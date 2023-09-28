@@ -31,33 +31,45 @@ syntax:
   - name: position
     type: Position3dAGL
   - name: minDistance
-    description: (Optional, default -1) minimum (2D) distance from other objects (range 0..50). -1 to ignore proximity check
+    description: minimum (2D) distance from other objects (range 0..50). -1 to ignore proximity check
     type: Number
+    optional: true
+    default: '-1'
   - name: mode
-    description: (Optional, default -1) position check mode ('''ALWAYS USE DEFAULT VALUE''')
+    description: position check mode ('''ALWAYS USE DEFAULT VALUE''')
     type: Number
+    optional: true
+    default: '-1'
   - name: maxGradient
-    description: (Optional, default -1) maximum terrain steepness allowed. -1 to ignore
+    description: maximum terrain steepness allowed. -1 to ignore
     type: Number
+    optional: true
+    default: '-1'
   - name: maxGradientRadius
-    description: (Optional, default 1) how far to extend gradient check
+    description: how far to extend gradient check
     type: Number
+    optional: true
+    default: '1'
   - name: overLandOrWater
     description: |-
-      (Optional, default 0)
       * 0: position cannot be over water
       * 2: position cannot be over land
       * -1 to ignore
     type: Number
+    optional: true
+    default: '0'
   - name: shoreLine
     description: |-
-      (Optional, default [[false]])
       * [[true]]: position is over shoreline (< ~25 m from water)
       * [[false]] to ignore
     type: Boolean
+    optional: true
+    default: '[[false]]'
   - name: ignoreObject
-    description: (Optional, default [[objNull]]) object to ignore in proximity checks. [[objNull]] to ignore
+    description: object to ignore in proximity checks. [[objNull]] to ignore
     type: Object
+    optional: true
+    default: '[[objNull]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -29,11 +29,12 @@ syntax:
       * bipod: [[String]] - Underbarrel rail attachment class name. Use "" if not needed.
       This array has the same format as the array returned by the [[weaponsItems]] command.
     type: !ArraySized
-    - - name: weapon
+      types:
+      - name: weapon
         value: String
         desc: ''
         since: null
-    - ''
+      desc: ''
   - name: weaponsCount
     description: Number of weapons to add
     type: Number

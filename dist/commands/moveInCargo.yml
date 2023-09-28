@@ -34,8 +34,10 @@ syntax:
   - name: cargoIndex
     type: Number
   - name: canReassign
-    description: (Optional, default [[true]]) try to move ''unit'' into the first free ''vehicle'' cargo seat if ''cargoIndex'' is already occupied
+    description: try to move ''unit'' into the first free ''vehicle'' cargo seat if ''cargoIndex'' is already occupied
     type: Boolean
+    optional: true
+    default: '[[true]]'
     since:
       arma_3:
         major: 2

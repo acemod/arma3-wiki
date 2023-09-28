@@ -30,15 +30,19 @@ syntax:
     description: elevation range 0..1
     type: Number
   - name: speed
-    description: (Optional, default -1) config anim speed multiplier, 2 - twice as fast, 0.5 - twice as slow, etc. -1 - default config speed. If [[true]] is used as param, the change in elevation is almost instant
+    description: config anim speed multiplier, 2 - twice as fast, 0.5 - twice as slow, etc. -1 - default config speed. If [[true]] is used as param, the change in elevation is almost instant
     type: !OneOf
     - - Number
       - null
     - - Boolean
       - null
+    optional: true
+    default: '-1'
   - name: blockUserInput
-    description: (Optional, default [[false]]) [[true]] to disable user ability to control periscope with keyboard. The change is persistent unless set to [[false]] again
+    description: '[[true]] to disable user ability to control periscope with keyboard. The change is persistent unless set to [[false]] again'
     type: Boolean
+    optional: true
+    default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

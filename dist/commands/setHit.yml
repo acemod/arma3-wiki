@@ -24,29 +24,35 @@ syntax:
     description: Damage value ranging 0..1, 0 being fully functional, 1 being destroyed
     type: Number
   - name: useEffects
-    description: (Optional, default [[true]]) [[false]] to skip destruction effects
+    description: '[[false]] to skip destruction effects'
     type: Boolean
+    optional: true
+    default: '[[true]]'
     since:
       arma_3:
         major: 1
         minor: 68
   - name: killer
     description: |-
-      (Optional, default [[objNull]]) The entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill.
+      The entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill.
       * it can be used to show "killed by player" in debriefing statistics and kill messages in the chat (if death messages are enabled).
       * it will alter the killer's [[rating]] as if the killer directly killed the unit.
       * it will be listed as <sqf inline>_killer</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler.
     type: Object
+    optional: true
+    default: '[[objNull]]'
     since:
       arma_3:
         major: 2
         minor: 8
   - name: instigator
     description: |-
-      (Optional, default [[objNull]]) The person that instigated the damage.
+      The person that instigated the damage.
       * if a tank is a killer, the tank gunner that pulled the trigger is instigator
       * it will be listed as <sqf inline>_instigator</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler.
     type: Object
+    optional: true
+    default: '[[objNull]]'
     since:
       arma_3:
         major: 2

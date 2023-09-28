@@ -9,15 +9,16 @@ syntax:
   - turretPath
   ret:
   - !ArraySized
-    - - name: elevation
-        value: Number
-        desc: current periscope elevation value. -1 in case of an invalid turret
-        since: null
-      - name: isLocked
-        value: Boolean
-        desc: whether or not user override is blocked
-        since: null
-    - ''
+    types:
+    - name: elevation
+      value: Number
+      desc: current periscope elevation value. -1 in case of an invalid turret
+      since: null
+    - name: isLocked
+      value: Boolean
+      desc: whether or not user override is blocked
+      since: null
+    desc: ''
   - null
   params:
   - name: vehicle

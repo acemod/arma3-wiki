@@ -46,11 +46,15 @@ syntax:
     description: text of the entry that is added to the history list
     type: String
   - name: tooltip
-    description: (Optional, default "Batch Change" ([[isLocalized|localized]])) - tooltip of the entry
+    description: ) - tooltip of the entry
     type: String
+    optional: true
+    default: '"Batch Change" ([[isLocalized|localized]]'
   - name: icon
-    description: (Optional, default "a3\3den\data\cfg3den\history\multipleoperations_ca.paa") - path to the icon that is displayed left of the ''text''. '''Must not start with a {{hl|\}}!'''
+    description: '- path to the icon that is displayed left of the ''''text''''. ''''''Must not start with a {{hl|\}}!'''''''
     type: String
+    optional: true
+    default: '"a3\3den\data\cfg3den\history\multipleoperations_ca.paa"'
   - name: code
     description: Code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
     type: Code

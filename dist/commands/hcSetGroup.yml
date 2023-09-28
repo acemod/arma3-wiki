@@ -21,17 +21,19 @@ syntax:
   - name: group
     type: Group
   - name: groupName
-    description: (Optional)
     type: String
+    optional: true
   - name: team
     description: |-
-      (Optional, default "teamMain") can be one of:
+      can be one of:
       * "teamMain"
       * "teamRed"
       * "teamGreen"
       * "teamBlue"
       * "teamYellow"
     type: String
+    optional: true
+    default: '"teamMain"'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

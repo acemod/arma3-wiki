@@ -7,15 +7,16 @@ syntax:
 - call: !Unary vehicle
   ret:
   - !ArraySized
-    - - name: moveInfo
-        value: String
-        desc: state of vehicle forward/backward movement (see description)
-        since: null
-      - name: turnInfo
-        value: String
-        desc: state of vehicle left/right turning (see description)
-        since: null
-    - ''
+    types:
+    - name: moveInfo
+      value: String
+      desc: state of vehicle forward/backward movement (see description)
+      since: null
+    - name: turnInfo
+      value: String
+      desc: state of vehicle left/right turning (see description)
+      since: null
+    desc: ''
   - null
   params:
   - name: vehicle

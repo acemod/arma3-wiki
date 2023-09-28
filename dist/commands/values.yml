@@ -1,0 +1,20 @@
+name: values
+description: Returns all values stored in the given [[HashMap]]. The order of the returned Array corresponds to the order of the Array returned by the [[keys]] command.
+groups:
+- HashMap
+syntax:
+- call: !Unary hashmap
+  ret:
+  - ArrayUnknown
+  - all values stored in ''hashmap''
+  params:
+  - name: hashmap
+    type: HashMapUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- private _values = values _myHashMap;

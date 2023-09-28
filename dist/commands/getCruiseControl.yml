@@ -7,15 +7,16 @@ syntax:
 - call: !Unary vehicle
   ret:
   - !ArraySized
-    - - name: '0'
-        value: Number
-        desc: Defined speed limit
-        since: null
-      - name: '1'
-        value: Boolean
-        desc: '[[true]] if cruise control is enabled, [[false]] if only speed was limited'
-        since: null
-    - ''
+    types:
+    - name: '0'
+      value: Number
+      desc: Defined speed limit
+      since: null
+    - name: '1'
+      value: Boolean
+      desc: '[[true]] if cruise control is enabled, [[false]] if only speed was limited'
+      since: null
+    desc: ''
   - null
   params:
   - name: vehicle

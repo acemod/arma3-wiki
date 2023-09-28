@@ -21,11 +21,15 @@ syntax:
     description: 'Can be: "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.'
     type: String
   - name: speed
-    description: (Optional, default -1) Time in seconds to fade in resource
+    description: Time in seconds to fade in resource
     type: Number
+    optional: true
+    default: '-1'
   - name: showInMap
-    description: (Optional, default [[true]]) [[false||False]] to hide the text when the map is opened.
+    description: '[[false||False]] to hide the text when the map is opened.'
     type: Boolean
+    optional: true
+    default: '[[true]]'
 argument_loc: Unspecified
 effect_loc: Local
 since:

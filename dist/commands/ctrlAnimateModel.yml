@@ -23,7 +23,6 @@ syntax:
     type: Number
   - name: speed
     description: |-
-      (Optional, default [[false]])
       * [[Boolean]] - when set to [[true]], animation is instant
       * {{GVI|arma3|1.66|size= 0.75}} [[Number]] - > 0 is treated as config speed value multiplier
     type: !OneOf
@@ -31,6 +30,8 @@ syntax:
       - null
     - - Number
       - null
+    optional: true
+    default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

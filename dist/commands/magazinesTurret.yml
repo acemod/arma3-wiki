@@ -10,8 +10,8 @@ syntax:
   - turretPath
   ret:
   - !ArrayUnsized
-    - String
-    - ''
+    type: String
+    desc: ''
   - null
   params:
   - name: vehicle
@@ -24,8 +24,8 @@ syntax:
     - includeEmpty
   ret:
   - !ArrayUnsized
-    - String
-    - ''
+    type: String
+    desc: ''
   - null
   params:
   - name: vehicle
@@ -33,8 +33,10 @@ syntax:
   - name: turretPath
     type: TurretPath
   - name: includeEmpty
-    description: (Optional, default [[true]]) - [[true]] = include empty magazines (behaviour as the primary syntax, but consistent), [[false]] = exclude empty magazines
+    description: '- [[true]] = include empty magazines (behaviour as the primary syntax, but consistent), [[false]] = exclude empty magazines'
     type: Boolean
+    optional: true
+    default: '[[true]]'
   since:
     arma_3:
       major: 2

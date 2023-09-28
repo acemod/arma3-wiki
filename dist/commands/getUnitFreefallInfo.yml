@@ -6,19 +6,20 @@ syntax:
 - call: !Unary unit
   ret:
   - !ArraySized
-    - - name: isFalling
-        value: Boolean
-        desc: '[[true]] if unit is falling'
-        since: null
-      - name: isInFreefallPose
-        value: Boolean
-        desc: '[[true]] if unit is in freefall pose'
-        since: null
-      - name: minFreefallHeight
-        value: Number
-        desc: current minimum freefall height (see [[setUnitFreefallHeight]])
-        since: null
-    - ''
+    types:
+    - name: isFalling
+      value: Boolean
+      desc: '[[true]] if unit is falling'
+      since: null
+    - name: isInFreefallPose
+      value: Boolean
+      desc: '[[true]] if unit is in freefall pose'
+      since: null
+    - name: minFreefallHeight
+      value: Number
+      desc: current minimum freefall height (see [[setUnitFreefallHeight]])
+      since: null
+    desc: ''
   - null
   params:
   - name: unit

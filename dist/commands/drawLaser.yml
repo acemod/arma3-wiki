@@ -26,18 +26,18 @@ syntax:
   - name: direction
     description: the laser's direction vector
     type: !ArrayUnsized
-    - Vector3d
-    - ''
+      type: Vector3d
+      desc: ''
   - name: beamColor
     description: laser beam color. The values can go way above the usual 0..1 range as they also act as emissivity brightness
     type: !ArrayUnsized
-    - ArrayColorRgb
-    - ''
+      type: ArrayColorRgb
+      desc: ''
   - name: dotColor
     description: impact dot color. Set to <sqf inline>[]</sqf> to use the same value as ''beamColor''.
     type: !ArrayUnsized
-    - ArrayColorRgb
-    - ''
+      type: ArrayColorRgb
+      desc: ''
   - name: dotSize
     description: impact dot size; if set to 0 the impact dot will not render
     type: Number
@@ -45,11 +45,15 @@ syntax:
     description: laser beam's thickness scale; if set to 0, the beam will not render
     type: Number
   - name: beamMaxLength
-    description: (Optional, default -1) laser beam's maximum length. {{hl|-1}} means maximum length (defined in {{hl|CfgIRLaserSettings}}), {{hl|0}} means no length at all and the command is ignored
+    description: laser beam's maximum length. {{hl|-1}} means maximum length (defined in {{hl|CfgIRLaserSettings}}), {{hl|0}} means no length at all and the command is ignored
     type: Number
+    optional: true
+    default: '-1'
   - name: isIR
-    description: (Optional, default [[true]]) whether the laser and impact dot are only visible with Night Vision / Thermal Imaging
+    description: whether the laser and impact dot are only visible with Night Vision / Thermal Imaging
     type: Boolean
+    optional: true
+    default: '[[true]]'
 argument_loc: Unspecified
 effect_loc: Local
 since:

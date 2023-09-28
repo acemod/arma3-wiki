@@ -21,8 +21,10 @@ syntax:
     description: class name of the item to add (if magazine, muzzle will be autodetected)
     type: String
   - name: instant
-    description: (Optional, default [[false]]) [[true]] to skip animation
+    description: '[[true]] to skip animation'
     type: Boolean
+    optional: true
+    default: '[[false]]'
     since:
       arma_3:
         major: 1
@@ -47,14 +49,18 @@ syntax:
     description: class name of the item to add (if magazine, muzzle will be autodetected unless specified)
     type: String
   - name: ammoCount
-    description: (Optional) optional amount of ammo in magazine
+    description: optional amount of ammo in magazine
     type: Number
+    optional: true
   - name: muzzleName
-    description: (Optional) optional target muzzle to add magazine to
+    description: optional target muzzle to add magazine to
     type: String
+    optional: true
   - name: instant
-    description: (Optional, default [[false]]) [[true]] to skip animation
+    description: '[[true]] to skip animation'
     type: Boolean
+    optional: true
+    default: '[[false]]'
     since:
       arma_3:
         major: 1

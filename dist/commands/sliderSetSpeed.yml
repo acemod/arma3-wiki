@@ -22,8 +22,10 @@ syntax:
     description: value delta to move the slider when clicking inside the slider bar
     type: Number
   - name: step
-    description: (Optional, default 0) slider step
+    description: slider step
     type: Number
+    optional: true
+    default: '0'
 - call: !Binary
   - control
   - - line
@@ -42,8 +44,10 @@ syntax:
     description: value delta to move the slider when clicking inside the slider bar
     type: Number
   - name: step
-    description: (Optional, default 0) slider step
+    description: slider step
     type: Number
+    optional: true
+    default: '0'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

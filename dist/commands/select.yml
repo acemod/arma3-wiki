@@ -61,8 +61,10 @@ syntax:
     description: string position to start selection from. 0 denotes the first character of the string, 1 the second, etc. If passed number has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
     type: Number
   - name: length
-    description: (Optional, default ''string''<nowiki/>'s length) number of characters to select
+    description: number of characters to select
     type: Number
+    optional: true
+    default: '''''string''''<nowiki/>''s length'
   since:
     arma_3:
       major: 1

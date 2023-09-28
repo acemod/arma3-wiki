@@ -25,21 +25,23 @@ syntax:
     type: String
   - name: fsmFile
     description: |-
-      (Optional) .fsm file path. Receives the following parameters:
+      .fsm file path. Receives the following parameters:
       * '''_sentenceId:''' the sentence as defined in the .bikb file
       * '''_topic:''' TopicName registered via kbAddTopic
       * '''_this:''' the person that was talked to (receiver)
       * '''_from:''' the person that talked to the receiver and triggered the script
     type: String
+    optional: true
   - name: eventHandler
     description: |-
-      (Optional) code to execute - given String will be [[compile]]d. This is '''not''' an sqf file path.<br>
+      code to execute - given String will be [[compile]]d. This is '''not''' an sqf file path.<br>
       Parameters: identical to ''fsmFile'' - see above.
     type: !OneOf
     - - Code
       - null
     - - String
       - null
+    optional: true
 argument_loc: Local
 effect_loc: Local
 since:

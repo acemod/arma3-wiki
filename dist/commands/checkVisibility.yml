@@ -37,8 +37,10 @@ syntax:
     description: 'level of details to use. Possible values are: {{hl|"FIRE"}}, {{hl|"VIEW"}}, {{hl|"GEOM"}}, {{hl|"IFIRE"}}, and {{GVI|arma3|2.02|size= 0.75}} {{hl|"PHYSX"}}'
     type: String
   - name: ignore2
-    description: (Optional, default [[objNull]]) second object to exclude from calculations
+    description: second object to exclude from calculations
     type: Object
+    optional: true
+    default: '[[objNull]]'
     since:
       arma_3:
         major: 1

@@ -26,13 +26,13 @@ syntax:
   - name: position
     description: In format [randomX, randomY, randomZ]
     type: !ArrayUnsized
-    - Number
-    - ''
+      type: Number
+      desc: ''
   - name: moveVelocity
     description: In format [randomX, randomY, randomZ]
     type: !ArrayUnsized
-    - Number
-    - ''
+      type: Number
+      desc: ''
   - name: rotationVelocity
     type: Number
   - name: size
@@ -44,11 +44,11 @@ syntax:
   - name: directionIntensity
     type: Number
   - name: angle
-    description: )
     type: Number
+    optional: true
   - name: bounceOnSurface
-    description: )
     type: Number
+    optional: true
     since:
       arma_3:
         major: 0

@@ -25,14 +25,17 @@ syntax:
     description: virtual line end
     type: Position3dASL
   - name: objIgnore1
-    description: (Optional) object to ignore. When testing intersection from an object/unit/vehicle, pass that object here to prevent intersection inside of the object.
+    description: object to ignore. When testing intersection from an object/unit/vehicle, pass that object here to prevent intersection inside of the object.
     type: Object
+    optional: true
   - name: objIgnore2
-    description: (Optional) another object to ignore. When testing intersection of a line between two objects, pass the second object here to prevent intersection inside of it being reported
+    description: another object to ignore. When testing intersection of a line between two objects, pass the second object here to prevent intersection inside of it being reported
     type: Object
+    optional: true
   - name: sortByDistance
-    description: '(Optional) [[true]]: sort by ''''''desc''''''ending distance (furthermost object first, closest object last); [[false]]: unsorted'
+    description: '[[true]]: sort by ''''''desc''''''ending distance (furthermost object first, closest object last); [[false]]: unsorted'
     type: Boolean
+    optional: true
 argument_loc: Global
 effect_loc: Unspecified
 since:

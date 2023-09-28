@@ -8,8 +8,8 @@ syntax:
 - call: !Unary roadSegment
   ret:
   - !ArrayUnsized
-    - Object
-    - ''
+    type: Object
+    desc: ''
   - Connected road segments
   params:
   - name: roadSegment
@@ -20,16 +20,18 @@ syntax:
   - extended
   ret:
   - !ArrayUnsized
-    - Object
-    - ''
+    type: Object
+    desc: ''
   - Connected road segments
   params:
   - name: roadSegment
     description: Road segment
     type: Object
   - name: extended
-    description: (Optional, default [[false]]) When [[true]], performs a more thorough search on top of base behaviour, slower but returns pedestrian and other missing road segments
+    description: When [[true]], performs a more thorough search on top of base behaviour, slower but returns pedestrian and other missing road segments
     type: Boolean
+    optional: true
+    default: '[[false]]'
   since:
     arma_3:
       major: 2

@@ -27,11 +27,13 @@ syntax:
     type: String
   - name: position
     type: !ArrayUnsized
-    - Position
-    - ''
+      type: Position
+      desc: ''
   - name: isEmpty
-    description: (Optional, default [[false]]) [[true]] to create vehicle without crew
+    description: '[[true]] to create vehicle without crew'
     type: Boolean
+    optional: true
+    default: '[[false]]'
 - call: !Binary
   - group
   - - mode
@@ -57,11 +59,13 @@ syntax:
     type: String
   - name: position
     type: !ArrayUnsized
-    - Position
-    - ''
+      type: Position
+      desc: ''
   - name: isEmpty
-    description: (Optional, default [[false]]) [[true]] to create vehicle without crew
+    description: '[[true]] to create vehicle without crew'
     type: Boolean
+    optional: true
+    default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

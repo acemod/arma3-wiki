@@ -34,23 +34,33 @@ syntax:
     type: Number
   - name: sortByType
     description: |-
-      (Optional, default "TEXT") one of:
+      one of:
       * {{hl|"TEXT"}}
       * {{hl|"VALUE"}}
       * {{hl|"DATA"}}
     type: String
+    optional: true
+    default: '"TEXT"'
   - name: reversedOrder
-    description: (Optional, default [[false]]) [[true]] for sorting in reversed order
+    description: '[[true]] for sorting in reversed order'
     type: Boolean
+    optional: true
+    default: '[[false]]'
   - name: caseSensitive
-    description: (Optional, default [[false]]) [[true]] for using case-sensitive comparison
+    description: '[[true]] for using case-sensitive comparison'
     type: Boolean
+    optional: true
+    default: '[[false]]'
   - name: useTextRight
-    description: (Optional, default [[false]]) [[true]] to sort by [[lnbSetTextRight | text right]]
+    description: '[[true]] to sort by [[lnbSetTextRight | text right]]'
     type: Boolean
+    optional: true
+    default: '[[false]]'
   - name: unicodeOff
-    description: (Optional, default [[false]]) [[true]] to switch off UNICODE conversion for faster sorting
+    description: '[[true]] to switch off UNICODE conversion for faster sorting'
     type: Boolean
+    optional: true
+    default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

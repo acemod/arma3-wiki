@@ -1,0 +1,20 @@
+name: keys
+description: Retrieves a list of all keys in a [[HashMap]].
+groups:
+- HashMap
+syntax:
+- call: !Unary hashMap
+  ret:
+  - ArrayUnknown
+  - Array of all keys in the HashMap
+  params:
+  - name: hashMap
+    type: HashMapUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- keys _myHashMap;

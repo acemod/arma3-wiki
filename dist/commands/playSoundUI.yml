@@ -17,17 +17,25 @@ syntax:
     description: '[[CfgSounds]] class or file as used in [[playSound3D]] (see [[Arma 3: Sound Files]] for available file names)'
     type: String
   - name: volume
-    description: (Optional, default 1) sound volume clamped in range 0..5
+    description: sound volume clamped in range 0..5
     type: Number
+    optional: true
+    default: '1'
   - name: soundPitch
-    description: "(Optional, default 1)\n* 1.0 &rarr; normal \n* 0.5 &rarr; Darth Vader\n* 2.0 &rarr; Chipmunks"
+    description: "* 1.0 &rarr; normal \n* 0.5 &rarr; Darth Vader\n* 2.0 &rarr; Chipmunks"
     type: Number
+    optional: true
+    default: '1'
   - name: isEffect
-    description: (Optional, default [[false]]) if [[true]], diverts sound through effects channel (see [[fadeSound]], [[soundVolume]])
+    description: if [[true]], diverts sound through effects channel (see [[fadeSound]], [[soundVolume]])
     type: Boolean
+    optional: true
+    default: '[[false]]'
   - name: offset
-    description: (Optional, default 0) offset in seconds. Same as with [[playSound3D]]
+    description: offset in seconds. Same as with [[playSound3D]]
     type: Number
+    optional: true
+    default: '0'
     since:
       arma_3:
         major: 2

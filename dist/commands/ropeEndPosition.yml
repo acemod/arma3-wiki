@@ -6,15 +6,16 @@ syntax:
 - call: !Unary rope
   ret:
   - !ArraySized
-    - - name: startPos
-        value: ArrayUnknown
-        desc: rope start position format [[Position#PositionAGL|PositionAGL]]
-        since: null
-      - name: endPos
-        value: ArrayUnknown
-        desc: rope end position format [[Position#PositionAGL|PositionAGL
-        since: null
-    - array
+    types:
+    - name: startPos
+      value: ArrayUnknown
+      desc: rope start position format [[Position#PositionAGL|PositionAGL]]
+      since: null
+    - name: endPos
+      value: ArrayUnknown
+      desc: rope end position format [[Position#PositionAGL|PositionAGL
+      since: null
+    desc: array
   - null
   params:
   - name: rope

@@ -30,20 +30,22 @@ syntax:
       * [[Array]] of [[String]]s - format [title, text, icon]:
       ** title: [[String]]
       ** text: [[String]]
-      ** {{GVI|arma3|2.10|size= 0.75}} icon: [[String]] - (Optional) icon to show next to the title
+      ** {{GVI|arma3|2.10|size= 0.75}} icon: [[String]] -  icon to show next to the title
     type: !OneOf
     - - String
       - null
     - - !ArrayUnsized
-        - String
-        - ''
+        type: String
+        desc: ''
       - null
+    optional: true
   - name: task
-    description: (Optional, default [[taskNull]])
     type: Task
+    optional: true
+    default: '[[taskNull]]'
   - name: taskState
     description: |-
-      (Optional, default {{hl|"NONE"}}) changes the state of the given task. Can be one of:
+      changes the state of the given task. Can be one of:
       {{Columns|3|
       * {{hl|"NONE"}}
       * {{hl|"CREATED"}}
@@ -53,9 +55,13 @@ syntax:
       * {{hl|"CANCELED"}}
       }}
     type: String
+    optional: true
+    default: '{{hl|"NONE"}}'
   - name: showTitle
-    description: (Optional, default [[true]]) whether or not to show title in the description section as well
+    description: whether or not to show title in the description section as well
     type: Boolean
+    optional: true
+    default: '[[true]]'
     since:
       arma_3:
         major: 1

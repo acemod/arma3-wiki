@@ -100,15 +100,18 @@ pub fn syntax(
             } else {
                 let (mut name, typ) = value.split_once(':').unwrap();
                 let typ = typ.trim();
-                let (mut typ, mut desc) = typ
-                    .split_once('-')
-                    .unwrap_or(typ.split_once("(Optional").unwrap_or((typ, "")));
-                let default = if typ.contains("(Optional, default ") {
-                    let (typ_trim, default) = typ.split_once("(Optional").unwrap();
-                    typ = typ_trim;
+                let (typ, desc) = typ.split_once('-').unwrap_or((typ, ""));
+                let optional = desc.contains("(Optional");
+                let mut desc = desc.to_string();
+                let default = if desc.contains("(Optional, default ") {
+                    let (_, default) = desc.split_once("(Optional").unwrap();
                     let (default, desc_trim) = default.split_once(')').unwrap();
-                    desc = desc_trim;
-                    Some(default.replace(", default ", "").trim().to_string())
+                    let default = default.replace(", default ", "").trim().to_string();
+                    desc = desc_trim.to_string();
+                    Some(default)
+                } else if desc.contains("(Optional)") {
+                    desc = desc.replace("(Optional)", "").trim().to_string();
+                    None
                 } else {
                     None
                 };
@@ -129,6 +132,7 @@ pub fn syntax(
                     } else {
                         Some(desc.trim().to_string())
                     },
+                    optional,
                     typ: Value::from_wiki(typ.trim())?,
                     default,
                     since,

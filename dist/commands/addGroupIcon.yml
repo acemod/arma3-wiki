@@ -20,10 +20,12 @@ syntax:
     description: class name of an icon from {{hl|CfgGroupIcons}}
     type: String
   - name: offset
-    description: (Optional, default [0,0]) X and Y offsets of the icon in format [offsetX, offsetY]
+    description: X and Y offsets of the icon in format [offsetX, offsetY]
     type: !ArrayUnsized
-    - Number
-    - ''
+      type: Number
+      desc: ''
+    optional: true
+    default: '[0,0]'
 argument_loc: Global
 effect_loc: Local
 since:

@@ -29,15 +29,19 @@ syntax:
     description: range from center position to search for objects
     type: Number
   - name: sort
-    description: (Optional, default [[true]]) sort objects by distance to the center or not - setting to [[false]] '''greatly''' improves performance
+    description: sort objects by distance to the center or not - setting to [[false]] '''greatly''' improves performance
     type: Boolean
+    optional: true
+    default: '[[true]]'
     since:
       arma_3:
         major: 1
         minor: 62
   - name: 2Dmode
-    description: '(Optional, default [[false]]) the object search and sorting mode: [[true]] - 2D, [[false]] - 3D'
+    description: 'the object search and sorting mode: [[true]] - 2D, [[false]] - 3D'
     type: Boolean
+    optional: true
+    default: '[[false]]'
     since:
       arma_3:
         major: 1

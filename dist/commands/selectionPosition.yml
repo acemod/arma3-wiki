@@ -56,11 +56,13 @@ syntax:
         minor: 6
   - name: returnMode
     description: |-
-      (Optional, default {{hl|"FirstPoint"}}) can be one of:
+      can be one of:
       * {{hl|"FirstPoint"}}
       * {{hl|"AveragePoint"}}
       * {{hl|"BoundingBox"}}
     type: String
+    optional: true
+    default: '{{hl|"FirstPoint"}}'
     since:
       arma_3:
         major: 2
@@ -87,15 +89,19 @@ syntax:
     description: the index of the target LOD (see [[allLODs]])
     type: Number
   - name: isVisual
-    description: (Optional, default [[true]]) [[true]] for Render, [[false]] for Simulation [[Simulation_vs_Render_Time_Scope|time scope]]
+    description: '[[true]] for Render, [[false]] for Simulation [[Simulation_vs_Render_Time_Scope|time scope]]'
     type: Boolean
+    optional: true
+    default: '[[true]]'
   - name: returnMode
     description: |-
-      (Optional, default {{hl|"FirstPoint"}}) can be one of:
+      can be one of:
       * {{hl|"FirstPoint"}}
       * {{hl|"AveragePoint"}}
       * {{hl|"BoundingBox"}}
     type: String
+    optional: true
+    default: '{{hl|"FirstPoint"}}'
     since:
       arma_3:
         major: 2

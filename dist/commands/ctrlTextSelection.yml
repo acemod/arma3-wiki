@@ -6,19 +6,20 @@ syntax:
 - call: !Unary control
   ret:
   - !ArraySized
-    - - name: start
-        value: Number
-        desc: position in text selection started
-        since: null
-      - name: length
-        value: Number
-        desc: number of the highlighted characters (this number could be negative, see description)
-        since: null
-      - name: selectedText
-        value: String
-        desc: selected text
-        since: null
-    - ''
+    types:
+    - name: start
+      value: Number
+      desc: position in text selection started
+      since: null
+    - name: length
+      value: Number
+      desc: number of the highlighted characters (this number could be negative, see description)
+      since: null
+    - name: selectedText
+      value: String
+      desc: selected text
+      since: null
+    desc: ''
   - null
   params:
   - name: control

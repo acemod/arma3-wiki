@@ -6,15 +6,16 @@ syntax:
 - call: !Unary unit
   ret:
   - !ArraySized
-    - - name: infoPanelId
-        value: String
-        desc: name of the info panel class as defined in vehicle config
-        since: null
-      - name: infopanelShortcutId
-        value: String
-        desc: shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
-        since: null
-    - '-'
+    types:
+    - name: infoPanelId
+      value: String
+      desc: name of the info panel class as defined in vehicle config
+      since: null
+    - name: infopanelShortcutId
+      value: String
+      desc: shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+      since: null
+    desc: '-'
   - null
   params:
   - name: unit
@@ -25,15 +26,16 @@ syntax:
   - turretPath
   ret:
   - !ArraySized
-    - - name: infoPanelId
-        value: String
-        desc: name of the info panel class as defined in vehicle config
-        since: null
-      - name: infopanelShortcutId
-        value: String
-        desc: shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
-        since: null
-    - '-'
+    types:
+    - name: infoPanelId
+      value: String
+      desc: name of the info panel class as defined in vehicle config
+      since: null
+    - name: infopanelShortcutId
+      value: String
+      desc: shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+      since: null
+    desc: '-'
   - null
   params:
   - name: unit

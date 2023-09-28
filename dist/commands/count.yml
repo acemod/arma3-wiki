@@ -1,0 +1,76 @@
+name: count
+description: |-
+  Can be used to count:
+  * The number of elements in an array (returns the already internally known array size)
+  * The number of elements in an array matching the condition
+  * The number of sub-entries in a config entry
+  * {{GVI|arma3|1.28|size= 0.75}} The number of characters in an ANSI string {{Feature|informative|If Unicode support is desired, see [[forceUnicode]].}}
+groups:
+- Arrays
+- Strings
+- Config
+- HashMap
+syntax:
+- call: !Unary value
+  ret:
+  - Number
+  - null
+  params:
+  - name: value
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - Config
+      - null
+    - - HashMapUnknown
+      - null
+- call: !Binary
+  - condition
+  - array
+  ret:
+  - Number
+  - null
+  params:
+  - name: condition
+    description: |-
+      Condition that must return [[true]] for the tested element to be counted. The variable {{hl|[[Magic Variables#x|_x]]}} will contain the currently tested element
+      {{Feature|arma3|If array contains different data types, use [[isEqualTo]] instead of [[==]]!}}
+    type: Code
+  - name: array
+    type: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  count [0, 0, 1, 2]; // returns 4
+  count units group player; // returns number of units in player group
+- |-
+  private _cnt = { _x == 4 } count [1, 9, 8, 3, 4, 4, 4, 5, 6]; // returns 3
+  _cnt = { alive _x } count allUnits; // returns the number of alive units
+- private _cnt = count (configFile >> "CfgVehicles");
+- hint str count "japa is the man!"; // 16
+- if (count _myHashMap < 1) then { hint "empty hashmap!"; };

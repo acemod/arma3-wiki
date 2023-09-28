@@ -11,50 +11,51 @@ syntax:
 - call: !Unary road
   ret:
   - !ArraySized
-    - - name: mapType
-        value: String
-        desc: road segment type, could be {{hl|"HIDE"}}, {{hl|"ROAD"}}, {{hl|"MAIN ROAD"}}, {{hl|"TRACK"}}, {{hl|"TRAIL"}} (see [[nearestTerrainObjects]])
-        since: null
-      - name: width
-        value: Number
-        desc: road segment width
-        since: null
-      - name: isPedestrian
-        value: Boolean
-        desc: when [[true]] road is for pedestrian use only
-        since: null
-      - name: texture
-        value: String
-        desc: road segment surface texture
-        since: null
-      - name: textureEnd
-        value: String
-        desc: road segment surface texture
-        since: null
-      - name: material
-        value: String
-        desc: road segment surface material
-        since: null
-      - name: begPos
-        value: Position3dASL
-        desc: start of the road segment
-        since: null
-      - name: endPos
-        value: Position3dASL
-        desc: finish of the road segment
-        since: null
-      - name: isBridge
-        value: Boolean
-        desc: when [[true]] road segment is a bridge
-        since: null
-      - name: AIpathOffset
-        value: Number
-        desc: config value of `AIpathOffset`
-        since:
-          arma_3:
-            major: 2
-            minor: 12
-    - ''
+    types:
+    - name: mapType
+      value: String
+      desc: road segment type, could be {{hl|"HIDE"}}, {{hl|"ROAD"}}, {{hl|"MAIN ROAD"}}, {{hl|"TRACK"}}, {{hl|"TRAIL"}} (see [[nearestTerrainObjects]])
+      since: null
+    - name: width
+      value: Number
+      desc: road segment width
+      since: null
+    - name: isPedestrian
+      value: Boolean
+      desc: when [[true]] road is for pedestrian use only
+      since: null
+    - name: texture
+      value: String
+      desc: road segment surface texture
+      since: null
+    - name: textureEnd
+      value: String
+      desc: road segment surface texture
+      since: null
+    - name: material
+      value: String
+      desc: road segment surface material
+      since: null
+    - name: begPos
+      value: Position3dASL
+      desc: start of the road segment
+      since: null
+    - name: endPos
+      value: Position3dASL
+      desc: finish of the road segment
+      since: null
+    - name: isBridge
+      value: Boolean
+      desc: when [[true]] road segment is a bridge
+      since: null
+    - name: AIpathOffset
+      value: Number
+      desc: config value of `AIpathOffset`
+      since:
+        arma_3:
+          major: 2
+          minor: 12
+    desc: ''
   - null
   params:
   - name: road

@@ -21,14 +21,17 @@ syntax:
     description: object to attach to
     type: Object
   - name: offset
-    description: (Optional) format [[Position#PositionRelative|PositionRelative]]
+    description: format [[Position#PositionRelative|PositionRelative]]
     type: ArrayUnknown
+    optional: true
   - name: memPoint
-    description: '(Optional) see [[ArmA: Selection Translations]] for czech selections names'
+    description: 'see [[ArmA: Selection Translations]] for czech selections names'
     type: String
+    optional: true
   - name: followBoneRotation
-    description: (Optional) follows the memory point's rotation (if attached to one)
+    description: follows the memory point's rotation (if attached to one)
     type: Boolean
+    optional: true
     since:
       arma_3:
         major: 2

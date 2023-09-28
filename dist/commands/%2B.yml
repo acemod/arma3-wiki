@@ -1,0 +1,127 @@
+name: +
+description: |-
+  Add two [[Number]]s, concatenate two [[Array]]s or two [[String]]s, or create a copy of an Array or [[HashMap]].
+
+  {{Feature|warning|[[Array]] copy methods {{hl|ARRAY + []}} and {{hl|+ ARRAY}} have different behaviours:
+  * {{hl|ARRAY + []}} creates copy of the 1st dimension, but preserves references in other dimensions ({{Link|https://en.wikipedia.org/wiki/Object_copying#Shallow_copy|shallow copy}}).
+  * {{hl|+ ARRAY}} clones every element, so if the array is multi-dimensional, the created copy contains no references ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}}).
+  See [[#Example_6|Example 6]].
+  }}
+groups:
+- Math
+- Arrays
+- HashMap
+- Strings
+syntax:
+- call: !Binary
+  - numberA
+  - numberB
+  ret:
+  - Number
+  - The sum of ''numberA'' and ''numberB''
+  params:
+  - name: numberA
+    type: Number
+  - name: numberB
+    type: Number
+- call: !Unary number
+  ret:
+  - Number
+  - The value of the parameter ''number''
+  params:
+  - name: number
+    type: Number
+- call: !Binary
+  - arrayA
+  - arrayB
+  ret:
+  - ArrayUnknown
+  - A new array filled with ''arrayA'' and ''arrayB'' elements, in that order
+  params:
+  - name: arrayA
+    type: ArrayUnknown
+  - name: arrayB
+    type: ArrayUnknown
+- call: !Binary
+  - stringA
+  - stringB
+  ret:
+  - String
+  - a string concatenating ''stringA'' and ''stringB''
+  params:
+  - name: stringA
+    type: String
+  - name: stringB
+    type: String
+- call: !Unary array
+  ret:
+  - ArrayUnknown
+  - A new instance of the provided array filled with same elements ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}})
+  params:
+  - name: array
+    type: ArrayUnknown
+- call: !Unary hashMap
+  ret:
+  - HashMapUnknown
+  - A new instance of the provided [[HashMap]] filled with the same key-value pairs ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}})
+  params:
+  - name: hashMap
+    type: HashMapUnknown
+  since:
+    arma_3:
+      major: 2
+      minor: 4
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "<sqf notrim>\n 5 +  3\t// returns  8\n-5 + -3\t// returns -8\n"
+- "+  2\t// returns  2\n+ -7\t// returns -7\n"
+- |
+  _arrayA = [1,2,3];
+  _arrayB = [3,4,5];
+  _arrayAB = _arrayA + _arrayB; // _arrayAB = [1,2,3,3,4,5]
+  // _arrayA and _arrayB remain unchanged
+- _result = "Hello" + " " + "there"; // "Hello there"
+- |
+  _arrayA = [1,2,3];
+  _arrayB = + _arrayA;
+  _arrayB set [0, 99]; // _arrayA = [1,2,3], _arrayB = [99,2,3]
+- |
+  Shallow copy with {{hl|ARRAY + []}}:
+  <sqf>
+  private _subArray = [1, 2, 3];
+  private _array1 = [_subArray, 1, 2, 3];
+  private _array2 = _array1 + [];
+  _array2 select 0 set [0, "oops"];
+  hint str _subArray; // ["oops", 2, 3]
+  </sqf>
+
+  Deep copy with {{hl|+ ARRAY}}:
+  <sqf>
+  private _subArray = [1, 2, 3];
+  private _array1 = [_subArray, 1, 2, 3];
+  private _array2 = + _array1;
+  _array2 select 0 set [0, "oops"];
+  hint str _subArray; // [1, 2, 3]

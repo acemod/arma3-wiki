@@ -27,8 +27,10 @@ syntax:
     - - String
       - null
   - name: arguments
-    description: (Optional, default {{hl|[]}}) additional arguments to be passed to the EH code. Available during code execution via {{hl|_thisArgs}} variable.
+    description: additional arguments to be passed to the EH code. Available during code execution via {{hl|_thisArgs}} variable.
     type: ArrayUnknown
+    optional: true
+    default: '{{hl|[]}}'
     since:
       arma_3:
         major: 2

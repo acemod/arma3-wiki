@@ -6,15 +6,16 @@ syntax:
 - call: !Unary markerName
   ret:
   - !ArraySized
-    - - name: a-axis
-        value: Number
-        desc: 1/2 width of marker
-        since: null
-      - name: b-axis
-        value: Number
-        desc: 1/2 height of marker
-        since: null
-    - '-'
+    types:
+    - name: a-axis
+      value: Number
+      desc: 1/2 width of marker
+      since: null
+    - name: b-axis
+      value: Number
+      desc: 1/2 height of marker
+      since: null
+    desc: '-'
   - null
   params:
   - name: markerName

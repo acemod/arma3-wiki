@@ -17,9 +17,16 @@ pub struct ArraySizedElement {
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub enum Value {
     Anything,
-    ArraySized((Vec<ArraySizedElement>, String)),
+    ArraySized {
+        types: Vec<ArraySizedElement>,
+        desc: String,
+    },
     ArrayUnknown,
-    ArrayUnsized((Box<Value>, String)),
+    ArrayUnsized {
+        #[serde(rename = "type")]
+        typ: Box<Value>,
+        desc: String,
+    },
     ArrayDate,
     ArrayColor,
     ArrayColorRgb,
@@ -35,6 +42,8 @@ pub enum Value {
     ExceptionHandle,
     ForType,
     Group,
+    HashMapUnknown,
+    HashMapKnownKeys(Vec<String>),
     IfType,
     Location,
     Namespace,
@@ -54,6 +63,7 @@ pub enum Value {
     Position2d,
     Position3d,
     Position3dASL,
+    Position3DASLW,
     Position3dATL,
     Position3dAGL,
     Position3dAGLS,
@@ -83,6 +93,18 @@ impl Value {
             }
         }
 
+        if source.starts_with("[[Array]] of [[Array]]s ") {
+            let (_, subtyp) = source.split_once("[[Array]]s ").unwrap();
+            let subtyp = Self::from_wiki(&format!("[[Array]] {}", subtyp))?;
+            return Ok(Value::ArrayUnsized {
+                typ: Box::new(Value::ArrayUnsized {
+                    typ: Box::new(subtyp),
+                    desc: "".to_string(),
+                }),
+                desc: "".to_string(),
+            });
+        }
+
         let source = source.trim_start_matches("[[").trim_end_matches("]]");
         match source {
             "Anything" => Ok(Value::Anything),
@@ -94,6 +116,7 @@ impl Value {
             "Array]] format [[Position#Introduction|Position2D" => Ok(Value::Position2d),
             "Array]] format [[Position#Introduction|Position3D" => Ok(Value::Position3d),
             "Array]] format [[Position#PositionASL|PositionASL" => Ok(Value::Position3dASL),
+            "Array]] format [[Position#PositionASLW|PositionASLW" => Ok(Value::Position3DASLW),
             "Array]] format [[Position#PositionATL|PositionATL" => Ok(Value::Position3dATL),
             "Array]] format [[Position#PositionAGL|PositionAGL" => Ok(Value::Position3dAGL),
             "Array]] format [[Position#PositionAGLS|PositionAGLS" => Ok(Value::Position3dAGLS),
@@ -119,6 +142,7 @@ impl Value {
             "Exception handling|Exception Type" => Ok(Value::ExceptionHandle),
             "For Type" => Ok(Value::ForType),
             "Group" => Ok(Value::Group),
+            "HashMap" => Ok(Value::HashMapUnknown),
             "If Type" => Ok(Value::IfType),
             "Location" => Ok(Value::Location),
             "Namespace" => Ok(Value::Namespace),
@@ -129,6 +153,7 @@ impl Value {
             "Position#Introduction|Position2D" => Ok(Value::Position2d),
             "Position#Introduction|Position3D" => Ok(Value::Position3d),
             "Position#PositionASL|PositionASL" => Ok(Value::Position3dASL),
+            "Position#PositionASLW|PositionASLW" => Ok(Value::Position3DASLW),
             "Position#PositionATL|PositionATL" => Ok(Value::Position3dATL),
             "Position#PositionAGL|PositionAGL" => Ok(Value::Position3dAGL),
             "Position#PositionAGLS|PositionAGLS" => Ok(Value::Position3dAGLS),
@@ -156,8 +181,8 @@ impl Value {
                                 let (_, typ) = desc.split_once("]] of [[").unwrap();
                                 let (typ, _) = typ.split_once("]]").unwrap();
                                 let typ = Value::from_wiki(typ.trim())?;
-                                return Ok(Value::ArraySized((
-                                    params
+                                return Ok(Value::ArraySized {
+                                    types: params
                                         .names()
                                         .into_iter()
                                         .map(|p| ArraySizedElement {
@@ -167,8 +192,8 @@ impl Value {
                                             since: None,
                                         })
                                         .collect(),
-                                    "".to_string(),
-                                )));
+                                    desc: "".to_string(),
+                                });
                             }
                             let (_, values) = values.split_once('\n').unwrap();
                             let values = values.split('*');
@@ -217,25 +242,29 @@ impl Value {
                                     since,
                                 });
                             }
-                            Ok(Value::ArraySized((
-                                array,
-                                desc.trim()
+                            Ok(Value::ArraySized {
+                                types: array,
+                                desc: desc
+                                    .trim()
                                     .trim_end_matches(" in the following")
                                     .replace("Array]]", "")
                                     .to_string(),
-                            )))
+                            })
                         } else if source.contains("of ") {
                             let typ = source.split_once("of ").unwrap().1;
                             if typ.contains('-') {
                                 let (typ, description) = typ.split_once(" - ").unwrap();
                                 let typ = Value::from_wiki(typ.trim().trim_end_matches('s'))?;
-                                Ok(Value::ArrayUnsized((
-                                    Box::new(typ),
-                                    description.to_string(),
-                                )))
+                                Ok(Value::ArrayUnsized {
+                                    typ: Box::new(typ),
+                                    desc: description.to_string(),
+                                })
                             } else {
                                 let typ = Value::from_wiki(typ.trim_end_matches("]]s"))?;
-                                Ok(Value::ArrayUnsized((Box::new(typ), "".to_string())))
+                                Ok(Value::ArrayUnsized {
+                                    typ: Box::new(typ),
+                                    desc: "".to_string(),
+                                })
                             }
                         } else {
                             Err(format!("Unknown value: {}", source))
@@ -266,7 +295,7 @@ fn basic() {
     );
     assert_eq!(
         Value::from_wiki("[[Array]] format [[Position#PositionAGL|PositionAGL]]"),
-        Ok(Value::Position3dASL)
+        Ok(Value::Position3dAGL)
     );
     assert_eq!(
         Value::from_wiki("[[Array]] format [[Position#PositionATL|PositionATL]]"),
@@ -297,7 +326,7 @@ fn basic() {
     assert_eq!(Value::from_wiki("[[Object]]"), Ok(Value::Object));
     assert_eq!(
         Value::from_wiki("[[Position#PositionAGL|PositionAGL]]"),
-        Ok(Value::Position3dASL)
+        Ok(Value::Position3dAGL)
     );
     assert_eq!(
         Value::from_wiki("[[Position#PositionATL|PositionATL]]"),
@@ -331,8 +360,8 @@ fn array_sized() {
     let value = "[[Array]] in format:\n* 0: [[Number]] - Defined speed limit\n* 1: [[Boolean]] - [[true]] if cruise control is enabled, [[false]] if only speed was limited";
     assert_eq!(
         Value::from_wiki(value),
-        Ok(Value::ArraySized((
-            vec![
+        Ok(Value::ArraySized {
+            types: vec![
                 ArraySizedElement {
                     name: "0".to_string(),
                     value: Value::Number,
@@ -348,35 +377,41 @@ fn array_sized() {
                     since: None,
                 },
             ],
-            "".to_string()
-        )))
+            desc: "".to_string()
+        })
     );
     let value = "[[Array]] format [staticAirports, dynamicAirports], where:\n* staticAirports [[Array]] of [[Number]]s - static airports IDs\n* dynamicAirports [[Array]] of [[Object]]s - dynamic airports objects (such as \"DynamicAirport_01_F\" found on aircraft carrier)";
     assert_eq!(
         Value::from_wiki(value),
-        Ok(Value::ArraySized((
-            vec![
+        Ok(Value::ArraySized {
+            types: vec![
                 ArraySizedElement {
                     name: "staticAirports".to_string(),
-                    value: Value::ArrayUnsized((Box::new(Value::Number), "".to_string())),
+                    value: Value::ArrayUnsized{
+                        typ: Box::new(Value::Number),
+                        desc: "".to_string(),
+                    },
                     desc: "static airports IDs".to_string(),
                     since: None,
                 },
                 ArraySizedElement {
                     name: "dynamicAirports".to_string(),
-                    value: Value::ArrayUnsized((Box::new(Value::Object), "".to_string())),
+                    value: Value::ArrayUnsized{
+                        typ: Box::new(Value::Object),
+                        desc: "".to_string(),
+                    },
                     desc: "dynamic airports objects (such as \"DynamicAirport_01_F\" found on aircraft carrier)".to_string(),
                     since: None,
                 },
             ],
-            "".to_string()
-        )))
+            desc: "".to_string()
+        })
     );
     let value = "[[Array]] in format [forceMapForced, openMapForced]:\n* forceMapForced: [[Boolean]] - [[true]] if map was forced with [[forceMap]] command\n* openMapForced: [[Boolean]] - [[true]] if map was forced with [[openMap]] command.";
     assert_eq!(
         Value::from_wiki(value),
-        Ok(Value::ArraySized((
-            vec![
+        Ok(Value::ArraySized {
+            types: vec![
                 ArraySizedElement {
                     name: "forceMapForced".to_string(),
                     value: Value::Boolean,
@@ -390,8 +425,8 @@ fn array_sized() {
                     since: None,
                 },
             ],
-            "".to_string()
-        )))
+            desc: "".to_string(),
+        })
     );
     let value = "[[Array]] in format [weapon, muzzle, firemode, magazine, ammoCount, roundReloadPhase, magazineReloadPhase], where:
 * weapon: [[String]]
@@ -403,8 +438,8 @@ fn array_sized() {
 * {{GVI|arma3|2.06|size= 0.75}} magazineReloadPhase: [[Number]] - current magazine reload phase from 1 to 0, 0 - reload complete. &gt; 0 - reload in progress";
     assert_eq!(
         Value::from_wiki(value),
-        Ok(Value::ArraySized((
-            vec![
+        Ok(Value::ArraySized {
+            types: vec![
                 ArraySizedElement {
                     name: "weapon".to_string(),
                     value: Value::String,
@@ -457,14 +492,14 @@ fn array_sized() {
                     }),
                 },
             ],
-            "".to_string()
-        )))
+            desc: "".to_string(),
+        })
     );
     let value = "[[Array]] of [[Number]]s in format [vScrollValue, hScrollValue]";
     assert_eq!(
         Value::from_wiki(value),
-        Ok(Value::ArraySized((
-            vec![
+        Ok(Value::ArraySized {
+            types: vec![
                 ArraySizedElement {
                     name: "vScrollValue".to_string(),
                     value: Value::Number,
@@ -478,8 +513,8 @@ fn array_sized() {
                     since: None,
                 },
             ],
-            "".to_string()
-        )))
+            desc: "".to_string()
+        })
     );
 }
 
@@ -488,26 +523,37 @@ fn array_unsized() {
     let value = "[[Array]] of [[String]]s - Compatible attachments";
     assert_eq!(
         Value::from_wiki(value),
-        Ok(Value::ArrayUnsized((
-            Box::new(Value::String),
-            "Compatible attachments".to_string()
-        )))
+        Ok(Value::ArrayUnsized {
+            typ: Box::new(Value::String),
+            desc: "Compatible attachments".to_string(),
+        })
     );
     let value = "[[Array]] of [[Number]]s";
     assert_eq!(
         Value::from_wiki(value),
-        Ok(Value::ArrayUnsized((
-            Box::new(Value::Number),
-            "".to_string()
-        )))
+        Ok(Value::ArrayUnsized {
+            typ: Box::new(Value::Number),
+            desc: "".to_string(),
+        })
     );
     let value = "[[Array]] of [[Number]]s - [x1, y1, x2, y2, ... xn, yn]";
     assert_eq!(
         Value::from_wiki(value),
-        Ok(Value::ArrayUnsized((
-            Box::new(Value::Number),
-            "[x1, y1, x2, y2, ... xn, yn]".to_string()
-        )))
+        Ok(Value::ArrayUnsized {
+            typ: Box::new(Value::Number),
+            desc: "[x1, y1, x2, y2, ... xn, yn]".to_string(),
+        })
+    );
+    let value = "[[Array]] of [[Array]]s in format [[Position#Introduction|Position3D]]";
+    assert_eq!(
+        Value::from_wiki(value),
+        Ok(Value::ArrayUnsized {
+            typ: Box::new(Value::ArrayUnsized {
+                typ: Box::new(Value::Position3d),
+                desc: "".to_string(),
+            }),
+            desc: "".to_string(),
+        })
     );
 }
 
@@ -518,7 +564,10 @@ fn array_or() {
         Value::from_wiki(value),
         Ok(Value::OneOf(vec![
             (
-                Value::ArrayUnsized((Box::new(Value::String), "".to_string())),
+                Value::ArrayUnsized {
+                    typ: Box::new(Value::String),
+                    desc: "".to_string(),
+                },
                 None
             ),
             (Value::String, None),
@@ -549,8 +598,8 @@ fn array_names() {
 * record: [[Diary Record]] - record reference";
     assert_eq!(
         Value::from_wiki(value),
-        Ok(Value::ArraySized((
-            vec![
+        Ok(Value::ArraySized {
+            types: vec![
                 ArraySizedElement {
                     name: "id".to_string(),
                     value: Value::Number,
@@ -600,7 +649,7 @@ fn array_names() {
                     since: None,
                 },
             ],
-            "".to_string()
-        )))
+            desc: "".to_string()
+        })
     )
 }

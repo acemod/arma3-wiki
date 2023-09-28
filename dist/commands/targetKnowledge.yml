@@ -8,35 +8,36 @@ syntax:
   - target
   ret:
   - !ArraySized
-    - - name: knownByGroup
-        value: Boolean
-        desc: target known by group
-        since: null
-      - name: knownByUnit
-        value: Boolean
-        desc: target known by the unit
-        since: null
-      - name: lastSeen
-        value: Number
-        desc: last time the target was seen by the unit
-        since: null
-      - name: lastThreat
-        value: Number
-        desc: last time the target endangered the unit
-        since: null
-      - name: side
-        value: Side
-        desc: target side
-        since: null
-      - name: errorMargin
-        value: Number
-        desc: position error
-        since: null
-      - name: position
-        value: ArrayUnknown
-        desc: target position format [[Position
-        since: null
-    - ''
+    types:
+    - name: knownByGroup
+      value: Boolean
+      desc: target known by group
+      since: null
+    - name: knownByUnit
+      value: Boolean
+      desc: target known by the unit
+      since: null
+    - name: lastSeen
+      value: Number
+      desc: last time the target was seen by the unit
+      since: null
+    - name: lastThreat
+      value: Number
+      desc: last time the target endangered the unit
+      since: null
+    - name: side
+      value: Side
+      desc: target side
+      since: null
+    - name: errorMargin
+      value: Number
+      desc: position error
+      since: null
+    - name: position
+      value: ArrayUnknown
+      desc: target position format [[Position
+      since: null
+    desc: ''
   - null
   params:
   - name: unit

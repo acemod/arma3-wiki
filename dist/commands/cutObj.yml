@@ -21,11 +21,15 @@ syntax:
     description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values
     type: String
   - name: speed
-    description: (Optional, default -1) time in seconds to fade in resource
+    description: time in seconds to fade in resource
     type: Number
+    optional: true
+    default: '-1'
   - name: showInMap
-    description: (Optional, default [[true]]) [[false]] to hide the text when the map is opened
+    description: '[[false]] to hide the text when the map is opened'
     type: Boolean
+    optional: true
+    default: '[[true]]'
 - call: !Binary
   - layer
   - - class
@@ -46,11 +50,15 @@ syntax:
     description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.
     type: String
   - name: speed
-    description: (Optional, default -1) Time in seconds to fade in resource
+    description: Time in seconds to fade in resource
     type: Number
+    optional: true
+    default: '-1'
   - name: showInMap
-    description: (Optional, default [[true]]) [[false]] to hide the text when the map is opened
+    description: '[[false]] to hide the text when the map is opened'
     type: Boolean
+    optional: true
+    default: '[[true]]'
 - call: !Binary
   - layerName
   - - class
@@ -71,11 +79,15 @@ syntax:
     description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values
     type: String
   - name: speed
-    description: (Optional, default -1) time in seconds to fade in resource
+    description: time in seconds to fade in resource
     type: Number
+    optional: true
+    default: '-1'
   - name: showInMap
-    description: (Optional, default [[true]]) [[false]] to hide the text when the map is opened
+    description: '[[false]] to hide the text when the map is opened'
     type: Boolean
+    optional: true
+    default: '[[true]]'
   since:
     arma_3:
       major: 1

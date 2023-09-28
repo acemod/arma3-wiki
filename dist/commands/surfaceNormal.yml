@@ -9,8 +9,12 @@ syntax:
   - null
   params:
   - name: position
-    description: format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] in which case Z will be ignored
-    type: ArrayUnknown
+    description: when using [[Position#Introduction|Position3D]] Z will be ignored
+    type: !OneOf
+    - - Position2d
+      - null
+    - - Position3d
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

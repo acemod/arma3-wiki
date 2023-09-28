@@ -1,0 +1,18 @@
+name: getVideoOptions
+description: Obtain the current system's video settings.
+groups:
+- System
+syntax:
+- call: Nular
+  ret:
+  - HashMapUnknown
+  - all video settings, the key is always a [[String]], the value can be a [[String]], [[Number]], [[Boolean]] or [[Array]] (see {{Link|#Example 1}}).
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- "private _videoOptions = getVideoOptions;\n/*\n[\n\t[\"aspectRatioName\", \"Auto (Stretch)\"],\n\t[\"brightness\", 1],\n\t[\"cloudQualityName\", \"VeryLow\"],\n\t[\"displayModeName\", \"Window\"],\n\t[\"dynLightsCount\", 4],\n\t[\"dynLightsQualityName\", \"VeryLow\"],\n\t[\"gamma\", 1],\n\t[\"guiScale\", 0.55],\n\t[\"guiScaleName\", \"Small\"],\n\t[\"hdrQuality\", 16],\n\t[\"hdrQualityName\", \"Normal\"],\n\t[\"monitorResolution\", [0, 0, 2304, 1440]],\t\t\t\t\t\t\t// presence not guaranteed\n\t[\"objQualityName\", \"VeryLow\"],\n\t[\"objectVisibility\", 800],\n\t[\"overallPresetName\", \"VeryLow\"],\n\t[\"overallVisibility\", 1000],\n\t[\"particleQualityName\", \"Low\"],\n\t[\"pipQuality\", 512],\n\t[\"pipQualityName\", \"VeryLow\"],\n\t[\"pipVisibility\", 835],\n\t[\"ppBloom\", 0],\n\t[\"ppBrightness\", 1],\n\t[\"ppCausticsQualityName\", \"Disabled\"],\n\t[\"ppColorPresetName\", \"Default\"],\n\t[\"ppContrast\", 1],\n\t[\"ppDOF\", 0],\n\t[\"ppFSAA\", 1]\n\t[\"ppPPAAQualityName\", \"Disabled\"],\n\t[\"ppRadialBlur\", 0],\n\t[\"ppRotationBlur\", 0],\n\t[\"ppSSAOQualityName\", \"Disabled\"],\n\t[\"ppSaturation\", 1],\n\t[\"ppSharpenFilter\", 0],\n\t[\"refreshRate\", 60],\n\t[\"samplingPercentage\", 100],\n\t[\"shadowQualityName\", \"Low\"],\n\t[\"shadowVisibility\", 100],\n\t[\"terrainQuality\", 25],\n\t[\"terrainQualityName\", \"Low\"],\n\t[\"texQualityName\", \"VeryLow\"],\n\t[\"vramInfo\", [\"5.8 GiB\", \"7.9 GiB\", \"0 B\", \"231 MiB\", \"5.5 GiB\"]],\t// presence not guaranteed\n\t[\"vsync\", false],\n\t[\"waterReflectionQualityName\", \"Disabled\"]\n];\n*/\n"

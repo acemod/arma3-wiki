@@ -16,8 +16,11 @@ syntax:
   - name: object
     type: Object
   - name: worldPosition
-    description: format [[Position#PositionAGL|PositionAGL]] or [[Position#Introduction|Position2D]]
-    type: ArrayUnknown
+    type: !OneOf
+    - - Position3dAGL
+      - null
+    - - Position2d
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

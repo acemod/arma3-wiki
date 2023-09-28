@@ -26,32 +26,46 @@ syntax:
     description: the object emitting the sound. If ''soundPosition'' below is specified this parameter is ignored
     type: Object
   - name: isInside
-    description: (Optional, default [[false]]) - [[true]] to simulate a sound played inside a building or similar
+    description: '- [[true]] to simulate a sound played inside a building or similar'
     type: Boolean
+    optional: true
+    default: '[[false]]'
   - name: soundPosition
     description: |-
-      (Optional, default [0,0,0]) position for sound emitter, overrides ''soundSource''
+      position for sound emitter, overrides ''soundSource''
       {{Feature|informative|If a following parameter has to be used, simply use <sqf inline>getPosASL _soundSource</sqf> for ''soundPosition'' instead of <sqf inline>_soundSource</sqf> for ''soundSource''.}}
     type: Position3dASL
+    optional: true
+    default: '[0,0,0]'
   - name: volume
-    description: (Optional, default 1) Sound volume. A value greater than 5 gets capped
+    description: Sound volume. A value greater than 5 gets capped
     type: Number
+    optional: true
+    default: '1'
   - name: soundPitch
-    description: "(Optional, default 1)\n* 1.0 &rarr; normal \n* 0.5 &rarr; Darth Vader\n* 2.0 &rarr; Chipmunks"
+    description: "* 1.0 &rarr; normal \n* 0.5 &rarr; Darth Vader\n* 2.0 &rarr; Chipmunks"
     type: Number
+    optional: true
+    default: '1'
   - name: distance
-    description: (Optional, default 0) How far the sound is audible, in meters. {{hl|0}} means no maximum distance
+    description: How far the sound is audible, in meters. {{hl|0}} means no maximum distance
     type: Number
+    optional: true
+    default: '0'
   - name: offset
-    description: (Optional, default 0) Offset in seconds. Same as with [[playMusic]]
+    description: Offset in seconds. Same as with [[playMusic]]
     type: Number
+    optional: true
+    default: '0'
     since:
       arma_3:
         major: 2
         minor: 0
   - name: local
-    description: (Optional, default [[false]]) If [[true]] the sound will not be broadcast over network
+    description: If [[true]] the sound will not be broadcast over network
     type: Boolean
+    optional: true
+    default: '[[false]]'
     since:
       arma_3:
         major: 2

@@ -14,41 +14,42 @@ syntax:
 - call: !Unary unit
   ret:
   - !ArraySized
-    - - name: weapon
-        value: String
-        desc: ''
-        since: null
-      - name: muzzle
-        value: String
-        desc: ''
-        since: null
-      - name: firemode
-        value: String
-        desc: ''
-        since: null
-      - name: magazine
-        value: String
-        desc: ''
-        since: null
-      - name: ammoCount
-        value: Number
-        desc: ''
-        since: null
-      - name: roundReloadPhase
-        value: Number
-        desc: current ammo round reload phase (see [[weaponReloadingTime]])
-        since:
-          arma_3:
-            major: 2
-            minor: 6
-      - name: magazineReloadPhase
-        value: Number
-        desc: current magazine reload phase from 1 to 0, 0 - reload complete. &gt; 0 - reload in progress
-        since:
-          arma_3:
-            major: 2
-            minor: 6
-    - ''
+    types:
+    - name: weapon
+      value: String
+      desc: ''
+      since: null
+    - name: muzzle
+      value: String
+      desc: ''
+      since: null
+    - name: firemode
+      value: String
+      desc: ''
+      since: null
+    - name: magazine
+      value: String
+      desc: ''
+      since: null
+    - name: ammoCount
+      value: Number
+      desc: ''
+      since: null
+    - name: roundReloadPhase
+      value: Number
+      desc: current ammo round reload phase (see [[weaponReloadingTime]])
+      since:
+        arma_3:
+          major: 2
+          minor: 6
+    - name: magazineReloadPhase
+      value: Number
+      desc: current magazine reload phase from 1 to 0, 0 - reload complete. &gt; 0 - reload in progress
+      since:
+        arma_3:
+          major: 2
+          minor: 6
+    desc: ''
   - null
   params:
   - name: unit
@@ -61,41 +62,42 @@ syntax:
   - firemode
   ret:
   - !ArraySized
-    - - name: weapon
-        value: String
-        desc: ''
-        since: null
-      - name: muzzle
-        value: String
-        desc: ''
-        since: null
-      - name: firemode
-        value: String
-        desc: ''
-        since: null
-      - name: magazine
-        value: String
-        desc: ''
-        since: null
-      - name: ammoCount
-        value: Number
-        desc: ''
-        since: null
-      - name: roundReloadPhase
-        value: Number
-        desc: current ammo round reload phase (see [[weaponReloadingTime]])
-        since:
-          arma_3:
-            major: 2
-            minor: 6
-      - name: magazineReloadPhase
-        value: Number
-        desc: current magazine reload phase from 1 to 0, 0 - reload complete. &gt; 0 - reload in progress
-        since:
-          arma_3:
-            major: 2
-            minor: 6
-    - ''
+    types:
+    - name: weapon
+      value: String
+      desc: ''
+      since: null
+    - name: muzzle
+      value: String
+      desc: ''
+      since: null
+    - name: firemode
+      value: String
+      desc: ''
+      since: null
+    - name: magazine
+      value: String
+      desc: ''
+      since: null
+    - name: ammoCount
+      value: Number
+      desc: ''
+      since: null
+    - name: roundReloadPhase
+      value: Number
+      desc: current ammo round reload phase (see [[weaponReloadingTime]])
+      since:
+        arma_3:
+          major: 2
+          minor: 6
+    - name: magazineReloadPhase
+      value: Number
+      desc: current magazine reload phase from 1 to 0, 0 - reload complete. &gt; 0 - reload in progress
+      since:
+        arma_3:
+          major: 2
+          minor: 6
+    desc: ''
   - null
   params:
   - name: vehicle
@@ -103,22 +105,25 @@ syntax:
   - name: turretPath
     type: ArrayUnknown
   - name: weapon
-    description: (Optional) weapon or muzzle name
+    description: weapon or muzzle name
     type: String
+    optional: true
     since:
       arma_3:
         major: 1
         minor: 70
   - name: muzzle
-    description: (Optional) muzzle name
+    description: muzzle name
     type: String
+    optional: true
     since:
       arma_3:
         major: 2
         minor: 8
   - name: firemode
-    description: (Optional) firemode name
+    description: firemode name
     type: String
+    optional: true
     since:
       arma_3:
         major: 2
@@ -128,41 +133,42 @@ syntax:
   - weaponOrMuzzle
   ret:
   - !ArraySized
-    - - name: weapon
-        value: String
-        desc: ''
-        since: null
-      - name: muzzle
-        value: String
-        desc: ''
-        since: null
-      - name: firemode
-        value: String
-        desc: ''
-        since: null
-      - name: magazine
-        value: String
-        desc: ''
-        since: null
-      - name: ammoCount
-        value: Number
-        desc: ''
-        since: null
-      - name: roundReloadPhase
-        value: Number
-        desc: current ammo round reload phase (see [[weaponReloadingTime]])
-        since:
-          arma_3:
-            major: 2
-            minor: 6
-      - name: magazineReloadPhase
-        value: Number
-        desc: current magazine reload phase from 1 to 0, 0 - reload complete. &gt; 0 - reload in progress
-        since:
-          arma_3:
-            major: 2
-            minor: 6
-    - ''
+    types:
+    - name: weapon
+      value: String
+      desc: ''
+      since: null
+    - name: muzzle
+      value: String
+      desc: ''
+      since: null
+    - name: firemode
+      value: String
+      desc: ''
+      since: null
+    - name: magazine
+      value: String
+      desc: ''
+      since: null
+    - name: ammoCount
+      value: Number
+      desc: ''
+      since: null
+    - name: roundReloadPhase
+      value: Number
+      desc: current ammo round reload phase (see [[weaponReloadingTime]])
+      since:
+        arma_3:
+          major: 2
+          minor: 6
+    - name: magazineReloadPhase
+      value: Number
+      desc: current magazine reload phase from 1 to 0, 0 - reload complete. &gt; 0 - reload in progress
+      since:
+        arma_3:
+          major: 2
+          minor: 6
+    desc: ''
   - null
   params:
   - name: unit

@@ -8,43 +8,44 @@ syntax:
   - subject
   ret:
   - !ArraySized
-    - - name: id
-        value: Number
-        desc: record id
-        since: null
-      - name: title
-        value: String
-        desc: record title
-        since: null
-      - name: text
-        value: String
-        desc: record text
-        since: null
-      - name: icon
-        value: String
-        desc: record icon
-        since: null
-      - name: task
-        value: Task
-        desc: record task
-        since: null
-      - name: taskState
-        value: String
-        desc: record task state
-        since: null
-      - name: showTitle
-        value: Boolean
-        desc: '[[true]] if tile is shown'
-        since: null
-      - name: date
-        value: ArrayUnknown
-        desc: '[[date]] format [year, month, day, hour, minute, second]'
-        since: null
-      - name: record
-        value: DiaryRecord
-        desc: record reference
-        since: null
-    - all diary records for the given subject
+    types:
+    - name: id
+      value: Number
+      desc: record id
+      since: null
+    - name: title
+      value: String
+      desc: record title
+      since: null
+    - name: text
+      value: String
+      desc: record text
+      since: null
+    - name: icon
+      value: String
+      desc: record icon
+      since: null
+    - name: task
+      value: Task
+      desc: record task
+      since: null
+    - name: taskState
+      value: String
+      desc: record task state
+      since: null
+    - name: showTitle
+      value: Boolean
+      desc: '[[true]] if tile is shown'
+      since: null
+    - name: date
+      value: ArrayUnknown
+      desc: '[[date]] format [year, month, day, hour, minute, second]'
+      since: null
+    - name: record
+      value: DiaryRecord
+      desc: record reference
+      since: null
+    desc: all diary records for the given subject
   - null
   params:
   - name: person

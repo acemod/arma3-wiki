@@ -29,11 +29,15 @@ syntax:
     description: in format [type1, type2, ...typeN], where type is a [[String]]. Empty array [] means exclude no entity. Method used for filtering - [[isKindOf]]
     type: ArrayUnknown
   - name: includeCrews
-    description: (Optional, default [[false]]) include crews currently in vehicles
+    description: include crews currently in vehicles
     type: Boolean
+    optional: true
+    default: '[[false]]'
   - name: excludeDead
-    description: (Optional, default [[false]]) exclude dead entities
+    description: exclude dead entities
     type: Boolean
+    optional: true
+    default: '[[false]]'
   since:
     arma_3:
       major: 1

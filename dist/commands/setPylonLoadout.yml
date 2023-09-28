@@ -26,11 +26,15 @@ syntax:
     description: magazine name
     type: String
   - name: forced
-    description: (Optional, default [[false]]) [[true]] to force incompatible magazine
+    description: '[[true]] to force incompatible magazine'
     type: Boolean
+    optional: true
+    default: '[[false]]'
   - name: turret
-    description: (Optional, default []) turret path
+    description: turret path
     type: ArrayUnknown
+    optional: true
+    default: '[]'
 argument_loc: Unspecified
 effect_loc: Local
 since:

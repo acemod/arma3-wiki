@@ -73,19 +73,20 @@ syntax:
     - arguments
   ret:
   - !ArraySized
-    - - name: result
-        value: String
-        desc: data sent back from extension. It is up to extension maker what it is.
-        since: null
-      - name: returnCode
-        value: Number
-        desc: integer return from extension method. It is up to extension maker to define it.
-        since: null
-      - name: errorCode
-        value: Number
-        desc: error code in case of command error (see description). 0 means no errors.
-        since: null
-    - ''
+    types:
+    - name: result
+      value: String
+      desc: data sent back from extension. It is up to extension maker what it is.
+      since: null
+    - name: returnCode
+      value: Number
+      desc: integer return from extension method. It is up to extension maker to define it.
+      since: null
+    - name: errorCode
+      value: Number
+      desc: error code in case of command error (see description). 0 means no errors.
+      since: null
+    desc: ''
   - null
   params:
   - name: extension

@@ -17,8 +17,10 @@ syntax:
     description: '[[Tree View Path]] of the parent item to sort'
     type: ArrayUnknown
   - name: reversed
-    description: (Optional, default [[false]]) [[true]] to reverse sort it
+    description: '[[true]] to reverse sort it'
     type: Boolean
+    optional: true
+    default: '[[false]]'
 - call: !Unary
   - idc
   - path
@@ -34,8 +36,10 @@ syntax:
     description: '[[Tree View Path]] of the parent item to sort'
     type: ArrayUnknown
   - name: reversed
-    description: (Optional, default [[false]]) [[true]] to reverse sort it
+    description: '[[true]] to reverse sort it'
     type: Boolean
+    optional: true
+    default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

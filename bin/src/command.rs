@@ -12,7 +12,14 @@ pub fn command(name: &str, url: &str) -> bool {
     let content = if path.exists() {
         std::fs::read_to_string(&path).unwrap()
     } else {
-        let content = reqwest::blocking::get(url).unwrap().text().unwrap();
+        let res = match reqwest::blocking::get(url) {
+            Ok(res) => res,
+            Err(e) => {
+                println!("Failed to fetch {}: {}", name, e);
+                return false;
+            }
+        };
+        let content = res.text().unwrap();
         std::fs::write(&path, &content).unwrap();
         content
     };

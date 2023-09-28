@@ -12,41 +12,42 @@ syntax:
 - call: !Unary vehicle
   ret:
   - !ArraySized
-    - - name: unit
-        value: Object
-        desc: ''
-        since: null
-      - name: role
-        value: String
-        desc: not always lowercase before {{GVI|arma3|2.04|size= 0.75}}
-        since: null
-      - name: cargoIndex
-        value: Number
-        desc: ''
-        since: null
-      - name: turretPath
-        value: ArrayUnknown
-        desc: ''
-        since: null
-      - name: personTurret
-        value: Boolean
-        desc: ''
-        since: null
-      - name: assignedUnit
-        value: Object
-        desc: see ''assignAsXXX'' commands, [[assignAsDriver]] for example
-        since:
-          arma_3:
-            major: 2
-            minor: 12
-      - name: positionName
-        value: String
-        desc: un[[localize]]d entry for turret's `gunnerName`, for example "$STR_A3_TURRETS_CARGOTURRET_R2"
-        since:
-          arma_3:
-            major: 2
-            minor: 12
-    - list of arrays
+    types:
+    - name: unit
+      value: Object
+      desc: ''
+      since: null
+    - name: role
+      value: String
+      desc: not always lowercase before {{GVI|arma3|2.04|size= 0.75}}
+      since: null
+    - name: cargoIndex
+      value: Number
+      desc: ''
+      since: null
+    - name: turretPath
+      value: ArrayUnknown
+      desc: ''
+      since: null
+    - name: personTurret
+      value: Boolean
+      desc: ''
+      since: null
+    - name: assignedUnit
+      value: Object
+      desc: see ''assignAsXXX'' commands, [[assignAsDriver]] for example
+      since:
+        arma_3:
+          major: 2
+          minor: 12
+    - name: positionName
+      value: String
+      desc: un[[localize]]d entry for turret's `gunnerName`, for example "$STR_A3_TURRETS_CARGOTURRET_R2"
+      since:
+        arma_3:
+          major: 2
+          minor: 12
+    desc: list of arrays
   - null
   params:
   - name: vehicle
@@ -57,41 +58,42 @@ syntax:
   - includeEmpty
   ret:
   - !ArraySized
-    - - name: unit
-        value: Object
-        desc: ''
-        since: null
-      - name: role
-        value: String
-        desc: not always lowercase before {{GVI|arma3|2.04|size= 0.75}}
-        since: null
-      - name: cargoIndex
-        value: Number
-        desc: ''
-        since: null
-      - name: turretPath
-        value: ArrayUnknown
-        desc: ''
-        since: null
-      - name: personTurret
-        value: Boolean
-        desc: ''
-        since: null
-      - name: assignedUnit
-        value: Object
-        desc: see ''assignAsXXX'' commands, [[assignAsDriver]] for example
-        since:
-          arma_3:
-            major: 2
-            minor: 12
-      - name: positionName
-        value: String
-        desc: un[[localize]]d entry for turret's `gunnerName`, for example "$STR_A3_TURRETS_CARGOTURRET_R2"
-        since:
-          arma_3:
-            major: 2
-            minor: 12
-    - list of arrays
+    types:
+    - name: unit
+      value: Object
+      desc: ''
+      since: null
+    - name: role
+      value: String
+      desc: not always lowercase before {{GVI|arma3|2.04|size= 0.75}}
+      since: null
+    - name: cargoIndex
+      value: Number
+      desc: ''
+      since: null
+    - name: turretPath
+      value: ArrayUnknown
+      desc: ''
+      since: null
+    - name: personTurret
+      value: Boolean
+      desc: ''
+      since: null
+    - name: assignedUnit
+      value: Object
+      desc: see ''assignAsXXX'' commands, [[assignAsDriver]] for example
+      since:
+        arma_3:
+          major: 2
+          minor: 12
+    - name: positionName
+      value: String
+      desc: un[[localize]]d entry for turret's `gunnerName`, for example "$STR_A3_TURRETS_CARGOTURRET_R2"
+      since:
+        arma_3:
+          major: 2
+          minor: 12
+    desc: list of arrays
   - null
   params:
   - name: vehicle
@@ -106,8 +108,10 @@ syntax:
       * "cargo"
     type: String
   - name: includeEmpty
-    description: (Optional, default [[false]]) include empty crew seats
+    description: include empty crew seats
     type: Boolean
+    optional: true
+    default: '[[false]]'
     since:
       arma_3:
         major: 1

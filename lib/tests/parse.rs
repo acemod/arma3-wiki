@@ -19,6 +19,7 @@ fn parse(path: &str) {
     assert!(result.is_ok());
 }
 
+parse!(addGroupIcon);
 parse!(getWeaponSway);
 parse!(ctrlSetTextSecondary);
 parse!(addScore);

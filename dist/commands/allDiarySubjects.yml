@@ -6,31 +6,32 @@ syntax:
 - call: !Unary person
   ret:
   - !ArraySized
-    - - name: name
-        value: String
-        desc: internal subject reference
-        since: null
-      - name: displayName
-        value: String
-        desc: visible name
-        since: null
-      - name: picture
-        value: String
-        desc: subject icon
-        since: null
-      - name: countRecords
-        value: Number
-        desc: number of records in this subject
-        since: null
-      - name: isReadOnly
-        value: Boolean
-        desc: whether or not the records could be added
-        since: null
-      - name: isSelected
-        value: Boolean
-        desc: '[[true]] if subject is currently selected'
-        since: null
-    - all diary subject entries
+    types:
+    - name: name
+      value: String
+      desc: internal subject reference
+      since: null
+    - name: displayName
+      value: String
+      desc: visible name
+      since: null
+    - name: picture
+      value: String
+      desc: subject icon
+      since: null
+    - name: countRecords
+      value: Number
+      desc: number of records in this subject
+      since: null
+    - name: isReadOnly
+      value: Boolean
+      desc: whether or not the records could be added
+      since: null
+    - name: isSelected
+      value: Boolean
+      desc: '[[true]] if subject is currently selected'
+      since: null
+    desc: all diary subject entries
   - null
   params:
   - name: person

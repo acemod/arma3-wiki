@@ -6,31 +6,32 @@ syntax:
 - call: !Unary group
   ret:
   - !ArraySized
-    - - name: color
-        value: ArrayUnknown
-        desc: icon color format [r,g,b,a]
-        since: null
-      - name: text
-        value: String
-        desc: icon text
-        since: null
-      - name: scale
-        value: Number
-        desc: icon scale
-        since: null
-      - name: visibility
-        value: Boolean
-        desc: icon visibility
-        since: null
-      - name: WPvisibility
-        value: Boolean
-        desc: waypoint visibility
-        since: null
-      - name: WPcolor
-        value: ArrayUnknown
-        desc: waypoint color format [r,g,b,a]
-        since: null
-    - ''
+    types:
+    - name: color
+      value: ArrayUnknown
+      desc: icon color format [r,g,b,a]
+      since: null
+    - name: text
+      value: String
+      desc: icon text
+      since: null
+    - name: scale
+      value: Number
+      desc: icon scale
+      since: null
+    - name: visibility
+      value: Boolean
+      desc: icon visibility
+      since: null
+    - name: WPvisibility
+      value: Boolean
+      desc: waypoint visibility
+      since: null
+    - name: WPcolor
+      value: ArrayUnknown
+      desc: waypoint color format [r,g,b,a]
+      since: null
+    desc: ''
   - null
   params:
   - name: group

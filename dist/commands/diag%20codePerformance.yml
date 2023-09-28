@@ -14,29 +14,36 @@ syntax:
   - cycles
   ret:
   - !ArraySized
-    - - name: duration
-        value: Number
-        desc: average duration of 1 execution in milliseconds
-        since: null
-      - name: cycles
-        value: Number
-        desc: actual number of cycles executed
-        since: null
-    - ''
+    types:
+    - name: duration
+      value: Number
+      desc: average duration of 1 execution in milliseconds
+      since: null
+    - name: cycles
+      value: Number
+      desc: actual number of cycles executed
+      since: null
+    desc: ''
   - null
   params:
   - name: code
     description: code to compare performance
     type: Code
   - name: arguments
-    description: '(Optional, default [[nil]]) arguments to pass to the code in _this variable. Default: [[nil]]'
+    description: 'arguments to pass to the code in _this variable. Default: [[nil]]'
     type: Anything
+    optional: true
+    default: '[[nil]]'
   - name: cycles
-    description: (Optional, default 100000) wanted number of cycles to run the given code. > 1000 is recommended
+    description: wanted number of cycles to run the given code. > 1000 is recommended
     type: Number
+    optional: true
+    default: '100000'
   - name: ignoreTimeLimit
-    description: (Optional, default false) - ignore the 1 second timelimit, and always run the provided number of cycles (except in multiplayer)
+    description: '- ignore the 1 second timelimit, and always run the provided number of cycles (except in multiplayer)'
     type: Boolean
+    optional: true
+    default: 'false'
     since:
       arma_3:
         major: 2

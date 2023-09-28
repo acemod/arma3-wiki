@@ -27,23 +27,27 @@ syntax:
     - - StructuredText
       - null
   - name: textWindowBackground
-    description: (Optional, default "") background text
+    description: background text
     type: !OneOf
     - - String
       - null
     - - StructuredText
       - null
+    optional: true
+    default: '""'
     since:
       arma_3:
         major: 1
         minor: 62
   - name: textWindowForeground
-    description: (Optional, default "") foreground text
+    description: foreground text
     type: !OneOf
     - - String
       - null
     - - StructuredText
       - null
+    optional: true
+    default: '""'
     since:
       arma_3:
         major: 1

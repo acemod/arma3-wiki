@@ -1,0 +1,50 @@
+name: tvSortByValue
+description: Sorts all children of given path. Value of [[CT_TREE|Tree View]] entries is used for sorting. [[tvSetValue]] can be used to set the value for a given path.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Binary
+  - control
+  - - path
+    - ascending
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    type: Control
+  - name: path
+    description: '[[Tree View Path]] of the parent item to sort'
+    type: ArrayUnknown
+  - name: ascending
+    description: '[[true]] to sort ascending, else descending'
+    type: Boolean
+    optional: true
+    default: '[[false]]'
+- call: !Unary
+  - idc
+  - path
+  - ascending
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    description: control idc
+    type: Number
+  - name: path
+    description: '[[Tree View Path]] of the parent item to sort'
+    type: ArrayUnknown
+  - name: ascending
+    description: '[[true]] to sort ascending, else descending. Default: [[false]]'
+    type: Boolean
+    optional: true
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- control tvSortByValue [[0], false];
+- tvSortByValue [102, [0], false];

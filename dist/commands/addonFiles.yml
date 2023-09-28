@@ -10,16 +10,17 @@ syntax:
   - fileExtension
   ret:
   - !ArrayUnsized
-    - String
-    - ''
+    type: String
+    desc: ''
   - null
   params:
   - name: pboPrefix
     description: addon prefix available from [[allAddonsInfo]]
     type: String
   - name: fileExtension
-    description: (Optional) file extension to filter results, for example {{hl|".paa"}}
+    description: file extension to filter results, for example {{hl|".paa"}}
     type: String
+    optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

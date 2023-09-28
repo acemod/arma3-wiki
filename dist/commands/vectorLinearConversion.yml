@@ -30,8 +30,10 @@ syntax:
     description: end "to" vector
     type: ArrayUnknown
   - name: clip
-    description: (Optional, default [[false]] if [[true]], range value will be clipped to stay within "from" - "to" range
+    description: if [[true]], range value will be clipped to stay within "from" - "to" range
     type: Boolean
+    optional: true
+    default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

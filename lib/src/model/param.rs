@@ -11,6 +11,9 @@ pub struct Param {
     #[serde(rename = "type")]
     pub(crate) typ: Value,
     #[serde(default)]
+    #[serde(skip_serializing_if = "std::ops::Not::not")]
+    pub(crate) optional: bool,
+    #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub(crate) default: Option<String>,
     #[serde(default)]

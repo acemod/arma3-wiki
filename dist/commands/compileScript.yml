@@ -17,11 +17,15 @@ syntax:
     description: path to script file
     type: String
   - name: final
-    description: (Optional, default [[false]]) compile final, see [[compileFinal]]
+    description: compile final, see [[compileFinal]]
     type: Boolean
+    optional: true
+    default: '[[false]]'
   - name: prefixHeader
-    description: (Optional, default "") value added at the beginning of the file
+    description: value added at the beginning of the file
     type: String
+    optional: true
+    default: '""'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
