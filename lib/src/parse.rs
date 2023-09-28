@@ -130,7 +130,7 @@ pub fn syntax(
                         if desc.contains("{{GVI|arma3|") {
                             return Err(format!("Invalid param since: {}", desc));
                         }
-                        Some(desc.trim().trim_end_matches(')').to_string())
+                        Some(desc.trim().to_string())
                     },
                     typ: Value::from_wiki(typ.trim())?,
                     default,
