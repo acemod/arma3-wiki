@@ -15,10 +15,12 @@ syntax:
     typ: Object
   - name: target
     typ: !OneOf
-    - Object
-    - !ArrayUnsized
-      - Object
-      - ''
+    - - Object
+      - null
+    - - !ArrayUnsized
+        - Object
+        - ''
+      - null
 argument_loc: Local
 effect_loc: Global
 since:

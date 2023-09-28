@@ -12,8 +12,10 @@ syntax:
   - name: controlOrIDC
     description: Control or control's IDC
     typ: !OneOf
-    - Control
-    - Number
+    - - Control
+      - null
+    - - Number
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

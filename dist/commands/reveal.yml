@@ -17,8 +17,10 @@ syntax:
   - name: toWhom
     description: which receives revealing information
     typ: !OneOf
-    - Object
-    - Group
+    - - Object
+      - null
+    - - Group
+      - null
   - name: target
     description: which is revealed
     typ: Object
@@ -33,8 +35,10 @@ syntax:
   - name: toWhom
     description: which receives revealing information
     typ: !OneOf
-    - Object
-    - Group
+    - - Object
+      - null
+    - - Group
+      - null
   - name: target
     description: which is revealed
     typ: Object

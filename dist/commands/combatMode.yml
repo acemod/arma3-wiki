@@ -20,8 +20,10 @@ syntax:
   - name: group
     description: If the argument is unit [[Object]], unit's current group is used.
     typ: !OneOf
-    - Group
-    - Object
+    - - Group
+      - null
+    - - Object
+      - null
 argument_loc: Global
 effect_loc: Unspecified
 since:

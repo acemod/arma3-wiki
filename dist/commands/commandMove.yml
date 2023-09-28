@@ -13,10 +13,12 @@ syntax:
   params:
   - name: unitName
     typ: !OneOf
-    - Object
-    - !ArrayUnsized
-      - Object
-      - ''
+    - - Object
+      - null
+    - - !ArrayUnsized
+        - Object
+        - ''
+      - null
   - name: position
     description: format [[Position]]
     typ: ArrayUnknown

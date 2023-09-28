@@ -19,8 +19,10 @@ syntax:
   - name: positionWorld
     description: Position in world coordinates either in [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]
     typ: !OneOf
-    - Position2d
-    - Position3d
+    - - Position2d
+      - null
+    - - Position3d
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

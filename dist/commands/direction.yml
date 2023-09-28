@@ -12,8 +12,10 @@ syntax:
   params:
   - name: object
     typ: !OneOf
-    - Object
-    - Location
+    - - Object
+      - null
+    - - Location
+      - null
 argument_loc: Global
 effect_loc: Unspecified
 since:

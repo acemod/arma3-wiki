@@ -12,12 +12,16 @@ syntax:
   params:
   - name: group
     typ: !OneOf
-    - Object
-    - Group
+    - - Object
+      - null
+    - - Group
+      - null
   - name: position
     typ: !OneOf
-    - Position2d
-    - Position3dATL
+    - - Position2d
+      - null
+    - - Position3dATL
+      - null
 argument_loc: Local
 effect_loc: Global
 since:

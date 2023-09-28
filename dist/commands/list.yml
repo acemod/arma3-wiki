@@ -7,8 +7,10 @@ syntax:
   - trigger
   ret:
   - !OneOf
-    - ArrayUnknown
-    - Nothing
+    - - ArrayUnknown
+      - null
+    - - Nothing
+      - null
   - null
   params:
   - name: trigger

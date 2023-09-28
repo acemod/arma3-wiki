@@ -19,8 +19,10 @@ syntax:
   - name: LOD
     description: "the LOD that contains the selection:\n* [[String]] - can be one of:\n** \"Memory\"\n** \"Geometry\"\n** \"FireGeometry\"\n** \"LandContact\"\n** \"HitPoints\" \n** \"ViewGeometry\"\n* [[Number]] - command searches for a LOD with the similar [[LOD resolutions|resolution]] (see [[allLODs]])."
     typ: !OneOf
-    - String
-    - Number
+    - - String
+      - null
+    - - Number
+      - null
 argument_loc: Global
 effect_loc: Unspecified
 since:

@@ -24,8 +24,10 @@ syntax:
   - name: controlOrIDC
     description: the ListBox control or its IDC
     typ: !OneOf
-    - Control
-    - Number
+    - - Control
+      - null
+    - - Number
+      - null
   - name: sortByType
     description: |-
       (Optional, default "TEXT") one of:

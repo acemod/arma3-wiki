@@ -22,8 +22,10 @@ syntax:
   - name: center
     description: search area center position in format [x,y] or [x,y,z] in which case z is ignored
     typ: !OneOf
-    - Position2d
-    - Position3d
+    - - Position2d
+      - null
+    - - Position3d
+      - null
   - name: areaRadius
     description: wanted area radius
     typ: Number

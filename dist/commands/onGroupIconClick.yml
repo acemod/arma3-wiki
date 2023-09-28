@@ -16,8 +16,10 @@ syntax:
   - name: command
     description: script
     typ: !OneOf
-    - String
-    - Code
+    - - String
+      - null
+    - - Code
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

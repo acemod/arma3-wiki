@@ -24,9 +24,12 @@ syntax:
   - name: position
     description: desired placement position
     typ: !OneOf
-    - Object
-    - Position3dASL
-    - Position2d
+    - - Object
+      - null
+    - - Position3dASL
+      - null
+    - - Position2d
+      - null
   - name: markers
     description: if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position. If any of the markers were given z coordinate with setMarkerPos, the vehicle will also be created at given z coordinate.
     typ: ArrayUnknown

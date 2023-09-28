@@ -15,12 +15,16 @@ syntax:
   params:
   - name: unit(s)
     typ: !OneOf
-    - Object
-    - ArrayUnknown
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: position
     typ: !OneOf
-    - Object
-    - ArrayUnknown
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

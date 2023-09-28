@@ -14,8 +14,10 @@ syntax:
   - name: group
     description: group itself or unit in a group
     typ: !OneOf
-    - Group
-    - Object
+    - - Group
+      - null
+    - - Object
+      - null
   - name: target
     description: group target
     typ: Object

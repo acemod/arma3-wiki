@@ -36,8 +36,10 @@ syntax:
       (Optional) code to execute - given String will be [[compile]]d. This is '''not''' an sqf file path.<br>
       Parameters: identical to ''fsmFile'' - see above.
     typ: !OneOf
-    - Code
-    - String
+    - - Code
+      - null
+    - - String
+      - null
 argument_loc: Local
 effect_loc: Local
 since:

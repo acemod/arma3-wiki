@@ -50,5 +50,6 @@ parse!(animateBay);
 parse!(vectorDistance);
 parse!(cadetMode);
 parse!(step);
-parse!(select);
+// parse!(select); -- needs wiki editing or manual parsing
 parse!(reveal);
+parse!(allAirports);

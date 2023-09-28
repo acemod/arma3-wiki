@@ -18,8 +18,10 @@ syntax:
   - name: pylon
     description: pylon index (index starts from 1) or pylon name (see [[getCompatiblePylonMagazines]] Example 4
     typ: !OneOf
-    - Number
-    - String
+    - - Number
+      - null
+    - - String
+      - null
   - name: magazine
     description: magazine name
     typ: String

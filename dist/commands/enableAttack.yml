@@ -13,8 +13,10 @@ syntax:
   params:
   - name: group
     typ: !OneOf
-    - Object
-    - Group
+    - - Object
+      - null
+    - - Group
+      - null
   - name: enable
     typ: Boolean
 argument_loc: Local

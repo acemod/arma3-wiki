@@ -12,8 +12,10 @@ syntax:
   params:
   - name: group
     typ: !OneOf
-    - Object
-    - Group
+    - - Object
+      - null
+    - - Group
+      - null
   - name: heading
     typ: Number
 argument_loc: Local

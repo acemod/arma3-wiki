@@ -15,8 +15,10 @@ syntax:
     typ: Object
   - name: uav
     typ: !OneOf
-    - Object
-    - ArrayUnknown
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: checkAllItems
     description: True for enabling of all terminals in unit's inventory, false for enabling of terminal assigned to proper slot only.
     typ: Boolean

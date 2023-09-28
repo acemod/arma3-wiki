@@ -26,8 +26,10 @@ syntax:
   - name: position
     description: 'Formats: [[Position#Introduction|Position2D]], [[Position#Introduction|Position3D]], [[Object]]'
     typ: !OneOf
-    - ArrayUnknown
-    - Object
+    - - ArrayUnknown
+      - null
+    - - Object
+      - null
 argument_loc: Local
 effect_loc: Local
 since:

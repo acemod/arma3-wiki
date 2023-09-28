@@ -17,8 +17,10 @@ syntax:
   params:
   - name: unitName
     typ: !OneOf
-    - Object
-    - ArrayUnknown
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: target
     typ: Object
 argument_loc: Local

@@ -14,8 +14,10 @@ syntax:
   - name: target
     description: The group forced to use gun lights. If unit is supplied as argument, unit's group is used
     typ: !OneOf
-    - Group
-    - Object
+    - - Group
+      - null
+    - - Object
+      - null
   - name: state
     description: '[[true]] to enable, [[false]] to disable'
     typ: Boolean

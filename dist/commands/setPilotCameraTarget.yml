@@ -15,8 +15,10 @@ syntax:
   - name: target
     description: format PositionASL
     typ: !OneOf
-    - Object
-    - ArrayUnknown
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Local
 effect_loc: Unspecified
 since:

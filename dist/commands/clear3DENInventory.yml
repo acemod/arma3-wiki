@@ -11,10 +11,12 @@ syntax:
   params:
   - name: entities
     typ: !OneOf
-    - !ArrayUnsized
-      - EdenEntity
-      - ''
-    - EdenID
+    - - !ArrayUnsized
+        - EdenEntity
+        - ''
+      - null
+    - - EdenID
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -14,10 +14,12 @@ syntax:
   params:
   - name: unit
     typ: !OneOf
-    - Object
-    - !ArrayUnsized
-      - Object
-      - ''
+    - - Object
+      - null
+    - - !ArrayUnsized
+        - Object
+        - ''
+      - null
   - name: unitLead
     typ: Object
 argument_loc: Local

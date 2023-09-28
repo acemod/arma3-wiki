@@ -13,13 +13,17 @@ syntax:
   - name: unit
     description: a single unit or array of units
     typ: !OneOf
-    - Object
-    - ArrayUnknown
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: target
     description: actual target or position of the target in format [[Position#PositionASL|PositionASL]]
     typ: !OneOf
-    - Object
-    - ArrayUnknown
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Local
 effect_loc: Global
 since:

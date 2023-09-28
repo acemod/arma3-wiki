@@ -17,8 +17,10 @@ syntax:
   params:
   - name: statement
     typ: !OneOf
-    - String
-    - Code
+    - - String
+      - null
+    - - Code
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

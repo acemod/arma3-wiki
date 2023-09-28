@@ -25,8 +25,10 @@ syntax:
   - name: controlOrIDC
     description: the ListNBox control or its IDC
     typ: !OneOf
-    - Control
-    - Number
+    - - Control
+      - null
+    - - Number
+      - null
   - name: column
     description: column to sort (starts with 0
     typ: Number

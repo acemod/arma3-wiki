@@ -15,8 +15,10 @@ syntax:
   params:
   - name: entity
     typ: !OneOf
-    - EdenEntity
-    - EdenID
+    - - EdenEntity
+      - null
+    - - EdenID
+      - null
   - name: class
     description: Attribute name
     typ: String

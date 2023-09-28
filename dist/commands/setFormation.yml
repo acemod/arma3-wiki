@@ -12,8 +12,10 @@ syntax:
   params:
   - name: group
     typ: !OneOf
-    - Object
-    - Group
+    - - Object
+      - null
+    - - Group
+      - null
   - name: formation
     description: |-
       can be one of:

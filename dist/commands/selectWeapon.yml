@@ -28,8 +28,10 @@ syntax:
     - firemode
   ret:
   - !OneOf
-    - Boolean
-    - Nothing
+    - - Boolean
+      - null
+    - - Nothing
+      - null
   - '[[true]] on success, [[false]] on failure, [[Nothing]] when the call to the command is dispatched over network'
   params:
   - name: unit

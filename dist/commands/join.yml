@@ -25,8 +25,10 @@ syntax:
     typ: ArrayUnknown
   - name: group
     typ: !OneOf
-    - Group
-    - Object
+    - - Group
+      - null
+    - - Object
+      - null
 argument_loc: Global
 effect_loc: Global
 since:

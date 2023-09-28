@@ -11,10 +11,12 @@ syntax:
   params:
   - name: target
     typ: !OneOf
-    - Object
-    - !ArrayUnsized
-      - Object
-      - ''
+    - - Object
+      - null
+    - - !ArrayUnsized
+        - Object
+        - ''
+      - null
 argument_loc: Global
 effect_loc: Global
 since:

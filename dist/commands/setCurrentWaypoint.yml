@@ -12,8 +12,10 @@ syntax:
   params:
   - name: groupName
     typ: !OneOf
-    - Object
-    - Group
+    - - Object
+      - null
+    - - Group
+      - null
   - name: waypoint
     description: format [[Waypoint]]
     typ: ArrayUnknown

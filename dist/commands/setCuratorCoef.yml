@@ -26,8 +26,10 @@ syntax:
     typ: String
   - name: coef
     typ: !OneOf
-    - Number
-    - Boolean
+    - - Number
+      - null
+    - - Boolean
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 server_exec: false

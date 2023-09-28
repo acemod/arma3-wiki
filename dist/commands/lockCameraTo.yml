@@ -22,8 +22,10 @@ syntax:
   - name: target
     description: use [[objNull]] to unlock
     typ: !OneOf
-    - Object
-    - Position3dASL
+    - - Object
+      - null
+    - - Position3dASL
+      - null
   - name: turretPath
     description: path to the turret with required camera
     typ: ArrayUnknown
@@ -42,8 +44,10 @@ syntax:
   - name: target
     description: use [[objNull]] to unlock
     typ: !OneOf
-    - Object
-    - Position3dASL
+    - - Object
+      - null
+    - - Position3dASL
+      - null
   - name: turretPath
     description: path to the turret with required camera
     typ: ArrayUnknown

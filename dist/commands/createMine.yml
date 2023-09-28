@@ -27,8 +27,10 @@ syntax:
     typ: String
   - name: position
     typ: !OneOf
-    - Object
-    - Position3dASL
+    - - Object
+      - null
+    - - Position3dASL
+      - null
   - name: markers
     description: marker name(s
     typ: !ArrayUnsized

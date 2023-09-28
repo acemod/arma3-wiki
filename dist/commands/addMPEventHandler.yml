@@ -32,8 +32,10 @@ syntax:
       * The Event Handler type is available as <sqf inline>_thisEvent</sqf>
       * The Event Handler index is available as <sqf inline>_thisEventHandler</sqf>
     typ: !OneOf
-    - String
-    - Code
+    - - String
+      - null
+    - - Code
+      - null
 argument_loc: Global
 effect_loc: Global
 since:

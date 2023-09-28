@@ -18,8 +18,10 @@ syntax:
   - name: position
     description: 'format position: [[Position#Introduction|Position2D]], [[Position#PositionAGL|PositionAGL]] or [[Object]] (object''s model centre is used (see [[getPosWorld]]'
     typ: !OneOf
-    - ArrayUnknown
-    - Object
+    - - ArrayUnknown
+      - null
+    - - Object
+      - null
   - name: channel
     description: (Optional)The marker side for multiplayer
     typ: Number

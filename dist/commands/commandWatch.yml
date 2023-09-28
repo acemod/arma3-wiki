@@ -13,8 +13,10 @@ syntax:
   params:
   - name: units
     typ: !OneOf
-    - Object
-    - ArrayUnknown
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: position
     description: format [[Position]]
     typ: ArrayUnknown
@@ -27,8 +29,10 @@ syntax:
   params:
   - name: units
     typ: !OneOf
-    - Object
-    - ArrayUnknown
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: target
     typ: Object
 argument_loc: Local

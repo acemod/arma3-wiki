@@ -11,8 +11,10 @@ syntax:
   params:
   - name: unitOrGroup
     typ: !OneOf
-    - Object
-    - Group
+    - - Object
+      - null
+    - - Group
+      - null
 argument_loc: Global
 effect_loc: Unspecified
 since:

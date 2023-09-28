@@ -21,8 +21,10 @@ syntax:
   - name: groupOrUnit
     description: Unit or a [[group]]
     typ: !OneOf
-    - Group
-    - Object
+    - - Group
+      - null
+    - - Object
+      - null
   - name: behaviour
     description: |-
       Can be one of:

@@ -12,8 +12,10 @@ syntax:
   params:
   - name: commandset
     typ: !OneOf
-    - String
-    - Code
+    - - String
+      - null
+    - - Code
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -12,8 +12,10 @@ syntax:
   params:
   - name: object
     typ: !OneOf
-    - Object
-    - Group
+    - - Object
+      - null
+    - - Group
+      - null
   - name: enable
     typ: Boolean
 argument_loc: Global

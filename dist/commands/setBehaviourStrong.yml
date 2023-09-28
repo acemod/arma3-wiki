@@ -20,8 +20,10 @@ syntax:
   - name: groupName
     description: unit from the group
     typ: !OneOf
-    - Group
-    - Object
+    - - Group
+      - null
+    - - Object
+      - null
   - name: behaviour
     description: |-
       can be one of:

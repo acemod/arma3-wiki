@@ -15,8 +15,10 @@ syntax:
     typ: Object
   - name: uav
     typ: !OneOf
-    - Object
-    - ArrayUnknown
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: checkAllItems
     description: '[[true]] to check all terminals in unit''s inventory, [[false]] to only check assigned terminal.'
     typ: Boolean

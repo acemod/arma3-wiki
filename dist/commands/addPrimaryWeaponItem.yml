@@ -8,8 +8,10 @@ syntax:
   - - item
   ret:
   - !OneOf
-    - Nothing
-    - Boolean
+    - - Nothing
+      - null
+    - - Boolean
+      - null
   - '''''''false'''''' is returned if ''''''item'''''' can not be added'
   params:
   - name: unit

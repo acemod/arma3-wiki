@@ -26,8 +26,10 @@ syntax:
   - name: position
     description: '[[Position#Introduction|Position2D]], [[Position#PositionAGL|PositionAGL]] or [[Object]]. In case of an object, the object''s ''''''model centre''''''<nowiki/>''s [[Position#PositionASL|PositionASL]] is used (see [[getPosWorld]]'
     typ: !OneOf
-    - ArrayUnknown
-    - Object
+    - - ArrayUnknown
+      - null
+    - - Object
+      - null
   - name: channel
     description: (Optional) the marker channel - see [[Channel IDs]] (for multiplayer
     typ: Number

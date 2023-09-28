@@ -15,8 +15,10 @@ syntax:
   - name: groupOrUnit
     description: the group (or unit) of which to select a waypoint
     typ: !OneOf
-    - Group
-    - Object
+    - - Group
+      - null
+    - - Object
+      - null
   - name: index
     description: |-
       0 equals the starting position of the group.<br>

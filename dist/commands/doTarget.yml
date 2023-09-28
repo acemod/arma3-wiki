@@ -13,8 +13,10 @@ syntax:
   - name: unit
     description: a single unit or array of units
     typ: !OneOf
-    - Object
-    - ArrayUnknown
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: target
     typ: Object
 argument_loc: Local

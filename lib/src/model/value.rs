@@ -103,11 +103,16 @@ impl Value {
             _ => {
                 match panic::catch_unwind(|| {
                     if source.starts_with("Array") {
-                        if source.contains("format:") {
-                            let (desc, values) = source.split_once(" format:").unwrap();
+                        if source.contains("format") {
+                            let (desc, values) = source.split_once(" format").unwrap();
                             let (_, values) = values.split_once('\n').unwrap();
                             let values = values.split('*');
-                            let desc = desc.replace("Array]] in", "").replace("Array]] - ", "");
+                            let desc = desc
+                                .replace("Array]] in", "")
+                                .replace("Array]] - ", "")
+                                .replace("Array]] ", "")
+                                .trim()
+                                .to_string();
                             let mut array = Vec::new();
                             for value in values {
                                 let mut value = value.trim();
@@ -117,7 +122,13 @@ impl Value {
                                 if value.starts_with('\n') {
                                     value = value.trim_start_matches('\n');
                                 }
-                                let (_, value) = value.split_once(':').unwrap();
+                                if value.contains(':') {
+                                    let (_index, value_trim) = value.split_once(':').unwrap();
+                                    value = value_trim;
+                                } else {
+                                    let (_name, value_trim) = value.split_once(' ').unwrap();
+                                    value = value_trim;
+                                }
                                 let value = value.trim();
                                 let (value, description) = value.split_once(" - ").unwrap();
                                 let value = Value::from_wiki(value)?;
@@ -127,6 +138,7 @@ impl Value {
                                 array,
                                 desc.trim()
                                     .trim_end_matches(" in the following")
+                                    .replace("Array]]", "")
                                     .to_string(),
                             )))
                         } else if source.contains("of ") {
@@ -162,7 +174,7 @@ fn basic() {
     assert_eq!(Value::from_wiki("[[Anything]]"), Ok(Value::Anything));
     assert_eq!(Value::from_wiki("[[Array]]"), Ok(Value::ArrayUnknown));
     assert_eq!(
-        Value::from_wiki("[[Array]] format [[Color (RGBA)]]"),
+        Value::from_wiki("[[Array]] format [[Color|Color (RGBA)]]"),
         Ok(Value::ArrayColor)
     );
     assert_eq!(
@@ -243,6 +255,20 @@ fn array_sized() {
                     Value::Boolean,
                     "[[true]] if cruise control is enabled, [[false]] if only speed was limited"
                         .to_string()
+                )
+            ],
+            "".to_string()
+        )))
+    );
+    let value = "[[Array]] format [staticAirports, dynamicAirports], where:\n* staticAirports [[Array]] of [[Number]]s - static airports IDs\n* dynamicAirports [[Array]] of [[Object]]s - dynamic airports objects (such as \"DynamicAirport_01_F\" found on aircraft carrier)";
+    assert_eq!(
+        Value::from_wiki(value),
+        Ok(Value::ArraySized((
+            vec![
+                (Value::ArrayUnsized((Box::new(Value::Number), "".to_string())), "static airports IDs".to_string()),
+                (
+                    Value::ArrayUnsized((Box::new(Value::Object), "".to_string())),
+                    "dynamic airports objects (such as \"DynamicAirport_01_F\" found on aircraft carrier)".to_string()
                 )
             ],
             "".to_string()
