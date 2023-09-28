@@ -3,8 +3,7 @@ description: "Returns a random element from the given array according to assigne
 groups:
 - Arrays
 syntax:
-- call: !Unary
-  - valuesAndWeights
+- call: !Unary valuesAndWeights
   ret:
   - Anything
   - random weighted value or [[Nothing]] if array is empty or all weights are 0
@@ -16,8 +15,8 @@ syntax:
       * weight: [[Number]] - values relative weight
     typ: ArrayUnknown
 - call: !Binary
-  - - values
-  - - weights
+  - values
+  - weights
   ret:
   - Anything
   - random weighted value or [[Nothing]] if any of arrays is empty or all weights are 0

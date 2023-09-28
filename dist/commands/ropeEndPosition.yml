@@ -3,14 +3,17 @@ description: Returns start and end positions for the given [[ropeCreate | rope]]
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Unary
-  - rope
+- call: !Unary rope
   ret:
   - !ArraySized
-    - - - ArrayUnknown
-        - rope start position in format [[Position#PositionAGL|PositionAGL]]
-      - - ArrayUnknown
-        - rope end position in format [[Position#PositionAGL|PositionAGL
+    - - name: startPos
+        value: ArrayUnknown
+        desc: rope start position in format [[Position#PositionAGL|PositionAGL]]
+        since: null
+      - name: endPos
+        value: ArrayUnknown
+        desc: rope end position in format [[Position#PositionAGL|PositionAGL
+        since: null
     - array in
   - null
   params:

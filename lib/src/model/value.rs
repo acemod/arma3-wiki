@@ -2,12 +2,22 @@ use std::panic;
 
 use serde::{Deserialize, Serialize};
 
+use crate::model::Version;
+
 use super::Since;
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct ArraySizedElement {
+    pub name: String,
+    pub value: Value,
+    pub desc: String,
+    pub since: Option<Since>,
+}
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub enum Value {
     Anything,
-    ArraySized((Vec<(Value, String)>, String)),
+    ArraySized((Vec<ArraySizedElement>, String)),
     ArrayUnknown,
     ArrayUnsized((Box<Value>, String)),
     ArrayDate,
@@ -75,6 +85,7 @@ impl Value {
             }
             "Boolean" => Ok(Value::Boolean),
             "Code" => Ok(Value::Code),
+            "Color|Color (RGBA)" => Ok(Value::ArrayColor),
             "Config" => Ok(Value::Config),
             "Control" => Ok(Value::Control),
             "Diary Record" => Ok(Value::DiaryRecord),
@@ -122,17 +133,35 @@ impl Value {
                                 if value.starts_with('\n') {
                                     value = value.trim_start_matches('\n');
                                 }
-                                if value.contains(':') {
-                                    let (_index, value_trim) = value.split_once(':').unwrap();
+                                let mut name = if value.contains(':') {
+                                    let (index, value_trim) = value.split_once(':').unwrap();
                                     value = value_trim;
+                                    index
                                 } else {
-                                    let (_name, value_trim) = value.split_once(' ').unwrap();
+                                    let (name, value_trim) = value.split_once(' ').unwrap();
                                     value = value_trim;
-                                }
+                                    name
+                                };
                                 let value = value.trim();
-                                let (value, description) = value.split_once(" - ").unwrap();
+                                let (value, description) =
+                                    value.split_once(" - ").unwrap_or((value, ""));
+                                let since = if name.contains("{{GVI|") {
+                                    let (since, name_trim) = name.split_once("}} ").unwrap();
+                                    name = name_trim;
+                                    let (game, version) = Version::from_icon(since)?;
+                                    let mut since = Since::default();
+                                    since.set_version(&game, version)?;
+                                    Some(since)
+                                } else {
+                                    None
+                                };
                                 let value = Value::from_wiki(value)?;
-                                array.push((value, description.to_string()));
+                                array.push(ArraySizedElement {
+                                    name: name.to_string(),
+                                    value,
+                                    desc: description.to_string(),
+                                    since,
+                                });
                             }
                             Ok(Value::ArraySized((
                                 array,
@@ -250,12 +279,20 @@ fn array_sized() {
         Value::from_wiki(value),
         Ok(Value::ArraySized((
             vec![
-                (Value::Number, "Defined speed limit".to_string()),
-                (
-                    Value::Boolean,
-                    "[[true]] if cruise control is enabled, [[false]] if only speed was limited"
-                        .to_string()
-                )
+                ArraySizedElement {
+                    name: "0".to_string(),
+                    value: Value::Number,
+                    desc: "Defined speed limit".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "1".to_string(),
+                    value: Value::Boolean,
+                    desc:
+                        "[[true]] if cruise control is enabled, [[false]] if only speed was limited"
+                            .to_string(),
+                    since: None,
+                },
             ],
             "".to_string()
         )))
@@ -265,11 +302,18 @@ fn array_sized() {
         Value::from_wiki(value),
         Ok(Value::ArraySized((
             vec![
-                (Value::ArrayUnsized((Box::new(Value::Number), "".to_string())), "static airports IDs".to_string()),
-                (
-                    Value::ArrayUnsized((Box::new(Value::Object), "".to_string())),
-                    "dynamic airports objects (such as \"DynamicAirport_01_F\" found on aircraft carrier)".to_string()
-                )
+                ArraySizedElement {
+                    name: "staticAirports".to_string(),
+                    value: Value::ArrayUnsized((Box::new(Value::Number), "".to_string())),
+                    desc: "static airports IDs".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "dynamicAirports".to_string(),
+                    value: Value::ArrayUnsized((Box::new(Value::Object), "".to_string())),
+                    desc: "dynamic airports objects (such as \"DynamicAirport_01_F\" found on aircraft carrier)".to_string(),
+                    since: None,
+                },
             ],
             "".to_string()
         )))
@@ -279,8 +323,85 @@ fn array_sized() {
         Value::from_wiki(value),
         Ok(Value::ArraySized((
             vec![
-                (Value::Boolean, "[[true]] if map was forced with [[forceMap]] command".to_string()),
-                (Value::Boolean, "[[true]] if map was forced with [[openMap]] command.".to_string()),
+                ArraySizedElement {
+                    name: "forceMapForced".to_string(),
+                    value: Value::Boolean,
+                    desc: "[[true]] if map was forced with [[forceMap]] command".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "openMapForced".to_string(),
+                    value: Value::Boolean,
+                    desc: "[[true]] if map was forced with [[openMap]] command.".to_string(),
+                    since: None,
+                },
+            ],
+            "".to_string()
+        )))
+    );
+    let value = "[[Array]] in format [weapon, muzzle, firemode, magazine, ammoCount, roundReloadPhase, magazineReloadPhase], where:
+* weapon: [[String]]
+* muzzle: [[String]]
+* firemode: [[String]]
+* magazine: [[String]]
+* ammoCount: [[Number]]
+* {{GVI|arma3|2.06|size= 0.75}} roundReloadPhase: [[Number]] - current ammo round reload phase (see [[weaponReloadingTime]])
+* {{GVI|arma3|2.06|size= 0.75}} magazineReloadPhase: [[Number]] - current magazine reload phase from 1 to 0, 0 - reload complete. &gt; 0 - reload in progress";
+    assert_eq!(
+        Value::from_wiki(value),
+        Ok(Value::ArraySized((
+            vec![
+                ArraySizedElement {
+                    name: "weapon".to_string(),
+                    value: Value::String,
+                    desc: "".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "muzzle".to_string(),
+                    value: Value::String,
+                    desc: "".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "firemode".to_string(),
+                    value: Value::String,
+                    desc: "".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "magazine".to_string(),
+                    value: Value::String,
+                    desc: "".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "ammoCount".to_string(),
+                    value: Value::Number,
+                    desc: "".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "roundReloadPhase".to_string(),
+                    value: Value::Number,
+                    desc: "current ammo round reload phase (see [[weaponReloadingTime]])"
+                        .to_string(),
+                    since: Some({
+                        let mut since = Since::default();
+                        since.set_arma_3(Some(Version::new(2, 6)));
+                        since
+                    }),
+                },
+                ArraySizedElement {
+                    name: "magazineReloadPhase".to_string(),
+                    value: Value::Number,
+                    desc: "current magazine reload phase from 1 to 0, 0 - reload complete. &gt; 0 - reload in progress".to_string(),
+                    since: Some({
+                        let mut since = Since::default();
+                        since.set_arma_3(Some(Version::new(2, 6)));
+                        since
+                    }),
+                },
             ],
             "".to_string()
         )))
@@ -303,6 +424,14 @@ fn array_unsized() {
         Ok(Value::ArrayUnsized((
             Box::new(Value::Number),
             "".to_string()
+        )))
+    );
+    let value = "[[Array]] of [[Number]]s - [x1, y1, x2, y2, ... xn, yn]";
+    assert_eq!(
+        Value::from_wiki(value),
+        Ok(Value::ArrayUnsized((
+            Box::new(Value::Number),
+            "[x1, y1, x2, y2, ... xn, yn]".to_string()
         )))
     );
 }
@@ -333,7 +462,7 @@ fn array_or() {
 
 #[test]
 fn array_names() {
-    let value = "[[Array]] - all diary records for the given subject in the following format: [id, title, text, icon, task, taskState, showTitle, date, record], where:
+    let value = "[[Array]] in format [id, title, text, icon, task, taskState, showTitle, date, record], where:
 * id: [[Number]] - record id
 * title: [[String]] - record title
 * text: [[String]] - record text
@@ -341,24 +470,106 @@ fn array_names() {
 * task: [[Task]] - record task
 * taskState: [[String]] - record task state
 * showTitle: [[Boolean]] - [[true]] if tile is shown
-* date: [[Array]] - [[date]] in format [year, month, day, hour, minute, second] 
+* date: [[Array]] in format [year, month, day, hour, minute, second] 
 * record: [[Diary Record]] - record reference";
     assert_eq!(
         Value::from_wiki(value),
         Ok(Value::ArraySized((
             vec![
-                (Value::Number, "record id".to_string()),
-                (Value::String, "record title".to_string()),
-                (Value::String, "record text".to_string()),
-                (Value::String, "record icon".to_string()),
-                (Value::Task, "record task".to_string()),
-                (Value::String, "record task state".to_string()),
-                (Value::Boolean, "[[true]] if tile is shown".to_string()),
-                (
-                    Value::ArrayUnknown,
-                    "[[date]] in format [year, month, day, hour, minute, second]".to_string()
-                ),
-                (Value::DiaryRecord, "record reference".to_string()),
+                ArraySizedElement {
+                    name: "id".to_string(),
+                    value: Value::Number,
+                    desc: "record id".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "title".to_string(),
+                    value: Value::String,
+                    desc: "record title".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "text".to_string(),
+                    value: Value::String,
+                    desc: "record text".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "icon".to_string(),
+                    value: Value::String,
+                    desc: "record icon".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "task".to_string(),
+                    value: Value::Task,
+                    desc: "record task".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "taskState".to_string(),
+                    value: Value::String,
+                    desc: "record task state".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "showTitle".to_string(),
+                    value: Value::Boolean,
+                    desc: "[[true]] if tile is shown".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "date".to_string(),
+                    value: Value::ArraySized((
+                        vec![
+                            ArraySizedElement {
+                                name: "year".to_string(),
+                                value: Value::Number,
+                                desc: "year".to_string(),
+                                since: None,
+                            },
+                            ArraySizedElement {
+                                name: "month".to_string(),
+                                value: Value::Number,
+                                desc: "month".to_string(),
+                                since: None,
+                            },
+                            ArraySizedElement {
+                                name: "day".to_string(),
+                                value: Value::Number,
+                                desc: "day".to_string(),
+                                since: None,
+                            },
+                            ArraySizedElement {
+                                name: "hour".to_string(),
+                                value: Value::Number,
+                                desc: "hour".to_string(),
+                                since: None,
+                            },
+                            ArraySizedElement {
+                                name: "minute".to_string(),
+                                value: Value::Number,
+                                desc: "minute".to_string(),
+                                since: None,
+                            },
+                            ArraySizedElement {
+                                name: "second".to_string(),
+                                value: Value::Number,
+                                desc: "second".to_string(),
+                                since: None,
+                            },
+                        ],
+                        "".to_string()
+                    )),
+                    desc: "[[date]] in format [year, month, day, hour, minute, second]".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "record".to_string(),
+                    value: Value::DiaryRecord,
+                    desc: "record reference".to_string(),
+                    since: None,
+                },
             ],
             "all diary records for the given subject".to_string()
         )))

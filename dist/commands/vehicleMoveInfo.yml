@@ -4,14 +4,17 @@ groups:
 - Object Manipulation
 - Unit Control
 syntax:
-- call: !Unary
-  - vehicle
+- call: !Unary vehicle
   ret:
   - !ArraySized
-    - - - String
-        - state of vehicle forward/backward movement (see description)
-      - - String
-        - state of vehicle left/right turning (see description)
+    - - name: moveInfo
+        value: String
+        desc: state of vehicle forward/backward movement (see description)
+        since: null
+      - name: turnInfo
+        value: String
+        desc: state of vehicle left/right turning (see description)
+        since: null
     - ''
   - null
   params:

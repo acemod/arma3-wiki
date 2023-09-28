@@ -55,8 +55,8 @@ groups:
 - System
 syntax:
 - call: !Binary
-  - - extension
-  - - function
+  - extension
+  - function
   ret:
   - String
   - data sent back from extension; If the extensiion was not found an empty String will be returned
@@ -68,18 +68,24 @@ syntax:
     description: data sent to the extension
     typ: String
 - call: !Binary
-  - - extension
+  - extension
   - - function
     - arguments
   ret:
   - !ArraySized
-    - - - String
-        - data sent back from extension. It is up to extension maker what it is.
-      - - Number
-        - integer return from extension method. It is up to extension maker to define it.
-      - - Number
-        - error code in case of command error (see description). 0 means no errors.
-    - in
+    - - name: result
+        value: String
+        desc: data sent back from extension. It is up to extension maker what it is.
+        since: null
+      - name: returnCode
+        value: Number
+        desc: integer return from extension method. It is up to extension maker to define it.
+        since: null
+      - name: errorCode
+        value: Number
+        desc: error code in case of command error (see description). 0 means no errors.
+        since: null
+    - ''
   - null
   params:
   - name: extension

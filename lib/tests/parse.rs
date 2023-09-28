@@ -54,3 +54,5 @@ parse!(step);
 parse!(reveal);
 parse!(allAirports);
 parse!(forcedMap);
+parse!(weaponState);
+parse!(lnbSetPictureColorSelected);

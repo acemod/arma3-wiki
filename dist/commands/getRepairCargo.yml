@@ -3,8 +3,7 @@ description: Returns the amount (1 is full) of repair resources in the cargo spa
 groups:
 - Vehicle Inventory
 syntax:
-- call: !Unary
-  - vehicle
+- call: !Unary vehicle
   ret:
   - Number
   - repair cargo value, -1 if repair cargo is not supported, 0 if the vehicle is ![[alive]] or [[isNull]]

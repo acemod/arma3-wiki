@@ -3,8 +3,7 @@ description: 'Returns if a control on the currently active user dialog is enable
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - idc
+- call: !Unary idc
   ret:
   - Boolean
   - '[[true]] if the control is enabled, [[false]] if not'
@@ -12,8 +11,7 @@ syntax:
   - name: idc
     description: control's IDC
     typ: Number
-- call: !Unary
-  - controlName
+- call: !Unary controlName
   ret:
   - Boolean
   - '[[true]] if the control is enabled, [[false]] if not'

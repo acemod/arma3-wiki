@@ -12,8 +12,7 @@ description: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - idc
+- call: !Unary idc
   ret:
   - String
   - The text or image path is returned, dependent on the control type
@@ -21,8 +20,7 @@ syntax:
   - name: idc
     description: control ID
     typ: Number
-- call: !Unary
-  - controlName
+- call: !Unary controlName
   ret:
   - String
   - The text or image path is returned, dependent on the control type

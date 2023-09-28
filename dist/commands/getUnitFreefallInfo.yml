@@ -3,16 +3,21 @@ description: Returns a unit's freefall information.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary
-  - unit
+- call: !Unary unit
   ret:
   - !ArraySized
-    - - - Boolean
-        - '[[true]] if unit is falling'
-      - - Boolean
-        - '[[true]] if unit is in freefall pose'
-      - - Number
-        - current minimum freefall height (see [[setUnitFreefallHeight]])
+    - - name: isFalling
+        value: Boolean
+        desc: '[[true]] if unit is falling'
+        since: null
+      - name: isInFreefallPose
+        value: Boolean
+        desc: '[[true]] if unit is in freefall pose'
+        since: null
+      - name: minFreefallHeight
+        value: Number
+        desc: current minimum freefall height (see [[setUnitFreefallHeight]])
+        since: null
     - ''
   - null
   params:

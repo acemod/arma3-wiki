@@ -1,0 +1,53 @@
+name: lnbSetColorRight
+description: Sets the right color.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: row
+    description: Index of the row
+    typ: Number
+  - name: column
+    description: Index of the column
+    typ: Number
+  - name: color
+    description: Color RGBA
+    typ: ArrayUnknown
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: row
+    description: Index of the row
+    typ: Number
+  - name: column
+    description: Index of the column
+    typ: Number
+  - name: color
+    description: Color RGBA
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- _control lnbSetColorRight [[0, 0], [1,1,1,0.5]];

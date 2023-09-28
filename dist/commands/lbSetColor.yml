@@ -1,0 +1,61 @@
+name: lbSetColor
+description: Sets the color of the item (left) with the given index of the listbox or combobox with id idc of the topmost user [[Dialog]] to color.
+groups:
+- GUI Control - ListBox
+syntax:
+- call: !Unary
+  - idc
+  - index
+  - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    description: control's IDC
+    typ: Number
+  - name: index
+    typ: Number
+  - name: color
+    typ: ArrayColor
+- call: !Binary
+  - control
+  - - index
+    - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: index
+    typ: Number
+  - name: color
+    typ: ArrayColor
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- lbSetColor [101, 0, [0, 1, 0, 0.5]];
+- _control lbSetColor [0, [0, 1, 0, 0.5]];

@@ -13,8 +13,8 @@ groups:
 - Program Flow
 syntax:
 - call: !Binary
-  - - arguments
-  - - fsmFilePath
+  - arguments
+  - fsmFilePath
   ret:
   - Number
   - FSM handle
@@ -25,8 +25,7 @@ syntax:
   - name: fsmFilePath
     description: file with FSM code
     typ: String
-- call: !Unary
-  - fsmFilePath
+- call: !Unary fsmFilePath
   ret:
   - Number
   - FSM handle

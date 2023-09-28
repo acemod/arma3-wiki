@@ -1,0 +1,62 @@
+name: lnbSetTooltip
+description: |-
+  Sets tooltip on the item with the given row and column of [[CT_LISTNBOX]].
+  {{Feature|important|
+  By default, tooltips are added for all columns no matter what column index is provided.
+  This behaviour can be overwritten since {{GVI|arma3|2.02}} by setting the control's property {{hl|tooltipPerColumn}} to [[true]].
+  See [[CT_LISTNBOX#tooltipPerColumn|CT_LISTNBOX documentation]].
+  }}
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - text
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    description: control's IDC
+    typ: Number
+  - name: row
+    description: row where the tooltip should be shown
+    typ: Number
+  - name: column
+    description: column where tooltip should be shown. By default it is set for every column, see description
+    typ: Number
+  - name: text
+    description: tooltip text
+    typ: String
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - text
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    description: Control
+    typ: Control
+  - name: row
+    description: Row where the tooltip should be shown
+    typ: Number
+  - name: column
+    description: Column where tooltip should be shown. By default it is set for every column, see description
+    typ: Number
+  - name: text
+    description: Tooltip text
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 94
+examples:
+- lnbSetTooltip [1234, [1,0], "tip"];
+- _ctrl lnbSetTooltip [[3,0], "top"];

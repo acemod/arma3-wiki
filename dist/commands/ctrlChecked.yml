@@ -3,8 +3,7 @@ description: Returns the current state of given [[CT_CHECKBOXES]] control. Since
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - control
+- call: !Unary control
   ret:
   - Boolean
   - '[[true]] checked, [[false]] unchecked'
@@ -13,8 +12,8 @@ syntax:
     description: '[[CT_CHECKBOXES]] control. If control contain multiple checkboxes, only checkbox with index 0 is queried.'
     typ: Control
 - call: !Binary
-  - - control
-  - - index
+  - control
+  - index
   ret:
   - Boolean
   - '[[true]] checked, [[false]] unchecked'

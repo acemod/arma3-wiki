@@ -3,8 +3,7 @@ description: Returns the number of items in a [[CT_LISTBOX]] or [[CT_COMBO]] con
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Unary
-  - idc
+- call: !Unary idc
   ret:
   - Number
   - null
@@ -12,8 +11,7 @@ syntax:
   - name: idc
     description: control's id
     typ: Number
-- call: !Unary
-  - control
+- call: !Unary control
   ret:
   - Number
   - null

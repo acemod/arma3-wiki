@@ -1,0 +1,45 @@
+name: lnbColorRight
+description: Returns the right color of given row.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  ret:
+  - ArrayUnknown
+  - RGBA
+  params:
+  - name: idc
+    typ: Number
+  - name: row
+    description: Index of the row
+    typ: Number
+  - name: column
+    description: Index of the column
+    typ: Number
+- call: !Binary
+  - ctrl
+  - - row
+    - column
+  ret:
+  - ArrayUnknown
+  - RGBA
+  params:
+  - name: ctrl
+    typ: Control
+  - name: row
+    description: Index of the row
+    typ: Number
+  - name: column
+    description: Index of the column
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- private _result = _control lnbColorRight [0, 0];

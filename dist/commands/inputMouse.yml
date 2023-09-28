@@ -3,8 +3,7 @@ description: "Returns the state of mouse button action, alone or in combination 
 groups:
 - Interaction
 syntax:
-- call: !Unary
-  - button
+- call: !Unary button
   ret:
   - Number
   - |-
@@ -18,8 +17,7 @@ syntax:
   - name: button
     description: 'button number 0..7: 0-LMB, 1-RMB, 2-MMB'
     typ: Number
-- call: !Unary
-  - combocode
+- call: !Unary combocode
   ret:
   - Boolean
   - '[[true]] if given code/combination detected, [[false]] otherwise'

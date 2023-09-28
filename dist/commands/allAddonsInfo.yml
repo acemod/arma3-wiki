@@ -6,16 +6,32 @@ syntax:
 - call: Nular
   ret:
   - !ArraySized
-    - - - String
-        - addon prefix
-      - - String
-        - addon revision version
-      - - Boolean
-        - '[[true]] if patching is enabled and this addon is being patched'
-      - - Number
-        - index of mod in [[getLoadedModsInfo]] array. -1 if not found.
-      - - String
-        - hash of the addon PBO file. "" if hashing fails.
+    - - name: prefix
+        value: String
+        desc: addon prefix
+        since: null
+      - name: version
+        value: String
+        desc: addon revision version
+        since: null
+      - name: isPatched
+        value: Boolean
+        desc: '[[true]] if patching is enabled and this addon is being patched'
+        since: null
+      - name: modIndex
+        value: Number
+        desc: index of mod in [[getLoadedModsInfo]] array. -1 if not found.
+        since:
+          arma_3:
+            major: 2
+            minor: 14
+      - name: hash
+        value: String
+        desc: hash of the addon PBO file. "" if hashing fails.
+        since:
+          arma_3:
+            major: 2
+            minor: 14
     - of [[s in
   - null
   params: []

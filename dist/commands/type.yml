@@ -4,16 +4,14 @@ groups:
 - Locations
 - Briefing
 syntax:
-- call: !Unary
-  - location
+- call: !Unary location
   ret:
   - String
   - null
   params:
   - name: location
     typ: Location
-- call: !Unary
-  - task
+- call: !Unary task
   ret:
   - String
   - the type of the task

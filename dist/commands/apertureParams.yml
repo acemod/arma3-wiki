@@ -7,26 +7,46 @@ syntax:
 - call: Nular
   ret:
   - !ArraySized
-    - - - Number
-        - current aperture
-      - - Boolean
-        - whether aperture was forced by [[setAperture]]
-      - - Number
-        - engine-estimated scene aperture
-      - - Number
-        - engine-estimated luminance
-      - - Number
-        - minimal custom aperture, see [[setApertureNew]]
-      - - Number
-        - standard custom aperture, see [[setApertureNew]]
-      - - Number
-        - maximal custom aperture, see [[setApertureNew]]
-      - - Number
-        - custom luminance, see [[setApertureNew]]
-      - - Boolean
-        - whether custom values were forced
-      - - Number
-        - blinding intensity of the light
+    - - name: aperture
+        value: Number
+        desc: current aperture
+        since: null
+      - name: isForced
+        value: Boolean
+        desc: whether aperture was forced by [[setAperture]]
+        since: null
+      - name: estimatedAperture
+        value: Number
+        desc: engine-estimated scene aperture
+        since: null
+      - name: estimatedLuminance
+        value: Number
+        desc: engine-estimated luminance
+        since: null
+      - name: minCustom
+        value: Number
+        desc: minimal custom aperture, see [[setApertureNew]]
+        since: null
+      - name: stdCustom
+        value: Number
+        desc: standard custom aperture, see [[setApertureNew]]
+        since: null
+      - name: maxCustom
+        value: Number
+        desc: maximal custom aperture, see [[setApertureNew]]
+        since: null
+      - name: customLuminance
+        value: Number
+        desc: custom luminance, see [[setApertureNew]]
+        since: null
+      - name: isCustomForced
+        value: Boolean
+        desc: whether custom values were forced
+        since: null
+      - name: blinding
+        value: Number
+        desc: blinding intensity of the light
+        since: null
     - ''
   - null
   params: []

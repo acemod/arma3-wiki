@@ -1,0 +1,29 @@
+name: listRemoteTargets
+description: Return list of datalink targets and time for which they will be/were known.
+groups:
+- Sensors
+syntax:
+- call: !Unary side
+  ret:
+  - !ArraySized
+    - - name: remoteTarget
+        value: Object
+        desc: ''
+        since: null
+      - name: lastDetected
+        value: Number
+        desc: ''
+        since: null
+    - of [[s in
+  - null
+  params:
+  - name: side
+    typ: Side
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 72
+examples:
+- listRemoteTargets opfor;

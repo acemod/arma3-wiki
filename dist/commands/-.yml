@@ -7,8 +7,8 @@ groups:
 - Arrays
 syntax:
 - call: !Binary
-  - - numberA
-  - - numberB
+  - numberA
+  - numberB
   ret:
   - Number
   - null
@@ -17,8 +17,7 @@ syntax:
     typ: Number
   - name: numberB
     typ: Number
-- call: !Unary
-  - numberA
+- call: !Unary numberA
   ret:
   - Number
   - the negative of ''numberA''
@@ -26,8 +25,8 @@ syntax:
   - name: numberA
     typ: Number
 - call: !Binary
-  - - arrayA
-  - - arrayB
+  - arrayA
+  - arrayB
   ret:
   - ArrayUnknown
   - null

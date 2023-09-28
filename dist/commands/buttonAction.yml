@@ -3,8 +3,7 @@ description: 'Returns the action assigned to a control of the currently active u
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - idc
+- call: !Unary idc
   ret:
   - String
   - null
@@ -12,8 +11,7 @@ syntax:
   - name: idc
     description: Button IDC
     typ: Number
-- call: !Unary
-  - control
+- call: !Unary control
   ret:
   - String
   - null

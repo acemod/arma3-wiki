@@ -14,10 +14,14 @@ syntax:
   - cycles
   ret:
   - !ArraySized
-    - - - Number
-        - average duration of 1 execution in milliseconds
-      - - Number
-        - actual number of cycles executed
+    - - name: duration
+        value: Number
+        desc: average duration of 1 execution in milliseconds
+        since: null
+      - name: cycles
+        value: Number
+        desc: actual number of cycles executed
+        since: null
     - ''
   - null
   params:

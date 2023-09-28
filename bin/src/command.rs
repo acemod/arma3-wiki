@@ -12,7 +12,7 @@ pub fn command(name: &str, url: &str) -> bool {
     let content = if path.exists() {
         std::fs::read_to_string(&path).unwrap()
     } else {
-        let content = reqwest::blocking::get(&url).unwrap().text().unwrap();
+        let content = reqwest::blocking::get(url).unwrap().text().unwrap();
         std::fs::write(&path, &content).unwrap();
         content
     };

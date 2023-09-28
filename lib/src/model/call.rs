@@ -1,10 +1,26 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum Arg {
+    Item(String),
+    Array(Vec<Arg>),
+}
+
+impl Arg {
+    pub fn names(&self) -> Vec<String> {
+        match self {
+            Arg::Item(name) => vec![name.clone()],
+            Arg::Array(args) => args.iter().flat_map(|arg| arg.names()).collect(),
+        }
+    }
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub enum Call {
     Nular,
-    Unary(Vec<String>),
-    Binary(Vec<String>, Vec<String>),
+    Unary(Arg),
+    Binary(Arg, Arg),
 }
 
 impl Call {
@@ -12,7 +28,7 @@ impl Call {
         if source.starts_with("'''") {
             return Ok(Call::Nular);
         }
-
+        let source = source.trim().replace("<nowiki/>", "");
         let Some((left, right)) = source.split_once("[[") else {
             return Err(format!("Invalid call: {}", source));
         };
@@ -25,42 +41,130 @@ impl Call {
             if right.is_empty() {
                 Ok(Call::Nular)
             } else {
-                Ok(Call::Unary(Self::parse_params(right)))
+                Ok(Call::Unary(Self::parse(right).unwrap()))
             }
         } else {
             if right.is_empty() {
                 return Err(format!("Invalid call: {}", source));
             }
             Ok(Call::Binary(
-                Self::parse_params(left),
-                Self::parse_params(right),
+                Self::parse(left).unwrap(),
+                Self::parse(right).unwrap(),
             ))
         }
     }
 
-    fn parse_params(source: &str) -> Vec<String> {
-        let mut params = Vec::new();
-        let mut source = source.trim().trim_start_matches('[').trim_end_matches(']');
-        while let Some((param, right)) = source.split_once(',') {
-            params.push(param.trim().to_string());
-            source = right.trim();
-        }
-        params.push(source.to_string());
-        params
+    fn parse(source: &str) -> Option<Arg> {
+        let mut chars = source.trim().chars().peekable();
+        Self::parse_arg(&mut chars)
     }
 
-    pub fn params(&self) -> Vec<String> {
+    fn parse_arg<I>(chars: &mut std::iter::Peekable<I>) -> Option<Arg>
+    where
+        I: Iterator<Item = char>,
+    {
+        match chars.peek() {
+            Some('[') => Self::parse_array(chars),
+            _ => Self::parse_item(chars),
+        }
+    }
+
+    fn parse_item<I>(chars: &mut std::iter::Peekable<I>) -> Option<Arg>
+    where
+        I: Iterator<Item = char>,
+    {
+        let mut item = String::new();
+        while let Some(&c) = chars.peek() {
+            match c {
+                '[' | ']' | ',' => break,
+                _ => {
+                    item.push(c);
+                    chars.next(); // Consume the character
+                }
+            }
+        }
+        let item = item.trim();
+        if item.is_empty() {
+            return None;
+        }
+        Some(Arg::Item(item.to_owned()))
+    }
+
+    fn parse_array<I>(chars: &mut std::iter::Peekable<I>) -> Option<Arg>
+    where
+        I: Iterator<Item = char>,
+    {
+        chars.next(); // Consume the '['
+        let mut array = Vec::new();
+        while let Some(&c) = chars.peek() {
+            match c {
+                ']' => {
+                    chars.next(); // Consume the ']'
+                    return Some(Arg::Array(array));
+                }
+                ',' => {
+                    chars.next(); // Consume the ','
+                }
+                _ => {
+                    if let Some(arg) = Self::parse_arg(chars) {
+                        array.push(arg);
+                    }
+                    if let Some(&',') = chars.peek() {
+                        chars.next(); // Consume the ','
+                    }
+                }
+            }
+        }
+        Some(Arg::Array(array))
+    }
+
+    pub fn param_names(&self) -> Vec<String> {
         match self {
             Call::Nular => Vec::new(),
-            Call::Unary(params) => params.to_owned(),
-            Call::Binary(params1, params2) => {
-                let mut params = Vec::with_capacity(params1.len() + params2.len());
-                params.extend_from_slice(params1);
-                params.extend_from_slice(params2);
-                params
+            Call::Unary(arg) => arg.names(),
+            Call::Binary(arg1, arg2) => {
+                let names1 = arg1.names();
+                let names2 = arg2.names();
+                let mut arg = Vec::with_capacity(names1.len() + names2.len());
+                arg.extend_from_slice(&names1);
+                arg.extend_from_slice(&names2);
+                arg
             }
         }
     }
+}
+
+#[test]
+fn parse() {
+    assert_eq!(
+        Call::parse("[idc, path, name]").unwrap(),
+        Arg::Array(vec![
+            Arg::Item("idc".to_string()),
+            Arg::Item("path".to_string()),
+            Arg::Item("name".to_string())
+        ])
+    );
+    assert_eq!(
+        Call::parse("[idc, [row, column], colour]").unwrap(),
+        Arg::Array(vec![
+            Arg::Item("idc".to_string()),
+            Arg::Array(vec![
+                Arg::Item("row".to_string()),
+                Arg::Item("column".to_string())
+            ]),
+            Arg::Item("colour".to_string())
+        ])
+    );
+    assert_eq!(
+        Call::parse("[[row, column], colour]").unwrap(),
+        Arg::Array(vec![
+            Arg::Array(vec![
+                Arg::Item("row".to_string()),
+                Arg::Item("column".to_string())
+            ]),
+            Arg::Item("colour".to_string())
+        ])
+    );
 }
 
 #[test]
@@ -68,13 +172,13 @@ fn test_call_from_wiki() {
     assert_eq!(Call::from_wiki("[[addScore]]"), Ok(Call::Nular));
     assert_eq!(
         Call::from_wiki("[[addScore]] foo"),
-        Ok(Call::Unary(vec!["foo".to_string()]))
+        Ok(Call::Unary(Arg::Item("foo".to_string())))
     );
     assert_eq!(
         Call::from_wiki("foo [[addScore]] baz"),
         Ok(Call::Binary(
-            vec!["foo".to_string()],
-            vec!["baz".to_string()]
+            Arg::Item("foo".to_string()),
+            Arg::Item("baz".to_string())
         ))
     );
     assert_eq!(
@@ -83,17 +187,21 @@ fn test_call_from_wiki() {
     );
     assert_eq!(
         Call::from_wiki("[[tvSetPicture]] [idc, path, name]"),
-        Ok(Call::Unary(vec![
-            "idc".to_string(),
-            "path".to_string(),
-            "name".to_string()
-        ]))
+        Ok(Call::Unary(Arg::Array(vec![
+            Arg::Item("idc".to_string()),
+            Arg::Item("path".to_string()),
+            Arg::Item("name".to_string())
+        ])))
     );
     assert_eq!(
         Call::from_wiki("control [[tvSetPicture]] [idc, path, name]"),
         Ok(Call::Binary(
-            vec!["control".to_string()],
-            vec!["idc".to_string(), "path".to_string(), "name".to_string()]
+            Arg::Item("control".to_string()),
+            Arg::Array(vec![
+                Arg::Item("idc".to_string()),
+                Arg::Item("path".to_string()),
+                Arg::Item("name".to_string())
+            ])
         ))
     );
     assert_eq!(Call::from_wiki("'''viewDistance'''"), Ok(Call::Nular));

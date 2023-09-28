@@ -5,8 +5,7 @@ description: |-
 groups:
 - Vehicle Inventory
 syntax:
-- call: !Unary
-  - vehicle
+- call: !Unary vehicle
   ret:
   - Number
   - fuel cargo value, -1 if fuel cargo is not supported, 0 if the vehicle is ![[alive]] or [[isNull]]

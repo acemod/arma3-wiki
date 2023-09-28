@@ -4,20 +4,30 @@ groups:
 - Turrets
 syntax:
 - call: !Binary
-  - - vehicle
-  - - turret
+  - vehicle
+  - turret
   ret:
   - !ArraySized
-    - - - Number
-        - from 0 to -angle in degrees (left)
-      - - Number
-        - from 0 to +angle in degrees (right)
-      - - Number
-        - from 0 to -angle in degrees (down)
-      - - Number
-        - from 0 to +angle in degrees (up)
-      - - Boolean
-        - if custom limits were applied
+    - - name: minTurn
+        value: Number
+        desc: from 0 to -angle in degrees (left)
+        since: null
+      - name: maxTurn
+        value: Number
+        desc: from 0 to +angle in degrees (right)
+        since: null
+      - name: minElev
+        value: Number
+        desc: from 0 to -angle in degrees (down)
+        since: null
+      - name: maxElev
+        value: Number
+        desc: from 0 to +angle in degrees (up)
+        since: null
+      - name: overridden
+        value: Boolean
+        desc: if custom limits were applied
+        since: null
     - ''
   - null
   params:

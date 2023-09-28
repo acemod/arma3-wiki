@@ -3,8 +3,7 @@ description: Enables or disables disassembly of static weapons. Could be applied
 groups:
 - Weapons
 syntax:
-- call: !Unary
-  - enable
+- call: !Unary enable
   ret:
   - Nothing
   - null
@@ -13,8 +12,8 @@ syntax:
     description: '[[false]] to prevent local [[player]] from being able to disassemble static weapons'
     typ: Boolean
 - call: !Binary
-  - - entity
-  - - enable
+  - entity
+  - enable
   ret:
   - Nothing
   - null

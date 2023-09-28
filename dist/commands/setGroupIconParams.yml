@@ -1,0 +1,45 @@
+name: setGroupIconParams
+description: Set group icons parameters.
+groups:
+- High Command
+syntax:
+- call: !Binary
+  - group
+  - properties
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: group
+    typ: Group
+  - name: properties
+    description: |-
+      icon color in format [r,g,b,a]
+      * text: [[String]] - icon text
+      * scale: [[Number]] - icon scale
+      * visibility: [[Boolean]] - icon visibility
+      * WPvisibility: [[Boolean]] - waypoint visibility
+      * WPcolor: [[Array]] - waypoint color in format [r,g,b,a]
+    typ: !ArraySized
+    - - name: color
+        value: ArrayUnknown
+        desc: ''
+        since: null
+    - ''
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _grp setGroupIconParams [[0.9,0,0,1], "The Group", 1.25, false];

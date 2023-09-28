@@ -5,15 +5,19 @@ groups:
 - Animations
 syntax:
 - call: !Binary
-  - - vehicle
-  - - turretPath
+  - vehicle
+  - turretPath
   ret:
   - !ArraySized
-    - - - Number
-        - current periscope elevation value. -1 in case of an invalid turret
-      - - Boolean
-        - whether or not user override is blocked
-    - in
+    - - name: elevation
+        value: Number
+        desc: current periscope elevation value. -1 in case of an invalid turret
+        since: null
+      - name: isLocked
+        value: Boolean
+        desc: whether or not user override is blocked
+        since: null
+    - ''
   - null
   params:
   - name: vehicle

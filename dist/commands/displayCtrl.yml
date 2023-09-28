@@ -4,8 +4,8 @@ groups:
 - GUI Control
 syntax:
 - call: !Binary
-  - - display
-  - - idc
+  - display
+  - idc
   ret:
   - Control
   - null
@@ -14,8 +14,7 @@ syntax:
     typ: Display
   - name: idc
     typ: Number
-- call: !Unary
-  - idc
+- call: !Unary idc
   ret:
   - Control
   - null

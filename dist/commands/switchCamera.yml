@@ -14,8 +14,8 @@ groups:
 - Camera Control
 syntax:
 - call: !Binary
-  - - target
-  - - mode
+  - target
+  - mode
   ret:
   - Nothing
   - null
@@ -24,8 +24,7 @@ syntax:
     typ: Object
   - name: mode
     typ: String
-- call: !Unary
-  - target
+- call: !Unary target
   ret:
   - Nothing
   - null

@@ -6,10 +6,14 @@ syntax:
 - call: Nular
   ret:
   - !ArraySized
-    - - - Boolean
-        - visibility in the scene
-      - - Boolean
-        - visibility in the map
+    - - name: showScene
+        value: Boolean
+        desc: visibility in the scene
+        since: null
+      - name: 'showMap '
+        value: Boolean
+        desc: visibility in the map
+        since: null
     - ''
   - null
   params: []

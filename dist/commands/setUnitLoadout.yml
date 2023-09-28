@@ -4,8 +4,8 @@ groups:
 - Unit Inventory
 syntax:
 - call: !Binary
-  - - unit
-  - - loadout
+  - unit
+  - loadout
   ret:
   - Nothing
   - null
@@ -16,7 +16,7 @@ syntax:
     description: '[[Unit Loadout Array]]'
     typ: ArrayUnknown
 - call: !Binary
-  - - unit
+  - unit
   - - loadout
     - fullMagazines
   ret:
@@ -32,8 +32,8 @@ syntax:
     description: Partially emptied magazines will be refilled when the loadout is applied
     typ: Boolean
 - call: !Binary
-  - - unit
-  - - name
+  - unit
+  - name
   ret:
   - Nothing
   - null
@@ -44,8 +44,8 @@ syntax:
     description: Class name (see description
     typ: String
 - call: !Binary
-  - - unit
-  - - config
+  - unit
+  - config
   ret:
   - Nothing
   - null

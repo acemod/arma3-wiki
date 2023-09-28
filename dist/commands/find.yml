@@ -8,8 +8,8 @@ groups:
 - Arrays
 syntax:
 - call: !Binary
-  - - array
-  - - element
+  - array
+  - element
   ret:
   - Number
   - zero-based position of the first array element that matches x, -1 if not found
@@ -21,8 +21,8 @@ syntax:
     description: array element to find
     typ: Anything
 - call: !Binary
-  - - string
-  - - substring
+  - string
+  - substring
   ret:
   - Number
   - zero-based position of the first sequence of characters that matches substring, -1 if not found
@@ -38,7 +38,7 @@ syntax:
       major: 1
       minor: 28
 - call: !Binary
-  - - string
+  - string
   - - substring
     - indexStart
   ret:

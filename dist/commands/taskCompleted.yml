@@ -3,8 +3,7 @@ description: Return if task is completed. (state Succeeded, Failed or Canceled)
 groups:
 - Briefing
 syntax:
-- call: !Unary
-  - task
+- call: !Unary task
   ret:
   - Boolean
   - '[[true]] if task has been Succeeded, Failed or Canceled'

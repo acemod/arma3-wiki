@@ -6,8 +6,7 @@ description: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary
-  - expression
+- call: !Unary expression
   ret:
   - Nothing
   - null
@@ -15,8 +14,8 @@ syntax:
   - name: expression
     typ: Anything
 - call: !Binary
-  - - if (condition)
-  - - exception
+  - if (condition)
+  - exception
   ret:
   - Nothing
   - null

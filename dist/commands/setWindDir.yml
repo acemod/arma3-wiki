@@ -5,8 +5,8 @@ groups:
 - Environment
 syntax:
 - call: !Binary
-  - - time
-  - - value
+  - time
+  - value
   ret:
   - Nothing
   - null
@@ -17,8 +17,7 @@ syntax:
   - name: value
     description: Azimuth
     typ: Number
-- call: !Unary
-  - direction
+- call: !Unary direction
   ret:
   - Nothing
   - null

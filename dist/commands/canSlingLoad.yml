@@ -4,8 +4,8 @@ groups:
 - Ropes and Sling Loading
 syntax:
 - call: !Binary
-  - - heli
-  - - cargo
+  - heli
+  - cargo
   ret:
   - Boolean
   - '[[true]] if [[setSlingLoad]] is possible'
@@ -17,8 +17,8 @@ syntax:
     description: an entity
     typ: Object
 - call: !Binary
-  - - typeOfHeli
-  - - typeOfCargo
+  - typeOfHeli
+  - typeOfCargo
   ret:
   - Boolean
   - '[[true]] if can be sling loaded ''''in principle'''''

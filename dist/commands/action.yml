@@ -10,8 +10,8 @@ groups:
 - Interaction
 syntax:
 - call: !Binary
-  - - unit
-  - - actionArray
+  - unit
+  - actionArray
   ret:
   - Nothing
   - null
@@ -20,8 +20,7 @@ syntax:
     typ: Object
   - name: actionArray
     typ: ArrayUnknown
-- call: !Unary
-  - actionArray
+- call: !Unary actionArray
   ret:
   - Nothing
   - null

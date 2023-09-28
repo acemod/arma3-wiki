@@ -1,0 +1,52 @@
+name: lnbSetTextRight
+description: Sets cell's right-aligned text. Does not replace [[lnbText|cell's text]].
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - text
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: row
+    description: 0-based index (first row is 0, second is 1, etc
+    typ: Number
+  - name: column
+    description: 0-based index (first column is 0, second is 1, etc
+    typ: Number
+  - name: text
+    typ: String
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - text
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: row
+    description: 0-based index (first row is 0, second is 1, etc
+    typ: Number
+  - name: column
+    description: 0-based index (first column is 0, second is 1, etc
+    typ: Number
+  - name: text
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- lnbSetTextRight [1492, [1,0], "right text"];
+- _ctrl lnbSetTextRight [[0, 3], "right text"];

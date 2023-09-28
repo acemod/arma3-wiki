@@ -1,4 +1,4 @@
-use crate::model::{Call, Command, Param, Since, Syntax, Value};
+use crate::model::{Call, Command, Param, Since, Syntax, Value, Version};
 
 pub fn command(name: &str, source: &str) -> Result<Command, String> {
     let lines = source
@@ -46,7 +46,7 @@ pub fn command(name: &str, source: &str) -> Result<Command, String> {
                 if key.starts_with("game") {
                     let next = lines.next().unwrap();
                     assert!(next.0.starts_with("version"));
-                    command.since_mut().set(value, next.1)?;
+                    command.since_mut().set_from_wiki(value, next.1)?;
                 } else if key.starts_with("gr") {
                     command.add_group(value.to_string());
                     if value.contains("Broken Commands") {
@@ -96,25 +96,35 @@ pub fn syntax(
                 let Some((game, version)) = value.split_once(' ') else {
                     return Err(format!("Invalid since: {}", value));
                 };
-                last_param.since_mut().set(game, version)?;
+                last_param.since_mut().set_from_wiki(game, version)?;
             } else {
-                let (name, typ) = value.split_once(':').unwrap();
+                let (mut name, typ) = value.split_once(':').unwrap();
                 let typ = typ.trim();
                 let (mut typ, mut desc) = typ
                     .split_once('-')
-                    .unwrap_or(typ.split_once('(').unwrap_or((typ, "")));
+                    .unwrap_or(typ.split_once("(Optional").unwrap_or((typ, "")));
                 let default = if typ.contains("(Optional, default ") {
-                    let (typ_trim, default) = typ.split_once('(').unwrap();
+                    let (typ_trim, default) = typ.split_once("(Optional").unwrap();
                     typ = typ_trim;
                     let (default, desc_trim) = default.split_once(')').unwrap();
                     desc = desc_trim;
-                    Some(default.replace("Optional, default ", "").trim().to_string())
+                    Some(default.replace(", default ", "").trim().to_string())
+                } else {
+                    None
+                };
+                let since = if name.contains("{{GVI|") {
+                    let (since, name_trim) = name.split_once("{{GVI|").unwrap();
+                    name = name_trim;
+                    let (game, version) = Version::from_icon(since)?;
+                    let mut since = Since::default();
+                    since.set_version(&game, version)?;
+                    Some(since)
                 } else {
                     None
                 };
                 params.push(Param {
                     name: name.trim().to_string(),
-                    description: if desc.is_empty() {
+                    description: if desc.trim().is_empty() {
                         None
                     } else {
                         if desc.contains("{{GVI|arma3|") {
@@ -124,7 +134,7 @@ pub fn syntax(
                     },
                     typ: Value::from_wiki(typ.trim())?,
                     default,
-                    since: None,
+                    since,
                 });
             }
             lines.next();
@@ -136,10 +146,10 @@ pub fn syntax(
                 return Err(format!("Invalid since: {}", value));
             };
             if let Some(since) = &mut since {
-                since.set(game, version)?;
+                since.set_from_wiki(game, version)?;
             } else {
                 let mut new_since = Since::default();
-                new_since.set(game, version)?;
+                new_since.set_from_wiki(game, version)?;
                 since = Some(new_since);
             }
             lines.next();
@@ -148,7 +158,8 @@ pub fn syntax(
         }
     }
     let call = Call::from_wiki(usage)?;
-    for arg in call.params() {
+    println!("params: {:?}", call.param_names());
+    for arg in call.param_names() {
         if !params.iter().any(|p| p.name() == arg) {
             return Err(format!("Missing param: {}", arg));
         }

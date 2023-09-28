@@ -1,0 +1,35 @@
+name: environmentEnabled
+description: Returns status of [[enableEnvironment]] command
+groups:
+- Environment
+- Sounds
+syntax:
+- call: Nular
+  ret:
+  - !ArraySized
+    - - name: ambientLife
+        value: Boolean
+        desc: ''
+        since: null
+      - name: ambientSound
+        value: Boolean
+        desc: ''
+        since: null
+      - name: windyCoef
+        value: Number
+        desc: see [[enableEnvironment
+        since:
+          arma_3:
+            major: 2
+            minor: 12
+    - ''
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 68
+examples:
+- private _enabled = environmentEnabled;

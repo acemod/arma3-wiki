@@ -5,7 +5,17 @@ use regex::Regex;
 const URL: &str = "https://community.bistudio.com/wiki/Category:Scripting_Commands?action=render";
 
 pub fn read_list() -> HashMap<String, String> {
-    let body: String = reqwest::blocking::get(URL).unwrap().text().unwrap();
+    let tmp = std::env::temp_dir()
+        .join("a3_wiki_fetch")
+        .join("command_list.html");
+
+    let body: String = if tmp.exists() {
+        std::fs::read_to_string(&tmp).unwrap()
+    } else {
+        let content = reqwest::blocking::get(URL).unwrap().text().unwrap();
+        std::fs::write(&tmp, &content).unwrap();
+        content
+    };
 
     let regex = Regex::new(r#"(?m)<li><a href="(.+?)" title="(.+?)">"#).unwrap();
     let mut list = HashMap::new();

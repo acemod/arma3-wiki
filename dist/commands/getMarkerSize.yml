@@ -3,14 +3,17 @@ description: Returns the size of the given marker. A getter for [[setMarkerSize]
 groups:
 - Markers
 syntax:
-- call: !Unary
-  - markerName
+- call: !Unary markerName
   ret:
   - !ArraySized
-    - - - Number
-        - 1/2 width of marker
-      - - Number
-        - 1/2 height of marker
+    - - name: a-axis
+        value: Number
+        desc: 1/2 width of marker
+        since: null
+      - name: b-axis
+        value: Number
+        desc: 1/2 height of marker
+        since: null
     - in
   - null
   params:

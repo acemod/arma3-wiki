@@ -3,8 +3,7 @@ description: "Returns the preprocessed content of the given file. The preprocess
 groups:
 - System
 syntax:
-- call: !Unary
-  - fileName
+- call: !Unary fileName
   ret:
   - String
   - file content containing {{hl|#line 1 "aFilename"}}

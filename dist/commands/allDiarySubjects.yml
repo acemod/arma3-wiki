@@ -3,22 +3,33 @@ description: Returns array with all [[Diary]] subjects available to the given pe
 groups:
 - Briefing
 syntax:
-- call: !Unary
-  - person
+- call: !Unary person
   ret:
   - !ArraySized
-    - - - String
-        - internal subject reference
-      - - String
-        - visible name
-      - - String
-        - subject icon
-      - - Number
-        - number of records in this subject
-      - - Boolean
-        - whether or not the records could be added
-      - - Boolean
-        - '[[true]] if subject is currently selected'
+    - - name: name
+        value: String
+        desc: internal subject reference
+        since: null
+      - name: displayName
+        value: String
+        desc: visible name
+        since: null
+      - name: picture
+        value: String
+        desc: subject icon
+        since: null
+      - name: countRecords
+        value: Number
+        desc: number of records in this subject
+        since: null
+      - name: isReadOnly
+        value: Boolean
+        desc: whether or not the records could be added
+        since: null
+      - name: isSelected
+        value: Boolean
+        desc: '[[true]] if subject is currently selected'
+        since: null
     - all diary subject entries
   - null
   params:

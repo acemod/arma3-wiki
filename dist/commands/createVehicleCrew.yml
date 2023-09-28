@@ -3,8 +3,7 @@ description: "Creates vehicle crew corresponding to the provided vehicle's [[fac
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary
-  - vehicle
+- call: !Unary vehicle
   ret:
   - Group
   - the group of the created crew (since {{GVI|arma3|1.94}}; before that returned [[Nothing]])
@@ -13,8 +12,8 @@ syntax:
     description: vehicle to populate with crew
     typ: Object
 - call: !Binary
-  - - group
-  - - vehicle
+  - group
+  - vehicle
   ret:
   - Group
   - the group of the created crew or [[grpNull]]
@@ -30,8 +29,8 @@ syntax:
       major: 2
       minor: 14
 - call: !Binary
-  - - side
-  - - vehicle
+  - side
+  - vehicle
   ret:
   - Group
   - the group of the created crew or [[grpNull]]

@@ -3,8 +3,7 @@ description: Returns a list of all controls for desired existing display. Return
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - display
+- call: !Unary display
   ret:
   - !ArrayUnsized
     - Control
@@ -13,8 +12,7 @@ syntax:
   params:
   - name: display
     typ: Display
-- call: !Unary
-  - controlsGroup
+- call: !Unary controlsGroup
   ret:
   - !ArrayUnsized
     - Control

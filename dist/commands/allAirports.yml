@@ -6,15 +6,19 @@ syntax:
 - call: Nular
   ret:
   - !ArraySized
-    - - - !ArrayUnsized
-          - Number
-          - ''
-        - static airports IDs
-      - - !ArrayUnsized
-          - Object
-          - ''
-        - dynamic airports objects (such as "DynamicAirport_01_F" found on aircraft carrier)
-    - in
+    - - name: staticAirports
+        value: !ArrayUnsized
+        - Number
+        - ''
+        desc: static airports IDs
+        since: null
+      - name: dynamicAirports
+        value: !ArrayUnsized
+        - Object
+        - ''
+        desc: dynamic airports objects (such as "DynamicAirport_01_F" found on aircraft carrier)
+        since: null
+    - ''
   - null
   params: []
 argument_loc: Unspecified

@@ -1,0 +1,50 @@
+name: lnbAddArray
+description: Adds list of rows of strings.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - arrayOfTextAndValues
+  ret:
+  - Number
+  - index
+  params:
+  - name: idc
+    typ: !OneOf
+    - - Number
+      - null
+    - - Control
+      - null
+  - name: arrayOfTextAndValues
+    typ: !ArraySized
+    - - name: text
+        value: String
+        desc: ''
+        since: null
+      - name: value
+        value: Number
+        desc: ''
+        since: null
+      - name: data
+        value: String
+        desc: ''
+        since: null
+    - of [[s
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "lnbAddArray [\n\t102,\n\t[\n\t\t[\n\t\t\t[\"#1\"],\n\t\t\t[1],\n\t\t\t[\"#1\"]\n\t\t],\n\t\t[\n\t\t\t[\"#2\"],\n\t\t\t[2],\n\t\t\t[\"#2\"]\n\t\t]\n\t]\n];\n"

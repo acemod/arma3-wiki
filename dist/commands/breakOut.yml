@@ -6,8 +6,7 @@ description: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary
-  - name
+- call: !Unary name
   ret:
   - Nothing
   - null
@@ -16,8 +15,8 @@ syntax:
     description: Name of the scope which was previously set with [[scopeName]]. <sqf inline>""</sqf> will exit the current scope (see also [[exitWith]]
     typ: String
 - call: !Binary
-  - - value
-  - - name
+  - value
+  - name
   ret:
   - Anything
   - Will return '''value'''

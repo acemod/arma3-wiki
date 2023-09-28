@@ -4,14 +4,17 @@ groups:
 - Unit Control
 - Object Manipulation
 syntax:
-- call: !Unary
-  - vehicle
+- call: !Unary vehicle
   ret:
   - !ArraySized
-    - - - Number
-        - Defined speed limit
-      - - Boolean
-        - '[[true]] if cruise control is enabled, [[false]] if only speed was limited'
+    - - name: '0'
+        value: Number
+        desc: Defined speed limit
+        since: null
+      - name: '1'
+        value: Boolean
+        desc: '[[true]] if cruise control is enabled, [[false]] if only speed was limited'
+        since: null
     - ''
   - null
   params:

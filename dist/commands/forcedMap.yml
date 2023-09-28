@@ -7,10 +7,14 @@ syntax:
 - call: Nular
   ret:
   - !ArraySized
-    - - - Boolean
-        - '[[true]] if map was forced with [[forceMap]] command'
-      - - Boolean
-        - '[[true]] if map was forced with [[openMap]] command.'
+    - - name: forceMapForced
+        value: Boolean
+        desc: '[[true]] if map was forced with [[forceMap]] command'
+        since: null
+      - name: openMapForced
+        value: Boolean
+        desc: '[[true]] if map was forced with [[openMap]] command.'
+        since: null
     - ''
   - null
   params: []

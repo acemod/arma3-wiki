@@ -1,0 +1,45 @@
+name: lnbPictureRight
+description: Returns the right picture of given row. The ''column'' parameter does not matter.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  ret:
+  - String
+  - Path of image
+  params:
+  - name: idc
+    typ: Number
+  - name: row
+    description: Index of the row
+    typ: Number
+  - name: column
+    description: Index of the column
+    typ: Number
+- call: !Binary
+  - ctrl
+  - - row
+    - column
+  ret:
+  - String
+  - Path of image
+  params:
+  - name: ctrl
+    typ: Control
+  - name: row
+    description: Index of the row
+    typ: Number
+  - name: column
+    description: Index of the column
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- _path = _control lnbPictureRight [0, 0];

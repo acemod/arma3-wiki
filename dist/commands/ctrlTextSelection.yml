@@ -3,16 +3,21 @@ description: "Returns edit control text selection in format [start, length, sele
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - control
+- call: !Unary control
   ret:
   - !ArraySized
-    - - - Number
-        - position in text selection started
-      - - Number
-        - number of the highlighted characters (this number could be negative, see description)
-      - - String
-        - selected text
+    - - name: start
+        value: Number
+        desc: position in text selection started
+        since: null
+      - name: length
+        value: Number
+        desc: number of the highlighted characters (this number could be negative, see description)
+        since: null
+      - name: selectedText
+        value: String
+        desc: selected text
+        since: null
     - ''
   - null
   params:

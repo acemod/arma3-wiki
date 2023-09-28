@@ -4,16 +4,22 @@ groups:
 - Custom Panels
 syntax:
 - call: !Binary
-  - - unit
-  - - panelID
+  - unit
+  - panelID
   ret:
   - !ArraySized
-    - - - String
-        - component classname as defined in object/vehicle config
-      - - String
-        - componentType - component type
-      - - Boolean
-        - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
+    - - name: className
+        value: String
+        desc: component classname as defined in object/vehicle config
+        since: null
+      - name: componentType
+        value: String
+        desc: componentType - component type
+        since: null
+      - name: isAccessible
+        value: Boolean
+        desc: boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
+        since: null
     - '-'
   - null
   params:
@@ -26,15 +32,21 @@ syntax:
 - call: !Binary
   - - unit
     - turretPath
-  - - panelID
+  - panelID
   ret:
   - !ArraySized
-    - - - String
-        - component classname as defined in object/vehicle config
-      - - String
-        - componentType - component type
-      - - Boolean
-        - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
+    - - name: className
+        value: String
+        desc: component classname as defined in object/vehicle config
+        since: null
+      - name: componentType
+        value: String
+        desc: componentType - component type
+        since: null
+      - name: isAccessible
+        value: Boolean
+        desc: boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
+        since: null
     - '-'
   - null
   params:

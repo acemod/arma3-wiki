@@ -9,16 +9,14 @@ groups:
 - Unit Identity
 - Locations
 syntax:
-- call: !Unary
-  - object
+- call: !Unary object
   ret:
   - String
   - null
   params:
   - name: object
     typ: Object
-- call: !Unary
-  - location
+- call: !Unary location
   ret:
   - String
   - the location's ''name''. To get its textual value, use [[text]] (see {{Link|#Example 3}})

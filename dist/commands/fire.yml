@@ -7,8 +7,8 @@ groups:
 - Weapons
 syntax:
 - call: !Binary
-  - - unit
-  - - muzzle
+  - unit
+  - muzzle
   ret:
   - Nothing
   - null
@@ -20,7 +20,7 @@ syntax:
     description: name of the muzzle to be fired
     typ: String
 - call: !Binary
-  - - unit
+  - unit
   - - muzzle
     - mode
     - magazine
@@ -35,7 +35,7 @@ syntax:
   - name: mode
     typ: String
   - name: magazine
-    description: Optional
+    description: ''
     typ: String
 argument_loc: Local
 effect_loc: Global

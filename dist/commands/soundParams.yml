@@ -3,20 +3,29 @@ description: Returns various params for the given sound
 groups:
 - Sounds
 syntax:
-- call: !Unary
-  - id
+- call: !Unary id
   ret:
   - !ArraySized
-    - - - String
-        - the path to the played sound file
-      - - Number
-        - current play position in 0...1 range
-      - - Number
-        - total sound duration in seconds
-      - - Number
-        - time passed since the start of playback
-      - - Number
-        - playback volume
+    - - name: path
+        value: String
+        desc: the path to the played sound file
+        since: null
+      - name: curPos
+        value: Number
+        desc: current play position in 0...1 range
+        since: null
+      - name: length
+        value: Number
+        desc: total sound duration in seconds
+        since: null
+      - name: time
+        value: Number
+        desc: time passed since the start of playback
+        since: null
+      - name: volume
+        value: Number
+        desc: playback volume
+        since: null
     - ''
   - null
   params:

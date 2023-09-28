@@ -1,0 +1,44 @@
+name: tvSetPictureRightColor
+description: Sets color of the right picture on the tree view item defined by path
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    description: path to tree view item
+    typ: ArrayUnknown
+  - name: color
+    typ: ArrayColor
+- call: !Binary
+  - control
+  - - path
+    - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    description: path to tree view item
+    typ: ArrayUnknown
+  - name: color
+    typ: ArrayColor
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- tvSetPictureRightColor [101, [0], [1,0,1,1]];
+- _ctrl tvSetPictureRightColor [[0], [1,0,1,1]];

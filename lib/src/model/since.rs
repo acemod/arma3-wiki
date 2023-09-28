@@ -84,7 +84,7 @@ impl Since {
         self.arma_3 = arma_3;
     }
 
-    pub fn set(&mut self, key: &str, value: &str) -> Result<(), String> {
+    pub fn set_from_wiki(&mut self, key: &str, value: &str) -> Result<(), String> {
         match key.to_lowercase().as_str() {
             "ofp" => {
                 self.set_flashpoint(Some(Version::from_wiki(value)?));
@@ -106,6 +106,36 @@ impl Since {
             }
             "arma3" => {
                 self.set_arma_3(Some(Version::from_wiki(value)?));
+            }
+            _ => {
+                panic!("Unknown since key: {}", key);
+            }
+        }
+        Ok(())
+    }
+
+    pub fn set_version(&mut self, key: &str, version: Version) -> Result<(), String> {
+        match key.to_lowercase().as_str() {
+            "ofp" => {
+                self.set_flashpoint(Some(version));
+            }
+            "ofpe" => {
+                self.set_flashpoint_elite(Some(version));
+            }
+            "arma1" => {
+                self.set_armed_assault(Some(version));
+            }
+            "arma2" => {
+                self.set_arma_2(Some(version));
+            }
+            "arma2oa" => {
+                self.set_arma_2_arrowhead(Some(version));
+            }
+            "tkoh" => {
+                self.set_take_on_helicopters(Some(version));
+            }
+            "arma3" => {
+                self.set_arma_3(Some(version));
             }
             _ => {
                 panic!("Unknown since key: {}", key);

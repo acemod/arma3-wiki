@@ -3,14 +3,17 @@ description: Returns array all info panels configured for given object or object
 groups:
 - Custom Panels
 syntax:
-- call: !Unary
-  - unit
+- call: !Unary unit
   ret:
   - !ArraySized
-    - - - String
-        - name of the info panel class as defined in vehicle config
-      - - String
-        - shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+    - - name: infoPanelId
+        value: String
+        desc: name of the info panel class as defined in vehicle config
+        since: null
+      - name: infopanelShortcutId
+        value: String
+        desc: shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+        since: null
     - '-'
   - null
   params:
@@ -22,10 +25,14 @@ syntax:
   - turretPath
   ret:
   - !ArraySized
-    - - - String
-        - name of the info panel class as defined in vehicle config
-      - - String
-        - shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+    - - name: infoPanelId
+        value: String
+        desc: name of the info panel class as defined in vehicle config
+        since: null
+      - name: infopanelShortcutId
+        value: String
+        desc: shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+        since: null
     - '-'
   - null
   params:

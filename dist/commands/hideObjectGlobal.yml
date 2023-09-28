@@ -3,8 +3,7 @@ description: This command is designed for MP. Hides object on all connected clie
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary
-  - object
+- call: !Unary object
   ret:
   - Nothing
   - null
@@ -13,8 +12,8 @@ syntax:
     description: object to hide
     typ: Object
 - call: !Binary
-  - - object
-  - - hidden
+  - object
+  - hidden
   ret:
   - Nothing
   - null

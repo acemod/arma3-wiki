@@ -1,0 +1,57 @@
+name: lnbSetText
+description: Sets the text in the item with the given position of the 2D listbox.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - data
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: row
+    typ: Number
+  - name: column
+    typ: Number
+  - name: data
+    typ: String
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - data
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: row
+    typ: Number
+  - name: column
+    typ: Number
+  - name: data
+    typ: String
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- lnbSetText [101, [0,1], "#1"];
+- _ctrl lnbSetText [[0,1], "#1"];

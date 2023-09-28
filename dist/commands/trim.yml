@@ -3,8 +3,7 @@ description: Trims a [[String|string]].
 groups:
 - Strings
 syntax:
-- call: !Unary
-  - stringValue
+- call: !Unary stringValue
   ret:
   - String
   - trimmed string
@@ -13,7 +12,7 @@ syntax:
     description: string to be trimmed. spaces, tabs and line returns are removed from both ends of ''stringValue''.
     typ: String
 - call: !Binary
-  - - string
+  - string
   - - chars
     - where
   ret:

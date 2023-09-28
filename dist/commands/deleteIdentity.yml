@@ -3,8 +3,7 @@ description: Deletes an identity created with [[saveIdentity]] from the campaign
 groups:
 - Unit Identity
 syntax:
-- call: !Unary
-  - identityName
+- call: !Unary identityName
   ret:
   - Boolean
   - '[[true]] if the identity was deleted successfully, [[false]] if not'

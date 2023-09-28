@@ -3,8 +3,7 @@ description: Checks whether specific diagnostic mode is activated.
 groups:
 - Diagnostic
 syntax:
-- call: !Unary
-  - mode
+- call: !Unary mode
   ret:
   - Boolean
   - '[[true]] when enabled, [[false]] when disabled'

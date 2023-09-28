@@ -3,8 +3,7 @@ description: Returns true if the vehicle has its laser turned on. Not to be conf
 groups:
 - Weapons
 syntax:
-- call: !Unary
-  - entity
+- call: !Unary entity
   ret:
   - Boolean
   - '[[true]] when laser is on, [[false]] otherwise'
@@ -13,8 +12,8 @@ syntax:
     description: unit or vehicle
     typ: Object
 - call: !Binary
-  - - vehicle
-  - - turret
+  - vehicle
+  - turret
   ret:
   - Boolean
   - '[[true]] when laser is on, [[false]] otherwise'
