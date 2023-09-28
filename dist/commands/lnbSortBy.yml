@@ -24,33 +24,33 @@ syntax:
   params:
   - name: controlOrIDC
     description: the ListNBox control or its IDC
-    typ: !OneOf
+    type: !OneOf
     - - Control
       - null
     - - Number
       - null
   - name: column
     description: column to sort (starts with 0)
-    typ: Number
+    type: Number
   - name: sortByType
     description: |-
       (Optional, default "TEXT") one of:
       * {{hl|"TEXT"}}
       * {{hl|"VALUE"}}
       * {{hl|"DATA"}}
-    typ: String
+    type: String
   - name: reversedOrder
     description: (Optional, default [[false]]) [[true]] for sorting in reversed order
-    typ: Boolean
+    type: Boolean
   - name: caseSensitive
     description: (Optional, default [[false]]) [[true]] for using case-sensitive comparison
-    typ: Boolean
+    type: Boolean
   - name: useTextRight
     description: (Optional, default [[false]]) [[true]] to sort by [[lnbSetTextRight | text right]]
-    typ: Boolean
+    type: Boolean
   - name: unicodeOff
     description: (Optional, default [[false]]) [[true]] to switch off UNICODE conversion for faster sorting
-    typ: Boolean
+    type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

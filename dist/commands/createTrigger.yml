@@ -39,9 +39,9 @@ syntax:
   params:
   - name: type
     description: usually "EmptyDetector"
-    typ: String
+    type: String
   - name: position
-    typ: !OneOf
+    type: !OneOf
     - - Position2d
       - null
     - - Position3d
@@ -53,7 +53,7 @@ syntax:
       (Optional - default [[true]]) locality flag
       * [[true]] - trigger is global {{Icon|globalEffect|24}}
       * [[false]] - trigger is local {{Icon|localEffect|24}}
-    typ: Boolean
+    type: Boolean
     since:
       arma_3:
         major: 1

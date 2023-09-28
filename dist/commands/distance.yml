@@ -1,0 +1,83 @@
+name: distance
+description: |-
+  [[Image:distance2D.jpg|400px|right]]
+  Returns a distance in meters between [[Object]]s, [[Position]]s or [[Location]]s.
+  {{Feature | important | If positions are supplied as arguments, the coordinates are treated as [[Position#PositionAGL|PositionAGL]]. If [[Position#Introduction|Position2D]] is supplied, z is assumed 0. If you need distance between two [[Position#Position3D|Position3D]] coordinates, use [[vectorDistance]].}}
+groups:
+- Math - Geometry
+syntax:
+- call: !Binary
+  - param1
+  - param2
+  ret:
+  - Number
+  - distance in meters or 1e10 if distance cannot be calculated
+  params:
+  - name: param1
+    type: !OneOf
+    - - Object
+      - null
+    - - Position3dASL
+      - null
+    - - Position2d
+      - null
+  - name: param2
+    type: !OneOf
+    - - Object
+      - null
+    - - Position3dASL
+      - null
+    - - Position2d
+      - null
+- call: !Binary
+  - location1
+  - location2
+  ret:
+  - Number
+  - distance in meters or 1e10 if distance cannot be calculated
+  params:
+  - name: location1
+    type: !OneOf
+    - - Location
+      - null
+    - - Position
+      - null
+    - - Position2d
+      - null
+  - name: location2
+    type: !OneOf
+    - - Location
+      - null
+    - - Position
+      - null
+    - - Position2d
+      - null
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _meters = player distance _object;
+- _meters = player distance [1,2,3];
+- _meters = [1,2,3] distance [4,5,6];
+- _meters = position player distance nearestLocation [position player, "hill"];

@@ -16,16 +16,16 @@ syntax:
   params:
   - name: object
     description: '[[local]] object'
-    typ: Object
+    type: Object
   - name: part
     description: Name of the part ([[Named_Selection|selection]] name)
-    typ: String
+    type: String
   - name: damage
     description: Damage value ranging 0..1, 0 being fully functional, 1 being destroyed
-    typ: Number
+    type: Number
   - name: useEffects
     description: (Optional, default [[true]]) [[false]] to skip destruction effects
-    typ: Boolean
+    type: Boolean
     since:
       arma_3:
         major: 1
@@ -36,7 +36,7 @@ syntax:
       * it can be used to show "killed by player" in debriefing statistics and kill messages in the chat (if death messages are enabled).
       * it will alter the killer's [[rating]] as if the killer directly killed the unit.
       * it will be listed as <sqf inline>_killer</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler.
-    typ: Object
+    type: Object
     since:
       arma_3:
         major: 2
@@ -46,7 +46,7 @@ syntax:
       (Optional, default [[objNull]]) The person that instigated the damage.
       * if a tank is a killer, the tank gunner that pulled the trigger is instigator
       * it will be listed as <sqf inline>_instigator</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler.
-    typ: Object
+    type: Object
     since:
       arma_3:
         major: 2

@@ -15,14 +15,14 @@ syntax:
   params:
   - name: type
     description: '"MusicStart" or "MusicStop"'
-    typ: String
+    type: String
   - name: function
     description: |-
       passed params array is [musicClassname, eventHandlerId] where:
       <sqf>params ["_musicClassname", "_ehId"];</sqf>
       * musicClassname: [[String]] - [[Description.ext#Music|CfgMusic]] class name
       * eventHandlerId: [[Number]] - event handler id
-    typ: !OneOf
+    type: !OneOf
     - - String
       - null
     - - Code

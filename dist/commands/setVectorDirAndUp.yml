@@ -1,0 +1,68 @@
+name: setVectorDirAndUp
+description: |-
+  [[File:Vectordirandup.jpg|right|300px]] Sets orientation of an object.
+  The command takes 2 vector arrays, one for [[vectorDir]] and one for [[vectorUp]].
+  Default object orientation will always have [[vectorDir]] pointing forward (North) along Y axis and [[vectorUp]] pointing up along Z axis - [[0,1,0],[0,0,1]], as shown on the diagram below (see also [[BIS_fnc_transformVectorDirAndUp]]).<br>
+
+  When attaching object to an object the axes are relative to the object that gets the attachment.
+  If it is player object for example, then X goes from left to right, Y goes from back to front, and Z goes from down up.<br>
+
+  The [[setDir]] command is incompatible with [[setVectorDirAndUp]] and should not be used together on the same object.
+  Using [[setVectorDirAndUp]] alone should be sufficient for any orientation.
+groups:
+- Math - Vectors
+syntax:
+- call: !Binary
+  - vehicle
+  - - vectorDir
+    - vectorUp
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    type: Object
+  - name: vectorDir
+    description: '[[vectorDir]]'
+    type: Vector3d
+  - name: vectorUp
+    description: '[[vectorUp]]'
+    type: Vector3d
+argument_loc: Local
+effect_loc: Global
+since:
+  armed_assault:
+    major: 1
+    minor: 9
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "// set exact yaw, pitch, and roll\n_yaw = 45; _pitch = -80; _roll = 0;\n_myObject setVectorDirAndUp [\n\t[sin _yaw * cos _pitch, cos _yaw * cos _pitch, sin _pitch],\n\t[[sin _roll, -sin _pitch, cos _roll * cos _pitch], -_yaw] call BIS_fnc_rotateVector2D\n];\n"
+- |-
+  To rotate _myObject on Z axis 90 degrees clockwise, change its [[vectorDir]] but leave [[vectorUp]] unchanged.
+  <sqf>_myObject setVectorDirAndUp [[1,0,0], [0,0,1]];
+- |-
+  To rotate _myObject on Y axis 90 degrees clockwise, change its [[vectorUp]] but leave [[vectorDir]] unchanged.
+  <sqf>_myObject setVectorDirAndUp [[0,1,0], [1,0,0]];
+- |-
+  To rotate _myObject on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
+  <sqf>_myObject setVectorDirAndUp [[0,0,-1], [0,1,0]];
+- |
+  More complex orientations
+  <sqf>
+  // tilt forward 90 + rotate left 90
+  _myObject setVectorDirAndUp [[1,0,0], [0,1,0]];
+  // tilt backward 45 degrees
+  _myObject setVectorDirAndUp [[0,0.5,0.5], [0,-0.5,0.5]];
+  // tilt forward 30 degrees
+  _myObject setVectorDirAndUp [[0,0.66,-0.33], [0,0.33,0.66]];

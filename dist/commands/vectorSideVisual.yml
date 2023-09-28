@@ -1,0 +1,25 @@
+name: vectorSideVisual
+description: |-
+  [[Image:arma3_object-vectors.jpg|thumb|right|An object with its [[vectorDirVisual]], [[vectorUpVisual]] and [[vectorSideVisual]] (vectors not to scale)]]
+  Returns an object's side vector in world space and [[Simulation vs Render Time Scope|render time scope]].
+
+  {{Feature|important|The vector is '''not necessarily [[vectorNormalized|normalized]]'''. The [[vectorMagnitude|magnitude]] of the vector depends on the [[getObjectScale|object's scale]].}}
+groups:
+- Math - Vectors
+- Render Time Scope
+syntax:
+- call: !Unary object
+  ret:
+  - Vector3d
+  - null
+  params:
+  - name: object
+    type: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 14
+examples:
+- _vecSideVis = vectorSideVisual MyObject;

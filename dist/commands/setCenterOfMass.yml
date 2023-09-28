@@ -12,13 +12,13 @@ syntax:
   - null
   params:
   - name: myObject
-    typ: Object
+    type: Object
   - name: centerOfMass
     description: '[x,y,z] offset relative to the model centre'
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: time
     description: transition time, 0 for instant center of mass transfer
-    typ: Number
+    type: Number
 - call: !Binary
   - myObject
   - centerOfMass
@@ -27,10 +27,10 @@ syntax:
   - null
   params:
   - name: myObject
-    typ: Object
+    type: Object
   - name: centerOfMass
     description: '[x,y,z] offset relative to the model centre'
-    typ: ArrayUnknown
+    type: ArrayUnknown
 argument_loc: Local
 effect_loc: Global
 since:

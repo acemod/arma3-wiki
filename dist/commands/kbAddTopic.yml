@@ -16,13 +16,13 @@ syntax:
   - null
   params:
   - name: person
-    typ: Object
+    type: Object
   - name: topicName
     description: the topic id for further reference
-    typ: String
+    type: String
   - name: conversationFile
     description: .bikb file path
-    typ: String
+    type: String
   - name: fsmFile
     description: |-
       (Optional) .fsm file path. Receives the following parameters:
@@ -30,12 +30,12 @@ syntax:
       * '''_topic:''' TopicName registered via kbAddTopic
       * '''_this:''' the person that was talked to (receiver)
       * '''_from:''' the person that talked to the receiver and triggered the script
-    typ: String
+    type: String
   - name: eventHandler
     description: |-
       (Optional) code to execute - given String will be [[compile]]d. This is '''not''' an sqf file path.<br>
       Parameters: identical to ''fsmFile'' - see above.
-    typ: !OneOf
+    type: !OneOf
     - - Code
       - null
     - - String

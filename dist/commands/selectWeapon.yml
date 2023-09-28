@@ -11,7 +11,7 @@ syntax:
   - null
   params:
   - name: unitName
-    typ: Object
+    type: Object
   - name: muzzleName
     description: |-
       Name of the weapon or muzzle
@@ -20,7 +20,7 @@ syntax:
       * In {{arma1}} the weaponNames and muzzleNames are different.
       * For muzzle names see [[:Category:Weapons|CfgWeapons]].
       }}
-    typ: String
+    type: String
 - call: !Binary
   - unit
   - - weapon
@@ -36,16 +36,16 @@ syntax:
   params:
   - name: unit
     description: person. This argument has to be [[local]], or it can be remote when executed on the [[isServer|server]]
-    typ: Object
+    type: Object
   - name: weapon
     description: Name of the weapon, personal or vehicle's weapon (see [[weaponState]])
-    typ: String
+    type: String
   - name: muzzle
     description: Name of the selected muzzle (see [[weaponState]])
-    typ: String
+    type: String
   - name: firemode
     description: Name of the firemode (see [[weaponState]])
-    typ: String
+    type: String
   since:
     arma_3:
       major: 2

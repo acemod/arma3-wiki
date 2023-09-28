@@ -1,0 +1,35 @@
+name: ctrlSetDisabledColor
+description: Sets the colorDisabled attribute of a control.
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - idc
+  - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    type: Number
+  - name: color
+    type: ArrayColor
+- call: !Binary
+  - ctrl
+  - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    type: Control
+  - name: color
+    type: ArrayColor
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- _control ctrlSetDisabledColor [0.5, 0.5, 0.5, 0.5];

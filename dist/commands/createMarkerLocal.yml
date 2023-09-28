@@ -14,24 +14,24 @@ syntax:
   - the marker's name, or an empty string if the marker name is not unique
   params:
   - name: name
-    typ: String
+    type: String
   - name: position
     description: 'format position: [[Position#Introduction|Position2D]], [[Position#PositionAGL|PositionAGL]] or [[Object]] (object''s model centre is used (see [[getPosWorld]]))'
-    typ: !OneOf
+    type: !OneOf
     - - ArrayUnknown
       - null
     - - Object
       - null
   - name: channel
     description: (Optional)The marker side for multiplayer
-    typ: Number
+    type: Number
     since:
       arma_3:
         major: 2
         minor: 2
   - name: creator
     description: (Optional) The marker creator for multiplayer
-    typ: Object
+    type: Object
     since:
       arma_3:
         major: 2

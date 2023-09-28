@@ -1,0 +1,28 @@
+name: surfaceNormal
+description: Returns terrain's {{Link|https://en.wikipedia.org/wiki/Normal_(geometry)|surface normal}} on given position.
+groups:
+- Positions
+syntax:
+- call: !Unary position
+  ret:
+  - Vector3d
+  - null
+  params:
+  - name: position
+    description: format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] in which case Z will be ignored
+    type: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 60
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _normal = surfaceNormal [300, 500];
+- _normal = surfaceNormal position player;

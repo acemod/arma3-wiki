@@ -21,37 +21,37 @@ syntax:
     description: |-
       see [[Arma 3: Sound Files]] for available file names or {{Link|#Example 3}} to use mission files
       {{Feature|important|Before {{arma3}} v2.10, ''filename'' must '''not''' start with a leading slash {{hl|'''\'''a3\...}}.}}
-    typ: String
+    type: String
   - name: soundSource
     description: the object emitting the sound. If ''soundPosition'' below is specified this parameter is ignored
-    typ: Object
+    type: Object
   - name: isInside
     description: (Optional, default [[false]]) - [[true]] to simulate a sound played inside a building or similar
-    typ: Boolean
+    type: Boolean
   - name: soundPosition
     description: |-
       (Optional, default [0,0,0]) position for sound emitter, overrides ''soundSource''
       {{Feature|informative|If a following parameter has to be used, simply use <sqf inline>getPosASL _soundSource</sqf> for ''soundPosition'' instead of <sqf inline>_soundSource</sqf> for ''soundSource''.}}
-    typ: Position3dASL
+    type: Position3dASL
   - name: volume
     description: (Optional, default 1) Sound volume. A value greater than 5 gets capped
-    typ: Number
+    type: Number
   - name: soundPitch
     description: "(Optional, default 1)\n* 1.0 &rarr; normal \n* 0.5 &rarr; Darth Vader\n* 2.0 &rarr; Chipmunks"
-    typ: Number
+    type: Number
   - name: distance
     description: (Optional, default 0) How far the sound is audible, in meters. {{hl|0}} means no maximum distance
-    typ: Number
+    type: Number
   - name: offset
     description: (Optional, default 0) Offset in seconds. Same as with [[playMusic]]
-    typ: Number
+    type: Number
     since:
       arma_3:
         major: 2
         minor: 0
   - name: local
     description: (Optional, default [[false]]) If [[true]] the sound will not be broadcast over network
-    typ: Boolean
+    type: Boolean
     since:
       arma_3:
         major: 2

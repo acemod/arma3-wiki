@@ -20,22 +20,22 @@ syntax:
   params:
   - name: color
     description: '[[Color|RGBA color]] values'
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: label
     description: label
-    typ: String
+    type: String
   - name: callSign
     description: call sign - see [[radioChannelSetCallSign]]
-    typ: String
+    type: String
   - name: units
     description: list of units in the channel
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: sentenceType
     description: |-
       (Optional, default [[true]])
       * [[true]] - use ''Protocol'' message color from <sqf inline>getArray (configFile >> "RscChatListDefault" >> "colorMessageProtocol")</sqf>
       * [[false]] - use ''Normal'' message color from <sqf inline>getArray (configFile >> "RscChatListDefault" >> "colorMessage")</sqf>
-    typ: Boolean
+    type: Boolean
 argument_loc: Global
 effect_loc: Global
 server_exec: false

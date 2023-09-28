@@ -13,20 +13,20 @@ syntax:
   params:
   - name: keyName
     description: action key name - see [[inputAction/actions]]
-    typ: String
+    type: String
   - name: event
     description: |-
       event name - see [[Arma 3: Event Handlers#UserAction Event Handlers|UserAction Event Handlers]]. Can be one of:
       * "Activate"
       * "Deactivate"
       * "Analog"
-    typ: String
+    type: String
   - name: expression
     description: |-
       Expression that will be executed in [[missionNamespace]] when event handler fires.<br>
       The Event Handler index is available as {{hl|_thisEventHandler}} during Event Handler code execution.
       {{Feature | important | ''expression'' can only be [[Code]], '''not''' [[String]].}}
-    typ: Code
+    type: Code
 argument_loc: Unspecified
 effect_loc: Local
 since:

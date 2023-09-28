@@ -14,10 +14,10 @@ syntax:
   - null
   params:
   - name: vehicleName
-    typ: Object
+    type: Object
   - name: locked
     description: '[[true]] to lock, [[false]] to unlock'
-    typ: Boolean
+    type: Boolean
 - call: !Binary
   - vehicleName
   - lockstate
@@ -26,7 +26,7 @@ syntax:
   - null
   params:
   - name: vehicleName
-    typ: Object
+    type: Object
   - name: lockstate
     description: |-
       Can be one of the following:<br>
@@ -34,7 +34,7 @@ syntax:
       1 - Default (player subordinate cannot enter until his leader says so)<br>
       2 - Locked<br>
       3 - Locked for player
-    typ: Number
+    type: Number
   since:
     arma_3:
       major: 0

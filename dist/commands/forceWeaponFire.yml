@@ -14,15 +14,15 @@ syntax:
   params:
   - name: unit
     description: unit alone or in vehicle
-    typ: Object
+    type: Object
   - name: muzzle
-    typ: String
+    type: String
   - name: firemode
     description: |-
       Common options are "Single", "Burst", "FullAuto". For the full list of a weapon firemodes:
 
       <sqf>hint str (getArray (configFile >> "CfgWeapons" >> currentWeapon player >> "modes"));</sqf> If ''modes[]'' param in config for the weapon says ''{"this"}'', then the same classname as for the weapon param ([[currentWeapon]] [[player]]) should be used as firemode param.
-    typ: String
+    type: String
 argument_loc: Local
 effect_loc: Global
 since:

@@ -17,7 +17,7 @@ syntax:
   - null
   params:
   - name: centre
-    typ: !OneOf
+    type: !OneOf
     - - Position2d
       - null
     - - Position3d
@@ -26,15 +26,15 @@ syntax:
       - null
   - name: locationTypes
     description: list of [[Location#Location Types|location type]] names, e.g "NameCity"; {{GVI|arma3|2.14|size= 0.75}} passing empty array [] will return all available locations within the radius
-    typ: !ArrayUnsized
+    type: !ArrayUnsized
     - String
     - ''
   - name: radius
     description: maximum distance from the given position that returned locations may be, in metres
-    typ: Number
+    type: Number
   - name: sortPosition
     description: (Optional) results will be sorted from the distance to given ''sortPosition'' (nearest to farthest still)
-    typ: !OneOf
+    type: !OneOf
     - - Position2d
       - null
     - - Position3d

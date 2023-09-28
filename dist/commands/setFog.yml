@@ -15,10 +15,10 @@ syntax:
   params:
   - name: time
     description: transition time to the new value
-    typ: Number
+    type: Number
   - name: fog
     description: fog density in range 0..1
-    typ: Number
+    type: Number
 - call: !Binary
   - time
   - - fogValue
@@ -30,16 +30,16 @@ syntax:
   params:
   - name: time
     description: transition time to the new value
-    typ: Number
+    type: Number
   - name: fogValue
     description: normal [[fog]] value that represents fog density at ''fogBase'' level, in range 0..1
-    typ: Number
+    type: Number
   - name: fogDecay
     description: decay of fog density with altitude, in range -1..1; a negative value means a "ceiling" fog
-    typ: Number
+    type: Number
   - name: fogBase
     description: base altitude ([[Position#PositionASL|ASL]]) of fog (in meters), in range -5000..5000
-    typ: Number
+    type: Number
   since:
     arma_3:
       major: 0

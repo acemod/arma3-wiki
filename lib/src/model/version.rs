@@ -12,6 +12,9 @@ impl Version {
     }
 
     pub fn from_wiki(source: &str) -> Result<Self, String> {
+        if source.is_empty() {
+            return Ok(Self::new(0, 0));
+        }
         let Some((major, minor)) = source.split_once('.') else {
             return Err(format!("Invalid version: {}", source));
         };

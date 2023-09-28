@@ -12,10 +12,10 @@ syntax:
   params:
   - name: effect
     description: name of the effect
-    typ: String
+    type: String
   - name: commit
     description: duration
-    typ: Number
+    type: Number
 - call: !Binary
   - handle
   - commit
@@ -25,10 +25,10 @@ syntax:
   params:
   - name: handle
     description: handle of the effect
-    typ: Number
+    type: Number
   - name: commit
     description: duration
-    typ: Number
+    type: Number
 - call: !Binary
   - handles
   - commit
@@ -38,12 +38,12 @@ syntax:
   params:
   - name: handles
     description: list of handles
-    typ: !ArrayUnsized
+    type: !ArrayUnsized
     - Number
     - ''
   - name: commit
     description: duration
-    typ: Number
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

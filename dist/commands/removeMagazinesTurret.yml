@@ -1,0 +1,34 @@
+name: removeMagazinesTurret
+description: Removes all magazines of the given type from given vehicle. Use turret path [-1] for driver's turret.
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - - magazineName
+    - turretPath
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    type: Object
+  - name: magazineName
+    type: String
+  - name: turretPath
+    type: TurretPath
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 52
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- vehicle player removeMagazinesTurret ["60rnd_cmflaremagazine",[-1]];
+- _tank removeMagazinesTurret ["20Rnd_120mmSABOT_M1A2",[0]];

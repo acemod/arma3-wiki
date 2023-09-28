@@ -14,24 +14,24 @@ syntax:
   params:
   - name: entity
     description: entity to be attached to the end of rope
-    typ: Object
+    type: Object
   - name: toPoint
     description: (Optional) position for the rope end, either a memory point [[String]] or relative offset [[Array]]
-    typ: !OneOf
+    type: !OneOf
     - - String
       - null
     - - ArrayUnknown
       - null
   - name: ropeEndDownVector
     description: (Optional, default [0,0,-1]) either a memory point [[String]] or relative vector [[Array]]. If [[String]] is given, then {{hl|ropeEndDownVector}} is calculated from {{hl|toPoint}} towards {{hl|ropeEndDownVector}} memory point
-    typ: !OneOf
+    type: !OneOf
     - - String
       - null
     - - ArrayUnknown
       - null
   - name: rope
     description: the rope to which entity will be attached to
-    typ: Object
+    type: Object
 - call: !Binary
   - entity
   - rope
@@ -41,10 +41,10 @@ syntax:
   params:
   - name: entity
     description: entity to be attached to the end of rope
-    typ: Object
+    type: Object
   - name: rope
     description: the rope to which entity will be attached to
-    typ: Object
+    type: Object
   since:
     arma_3:
       major: 2

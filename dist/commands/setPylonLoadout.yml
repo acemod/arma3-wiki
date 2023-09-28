@@ -14,23 +14,23 @@ syntax:
   - '[[true]] on success'
   params:
   - name: vehicle
-    typ: Object
+    type: Object
   - name: pylon
     description: pylon index (index starts from 1) or pylon name (see [[getCompatiblePylonMagazines]] Example 4)
-    typ: !OneOf
+    type: !OneOf
     - - Number
       - null
     - - String
       - null
   - name: magazine
     description: magazine name
-    typ: String
+    type: String
   - name: forced
     description: (Optional, default [[false]]) [[true]] to force incompatible magazine
-    typ: Boolean
+    type: Boolean
   - name: turret
     description: (Optional, default []) turret path
-    typ: ArrayUnknown
+    type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Local
 since:

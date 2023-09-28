@@ -12,7 +12,7 @@ syntax:
   params:
   - name: type
     description: if an empty string {{hl|""}} is provided, all entities are returned
-    typ: String
+    type: String
 - call: !Unary
   - typesInclude
   - typesExclude
@@ -24,16 +24,16 @@ syntax:
   params:
   - name: typesInclude
     description: in format [type1, type2, ...typeN], where type is a [[String]]. Empty array [] means include every entity. Method used for filtering - [[isKindOf]]
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: typesExclude
     description: in format [type1, type2, ...typeN], where type is a [[String]]. Empty array [] means exclude no entity. Method used for filtering - [[isKindOf]]
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: includeCrews
     description: (Optional, default [[false]]) include crews currently in vehicles
-    typ: Boolean
+    type: Boolean
   - name: excludeDead
     description: (Optional, default [[false]]) exclude dead entities
-    typ: Boolean
+    type: Boolean
   since:
     arma_3:
       major: 1

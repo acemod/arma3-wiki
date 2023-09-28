@@ -46,11 +46,11 @@ syntax:
           arma_3:
             major: 2
             minor: 12
-    - list of arrays in
+    - list of arrays
   - null
   params:
   - name: vehicle
-    typ: Object
+    type: Object
 - call: !Unary
   - vehicle
   - type
@@ -91,11 +91,11 @@ syntax:
           arma_3:
             major: 2
             minor: 12
-    - list of arrays in
+    - list of arrays
   - null
   params:
   - name: vehicle
-    typ: Object
+    type: Object
   - name: type
     description: |-
       role filter (case-insensitive). An invalid value (e.g "") will return all positions. Available values:
@@ -104,10 +104,10 @@ syntax:
       * "gunner"
       * "turret"
       * "cargo"
-    typ: String
+    type: String
   - name: includeEmpty
     description: (Optional, default [[false]]) include empty crew seats
-    typ: Boolean
+    type: Boolean
     since:
       arma_3:
         major: 1

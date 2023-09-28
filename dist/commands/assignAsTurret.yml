@@ -1,0 +1,29 @@
+name: assignAsTurret
+description: |-
+  Assigns the soldier to turret.
+  {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - unit
+  - - vehicle
+    - turretPath
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    type: Object
+  - name: vehicle
+    type: Object
+  - name: turretPath
+    type: TurretPath
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player assignAsTurret [BIS_vehicle, [0,1]];

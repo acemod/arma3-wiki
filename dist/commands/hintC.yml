@@ -13,7 +13,7 @@ syntax:
   - null
   params:
   - name: message
-    typ: String
+    type: String
 - call: !Binary
   - title
   - message
@@ -23,9 +23,9 @@ syntax:
   params:
   - name: title
     description: message title
-    typ: String
+    type: String
   - name: message
-    typ: !OneOf
+    type: !OneOf
     - - String
       - null
     - - StructuredText

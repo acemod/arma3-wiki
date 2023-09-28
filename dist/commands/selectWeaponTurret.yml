@@ -1,0 +1,45 @@
+name: selectWeaponTurret
+description: Selects the given weapon on the specified turret. Use turret path [-1] for the driver's turret.
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - - weapon
+    - turretPath
+    - muzzle
+    - firemode
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    type: Object
+  - name: weapon
+    description: weapon class name or (since {{GVI|arma3|1.64|size= 0.75}}) muzzle class name
+    type: String
+  - name: turretPath
+    type: TurretPath
+  - name: muzzle
+    description: (Optional) muzzle name
+    type: String
+    since:
+      arma_3:
+        major: 2
+        minor: 8
+  - name: firemode
+    description: (Optional) firemode name
+    type: String
+    since:
+      arma_3:
+        major: 2
+        minor: 8
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 12
+examples:
+- MBT_Kuma selectWeaponTurret ["LMG_coax",[0]];
+- Kamysh selectWeaponTurret ["missiles_titan", [0], "missiles_titan", "topdown"];

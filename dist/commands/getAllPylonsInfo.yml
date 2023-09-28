@@ -1,0 +1,49 @@
+name: getAllPylonsInfo
+description: Return an array with the vehicle's all pylons info.
+groups:
+- Vehicle Loadouts
+syntax:
+- call: !Unary vehicle
+  ret:
+  - !ArraySized
+    - - name: Pylon index
+        value: ArrayUnknown
+        desc: ''
+        since: null
+      - name: Pylon name
+        value: ArrayUnknown
+        desc: ''
+        since: null
+      - name: Assigned turret
+        value: ArrayUnknown
+        desc: ''
+        since: null
+      - name: Magazine className
+        value: ArrayUnknown
+        desc: ''
+        since: null
+      - name: Magazine ammo count
+        value: ArrayUnknown
+        desc: ''
+        since: null
+      - name: currentMagazineDetail|Magazine detail
+        value: ArrayUnknown
+        desc: ''
+        since: null
+      - name: <nowiki>
+        value: ArrayUnknown
+        desc: ''
+        since: null
+    - ''
+  - null
+  params:
+  - name: vehicle
+    type: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- "getAllPylonsInfo vehicle player;\n/*\n\tExecuted on an Mi-48 Kajman:\n\t[\n\t\t[1,\"PylonLeft1\",[0],\"PylonRack_4Rnd_LG_scalpel\",4,\"0:10000646\"],\n\t\t[2,\"PylonLeft2\",[0],\"PylonRack_19Rnd_Rocket_Skyfire\",19,\"0:10000648\"],\n\t\t[3,\"PylonRight2\",[0],\"PylonRack_19Rnd_Rocket_Skyfire\",19,\"0:10000649\"],\n\t\t[4,\"PylonRight1\",[0],\"PylonRack_4Rnd_LG_scalpel\",4,\"0:10000650\"]\n\t]\n*/\n"

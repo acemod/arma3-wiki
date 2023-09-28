@@ -17,19 +17,19 @@ syntax:
   - null
   params:
   - name: object
-    typ: Object
+    type: Object
   - name: source
     description: common source
-    typ: String
+    type: String
   - name: phase
     description: wanted animation phase
-    typ: Number
+    type: Number
   - name: speed
     description: |-
       (Optional, default [[false]])
       * [[Boolean]] - when set to [[true]], animation is instant
       * {{GVI|arma3|1.66|size= 0.75}} [[Number]] > 0 is treated as config speed value multiplier. Since {{GVI|arma3|2.10|size= 0.75}} values <= 0 will instantly reset animation to initPhase.
-    typ: !OneOf
+    type: !OneOf
     - - Boolean
       - null
     - - Number

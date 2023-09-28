@@ -1,0 +1,25 @@
+name: setAngularVelocityModelSpace
+description: Sets the angular velocity of the object in model space as a 3D vector. The units are in Rad/s and rotations are clockwise.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - obj
+  - vector
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: obj
+    type: Object
+  - name: vector
+    description: angular velocity of the object in model space.
+    type: Vector3d
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- myHeli setAngularVelocityModelSpace [0,0,1]; // will cause the helicopter to spin around its main rotor shaft

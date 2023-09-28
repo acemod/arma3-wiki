@@ -16,19 +16,19 @@ syntax:
   params:
   - name: vehicle
     description: vehicle to be damaged
-    typ: Object
+    type: Object
   - name: hitPartIndex
     description: hit part index of the Hit Point
-    typ: Number
+    type: Number
   - name: damage
     description: |-
       level of damage
       * 0: no damage
       * 1: full damage
-    typ: Number
+    type: Number
   - name: useEffects
     description: (Optional, default [[true]]) [[false]] to skip destruction effects
-    typ: Boolean
+    type: Boolean
     since:
       arma_3:
         major: 1
@@ -39,7 +39,7 @@ syntax:
       * It can be used to show "killed by player" in debriefing statistics and kill messages in the chat (if death messages are enabled). <br>
       * It will alter the killer's [[rating]] as if the killer directly killed the unit. <br>
       * It will be listed as <sqf inline>_killer</sqf> parameter in the [[Arma_3:_Event_Handlers#Killed|Killed]] event handler.
-    typ: Object
+    type: Object
     since:
       arma_3:
         major: 2
@@ -49,7 +49,7 @@ syntax:
       (Optional, default [[objNull]]) the person that instigated the damage.
       * if a tank is a killer, the tank gunner that pulled the trigger is instigator
       * it will be listed as <sqf inline>_instigator</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler.
-    typ: Object
+    type: Object
     since:
       arma_3:
         major: 2

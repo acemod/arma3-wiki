@@ -41,20 +41,20 @@ impl Call {
             if right.is_empty() {
                 Ok(Call::Nular)
             } else {
-                Ok(Call::Unary(Self::parse(right).unwrap()))
+                Ok(Call::Unary(Self::parse_params(right).unwrap()))
             }
         } else {
             if right.is_empty() {
                 return Err(format!("Invalid call: {}", source));
             }
             Ok(Call::Binary(
-                Self::parse(left).unwrap(),
-                Self::parse(right).unwrap(),
+                Self::parse_params(left).unwrap(),
+                Self::parse_params(right).unwrap(),
             ))
         }
     }
 
-    fn parse(source: &str) -> Option<Arg> {
+    pub fn parse_params(source: &str) -> Option<Arg> {
         let mut chars = source.trim().chars().peekable();
         Self::parse_arg(&mut chars)
     }
@@ -137,7 +137,7 @@ impl Call {
 #[test]
 fn parse() {
     assert_eq!(
-        Call::parse("[idc, path, name]").unwrap(),
+        Call::parse_params("[idc, path, name]").unwrap(),
         Arg::Array(vec![
             Arg::Item("idc".to_string()),
             Arg::Item("path".to_string()),
@@ -145,7 +145,7 @@ fn parse() {
         ])
     );
     assert_eq!(
-        Call::parse("[idc, [row, column], colour]").unwrap(),
+        Call::parse_params("[idc, [row, column], colour]").unwrap(),
         Arg::Array(vec![
             Arg::Item("idc".to_string()),
             Arg::Array(vec![
@@ -156,7 +156,7 @@ fn parse() {
         ])
     );
     assert_eq!(
-        Call::parse("[[row, column], colour]").unwrap(),
+        Call::parse_params("[[row, column], colour]").unwrap(),
         Arg::Array(vec![
             Arg::Array(vec![
                 Arg::Item("row".to_string()),

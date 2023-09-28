@@ -23,7 +23,7 @@ syntax:
   params:
   - name: arguments
     description: declares the index variable name like "_myVar". [[from]] and [[to]] are required, [[step]] is optional.
-    typ: String
+    type: String
 - call: !Unary
   - init
   - condition
@@ -34,13 +34,13 @@ syntax:
   params:
   - name: init
     description: loop variable definition
-    typ: Code
+    type: Code
   - name: condition
     description: '[[call]]ed code returns [[false]], leave the [[for]]-loop'
-    typ: Code
+    type: Code
   - name: codeToExecute
     description: code to be run on each loop
-    typ: Code
+    type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

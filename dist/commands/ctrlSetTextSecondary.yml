@@ -1,0 +1,44 @@
+name: ctrlSetTextSecondary
+description: Sets the secondary text of a text control.
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - control
+  - text
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    description: Text control
+    type: Control
+  - name: text
+    description: Secondary text
+    type: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 0
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _ctrlText ctrlSetTextSecondary "Hello World!";

@@ -12,14 +12,14 @@ syntax:
   - null
   params:
   - name: units
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - ArrayUnknown
       - null
   - name: position
     description: format [[Position]]
-    typ: ArrayUnknown
+    type: ArrayUnknown
 - call: !Binary
   - units
   - target
@@ -28,13 +28,13 @@ syntax:
   - null
   params:
   - name: units
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - ArrayUnknown
       - null
   - name: target
-    typ: Object
+    type: Object
 argument_loc: Local
 effect_loc: Global
 since:

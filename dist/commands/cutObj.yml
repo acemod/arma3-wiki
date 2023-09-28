@@ -16,16 +16,16 @@ syntax:
   params:
   - name: class
     description: the className of the object defined in {{hl|[[configFile]] >> "CfgTitles" >> class}}
-    typ: String
+    type: String
   - name: type
     description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values
-    typ: String
+    type: String
   - name: speed
     description: (Optional, default -1) time in seconds to fade in resource
-    typ: Number
+    type: Number
   - name: showInMap
     description: (Optional, default [[true]]) [[false]] to hide the text when the map is opened
-    typ: Boolean
+    type: Boolean
 - call: !Binary
   - layer
   - - class
@@ -38,19 +38,19 @@ syntax:
   params:
   - name: layer
     description: layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100
-    typ: Number
+    type: Number
   - name: class
     description: the className of the object defined in {{hl|[[configFile]] >> "CfgTitles" >> class}}
-    typ: String
+    type: String
   - name: type
     description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.
-    typ: String
+    type: String
   - name: speed
     description: (Optional, default -1) Time in seconds to fade in resource
-    typ: Number
+    type: Number
   - name: showInMap
     description: (Optional, default [[true]]) [[false]] to hide the text when the map is opened
-    typ: Boolean
+    type: Boolean
 - call: !Binary
   - layerName
   - - class
@@ -63,19 +63,19 @@ syntax:
   params:
   - name: layerName
     description: layer name on which the effect is shown. Layer names are CaSe SeNsItIvE
-    typ: String
+    type: String
   - name: class
     description: the className of the object defined in {{hl|[[configFile]] >> "CfgTitles" >> class}}
-    typ: String
+    type: String
   - name: type
     description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values
-    typ: String
+    type: String
   - name: speed
     description: (Optional, default -1) time in seconds to fade in resource
-    typ: Number
+    type: Number
   - name: showInMap
     description: (Optional, default [[true]]) [[false]] to hide the text when the map is opened
-    typ: Boolean
+    type: Boolean
   since:
     arma_3:
       major: 1

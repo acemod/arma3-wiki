@@ -13,12 +13,12 @@ syntax:
   - a <u>reference</u> to the array element given by its index
   params:
   - name: array
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: index
     description: |-
       index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up.<br>
       {{GVI|arma3|2.12|size= 0.75}} negative index can be used to select from the end of the array, i.e. -1 means last array element.
-    typ: Number
+    type: Number
 - call: !Binary
   - array
   - boolean
@@ -27,10 +27,10 @@ syntax:
   - a <u>reference</u> to the array element
   params:
   - name: array
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: boolean
     description: '[[false]] selects the ''''''first'''''' element of the [[Array]], [[true]] the ''''''second'''''' one'
-    typ: Boolean
+    type: Boolean
 - call: !Binary
   - config
   - index
@@ -39,10 +39,10 @@ syntax:
   - null
   params:
   - name: config
-    typ: Config
+    type: Config
   - name: index
     description: index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
-    typ: Number
+    type: Number
   since:
     armed_assault:
       major: 1
@@ -56,13 +56,13 @@ syntax:
   - null
   params:
   - name: string
-    typ: String
+    type: String
   - name: start
     description: string position to start selection from. 0 denotes the first character of the string, 1 the second, etc. If passed number has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
-    typ: Number
+    type: Number
   - name: length
     description: (Optional, default ''string''<nowiki/>'s length) number of characters to select
-    typ: Number
+    type: Number
   since:
     arma_3:
       major: 1
@@ -76,15 +76,15 @@ syntax:
   - a <u>new array</u> from selection
   params:
   - name: array
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: start
     description: array index to start selection from
-    typ: Number
+    type: Number
   - name: count
     description: |-
       ({{GVI|arma3|2.14|size= 0.75}} Optional) number of array elements to select. If the selected range exceeds source array boundaries, selection will be made up to the last element of the array.
       {{Feature|informative|Since v2.14 'count' is optional, if omitted the selection is made from ''start'' until the end of the array.}}
-    typ: Number
+    type: Number
   since:
     arma_3:
       major: 1
@@ -97,12 +97,12 @@ syntax:
   - a <u>new array</u> of all elements from the original array that satisfied expression condition
   params:
   - name: array
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: expression
     description: |-
       expression that is expected to return [[Boolean]] or [[Nothing]].
       If [[true]] is returned, the original array value of currently tested element [[Magic Variables#x|_x]] will be added to the output array
-    typ: Code
+    type: Code
   since:
     arma_3:
       major: 1

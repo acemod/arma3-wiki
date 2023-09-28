@@ -20,9 +20,9 @@ syntax:
   params:
   - name: side
     description: The side which will be guarding
-    typ: Side
+    type: Side
   - name: position
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - Group
@@ -33,10 +33,10 @@ syntax:
       - null
   - name: objectMapID
     description: static id of map object. -1 to ignore
-    typ: Number
+    type: Number
   - name: vehicle
     description: vehicle to be used for position. [[objNull]] to ignore
-    typ: Object
+    type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

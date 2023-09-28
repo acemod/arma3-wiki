@@ -20,10 +20,10 @@ syntax:
   params:
   - name: type
     description: class from [[CfgVehicles]]
-    typ: String
+    type: String
   - name: position
     description: desired placement position
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - Position3dASL
@@ -32,16 +32,16 @@ syntax:
       - null
   - name: markers
     description: if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position. If any of the markers were given z coordinate with setMarkerPos, the vehicle will also be created at given z coordinate.
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: placement
     description: Placement radius, the unit is randomly place in a circle with this radius
-    typ: Number
+    type: Number
   - name: special
     description: |-
       one of:
       * {{hl|"NONE"}} - will look for a suitable empty position near given position (subject to other placement params) before creating the agent
       * {{hl|"CAN_COLLIDE"}} - creates the agent at given position (subject to other placement params), without checking if others objects can cross its 3D model
-    typ: String
+    type: String
 argument_loc: Unspecified
 effect_loc: Global
 since:

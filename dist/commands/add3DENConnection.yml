@@ -1,0 +1,32 @@
+name: add3DENConnection
+description: '[[Eden Editor: Connecting|Connect]] entities together.'
+groups:
+- Eden Editor
+syntax:
+- call: !Unary
+  - type
+  - from
+  - to
+  ret:
+  - Boolean
+  - '[[true]] If the connection was made'
+  params:
+  - name: type
+    description: Connection class from ''Cfg3DEN >> Connections''
+    type: String
+  - name: from
+    description: Entities which are being connected
+    type: !ArrayUnsized
+    - EdenEntity
+    - ''
+  - name: to
+    description: Entity to which entities will be connected to
+    type: EdenEntity
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- add3DENConnection ["RandomStart", get3DENSelected "Object", "marker_0"];// Set random start on marker "marker_0" for all selected objects.

@@ -1,0 +1,27 @@
+name: turretOwner
+description: Returns id of the turret's [[owner]]. Returns 0 on non-server and SP.
+multiplayer_note: A vehicle turret will change locality when player gunner gets in it, just like vehicle changes locality when player driver gets in it. Many commands for turrets work only where turret is [[Multiplayer Scripting#Locality|local]]. When gunner leaves turret it is supposed to change locality to the locality of the vehicle. A vehicle can have one [[owner]] while turrets have different [[owner]]s.
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
+  - Number
+  - '[[owner]] id'
+  params:
+  - name: vehicle
+    type: Object
+  - name: turretPath
+    description: since {{GVI|arma3|2.08|size= 0.75}} [-1] (driver) is supported
+    type: TurretPath
+argument_loc: Global
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 38
+examples:
+- _ownerId = vehicle player turretOwner [0];

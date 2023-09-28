@@ -1,0 +1,41 @@
+name: ctrlScrollValues
+description: |-
+  Returns scroll values for current scrollbars in range 0...1 (-1 if not applicable) for the following controls:
+  {{Columns|2|
+  * [[CT_CONTROLS_TABLE]]
+  * [[CT_CONTROLS_GROUP]]
+  * [[CT_TREE]]
+  * [[CT_LISTBOX]]
+  * [[CT_COMBO]]
+  * [[CT_XCOMBO]]
+  * [[CT_LISTNBOX]]
+  * [[CT_LISTNBOX_CHECKABLE]]
+  }}
+groups:
+- GUI Control
+syntax:
+- call: !Unary control
+  ret:
+  - !ArraySized
+    - - name: vScrollValue
+        value: Number
+        desc: ''
+        since: null
+      - name: hScrollValue
+        value: Number
+        desc: ''
+        since: null
+    - ''
+  - null
+  params:
+  - name: control
+    type: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 0
+examples:
+- private _scrollvalues = ctrlScrollValues _ctrl;
+- "// ControlsGroup\nprivate _disp = findDisplay 46 createDisplay \"RscDisplayEmpty\";\nprivate _ctrlGrp = _disp ctrlCreate [\"RscControlsGroup\", -1];\nprivate _ctrl = _disp ctrlCreate [\"RscTree\", -1, _ctrlGrp];\n_ctrl tvAdd [[], \"Root\"];\nfor \"_i\" from 1 to 25 do\n{\n\t_ctrl tvAdd [[0], format [\"Tree Item %1\", _i]];\n};\n_ctrl ctrlSetPosition [0,0,0.3,1.2];\n_ctrl ctrlCommit 0;\ntvExpandAll _ctrl;\n_ctrlGrp ctrlSetPosition [0,0,0.2,0.3];\n_ctrlGrp ctrlCommit 0;\n \nuiNamespace setVariable [\"_ctrl\", _ctrlGrp];\nonEachFrame\n{\n\thintSilent str ctrlScrollValues (uiNamespace getVariable [\"_ctrl\", controlNull]);\n};\n0 spawn\n{\n\tsleep 1;\n\tuiNamespace getVariable [\"_ctrl\", controlNull] ctrlSetScrollValues [0.3, -1];\n\tsleep 1;\n\tuiNamespace getVariable [\"_ctrl\", controlNull] ctrlSetScrollValues [-1, 0.3];\n\tsleep 1;\n\tuiNamespace getVariable [\"_ctrl\", controlNull] ctrlSetScrollValues [0.7, -1];\n\tsleep 1;\n\tuiNamespace getVariable [\"_ctrl\", controlNull] ctrlSetScrollValues [-1, 0.7];\n};\n"

@@ -4,9 +4,9 @@ use serde::{Deserialize, Serialize};
 
 use crate::model::Version;
 
-use super::Since;
+use super::{Call, Since};
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ArraySizedElement {
     pub name: String,
     pub value: Value,
@@ -14,7 +14,7 @@ pub struct ArraySizedElement {
     pub since: Option<Since>,
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub enum Value {
     Anything,
     ArraySized((Vec<ArraySizedElement>, String)),
@@ -34,6 +34,7 @@ pub enum Value {
     Group,
     IfType,
     Location,
+    Namespace,
     Nothing,
     Number,
     Object,
@@ -43,18 +44,22 @@ pub enum Value {
     SwitchType,
     Task,
     TeamMember,
+    TurretPath,
+    UnitLoadoutArray,
+    Position,
     Position2d,
     Position3d,
     Position3dASL,
     Position3dATL,
     Position3dRelative,
+    Vector3d,
 
     OneOf(Vec<(Value, Option<Since>)>),
 }
 
 impl Value {
     pub fn from_wiki(source: &str) -> Result<Self, String> {
-        let mut source = source.trim().to_string();
+        let mut source = source.replace("in format", "format").trim().to_string();
         if !source.contains(" whether or") && source.contains(" or ") {
             source = source.replace(" or ", ", ").to_string();
             let mut or = Vec::new();
@@ -75,6 +80,7 @@ impl Value {
             "Array" => Ok(Value::ArrayUnknown),
             "Array]] format [[Color|Color (RGBA)" => Ok(Value::ArrayColor),
             "Array]] format [[Date" => Ok(Value::ArrayDate),
+            "Array]] format [[Position" => Ok(Value::Position),
             "Array]] format [[Position#Introduction|Position2D" => Ok(Value::Position2d),
             "Array]] format [[Position#Introduction|Position3D" => Ok(Value::Position3d),
             "Array]] format [[Position#PositionAGL|PositionAGL" => Ok(Value::Position3dASL),
@@ -83,19 +89,25 @@ impl Value {
             "Array]] format [[Position#PositionRelative|PositionRelative" => {
                 Ok(Value::Position3dRelative)
             }
+            "Array]] format [[Turret Path" => Ok(Value::TurretPath),
+            "Array]] format [[Unit Loadout Array" => Ok(Value::UnitLoadoutArray),
+            "Array]] format [[Vector3D" => Ok(Value::Vector3d),
             "Boolean" => Ok(Value::Boolean),
             "Code" => Ok(Value::Code),
+            "Color" => Ok(Value::ArrayColor),
             "Color|Color (RGBA)" => Ok(Value::ArrayColor),
             "Config" => Ok(Value::Config),
             "Control" => Ok(Value::Control),
             "Diary Record" => Ok(Value::DiaryRecord),
             "Display" => Ok(Value::Display),
             "Eden Entity" => Ok(Value::EdenEntity),
+            "Eden Entity|Eden Entities" => Ok(Value::EdenEntity),
             "Eden ID" => Ok(Value::EdenID),
             "For Type" => Ok(Value::ForType),
             "Group" => Ok(Value::Group),
             "If Type" => Ok(Value::IfType),
             "Location" => Ok(Value::Location),
+            "Namespace" => Ok(Value::Namespace),
             "Nothing" => Ok(Value::Nothing),
             "Number" => Ok(Value::Number),
             "Object" => Ok(Value::Object),
@@ -111,11 +123,33 @@ impl Value {
             "Switch Type" => Ok(Value::SwitchType),
             "Task" => Ok(Value::Task),
             "Team Member" => Ok(Value::TeamMember),
+            "Turret Path" => Ok(Value::TurretPath),
+            "Unit Loadout Array" => Ok(Value::UnitLoadoutArray),
+            "Vector3D" => Ok(Value::Vector3d),
             _ => {
                 match panic::catch_unwind(|| {
                     if source.starts_with("Array") {
                         if source.contains("format") {
                             let (desc, values) = source.split_once(" format").unwrap();
+                            if !values.contains('\n') {
+                                let params = Call::parse_params(values.trim()).unwrap();
+                                let (_, typ) = desc.split_once("]] of [[").unwrap();
+                                let (typ, _) = typ.split_once("]]").unwrap();
+                                let typ = Value::from_wiki(typ.trim())?;
+                                return Ok(Value::ArraySized((
+                                    params
+                                        .names()
+                                        .into_iter()
+                                        .map(|p| ArraySizedElement {
+                                            name: p,
+                                            value: typ.clone(),
+                                            desc: "".to_string(),
+                                            since: None,
+                                        })
+                                        .collect(),
+                                    "".to_string(),
+                                )));
+                            }
                             let (_, values) = values.split_once('\n').unwrap();
                             let values = values.split('*');
                             let desc = desc
@@ -180,7 +214,7 @@ impl Value {
                                     description.to_string(),
                                 )))
                             } else {
-                                let typ = Value::from_wiki(typ.trim_end_matches('s'))?;
+                                let typ = Value::from_wiki(typ.trim_end_matches("]]s"))?;
                                 Ok(Value::ArrayUnsized((Box::new(typ), "".to_string())))
                             }
                         } else {
@@ -401,6 +435,27 @@ fn array_sized() {
                         since.set_arma_3(Some(Version::new(2, 6)));
                         since
                     }),
+                },
+            ],
+            "".to_string()
+        )))
+    );
+    let value = "[[Array]] of [[Number]]s in format [vScrollValue, hScrollValue]";
+    assert_eq!(
+        Value::from_wiki(value),
+        Ok(Value::ArraySized((
+            vec![
+                ArraySizedElement {
+                    name: "vScrollValue".to_string(),
+                    value: Value::Number,
+                    desc: "".to_string(),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "hScrollValue".to_string(),
+                    value: Value::Number,
+                    desc: "".to_string(),
+                    since: None,
                 },
             ],
             "".to_string()

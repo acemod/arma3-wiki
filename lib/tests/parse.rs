@@ -19,6 +19,8 @@ fn parse(path: &str) {
     assert!(result.is_ok());
 }
 
+parse!(getWeaponSway);
+parse!(ctrlSetTextSecondary);
 parse!(addScore);
 parse!(ctrlSetAngle);
 parse!(getCruiseControl);
@@ -57,3 +59,4 @@ parse!(forcedMap);
 parse!(weaponState);
 parse!(lnbSetPictureColorSelected);
 parse!(tvText);
+parse!(create3DENComposition);

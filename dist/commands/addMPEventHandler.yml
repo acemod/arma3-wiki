@@ -19,10 +19,10 @@ syntax:
   params:
   - name: object
     description: object to monitor
-    typ: Object
+    type: Object
   - name: type
     description: event handler name
-    typ: String
+    type: String
   - name: expression
     description: |-
       Expression to execute.<br>
@@ -31,7 +31,7 @@ syntax:
       * Event Handler parameters are accessible via <sqf inline>_this</sqf>
       * The Event Handler type is available as <sqf inline>_thisEvent</sqf>
       * The Event Handler index is available as <sqf inline>_thisEventHandler</sqf>
-    typ: !OneOf
+    type: !OneOf
     - - String
       - null
     - - Code

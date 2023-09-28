@@ -1,0 +1,27 @@
+name: create3DENComposition
+description: Create new [[Eden_Editor:_Composition|Composition]]. To create individual entities, use [[create3DENEntity]].
+groups:
+- Eden Editor
+syntax:
+- call: !Unary
+  - configPath
+  - position
+  ret:
+  - !ArrayUnsized
+    - EdenEntity
+    - ''
+  - null
+  params:
+  - name: configPath
+    description: path to {{hl|CfgGroups}} class of a composition
+    type: Config
+  - name: position
+    type: Position
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- "myComposition = create3DENComposition [\n\tconfigFile >> \"CfgGroups\" >> \"West\" >> \"BLU_F\" >> \"Infantry\" >> \"BUS_InfSquad\",\n\tscreenToWorld [0.5, 0.5]\n];\n"

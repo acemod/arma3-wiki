@@ -11,10 +11,10 @@ syntax:
   - null
   params:
   - name: unit
-    typ: Object
+    type: Object
   - name: loadout
     description: '[[Unit Loadout Array]]'
-    typ: ArrayUnknown
+    type: ArrayUnknown
 - call: !Binary
   - unit
   - - loadout
@@ -24,13 +24,13 @@ syntax:
   - null
   params:
   - name: unit
-    typ: Object
+    type: Object
   - name: loadout
     description: '[[Unit Loadout Array]]'
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: fullMagazines
     description: Partially emptied magazines will be refilled when the loadout is applied
-    typ: Boolean
+    type: Boolean
 - call: !Binary
   - unit
   - name
@@ -39,10 +39,10 @@ syntax:
   - null
   params:
   - name: unit
-    typ: Object
+    type: Object
   - name: name
     description: Class name (see description)
-    typ: String
+    type: String
 - call: !Binary
   - unit
   - config
@@ -51,10 +51,10 @@ syntax:
   - null
   params:
   - name: unit
-    typ: Object
+    type: Object
   - name: config
     description: Config class (see description)
-    typ: Config
+    type: Config
 argument_loc: Global
 effect_loc: Global
 since:

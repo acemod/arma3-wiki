@@ -20,9 +20,9 @@ syntax:
   - null
   params:
   - name: player
-    typ: Object
+    type: Object
   - name: subject
-    typ: String
+    type: String
   - name: textInfo
     description: |-
       can be:
@@ -31,7 +31,7 @@ syntax:
       ** title: [[String]]
       ** text: [[String]]
       ** {{GVI|arma3|2.10|size= 0.75}} icon: [[String]] - (Optional) icon to show next to the title
-    typ: !OneOf
+    type: !OneOf
     - - String
       - null
     - - !ArrayUnsized
@@ -40,7 +40,7 @@ syntax:
       - null
   - name: task
     description: (Optional, default [[taskNull]])
-    typ: Task
+    type: Task
   - name: taskState
     description: |-
       (Optional, default {{hl|"NONE"}}) changes the state of the given task. Can be one of:
@@ -52,10 +52,10 @@ syntax:
       * {{hl|"FAILED"}}
       * {{hl|"CANCELED"}}
       }}
-    typ: String
+    type: String
   - name: showTitle
     description: (Optional, default [[true]]) whether or not to show title in the description section as well
-    typ: Boolean
+    type: Boolean
     since:
       arma_3:
         major: 1

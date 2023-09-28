@@ -23,7 +23,7 @@ syntax:
   params:
   - name: controlOrIDC
     description: the ListBox control or its IDC
-    typ: !OneOf
+    type: !OneOf
     - - Control
       - null
     - - Number
@@ -34,19 +34,19 @@ syntax:
       * {{hl|"TEXT"}}
       * {{hl|"VALUE"}}
       * {{hl|"DATA"}}
-    typ: String
+    type: String
   - name: reversedOrder
     description: (Optional, default [[false]]) [[true]] for sorting in reversed order
-    typ: Boolean
+    type: Boolean
   - name: caseSensitive
     description: (Optional, default [[false]]) [[true]] for using case-sensitive comparison
-    typ: Boolean
+    type: Boolean
   - name: useTextRight
     description: (Optional, default [[false]]) [[true]] to sort by [[lbSetTextRight | text right]]
-    typ: Boolean
+    type: Boolean
   - name: unicodeOff
     description: (Optional, default [[false]]) [[true]] to switch off UNICODE conversion for faster sorting
-    typ: Boolean
+    type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -1,0 +1,31 @@
+name: enableDirectionStabilization
+description: Enables / disables direction stabilization of turrets. This command only has an effect if the current optic mode of the selected turret has {{hl|directionStabilized}} configured in config.
+groups:
+- Camera Control
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - - enabled
+    - turretPath
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    type: Object
+  - name: enabled
+    description: enable or disable turret stabilization
+    type: Boolean
+  - name: turretPath
+    type: TurretPath
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- uav enableDirectionStabilization [false, [0]]; // Disable direction stabilization for the first turret
+- uav enableDirectionStabilization [true, [0]];
+- uav enableDirectionStabilization [false]; // Disable direction stabilization for the primary turret

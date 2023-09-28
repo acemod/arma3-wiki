@@ -1,0 +1,26 @@
+name: get3DENLayerEntities
+description: Return all entities and sub-layer in [[Eden Entity]] layer. In order to get all layer entities during a scenario use [[getMissionLayerEntities]].
+groups:
+- Eden Editor
+syntax:
+- call: !Unary layerID
+  ret:
+  - !ArrayUnsized
+    - EdenEntity
+    - ''
+  - null
+  params:
+  - name: layerID
+    description: layer ID as returned by [[add3DENLayer]] command
+    type: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- |-
+  _myLayer = -1 add3DENLayer "CTRG";
+  player set3DENLayer _myLayer;
+  _entities = get3DENLayerEntities _myLayer;

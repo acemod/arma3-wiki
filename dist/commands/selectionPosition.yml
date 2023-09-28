@@ -19,9 +19,9 @@ syntax:
   - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned.'
   params:
   - name: object
-    typ: Object
+    type: Object
   - name: selectionName
-    typ: String
+    type: String
 - call: !Binary
   - object
   - - selectionName
@@ -32,9 +32,9 @@ syntax:
   - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
   params:
   - name: object
-    typ: Object
+    type: Object
   - name: selectionName
-    typ: String
+    type: String
   - name: LOD
     description: |-
       can be one of:
@@ -45,7 +45,7 @@ syntax:
       * {{hl|"HitPoints"}}
       * {{GVI|arma3|2.06|size= 0.75}} {{hl|"ViewGeometry"}}
       When [[Number]] is used, command searches for a LOD with the similar [[LOD resolutions|LOD resolution]]
-    typ: !OneOf
+    type: !OneOf
     - - String
       - null
     - - Number
@@ -60,7 +60,7 @@ syntax:
       * {{hl|"FirstPoint"}}
       * {{hl|"AveragePoint"}}
       * {{hl|"BoundingBox"}}
-    typ: String
+    type: String
     since:
       arma_3:
         major: 2
@@ -80,22 +80,22 @@ syntax:
   - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
   params:
   - name: object
-    typ: Object
+    type: Object
   - name: selectionName
-    typ: String
+    type: String
   - name: LODIndex
     description: the index of the target LOD (see [[allLODs]])
-    typ: Number
+    type: Number
   - name: isVisual
     description: (Optional, default [[true]]) [[true]] for Render, [[false]] for Simulation [[Simulation_vs_Render_Time_Scope|time scope]]
-    typ: Boolean
+    type: Boolean
   - name: returnMode
     description: |-
       (Optional, default {{hl|"FirstPoint"}}) can be one of:
       * {{hl|"FirstPoint"}}
       * {{hl|"AveragePoint"}}
       * {{hl|"BoundingBox"}}
-    typ: String
+    type: String
     since:
       arma_3:
         major: 2

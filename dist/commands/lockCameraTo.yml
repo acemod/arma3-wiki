@@ -18,17 +18,17 @@ syntax:
   params:
   - name: vehicle
     description: UAV
-    typ: Object
+    type: Object
   - name: target
     description: use [[objNull]] to unlock
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - Position3dASL
       - null
   - name: turretPath
     description: path to the turret with required camera
-    typ: ArrayUnknown
+    type: ArrayUnknown
 - call: !Binary
   - vehicle
   - - target
@@ -40,22 +40,22 @@ syntax:
   params:
   - name: vehicle
     description: UAV
-    typ: Object
+    type: Object
   - name: target
     description: use [[objNull]] to unlock
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - Position3dASL
       - null
   - name: turretPath
     description: path to the turret with required camera
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: temporary
     description: |-
       if set to [[true]], the engine will automatically remove the lock-on once the turret reaches its target.
       If the target is out of turret's reach, the turret will move to the maximum of its capacity towards the target.
-    typ: Boolean
+    type: Boolean
   since:
     arma_3:
       major: 2

@@ -24,21 +24,21 @@ syntax:
   params:
   - name: type
     description: mine class name from {{hl|CfgVehicles}}
-    typ: String
+    type: String
   - name: position
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - Position3dASL
       - null
   - name: markers
     description: marker name(s)
-    typ: !ArrayUnsized
+    type: !ArrayUnsized
     - String
     - ''
   - name: placement
     description: placement radius
-    typ: Number
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

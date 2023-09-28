@@ -12,15 +12,15 @@ syntax:
   - null
   params:
   - name: idc
-    typ: !OneOf
+    type: !OneOf
     - - Number
       - null
     - - Control
       - null
   - name: row
-    typ: Number
+    type: Number
   - name: column
-    typ: Number
+    type: Number
 - call: !Binary
   - ctrl
   - - row
@@ -30,11 +30,11 @@ syntax:
   - null
   params:
   - name: ctrl
-    typ: Control
+    type: Control
   - name: row
-    typ: Number
+    type: Number
   - name: column
-    typ: Number
+    type: Number
 argument_loc: Local
 effect_loc: Local
 since:

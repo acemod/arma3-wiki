@@ -40,7 +40,7 @@ syntax:
   - '[[grpNull]] if the group limit is reached'
   params:
   - name: side
-    typ: Side
+    type: Side
 - call: !Unary
   - side
   - deleteWhenEmpty
@@ -49,13 +49,13 @@ syntax:
   - '[[grpNull]] if the group limit is reached'
   params:
   - name: side
-    typ: Side
+    type: Side
   - name: deleteWhenEmpty
     description: |-
       [[true]] to [[deleteGroupWhenEmpty|delete the group when empty]].
       * If set to [[true]], forces a group to get deleted when empty - it does '''not''' prevent its deletion by other commands when set to [[false]].
       * Deletion may take up to a minute after the last unit is removed.
-    typ: Boolean
+    type: Boolean
   since:
     arma_3:
       major: 1

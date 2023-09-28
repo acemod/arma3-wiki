@@ -22,24 +22,24 @@ syntax:
   params:
   - name: name
     description: the marker's name, used to reference the marker in scripts.
-    typ: String
+    type: String
   - name: position
     description: '[[Position#Introduction|Position2D]], [[Position#PositionAGL|PositionAGL]] or [[Object]]. In case of an object, the object''s ''''''model centre''''''<nowiki/>''s [[Position#PositionASL|PositionASL]] is used (see [[getPosWorld]])'
-    typ: !OneOf
+    type: !OneOf
     - - ArrayUnknown
       - null
     - - Object
       - null
   - name: channel
     description: (Optional) the marker channel - see [[Channel IDs]] (for multiplayer)
-    typ: Number
+    type: Number
     since:
       arma_3:
         major: 2
         minor: 2
   - name: creator
     description: (Optional) the marker creator (for multiplayer)
-    typ: Object
+    type: Object
     since:
       arma_3:
         major: 2

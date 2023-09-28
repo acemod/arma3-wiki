@@ -18,9 +18,9 @@ syntax:
   - null
   params:
   - name: className
-    typ: String
+    type: String
   - name: position
-    typ: !OneOf
+    type: !OneOf
     - - Position2d
       - null
     - - Position3d
@@ -29,10 +29,10 @@ syntax:
       - null
   - name: sizeX
     description: in meters
-    typ: Number
+    type: Number
   - name: sizeY
     description: in meters
-    typ: Number
+    type: Number
 - call: !Unary
   - location
   ret:
@@ -41,7 +41,7 @@ syntax:
   params:
   - name: location
     description: a terrain's location. If a scripted location is provided, it is simply returned
-    typ: Location
+    type: Location
   since:
     arma_3:
       major: 2

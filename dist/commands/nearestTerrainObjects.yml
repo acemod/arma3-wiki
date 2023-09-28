@@ -15,7 +15,7 @@ syntax:
   params:
   - name: position
     description: where to find objects, center position
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - Position3dASL
@@ -24,20 +24,20 @@ syntax:
       - null
   - name: types
     description: list of case-insensitive types of the objects to search for. {{hl|[]}} to search without filters
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: radius
     description: range from center position to search for objects
-    typ: Number
+    type: Number
   - name: sort
     description: (Optional, default [[true]]) sort objects by distance to the center or not - setting to [[false]] '''greatly''' improves performance
-    typ: Boolean
+    type: Boolean
     since:
       arma_3:
         major: 1
         minor: 62
   - name: 2Dmode
     description: '(Optional, default [[false]]) the object search and sorting mode: [[true]] - 2D, [[false]] - 3D'
-    typ: Boolean
+    type: Boolean
     since:
       arma_3:
         major: 1

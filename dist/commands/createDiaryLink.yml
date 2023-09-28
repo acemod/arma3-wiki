@@ -12,9 +12,9 @@ syntax:
   - empty string or a string similar to the result of <sqf inline>format ["<log subject=""%1"" record=""%2"">%3</log>", subject, processedRecordId, text]</sqf>
   params:
   - name: subject
-    typ: String
+    type: String
   - name: record
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - Task
@@ -22,7 +22,7 @@ syntax:
     - - DiaryRecord
       - null
   - name: text
-    typ: String
+    type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

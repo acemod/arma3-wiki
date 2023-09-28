@@ -12,7 +12,7 @@ syntax:
   params:
   - name: userAction
     description: Name of the action
-    typ: String
+    type: String
 - call: !Unary
   - userAction
   - maxKeys
@@ -25,13 +25,13 @@ syntax:
   params:
   - name: userAction
     description: Name of the action
-    typ: String
+    type: String
   - name: maxKeys
     description: Maximum number of keys to return
-    typ: Number
+    type: Number
   - name: inputDevicePriority
     description: "Result sorted by {{hl|inputDevicePriority}} with values:\n* {{hl|\"Mouse\"}}\n* {{hl|\"Keyboard\"}}\n* {{hl|\"Stick\"}}\n* {{hl|\"Gamepad\"}}\n* {{hl|\"Tracker\"}}\n* {{hl|\"Combo\"}} (mouse and keyboard combinations)\n* {{sic|{{hl|\"Controler\"}}}} (any controller other than mouse or keyboard)\nOther values are considered as: \n* {{hl|\"Unsorted\"}}"
-    typ: String
+    type: String
     since:
       arma_3:
         major: 1

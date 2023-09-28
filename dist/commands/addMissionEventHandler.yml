@@ -13,7 +13,7 @@ syntax:
   params:
   - name: event
     description: event name
-    typ: String
+    type: String
   - name: expression
     description: |-
       Expression that will be executed in [[missionNamespace]] when event handler fires.
@@ -21,14 +21,14 @@ syntax:
       * {{GVI|arma3|1.64|size= 0.75}} the event handler's handle is stored in {{hl|_thisEventHandler}} variable and is available during event handler code execution
       * {{GVI|arma3|2.04|size= 0.75}} it is possible to pass additional arguments to the EH code via optional param. The ''args'' are stored in {{hl|_thisArgs}} variable
       * {{GVI|arma3|2.06|size= 0.75}} the event's name is available from {{hl|_thisEvent}} variable
-    typ: !OneOf
+    type: !OneOf
     - - Code
       - null
     - - String
       - null
   - name: arguments
     description: (Optional, default {{hl|[]}}) additional arguments to be passed to the EH code. Available during code execution via {{hl|_thisArgs}} variable.
-    typ: ArrayUnknown
+    type: ArrayUnknown
     since:
       arma_3:
         major: 2

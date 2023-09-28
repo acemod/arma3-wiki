@@ -29,35 +29,35 @@ syntax:
   - Empty array [] if check failed or [[Position#PositionASL|PositionASL]] if succeded. Resulting position will be original [[Position#PositionAGL|PositionAGL]] + [[getTerrainHeightASL]]
   params:
   - name: position
-    typ: Position3dASL
+    type: Position3dASL
   - name: minDistance
     description: (Optional, default -1) minimum (2D) distance from other objects (range 0..50). -1 to ignore proximity check
-    typ: Number
+    type: Number
   - name: mode
     description: (Optional, default -1) position check mode ('''ALWAYS USE DEFAULT VALUE''')
-    typ: Number
+    type: Number
   - name: maxGradient
     description: (Optional, default -1) maximum terrain steepness allowed. -1 to ignore
-    typ: Number
+    type: Number
   - name: maxGradientRadius
     description: (Optional, default 1) how far to extend gradient check
-    typ: Number
+    type: Number
   - name: overLandOrWater
     description: |-
       (Optional, default 0)
       * 0: position cannot be over water
       * 2: position cannot be over land
       * -1 to ignore
-    typ: Number
+    type: Number
   - name: shoreLine
     description: |-
       (Optional, default [[false]])
       * [[true]]: position is over shoreline (< ~25 m from water)
       * [[false]] to ignore
-    typ: Boolean
+    type: Boolean
   - name: ignoreObject
     description: (Optional, default [[objNull]]) object to ignore in proximity checks. [[objNull]] to ignore
-    typ: Object
+    type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

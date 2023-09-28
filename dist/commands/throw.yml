@@ -12,7 +12,7 @@ syntax:
   - null
   params:
   - name: expression
-    typ: Anything
+    type: Anything
 - call: !Binary
   - if (condition)
   - exception
@@ -22,10 +22,10 @@ syntax:
   params:
   - name: if (condition)
     description: if (condition) returns [[true]], "exception" is thrown
-    typ: IfType
+    type: IfType
   - name: exception
     description: value that will be put into ''_exception'' variable inside [[catch]] block
-    typ: Anything
+    type: Anything
   since:
     arma_3:
       major: 1

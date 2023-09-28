@@ -13,7 +13,7 @@ syntax:
   - null
   params:
   - name: marker
-    typ: String
+    type: String
   - name: path
     description: |-
       {{hl|[x1, y1, x2, y2, ... xn, yn]}}
@@ -21,7 +21,7 @@ syntax:
       Be aware that this command expects an array with a minimum array size of 4 and that the array count always needs to be dividable by 2 and return a whole number. Code:
       <sqf>count path >= 4 && count path mod 2 == 0; // true → valid path</sqf>
       }}
-    typ: ArrayUnknown
+    type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Global
 since:

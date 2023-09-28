@@ -8,6 +8,7 @@ pub struct Param {
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub(crate) description: Option<String>,
+    #[serde(rename = "type")]
     pub(crate) typ: Value,
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]

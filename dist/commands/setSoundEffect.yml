@@ -16,19 +16,19 @@ syntax:
   - null
   params:
   - name: trigger
-    typ: Object
+    type: Object
   - name: sound
     description: Plays a 2D sound as if [[playSound]] was used from CfgSounds (mission or main config). Use {{hl|"$NONE$"}} for an empty sound
-    typ: String
+    type: String
   - name: voice
     description: Attaches a 3D sound from CfgSounds (mission or main config) to the object that activated the trigger and plays it as if [[say3D]] was used
-    typ: String
+    type: String
   - name: soundEnv
     description: Plays an environmental sound from CfgEnvSounds (mission or main config)
-    typ: String
+    type: String
   - name: soundDet
     description: Creates a dynamic sound object attached to a trigger defined in [[CfgSFX]] (mission or main config)
-    typ: String
+    type: String
 - call: !Binary
   - waypoint
   - - sound
@@ -39,13 +39,13 @@ syntax:
   params:
   - name: waypoint
     description: format [[Waypoint]]
-    typ: ArrayUnknown
+    type: ArrayUnknown
   - name: sound
     description: Plays a 2D sound as if [[playSound]] was used from CfgSounds (mission or main config)
-    typ: String
+    type: String
   - name: voice
     description: Attaches a 3D sound from CfgSounds (mission or main config) to the object that activated the trigger and plays it as if [[say3D]] was used
-    typ: String
+    type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

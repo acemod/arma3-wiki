@@ -15,7 +15,7 @@ syntax:
   params:
   - name: trigger
     description: Trigger object
-    typ: Object
+    type: Object
   - name: by
     description: |-
       Who activates trigger. Can be {{hl|"NONE"}} or<br>
@@ -23,16 +23,16 @@ syntax:
       * Radio:{{hl| "ALPHA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT", "GOLF", "HOTEL", "INDIA", "JULIET"}}
       * Object: {{hl|"STATIC", "VEHICLE", "GROUP", "LEADER", "MEMBER"}}
       * Status: {{hl|"WEST SEIZED", "EAST SEIZED" or "GUER SEIZED"}}
-    typ: String
+    type: String
   - name: type
     description: |-
       How trigger is it activated. Can be:<br>
       * Presence: {{hl|"PRESENT", "NOT PRESENT"}}
       * Detection: {{hl|"WEST D", "EAST D", "GUER D" or "CIV D"}}
-    typ: String
+    type: String
   - name: repeating
     description: Activation can happen repeatedly
-    typ: Boolean
+    type: Boolean
 argument_loc: Global
 effect_loc: Local
 since:

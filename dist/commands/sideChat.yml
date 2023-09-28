@@ -12,10 +12,10 @@ syntax:
   params:
   - name: unit
     description: Unit transmitting message
-    typ: Object
+    type: Object
   - name: chatText
     description: Message to transmit
-    typ: String
+    type: String
 - call: !Binary
   - - side
     - identity
@@ -26,7 +26,7 @@ syntax:
   params:
   - name: side
     description: Side to which the message will be seen
-    typ: Side
+    type: Side
   - name: identity
     description: |-
       Class name of one of the identities in CfgHQIdentities. Possible identities in {{arma3}} are:
@@ -40,10 +40,10 @@ syntax:
       * "IND"
       * "IND_G"
       }}
-    typ: String
+    type: String
   - name: chatText
     description: Message to transmit
-    typ: String
+    type: String
 argument_loc: Global
 effect_loc: Local
 since:

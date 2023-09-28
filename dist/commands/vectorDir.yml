@@ -1,0 +1,45 @@
+name: vectorDir
+description: |-
+  [[Image:arma3_object-vectors.jpg|thumb|right|An object with its [[vectorDir]], [[vectorUp]] and [[vectorSide]] (vectors not to scale)]]
+  Returns an object's direction vector in world space.
+
+  {{Feature|important|The vector is '''not necessarily [[vectorNormalized|normalized]]'''. The [[vectorMagnitude|magnitude]] of the vector depends on the [[getObjectScale|object's scale]].}}
+
+  For an object facing one of the cardinal directions on perfectly flat ground (parallel to the XY-plane of the world space), [[vectorDir]] returns simple values:
+  * {{hl|[0, 1, 0]}} if the object is facing directly north
+  * {{hl|[1, 0, 0]}} if the object is facing directly east
+  * {{hl|[0, -1, 0]}} if the object is facing directly south
+  * {{hl|[-1, 0, 0]}} if the object is facing directly west
+groups:
+- Math - Vectors
+syntax:
+- call: !Unary object
+  ret:
+  - Vector3d
+  - null
+  params:
+  - name: object
+    type: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _vecDir = vectorDir MyObject;

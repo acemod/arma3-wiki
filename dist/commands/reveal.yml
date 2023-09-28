@@ -16,14 +16,14 @@ syntax:
   params:
   - name: toWhom
     description: which receives revealing information
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - Group
       - null
   - name: target
     description: which is revealed
-    typ: Object
+    type: Object
 - call: !Binary
   - toWhom
   - - target
@@ -34,17 +34,17 @@ syntax:
   params:
   - name: toWhom
     description: which receives revealing information
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - Group
       - null
   - name: target
     description: which is revealed
-    typ: Object
+    type: Object
   - name: accuracy
     description: knowledge value, clamped to 0..4 range
-    typ: Number
+    type: Number
   since:
     arma_2_arrowhead:
       major: 1

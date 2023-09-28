@@ -1,0 +1,45 @@
+name: setVectorDir
+description: Set object's direction vector. Up vector will remain unchanged.
+problem_notes:
+- The effect is {{Icon|localeffect|32}} when using [[setVectorDir]] on a mine. Use a position modification to broadcast [[setVectorDir]]'s change (see {{Link|#Example 2}}).
+groups:
+- Math - Vectors
+syntax:
+- call: !Binary
+  - object
+  - vectorDir
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    type: Object
+  - name: vectorDir
+    type: Vector3d
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player setVectorDir [5,6,1];
+- |
+  // provided _myMine is local
+  _myMine setVectorDir [0.3, 1, 0];
+  _myMine setPosWorld getPosWorld _myMine; // synchronises the mine's direction over the network (special case)

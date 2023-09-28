@@ -1,0 +1,28 @@
+name: setVelocityModelSpace
+description: |-
+  Sets the velocity (speed vector) of the given vehicle relative to its model.
+
+  {{Feature|important|Since {{arma3}} v2.06 each velocity component is limited to the range +-5000 m/s.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - vehicle
+  - velocity
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    type: Object
+  - name: velocity
+    description: relative velocity vector
+    type: Vector3d
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 68
+examples:
+- car setVelocityModelSpace [0, 10, 0]; // pushes car forward

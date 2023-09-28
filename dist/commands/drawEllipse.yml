@@ -16,10 +16,10 @@ syntax:
   - null
   params:
   - name: map
-    typ: Control
+    type: Control
   - name: centre
     description: ellipse's centre
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - Position2d
@@ -28,19 +28,19 @@ syntax:
       - null
   - name: a
     description: horizontal (x) radius
-    typ: Number
+    type: Number
   - name: b
     description: vertical (y) radius
-    typ: Number
+    type: Number
   - name: angle
     description: angle of rotation in degrees
-    typ: Number
+    type: Number
   - name: color
     description: line color
-    typ: ArrayColor
+    type: ArrayColor
   - name: fill
     description: fill texture file or [[Procedural Textures]]. Note that the file texture will not rotate with rectangle, use [[drawIcon]] for that. If fill texture is not empty, set line color to white [1,1,1,1]
-    typ: String
+    type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -19,7 +19,7 @@ syntax:
   params:
   - name: position
     description: position to start search at
-    typ: !OneOf
+    type: !OneOf
     - - Object
       - null
     - - Position2d
@@ -28,7 +28,7 @@ syntax:
       - null
   - name: type
     description: type of object (see [[typeOf]], [[CfgVehicles|class type]])
-    typ: String
+    type: String
 - call: !Unary position
   ret:
   - Object
@@ -36,7 +36,7 @@ syntax:
   params:
   - name: position
     description: position to start search at
-    typ: !OneOf
+    type: !OneOf
     - - Position2d
       - null
     - - Position3d
@@ -50,14 +50,14 @@ syntax:
   params:
   - name: position
     description: position to start search at
-    typ: !OneOf
+    type: !OneOf
     - - Position3d
       - null
     - - Position2d
       - null
   - name: typeOrId
     description: type of object (see [[typeOf]], [[CfgVehicles|class type]]) or {{GVI|arma3|2.10|size= 0.75}} Visitor id (see [[getObjectID]])
-    typ: String
+    type: String
 - call: !Binary
   - position
   - id
@@ -67,14 +67,14 @@ syntax:
   params:
   - name: position
     description: position to start search at
-    typ: !OneOf
+    type: !OneOf
     - - Position2d
       - null
     - - Position3d
       - null
   - name: id
     description: object Visitor id
-    typ: Number
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

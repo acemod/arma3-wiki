@@ -15,20 +15,20 @@ syntax:
   params:
   - name: object
     description: object the action is added to
-    typ: Object
+    type: Object
   - name: actionIndex
     description: action id returned by [[addAction]]
-    typ: Number
+    type: Number
   - name: textMenu
     description: Text title shown in scroll action menu
-    typ: !OneOf
+    type: !OneOf
     - - String
       - null
     - - StructuredText
       - null
   - name: textWindowBackground
     description: (Optional, default "") background text
-    typ: !OneOf
+    type: !OneOf
     - - String
       - null
     - - StructuredText
@@ -39,7 +39,7 @@ syntax:
         minor: 62
   - name: textWindowForeground
     description: (Optional, default "") foreground text
-    typ: !OneOf
+    type: !OneOf
     - - String
       - null
     - - StructuredText
