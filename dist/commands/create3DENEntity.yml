@@ -1,0 +1,76 @@
+name: create3DENEntity
+description: |-
+  Create new [[Eden Entity]]. Used for creating individual entities; to create a [[Eden_Editor:_Composition|composition]] (e.g., infantry squad), use [[create3DENComposition]] and to create a [[Eden_Editor:_Layer|layer]] use [[add3DENLayer]].<br>
+  This is the only way to add new editable entities to an [[:Category:Eden Editor|Eden Editor]] scenario. Other 'create' commands like [[createVehicle]] or [[createUnit]] will still work, but the resulting entity will not be editable.
+groups:
+- Eden Editor
+syntax:
+- call: !Unary
+  - mode
+  - class
+  - position
+  - isEmpty
+  ret:
+  - EdenEntity
+  - null
+  params:
+  - name: mode
+    description: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
+    type: String
+  - name: class
+    description: |-
+      entity class, defined in one of the following classes:
+      * {{hl|CfgVehicles}} - objects and logic entities
+      * {{hl|CfgNonAIVehicles}} - triggers
+      * {{hl|CfgWaypoint}} - waypoints
+      * {{hl|CfgMarkers}} - markers
+    type: String
+  - name: position
+    type: !ArrayUnsized
+    - Position
+    - ''
+  - name: isEmpty
+    description: (Optional, default [[false]]) [[true]] to create vehicle without crew
+    type: Boolean
+- call: !Binary
+  - group
+  - - mode
+    - class
+    - position
+    - isEmpty
+  ret:
+  - EdenEntity
+  - null
+  params:
+  - name: group
+    description: |-
+      group in which an AI character or waypoint is created.
+      * When missing for AI characters, new group is created for them
+      * When missing for waypoints, an error is logged and nothing is created
+      * When used on any other mode, group is ignored and entity is created as usual
+    type: Group
+  - name: mode
+    description: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
+    type: String
+  - name: class
+    description: entity class
+    type: String
+  - name: position
+    type: !ArrayUnsized
+    - Position
+    - ''
+  - name: isEmpty
+    description: (Optional, default [[false]]) [[true]] to create vehicle without crew
+    type: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- dude1 = create3DENEntity ["Object", "B_Soldier_F", screenToWorld [0.5, 0.5]];
+- dude2 = group dude1 create3DENEntity ["Object", "B_Soldier_AR_F", screenToWorld [0.5, 0.5]];
+- myMarker = create3DENEntity ["Marker", "mil_warning", position player];
+- mytrigger = create3DENEntity ["Trigger", "EmptyDetectorArea10x10", position player];
+- "{{GVI|arma3|2.06|size= 0.75}} Create a shape marker:\n<sqf>\nm = create3DENEntity [\"Marker\", \"\", position player];\t// default rectangular marker\nm set3DENAttribute [\"markerType\", 1];\t\t\t\t\t// 0 - rectangle; 1 - ellipse\nm set3DENAttribute [\"brush\", \"DiagGrid\"];\n"

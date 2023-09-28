@@ -1,0 +1,64 @@
+name: nearObjects
+description: Find objects (Units, Vehicles, Dead, Map Objects) in a sphere with given radius. The first object in the returned array is ''not'' necessarily the closest one. If you need returned objects to be sorted by distance, use [[nearestObjects]]. If typeName is given, only objects of given type (or its subtype) are listed.
+groups:
+- Object Detection
+syntax:
+- call: !Binary
+  - position
+  - radius
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: position
+    type: !OneOf
+    - - Position
+      - null
+    - - Position2d
+      - null
+    - - Object
+      - null
+  - name: radius
+    type: Number
+- call: !Binary
+  - position
+  - - typeName
+    - radius
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: position
+    type: !OneOf
+    - - Position3dAGL
+      - null
+    - - Position2d
+      - null
+    - - Object
+      - null
+  - name: typeName
+    type: String
+  - name: radius
+    type: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _list = position player nearObjects 50;
+- _list = [_xpos,_ypos] nearObjects ["House", 20];
+- _list = player nearObjects 20;

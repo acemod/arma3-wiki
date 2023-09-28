@@ -22,6 +22,8 @@ pub enum Value {
     ArrayUnsized((Box<Value>, String)),
     ArrayDate,
     ArrayColor,
+    ArrayColorRgb,
+    ArrayColorRgba,
     Boolean,
     Code,
     Config,
@@ -30,6 +32,7 @@ pub enum Value {
     Display,
     EdenEntity,
     EdenID,
+    ExceptionHandle,
     ForType,
     Group,
     IfType,
@@ -38,6 +41,7 @@ pub enum Value {
     Nothing,
     Number,
     Object,
+    ScriptHandle,
     Side,
     String,
     StructuredText,
@@ -51,8 +55,13 @@ pub enum Value {
     Position3d,
     Position3dASL,
     Position3dATL,
+    Position3dAGL,
+    Position3dAGLS,
     Position3dRelative,
     Vector3d,
+    Waypoint,
+    WhileType,
+    WithType,
 
     OneOf(Vec<(Value, Option<Since>)>),
 }
@@ -78,24 +87,28 @@ impl Value {
         match source {
             "Anything" => Ok(Value::Anything),
             "Array" => Ok(Value::ArrayUnknown),
-            "Array]] format [[Color|Color (RGBA)" => Ok(Value::ArrayColor),
+            "Array]] format [[Color|Color (RGB)" => Ok(Value::ArrayColorRgb),
+            "Array]] format [[Color|Color (RGBA)" => Ok(Value::ArrayColorRgba),
             "Array]] format [[Date" => Ok(Value::ArrayDate),
             "Array]] format [[Position" => Ok(Value::Position),
             "Array]] format [[Position#Introduction|Position2D" => Ok(Value::Position2d),
             "Array]] format [[Position#Introduction|Position3D" => Ok(Value::Position3d),
-            "Array]] format [[Position#PositionAGL|PositionAGL" => Ok(Value::Position3dASL),
             "Array]] format [[Position#PositionASL|PositionASL" => Ok(Value::Position3dASL),
             "Array]] format [[Position#PositionATL|PositionATL" => Ok(Value::Position3dATL),
+            "Array]] format [[Position#PositionAGL|PositionAGL" => Ok(Value::Position3dAGL),
+            "Array]] format [[Position#PositionAGLS|PositionAGLS" => Ok(Value::Position3dAGLS),
             "Array]] format [[Position#PositionRelative|PositionRelative" => {
                 Ok(Value::Position3dRelative)
             }
             "Array]] format [[Turret Path" => Ok(Value::TurretPath),
             "Array]] format [[Unit Loadout Array" => Ok(Value::UnitLoadoutArray),
             "Array]] format [[Vector3D" => Ok(Value::Vector3d),
+            "Array]] format [[Waypoint" => Ok(Value::Waypoint),
             "Boolean" => Ok(Value::Boolean),
             "Code" => Ok(Value::Code),
             "Color" => Ok(Value::ArrayColor),
-            "Color|Color (RGBA)" => Ok(Value::ArrayColor),
+            "Color|Color (RGB)" => Ok(Value::ArrayColorRgb),
+            "Color|Color (RGBA)" => Ok(Value::ArrayColorRgba),
             "Config" => Ok(Value::Config),
             "Control" => Ok(Value::Control),
             "Diary Record" => Ok(Value::DiaryRecord),
@@ -103,6 +116,7 @@ impl Value {
             "Eden Entity" => Ok(Value::EdenEntity),
             "Eden Entity|Eden Entities" => Ok(Value::EdenEntity),
             "Eden ID" => Ok(Value::EdenID),
+            "Exception handling|Exception Type" => Ok(Value::ExceptionHandle),
             "For Type" => Ok(Value::ForType),
             "Group" => Ok(Value::Group),
             "If Type" => Ok(Value::IfType),
@@ -111,12 +125,15 @@ impl Value {
             "Nothing" => Ok(Value::Nothing),
             "Number" => Ok(Value::Number),
             "Object" => Ok(Value::Object),
+            "Position" => Ok(Value::Position),
             "Position#Introduction|Position2D" => Ok(Value::Position2d),
             "Position#Introduction|Position3D" => Ok(Value::Position3d),
-            "Position#PositionAGL|PositionAGL" => Ok(Value::Position3dASL),
             "Position#PositionASL|PositionASL" => Ok(Value::Position3dASL),
             "Position#PositionATL|PositionATL" => Ok(Value::Position3dATL),
+            "Position#PositionAGL|PositionAGL" => Ok(Value::Position3dAGL),
+            "Position#PositionAGLS|PositionAGLS" => Ok(Value::Position3dAGLS),
             "Position#PositionRelative|PositionRelative" => Ok(Value::Position3dRelative),
+            "Script Handle" => Ok(Value::ScriptHandle),
             "Side" => Ok(Value::Side),
             "String" => Ok(Value::String),
             "Structured Text" => Ok(Value::StructuredText),
@@ -126,6 +143,9 @@ impl Value {
             "Turret Path" => Ok(Value::TurretPath),
             "Unit Loadout Array" => Ok(Value::UnitLoadoutArray),
             "Vector3D" => Ok(Value::Vector3d),
+            "Waypoint" => Ok(Value::Waypoint),
+            "While Type" => Ok(Value::WhileType),
+            "With Type" => Ok(Value::WithType),
             _ => {
                 match panic::catch_unwind(|| {
                     if source.starts_with("Array") {
@@ -238,7 +258,7 @@ fn basic() {
     assert_eq!(Value::from_wiki("[[Array]]"), Ok(Value::ArrayUnknown));
     assert_eq!(
         Value::from_wiki("[[Array]] format [[Color|Color (RGBA)]]"),
-        Ok(Value::ArrayColor)
+        Ok(Value::ArrayColorRgba)
     );
     assert_eq!(
         Value::from_wiki("[[Array]] format [[Date]]"),

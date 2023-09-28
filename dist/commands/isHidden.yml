@@ -1,0 +1,34 @@
+name: isHidden
+description: |-
+  Returns whether a person is hidden (reached the hiding position).
+  {{Feature|Important | Not to be confused with [[isObjectHidden]], which is returning object visibility set with [[hideObject]]}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary person
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: person
+    type: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _bobIsHidden = isHidden bob;

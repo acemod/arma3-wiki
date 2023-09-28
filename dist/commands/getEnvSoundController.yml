@@ -1,0 +1,25 @@
+name: getEnvSoundController
+description: Returns value of the specified controller, see [[getAllEnvSoundControllers]]
+groups:
+- Sounds
+syntax:
+- call: !Binary
+  - position
+  - controller
+  ret:
+  - Number
+  - null
+  params:
+  - name: position
+    type: Position
+  - name: controller
+    description: name of environmental variable like "trees" or "houses"
+    type: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- position player getEnvSoundController "trees"; //0.3333

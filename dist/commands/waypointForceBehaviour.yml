@@ -1,0 +1,24 @@
+name: waypointForceBehaviour
+description: Returns true if the waypoint behavior is forced.
+groups:
+- Waypoints
+syntax:
+- call: !Unary waypoint
+  ret:
+  - Boolean
+  - is forced
+  params:
+  - name: waypoint
+    description: |-
+      format [group, index]:
+      * group: [[Group]]
+      * index: [[Number]]
+    type: Waypoint
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- _isForced = waypointForceBehaviour [groupOne, 1];

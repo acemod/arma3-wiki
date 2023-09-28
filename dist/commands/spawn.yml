@@ -1,0 +1,50 @@
+name: spawn
+description: |-
+  Adds given set of compiled instructions to the [[Scheduler|scheduler]].
+  Exactly when the code will be executed is unknown, it depends on how busy is the engine and how filled up is the [[Scheduler|scheduler]].
+  Therefore [[spawn]] does not wait for the supplied code to finish, instead, [[spawn]] returns a [[Script Handle|Script]] handle to the [[Scheduler|scheduler]] task.
+  [[scriptDone]] command can be used to check the code completion. Additional arguments are passed to the code in local variable [[Magic Variables#this|_this]].
+  Since {{GVI|arma3|1.56|size= 0.75}} the script handle also exists inside the code in {{hl|_thisScript}} variable.
+  To see what spawned scripts are currently in the scheduler, use [[diag_activeSQFScripts]] command.
+
+  {{Feature|warning| When multiple [[Code]] is [[spawn]]ed in an order, there is <u>no guarantee</u> that the [[spawn]]ed [[Code]] will execute in the same order (see {{Link|#Example 2}}). If the order is important, use [[BIS_fnc_spawnOrdered]].}}
+groups:
+- Program Flow
+syntax:
+- call: !Binary
+  - arguments
+  - code
+  ret:
+  - ScriptHandle
+  - can be used to determine (''via'' [[scriptDone]] (also ''via'' [[isNull]] in {{arma3}})) when the spawned script has finished. In {{arma3}}, the handle is also available inside the spawned script in {{hl|_thisScript}} variable
+  params:
+  - name: arguments
+    description: arguments passed to the script, which later available in {{hl|_this}} variable inside the script.
+    type: Anything
+  - name: code
+    type: Code
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _handle = 0 spawn { player globalChat "Hello world!" };
+- "There is no guarantee that spawned scripts will be executed in the same order they spawned: \n<sqf>\nfor \"_i\" from 0 to 100 do\n{\n\t_i spawn\n\t{\n\t\tdiag_log _this;\n\t};\n}; // Result: 51,1,2...49,50,0,52,53...100\n"
+- "Local variables declared in the main scope are not available in the spawned code. You have to pass them as parameters:\n<sqf>\nprivate _localVariable = 1234;\n[_localVariable] spawn \n{\n\tsystemChat format [\"_localVariable does not exist: %1\", isNil \"_localVariable\"]; // _localVariable does not exist: true\n\tparams [\"_localVariable\"];\n\tsystemChat format [\"_localVariable is now: %1\", _localVariable]; // _localVariable is now: 1234\n};\n"

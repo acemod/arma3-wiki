@@ -1,0 +1,33 @@
+name: needReload
+description: Returns how much vehicle wants to reload its weapons.
+groups:
+- Weapons
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Number
+  - 'Range: 0-1, 0: full mag, 1: empty mag'
+  params:
+  - name: vehicle
+    type: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _seriousness = needReload _vehicle;
+- if (needReload player == 1) then { reload player };

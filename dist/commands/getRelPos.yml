@@ -1,0 +1,49 @@
+name: getRelPos
+description: Returns position that is given distance and relative direction away from original object. The alternative syntax available from Arma 3 v 2.14, returns the position offset of the attached object. If the animated memory point is used for attachment, the offset is calculated in [[Simulation_vs_Render_Time_Scope#Render_Time_Scope | render scope]].
+groups:
+- Positions
+syntax:
+- call: !Binary
+  - object
+  - - distance
+    - direction
+  ret:
+  - Position3dAGL
+  - null
+  params:
+  - name: object
+    description: Object
+    type: Object
+  - name: distance
+    description: Distance from object
+    type: Number
+  - name: direction
+    description: Direction relative to object's current direction
+    type: Number
+- call: !Binary
+  - obj1
+  - obj2
+  ret:
+  - Position3dRelative
+  - null
+  params:
+  - name: obj1
+    description: Parent object
+    type: Object
+  - name: obj2
+    description: Attached object
+    type: Object
+  since:
+    arma_3:
+      major: 2
+      minor: 14
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- |-
+  Find position 100 metres away at player's 3 o'clock:
+  <sqf>_relpos = player getRelPos [100, 90];

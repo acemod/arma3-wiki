@@ -1,0 +1,62 @@
+name: setTitleEffect
+description: "Defines the title effect to show on activation via [Type, Effect, Text] where\n\n'Type' \n\nThe title effect does not disappear on deactivation, this should be done manually if required."
+groups:
+- Triggers
+- Waypoints
+syntax:
+- call: !Binary
+  - triggerOrWaypoint
+  - - type
+    - effect
+    - text
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: triggerOrWaypoint
+    type: !OneOf
+    - - Object
+      - null
+    - - Waypoint
+      - null
+  - name: type
+    description: |-
+      can be one of:
+      * "NONE"
+      * "OBJECT"
+      ** ''text'' defines the shown object , a subclass of {{hl|CfgTitles}} (see [[cutObj]])
+      ** ''effect'' defines [[Title Effect Type]]
+      * "RES"
+      ** ''text'' defines a resource class, a subclass of RscTitles (see [[cutRsc]])
+      ** ''effect'' defines [[Title Effect Type]]
+      * "TEXT"
+      ** ''text'' defines text string to show (see [[cutText]])
+      ** ''effect'' defines [[Title Effect Type]]
+    type: String
+  - name: effect
+    type: String
+  - name: text
+    type: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _trigger setTitleEffect ["TEXT", "PLAIN DOWN", "Hello world."];

@@ -1,0 +1,24 @@
+name: getPosVisual
+description: |-
+  Returns an object's [[Position#PositionAGLS|AGLS position]] in render time scope. Alias of [[visiblePosition]].
+  {{Feature | Important | This command '''should not''' be used for actual 3D calculations. See [[getPos]] for more details.}}
+groups:
+- Object Manipulation
+- Render Time Scope
+syntax:
+- call: !Unary object
+  ret:
+  - Position3dAGLS
+  - null
+  params:
+  - name: object
+    description: name of the object
+    type: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- _playerRenderedPos = getPosVisual player;

@@ -1,0 +1,56 @@
+name: lnbSetColor
+description: Sets the color of the item with the given position of the 2D listbox. Color is in format [[Color|Color (RGBA)]].
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    type: Number
+  - name: row
+    type: Number
+  - name: column
+    type: Number
+  - name: color
+    type: ArrayColorRgba
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    type: Control
+  - name: row
+    type: Number
+  - name: column
+    type: Number
+  - name: color
+    type: ArrayColorRgba
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _ctrl lnbSetColor [[0,0], [1,0,0,1]];

@@ -1,0 +1,88 @@
+name: setCameraEffect
+description: |-
+  Applies an effect to the current camera of the player.
+
+  {{Feature|arma3|This command is not present in {{arma3}}.}}
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - triggerOrWaypoint
+  - - type
+    - position
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: triggerOrWaypoint
+    type: !OneOf
+    - - Object
+      - null
+    - - Waypoint
+      - null
+  - name: type
+    description: |-
+      Effect type (a subclass of CfgCameraEffects.Array)
+      {{{!}} class="wikitable"
+      ! Effect
+      ! Position
+      {{!}}-
+      {{!}} style="vertical-align: top" {{!}}
+      {{Columns|2|
+      * "TERMINATE"
+      * "INTERNAL"
+      * "ZOOMIN"
+      * "ZOOMINSLOW"
+      * "AROUND"
+      * "AROUNDSLOW"
+      * "ZOOMANDAROUND"
+      * "AROUNDANDZOOMINSLOW"
+      * "ZOOMINS"
+      * "FIXED"
+      * "FIXEDWITHZOOM"
+      * "EXTERNAL"
+      * "$TERMINATE$"
+      }}
+      {{!}} style="vertical-align: top" {{!}}
+      {{Columns|3|
+      * "TOP"
+      * "LEFT"
+      * "RIGHT"
+      * "FRONT"
+      * "BACK"
+      * "LEFT FRONT"
+      * "RIGHT FRONT"
+      * "LEFT BACK"
+      * "RIGHT BACK"
+      * "LEFT TOP"
+      * "RIGHT TOP"
+      * "FRONT TOP"
+      * "BACK TOP"
+      * "BOTTOM"
+      }}
+      {{!}}}
+    type: String
+  - name: position
+    description: Relative position
+    type: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+examples:
+- myTrigger setCameraEffect ["ZoomIn", "FRONT"];
+- _waypoint1 setCameraEffect ["FIXED", "RIGHT TOP"];

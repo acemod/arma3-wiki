@@ -1,0 +1,42 @@
+name: while
+description: |-
+  Repeats [[Code]] while the given condition is [[true]]. A part of [[while]]-[[do]] construct.
+  {{Feature | Important | A  [[while]] loop does not have any suspension, meaning that if used in [[Scheduler#Scheduled_Environment|scheduled environment]] without any suspension ([[sleep]] or [[uiSleep]]) the code will run multiple times per frame and consumes the 3 ms per frame scheduler execution limit. This should be avoided if not intended (see {{Link|#Example 3}}).}}
+groups:
+- Program Flow
+syntax:
+- call: !Unary condition
+  ret:
+  - WhileType
+  - null
+  params:
+  - name: condition
+    type: Code
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 85
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- while { a < b } do { a = a + 1 };
+- "A practical example: Repair all members of a group to such a level that they are able to stand up:\n<sqf>\n{\n\tif (alive _x) then\n\t{\n\t\twhile { not canStand _x } do\n\t\t{\n\t\t\t_x setDamage (damage _x - 0.01);\n\t\t};\n\t};\n} forEach units group unitname;\n"
+- "[] spawn {\n\t// warning: while loop without suspension executes multiple times per frame\n\tprivate _counter = 0;\n\tprivate _endTime = diag_tickTime + 5;\n\tprivate _frameNo = diag_frameNo;\n\twhile { diag_tickTime < _endTime } do\n\t{\n\t\t_counter = _counter + 1;\n\t};\n\t// in an empty mission, the _counter may go well over 2000 times per frame!\n\thint format [\"Average Execution: %1 times per frame\", _counter / (diag_frameNo - _frameNo)];\n\n\t// with suspension\n\tprivate _counter = 0;\n\tprivate _endTime = diag_tickTime + 5;\n\tprivate _frameNo = diag_frameNo;\n\twhile { diag_tickTime < _endTime } do\n\t{\n\t\t_counter = _counter + 1;\n\t\tuiSleep 0.001; // waits at least 1 frame\n\t};\n\t// _counter says one per frame, as expected\n\thint format [\"Average Execution: %1 times per frame\", _counter / (diag_frameNo - _frameNo)];\n};\n"

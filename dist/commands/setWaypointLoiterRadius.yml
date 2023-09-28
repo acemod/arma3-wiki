@@ -1,0 +1,24 @@
+name: setWaypointLoiterRadius
+description: Assignes loiter radius to waypoint
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - waypoint
+  - radius
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: waypoint
+    type: Waypoint
+  - name: radius
+    type: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- '[_grp, 2] setWaypointLoiterRadius 200;'

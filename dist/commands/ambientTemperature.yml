@@ -1,0 +1,31 @@
+name: ambientTemperature
+description: 'Returns ambient temperature on the current terrain in Celsius in format: [airTemperature, blackSurfaceTemperature, whiteSurfaceTemperature]'
+groups:
+- Environment
+syntax:
+- call: Nular
+  ret:
+  - !ArraySized
+    - - name: airTemperature
+        value: Number
+        desc: ''
+        since: null
+      - name: blackSurfaceTemperature
+        value: Number
+        desc: ''
+        since: null
+      - name: whiteSurfaceTemperature
+        value: Number
+        desc: ''
+        since: null
+    - ''
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- private _airTemp = ambientTemperature select 0;
