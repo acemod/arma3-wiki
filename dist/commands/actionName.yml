@@ -1,0 +1,21 @@
+name: actionName
+description: Returns localized name of action.
+groups:
+- Interaction
+syntax:
+- call: !Unary
+  - action
+  ret:
+  - String
+  - null
+  params:
+  - name: action
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- actionName "ReloadMagazine"; // returns "Reload"

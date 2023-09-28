@@ -1,0 +1,72 @@
+name: fire
+description: |-
+  Forces a unit to fire the given weapon.
+  {{Feature | Informative | Just like with [[forceWeaponFire]] it is possible to pass remote unit as argument, but this could be unreliable. Considering this command might need to be used in combination with [[selectWeapon]], which takes only [[Multiplayer Scripting#Locality|local]] arguments, it would make sense to execute the [[fire]] command where the unit is [[Multiplayer Scripting#Locality|local]] as well.}}
+groups:
+- Unit Control
+- Weapons
+syntax:
+- call: !Binary
+  - - unit
+  - - muzzle
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    description: unit that is supposed to fire
+    typ: Object
+  - name: muzzle
+    description: name of the muzzle to be fired
+    typ: String
+- call: !Binary
+  - - unit
+  - - muzzle
+    - mode
+    - magazine
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: muzzle
+    typ: String
+  - name: mode
+    typ: String
+  - name: magazine
+    description: Optional
+    typ: String
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldier fire "M16";
+- _soldier fire "SmokeShellMuzzle";
+- _soldier fire ["SmokeShellMuzzle", "SmokeShellMuzzle", "SmokeShellRed"];
+- |-
+  player playActionNow "PutDown";
+  player selectWeapon "DemoChargeMuzzle";
+  player fire ["DemoChargeMuzzle", "DemoChargeMuzzle", "DemoCharge_Remote_Mag"];
+  player setWeaponReloadingTime [player, "DemoChargeMuzzle", 0];

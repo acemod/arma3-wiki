@@ -1,0 +1,40 @@
+name: setWaypointDescription
+description: Sets the description shown in the HUD while the waypoint is active.
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - - waypoint
+  - - text
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    typ: ArrayUnknown
+  - name: text
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '[_grp, 2] setWaypointDescription "Move here.";'

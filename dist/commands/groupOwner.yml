@@ -1,0 +1,22 @@
+name: groupOwner
+description: Returns the [[Multiplayer_Scripting#Machine_network_ID | machine network ID]] of the client to which the group is local. This command only works when called from the server. When called from a client, it always returns 0.
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - group
+  ret:
+  - Number
+  - null
+  params:
+  - name: group
+    typ: Group
+argument_loc: Global
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 40
+examples:
+- _clientID = groupOwner _someGroup;

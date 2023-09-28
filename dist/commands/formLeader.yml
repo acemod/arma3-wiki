@@ -1,0 +1,41 @@
+name: formLeader
+description: |-
+  Returns the formation leader of a given unit.
+  This is often the same as the group leader, but not always, for example in cases when a unit is ordered to follow another unit.
+groups:
+- Unit Control
+syntax:
+- call: !Unary
+  - unitName
+  ret:
+  - Object
+  - the leader of the formation is returned. If used on a dead unit, the returned value is [[objNull]]
+  params:
+  - name: unitName
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (formLeader player != leader player) then\n{\n\thint \"The formation leader is different to the group leader!\";\n};"

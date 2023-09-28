@@ -1,0 +1,22 @@
+name: curatorCameraArea
+description: Returns all curator camera areas.
+groups:
+- Curator
+syntax:
+- call: !Unary
+  - curatorObj
+  ret:
+  - ArrayUnknown
+  - Array of camera areas in format [cameraAreaID,position,radius]. See [[addCuratorCameraArea]].
+  params:
+  - name: curatorObj
+    description: Curator module.
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- _camArea = curatorCameraArea myCurator; // [[8052,[4027.36,4024.89,0],250]]

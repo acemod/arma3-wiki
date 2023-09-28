@@ -1,0 +1,45 @@
+name: parseSimpleArray
+description: |-
+  Converts given, formatted as simple array, [[String]] into a valid [[Array]]. Simple array is array consisting of [[Number]]s, [[String]]s, [[Boolean]]s and [[Array]]s of all of the above.
+  This command is almost '''4&times; faster''' than similar uncached [[call]] [[compile]] method. And because [[call]] [[compile]] is not required, it is also '''more secure''' and primarily intended for use with [[callExtension]] to parse the [[String]] output into [[Array]].<br>
+  <br>
+  Since {{arma3}} v1.96 the command will tolerate extra spaces and supports single quotes. The only recognised keywords (case '''in'''sensitive) are:
+  * {{hl|true}} - translates into [[true]]
+  * {{hl|false}} - translates into [[false]]
+  * {{hl|nil}} - translates into [[nil]]
+  * {{hl|null}} - translates into [[nil]]
+  * {{hl|&lt;null&gt;}} - translates into [[nil]]
+  * {{hl|any}} - translates into [[nil]]
+groups:
+- Strings
+- Arrays
+syntax:
+- call: !Unary
+  - stringArray
+  ret:
+  - ArrayUnknown
+  - valid array
+  params:
+  - name: stringArray
+    description: string formatted as simple array
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 68
+examples:
+- private _arr = parseSimpleArray "[1,2,3]";
+- |
+  private _array1 = [1, "2", true, [4, "five", false]];
+  private _array2 = parseSimpleArray "[1,""2"",true,[4,""five"",false]]";
+  _array1 isEqualTo _array2; // true
+- |
+  _bool = true;
+  _num = 123.45;
+  _str = "ok";
+  _arr = [1, false, "cool"];
+  _res = parseSimpleArray format ["[%1,%2,%3,%4]", _bool, _num, str _str, str _arr];
+  // note how _bool and _num do not need str, however if used anyway, the result in this case would be identical
+  hint str _res;  // returns [true,123.45,"ok",[1,false,"cool"]]

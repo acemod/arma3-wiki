@@ -1,0 +1,22 @@
+name: curatorAddons
+description: Returns list of addons allowed to given curator. The addon names are not guaranteed to be all lower case
+groups:
+- Curator
+syntax:
+- call: !Unary
+  - curatorObj
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: curatorObj
+    description: Curator module
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- private _addons = curatorAddons myCurator;

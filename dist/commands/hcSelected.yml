@@ -1,0 +1,31 @@
+name: hcSelected
+description: Returns selected groups in [[High Command|high command]].
+groups:
+- High Command
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: unit
+    description: commander
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- array = hcSelected unit;

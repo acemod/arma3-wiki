@@ -1,0 +1,22 @@
+name: getTrimOffsetRTD
+description: Returns controls trim offset.{{Feature|afm}}
+groups:
+- RTD
+syntax:
+- call: !Unary
+  - RTD_helicopter
+  ret:
+  - ArrayUnknown
+  - Offsets in format [x,y,z]
+  params:
+  - name: RTD_helicopter
+    description: Helicopter with advanced flight model enabled
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- _array = getTrimOffsetRTD vehicle player;

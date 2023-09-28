@@ -1,0 +1,49 @@
+{{RV|type=command
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|gr1= Difficulty
+
+|descr= '''Prior to {{arma3}}''' it returns if the player is currently playing in cadet or veteran mode.
+
+|pr= {{Feature|arma3|
+This command returns the status of the global [[Arma 3: Difficulty Settings| difficulty]] {{hl|showCadetHints}}.<br>
+Use <sqf inline>difficulty in [0, 1]</sqf> to achieve the '''original intended''' functionality!
+}}
+
+|s1= [[cadetMode]]
+
+|r1= [[Boolean]] - true when playing in cadet mode, false when playing in veteran mode
+
+|x1= [[SQS Syntax]]: <sqs>? (cadetMode) : _AIsoldier setSkill 0.1</sqs>
+
+|x2= [[SQF Syntax]]: <sqf>if (cadetMode) then { _AIsoldier setSkill 0.1 };</sqf>
+
+|seealso= [[hintCadet]] [[difficulty]]
+}}
+
+{{Note
+|user= Killswitch
+|timestamp= 20091201174900
+|text= In {{arma2}}, this command will return true if the difficulty level is set to "Recruit" or "Regular". It returns false for the "Veteran" and "Expert" difficulty levels.
+|game= arma2
+}}

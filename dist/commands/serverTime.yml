@@ -1,0 +1,32 @@
+name: serverTime
+description: |-
+  Returns the time since last server restart, synced to all clients in MP. The syncing is happening every 5 minutes, but you can force the next sync earlier by executing [[estimatedTimeLeft]] command. The time returned is also different to the time returned by [[time]] and [[diag_tickTime]] commands on server. Returns 0 in SP.<br><br>
+
+  {{Feature|Informative|'''Known issues before Arma 3 v1.86''':  Both server and clients showed the same value when synced. The only time it was not synced was on the server, right after server restart and only for the first 300 seconds. Client side was synced from the start}}
+groups:
+- Time
+- Mission Information
+- Multiplayer
+syntax:
+- call: Nular
+  ret:
+  - Number
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 'hint format ["Synced server time : %1", serverTime];'

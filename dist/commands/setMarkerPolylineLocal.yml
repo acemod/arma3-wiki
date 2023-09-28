@@ -1,0 +1,25 @@
+name: setMarkerPolylineLocal
+description: Sets a polyline marker's path. Works only on the computer that executes this command.
+groups:
+- Markers
+syntax:
+- call: !Binary
+  - - marker
+  - - path
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: marker
+    typ: String
+  - name: path
+    description: '{{hl|[x1, y1, x2, y2, ... xn, yn]}}'
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- "Changes {{hl|\"marker_1\"}} into a polyline and draws a sine curve on your position:\n<sqf>\n\"marker_1\" setMarkerShape \"polyline\";\nprivate _return = [] ;\n\nfor \"_i\" from 0 to 100 step 0.1 do\n{\n\t_return pushBack (_i + getPos player#0);\n\t_return pushBack ((sin (_i*10))*10 + getPos player#1);\n} ;\n\n\"marker_1\" setMarkerPolylineLocal _return;\n"

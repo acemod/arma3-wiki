@@ -1,0 +1,54 @@
+name: titleRsc
+description: |-
+  Displays a resource defined in RscTitles. Also see [[cutRsc]], with these two commands you can show two different resources at once.
+  {{Feature|arma3|Multiple layers and map overlays are possible with [[cutRsc]] which provides more options and handles layers better.|arma3|1.58}}
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - text
+  - type
+  - speed
+  - showInMap
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: text
+    description: The class name of the resource. ("Default" will remove the current resource.
+    typ: String
+  - name: type
+    description: 'Can be: "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.'
+    typ: String
+  - name: speed
+    description: (Optional, default -1) Time in seconds to fade in resource
+    typ: Number
+  - name: showInMap
+    description: (Optional, default [[true]]) [[false||False]] to hide the text when the map is opened.
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- titleRsc ["BIS", "PLAIN"];

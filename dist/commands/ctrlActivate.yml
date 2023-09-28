@@ -1,0 +1,36 @@
+name: ctrlActivate
+description: "Launch actions attached to given (button based) control. <br> \nCommand only triggers '''action''' entry described in control config and engine-based actions (cancel or ok codes) and will not trigger button related [[User_Interface_Event_Handlers|User Interface Event Handlers]].<br>\nCommand ignores control disabled state. (Example 2)"
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - controlName
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: controlName
+    typ: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- ctrlActivate _control;
+- |-
+  _control ctrlEnable false;
+  ctrlActivate _control; // Action fired.

@@ -1,0 +1,41 @@
+name: currentTasks
+description: |-
+  Returns array with all [[taskCompleted | uncompleted]] tasks for the given agent.
+  [[getVariable]] could be used on [[Task]] to get the following special local variables from the task:
+  * {{hl|"_this"}} [[Team Member]] - the [[teamMember]] [[agent]] the task is assigned to
+  * {{hl|"_taskType"}} [[String]] - the name of the task (see [[registeredTasks]])
+  * {{hl|"_thisCreated"}} [[Number]] - 1 or 0
+  * {{hl|"_thisRunning"}} [[Number]] - 1 or 0
+  * {{hl|"_totalCreated"}} [[Number]] - total number of tasks
+  * {{hl|"_totalRunning"}} [[Number]] - total number of running tasks
+  * {{hl|"_task"}}[[Task]] - often null
+groups:
+- Briefing
+- Teams
+syntax:
+- call: !Unary
+  - teamMember
+  ret:
+  - ArrayUnknown
+  - array of [[Task]]s
+  params:
+  - name: teamMember
+    description: '[[teamMember]] [[agent]]'
+    typ: TeamMember
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- currentTasks teamMember _agent;

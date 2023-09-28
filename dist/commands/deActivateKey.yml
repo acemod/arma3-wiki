@@ -1,0 +1,30 @@
+name: deActivateKey
+description: |-
+  Deactivates the given keyname for the current user profile. The keys are used to unlock missions or campaigns.
+
+  See keys, keysLimit and doneKeys in the [[Description.ext#keys|description.ext]] file of the missions.
+groups:
+- Mission Information
+syntax:
+- call: !Unary
+  - keyname
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: keyname
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 62
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- deActivateKey "Mission04Key";

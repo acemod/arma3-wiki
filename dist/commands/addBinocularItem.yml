@@ -1,0 +1,24 @@
+name: addBinocularItem
+description: Adds weapon item, including magazine, directly to the [[binocular]] weapon. This is used for infantry weapons.
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - - unit
+  - - item
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: item
+    typ: String
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- player addBinocularItem "Laserbatteries";

@@ -1,0 +1,55 @@
+name: ropeAttachTo
+description: Attaches entity to the rope end with optional offset. For detach operation use [[ropeDetach]].
+groups:
+- Ropes and Sling Loading
+syntax:
+- call: !Binary
+  - - entity
+    - toPoint
+    - ropeEndDownVector
+  - - rope
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: entity
+    description: entity to be attached to the end of rope
+    typ: Object
+  - name: toPoint
+    description: (Optional) position for the rope end, either a memory point [[String]] or relative offset [[Array]]
+    typ: !OneOf
+    - String
+    - ArrayUnknown
+  - name: ropeEndDownVector
+    description: (Optional, default [0,0,-1]) either a memory point [[String]] or relative vector [[Array]]. If [[String]] is given, then {{hl|ropeEndDownVector}} is calculated from {{hl|toPoint}} towards {{hl|ropeEndDownVector}} memory point
+    typ: !OneOf
+    - String
+    - ArrayUnknown
+  - name: rope
+    description: the rope to which entity will be attached to
+    typ: Object
+- call: !Binary
+  - - entity
+  - - rope
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: entity
+    description: entity to be attached to the end of rope
+    typ: Object
+  - name: rope
+    description: the rope to which entity will be attached to
+    typ: Object
+  since:
+    arma_3:
+      major: 2
+      minor: 10
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- '[veh1, [0,0,0], [0,0,-1]] ropeAttachTo (ropes heli1 select 0);'

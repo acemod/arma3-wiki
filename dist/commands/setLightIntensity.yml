@@ -1,0 +1,24 @@
+name: setLightIntensity
+description: Sets intensity of light.
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - - light
+  - - value
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: light
+    typ: Object
+  - name: value
+    typ: Number
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- myLight setLightIntensity 4;

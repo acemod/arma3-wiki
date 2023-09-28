@@ -1,0 +1,34 @@
+name: hideBody
+description: Hides dead body of the given unit. After a short delay, the body slowly sinks into the ground. After awhile, when group of the unit becomes [[grpNull]], the body gets deleted and becomes [[objNull]]. If applied to alive unit, nothing happens until unit dies, then the unit's body gets hidden. If a dead unit is human player, the body is hidden but not deleted until player respawns.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    description: person
+    typ: Object
+argument_loc: Local
+effect_loc: Global
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hideBody player1;

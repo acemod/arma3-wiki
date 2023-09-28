@@ -1,0 +1,47 @@
+name: respawnVehicle
+description: |-
+  Sets vehicle as respawnable in MP game. The vehicle will be spawned at the locality and coordinates it was prior to destruction.
+  If respawn type is set to base respawn (type 3) and vehicle respawn marker is provided (respawn_vehicle_XXXSIDEXXX), vehicle will spawn on the marker.
+groups:
+- Multiplayer
+syntax:
+- call: !Binary
+  - - vehicle
+  - - delay
+    - count
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    typ: Object
+  - name: delay
+    description: delay in seconds between respawns. (-1 to use ''respawnDelay'' from [[Description.ext|description.ext]]
+    typ: Number
+  - name: count
+    description: (Optional, default 0) how many times to respawn vehicle in total. (0 - unlimited respawns
+    typ: Number
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- car respawnVehicle [5, 3]; // 'car' will respawn at the predefined marker for the side after 5 seconds. The unit will respawn 3 times.
+- car respawnVehicle [30]; // 'car' will respawn at the predefined marker for the side after 30 seconds. The unit will respawn an unlimited number of times.

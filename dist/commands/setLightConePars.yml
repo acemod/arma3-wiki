@@ -1,0 +1,31 @@
+name: setLightConePars
+description: Sets the lightpoint (directional light {{hl|#lightreflector}})'s cone params.
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - - lightReflector
+  - - outerAngle
+    - innerAngle
+    - fadeCoef
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: lightReflector
+    description: Object of class {{hl|#lightreflector}}
+    typ: Object
+  - name: outerAngle
+    typ: Number
+  - name: innerAngle
+    typ: Number
+  - name: fadeCoef
+    typ: Number
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- _light setLightConePars [90, 45, 1];

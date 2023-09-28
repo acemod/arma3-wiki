@@ -1,0 +1,44 @@
+name: moveInCommander
+description: |-
+  Move soldier into vehicle commander position (Immediate, no animation).
+  {{Feature|Important|If the unit is already in a vehicle, nothing will happen. You should use [[moveOut]] to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.}}
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - - unitName
+  - - vehicle
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unitName
+    typ: Object
+  - name: vehicle
+    typ: Object
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldierOne moveInCommander _tankOne;

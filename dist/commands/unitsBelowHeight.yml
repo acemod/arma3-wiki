@@ -1,0 +1,57 @@
+name: unitsBelowHeight
+description: |-
+  Returns units in group/array below given Above Terrain Level (ATL) altitude.
+  {{Feature|informative|an object's ATL altitude can be found with <sqf inline>_altitude = (getPosATL _obj) select 2;</sqf>.}}
+groups:
+- Object Detection
+- Positions
+syntax:
+- call: !Binary
+  - - units
+  - - height
+  ret:
+  - !ArrayUnsized
+    - Object
+    - ''
+  - null
+  params:
+  - name: units
+    typ: !ArrayUnsized
+    - Object
+    - ''
+  - name: height
+    description: height above terrain level ([[Position#PositionATL|PositionATL]]
+    typ: Number
+- call: !Binary
+  - - group
+  - - height
+  ret:
+  - !ArrayUnsized
+    - Object
+    - ''
+  - null
+  params:
+  - name: group
+    description: AI group
+    typ: Group
+  - name: height
+    description: height above terrain level ([[Position#PositionATL|PositionATL]]
+    typ: Number
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 4
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _allOnGroudUnits = group player unitsBelowHeight 10;
+- _units = allUnits unitsBelowHeight 30;

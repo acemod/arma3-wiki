@@ -1,0 +1,44 @@
+name: playersNumber
+description: Returns count of occupied role selection slots for given side. Players who claimed a slot in the lobby but did not start the mission are counted as well. If <syntaxhighlight lang="cpp" inline>disabledAI = 0;</syntaxhighlight> in [[Description.ext#disabledAI|description.ext]] or ''Enable AI'' option is checked in [[:Category:Eden Editor|Eden Editor]], AI bots will be treated as valid players and will be counted too.
+multiplayer_note: '''''''Multiplayer only'''''', in singleplayer it always returns 0.'
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - side
+  ret:
+  - Number
+  - null
+  params:
+  - name: side
+    typ: Side
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 80
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _west = playersNumber west;
+  _east = playersNumber east;
+  _civ = playersNumber civilian;
+  hint format ["West:%1 East:%2, Civ:%3", _west, _east, _civ];

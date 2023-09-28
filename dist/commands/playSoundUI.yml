@@ -1,0 +1,44 @@
+name: playSoundUI
+description: 'Plays given [[CfgSounds]] sound or a [[Arma 3: Sound Files| sound file]] given by file path through a dedicated UI sound channel unaffected by the global mixer volumes. If the file path is given, the leading slash will be ignored.'
+groups:
+- Sounds
+syntax:
+- call: !Unary
+  - sound
+  - volume
+  - soundPitch
+  - isEffect
+  - offset
+  ret:
+  - Number
+  - id of the sound (0..65535) since {{GVI|arma3|2.12|size= 0.75}} (was [[Nothing]] before that)
+  params:
+  - name: sound
+    description: '[[CfgSounds]] class or file as used in [[playSound3D]] (see [[Arma 3: Sound Files]] for available file names'
+    typ: String
+  - name: volume
+    description: (Optional, default 1) sound volume clamped in range 0..5
+    typ: Number
+  - name: soundPitch
+    description: "(Optional, default 1)\n* 1.0 &rarr; normal \n* 0.5 &rarr; Darth Vader\n* 2.0 &rarr; Chipmunks"
+    typ: Number
+  - name: isEffect
+    description: (Optional, default [[false]]) if [[true]], diverts sound through effects channel (see [[fadeSound]], [[soundVolume]]
+    typ: Boolean
+  - name: offset
+    description: (Optional, default 0) offset in seconds. Same as with [[playSound3D]]
+    typ: Number
+    since:
+      arma_3:
+        major: 2
+        minor: 12
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- playSoundUI ["Alarm", 0.5, 0.5];
+- playSoundUI ["A3\Sounds_F\sfx\blip1.wss"];
+- "Sound file extension must be specified even if a config entry has none:\n<sqf>\nplaySoundUI [\"A3\\Sounds_F\\sfx\\alarm_independent\", 5, 1];\t\t// no sound\nplaySoundUI [\"A3\\Sounds_F\\sfx\\alarm_independent.wss\", 5, 1];\t// alarm\n"

@@ -1,0 +1,29 @@
+name: setSlingLoad
+description: Creates a sling loading from a helicopter to an entity if possible. To unload cargo, pass [[objNull]] as second param. {{Feature | Informative | FROM object has to be a helicoper, alive with [[enableRopeAttach | rope attachment]] enabled, TO object has to be an entity, alive with [[enableRopeAttach | rope attachment]] enabled.}}
+groups:
+- Ropes and Sling Loading
+syntax:
+- call: !Binary
+  - - heli
+  - - cargo
+  ret:
+  - Boolean
+  - '[[true]] on success'
+  params:
+  - name: heli
+    description: the helicopter slinging the load
+    typ: Object
+  - name: cargo
+    description: the cargo load entity
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- _success = heli1 setSlingLoad veh1;
+- |-
+  To unload cargo:
+  <sqf>_success = heli setSlingLoad objNull;

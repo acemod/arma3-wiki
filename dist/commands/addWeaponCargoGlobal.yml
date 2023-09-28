@@ -1,0 +1,36 @@
+name: addWeaponCargoGlobal
+description: Add weapons to the cargo space of vehicles, which can be taken out by infantry units.
+groups:
+- Containers
+syntax:
+- call: !Binary
+  - - vehicleName
+  - - weaponName
+    - count
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicleName
+    description: vehicle to which add the weapons
+    typ: Object
+  - name: weaponName
+    description: weapon name. See the topic [[:Category:Weapons]] for reference about possible values
+    typ: String
+  - name: count
+    description: number of weapons to add. Since Arma 3 v2.14, negative count will remove weapons.
+    typ: Number
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 55
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _truck addWeaponCargoGlobal ["M16", 5];

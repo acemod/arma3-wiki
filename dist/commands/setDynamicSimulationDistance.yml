@@ -1,0 +1,30 @@
+name: setDynamicSimulationDistance
+description: 'Sets activation distance of [[Arma 3: Dynamic Simulation]] for given category.'
+groups:
+- Dynamic Simulation
+syntax:
+- call: !Binary
+  - - category
+  - - distance
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: category
+    description: |-
+      Can be:
+      * {{hl|"Group"}} - Infantry units. Set to a reasonable distance, player should not see disabled infantry units. Default: 500m
+      * {{hl|"Vehicle"}} - Vehicles with crew. Set to a reasonable distance, player should not see disabled vehicles. Default: 350m
+      * {{hl|"EmptyVehicle"}} - All vehicles without crew. Separated from Props as Empty Vehicles have often more complex damage states and selective destruction. Their activation distance should be larger than the one used for Props. Default: 250m
+      * {{hl|"Prop"}} - Static objects. Anything from a small tin can to a building. Default: 50m
+    typ: String
+  - name: distance
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 68
+examples:
+- '"Group" setDynamicSimulationDistance 1000;'

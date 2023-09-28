@@ -1,0 +1,47 @@
+name: engineOn
+description: Activates and deactivates the engine of a vehicle.
+multiplayer_note: Executed on a remote vehicle this command may turn the engine on but then it will get turned off by itself after a short while.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - vehicle
+  - - state
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    typ: Object
+  - name: state
+    description: '[[true]] to turn the engine on, [[false]] to turn it off'
+    typ: Boolean
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 90
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (!isEngineOn _jeep) then { _jeep engineOn true; };
+- |
+  waitUntil { player == driver _jeep; };
+  vehicle player engineOn true;

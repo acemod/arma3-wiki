@@ -1,0 +1,54 @@
+name: getDirVisual
+description: |-
+  Returns object's heading in the range from 0 to 360 in render time scope.
+  {{Feature|arma3|The alternative syntax gets heading from one object or position to another object or position in render time scope, and should be used instead of [[BIS_fnc_dirTo]].}}
+groups:
+- Object Manipulation
+- Render Time Scope
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - Number
+  - null
+  params:
+  - name: object
+    typ: Object
+- call: !Binary
+  - - pos1
+  - - pos2
+  ret:
+  - Number
+  - null
+  params:
+  - name: pos1
+    description: from where
+    typ: !OneOf
+    - - Object
+      - null
+    - - Position2d
+      - null
+    - - Position3d
+      - null
+  - name: pos2
+    description: to where
+    typ: !OneOf
+    - - Object
+      - null
+    - - Position2d
+      - null
+    - - Position3d
+      - null
+  since:
+    arma_3:
+      major: 2
+      minor: 12
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- _dir = getDirVisual player;
+- _azimuth = player getDirVisual tank;

@@ -1,0 +1,30 @@
+name: leaderboardRequestRowsGlobal
+description: Requests given leaderboard to download values from global table.
+groups:
+- Leaderboards
+syntax:
+- call: !Unary
+  - leaderboard
+  - offset
+  - rows
+  ret:
+  - Boolean
+  - Returns [[true]] if request has been started
+  params:
+  - name: leaderboard
+    description: Name of the leaderboard
+    typ: String
+  - name: offset
+    description: Defines how many rows are skipped
+    typ: Number
+  - name: rows
+    description: Defines how many rows are requested
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- _isGettingValues = leaderboardRequestRowsGlobal ["TT01", 0, 10];

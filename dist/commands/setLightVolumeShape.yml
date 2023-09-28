@@ -1,0 +1,29 @@
+name: setLightVolumeShape
+description: Sets the lightpoint (directional light {{hl|#lightreflector}})'s volume shape.
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - - lightReflector
+  - - shapePath
+    - scale
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: lightReflector
+    description: Object of class {{hl|#lightreflector}}
+    typ: Object
+  - name: shapePath
+    typ: String
+  - name: scale
+    description: '[sizeX, sizeY, sizeZ]'
+    typ: ArrayUnknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- _light setLightVolumeShape ["a3\data_f\VolumeLightFlashlight.p3d", [1, 1, 1]];

@@ -1,0 +1,42 @@
+name: ppEffectCommitted
+description: Check whether given [[Post Process Effects|post process effect]] is committed.
+groups:
+- Camera Control
+syntax:
+- call: !Unary
+  - effect
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: effect
+    description: Effect name
+    typ: String
+- call: !Unary
+  - handle
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: handle
+    description: Effect handle
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- ppEffectCommitted "colorCorrection";
+- ppEffectCommitted _hndl;
+- if (ppEffectCommitted "colorCorrection") then { hint "alteration done !" };

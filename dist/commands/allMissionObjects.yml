@@ -1,0 +1,48 @@
+name: allMissionObjects
+description: |-
+  Returns all objects of the given type that are currently present in the mission. In some cases, the [[entities]] command is a much faster alternative to this command.<br>
+  Some of the special types that can be detected with this command (and with [[nearestObject]]):
+  * {{hl|""}} - returns everything, e.g. agents, bees, mosquitoes, footprints, armed mines, ...
+  * {{hl|"all"}} - more restrictive than {{hl|""}}: no ambient insects, only agents such as rabbits and snakes, no footprints, tracks, no armed mines
+  * {{hl|"#slop"}} - blood drops
+  * {{hl|"#mark"}} - unit footprints
+  * {{hl|"#track"}} - vehicle tracks
+  * {{hl|"#crater"}} - explosion craters on the ground
+  * {{hl|"#crateronvehicle"}} - bullet marks on vehicles
+  * {{hl|"#explosion"}} - explosions
+  * {{hl|"#objectdestructed"}} - building, tree or bush destruction
+  * {{hl|"#soundonvehicle"}} - sounds created with [[say3D]] for example
+  * {{hl|"#dynamicsound"}} - sound sources created using [[createSoundSource]]
+  * {{hl|"EmptyDetector"}} - all [[Trigger]]s
+  * {{hl|"Logic"}} - all game logics
+  {{Feature|Important|This command is quite performance heavy. Use with caution!}}
+multiplayer_note: '{{Feature|arma3|This command is ~5 times faster on a dedicated server than on a client. Reason unknown.}}'
+groups:
+- Object Detection
+syntax:
+- call: !Unary
+  - type
+  ret:
+  - !ArrayUnsized
+    - Object
+    - ''
+  - null
+  params:
+  - name: type
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 57
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _airObjects = allMissionObjects "Air";
+- '{ deleteVehicle _x; } forEach (allMissionObjects "");'
+- _allMObjects = allMissionObjects "All";

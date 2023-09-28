@@ -1,0 +1,42 @@
+name: showRadio
+description: |-
+  Shows or hides the radio on the map screen, if enabled for the mission and you possess the item. (default [[true]]).
+  {{Feature|arma3|This command does nothing in {{arma3}}.}}
+groups:
+- Interaction
+- Radio and Chat
+syntax:
+- call: !Unary
+  - show
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: show
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- showRadio false;

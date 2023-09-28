@@ -1,0 +1,33 @@
+name: ctrlParent
+description: Returns the parent [[Display]] of the given control. For parent [[Control]]s group see [[ctrlParentControlsGroup]].
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - control
+  ret:
+  - Display
+  - null
+  params:
+  - name: control
+    typ: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _display = ctrlParent _control;

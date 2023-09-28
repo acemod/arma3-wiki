@@ -1,0 +1,49 @@
+name: lnbAddRow
+description: Adds a row of strings.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - data
+  ret:
+  - Number
+  - Row index
+  params:
+  - name: idc
+    typ: Number
+  - name: data
+    typ: !ArrayUnsized
+    - String
+    - ''
+- call: !Binary
+  - - ctrl
+  - - data
+  ret:
+  - Number
+  - Row index
+  params:
+  - name: ctrl
+    typ: Control
+  - name: data
+    typ: !ArrayUnsized
+    - String
+    - ''
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- lnbAddRow [1, ["COL1", "COL2"]];
+- _ctrl lnbAddRow ["COL1", "COL2"];

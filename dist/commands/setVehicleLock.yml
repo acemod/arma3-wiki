@@ -1,0 +1,39 @@
+name: setVehicleLock
+description: "Sets vehicle lock. Possible values:\n<br> \n* \"UNLOCKED\" \n* \"DEFAULT\"\n* \"LOCKED\"\n* \"LOCKEDPLAYER\""
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - vehicleName
+  - - lockState
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicleName
+    typ: Object
+  - name: lockState
+    typ: String
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _veh1 setVehicleLock "LOCKED";

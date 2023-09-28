@@ -1,0 +1,38 @@
+name: setObjectProxy
+description: |-
+  Set the proxy object associated with the given editor object.
+  {{Feature | Informative | Some Old Editor Command}}
+groups:
+- Game 2 Editor
+syntax:
+- call: !Binary
+  - - map
+  - - object
+    - proxy
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: map
+    typ: Control
+  - name: object
+    typ: String
+  - name: proxy
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _map setObjectProxy ["_group_0", vehicle (leader _group)];

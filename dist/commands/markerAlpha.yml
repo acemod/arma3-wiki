@@ -1,0 +1,30 @@
+name: markerAlpha
+description: Gets the marker alpha. See [[setMarkerAlpha]].
+groups:
+- Markers
+syntax:
+- call: !Unary
+  - markerName
+  ret:
+  - Number
+  - null
+  params:
+  - name: markerName
+    typ: String
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- AlphaMarker = markerAlpha "myMarker";

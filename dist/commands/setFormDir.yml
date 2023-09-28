@@ -1,0 +1,48 @@
+name: setFormDir
+description: Sets group formation heading. Accepted heading range is 0 to 360. Formation is facing this direction unless enemy is seen. When group is moving, this value is overridden by movement direction. If the new direction is noticeably different from the old direction (approx +/- 15 degrees), units will change positions changing [[formationDirection]].
+groups:
+- Groups
+syntax:
+- call: !Binary
+  - - group
+  - - heading
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: group
+    typ: !OneOf
+    - Object
+    - Group
+  - name: heading
+    typ: Number
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _group1 setFormDir 180;
+- _unit1 setFormDir random 360;
+- |-
+  //center the main turret
+  (group BIS_Crew1) setFormDir (getDir BIS_Armor);

@@ -1,0 +1,40 @@
+name: setMarkerAlpha
+description: |-
+  Sets the marker alpha. The marker is modified on all computers in a network session.
+  <br>
+  When alpha equals {{hl|1}}, the marker is visible, but if alpha equals {{hl|0}}, then the marker is invisible.
+  <br>
+  Alpha can be numbers and fractions.
+  {{Feature|Informative|'''Multiplayer optimisation:''' Global marker commands always broadcast the ''entire'' marker state over the network. As such, the number of network messages exchanged when creating or editing a marker can be reduced by performing all but the last operation using local marker commands, then using a global marker command for the last change (and subsequent global broadcast of all changes applied to the marker).}}
+groups:
+- Markers
+syntax:
+- call: !Binary
+  - - marker
+  - - alpha
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: marker
+    typ: String
+  - name: alpha
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"my_marker" setMarkerAlpha 0.5;'
+- '"enemy_convoy_marker" setMarkerAlpha 0;'

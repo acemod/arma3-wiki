@@ -1,0 +1,34 @@
+name: setWeaponZeroing
+description: Sets zeroing of given weapon and muzzle for given unit or vehicle.
+groups:
+- Weapons
+syntax:
+- call: !Binary
+  - - object
+  - - weaponClass
+    - muzzleClass
+    - zeroingIndex
+  ret:
+  - Boolean
+  - '[[true]] if successful, otherwise [[false]] is returned (e.g. weapon, muzzle, or zeroing index is invalid)'
+  params:
+  - name: object
+    description: Unit or vehicle
+    typ: Object
+  - name: weaponClass
+    description: class name of weapon
+    typ: String
+  - name: muzzleClass
+    description: class name of the muzzle
+    typ: String
+  - name: zeroingIndex
+    description: zeroing index. See [[currentZeroing]]
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- player setWeaponZeroing ["arifle_MX_GL_F", "GL_3GL_F", 8]; // Set zeroing for underbarrel grenade launcher to 400m

@@ -1,0 +1,26 @@
+name: get3DENGrid
+description: Returns the grid increment for the given transformation type.
+groups:
+- Eden Editor
+syntax:
+- call: !Unary
+  - type
+  ret:
+  - Number
+  - null
+  params:
+  - name: type
+    description: |-
+      Name of transformation type. Can be:
+      * {{hl|"r"}} - Rotation
+      * {{hl|"t"}} - Translation
+      * {{hl|"s"}} - Scale
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- _currentIncrement = get3DENGrid "t";

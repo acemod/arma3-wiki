@@ -1,0 +1,22 @@
+name: showUAVFeed
+description: Shows/hides video feed transmitted from UAV in [[Arma 3 Custom Info|its custom info panel]].
+groups:
+- Remote Control
+- Custom Panels
+syntax:
+- call: !Unary
+  - show
+  ret:
+  - Boolean
+  - always [[true]] unless error
+  params:
+  - name: show
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- showUAVFeed true;

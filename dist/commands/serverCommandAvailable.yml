@@ -1,0 +1,82 @@
+name: serverCommandAvailable
+description: |-
+  Returns [[true]] if given [[serverCommand]] is available on current machine, [[false]] if not.
+
+  {{{!}} class="wikitable align-center"
+  ! rowspan="2" {{!}} {{arma3}} [[Multiplayer Server Commands]]
+  ! colspan="4" {{!}} Available to
+  {{!}}-
+  ! Client
+  ! Voted [[admin|Admin]]
+  ! Logged [[admin|Admin]]
+  ! [[isServer|Server Host]]
+  {{!}}-
+  {{!}} {{hl|#login}}, {{hl|#userlist}}, {{hl| #beclient}}, {{hl| #vote}}
+  {{!}} {{Icon|checked}}
+  {{!}} {{Icon|checked}}
+  {{!}} {{Icon|checked}}
+  {{!}} {{Icon|checked}}
+  {{!}}-
+  {{!}} {{hl|#kick}}, {{hl|#debug}}
+  {{!}} {{Icon|unchecked}}
+  {{!}} {{Icon|checked}}
+  {{!}} {{Icon|checked}}
+  {{!}} {{Icon|checked}}
+  {{!}}-
+  {{!}} {{hl|#lock}}, {{hl|#unlock}}, {{hl|#maxping}}, {{hl|#maxdesync}}, {{hl|#maxpacketloss}}
+  {{!}} {{Icon|unchecked}}
+  {{!}} {{Icon|unchecked}}
+  {{!}} {{Icon|checked}}
+  {{!}} {{Icon|checked}}
+  {{!}}-
+  {{!}} {{hl|#logout}}, {{hl|#restart}}, {{hl|#mission}}, {{hl|#missions}}, {{hl|#reassign}}, {{hl|#monitor}}, {{hl|#init}}
+  {{!}} {{Icon|unchecked}}
+  {{!}} {{Icon|checked}}
+  {{!}} {{Icon|checked}}
+  {{!}} {{Icon|unchecked}}
+  {{!}}-
+  {{!}} {{hl|#shutdown}}, {{hl|#restartserver}}, {{hl|#exec}}, {{hl|#beserver}}, {{hl|#monitords}}, {{hl|#logentities}}, {{hl|#exportjipqueue}}
+  {{!}} {{Icon|unchecked}}
+  {{!}} {{Icon|unchecked}}
+  {{!}} {{Icon|checked}}
+  {{!}} {{Icon|unchecked}}
+  {{!}}-
+  {{!}} Specific builds only: {{hl|#captureframe}}, {{hl|#enabletest}}, {{hl|#disabletest}}
+  {{!}} {{Icon|unchecked}}
+  {{!}} {{Icon|unchecked}}
+  {{!}} {{Icon|checked}}
+  {{!}} {{Icon|unchecked}}
+  {{!}}}
+
+  To check if a [[Multiplayer Server Commands|server command]] can be executed in the current environment, use [[serverCommandExecutable]].
+
+  {{Feature|informative|The table above does not apply to the command's password variant on a dedicated server as everything is available to it.}}
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - command
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: command
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 5
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _can = serverCommandAvailable "#kick";
+- "if (serverCommandAvailable \"#logout\") then \n{\n\thint \"You are a some sort of admin\";\n};"

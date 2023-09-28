@@ -1,0 +1,46 @@
+name: doMove
+description: Order the given unit(s) to move to the given position (without radio messages). Upon reaching its destination, if it is the group leader it will order the group to form around it's new position. If it is not the leader, it will immediately be ordered to return to formation by the group leader and begin moving back to the group. Use [[doStop]] to stop units returning to formation. [[moveToCompleted]] will return true when a unit issued this command reaches its destination.
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - - unit(s)
+  - - position
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit(s)
+    typ: !OneOf
+    - Object
+    - ArrayUnknown
+  - name: position
+    description: format [[Position]]
+    typ: ArrayUnknown
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldier1 doMove (position _officer);
+- this doMove (getMarkerPos "Marker1");

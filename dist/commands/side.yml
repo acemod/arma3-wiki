@@ -1,0 +1,62 @@
+name: side
+description: |-
+  Returns the side of a unit, vehicle, object or location.
+  * side of a renegade soldier is [[sideEnemy]]
+  * side of an empty vehicle is [[civilian]]
+  * side of a crewed vehicle is, if present, commander's > gunner's > driver's or > cargo's side, in this order
+  * side of a captive or dead unit is [[civilian]]. Use <sqf inline>side group _unit</sqf> to get the underlying side (see {{Link|#Example 2}})
+  * you can use [[playerSide]] to know the real player's side
+
+  {{Feature|informative|
+  Converting a side to string will '''not''' always return the side command text: e.g <sqf inline>str resistance; // returns "GUER"</sqf>.<br>
+  See [[Side]] page to see the return value of all side commands.
+  }}
+groups:
+- Sides
+syntax:
+- call: !Unary
+  - target
+  ret:
+  - Side
+  - null
+  params:
+  - name: target
+    typ: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
+    - - Location
+      - null
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (side player == west) then { hint "Player is on the West side" };
+- _sideAlsoWorkingForDead = side group _deadUnit;
+- _sideLocation = side myLocation;
+- if (side player != playerSide) then { hint "player is renegade or dead"; };
+- |-
+  Check the [[side]] of the vehicle:
+  <sqf>_vehicleSide = side group _vehicle; // sideUnknown (CIV for Arma 3) if empty or dead crew, otherwise the appropriate side

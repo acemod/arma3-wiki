@@ -1,0 +1,208 @@
+{{RV|type=command
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|gr1= Arrays
+
+|gr2= Strings
+
+|gr3= Config
+
+|descr= Selects an element from an array, config entry from [[Config]] or substring from a string or a range from an array. 
+
+|s1= array [[select]] index
+
+|p1= array: [[Array]]
+
+|p2= index: [[Number]] - index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up.<br>
+{{GVI|arma3|2.12|size= 0.75}} negative index can be used to select from the end of the array, i.e. -1 means last array element.
+
+|r1= [[Anything]] - a <u>reference</u> to the array element given by its index
+{{Feature|important|When the index equals the size of the array, there is no error for out of range selection and [[nil]] is returned - see {{Link|#Example 8}}.}}
+
+|s2= array [[select]] boolean
+
+|p21= array: [[Array]]
+
+|p22= boolean: [[Boolean]] - [[false]] selects the '''first''' element of the [[Array]], [[true]] the '''second''' one
+
+|r2= [[Anything]] - a <u>reference</u> to the array element
+
+|s3= config [[select]] index
+
+|s3since= arma1 1.00
+
+|p41= config: [[Config]]
+
+|p42= index: [[Number]] - index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
+
+|r3= [[Config]]
+
+|s4= string [[select]] [start, length]
+
+|s4since= arma3 1.28
+
+|p61= string: [[String]]
+
+|p62= start: [[Number]] - string position to start selection from. 0 denotes the first character of the string, 1 the second, etc. If passed number has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
+
+|p63= length: [[Number]] - (Optional, default ''string''<nowiki/>'s length) number of characters to select
+
+|r4= [[String]]
+{{Feature|informative|Substring version of [[select]] operates with the ANSI charset; if Unicode support is desired, see [[forceUnicode]].}}
+
+|s5= array [[select]] [start, count]
+
+|s5since= arma3 1.32
+
+|p81= array: [[Array]]
+
+|p82= start: [[Number]] - array index to start selection from
+
+|p83= count: [[Number]] - ({{GVI|arma3|2.14|size= 0.75}} Optional) number of array elements to select. If the selected range exceeds source array boundaries, selection will be made up to the last element of the array.
+{{Feature|informative|Since v2.14 'count' is optional, if omitted the selection is made from ''start'' until the end of the array.}}
+
+|r5= [[Array]] - a <u>new array</u> from selection
+
+|s6= array [[select]] expression
+
+|s6since= arma3 1.56
+
+|p101= array: [[Array]]
+
+|p102= expression: [[Code]] - expression that is expected to return [[Boolean]] or [[Nothing]].
+If [[true]] is returned, the original array value of currently tested element [[Magic Variables#x|_x]] will be added to the output array
+
+|r6= [[Array]] - a <u>new array</u> of all elements from the original array that satisfied expression condition
+
+|x1= <sqf>
+["a", "b", "c", "d"] select 2;	// result is "c"
+position player select 2;		// result is Z coordinate of player position
+</sqf>
+
+|x2= <sqf>["", currentWeapon player] select alive player; // if player is dead, "" is selected</sqf>
+
+|x3= <sqf>(configFile >> "cfgVehicles" >> typeOf vehicle player >> "Turrets") select 0 >> "gunnerAction";</sqf>
+
+|x4= <sqf>
+hint str ("japa is the man!" select [8]);		// the man!
+hint str ("japa is the man!" select [0, 7]);	// japa is
+</sqf>
+
+|x5= <sqf>hint str ([1,2,3,4,5,6] select [1, 4]); // [2,3,4,5]</sqf>
+
+|x6= <sqf>_even = [1,2,3,4,5,6,7,8,9,0] select { _x % 2 == 0 }; // returns [2, 4, 6, 8, 0]</sqf>
+
+|x7= JavaScript endsWith() alternative:
+<sqf>
+private _fnc_endsWith = 
+{
+	params ["_string", "_endswith"];
+	_string select [count _string - count _endswith] isEqualTo _endswith
+};
+
+["Arma 3", "3"] call _fnc_endsWith; // true
+["Arma 3", "4"] call _fnc_endsWith; // false
+</sqf>
+
+<!-- referenced in r1 -->
+|x8= [[select]] index traps:
+<sqf>
+private _array = ["a", "b", "c", "d"];
+_array select 0; // "a"
+_array select 3; // "d"
+_array select 4; // nil - no error shown
+_array select 5; // error
+
+// can sometimes be useful
+private _firstEnemyNearMe = allUnits opfor select { player distance _x < 10 } select 0; // nil if no enemies nearby
+if (isNil _firstEnemyNearMe) exitWith { systemChat "no enemy found" };
+systemChat format ["enemy found: %1", name _firstEnemyNearMe];
+
+// get the last element properly
+_array select (count _array);		// wrong - nil is returned
+_array select (count _array - 1);	// correct - "d" is returned
+</sqf>
+
+|seealso= [[a hash b|#]] [[selectRandom]] [[selectRandomWeighted]] [[set]] [[resize]] [[reverse]] [[in]] [[find]] [[findIf]] [[toArray]] [[toString]] [[forEach]] [[count]] [[deleteAt]] [[deleteRange]] [[append]] [[sort]] [[param]] [[params]] [[splitString]] [[joinString]] [[pushBack]] [[pushBackUnique]] [[apply]] [[forceUnicode]]
+}}
+
+{{Note
+|user= General Barron
+|timestamp= 20090303020200
+|text= When combined with the [[count]] command, this can be used to read all entries out of a config; even when you don't know exactly how many entries there will be.
+See the notes under [[count]] for more info.
+}}
+
+{{Note
+|user= Killzone Kid
+|timestamp= 20130928005300
+|text= Rounding of fractions with [[select]] is not the same as when you use [[round]] command:
+<sqf>
+_roundThis = 0.5;
+hint str ([0,1] select _roundThis);			// 0
+hint str ([0,1] select round _roundThis);	// 1
+</sqf>
+}}
+
+{{Note
+|user= Pierre MGI
+|timestamp= 20160714041800
+|text= You can substract array from array using select:
+<sqf>
+_array = [[1], [2], [3]];
+_sub = [2];
+_array - _sub; // [[1], [2], [3]]
+_array select { !(_x isEqualTo _sub) }; // [[1], [3]]
+[[1],[2],[2],[2],[2],[3]] select { !(_x isEqualTo _sub) }; // [[1], [3]]
+</sqf>
+}}
+
+{{Note
+|user= Commy2
+|timestamp= 20161112223600
+|text= It is not safe to escape the code block of alternative syntax #5 with [[exitWith]], [[breakOut]] etc:
+<sqf>
+x3 = [1,2,3,4,5] select {
+	if (_x == 3) exitWith
+	{
+		false;
+	};
+	true
+};
+// could be expected to be: x3 = [1,2,4,5]
+// actual result: x3 = false
+</sqf>
+}}
+
+{{Note
+|user= Igneous01
+|timestamp= 20170214162600
+|text= {{Link|#Syntax 5}} is the equivalent of passing in a predicate that returns a boolean. In SQF, a piece of code will always return what the last executed command returned.
+<sqf>
+myAliveUnits = allUnits select { alive _x };	// alive returns a boolean, the last statement run was alive _x,
+												// therefore this piece of code will return a true/false to the select command
+myEastGroups = allGroups select { side _x == east };					// returns all east groups
+my4ManGroups = allGroups select { count units _x == 4 };				// returns all groups that have 4 men in them
+unitsThatDetectedMe = allUnits select { _x knowsAbout player > 0.1 };	// returns a list of units that have detected the player
+</sqf>
+}}

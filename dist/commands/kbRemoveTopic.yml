@@ -1,0 +1,33 @@
+name: kbRemoveTopic
+description: Unregister conversation topic from given person. See [[Conversations]] for more details.
+groups:
+- Conversations
+syntax:
+- call: !Binary
+  - - person
+  - - topicName
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: person
+    typ: Object
+  - name: topicName
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _unit1 kbRemoveTopic "howsTheWeather";

@@ -1,0 +1,29 @@
+name: matrixTranspose
+description: |-
+  [[File:matrixTranspose.jpg|thumb|Matrix transposition]]
+  Returns {{Link|https://en.wikipedia.org/wiki/Transpose|transposed}} version of the given matrix.
+  The matrix is an [[Array]] of rows.
+  Each row is an [[Array]] of corresponding column values for the row. The minimum number of rows is 1.
+groups:
+- Math
+- Math - Vectors
+syntax:
+- call: !Unary
+  - matrix
+  ret:
+  - ArrayUnknown
+  - transposed matrix
+  params:
+  - name: matrix
+    description: given matrix
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 92
+examples:
+- "matrixTranspose \n[\n\t[1,2,3], \n\t[3,1,2], \n\t[2,3,1]\n];\n/* returns \n[\n\t[1,3,2], \n\t[2,1,3], \n\t[3,2,1]\n] */\n"
+- "matrixTranspose \n[\n\t[1,2,3]\n];\n/* returns \n[\n\t[1],\n\t[2],\n\t[3]\n] */\n"
+- "matrixTranspose \n[\n\t[1],\n\t[2],\n\t[3]\n];\n/* returns \n[\n\t[1,2,3]\n] */\n"

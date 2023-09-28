@@ -1,0 +1,28 @@
+name: ASLToATL
+description: Converts a position from [[Position#PositionASL|PositionASL]] to [[Position#PositionATL|PositionATL]]
+groups:
+- Positions
+syntax:
+- call: !Unary
+  - pos
+  ret:
+  - Position3dATL
+  - null
+  params:
+  - name: pos
+    description: position to convert
+    typ: Position3dASL
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 62
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- ASLToATL getPosASL player isEqualTo getPosATL player;

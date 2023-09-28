@@ -1,0 +1,95 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 0.76
+
+|gr1= Unit Inventory
+
+|gr2= Vehicle Inventory
+
+|descr= Returns array of arrays of all unit's or vehicle's magazines with extended information about them.
+The magazines returned are for primary gunner. If you need magazines for all turrets, see [[magazinesAllTurrets]].
+{{Feature|important|This command does not return empty magazines from containers, only from the weapon. Use [[magazinesAmmoCargo]] instead.}}
+
+|s1= [[magazinesAmmoFull]] entity
+
+|p1= entity: [[Object]] - unit or vehicle
+
+|r1= [[Array]] of [[Array]]s in format:
+* [[String]]: magazine class name
+* [[Number]]: magazine ammo count
+* [[Boolean]]: is magazine loaded
+* [[Number]]: magazine type:
+** -1 = n/a (default if magazine is not loaded)
+** 0 - grenade
+** 1 - primary weapon mag
+** 2 - handgun mag
+** 4 - secondary weapon mag
+** 4096 - binocular weapon mag
+** 65536 - vehicle mag
+* [[String]]: magazine location: "Vest", "Uniform", "Backpack", "" or [[currentMuzzle]] if the magazine is loaded
+* {{GVI|arma3|2.08|size= 0.75}} [[Number]]: magazine id, starts with 10000000; use <sqf inline>toFixed 0;</sqf> to see this number in a human readable format
+* {{GVI|arma3|2.08|size= 0.75}} [[Number]]: magazine creator
+
+|s2= [[magazinesAmmoFull]] [vehicle, includeEmpty]
+
+|s2since= arma3 2.00
+
+|p21= vehicle: [[Object]] - unit or vehicle
+
+|p22= includeEmpty: [[Boolean]] - (Optional, default [[false]]) [[true]] to include empty magazines
+
+|r2= same as [[#Syntax|Primary Syntax]]
+ 
+|x1= <sqf>
+toFixed 0;
+magazinesAmmoFull player;
+/*
+[
+	["30Rnd_65x39_caseless_mag",30,false,-1,"Uniform",10000003,0],
+	["Chemlight_green",1,true,0,"ChemlightGreenMuzzle",10000016,0],
+	["30Rnd_65x39_caseless_mag",30,false,-1,"Vest",10000008,0],
+	["30Rnd_65x39_caseless_mag",30,false,-1,"Vest",10000009,0],
+	["30Rnd_65x39_caseless_mag",30,false,-1,"Vest",10000010,0],
+	["HandGrenade",1,true,0,"HandGrenadeMuzzle",10000018,0],
+	["HandGrenade",1,false,-1,"Vest",10000019,0],
+	["30Rnd_65x39_caseless_mag",30,true,1,"arifle_MX_ACO_pointer_F",10000001,0],
+	["16Rnd_9x21_Mag",16,true,2,"hgun_P07_F",10000011,0]
+]
+*/</sqf>
+
+|x2= <sqf>
+toFixed 0;
+magazinesAmmoFull Mi_48;
+/*
+[
+	["250Rnd_30mm_HE_shells_Tracer_Green",250,true,65536,"HE",10000043,0],
+	["250Rnd_30mm_APDS_shells_Tracer_Green",250,true,65536,"AP",10000044,0],
+	["Laserbatteries",1,true,65536,"Laserdesignator_mounted",10000045,0],
+	["PylonRack_4Rnd_LG_scalpel",4,false,-1,"",10000049,0],
+	["PylonRack_19Rnd_Rocket_Skyfire",19,false,-1,"",10000051,0],
+	["PylonRack_19Rnd_Rocket_Skyfire",19,false,-1,"",10000052,0],
+	["PylonRack_4Rnd_LG_scalpel",4,false,-1,"",10000053,0]
+]
+*/</sqf>
+
+|seealso= [[magazinesAmmo]] [[magazinesAmmoCargo]] [[magazinesDetail]] [[magazines]] [[magazinesTurret]]
+}}
+
+{{Note
+|user= Actium
+|timestamp= 20141220144000
+|text= When used on vehicles this will only return all magazines associated with a single turretPath (which one depends on the actual armament of the vehicle, usually the first armed turretPath or alternatively turretPath [-1]).<br>
+If you want to get all turrets' magazines, use [[allTurrets]] and [[magazinesTurret]].
+}}
+
+{{Note
+|user= Pierre MGI
+|timestamp= 20150210044000
+|text= As Actium said, this function seems to extract data from:
+<sqf>configFile >> "CfgVehicles" >> _the_vehicle_you_want >> "Turrets" >> "MainTurret">> "magazines"</sqf>
+Some vehicles return an empty field {} because magazines are in straight in:
+<sqf>configFile >> "CfgVehicles" >> _the_vehicle_you_want >> "magazines" // often dedicated to flares only</sqf>
+
+This is the case of WY-55 Hellcat. This function returns an empty array.
+}}

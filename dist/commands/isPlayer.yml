@@ -1,0 +1,51 @@
+name: isPlayer
+description: |-
+  Checks if given person is a [[player]]. Returns [[true]] for headless clients as well.
+
+  {{Feature|informative|Prior to {{arma3}} v2.02, in some cases the identity of certain player units could fail to propagate to other clients and the server, which caused [[isPlayer]] and [[getPlayerUID]] to incorrectly return {{hl|[[false]]}} and {{hl|""}} respectively, where the affected units were [[not]] [[local]]. See {{Link|https://github.com/michail-nikolaev/task-force-arma-3-radio/issues/1096|this GitHub bug report}} for more info. Remain vigilant toward potential false negatives.}}
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: unit
+    typ: Object
+- call: !Unary
+  - person
+  ret:
+  - Boolean
+  - '[[true]] if is/was player ''''''and'''''' the identity still exists on the (dead) body'
+  params:
+  - name: person
+    description: dead or alive unit
+    typ: Object
+  since:
+    arma_3:
+      major: 2
+      minor: 6
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (isPlayer _Soldier1) then\n{\n\t_soldier1 setDamage 1;\n};\n"
+- _playerCount = { isPlayer _x } count playableUnits;
+- private _wasPlayer = isPlayer [_deadBody]; // returns true if _deadBody's identity still exists and was controlled by a player

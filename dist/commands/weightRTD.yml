@@ -1,0 +1,21 @@
+name: weightRTD
+description: '{{Feature|afm}}Returns weight of RTD helicopter.'
+groups:
+- RTD
+syntax:
+- call: !Unary
+  - helicopter
+  ret:
+  - ArrayUnknown
+  - '[fuselage weight, crew weight, fuel weight, [[setCustomWeightRTD|custom weight]], weapons weight] (kilograms)'
+  params:
+  - name: helicopter
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- _taruWeight = weightRTD taru// Returns [7000,300,1990.56,0,0]

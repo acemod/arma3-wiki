@@ -1,0 +1,36 @@
+name: sideFriendly
+description: The Friendly side - friendly to all, see [[Side Relations]].
+groups:
+- Sides
+syntax:
+- call: Nular
+  ret:
+  - Side
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 78
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (side player == sideFriendly) then { hint "I feel friendly today!"; };

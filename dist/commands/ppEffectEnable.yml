@@ -1,0 +1,64 @@
+name: ppEffectEnable
+description: |-
+  Enable / disable [[Post Process Effects]]
+  {{Feature | important | If effect fails to get enabled (can check it with [[ppEffectEnabled]]) try adding a little [[sleep]] in front of it. }}
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - - effect
+  - - enable
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: effect
+    description: name of the effect
+    typ: String
+  - name: enable
+    typ: Boolean
+- call: !Binary
+  - - effect
+  - - enable
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: effect
+    description: handle of the effect
+    typ: Number
+  - name: enable
+    typ: Boolean
+- call: !Binary
+  - - effectArray
+  - - enable
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: effectArray
+    description: array of effect handles
+    typ: !ArrayUnsized
+    - Number
+    - ''
+  - name: enable
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"colorCorrections" ppEffectEnable true;'
+- _hndl ppEffectEnable true;
+- '[_hndl1, _hndl2] ppEffectEnable true;'

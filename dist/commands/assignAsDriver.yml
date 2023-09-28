@@ -1,0 +1,46 @@
+name: assignAsDriver
+description: |-
+  Assign a unit as driver of a vehicle. Used together with [[orderGetIn]] to order subordinate units to get in as driver of a specific vehicle. Before usage of this command a subordinate unit has not got the option to get into the driver place of the vehicle.
+  {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - - unitName
+  - - vehicleName
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unitName
+    typ: Object
+  - name: vehicleName
+    typ: Object
+argument_loc: Global
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _soldier1 assignAsDriver _tank;
+  [_soldier1] orderGetIn true;

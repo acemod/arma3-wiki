@@ -1,0 +1,30 @@
+name: set3DENGrid
+description: Sets the grid increment for the given transformation type.
+groups:
+- Eden Editor
+syntax:
+- call: !Unary
+  - type
+  - value
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: type
+    description: |-
+      Name of transformation type. Can be:
+      * {{hl|"r"}} - Rotation
+      * {{hl|"t"}} - Translation
+      * {{hl|"s"}} - Scale
+    typ: String
+  - name: value
+    description: Transformation increment
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- set3DENGrid ["t",100]; // 100m movement increment

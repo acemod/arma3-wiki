@@ -1,0 +1,42 @@
+name: deleteGroup
+description: |-
+  Destroys the given group - the group must be empty and [[Multiplayer Scripting#Locality|local]] to the machine executing this command.
+
+  {{Feature|informative|In {{arma3}} you can find out locality of the group with [[local]] command, unlike with previous games. However [[owner]] and [[setOwner]] don't work with groups anywhere. The group will always be local to the client that created it, until the client disconnects, then the group becomes local to the server. So if you need to delete a group, delete all members first then execute [[deleteGroup]] where is it [[local]].}}
+
+  {{Feature|arma3|In {{arma3}} when the last unit leaves a group, the group gets automatically deleted. Manually deleting all units from a group, however, does '''not''' automatically delete the empty group. To force the group to get auto-deleted when empty, use [[deleteGroupWhenEmpty]].}}
+groups:
+- Groups
+syntax:
+- call: !Unary
+  - group
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: group
+    typ: Group
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- deleteGroup _group;
+- '[_group] remoteExec ["deleteGroup", groupOwner _group]; // server only'

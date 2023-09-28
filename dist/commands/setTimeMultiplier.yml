@@ -1,0 +1,26 @@
+name: setTimeMultiplier
+description: Sets a time multiplier for in-game time. The command range is capped at 0.1 - 120 to avoid performance problems.
+groups:
+- Time
+- Mission Information
+- Environment
+syntax:
+- call: !Unary
+  - value
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: value
+    description: has to be in range from 0.1 to 120
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Global
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 26
+examples:
+- setTimeMultiplier 60;
+- setTimeMultiplier 0.5;

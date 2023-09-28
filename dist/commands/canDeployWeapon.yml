@@ -1,0 +1,21 @@
+name: canDeployWeapon
+description: Returns [[true]] if a unit's weapon can be deployed.
+groups:
+- Weapons
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Boolean
+  - '[[true]] if unit''s weapon can be deployed'
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- if (canDeployWeapon player) then { hint "I could rest my weapon here..." };

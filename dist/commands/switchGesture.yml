@@ -1,0 +1,33 @@
+name: switchGesture
+description: When used on a person,the given move is started immediately (without transition).
+groups:
+- Animations
+syntax:
+- call: !Binary
+  - - soldier
+  - - moveName
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: soldier
+    typ: Object
+  - name: moveName
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- soldierOne switchGesture "Wave";

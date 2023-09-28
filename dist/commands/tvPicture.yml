@@ -1,0 +1,40 @@
+name: tvPicture
+description: Returns name of picture from item pointed to by path. IDC means id of parent Tree View.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - String
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+- call: !Binary
+  - - ctrl
+  - - path
+  ret:
+  - String
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvPicture [101, [0]];
+- _ctrl tvPicture [0,0,0];

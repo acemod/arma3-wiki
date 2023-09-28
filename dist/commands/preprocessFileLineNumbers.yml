@@ -1,0 +1,43 @@
+name: preprocessFileLineNumbers
+description: "Returns the preprocessed content of the given file. The preprocessor is C-like, it supports comments using /* */ and [[PreProcessor Commands]]. The preprocessor also adds a default debug entrypoint for compiler at the begining of script: {{hl|#line 1 \"aFilename\"}}<br><br>\n\nThe '''#line''' keyword can be used in any script that are not preprocess, or with preprocess script with extra macro to protect reserverd sharp character. The format is:<br>\n{{hl|'''#line''' <number> \"<name>\"}}<br>\nfollowed by new line. <number> could be only positive integer and <name> could be any name. This will be used only if an error occurs in the script. The error will contain the line:\n{{hl|File <filename>, line <linenumber>}}<br>\nwhere <filename> will be the <name> you set and <linenumber> will be <number> + how many lines it is from the '''#line''' line. If the error happened on the line right under '''#line''' it will add 0 to <number>, if on second line, it will add 1 etc.<br><br>\nIt is possible to use more than one '''#line''' keywords, but it seems having just one at the top for little script is enough to pinpoint position of the error easily. \n{{Feature | Warning | If the file you are loading is not prepared using UTF-8 encoding and contains some characters [[toArray | with codes]] > 127, they might convert incorrectly}}"
+groups:
+- System
+syntax:
+- call: !Unary
+  - fileName
+  ret:
+  - String
+  - file content containing {{hl|#line 1 "aFilename"}}
+  params:
+  - name: fileName
+    description: path to the file
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _string = preprocessFileLineNumbers "A3\ui_f\scripts\IGUI\RscUnitInfo.sqf"</sqf>
+
+  Result is: <br>
+   #line 1 "A3\ui_f\scripts\IGUI\RscUnitInfo.sqf"<br>
+   disableserialization;<br>
+   ........

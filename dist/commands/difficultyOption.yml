@@ -1,0 +1,62 @@
+name: difficultyOption
+description: |-
+  Checks specific difficulty settings of the current user.
+  Difficulty flag names can be found in the {{hl|CfgDifficultyPresets}} config class or in [[server.armaprofile|ArmA profile]] file under class {{hl|DifficultyPresets/xxx/Options}} (xxx being Recruit, Regular or Veteran).
+  This command replaces [[difficultyEnabled]] as many options have multiple values and former command only provided [[Boolean]] return.
+groups:
+- Difficulty
+syntax:
+- call: !Unary
+  - optionName
+  ret:
+  - Number
+  - null
+  params:
+  - name: optionName
+    description: |-
+      difficulty option name; one of:
+      {{Columns|5|
+      * reducedDamage
+      * groupIndicators
+      * friendlyTags
+      * enemyTags
+      * detectedMines
+      * commands
+      * waypoints
+      * weaponInfo
+      * stanceIndicator
+      * staminaBar
+      * weaponCrosshair
+      * visionAid
+      * thirdPersonView
+      * cameraShake
+      * scoreTable
+      * deathMessages
+      * vonID
+      * mapContent
+      * autoReport
+      * multipleSaves
+      }}
+    typ: String
+- call: !Unary
+  - array
+  ret:
+  - ArrayUnknown
+  - array of all options and current values in format <nowiki>[</nowiki>["Option1", value1], ...["OptionN", valueN]]
+  params:
+  - name: array
+    description: any array, could be empty array []
+    typ: ArrayUnknown
+  since:
+    arma_3:
+      major: 2
+      minor: 14
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- hint str (difficultyOption "friendlyTags");
+- "Remember last [[cameraView]] per vehicle:\n<sqf>player addEventHandler [\"GetOutMan\", {\n\tparams [\"_unit\", \"\", \"_vehicle\"];\n\t_unit setVariable [_vehicle call BIS_fnc_netId, cameraView];\n}];\nplayer addEventHandler [\"GetInMan\", {\n\tif (difficultyOption \"thirdPersonView\" == 2) then {\n\t\tparams [\"_unit\", \"\", \"_vehicle\"];\n\t\t_unit switchCamera (_unit getVariable [_vehicle call BIS_fnc_netId, \"INTERNAL\"]);\n\t};\n}];"

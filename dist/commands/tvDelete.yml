@@ -1,0 +1,40 @@
+name: tvDelete
+description: |-
+  Removes an item with given [[Tree View Path]] from Tree View.
+  {{Feature|important|The paths of other items on the same branch after delete operation are updated accordingly; therefore, when deleting multiple entries, start with the one with the highest index and proceed in reverse order.}}
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    description: '[[Tree View Path]] of the item'
+    typ: ArrayUnknown
+- call: !Binary
+  - - control
+  - - path
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    description: '[[Tree View Path]] of the item'
+    typ: ArrayUnknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvDelete [101, [0, 0]];
+- _ctrl tvDelete [0, 0];

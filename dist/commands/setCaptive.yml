@@ -1,0 +1,69 @@
+name: setCaptive
+description: |-
+  Mark a unit as captive. If unit is a vehicle, commander is marked. A captive unit:
+  * is seen as belonging to the [[civilian]] [[Side]]
+  * will not be fired upon
+  * will still shoot at its real side's enemies
+  * will make its killer earn/lose [[score]]/[[rating]] as usual
+  * will not get its weapons removed (see [[removeAllWeapons]])
+  * will not trigger "detected by" conditions for its original [[Side]].
+  {{Feature|informative|The number used as status can be retrieved by [[captiveNum]] to keep track of the captivity status at a finer resolution (e.g. handcuffed, grouped, etc).}}
+groups:
+- Object Manipulation
+- Sides
+syntax:
+- call: !Binary
+  - - unitName
+  - - status
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unitName
+    typ: Object
+  - name: status
+    description: '[[true]] means [[captive]]'
+    typ: Boolean
+- call: !Binary
+  - - unitName
+  - - statusNumber
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unitName
+    typ: Object
+  - name: statusNumber
+    description: zero means non-captive, a non-zero value means [[captive]]; see [[captiveNum]]
+    typ: Number
+  since:
+    arma_2:
+      major: 1
+      minor: 0
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "_soldier1 setCaptive true;\nside _soldier1;\t\t\t// returns civilian\nside group _soldier1;\t// returns e.g blufor\n"
+- "_soldier1 setCaptive 1;\ncaptive _soldier1;\t\t// returns true\n\n_soldier1 setCaptive 42;\ncaptive _soldier1;\t\t// returns true\n\n_soldier1 setCaptive 0;\ncaptive _soldier1;\t\t// returns false\n"

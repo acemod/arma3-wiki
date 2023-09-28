@@ -1,0 +1,72 @@
+name: sliderSetSpeed
+description: "Sets slider line step and page step delta amount as well as optional step amount of [[CT_SLIDER]] or [[CT_XSLIDER]] with given idc of topmost user [[dialog]]. \n* Click to arrow - move by line\n* Click to scale outside thumb - move by page.\n\n{{Feature|Informative|[[CT_XSLIDER]] does not use `page` param, it acts as scrollbar when clicked on the bar. It also can only be horizontal.}}"
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - idc
+  - line
+  - page
+  - step
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    description: control's idc
+    typ: Number
+  - name: line
+    description: value delta to move the slider when clicking on the outer arrows
+    typ: Number
+  - name: page
+    description: value delta to move the slider when clicking inside the slider bar
+    typ: Number
+  - name: step
+    description: (Optional, default 0) slider step
+    typ: Number
+- call: !Binary
+  - - control
+  - - line
+    - page
+    - step
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: line
+    description: value delta to move the slider when clicking on the outer arrows
+    typ: Number
+  - name: page
+    description: value delta to move the slider when clicking inside the slider bar
+    typ: Number
+  - name: step
+    description: (Optional, default 0) slider step
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 85
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- sliderSetSpeed [101, 0.5, 2];

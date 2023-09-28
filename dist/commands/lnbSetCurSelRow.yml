@@ -1,0 +1,47 @@
+name: lnbSetCurSelRow
+description: Selects the row with the given index of the 2D listbox.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - index
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: index
+    typ: Number
+- call: !Binary
+  - - ctrl
+  - - index
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: index
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  disableSerialization;
+  _ctrl = (findDisplay 300) displayCtrl 304;
+  _ctrl lnbSetCurSelRow 1;

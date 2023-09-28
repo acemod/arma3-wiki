@@ -1,0 +1,29 @@
+name: add3DENLayer
+description: Adds an editing layer in [[:Category:Eden Editor|Eden Editor]].
+groups:
+- Eden Editor
+syntax:
+- call: !Binary
+  - - parentLayerID
+  - - name
+  ret:
+  - Number
+  - Layer ID
+  params:
+  - name: parentLayerID
+    description: ID of the parent layer. No layer will be created when the ID does not point to a layer. Use {{hl|-1}} to create the layer to root.
+    typ: Number
+  - name: name
+    description: Layer display name
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- |-
+  _myLayer = -1 add3DENLayer "Enemy Base";
+  _myLayerFort = _myLayer add3DENLayer "Fortifications";
+  _myLayerPatrol = _myLayer add3DENLayer "Patrols";

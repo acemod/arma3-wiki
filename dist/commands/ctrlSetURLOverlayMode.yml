@@ -1,0 +1,26 @@
+name: ctrlSetURLOverlayMode
+description: "Sets how to handle opening of URL, default browser ot Steam overlay. Possible values:\n* 0 - default browser\n* 1 - Steam overlay if enabled, otherwise default browser \n* 2 - Steam overlay, shows error message box if disabled (the box has a button to continue with default browser)\n\n{{Feature|informative|Toggling Steam overlay in Steam options will require game restart for the changes to take effect.}}"
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - - control
+  - - mode
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    description: control that contain url opening action
+    typ: Control
+  - name: mode
+    description: overlay mode, see description
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- _control ctrlSetURLOverlayMode 1;

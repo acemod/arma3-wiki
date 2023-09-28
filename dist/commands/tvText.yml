@@ -1,0 +1,40 @@
+name: tvText
+description: Returns shown text in the item on given path. IDC means id of parent Tree View.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - String
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+- call: !Binary
+  - - control
+  - - path
+  ret:
+  - String
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvText [101, [0]];
+- _ctrl tvText [0,0,0];

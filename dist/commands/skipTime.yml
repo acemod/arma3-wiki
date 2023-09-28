@@ -1,0 +1,50 @@
+name: skipTime
+description: Jumps the specified number of hours forward or backward.<br>The time of day and tides are adjusted, but no changes are made to any units. If present, the lower level of clouds instantly jump to the position they would be in if time had passed normally.
+multiplayer_note: |-
+  In {{arma3}} (around v1.14) [[skipTime]] executed on the server will get synced in 5 seconds or so with all the clients. It will also be [[Multiplayer Scripting#Join In Progress|JIP]] compatible. [[skipTime]] executed on a client will change time on client for about 5 seconds after which it will sync back to server time.<br>
+  For other games' behaviour, see {{Link|Multiplayer Scripting#Join In Progress}}.
+
+  {{Feature|important|Since {{GVI|arma3|2.10}} [[skipTime]] is limited to max +/- 1000 hours per skip for game stability. The command is intended for short time jumps. For large intervals, use [[setDate]].}}
+groups:
+- Time
+- Environment
+syntax:
+- call: !Unary
+  - duration
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: duration
+    description: Hours to skip. A positive value will create a forward time jump, a negative value will jump backwards.
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- skipTime 5;
+- skipTime (5/60); // be sure to use parentheses, otherwise here (skipTime 5)/60 will happen
+- "while {true} do \n{\n\tskipTime 0.00333;\n\tsleep 0.1; // smooth time transition\n};\n"
+- skipTime ((_timeToSkipTo - dayTime + 24) % 24); // skip forward to a specific time, irrespective of the current mission time

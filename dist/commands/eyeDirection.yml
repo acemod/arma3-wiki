@@ -1,0 +1,22 @@
+name: eyeDirection
+description: Returns the direction object is watching (eyes, or a vehicle primary observer).
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - ArrayUnknown
+  - 3D Vector
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "Can = \"Land_Can_V3_F\" createVehicle position player;\nonEachFrame {\n\tCan setPosASL [\n\t\t(eyePos player select 0) + (eyeDirection player select 0),\n\t\t(eyePos player select 1) + (eyeDirection player select 1),\n\t\t(eyePos player select 2) + (eyeDirection player select 2)\n\t]\n};"
+- "Draw AI eye direction (green) and weapon direction (red) in 3D:\n<sqf>Bob = createGroup east createUnit [\"O_Soldier_F\", [0,0,0], [], 0, \"NONE\"];\nBob setVehiclePosition [player modelToWorld [0,100,0], [], 0, \"NONE\"];\nonEachFrame {\n\t_beg = ASLToAGL eyePos Bob;\n\t_endE = (_beg vectorAdd (eyeDirection Bob vectorMultiply 100));\n\tdrawLine3D [ _beg, _endE, [0,1,0,1]];\n\t_endW = (_beg vectorAdd (Bob weaponDirection currentWeapon Bob vectorMultiply 100));\n\tdrawLine3D [_beg, _endW, [1,0,0,1]];\n};"

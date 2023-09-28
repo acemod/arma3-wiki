@@ -1,0 +1,21 @@
+name: isAbleToBreathe
+description: If unit is diving and doesn't have a re-breather, it returns [[false]]. Diving means the unit's head is underwater. If unit is underwater and has a re-breather, the command returns [[true]].
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _canBreath = isAbleToBreathe player;

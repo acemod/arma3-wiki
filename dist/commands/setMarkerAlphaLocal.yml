@@ -1,0 +1,35 @@
+name: setMarkerAlphaLocal
+description: Sets the marker alpha.
+groups:
+- Markers
+syntax:
+- call: !Binary
+  - - marker
+  - - alpha
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: marker
+    typ: String
+  - name: alpha
+    description: Alpha value from 0 (invisible) to 1 (fully visible
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"my_marker" setMarkerAlphaLocal 0.5;'
+- '"enemy_convoy_marker" setMarkerAlphaLocal 0;'

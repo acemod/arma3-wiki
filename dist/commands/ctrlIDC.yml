@@ -1,0 +1,21 @@
+name: ctrlIDC
+description: Returns control IDC.
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - control
+  ret:
+  - Number
+  - null
+  params:
+  - name: control
+    typ: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- ctrlIDC _ctrl;

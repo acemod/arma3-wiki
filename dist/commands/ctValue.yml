@@ -1,0 +1,24 @@
+name: ctValue
+description: Returns metadata (number) associated with a particular row of RscControlsTable.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Binary
+  - - control
+  - - index
+  ret:
+  - Number
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: index
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- _number = _control ctValue 0;

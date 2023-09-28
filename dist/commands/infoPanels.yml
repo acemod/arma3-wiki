@@ -1,0 +1,41 @@
+name: infoPanels
+description: Returns array all info panels configured for given object or object and turret path.
+groups:
+- Custom Panels
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - ArrayUnknown
+  - |-
+    format [<nowiki/>[infoPanelId1, infoPanelShortcutId1], [infoPanelId2, infoPanelShortcutId2], ...]:
+    * infoPanelId: [[String]] - name of the info panel class as defined in vehicle config
+    * infopanelShortcutId: [[String]] - shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+  params:
+  - name: unit
+    description: the concerned vehicle
+    typ: Object
+- call: !Unary
+  - unit
+  - turretPath
+  ret:
+  - ArrayUnknown
+  - |-
+    format [<nowiki/>[infoPanelId1, infoPanelShortcutId1], [infoPanelId2, infoPanelShortcutId2], ...]:
+    * infoPanelId: [[String]] - name of the info panel class as defined in vehicle config
+    * infopanelShortcutId: [[String]] - shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+  params:
+  - name: unit
+    description: the concerned vehicle
+    typ: Object
+  - name: turretPath
+    description: turret index
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 72
+examples:
+- infoPanels [vehicle player, [0]];

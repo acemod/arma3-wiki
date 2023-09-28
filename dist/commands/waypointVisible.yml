@@ -1,0 +1,32 @@
+name: waypointVisible
+description: |-
+  A getter for [[setWaypointVisible]] command.
+
+  {{Feature|warning|Returns '''0''' ([[Number]]) instead of [[Boolean]]for an invalid waypoint.}}
+groups:
+- Waypoints
+syntax:
+- call: !Unary
+  - waypoint
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 55
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _visible = waypointVisible [groupOne, 1];
+- _visible = waypointVisible [group player, currentWaypoint group player];

@@ -1,0 +1,30 @@
+name: findIf
+description: |-
+  Searches for an element within array for which the code evaluates to true. Returns the zero-based index on success or -1 if not found.<br>
+  Code on the right side of the command is evaluated for each element of the array, processed element can be referenced in code as [[Magic Variables#x|_x]].
+  {{Feature|informative|[[findIf]] terminates as soon as it finds an element that fulfills the condition, thus it is more efficient than [[count]] in scenarios where a check for presence / absence of at least one element should be done (See {{Link|#Example 2}}).}}
+groups:
+- Arrays
+syntax:
+- call: !Binary
+  - - array
+  - - code
+  ret:
+  - Number
+  - Zero-based position of the first array element for which the code evaluate to true, -1 if not found
+  params:
+  - name: array
+    description: array to search in
+    typ: ArrayUnknown
+  - name: code
+    description: code defining an element to find, processed element can be referenced within the code as [[Magic Variables#x|_x]]
+    typ: Code
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 82
+examples:
+- '[unit1, unit2, unit3] findIf {not alive _x}; // return index of the first dead unit)'
+- "// two ways how to 'wait for all units to be dead':\nwaitUntil { [unit1, unit2, unit3] findIf { alive _x } == -1 };\t// fast, terminates as soon as it finds a living unit\nwaitUntil { { alive _x } count [unit1, unit2, unit3] == 0 };\t// slow, always goes through all array elements\n"

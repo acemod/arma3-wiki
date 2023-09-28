@@ -1,0 +1,39 @@
+name: tvTooltip
+description: Gets the tooltip text associated with the specified tree view path.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - String
+  - Tooltip text
+  params:
+  - name: idc
+    description: IDC of the tree view control
+    typ: Number
+  - name: path
+    description: array containing path numbers
+    typ: ArrayUnknown
+- call: !Binary
+  - - ctrl
+  - - path
+  ret:
+  - String
+  - tooltip text
+  params:
+  - name: ctrl
+    typ: Control
+  - name: path
+    description: array containing path numbers
+    typ: ArrayUnknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- _text = tvTooltip [101, [0,2]];
+- _text = _treeCtrl tvTooltip [0,2];

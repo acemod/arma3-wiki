@@ -1,0 +1,37 @@
+name: ropeUnwind
+description: |-
+  Increases or decreases the rope length by the given amount. Use relative parameter for changing rope length +/- from current length.
+  {{Feature|informative|Rope length can be in range 0.5..100 metres.}}
+groups:
+- Ropes and Sling Loading
+syntax:
+- call: !Unary
+  - rope
+  - speed
+  - length
+  - relative
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: rope
+    description: rope object
+    typ: Object
+  - name: speed
+    description: animation speed in m/s with which to lengthen or shorten the rope, in range 0.01..20
+    typ: Number
+  - name: length
+    description: 'the amount of length change in meters, in range: 0.1..100'
+    typ: Number
+  - name: relative
+    description: (Optional) [[true]] will add or subtract given length from current rope length, [[false]] will resize the rope to the given length
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- ropeUnwind [ropes heli1 select 0, 3, 10]; // set rope length to 10m at 3m/s
+- ropeUnwind [ropes heli1 select 0, 3, -5, true]; // decrease rope length by 5m at 3m/s

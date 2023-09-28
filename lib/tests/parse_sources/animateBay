@@ -1,0 +1,42 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 1.70
+
+|eff= local
+
+|arg= global
+
+|gr1= Animations
+
+|gr2= Vehicle Loadouts
+
+|descr= Forces animation of bay to given state, -1 for reset to engine handling, can cause weapon inoperative, because weapon is released when bay state == 1.
+{{Feature|informative|While there is no getter to read the animation phase of the given bay, [[animationPhase]] command can be used with the individual bay door name from [[animationNames]] as a workaround.
+For example, for the UCAV Sentinel:
+<sqf>ucav animateBay [1, 1];
+// can be checked with
+ucav animationPhase "weapons_bay_l_1"
+// or
+ucav animationPhase "weapons_bay_l_2"
+</sqf>
+}}
+
+|s1= vehicle [[animateBay]]  [bay, animphase, instant]
+
+|p1= vehicle: [[Object]]
+
+|p2= bay: [[Number]] - bay index (index starts from 1 and different from pylon index)
+
+|p4= animphase: [[Number]] - animation phase in range 0..1
+
+|p5= instant: [[Boolean]]  (Optional, default [[false]]) - Animate immediately
+
+|r1= [[Nothing]]
+
+|x1= <sqf>vehicle player animateBay [1, 0.5];</sqf>
+
+|x2= <sqf>vehicle player animateBay [1, 1, true];</sqf>
+
+|seealso= [[Arma 3: Vehicle Loadouts]] [[getCompatiblePylonMagazines]] [[getPylonMagazines]] [[setAmmoOnPylon]] [[ammoOnPylon]] [[animatePylon]] [[setPylonsPriority]] [[setPylonLoadout]]
+}}

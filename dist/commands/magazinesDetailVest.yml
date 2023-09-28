@@ -1,0 +1,42 @@
+name: magazinesDetailVest
+description: Returns an array with the type names of all the unit's vest magazines.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: unit
+    typ: Object
+- call: !Unary
+  - unit
+  - includeEmpty
+  - includeLoaded
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: unit
+    description: unit
+    typ: Object
+  - name: includeEmpty
+    description: (Optional, default [[false]]) [[true]] to include empty magazines
+    typ: Boolean
+  - name: includeLoaded
+    description: (Optional, default [[false]]) [[true]] to include magazines loaded in weapons (Since Arma 3 v2.07.148195
+    typ: Boolean
+  since:
+    arma_3:
+      major: 2
+      minor: 0
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 4
+examples:
+- "magazinesDetailVest player;\n/*\n[\n\t[\"6.5 mm 30Rnd Sand Mag(30/30)[id/cr:10000012/0]\",\n\t\"RGO Grenade(1/1)[id/cr:10000016/0]\",\n\t\"RGO Grenade(1/1)[id/cr:10000017/0]\"]\n]\n*/"

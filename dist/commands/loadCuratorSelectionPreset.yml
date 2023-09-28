@@ -1,0 +1,22 @@
+name: loadCuratorSelectionPreset
+description: Load the given selection preset to the current selection of the curator.
+groups:
+- Curator
+syntax:
+- call: !Unary
+  - numkey
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: numkey
+    description: the number key under which the selection preset is saved
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 14
+examples:
+- loadCuratorSelectionPreset 1;

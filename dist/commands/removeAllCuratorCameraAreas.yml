@@ -1,0 +1,23 @@
+name: removeAllCuratorCameraAreas
+description: Delete all curator camera areas.
+groups:
+- Curator
+syntax:
+- call: !Unary
+  - curatorObj
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: curatorObj
+    description: Curator module.
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- removeAllCuratorCameraAreas myCurator;

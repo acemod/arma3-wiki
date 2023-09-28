@@ -1,0 +1,27 @@
+name: vectorWorldToModel
+description: |-
+  Converts vector direction from world to model space.
+  {{Feature|important|For [[setObjectScale|scaled objects]], the resulting vector's [[vectorMagnitude|magnitude]] will be [[vectorMultiply|divided]] by the object scale.}}
+groups:
+- Math - Vectors
+syntax:
+- call: !Binary
+  - - object
+  - - worldDir
+  ret:
+  - ArrayUnknown
+  - vector direction in model space in format [x,y,z]
+  params:
+  - name: object
+    typ: Object
+  - name: worldDir
+    description: vector direction in world space in format [x,y,z]
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 72
+examples:
+- "Convert world space vector [0,-10,4] to model space of object _airplane: \n<sqf>_airplane vectorWorldToModel [0,-10,4];"

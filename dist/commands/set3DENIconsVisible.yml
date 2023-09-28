@@ -1,0 +1,26 @@
+name: set3DENIconsVisible
+description: Toggle visibility of [[:Category:Eden Editor|Eden Editor]] icons.
+groups:
+- Eden Editor
+syntax:
+- call: !Unary
+  - showMap
+  - showScene
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: showScene
+    description: visibility in the scene
+    typ: Boolean
+  - name: showMap
+    description: visibility in the map
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- set3DENIconsVisible [false, false]; // Hide all icons

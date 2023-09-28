@@ -1,0 +1,30 @@
+name: triggerType
+description: "Returns the trigger type. \n\n{{Feature|important|\nThe trigger could be [[Multiplayer Scripting#Locality|local]] or remote but the result returned by this command will be for the trigger type set up locally on the client that executed the command.\nSee [[createTrigger]] for more info.\n}}"
+groups:
+- Triggers
+syntax:
+- call: !Unary
+  - trigger
+  ret:
+  - String
+  - 'can be one of the following (see [[setTriggerType]] for details):'
+  params:
+  - name: trigger
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _type = triggerType tr1;

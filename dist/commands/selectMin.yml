@@ -1,0 +1,23 @@
+name: selectMin
+description: "Returns the array element with [[min]]imum numerical value. Engine solution to [[BIS_fnc_lowestNum]] and [[BIS_fnc_findExtreme]]. Therefore it is expected that supplied array consists of [[Number]]s only.  [[Boolean]]s however are also supported and will be evaluated as [[Number]]s: [[true]] - 1, [[false]] - 0. [[nil]] value treated as 0. \n{{Feature | Warning | Other non [[Number]] elements (not recommended) will be evaluated as 0 and '''Bad conversion: scalar''' message will be logged into .[[rpt]].}}"
+groups:
+- Arrays
+syntax:
+- call: !Unary
+  - array
+  ret:
+  - Anything
+  - element with [[min]]imum numerical value
+  params:
+  - name: array
+    description: array of [[Number]]s
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 66
+examples:
+- _min = selectMin [1,2,3,4,5]; //1
+- "// Same as, for example: \n_min = _a min _b min _c min _d;\n// Only faster:\n_min = selectMin [_a,_b,_c,_d];"

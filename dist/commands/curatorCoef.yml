@@ -1,0 +1,25 @@
+name: curatorCoef
+description: Returns current coeficient setting.
+groups:
+- Curator
+syntax:
+- call: !Binary
+  - - curatorObj
+  - - action
+  ret:
+  - Number
+  - null
+  params:
+  - name: curatorObj
+    description: Curator module.
+    typ: Object
+  - name: action
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- curatorModule curatorCoef "Place";

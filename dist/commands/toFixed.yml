@@ -1,0 +1,56 @@
+name: toFixed
+description: |-
+  Converts a number into a string, keeping the specified number of decimals. If the desired number of decimals is higher than the actual number, nulls are added to create the desired decimal length. This command is almost identical in behaviour to JavaScript {{Link|https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed|toFixed()}}<br><br>
+  The alternative syntax acts as keyword and switches engine's [[Number]] to [[String]] global conversion into desired format, from the moment it is applied until the end of script.
+  To reset output back to default at any time, use {{hl|toFixed -1}} - see {{Link|#Example 5}}.
+
+  {{Feature|informative|Converted number is never presented in scientific notation unlike with other number to string commands. Also Arma's default string conversion limits numbers to 6 {{Link|https://en.wikipedia.org/wiki/Significant_figures|significant figures}}, whereas with this command it is possible to preserve some extra precision - see {{Link|#Example 6}}.}}
+groups:
+- Math
+- Strings
+syntax:
+- call: !Binary
+  - - number
+  - - decimals
+  ret:
+  - String
+  - null
+  params:
+  - name: number
+    description: number to convert
+    typ: Number
+  - name: decimals
+    description: number of decimals to display (range 0-20
+    typ: Number
+- call: !Unary
+  - decimals
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: decimals
+    description: number of decimals to display (range 0-20). -1 to reset to default number of decimals
+    typ: Number
+  since:
+    arma_3:
+      major: 1
+      minor: 72
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 66
+examples:
+- 123 toFixed 2; // "123.00"
+- |-
+  2.34 toFixed 1; // "2.3"
+  2.35 toFixed 1; // "2.4"
+- "Convert position to string preserving position precision:\n<sqf>fn_posToString = \n{\n\tformat [\n\t\t\"[%1,%2,%3]\", \n\t\t_this select 0 toFixed 8, \n\t\t_this select 1 toFixed 8, \n\t\t_this select 2 toFixed 8\n\t]\n};\nstr getPos player;\t\t\t\t\t// \"[3231.05,171.802,0.00143862]\"\ngetPos player call fn_posToString;\t// \"[3231.04882813,171.80192566,0.00143862]\""
+- |-
+  Same as '''Example 3''' only using new alternative syntax:
+  <sqf>str getPos player; // "[3231.05,171.802,0.00143862]"
+  toFixed 8;
+  str getPos player; // "[3231.04882813,171.80192566,0.00143862]"
+- "systemChat str position player;\t\t// [11580.3,11797.7,0.00146675]\ncall\n{\n\ttoFixed 6;\n\tsystemChat str position player;\t// [11580.341797,11797.737305,0.001467]\n};\nsystemChat str position player;\t\t// [11580.341797,11797.737305,0.001467]\ntoFixed -1;\nsystemChat str position player;\t\t// [11580.3,11797.7,0.00146675]\n</sqf>\nIdeal to be used when saving data to a database when more precise positioning is required."
+- "str (pi/100000);\t\t// \"3.14159e-005\" - scientific notation\n(pi/100000) toFixed 10;\t// \"0.0000314159\" - no scientific notation\nstr pi;\t\t\t\t\t// \"3.14159\" - 6 significant figures (default)\npi toFixed 6;\t\t\t// \"3.141593\" - forced to 7 significant figures\npi toFixed 7;\t\t\t// \"3.1415927\" - forced to 8 significant figures\n"

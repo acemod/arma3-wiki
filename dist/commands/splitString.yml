@@ -1,0 +1,40 @@
+name: splitString
+description: |-
+  Splits the provided '''ANSI''' string into an array of tokens according to given delimiters.
+  {{Feature|informative|For Unicode support, see [[forceUnicode]].}}
+groups:
+- Strings
+syntax:
+- call: !Binary
+  - - str
+  - - delimiters
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: str
+    description: the string to split
+    typ: String
+  - name: delimiters
+    description: one or more characters, each used as a separate delimiter; if empty, ''str'' is split by each character
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 50
+examples:
+- |
+  _str = "- This, is a sample string." splitString "-,. "; // ["This","is","a","sample","string"]
+  _str joinString "#"; // "This#is#a#sample#string"
+- |
+  "\A3\ui_f\data\map\vehicleicons\iconLogic_ca.paa" splitString "\."; // ["A3","ui_f","data","map","vehicleicons","iconLogic_ca","paa"]
+- '"1:2:3" splitString ":"; // ["1","2","3"]'
+- '"Japa is the best!" splitString "" joinString " "; // "J a p a   i s   t h e   b e s t !"'
+- |
+  _cmd = currentMagazineDetail player; // "9mm 16Rnd Mag(13/16)[id/cr:10000011/0]"
+  _cmd splitString "([ ]/:)"; // ["9mm","16Rnd","Mag","13","16","id","cr","10000011","0"]
+- |-
+  Remove all \r\n from file:
+  <sqf>loadFile "somefile.txt" splitString toString [13,10] joinString " ";

@@ -1,0 +1,33 @@
+name: setDriveOnPath
+description: |-
+  Sets the path to follow for AI driver. Note that [[unitReady]] will return [[true]] even if AI is still driving through the points.<br>
+  Using any other ''move'' command (e.g <sqf inline>_vehicle move getPosATL _vehicle</sqf>) or [[doStop]] will stop the effect of this command.
+  {{Feature|important|This command does '''not''' work on air vehicles and boats. Only land vehicles are compatible. (cars, tanks, APCs, etc.)}}
+  {{Feature|informative|For the command to work properly, the unit must either be an [[createAgent|agent]], or in the case of normal AI, have been stopped using [[doStop]].}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - vehicleName
+  - - points
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicleName
+    typ: Object
+  - name: points
+    description: list of [[Position]]s to format [x,y,z] OR to format [x,y,z, speed], speed being '''in m/s'''.
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 68
+examples:
+- myVehicle setDriveOnPath [getMarkerPos "wp1", getMarkerPos "wp2"];
+- |
+  private _points = allMapMarkers apply { getMarkerPos _x; }; // getting all marker positions
+  { _x pushBack 15; } forEach _points; // setting speed
+  myVehicle setDriveOnPath _points;

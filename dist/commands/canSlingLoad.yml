@@ -1,0 +1,44 @@
+name: canSlingLoad
+description: Returns [[true]] if [[setSlingLoad]] is possible.
+groups:
+- Ropes and Sling Loading
+syntax:
+- call: !Binary
+  - - heli
+  - - cargo
+  ret:
+  - Boolean
+  - '[[true]] if [[setSlingLoad]] is possible'
+  params:
+  - name: heli
+    description: a helicopter
+    typ: Object
+  - name: cargo
+    description: an entity
+    typ: Object
+- call: !Binary
+  - - typeOfHeli
+  - - typeOfCargo
+  ret:
+  - Boolean
+  - '[[true]] if can be sling loaded ''''in principle'''''
+  params:
+  - name: typeOfHeli
+    description: a config type of helicopter
+    typ: String
+  - name: typeOfCargo
+    description: a config type of cargo (the object of type cargo has to exist in the mission
+    typ: String
+  since:
+    arma_3:
+      major: 2
+      minor: 12
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- _canSling = veh1 canSlingLoad veh2;
+- hint str ((vehicle player) canSlingLoad veh1);

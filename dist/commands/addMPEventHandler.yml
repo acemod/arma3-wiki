@@ -1,0 +1,50 @@
+name: addMPEventHandler
+description: |-
+  Adds a multiplayer event handler (EH) to the given object and returns EH handle. See {{Link|:Category:Event Handlers|Event Handlers}}.
+  {{Feature|important|A Multiplayer Event Handler is '''not''' saved in a save file and therefore will not be restored on load - use it accordingly.}}
+multiplayer_note: |-
+  Multiplayer EHs are added globally to every client and the server will fire on itself and every client upon event.
+  The only exception is the '''MPRespawn''' EH that one only fires where the respawned unit is local. Make sure to check the EHs' locality in {{Link|:Category:Event Handlers|Event Handlers}} pages.
+groups:
+- Multiplayer
+- Event Handlers
+syntax:
+- call: !Binary
+  - - object
+  - - type
+    - expression
+  ret:
+  - Number
+  - event handler index
+  params:
+  - name: object
+    description: object to monitor
+    typ: Object
+  - name: type
+    description: event handler name
+    typ: String
+  - name: expression
+    description: |-
+      Expression to execute.<br>
+      If EH has some data to return upon event (e.g. the "MPKilled" EH will return an array with 2 elements: the killed unit, and the killer), it is passed in {{hl|_this}} variable.
+      {{Feature|arma3|Since Arma 3 v.1.64 the EH handle is also stored in {{hl|_thisEventHandler}} variable and is available during EH code execution.}}
+      * Event Handler parameters are accessible via <sqf inline>_this</sqf>
+      * The Event Handler type is available as <sqf inline>_thisEvent</sqf>
+      * The Event Handler index is available as <sqf inline>_thisEventHandler</sqf>
+    typ: !OneOf
+    - String
+    - Code
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 55
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _index = player addMPEventHandler ["MPKilled", { _this execVM "playerKilled.sqf"; }];

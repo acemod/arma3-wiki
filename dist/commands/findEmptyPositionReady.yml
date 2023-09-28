@@ -1,0 +1,46 @@
+name: findEmptyPositionReady
+description: |-
+  Preloads area to be used with [[findEmptyPosition]] command and returns [[true]] when area is ready.
+  The size of the area preloaded is from {{hl|center - radius - maxDistance}} to {{hl|center + radius + maxDistance}}
+  {{Feature|important|Preloading large areas may take a long time, we are talking minutes. However once preloaded, it stays preloaded even after mission restart.}}
+groups:
+- Positions
+syntax:
+- call: !Binary
+  - - center
+  - - radius
+    - maxDistance
+  ret:
+  - Boolean
+  - '[[true]] when ready'
+  params:
+  - name: center
+    description: search area center position in format [x,y] or [x,y,z] in which case z is ignored
+    typ: !OneOf
+    - Position2d
+    - Position3d
+  - name: radius
+    description: distance from the center
+    typ: Number
+  - name: maxDistance
+    description: distance from the end of radius
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  Preload aread within 500m:
+  <sqf>_ready = _center findEmptyPositionReady [0, 500];

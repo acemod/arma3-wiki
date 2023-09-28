@@ -1,0 +1,24 @@
+name: setPilotCameraOpticsMode
+description: 'Sets the optics mode index (zoom) for the [[Arma 3: Targeting config reference#class pilotCamera|pilotCamera]]'
+groups:
+- Pilot Camera
+syntax:
+- call: !Binary
+  - - object
+  - - index
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    typ: Object
+  - name: index
+    typ: Number
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 14
+examples:
+- vehicle player setPilotCameraOpticsMode 0

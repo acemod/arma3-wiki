@@ -1,0 +1,20 @@
+name: opfor
+description: Pre-defined variable for the opfor [[Side|side]].
+alias:
+- '[[east]]'
+groups:
+- Sides
+syntax:
+- call: Nular
+  ret:
+  - Side
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (side player == opfor) then\n{\n\thint \"OPFOR\";\n};"

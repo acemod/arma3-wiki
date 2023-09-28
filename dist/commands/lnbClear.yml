@@ -1,0 +1,38 @@
+name: lnbClear
+description: Clears all items in the given listbox or combobox.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+- call: !Unary
+  - ctrl
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- lnbClear _ctrl;

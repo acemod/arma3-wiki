@@ -1,0 +1,22 @@
+name: actionIDs
+description: Returns [[Array]] of [[Number]]s, where numbers are IDs of all user actions added to given entity with [[addAction]] command.
+groups:
+- Interaction
+syntax:
+- call: !Unary
+  - entity
+  ret:
+  - ArrayUnknown
+  - Array with user action IDs
+  params:
+  - name: entity
+    description: entity with added user actions
+    typ: Object
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- _actions = actionIDs player;

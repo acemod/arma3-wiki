@@ -1,0 +1,55 @@
+name: execFSM
+description: |-
+  Execute scripted [[FSM]] and return the FSM handle or 0 when failed. The FSM file is first searched in the mission folder, then in the campaign scripts folder and finally in the global scripts folder. Argument (if any) are available in {{hl|_this}} variable inside FSM. Variables set inside FSMs can be read/modified externally, using [[setFSMVariable]] and [[getFSMVariable]] commands.<br>
+  <br>
+  The return value is the FSM handle; it can be used to determine (via [[completedFSM]]) when the FSM has finished.
+  {{Feature|arma3|In Arma 3, the FSM handle is also available within the FSM through the {{hl|_thisFSM}} variable.}}
+  <br>
+  Scripted FSMs are added into the scheduler just like [[exec]] scripts, [[execVM]] scripts and [[spawn]] scripts.<br>
+  To see what FSMs are currently in the scheduler, use [[diag_activeMissionFSMs]] command.
+  {{Feature|important|While the code placed into any of the sections of FSM cannot be suspended ([[canSuspend]] is false), the FSM itself is suspended every simulation between the state's {{hl|init}} and {{hl|precondition}} (exception is the '''init state'''). This is the only place where scripted FSM is suspended/resumed.
+  The usual difference between the state's {{hl|init}} and {{hl|precondition}} is 1 frame but if the scheduler is busy it can take longer. See [[FSM]] for more information about FSM's structure.}}
+groups:
+- Program Flow
+syntax:
+- call: !Binary
+  - - arguments
+  - - fsmFilePath
+  ret:
+  - Number
+  - FSM handle
+  params:
+  - name: arguments
+    description: Arguments accessible as {{hl|_this}} in the FSM
+    typ: Anything
+  - name: fsmFilePath
+    description: file with FSM code
+    typ: String
+- call: !Unary
+  - fsmFilePath
+  ret:
+  - Number
+  - FSM handle
+  params:
+  - name: fsmFilePath
+    description: file with FSM code
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _id = player execFSM "test.fsm";
+- _handle = [_a, _b, _c] execFSM "test.fsm";
+- _handle = execFSM "test.fsm";

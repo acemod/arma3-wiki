@@ -1,0 +1,21 @@
+name: forceRespawn
+description: Forces the unit to respawn. The effect is as if the player pressed the RESPAWN button in the game pause menu; the unit is killed but there is no "X was killed" message and no score adjustment.
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 4
+examples:
+- forceRespawn player;

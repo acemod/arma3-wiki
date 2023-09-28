@@ -1,0 +1,59 @@
+name: lnbSortBy
+description: |-
+  Sorts given multi-column ListNBox in the given column by either [[lnbText]], [[lnbValue]] or [[lnbData]] in normal or reversed order, using case-sensitive or case-insensitive comparison. Unlike the older '''lnbSortXXX''' commands, this command supports UNICODE characters out of the box.<br>
+  When sorting by {{hl|"VALUE"}}, the rows with the same [[lnbValue]] will additionally be sorted by [[lnbText]] in the order specified by the ''reversedOrder'' flag, text specified by `useTextRight` flag and case-sensitivity specified by `caseSensitive` flag.
+
+  {{Feature|Important|
+  * This command supports referencing control via IDC as well, but as with any use of IDC in UI [[Control]] commands, a [[dialog]] should be present, i.e. UI user interaction is created with [[createDialog]] rather than [[createDisplay]].
+  * As this command supports UNICODE by default, which may result in slower sorting, you can switch it off with {{hl|unicodeOff}} param.
+  }}
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Binary
+  - - controlOrIDC
+    - column
+  - - sortByType
+    - reversedOrder
+    - caseSensitive
+    - useTextRight
+    - unicodeOff
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: controlOrIDC
+    description: the ListNBox control or its IDC
+    typ: !OneOf
+    - Control
+    - Number
+  - name: column
+    description: column to sort (starts with 0
+    typ: Number
+  - name: sortByType
+    description: |-
+      (Optional, default "TEXT") one of:
+      * {{hl|"TEXT"}}
+      * {{hl|"VALUE"}}
+      * {{hl|"DATA"}}
+    typ: String
+  - name: reversedOrder
+    description: (Optional, default [[false]]) [[true]] for sorting in reversed order
+    typ: Boolean
+  - name: caseSensitive
+    description: (Optional, default [[false]]) [[true]] for using case-sensitive comparison
+    typ: Boolean
+  - name: useTextRight
+    description: (Optional, default [[false]]) [[true]] to sort by [[lnbSetTextRight | text right]]
+    typ: Boolean
+  - name: unicodeOff
+    description: (Optional, default [[false]]) [[true]] to switch off UNICODE conversion for faster sorting
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- "with uiNamespace do\n{\n\tprivate _column = 1;\n\tprivate _lnb = findDisplay 46 createDisplay \"RscDisplayEmpty\" ctrlCreate [\"RscListNBox\", -1];\n\t_lnb ctrlSetPosition [0,0,1,1];\n\t_lnb ctrlCommit 0;\n\tlnbClear _lnb;\n\t{ \n\t\t_lnb lnbAddRow [format [\"Row %1\", _forEachIndex], _x select 0];\n\t\t_lnb lnbSetValue [[_forEachIndex, _column], _x select 1];\n\t} \n\tforEach [[\"В\",1], [\"Я\",0], [\"Б\",1], [\"Ю\",0], [\"А\",1]];\n\t[_lnb, _column] lnbSortBy [\"VALUE\", true, false];\n};\n"

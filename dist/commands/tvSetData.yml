@@ -1,0 +1,46 @@
+name: tvSetData
+description: Sets string data to item on given path. IDC means id of parent Tree View.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - data
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+  - name: data
+    typ: String
+- call: !Binary
+  - - ctrl
+  - - path
+    - data
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+  - name: data
+    typ: String
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvSetData [101, [0], "Test data"];
+- _ctrl tvSetData [[0,0,0], "Test data"];

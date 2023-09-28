@@ -1,0 +1,39 @@
+name: resistance
+description: Pre-defined variable for the resistance [[Side|side]].
+alias:
+- '[[independent]]'
+groups:
+- Sides
+syntax:
+- call: Nular
+  ret:
+  - Side
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (side _unit == resistance) then\n{\n\thint \"This is a resistance unit!\";\n};\n"
+- hint format ["%1", resistance]; // Returns "GUER"

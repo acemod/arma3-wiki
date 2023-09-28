@@ -1,0 +1,72 @@
+name: setUnitLoadout
+description: "Creates a loadout from given inventory structure and applies it to a unit. When [[String]] for class name is supplied, the command will search {{hl|CfgVehicles}} for the given class in order to extract the loadout from config. If [[Config]] is given, it will search given config (including [[missionConfigFile | mission config]]) for the loadout information. In either case, the config should contain the following entries, which is standard for any unit class, for example:\n<syntaxhighlight lang=\"cpp\">\nclass MyLoadout\n{\n\tuniformClass = \"U_B_CombatUniform_mcam\";\n\tbackpack = \"B_AssaultPack_mcamo\";\n\tlinkedItems[] = {\"V_PlateCarrier1_rgr\",\"H_HelmetB\",\"ItemCompass\",\"ItemWatch\",\"ItemRadio\",\"NVGoggles\"};\n\tweapons[] = {\"arifle_MX_ACO_pointer_F\",\"hgun_P07_F\"};\n\titems[] = {\"FirstAidKit\",\"FirstAidKit\",\"FirstAidKit\"};\n\tmagazines[] = {\"30Rnd_65x39_caseless_mag\",\"16Rnd_9x21_Mag\",\"SmokeShell\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\",\"HandGrenade\"};\n};\n</syntaxhighlight>"
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - - unit
+  - - loadout
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: loadout
+    description: '[[Unit Loadout Array]]'
+    typ: ArrayUnknown
+- call: !Binary
+  - - unit
+  - - loadout
+    - fullMagazines
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: loadout
+    description: '[[Unit Loadout Array]]'
+    typ: ArrayUnknown
+  - name: fullMagazines
+    description: Partially emptied magazines will be refilled when the loadout is applied
+    typ: Boolean
+- call: !Binary
+  - - unit
+  - - name
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: name
+    description: Class name (see description
+    typ: String
+- call: !Binary
+  - - unit
+  - - config
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: config
+    description: Config class (see description
+    typ: Config
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- player_2 setUnitLoadout (getUnitLoadout player_1); // Copies loadout from player_1 and applies it to player_2
+- player_2 setUnitLoadout [getUnitLoadout player_1, true]; // Copies loadout from player_1 and applies it to player_2 while topping up all magazines
+- _unit setUnitLoadout "B_Soldier_F";
+- _unit setUnitLoadout (configFile >> "CfgVehicles" >> "B_Soldier_F");
+- _unit setUnitLoadout (missionConfigFile >> "MyLoadout");
+- |-
+  Strip unit of everything:
+  <sqf>_unit setUnitLoadout (configFile >> "EmptyLoadout");

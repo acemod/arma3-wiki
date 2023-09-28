@@ -1,0 +1,39 @@
+name: isKeyActive
+description: |-
+  Checks whether the given key is active in the current user profile.
+
+  See keys, keysLimit and doneKeys in the [[Description.ext#keys|description.ext]] file of the missions.
+groups:
+- Mission Information
+syntax:
+- call: !Unary
+  - keyName
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: keyName
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _active = isKeyActive "Mission04Key";

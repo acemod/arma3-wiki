@@ -1,0 +1,48 @@
+name: camCommitPrepared
+description: Smoothly conducts the changes that were assigned to a camera within the given time. If the time is set to zero, the changes are done immediately. This command is for use with {{hl|camPrepareXXX}} commands. For the normal cam command use [[camCommit]].
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - - camera
+  - - time
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: camera
+    description: Object of type "camera"
+    typ: Object
+  - name: time
+    description: Time in seconds during which the changes shall be done
+    typ: Number
+argument_loc: Local
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  // Create a camera object
+  _cam = "camera" camCreate [5600,4800,10];
+  _cam camPrepareTarget player;
+  _cam cameraEffect ["internal", "BACK"];
+  _cam camCommitPrepared 0;
+  // Smoothly move the camera to its new position in 6 seconds
+  _cam camPreparePos [5680,4720,20];
+  _cam camCommitPrepared 6;
+  waitUntil {camCommitted _cam};
+  // Proceed

@@ -1,0 +1,23 @@
+name: ctrlClassName
+description: |-
+  Returns the class name of a [[Control]] as it is defined in config. If you need config class of a game created [[Display]], it is stored on display itself:
+  <sqf>_className = findDisplay 12 getVariable ["BIS_fnc_initDisplay_configClass", ""]; // "RscDiary"</sqf>
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - control
+  ret:
+  - String
+  - class name
+  params:
+  - name: control
+    typ: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 26
+examples:
+- "List class names of all controls present on display 46:\n<sqf>\n_return = [];\n{\n\t_return pushBack format [\"IDC: %1, className: %2\", ctrlIDC _x, ctrlClassName _x];\n} forEach (allControls findDisplay 46);\n\ncopyToClipboard (_return joinString endl);\n"

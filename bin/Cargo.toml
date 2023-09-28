@@ -1,0 +1,14 @@
+[package]
+name = "a3_wiki_fetch"
+version = "0.1.0"
+authors = ["Brett Mayson"]
+edition = "2021"
+
+[dependencies]
+a3_wiki_lib ={ path = "../lib" }
+
+regex = { version = "1.9.5" }
+reqwest = { version = "0.11.20", features = ["blocking"] }
+serde_yaml = { version = "0.9.25" }
+tempdir = { version = "0.3.7" }
+urlencoding = { version = "2.1.3" }

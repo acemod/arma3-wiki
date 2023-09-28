@@ -1,0 +1,24 @@
+name: waypointsEnabledUAV
+description: Checks if the UAV has waypoints enabled.
+groups:
+- Waypoints
+- Remote Control
+syntax:
+- call: !Unary
+  - uav
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: uav
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 40
+examples:
+- |-
+  _uav enableUAVWaypoints false;
+  hint str waypointsEnabledUAV _uav; // returns false

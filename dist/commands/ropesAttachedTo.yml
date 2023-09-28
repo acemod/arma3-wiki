@@ -1,0 +1,24 @@
+name: ropesAttachedTo
+description: |-
+  Returns the owners of all ropes attached to the cargo - the transports to which other entities are attached with [[ropes]].
+  This command returns [[Array]] of [[Object]]s instead of a single [[Object]] as with [[ropeAttachedTo]].
+groups:
+- Ropes and Sling Loading
+syntax:
+- call: !Unary
+  - cargo
+  ret:
+  - ArrayUnknown
+  - of [[Object]]s which are transports from which the ropes originate, the ropes owners
+  params:
+  - name: cargo
+    description: entity attached to the ends of the ropes
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- "r1 = ropeCreate [car1, [0,0,0], car3, [0,0,0], 10]; \nr2 = ropeCreate [car2, [0,0,0], car3, [0,0,0], 10];\nropesAttachedTo car3; // [car1,car2]\n"

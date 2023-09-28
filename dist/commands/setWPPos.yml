@@ -1,0 +1,46 @@
+name: setWPPos
+description: |-
+  Sets waypoint position.
+  {{Feature|informative|This command is identical to <sqf inline>setWaypointPosition [pos, -1]</sqf> (see [[setWaypointPosition]] description for more information).}}
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - - waypoint
+  - - pos
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    typ: ArrayUnknown
+  - name: pos
+    description: format [[Position#PositionAGL|PositionAGL]]
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 21
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '[_groupOne, 1] setWPPos markerPos "MarkerOne";'

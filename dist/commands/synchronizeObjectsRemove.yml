@@ -1,0 +1,34 @@
+name: synchronizeObjectsRemove
+description: Removes given objects from the unit's list of synchronized objects.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - unit
+  - - objects
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: objects
+    description: An array of objects
+    typ: ArrayUnknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player synchronizeObjectsRemove [_object1, _object2, _object3];

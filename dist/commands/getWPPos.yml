@@ -1,0 +1,52 @@
+name: getWPPos
+description: Returns the position of a selected waypoint of a given group. Waypoints include only those which were placed in the mission editor.
+alias:
+- '[[waypointPosition]]'
+groups:
+- Waypoints
+syntax:
+- call: !Unary
+  - groupOrUnit
+  - index
+  ret:
+  - ArrayUnknown
+  - format [[Position#Introduction|Position3D]]. The returned position equals [0,0,0] if the selected waypoint doesn't exist.
+  params:
+  - name: groupOrUnit
+    description: the group (or unit) of which to select a waypoint
+    typ: !OneOf
+    - Group
+    - Object
+  - name: index
+    description: |-
+      0 equals the starting position of the group.<br>
+      The number used in this and other waypoint commands is ''one more'' than the one displayed in the waypoint window in the editor. (i.e. if the editor labeled a WP {{hl|"0:MOVE"}} the you would have to use {{hl|getWPPos [grp,1]}} to access this particular WP
+    typ: Number
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 21
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  [_group1, 1] setWPPos [200,600,0];
+  _pos = getWPPos [_group1, 1]; // returns [200, 600, 0]

@@ -1,0 +1,44 @@
+name: deg
+description: |-
+  Converts given value in radians to degrees. 1 degree equals 0.01745 radians or [[pi]] / 180.
+
+  {{Feature|informative|{{hl|1= 2 * pi ≙ 360° → 1 rad = 2 * pi / 360°}}}}
+groups:
+- Math - Geometry
+syntax:
+- call: !Unary
+  - value
+  ret:
+  - Number
+  - Degrees
+  params:
+  - name: value
+    description: Radians
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _degrees = deg 1; // Returns 57.2958
+- deg (2 * pi / 360); // Returns 1

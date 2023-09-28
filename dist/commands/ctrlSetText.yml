@@ -1,0 +1,68 @@
+name: ctrlSetText
+description: |-
+  Sets the text of a control of the currently active user dialog or display. This command can be used for static texts, buttons, edit lines and active texts as well as for images, where you can use it to set the image path.
+  <br>Read [[Arma: GUI Configuration]] for more information about user dialogs and controls.
+  <br>Use [[endl]] to insert line breaks.
+  Since Arma 3 v2.05.147765 supported control types are:
+  * [[CT_STATIC]]
+  * [[CT_EDIT]]
+  * [[CT_XKEYDESC]]
+  * [[CT_XBUTTON]]
+  * [[CT_SHORTCUTBUTTON]]
+  * [[CT_STRUCTURED_TEXT]]
+  * [[CT_BUTTON]]
+  * [[CT_ACTIVETEXT]]
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - idc
+  - text
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    description: Control IDC
+    typ: Number
+  - name: text
+    description: Text or image path, depending on the control type
+    typ: String
+- call: !Binary
+  - - control
+  - - text
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: text
+    typ: String
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- ctrlSetText [100, "Hello world"]; // for Dialogs
+- _control ctrlSetText "Hello world."; // for Displays

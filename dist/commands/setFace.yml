@@ -1,0 +1,54 @@
+name: setFace
+description: |-
+  Set person's face. For a list of available faces, check [[:Category:CfgIdentities]].
+  {{Columns|3|
+  * [[Operation Flashpoint: CfgIdentities#Faces|{{ofp}} faces]]
+  * [[ArmA: Armed Assault: CfgIdentities#Faces|{{arma1}} faces]]
+  * [[Arma 2: CfgIdentities#Faces|{{arma2}} faces]]
+  * [[Arma 3: CfgIdentities#Faces|{{arma3}} faces]]
+  * [[Take On Helicopters: CfgIdentities#Faces|{{tkoh}} faces]]
+  }}
+groups:
+- Unit Identity
+syntax:
+- call: !Binary
+  - - person
+  - - face
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: person
+    typ: Object
+  - name: face
+    typ: String
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- soldier1 setFace "WhiteHead_02";
+- |-
+  Set persistent face for a unit in multiplayer:
+  <sqf>this setFace "AsianHead_A3_02"; // in the init field if the unit already exists in Eden Editor</sqf>
+  <sqf>if (isServer) then { [_unit, "AsianHead_A3_02"] remoteExec ["setFace", 0, _unit] }; // if the unit is created later in the game

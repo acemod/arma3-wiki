@@ -1,0 +1,25 @@
+name: removeHandgunItem
+description: Removes given weapon item, including magazine, from the [[handgunWeapon]]
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - - unit
+  - - item
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: item
+    description: Config class
+    typ: String
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 70
+examples:
+- player removeHandgunItem "muzzle_snds_L";

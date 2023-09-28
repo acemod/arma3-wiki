@@ -1,0 +1,41 @@
+name: addVehicle
+description: |-
+  Adds a specified vehicle for use by a specified AI led group.
+  {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - groupName
+  - - vehicleName
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: groupName
+    typ: Group
+  - name: vehicleName
+    typ: Object
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 5
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _grp addVehicle _vehicle;
+- |-
+  Using on crewed vehicle:
+  <sqf>group tank addVehicle tank;

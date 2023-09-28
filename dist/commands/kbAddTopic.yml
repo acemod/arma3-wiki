@@ -1,0 +1,58 @@
+name: kbAddTopic
+description: |-
+  Register conversation topic to given person. See [[Conversations]] for more details.
+  {{Feature | Informative | Only the speaker(s) need to have the topic added.}}
+groups:
+- Conversations
+syntax:
+- call: !Binary
+  - - person
+  - - topicName
+    - conversationFile
+    - fsmFile
+    - eventHandler
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: person
+    typ: Object
+  - name: topicName
+    description: the topic id for further reference
+    typ: String
+  - name: conversationFile
+    description: .bikb file path
+    typ: String
+  - name: fsmFile
+    description: |-
+      (Optional) .fsm file path. Receives the following parameters:
+      * '''_sentenceId:''' the sentence as defined in the .bikb file
+      * '''_topic:''' TopicName registered via kbAddTopic
+      * '''_this:''' the person that was talked to (receiver)
+      * '''_from:''' the person that talked to the receiver and triggered the script
+    typ: String
+  - name: eventHandler
+    description: |-
+      (Optional) code to execute - given String will be [[compile]]d. This is '''not''' an sqf file path.<br>
+      Parameters: identical to ''fsmFile'' - see above.
+    typ: !OneOf
+    - Code
+    - String
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player kbAddTopic ["myTest", "myTest.bikb", "myTest.fsm", compile preprocessFileLineNumbers "myTest.sqf"];
+- player kbAddTopic ["itsGettingWarm", "weatherTalk.bikb"];

@@ -1,0 +1,22 @@
+name: didJIPOwner
+description: Checks if the current [[owner]] of supplied [[Object]] Joined In Progress. Returns [[false]] on clients.
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: object
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 50
+examples:
+- _ownerDidJip = didJIPOwner tank;

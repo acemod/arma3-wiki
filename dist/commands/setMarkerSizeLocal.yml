@@ -1,0 +1,41 @@
+name: setMarkerSizeLocal
+description: Set marker size.
+groups:
+- Markers
+syntax:
+- call: !Binary
+  - - markerName
+  - - axisA
+    - axisB
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: markerName
+    typ: String
+  - name: axisA
+    description: 1/2 width of marker
+    typ: Number
+  - name: axisB
+    description: 1/2 height of marker
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 4
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"MarkerOne" setMarkerSizeLocal [100, 200];'

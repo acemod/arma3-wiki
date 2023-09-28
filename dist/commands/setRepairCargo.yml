@@ -1,0 +1,45 @@
+name: setRepairCargo
+description: |-
+  Set amount of repair resources in cargo space of repair vehicle.
+  Amount 1 is full cargo.
+groups:
+- Vehicle Inventory
+syntax:
+- call: !Binary
+  - - vehicleName
+  - - amount
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicleName
+    typ: Object
+  - name: amount
+    description: In range 0 to 1
+    typ: Number
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _repairTruck1 setRepairCargo 0;

@@ -1,0 +1,30 @@
+name: removeMissionEventHandler
+description: Removes mission event handler added by [[addMissionEventHandler]].
+groups:
+- Event Handlers
+syntax:
+- call: !Unary
+  - type
+  - index
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: type
+    typ: String
+  - name: index
+    description: Index is returned by addMissionEventHandler.
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  private _eventHandlerId = addMissionEventHandler ["Ended", { diag_log "mission complete"; }];
+  // ...
+  removeMissionEventHandler ["Ended", _eventHandlerId];
+- "for \"_i\" from 0 to 4 do {\n\tmissionNamespace setVariable [format [\"handler%1\",_i], addMissionEventHandler [\"Loaded\",\"hint \"\"_i\"\";\"]];\n};\nremoveMissionEventHandler [\"Loaded\", handler2]; // Remove the third index under type \"Loaded\""
+- addMissionEventHandler ["entityKilled",{hint "First kill!"; removeMissionEventHandler ["entityKilled", _thisEventHandler]; }];

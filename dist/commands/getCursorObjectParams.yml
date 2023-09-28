@@ -1,0 +1,18 @@
+name: getCursorObjectParams
+description: Returns object and named selections under cursor and distance to object's surface (to the point cursor points at). If object surface is further away than 50 meters, selections are always an empty array and distance is 1e10 (10^10).
+groups:
+- Object Detection
+syntax:
+- call: Nular
+  ret:
+  - ArrayUnknown
+  - '[cursorObject, selections, distance]'
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- hint str getCursorObjectParams;

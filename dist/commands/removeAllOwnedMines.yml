@@ -1,0 +1,21 @@
+name: removeAllOwnedMines
+description: Removes ownership of all owned mines/explosive devices of the given unit
+groups:
+- Mines
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- removeAllOwnedMines player;

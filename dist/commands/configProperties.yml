@@ -1,0 +1,41 @@
+name: configProperties
+description: |-
+  Returns an array of config entries which meet criteria in condition code. Command iterates through available classes and config properties for given config entry.
+  If 3rd param is [[true]] the search also includes inherited properties. Current looked at config is stored in _x variable (similar to alternative [[count]] command implementation).
+  Condition has to return [[true]] in order for the looked at property to be added to the resulting array. A bit slower than [[configClasses]] but allows to access inherited entries.
+  {{Feature|Warning|The condition code passed to [[configProperties]] should only be used for '''simple filter expressions''' and nothing more.}}
+  {{Feature|Informative|Since {{GVI|arma3|2.02}} the following conditions are optimised for performance:
+  * {{hl|"true"}} (omitted condition)
+  * {{hl|"isClass _x"}}
+  * {{hl|"isClass _x &amp;&amp; (...)"}}
+  }}
+groups:
+- Config
+syntax:
+- call: !Unary
+  - config
+  - condition
+  - inherit
+  ret:
+  - ArrayUnknown
+  - Array of [[Config]]s
+  params:
+  - name: config
+    description: config entry to search
+    typ: Config
+  - name: condition
+    description: (Optional, default "true") expression, which if returns [[true]], adds current property to result
+    typ: String
+  - name: inherit
+    description: (Optional, default [[true]]) include inherited properties
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 36
+examples:
+- _configs = configProperties [configFile >> "CfgVehicles" >> "O_Truck_02_box_F"];
+- _configs = configProperties [configFile >> "RscText", "true", true];
+- "Get all hitpoints of a truck:\n<sqf>_hitPoints = [];\n_hitPointsCfgs = configProperties [\n\tconfigFile >> \"CfgVehicles\" >> \"O_Truck_02_box_F\" >> \"HitPoints\", \n\t\"true\", \n\ttrue\n];\nhint str _hitPointsCfgs;"

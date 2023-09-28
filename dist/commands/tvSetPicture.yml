@@ -1,0 +1,46 @@
+name: tvSetPicture
+description: Sets picture to item selected by path. IDC means id of parent Tree View. Name is picture name. The picture is searched in the mission directory.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - name
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+  - name: name
+    typ: String
+- call: !Binary
+  - - control
+  - - path
+    - name
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+  - name: name
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvSetPicture [101, [0], "picture"];
+- _ctrl tvSetPicture [[0,0,0], getText (configFile >> "CfgWeapons" >> "optic_NVS" >> "picture")];

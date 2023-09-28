@@ -1,0 +1,21 @@
+name: tvSelection
+description: Returns array of paths to selected items.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - control
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: control
+    typ: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- private _selection = tvSelection _ctrlTV;

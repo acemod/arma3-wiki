@@ -1,0 +1,45 @@
+name: enableRadio
+description: |-
+  Enable and disable radio messages to be heard and shown in the left lower corner of the screen - the order-giving unit can still be heard direct-talking when in its vicinity. The AI will still follow orders.
+  This command can be helpful during cutscenes.
+groups:
+- Radio and Chat
+- Sounds
+syntax:
+- call: !Unary
+  - state
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: state
+    description: true to enable the radio, false to disable it
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  enableRadio false;
+  clearRadio;

@@ -1,0 +1,23 @@
+name: getShotParents
+description: Returns shot information for the given projectile. If shot was fired by a soldier on foot or in FFV position in vehicle, the soldier is returned for the vehicle.
+groups:
+- Weapons
+syntax:
+- call: !Unary
+  - projectile
+  ret:
+  - ArrayUnknown
+  - '[vehicle, instigator] - Where vehicle is the vehicle the shot was fired from, and the instigator is the person who pulled the trigger'
+  params:
+  - name: projectile
+    description: The actual projectile shot
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- _shotParents = getShotParents myProjectile;
+- batmobile addEventHandler ["Fired", {systemChat str getShotParents (_this select 6)}];

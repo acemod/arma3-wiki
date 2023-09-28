@@ -1,0 +1,24 @@
+name: resetSubgroupDirection
+description: |-
+  Sets [[formationDirection | formation direction]] of a group relative to current direction of the group leader. The group units will change their positions to form new formation if new formation direction is different (approx +/- 15 degrees). Does the same as:<br>
+  <sqf>_grp setFormDir getDir leader _grp;</sqf>
+groups:
+- Groups
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    description: any member of the [[Group]]
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- resetSubgroupDirection myUnit;

@@ -1,0 +1,29 @@
+name: tvSetSelectColor
+description: Sets the select color of given path.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Binary
+  - - ctrl
+  - - path
+    - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: path
+    description: Path of the item
+    typ: ArrayUnknown
+  - name: color
+    description: Color RGBA
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- _control tvSetSelectColor [[0, 0], [1,1,1,0.5]];

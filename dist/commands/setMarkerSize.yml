@@ -1,0 +1,49 @@
+name: setMarkerSize
+description: |-
+  Sets the marker's size.
+  {{Feature|Informative|'''Multiplayer optimisation:''' Global marker commands always broadcast the ''entire'' marker state over the network. As such, the number of network messages exchanged when creating or editing a marker can be reduced by performing all but the last operation using local marker commands, then using a global marker command for the last change (and subsequent global broadcast of all changes applied to the marker).}}
+groups:
+- Markers
+syntax:
+- call: !Binary
+  - - markerName
+  - - a-axis
+    - b-axis
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: markerName
+    typ: String
+  - name: a-axis
+    description: 1/2 width of marker
+    typ: Number
+  - name: b-axis
+    description: 1/2 height of marker
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 21
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"MarkerOne" setMarkerSize [100, 200];'

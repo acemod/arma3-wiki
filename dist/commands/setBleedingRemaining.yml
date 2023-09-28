@@ -1,0 +1,29 @@
+name: setBleedingRemaining
+description: |-
+  Sets for how many seconds injured unit leaves blood trail.
+  The unit damage must be >= 0.1 for this command to have an effect, otherwise, the [[getBleedingRemaining]] will return 0 and no blood trail is left behind.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - unit
+  - - time
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: time
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _unit setBleedingRemaining 60;
+- |
+  player setDamage 0.25;
+  player setBleedingRemaining 120;

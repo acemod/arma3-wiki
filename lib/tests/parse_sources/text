@@ -1,0 +1,45 @@
+{{RV|type=command
+
+|game1= arma1
+|version1= 1.00
+
+|game2= arma2
+|version2= 1.00
+
+|game3= arma2oa
+|version3= 1.50
+
+|game4= tkoh
+|version4= 1.00
+
+|game5= arma3
+|version5= 0.50
+
+|gr1= Locations
+
+|gr2= Strings
+
+|gr3= Structured Text
+
+|descr= Creates a structured text containing the given plain text if argument is [[String]]. Use [[setAttributes]] to set additional [[Structured_Text#Attributes | attributes]] on the text. If the argument is [[location]], returns location's text value (see Alt Syntax).
+
+|s1= [[text]] string
+
+|p1= string: [[String]]
+
+|r1= [[Structured Text]]
+
+|s2= [[text]] location
+
+|p21= location: [[Location]]
+
+|r2= [[String]]
+
+|x1= <sqf>_stxt2 = text "Hello world.";</sqf>
+
+|x2= <sqf>_townName = text myTownLocation;</sqf>
+
+|x3= <sqf>_loc = text nearestLocation [position player, "NameMarine"]; //"Marina Bay"</sqf>
+
+|seealso= [[parseText]] [[composeText]] [[image]] [[lineBreak]] [[setText]] [[createLocation]] [[deleteLocation]] [[drawLocation]] [[locationPosition]] [[locationNull]] [[nearestLocation]] [[nearestLocations]] [[nearestLocationWithDubbing]] [[name]]
+}}

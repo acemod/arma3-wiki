@@ -1,0 +1,19 @@
+name: getPiPViewDistance
+description: Get the set PiP (Picture-in-Picture) view distance (that can be set by [[setPiPViewDistance]]).
+groups:
+- System
+syntax:
+- call: Nular
+  ret:
+  - Number
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- private _pipViewDistance = getPiPViewDistance;
+- private _pipViewDistanceRatio = getPiPViewDistance / viewDistance;

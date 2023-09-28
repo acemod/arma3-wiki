@@ -1,0 +1,35 @@
+name: lbTooltip
+description: Returns tooltip for ListBox, ComboBox and Toolbox
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - idc
+  - index
+  ret:
+  - String
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: index
+    typ: Number
+- call: !Binary
+  - - control
+  - - index
+  ret:
+  - String
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: index
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- lbTooltip [1, 1];

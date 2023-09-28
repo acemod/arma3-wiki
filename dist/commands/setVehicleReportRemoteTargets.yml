@@ -1,0 +1,24 @@
+name: setVehicleReportRemoteTargets
+description: Sets that the vehicle will share targets that were acquired by its own sensors via datalink to the [[Side]] center.
+groups:
+- Sensors
+syntax:
+- call: !Binary
+  - - vehicle
+  - - bool
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    typ: Object
+  - name: bool
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- vehicle player setVehicleReportRemoteTargets true;

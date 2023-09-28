@@ -1,0 +1,20 @@
+name: getSubtitleOptions
+description: Returns subtitles settings.
+groups:
+- Radio and Chat
+syntax:
+- call: Nular
+  ret:
+  - !ArrayUnsized
+    - Boolean
+    - ''
+  - options in format [subtitlesEnabled, radioSubtitlesEnabled]
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 94
+examples:
+- private _subtitleSettings = getSubtitleOptions;

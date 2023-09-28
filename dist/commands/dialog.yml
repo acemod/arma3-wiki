@@ -1,0 +1,36 @@
+name: dialog
+description: Tests whether any user dialog is open.
+groups:
+- GUI Control
+syntax:
+- call: Nular
+  ret:
+  - Boolean
+  - '[[true]] if a dialog is open, [[false]] if not'
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 78
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (!dialog) then { createDialog "Dialog1"; };

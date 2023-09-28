@@ -1,0 +1,71 @@
+name: collect3DENHistory
+description: |-
+  Execute a block of code in which all Eden Editor operations will be recorded as one history step. For example creating an entity, setting its attributes and then connections would normally be recorded as three different steps. Calling them all within single '''collect3DENHistory''' block will group them together and the user will need to undo only once to revert the changes.
+
+  {{Feature|Informative|In order to only change the 2nd or 3rd parameter of the alternative syntax use [[nil]] as the preceding parameters.}}
+  Some useful icons are:
+  <spoiler text="Show texture paths">
+  * {{hl|"\a3\3den\data\cfg3den\history\addtolayer_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\changeattributes_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\changeseat_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\connectitems_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\create_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\createcomment_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\deleteitems_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\disconnectitems_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\makenewlayer_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\missionnew_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\moveitems_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\multipleoperations_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\pasteitems_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\removefromlayer_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\rotateitems_ca.paa"}}
+  * {{hl|"\a3\3den\data\cfg3den\history\scaleitems_ca.paa"}}
+  </spoiler>
+groups:
+- Eden Editor
+syntax:
+- call: !Unary
+  - code
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: code
+    description: Code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
+    typ: Code
+- call: !Binary
+  - - text
+    - tooltip
+    - icon
+  - - code
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: text
+    description: text of the entry that is added to the history list
+    typ: String
+  - name: tooltip
+    description: (Optional, default "Batch Change" ([[isLocalized|localized]])) - tooltip of the entry
+    typ: String
+  - name: icon
+    description: (Optional, default "a3\3den\data\cfg3den\history\multipleoperations_ca.paa") - path to the icon that is displayed left of the ''text''. '''Must not start with a {{hl|\}}!'''
+    typ: String
+  - name: code
+    description: Code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
+    typ: Code
+  since:
+    arma_3:
+      major: 2
+      minor: 6
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- "collect3DENHistory \n{\n\t_logic = create3DENEntity [\"Logic\", \"Logic\", position player];\n\tadd3DENConnection [\"Sync\", [_logic], player ];\n}; // Creates a logic and connects it to player in one history step."
+- "[\"Create Entity\", \"B_Soldier_F\", \"a3\\3den\\data\\cfg3den\\history\\create_ca.paa\"] collect3DENHistory \n{\n\tcreate3DENEntity [\"Object\",\"B_Soldier_F\", screenToWorld [0.5,0.5]];\n};"
+- "[nil, nil, \"a3\\3den\\data\\cfg3den\\history\\moveitems_ca.paa\"] collect3DENHistory \n{\n\tcreate3DENEntity [\"Object\",\"B_Soldier_F\", screenToWorld [0.5,0.5]];\n}; // Change only the icon\n"

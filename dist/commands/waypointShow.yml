@@ -1,0 +1,36 @@
+name: waypointShow
+description: A getter for [[showWaypoint]] command.
+groups:
+- Waypoints
+syntax:
+- call: !Unary
+  - waypoint
+  ret:
+  - String
+  - |-
+    Can return:
+    * "NEVER" - Never show
+    * "EASY" - Show only in cadet mode
+    * "ALWAYS" - Always show
+    * "ERROR" - When set to any different string
+  params:
+  - name: waypoint
+    description: In format [[Waypoint]]
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _wpShow = waypointShow [groupOne, 1];

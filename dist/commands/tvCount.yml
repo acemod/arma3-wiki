@@ -1,0 +1,40 @@
+name: tvCount
+description: Returns children count on given path. IDC means id of parent Tree View.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - Number
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+- call: !Binary
+  - - ctrl
+  - - path
+  ret:
+  - Number
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvCount [101, [0]];
+- _ctrl tvCount [1,0];

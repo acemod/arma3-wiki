@@ -1,0 +1,24 @@
+name: addHeadgear
+description: Creates a headgear item and tries to link it to headgear slot. If slot is occupied with another item, the item in the slot will be replaced.
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - - unit
+  - - item
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: item
+    typ: String
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player addHeadgear "H_HelmetB";

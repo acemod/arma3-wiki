@@ -1,0 +1,18 @@
+name: getMousePosition
+description: Returns mouse position in UI coordinates.
+groups:
+- GUI Control - Positioning
+syntax:
+- call: Nular
+  ret:
+  - ArrayUnknown
+  - position in format [x, y], where x and y are UI coordinates
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 54
+examples:
+- getMousePosition params ["_mouseX", "_mouseY"];

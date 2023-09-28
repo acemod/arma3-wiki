@@ -1,0 +1,55 @@
+name: lbDelete
+description: Removes the item with the given index from the [[CT_LISTBOX]], [[CT_COMBO]] or [[CT_TOOLBOX]].
+groups:
+- GUI Control - ListBox
+syntax:
+- call: !Unary
+  - idc
+  - index
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    description: Control IDC
+    typ: Number
+  - name: index
+    typ: Number
+- call: !Binary
+  - - control
+  - - index
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: index
+    typ: Number
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- lbDelete [101, 0];
+- _control lbDelete 0;

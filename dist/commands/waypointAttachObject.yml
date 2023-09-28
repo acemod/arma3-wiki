@@ -1,0 +1,62 @@
+name: waypointAttachObject
+description: |-
+  Attaches a static object via it is numeric ID to the given waypoint.
+
+  {{Feature|important|
+  * The [[#Syntax|main syntax]] doesn't work in {{arma3}} anymore.
+  * The [[#Alternative_Syntax|alternative syntax]] is (at least) available since {{arma2}}.
+  }}
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - - waypoint
+  - - objectID
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    typ: ArrayUnknown
+  - name: objectID
+    typ: Number
+- call: !Binary
+  - - waypoint
+  - - object
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    typ: ArrayUnknown
+  - name: object
+    description: static object
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '[_grp, 2] waypointAttachObject 1234;'
+- |-
+  private _wp = group player addWaypoint [[1907.5, 5746.5, 0.00144196], 0];
+  _wp waypointAttachObject ((waypointPosition _wp) nearestObject 66220);

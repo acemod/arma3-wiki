@@ -1,0 +1,25 @@
+name: setAirplaneThrottle
+description: Sets a wanted throttle position - works only on [[player]]'s vehicle.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - airplane
+  - - value
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: airplane
+    typ: Object
+  - name: value
+    description: wanted throttle
+    typ: Number
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- vehicle player setAirplaneThrottle 0.5;

@@ -1,0 +1,21 @@
+name: getPilotCameraPosition
+description: Returns model space coordinates of the object airplane or helicopter [[A3_Targeting_config_reference#class_pilotCamera|pilotCamera]].
+groups:
+- Pilot Camera
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - ArrayUnknown
+  - '[x,y,z] offset relative to the model centre, format [[Position#PositionRelative|PositionRelative]]. Returns [0,0,0] if object has no [[A3_Targeting_config_reference#class_pilotCamera|pilotCamera]].'
+  params:
+  - name: object
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- _pilotCamPos = getPilotCameraPosition vehicle player;

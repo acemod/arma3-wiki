@@ -1,0 +1,21 @@
+name: leaderboardInit
+description: Initialize the leaderboard structure for board with given name. Returns true if board is already initialized.
+groups:
+- Leaderboards
+syntax:
+- call: !Unary
+  - boardName
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: boardName
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- leaderboardInit "TT01";

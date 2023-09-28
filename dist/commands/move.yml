@@ -1,0 +1,46 @@
+name: move
+description: Let group move to given position. Active waypoints will be ignored when command is used.
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - - group
+  - - position
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: group
+    typ: !OneOf
+    - Object
+    - Group
+  - name: position
+    typ: !OneOf
+    - Position2d
+    - Position3dATL
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _groupOne move position player;

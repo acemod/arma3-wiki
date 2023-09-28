@@ -1,0 +1,38 @@
+name: surfaceIsWater
+description: Returns whether there is water at given position. In Arma 3, it also detects pond objects, but only if they are loaded in memory (normally only true if the objects are within the [[setObjectViewDistance|object view distance]])
+groups:
+- Positions
+syntax:
+- call: !Unary
+  - position
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: position
+    description: format [[Position#Introduction|Position2D]]  or [[Position#Introduction|Position3D]] in which case Z will be ignored
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- private _result = surfaceIsWater [1000, 3000];
+- _isWater = surfaceIsWater position player;

@@ -1,0 +1,36 @@
+name: image
+description: Creates a structured text containing the given image. Use [[setAttributes]] to set additional [[Structured_Text#Attributes | attributes]] on the image.
+groups:
+- Strings
+- GUI Control
+- Structured Text
+syntax:
+- call: !Unary
+  - filename
+  ret:
+  - StructuredText
+  - null
+  params:
+  - name: filename
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 'hint composeText ["Image: ", image "\a3\Data_f\Flags\flag_Altis_co.paa"];'
+- 'hint str (composeText ["Image: ", image "\a3\Data_f\Flags\flag_Altis_co.paa"] == parseText "Image: <img image=''\a3\Data_f\Flags\flag_Altis_co.paa''/>"); // true'

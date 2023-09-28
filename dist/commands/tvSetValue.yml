@@ -1,0 +1,46 @@
+name: tvSetValue
+description: Sets scalar data to item on given path. IDC means id of parent Tree View. If the given value is not integer, it will be converted to integer
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - val
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+  - name: val
+    typ: Number
+- call: !Binary
+  - - ctrl
+  - - path
+    - val
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: path
+    typ: !ArrayUnsized
+    - Number
+    - ''
+  - name: val
+    typ: Number
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvSetValue [101, [0], 555];
+- _ctrl tvSetValue [[0,0,0], 14];

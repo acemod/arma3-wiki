@@ -1,0 +1,24 @@
+name: vectorNormalized
+description: Returns normalized vector (unit vector, [[vectorMagnitude]] {{=}}{{=}} 1) of given vector. If given vector is 0 result is a 0 vector as well.
+groups:
+- Math - Vectors
+syntax:
+- call: !Unary
+  - vector
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: vector
+    description: vector 3D or 2D (since Arma 3 v2.00, z coordinate is defaulted to 0
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 26
+examples:
+- |-
+  vectorNormalized [12345,7890,38383]; // [0.300481,0.192045,0.934254]
+  vectorMagnitude [0.300481,0.192045,0.934254]; // 1

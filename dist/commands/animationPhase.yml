@@ -1,0 +1,49 @@
+name: animationPhase
+description: Returns the phase of the given animation on the given object. Animation can be scripted ([[animate]], [[animateSource]], [[animateDoor]]) or engine driven. Animation names for an object could be found out with [[animationNames]] command. When animation is rotation, like with "MainTurret" for example, the output is in radians, to convert to degrees use [[deg]] command.
+multiplayer_note: In {{ofp}}, on dedicated servers, ''animationPhase'' will always return 0, no matter what the actual phase is.
+groups:
+- Animations
+syntax:
+- call: !Binary
+  - - object
+  - - animationName
+  ret:
+  - Number
+  - Range 0 (start point of the animation) to 1 (end point of the animation)
+  params:
+  - name: object
+    typ: Object
+  - name: animationName
+    description: Name of the animation. This is the class-name of the animation defined in the addon's config.cpp
+    typ: String
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _building animate ["maindoor",1];
+  sleep 1;
+  _p = _building animationPhase "maindoor";// Returns 1, if the animation speed is two seconds
+- _flagPole animationPhase "flag";
+- _tank animationPhase "MainTurret";

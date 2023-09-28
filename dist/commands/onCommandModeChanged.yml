@@ -1,0 +1,37 @@
+name: onCommandModeChanged
+description: "Defines code performed when hc command mode changes either because of (Left Ctrl + Space) shortcut or [[hcShowBar]] scripting command. Groups hc mode must contain at least one group for this command to work (see [[High Command]]). Attached code receives ''_isHighCommand'' boolean. \n{{Feature|Informative|Since '''Arma 3''' ''v1.57'' a stackable version of this EH is available: [[Arma 3: Mission Event Handlers#CommandModeChanged|CommandModeChanged]]}}"
+groups:
+- Event Handlers
+- High Command
+syntax:
+- call: !Unary
+  - code
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: code
+    typ: !OneOf
+    - Code
+    - String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  //Examples in-use can be found in:
+
+  //ca\modules\HC\data\scripts\HC_GUI.sqf
+  //A3\modules_f\HC\data\scripts\HC_GUI.sqf

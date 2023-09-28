@@ -1,0 +1,37 @@
+name: directSay
+description: "Sends given audio message to the direct channel. Command operates just like xxxxRadio commands, but the sound is played over direct channel and is independent of [[fadeSound]]. The message is defined in CfgRadio in the [[Description.ext|description.ext]] file or config radio protocol or a kbAddTopic. The transmission will play only on the PC where command was executed. If you need the transmission to play on all computers, you have to execute it globally (see [[remoteExec]]). \n{{Feature|informative|When transmitting unit gets killed, transmission will be interrupted. However when receiving unit gets killed, the transmission continues to play.}}"
+groups:
+- Radio and Chat
+- Sounds
+syntax:
+- call: !Binary
+  - - unit
+  - - radioName
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    description: unit to transmit
+    typ: Object
+  - name: radioName
+    description: class name from CfgRadio
+    typ: String
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player directSay configName selectRandom ("true" configClasses (configFile >> "CfgRadio"));
+- "An equivalent of a '''''directChat''''' command:\n<sqf>\n[player, \"Hello there\", 30] call {\n\tparams [\"_unit\", \"_text\", \"_distance\"];\n\t[_unit, _text] remoteExec [\"globalChat\", call BIS_fnc_listPlayers select { _x distance _unit < _distance }];\n};\n</sqf>\n\nA [[:Category:Functions Library|function]] can be made for [[localize|localisation]] purpose:\n<sqf>\n/* TAG_fnc_globalChat */\nparams [\n\t[\"_unit\", objNull, [objNull]],\n\t[\"_text\", \"\", [\"\"]]\n];\n\n_unit globalChat (_text call BIS_fnc_localize);\n</sqf>\n<sqf>\n// usage\n[player, \"STR_HelloThere\"] remoteExec [\"TAG_fnc_globalChat\", call BIS_fnc_listPlayers select { _x distance _unit < 30 }];\n"

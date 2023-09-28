@@ -1,0 +1,41 @@
+name: setTrafficGap
+description: Set the average gap between ambient cars in a rectangle (in meters). {{Feature|arma3|This command does nothing in {{arma3}}.}}
+groups:
+- Environment
+syntax:
+- call: !Unary
+  - gap
+  - xMin
+  - xMax
+  - zMin
+  - zMax
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: gap
+    description: average gap between ambient cars (in meters
+    typ: Number
+  - name: xMin
+    description: western border of the affected rectangle
+    typ: Number
+  - name: xMax
+    description: eastern border of the affected rectangle
+    typ: Number
+  - name: zMin
+    description: southern border of the affected rectangle
+    typ: Number
+  - name: zMax
+    description: northern border of the affected rectangle
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 1
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setTrafficGap [50, 31000, 32500, 28000, 32000];

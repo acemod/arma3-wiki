@@ -1,0 +1,41 @@
+name: createDiarySubject
+description: Creates a new subject in the [[Diary]].
+groups:
+- Briefing
+syntax:
+- call: !Binary
+  - - player
+  - - subject
+    - displayName
+    - picture
+  ret:
+  - Number
+  - Index of the entry that was added
+  params:
+  - name: player
+    typ: Object
+  - name: subject
+    typ: String
+  - name: displayName
+    description: The visible name
+    typ: String
+  - name: picture
+    description: (Optional, default {{hl|""}}) Icon to display next to the subject. Can be set later with [[setDiarySubjectPicture]]. Similar to [[lbSetPictureRight]].
+    typ: String
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _index = player createDiarySubject ["myPage","My page"];

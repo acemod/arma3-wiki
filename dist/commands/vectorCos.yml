@@ -1,0 +1,26 @@
+name: vectorCos
+description: Cosine of angle between two 3D vectors.
+groups:
+- Math - Vectors
+syntax:
+- call: !Binary
+  - - vector1
+  - - vector2
+  ret:
+  - Number
+  - null
+  params:
+  - name: vector1
+    description: vector 3D or 2D (since {{arma3}} v2.00, the z coordinate is defaulted to 0
+    typ: ArrayUnknown
+  - name: vector2
+    description: vector 3D or 2D (since {{arma3}} v2.00, the z coordinate is defaulted to 0
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 22
+examples:
+- _cos = getPos player vectorCos [0,0,2];

@@ -1,0 +1,30 @@
+name: modelToWorldVisual
+description: |-
+  Converts position from object model space to world space in render time scope. For ASL version see [[modelToWorldVisualWorld]].
+  {{Feature|important|For [[setObjectScale|scaled objects]], the relative position will first be [[vectorMultiply|multiplied]] by the object scale.<br>
+  For example, if the object scale is 2, <sqf inline>_obj modelToWorldVisual [0,1,0]</sqf> will be offset '''2 meters''' from the model center (<sqf inline>[0,0,0]</sqf>).
+  }}
+groups:
+- Object Manipulation
+- Render Time Scope
+syntax:
+- call: !Binary
+  - - object
+  - - modelPos
+  ret:
+  - ArrayUnknown
+  - world position in format [[Position#PositionAGL|PositionAGL]]
+  params:
+  - name: object
+    typ: Object
+  - name: modelPos
+    description: in format [[Position#PositionRelative|PositionRelative]] ([x,y,z] offset relative to the model centre
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- _aboveAndBehindPlayer = player modelToWorldVisual [0,-1,3];

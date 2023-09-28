@@ -1,0 +1,22 @@
+name: triggerTimeoutCurrent
+description: "Returns current timeout of the given trigger or -1 if countdown is not in progress. \n\n{{Feature | important | The trigger could be [[Multiplayer Scripting#Locality|local]] or remote but the result returned by this command will be for the current trigger timeout local to the client that executed the command. See [[createTrigger]] for more info.}}"
+groups:
+- Triggers
+syntax:
+- call: !Unary
+  - trigger
+  ret:
+  - Number
+  - time remaining before trigger activation.
+  params:
+  - name: trigger
+    description: trigger object
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 8
+examples:
+- private _remaining = triggerTimeoutCurrent _trigger;

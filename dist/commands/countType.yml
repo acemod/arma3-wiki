@@ -1,0 +1,45 @@
+name: countType
+description: Count how many objects in the array are of given type. This command also works with parent classes like "Air", "Tank", and "Car". For a full class reference see [[CfgVehicles|Classes]].
+groups:
+- Object Detection
+syntax:
+- call: !Binary
+  - - type
+  - - objects
+  ret:
+  - Number
+  - null
+  params:
+  - name: type
+    description: class type
+    typ: String
+  - name: objects
+    description: array of [[Object]]s
+    typ: ArrayUnknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _count = "Tank" countType list _triggerOne;
+- _count = "B_medic_F" countType units player;

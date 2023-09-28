@@ -1,0 +1,36 @@
+name: moveTo
+description: Low level command to person to move to given position.
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - - unit
+  - - position
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: position
+    typ: Position3dATL
+argument_loc: Local
+effect_loc: Global
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _myAgent moveTo getPosATL player;

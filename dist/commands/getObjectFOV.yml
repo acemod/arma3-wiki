@@ -1,0 +1,30 @@
+name: getObjectFOV
+description: |-
+  Returns Field of View of the given object in [[rad]]ians. Static objects return default value, which is 1.
+  FOV of [[objNull]] is 0.
+  Object FOV is indirectly connected with optics magnification or player view zoom, the narrower the angle the greater the zoom.
+  {{Feature|informative|The FOV returned by this command doesn't change if user has custom FOV set in profile. Use it in combination with [[getResolution]] to adjust for the difference if required.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - Number
+  - FOV in [[rad]]ians
+  params:
+  - name: object
+    description: for units it queries unit weapon optics/zoom, for vehicles - vehicle optics/zoom
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 96
+examples:
+- private _objFOV = getObjectFOV player;
+- private _objFOVinDegrees = deg getObjectFOV cursorObject;
+- |-
+  Perceived distance to an object:
+  <sqf>private _vdist = (player distance _obj) * (getObjectFOV player / 0.75);

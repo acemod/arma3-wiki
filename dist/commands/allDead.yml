@@ -1,0 +1,25 @@
+name: allDead
+description: Return a list of all dead units including agents and destroyed vehicles. Dead units may be in vehicles.
+groups:
+- Object Detection
+syntax:
+- call: Nular
+  ret:
+  - ArrayUnknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 57
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '{ deleteVehicle _x } forEach allDead;'
+- "allAlive:\n<sqf>_all = allUnits + vehicles;\n{\n\t_all pushBack agent _x;\n} forEach (agents - [teamMemberNull]);\nallAlive = _all - allDead;"

@@ -1,0 +1,36 @@
+name: decayGraphValues
+description: Multiplies graph values by the given coefficient. The corresponding lower bound value is used instead if the product is smaller than the bound.
+groups:
+- Math
+syntax:
+- call: !Unary
+  - lowerBoundValues
+  - graphValues
+  - coef
+  ret:
+  - !ArrayUnsized
+    - Number
+    - ''
+  - null
+  params:
+  - name: lowerBoundValues
+    description: lower bound for the new graph
+    typ: !ArrayUnsized
+    - Number
+    - ''
+  - name: graphValues
+    description: graph values
+    typ: !ArrayUnsized
+    - Number
+    - ''
+  - name: coef
+    description: the multiplication coefficient
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 92
+examples:
+- decayGraphValues [[1,2,3,4,5], [1,4,9,16,25], 0.3]; // returns [1,2,3,4.8,7.5]

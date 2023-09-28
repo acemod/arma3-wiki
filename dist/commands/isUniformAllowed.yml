@@ -1,0 +1,24 @@
+name: isUniformAllowed
+description: Check whether given uniform can be dressed by target soldier.
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - - unit
+  - - type
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: type
+    typ: String
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 22
+examples:
+- _canUse = _unit isUniformAllowed "U_B_CombatUniform_mcam";

@@ -1,0 +1,27 @@
+name: eyePos
+description: Returns the object's eyes / main turret position.
+groups:
+- Positions
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - ArrayUnknown
+  - format [[Position#PositionASL|PositionASL]]
+  params:
+  - name: object
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 62
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _eyesPos = eyePos player;

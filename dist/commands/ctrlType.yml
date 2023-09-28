@@ -1,0 +1,33 @@
+name: ctrlType
+description: 'Returns number representing the type of control, which is also defined by ''''type'''' property in config. For more information see [[Arma: GUI Configuration]]'
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - control
+  ret:
+  - Number
+  - null
+  params:
+  - name: control
+    typ: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _type = ctrlType _rscEdit; // 2

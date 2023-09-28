@@ -1,0 +1,25 @@
+name: getArtilleryAmmo
+description: Get list of all available magazines of artillery units on the list. Command returns only unique magazine types and doesn't contain any information about which unit has which magazine.
+groups:
+- Artillery
+syntax:
+- call: !Unary
+  - artilleryList
+  ret:
+  - !ArrayUnsized
+    - String
+    - ''
+  - null
+  params:
+  - name: artilleryList
+    typ: !ArrayUnsized
+    - Object
+    - ''
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (\"8Rnd_82mm_Mo_Flare_white\" in getArtilleryAmmo [\n\t_mortar1,\n\t_mortar2,\n\t_mortar3, \n\t_mortar4\n]) then\n{\n\thint \"Sir, we have white flares, Sir!\";\n};"

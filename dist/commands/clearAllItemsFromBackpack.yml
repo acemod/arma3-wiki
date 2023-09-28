@@ -1,0 +1,21 @@
+name: clearAllItemsFromBackpack
+description: Removes all items from backpack of a unit.
+groups:
+- Containers
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- clearAllItemsFromBackpack player;

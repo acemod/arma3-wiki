@@ -1,0 +1,22 @@
+name: isInRemainsCollector
+description: Checks if unit or vehicle is queued for disposal after death.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - remain
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: remain
+    description: vehicle or unit
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- if (isInRemainsCollector unit1) then {hint "unit1 is queued for disposal"};

@@ -1,0 +1,46 @@
+name: moveInDriver
+description: |-
+  Moves soldier into vehicle driver position (immediate, no animation).
+  {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
+  {{Feature|Important|If the unit is already in a vehicle, nothing will happen. You should use [[moveOut]] to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.}}
+multiplayer_note: '{{Feature|important|''''unit'''' must be [[Multiplayer Scripting#Locality|local]], while the vehicle''s locality does not matter.}}'
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - - unit
+  - - vehicle
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: vehicle
+    typ: Object
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldierOne moveInDriver _tankOne;

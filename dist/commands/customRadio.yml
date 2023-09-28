@@ -1,0 +1,34 @@
+name: customRadio
+description: |-
+  Sends the message to the custom radio channel. The message is defined in the [[Description.ext|description.ext]] file or radio protocol.
+
+  {{Feature | Important | The unit must have an [[assignItem|assigned]] radio item (such as '''''"ItemRadio"''''') to see or transmit the messages. A radio item must have the property <syntaxhighlight lang="cpp" inline>simulation = "ItemRadio";</syntaxhighlight> in its [[CfgWeapons_Config_Reference#simulation.3D.22Weapon.22|CfgWeapons config]].}}
+  {{Feature|informative|When transmitting unit gets killed, transmission will be interrupted. However when receiving unit gets killed, the transmission continues to play.}}
+groups:
+- Radio and Chat
+- Sounds
+- Custom Radio and Chat
+syntax:
+- call: !Binary
+  - - unit
+  - - customChannelID
+    - message
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: customChannelID
+    description: '[[Channel IDs|custom channel ID]] returned by [[radioChannelCreate]] command'
+    typ: Number
+  - name: message
+    typ: String
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldierOne customRadio [1, "WordEnemy"];

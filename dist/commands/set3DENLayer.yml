@@ -1,0 +1,28 @@
+name: set3DENLayer
+description: Set layer for [[Eden Entity]].
+groups:
+- Eden Editor
+syntax:
+- call: !Binary
+  - - entity
+  - - layerID
+  ret:
+  - Boolean
+  - '[[true]] if the entity was moved succesfully'
+  params:
+  - name: entity
+    typ: EdenEntity
+  - name: layerID
+    description: layer ID as returned by [[add3DENLayer]] command
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- |-
+  _myLayer = -1 add3DENLayer "CTRG";
+  player set3DENLayer _myLayer;
+- player set3DENLayer -1; // Move to root

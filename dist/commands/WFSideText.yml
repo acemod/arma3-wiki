@@ -1,0 +1,63 @@
+name: WFSideText
+description: |-
+  Returns the [[localize|unlocalized]] text value of a side or an object's/group's side.
+
+  {{{!}} class="wikitable"
+  ! Side
+  {{!}} [[east]]&nbsp;/&nbsp;[[opfor]]
+  {{!}} [[west]]&nbsp;/&nbsp;[[blufor]]
+  {{!}} [[resistance]]&nbsp;/&nbsp;[[independent]]
+  {{!}} [[civilian]]
+  {{!}} [[sideUnknown]]
+  {{!}} [[sideEnemy]]
+  {{!}} [[sideFriendly]]
+  {{!}} [[sideLogic]]
+  {{!}} [[sideEmpty]]
+  {{!}} [[sideAmbientLife]]
+  {{!}}- style="text-align: center"
+  ! Result
+  {{!}} "East"
+  {{!}} "West"
+  {{!}} "Resistance"
+  {{!}} "Civilian"
+  {{!}} colspan="6" {{!}} "Unknown"
+  {{!}}}
+
+  {{Feature|Informative|''WF'' stands for '''Warfare''', an [[Warfare 1 - Editing Guide|{{arma1}}]]/[[Warfare 2 Manual|{{arma2}}]] official game mode.}}
+groups:
+- Sides
+- Localization
+syntax:
+- call: !Unary
+  - value
+  ret:
+  - String
+  - unlocalized side text value
+  params:
+  - name: value
+    typ: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
+    - - Side
+      - null
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 4
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- WFSideText player;
+- WFSideText group player;
+- WFSideText west;

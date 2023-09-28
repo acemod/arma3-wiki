@@ -1,0 +1,65 @@
+name: ppEffectCommit
+description: Commit [[Post Process Effects|post process effect]] in given time.
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - - effect
+  - - commit
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: effect
+    description: name of the effect
+    typ: String
+  - name: commit
+    description: duration
+    typ: Number
+- call: !Binary
+  - - handle
+  - - commit
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: handle
+    description: handle of the effect
+    typ: Number
+  - name: commit
+    description: duration
+    typ: Number
+- call: !Binary
+  - - handles
+  - - commit
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: handles
+    description: list of handles
+    typ: !ArrayUnsized
+    - Number
+    - ''
+  - name: commit
+    description: duration
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"colorCorrection" ppEffectCommit 3;'
+- _hndl ppEffectCommit 3;
+- '[_hndl1, _hndl2] ppEffectCommit 3;'

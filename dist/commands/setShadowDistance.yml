@@ -1,0 +1,22 @@
+name: setShadowDistance
+description: Sets the shadows rendering distance.
+groups:
+- System
+- Environment
+syntax:
+- call: !Unary
+  - value
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: value
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setShadowDistance 200;

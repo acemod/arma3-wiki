@@ -1,0 +1,24 @@
+name: getWingsPositionRTD
+description: Returns position of stabilizers.{{Feature|afm}}
+groups:
+- RTD
+syntax:
+- call: !Unary
+  - RTD_helicopter
+  ret:
+  - Number
+  - null
+  params:
+  - name: RTD_helicopter
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- _position = getWingsPositionRTD myHelicopter;

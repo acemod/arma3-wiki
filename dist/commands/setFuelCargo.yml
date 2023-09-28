@@ -1,0 +1,43 @@
+name: setFuelCargo
+description: Sets fuel amount in cargo space of refuel vehicles. Note that the carrying capacity of each side's refuel trucks differ.
+groups:
+- Vehicle Inventory
+syntax:
+- call: !Binary
+  - - vehicle
+  - - amount
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    typ: Object
+  - name: amount
+    description: From 0 (empty) to 1 (full
+    typ: Number
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _refuelTruck setFuelCargo 0;

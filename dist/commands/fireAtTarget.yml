@@ -1,0 +1,39 @@
+name: fireAtTarget
+description: Remotely forces a unit to fire the given weapon. See also [[BIS_fnc_fire]].
+groups:
+- Unit Control
+- Weapons
+syntax:
+- call: !Binary
+  - - sourceVehicle
+  - - targetVehicle
+    - weaponMuzzleName
+  ret:
+  - Boolean
+  - '[[true]] if fired, [[false]] if not'
+  params:
+  - name: sourceVehicle
+    description: source vehicle to fire from
+    typ: Object
+  - name: targetVehicle
+    description: target vehicle to fire at
+    typ: Object
+  - name: weaponMuzzleName
+    description: (Optional) weapon muzzle classname, optional parameter
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _handle = this fireAtTarget [groundtarget1, "HellfireLauncher"];
+- _handle = Igla_AA_pod_TK_EP1 fireAtTarget [_helicopter, currentWeapon Igla_AA_pod_TK_EP1];
+- _handle = Igla_AA_pod_TK_EP1 fireAtTarget [helicopter];

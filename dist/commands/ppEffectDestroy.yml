@@ -1,0 +1,43 @@
+name: ppEffectDestroy
+description: Destroy [[Post Process Effects]] given by handle or array of handles.
+groups:
+- Camera Control
+syntax:
+- call: !Unary
+  - effect
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: effect
+    description: effect handle
+    typ: Number
+- call: !Unary
+  - effects
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: effects
+    description: array of effect handles
+    typ: !ArrayUnsized
+    - Number
+    - ''
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- ppEffectDestroy _hndl;
+- ppEffectDestroy [_hndl0, _hndl1, _hndl2];

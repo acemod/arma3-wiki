@@ -1,0 +1,37 @@
+name: selectDiarySubject
+description: Selects a subject page in the [[Diary|diary]]. The subject page is selected but the command does not open the map by default, which could be opened with [[openMap]] if necessary.
+groups:
+- Briefing
+syntax:
+- call: !Binary
+  - - player
+  - - subject
+  ret:
+  - Boolean
+  - '[[true]] if subject was successfully selected'
+  params:
+  - name: player
+    description: Player
+    typ: Object
+  - name: subject
+    description: "Subject name, for example \"Diary\" (see also [[Diary]]). \n{{Feature|informative|\nIn order to open a specific record inside a subject one can append {{hl|:Record#}} to the subject name. \n<sqf>\nplayer selectDiarySubject \"Diary:Record0\"; // selects the first record in the diary subject (from bottom to top)\nplayer selectDiarySubject \"Diary:Record1\"; // selects the second record\n</sqf>\n}}"
+    typ: String
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  openMap true;
+  player selectDiarySubject "Diary";

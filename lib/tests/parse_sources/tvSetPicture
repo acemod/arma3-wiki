@@ -1,0 +1,48 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 0.74
+
+|gr1= GUI Control - Tree View
+
+|descr= Sets picture to item selected by path. IDC means id of parent Tree View. Name is picture name. The picture is searched in the mission directory.
+
+|s1= [[tvSetPicture]] [idc, path, name]
+
+|p1= idc: [[Number]]
+
+|p2= path: [[Array]] of [[Number]]s
+
+|p3= name: [[String]]
+
+|r1= [[Nothing]]
+
+|s2= control [[tvSetPicture]] [path, name]
+
+|p21= control: [[Control]]
+
+|p22= path: [[Array]] of [[Number]]s
+
+|p23= name: [[String]]
+
+|r2= [[Nothing]]
+
+|x1= <sqf>tvSetPicture [101, [0], "picture"];</sqf>
+
+|x2= <sqf>_ctrl tvSetPicture [[0,0,0], getText (configFile >> "CfgWeapons" >> "optic_NVS" >> "picture")];</sqf>
+
+|seealso= [[tvPicture]] [[tvSetPictureColor]] [[tvSetPictureRight]] [[tvSetPictureRightColor]]
+}}
+
+<dl class="command_description">
+
+<dt></dt>
+<dd class="notedate">Posted on 2021-04-05 - 12:22 (UTC)</dd>
+<dt class="note">[[User:R3vo|R3vo]]</dt>
+<dd class="note">{{Feature|Informative|Adding pictures to lists is very slow. In order to prevent the filling of the list to be slowed down, add the pictures in the '''scheduled''' environment. One drawback of that method is, that sorting the entries is not easily possible.
+<sqf>private _path = _ctrlTV tvAdd [[], "Some Entry"];<br>[_ctrlTV, _path] spawn {
+	(_this select 0) tvSetPictureRight [[_this select 1], "someImage.paa"];
+};</sqf>
+}}</dd>
+
+</dl>

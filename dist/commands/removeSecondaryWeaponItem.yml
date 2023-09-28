@@ -1,0 +1,24 @@
+name: removeSecondaryWeaponItem
+description: Removes given weapon item, including magazine, from the [[secondaryWeapon]].
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - - unit
+  - - item
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: item
+    typ: String
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 38
+examples:
+- player removeSecondaryWeaponItem (secondaryWeaponItems player select 0);

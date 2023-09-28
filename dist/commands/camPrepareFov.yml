@@ -1,0 +1,36 @@
+name: camPrepareFov
+description: Prepares the camera field of view (zoom). The default zoom level is 0.75, 0.01 is the nearest and 2 the furthest zoom value. The angle of the field of view is ''atan(FOV)*2'' radians when in 4:3 aspect ratio. Needs the call of [[camCommitPrepared]] to be conducted.
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - - camera
+  - - fieldOfView
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: camera
+    typ: Object
+  - name: fieldOfView
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _camera camPrepareFov 0.1;

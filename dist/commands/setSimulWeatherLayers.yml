@@ -1,0 +1,23 @@
+name: setSimulWeatherLayers
+description: Sets number of simul weather layers, affects quality of simul weather clouds.
+problem_notes:
+- The effect of this command seems to be persistent across the game instance, e.g. restarting a mission will not reset it.
+groups:
+- Environment
+syntax:
+- call: !Unary
+  - layers
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: layers
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- setSimulWeatherLayers 0; // Very flat clouds

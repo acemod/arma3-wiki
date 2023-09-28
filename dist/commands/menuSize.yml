@@ -1,0 +1,35 @@
+name: menuSize
+description: Returns how many sub entries is in item on given path.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - Number
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    typ: ArrayUnknown
+- call: !Binary
+  - - control
+  - - path
+  ret:
+  - Number
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- findDisplay 313 displayCtrl 120 menuSize [];

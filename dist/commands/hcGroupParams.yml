@@ -1,0 +1,40 @@
+name: hcGroupParams
+description: |-
+  Returns parameters describing group in [[High Command|high command]] bar. Return value is array in format [groupName, teamName] or [] if error. Possible values for team name:
+  * {{hl|"teammain"}} (default)
+  * {{hl|"teamred"}}
+  * {{hl|"teamgreen"}}
+  * {{hl|"teamblue"}}
+  * {{hl|"teamyellow"}}
+groups:
+- High Command
+syntax:
+- call: !Binary
+  - - unit
+  - - group
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: unit
+    description: commander
+    typ: Object
+  - name: group
+    typ: Group
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player hcGroupParams someGroup;

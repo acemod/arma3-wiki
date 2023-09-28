@@ -1,0 +1,46 @@
+name: setCamShakeDefParams
+description: Sets camera shake default parameters.
+groups:
+- Camera Control
+syntax:
+- call: !Unary
+  - power
+  - duration
+  - frequency
+  - minSpeed
+  - minMass
+  - caliberCoefHit
+  - vehicleCoef
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: power
+    typ: Number
+  - name: duration
+    typ: Number
+  - name: frequency
+    typ: Number
+  - name: minSpeed
+    typ: Number
+  - name: minMass
+    typ: Number
+  - name: caliberCoefHit
+    typ: Number
+  - name: vehicleCoef
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setCamShakeDefParams [1, 2, 3, 4, 5, .5, .5];
+- setCamShakeDefParams [100, 10, 10, 4, 5, 1, 1];

@@ -1,0 +1,42 @@
+name: ln
+description: Returns the natural logarithm of x.  [[File:A3 lnx figure.jpg|thumb|400|ln(x) and ln(e)]]
+groups:
+- Math
+syntax:
+- call: !Unary
+  - x
+  ret:
+  - Number
+  - null
+  params:
+  - name: x
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _nlog = ln 10;
+- |-
+  _euler = exp 1;
+  _euler = ln _euler; // Returns 1

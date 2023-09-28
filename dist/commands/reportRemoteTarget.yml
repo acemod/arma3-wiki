@@ -1,0 +1,27 @@
+name: reportRemoteTarget
+description: Shares the target vehicle via datalink to the [[Side]] center for a given time.
+groups:
+- Sensors
+syntax:
+- call: !Binary
+  - - side
+  - - target
+    - time
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: side
+    typ: Side
+  - name: target
+    typ: Object
+  - name: time
+    typ: Number
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- blufor reportRemoteTarget [vehicle player, 60];

@@ -1,0 +1,30 @@
+name: hideSelection
+description: Hides or shows the [[createSimpleObject | simple object]]'s provided selection.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - object
+  - - selection
+    - hidden
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    description: simple object
+    typ: Object
+  - name: selection
+    description: selection name
+    typ: String
+  - name: hidden
+    description: '[[true]] to hide, [[false]] to show'
+    typ: Boolean
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- _simpleObject hideSelection ["some_selection", true];

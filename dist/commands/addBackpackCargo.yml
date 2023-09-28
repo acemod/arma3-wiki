@@ -1,0 +1,42 @@
+name: addBackpackCargo
+description: |-
+  Add backpack(s) to the cargo space of vehicle. Classname list of available backpacks is [[Arma 2: Operation Arrowhead: Backpacks|here]].
+  For a list of possible backpacks, see:
+  * {{GVI|arma2|1.50}} [[Arma 2: Operation Arrowhead: Backpacks]]
+  * {{GVI|arma3|1.00}} [[Arma 3: CfgVehicles Equipment]] (starting with {{hl|B_}})
+  {{Feature|arma3|In {{arma3}}, arguments for this command are local {{Icon|localArgument|32}}. For the global variant, see [[addBackpackCargoGlobal]].}}
+groups:
+- Containers
+syntax:
+- call: !Binary
+  - - vehicle
+  - - backpackClassName
+    - count
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    description: vehicle to add the backpack to
+    typ: Object
+  - name: backpackClassName
+    description: backpack classname
+    typ: String
+  - name: count
+    description: number of backpacks to add. Since Arma 3 v2.14, negative count will remove backpacks.
+    typ: Number
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 55
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- this addBackpackCargo ["TK_RPG_Backpack_EP1", 2];
+- _apc addBackpackCargo ["US_Patrol_Pack_EP1", 4];

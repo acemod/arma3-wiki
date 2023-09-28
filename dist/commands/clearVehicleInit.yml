@@ -1,0 +1,36 @@
+name: clearVehicleInit
+description: |-
+  Clears the object's init.
+
+  {{Feature|arma3|For security reasons, the command was disabled in {{arma3}}.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - objectName
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: objectName
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 8
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+examples:
+- |-
+  _tank1 setVehicleInit "hint 'hi all'";
+  processInitCommands;
+  clearVehicleInit _tank1;

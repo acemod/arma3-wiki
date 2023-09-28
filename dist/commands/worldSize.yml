@@ -1,0 +1,25 @@
+name: worldSize
+description: Returns the engine calculated size (terrain side length) of the current world ([[BIS_fnc_mapSize]] may return the same value, but is just a simple look up in [[configFile | config]]).
+groups:
+- Mission Information
+syntax:
+- call: Nular
+  ret:
+  - Number
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 48
+examples:
+- private _size = worldSize;
+- |-
+  // A round marker that should cover the whole map, placed in the center of the map, should have the following radius (a, b)
+  private _radius = sqrt 2 / 2 * worldSize;
+- |-
+  private _axis = worldSize / 2;
+  private _center = [_axis, _axis , 0];
+  private _radius = sqrt 2 * _axis;

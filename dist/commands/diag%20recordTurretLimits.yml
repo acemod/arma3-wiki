@@ -1,0 +1,21 @@
+name: diag recordTurretLimits
+description: Start recording tool for creating turret aiming limits.
+groups:
+- Diagnostic
+syntax:
+- call: !Unary
+  - section
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: section
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- diag_recordTurretLimits true;

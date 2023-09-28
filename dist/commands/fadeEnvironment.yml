@@ -1,0 +1,36 @@
+name: fadeEnvironment
+description: |-
+  Changes the master environment volume smoothly within the given time and is different from [[enableEnvironment]] global mute option. The default volume is 1.<br>
+  Influenced sounds, among others, are:
+  {{Columns|2|
+  * forest sounds (birds, crickets, ...)
+  * waves
+  * wind
+  * rain
+  * object sounds (air conditioners, ...)
+  * {{GVI|arma3|2.06|size= 0.75}} thunder
+  }}
+groups:
+- Sounds
+syntax:
+- call: !Binary
+  - - time
+  - - volume
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: time
+    description: fade interval in seconds
+    typ: Number
+  - name: volume
+    description: speech volume in range 0..1
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- 5 fadeEnvironment 0.1;

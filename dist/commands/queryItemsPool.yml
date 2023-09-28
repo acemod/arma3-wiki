@@ -1,0 +1,21 @@
+name: queryItemsPool
+description: Returns the number of items of type in the weapon pool (used in campaigns to transfer weapons to the next mission).
+groups:
+- Weapon Pool
+syntax:
+- call: !Unary
+  - name
+  ret:
+  - Number
+  - null
+  params:
+  - name: name
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 12
+examples:
+- private _amountOfFAKgiven = queryItemsPool "FirstAidKit";

@@ -1,0 +1,69 @@
+name: playSound3D
+description: Plays positional sound with given ''filename'' on every computer on network. Since Arma 2.10 the leading slash in file path will be ignored.
+groups:
+- Sounds
+syntax:
+- call: !Unary
+  - filename
+  - soundSource
+  - isInside
+  - soundPosition
+  - volume
+  - soundPitch
+  - distance
+  - offset
+  - local
+  ret:
+  - Number
+  - id of the sound (0..65535) (was [[Nothing]] before {{GVI|arma3|2.12|size= 0.75}})
+  params:
+  - name: filename
+    description: |-
+      see [[Arma 3: Sound Files]] for available file names or {{Link|#Example 3}} to use mission files
+      {{Feature|important|Before {{arma3}} v2.10, ''filename'' must '''not''' start with a leading slash {{hl|'''\'''a3\...}}.}}
+    typ: String
+  - name: soundSource
+    description: the object emitting the sound. If ''soundPosition'' below is specified this parameter is ignored
+    typ: Object
+  - name: isInside
+    description: (Optional, default [[false]]) - [[true]] to simulate a sound played inside a building or similar
+    typ: Boolean
+  - name: soundPosition
+    description: |-
+      (Optional, default [0,0,0]) position for sound emitter, overrides ''soundSource''
+      {{Feature|informative|If a following parameter has to be used, simply use <sqf inline>getPosASL _soundSource</sqf> for ''soundPosition'' instead of <sqf inline>_soundSource</sqf> for ''soundSource''.}}
+    typ: Position3dASL
+  - name: volume
+    description: (Optional, default 1) Sound volume. A value greater than 5 gets capped
+    typ: Number
+  - name: soundPitch
+    description: "(Optional, default 1)\n* 1.0 &rarr; normal \n* 0.5 &rarr; Darth Vader\n* 2.0 &rarr; Chipmunks"
+    typ: Number
+  - name: distance
+    description: (Optional, default 0) How far the sound is audible, in meters. {{hl|0}} means no maximum distance
+    typ: Number
+  - name: offset
+    description: (Optional, default 0) Offset in seconds. Same as with [[playMusic]]
+    typ: Number
+    since:
+      arma_3:
+        major: 2
+        minor: 0
+  - name: local
+    description: (Optional, default [[false]]) If [[true]] the sound will not be broadcast over network
+    typ: Boolean
+    since:
+      arma_3:
+        major: 2
+        minor: 6
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- playSound3D ["A3\Sounds_F\sfx\blip1.wss", player];
+- playSound3D ["A3\Sounds_F\sfx\blip1.wss", player, false, getPosASL player, 1, 1, 0];
+- playSound3D [getMissionPath "mySound.ogg", player]; // to play a mission directory sound
+- "Sound file extension must be specified even if a config entry has none:\n<sqf>\nplaySound3D [\"A3\\Sounds_F\\sfx\\alarm_independent\", player];\t\t// no sound\nplaySound3D [\"A3\\Sounds_F\\sfx\\alarm_independent.wss\", player];\t// alarm\n"

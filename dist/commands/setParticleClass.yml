@@ -1,0 +1,31 @@
+name: setParticleClass
+description: |-
+  Sets particle source parameters using existing particle config from {{hl|CfgCloudlets}} class. Use [[setParticleParams]] subsequently if you need to overwrite some values.
+  {{Feature | important | If {{hl|CfgCloudlets}} class contains [[Simple_Expression | simple expressions]], they will not be evaluated by this command, which might make the whole class unusable in script.}}
+groups:
+- Particles
+syntax:
+- call: !Binary
+  - - source
+  - - className
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: source
+    description: particle source
+    typ: Object
+  - name: className
+    description: CfgCloudlets class
+    typ: String
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _source01 = "#particlesource" createVehicleLocal _pos01;
+  _source01 setParticleClass "ObjectDestructionFire1Smallx";
+  _source01 attachTo [_object,[0,0,0]];

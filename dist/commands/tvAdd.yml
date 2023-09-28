@@ -1,0 +1,44 @@
+name: tvAdd
+description: Adds an item with given text to Tree View control. The position on Tree View where to add the item and the actual path to this item once added are different. If item is added to existing item, then parent item path is used. If no parent exists, empty array [] is used. See [[Tree View Path]] for more information.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - pathParent
+  - text
+  ret:
+  - Number
+  - Index of the added item relative to the branch it was added to
+  params:
+  - name: idc
+    typ: Number
+  - name: pathParent
+    description: '[[Tree View Path]] of parent item or [] if no parent exists'
+    typ: ArrayUnknown
+  - name: text
+    typ: String
+- call: !Binary
+  - - control
+  - - pathParent
+    - text
+  ret:
+  - Number
+  - Index of the added item relative to the branch it was added to
+  params:
+  - name: control
+    typ: Control
+  - name: pathParent
+    description: '[[Tree View Path]] of parent item or [] if no parent exists'
+    typ: ArrayUnknown
+  - name: text
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- _index = _ctrl tvAdd [[], "Parent Item"];
+- _index = tvAdd [101, [0], "First item"];

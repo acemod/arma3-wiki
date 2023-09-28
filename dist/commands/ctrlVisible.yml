@@ -1,0 +1,40 @@
+name: ctrlVisible
+description: 'Returns if a control of the currently active user dialog is shown or not. Read [[Arma: GUI Configuration]] for more information about user dialogs and controls.'
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - idc
+  ret:
+  - Boolean
+  - '[[true]] if the control is shown, [[false]] if not'
+  params:
+  - name: idc
+    description: Control IDC
+    typ: Number
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _bool = ctrlVisible 100;

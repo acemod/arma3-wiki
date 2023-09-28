@@ -1,0 +1,21 @@
+name: ctrlTextHeight
+description: "Returns the control text height. Supported control [[ctrlType|types]] are:\n* [[CT_STATIC]]\n* [[CT_STRUCTURED_TEXT]]\n* [[CT_EDIT]] \nSince Arma 3 v2.05.147765 control types added:\n* [[CT_XKEYDESC]]\n* [[CT_XBUTTON]]\n* [[CT_SHORTCUTBUTTON]]\n* [[CT_BUTTON]]\n* [[CT_ACTIVETEXT]]"
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - control
+  ret:
+  - Number
+  - null
+  params:
+  - name: control
+    typ: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _h = ctrlTextHeight _ctrl;

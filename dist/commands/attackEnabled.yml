@@ -1,0 +1,39 @@
+name: attackEnabled
+description: Return whether a group's leader can issue attack commands to soldiers under his command.
+groups:
+- Groups
+- Unit Control
+syntax:
+- call: !Unary
+  - name
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: name
+    typ: !OneOf
+    - Object
+    - Group
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (not attackEnabled _soldier) then { _soldier setCombatMode "Careless" };

@@ -1,0 +1,42 @@
+name: loadFile
+description: |-
+  Returns the content of given files. If you plan to [[compile]] said string, be aware that the file should not contain comments or [[compile]] will throw an error. If there are comments, use [[preprocessFile]]/[[preprocessFileLineNumbers]] instead.
+  {{Feature|Warning|If the file is not prepared using UTF-8 encoding and contains some characters [[toArray|with codes]] > 127, they might convert incorrectly.}}
+groups:
+- Program Flow
+syntax:
+- call: !Unary
+  - fileName
+  ret:
+  - String
+  - null
+  params:
+  - name: fileName
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 90
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _contents = loadFile "wantedString.txt";
+- _contents = compile loadFile "myFunction.sqf"; // will compile string into code

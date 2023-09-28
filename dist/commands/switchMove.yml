@@ -1,0 +1,64 @@
+name: switchMove
+description: |-
+  Immediately applies given animation to the unit. For a smooth transition from the current animation, use [[playMove]].
+  {{Feature | Informative | see [[:Category:Moves]] for respective games animations.}}
+  This command first resets the unit's animation states (including aiming state, gesture state, etc.) then puts the unit in the first frame of the animation (therefore showing no transition).
+  If an invalid animation is provided, the unit's animations will be reset but no new animation will be played (see {{Link|#Example 3}}).
+
+  {{Feature|informative|It is a good practice to always use [[playMoveNow]] after [[switchMove]] to make sure the animation plays correctly:
+  <sqf>
+  _unit switchMove "myMove";
+  _unit playMoveNow "myMove";
+  </sqf>
+  }}
+multiplayer_note: This command has a global effect when executed locally to the unit and will synchronise properly for JIP. In this case the animation on the executing machine is immediate while on remote machines it will be transitional. In order for the animation to change immediately on every PC in multiplayer, use global remote execution (see {{Link|#Example 2}}). When the argument is remote, the animation change on the executing PC is only temporary.
+groups:
+- Animations
+syntax:
+- call: !Binary
+  - - person
+  - - moveName
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: person
+    description: unit
+    typ: Object
+  - name: moveName
+    description: animation state (see [[animationState]]
+    typ: String
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  Prone:
+  <sqf>player switchMove "AmovPpneMstpSrasWrflDnon";
+- |-
+  Sit player immediately and globally:
+  <sqf>[player, "AmovPsitMstpSlowWrflDnon"] remoteExec ["switchMove"];
+- |-
+  Resets unit's animation:
+  <sqf>_unit switchMove "";

@@ -1,0 +1,35 @@
+name: allDiarySubjects
+description: Returns array with all [[Diary]] subjects available to the given person. See [[Diary]] for the explanation on the available subjects and their structure.
+groups:
+- Briefing
+syntax:
+- call: !Unary
+  - person
+  ret:
+  - !ArraySized
+    - - - String
+        - internal subject reference
+      - - String
+        - visible name
+      - - String
+        - subject icon
+      - - Number
+        - number of records in this subject
+      - - Boolean
+        - whether or not the records could be added
+      - - Boolean
+        - '[[true]] if subject is currently selected'
+    - all diary subject entries
+  - null
+  params:
+  - name: person
+    description: unit
+    typ: Object
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- allDiarySubjects player;

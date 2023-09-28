@@ -1,0 +1,21 @@
+name: difficultyEnabledRTD
+description: |-
+  Returns [[true]] if Advanced Flight Model is enabled.
+  Forcing of rotorlib simulation could be done with mission param [[Description.ext#forceRotorLibSimulation|forceRotorLibSimulation]].
+groups:
+- RTD
+- Difficulty
+syntax:
+- call: Nular
+  ret:
+  - Boolean
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- _rtdOn = difficultyEnabledRTD;

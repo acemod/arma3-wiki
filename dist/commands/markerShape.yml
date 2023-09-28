@@ -1,0 +1,37 @@
+name: markerShape
+description: Returns the shape of given marker.
+groups:
+- Markers
+syntax:
+- call: !Unary
+  - name
+  ret:
+  - String
+  - |-
+    Shape of given marker. Can be return:
+    * {{hl|"ICON"}}
+    * {{hl|"RECTANGLE"}}
+    * {{hl|"ELLIPSE"}}
+    * {{GVI|arma3|1.60|size= 0.75}} {{hl|"POLYLINE"}} (Hand drawn markers)
+    * {{hl|"ERROR"}}
+  params:
+  - name: name
+    description: Name of the marker
+    typ: String
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (markerShape "Marker1" == "RECTANGLE") then {hint "Marker1 is a rectangle!"};

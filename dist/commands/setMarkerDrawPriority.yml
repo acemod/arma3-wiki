@@ -1,0 +1,26 @@
+name: setMarkerDrawPriority
+description: Sets marker draw priority. Higher priority markers are drawn on top. Default priority is 0. {{Feature|important|Be aware that this command has '''local''' effect despite the command name missing the world '''local'''!}}
+groups:
+- Markers
+syntax:
+- call: !Binary
+  - - markerName
+  - - priority
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: markerName
+    typ: String
+  - name: priority
+    description: draw priority
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 14
+examples:
+- '"MarkerOne" setMarkerDrawPriority 0.5;'
+- '"MarkerTwo" setMarkerDrawPriority -2.1;'

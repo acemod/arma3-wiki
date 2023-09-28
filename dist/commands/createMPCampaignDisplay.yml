@@ -1,0 +1,27 @@
+name: createMPCampaignDisplay
+description: |-
+  Create a MP campaign display. The class name must be a mission collection declared in the configs; for example, <sqf inline>configFile >> "CfgMissions" >> "MPMissions" >> "Apex"</sqf><br>
+  If the class does not exist or is not a mission collection, the display will be created empty.
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - - display
+  - - class
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: display
+    typ: Display
+  - name: class
+    description: Mission collection classname
+    typ: String
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- findDisplay 46 createMPCampaignDisplay "Apex";

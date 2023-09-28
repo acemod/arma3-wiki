@@ -1,0 +1,38 @@
+name: waypointSpeed
+description: |-
+  Gets the waypoint speed.
+
+  Possible values are:
+  * "UNCHANGED"
+  * "LIMITED"
+  * "NORMAL"
+  * "FULL"
+groups:
+- Waypoints
+syntax:
+- call: !Unary
+  - waypoint
+  ret:
+  - String
+  - see description
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _speed = waypointSpeed [groupOne,1];

@@ -1,0 +1,21 @@
+name: getFieldManualStartPage
+description: Returns array of the starting topic and hint the given field manual should display.
+groups:
+- System
+syntax:
+- call: !Unary
+  - display
+  ret:
+  - ArrayUnknown
+  - '[starting topic, hint]'
+  params:
+  - name: display
+    typ: Display
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 18
+examples:
+- getFieldManualStartPage (findDisplay 46); // returns ["", ""]

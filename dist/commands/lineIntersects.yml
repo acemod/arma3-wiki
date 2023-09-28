@@ -1,0 +1,43 @@
+name: lineIntersects
+description: |-
+  Checks for object intersection with a virtual line between two positions.
+  {{Feature|informative|
+  * Does not work under water.
+  * Max harcoded distance is 1000m.
+  }}
+groups:
+- Math - Geometry
+syntax:
+- call: !Unary
+  - begPos
+  - endPos
+  - objIgnore1
+  - objIgnore2
+  ret:
+  - Boolean
+  - '[[true]] if an intersection happens with an object (not with terrain)'
+  params:
+  - name: begPos
+    typ: Position3dASL
+  - name: endPos
+    typ: Position3dASL
+  - name: objIgnore1
+    description: (Optional, default [[objNull]]) object to ignore. When testing intersection from an object/unit/vehicle, pass that object here to prevent intersection inside of the object
+    typ: Object
+  - name: objIgnore2
+    description: (Optional, default [[objNull]]) another object to ignore. When testing intersection of a line between two objects, pass the second object here to prevent intersection inside of it being reported
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 62
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- private _hasStraightLineToChopper = lineIntersects [eyePos player, aimPos chopper, player, chopper];

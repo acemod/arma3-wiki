@@ -1,0 +1,47 @@
+name: closeDialog
+description: |-
+  Close the currently active user dialog with exit code. Most common exit codes are:
+  <sqf>
+  #define IDC_OK            1 // emulate "Ok" button
+  #define IDC_CANCEL        2 // emulate "Cancel" button
+  </sqf>
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - exitcode
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: exitcode
+    typ: Number
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- closeDialog 2;
+- |
+  #define IDC_CANCEL 2
+  closeDialog IDC_CANCEL;

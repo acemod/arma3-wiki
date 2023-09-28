@@ -1,0 +1,37 @@
+name: enableWeaponDisassembly
+description: Enables or disables disassembly of static weapons. Could be applied to local [[player]], to another unit or to static weapon directly.
+groups:
+- Weapons
+syntax:
+- call: !Unary
+  - enable
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: enable
+    description: '[[false]] to prevent local [[player]] from being able to disassemble static weapons'
+    typ: Boolean
+- call: !Binary
+  - - entity
+  - - enable
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: entity
+    description: unit or static weapon
+    typ: Object
+  - name: enable
+    description: '[[false]] to prevent a unit from being able to disassemble static weapons, or to prevent a static weapon from being disassembled by anyone'
+    typ: Boolean
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 68
+examples:
+- enableWeaponDisassembly false;
+- soldier1 enableWeaponDisassembly false;
+- mortar1 enableWeaponDisassembly false;

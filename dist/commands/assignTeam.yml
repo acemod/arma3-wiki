@@ -1,0 +1,69 @@
+name: assignTeam
+description: |-
+  {{{!}} class="wikitable float-right align-center"
+  ! Team
+  ! Value
+  {{!}}-
+  {{!}} White
+  {{!}} "MAIN"
+  {{!}}-
+  {{!}} Red
+  {{!}} "RED"
+  {{!}}-
+  {{!}} Green
+  {{!}} "GREEN"
+  {{!}}-
+  {{!}} Blue
+  {{!}} "BLUE"
+  {{!}}-
+  {{!}} Yellow
+  {{!}} "YELLOW"
+  {{!}}}
+  Assigns the unit (in case of a vehicle, its commander) to the given team. Team is an option in group control (unit management) menu that allows to split player group in teams and then give bulk order to separate teams.
+  In order to operate properly, the command requires specific conditions:
+  * the command requires [[player]] to be fully initialised
+  * the unit getting assigned must be either player himself or a unit in player's group
+  The colour of the assigned team for a unit is seen on the group management UI as well as squad radar.
+
+
+  {{Feature|important|In older versions of the game ({{arma2}}?) the effect of this command is '''local''' {{Icon|localEffect|32}}.}}
+groups:
+- Groups
+syntax:
+- call: !Binary
+  - - unit
+  - - team
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: team
+    typ: String
+argument_loc: Global
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldier2 assignTeam "RED";
+- |-
+  In a unit's init script in the editor [[spawn]] should be used, otherwise a {{Link|https://en.wikipedia.org/wiki/Race_condition|race condition}} may be experienced:
+  <sqf>this spawn { _this assignTeam "RED" };

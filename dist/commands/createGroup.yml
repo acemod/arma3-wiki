@@ -1,0 +1,87 @@
+name: createGroup
+description: |-
+  Creates a new [[Group]] for the given [[Side]]. Using this command if the group limit is reached will return [[grpNull]]. The new [[Group]] exists globally, but it's locality is where this command was executed.
+  {{{!}} class="wikitable" style="text-align: center"
+  ! Game
+  {{!}} {{GVI|ofp|1.00}}
+  {{!}} {{GVI|ofpe|1.00}}
+  {{!}} {{GVI|arma1|1.00}}
+  {{!}} {{GVI|arma2|1.00}}
+  {{!}} {{GVI|arma2oa|1.50}}
+  {{!}} {{GVI|tkoh|1.00}}
+  {{!}} {{GVI|arma3|1.00}}
+  {{!}} {{GVI|arma3|1.68}}
+  {{!}}-
+  ! Group auto-deletion
+  {{!}} colspan="6" {{!}} {{Icon|unchecked}}
+  {{!}} colspan="2" {{!}} {{Icon|checked}}
+  {{!}}-
+  ! Group limit per side
+  {{!}} 63
+  {{!}} colspan="6" {{!}} 144
+  {{!}} 288
+  {{!}}}
+
+  {{Feature | important |
+  * Groups can only be created for the [[west]]/[[blufor]], [[opfor]]/[[east]], [[independent]]/[[resistance]], [[civilian]] and [[sideLogic]] sides - any other side will return [[grpNull]]
+  * Before {{arma3}}, a [[Side]] [[createCenter|center]] must exist before group creation (either by having editor-placed units or [[createCenter]] usage)
+  }}
+
+  {{Feature|arma3|
+  * [[createCenter]] usage is not needed anymore as all centers are automatically created.
+  * When the last unit leaves its group, the group usually gets immediately auto-deleted, regardless of its auto-deletion setting.
+  }}
+groups:
+- Groups
+syntax:
+- call: !Unary
+  - side
+  ret:
+  - Group
+  - '[[grpNull]] if the group limit is reached'
+  params:
+  - name: side
+    typ: Side
+- call: !Unary
+  - side
+  - deleteWhenEmpty
+  ret:
+  - Group
+  - '[[grpNull]] if the group limit is reached'
+  params:
+  - name: side
+    typ: Side
+  - name: deleteWhenEmpty
+    description: |-
+      [[true]] to [[deleteGroupWhenEmpty|delete the group when empty]].
+      * If set to [[true]], forces a group to get deleted when empty - it does '''not''' prevent its deletion by other commands when set to [[false]].
+      * Deletion may take up to a minute after the last unit is removed.
+    typ: Boolean
+  since:
+    arma_3:
+      major: 1
+      minor: 68
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- private _group = createGroup east;
+- private _group = createGroup [east, true];

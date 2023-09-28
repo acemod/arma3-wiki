@@ -1,0 +1,41 @@
+name: playerSide
+description: |-
+  Returns the player's [[Side|side]]. This is valid even when the player controlled person is dead (a difference from [[side]] [[player]]).
+  {{Feature | Informative | [[playerSide]] will not change automatically if [[player]] [[join]]s a [[group]] on different [[side]]. However, [[selectPlayer]] command can and does change [[playerSide]] - see {{Link|#Example 3}} for information.}}
+groups:
+- Sides
+syntax:
+- call: Nular
+  ret:
+  - Side
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (side man1 == playerSide) then\n{\n\thint \"man1 is on your side!\";\n};\n"
+- "switch (playerSide) do\n{\n\tcase west: { hint \"You are BLUFOR\"; };\n\tcase east: { hint \"You are OPFOR\"; };\n};\n"
+- |
+  the following code will change the side of the player including [[playerSide]]:
+  <sqf>
+  private _player = player;
+  [player] join createGroup east;
+  selectNoPlayer;
+  selectPlayer _player;
+  hint str playerSide; // EAST

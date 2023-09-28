@@ -1,0 +1,69 @@
+name: ctrlMapCursor
+description: |-
+  Changes the default cursor that appears when interacting with a map control to a custom one. Use an empty string to restore the default cursor.
+  {{Feature|important|Before {{arma3}}, if the specified cursor does not exist the default is used and no error is produced.<br>
+  In {{arma3}}, this would result in the following error: {{hl|"No entry 'bin\config.bin/CfgWrapperUI/Cursors'"}}.
+  }}
+  The cursor is the name of a config entry from ''CfgWrapperUI / Cursors''. This command has the following specifics:
+  * When used on the Main Map (<sqf inline>findDisplay 12 displayCtrl 51</sqf>), it is possible to override multiple default cursors. For example, while leaving default "Arrow" intact, it is possible to just override "Scroll" with e.g "Wait" (See {{Link|#Example 3}})
+  * When used on a custom map, for example user made Mini Map, there is only one single cursor "" for everything, therefore only this cursor can be overridden (see {{Link|#Example 4}} on how to override it)
+  Some possible class names (See [[ctrlMapCursor/cursors]] for the whole list):
+  {{Columns|4|
+  * Arrow
+  * Track
+  * Move
+  * Scroll
+  * Rotate
+  * Track3D
+  * Move3D
+  * Rotate3D
+  * Raise3D
+  * Wait
+  * HC_move
+  * HC_overFriendly
+  * HC_overEnemy
+  * HC_overMission
+  * HC_unsel
+  }}
+groups:
+- GUI Control - Map
+syntax:
+- call: !Binary
+  - - control
+  - - defaultCursor
+    - newCursor
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    description: Map control
+    typ: Control
+  - name: defaultCursor
+    description: cursor class name, '''case-sensitive'''
+    typ: String
+  - name: newCursor
+    description: cursor class name, '''case-sensitive'''
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _map ctrlMapCursor ["Track", "Arrow"];
+- |
+  uiNamespace setVariable ["_map", findDisplay 12 displayCtrl 51];
+  (uiNamespace getVariable "_map") ctrlMapCursor ["Track", "HC_overFriendly"];
+- findDisplay 12 displayCtrl 51 ctrlMapCursor ["Scroll", "Wait"];
+- "Cycle through all available cursors over custom map:\n<sqf>\n[] spawn\n{\n\tdisableSerialization;\n\t_map = findDisplay 46 createDisplay \"RscCredits\" ctrlCreate [\"RscMapControl\", -1];\n\t_map ctrlSetPosition [0,0,1,1];\n\t_map ctrlCommit 0;\n\t{\n\t\t_map ctrlMapCursor [\"\", configName _x]; //<-- the actual usage\n\t\thint format [\"Current cursor: %1\", configName _x];\n\t\tsleep 1;\n\t}\n\tforEach (\"true\" configClasses (configFile >> \"CfgWrapperUI\" >> \"Cursors\"));\n};\n"

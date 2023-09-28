@@ -1,0 +1,37 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 1.22
+
+|gr2= Math - Vectors
+
+|descr= Returns {{Link|https://en.wikipedia.org/wiki/Euclidean_distance|Euclidean distance}} between two points.
+
+|s1= point1 [[vectorDistance]] point2
+
+|p1= point1: [[Position#Introduction|Position3D]] or [[Position#Introduction|Position2D]] - (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
+
+|p2= point2: [[Position#Introduction|Position3D]] or [[Position#Introduction|Position2D]] - (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
+
+|r1= [[Number]]
+
+|x1= <sqf>_euclideanDist = getPosASL player vectorDistance [0,0,0];</sqf>
+
+|x2= <sqf>(getPosASL _a) vectorDistance (getPosASL _b);
+// same as
+(getPosATL _a) distance (getPosATL _b);</sqf>
+
+|seealso= [[vectorAdd]] [[vectorDiff]] [[vectorCrossProduct]] [[vectorDotProduct]] [[vectorCos]] [[vectorMagnitude]] [[vectorMagnitudeSqr]] [[vectorMultiply]] [[vectorDistanceSqr]] [[vectorDir]] [[vectorUp]] [[setVectorDir]] [[setVectorUp]] [[setVectorDirAndUp]] [[distance]] [[vectorNormalized]] [[vectorFromTo]] [[distance2D]] [[matrixMultiply]] [[matrixTranspose]]
+}}
+
+<dl class="command_description">
+
+<dt></dt>
+<dd class="notedate">Posted on 28 Jun, 2014</dd>
+<dt class="note">[[User:ffur2007slx2_5| ffur2007slx2_5]]</dt>
+<dd class="note">
+{{GVI|arma3|1.22}} Algorithm:
+<sqf>Vector1 = [x1,y1,z1];
+Vector2 = [x2,y2,z2];
+Result = sqrt ((x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2);</sqf>
+</dl>

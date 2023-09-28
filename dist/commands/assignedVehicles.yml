@@ -1,0 +1,23 @@
+name: assignedVehicles
+description: Returns all vehicles added to the given [[Group]] with [[addVehicle]].
+groups:
+- Groups
+syntax:
+- call: !Unary
+  - group
+  ret:
+  - !ArrayUnsized
+    - Object
+    - ''
+  - null
+  params:
+  - name: group
+    typ: Group
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- _vehicles = assignedVehicles group player;

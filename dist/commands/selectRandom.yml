@@ -1,0 +1,22 @@
+name: selectRandom
+description: Returns a random element from the given array. Engine solution to [[BIS_fnc_selectRandom]]
+groups:
+- Arrays
+syntax:
+- call: !Unary
+  - array
+  ret:
+  - Anything
+  - random selected value or [[Nothing]] if array is empty
+  params:
+  - name: array
+    description: array of anything
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- _randomElement = selectRandom [1,2,3,4,5];

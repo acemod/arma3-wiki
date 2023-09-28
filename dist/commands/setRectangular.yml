@@ -1,0 +1,37 @@
+name: setRectangular
+description: Set the shape of a location to be either rectangular or elliptical. Locations default shape is elliptical.
+groups:
+- Locations
+syntax:
+- call: !Binary
+  - - location
+  - - set
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: location
+    typ: Location
+  - name: set
+    description: '[[true]] set rectangular, [[false]] set elliptical'
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 8
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- myLocation setRectangular true;

@@ -1,0 +1,38 @@
+name: tvData
+description: Returns string data from item on given path. IDC means id of parent [[CT_TREE]].
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - String
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    description: Array of [[Number|numbers]]
+    typ: ArrayUnknown
+- call: !Binary
+  - - control
+  - - path
+  ret:
+  - String
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    description: Array of [[Number|numbers]]
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvData [101, [0]];
+- (_display displayCtrl 101) tvData [0];

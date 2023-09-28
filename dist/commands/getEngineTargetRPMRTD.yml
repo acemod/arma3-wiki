@@ -1,0 +1,24 @@
+name: getEngineTargetRPMRTD
+description: Returns RPM of all engines. {{Feature|afm}}
+groups:
+- RTD
+syntax:
+- call: !Unary
+  - helicopter
+  ret:
+  - ArrayUnknown
+  - Array of [[Number|numbers]] with the RPM of each engine
+  params:
+  - name: helicopter
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- private _rpm = getEngineTargetRPMRTD _helicopter;

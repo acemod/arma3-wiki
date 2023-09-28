@@ -1,0 +1,43 @@
+name: limitSpeed
+description: Limit the speed of an AI-driven vehicle or AI person to given value. It has continuous effect and AI will not break through the speed limitation until one is contacted, engaged or regrouped.
+groups:
+- Unit Control
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - objectName
+  - - speed
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: objectName
+    typ: Object
+  - name: speed
+    description: in km/h; set to {{hl|-1}} (or any <= 0 value) to remove the limit
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "leader player limitSpeed 5;\t\t// set to walking speed\nsleep 30;\nleader player limitSpeed -1;\t// remove the limit\n"
+- |
+  addMissionEventHandler ["OnEachFrame", { hintSilent format ["myVehicle's speed: %1 km/h", speed myVehicle toFixed 2] }];
+  sleep 5;
+  myVehicle limitSpeed 5;
+- "// it was necessary to use limitSpeed repeatedly before Arma 3 1.24\n_this setVariable [\"speedLimit\", 50];\n_this spawn {\n\twhile { sleep 0.1; canMove _this } do\n\t{\n\t\t_this limitSpeed (_this getVariable \"speedLimit\");\n\t};\n};\nsleep 10;\n_this setVariable [\"speedLimit\", 100]; // update the speed limit\n"

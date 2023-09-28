@@ -1,0 +1,62 @@
+name: hint
+description: |-
+  Outputs a hint message to the right of the screen (left of the screen in {{ofp}}) with a sound (except in {{arma1}}).
+  To split message in multiple lines either use [[Structured Text]] or {{hl|\n}} (in lower case).
+
+  {{Feature|arma1|{{arma1}} hints are silent. For later titles, see [[hintSilent]].}}
+problem_notes:
+- |-
+  {{GVI|ofp|1.00}} {{GVI|arma1|1.00}} {{GVI|arma2|1.00}} Hint messages that exceed the screen may lead to crashes.<br>
+  {{GVI|arma3|1.00}} The game would not crash but suffer FPS drop / temporary freezing.
+groups:
+- Interaction
+- Structured Text
+- Strings
+syntax:
+- call: !Unary
+  - message
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: message
+    description: the message to display.
+    typ: !OneOf
+    - String
+    - StructuredText
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  // outputs the following:
+  // Press W to move forward.
+  // Press S to move backwards.
+  hint "Press W to move forward.\nPress S to move backwards."
+- hint format ["Hello, %1!", name player];
+- |
+  hint str count allPlayers;
+  sleep 10;
+  hintSilent ""; // hides the previous hint display
+- hint parseText "<t size='2.0'>Large text</t>"; // displays text twice as large as the default one

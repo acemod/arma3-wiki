@@ -1,0 +1,44 @@
+name: a less b
+description: Returns if ''a'' is lesser than ''b''.
+groups:
+- Math
+- Variables
+syntax:
+- call: !Binary
+  - - a
+  - - b
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: a
+    typ: Number
+  - name: b
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _test = 1 < 2; // true
+- _test = 2 < 1; // false

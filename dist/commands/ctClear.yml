@@ -1,0 +1,21 @@
+name: ctClear
+description: Removes all the lines from the RscControlsTable. Returns Nothing.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Unary
+  - ctrl
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- ctClear _control;

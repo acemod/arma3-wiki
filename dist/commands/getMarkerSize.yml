@@ -1,0 +1,44 @@
+name: getMarkerSize
+description: Returns the size of the given marker. A getter for [[setMarkerSize]] and an alias of [[markerSize]].
+groups:
+- Markers
+syntax:
+- call: !Unary
+  - markerName
+  ret:
+  - ArrayUnknown
+  - |-
+    in format [a-axis, b-axis], where:
+    * a-axis: [[Number]] - 1/2 width of marker
+    * b-axis: [[Number]] - 1/2 height of marker
+  params:
+  - name: markerName
+    typ: String
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 21
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  "MarkerOne" setMarkerSize [100,200];
+  _size = getMarkerSize "MarkerOne"; //returns [100,200]

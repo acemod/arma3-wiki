@@ -1,0 +1,40 @@
+name: speed
+description: 'Object speed (in km/h). Returns relative speed of given object along Y axis. An equivalent to: <sqf inline>3.6 * (velocityModelSpace _obj select 1)</sqf>'
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - Number
+  - null
+  params:
+  - name: object
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (speed _truck1 >= 100) then { hint "You're going too fast!" };
+- if (speed objectParent player) < 0) then { hint "You're going reverse!" };

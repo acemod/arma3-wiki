@@ -1,0 +1,35 @@
+name: deleteResources
+description: Delete (unregister) resources of the team member. Resources are deleted in the order they were added. Case insensitive.
+groups:
+- Teams
+syntax:
+- call: !Binary
+  - - teamMember
+  - - resources
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: teamMember
+    typ: TeamMember
+  - name: resources
+    typ: !ArrayUnsized
+    - String
+    - ''
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- teamMember _agent deleteResources ["Legs"];

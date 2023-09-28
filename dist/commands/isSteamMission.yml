@@ -1,0 +1,18 @@
+name: isSteamMission
+description: Returns true if the current mission is a Steam Workshop mission.
+groups:
+- Mission Information
+syntax:
+- call: Nular
+  ret:
+  - Boolean
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- "if (isSteamMission) then\n{\n\thint \"Thank you for subscribing to my mission on Steam!\";\n}\nelse\n{\n\thint \"Thank you for downloading my mission off the Internet!\";\n};"

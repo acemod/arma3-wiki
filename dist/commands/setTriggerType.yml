@@ -1,0 +1,51 @@
+name: setTriggerType
+description: |-
+  Sets the type of action processed by the trigger after activation (no action, a waypoints switch or an end of mission):
+
+  * {{hl|"NONE"}}
+  * {{hl|"EAST G"}} - Guarded by OPFOR - (It is better to use [[createGuardedPoint]] instead)
+  * {{hl|"WEST G"}} - Guarded by BLUFOR - (It is better to use [[createGuardedPoint]] instead)
+  * {{hl|"GUER G"}} - Guarded by Independent - (It is better to use [[createGuardedPoint]] instead)
+  * {{hl|"SWITCH"}} - Switch waypoints/break loop (see [[ArmA:_Mission_Editor#Triggers_Mode_.28F3.29|Triggers]])
+  * {{hl|"END1"}} - End #1
+  * {{hl|"END2"}} - End #2
+  * {{hl|"END3"}} - End #3
+  * {{hl|"END4"}} - End #4
+  * {{hl|"END5"}} - End #5
+  * {{hl|"END6"}} - End #6
+  * {{hl|"LOOSE"}} - (Meant to say LOSE but is misspelt in the game engine).
+  * {{hl|"WIN"}} - (Not in editor. Valid enum name but when set, defaults to {{hl|"END1"}})
+groups:
+- Triggers
+syntax:
+- call: !Binary
+  - - trigger
+  - - action
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: trigger
+    typ: Object
+  - name: action
+    typ: String
+argument_loc: Global
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _trigger setTriggerType "END1";

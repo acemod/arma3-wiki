@@ -1,0 +1,23 @@
+name: uniformContainer
+description: Returns a cargo container of a unit's uniform.
+groups:
+- Containers
+- Unit Inventory
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Object
+  - cargo container, [[objNull]] if ''unit'' does not wear any uniform/clothing
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 4
+examples:
+- 'hint str uniformContainer player; //2df7dd00# 163941: dummyweapon.p3d'
+- "hint str getMagazineCargo uniformContainer player;\n/*\n\treturns e.g\n\t[\n\t\t[\"30Rnd_65x39_caseless_mag\"],\n\t\t[3]\n\t]\n*/"

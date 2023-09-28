@@ -1,0 +1,36 @@
+name: disableMapIndicators
+description: Command allows suppressing visualization of FRIENDLY, ENEMY, MINES and/or PING map indicators from difficulty setting EXTENDED MAP CONTENT.
+groups:
+- Difficulty
+syntax:
+- call: !Unary
+  - disableFriendly
+  - disableEnemy
+  - disableMines
+  - disablePing
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: disableFriendly
+    description: '[[true]] to disable visualization of friendly units'
+    typ: Boolean
+  - name: disableEnemy
+    description: '[[true]] to disable visualization of enemy units'
+    typ: Boolean
+  - name: disableMines
+    description: '[[true]] to disable visualization of mines'
+    typ: Boolean
+  - name: disablePing
+    description: '[[true]] to disable visualization of all tactical pings'
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 82
+examples:
+- |-
+  Disable visualization of friendly and enemy units:
+  <sqf>disableMapIndicators [true, true, false, false];

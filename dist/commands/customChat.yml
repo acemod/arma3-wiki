@@ -1,0 +1,42 @@
+name: customChat
+description: |-
+  Sends the chat message to the custom radio channel. The radio channel needs to be created on the server before hand, with [[radioChannelCreate]] command.
+
+  {{Feature|important|The unit must have an [[assignItem|assigned]] radio item (such as '''''"ItemRadio"''''') to see or transmit the messages. A radio item must have the property <syntaxhighlight lang="cpp" inline>simulation = "ItemRadio";</syntaxhighlight> in its [[CfgWeapons_Config_Reference#simulation.3D.22Weapon.22|CfgWeapons config]].}}
+groups:
+- Radio and Chat
+- Custom Radio and Chat
+syntax:
+- call: !Binary
+  - - unit
+  - - customChannelID
+    - message
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: customChannelID
+    description: '[[Channel IDs|Custom channel ID]] returned by [[radioChannelCreate]] command'
+    typ: Number
+  - name: message
+    typ: String
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _unit customChat [1, "Hi, I am a custom chat message"];
+- |
+  [[File:xChat.jpg|right]]
+  <sqf>
+  driver vehicle player sideChat "sideChat";
+  driver vehicle player globalChat "globalChat";
+  driver vehicle player groupChat "groupChat";
+  vehicle player vehicleChat "vehicleChat";
+  driver vehicle player commandChat "commandChat";
+  driver vehicle player customChat [1, "customChat"];
+  systemChat "systemChat";

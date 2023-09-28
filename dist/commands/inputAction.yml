@@ -1,0 +1,37 @@
+name: inputAction
+description: |-
+  Return the state of input devices mapped to given input action.
+  <br>
+  For Arma 3 inputActions and its bindings see: [[{{PAGENAME}}/actions]].
+  <br>
+  For earlier Arma editions  see [[:Category:Key Actions]].
+groups:
+- Interaction
+syntax:
+- call: !Unary
+  - name
+  ret:
+  - Number
+  - null
+  params:
+  - name: name
+    description: name of the action
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- inputAction "leanLeft";</sqf> Returns 1 if the button mapped to "leanLeft" is pressed currently else 0.
+- "[] spawn {\n\twaitUntil {inputAction \"reloadMagazine\" > 0};\n\thint \"Reload Key Pressed\";\n};"

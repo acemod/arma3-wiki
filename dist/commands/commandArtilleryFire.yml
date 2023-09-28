@@ -1,0 +1,33 @@
+name: commandArtilleryFire
+description: Orders an artillery unit to fire a burst on the given position (via the radio).
+problem_notes:
+- The unit will fire a burst even if the '''rounds''' parameter is 0 or a negative number.
+groups:
+- Artillery
+syntax:
+- call: !Binary
+  - - unit
+  - - position
+    - type
+    - rounds
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: position
+    typ: Position3dASL
+  - name: type
+    description: Magazine class name from [[Arma_3:_CfgMagazines|CfgMagazines]] (case sensitive).
+    typ: String
+  - name: rounds
+    typ: Number
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- Mortar commandArtilleryFire [[3000, 120, 1000], "8Rnd_82mm_Mo_shells", 3];

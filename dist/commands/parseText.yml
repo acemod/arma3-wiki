@@ -1,0 +1,41 @@
+name: parseText
+description: |-
+  Creates a structured text by parsing the given XML description. Do not use [[parseText]] when displaying a localized text from [[Stringtable.xml]].<br>
+  A detailed explanation of all formatting possibilities can be found at [[Structured Text]].
+groups:
+- Strings
+- Structured Text
+syntax:
+- call: !Unary
+  - text
+  ret:
+  - StructuredText
+  - null
+  params:
+  - name: text
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- private _Stxt = parseText "First line<img image='data\isniper.paa'/><br/>Second line";
+- hintSilent parseText format["<t size='1.25' font='Zeppelin33' color='#ff0000'>%1 lives remaining.</t>", 12];
+- private _clickableLink = parseText "<a href='http://arma3.com'>A3</a>";

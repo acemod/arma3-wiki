@@ -1,0 +1,49 @@
+name: setWaypointSpeed
+description: |-
+  Switches the group speed mode when the waypoint becomes active.
+  <br>
+  <br>
+  Possible values are:
+  * "UNCHANGED"
+  * "LIMITED"
+  * "NORMAL"
+  * "FULL"
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - - waypoint
+  - - mode
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    typ: ArrayUnknown
+  - name: mode
+    typ: String
+argument_loc: Unspecified
+effect_loc: Global
+server_exec: false
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '[_grp, 2] setWaypointSpeed "FULL";'

@@ -1,0 +1,34 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 1.50
+
+|gr1= Multiplayer
+
+|descr= [[Scheduler|Unscheduled]] version of [[remoteExec]]. The only difference between [[remoteExec]] and [[remoteExecCall]] is that [[remoteExecCall]] will run '''functions''' in [[Scheduler#Unscheduled Environment|unscheduled environment]].
+{{Feature|important|
+The "Call" in [[remoteExecCall]] only means that the remote execution will take place in [[Scheduler#Unscheduled Environment|unscheduled environment]] and does '''not''' mean it will happen right away (see {{Link|#Example 3}}).}}
+
+|s1= see [[remoteExec]]
+
+|p1= see [[remoteExec]]
+
+|r1= see [[remoteExec]]
+
+|x1= <sqf>["hello"] remoteExec ["hint"];		// runs unscheduled
+["hello"] remoteExecCall ["hint"];	// no difference at all</sqf>
+
+|x2= <sqf>["my message"] remoteExec ["BIS_fnc_infoText"];		// correct
+["my message"] remoteExecCall ["BIS_fnc_infoText"];	// wrong - BIS_fnc_infoText needs a scheduled environment, see its spawn need</sqf>
+
+|x3= <sqf>remoteExecCall ["fnc1"];
+call fnc2;	// fnc1 may or may not be executed after fnc2
+
+call fnc1;
+call fnc2;	// fnc2 will be executed after fnc1</sqf>
+
+|seealso= [[remoteExec]] [[remoteExecutedOwner]] [[isRemoteExecuted]] [[isRemoteExecutedJIP]] [[Arma 3: Remote Execution]] [[canSuspend]] [[BIS_fnc_MP]]
+}}
+
+
+{{GameCategory|arma3|Remote Execution}}

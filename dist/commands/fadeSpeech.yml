@@ -1,0 +1,36 @@
+name: fadeSpeech
+description: |-
+  Changes the master speech volume smoothly within the given time. The default volume is 1.0. Some of the sounds that play through speech channel are:
+  * [[Arma 3: Difficulty Settings| Tactical Ping]] sound
+  * [[playSound]] when ''isSpeech'' argument is [[true]]
+  * [[say3D]] when ''isSpeech'' argument is [[true]]
+groups:
+- Sounds
+syntax:
+- call: !Binary
+  - - time
+  - - volume
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: time
+    description: Fade interval in seconds
+    typ: Number
+  - name: volume
+    description: Speech volume range 0 to 2
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 5 fadeSpeech 0.1;

@@ -1,0 +1,27 @@
+name: currentMagazineDetail
+description: Returns description of vehicle's currently loaded magazine, its ammo count (current/default) and its id.
+groups:
+- Unit Inventory
+- Vehicle Inventory
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - String
+  - null
+  params:
+  - name: object
+    description: unit or vehicle
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _currentMagazineDetail = currentMagazineDetail player; // "6.5mm 30Rnd STANAG Mag(30/30)[id:0]"
+- _currentMagazineDetail = currentMagazineDetail Mi_48; // "30mm HE Shells(250/250)[id:21]
+- |-
+  _cmd = currentMagazineDetail player; // "9mm 16Rnd Mag(13/16)[id/cr:10000011/0]"
+  _cmd splitString "([ ]/:)"; // ["9mm","16Rnd","Mag","13","16","id","cr","10000011","0"]

@@ -1,0 +1,47 @@
+name: setLightAttenuation
+description: |-
+  Sets attenuation of light. Standard method of attenuation (1 / (constant + linear*dist + quadratic*dist*dist)).
+  ''start'' param represents distance where the attenuation starts to take effects (dist = distance - start).
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - - light
+  - - start
+    - constant
+    - linear
+    - quadratic
+    - hardlimitstart
+    - hardlimitend
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: light
+    typ: Object
+  - name: start
+    description: distance with 100% intensity, falloff starts here
+    typ: Number
+  - name: constant
+    description: constant attenuation coef
+    typ: Number
+  - name: linear
+    description: linear attenuation coef
+    typ: Number
+  - name: quadratic
+    description: quadratic attenuation coef
+    typ: Number
+  - name: hardlimitstart
+    description: (Optional) max distance hard limit start (start of fading of intensity to 0) in m
+    typ: Number
+  - name: hardlimitend
+    description: (Optional) max distance hard limit end (end of fading of intensity to 0) in m
+    typ: Number
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- myLight setLightAttenuation [2, 4, 4, 0, 9, 10];

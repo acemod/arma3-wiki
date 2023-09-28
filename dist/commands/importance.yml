@@ -1,0 +1,33 @@
+name: importance
+description: Returns a location's importance value.
+groups:
+- Locations
+syntax:
+- call: !Unary
+  - location
+  ret:
+  - Number
+  - null
+  params:
+  - name: location
+    typ: Location
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 8
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _locationImportance = importance myLocation;

@@ -1,0 +1,30 @@
+name: admin
+description: |-
+  This is dedicated server command, which queries the admin state of any client on the network by their client ([[owner]]) id.
+  {{Feature|informative|To self-check the admin state of a local client, use [[BIS_fnc_admin]].}}
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - ownerID
+  ret:
+  - Number
+  - |-
+    admin state of given client:
+    * 0 - client is not an admin
+    * 1 - client is admin that is [[server.cfg#Voted_In_Admin|voted in]]
+    * 2 - client is admin that is [[server.cfg#Logged_In_Admin|logged in]]
+  params:
+  - name: ownerID
+    description: '[[clientOwner]] id'
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- private _isLoggedInAdmin = admin 3 == 2;
+- private _adminState = admin owner unit1;

@@ -1,0 +1,23 @@
+name: AGLToASL
+description: Converts position from [[Position#PositionAGL|PositionAGL]] to [[Position#PositionASL|PositionASL]].
+groups:
+- Positions
+syntax:
+- call: !Unary
+  - posAGL
+  ret:
+  - Position3dASL
+  - null
+  params:
+  - name: posAGL
+    description: position to convert
+    typ: Position3dASL
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 50
+examples:
+- _playerPosASL = AGLToASL (player modelToWorld [0,0,0]);
+- _camPosASL = AGLToASL positionCameraToWorld [0,0,0];

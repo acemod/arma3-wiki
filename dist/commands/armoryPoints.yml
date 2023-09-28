@@ -1,0 +1,27 @@
+name: armoryPoints
+description: Returns, stored in [USERNAME].ArmaXProfile, value of ''armoryPoints'' entry. If the entry doesn't exist, it returns 0.
+groups:
+- System
+syntax:
+- call: Nular
+  ret:
+  - Number
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _points = armoryPoints;

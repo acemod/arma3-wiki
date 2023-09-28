@@ -1,0 +1,35 @@
+name: menuEnabled
+description: Returns if menu entry on given path is enabled or not.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    typ: ArrayUnknown
+- call: !Binary
+  - - control
+  - - path
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- _isEnabled = findDisplay 313 displayCtrl 120 menuEnabled [0];

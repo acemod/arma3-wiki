@@ -1,0 +1,39 @@
+name: setUnconscious
+description: |-
+  In {{arma2}} and since {{arma3}} v1.64, this command sets unit into incapacitated state.<br>
+  [[lifeState]] results:
+  * {{arma2}}: "UNCONSCIOUS"
+  * {{arma3}}: "INCAPACITATED"
+
+  {{Feature|arma3|The unit goes in ragdoll mode and animation played while incapacitated depends on the injuries received.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - unit
+  - - set
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: set
+    typ: Boolean
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _unit setUnconscious true;

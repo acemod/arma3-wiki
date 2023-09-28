@@ -1,0 +1,46 @@
+name: failMission
+description: |-
+  Finish the mission. If the server is set to run persistent mission, [[failMission]] will not end the mission when last player gets kicked to the lobby. Use [[endMission]] to end the mission.
+
+  The end type can be:
+  * "CONTINUE" - this is default type, basically an alias to do nothing
+  * "KILLED"
+  * "LOSER"
+  * "END1"
+  * "END2"
+  * "END3"
+  * "END4"
+  * "END5"
+  * "END6"
+
+  '''Mission saves won't be deleted'''.<br><br>
+
+  {{Feature|arma3|To maintain Arma 3 visual style, it is recommended to use [[BIS_fnc_endMission]] instead.}}
+groups:
+- Mission Information
+syntax:
+- call: !Unary
+  - endtype
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: endtype
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- failMission "LOSER";

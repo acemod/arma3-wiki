@@ -1,0 +1,45 @@
+name: alive
+description: Check if given vehicle/person/building is alive (i.e. not dead or destroyed).
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - Boolean
+  - '[[true]] if alive, [[false]] if dead/destroyed'
+  params:
+  - name: object
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  SQS:
+  <sqs>? not alive player : exit</sqs>
+- |-
+  SQF:
+  <sqf>if (!alive player) exitWith {};
+- alive objNull; // returns false

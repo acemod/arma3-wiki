@@ -1,0 +1,33 @@
+name: moveObjectToEnd
+description: "Shifts an editor object to the end of the objects array. This means,that the object will be drawn last (after all other objects). \n{{Feature | Informative | Some Old Editor Command}}"
+groups:
+- Game 2 Editor
+syntax:
+- call: !Binary
+  - - map
+  - - object
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: map
+    typ: Control
+  - name: object
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '-'

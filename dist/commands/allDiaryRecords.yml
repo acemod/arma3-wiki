@@ -1,0 +1,45 @@
+name: allDiaryRecords
+description: Returns array with all [[Diary]] Records for the given subject available to the given person. See [[Diary]] for the explanation on the available subjects and their structure.
+groups:
+- Briefing
+syntax:
+- call: !Binary
+  - - person
+  - - subject
+  ret:
+  - !ArraySized
+    - - - Number
+        - record id
+      - - String
+        - record title
+      - - String
+        - record text
+      - - String
+        - record icon
+      - - Task
+        - record task
+      - - String
+        - record task state
+      - - Boolean
+        - '[[true]] if tile is shown'
+      - - ArrayUnknown
+        - '[[date]] in format [year, month, day, hour, minute, second]'
+      - - DiaryRecord
+        - record reference
+    - all diary records for the given subject
+  - null
+  params:
+  - name: person
+    description: unit
+    typ: Object
+  - name: subject
+    description: subject
+    typ: String
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- player allDiaryRecords "Diary";

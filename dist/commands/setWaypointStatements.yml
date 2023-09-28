@@ -1,0 +1,49 @@
+name: setWaypointStatements
+description: |-
+  The waypoint is done only when the condition is fulfilled. When the waypoint is done, the statement expression is executed.<br>
+  Within the Condition & Statement code string:
+  * [[Magic Variables#this_2|this]] refers to the group leader
+  * [[Magic Variables#thisList|thisList]] refers to the group's units
+  {{Feature | important | The '''Condition''' code is evaluated on the [[groupOwner|group owner]]'s machine. When condition returns [[true]], for some strange reason, the condition is evaluated one more time. The '''OnActivation''' code is executed '''[[Multiplayer Scripting#Locality|globally]]''', a.k.a on every client! See [[Waypoints]].}}
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - - waypoint
+  - - condition
+    - statement
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    typ: ArrayUnknown
+  - name: condition
+    typ: String
+  - name: statement
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _waypoint setWaypointStatements ["true", "hint 'hello'; hint 'goodbye'"];
+- '_waypoint setWaypointStatements ["true", "diag_log [''GroupLeader: '', this]; diag_log [''Units: '', thislist]"];'

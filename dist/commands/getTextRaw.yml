@@ -1,0 +1,22 @@
+name: getTextRaw
+description: Returns raw text from config entry. If entry is subject to [[localize | localization]], the translation key is returned. To obtain the [[isLocalized | localized]] text, see [[getText]].
+groups:
+- Config
+- Localization
+syntax:
+- call: !Unary
+  - config
+  ret:
+  - String
+  - raw text value
+  params:
+  - name: config
+    typ: Config
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- "private _text = getText (configFile >> \"CfgVehicles\" >> \"Thing\" >> \"displayName\");\t\t\t// \"Get in %1 as Driver\"\nprivate _rawText = getTextRaw (configFile >> \"CfgVehicles\" >> \"Thing\" >> \"displayName\");\t// \"$STR_ACTION_GETIN_DRIVER\"\nprivate _localized = localize _text;\t\t\t\t\t\t\t\t\t\t\t\t\t\t// \"Get in %1 as Driver\"\n_localized == _text; // true\n"

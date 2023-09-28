@@ -1,0 +1,24 @@
+name: backpackMagazines
+description: Get array with all magazines from backpack of the given unit.
+groups:
+- Containers
+- Unit Inventory
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - !ArrayUnsized
+    - String
+    - ''
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "backpackMagazines player;\n// returns e.g\n/*\n[\n\t\"Titan AT Missile(1/1)[id/cr:16/0](2x)\"\n]\n*/\n"

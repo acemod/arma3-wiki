@@ -1,0 +1,21 @@
+name: primaryWeaponItems
+description: Returns array with all items assigned to the [[primaryWeapon]] except magazines. Use [[primaryWeaponMagazine]] command for the latter. This command is used for infantry weapons only.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - ArrayUnknown
+  - '[silencer, laserpointer/flashlight, optics, bipod]'
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "primaryWeaponItems player;\n/*\n[\n\t\"muzzle_snds_H\",\t// silencer\n\t\"acc_pointer_IR\",\t// laser\n\t\"optic_Aco\",\t\t// optics\n\t\"bipod_01_F_blk\"\t// bipod\n]\n*/\n"

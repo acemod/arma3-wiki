@@ -1,0 +1,37 @@
+name: onGroupIconClick
+description: |-
+  Defines an action performed when player clicked on group marker (3D or in a map). The code executed once.
+  This EH, unlike [[onGroupIconOverEnter]] and [[onGroupIconOverLeave]], has one more param which returns 1 if RMB was pressed, 0 otherwise.
+  {{Feature|arma3|Since {{arma3}} v1.58 a [[Arma 3: Mission Event Handlers#GroupIconClick|Mission Event Handler]] exists and should be used.}}
+groups:
+- High Command
+- Event Handlers
+syntax:
+- call: !Unary
+  - command
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: command
+    description: script
+    typ: !OneOf
+    - String
+    - Code
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "onGroupIconClick\n{\n\t// passed values for _this are:\n\tparams [\"_is3D\", \"_group\", \"_wpID\", \"_posX\", \"_posY\", \"_shift\", \"_ctrl\", \"_alt\"];\n\n\t// before Arma 3\n\t_is3D = _this select 0;\n\t_group = _this select 1;\n\t_wpID = _this select 2;\n\t_RMB = _this select 3;\n\t_posx = _this select 4;\n\t_posy = _this select 5;\n\t_shift = _this select 6;\n\t_ctrl = _this select 7;\n\t_alt = _this select 8;\n\n\t_message = format [\"____ Info ____\"];\n\t{_message = _message + format [\"\\n %1\", _x]} forEach _this;\n\thint _message;\n};\n"

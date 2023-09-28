@@ -1,0 +1,30 @@
+name: clear3DENAttribute
+description: |-
+  Clears the value of the given entity's [[Eden_Editor:_Entity_Attributes|attribute]] in [[:Category:Eden Editor|Eden Editor]]. An attribute is identified by its {{hl|property}} ({{hl|data}} when it is engine-drive attribute) value in config. For the list of all attributes with their properties, see [[Eden_Editor:_Setting_Attributes#Attributes|Setting Attributes]].
+
+  {{Feature|important|Attributes are available only within the Eden Editor workspace. You cannot access them in scenario preview or exported scenario!}}
+groups:
+- Eden Editor
+syntax:
+- call: !Binary
+  - - entity
+  - - attribute
+  ret:
+  - Boolean
+  - '[[true]] on success'
+  params:
+  - name: entity
+    typ: !OneOf
+    - EdenEntity
+    - EdenID
+  - name: attribute
+    description: Attribute property
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- 0 clear3DENAttribute "name";

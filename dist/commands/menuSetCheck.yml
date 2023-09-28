@@ -1,0 +1,45 @@
+name: menuSetCheck
+description: |-
+  Sets item on given path to be checked or not. By default menu strip entries are not checkable.
+  Once this command was executed, an entry can become checked and unchecked.
+  If an entry is checked is indicated by a tick to the left of the entry's text.
+  Setting an entry to be checkable will overwrite set picture with [[menuSetPicture]].
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - checked
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    typ: ArrayUnknown
+  - name: checked
+    typ: Boolean
+- call: !Binary
+  - - control
+  - - path
+    - checked
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    typ: ArrayUnknown
+  - name: checked
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- findDisplay 313 displayCtrl 120 menuSetCheck [[0,1], true];

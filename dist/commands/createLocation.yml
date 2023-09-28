@@ -1,0 +1,72 @@
+name: createLocation
+description: |-
+  Creates a location of the specified class and dimensions at the specified position.
+  Classes are defined in {{hl|CfgLocationTypes}}; for possible location types see [[Location#Location Types|Location Types]].<br>
+  The alternative syntax allows to convert a non-editable (built-in) terrain location into an editable one, with the following restrictions:
+  * it cannot be deleted (but can be [[setType]] to "Invisible" to hide it)
+  * it cannot be moved
+groups:
+- Locations
+syntax:
+- call: !Unary
+  - className
+  - position
+  - sizeX
+  - sizeY
+  ret:
+  - Location
+  - null
+  params:
+  - name: className
+    typ: String
+  - name: position
+    typ: !OneOf
+    - - Position2d
+      - null
+    - - Position3d
+      - null
+    - - Object
+      - null
+  - name: sizeX
+    description: in meters
+    typ: Number
+  - name: sizeY
+    description: in meters
+    typ: Number
+- call: !Unary
+  - location
+  ret:
+  - Location
+  - a script-editable location
+  params:
+  - name: location
+    description: a terrain's location. If a scripted location is provided, it is simply returned
+    typ: Location
+  since:
+    arma_3:
+      major: 2
+      minor: 10
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 8
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _location = createLocation ["NameVillage", [4035,2151,10], 100, 100];
+- |
+  _location = createLocation ["NameVillage", [4035,2151,10], 30, 30];
+  _location setText "Player town";
+- "private _terrainLocation = nearestLocation [player, \"nameCity\"];\t// assuming it returns a built-in location\n_terrainLocation setType \"Invisible\";\t\t\t\t\t\t\t\t// does not do anything\nprivate _editableLocation = createLocation [_terrainLocation];\t\t// does the conversion\n_editableLocation setType \"Invisible\";\t\t\t\t\t\t\t\t// hides the location\n"

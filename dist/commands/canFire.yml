@@ -1,0 +1,39 @@
+name: canFire
+description: Returns [[true]] if the given vehicle is still able to fire. For the command to return [[true]], vehicle must be alive, have weapon operator and the weapon cannot be damaged &ge; 0.9 but can be empty due to running out of ammo. If mission starts with vehicle having no ammo or [[setVehicleAmmo]] 0 command is executed on the vehicle, then [[canFire]] will always report [[false]] for it.
+groups:
+- Weapons
+syntax:
+- call: !Unary
+  - unitName
+  ret:
+  - Boolean
+  - '[[true]] if able to fire'
+  params:
+  - name: unitName
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (not canFire _tank) then\n{\n\tplayer sideChat \"Tank disabled!\";\n};"

@@ -1,0 +1,24 @@
+name: ropeAttachedTo
+description: |-
+  Returns the owner of the first rope - the transport to which other entities are attached with [[ropes]]. This command is the opposite of [[ropeAttachedObjects]]. To return all owners see [[ropesAttachedTo]].<br><br>
+  [[Image:ropeAttachedTo.jpg|400px]]
+groups:
+- Ropes and Sling Loading
+syntax:
+- call: !Unary
+  - cargo
+  ret:
+  - Object
+  - a transport from which the first rope originates, the rope owner
+  params:
+  - name: cargo
+    description: entity attached to the end of the first rope
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- _heli = ropeAttachedTo veh1;

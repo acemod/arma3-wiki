@@ -1,0 +1,18 @@
+name: diag activeScripts
+description: 'Returns 4 element array with numbers of currently running scripts in format: [<nowiki/>[[spawn]]-ed, [[execVM]]-ed, [[exec]]-ed, [[execFSM]]-ed]'
+groups:
+- Diagnostic
+syntax:
+- call: Nular
+  ret:
+  - ArrayUnknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- hint str diag_activeScripts; //[0,0,0,1]

@@ -1,0 +1,45 @@
+name: if
+description: This operator creates a [[If Type]] which is used in the if-construct as described [[Control_Structures#if-Statement|here]].
+groups:
+- Program Flow
+syntax:
+- call: !Unary
+  - condition
+  ret:
+  - IfType
+  - predicate which will execute 1st or 2nd option when used. This predicate is used in [[then]] or [[exitWith]] commands
+  params:
+  - name: condition
+    description: if it evaluates as [[true]], the [[then]] clause is executed.  Otherwise, the [[else]] clause (if present) is executed
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 85
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  _retVal = if (1 > 0) then { "It's true" } else { "It's false" };
+  hint str _retVal;
+- |
+  _val = if (true) then [{ "true" }, { "false" }];
+  hint _val;

@@ -1,0 +1,37 @@
+name: get3DENSelected
+description: |-
+  Returns an array of all selected [[Eden Entity|Eden Editor Entities]] of the given type.<br>
+  If a wrong type is provided, {{hl|[[], [], [], [], [], []]}} is returned and an error message is shown.
+groups:
+- Eden Editor
+syntax:
+- call: !Unary
+  - type
+  ret:
+  - ArrayUnknown
+  - array of entities
+  params:
+  - name: type
+    description: |-
+      Entity type, can be one of:
+      {{Columns|2|
+      * {{hl|"object"}}
+      * {{hl|"group"}}
+      * {{hl|"trigger"}}
+      * {{hl|"logic"}}
+      * {{hl|"waypoint"}}
+      * {{hl|"marker"}}
+      * {{hl|"layer"}}
+      * {{hl|"comment"}}
+      * {{hl|""}} - everything but "layer" and "comment"
+      }}
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- "get3DENSelected \"\";\n\n/*\n[\n\t[B Alpha 2-1:1],\t\t\t\t// objects\n\t[B Alpha 2-1],\t\t\t\t\t// groups\n\t[164494: <no shape>],\t\t\t// triggers\n\t[<No center> Charlie 1-2:4],\t// logic\n\t[[B Alpha 2-1,0]],\t\t\t\t// waypoints\n\t[\"Hotel_Whiskey\"]\t\t\t\t// markers\n]\n*/\n"
+- get3DENSelected "object"; // [B Alpha 2-1:1]

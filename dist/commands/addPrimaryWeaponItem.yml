@@ -1,0 +1,26 @@
+name: addPrimaryWeaponItem
+description: Adds weapon item, including magazine, directly to the [[primaryWeapon]]. This is used for infantry weapons.
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - - unit
+  - - item
+  ret:
+  - !OneOf
+    - Nothing
+    - Boolean
+  - '''''''false'''''' is returned if ''''''item'''''' can not be added'
+  params:
+  - name: unit
+    typ: Object
+  - name: item
+    typ: String
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player addPrimaryWeaponItem "muzzle_snds_H";

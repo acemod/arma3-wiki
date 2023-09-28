@@ -1,0 +1,42 @@
+name: ctrlMapMouseOver
+description: Returns description of map sign mouse cursor is over. Works with in-game map as well as 2D editor map in edit mode.
+groups:
+- GUI Control - Map
+syntax:
+- call: !Unary
+  - control
+  ret:
+  - ArrayUnknown
+  - |-
+    Possible values:
+    * ["unit", [[Object]]]
+    * ["vehicle", [[Object]]]
+    * ["vehicleGroup", [[Object]]]
+    * ["object", [[Object]]]
+    * ["waypoint", [[Waypoint]]]
+    * ["trigger", [[Object]]]
+    * ["marker", [[String]]]
+    * ["task", [[Task]]]
+    * ["customMark"]
+  params:
+  - name: control
+    description: map control
+    typ: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "(uiNamespace getVariable \"_map\") ctrlMapCursor [\"Track\",\"HC_overFriendly\"];\n\n_mouseover = if (count (ctrlMapMouseOver (uiNamespace getVariable \"_map\")) > 0) then\n{\n\tctrlMapMouseOver (uiNamespace getVariable \"_map\")\n}\nelse\n{\n\t[\"\"]\n};\n\nif (_mouseover select 0 == \"task\" && str(_logic getVariable \"onTaskAssigned\") != str{}) then\n{\n\t//--- Task\n\t(uiNamespace getVariable \"_map\") ctrlMapCursor [\"Track\",\"HC_overMission\"];\n}\nelse\n{\n\t//--- Waypoint\n\t(uiNamespace getVariable \"_map\") ctrlMapCursor [\"Track\",\"HC_move\"];\n};"
+- onEachFrame {hintSilent str ctrlMapMouseOver (findDisplay 12 displayCtrl 51)};

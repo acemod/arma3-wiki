@@ -1,0 +1,58 @@
+name: actionKeysNames
+description: |-
+  Returns a list of button names assigned to the given user action.
+  Action names can be found in config class {{hl|ControllerSchemes}} or [[:Category:Key Actions|user action names]].
+groups:
+- Interaction
+syntax:
+- call: !Unary
+  - userAction
+  ret:
+  - String
+  - null
+  params:
+  - name: userAction
+    typ: String
+- call: !Unary
+  - userAction
+  - maxKeys
+  - inputDevicePriority
+  ret:
+  - String
+  - null
+  params:
+  - name: userAction
+    typ: String
+  - name: maxKeys
+    description: maximum number of keys to return
+    typ: Number
+  - name: inputDevicePriority
+    description: "result sorted by inputDevicePriority with values:\n* {{hl|\"Mouse\"}}\n* {{hl|\"Keyboard\"}}\n* {{hl|\"Stick\"}}\n* {{hl|\"Gamepad\"}}\n* {{hl|\"Tracker\"}}\n* {{hl|\"Combo\"}} (mouse and keyboard combinations)\n* {{sic|{{hl|\"Controler\"}}}} (any controller other than mouse or keyboard)\nOther values are considered as: \n* {{hl|\"Unsorted\"}}"
+    typ: String
+    since:
+      arma_3:
+        major: 1
+        minor: 36
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _list = actionKeysNames "ReloadMagazine"; // """R"" or ""XBox X"""

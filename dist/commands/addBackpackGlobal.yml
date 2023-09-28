@@ -1,0 +1,27 @@
+name: addBackpackGlobal
+description: Adds a backpack to a unit (even non-local).{{Feature | Warning | Beware, the backpack added with this command will be created on the PC [[Multiplayer Scripting#Locality|local]] to the unit you are adding it to, even if executed on the server. Because of this, if non-local unit is the target and one tries to immediately access added backpack, the backpack returned will be [[objNull | Null]]. When adding backpack dynamically to a remote unit, wait until backpack is added (See Example 2)}}
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - - unit
+  - - backpack
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    description: soldier
+    typ: Object
+  - name: backpack
+    description: backpack class name
+    typ: String
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- player addBackpackGlobal "B_AssaultPack_khk";
+- "_unit spawn \n{\n\tif (!isNull backpackContainer _this) then\n\t{\n\t\tremoveBackpackGlobal _this;\n\t\twaitUntil { isNull backpackContainer _this };\n\t};\n\t_this addBackpackGlobal \"B_AssaultPack_khk\";\n\twaitUntil { !isNull backpackContainer _this };\n\tbackpackContainer _this addMagazineCargoGlobal [\"30Rnd_556x45_Stanag\",5];\n};"

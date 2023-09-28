@@ -1,0 +1,50 @@
+name: addMagazineCargo
+description: |-
+  Add magazines to the cargo space of vehicles, which can be taken out by infantry units. Once the magazine cargo space is filled up, any further addMagazineCargo commands are ignored.
+  {{Feature|arma3|In {{arma3}}, arguments for this command must be local ({{Icon|localArgument|32}}). For the global variant see [[addMagazineCargoGlobal]].}}
+groups:
+- Containers
+syntax:
+- call: !Binary
+  - - vehicleName
+  - - magazineName
+    - count
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicleName
+    description: vehicle to add the magazines to
+    typ: Object
+  - name: magazineName
+    description: magazine name. See [[:Category:Weapons]] for reference about possible values.
+    typ: String
+  - name: count
+    description: number of magazines to add. Since Arma 3 v2.14, negative count will remove magazines.
+    typ: Number
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _truck addMagazineCargo ["M16", 5];

@@ -1,0 +1,30 @@
+name: removeItem
+description: Removes item from the inventory.
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - - unit
+  - - item
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: item
+    typ: String
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  bluforUnit unassignItem "NVGoggles";
+  bluforUnit removeItem "NVGoggles";
+  opforUnit unassignItem "NVGoggles_OPFOR";
+  opforUnit removeItem "NVGoggles_OPFOR";
+  independentUnit unassignItem "NVGoggles_INDEP";
+  independentUnit removeItem "NVGoggles_INDEP";

@@ -1,0 +1,21 @@
+name: ctHeaderCount
+description: Returns number of headers (rows not included) in the RscControlsTable.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Unary
+  - ctrl
+  ret:
+  - Number
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- ctHeaderCount _control;

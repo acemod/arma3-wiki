@@ -1,0 +1,46 @@
+name: camSetRelPos
+description: Sets the position of the given camera relative to its target, set with [[camSetTarget]]. Needs a call to [[camCommit]] to be conducted.{{Feature | important |Since it sets relative position to the target, the [[camSetTarget]] command should be executed already, before [[camSetRelPos]].}}
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - - camera
+  - - position
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: camera
+    description: object of type "camera"
+    typ: Object
+  - name: position
+    description: format [[Position#PositionRelative|PositionRelative]]
+    typ: ArrayUnknown
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _cam camSetTarget _car;
+  _cam camSetRelPos [0,10,8];

@@ -1,0 +1,24 @@
+name: setPilotLight
+description: Switches headlights of a vehicle on/off. Note that the vehicle has to be [[Multiplayer Scripting#Locality|local]], for global variant use [[Arma 3 Actions]] "[[Arma_3_Actions#LightOn|LightOn]]"/"[[Arma_3_Actions#LightOff|LightOff]]"
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - - vehicle
+  - - set
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    typ: Object
+  - name: set
+    typ: Boolean
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- car setPilotLight true;

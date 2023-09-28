@@ -1,0 +1,24 @@
+name: removeItemFromBackpack
+description: Removes item from soldier's backpack.
+groups:
+- Containers
+syntax:
+- call: !Binary
+  - - unit
+  - - item
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: item
+    typ: String
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 4
+examples:
+- player removeItemFromBackpack "itemGPS";

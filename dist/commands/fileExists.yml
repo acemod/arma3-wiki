@@ -1,0 +1,37 @@
+name: fileExists
+description: |-
+  Checks if file on given path exists. Uses same path resolve code as [[loadFile]].
+  {{Feature|Informative|Absolute paths are not supported, such as those generated using [[getMissionPath]]. Attempting to check an absolute path will result in this error in [[RPT]] logs:
+  {{hl|Invalid path (only relative paths supported): 'C:\...'}}
+  }}
+groups:
+- Program Flow
+syntax:
+- call: !Unary
+  - path
+  ret:
+  - Boolean
+  - '[[true]] if it exists, otherwise [[false]]'
+  params:
+  - name: path
+    description: Path to file
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- fileExists "\a3\mySuperPath\bestFileEver.paa"; // returns false
+- |
+  private _path = "a3\functions_f_mp_mark\revive\_addaction_revive.inc";
+  if (fileExists _path) then { loadFile _path } else { diag_log format ["File (%1) does not exist!", _path] };
+- |
+  // Sometimes it might be better to check if a file exists instead of checking if path is empty ("")
+  private _class = "ModuleObjectiveRaceFinish_F";
+  private _picture = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview");
+  if !(fileExists _picture) then { _picture = getText (configFile >> "CfgVehicles" >> _class >> "portrait") };
+  if !(fileExists _picture) then { _picture = getText (configFile >> "CfgVehicles" >> _class >> "icon") };
+  if !(fileExists _picture) then { _picture = getText (configFile >> "CfgVehicles" >> _class >> "picture") };
+  if !(fileExists _picture) then { systemChat "No valid picture found!" } else { systemChat _picture };

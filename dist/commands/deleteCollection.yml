@@ -1,0 +1,36 @@
+name: deleteCollection
+description: |-
+  Delete a collection. As example, used with a soldier, it'll hide the ingame model.
+
+  ''When targetting Arma 2 1.06 or newer, use [[hideObject]] instead. This function is a relic from dynamic building destruction development. It is left only for compatibility with scripts created before Arma 2 1.06, and its functionality may be changed or removed in the future.''
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- deleteCollection unitName;

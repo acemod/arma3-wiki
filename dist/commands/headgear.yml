@@ -1,0 +1,21 @@
+name: headgear
+description: Returns headgear of unit.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - String
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hint headgear player; //H_HelmetB

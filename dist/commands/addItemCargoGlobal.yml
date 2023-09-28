@@ -1,0 +1,28 @@
+name: addItemCargoGlobal
+description: Global variant of [[addItemCargo]].
+groups:
+- Vehicle Inventory
+syntax:
+- call: !Binary
+  - - box
+  - - item
+    - count
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: box
+    typ: Object
+  - name: item
+    typ: String
+  - name: count
+    description: number of items to add. Since Arma 3 v2.14, negative count will remove items.
+    typ: Number
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- supplyBox addItemCargoGlobal ["optic_Arco", 10];

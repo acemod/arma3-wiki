@@ -1,0 +1,35 @@
+name: groupId
+description: Returns a group's name or a unit's group ID number.
+groups:
+- Groups
+syntax:
+- call: !Unary
+  - group
+  ret:
+  - String
+  - the group's name (e.g "Alpha Red")
+  params:
+  - name: group
+    typ: Group
+- call: !Unary
+  - unit
+  ret:
+  - Number
+  - the unit's group ID (e.g "'''2''', taking command")
+  params:
+  - name: unit
+    description: a group's unit
+    typ: Object
+  since:
+    arma_3:
+      major: 2
+      minor: 12
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "_name = groupId group player;\t\t\t// e.g \"B Alpha 1-1\""
+- "private _unitGroupId = groupId player;\t// e.g 3 (number, not a string)"

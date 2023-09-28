@@ -1,0 +1,34 @@
+name: removeMenuItem
+description: "Removes a previously added menu item. \n{{Feature | Informative | Some Old Editor Command}}"
+groups:
+- Game 2 Editor
+syntax:
+- call: !Binary
+  - - map
+  - - index
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: map
+    typ: Control
+  - name: index
+    description: index of menu item to delete
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '-'

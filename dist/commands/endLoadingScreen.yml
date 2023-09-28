@@ -1,0 +1,36 @@
+name: endLoadingScreen
+description: |-
+  Finishes loading screen started by [[startLoadingScreen]].
+
+  {{Feature|arma3|Use [[BIS_fnc_endLoadingScreen]] to prevent potential usage conflicts.}}
+groups:
+- System
+syntax:
+- call: Nular
+  ret:
+  - Nothing
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  startLoadingScreen ["Loading My Mission"];
+  // code
+  progressLoadingScreen 0.5;
+  // code
+  endLoadingScreen;
+- "// this structure prevents error-prone or lengthy code to miss endLoadingScreen.\nprivate _maxTime = diag_tickTime + 30; // max 30s of loading\n\nstartLoadingScreen [\"Loading\"];\nprivate _handle = [] spawn {\n\t// code that may crash or take too long\n};\n\nwaitUntil { sleep .01; scriptDone _handle || diag_tickTime > _maxTime };\nendLoadingScreen;\n"

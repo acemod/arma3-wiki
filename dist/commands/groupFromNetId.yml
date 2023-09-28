@@ -1,0 +1,25 @@
+name: groupFromNetId
+description: Get group with given unique ID. For objects use [[objectFromNetId]]. As this command is MP only, you can use [[BIS_fnc_groupFromNetId]], which extends the use to SP as well.
+groups:
+- Groups
+- Multiplayer
+syntax:
+- call: !Unary
+  - id
+  ret:
+  - Group
+  - null
+  params:
+  - name: id
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 63
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _group = groupFromNetId "4:45";

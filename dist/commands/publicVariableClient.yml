@@ -1,0 +1,36 @@
+name: publicVariableClient
+description: |-
+  Send the variable value to the client computer - same limitations regarding variable type as [[publicVariable#Description|publicVariable]].
+
+  The Client ID is the temporary ID given to a connected client for that session. You can find out this ID with the [[owner]] command (using it on a player's character, for example, will give you that players client ID).<br><br>
+
+  {{Feature|arma3|In Arma 3 it is possible to broadcast [[nil]] value}}
+groups:
+- Multiplayer
+- Variables
+syntax:
+- call: !Binary
+  - - clientID
+  - - varName
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: clientID
+    typ: Number
+  - name: varName
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 62
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 3 publicVariableClient "CTFscoreOne";

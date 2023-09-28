@@ -1,0 +1,20 @@
+name: independent
+description: Pre-defined variable for the independent [[Side|side]].
+alias:
+- '[[resistance]]'
+groups:
+- Sides
+syntax:
+- call: Nular
+  ret:
+  - Side
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (side _unit == independent) then\n{\n\thint \"This is a independent unit!\";\n};"

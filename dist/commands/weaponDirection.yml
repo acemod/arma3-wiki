@@ -1,0 +1,43 @@
+name: weaponDirection
+description: |-
+  Returns the direction that the vehicle weapon is aiming in. For addons the weapon name must be an entry in [[:Category:CfgWeapons|CfgWeapons]].
+  {{Feature | Informative | Turret and gun angle in degrees can also be obtained using [[animationSourcePhase]] or [[animationPhase]] commands.}}
+groups:
+- Weapons
+- Unit Control
+syntax:
+- call: !Binary
+  - - vehicleName
+  - - weaponName
+  ret:
+  - ArrayUnknown
+  - format [[Vector3D]]
+  params:
+  - name: vehicleName
+    typ: Object
+  - name: weaponName
+    typ: String
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _weaponVectorDir = player weaponDirection currentWeapon player;
+- "Draw AI eye direction (green) and weapon direction (red) in 3D:\n<sqf>bob = createGroup east createUnit [\"O_Soldier_F\", [0,0,0], [], 0, \"NONE\"];\nbob setVehiclePosition [player modelToWorld [0,100,0], [], 0, \"NONE\"];\nonEachFrame\n{\n\t_beg = ASLToAGL eyePos bob;\n\t_endE = _beg vectorAdd (eyeDirection bob vectorMultiply 100);\n\tdrawLine3D [_beg, _endE, [0,1,0,1]];\n\t_endW = _beg vectorAdd (bob weaponDirection currentWeapon bob vectorMultiply 100);\n\tdrawLine3D [_beg, _endW, [1,0,0,1]];\n};"

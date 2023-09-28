@@ -1,0 +1,32 @@
+name: compileScript
+description: |-
+  This command is an alias for {{hl|[[compile]](Final) (prefixHeader + [[preprocessFileLineNumbers]] path)}}. See description of [[preprocessFileLineNumbers]] for more details.<br>
+  In addition, this command can also compile [[SQF Bytecode]] files, which can reduce compilation time.
+groups:
+- System
+syntax:
+- call: !Unary
+  - path
+  - final
+  - prefixHeader
+  ret:
+  - Code
+  - null
+  params:
+  - name: path
+    description: path to script file
+    typ: String
+  - name: final
+    description: (Optional, default [[false]]) compile final, see [[compileFinal]]
+    typ: Boolean
+  - name: prefixHeader
+    description: (Optional, default "") value added at the beginning of the file
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- "compileScript [\"a3\\props_f_enoch\\military\\equipment\\scripts\\meteo.sqf\"];\n// has the same functionality as \ncompile preprocessFileLineNumbers \"a3\\props_f_enoch\\military\\equipment\\scripts\\meteo.sqf\";\n"

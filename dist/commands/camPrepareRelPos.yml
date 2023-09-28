@@ -1,0 +1,36 @@
+name: camPrepareRelPos
+description: Prepares the camera position relative to the current position of the currect target (see [[camPrepareTarget]]). Needs the call of [[camCommitPrepared]] to be conducted.
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - - camera
+  - - position
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: camera
+    typ: Object
+  - name: position
+    typ: Position3dRelative
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _camera camPrepareRelPos [10,5,-2];

@@ -1,0 +1,28 @@
+name: setMarkerShadow
+description: Sets the shadow property of given marker.
+problem_notes:
+- '[[setMarkerType]] will reset the shadow value to the one defined in marker type.'
+groups:
+- Markers
+syntax:
+- call: !Binary
+  - - marker
+  - - shadowState
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: marker
+    description: The marker
+    typ: String
+  - name: shadowState
+    description: '[[true]] to enable the shadow, [[false]] to disable it'
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- _myMarker setMarkerShadow true; // enable shadow

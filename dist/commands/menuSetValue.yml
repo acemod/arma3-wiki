@@ -1,0 +1,41 @@
+name: menuSetValue
+description: Sets new value into menu entry on given path.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - value
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    typ: ArrayUnknown
+  - name: value
+    typ: Number
+- call: !Binary
+  - - control
+  - - path
+    - value
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    typ: ArrayUnknown
+  - name: value
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- findDisplay 313 displayCtrl 120 menuSetValue [[0, 1], 1337];

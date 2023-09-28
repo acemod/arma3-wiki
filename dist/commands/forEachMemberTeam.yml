@@ -1,0 +1,33 @@
+name: forEachMemberTeam
+description: Executes the given command recursively for each team that is a member of the given team. For just agents use [[forEachMemberAgent]]. For both teams and agents use [[forEachMember]].
+groups:
+- Program Flow
+syntax:
+- call: !Binary
+  - - command
+  - - team
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: command
+    typ: Code
+  - name: team
+    typ: TeamMember
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- ''

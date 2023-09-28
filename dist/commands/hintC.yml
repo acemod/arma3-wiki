@@ -1,0 +1,75 @@
+name: hintC
+description: |-
+  Displays a very basic message dialog in the center of the screen. Player control is taken away until "Continue" is pressed. The message dialog can be dragged around on the screen. After "Continue" has been pressed, the content of the [[hintC]] is repeated in a normal [[hint]].
+  {{Feature | Informative | In Singleplayer, the game is paused while the message dialog is visible.}}
+groups:
+- Interaction
+- Structured Text
+- Strings
+syntax:
+- call: !Unary
+  - message
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: message
+    typ: String
+- call: !Binary
+  - - title
+  - - message
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: title
+    description: message title
+    typ: String
+  - name: message
+    typ: !OneOf
+    - - String
+      - null
+    - - StructuredText
+      - null
+    - - !ArrayUnsized
+        - String
+        - ''
+      - null
+    - - !ArrayUnsized
+        - StructuredText
+        - ''
+      - null
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hintC "Press W to move forward";
+- "Same as the above in {{arma3}} but without second [[hint]] displayed:<br>[[Image:HintC.jpg|400px|right]]\n<sqf>\nhintC \"Press W to move forward\";\nhintC_EH = findDisplay 57 displayAddEventHandler [\"Unload\", {\n\t_this spawn {\n\t\t_this select 0 displayRemoveEventHandler [\"Unload\", hintC_EH];\n\t\thintSilent \"\";\n\t};\n}];\n"
+- "\"Instructions\" hintC [\n\t\"Press W to move forward.\",\n\t\"Press S to move backwards.\",\n\t\"Use the mouse to turn right or left.\",\n\t\"Press V for weapon sights.\"\n];\n"
+- "Same as the above in {{arma3}} but without second [[hint]] displayed:<br>[[Image:HintC_array.jpg|400px|right]]\n<sqf>\n\"Instructions\" hintC [\n\t\"Press W to move forward.\",\n\t\"Press S to move backwards.\",\n\t\"Use the mouse to turn right or left.\",\n\t\"Press V for weapon sights.\"\n];\nhintC_EH = findDisplay 72 displayAddEventHandler [\"Unload\", {\n\t_this spawn {\n\t\t_this select 0 displayRemoveEventHandler [\"Unload\", hintC_EH];\n\t\thintSilent \"\";\n\t};\n}];\n"
+- |
+  private _separator = parseText "<br/>------------------------<br/>";
+  private _image = "\ca\ui\textures\aus_flag.paa";
+  private _message = composeText [image _image, "Heading Text", _separator, "Content"];
+  "" hintC _message;

@@ -1,0 +1,47 @@
+name: waitUntil
+description: "Suspends execution of [[Scheduler|scheduled]] script until the given condition satisfied. \n* This command will loop and call the code inside <sqf inline>{}</sqf> '''mostly every frame''', depends on complexity of the condition and the overall engine load, until the [[Code|code]] returns [[true]]\n* If the very first execution of the code returns [[true]] the command will exit immediately, therefore it will not produce any \"Suspending not allowed in this context\" error when used inside [[Scheduler#Unscheduled_Environment|non-scheduled]] script. For all other uses it must be executed in environment that allows [[Scheduler#Suspension|suspension]] ([[canSuspend]]), such as [[spawn]]ed or [[execVM]]ed code\n* Avoid doing <sqf inline>waitUntil { time > 20 };</sqf> and use <sqf inline>sleep 20;</sqf> instead!\n* If you can, add a [[sleep]] to the condition to save some cpu cycles <sqf inline>waitUntil { sleep 1; !alive player };</sqf>\n\n{{Feature|arma3|Since {{arma3}} v1.94, a ''condition'' returning anything other than [[true]] or [[false]] '''will''' result in an appropriate type error.}}"
+problem_notes:
+- |-
+  For some unknown reason if you have [[waitUntil]] loop active and game is '''saved/loaded''', some variables in the expression may appear undefined for a short time. As a workaround, assign expression to a variable and make sure it is defined before [[waitUntil]] checks it:
+  <sqf>waitUntil { private _expression = var1 && (var2 > 10); !isNil "_expression" && { _expression } };</sqf>
+groups:
+- Program Flow
+syntax:
+- call: !Unary
+  - condition
+  ret:
+  - Anything
+  - The value the condition evaluates to when the wait is over (normally [[true]])
+  params:
+  - name: condition
+    description: The expression that '''must''' return a [[Boolean]], [[true]] to finish waiting or [[false]] to continue waiting
+    typ: Code
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- waitUntil { not alive player };
+- _i = 0; waitUntil { _i = _i + 1; _i >= 100 };
+- "[[waitUntil]] can lead to performance loss if used improperly:\n<sqf>\nwaitUntil { not alive player };\t\t\t// bad\nwaitUntil { sleep 1; not alive player };\t// good - checks every 1 second\nplayer addEventHandler [\"Killed\", {  }];\t// best - don't forget about Event Handlers\n"
+- "An on-the-fly custom [[Arma 3: Event Handlers|event handler]]:\n<sqf>\n_myEH = [\"ZoomIn\"] spawn {\n\twhile { true } do\n\t{\n\t\twaitUntil { inputAction (_this select 0) == 1 };\n\t\tdiag_log format [\"%1 @ %2\", _this select 0, diag_tickTime];\n\t};\n};\n</sqf>\nAlthough it may be better to use [[onEachFrame]] ([[BIS_fnc_addStackedEventHandler|stacked]]) [[Arma_3:_Mission_Event_Handlers#EachFrame|mission Event Handler]], depending on the application."
+- |
+  Use [[getVariable]] with default value to prevent unexcepted script errors:
+  <sqf>
+  waitUntil { bank getVariable ["money", 0] > 0 };
+  waitUntil { missionNamespace getVariable ["isready", false] };
+- "Always return [[Boolean]]:\n<sqf>\nwaitUntil { sleep 1; if (not alive player) exitWith {}; _time = _time + 1 };\t\t\t\t// bad\nwaitUntil { sleep 1; if (not alive player) exitWith { true }; _time = _time + 1; false };\t// good\nwaitUntil { sleep 1; not alive player };\t\t\t\t\t\t\t\t\t\t\t\t\t// perfect\n"

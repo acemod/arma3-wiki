@@ -1,0 +1,29 @@
+name: isWalking
+description: |-
+  Returns [[true]] if walk is '''toggled''' (default W+S in {{arma3}}).
+  {{Feature | Informative | This command can still return true when the unit is sprinting or stopped; it only returns the '''toggle''' value of walking, not if the unit is walking right now.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - unitName
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: unitName
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _bool = isWalking player;

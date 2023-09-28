@@ -1,0 +1,30 @@
+name: ctrlAt
+description: Returns the control at the specified coordinates.
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - - display
+  - - x
+    - y
+  ret:
+  - Control
+  - the control at the specified coordinates, [[controlNull]] if none
+  params:
+  - name: display
+    description: the display to check
+    typ: Display
+  - name: x
+    description: position (0 = left, 1 = right
+    typ: Number
+  - name: y
+    description: position (0 = top, 1 = bottom
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- private _ctrl = _myDisplay ctrlAt [0.5, 0.5];

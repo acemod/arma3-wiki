@@ -1,0 +1,36 @@
+name: lbIsSelected
+description: Checks whether or not given row of the given listbox is selected.
+groups:
+- GUI Control - ListBox
+syntax:
+- call: !Binary
+  - - control
+  - - index
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: index
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _selected = _control lbIsSelected 0;

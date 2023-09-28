@@ -1,0 +1,40 @@
+name: onPreloadFinished
+description: |-
+  Defines an action performed after the preload screen finished. Preload event occurs after briefing screen on mission start.
+  {{Feature | important | This event handler also fires on client after user closes the main map. }}
+  {{Feature|arma3|
+  * Since {{arma3}} v1.57 a stackable version of this EH is available: [[Arma 3: Mission Event Handlers#PreloadFinished|PreloadFinished]]
+  * Before that, the [[BIS_fnc_addStackedEventHandler]] and [[BIS_fnc_removeStackedEventHandler]] functions should be used instead.}}
+groups:
+- Event Handlers
+syntax:
+- call: !Unary
+  - command
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: command
+    typ: !OneOf
+    - String
+    - Code
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- onPreloadFinished {TAG_ReceivingScreenDone = true};
+- |-
+  // removes the event immediately after the first run again
+  onPreloadFinished { TAG_ReceivingScreenDone = true; onPreloadFinished "" };

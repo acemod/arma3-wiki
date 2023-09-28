@@ -1,0 +1,24 @@
+name: objectFromNetId
+description: Get object with given unique ID. If object is a [[group]] use [[groupFromNetId]]. As this command is MP only, you can use [[BIS_fnc_objectFromNetId]], which extends the use to SP as well.
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - id
+  ret:
+  - Object
+  - null
+  params:
+  - name: id
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 63
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- objectFromNetId "2:3"

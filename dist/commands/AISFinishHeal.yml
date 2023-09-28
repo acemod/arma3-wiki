@@ -1,0 +1,38 @@
+name: AISFinishHeal
+description: Alternative Injury Simulation (AIS) end state. Used to tell engine that script side healing is done when using "HandleHeal" event handler.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - unit
+  - healer
+  - healerCanHeal
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    description: wounded
+    typ: Object
+  - name: healer
+    description: medic
+    typ: Object
+  - name: healerCanHeal
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- AISFinishHeal [_wounded, _medic, true];

@@ -1,0 +1,48 @@
+name: globalRadio
+description: |-
+  Sends the audio message to the global radio channel. The message is defined in CfgRadio in the [[Description.ext|description.ext]] file or config radio protocol. The transmission will play only on the PC where command was executed. If you need the transmission to play on all computers, you have to execute it globally (see [[remoteExec]]).
+  {{Feature | Informative | When transmitting unit gets killed, transmission will be interrupted. However when receiving unit gets killed, the transmission continues to play.}}
+groups:
+- Radio and Chat
+- Sounds
+syntax:
+- call: !Binary
+  - - unit
+  - - radioName
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    description: unit to transmit
+    typ: Object
+  - name: radioName
+    description: class name from CfgRadio
+    typ: String
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldierOne globalRadio "messageOne";
+- player globalRadio configName selectRandom ("true" configClasses (configFile >> "CfgRadio"));

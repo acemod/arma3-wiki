@@ -1,0 +1,33 @@
+name: configName
+description: Returns name of config entry.
+groups:
+- Config
+syntax:
+- call: !Unary
+  - config
+  ret:
+  - String
+  - null
+  params:
+  - name: config
+    typ: Config
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _name = configName (configFile >> "CfgVehicles"); // result is "CfgVehicles"

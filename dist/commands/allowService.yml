@@ -1,0 +1,28 @@
+name: allowService
+description: |-
+  Sets which type of repair/refuel/rearm service is allowed. The two available types are manual, where the action is displayed to the user, and auto, where the service happens within distance.
+  The engine default is both (manual and auto) for historic reasons.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - vehicle
+  - - type
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    description: supply vehicle, i.e. ammo truck
+    typ: Object
+  - name: type
+    description: '0: none, 1: auto, 2: manual, 3: both'
+    typ: Number
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- ammoTruck allowService 0;

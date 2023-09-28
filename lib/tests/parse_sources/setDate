@@ -1,0 +1,77 @@
+{{RV|type=command
+
+|game1= ofpe
+|version1= 1.00
+
+|game2= arma1
+|version2= 1.00
+
+|game3= arma2
+|version3= 1.00
+
+|game4= arma2oa
+|version4= 1.50
+
+|game5= tkoh
+|version5= 1.00
+
+|game6= arma3
+|version6= 0.50
+
+|eff= local
+
+|gr1= Mission Information
+
+|gr2= Environment
+
+|descr= Sets mission date and time. Players joining after mission start will get the current server [[date]] including the year.
+
+|mp= {{Feature|arma3 |Clients' local date is [[Multiplayer Scripting#Join In Progress|automatically and periodically synchronised]] with the server date.<br>
+In order to change the date without waiting for automatic synchronisation, use remote execution: <sqf inline>[[2001,6,22,12,0]] remoteExec ["setDate"];</sqf>.}}
+{{Feature|warning|While the game creates February 29th in a leap year, it removes December 31st. For example <sqf inline>setDate [1980,12,31,12,0]</sqf> will result in game jumping to [1981,1,1,12,0] as 1980 is a leap year.}}
+
+|s1= [[setDate]] date
+
+|p1= date: [[Array]] format [[Date]]
+
+|r1= [[Nothing]]
+
+|x1= <sqf>setDate [1986, 2, 25, 16, 0]; // 4:00pm February 25, 1986</sqf>
+
+|x2= <sqf>
+// postInit = 1;
+// Set the real date (MP only):
+if (isServer) then
+{
+	waitUntil { time > 0 };
+	[missionStart select [0, 5]] remoteExec ["setDate"];
+};
+</sqf>
+
+|seealso= [[date]] [[skipTime]] [[numberToDate]] [[dateToNumber]]
+}}
+
+{{Note
+|user= Alpha
+|timestamp= 20121207111000
+|text= This command sets the date for the southern hemisphere only, i.e. when the map is in northern hemisphere a date [2010,12,7,17,0] is in day light and and date [2010,6,7,17,0] is in darkness.
+}}
+
+{{Note
+|user= Osmo
+|timestamp= 20111031210700
+|text= In multiplayer, the effect of this command is local, not global. The date from the server is synchronized with clients when they join the game (including start of the mission and joining in progress). E.g. if this command is executed on server in the init.sqf before the mission starts, every client will be synchronized with server as mission is started. However, if you run this command in the middle of the mission, effect is local.
+}}
+
+{{Note
+|user= MulleDK13
+|timestamp= 20141004174300
+|text= Since an unknown version of {{arma3}}, this command now has global effect when executed on the server.
+}}
+
+{{Note
+|user= OOKexOo
+|timestamp= 20170423025800
+|text= Regarding execution in the middle of a session, the post of [[User:MulleDK13|MulleDK13]] is not entirely true. If you don't change the year, you are perfectly fine when executing the command on the server only. However, the server does not sync the year. Hence, if you do change the year, you have to execute the command on the server, clients and JIP to account for the missing sync. e.g.
+<sqf>[[], { setDate [1986, 2, 25, 16, 0] }] remoteExec ["call", 0, "JIP_id_setDate"];</sqf> 
+}}

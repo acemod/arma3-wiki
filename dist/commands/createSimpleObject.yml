@@ -1,0 +1,57 @@
+name: createSimpleObject
+description: "Create object with given shape defined as path to .p3d model. Supported [[LOD]]s include [[LOD#Geometry|Geometry]], [[LOD#Fire_Geometry|Fire Geometry]], [[LOD#Roadway|Roadway]], [[LOD#ViewGeometry|View Geometry]] and [[LOD#ShadowVolume|ShadowVolume]]. Supported features include collision, texturing, animation, penetration, AI spotting occlusion, and surface specific sounds (like footsteps). Unsupported features include PhysX, damage, AI pathfinding (causes walking through walls), and built-in lights.<br><br>\n\nGiven the simulation limitations, global decorative objects can be created with very little network traffic. Objects that could be exclusively created with this command are: trees, bushes, rocks, bridges, roads, vehicle wrecks, custom models in mission, and other objects without a class in config. The height of the placement position might need to be adjusted experimentally.<br>\n{{Feature|informative|\n* See [[Arma 3: createSimpleObject/objects]] for a p3d models' list.\n* See [[Arma 3: Livonia Props]] for [[Livonia]] furniture.\n}}\n\nSee [[Arma 3: Simple Objects]] to learn more about simple objects.\n\n{{Feature|informative|\n* [[addAction]] does not work with simple objects.\n* objects created with Syntax 1 cannot be textured. Some objects may also have inverted default direction. \n* objects created with Syntax 2 can be textured. The default direction should match the direction of the object if it was created with [[createVehicle]].\n* only as of {{GVI|arma3|1.68}} do simple objects support [[getVariable]] and [[setVariable]].\n}}"
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - shapeName
+  - positionWorld
+  - local
+  ret:
+  - Object
+  - created simple object
+  params:
+  - name: shapeName
+    description: "path to the 3d model (can be obtained with [[getModelInfo]] command)\n{{Feature|important|The path must '''not''' start with a backslash:\n{{{!}}\n{{!}} {{Icon|unchecked}}\n{{!}} {{hl|\"'''\\'''a3\\armor_f_beta...}}\n{{!}}-\n{{!}} {{Icon|checked}} \n{{!}} {{hl|\"a3\\armor_f_beta...}}\n{{!}}}\n}}"
+    typ: String
+  - name: positionWorld
+    description: placement position by the '''model centre'''<nowiki/>'s position (see [[getPosWorld]]
+    typ: Position3dASL
+  - name: local
+    description: (Optional, default [[false]]) [[true]] to create a local instance only
+    typ: Boolean
+    since:
+      arma_3:
+        major: 1
+        minor: 96
+- call: !Unary
+  - className
+  - positionASL
+  - local
+  ret:
+  - Object
+  - Created simple object
+  params:
+  - name: className
+    description: '[[CfgVehicles]] class name'
+    typ: String
+  - name: positionASL
+    description: placement position
+    typ: Position3dASL
+  - name: local
+    description: (Optional, default [[false]]) [[true]] to create a local instance only
+    typ: Boolean
+    since:
+      arma_3:
+        major: 1
+        minor: 96
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- "private _pos = player getRelPos [10, 0];\nprivate _tank = createSimpleObject [\"a3\\armor_f_beta\\apc_tracked_01\\apc_tracked_01_rcws_f.p3d\", _pos];\n_tank setPos (_pos vectorAdd (getPosWorld _tank vectorDiff (_tank modelToWorld [0,0,0])));\n\n_tank hideSelection [\"zasleh\", true];\n_tank hideSelection [\"zasleh2\", true];\n_tank hideSelection [\"clan\", true];\n \n_tank animate [\"Wheel_podkoloL3\", 0.5, true];\n_tank animate [\"Wheel_podkoloL6\", 0.5, true];\n"
+- "private _pos = player getRelPos [10, 0];\nprivate _tank = createSimpleObject [\"B_APC_Tracked_01_CRV_F\", AGLToASL _pos];\n_tank setObjectTexture [0, \"#(rgb,8,8,3)color(0,1,0,0.01)\"];\n\n_tank hideSelection [\"zasleh\", true];\n_tank hideSelection [\"zasleh2\", true];\n_tank hideSelection [\"clan\", true];\n  \n_tank animate [\"Wheel_podkoloL3\", 0.5, true];\n_tank animate [\"Wheel_podkoloL6\", 0.5, true];\n"
+- "Create a pond:\n<sqf>\nprivate _waterTileModel = \"a3\\structures_f_enoch\\Water\\pond_big_01.p3d\"; // visual only - this pond is a hard surface\nprivate _tileSize = 18; // width & height\nprivate _tileX = 10;\nprivate _tileY = 5;\nprivate _bottomLeftCorner = getPosWorld player;\nprivate _tilePos = -1;\nprivate _tiles = [];\nprivate _tile = objNull;\nfor \"_y\" from 0 to (_tileY - 1) do\n{\n\tfor \"_x\" from 0 to (_tileX - 1) do\n\t{\n\t\t_tilePos = _bottomLeftCorner vectorAdd [_x * _tileSize, _y * _tileSize, 0];\n\t\t_tile = createSimpleObject [_waterTileModel, _tilePos];\n\t\t_tiles pushBack _tile;\n\t};\n};\nsleep 10;\n{ deleteVehicle _x } forEach _tiles;\n"

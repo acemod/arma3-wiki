@@ -1,0 +1,100 @@
+name: ctrlSetPosition
+description: |-
+  Sets wanted position and size for 2D control animation. Width and height are optional. [[ctrlCommit]] is required to complete the operation. For 3D control, param is relative [x, y, z] and no [[ctrlCommit]] is required as it cannot be animated. If target control is inside a [[CT_CONTROLS_GROUP]], the position needs to be relative to it.
+
+  {{Feature|Important| This command doesn't work well with [[CT_MAP]] control. Use [[ctrlMapSetPosition]] instead. }}
+groups:
+- GUI Control - Positioning
+syntax:
+- call: !Binary
+  - - controlName
+  - - x
+    - y
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: controlName
+    description: 2D control
+    typ: Control
+  - name: x
+    description: Position in x
+    typ: Number
+  - name: y
+    description: Position in y
+    typ: Number
+- call: !Binary
+  - - controlName
+  - - x
+    - y
+    - w
+    - h
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: controlName
+    description: 2D control
+    typ: Control
+  - name: x
+    description: Position in x
+    typ: Number
+  - name: y
+    description: Position in y
+    typ: Number
+  - name: w
+    description: Width of the control
+    typ: Number
+  - name: h
+    description: Height of the control
+    typ: Number
+- call: !Binary
+  - - controlName
+  - - x
+    - z
+    - y
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: controlName
+    description: 3D control
+    typ: Control
+  - name: x
+    description: screen x
+    typ: Number
+  - name: z
+    description: distance from the screen (depth). If object is too far, it cannot be dragged by the mouse.
+    typ: Number
+  - name: y
+    description: screen y
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  Move control:
+  <sqf>_control2D ctrlSetPosition [0, 0];
+  _control2D ctrlCommit 0;
+- |-
+  Move control and resize:
+  <sqf>_control2D ctrlSetPosition [0, 0, 1, 1];
+  _control2D ctrlCommit 0;
+- _control3D ctrlSetPosition [0.5, 1, 0.5]; //centered and 1m away from screen
+- "Typewriter effect:\n<sqf>\nwith uiNamespace do\n{\n\t[] spawn\n\t{\n\t\t_text1 = \"This is a simple demo of typewriter text effect with various speed.\";\n\t\t_text2 = \"This took 10 seconds.\";\n\t\t_text3 = \"This is a fast one, set for 2 seconds.\";\n\n\t\tctrl = findDisplay 46 ctrlCreate [\"RscStructuredText\", -1];\n\n\t\tctrl ctrlSetPosition [0,0,0,0.1];\n\t\tctrl ctrlCommit 0;\n\t\tctrl ctrlSetStructuredText parseText format [\"<t color='#ff0000' size='2.1'>%1</t>\", _text1 splitString \" \" joinString \"&#160;\"];\n\t\tctrl ctrlSetPosition [0,0,ctrlTextWidth ctrl,0.1];\n\t\tctrl ctrlCommit 8;\n\n\t\twaitUntil {ctrlCommitted ctrl};\n\t\tsleep 0.5;\n\n\t\tctrl ctrlSetPosition [0,0,0,0.1];\n\t\tctrl ctrlCommit 0;\n\t\tctrl ctrlSetStructuredText parseText format [\"<t color='#ff0000' size='2.1'>%1</t>\", _text2 splitString \" \" joinString \"&#160;\"];\n\t\tctrl ctrlSetPosition [0,0,ctrlTextWidth ctrl,0.1];\n\t\tctrl ctrlCommit 2;\n\n\t\twaitUntil {ctrlCommitted ctrl};\n\t\tsleep 2;\n\n\t\tctrl ctrlSetPosition [0,0,0,0.1];\n\t\tctrl ctrlCommit 0;\n\t\tctrl ctrlSetStructuredText parseText format [\"<t color='#00ff00' size='2.1'>%1</t>\", _text3 splitString \" \" joinString \"&#160;\"];\n\t\tctrl ctrlSetPosition [0,0,ctrlTextWidth ctrl,0.1];\n\t\tctrl ctrlCommit 2;\n\n\t\twaitUntil {ctrlCommitted ctrl};\n\t\tsleep 2;\n\n\t\tctrlDelete ctrl;\n\t};\n};\n"

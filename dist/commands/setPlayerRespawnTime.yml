@@ -1,0 +1,28 @@
+name: setPlayerRespawnTime
+description: Sets the time interval (in seconds) that the player must wait before respawn. It resets to mission default on mission start. In Single Player or when respawn type is GROUP or SIDE in Multiplayer, setting player respawn time has no effect, and [[playerRespawnTime]] will always return -1.
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - interval
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: interval
+    description: respawn time in seconds
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 57
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setPlayerRespawnTime 5;

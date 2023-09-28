@@ -1,0 +1,30 @@
+name: allUnits
+description: |-
+  Returns a list of all units, '''except agents, dead units or units waiting for respawn''', outside and inside vehicles that were created on the following sides [[east]], [[west]], [[independent]] and [[civilian]].
+  {{Feature|arma3|To get all units of given side, use {{hl|[[units]] [[Side]]}}.}}
+groups:
+- Object Detection
+syntax:
+- call: Nular
+  ret:
+  - ArrayUnknown
+  - Array of [[Object|object]]s
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '{ _x setDamage 0.5; _x groupChat "Braaains"; } forEach allUnits;'
+- allUnits apply { diag_log _x; };

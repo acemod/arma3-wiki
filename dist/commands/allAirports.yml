@@ -1,0 +1,21 @@
+name: allAirports
+description: Returns all map airports, both static and dynamic.
+groups:
+- Roads and Airports
+syntax:
+- call: Nular
+  ret:
+  - ArrayUnknown
+  - |-
+    in format [staticAirports, dynamicAirports], where:
+    * staticAirports [[Array]] of [[Number]]s - static airports IDs
+    * dynamicAirports [[Array]] of [[Object]]s - dynamic airports objects (such as "DynamicAirport_01_F" found on aircraft carrier)
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 76
+examples:
+- _airplane landAt selectRandom (allAirports select 0);

@@ -1,0 +1,21 @@
+name: clearBackpackCargo
+description: Removes all backpacks from ammo box (or any general weapon holder container).
+groups:
+- Containers
+syntax:
+- call: !Unary
+  - box
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: box
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- clearBackpackCargo myBox;

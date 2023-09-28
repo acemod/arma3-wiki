@@ -1,0 +1,24 @@
+name: sendAUMessage
+description: Send the command to the list of clients.
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - clientList
+  - command
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: clientList
+    typ: ArrayUnknown
+  - name: command
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 'sendAUMessage [[dpnid1, dpnid2], "ConnectTo: 192.168.1.66"];'

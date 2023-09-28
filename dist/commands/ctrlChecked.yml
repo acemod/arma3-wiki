@@ -1,0 +1,40 @@
+name: ctrlChecked
+description: Returns the current state of given [[CT_CHECKBOXES]] control. Since Arma 3 v1.72 it is possible to query multiple checkboxes by providing checkbox index. For more information see [[CT_CHECKBOXES]].{{Feature | Informative | The {{hl|"CheckBoxesSelChanged"}} control EH returns the control, index of changed checkbox and its current checked state. The checked state however is not a [[Boolean]] but [[Number]] 0 or 1. To convert [[ctrlChecked]] command output into number as well, use [[parseNumber]] command}}
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - control
+  ret:
+  - Boolean
+  - '[[true]] checked, [[false]] unchecked'
+  params:
+  - name: control
+    description: '[[CT_CHECKBOXES]] control. If control contain multiple checkboxes, only checkbox with index 0 is queried.'
+    typ: Control
+- call: !Binary
+  - - control
+  - - index
+  ret:
+  - Boolean
+  - '[[true]] checked, [[false]] unchecked'
+  params:
+  - name: control
+    description: '[[CT_CHECKBOXES]] control'
+    typ: Control
+  - name: index
+    description: checkbox index
+    typ: Number
+  since:
+    arma_3:
+      major: 1
+      minor: 72
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- ctrlChecked _control;
+- _control ctrlChecked 3;

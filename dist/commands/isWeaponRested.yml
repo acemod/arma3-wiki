@@ -1,0 +1,21 @@
+name: isWeaponRested
+description: Returns true if weapon is currently rested.
+groups:
+- Weapons
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 42
+examples:
+- _rest = isWeaponRested player;

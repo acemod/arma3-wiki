@@ -1,0 +1,24 @@
+name: setRandomLip
+description: Enables/Disables random lip. When enabled, the unit continuously moves its lips as if it is talking.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - unit
+  - - bool
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: bool
+    typ: Boolean
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player setRandomLip true;

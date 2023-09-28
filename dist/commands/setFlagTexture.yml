@@ -1,0 +1,57 @@
+name: setFlagTexture
+description: Sets flag texture.
+groups:
+- Flags
+syntax:
+- call: !Binary
+  - - flag
+  - - texture
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: flag
+    description: a flag pole
+    typ: Object
+  - name: texture
+    description: |-
+      flag texture. If texture is {{hl|""}}, flag is not drawn. Custom texture can be used:
+      * Prior {{arma3}}: Dimension 200x200, file extension .jpg
+      * Since {{arma3}}: Dimension 512×256, file extension .paa
+    typ: String
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _flagE setFlagTexture "\ca\misc\data\sever_vlajka.paa";
+- _flagW setFlagTexture "\ca\misc\data\usa_vlajka.paa";
+- flag1 setFlagTexture "\A3\Data_F\Flags\Flag_red_CO.paa";
+- _customFlag setFlagTexture "myMissionFlag.paa";
+- _flag_Arma_3 setFlagTexture "\a3\ui_f\data\Logos\arma3_expansion_ca.paa";
+- |
+  Capturable OPFOR flag:
+  <sqf>
+  private _flag = "FlagPole_F" createVehicle position player;
+  _flag setFlagTexture "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
+  _flag setFlagSide east;

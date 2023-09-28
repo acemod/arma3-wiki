@@ -1,0 +1,22 @@
+name: maxLoad
+description: Returns maximum load limit for a unit, uniform/vest/backpack containers, vehicle cargo, supply boxes and weapon holders.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary
+  - container
+  ret:
+  - Number
+  - null
+  params:
+  - name: container
+    description: unit, uniform/vest/backpack container, vehicle cargo, supply box, weapon holder
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- private _maxLoad = maxLoad _yaMum;

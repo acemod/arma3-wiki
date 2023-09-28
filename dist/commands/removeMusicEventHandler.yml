@@ -1,0 +1,32 @@
+name: removeMusicEventHandler
+description: 'Removes specified music track event handler. See {{Link|Arma 3: Event Handlers#Music Event Handlers}}.'
+groups:
+- Event Handlers
+- Sounds
+syntax:
+- call: !Unary
+  - type
+  - id
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: type
+    description: '"MusicStart" or "MusicStop"'
+    typ: String
+  - name: id
+    description: event handler id
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- removeMusicEventHandler ["MusicStart", 12];
+- removeMusicEventHandler ["MusicStop", 12];
+- |-
+  private _stopMusicEH = addMusicEventHandler ["MusicStop", {}];
+  // ...
+  removeMusicEventHandler ["MusicStop", _stopMusicEH];

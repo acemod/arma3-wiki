@@ -1,0 +1,55 @@
+name: setTriggerStatements
+description: Defines trigger condition, activation and deactivation statements. Trigger condition has to return [[Boolean]]. [[true]] will activate the trigger, [[false]] will deactivate it (only if activation is set to repeat). [[thisList]] returns the same result as [[list]] command, which includes all entities in the trigger area that are capable of activating the trigger. Dead entities are excluded as well as crew in vehicles, vehicles themselves are included.
+groups:
+- Triggers
+syntax:
+- call: !Binary
+  - - trigger
+  - - condition
+    - activation
+    - deactivation
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: trigger
+    description: trigger object
+    typ: Object
+  - name: condition
+    description: |-
+      code containing trigger condition. Special variables available here:
+      * [[Magic Variables#this_2|this]] ([[Boolean]]) - detection event
+      * [[thisTrigger]] ([[Object]]) - trigger instance
+      * [[thisList]] ([[Array]]) - array of all detected entities
+    typ: String
+  - name: activation
+    description: |-
+      code that is executed when the trigger is activated. Special variables available here:
+      * [[thisTrigger]] ([[Object]]) - trigger instance
+      * [[thisList]] ([[Array]]) - array of all detected entities
+    typ: String
+  - name: deactivation
+    description: |-
+      code that is executed when the trigger is deactivated. Special variable available here:
+      * [[thisTrigger]] ([[Object]]) - trigger instance
+    typ: String
+argument_loc: Global
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _trg setTriggerStatements ["this", "hint 'trigger on'", "hint 'trigger off'"];

@@ -1,0 +1,23 @@
+name: isDamageAllowed
+description: |-
+  A getter for [[allowDamage]] command. The command indicates if damage is allowed at current [[local]]ity, hence local effect of the command.
+  For complete solution for being able to tell whether or not an object can be damaged at current locality see {{Link|#Example 1}}.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: object
+    typ: Object
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- private _canBeDamaged = local _obj && isDamageAllowed _obj;

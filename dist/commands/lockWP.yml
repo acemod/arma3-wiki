@@ -1,0 +1,46 @@
+name: lockWP
+description: Disable switching to next waypoint (current waypoint will never complete while lockwp is used). Sometimes used during cut-scenes.
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - - groupName
+  - - lock
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: groupName
+    typ: !OneOf
+    - Object
+    - Group
+  - name: lock
+    typ: Boolean
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _groupOne lockWP true;
+- _Soldier lockWP true;
+- _MyTank lockWP false;

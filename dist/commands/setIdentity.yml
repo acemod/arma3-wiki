@@ -1,0 +1,45 @@
+name: setIdentity
+description: "Sets identity of a person. The identities could be defined in a custom config in [[Description.ext#CfgIdentities|Description.ext]] or in the main config. For a list of available main config values see [[CfgIdentities]].\n<br><br> \nThis command is an aggregate of the following commands: [[setName]], [[setFace]], [[setSpeaker]], [[setNameSound]], [[setPitch]], only the values are loaded from the given config. It also includes value for glasses for which currently there is no direct command, instead there is an inventory command [[addGoggles]]."
+groups:
+- Unit Identity
+syntax:
+- call: !Binary
+  - - person
+  - - identity
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: person
+    description: unit to which the identity will be applied
+    typ: Object
+  - name: identity
+    description: name of the subclass in [[CfgIdentities]]
+    typ: String
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldier1 setIdentity "MyLittleSoldier";
+- "Clone factory in MP:\n<sqf>for \"_i\" from 1 to 10 do\n{\n\t_bob = group player createUnit [typeOf player, position player, [], 0, \"none\"];\n\t[_bob, \"MyLittleSoldier\"] remoteExec [\"setIdentity\", 0, _bob];\n};"

@@ -1,0 +1,31 @@
+name: setMissileTargetPos
+description: |-
+  Sets a guided munition target position.
+  The munition must have {{hl|manualControl}} config entry to use this command.
+  The target position has to be inside the missile's configured targeting cone for the command to work.
+groups:
+- Object Manipulation
+- Weapons
+syntax:
+- call: !Binary
+  - - munition
+  - - position
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: munition
+    typ: Object
+  - name: position
+    typ: Position3dATL
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 92
+examples:
+- missile1 setMissileTargetPos unitAimPosition tank1;
+- |
+  private _missile = createVehicle ["M_Scalpel_AT", player modelToWorld [0,0,100], [], 0, "CAN_COLLIDE"];
+  _missile setMissileTargetPos (player modelToWorld [0,100,0]);

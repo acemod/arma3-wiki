@@ -1,0 +1,50 @@
+name: titleCut
+description: |-
+  Displays text on screen.
+  {{Feature|obsolete|[[cutText]] should be used instead.}}
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - text
+  - type
+  - speed
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: text
+    description: text to be displayed on screen
+    typ: String
+  - name: type
+    description: can be one of [[Title Effect Type]]s
+    typ: String
+  - name: speed
+    description: (Optional, default 1
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- titleCut ["Hello, how are you?","Plain Down",3];

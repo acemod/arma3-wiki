@@ -1,0 +1,52 @@
+name: lifeState
+description: |-
+  Returns the life state of the given unit.
+  {{{!}} class="wikitable"
+  ! {{arma2}}
+  ! {{arma3}}
+  {{!}}-
+  {{!}}
+  * "ALIVE"
+  * "DEAD"
+  * "DEAD-RESPAWN"
+  * "DEAD-SWITCHING"
+  * "ASLEEP"
+  * "UNCONSCIOUS"
+  {{!}}
+  * "HEALTHY"
+  * "DEAD"
+  * "DEAD-RESPAWN"
+  * "DEAD-SWITCHING"
+  * "INCAPACITATED"
+  * "INJURED"
+  {{!}}}
+
+  {{Feature | arma3 | In {{arma3}}, [[lifeState]] seems to change to "INJURED" when <sqf inline>damage aliveUnit >= 0.1</sqf> (0.1 seeming to be the value defined in config under {{sic|"InjuredTreshold"|Threshold}}). When the state is "INCAPACITATED", a sub-state is available via [[incapacitatedState]] command.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - String
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- private _lifeState = lifeState player;

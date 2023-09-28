@@ -1,0 +1,24 @@
+name: surfaceTexture
+description: |-
+  Same as [[surfaceType]], but returns texture path to ground texture as string.
+  {{Feature|informative|The texture returned is of the ground, even if there is a road at that position. To get road texture use [[getRoadInfo]] command.}}
+groups:
+- Positions
+syntax:
+- call: !Unary
+  - position
+  ret:
+  - String
+  - null
+  params:
+  - name: position
+    description: in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] in which case Z is ignored
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 0
+examples:
+- private _groundTexture = surfaceTexture getPosATL player;

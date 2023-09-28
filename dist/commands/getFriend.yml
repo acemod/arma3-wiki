@@ -1,0 +1,34 @@
+name: getFriend
+description: Returns if sides are friendly or hostile. For a value smaller than 0.6 it results in being enemy, otherwise it is friendly. See also [[Side Relations]].
+groups:
+- Sides
+syntax:
+- call: !Binary
+  - - side1
+  - - side2
+  ret:
+  - Number
+  - Decimal value between 0.0 to 1.0
+  params:
+  - name: side1
+    typ: Side
+  - name: side2
+    typ: Side
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- value = west getFriend east;
+- _isEnemy = side _killer getFriend side _victim < 0.6;

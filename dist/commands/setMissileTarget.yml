@@ -1,0 +1,28 @@
+name: setMissileTarget
+description: Sets a guided missile target. Does not work for all types of missiles. If the target is dead, it is ignored. The target has to be inside the missile's configured targeting cone for the command to work.
+groups:
+- Object Manipulation
+- Weapons
+syntax:
+- call: !Binary
+  - - munition
+  - - target
+  ret:
+  - Boolean
+  - '[[true]] if successful'
+  params:
+  - name: munition
+    typ: Object
+  - name: target
+    description: '[[objNull]] to cancel targeting'
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 92
+examples:
+- missile1 setMissileTarget tank1;
+- "_missile = createVehicle [\"Missile_AGM_01_F\", player modelToWorld [0,0,50], [], 0, \"CAN_COLLIDE\"];\n_missile setDir getDir player;\n_tgt = createVehicle [\"O_APC_Wheeled_02_rcws_v2_F\", player modelToWorld [0,300,0], [], 0, \"CAN_COLLIDE\"];\n_tgt setVehicleTiPars [1, 1, 1];\n[_missile, _tgt] spawn {\n\tparams [\"_missile\", \"_tgt\"];\n\tsleep 0.1;\n\t_missile setMissileTarget _tgt;\n};\n"
+- _missile setMissileTarget objNull; // cancels targeting

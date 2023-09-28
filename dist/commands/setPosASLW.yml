@@ -1,0 +1,25 @@
+name: setPosASLW
+description: Sets the object position above sea surface. The pos array uses the [[Position#PositionASLW|PositionASLW]] format.
+groups:
+- Positions
+syntax:
+- call: !Binary
+  - - obj
+  - - pos
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: obj
+    typ: Object
+  - name: pos
+    description: format [[Position#PositionASLW|PositionASLW]]
+    typ: ArrayUnknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _diver setPosASLW [(position _diver) select 0, (position _diver) select 1, -10];

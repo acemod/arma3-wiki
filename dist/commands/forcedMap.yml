@@ -1,0 +1,24 @@
+name: forcedMap
+description: Returns if map was forced by using [[forceMap]] command or [[openMap]] command with force option
+groups:
+- Map
+- Interaction
+syntax:
+- call: Nular
+  ret:
+  - ArrayUnknown
+  - |-
+    in format [forceMapForced, openMapForced]:
+    * forceMapForced: [[Boolean]] - [[true]] if map was forced with [[forceMap]] command
+    * openMapForced: [[Boolean]] - [[true]] if map was forced with [[openMap]] command.
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- |-
+  _forceMapForced = forcedMap select 0;
+  _openMapForced = forcedMap select 1;

@@ -1,0 +1,26 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 2.02
+
+|gr1= Config
+
+|gr2= Localization
+
+|descr= Returns raw text from config entry. If entry is subject to [[localize | localization]], the translation key is returned. To obtain the [[isLocalized | localized]] text, see [[getText]].
+
+|s1= [[getTextRaw]] config
+
+|p1= config: [[Config]]
+
+|r1= [[String]] - raw text value
+
+|x1= <sqf>
+private _text = getText (configFile >> "CfgVehicles" >> "Thing" >> "displayName");			// "Get in %1 as Driver"
+private _rawText = getTextRaw (configFile >> "CfgVehicles" >> "Thing" >> "displayName");	// "$STR_ACTION_GETIN_DRIVER"
+private _localized = localize _text;														// "Get in %1 as Driver"
+_localized == _text; // true
+</sqf>
+
+|seealso= [[Stringtable.xml]] [[localize]] [[isLocalized]] [[diag_localized]] [[BIS_fnc_localize]] [[getText]] [[getNumber]] [[getArray]]
+}}

@@ -1,0 +1,42 @@
+name: setSimpleTaskDescription
+description: Attach descriptions to the simple task.
+groups:
+- Briefing
+syntax:
+- call: !Binary
+  - - task
+  - - description
+    - descriptionShort
+    - descriptionHUD
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: task
+    typ: Task
+  - name: description
+    description: task description
+    typ: String
+  - name: descriptionShort
+    description: task title
+    typ: String
+  - name: descriptionHUD
+    description: task waypoint description
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- myTask setSimpleTaskDescription ["Today you have to kill Spongebob", "Kill Spongebob", "There he is!"];

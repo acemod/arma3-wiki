@@ -1,0 +1,20 @@
+name: missionDifficulty
+description: Return difficulty that has been forced for this mission, returns -1 if difficulty is not forced and it is used one from player's options.
+groups:
+- Difficulty
+- Mission Information
+syntax:
+- call: Nular
+  ret:
+  - Number
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- private _number = missionDifficulty;
+- "private _playedDifficulty = missionDifficulty;\nif (_playedDifficulty == -1) then\n{\n\t_playedDifficulty = difficulty;\n};\n"

@@ -1,0 +1,79 @@
+name: setSkill
+description: Sets the skill level of given unit. The value of a [[AI Sub-skills|sub-skill]] is interpolated into a range defined in [[CfgAISkill]].
+groups:
+- AI Behaviour
+syntax:
+- call: !Binary
+  - - unit
+  - - skill
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: skill
+    description: general skill in range 0..1
+    typ: Number
+- call: !Binary
+  - - unit
+  - - skillName
+    - value
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: skillName
+    description: |-
+      available sub-skills are:
+      {{Columns|6|
+      * {{hl|"general"}}
+      * {{hl|"courage"}}
+      * {{hl|"aimingAccuracy"}}
+      * {{hl|"aimingShake"}}
+      * {{hl|"aimingSpeed"}}
+      * {{hl|"commanding"}}
+      * {{hl|"endurance"}}
+      * {{hl|"spotDistance"}}
+      * {{hl|"spotTime"}}
+      * {{hl|"reloadSpeed"}}
+      }}
+    typ: String
+  - name: value
+    description: value in range 0..1
+    typ: Number
+  since:
+    armed_assault:
+      major: 1
+      minor: 0
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _hero setSkill 1;
+- |
+  _finalBoss setSkill ["reloadSpeed", 0.8];
+  _finalBoss setSkill ["aimingSpeed", 0.33];

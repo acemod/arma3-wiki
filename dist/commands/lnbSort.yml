@@ -1,0 +1,46 @@
+name: lnbSort
+description: |-
+  Sorts given multicolumn listbox by [[lnbText]] in given column in ascending or descending order.
+  {{Feature|Important|This command does not support UNICODE, use [[lnbSortBy]] if it is needed instead}}
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - column
+  - reversed
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: column
+    typ: Number
+  - name: reversed
+    description: '(Optional, default [[false]]) [[false]]: descending / [[true]]: ascending'
+    typ: Boolean
+- call: !Binary
+  - - control
+  - - column
+    - reversed
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: column
+    typ: Number
+  - name: reversed
+    description: '(Optional, default [[false]]) [[false]]: descending / [[true]]: ascending'
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 8
+examples:
+- lnbSort [1800, 1, false];
+- _ctl lnbSort [1, true];

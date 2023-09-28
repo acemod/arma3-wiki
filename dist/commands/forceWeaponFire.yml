@@ -1,0 +1,43 @@
+name: forceWeaponFire
+description: 'The unit will be forced to fire weapon from the given muzzle. The weapon will not fire if firemode passed as parameter is not supported by the given muzzle. The muzzle could belong to a vehicle weapon and unit in this case will be the unit operating this weapon. Doesnt''t seem to work for units in FFV positions. Works on [[player]]. See also: [[BIS_fnc_fire]]'
+groups:
+- Unit Control
+- Weapons
+syntax:
+- call: !Binary
+  - - unit
+  - - muzzle
+    - firemode
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    description: unit alone or in vehicle
+    typ: Object
+  - name: muzzle
+    typ: String
+  - name: firemode
+    description: |-
+      Common options are "Single", "Burst", "FullAuto". For the full list of a weapon firemodes:
+
+      <sqf>hint str (getArray (configFile >> "CfgWeapons" >> currentWeapon player >> "modes"));</sqf> If ''modes[]'' param in config for the weapon says ''{"this"}'', then the same classname as for the weapon param ([[currentWeapon]] [[player]]) should be used as firemode param.
+    typ: String
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _unit forceWeaponFire ["arifle_MX_F", "Single"];
+  _unit forceWeaponFire ["hgun_ACPC2_F", "hgun_ACPC2_F"];
+  _unit forceWeaponFire ["HandGrenadeMuzzle","HandGrenadeMuzzle"];
+  _unit forceWeaponFire ["MiniGrenadeMuzzle","MiniGrenadeMuzzle"];
+  _unit forceWeaponFire ["HandGrenade_Stone","HandGrenade_Stone"];
+  _unit forceWeaponFire ["SmokeShellMuzzle","SmokeShellMuzzle"];
+  _unit forceWeaponFire ["ChemlightGreenMuzzle","ChemlightGreenMuzzle"];
+  _unit forceWeaponFire ["IRGrenade","IRGrenade"];
+  _unit forceWeaponFire ["Laserdesignator","Laserdesignator"];
+- gunner blackfoot forceWeaponFire ["gatling_20mm", "close"];

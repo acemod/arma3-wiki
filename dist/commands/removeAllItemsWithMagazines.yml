@@ -1,0 +1,22 @@
+name: removeAllItemsWithMagazines
+description: Removes all [[itemsWithMagazines]] from the uniform, vest and backpack. Command essentially clears all unit's containers.
+groups:
+- Unit Inventory
+- Containers
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 4
+examples:
+- removeAllItemsWithMagazines player;

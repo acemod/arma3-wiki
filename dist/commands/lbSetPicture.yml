@@ -1,0 +1,66 @@
+name: lbSetPicture
+description: |-
+  Sets the left picture in the row with given index of [[CT_LISTBOX]] or [[CT_COMBO]]. The picture is searched for in the mission directory, the dtaExt subdirectory of the campaign directory and the dtaExt directory and the data bank (or directory).<br>
+  {{Feature|arma3|In {{arma3}} it might be necessary to set the color of the picture as well with [[lbSetPictureColor]] as default color <sqf inline>[0,0,0,0]</sqf> makes the picture invisible.}}
+groups:
+- GUI Control - ListBox
+syntax:
+- call: !Unary
+  - idc
+  - index
+  - path
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    description: Control IDC
+    typ: Number
+  - name: index
+    typ: Number
+  - name: path
+    description: Path to the picture
+    typ: String
+- call: !Binary
+  - - control
+  - - index
+    - path
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: index
+    typ: Number
+  - name: path
+    description: Path to the picture
+    typ: String
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- lbSetPicture [101, 0, "iskoda.paa"];
+- _control lbSetPicture [0, "iskoda.paa"];
+- "{{Feature|informative|\nAdding pictures to lists is very slow. In order to prevent a list filling's possible slowdown, add the pictures in the '''scheduled''' environment using [[spawn]].<br>\nOne drawback of that method is that sorting the entries is not easily possible.\n}}\n<sqf>\nprivate _path = _ctrlTV tvAdd [[], \"Some Entry\"];\n[_ctrlTV, _path] spawn {\n\t(_this select 0) tvSetPictureRight [[_this select 1], \"someImage.paa\"];\n};\n"

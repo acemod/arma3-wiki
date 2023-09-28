@@ -1,0 +1,35 @@
+name: unregisterTask
+description: Unregisters a task type from given agent. The task type is the name given in {{hl|CfgTasks}} classes in {{hl|name}} property. Also available from [[registeredTasks]] array.
+groups:
+- Briefing
+syntax:
+- call: !Binary
+  - - teamMember
+  - - name
+  ret:
+  - Boolean
+  - '[[true]] on success'
+  params:
+  - name: teamMember
+    description: '[[teamMember]] [[agent]]'
+    typ: TeamMember
+  - name: name
+    description: name of the task
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- teamMember _agent unregisterTask (registeredTasks select 0);

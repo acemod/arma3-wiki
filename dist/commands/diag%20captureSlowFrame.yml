@@ -1,0 +1,52 @@
+name: diag captureSlowFrame
+description: |-
+  [[File:CaptureSlowFrame.jpg|right|200x120px]]
+  Opens "capture frame" dialog if current frame exceeds set threshold in seconds. One can indicate to either capture duration of a specific profiling selection or the total duration of the frame. The selection names can be obtained by expanding the profiling tree. Clicking on a tree item will highlight the item on the graph and vice versa. The GUI also provides method of copying of the displayed data to clipboard. Some of the selections:
+  {{{!}} class="wikitable valign-top-row-2" style="margin: 1em auto"
+  ! Render
+  ! Main Thread
+  ! Visualize
+  ! Mjob
+  {{!}}-
+  {{!}}
+  * bgD3D
+  {{!}}
+  * total
+  * memAl
+  {{!}}
+  * visul
+  {{!}}
+  * Mjob
+  {{!}}}
+groups:
+- Diagnostic
+- Performance Profiling
+syntax:
+- call: !Unary
+  - section
+  - threshold
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: section
+    description: case sensitive
+    typ: String
+  - name: threshold
+    description: section duration in seconds
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 63
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- diag_captureSlowFrame ["total", 0.003];
+- diag_captureSlowFrame ["memAl", 0.0001];

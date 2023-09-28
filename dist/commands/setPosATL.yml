@@ -1,0 +1,34 @@
+name: setPosATL
+description: Sets the position of an object relative to the terrain.
+groups:
+- Positions
+syntax:
+- call: !Binary
+  - - object
+  - - pos
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    typ: Object
+  - name: pos
+    description: format [[Position#PositionATL|PositionATL]]
+    typ: ArrayUnknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 3
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player setPosATL [getPosATL player select 0, (getPosATL player select 1) - 10, getPosATL player select 2];

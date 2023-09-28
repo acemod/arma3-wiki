@@ -1,0 +1,24 @@
+name: ctRemoveHeaders
+description: Takes array of header indices as a parameter and removes headers with those indices. Indices of remaining headers will be recomputed.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Binary
+  - - ctrl
+  - - indices
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: indices
+    typ: ArrayUnknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- _control ctRemoveHeaders [0, 1, 2];

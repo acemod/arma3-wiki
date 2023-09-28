@@ -1,0 +1,33 @@
+name: detach
+description: Detaches previously attached with [[attachTo]] object.
+multiplayer_note: Only has to be executed on one client.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    typ: Object
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  obj1 attachTo [player];
+  detach obj1;

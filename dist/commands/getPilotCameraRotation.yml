@@ -1,0 +1,21 @@
+name: getPilotCameraRotation
+description: Returns rotation (relative to the centered camera position) of the object airplane or helicopter [[A3_Targeting_config_reference#class_pilotCamera|pilotCamera]] .
+groups:
+- Pilot Camera
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - ArrayUnknown
+  - '[x,y] - format [yaw (turn), pitch (elevation)]. Positive values are left yaw and down pitch from the center. Returns [0,0] when camera is centered but also if object has no [[A3_Targeting_config_reference#class_pilotCamera|pilotCamera]].'
+  params:
+  - name: object
+    typ: Object
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- _pilotCamRot = getPilotCameraRotation vehicle player;

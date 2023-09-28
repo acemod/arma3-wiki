@@ -1,0 +1,43 @@
+name: saveStatus
+description: Saves object's properties to [[Objects.sav]] file in campaign directory as entry name.
+groups:
+- Weapon Pool
+- Mission Information
+syntax:
+- call: !Binary
+  - - object
+  - - name
+  ret:
+  - Boolean
+  - '[[true]] if successful, otherwise [[false]]'
+  params:
+  - name: object
+    typ: Object
+  - name: name
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player saveStatus "playerstate";

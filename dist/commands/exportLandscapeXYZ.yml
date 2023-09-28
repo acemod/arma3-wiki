@@ -1,0 +1,35 @@
+name: exportLandscapeXYZ
+description: |-
+  Exports landscape as XYZ file.
+  {{Feature|Warning|Not available in Retail Version!}}
+groups:
+- System
+syntax:
+- call: !Unary
+  - filename
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: filename
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- exportLandscapeXYZ "myLandscape.txt";

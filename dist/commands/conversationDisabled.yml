@@ -1,0 +1,21 @@
+name: conversationDisabled
+description: A getter for [[disableConversation]].
+groups:
+- Radio and Chat
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Boolean
+  - Returns [[true]] if the status of [[kbTell]]'s ''IsSpeaking'' for the given unit is {{hl|> 0}}. See [[disableConversation]] for more info
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- if (conversationDisabled soldier1) then { soldier1 disableConversation false };

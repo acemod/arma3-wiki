@@ -1,0 +1,29 @@
+name: ctrlSetShadow
+description: |-
+  Sets 'shadow' property of the control:
+  * 0 - no shadow
+  * 1 - shadow
+  * 2 - outline
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - - control
+  - - shadow
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: shadow
+    description: shadow value, see description
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- _control ctrlSetShadow 1;

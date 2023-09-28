@@ -1,0 +1,25 @@
+name: clear3DENInventory
+description: Deletes inventory from mission.sqm of given units. Effect is not immediately visible, only when previewing the inventory resets to default.
+groups:
+- Eden Editor
+syntax:
+- call: !Unary
+  - entities
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: entities
+    typ: !OneOf
+    - !ArrayUnsized
+      - EdenEntity
+      - ''
+    - EdenID
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- clear3DENInventory get3DENSelected "Object";

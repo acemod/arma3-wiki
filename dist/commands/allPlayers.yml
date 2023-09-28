@@ -1,0 +1,42 @@
+name: allPlayers
+description: |-
+  Returns a list of all units controlled by connected clients. This includes:
+  * Normal human players (including dead players)
+  * [[Eden Editor: System#Virtual Entities|Virtual Entities]] (see ''Systems'' → ''Logic Entities'' → ''Virtual Entities'' in the [[:Category:Eden Editor|Eden Editor]])
+  ** [[Arma 3: Headless Client|Headless Clients]] ({{hl|HeadlessClient_F}})
+  ** Virtual Curators ({{hl|VirtualCurator_F}}, {{hl|*_VirtualCurator_F}})
+  ** Virtual Spectators ({{hl|VirtualSpectator_F}})
+
+  Use [[BIS_fnc_listPlayers]] or see {{Link|#Example 1}} to only get human players.
+multiplayer_note: |-
+  <nowiki/>
+  * The complete array of [[allPlayers]] may get delayed on mission start in multiplayer. Use [[BIS_fnc_listPlayers]] to obtain it earlier.
+  * The order of the returned array may differ from server to clients.
+groups:
+- Multiplayer
+- Object Detection
+syntax:
+- call: Nular
+  ret:
+  - !ArrayUnsized
+    - Object
+    - ''
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 48
+examples:
+- |
+  Get human players (i.e. all players excluding Headless Clients):
+  <sqf>
+  private _players = allPlayers - entities "HeadlessClient_F";
+- |
+  Get non-virtual players (i.e. all players excluding Virtual Entities):
+  <sqf>
+  private _players = allPlayers select {!(_x isKindOf "VirtualMan_F")};
+- "{\n\tsystemChat format [\n\t\t\"Player %1 is %2\", \n\t\tname _x, \n\t\t[\"dead\", \"alive\"] select alive _x\n\t];\n} forEach allPlayers;"
+- private _bluforPlayers = blufor countSide allPlayers;

@@ -1,0 +1,32 @@
+name: setLocalWindParams
+description: |-
+  Sets parameters for helicopter rotor wash.
+  It affects the visual effect of a rotor's downwash, such as blown particles, vegetation wind effect and area size.
+groups:
+- Environment
+syntax:
+- call: !Unary
+  - strength
+  - diameter
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: strength
+    description: down-force wind strength
+    typ: Number
+  - name: diameter
+    description: area affected
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setLocalWindParams [10, 5];
+- |-
+  "Disables" the effects:
+  <sqf>setLocalWindParams [0.0001, 0.0001]; // 0 values are ignored by the command
+- Reset to default:<sqf>setLocalWindParams [1, 1];

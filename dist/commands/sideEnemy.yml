@@ -1,0 +1,39 @@
+name: sideEnemy
+description: |-
+  The enemy [[Side|side]] which is used for renegades. Units of this side are hostile to everyone.
+  * To join [[sideEnemy]], you can attack members of your own side or use [[addRating]].
+  * When below a [[rating]] of -2000 units switch automatically to this side.
+groups:
+- Sides
+syntax:
+- call: Nular
+  ret:
+  - Side
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 78
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (side player == sideEnemy) then\n{\n\thint \"We've got a renegade!\";\n};"

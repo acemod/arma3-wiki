@@ -1,0 +1,25 @@
+name: getContainerMaxLoad
+description: Returns max load value of given uniform, vest or backpack container. For other types of containers, use [[maxLoad]] command
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary
+  - containerClass
+  ret:
+  - Number
+  - load value, -1 if not available.
+  params:
+  - name: containerClass
+    description: uniform, vest or backpack class
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- |-
+  _maxLoadUniform = getContainerMaxLoad uniform player;
+  _maxLoadVest = getContainerMaxLoad vest player;
+  _maxLoadBackpack = getContainerMaxLoad backpack player;

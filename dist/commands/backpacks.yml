@@ -1,0 +1,21 @@
+name: backpacks
+description: Returns an array of all backpack names a unit has in its inventory, excluding the one it carries on the back.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 14
+examples:
+- private _allCarriedBackpackTypes = backpacks player + [backpack player];

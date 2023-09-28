@@ -1,0 +1,40 @@
+name: assert
+description: |-
+  Tests a condition and if the condition is false, displays error on screen (if -showscripterrors enabled) and logs error into .rpt file. It does not interrupt the script execution.
+
+  If script was pre-processed with [[preprocessFileLineNumbers]], it will also show/log the error line number and the file name.
+groups:
+- Program Flow
+syntax:
+- call: !Unary
+  - condition
+  ret:
+  - Boolean
+  - mirrors condition
+  params:
+  - name: condition
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  assert (1 > 2);</sqf>
+
+  [[Image:PreprocessFile.jpg]]
+- "Check function params (Faster alternative to [[BIS_fnc_param]])\n<sqf>\nsome_func = {\n\t_0 = _this select 0;\n\t_1 = _this select 1;\n\t_2 = _this select 2;\n\tif (!assert (\n\t\ttypeName _0 == \"ARRAY\" && \n\t\ttypeName _1 == \"STRING\" &&\n\t\ttypeName _2 == \"SCALAR\"\n\t)) exitWith { /* optional error logging */ };\n\thint \"Alright!\";\n};\n[1,2,3] call some_func; // assert error\n[[1],\"2\",3] call some_func; // Alright!\n"

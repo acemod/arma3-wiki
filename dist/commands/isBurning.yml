@@ -1,0 +1,23 @@
+name: isBurning
+description: |-
+  Returns whether the unit is burning.
+  This returns true only if unit is damaged by nearby fire, it does '''not''' check whether a fireplace is burning, use [[inflamed]] command for that.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (isBurning player) then { player groupChat "I'm burning!!"; };

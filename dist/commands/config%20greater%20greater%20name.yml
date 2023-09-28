@@ -1,0 +1,36 @@
+name: config greater greater name
+description: Returns [[Config | config]] entry with given name (alias of [[a / b]], slightly faster but with [[SQF Syntax#Rules_of_Precedence|lower precedence]])
+groups:
+- Config
+syntax:
+- call: !Binary
+  - - config
+  - - name
+  ret:
+  - Config
+  - config entry
+  params:
+  - name: config
+    typ: Config
+  - name: name
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- configFile >> "CfgVehicles";

@@ -1,0 +1,33 @@
+name: triggerTimeout
+description: |-
+  Returns trigger timeout in the form [min, mid, max, interruptable].
+
+  {{Feature | important | The trigger could be [[Multiplayer Scripting#Locality|local]] or remote but the result returned by this command will be for the trigger timeout set up locally on the client that executed the command. See [[createTrigger]] for more info.}}
+groups:
+- Triggers
+syntax:
+- call: !Unary
+  - trigger
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: trigger
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _timeOut = triggerTimeout someTrigger;

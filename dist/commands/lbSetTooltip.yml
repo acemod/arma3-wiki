@@ -1,0 +1,42 @@
+name: lbSetTooltip
+description: Sets tooltip for item with given index of the listbox or combobox with id idc of the topmost user dialog to the given data.
+groups:
+- GUI Control - ListBox
+syntax:
+- call: !Unary
+  - idc
+  - index
+  - tooltip
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: index
+    typ: Number
+  - name: tooltip
+    typ: String
+- call: !Binary
+  - - control
+  - - index
+    - tooltip
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: index
+    typ: Number
+  - name: tooltip
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 58
+examples:
+- lbSetTooltip [101, 1, "tooltip"];
+- _control lbSetTooltip [0, "another tooltip"];

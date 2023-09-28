@@ -1,0 +1,20 @@
+name: blufor
+description: Pre-defined variable for the blufor [[Side|side]].
+alias:
+- '[[west]]'
+groups:
+- Sides
+syntax:
+- call: Nular
+  ret:
+  - Side
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (side player == blufor) then\n{\n\thint \"BLUFOR\";\n};\n"

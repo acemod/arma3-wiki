@@ -1,0 +1,32 @@
+name: forgetTarget
+description: Resets the info a group has about a target, forcing [[knowsAbout]] value to 0.
+groups:
+- Unit Control
+- Groups
+syntax:
+- call: !Binary
+  - - group
+  - - target
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: group
+    description: group itself or unit in a group
+    typ: !OneOf
+    - Group
+    - Object
+  - name: target
+    description: group target
+    typ: Object
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- soldier1 forgetTarget soldier2;
+- |-
+  Give enemyBob some amnesia:
+  <sqf>onEachFrame { enemyBob forgetTarget player };

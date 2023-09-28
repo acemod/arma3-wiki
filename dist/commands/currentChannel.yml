@@ -1,0 +1,60 @@
+name: currentChannel
+description: |-
+  Returns currently selected user chat channel on the UI (selected with {{Controls|<}} and {{Controls|>}} in multiplayer).
+  {{{!}} class="wikitable align-center"
+  ! colspan="16" {{!}} [[Channel IDs|Channel ID]] number correspondence
+  {{!}}-
+  {{!}} colspan="6" {{!}} Default Channels
+  {{!}} colspan="10" {{!}} Custom Channels
+  {{!}}- style="font-size: .9em"
+  {{!}} Global
+  {{!}} Side
+  {{!}} Command
+  {{!}} Group
+  {{!}} Vehicle
+  {{!}} Direct
+  {{!}} CC&nbsp;1
+  {{!}} CC&nbsp;2
+  {{!}} CC&nbsp;3
+  {{!}} CC&nbsp;4
+  {{!}} CC&nbsp;5
+  {{!}} CC&nbsp;6
+  {{!}} CC&nbsp;7
+  {{!}} CC&nbsp;8
+  {{!}} CC&nbsp;9
+  {{!}} CC&nbsp;10
+  {{!}}-
+  {{!}} 0
+  {{!}} 1
+  {{!}} 2
+  {{!}} 3
+  {{!}} 4
+  {{!}} 5
+  {{!}} 6
+  {{!}} 7
+  {{!}} 8
+  {{!}} 9
+  {{!}} 10
+  {{!}} 11
+  {{!}} 12
+  {{!}} 13
+  {{!}} 14
+  {{!}} 15
+  {{!}}}
+  For Custom Radio, see [[radioChannelCreate]].
+groups:
+- Radio and Chat
+syntax:
+- call: Nular
+  ret:
+  - Number
+  - channel ID
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 42
+examples:
+- _selected = currentChannel; // 3 for the Group channel

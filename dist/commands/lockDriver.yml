@@ -1,0 +1,33 @@
+name: lockDriver
+description: Lock the driver position of the vehicle. This command must be executed where vehicle is [[Multiplayer Scripting#Locality|local]]. This command will remove user get in action (not get out) but will also stop player getting into vehicle via script commands unlike [[lock]] command
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - vehicle
+  - - lock
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    typ: Object
+  - name: lock
+    typ: Boolean
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- vehicleName lockDriver true;

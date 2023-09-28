@@ -1,0 +1,28 @@
+name: clearMagazineCargoGlobal
+description: Removes all magazines from the vehicle cargo space. MP synchronized.
+groups:
+- Containers
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    description: vehicle or ammo box
+    typ: Object
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 55
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- clearMagazineCargoGlobal jeepOne;

@@ -1,0 +1,24 @@
+name: getTerrainGrid
+description: A getter for [[setTerrainGrid]], returns the current terrain grid.
+groups:
+- System
+- Environment
+syntax:
+- call: Nular
+  ret:
+  - Number
+  - terrain grid value
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 60
+examples:
+- _terrainGrid = getTerrainGrid;
+- |-
+  if (getTerrainGrid < 50) then
+  {
+     hint "Grass is enabled";
+  };

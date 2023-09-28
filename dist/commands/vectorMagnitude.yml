@@ -1,0 +1,23 @@
+name: vectorMagnitude
+description: Magnitude of a 3D vector.
+groups:
+- Math - Vectors
+syntax:
+- call: !Unary
+  - vector
+  ret:
+  - Number
+  - null
+  params:
+  - name: vector
+    description: vector 3D or 2D (since Arma 3 v2.00, z coordinate is defaulted to 0
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 22
+examples:
+- _size = vectorMagnitude [0,3,4]; // returns 5
+- "_speed = vectorMagnitude velocity player;\t\t\t\t// return velocity of player in m/s\n_speed = (vectorMagnitude velocity player) * 3.6;\t\t// return velocity of player in km/h\n_speed = (vectorMagnitude velocity player) * 2.23694;\t// return velocity of player in mph\n"

@@ -1,0 +1,22 @@
+name: isObjectHidden
+description: Checks visibility of a given object on the local machine.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - Boolean
+  - '[[true]] if hidden, [[false]] if visible'
+  params:
+  - name: object
+    description: object to test
+    typ: Object
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 48
+examples:
+- _bobIsHidden = isObjectHidden bob;

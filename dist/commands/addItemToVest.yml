@@ -1,0 +1,25 @@
+name: addItemToVest
+description: Create new item and store it to soldier's vest. The item can also be a weapon or a magazine.
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - - unit
+  - - item
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: item
+    typ: String
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 4
+examples:
+- player addItemToVest "itemGPS";
+- player addItemToVest "hgun_Rook40_F";

@@ -1,0 +1,41 @@
+name: menuSetText
+description: Sets text of given menu strip entry.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - text
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    typ: ArrayUnknown
+  - name: text
+    typ: String
+- call: !Binary
+  - - control
+  - - path
+    - text
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    typ: ArrayUnknown
+  - name: text
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- _ctrlMenuStrip menuSetText [[0,0,1], "Hello World!"];

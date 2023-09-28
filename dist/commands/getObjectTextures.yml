@@ -1,0 +1,23 @@
+name: getObjectTextures
+description: Gets all custom textures (hiddenSelectionsTextures) associated with the object. {{Feature|important|It will return an empty [[Array]] when executed on [[Arma 3 Simple Objects|simple objects]].}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - obj
+  ret:
+  - !ArrayUnsized
+    - String
+    - ''
+  - array of textures
+  params:
+  - name: obj
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 38
+examples:
+- _textures = getObjectTextures player;

@@ -1,0 +1,46 @@
+name: setPosASL
+description: Sets the object position above sea level. Given position must be in [[Position#PositionASL|PositionASL]] format.
+groups:
+- Positions
+syntax:
+- call: !Binary
+  - - object
+  - - pos
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    typ: Object
+  - name: pos
+    typ: Position3dASL
+argument_loc: Global
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 99
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player setPosASL [getPosASL player select 0, (getPosASL player select 1) + 10, getPosASL player select 2];
+- |
+  _position = getPosASL _object;
+  _position set [2, 10]; // 10m above sea level
+  _object setPosASL _position;

@@ -1,0 +1,27 @@
+name: setUnloadInCombat
+description: Sets whether or not cargo or turret units ''should'' get out of vehicle when in combat. If '''true''', vehicle will stop and units will dismount. Vehicle must be local. The command resets last time unit had reacted to an enemy as well as forcing [[orderGetIn]] [[false]] if [[canUnloadInCombat]] is permitted by config
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - - vehicle
+  - - allowCargo
+    - allowTurrets
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    typ: Object
+  - name: allowCargo
+    typ: Boolean
+  - name: allowTurrets
+    typ: Boolean
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 36
+examples:
+- _veh setUnloadInCombat [true, false];

@@ -1,0 +1,36 @@
+name: from
+description: Continue sequence of [[for]] construct. It sets the start value of the index variable.
+groups:
+- Program Flow
+syntax:
+- call: !Binary
+  - - for
+  - - b
+  ret:
+  - ForType
+  - null
+  params:
+  - name: for
+    typ: ForType
+  - name: b
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "for \"_i\" from 10 to 20 do\n{\n\thint str _i; // will hint from 10 to 20, spaced by 1 second\n\tsleep 1;\n};\n"

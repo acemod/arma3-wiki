@@ -1,0 +1,43 @@
+name: preprocessFile
+description: |-
+  Reads and processes the content of the specified file. Preprocessor is C-like, supports comments using {{hl|//}} or {{hl|/*}} and {{hl|*/}} and [[PreProcessor Commands]].
+  Due to the hard-drive access this command executes and the lack of caching this command should not be used in time-critical script loops.
+  {{Feature|warning|If the file you are loading is not prepared using UTF-8 encoding and contains some characters [[toArray | with codes]] > 127, they might convert incorrectly.}}
+groups:
+- System
+syntax:
+- call: !Unary
+  - fileName
+  ret:
+  - String
+  - null
+  params:
+  - name: fileName
+    description: Path to the file and name of the file
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 85
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _content = preprocessFile "myFunction.sqf";

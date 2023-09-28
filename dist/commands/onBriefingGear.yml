@@ -1,0 +1,38 @@
+name: onBriefingGear
+description: Select a sound declared in the [[Description.ext#Sound|Description.ext]] of the mission to be played the first time the [[Briefing.html#Gear|Gear tab]] is selected in the [[Briefing.html|briefing]].
+groups:
+- Event Handlers
+- Sounds
+- Briefing
+syntax:
+- call: !Unary
+  - soundName
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: soundName
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+examples:
+- onBriefingGear "GearVoiceOver";

@@ -1,0 +1,49 @@
+name: lbSize
+description: Returns the number of items in a [[CT_LISTBOX]] or [[CT_COMBO]] control. For [[CT_TOOLBOX]] size see [[lnbSize]].
+groups:
+- GUI Control - ListBox
+syntax:
+- call: !Unary
+  - idc
+  ret:
+  - Number
+  - null
+  params:
+  - name: idc
+    description: control's id
+    typ: Number
+- call: !Unary
+  - control
+  ret:
+  - Number
+  - null
+  params:
+  - name: control
+    typ: Control
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _size = lbSize 101;
+- _size = lbSize _control;

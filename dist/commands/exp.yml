@@ -1,0 +1,40 @@
+name: exp
+description: Exponential function with the base {{Link|https://en.wikipedia.org/wiki/E_(mathematical_constant)|e}}. Equal to {{hl|e^x}}. [[File:A3 expx.jpg|thumb|See how green and blue are identical except for the offset]]
+groups:
+- Math
+syntax:
+- call: !Unary
+  - x
+  ret:
+  - Number
+  - null
+  params:
+  - name: x
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _e = exp 1; // Returns e (2.7182...)
+- ln exp 1; // Returns 1

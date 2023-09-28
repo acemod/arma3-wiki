@@ -1,0 +1,22 @@
+name: canSuspend
+description: |-
+  Returns [[true]] if [[sleep]], [[uiSleep]] or [[waitUntil]] commands can be used in current scope. Usually when suspension is not allowed but used, for example when code is executed in [[Scheduler#Unscheduled_Environment|unscheduled environment]], the script engine would ignore any suspension command and throw error: "Suspending not allowed in this context". Using [[canSuspend]] command allows to detect the correct environment for the code.
+
+  {{Feature | Informative |The definition of [[Scheduler#Scheduled_Environment|scheduled]] and [[Scheduler#Unscheduled_Environment|unscheduled environment]] is not the same as whether or not the script execution can or cannot be suspended. For example while .''sqs'' and .''fsm'' scripts are [[Scheduler#Scheduled_Environment|scheduled]] (i.e. added to the [[Scheduler|scheduler]]: [[diag_activeSQSScripts]], [[diag_activeMissionFSMs]]), they cannot use [[sleep]] or be suspended like [[execVM]] or [[spawn]] scripts can, therefore [[canSuspend]] for these types of scripts will return [[false]]. }}
+groups:
+- Program Flow
+syntax:
+- call: Nular
+  ret:
+  - Boolean
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- "onEachFrame \n{\n\tsystemChat str canSuspend;\t\t\t// false\n\t[] spawn { hint str canSuspend };\t// true\n\tonEachFrame {};\n};\n"
+- "Make sure the function code is always spawned even when called:\n<sqf>\nsleepingCode = \n{\n\tif (!canSuspend) exitWith { _this spawn sleepingCode };\n\tsleep _this;\n\thint (\"slept \" + str _this);\n};\n\n5 call sleepingCode;\n"

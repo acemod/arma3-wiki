@@ -1,0 +1,42 @@
+name: setDammage
+description: Damages/hurts or repairs/heals object/unit. Damage 0 means fully functional, damage 1 means completely destroyed / dead. {{Feature|Warning|Do '''not''' use this command. Use [[setDamage]] instead!}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - object
+  - - damage
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    typ: Object
+  - name: damage
+    typ: Number
+argument_loc: Global
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldier1 setDammage 1;

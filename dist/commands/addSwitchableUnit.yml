@@ -1,0 +1,35 @@
+name: addSwitchableUnit
+description: |-
+  Adds a unit to the list of units available for [[Team_Switch|Team Switch]]. Units marked as [[playableUnits|playable]] in editor are automatically switchable.
+  This command adds non-playable unit into array of [[switchableUnits]] and makes them available for [[teamSwitch]]. '''Singleplayer only!'''
+groups:
+- Team Switch
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- addSwitchableUnit bob;

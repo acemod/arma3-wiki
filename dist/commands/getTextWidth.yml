@@ -1,0 +1,41 @@
+name: getTextWidth
+description: |-
+  Returns estimated width of the text based on [[FXY_File_Format#Available_Fonts|font type]] and size. Similar to [[ctrlTextWidth]] but does not require a control and can be used to estimate text width for any control including buttons. Result does not include left and right margins (hardcoded at 0.008 each).
+  {{Feature|informative|This command always uses unicode (see also [[forceUnicode]]).}}
+groups:
+- GUI Control
+- Strings
+syntax:
+- call: !Binary
+  - - text
+  - - font
+    - size
+  ret:
+  - Number
+  - null
+  params:
+  - name: text
+    description: text string to measure
+    typ: String
+  - name: font
+    description: '[[FXY_File_Format#Available_Fonts|font type]]'
+    typ: String
+  - name: size
+    description: font size
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 98
+examples:
+- _textWidth = "Hello World" getTextWidth ["PuristaMedium", 0.03];
+- _textWidthInclMargins = ("Hello World" getTextWidth ["PuristaMedium", 0.03]) + 0.016;
+- |
+  #define MARGINS 0.0016
+  private _ctrl = findDisplay 46 ctrlCreate ["RscText", -1];
+  _ctrl ctrlSetText "TestString";
+  _ctrl ctrlSetFont "PuristaMedium";
+  _ctrl ctrlSetFontHeight 0.04;
+  ctrlTextWidth _ctrl == ("TestString" getTextWidth ["PuristaMedium", 0.04]) + MARGINS; // true

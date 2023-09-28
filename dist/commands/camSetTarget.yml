@@ -1,0 +1,65 @@
+name: camSetTarget
+description: Set the target object or position where the given camera should point at. Needs the call of [[camCommit]] to be conducted. To reset the target use [[objNull]].
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - - camera
+  - - target
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: camera
+    description: object of type "camera"
+    typ: Object
+  - name: target
+    description: target location
+    typ: Object
+- call: !Binary
+  - - camera
+  - - position
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: camera
+    description: object of type "camera"
+    typ: Object
+  - name: position
+    description: target location - [[Position]]
+    typ: ArrayUnknown
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _camera camSetTarget player;
+- _camera camSetTarget [2540,1503,26];
+- |-
+  _cam = "camera" camCreate (player modelToWorld [0, 100, 10]);
+  _cam camSetTarget player;
+  _cam camSetRelPos [0, 0.5, 1.5];
+  _cam cameraEffect ["internal", "back"];
+  _cam camCommit 1;
+  player setRandomLip true;

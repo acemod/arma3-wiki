@@ -1,0 +1,30 @@
+name: radioChannelAdd
+description: Add the units to the custom channel.
+groups:
+- Radio and Chat
+- Custom Radio and Chat
+syntax:
+- call: !Binary
+  - - customChannelID
+  - - units
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: customChannelID
+    description: '[[Channel IDs|custom channel ID]] returned by [[radioChannelCreate]] command'
+    typ: Number
+  - name: units
+    description: list of units
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 2 radioChannelAdd [player, unit1];

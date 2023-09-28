@@ -1,0 +1,59 @@
+name: createAgent
+description: |-
+  Creates an agent of the given type. An agent does not have a group or leader or the standard soldier [[FSM]] associated with it - for instance, an enemy soldier spawned as an agent has limited AI and will do nothing when fired upon - which can be useful to limit the amount of AI processing being done in a mission with very large numbers of "AI". Animals are also commonly created as agents.
+  {{Feature|informative|
+  * Players assigned to an agent using [[selectPlayer]] will be able to control the agent, operate weapons and other actions, but will not be able to access their inventory using the gear screen.
+  * To create objects of type {{hl|"Logic"}}, use [[createUnit]].
+  }}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - type
+  - position
+  - markers
+  - placement
+  - special
+  ret:
+  - Object
+  - null
+  params:
+  - name: type
+    description: class from [[CfgVehicles]]
+    typ: String
+  - name: position
+    description: desired placement position
+    typ: !OneOf
+    - Object
+    - Position3dASL
+    - Position2d
+  - name: markers
+    description: if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position. If any of the markers were given z coordinate with setMarkerPos, the vehicle will also be created at given z coordinate.
+    typ: ArrayUnknown
+  - name: placement
+    description: Placement radius, the unit is randomly place in a circle with this radius
+    typ: Number
+  - name: special
+    description: |-
+      one of:
+      * {{hl|"NONE"}} - will look for a suitable empty position near given position (subject to other placement params) before creating the agent
+      * {{hl|"CAN_COLLIDE"}} - creates the agent at given position (subject to other placement params), without checking if others objects can cross its 3D model
+    typ: String
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- private _agent = createAgent ["B_Soldier_F", getPosATL player, [], 0, "NONE"];
+- private _agent = createAgent ["Snake_random_F", ASLToAGL getPosASL player, [], 0, "CAN_COLLIDE"]; // Creates a snake at player's feet

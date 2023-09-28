@@ -1,0 +1,28 @@
+name: cbSetChecked
+description: Sets the current state of a [[CT_CHECKBOX]] control. Use {{hl|"CheckedChanged"}} control event handler with it.
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - - control
+  - - state
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: state
+    typ: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 12
+examples:
+- _myCheckBox cbSetChecked true;
+- |-
+  _disp = findDisplay 46 createDisplay "RscDisplayEmpty";
+  _chk = _disp ctrlCreate ["RscCheckBox", -1];
+  _chk cbSetChecked true;

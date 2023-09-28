@@ -1,0 +1,23 @@
+name: rainParams
+description: Returns currently set [[Arma_3:_CfgWorlds_Config_Reference#class_RainParticles | RainParticles]] params, custom or default.
+multiplayer_note: |-
+  {{Feature|important|
+  * Rain particle params are '''local'''
+  * If used on a dedicated server, this command returns an empty array.
+  }}
+groups:
+- Environment
+syntax:
+- call: Nular
+  ret:
+  - ArrayUnknown
+  - '[rainDropTexture, texDropCount, minRainDensity, effectRadius, windCoef, dropSpeed, rndSpeed, rndDir, dropWidth, dropHeight, dropColor, lumSunFront, lumSunBack, refractCoef, refractSaturation, snow, dropColorStrong] where:'
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- private _rainParams = rainParams;

@@ -1,0 +1,27 @@
+name: setAnimSpeedCoef
+description: |-
+  Sets a coefficient for animation speed (0.5 will play animations half the speed, 2 twice the speed).<br>
+  Doesn't affect upper body animations (reloading, etc.)
+groups:
+- Animations
+- Stamina System
+syntax:
+- call: !Binary
+  - - unit
+  - - coef
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: coef
+    typ: Number
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 54
+examples:
+- player setAnimSpeedCoef 0.75;

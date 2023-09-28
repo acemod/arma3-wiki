@@ -1,0 +1,31 @@
+name: waypointBehaviour
+description: Gets the waypoint behavior.
+groups:
+- Waypoints
+syntax:
+- call: !Unary
+  - waypoint
+  ret:
+  - String
+  - null
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- waypointBehaviour [groupOne,1];

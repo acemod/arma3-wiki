@@ -1,0 +1,21 @@
+name: leaderboardDeInit
+description: Deletes internal class for the leaderboard with given name. Returns true if the board has been found and deinitialized.
+groups:
+- Leaderboards
+syntax:
+- call: !Unary
+  - boardName
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: boardName
+    typ: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- leaderboardDeInit "TT01";

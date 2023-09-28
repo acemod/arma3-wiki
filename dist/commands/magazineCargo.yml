@@ -1,0 +1,23 @@
+name: magazineCargo
+description: Get array with magazines from ammo box (or any general weapon holder container).
+groups:
+- Vehicle Inventory
+- Containers
+syntax:
+- call: !Unary
+  - object
+  ret:
+  - ArrayUnknown
+  - 'Format: ["MagType1","MagType1","MagType2"...]'
+  params:
+  - name: object
+    description: Vehicle or ammo box
+    typ: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hint str magazineCargo uniformContainer cursorTarget;

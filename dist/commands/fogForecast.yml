@@ -1,0 +1,31 @@
+name: fogForecast
+description: Returns the forecast fog value. A value of 0 means no fog, 1 means maximum fog.
+multiplayer_note: This command returns the local forcast fog value. Each client and the server can have differing values.
+groups:
+- Environment
+syntax:
+- call: Nular
+  ret:
+  - Number
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _level = fogForecast;

@@ -1,0 +1,58 @@
+{{RV|type=command
+
+|game1= arma1
+|version1= 1.00
+
+|game2= arma2
+|version2= 1.00
+
+|game3= arma2oa
+|version3= 1.50
+
+|game4= tkoh
+|version4= 1.00
+
+|game5= arma3
+|version5= 0.50
+
+|gr1= Unit Control
+
+|gr2= Object Manipulation
+
+|descr= Limit the speed of an AI-driven vehicle or AI person to given value. It has continuous effect and AI will not break through the speed limitation until one is contacted, engaged or regrouped.
+
+|s1= objectName [[limitSpeed]] speed
+
+|p1= objectName: [[Object]]
+
+|p2= speed: [[Number]] - in km/h; set to {{hl|-1}} (or any <= 0 value) to remove the limit
+
+|r1= [[Nothing]]
+
+|x1= <sqf>
+leader player limitSpeed 5;		// set to walking speed
+sleep 30;
+leader player limitSpeed -1;	// remove the limit
+</sqf>
+
+|x2= <sqf>
+addMissionEventHandler ["OnEachFrame", { hintSilent format ["myVehicle's speed: %1 km/h", speed myVehicle toFixed 2] }];
+sleep 5;
+myVehicle limitSpeed 5;
+</sqf>
+
+|x3= <sqf>
+// it was necessary to use limitSpeed repeatedly before Arma 3 1.24
+_this setVariable ["speedLimit", 50];
+_this spawn {
+	while { sleep 0.1; canMove _this } do
+	{
+		_this limitSpeed (_this getVariable "speedLimit");
+	};
+};
+sleep 10;
+_this setVariable ["speedLimit", 100]; // update the speed limit
+</sqf>
+
+|seealso= [[speed]] [[setCruiseControl]]
+}}

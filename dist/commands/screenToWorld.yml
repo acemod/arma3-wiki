@@ -1,0 +1,31 @@
+name: screenToWorld
+description: Returns the position on landscape ([[Position#PositionAGL|PositionAGL]]) corresponding to the given point on screen (in UI coordinates).
+groups:
+- Positions
+syntax:
+- call: !Unary
+  - screen
+  ret:
+  - ArrayUnknown
+  - '[[Position#PositionAGL|PositionAGL]], world position on surface [x,y,0]'
+  params:
+  - name: screen
+    description: Screen position [x,y] (see [[SafeZone]] for more info
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _wPos = screenToWorld [0.5, 0.5];

@@ -1,0 +1,44 @@
+name: addMagazinePool
+description: Adds magazines to the magazine pool, of which the player may choose in the following mission. Available in campaigns only.
+groups:
+- Weapon Pool
+syntax:
+- call: !Unary
+  - magazineName
+  - count
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: magazineName
+    description: Magazine class name. See the topic [[:Category:Weapons]] for reference about possible values.
+    typ: String
+  - name: count
+    description: Number of magazines to add
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- addMagazinePool ["M16", 20];

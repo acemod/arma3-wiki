@@ -1,0 +1,30 @@
+name: selectedEditorObjects
+description: "Returns a list of currently selected editor objects. \n{{Feature | Informative | Some Old Editor Command}}"
+groups:
+- Game 2 Editor
+syntax:
+- call: !Unary
+  - map
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: map
+    typ: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '_selObjects = selectedEditorObjects _map; // result can be: ["_vehicle_0","_vehicle_9","_vehicle_11"]'

@@ -1,0 +1,36 @@
+name: addLiveStats
+description: Adds score to the Xbox Live Statistics score for the given unit (or the commander unit of the given vehicle).
+groups:
+- System
+syntax:
+- call: !Binary
+  - - unit
+  - - score
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    typ: Object
+  - name: score
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player addLiveStats 10;

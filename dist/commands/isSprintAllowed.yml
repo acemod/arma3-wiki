@@ -1,0 +1,21 @@
+name: isSprintAllowed
+description: Returns true if player is allowed to sprint
+groups:
+- Stamina System
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 54
+examples:
+- if (not isSprintAllowed player) then { hint "no running in the corridors!" };

@@ -1,0 +1,27 @@
+name: stance
+description: Returns the stance of the given unit.
+groups:
+- Unit Control
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - String
+  - |-
+    Can be:
+    * {{hl|"STAND"}}
+    * {{hl|"CROUCH"}}
+    * {{hl|"PRONE"}}
+    * {{hl|"UNDEFINED"}} (for example, swimming)
+    * {{hl|""}} (on non-person [[Object|object]])
+  params:
+  - name: unit
+    typ: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (stance player == "STAND") then {hint "I am standing!"};

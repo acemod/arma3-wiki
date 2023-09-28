@@ -1,0 +1,24 @@
+name: ctHeaderControls
+description: Returns array of controls on the header with the given index.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Binary
+  - - ctrl
+  - - index
+  ret:
+  - ArrayUnknown
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: index
+    typ: Number
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- _array = _control ctHeaderControls 0;

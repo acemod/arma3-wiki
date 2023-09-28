@@ -1,0 +1,29 @@
+name: tvSetPictureRightColorDisabled
+description: Sets the color of the right picture of a tree item defined by path when item is disabled
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Binary
+  - - control
+  - - path
+    - color
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    description: path to tree view item
+    typ: ArrayUnknown
+  - name: color
+    description: color in format [r,g,b,a]
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- _control tvSetPictureRightColorDisabled [[0], [1,0,1,1]];

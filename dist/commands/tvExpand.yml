@@ -1,0 +1,38 @@
+name: tvExpand
+description: Expands tree item pointed to by the path. IDC means id of parent Tree View.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: path
+    description: Item [[Tree View Path]]. [] will expand the whole tree if it was collapsed previously with []
+    typ: ArrayUnknown
+- call: !Binary
+  - - control
+  - - path
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    typ: Control
+  - name: path
+    description: Item [[Tree View Path]]. [] will expand the whole tree if it was collapsed previously with []
+    typ: ArrayUnknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvExpand [101, [0]];
+- _ctrl tvExpand [1];

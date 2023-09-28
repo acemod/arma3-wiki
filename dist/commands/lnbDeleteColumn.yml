@@ -1,0 +1,44 @@
+name: lnbDeleteColumn
+description: Removes column with given index from ListNBox control.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - index
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: idc
+    typ: Number
+  - name: index
+    typ: Number
+- call: !Binary
+  - - ctrl
+  - - index
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: ctrl
+    typ: Control
+  - name: index
+    typ: Number
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _ctrl lnbDeleteColumn 1;
