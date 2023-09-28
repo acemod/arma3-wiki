@@ -5,11 +5,13 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - |-
-    In format [showMap, showScene]
-    * showScene: [[Boolean]] - Visibility in the scene
-    * showMap : [[Boolean]] - Visibility in the map
+  - !ArraySized
+    - - - Boolean
+        - Visibility in the scene
+      - - Boolean
+        - Visibility in the map
+    - In
+  - null
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified

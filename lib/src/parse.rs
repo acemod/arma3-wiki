@@ -163,7 +163,7 @@ pub fn syntax(
                 };
                 ret = ret_trim.trim().to_string();
             }
-            if ret.contains(" format:") {
+            if ret.contains(" format") {
                 (Value::from_wiki(&ret)?, None)
             } else {
                 let (typ, desc) = ret.split_once('-').unwrap_or((&ret, ""));

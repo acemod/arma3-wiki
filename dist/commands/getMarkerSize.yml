@@ -6,11 +6,13 @@ syntax:
 - call: !Unary
   - markerName
   ret:
-  - ArrayUnknown
-  - |-
-    in format [a-axis, b-axis], where:
-    * a-axis: [[Number]] - 1/2 width of marker
-    * b-axis: [[Number]] - 1/2 height of marker
+  - !ArraySized
+    - - - Number
+        - 1/2 width of marker
+      - - Number
+        - 1/2 height of marker
+    - in
+  - null
   params:
   - name: markerName
     typ: String

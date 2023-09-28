@@ -1,0 +1,40 @@
+name: apertureParams
+description: Returns current aperture parameters.
+groups:
+- Camera Control
+- Lights
+syntax:
+- call: Nular
+  ret:
+  - !ArraySized
+    - - - Number
+        - current aperture
+      - - Boolean
+        - whether aperture was forced by [[setAperture]]
+      - - Number
+        - engine-estimated scene aperture
+      - - Number
+        - engine-estimated luminance
+      - - Number
+        - minimal custom aperture, see [[setApertureNew]]
+      - - Number
+        - standard custom aperture, see [[setApertureNew]]
+      - - Number
+        - maximal custom aperture, see [[setApertureNew]]
+      - - Number
+        - custom luminance, see [[setApertureNew]]
+      - - Boolean
+        - whether custom values were forced
+      - - Number
+        - blinding intensity of the light
+    - ''
+  - null
+  params: []
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- private _apertureParams = apertureParams;

@@ -274,6 +274,17 @@ fn array_sized() {
             "".to_string()
         )))
     );
+    let value = "[[Array]] in format [forceMapForced, openMapForced]:\n* forceMapForced: [[Boolean]] - [[true]] if map was forced with [[forceMap]] command\n* openMapForced: [[Boolean]] - [[true]] if map was forced with [[openMap]] command.";
+    assert_eq!(
+        Value::from_wiki(value),
+        Ok(Value::ArraySized((
+            vec![
+                (Value::Boolean, "[[true]] if map was forced with [[forceMap]] command".to_string()),
+                (Value::Boolean, "[[true]] if map was forced with [[openMap]] command.".to_string()),
+            ],
+            "".to_string()
+        )))
+    );
 }
 
 #[test]

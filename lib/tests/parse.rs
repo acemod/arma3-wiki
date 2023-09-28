@@ -53,3 +53,4 @@ parse!(step);
 // parse!(select); -- needs wiki editing or manual parsing
 parse!(reveal);
 parse!(allAirports);
+parse!(forcedMap);

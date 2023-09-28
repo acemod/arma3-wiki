@@ -1,0 +1,19 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 1.76
+
+|gr1= Roads and Airports
+
+|descr= Returns all map airports, both static and dynamic.
+
+|s1= [[allAirports]]
+
+|r1= [[Array]] format [staticAirports, dynamicAirports], where:
+* staticAirports [[Array]] of [[Number]]s - static airports IDs
+* dynamicAirports [[Array]] of [[Object]]s - dynamic airports objects (such as "DynamicAirport_01_F" found on aircraft carrier)
+
+|x1= <sqf>_airplane landAt selectRandom (allAirports select 0);</sqf>
+
+|seealso= [[airportSide]] [[setAirportSide]] [[land]] [[landAt]] [[assignToAirport]] [[Arma: Airport IDs]]
+}}

@@ -1,0 +1,33 @@
+name: soundParams
+description: Returns various params for the given sound
+groups:
+- Sounds
+syntax:
+- call: !Unary
+  - id
+  ret:
+  - !ArraySized
+    - - - String
+        - the path to the played sound file
+      - - Number
+        - current play position in 0...1 range
+      - - Number
+        - total sound duration in seconds
+      - - Number
+        - time passed since the start of playback
+      - - Number
+        - playback volume
+    - ''
+  - null
+  params:
+  - name: id
+    description: id returned by [[playSoundUI]] and [[playSound3D]] commands
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- _params = soundParams 10;

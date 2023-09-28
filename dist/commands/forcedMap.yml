@@ -6,11 +6,13 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - |-
-    in format [forceMapForced, openMapForced]:
-    * forceMapForced: [[Boolean]] - [[true]] if map was forced with [[forceMap]] command
-    * openMapForced: [[Boolean]] - [[true]] if map was forced with [[openMap]] command.
+  - !ArraySized
+    - - - Boolean
+        - '[[true]] if map was forced with [[forceMap]] command'
+      - - Boolean
+        - '[[true]] if map was forced with [[openMap]] command.'
+    - ''
+  - null
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified

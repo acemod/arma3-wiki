@@ -72,12 +72,15 @@ syntax:
   - - function
     - arguments
   ret:
-  - ArrayUnknown
-  - |-
-    in format [result, returnCode, errorCode], where:
-    * result: [[String]] - data sent back from extension. It is up to extension maker what it is.
-    * returnCode: [[Number]] - integer return from extension method. It is up to extension maker to define it.
-    * errorCode: [[Number]] - error code in case of command error (see description). 0 means no errors.
+  - !ArraySized
+    - - - String
+        - data sent back from extension. It is up to extension maker what it is.
+      - - Number
+        - integer return from extension method. It is up to extension maker to define it.
+      - - Number
+        - error code in case of command error (see description). 0 means no errors.
+    - in
+  - null
   params:
   - name: extension
     description: extension name

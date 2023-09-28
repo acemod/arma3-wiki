@@ -6,11 +6,13 @@ syntax:
 - call: !Unary
   - unit
   ret:
-  - ArrayUnknown
-  - |-
-    format [<nowiki/>[infoPanelId1, infoPanelShortcutId1], [infoPanelId2, infoPanelShortcutId2], ...]:
-    * infoPanelId: [[String]] - name of the info panel class as defined in vehicle config
-    * infopanelShortcutId: [[String]] - shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+  - !ArraySized
+    - - - String
+        - name of the info panel class as defined in vehicle config
+      - - String
+        - shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+    - '-'
+  - null
   params:
   - name: unit
     description: the concerned vehicle
@@ -19,11 +21,13 @@ syntax:
   - unit
   - turretPath
   ret:
-  - ArrayUnknown
-  - |-
-    format [<nowiki/>[infoPanelId1, infoPanelShortcutId1], [infoPanelId2, infoPanelShortcutId2], ...]:
-    * infoPanelId: [[String]] - name of the info panel class as defined in vehicle config
-    * infopanelShortcutId: [[String]] - shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+  - !ArraySized
+    - - - String
+        - name of the info panel class as defined in vehicle config
+      - - String
+        - shortcut representation of ''infopanelId'', currently are supported only shortcuts "left" and "right"
+    - '-'
+  - null
   params:
   - name: unit
     description: the concerned vehicle

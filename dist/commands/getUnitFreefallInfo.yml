@@ -1,0 +1,29 @@
+name: getUnitFreefallInfo
+description: Returns a unit's freefall information.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - unit
+  ret:
+  - !ArraySized
+    - - - Boolean
+        - '[[true]] if unit is falling'
+      - - Boolean
+        - '[[true]] if unit is in freefall pose'
+      - - Number
+        - current minimum freefall height (see [[setUnitFreefallHeight]])
+    - ''
+  - null
+  params:
+  - name: unit
+    description: unit
+    typ: Object
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- getUnitFreefallInfo player;

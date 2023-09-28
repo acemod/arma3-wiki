@@ -7,12 +7,15 @@ syntax:
   - - unit
   - - panelID
   ret:
-  - ArrayUnknown
-  - |-
-    format [className, componentType, isAccessible]:
-    * className: [[String]] - component classname as defined in object/vehicle config
-    * componentType: [[String]] - componentType - component type
-    * isAccessible: [[Boolean]] - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
+  - !ArraySized
+    - - - String
+        - component classname as defined in object/vehicle config
+      - - String
+        - componentType - component type
+      - - Boolean
+        - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
+    - '-'
+  - null
   params:
   - name: unit
     description: the concerned vehicle
@@ -25,12 +28,15 @@ syntax:
     - turretPath
   - - panelID
   ret:
-  - ArrayUnknown
-  - |-
-    format [className, componentType, isAccessible]:
-    * className: [[String]] - component classname as defined in object/vehicle config
-    * componentType: [[String]] - componentType - component type
-    * isAccessible: [[Boolean]] - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
+  - !ArraySized
+    - - - String
+        - component classname as defined in object/vehicle config
+      - - String
+        - componentType - component type
+      - - Boolean
+        - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
+    - '-'
+  - null
   params:
   - name: unit
     description: the concerned vehicle

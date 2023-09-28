@@ -8,11 +8,13 @@ syntax:
   - - vehicle
   - - turretPath
   ret:
-  - ArrayUnknown
-  - |-
-    in format [elevation, isLocked], where:
-    * elevation: [[Number]] - current periscope elevation value. -1 in case of an invalid turret
-    * isLocked: [[Boolean]] - whether or not user override is blocked
+  - !ArraySized
+    - - - Number
+        - current periscope elevation value. -1 in case of an invalid turret
+      - - Boolean
+        - whether or not user override is blocked
+    - in
+  - null
   params:
   - name: vehicle
     description: vehicle with periscope tech

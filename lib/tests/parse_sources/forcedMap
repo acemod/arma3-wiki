@@ -1,0 +1,22 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 1.62
+
+|gr1= Map
+
+|gr2= Interaction
+
+|descr= Returns if map was forced by using [[forceMap]] command or [[openMap]] command with force option
+
+|s1= [[forcedMap]]
+
+|r1= [[Array]] in format [forceMapForced, openMapForced]:
+* forceMapForced: [[Boolean]] - [[true]] if map was forced with [[forceMap]] command
+* openMapForced: [[Boolean]] - [[true]] if map was forced with [[openMap]] command.
+
+|x1= <sqf>_forceMapForced = forcedMap select 0;
+_openMapForced = forcedMap select 1;</sqf>
+
+|seealso= [[openMap]] [[forceMap]] [[showMap]] [[visibleMap]] [[shownMap]]
+}}

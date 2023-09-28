@@ -6,11 +6,13 @@ syntax:
 - call: !Unary
   - rope
   ret:
-  - ArrayUnknown
-  - |-
-    array in format [startPos, endPos], where:
-    * startPos: [[Array]] - rope start position in format [[Position#PositionAGL|PositionAGL]]
-    * endPos: [[Array]] - rope end position in format [[Position#PositionAGL|PositionAGL]]
+  - !ArraySized
+    - - - ArrayUnknown
+        - rope start position in format [[Position#PositionAGL|PositionAGL]]
+      - - ArrayUnknown
+        - rope end position in format [[Position#PositionAGL|PositionAGL
+    - array in
+  - null
   params:
   - name: rope
     description: rope object
