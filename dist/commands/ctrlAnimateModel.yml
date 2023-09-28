@@ -1,0 +1,42 @@
+name: ctrlAnimateModel
+description: 'Process an animation of 3D [[Arma: GUI Configuration]]. Command uses name defined by source property and works similar like [[animateSource]] command.'
+groups:
+- GUI Control - Object
+syntax:
+- call: !Binary
+  - control
+  - - source
+    - phase
+    - speed
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: control
+    description: 3D control
+    typ: Control
+  - name: source
+    description: common source
+    typ: String
+  - name: phase
+    description: wanted animation phase
+    typ: Number
+  - name: speed
+    description: |-
+      (Optional, default [[false]])
+      * [[Boolean]] - when set to [[true]], animation is instant
+      * {{GVI|arma3|1.66|size= 0.75}} [[Number]] - > 0 is treated as config speed value multiplier
+    typ: !OneOf
+    - - Boolean
+      - null
+    - - Number
+      - null
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 84
+examples:
+- _control3D ctrlAnimateModel ["Close", 1];
+- _ctrlLaptop ctrlAnimateModel ["Lid", 1, 2];

@@ -1,0 +1,116 @@
+name: nearestObject
+description: |-
+  Returns the nearest object of given type (or inherited classes) to given position within a sphere. Hardcoded radius is 50 meters.
+  Unlike with [[nearestObjects]], where distance is measured in 2D space, [[nearestObject]] will be closest object in 3D space.
+
+  {{Feature|informative|
+  * in {{ofp}}, only objects of the exact provided class are found.
+  * if an object ID is used ({{Link|#Syntax 4}}, see {{Link|#Example 2}}) the search range is unlimited
+  }}
+groups:
+- Object Detection
+syntax:
+- call: !Unary
+  - position
+  - type
+  ret:
+  - Object
+  - nearest object, [[objNull]] otherwise
+  params:
+  - name: position
+    description: position to start search at
+    typ: !OneOf
+    - - Object
+      - null
+    - - Position2d
+      - null
+    - - Position3d
+      - null
+  - name: type
+    description: type of object (see [[typeOf]], [[CfgVehicles|class type]])
+    typ: String
+- call: !Unary position
+  ret:
+  - Object
+  - nearest object, [[objNull]] otherwise
+  params:
+  - name: position
+    description: position to start search at
+    typ: !OneOf
+    - - Position2d
+      - null
+    - - Position3d
+      - null
+- call: !Binary
+  - position
+  - typeOrId
+  ret:
+  - Object
+  - nearest object, [[objNull]] otherwise
+  params:
+  - name: position
+    description: position to start search at
+    typ: !OneOf
+    - - Position3d
+      - null
+    - - Position2d
+      - null
+  - name: typeOrId
+    description: type of object (see [[typeOf]], [[CfgVehicles|class type]]) or {{GVI|arma3|2.10|size= 0.75}} Visitor id (see [[getObjectID]])
+    typ: String
+- call: !Binary
+  - position
+  - id
+  ret:
+  - Object
+  - nearest object, [[objNull]] otherwise
+  params:
+  - name: position
+    description: position to start search at
+    typ: !OneOf
+    - - Position2d
+      - null
+    - - Position3d
+      - null
+  - name: id
+    description: object Visitor id
+    typ: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  _nObject = nearestObject [2345, 6789];
+  _nObject = nearestObject [player, "StreetLamp"];
+- |-
+  Return the object with ID 123456:
+  <sqf>_nObject = [0,0,0] nearestObject 123456;
+- _nObject = getPos player nearestObject "StreetLamp";
+- |-
+  Return the nearest object with ([[typeOf]] _nObject == "#XXXX") -> #mark, #slop, etc. Unlimited search range:
+  <sqf>_nObject = _position nearestObject -1;</sqf>
+
+  Return the nearest object with ([[typeOf]] _nObject != ""). Search range is 50m:
+  <sqf>_nObject = nearestObject _position;
+- "(See also [[allMissionObjects]]):\n<sqf>\n_blood\t= nearestObject [player, \"#slop\"];\n_step\t= nearestObject [player, \"#mark\"];\n_track\t= nearestObject [player, \"#track\"];\n_crater\t= nearestObject [player, \"#crater\"];\n"

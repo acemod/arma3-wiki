@@ -1,0 +1,86 @@
+name: createDiaryRecord
+description: |-
+  Creates a [[Diary]] entry. Supported tags and their parameters: <spoiler>
+  {| class="wikitable sortable valign-top"
+  ! Tag
+  ! class="unsortable" | Options
+  ! class="unsortable" | Example
+groups:
+- Briefing
+syntax:
+- call: !Binary
+  - player
+  - - subject
+    - textInfo
+    - task
+    - taskState
+    - showTitle
+  ret:
+  - DiaryRecord
+  - null
+  params:
+  - name: player
+    typ: Object
+  - name: subject
+    typ: String
+  - name: textInfo
+    description: |-
+      can be:
+      * [[String]] - the record's content - its title will be empty
+      * [[Array]] of [[String]]s - format [title, text, icon]:
+      ** title: [[String]]
+      ** text: [[String]]
+      ** {{GVI|arma3|2.10|size= 0.75}} icon: [[String]] - (Optional) icon to show next to the title
+    typ: !OneOf
+    - - String
+      - null
+    - - !ArrayUnsized
+        - String
+        - ''
+      - null
+  - name: task
+    description: (Optional, default [[taskNull]])
+    typ: Task
+  - name: taskState
+    description: |-
+      (Optional, default {{hl|"NONE"}}) changes the state of the given task. Can be one of:
+      {{Columns|3|
+      * {{hl|"NONE"}}
+      * {{hl|"CREATED"}}
+      * {{hl|"ASSIGNED"}}
+      * {{hl|"SUCCEEDED"}}
+      * {{hl|"FAILED"}}
+      * {{hl|"CANCELED"}}
+      }}
+    typ: String
+  - name: showTitle
+    description: (Optional, default [[true]]) whether or not to show title in the description section as well
+    typ: Boolean
+    since:
+      arma_3:
+        major: 1
+        minor: 96
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player createDiaryRecord ["Diary", ["Intel", "Enemy base is on grid <marker name='enemyBase'>161170</marker>"]]
+- player createDiaryRecord ["Diary", "Information gathered.<br /><img image='wellDone_ca.paa' />"]
+- player createDiaryRecord ["Diary", ["Title", "Description"], taskNull, "", false];
+- "player createDiaryRecord [\n\t\"Diary\",\n\t[\"Font tag\", \"<font color='#7FFF00' size='30' face='TahomaB'>This will changed text size, colour and font</font>\"],\n\ttaskNull,\n\t\"\",\n\tfalse\n];\n"
+- "player createDiaryRecord [\n\t\"Diary\",\n\t[\"Image\", \"<img image='\\A3\\Ui_F_Curator\\Data\\Logos\\arma3_curator_artwork.jpg' width='500' height='800' />\"],\n\ttaskNull,\n\t\"\",\n\tfalse\n];\n"
+- player createDiaryRecord ["Diary", ["Linebreak", "Line1<br />Line2<br /><br />Line4"], taskNull, "", false];
+- player createDiaryRecord ["Diary", ["Execute","<execute expression='hint ""Some code"";'>Some text</execute>"], taskNull, "", false];
+- player createDiaryRecord ["Diary", ["ExecuteClose", "<executeClose expression=""hint 'Diary closed';"">Close Diary</executeClose>"], taskNull, "", false];

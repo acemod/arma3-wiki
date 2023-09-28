@@ -1,0 +1,49 @@
+name: animateSource
+description: |-
+  Process an animation of the object. If [[animate]] uses class name from [[CfgModels]] ''Animations'', [[animateSource]] uses name defined by the ''source'' property. AnimationSources can animate multiple [[animate]] Animations. AnimationSource is defined in [[:Category:CfgVehicles|CfgVehicles]]' [[Model Config#AnimationSources|AnimationSources]] (see [[Arma 3: createVehicle/vehicles]]).
+
+  {{Feature|arma3| It is recommended that [[animateSource]] command is used instead of [[animate]] whenever is possible, as it is more efficient and optimized for MP}}
+  {{Feature|warning|Mixing [[animateSource]] command with [[animate]] command to animate the same part may produce some undefined behaviour.}}
+groups:
+- Animations
+syntax:
+- call: !Binary
+  - object
+  - - source
+    - phase
+    - speed
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    typ: Object
+  - name: source
+    description: common source
+    typ: String
+  - name: phase
+    description: wanted animation phase
+    typ: Number
+  - name: speed
+    description: |-
+      (Optional, default [[false]])
+      * [[Boolean]] - when set to [[true]], animation is instant
+      * {{GVI|arma3|1.66|size= 0.75}} [[Number]] > 0 is treated as config speed value multiplier. Since {{GVI|arma3|2.10|size= 0.75}} values <= 0 will instantly reset animation to initPhase.
+    typ: !OneOf
+    - - Boolean
+      - null
+    - - Number
+      - null
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- house animateSource ["Door_1_source", 1, true];
+- "Create UGV and manipulate its turret (Not possible to do with [[animate]] command. See [[Arma 3: createVehicle/vehicles]] for reference)\n<sqf>\nugv = \"B_UGV_01_F\" createVehicle (player getRelPos [5, 0]);\nugv addAction [\"Show Turret\",\n{\n\tugv animateSource [\"Turret\", 0];\n\tugv animateSource [\"MainTurret\", rad 0, true];\n\tugv animateSource [\"MainGun\", rad 0, true];\n}];\nugv addAction [\"Hide Turret\",  { ugv animateSource [\"Turret\", 1] }];\nugv addAction [\"Turret Left\",  { ugv animateSource [\"MainTurret\",  rad 90] }];\nugv addAction [\"Turret Right\", { ugv animateSource [\"MainTurret\", -rad 90] }];\nugv addAction [\"Turret Up\",    { ugv animateSource [\"MainGun\",  rad 30] }];\nugv addAction [\"Turret Down\",  { ugv animateSource [\"MainGun\", -rad 20] }];\n"
+- |
+  barGate animateSource ["Door_1_sound_source", 1]; // Open
+  barGate animateSource ["Door_1_sound_source", 0]; // Close
+- "Open/close Bar Gate automatically:\n<sqf>\n// Bar Gate init\nif (isServer) then\n{\t\n\tprivate _gateTrigger = createTrigger [\"EmptyDetector\", getPosWorld this, false];\n\t_gateTrigger setVariable [\"BarGateObj\", this];\n\t_gateTrigger setTriggerActivation [\"ANYPLAYER\", \"PRESENT\", true];\n\t_gateTrigger setTriggerArea [5, 25, getDir this, true];\n\t_gateTrigger setTriggerStatements \n\t[\n\t\t\"this\",\n\t\t\"thisTrigger getVariable 'BarGateObj' animateSource ['Door_1_sound_source', 1]\",\n\t\t\"thisTrigger getVariable 'BarGateObj' animateSource ['Door_1_sound_source', 0]\"\n\t];\n};\n"

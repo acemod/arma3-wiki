@@ -127,9 +127,6 @@ pub fn syntax(
                     description: if desc.trim().is_empty() {
                         None
                     } else {
-                        if desc.contains("{{GVI|arma3|") {
-                            return Err(format!("Invalid param since: {}", desc));
-                        }
                         Some(desc.trim().to_string())
                     },
                     typ: Value::from_wiki(typ.trim())?,
@@ -158,7 +155,6 @@ pub fn syntax(
         }
     }
     let call = Call::from_wiki(usage)?;
-    println!("params: {:?}", call.param_names());
     for arg in call.param_names() {
         if !params.iter().any(|p| p.name() == arg) {
             return Err(format!("Missing param: {}", arg));

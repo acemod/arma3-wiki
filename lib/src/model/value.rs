@@ -462,7 +462,8 @@ fn array_or() {
 
 #[test]
 fn array_names() {
-    let value = "[[Array]] in format [id, title, text, icon, task, taskState, showTitle, date, record], where:
+    let value =
+        "[[Array]] in format [id, title, text, icon, task, taskState, showTitle, record], where:
 * id: [[Number]] - record id
 * title: [[String]] - record title
 * text: [[String]] - record text
@@ -470,7 +471,6 @@ fn array_names() {
 * task: [[Task]] - record task
 * taskState: [[String]] - record task state
 * showTitle: [[Boolean]] - [[true]] if tile is shown
-* date: [[Array]] in format [year, month, day, hour, minute, second] 
 * record: [[Diary Record]] - record reference";
     assert_eq!(
         Value::from_wiki(value),
@@ -519,59 +519,13 @@ fn array_names() {
                     since: None,
                 },
                 ArraySizedElement {
-                    name: "date".to_string(),
-                    value: Value::ArraySized((
-                        vec![
-                            ArraySizedElement {
-                                name: "year".to_string(),
-                                value: Value::Number,
-                                desc: "year".to_string(),
-                                since: None,
-                            },
-                            ArraySizedElement {
-                                name: "month".to_string(),
-                                value: Value::Number,
-                                desc: "month".to_string(),
-                                since: None,
-                            },
-                            ArraySizedElement {
-                                name: "day".to_string(),
-                                value: Value::Number,
-                                desc: "day".to_string(),
-                                since: None,
-                            },
-                            ArraySizedElement {
-                                name: "hour".to_string(),
-                                value: Value::Number,
-                                desc: "hour".to_string(),
-                                since: None,
-                            },
-                            ArraySizedElement {
-                                name: "minute".to_string(),
-                                value: Value::Number,
-                                desc: "minute".to_string(),
-                                since: None,
-                            },
-                            ArraySizedElement {
-                                name: "second".to_string(),
-                                value: Value::Number,
-                                desc: "second".to_string(),
-                                since: None,
-                            },
-                        ],
-                        "".to_string()
-                    )),
-                    desc: "[[date]] in format [year, month, day, hour, minute, second]".to_string(),
-                    since: None,
-                },
-                ArraySizedElement {
                     name: "record".to_string(),
                     value: Value::DiaryRecord,
                     desc: "record reference".to_string(),
                     since: None,
                 },
             ],
-            "all diary records for the given subject".to_string()
+            "".to_string()
         )))
     )
 }

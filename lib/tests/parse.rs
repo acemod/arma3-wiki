@@ -56,3 +56,4 @@ parse!(allAirports);
 parse!(forcedMap);
 parse!(weaponState);
 parse!(lnbSetPictureColorSelected);
+parse!(tvText);

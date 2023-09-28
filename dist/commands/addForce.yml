@@ -1,0 +1,38 @@
+name: addForce
+description: |-
+  Applies impulse force to unit or given PhysX object at given position.
+  {{Feature|informative|For more information see {{Link|http://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/classPxRigidBody.html|NVIDIA docs}}.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - object
+  - - force
+    - position
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    description: PhysX object or {{GVI|arma3|2.04|size= 0.75}}{{Icon|localargument|24}} unit, in which case the unit must be local and will be [[setUnconscious|set unconscious]]
+    typ: Object
+  - name: force
+    description: in format [x,y,z], force vector in '''world''' space. Force is in {{Link|https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/structPxForceMode.html|Newton}}
+    typ: ArrayUnknown
+  - name: position
+    description: in format [x,y,z], in ''object''<nowiki/>'s [[Position#PositionRelative|relative position]]
+    typ: ArrayUnknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 72
+examples:
+- |-
+  Apply force [0,1000,0] defined in world space (not factoring object actual positioning) to object position [1,0,0]:
+  <sqf>_object addForce [[0,1000,0], [1,0,0]];
+- |-
+  Apply force [0,1000,0] defined in model space (relative to object) to object position [1,0,0]:
+  <sqf>_object addForce [_object vectorModelToWorld [0,1000,0], [1,0,0]];
+- "Can be used on units since {{arma3}} v2.04:\n<sqf>\nif (local bob) then\n{\n\t[] spawn \n\t{\n\t\tbob addForce [bob vectorModelToWorld [0,-200,0], bob selectionPosition \"rightfoot\"];\n\t\tsleep 5;\n\t\tbob setUnconscious false;\n\t};\n};\n"

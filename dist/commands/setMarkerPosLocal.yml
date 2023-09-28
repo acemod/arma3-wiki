@@ -1,0 +1,37 @@
+name: setMarkerPosLocal
+description: Moves the marker. If position is given in 3D format, {{hl|z}} coordinate is stored with the marker and will be used when marker is passed to commands like [[createVehicle]], [[createUnit]], [[createAgent]], [[createMine]], [[setVehiclePosition]] for example. When [[Object]] is used for position, its [[getPosWorld]] is used.
+groups:
+- Markers
+syntax:
+- call: !Binary
+  - markerName
+  - pos
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: markerName
+    typ: String
+  - name: pos
+    description: format [[Position#Introduction|Position2D]], [[Position#PositionAGL|PositionAGL]] or {{GVI|arma3|1.94|size= 0.75}} [[Object]] - object's '''model centre'''<nowiki/>'s position is used (see [[getPosWorld]])
+    typ: ArrayUnknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 4
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"MarkerOne" setMarkerPosLocal getMarkerPos "MarkerTwo";'
