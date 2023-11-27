@@ -1,0 +1,75 @@
+name: setHitPointDamage
+description: "{{{!}} class=\"wikitable float-right align-center-col-2\"\n{{!}}+ \n! {{Link|:Category: Event Handlers|Event Handler}}\n! Triggered\n{{!}}-\n{{!}} {{hl|Hit}}\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} {{hl|HandleDamage}}\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} {{hl|Killed}}\n{{!}} {{Icon|checked}}\n{{!}}-\n{{!}} {{hl|MPKilled}}\n{{!}} {{Icon|checked}}\n{{!}}}\n\nSet the current level of damage for a specific Hit Point (specified by its config class). This command has no effect when [[allowDamage]] is set to [[false]].\n{{Feature|informative|See also [[BIS_fnc_setHitPointDamage]] for setting hit with dependency.}}"
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - vehicle
+  - - hitPointName
+    - damage
+    - useEffects
+    - killer
+    - instigator
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: vehicle to be damaged
+    type: Unknown
+  - name: hitPointName
+    description: name of the Hit Point class
+    type: Unknown
+  - name: damage
+    description: level of damage, in range 0..1
+    type: Unknown
+  - name: useEffects
+    description: '[[false]] to skip destruction effects'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+    since:
+      arma_3:
+        major: 1
+        minor: 68
+  - name: killer
+    description: |-
+      the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill. <br>
+      * It can be used to show "killed by player" in debriefing statistics and kill messages in the chat (if death messages are enabled). <br>
+      * It will alter the killer's [[rating]] as if the killer directly killed the unit. <br>
+      * It will be listed as <sqf inline>_killer</sqf> parameter in the [[Arma_3:_Event_Handlers#Killed|Killed]] event handler.
+    type: Unknown
+    optional: true
+    default: '[[objNull]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 8
+  - name: instigator
+    description: |-
+      the person that instigated the damage.
+      * if a tank is a killer, the tank gunner that pulled the trigger is instigator
+      * it will be listed as <sqf inline>_instigator</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler.
+    type: Unknown
+    optional: true
+    default: '[[objNull]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 12
+argument_loc: Local
+effect_loc: Global
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- vehicle player setHitPointDamage ["hitEngine2", 1.0];
+- |
+  player setHitPointDamage ["hitHead", 0.5];
+  player setHitPointDamage ["hitBody", 0.5];
+  player setHitPointDamage ["hitHands", 0.5];
+  player setHitPointDamage ["hitLegs", 0.5];
