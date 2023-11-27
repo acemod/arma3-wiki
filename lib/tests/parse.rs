@@ -28,3 +28,4 @@ parse!(ropeCreate);
 parse!(lnbSetPictureColor);
 parse!(drawIcon);
 parse!(activatedAddons);
+parse!(addAction);

@@ -180,12 +180,19 @@ pub fn syntax(
                 };
                 params.push(Param {
                     name: {
-                        let name = name.trim().to_string();
-                        if name.starts_with("{{") {
+                        let mut name = name.trim().to_string();
+                        name = if name.starts_with("{{") {
                             name.split_once("}} ").unwrap().1.trim().to_string()
                         } else {
                             name
+                        };
+                        if name.starts_with("'''") {
+                            name = name.trim_start_matches("'''").to_string();
                         }
+                        if name.ends_with("'''") {
+                            name = name.trim_end_matches("'''").to_string();
+                        }
+                        name
                     },
                     description: if desc.trim().is_empty() {
                         None
