@@ -39,4 +39,10 @@ since:
     minor: 50
 examples:
 - "private _distanceSquared = 5 * 5;\nif (player distanceSqr leader player < _distanceSquared) then // similar to player distance leader player < 5\n{\n\thint \"You are less than 5m from the leader!\";\n};\n"
-- "private _distance = sqrt ((x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2);\nprivate _distanceSqr = (x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2;\n_distance = [x1, y1, z1] distance [x2, y2, z2];\n_distanceSqr = [x1, y1, z1] distanceSqr [x2, y2, z2];\n_distance = sqrt ([x1, y1, z1] distanceSqr [x2, y2, z2]);\n_distanceSqr = ([x1, y1, z1] distance [x2, y2, z2]) ^ 2;\n</sqf>\n\n<!-- KK, your turn!\nIf normal distance is calculated according to this formula:\n\nsquared distance is calculated according to this formula:  \n-->"
+- |
+  private _distance = sqrt ((x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2);
+  private _distanceSqr = (x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2;
+  _distance = [x1, y1, z1] distance [x2, y2, z2];
+  _distanceSqr = [x1, y1, z1] distanceSqr [x2, y2, z2];
+  _distance = sqrt ([x1, y1, z1] distanceSqr [x2, y2, z2]);
+  _distanceSqr = ([x1, y1, z1] distance [x2, y2, z2]) ^ 2;

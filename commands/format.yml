@@ -1,0 +1,49 @@
+name: format
+description: |-
+  Composes a string containing other variables or other variable types. Converts any variable type to a string. If you want to convert a string back to a number, use [[parseNumber]].
+  {{Feature | important | The output of this command is limited to ~8Kb. [[joinString]] on the other hand doesn't have such limit and is a bit faster.}}
+groups:
+- Strings
+syntax:
+- call: !Unary
+  - formatString
+  - var1
+  - var2
+  - '...'
+  ret:
+  - Unknown
+  - the full string (up to 8kb, see above) is returned.
+  params:
+  - name: formatString
+    description: a string containing text and/or references to the variables listed below in the array. The references appear in the form of %1, %2 etc.
+    type: Unknown
+  - name: varN
+    description: variable referenced by %N
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- format ["Player:%1, player's side:%2", player, side player]; // returns "Player:WEST 1-1-A:1 (Username), player's side:WEST"
+- "player addEventHandler [\"HandleDamage\", {\n\thint format [\"You just sustained %1%2 damage!\", ceil ((_this select 2) * 100), \"%\"];\n}]; // Shows \"You just sustained 20% damage!\"\n"

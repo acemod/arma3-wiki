@@ -1,0 +1,25 @@
+name: kbReact
+description: Pass a non-verbal communication to the receiver. This command does '''as if''' the sentence was said and triggers the reaction scripts (AI FSM or player's conversation EH). See [[Conversations]] for more details.
+groups:
+- Conversations
+syntax: []
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  // will trigger AS IF unit1 said the sentence (via kbTell)
+  // unit2's FSM will react accordingly.
+  unit1 kbReact [unit2, "topicName", "speech1"];

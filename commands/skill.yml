@@ -1,0 +1,66 @@
+name: skill
+description: Returns current skill of a unit, in range between 0 to 1, 1 being the highest level of skill.
+groups:
+- AI Behaviour
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+- call: !Binary
+  - unit
+  - skillName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: skillName
+    description: |-
+      possible values are:
+      * "aimingAccuracy"
+      * "aimingShake"
+      * "aimingSpeed"
+      * "endurance"
+      * "spotDistance"
+      * "spotTime"
+      * "courage"
+      * "reloadSpeed"
+      * "commanding"
+      * "general"
+    type: Unknown
+  since:
+    armed_assault:
+      major: 1
+      minor: 0
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _skill = skill unit1;
+- _myCourage = player skill "courage";

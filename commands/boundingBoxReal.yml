@@ -1,0 +1,50 @@
+name: boundingBoxReal
+description: |-
+  [[File:Boundingbox.jpg|right|200px]] Returns a raw bounding box of given object in model coordinates space. This command is similar to [[boundingBox]] but gives more precise measurements.<br>
+  The alternative syntax allows to specify clipping type to be used, which in some cases could make the result even more precise.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+- call: !Binary
+  - clippingType
+  - object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: clippingType
+    description: |-
+      can be one of:
+      * 0 - ClipVisual (can significantly reduce bounding box's size on buildings)
+      * 1 - ClipShadow
+      * 2 - ClipGeometry
+      * 3 - ClipGeneral (same type that is used in the main syntax)
+    type: Unknown
+  - name: object
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 92
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  private _bbr = boundingBoxReal vehicle player;
+  private _p1 = _bbr select 0;
+  private _p2 = _bbr select 1;
+  private _maxWidth = abs ((_p2 select 0) - (_p1 select 0));
+  private _maxLength = abs ((_p2 select 1) - (_p1 select 1));
+  private _maxHeight = abs ((_p2 select 2) - (_p1 select 2));
+- hint str (0 boundingBoxReal cursorObject);

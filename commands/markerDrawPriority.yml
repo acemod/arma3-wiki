@@ -1,0 +1,20 @@
+name: markerDrawPriority
+description: Returns marker draw priority.
+groups:
+- Markers
+syntax:
+- call: !Unary markerName
+  ret:
+  - Unknown
+  - draw priority
+  params:
+  - name: markerName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 14
+examples:
+- markerDrawPriority "MarkerOne"

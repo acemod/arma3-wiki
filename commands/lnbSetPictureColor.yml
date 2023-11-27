@@ -1,0 +1,33 @@
+name: lnbSetPictureColor
+description: Sets the cell picture's colour.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - colour
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: row
+    description: 0-based index (first column is 0, second is 1, etc)
+    type: Unknown
+  - name: column
+    description: 0-based index (first column is 0, second is 1, etc)
+    type: Unknown
+  - name: colour
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 42
+examples:
+- lnbSetPictureColor [1492, [1,0], [0,0.75,0.3,0.5]];
+- ctrl lnbSetPictureColor [[0, 3], [1,0,0,1]];

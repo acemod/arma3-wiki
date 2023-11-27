@@ -1,0 +1,109 @@
+name: drawIcon
+description: |-
+  Draws an icon on the map.
+  As this command needs to be called every frame, it is preferable using the [[User Interface Event Handlers#onDraw|onDraw]] UI Event Handler.
+  {{Feature|informative|Some useful icons can be found in <sqf inline>configFile >> "CfgVehicleIcons"</sqf>.}}
+groups:
+- GUI Control - Map
+syntax:
+- call: !Binary
+  - map
+  - - texture
+    - color
+    - position
+    - width
+    - height
+    - angle
+    - text
+    - shadow
+    - textSize
+    - font
+    - align
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: map
+    type: Unknown
+  - name: texture
+    description: icon texture
+    type: Unknown
+  - name: color
+    description: text and icon color in format [[Color|Color(RGBA)]]
+    type: Unknown
+  - name: position
+    type: Unknown
+  - name: width
+    description: width of the icon (but not the text)
+    type: Unknown
+  - name: height
+    description: height of the icon (but not the text)
+    type: Unknown
+  - name: angle
+    description: rotation angle of the icon (but not the text)
+    type: Unknown
+  - name: text
+    type: Unknown
+    optional: true
+    default: '""'
+  - name: shadow
+    description: |-
+      can be one of:
+      * 0 ([[false]]): no shadow
+      * 1: shadow (for text)
+      * 2 ([[true]]): outline (works for text and for icon only if icon angle is 0)
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+  - name: textSize
+    description: size of the text in UI units
+    type: Unknown
+    optional: true
+    default: '-1'
+    since:
+      arma_3:
+        major: 0
+        minor: 72
+  - name: font
+    description: text's font
+    type: Unknown
+    optional: true
+    default: '""'
+    since:
+      arma_3:
+        major: 0
+        minor: 72
+  - name: align
+    description: |-
+      text alignment. Can be:
+      * "left"
+      * "right"
+      * "center"
+    type: Unknown
+    optional: true
+    default: '"right"'
+    since:
+      arma_3:
+        major: 0
+        minor: 72
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "Red icon with text:\n<sqf>\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\", {\n\t_this select 0 drawIcon [\n\t\t\"iconStaticMG\", // custom images can also be used: getMissionPath \"\\myFolder\\myIcon.paa\"\n\t\t[1,0,0,1],\n\t\tgetPosASLVisual player,\n\t\t24,\n\t\t24,\n\t\tgetDirVisual player,\n\t\t\"Player Vehicle\",\n\t\t1,\n\t\t0.03,\n\t\t\"TahomaB\",\n\t\t\"right\"\n\t]\n}];\n"
+- "Green text only:\n<sqf>\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\", {\n\t_this select 0 drawIcon [\n\t\t\"#(rgb,1,1,1)color(1,1,1,1)\",\n\t\t[0,1,0,1],\n\t\tplayer,\n\t\t0,\n\t\t0,\n\t\t0,\n\t\tname player\n\t]\n}];\n"

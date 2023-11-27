@@ -1,0 +1,42 @@
+name: setVelocityTransformation
+description: |-
+  [[File:setVelocityTransformation.jpg|thumb|right]]
+  Interpolates and applies [[Position#PositionASL|PositionASL]], [[velocity]], [[vectorDir]] and [[vectorUp]] to the given object based on the interval value.<br>
+
+  When interval is 0 the "fromXXX" values are used for the beginning of the interpolation. When interval is 1, the "toXXX" values are used for the end of interpolation.
+  When interval value is in between, interpolated values are used (see diagram below). The interpolation is linear and along straight line between "from" and "to" positions.
+  If curve is needed, then it should be constructed from multiple straight sections or by dynamically changing value of position params during the interpolation cycle, similar to {{Link|https://en.wikipedia.org/wiki/B%C3%A9zier_curve#Quadratic_curves|Quadratic Curve animation}} (see {{Link|#Example 3}}).<br>
+
+  The [[velocity]] param does not do much in SP, but in MP, provided the velocity component is set correctly, it helps the engine to figure out what the next position of the moving object should be on other clients.<br><br>
+  The actual approximate interpolation formula for this command is:
+  <sqf>_vecCurrent = _vecFrom vectorAdd (_vecTo vectorDiff _vecFrom vectorMultiply _interval);</sqf>
+
+  {{Feature|informative|
+  For continuous movement this command should be executed each frame while changing the interval value.
+  For example to apply interpolation for 10 seconds one could use the following command to translate 10 seconds into 0..1 interval:
+  <sqf>
+  t1 = time;
+  t2 = time + 10;
+  </sqf>
+  Later inside some on frame event...
+  <sqf>_interval = linearConversion [t1, t2, time, 0, 1];</sqf>
+  }}
+groups:
+- Object Manipulation
+syntax: []
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "_tracker setVelocityTransformation\n[\n\t_currentPos,\n\t_nextPos,\n\t_currentVelocity,\n\t_nextVelocity,\n\t_currentVectorDir,\n\t_nextVectorDir,\n\t_currentVectorUp,\n\t_nextVectorUp,\n\t_interval\n];\n"
+- "Bob on imaginary stairway to heaven:\n<sqf>\nbob = createAgent [\"C_man_1\", player getRelPos [5, 0], [], 0, \"CAN_COLLIDE\"];\nbob switchMove \"ladderCivilUpLoop\";\npos1 = getPosASL bob;\npos2 = pos1 vectorAdd [0,0,0.75];\nbob addEventHandler [\"AnimDone\",\n{\n\tpos1 = pos2;\n\tpos2 = pos2 vectorAdd [0,0,0.75]\n}];\n\nonEachFrame\n{\n\tif (!alive bob) then\n\t{\n\t\tonEachFrame {};\n\t\tbob switchMove \"\";\n\t\tbob removeAllEventHandlers \"AnimDone\";\n\t};\n\tbob setVelocityTransformation [\n\t\tpos1,\n\t\tpos2,\n\t\t[0,0,0],\n\t\t[0,0,0],\n\t\t[0,1,0],\n\t\t[0,1,0],\n\t\t[0,0,1],\n\t\t[0,0,1],\n\t\tmoveTime bob\n\t];\n};\n"
+- "Advanced trickery with curved movement. The curve is controlled with one control point (controlPointASL), just like quadratic Bézier curve:\n<sqf>\ndisableSerialization;\nplayer setDir 0;\ninterval = 0;\n_disp = findDisplay 46 createDisplay \"RscDisplayEmpty\";\n_ctrl = _disp ctrlCreate [\"RscSlider\", -1];\n_ctrl ctrlSetPosition [safeZoneX + 0.1, 1, safeZoneW - 0.2, 0.1];\n_ctrl ctrlSetActiveColor [1,0,0,1];\n_ctrl ctrlCommit 0;\n_ctrl sliderSetPosition 0;\n_ctrl sliderSetRange [0,1];\n_ctrl sliderSetSpeed [0.1,0.5];\n_ctrl ctrlAddEventHandler [\"SliderPosChanged\", {interval = _this select 1}];\nctrlSetFocus _ctrl;\nbox = \"Land_VR_Shape_01_cube_1m_F\" createVehicle [0,0,0];\ncontrolPointASL = AGLToASL (player getRelPos [70, -30]) vectorAdd [0, 0, 30];\nfromPosASL = AGLToASL (player getRelPos [10, -45]);\ntoPosASL = AGLToASL (player getRelPos [10, 45]);\nfromControlPointOffset = controlPointASL vectorDiff fromPosASL;\ntoControlPointOffset = toPosASL vectorDiff controlPointASL;\nonEachFrame\n{\n\thintSilent format [\"Interval: %1\", interval];\n\tbox setVelocityTransformation\n\t[\n\t\tfromPosASL vectorAdd (fromControlPointOffset vectorMultiply interval),\n\t\tcontrolPointASL vectorAdd (toControlPointOffset vectorMultiply interval),\n\t\t[0,0,0],\n\t\t[0,0,0],\n\t\t[0,1,0],\n\t\t[1,0,0],\n\t\t[0,0,1],\n\t\t[0,1,0],\n\t\tinterval\n\t];\n};\n"

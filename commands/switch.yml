@@ -38,7 +38,7 @@ since:
     minor: 50
 examples:
 - "switch (floor random 5) do\n{\n\tcase 1: { hint \"one\"; };\n\tcase 2: { hint \"two\"; };\n\tdefault { hint \"zero, three or four\" };\n};\n"
-- "<!-- this example is referenced in Description -->\n<sqf>\nswitch (_condition) do\n{\n\tcase \"string1\";\n\tcase \"string2\": { hint \"string1 or string2\" };\n\tcase \"string3\";\n\tcase \"string4\": { hint \"string3 or string4\" };\n\tcase \"string5\"; // will never enter default's code\n\tdefault { hint \"default\" };\n};\n"
+- "switch (_condition) do\n{\n\tcase \"string1\";\n\tcase \"string2\": { hint \"string1 or string2\" };\n\tcase \"string3\";\n\tcase \"string4\": { hint \"string3 or string4\" };\n\tcase \"string5\"; // will never enter default's code\n\tdefault { hint \"default\" };\n};\n"
 - "private _color = switch (side player) do\n{\n\tcase west: { \"ColorGreen\" };\n\tcase east: { \"ColorRed\" };\n};\n"
 - "private _fn_moveForward =\t{ /*...code...*/ };\nprivate _fn_moveBackward =\t{ /*...code...*/ };\nprivate _fn_invalidKey =\t{ /*...code...*/ };\n\nswitch true do\n{\n\tcase (_dikCode in actionKeys \"MoveForward\"):\t_fn_moveForward;\n\tcase (_dikCode in actionKeys \"MoveBackward\"):\t_fn_moveBackward;\n\tdefault _fn_invalidKey;\n};\n"
 - "switch _var do\n{\n\tcase \"0\";\n\tdefault { hint str [\"default\", _var] };\n\tcase \"3\": { hint str [\"3\", _var] };\n\tcase \"1\";\n\tcase \"4\";\n\tcase \"2\": { hint str [\"2\", _var] };\n};\n\n_var = \"0\"; // -> [\"3\", \"0\"]\n_var = \"1\"; // -> [\"2\", \"1\"]\n_var = \"2\"; // -> [\"2\", \"2\"]\n_var = \"3\"; // -> [\"3\", \"3\"]\n_var = \"4\"; // -> [\"2\", \"4\"]\n_var = \"5\"; // -> [\"default\", \"5\"]\n"

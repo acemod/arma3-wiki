@@ -1,0 +1,22 @@
+name: magazinesAllTurrets
+description: Returns all magazines (including empty) from all vehicle turrets (including driver turret [-1]) and their ammo counts. Since Arma 3 v2.08.148327 it is possible to exclude person turrets from returned results.
+groups:
+- Turrets
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: vehicle with turrets
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 52
+examples:
+- _mags = magazinesAllTurrets vehicle player;
+- _mags = magazinesAllTurrets [vehicle player, true];

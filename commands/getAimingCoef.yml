@@ -1,0 +1,20 @@
+name: getAimingCoef
+description: Get current aiming coefficient (higher ~ less precise, default is 1)
+groups:
+- Stamina System
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- _coef = [[getAimingCoef]] [[player]]

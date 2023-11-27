@@ -1,0 +1,27 @@
+name: evalObjectArgument
+description: "Return argument in mission editor of a given object. \n{{Feature|informative|Some Old Editor Command}}"
+groups:
+- Game 2 Editor
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  // returns string "[1009.0351, 1319.4928]"
+  (findDisplay 128 displayCtrl 51) getObjectArgument ["_unit_1", "POSITION"]
+
+  // returns array [1009.0351, 1319.4928]
+  (findDisplay 128 displayCtrl 51) evalObjectArgument ["_unit_1", "POSITION"]

@@ -1,0 +1,148 @@
+name: ropeCreate
+description: |-
+  Creates a PhysX rope with given params. Since Arma 3 v2.14 the optional arguments can be skipped by setting them to [[nil]].
+  {{Feature | Informative |
+  * ''fromObject'' has to be [[ropeCreate/transport | transport]] vehicle, [[alive]] with [[enableRopeAttach | rope attachment]] enabled, ''toObject'' has to be an entity, alive with [[enableRopeAttach | rope attachment]] enabled.
+  * {{hl|ropeEndType}} is defined in config under {{hl|"CfgNonAIVehicles" >> "RopeEnd"}}; see [[Arma 3: Ropes]]. Currently this is a hook that will be created on the end of the rope, and {{hl|ropeEndDownVector}} is its orientation, [0,0,-1] for example. The {{hl|"RopeEnd"}} is only shown when the rope is created object to object, it does not show on the open ended rope for some reason. There is currently no {{hl|"RopeStart"}}.
+  * The rope creation is limited to 63 segments.}}
+groups:
+- Ropes and Sling Loading
+syntax:
+- call: !Unary
+  - fromObject
+  - fromPoint
+  - toObject
+  - toPoint
+  - length
+  - ropeStart
+  - ropeEnd
+  - ropeType
+  - nSegments
+  ret:
+  - Unknown
+  - created rope or [[objNull]] on failure
+  params:
+  - name: fromObject
+    description: '[[ropeCreate/transport | transport]] where the rope originates and which fly behavior will be affected'
+    type: Unknown
+  - name: fromPoint
+    description: position for the rope start, either a memory point [[String]] or relative offset [[Array]]
+    type: Unknown
+  - name: toObject
+    description: entity which is automatically [[ropeAttachTo | attached to]] the end of the rope
+    type: Unknown
+  - name: toPoint
+    description: position for the rope end, either a memory point [[String]] or relative offset [[Array]]
+    type: Unknown
+  - name: length
+    description: rope length in meters
+    type: Unknown
+    optional: true
+    default: '-1'
+  - name: ropeStart
+    description: |-
+      array in format [ropeStartType, ropeStartDownVector] where:
+      * ropeStartType: [[String]] - type of the rope start (see description)
+      * ropeStartDownVector: [[String]] or [[Array]], either a memory point [[String]] or relative vector [[Array]]. If [[String]] is given, then {{hl|ropeStartDownVector}} is calculated from {{hl|fromPoint}} towards {{hl|ropeStartDownVector}} memory point
+    type: Unknown
+    optional: true
+    default: '["", [0,0,-1]]'
+  - name: ropeEnd
+    description: |-
+      array in format [ropeEndType, ropeEndDownVector] where:
+      * ropeEndType: [[String]] - type of the rope end (see description)
+      * ropeEndDownVector: [[String]] or [[Array]], either a memory point [[String]] or relative vector [[Array]]. If [[String]] is given, then {{hl|ropeEndDownVector}} is calculated from {{hl|toPoint}} towards {{hl|ropeEndDownVector}} memory point
+    type: Unknown
+    optional: true
+    default: '["", [0,0,-1]]'
+  - name: ropeType
+    description: '- rope type, {{hl|CfgVehicles}}'' classname'
+    type: Unknown
+    optional: true
+    default: '"Rope"'
+    since:
+      arma_3:
+        major: 2
+        minor: 6
+  - name: nSegments
+    description: '- number of rope segments (max 63)'
+    type: Unknown
+    optional: true
+    default: '-1'
+    since:
+      arma_3:
+        major: 2
+        minor: 14
+- call: !Unary
+  - fromObject
+  - fromPoint
+  - length
+  - ropeStart
+  - ropeEnd
+  - ropeType
+  - nSegments
+  ret:
+  - Unknown
+  - created rope or [[objNull]] on failure
+  params:
+  - name: fromObject
+    description: '[[ropeCreate/transport | transport]] where the rope originates and which fly behavior will be affected'
+    type: Unknown
+  - name: fromPoint
+    description: position for the rope start, either a memory point [[String]] or relative offset [[Array]]
+    type: Unknown
+  - name: length
+    description: rope length in meters
+    type: Unknown
+  - name: ropeStart
+    description: |-
+      array in format [ropeStartType, ropeStartDownVector] where:
+      * ropeStartType: [[String]] - type of the rope start (see description)
+      * ropeStartDownVector: [[String]] or [[Array]], either a memory point [[String]] or relative vector [[Array]]. If [[String]] is given, then {{hl|ropeStartDownVector}} is calculated from {{hl|fromPoint}} towards {{hl|ropeStartDownVector}} memory point
+    type: Unknown
+    optional: true
+    default: '["", [0,0,-1]]'
+  - name: ropeEnd
+    description: |-
+      array in format [ropeEndType, ropeEndDownVector] where:
+      * ropeEndType: [[String]] - type of the rope end (see description)
+      * ropeEndDownVector: [[Array]] - relative vector
+    type: Unknown
+    optional: true
+    default: '["", [0,0,-1]]'
+  - name: ropeType
+    description: '- rope type, {{hl|CfgVehicles}}'' classname'
+    type: Unknown
+    optional: true
+    default: '"Rope"'
+    since:
+      arma_3:
+        major: 2
+        minor: 6
+  - name: nSegments
+    description: '- number of rope segments (max 63)'
+    type: Unknown
+    optional: true
+    default: '-1'
+    since:
+      arma_3:
+        major: 2
+        minor: 14
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- myRope = ropeCreate [vehicle player, "slingload0", myCargo, [0, 0, 0], 10];
+- myRope = ropeCreate [veh1, [0, 0, -2], veh2, [0, 0, 0], 10];
+- |-
+  Free end rope (Alt Syntax):
+  <sqf>myRope = ropeCreate [vehicle player, [0, 0, 0], 10];
+- |-
+  A rope with a hook on the end:
+  <sqf>myRope = ropeCreate [heli, "slingload0", player, [0, 0, 2], 20, [], ["RopeEnd", [0, 0, -1]]];
+- |-
+  Since 2.14:
+  <sqf>myRope = ropeCreate [vehicle player, [0, 0, 0], 10, nil, nil, nil, 50];

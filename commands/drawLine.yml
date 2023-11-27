@@ -1,0 +1,25 @@
+name: drawLine
+description: Draw a line on the map. Can decrease framerate!
+groups:
+- GUI Control - Map
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "(findDisplay 12 displayCtrl 51) ctrlAddEventHandler [\"Draw\",\"\n\t(_this select 0) drawLine [\n\t\tgetPos player,\n\t\t[0,0,0],\n\t\t[0,0,1,1]\n\t];\n\"];\n"

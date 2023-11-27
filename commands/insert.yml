@@ -1,0 +1,62 @@
+name: insert
+description: |-
+  Inserts multiple values into [[Array]]/[[String]]/[[HashMap]].<br>
+  The [[String]] variant also supports [[forceUnicode]].
+groups:
+- HashMap
+- Arrays
+- Strings
+syntax:
+- call: !Binary
+  - array
+  - - index
+    - valuesToInsert
+    - onlyIfUnique
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: array
+    type: Unknown
+  - name: index
+    description: index at which the values will be inserted, -1 for append, {{GVI|arma3|2.14|size= 0.75}} -2 for inserting at the second-to-last position, -3 before that, etc.
+    type: Unknown
+  - name: valuesToInsert
+    description: values to insert at the specified index
+    type: Unknown
+  - name: onlyIfUnique
+    description: only insert if the value is unique in the array, like [[pushBackUnique]]
+    type: Unknown
+- call: !Binary
+  - string
+  - - index
+    - substring
+  ret:
+  - Unknown
+  - the new string
+  params:
+  - name: string
+    type: Unknown
+  - name: index
+    description: index at which the values will be inserted, -1 for append
+    type: Unknown
+  - name: substring
+    description: string to insert
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- "\"Test\" insert [0, \"Radio\"];\t\t// returns \"RadioTest\"\n\"Test\" insert [2, \"Radio\"];\t\t// returns \"TeRadiost\"\n\"Test\" insert [-1, \"Radio\"];\t// returns \"TestRadio\"\n"
+- |
+  private _array = ["a", "b", "c"];
+  _array insert [0, ["w"]]; // _array is now ["w", "a", "b", "c"]
+
+  private _array = ["a", "b", "c"];
+  _array insert [-1, ["w"]]; // _array is now ["a", "b", "c", "w"]
+
+  private _array = ["a", "b", "c"];
+  _array insert [-2, ["w"]]; // _array is now ["a", "b", "w", "c"] // Arma 3 v2.14

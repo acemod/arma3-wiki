@@ -1,0 +1,15 @@
+name: getTurretOpticsMode
+description: Get the current optics mode of the optics in the turret occupied by the specified unit. The alternative syntax allows a vehicle and turret path to be specified without needing a unit.
+groups:
+- Turrets
+syntax: []
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- getTurretOpticsMode player;
+- myTank getTurretOpticsMode [-1];
+- myAircraft getTurretOpticsMode [0, 0];

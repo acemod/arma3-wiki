@@ -1,0 +1,26 @@
+name: addAction
+description: Adds an entry to the action menu of an object. The action can only be activated when in proximity to the object '''and''' looking at it. Adding an action to the player makes that action available to the player at all times. For event handling of user interaction see [[inGameUISetEventHandler]].
+multiplayer_note: The command will be ignored on dedicated servers, probably because no UI exists.
+groups:
+- Interaction
+syntax: []
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  // short and sweet
+  player addAction ["a useless action that does nothing", {}];
+  player addAction ["<t color='#FF0000'>This Useless Action Is RED</t>", { hint "RED" }];
+  player addAction ["Hint Hello!", { hint format ["Hello %1!", name player] }];
+  player addAction ["String Exec", "hint 'this is also compiled'"];
+- |-
+  _actionID = player addAction ["Exec the file", "scriptFile.sqf"];</sqf>
+  '''scriptFile.sqf:'''
+  <sqf>hint str _this;
+- "// create object on the server and add action to the object on every client\nif (isServer) then\n{\n\tprivate _object = \"some_obj_class\" createVehicle [1234, 1234, 0];\n\t[_object, [\"Greetings!\", { hint \"Hello!\"; }]] remoteExec [\"addAction\"]; // Note: does not return action id\n};\n"
+- "Default parameters:\n<sqf>\nthis addAction\n[\n\t\"title\",\n\t{\n\t\tparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"];\n\t},\n\tnil,\n\t1.5,\n\ttrue,\n\ttrue,\n\t\"\",\n\t\"true\", // _target, _this, _originalTarget\n\t50,\n\tfalse,\n\t\"\",\n\t\"\"\n];\n"
+- "Default parameters with comments:\n<sqf>this addAction\n[\n\t\"title\",\t// title\n\t{\n\t\tparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"]; // script\n\t},\n\tnil,\t\t// arguments\n\t1.5,\t\t// priority\n\ttrue,\t\t// showWindow\n\ttrue,\t\t// hideOnUse\n\t\"\",\t\t\t// shortcut\n\t\"true\",\t\t// condition\n\t50,\t\t\t// radius\n\tfalse,\t\t// unconscious\n\t\"\",\t\t\t// selection\n\t\"\"\t\t\t// memoryPoint\n];\n"

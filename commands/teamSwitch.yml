@@ -1,0 +1,28 @@
+name: teamSwitch
+description: |-
+  Invoke the [[Team Switch]] dialog (force it even when conditions are not met).
+  There has to be at least one playable unit for team switch to work, and for this command to work in MP, respawn type in [[Description.ext|description.ext]] should be 5 (SIDE).
+  {{Feature|informative|When player switches and leaves behind AI unit, you need to enable "TeamSwitch" AI on it <sqf inline>_unit enableAI "TeamSwitch"</sqf> so that the unit continues with [[waypoints]].}}
+groups:
+- Team Switch
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- teamSwitch;

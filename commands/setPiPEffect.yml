@@ -1,0 +1,75 @@
+name: setPiPEffect
+description: |-
+  Sets Render Target's visual effect (Picture-in-Picture).
+  {{{!}} class="wikitable align-center-col-1" style="font-size: .95em"
+  ! Mode
+  ! Description
+  ! Parameters
+  {{!}}-
+  {{!}} 0
+  {{!}} Normal
+  {{!}} [0]
+  {{!}}-
+  {{!}} 1
+  {{!}} Night Vision
+  {{!}} [1]
+  {{!}}-
+  {{!}} 2
+  {{!}} Thermal Imaging
+  {{!}} [2]
+  {{!}}-
+  {{!}} 3
+  {{!}} [[Post Process Effects#ColorCorrections|Color Correction]]
+  {{!}} [3, enabled, brightness, contrast, offset, blend [r,g,b,a], lerp [r,g,b,a], rgb [r,g,b,a]]
+  {{!}}-
+  {{!}} 7
+  {{!}} Alt. Thermal Imaging 1 (Inverted)
+  {{!}} [7]
+  {{!}}-
+  {{!}} 8
+  {{!}} Alt. Thermal Imaging 2 (Green)
+  {{!}} [8]
+  {{!}}-
+  {{!}} 9..70
+  {{!}} {{GVI|arma3|2.10|size= 0.75}} Alt. Thermal Imaging 3..64
+  {{!}} ''[n]''
+  {{!}}}
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - name
+  - - effect
+    - optionalParam1
+    - optionalParam2
+    - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: name
+    description: render surface reference from [[Procedural Textures#Render To Texture|Render To Texture]]
+    type: Unknown
+  - name: effect
+    description: effect type
+    type: Unknown
+  - name: optionalParamN
+    description: parameters based on selected effect
+    type: Unknown
+    optional: true
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"rendersurface" setPiPEffect [0];'
+- '"rendertarget0" setPiPEffect [3, 1, 1.0, 1.0, 0.0, [0.0, 1.0, 0.0, 0.25], [1.0, 0.0, 1.0, 1.0],  [0.199, 0.587, 0.114, 0.0]];'
+- "private _cam = \"camera\" camCreate (player modelToWorld [0,-5,2]);\n_cam cameraEffect [\"internal\", \"back\", \"rtt\"];\n\"rtt\" setPiPEffect [2];\nwith uiNamespace do {\n\tprivate _pic = findDisplay 46 ctrlCreate [\"RscPicture\", -1];\n\t_pic ctrlSetPosition [0,0,1,1];\n\t_pic ctrlCommit 0;\n\t_pic ctrlSetText \"#(argb,512,512,1)r2t(rtt,1.0)\";\n};\n"
+- |-
+  Black & White:
+  <sqf>"rtt" setPiPEffect [3, 1, 1.0, 0.4, 0, [0,0,0,0], [1,1,1,0], [1,1,1,1]];

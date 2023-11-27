@@ -1,0 +1,92 @@
+name: setDamage
+description: "{{{!}} class=\"wikitable float-right align-center-col-2\"\n{{!}}+ \n! {{Link|:Category: Event Handlers|Event Handler}}\n! Triggered\n{{!}}-\n{{!}} {{hl|Hit}}\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} {{hl|HandleDamage}}\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} {{hl|Killed}}\n{{!}} {{Icon|checked}}\n{{!}}-\n{{!}} {{hl|MPKilled}}\n{{!}} {{Icon|checked}}\n{{!}}}\n\nSets the damage (or lack thereof) of an object/unit. The alternative syntax allows to skip destruction effects for vehicles and buildings.\n{{Feature|arma3|\nSince {{arma3}} v2.12 it is possible to influence trees, poles and walls fall direction by supplying the ''killer'' entity param - the fall direction will then be away from ''killer''<nowiki/>'s position.\nIn multiplayer, the ''killer'' argument is ignored if the command is not executed on the server unless it targets trees, walls or poles - see {{Link|#Syntax 2}} and {{Link|#Example 3}}.\n}}"
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - object
+  - damage
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: damage
+    description: range 0..1, 0 = pristine/healthy condition, 1 = entirely destroyed/killed
+    type: Unknown
+- call: !Binary
+  - object
+  - - damage
+    - useEffects
+    - killer
+    - instigator
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: damage
+    description: range 0..1, 0 = pristine/healthy condition, 1 = entirely destroyed/killed
+    type: Unknown
+  - name: useEffects
+    description: '[[false]] to skip destruction effects'
+    type: Unknown
+  - name: killer
+    description: |-
+      the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill.
+      * it can be used to show "killed by player" in debriefing statistics and kill messages in the chat (if death messages are enabled).
+      * it will alter the killer's [[rating]] as if the killer directly killed the unit
+      * it will be listed as <sqf inline>_killer</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler
+      * MP restricted similar to [[setShotParents]], will be ignored unless executed on the server or headless client in MP
+    type: Unknown
+    optional: true
+    default: '[[objNull]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 12
+  - name: instigator
+    description: |-
+      the person that instigated the damage.
+      * if a tank is a killer, the tank gunner that pulled the trigger is instigator
+      * it will be listed as <sqf inline>_instigator</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler
+      * MP restricted similar to [[setShotParents]], will be ignored unless executed on the server or headless client in MP
+      ** the above MP restriction does not apply to trees, poles and walls
+    type: Unknown
+    optional: true
+    default: '[[objNull]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 12
+  since:
+    arma_3:
+      major: 1
+      minor: 68
+argument_loc: Global
+effect_loc: Global
+since:
+  flashpoint:
+    major: 0
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldier1 setDamage 1;
+- _house1 setDamage [1, false];
+- "// executed on a client\n_remoteVehicle setDamage [1, true, player];\t// killer is not considered if the command is not called on the server - the vehicle still gets destroyed\n_tree setDamage [1, true, player];\t\t\t// the tree is destroyed and falls away from the player\n"

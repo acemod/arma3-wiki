@@ -1,0 +1,28 @@
+name: lbSetSelected
+description: |-
+  Sets the selection state of the given row of the given listbox of style LB_MULTI.
+  The command has to be called for every row which is needed to be selected in multi-selection listbox. Use negative index -1 to select/deselect all rows (since {{GVI|arma3|2.12}}).
+  For single selection listbox use [[lbSetCurSel]] instead.
+groups:
+- GUI Control - ListBox
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _control lbSetSelected [0, true];

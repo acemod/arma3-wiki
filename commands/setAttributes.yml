@@ -1,0 +1,56 @@
+name: setAttributes
+description: |-
+  Returns a [[Structured Text]] created from the given [[Structured Text|structured]] text and sets [[Structured_Text#Attributes | attributes]] to the given values.
+  {{Feature|important|Even though command accepts plain [[String]] too, the argument should be [[Structured Text]] in order for the set attributes to have an effect.
+  Additionally the result of the command should be fed to [[composeText]] (See {{Link|#Example 1}}) or [[formatText]].
+  }}
+groups:
+- Strings
+- Structured Text
+syntax:
+- call: !Binary
+  - text
+  - - name1
+    - value1
+    - name2
+    - value2
+    - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: text
+    description: only passing [[Structured Text]] has any effect
+    type: Unknown
+  - name: nameN
+    description: name of the attribute
+    type: Unknown
+  - name: valueN
+    description: value of the attribute
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  _txt = text "Red text, right align";
+  _txt setAttributes ["color", "#FF0000", "align", "right"];
+  hint composeText [_txt];

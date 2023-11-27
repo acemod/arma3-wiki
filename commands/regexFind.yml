@@ -1,0 +1,25 @@
+name: regexFind
+description: |-
+  Searches in a string with a regular expression.
+  {{Feature|informative|See [[Arma 3: Regular Expressions]].}}
+groups:
+- Strings - Regular Expression
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- '"wooKie boOkie cookie" regexFind [".ookie/gio"]; // [[["wooKie", 0]], [["boOkie", 7]], [["cookie", 14]]]'
+- '"wooKie boOkie cookie" regexFind [".ookie/i"]; // [[["wooKie",0]]]'
+- '"wooKie boOkie cookie" regexFind [".ookie/"]; // [[["cookie", 14]]]'
+- |-
+  Multiline example:
+  <sqf>
+  "co1kie2
+  co2kie" regexFind ["^co.kie$"]; // [[["co2kie",9]]]
+- |
+  "I'm a cookie clicker" regexFind ["c(.*?)k(.*?)e/i"]; // [[["cookie",6], ["oo", 7], ["i", 10]]]
+- '"I''m a cookie clicker" regexFind ["c(.*?)k(.*?)e"]; // [[["cookie", 6], ["oo", 7], ["i", 10]], [["clicke", 13], ["lic", 14], ["", 18]]]'

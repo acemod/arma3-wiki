@@ -1,0 +1,38 @@
+name: addMagazine
+description: |-
+  Adds a magazine to a person. Infantry units can only carry a specific number of magazines, once the magazine slots are filled (or uniform/vest/bagpack are full in {{arma3}}), any further [[addMagazine]] commands are ignored.
+  If class of magazine does not exist, an error message is printed in {{Link|Crash Files|.rpt}}:
+  <sqf>player addMagazine "dasdsa"; // .rpt: Given magazine[dasdsa] not found</sqf>
+  {{Feature|informative|Use [[addMagazine]] ''before'' [[addWeapon]] for the weapon to be loaded with the magazine automatically.}}
+groups:
+- Unit Inventory
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player addMagazine "30Rnd_556x45_STANAG";
+- "player addMagazine [\"30Rnd_556x45_STANAG\", 15];\t\t\t// since {{Name|arma2oa|short}} 1.62"
+- "nonLocalUnit addMagazine [\"30Rnd_556x45_STANAG\", 15];\t// global argument since {{arma3}}"
+- "player addMagazine [\"30Rnd_556x45_STANAG\", 9999];\t\t// will give a 30 rounds magazine anyway"

@@ -1,0 +1,83 @@
+name: remoteExec
+description: |-
+  Asks the server to execute the given function or script command on the given target machine(s).
+  * Functions are executed in the [[Scheduler#Scheduled Environment|scheduled environment]]; suspension is allowed.
+  * Script commands are executed in the [[Scheduler#Unscheduled Environment|unscheduled environment]]; suspension is not allowed (see {{Link|#Example 7}}).
+
+  Read [[Arma 3: Remote Execution]] for more information about remote execution, security features and JIP techniques.
+
+  {{Feature|informative|[[remoteExec]]/[[remoteExecCall]] can be used in single player as well, as it is considered as player-hosted multiplayer.}}
+
+  {{Feature|important|The direct execution of [[call]] or [[spawn]] via [[remoteExec]] (or [[remoteExecCall]]) should be avoided to prevent issues in cases where the remote execution of [[call]] or [[spawn]] is blocked by [[Arma 3: CfgRemoteExec|CfgRemoteExec]]. It is instead recommended to create a function to be itself remote-executed.}}
+multiplayer_note: Remote executions are queued and are therefore executed in the same order on remote clients (see {{Link|#Example 8}}).
+groups:
+- Multiplayer
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 50
+examples:
+- |-
+  How to write [[remoteExec]]/[[remoteExecCall]]:
+  <code style="display: block">{{Color|darkorange|hint}} {{Color|teal|"Hello"}};
+  {{cc|becomes}}
+  [{{Color|teal|"Hello"}}] remoteExec ["{{Color|darkorange|hint}}"];
+  {{Color|teal|"Hello"}} remoteExec ["{{Color|darkorange|hint}}"]; {{cc|alternatively}}</code>
+
+  <code style="display: block">{{Color|green|unit1}} {{Color|darkorange|setFace}} {{Color|teal|"Miller"}};
+  {{cc|becomes}}
+  [{{Color|green|unit1}}, {{Color|teal|"Miller"}}] remoteExec ["{{Color|darkorange|setFace}}"];</code>
+
+  <code style="display: block">{{Color|darkorange|cutRsc}} {{Color|darkred|["", "BLACK OUT"]}};
+  {{cc|becomes}}
+  [{{Color|darkred|["", "BLACK OUT"]}}] remoteExec ["{{Color|darkorange|cutRsc}}"]; {{cc|double brackets are needed as the unary command takes an array}}</code>
+
+  <code style="display: block">{{cc|functions, however, do not need double squared brackets}}
+  {{Color|teal|["line 1", "line 2"]}} spawn {{Color|darkorange|BIS_fnc_infoText}};
+  {{cc|becomes}}
+  {{Color|teal|["line 1", "line 2"]}} remoteExec ["{{Color|darkorange|BIS_fnc_infoText}}"];</code>
+- "send an order to specific machines:\n<sqf>\n\"message\" remoteExec [\"hint\", 0];\t\t\t\t// sends a hint message to everyone, identical to \"message\" remoteExec [\"hint\"]\n\"message\" remoteExec [\"hint\", -2];\t\t\t\t// sends a hint message to everybody but the server\n\"message\" remoteExec [\"hint\", myCar];\t\t\t// sends a hint message where myCar is local\n\"message\" remoteExec [\"hint\", -clientOwner];\t// sends a hint message to everybody but the current machine\n"
+- |
+  Add statements to the JIP queue:
+  <sqf>
+  private _jipId = ["mission state: the car is broken"] remoteExec ["systemChat", 0, true]; // adds the hint to the JIP queue and returns the JIP queue order id
+  waitUntil { canMove _car };
+  remoteExec ["", _jipId]; // the systemChat order is removed from the JIP queue
+  </sqf>
+
+  <sqf>
+  ["mission state: the car is broken"] remoteExec ["systemChat", 0, _queueObject];
+  // ...
+  remoteExec ["", _queueObject]; // the order attached to _queueObject is removed
+  </sqf>
+
+  <sqf>
+  private _jipId = ["mission state: the car is broken"] remoteExec ["systemChat", 0, "MY_JIP_ID"]; // _jipId is actually "MY_JIP_ID" now
+  waitUntil { canMove _car };
+  ["mission state: the car is repaired"] remoteExec ["systemChat", 0, "MY_JIP_ID"]; // this order replaces the previous one
+  // ...
+  remoteExec ["", "MY_JIP_ID"]; // the "MY_JIP_ID" order is removed from the JIP queue
+- |
+  Some more complex examples:
+  <sqf>
+  ["Open", true] remoteExec ["BIS_fnc_arsenal", MyTargetPlayer];
+  [MyCurator, [[MyObject1, MyObject2], false]] remoteExec ["addCuratorEditableObjects", 2];
+- |
+  A tricky example: executing <sqf inline>player setAmmo [primaryWeapon player, 1];</sqf> (on machines where the player is in MyGroup):
+  <sqf>
+  [player, [primaryWeapon player, 1]] remoteExec ["setAmmo", MyGroup]; // WRONG: the local player object is used here!
+  { player setAmmo [primaryWeapon player, 1]; } remoteExec ["call", MyGroup]; // CORRECT: the remote player object is used here
+- "'''[[Multiplayer Scripting]] \"performance trick\"'''<br>\nThis <sqf inline>[0, -2] select isDedicated</sqf> check is worth to avoid '''function''' server-side calculations only:\n<sqf>\n[\"message\"] remoteExec [\"BIS_fnc_infoText\"];\t\t\t\t\t\t\t\t// not ideal - the function will still run on the dedicated server for nothing\n[\"message\"] remoteExec [\"BIS_fnc_infoText\", [0, -2] select isDedicated];\t// ideal - the dedicated server will not run the code, a player-hosted server will\n\n\"message\" remoteExec [\"hint\", [0, -2] select isDedicated];\t// the check is too costy to be worthy\n\"message\" remoteExec [\"hint\"];\t\t\t\t\t\t\t\t// the (dedicated) server will automatically ditch hint usage due to it not having an interface\n"
+- |-
+  As said in the description: '''commands''' will be executed in an [[Scheduler#Unscheduled Environment|unscheduled environment]]
+  <sqf>[{ sleep 1 }] remoteExec ["call"]; // will throw an error: it is forbidden to use sleep (or waitUntil, etc) in unscheduled environment
+- |
+  "Message 1" remoteExec ["systemChat"];
+  "Message 2" remoteExec ["systemChat"];
+  // will result in
+  // "Message 1"
+  // "Message 2"
+  // in this exact order on clients

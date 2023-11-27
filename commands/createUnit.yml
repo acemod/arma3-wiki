@@ -58,7 +58,6 @@ syntax:
     description: |-
       unit placement special, one of:
       * {{hl|"NONE"}} - The unit will be created at the first available free position nearest to given position
-      <!-- * {{hl|"FORM"}} - Not implemented, currently functions the same as "NONE" -->
       * {{hl|"CAN_COLLIDE"}} - The unit will be created exactly at passed position
       * {{hl|"CARGO"}} - The unit will be created in cargo of the group's vehicle, regardless of the passed position (see {{Link|#Example 5}}). If group has no vehicle or there is no cargo space available, the unit will be placed according to {{hl|"NONE"}}. {{hl|"CARGO"}} placement excludes cargo positions with personal FFV turrets. To check available cargo space use:
       {{{!}} style="width: 100%"
@@ -135,13 +134,11 @@ examples:
 - '"B_RangeMaster_F" createUnit [getMarkerPos "barracks", _groupAlpha];'
 - "\"B_RangeMaster_F\" createUnit [\n\tgetMarkerPos \"marker_1\",\n\t_groupAlpha,\n\t\"loon1 = this; this addWeapon 'BAF_L85A2_RIS_SUSAT'\",\n\t0.6,\n\t\"corporal\"\n];\n"
 - |
-  <!-- referenced in parameters (p6) -->
-  <sqf>
   _veh = "O_Quadbike_01_F" createVehicle (player getRelPos [10, 0]);
   _grp = createVehicleCrew _veh;
   _unit = _grp createUnit [typeOf driver _veh, _grp, [], 0, "CARGO"];
 - |
-  <!-- referenced in the description -->Creating a unit from a different side may lead to issues:
+  reating a unit from a different side may lead to issues:
   <sqf>
   _grp = createGroup east;
   hint str side _grp; // EAST
@@ -151,4 +148,4 @@ examples:
   // workaround
   [_ap] joinSilent _grp;
   hint str side _ap; // EAST
-- "<!-- referenced in alternative result (r2) -->\nReference the created unit through a global variable:\n<sqf>\n_myUnit = \"B_RangeMaster_F\" createUnit [position player, group player];\t\t// wrong - this syntax does not return a reference\n\n\"B_RangeMaster_F\" createUnit [position player, group player, \"myUnit = this\"];\t// correct - the unit is myUnit\n"
+- "Reference the created unit through a global variable:\n<sqf>\n_myUnit = \"B_RangeMaster_F\" createUnit [position player, group player];\t\t// wrong - this syntax does not return a reference\n\n\"B_RangeMaster_F\" createUnit [position player, group player, \"myUnit = this\"];\t// correct - the unit is myUnit\n"

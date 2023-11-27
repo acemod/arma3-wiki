@@ -1,0 +1,23 @@
+name: removeAllAssignedItems
+description: |-
+  Unassigns and deletes all linked items from inventory.
+  The commands operates on [[assignedItems]] array, which does not include goggles or headgear but includes binoculars, which is a weapon.<br>
+  Use [[removeGoggles]] and [[removeHeadgear]] for those.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- removeAllAssignedItems player;
