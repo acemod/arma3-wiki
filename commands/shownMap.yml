@@ -2,7 +2,12 @@ name: shownMap
 description: Checks if client has Map enabled in [[Description.ext|description.ext]] (''showMap'' param) or force enabled with [[showMap]] command.
 groups:
 - Map
-syntax: []
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

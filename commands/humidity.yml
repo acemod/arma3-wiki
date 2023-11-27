@@ -2,7 +2,12 @@ name: humidity
 description: Returns the current humidity value. 0 is no humidity and 1 is 100% humidity. Humidity value quickly changes from 0 to 1 when rain starts, then slowly changes from 1 to 0 when rain stops.
 groups:
 - Environment
-syntax: []
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
