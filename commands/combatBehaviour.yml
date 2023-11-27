@@ -1,0 +1,19 @@
+name: combatBehaviour
+description: 'Returns combat behaviour of unit or group. To set unit or group behaviour see [[setCombatBehaviour]]. The behaviour is one of:'
+groups:
+- AI Behaviour
+- Groups
+syntax: []
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- |
+  unit1 setCombatBehaviour "CARELESS";
+  combatBehaviour unit1; // "CARELESS"
+- |
+  group unit1 setCombatBehaviour "SAFE";
+  combatBehaviour group unit1; // "SAFE"
