@@ -1,0 +1,26 @@
+name: Run
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout Dist
+        uses: actions/checkout@v2
+        with:
+          path: dist
+          ref: dist
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: run
+      - name: Compile
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: --release
