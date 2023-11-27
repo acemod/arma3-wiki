@@ -1,0 +1,20 @@
+name: assignedItems
+description: Get array with assigned items. The resulting [[Array]] order is not guaranteed. To check availability of a particular slot item use [[getSlotItemName]]. To return stored items see [[items]] and [[itemsWithMagazines]].
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hint str assignedItems player;
