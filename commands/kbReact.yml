@@ -2,7 +2,36 @@ name: kbReact
 description: Pass a non-verbal communication to the receiver. This command does '''as if''' the sentence was said and triggers the reaction scripts (AI FSM or player's conversation EH). See [[Conversations]] for more details.
 groups:
 - Conversations
-syntax: []
+syntax:
+- call: !Binary
+  - person
+  - - receiver
+    - topicName
+    - sentenceID
+    - argumentArray1
+    - argumentArray2
+    - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: person
+    type: Unknown
+  - name: receiver
+    type: Unknown
+  - name: topicName
+    type: Unknown
+  - name: sentenceID
+    type: Unknown
+  - name: argumentArrayN
+    description: |-
+      in format [argumentName, argumentValue, argumentText, argumentSpeech]:
+      * argumentName: [[String]]
+      * argumentValue: [[Code]]
+      * argumentText: [[String]]
+      * argumentSpeech: [[Array]] of [[String]]s - each string is an already defined word in config.
+    type: Unknown
+    optional: true
 argument_loc: Global
 effect_loc: Local
 since:

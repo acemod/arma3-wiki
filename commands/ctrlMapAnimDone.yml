@@ -2,7 +2,14 @@ name: ctrlMapAnimDone
 description: Checks whether the map animation has finished.
 groups:
 - GUI Control - Map
-syntax: []
+syntax:
+- call: !Unary controlName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: controlName
+    type: Unknown
 argument_loc: Local
 effect_loc: Local
 since:

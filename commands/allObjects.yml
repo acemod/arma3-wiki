@@ -38,6 +38,23 @@ syntax:
       * 7 - {{GVI|arma3|2.12}} Sensor map: ordered triggers. When trigger is created it is added to this collection in the order of creation. When deleted it becomes null. Use 'objectType' -1 to include nulls
       * 8 - {{GVI|arma3|2.12}} Vehicle map: ordered vehicles. When vehicle is created it is added to this collection in the order of creation. When deleted it becomes null. Use 'objectType' -1 to include nulls
     type: Unknown
+- call: !Binary
+  - objectType
+  - objectCollection
+  ret:
+  - Unknown
+  - array of [[Object]]s
+  params:
+  - name: objectType
+    description: type of the objects (will exact match return of [[typeOf]])
+    type: Unknown
+  - name: objectCollection
+    description: see main syntax above
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 12
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

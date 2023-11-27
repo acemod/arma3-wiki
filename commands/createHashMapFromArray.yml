@@ -3,7 +3,35 @@ description: Creates a new [[HashMap]] and initializes it from a key-value pair 
 groups:
 - HashMap
 - Arrays
-syntax: []
+syntax:
+- call: !Unary
+  - - key1
+    - value1
+  - - key2
+    - value2
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: keyN
+    type: Unknown
+  - name: valueN
+    type: Unknown
+- call: !Binary
+  - keys
+  - values
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: keys
+    type: Unknown
+  - name: values
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 4
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

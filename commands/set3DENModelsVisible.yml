@@ -2,7 +2,18 @@ name: set3DENModelsVisible
 description: Enables or disables trigger area visibility.
 groups:
 - Eden Editor
-syntax: []
+syntax:
+- call: !Unary
+  - map
+  - scene
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: map
+    type: Unknown
+  - name: scene
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

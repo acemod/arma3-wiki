@@ -43,6 +43,50 @@ syntax:
   - name: substring
     description: string to insert
     type: Unknown
+- call: !Binary
+  - hashMap
+  - - - key1
+      - value1
+    - - key2
+      - value2
+    - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: hashMap
+    type: Unknown
+  - name: keyN
+    type: Unknown
+  - name: valueN
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 4
+- call: !Binary
+  - hashMap
+  - - splitArray
+    - - keysAndValues
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: hashMap
+    type: Unknown
+  - name: splitArray
+    description: determines ''keysAndValues'' format (see ''keysAndValues'''s description)
+    type: Unknown
+  - name: keysAndValues
+    description: |-
+      in format depending on ''splitArray'''s value:
+      * [[true]] - {{hl|[[key1, key2, ...], [value1, value2, ...]]}}
+      * [[false]] - {{hl|[[key1, value1], [key2, value2], ...]}} (same as {{Link|#Syntax 3}})
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 4
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

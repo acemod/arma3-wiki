@@ -2,7 +2,24 @@ name: drawLine
 description: Draw a line on the map. Can decrease framerate!
 groups:
 - GUI Control - Map
-syntax: []
+syntax:
+- call: !Binary
+  - map
+  - - from
+    - to
+    - color
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: map
+    type: Unknown
+  - name: from
+    type: Unknown
+  - name: to
+    type: Unknown
+  - name: color
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

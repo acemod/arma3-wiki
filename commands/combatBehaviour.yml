@@ -3,7 +3,15 @@ description: 'Returns combat behaviour of unit or group. To set unit or group be
 groups:
 - AI Behaviour
 - Groups
-syntax: []
+syntax:
+- call: !Unary unitOrGroup
+  ret:
+  - Unknown
+  - 'unit behaviour - one of:'
+  params:
+  - name: unitOrGroup
+    description: AI unit or group
+    type: Unknown
 argument_loc: Global
 effect_loc: Unspecified
 since:

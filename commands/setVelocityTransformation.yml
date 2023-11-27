@@ -23,7 +23,62 @@ description: |-
   }}
 groups:
 - Object Manipulation
-syntax: []
+syntax:
+- call: !Binary
+  - object
+  - - fromPosASL
+    - toPosASL
+    - fromVelocity
+    - toVelocity
+    - fromVectorDir
+    - toVectorDir
+    - fromVectorUp
+    - toVectorUp
+    - interval
+    - customCenter
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    description: object to be interpolated
+    type: Unknown
+  - name: fromPosASL
+    description: starting [[getPosASL]] of the object
+    type: Unknown
+  - name: toPosASL
+    description: ending [[getPosASL]] of the object
+    type: Unknown
+  - name: fromVelocity
+    description: starting [[velocity]] of the object
+    type: Unknown
+  - name: toVelocity
+    description: ending [[velocity]] of the object
+    type: Unknown
+  - name: fromVectorDir
+    description: starting [[vectorDir]] of the object
+    type: Unknown
+  - name: toVectorDir
+    description: ending [[vectorDir]] of the object
+    type: Unknown
+  - name: fromVectorUp
+    description: starting [[vectorUp]] of the object
+    type: Unknown
+  - name: toVectorUp
+    description: ending [[vectorUp]] of the object
+    type: Unknown
+  - name: interval
+    description: interpolation interval (variable value, normally between 0 and 1)
+    type: Unknown
+  - name: customCenter
+    description: ) custom center [x, y, z] to which transformation would be applied in model coordinates
+    type: Unknown
+    optional: true
+    default: placing point of the model (see [[getModelInfo]]
+    since:
+      arma_3:
+        major: 2
+        minor: 8
 argument_loc: Local
 effect_loc: Global
 since:

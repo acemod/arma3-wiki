@@ -2,7 +2,21 @@ name: leaderboardsRequestUploadScoreKeepBest
 description: Starts async. operation to upload score to board with given name, value is only stored to board if it is better than one already in the board. The board has to be initialised before the call.
 groups:
 - Leaderboards
-syntax: []
+syntax:
+- call: !Unary
+  - boardName
+  - score
+  - details
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: boardName
+    type: Unknown
+  - name: score
+    type: Unknown
+  - name: details
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

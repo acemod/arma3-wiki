@@ -2,7 +2,22 @@ name: leaderboardsRequestUploadScore
 description: Starts async. operation to upload score to board with given name, value always overwrite the current value in the board. The board has to be initialized before the call.
 groups:
 - Leaderboards
-syntax: []
+syntax:
+- call: !Unary
+  - boardName
+  - score
+  - details
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: boardName
+    type: Unknown
+  - name: score
+    type: Unknown
+  - name: details
+    type: Unknown
+    optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

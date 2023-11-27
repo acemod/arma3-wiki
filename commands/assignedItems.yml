@@ -10,6 +10,27 @@ syntax:
   params:
   - name: unit
     type: Unknown
+- call: !Unary
+  - unit
+  - allItems
+  - includeBinocs
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: soldier
+    type: Unknown
+  - name: allItems
+    description: '[[true]] to include all slot items, [[false]] exclude goggles and headgear'
+    type: Unknown
+  - name: includeBinocs
+    description: '[[true]] to include binoculars (which is a weapon), [[false]] to exclude it'
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 14
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

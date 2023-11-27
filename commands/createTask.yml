@@ -3,7 +3,33 @@ description: Create a new AI task (subtask of parentTask). Type is name of regis
 groups:
 - Briefing
 - Teams
-syntax: []
+syntax:
+- call: !Binary
+  - teamMember
+  - - - type
+      - parentTask
+    - priority
+    - name1
+    - value1
+    - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: teamMember
+    type: Unknown
+  - name: type
+    description: '{{hl|name}} defined in {{hl|CfgTasks}}'
+    type: Unknown
+  - name: parentTask
+    type: Unknown
+    optional: true
+  - name: priority
+    type: Unknown
+  - name: nameN
+    type: Unknown
+  - name: valueN
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
