@@ -1,0 +1,29 @@
+name: preloadObject
+description: Preloads all textures, materials and proxies needed to render given object. Works with objects and classnames - note that classnames require an object instance in the mission.
+groups:
+- Object Manipulation
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "[] spawn \n{\n\twaitUntil { 10 preloadObject \"SoldierW\" };\n\thint \"Preload finished\";\n};"
+- "[] spawn \n{\n\twaitUntil { 10 preloadObject leader player };\n\thint \"Preload finished\";\n};"
