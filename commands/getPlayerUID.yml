@@ -4,7 +4,7 @@ description: |-
 
   {{Feature|arma3|The returned string is the player's steamID64: <sqf inline>private _steamProfileUrl = "http://steamcommunity.com/profiles/" + (getPlayerUID player);</sqf>}}
 
-  {{Feature|important|Prior to [[{{arma2oa}}]] v1.60, the result always consisted of a [[str|stringified]] number (see [[getPlayerUIDOld]]), but always had to be considered and processed as a [[String]].Converting it to a [[Number]] could cause precision problems, as [[Number]] cannot accurately represent integers above 16777216 (2<sup>24</sup>).Moreover, games since [[{{arma2oa}}]] v1.61 provide a value that is not all-numeric.}}
+  {{Feature|important|Prior to [[{{arma2oa}}]] v1.60, the result always consisted of a [[str|stringified]] number (see [[getPlayerUIDOld]]), but always had to be considered and processed as a [[String]]. Converting it to a [[Number]] could cause precision problems, as [[Number]] cannot accurately represent integers above 16777216 (2<sup>24</sup>). Moreover, games since [[{{arma2oa}}]] v1.61 provide a value that is not all-numeric.}}
 
   {{Feature | Informative | Prior to [[Arma 3]] v2.02, in some cases the identity of certain player units could fail to propagate to other clients and the server, which caused [[isPlayer]] and [[getPlayerUID]] to incorrectly return {{hl|[[false]]}} and {{hl|""}} respectively, where the affected units were [[not]] [[local]]. See {{Link|https://github.com/michail-nikolaev/task-force-arma-3-radio/issues/1096|this bug report (GitHub)}} for more info. This was supposedly fixed, but you should remain vigilant toward false negatives nonetheless. }}
 groups:

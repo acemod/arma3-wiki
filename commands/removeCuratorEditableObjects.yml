@@ -2,7 +2,22 @@ name: removeCuratorEditableObjects
 description: Unregister objects which can be edited by a curator.
 groups:
 - Curator
-syntax: []
+syntax:
+- call: !Binary
+  - curatorObj
+  - - - objects
+    - removeCrew
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: curatorObj
+    description: curator module
+    type: Unknown
+  - name: objects
+    type: Unknown
+  - name: removeCrew
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 server_exec: false

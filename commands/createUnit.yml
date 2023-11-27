@@ -58,6 +58,7 @@ syntax:
     description: |-
       unit placement special, one of:
       * {{hl|"NONE"}} - The unit will be created at the first available free position nearest to given position
+
       * {{hl|"CAN_COLLIDE"}} - The unit will be created exactly at passed position
       * {{hl|"CARGO"}} - The unit will be created in cargo of the group's vehicle, regardless of the passed position (see {{Link|#Example 5}}). If group has no vehicle or there is no cargo space available, the unit will be placed according to {{hl|"NONE"}}. {{hl|"CARGO"}} placement excludes cargo positions with personal FFV turrets. To check available cargo space use:
       {{{!}} style="width: 100%"
@@ -138,7 +139,7 @@ examples:
   _grp = createVehicleCrew _veh;
   _unit = _grp createUnit [typeOf driver _veh, _grp, [], 0, "CARGO"];
 - |
-  reating a unit from a different side may lead to issues:
+  Creating a unit from a different side may lead to issues:
   <sqf>
   _grp = createGroup east;
   hint str side _grp; // EAST
