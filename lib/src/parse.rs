@@ -8,8 +8,11 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
 
     let mut source = source.to_string();
     while let Some(start) = source.find("<!--") {
-        let end = source[start..].find("-->").unwrap() + start + 3;
-        source.replace_range(start..=end, "");
+        let end = source[start..]
+            .find("-->")
+            .map(|i| i + start + 3)
+            .unwrap_or_else(|| source.len());
+        source.replace_range(start..end, "");
     }
 
     if source.contains("<!--") {

@@ -13,33 +13,32 @@ pub async fn command(
     let mut dist_path = Path::new("./dist/commands").join(urlencoding::encode(&name).to_string());
     dist_path.set_extension("yml");
 
-    if dist_path.exists() {
+    let skip = if dist_path.exists() {
         let metadata = std::fs::metadata(&dist_path).unwrap();
         let modified: std::time::SystemTime = metadata.modified().unwrap();
         if modified.elapsed().unwrap().as_secs() < 60 * 60 * SKIP_IF_LESS_THAN {
-            println!("Skipping {}, less than {}h", name, SKIP_IF_LESS_THAN);
-            return Ok((false, Vec::new()));
+            true
+        } else {
+            let res = match client.head(&url).send().await {
+                Ok(res) => res,
+                Err(e) => {
+                    println!("Failed to fetch {}: {}", name, e);
+                    return Err(e.to_string());
+                }
+            };
+            let headers = res.headers();
+            let last_modified = headers
+                .get(LAST_MODIFIED)
+                .unwrap()
+                .to_str()
+                .unwrap()
+                .parse::<httpdate::HttpDate>()
+                .unwrap();
+            last_modified <= modified.into()
         }
-        let res = match client.head(&url).send().await {
-            Ok(res) => res,
-            Err(e) => {
-                println!("Failed to fetch {}: {}", name, e);
-                return Err(e.to_string());
-            }
-        };
-        let headers = res.headers();
-        let last_modified = headers
-            .get(LAST_MODIFIED)
-            .unwrap()
-            .to_str()
-            .unwrap()
-            .parse::<httpdate::HttpDate>()
-            .unwrap();
-        if last_modified <= modified.into() {
-            println!("Skipping {}, not modified", name);
-            return Ok((false, Vec::new()));
-        }
-    }
+    } else {
+        false
+    };
 
     let url = format!("{}?action=raw", url);
     let temp = std::env::temp_dir().join("a3_wiki_fetch");
@@ -47,6 +46,10 @@ pub async fn command(
     let content = if path.exists() {
         std::fs::read_to_string(&path).unwrap()
     } else {
+        if skip {
+            println!("Skipping {}, less than {}h", name, SKIP_IF_LESS_THAN);
+            return Ok((false, Vec::new()));
+        }
         let res = match client.get(&url).send().await {
             Ok(res) => res,
             Err(e) => {

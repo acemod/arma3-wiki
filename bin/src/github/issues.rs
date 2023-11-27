@@ -34,6 +34,10 @@ impl Issues {
     }
 
     pub async fn failed_command_create(&self, gh: &GitHub, command: &str, reason: String) -> bool {
+        if std::env::var("CI").is_err() {
+            println!("Local, Skipping issue creation for {}", command);
+            return false;
+        }
         let title = format!("Parse Failed: {}", command);
         if let Some(issue) = self.issues.iter().find(|i| i.title == title) {
             if Some(&reason) == issue.body.as_ref() {
