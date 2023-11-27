@@ -29,3 +29,4 @@ parse!(lnbSetPictureColor);
 parse!(drawIcon);
 parse!(activatedAddons);
 parse!(addAction);
+parse!(local);

@@ -96,6 +96,18 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
                         break;
                     }
                 } else if key == format!("s{}", syntax_counter) {
+                    // ==== Special Cases ====
+                    if command.name() == "local" && syntax_counter == 2 {
+                        // syntax 2 is not a regular command, and deprecated
+                        println!("Skipping local syntax 2");
+                        continue;
+                    }
+                    if command.name() == "private" && syntax_counter == 3 {
+                        println!("Skipping private syntax 3");
+                        // syntax 3 is not a regular command
+                        continue;
+                    }
+                    // ==== End Of Special Cases ====
                     match syntax(value, &mut lines) {
                         Ok(syntax) => {
                             command.add_syntax(syntax);
