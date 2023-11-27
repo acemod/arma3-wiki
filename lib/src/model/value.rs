@@ -44,6 +44,7 @@ pub enum Value {
     Group,
     HashMapUnknown,
     HashMapKnownKeys(Vec<String>),
+    HashMapKey,
     IfType,
     Location,
     Namespace,
@@ -79,6 +80,9 @@ pub enum Value {
 impl Value {
     pub fn from_wiki(source: &str) -> Result<Self, String> {
         let mut source = source.replace("in format", "format").trim().to_string();
+        if source.contains('\n') {
+            source = source.split_once('\n').unwrap().0.to_string();
+        }
         if !source.contains(" whether or") && source.contains(" or ") {
             source = source.replace(" or ", ", ").to_string();
             let mut or = Vec::new();
@@ -143,6 +147,7 @@ impl Value {
             "For Type" => Ok(Value::ForType),
             "Group" => Ok(Value::Group),
             "HashMap" => Ok(Value::HashMapUnknown),
+            "HashMapKey" => Ok(Value::HashMapKey),
             "If Type" => Ok(Value::IfType),
             "Location" => Ok(Value::Location),
             "Namespace" => Ok(Value::Namespace),
@@ -308,6 +313,10 @@ fn basic() {
     assert_eq!(
         Value::from_wiki("[[Array]] format [[Position#PositionRelative|PositionRelative]]"),
         Ok(Value::Position3dRelative)
+    );
+    assert_eq!(
+        Value::from_wiki("[[Array]] format [[Position#PositionAGL|PositionAGL]] - [x, y, '''0'''], z is always 0"),
+        Ok(Value::Position3dAGL)
     );
     assert_eq!(Value::from_wiki("[[Boolean]]"), Ok(Value::Boolean));
     assert_eq!(Value::from_wiki("[[Code]]"), Ok(Value::Code));

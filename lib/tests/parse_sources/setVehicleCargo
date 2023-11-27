@@ -1,0 +1,41 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 1.62
+
+|arg=
+
+|eff= global
+
+|gr1= Vehicle in Vehicle Transport
+
+|descr= Load cargo vehicle inside vehicle if possible, returns bool based on whether the vehicle was able to be loaded.  Can also be used to unload a specific loaded vehicle or all loaded vehicles.
+
+|s1= vehicle [[setVehicleCargo]] cargo
+
+|p1= vehicle: [[Object]] - vehicle for carrying cargo, [[objNull]] to unload specific loaded cargo 
+
+|p2= cargo: [[Object]] - cargo to put/loaded in vehicle, [[objNull]] to unload all loaded cargo 
+
+|r1= [[Boolean]] - whether or not operation was a success
+
+|x1= Blackfish with no vehicle cargo loaded
+<sqf>private _success = blackfish setVehicleCargo offroad; // true</sqf>
+
+|x2= Blackfish with full cargo already loaded
+<sqf>private _success = blackfish setVehicleCargo offroad; // false</sqf>
+
+|x3= Unload specific loaded vehicle (will paradrop if dropped from high altitude)
+<sqf>private _success = objNull setVehicleCargo offroad;</sqf>
+
+|x4= Unload all vehicles (will paradrop if dropped from high altitude)
+<sqf>private _success = blackfish setVehicleCargo objNull;</sqf>
+
+|seealso= [[Arma 3: Vehicle in Vehicle Transport| Vehicle in Vehicle Transport ]] [[canVehicleCargo]] [[enableVehicleCargo]] [[getVehicleCargo]] [[isVehicleCargo]] [[vehicleCargoEnabled]]
+}}
+
+{{Note
+|user= ImperialAlex
+|timestamp= 20160704184600
+|text= <sqf inline>objNull setVehicleCargo _cargoVehicle</sqf> - will unload specific loaded vehicle, and <sqf inline>_trasportVehicle setVehicleCargo objNull</sqf> will unload all vehicles. The unloaded vehicles will be paradropped if the altitude is high enough. See: {{Link|link= https://forums.bistudio.com/topic/191678-vehicle-in-vehicle-transport-feedback/page-5#entry3056397|text= BIforums}}
+}}

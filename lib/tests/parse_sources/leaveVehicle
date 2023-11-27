@@ -1,0 +1,52 @@
+{{RV|type=command
+
+|game1= arma2
+|version1= 1.00
+
+|game2= arma2oa
+|version2= 1.50
+
+|game3= tkoh
+|version3= 1.00
+
+|game4= arma3
+|version4= 0.50
+
+|arg= local
+
+|eff= local
+
+|gr1= Unit Control
+
+|gr2= Groups
+
+|descr= Ceases the using of the vehicle by a group and unassigns vehicle from the group.
+If the argument is a single unit, the vehicle will be unassigned from unit's group.
+After vehicle is unassigned from the group, each individual crew member then unassigned from the vehicle.<br>
+<br>
+In short the command could be hypothetically presented as:<br>
+<sqf>leaveVehicle = un-addVehicle + unassignVehicle forEach crew</sqf>
+
+However, to make it more reliable, it is best to move unit out of the vehicle manually with [[moveOut]] and force unassign the vehicle with [[unassignVehicle]].
+{{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
+
+|s1= group [[leaveVehicle]] vehicle
+
+|p1= group: [[Group]] or [[Object]], in which case, object's [[Group]] is used
+
+|p2= vehicle: [[Object]]
+
+|r1= [[Nothing]]
+
+|x1= <sqf>_unit leaveVehicle _vehicle;</sqf>
+
+|x2= <sqf>_grp leaveVehicle _vehicle;</sqf>
+
+|seealso= [[addVehicle]] [[assignAsCargo]] [[assignAsCommander]] [[assignAsDriver]] [[assignAsGunner]] [[assignedVehicle]] [[unassignVehicle]] [[doGetOut]] [[commandGetOut]] [[createVehicleCrew]] [[assignedVehicles]] [[assignedGroup]] [[fullCrew]]
+}}
+
+{{Note
+|user= Killzone_Kid
+|timestamp= 20130831160800
+|text= In {{arma3}} this command will not force a player to exit from a vehicle. It will unassign vehicle role for this player. AI crew however will also disembark.
+}}

@@ -78,6 +78,7 @@ pub fn locality(source: &str) -> Result<crate::model::Locality, String> {
         "local" => Ok(crate::model::Locality::Local),
         "global" => Ok(crate::model::Locality::Global),
         "server" => Ok(crate::model::Locality::Server),
+        "" => Ok(crate::model::Locality::Unspecified),
         _ => Err(format!("Unknown locality: {}", source)),
     }
 }

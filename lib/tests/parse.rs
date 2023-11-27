@@ -61,3 +61,8 @@ parse!(weaponState);
 parse!(lnbSetPictureColorSelected);
 parse!(tvText);
 parse!(create3DENComposition);
+parse!(toString);
+parse!(leaveVehicle);
+parse!(markerPos);
+parse!(setVehicleCargo);
+parse!(buildingPos);

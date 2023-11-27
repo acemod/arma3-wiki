@@ -1,0 +1,72 @@
+{{RV|type=command
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|arg= global
+
+|gr1= Positions
+
+|descr= Returns position of a given indexed position in a [[Object#Building|building]].
+
+|s1= building [[buildingPos]]  index
+
+|p1= building: [[Object]]
+
+|p2= index: [[Number]] - Index of a specific position {{Feature|arma3|Since v1.56 index {{hl|-1}} will return all available building positions.}}
+
+|r1= [[Array]] in format [[Position#PositionAGL|PositionAGL]] - A single building position. If building position with given index does not exist, {{hl|[0, 0, 0]}} is returned
+{{Feature|arma3|Since v1.56 it can also return an [[Array|array]] of all building positions in format [[Position#PositionAGL|PositionAGL]] if index that was given is {{hl|-1}}.}}
+
+|x1= <sqf>_soldier setPosATL (_house1 buildingPos 2);</sqf>
+
+|x2= <sqf>_allpositions = nearestBuilding player buildingPos -1;</sqf>
+
+|seealso= [[nearestBuilding]] [[nearestObject]] [[nearestObjects]] [[nearObjects]] [[insideBuilding]] [[buildingExit]] [[position]] [[setPos]] [[setWaypointHousePosition]] [[waypointHousePosition]] [[BIS_fnc_buildingPositions]]
+}}
+
+<dl class="command_description">
+
+<dt><dt>
+<dd class="notedate">Posted on 2006-08-02 - 10:45</dd>
+<dt class="note">[[User:Hardrock|hardrock]]</dt>
+<dd class="note">
+''Notes from before the conversion:''
+These examples will move a unit to the 1st position specified in a buildings model, in the second example - bunker1.
+<sqf>this move (building buildingPos 1);
+this move (bunker1 buildingPos 1);</sqf>
+In the default game buildings, the buildingPos is usually right behind a window. This can make it easy to place units in the windows of buildings, by putting the unit near a building and putting this in its init field: 
+<sqf>this setPosATL ((nearestBuilding this) buildingPos 1);</sqf>
+The location returned by buildingPos is not reliable after the player has exited and then resumed the mission. For code that is executed immediately after the mission starts there is no problem. 
+If buildingPos locations are to be accessed during the mission when the player may have exited and then resumed, save the locations you require at the start of the mission and use these saved locations in your subsequent scripts.
+
+<dt><dt>
+<dd class="notedate">Posted on 2007-01-26 - 01:02</dd>
+<dt class="note">[[User:Kronzky|Kronzky]]</dt>
+<dd class="note">
+The highest index is ''not'' necessarily the highest position in a building! Check the z-value to find out the absolute height of a position.
+
+<dt><dt>
+<dd class="notedate">Posted on 2011-01-08</dd>
+<dt class="note">[[User:kju|kju]]</dt>
+<dd class="note">
+Almost all buildings loose their building positions when they get (visually) damaged or destroyed. Some debris do still have building positions though. So it is no technical limitation. Just most damaged/destructed buildings models do not (yet?) have building positions. Keep in mind that a damaged or destroyed building is a different object instance (and model).
+</dl>
