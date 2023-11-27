@@ -2,7 +2,14 @@ name: taskCustomData
 description: Returns custom data attached to the local task or an empty array if there are no custom data attached.
 groups:
 - Briefing
-syntax: []
+syntax:
+- call: !Unary task
+  ret:
+  - Unknown
+  - iconPath, iconText, descriptionText
+  params:
+  - name: task
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

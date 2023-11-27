@@ -2,7 +2,19 @@ name: enableAimPrecision
 description: Set whether animation's aim precision affects weapon sway.
 groups:
 - Stamina System
-syntax: []
+syntax:
+- call: !Binary
+  - unit
+  - enable
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: enable
+    description: '[[true]] enable, [[false]], disabled'
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

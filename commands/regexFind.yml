@@ -4,7 +4,25 @@ description: |-
   {{Feature|informative|See [[Arma 3: Regular Expressions]].}}
 groups:
 - Strings - Regular Expression
-syntax: []
+syntax:
+- call: !Binary
+  - haystack
+  - - pattern
+    - startOffset
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: haystack
+    type: Unknown
+  - name: pattern
+    description: 'format [[Arma 3: Regular Expressions|regex pattern]]'
+    type: Unknown
+  - name: startOffset
+    description: has to be in range from 0 to <sqf inline>count haystack</sqf> (''haystack'''s length)
+    type: Unknown
+    optional: true
+    default: '0'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
