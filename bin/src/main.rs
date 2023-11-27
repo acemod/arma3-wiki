@@ -14,8 +14,9 @@ async fn main() {
     println!("Commands: {}", commands.len());
     let mut github = github::GitHub::new();
     let issues = github::Issues::new(&github).await;
+    let client = reqwest::Client::new();
     for (name, url) in commands {
-        let result = command::command(name.clone(), url.clone()).await;
+        let result = command::command(&client, name.clone(), url.clone()).await;
         if let Err(e) = result {
             println!("Failed {}", name);
             failed.push((name, e));
