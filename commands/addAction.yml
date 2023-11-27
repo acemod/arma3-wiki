@@ -3,7 +3,118 @@ description: Adds an entry to the action menu of an object. The action can only 
 multiplayer_note: The command will be ignored on dedicated servers, probably because no UI exists.
 groups:
 - Interaction
-syntax: []
+syntax:
+- call: !Binary
+  - object
+  - - title
+    - script
+    - arguments
+    - priority
+    - showWindow
+    - hideOnUse
+    - shortcut
+    - condition
+    - radius
+    - unconscious
+    - selection
+    - memoryPoint
+  ret:
+  - Unknown
+  - the added action's ID. Action can be removed with [[removeAction]] (see also [[removeAllActions]]). IDs are incrementing, the first given action to each unit has the ID 0, the second the ID 1, etc. IDs are also passed to the called script (see the [[#Syntax 2|''script'' parameter]])
+  params:
+  - name: object
+    description: unit, vehicle or static object. '''No [[createAgent|agents]] and [[Arma 3 Simple Objects|simple objects]]!'''
+    type: Unknown
+  - name: title
+    description: the action name displayed in the action menu, may contain [[Structured Text]]. Because of that '''<''' and '''>''' symbols will be interpreted as opening and closing XML tags. To avoid this use {{hl|&amp;lt;}} for '''&lt;''' and {{hl|&amp;gt;}} for '''&gt;'''. The title text appearance can be changed with [[setUserActionText]]
+    type: Unknown
+  - name: script
+    description: |-
+      either path to the script file, relative to the mission folder or string with code or the actual script code. If the string is a path to script file, the script file '''must''' have extension .[[SQS Syntax|SQS]] or .[[SQF Syntax|SQF]]. The script, whether it is a file or a code, will run in [[Scheduler#Scheduled Environment|scheduled environment]], i.e. it is ok to use [[sleep]]. Parameters array passed to the script upon activation in ''[[Magic Variables#this|_this]]'' variable is:
+      <sqf>params ["_target", "_caller", "_actionId", "_arguments"];</sqf>
+      * '''target''': [[Object]] - the object which the action is assigned to
+      * '''caller''': [[Object]] - the unit that activated the action
+      * '''actionID''': [[Number]] - activated action's ID (same as [[addAction]]'s return value)
+      * '''arguments''': [[Anything]] - arguments given to the script if you are using the extended syntax
+    type: Unknown
+  - name: arguments
+    description: arguments to pass to the script. Accessible with <sqf inline>_this select 3</sqf> inside the script. If [[Array]] is used as an argument for example, its first element reference would be <sqf inline>_this select 3 select 0</sqf>
+    type: Unknown
+    optional: true
+    default: '[[nil]]'
+  - name: priority
+    description: priority value of the action. Actions will be arranged in descending order according to this value. Every game action has a preset priority value. Value can be negative or decimal fraction. Actions with same values will be arranged in order which they were made, newest at the bottom. The bigger the number the higher the action will be positioned on the menu. Typical range is 0 to 6
+    type: Unknown
+    optional: true
+    default: '1.5'
+  - name: showWindow
+    description: if set to [[true]], players see "Titletext" at mid-lower screen, as they approach the object. Only the title text for the action with highest priority and ''showWindow'' set to [[true]] will be shown
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+  - name: hideOnUse
+    description: if set to [[true]], it will hide the action menu after selecting it. If set to [[false]], it will leave the action menu open and visible after selecting the action, leaving the same action highlighted, for the purpose of allowing you to re-select that same action quickly, or to select another action
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+  - name: shortcut
+    description: one of the [[:Category:Key Actions|key names]] defined in bin.pbo (e.g. "moveForward"). Adding available shortcut will bind corresponding keyboard key to this action. Shortcut availability can be tested with [[inputAction]] command
+    type: Unknown
+    optional: true
+    default: '""'
+  - name: condition
+    description: |-
+      expression that must return [[true]] for the action to be shown. '''Special variables''' passed to the script code are:
+      * ''_target'': [[Object]] - The object to which action is attached or, if the object is a unit inside of vehicle, the vehicle
+      * ''_this'': [[Object]] - Caller person to whom the action is shown (or not shown if ''condition'' returns [[false]])
+      * ''_originalTarget'': [[Object]] - The original object to which the action is attached, regardless if the object/unit is in a vehicle or not
+      * ''_actionId'': [[Number]] - checked action's ID (same as [[addAction]]'s return value)
+      {{Feature|warning|If the player is the group leader, has an action added to them, and selects a subordinate, {{hl|''_this''}} alternatively switches between the player and this selected unit - RPT logging {{hl|Unknown attribute itemsCmd}} in the process.}}
+      {{Feature|important|
+      * ''condition'' is evaluated on each frame in [[Scheduler#Unscheduled Environment|unscheduled environment]].
+      * ''condition'' is '''not''' evaluated if a dialog is open.
+      * If action is added to an object and not to the [[player]], ''condition'' will only get evaluated if the player is closer than ~50m to the object surface and is looking at the object.
+      * If action is added to [[player]], ''condition'' is evaluated all the time.
+      }}
+    type: Unknown
+    optional: true
+    default: '"true"'
+  - name: radius
+    description: maximum 3D [[distance]] in meters between the activating unit's [[eyePos]] and ''object'''s ''memoryPoint'', ''selection'' or [[position]]. -1 disables the radius; hardcoded limit is '''50'''
+    type: Unknown
+    optional: true
+    default: '50'
+    since:
+      arma_3:
+        major: 1
+        minor: 64
+  - name: unconscious
+    description: if [[true]] will be shown to incapacitated player. See also [[setUnconscious]] and [[lifeState]]
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 1
+        minor: 64
+  - name: selection
+    description: '''''object''''''s geometry LOD''s named selection'
+    type: Unknown
+    optional: true
+    default: '""'
+    since:
+      arma_3:
+        major: 1
+        minor: 70
+  - name: memoryPoint
+    description: '''''object''''''s memory point. If ''''selection'''' is supplied, ''''memoryPoint'''' is not used'
+    type: Unknown
+    optional: true
+    default: '""'
+    since:
+      arma_3:
+        major: 1
+        minor: 82
 argument_loc: Global
 effect_loc: Local
 since:
