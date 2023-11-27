@@ -21,6 +21,24 @@ syntax:
   - name: data
     description: the invisible text to add
     type: Unknown
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - data
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    type: Unknown
+  - name: row
+    type: Unknown
+  - name: column
+    type: Unknown
+  - name: data
+    description: the invisible text to add
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

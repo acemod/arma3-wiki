@@ -23,6 +23,26 @@ syntax:
   - name: color
     description: color RGBA
     type: Unknown
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - color
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    type: Unknown
+  - name: row
+    description: index of the row
+    type: Unknown
+  - name: column
+    description: index of the column
+    type: Unknown
+  - name: color
+    description: color RGBA
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
