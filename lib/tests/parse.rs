@@ -19,50 +19,10 @@ fn parse(path: &str) {
     assert!(result.is_ok());
 }
 
-parse!(addGroupIcon);
-parse!(getWeaponSway);
-parse!(ctrlSetTextSecondary);
-parse!(addScore);
-parse!(ctrlSetAngle);
-parse!(getCruiseControl);
-parse!(limitSpeed);
-parse!(loadAbs);
-parse!(score);
-parse!(setDir);
-parse!(text);
-parse!(tvSetPicture);
-parse!(addUserActionEventHandler);
-parse!(forEachMemberTeam);
-parse!(and);
-// parse!(magazinesAmmoFull); -- too complex
-parse!(getTerrainGrid);
-parse!(set3DENAttribute);
-parse!(getTextRaw);
-parse!(setWindDir);
-parse!(createSite); // broken command
-parse!(completedFSM);
-// parse!(remoteExecCall); -- needs manual parsing
-parse!(west);
-parse!(actionName);
-parse!(setDate);
-parse!(accTime);
-parse!(AGLToASL);
-parse!(allDiaryRecords);
-parse!(allDiarySubjects);
-parse!(animateBay);
-parse!(vectorDistance);
-parse!(cadetMode);
-parse!(step);
-// parse!(select); -- needs wiki editing or manual parsing
-parse!(reveal);
-parse!(allAirports);
-parse!(forcedMap);
-parse!(weaponState);
-parse!(lnbSetPictureColorSelected);
-parse!(tvText);
-parse!(create3DENComposition);
-parse!(toString);
-parse!(leaveVehicle);
-parse!(markerPos);
-parse!(setVehicleCargo);
-parse!(buildingPos);
+parse!(isFinal);
+parse!(diag_drawMode);
+parse!(formatText);
+parse!(setDamage);
+parse!(ropeCreate);
+parse!(lnbSetPictureColor);
+parse!(drawIcon);

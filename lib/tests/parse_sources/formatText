@@ -1,0 +1,40 @@
+{{RV|type=command
+
+|game1= arma1
+|version1= 1.00
+
+|game2= arma2
+|version2= 1.00
+
+|game3= arma2oa
+|version3= 1.50
+
+|game4= tkoh
+|version4= 1.00
+
+|game5= arma3
+|version5= 0.50
+
+|gr1= Strings
+
+|gr2= Structured Text
+
+|descr= Creates a [[Structured Text]] similar to [[format]] command.
+
+|s1= [[formatText]] [format, argument1, argument2, ...]
+
+|p1= format: [[String]] - a string containing text and/or references to the variables listed below in the array. The references appear in the form of %1, %2 etc.
+
+|p2= argumentN: [[Anything]] - use [[Structured Text]] where necessary (see [[#Example|Example 2]])
+
+|r1= [[Structured Text]]
+
+|x1= <sqf>hint formatText ["Image: %1", image "\a3\Data_f\Flags\flag_Altis_co.paa"];</sqf>
+
+|x2= <sqf>
+hint formatText ["%1%2%3", "line1", "<br/>", "line2"];		// result displayed in one line
+hint formatText ["%1%2%3", "line1", lineBreak, "line2"];	// result displayed in two lines
+</sqf>
+
+|seealso= [[Structured Text]] [[format]] [[composeText]] [[text]] [[parseText]]
+}}

@@ -1,0 +1,140 @@
+{{RV|type=command
+
+|game1= arma1
+|version1= 1.00
+
+|game2= arma2
+|version2= 1.00
+
+|game3= arma2oa
+|version3= 1.50
+
+|game4= tkoh
+|version4= 1.00
+
+|game5= arma3
+|version5= 0.50
+
+|gr1= GUI Control - Map
+
+|eff= local
+
+|descr= Draws an icon on the map.
+As this command needs to be called every frame, it is preferable using the [[User Interface Event Handlers#onDraw|onDraw]] UI Event Handler.
+{{Feature|informative|Some useful icons can be found in <sqf inline>configFile >> "CfgVehicleIcons"</sqf>.}}
+
+|s1= map [[drawIcon]] [texture, color, position, width, height, angle, text, shadow, textSize, font, align<!--, drawSideArrows, offsetX, offsetY-->]
+
+|p1= map: [[Control]]
+
+|p2= texture: [[String]] - icon texture
+
+|p3= color: [[Array]] - text and icon color in format [[Color|Color(RGBA)]]
+
+|p4= position: [[Object]], [[Array]] format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]
+
+|p5= width: [[Number]] - width of the icon (but not the text)
+
+|p6= height: [[Number]] - height of the icon (but not the text)
+
+|p7= angle: [[Number]] - rotation angle of the icon (but not the text)
+
+|p8= text: [[String]] - (Optional, default "")
+
+|p9= shadow: [[Number]] or [[Boolean]] - (Optional, default [[false]]) can be one of:
+* 0 ([[false]]): no shadow
+* 1: shadow (for text)
+* 2 ([[true]]): outline (works for text and for icon only if icon angle is 0)
+
+|p10= textSize: [[Number]] - (Optional, default -1) size of the text in UI units
+|p10since= arma3 0.72
+
+|p11= font: [[String]] - (Optional, default "") text's font
+|p11since= arma3 0.72
+
+|p12= align: [[String]] - (Optional, default "right") text alignment. Can be:
+* "left"
+* "right"
+* "center"
+|p12since= arma3 0.72
+
+<!--
+
+|p13= drawSideArrows: [[Boolean]] - (Optional, default [[false]]) unused
+|p13since= arma3 2.04
+
+|p14= offsetX: [[Number]] - (Optional, default 0) unused
+|p14since= arma3 2.04
+
+|p15= offsetY: [[Number]] - (Optional, default 0) unused
+|p15since= arma3 2.04
+
+-->
+
+|r1= [[Nothing]]
+
+|x1= Red icon with text:
+<sqf>
+findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["Draw", {
+	_this select 0 drawIcon [
+		"iconStaticMG", // custom images can also be used: getMissionPath "\myFolder\myIcon.paa"
+		[1,0,0,1],
+		getPosASLVisual player,
+		24,
+		24,
+		getDirVisual player,
+		"Player Vehicle",
+		1,
+		0.03,
+		"TahomaB",
+		"right"
+	]
+}];
+</sqf>
+
+|x2= Green text only:
+<sqf>
+findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["Draw", {
+	_this select 0 drawIcon [
+		"#(rgb,1,1,1)color(1,1,1,1)",
+		[0,1,0,1],
+		player,
+		0,
+		0,
+		0,
+		name player
+	]
+}];
+</sqf>
+
+|seealso= [[drawArrow]] [[drawEllipse]] [[drawLine]] [[drawRectangle]] [[drawPolygon]] [[drawTriangle]]
+}}
+
+{{Note
+|user= Benargee
+|timestamp= 20160104054100
+|text= {{arma3}} 1.54<br>
+This command does not seem to play nice with [[onEachFrame]]. It seems to draw on the main screen while maintaing position relative to the map position<br>
+Example:
+<sqf>
+onEachFrame {
+	findDisplay 12 displayCtrl 51 drawIcon ['iconStaticMG', [1,0,0,1], getPosASL player, 24, 24, getDir player, 'Player Vehicle', 1, 0.03, 'TahomaB', 'right'];
+};
+</sqf>
+}}
+
+{{Note
+|user= Leopard20
+|timestamp= 20220509193407
+|text= The icon size always stays the same, even after zooming in/out. To make the icon get bigger with map zoom, use this for width and height size:
+<sqf>
+private _scale = 6.4 * worldSize / 8192 * ctrlMapScale _map;
+private _size = _sizeInMeters / _scale;
+</sqf>
+For example, the following icon has an exact size of 50 meters on the map, even after zooming in/out:
+<sqf>
+private _scale = 6.4 * worldSize / 8192 * ctrlMapScale _map;
+private _size = 50 / _scale;
+_map drawIcon ["iconStaticMG", [1,0,0,1], getPosASLVisual player, _size, _size, 0]
+</sqf>
+}}

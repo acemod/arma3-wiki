@@ -1,0 +1,40 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 2.00
+
+|gr1= Variables
+
+|descr= Checks if [[Code]] or a variable was compiled final with [[compileFinal]].
+
+|s1= [[isFinal]] variable
+
+|p1= varName: [[Code]], [[String]], {{GVI|arma3|2.14|size= 0.75}} [[Array]] or [[HashMap]]
+* [[Code]]
+* [[String]] - the name of the variable holding [[Code]]
+* {{GVI|arma3|2.14|size= 0.75}} [[Array]] - an array that is a [[HashMapKey]], a trigger's <sqf inline>thisList</sqf> array, made final with [[compileFinal]] etc.
+* {{GVI|arma3|2.14|size= 0.75}} [[HashMap]] - a hashmap made final with [[compileFinal]]
+
+|r1= [[Boolean]] - [[true]] if final, [[false]] if not
+
+|x1= <sqf>
+private _myCode = compileFinal "a = a + 1";
+systemChat format ["isFinal ""_myCode"": %1", isFinal "_myCode"];				// true
+systemChat format ["isFinal _myCode: %1", isFinal _myCode];						// true
+systemChat format ["isFinal some code: %1", isFinal { hint "Hello there" }];	// false
+
+private _myArray1 = list _myTrigger;
+systemChat format ["isFinal _myArray1: %1", isFinal _myArray1];					// true
+
+private _myArray2 = [1, 2, 3];
+systemChat format ["isFinal _myArray2: %1", isFinal _myArray2];					// false
+
+private _myHashMap = compileFinal createHashMap;
+systemChat format ["isFinal _myHashMap: %1", isFinal _myHashMap];				// true
+</sqf>
+
+|x2= Avoid .rpt's overwrite warnings:
+<sqf>if (!isFinal fnc_myCode) then { fnc_myCode = compileFinal str_myCode };</sqf>
+
+|seealso= [[compile]] [[compileFinal]]
+}}

@@ -1,0 +1,123 @@
+{{RV|type=command
+
+|game1= ofp
+|version1= 
+
+|game2= arma1
+|version2= 1.00
+
+|game3= arma2
+|version3= 1.00
+
+|game4= arma2oa
+|version4= 1.50
+
+|game5= tkoh
+|version5= 1.00
+
+|game6= arma3
+|version6= 0.50
+
+|eff= global
+
+|arg= global
+
+|gr1= Object Manipulation
+
+|descr=
+{{{!}} class="wikitable float-right align-center-col-2"
+{{!}}+ 
+! {{Link|:Category: Event Handlers|Event Handler}}
+! Triggered
+{{!}}-
+{{!}} {{hl|Hit}}
+{{!}} {{Icon|unchecked}}
+{{!}}-
+{{!}} {{hl|HandleDamage}}
+{{!}} {{Icon|unchecked}}
+{{!}}-
+{{!}} {{hl|Killed}}
+{{!}} {{Icon|checked}}
+{{!}}-
+{{!}} {{hl|MPKilled}}
+{{!}} {{Icon|checked}}
+{{!}}}
+
+Sets the damage (or lack thereof) of an object/unit. The alternative syntax allows to skip destruction effects for vehicles and buildings.
+{{Feature|arma3|
+Since {{arma3}} v2.12 it is possible to influence trees, poles and walls fall direction by supplying the ''killer'' entity param - the fall direction will then be away from ''killer''<nowiki/>'s position.
+In multiplayer, the ''killer'' argument is ignored if the command is not executed on the server unless it targets trees, walls or poles - see {{Link|#Syntax 2}} and {{Link|#Example 3}}.
+}}
+
+|s1= object [[setDamage]] damage
+
+|p1= object: [[Object]]
+
+|p2= damage: [[Number]] - range 0..1, 0 = pristine/healthy condition, 1 = entirely destroyed/killed
+
+|r1= [[Nothing]]
+
+|s2= object [[setDamage]] [damage, useEffects, killer, instigator]
+
+|s2since= arma3 1.68
+
+|p21= object: [[Object]]
+
+|p22= damage: [[Number]] - range 0..1, 0 = pristine/healthy condition, 1 = entirely destroyed/killed
+
+|p23= useEffects: [[Boolean]] (Optional, default [[true]]) - [[false]] to skip destruction effects
+
+|p24= {{Icon|serverExec|28}} killer: [[Object]] - (Optional, default [[objNull]]) the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill.
+* it can be used to show "killed by player" in debriefing statistics and kill messages in the chat (if death messages are enabled).
+* it will alter the killer's [[rating]] as if the killer directly killed the unit
+* it will be listed as <sqf inline>_killer</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler
+* MP restricted similar to [[setShotParents]], will be ignored unless executed on the server or headless client in MP
+|p24since= arma3 2.12
+
+|p25= {{Icon|serverExec|28}} instigator: [[Object]] - (Optional, default [[objNull]]) the person that instigated the damage.
+* if a tank is a killer, the tank gunner that pulled the trigger is instigator
+* it will be listed as <sqf inline>_instigator</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler
+* MP restricted similar to [[setShotParents]], will be ignored unless executed on the server or headless client in MP
+** the above MP restriction does not apply to trees, poles and walls
+|p25since= arma3 2.12
+
+|r2= [[Nothing]]
+
+|x1= <sqf>_soldier1 setDamage 1;</sqf>
+
+|x2= <sqf>_house1 setDamage [1, false];</sqf>
+
+|x3= <sqf>
+// executed on a client
+_remoteVehicle setDamage [1, true, player];	// killer is not considered if the command is not called on the server - the vehicle still gets destroyed
+_tree setDamage [1, true, player];			// the tree is destroyed and falls away from the player
+</sqf>
+
+|seealso= [[setVehicleArmor]] [[damage]] [[setHit]] [[getHit]] [[getHitIndex]] [[setHitIndex]] [[getHitPointDamage]] [[setHitPointDamage]]
+}}
+
+{{Note
+|user= Fragorl
+|timestamp= 20060417073600
+|text= In '''{{ofp}}''', setting a unit's damage to a negative value will set it is health to full, but impair their aim.
+|game= ofp
+}}
+
+{{Note
+|user= KamikazXeX
+|timestamp= 20150529112300
+|text= Using this possible overrides individual hit damages such as [[setHitPointDamage]] ["HitHead", _value]; if you're having issues try setting hitdamage ''after'' setdamage.
+}}
+
+{{Note
+|user= Sarogahtyp
+|timestamp= 20210624103100
+|text= You are able to repair buildings with this command if you just store the original object and use setDamage on this and not on the wreck which is shown after the building was destroyed. This works in debug console when pointing a house:
+<sqf>[] spawn
+{
+	private _house = cursorObject;
+	_house setDamage 1;
+	sleep 5;
+	_house setDamage 0;
+};</sqf>
+}}

@@ -24,6 +24,9 @@ pub struct Command {
     server_exec: Option<bool>,
     since: Since,
     #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    branch: Option<String>,
+    #[serde(default)]
     #[serde(skip_serializing_if = "Vec::is_empty")]
     examples: Vec<String>,
 }
@@ -75,6 +78,14 @@ impl Command {
 
     pub fn since_mut(&mut self) -> &mut Since {
         &mut self.since
+    }
+
+    pub fn branch(&self) -> Option<&str> {
+        self.branch.as_deref()
+    }
+
+    pub fn branch_mut(&mut self) -> &mut Option<String> {
+        &mut self.branch
     }
 
     pub fn examples(&self) -> &[String] {

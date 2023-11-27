@@ -1,6 +1,21 @@
-use crate::model::{Call, Command, Param, Since, Syntax, Value, Version};
+use crate::{
+    model::{Call, Command, Param, Since, Syntax, Value, Version},
+    ParseError,
+};
 
-pub fn command(name: &str, source: &str) -> Result<Command, String> {
+pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), String> {
+    let mut errors = Vec::new();
+
+    let mut source = source.to_string();
+    while let Some(start) = source.find("<!--") {
+        let end = source[start..].find("-->").unwrap() + start + 3;
+        source.replace_range(start..=end, "");
+    }
+
+    if source.contains("<!--") {
+        Err("Found a comment that was not closed".to_string())?;
+    }
+
     let lines = source
         .split("\n|")
         .filter(|l| !l.is_empty() && !l.starts_with('{') && !l.starts_with('}') && l.contains('='))
@@ -15,8 +30,25 @@ pub fn command(name: &str, source: &str) -> Result<Command, String> {
     command.set_name(name.to_string());
     let mut lines = lines.into_iter().peekable();
     let mut syntax_counter = 1;
+
+    let mut reading_tab: Option<(&str, String)> = None;
+
     while let Some((key, value)) = lines.next() {
+        if let Some((tab, waiting)) = reading_tab.as_ref() {
+            if tab != waiting {
+                if key == waiting {
+                    reading_tab = Some((key, waiting.clone()));
+                }
+                continue;
+            } else if key.starts_with("content") {
+                reading_tab = Some((key, waiting.clone()));
+                continue;
+            }
+        }
         match key {
+            "selected" => {
+                reading_tab = Some(("", format!("content{value}")));
+            }
             "alias" => {
                 command.add_alias(value.to_string());
             }
@@ -44,8 +76,14 @@ pub fn command(name: &str, source: &str) -> Result<Command, String> {
             "seealso" => break,
             _ => {
                 if key.starts_with("game") {
-                    let next = lines.next().unwrap();
-                    assert!(next.0.starts_with("version"));
+                    let mut next = lines.next().unwrap();
+                    if next.0.starts_with("branch") {
+                        *command.branch_mut() = Some(next.1.trim().to_string());
+                        next = lines.next().unwrap();
+                    }
+                    if !next.0.starts_with("version") {
+                        Err(format!("Unknown key when expecting version: {}", next.0))?;
+                    }
                     command.since_mut().set_from_wiki(value, next.1)?;
                 } else if key.starts_with("gr") {
                     command.add_group(value.to_string());
@@ -53,8 +91,15 @@ pub fn command(name: &str, source: &str) -> Result<Command, String> {
                         break;
                     }
                 } else if key == format!("s{}", syntax_counter) {
-                    command.add_syntax(syntax(value, &mut lines)?);
-                    syntax_counter += 1;
+                    match syntax(value, &mut lines) {
+                        Ok(syntax) => {
+                            command.add_syntax(syntax);
+                            syntax_counter += 1;
+                        }
+                        Err(e) => {
+                            errors.push(ParseError::Syntax(e));
+                        }
+                    }
                 } else if key.starts_with('x') {
                     command.add_example(
                         value
@@ -70,7 +115,7 @@ pub fn command(name: &str, source: &str) -> Result<Command, String> {
             }
         }
     }
-    Ok(command)
+    Ok((command, errors))
 }
 
 pub fn locality(source: &str) -> Result<crate::model::Locality, String> {
@@ -99,7 +144,9 @@ pub fn syntax(
                 };
                 last_param.since_mut().set_from_wiki(game, version)?;
             } else {
-                let (mut name, typ) = value.split_once(':').unwrap();
+                let Some((mut name, typ)) = value.split_once(':') else {
+                    return Err(format!("Invalid param: {}", value));
+                };
                 let typ = typ.trim();
                 let (typ, desc) = typ.split_once('-').unwrap_or((typ, ""));
                 let optional = desc.contains("(Optional");
@@ -127,7 +174,14 @@ pub fn syntax(
                     None
                 };
                 params.push(Param {
-                    name: name.trim().to_string(),
+                    name: {
+                        let name = name.trim().to_string();
+                        if name.starts_with("{{") {
+                            name.split_once("}} ").unwrap().1.trim().to_string()
+                        } else {
+                            name
+                        }
+                    },
                     description: if desc.trim().is_empty() {
                         None
                     } else {
@@ -160,15 +214,36 @@ pub fn syntax(
         }
     }
     let call = Call::from_wiki(usage)?;
+    let mut list = false;
     for arg in call.param_names() {
+        if arg == "..." && list {
+            continue;
+        }
         if !params.iter().any(|p| p.name() == arg) {
-            return Err(format!("Missing param: {}", arg));
+            // check if arguments are numbered (argument1, argument2)
+            // then check if the param is argumentN
+            // generic over argument
+            let mut root = String::new();
+            for c in arg.chars() {
+                if c.is_numeric() {
+                    break;
+                }
+                root.push(c);
+            }
+            root.push('N');
+            if !params.iter().any(|p| p.name() == root) {
+                println!("params: {:?}", params);
+                return Err(format!("Missing param: {}", arg));
+            }
+            list = true;
         }
     }
     Ok(Syntax {
         call,
         ret: {
-            let mut ret = ret.unwrap();
+            let Some(mut ret) = ret else {
+                return Err("Missing return".to_string());
+            };
             if ret.contains("\n{{") {
                 let Some((ret_trim, _)) = ret.split_once("\n{{") else {
                     return Err(format!("Invalid return: {}", ret));
