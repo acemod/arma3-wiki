@@ -134,7 +134,7 @@ pub fn syntax(
                         Some(desc.trim().to_string())
                     },
                     optional,
-                    typ: Value::from_wiki(typ.trim())?,
+                    typ: Value::Unknown,
                     default,
                     since,
                 });
@@ -176,11 +176,11 @@ pub fn syntax(
                 ret = ret_trim.trim().to_string();
             }
             if ret.contains(" format") {
-                (Value::from_wiki(&ret)?, None)
+                (Value::Unknown, None)
             } else {
                 let (typ, desc) = ret.split_once('-').unwrap_or((&ret, ""));
                 (
-                    Value::from_wiki(typ.trim())?,
+                    Value::Unknown,
                     if desc.is_empty() {
                         None
                     } else {
