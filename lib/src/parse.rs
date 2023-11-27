@@ -15,6 +15,8 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
     if source.contains("<!--") {
         Err("Found a comment that was not closed".to_string())?;
     }
+    source = source.replace("<nowiki>", "");
+    source = source.replace("</nowiki>", "");
 
     let lines = source
         .split("\n|")
@@ -67,7 +69,6 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
             }
             "pr" => {
                 value.split("\n*").for_each(|v| {
-                    let v = v.replace("<nowiki/>", "");
                     if !v.trim().is_empty() {
                         command.add_problem_note(v.trim().to_string());
                     }

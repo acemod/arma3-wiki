@@ -25,10 +25,6 @@ pub enum Call {
 
 impl Call {
     pub fn from_wiki(source: &str) -> Result<Self, String> {
-        if source.starts_with("'''") {
-            return Ok(Call::Nular);
-        }
-        let source = source.trim().replace("<nowiki/>", "");
         let Some((left, right)) = source.split_once("[[") else {
             return Err(format!("Invalid call: {}", source));
         };
