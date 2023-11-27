@@ -3,6 +3,8 @@ use std::path::Path;
 use a3_wiki_lib::ParseError;
 use reqwest::{header::LAST_MODIFIED, Client};
 
+const SKIP_IF_LESS_THAN: u64 = 12;
+
 pub async fn command(
     client: &Client,
     name: String,
@@ -14,9 +16,8 @@ pub async fn command(
     if dist_path.exists() {
         let metadata = std::fs::metadata(&dist_path).unwrap();
         let modified: std::time::SystemTime = metadata.modified().unwrap();
-        // skip if less than 8 hours old
-        if modified.elapsed().unwrap().as_secs() < 60 * 60 * 8 {
-            println!("Skipping {}, less than 8h", name);
+        if modified.elapsed().unwrap().as_secs() < 60 * 60 * SKIP_IF_LESS_THAN {
+            println!("Skipping {}, less than {}h", name, SKIP_IF_LESS_THAN);
             return Ok((false, Vec::new()));
         }
         let res = match client.head(&url).send().await {
