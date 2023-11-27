@@ -1,0 +1,35 @@
+name: positionCameraToWorld
+description: "[[File:PositionCameraToWorld.jpg|right|120x120px]]Transforms position from camera coordinate space to world coordinate space. \n\nCamera axes are relative to camera orientation. x axis goes from left of the camera to right of the camera, z axis goes from underneath the camera to above the camera and y axis goes from back of the camera to where the camera is looking."
+groups:
+- Camera Control
+- Positions
+syntax:
+- call: !Unary cameraPos
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: cameraPos
+    description: relative camera position, format [x, z, y]{{Feature | important | Note that y and z for this command are swapped around, which is different from your usual model space coordinates format}}
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _worldPos = positionCameraToWorld _cameraPos;
+- "Example demonstrating reversed y and z:\n<sqf>\nplayer setDir 0; // assuming player is looking forward\nhint str [positionCameraToWorld [0,0,0], positionCameraToWorld [0,0,1]];\n/*\n[\n\t[2481.35, 5671.21, 1.51395],\n\t[2481.35, 5672.21, 1.46955]\n]\n*/\n"

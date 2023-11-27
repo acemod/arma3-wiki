@@ -1,0 +1,60 @@
+name: addWaypoint
+description: |-
+  Adds (or inserts when index is given) a new waypoint to a group.
+
+  The waypoint is placed randomly within a circle with the given center and radius.
+
+  The function returns a waypoint with format [group, index].
+  {{Feature|informative|For older titles and prior to {{arma3}} v1.90, use [[setWaypointPosition]] if you need exact waypoint placement.}}
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - groupName
+  - - center
+    - radius
+    - index
+    - name
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: groupName
+    type: Unknown
+  - name: center
+    type: Unknown
+  - name: radius
+    description: random waypoint placement within ''radius'' from ''center''; {{GVI|arma3|1.90|size= 0.75}} -1 can be used for exact waypoint placement
+    type: Unknown
+  - name: index
+    description: can be used to insert a waypoint in between existing waypoints
+    type: Unknown
+    optional: true
+  - name: name
+    description: '[[waypointName]]'
+    type: Unknown
+    optional: true
+argument_loc: Global
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _wp = _grp addWaypoint [position player, 0];
+- "_wp = _grp addWaypoint [position player, 0];\t\t\t// imprecise, placed like [[setVehiclePosition]]'s \"NONE\" placement\n_wp setWaypointPosition [getPosASL player, -1];\t\t\t// from {{ofpe}} to {{arma3}} v1.88\n\nprivate _wp = _grp addWaypoint [getPosASL player, -1];\t// {{arma3}} v1.90+: precise placement\n"

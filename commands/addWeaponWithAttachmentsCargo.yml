@@ -1,0 +1,51 @@
+name: addWeaponWithAttachmentsCargo
+description: Adds a weapon into the cargo space of a vehicle / box with given attachments / magazines. Ignores available cargo space. If the weapon class has any pre-attached items (LinkedItems), they are removed and new items, supplied via command arguments, are added.
+groups:
+- Vehicle Inventory
+syntax:
+- call: !Binary
+  - container
+  - - weaponConfiguration
+    - weaponsCount
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: container
+    description: container to add the weapon to. Might be a backpack, ammobox or vehicle.
+    type: Unknown
+  - name: weaponConfiguration
+    description: |-
+      Weapon class name from [[:Category:CfgWeapons|CfgWeapons]]
+      * muzzle: [[String]] - Muzzle attachment class name. Use "" if not needed.
+      * flashlight: [[String]] - Side rail attachment class name. Use "" if not needed.
+      * optics: [[String]] - Top rail attachment class name. Use "" if not needed.
+      * primaryMuzzle: [[Array]] in format [primaryMuzzleMagazine, primaryAmmoCount] - Use [] if not needed
+      ** primaryMuzzleMagazine: [[String]] - Magazine class name
+      ** primaryAmmoCount: [[Number]] - Ammo count in magazine (will be clipped to values between 0 and the maximum capacity of the magazine class)
+      * secondaryMuzzle: [[Array]] in format [secondaryMuzzleMagazine, secondaryAmmoCount] - Use [] if not needed
+      ** secondaryMuzzleMagazine: [[String]] - Magazine class name
+      ** secondaryAmmoCount: [[Number]] - Ammo count in magazine (will be clipped to values between 0 and the maximum capacity of the magazine class)
+      * bipod: [[String]] - Underbarrel rail attachment class name. Use "" if not needed.
+      This array has the same format as the array returned by the [[weaponsItems]] command.
+    type: Unknown
+  - name: weaponsCount
+    description: number of weapons to add
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 94
+examples:
+- cursorObject addWeaponWithAttachmentsCargo [["arifle_MX_GL_F", "muzzle_snds_H", "", "optic_aco", ["30Rnd_65x39_caseless_mag", 15], ["3Rnd_HE_Grenade_shell", 2], ""], 2];
+- |-
+  Add five MX GL rifles, each with flashlight side attachment, a full 30 rounds magazine loaded into the gun and a full 3Rnd HE grenade magazine loaded into the grenade launcher:
+  <sqf>cursorObject addWeaponWithAttachmentsCargo [["arifle_MX_GL_F", "", "acc_flashlight", "", ["30Rnd_65x39_caseless_mag", 30], ["3Rnd_HE_Grenade_shell", 2], ""], 5];
+- |-
+  Add one MX rifle without any attachments or magazines event though the class has linked items:
+  <sqf>cursorObject addWeaponWithAttachmentsCargo [["arifle_MX_Holo_pointer_F", "", "", "", [], [], ""], 1];
+- |-
+  Add all weapons on player with attachments:
+  <sqf>{ cursorObject addWeaponWithAttachmentsCargo [_x, 1] } forEach weaponsItems player;

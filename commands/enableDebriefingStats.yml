@@ -1,0 +1,30 @@
+name: enableDebriefingStats
+description: Enable debriefing score table.
+groups:
+- Briefing
+syntax:
+- call: !Unary
+  - left
+  - top
+  - width
+  - height
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: left
+    type: Unknown
+  - name: top
+    type: Unknown
+  - name: width
+    type: Unknown
+  - name: height
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- enableDebriefingStats [0.1, 0.1, 0.8, 0.8];

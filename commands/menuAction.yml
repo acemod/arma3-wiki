@@ -1,0 +1,36 @@
+name: menuAction
+description: Returns action stored in item on given path in [[CT_MENU_STRIP]] control.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - Unknown
+  - action
+  params:
+  - name: idc
+    type: Unknown
+  - name: path
+    type: Unknown
+- call: !Binary
+  - control
+  - path
+  ret:
+  - Unknown
+  - action
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- menuAction [120, [1, 0]];
+- findDisplay 313 displayCtrl 120 menuAction [1, 0];

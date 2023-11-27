@@ -1,0 +1,22 @@
+name: isGamePaused
+description: |-
+  Returns the state of game simulation. Simulation can get paused by pressing {{Controls|Alt|Tab}} or a system dialog opening (e.g. {{Controls|Esc}} menu).
+  Simulation will not get paused if {{hl|-noPause}} [[Arma 3: Startup Parameters|startup parameter]] is used.
+  {{Feature|informative|[[onEachFrame]] event and {{hl|"EachFrame"}} event handler continue to execute when the simulation is paused, which could result in undesired backlog. Use [[isGamePaused]] to skip loop if needed.}}
+multiplayer_note: In multiplayer the simulation will not get paused and this command will always return [[false]].
+groups:
+- System
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - returns [[true]] if game simulation is paused, [[false]] if not
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 96
+examples:
+- "onEachFrame \n{\n\tif (isGamePaused) exitWith {};\n\t// ...do stuff\n};\n"

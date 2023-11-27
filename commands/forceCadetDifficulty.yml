@@ -1,0 +1,27 @@
+name: forceCadetDifficulty
+description: 'Forces {{hl|showCadetHints}} and {{hl|showCadetWP}} global Cadet [[Arma 3: Difficulty Settings|{{arma3}} difficulty]], returns previous settings.'
+groups:
+- Difficulty
+syntax:
+- call: !Unary
+  - showCadetHints
+  - showCadetWP
+  ret:
+  - Unknown
+  - '[prev_showCadetHints, prev_showCadetWP]'
+  params:
+  - name: showCadetHints
+    description: '{{hl|showCadetHints}} difficulty'
+    type: Unknown
+  - name: showCadetWP
+    description: '{{hl|showCadetWP}} difficulty'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- private _previousSettings = forceCadetDifficulty [true, false];
+- "private _fnc_forceCadetDifficulty = \n{\n\tparams [\"_OKButtonPressed\"];\n\tif (_OKButtonPressed) then\n\t{\n\t\tforceCadetDifficulty (switch (toLowerANSI configName ((configFile >> \"CfgDifficultyPresets\") select difficulty)) do\n\t\t{\n\t\t\tcase \"recruit\";\n\t\t\tcase \"regular\":\n\t\t\t{\n\t\t\t\t// showCadetHints = 1;\n\t\t\t\t// showCadetWP = 1;\n\t\t\t\t[true, true]\n\t\t\t};\n\t\t\tcase \"veteran\":\n\t\t\t{\n\t\t\t\t// showCadetHints = 0;\n\t\t\t\t// showCadetWP = 1;\n\t\t\t\t[false, true]\n\t\t\t};\n\t\t\tdefault\n\t\t\t{\n\t\t\t\t// showCadetHints = 0;\n\t\t\t\t// showCadetWP = 0;\n\t\t\t\t[false, false]\n\t\t\t};\n\t\t});\n\t};\n};\n[true] call _fnc_forceCadetDifficulty;\n[missionNamespace, \"OnGameOptionsExited\", _fnc_forceCadetDifficulty] call BIS_fnc_addScriptedEventHandler;\n"

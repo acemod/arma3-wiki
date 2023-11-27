@@ -1,0 +1,33 @@
+name: sendUDPMessage
+description: "Send message to given address using UDP protocol. Returns false if the message has not been delivered \n\n{{Feature|warning|Not implemented (see the [[Talk:sendUDPMessage|talk page]] for more info).}}"
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - ip
+  - port
+  - message
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ip
+    type: Unknown
+  - name: port
+    type: Unknown
+  - name: message
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _bool = sendUDPMessage ["192.168.0.1", 2302, "Here goes you message..."];

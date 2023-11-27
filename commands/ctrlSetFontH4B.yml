@@ -1,0 +1,36 @@
+name: ctrlSetFontH4B
+description: Sets H4 bold font of given HTML control.
+groups:
+- GUI Control - HTML
+syntax:
+- call: !Binary
+  - controlName
+  - fontName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: controlName
+    type: Unknown
+  - name: fontName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _control ctrlSetFontH4B "TahomaB";

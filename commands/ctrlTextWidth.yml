@@ -1,0 +1,32 @@
+name: ctrlTextWidth
+description: |-
+  Returns the width of the control text including left and right margins (0.008 each). Supported control [[ctrlType|types]] are:
+  {{Columns|2|
+  * [[CT_STATIC]] 0
+  * [[CT_EDIT]] 2
+  * [[CT_STRUCTURED_TEXT]] 13
+  * {{GVI|arma3|2.06|size= 0.75}} [[CT_XKEYDESC]] 40
+  * {{GVI|arma3|2.06|size= 0.75}} [[CT_XBUTTON]] 41
+  * {{GVI|arma3|2.06|size= 0.75}} [[CT_SHORTCUTBUTTON]] 16
+  * {{GVI|arma3|2.06|size= 0.75}} [[CT_BUTTON]] 1
+  * {{GVI|arma3|2.06|size= 0.75}} [[CT_ACTIVETEXT]] 11
+  }}
+  {{Feature|informative|For control-independent text width estimate see [[getTextWidth]].}}
+groups:
+- GUI Control
+syntax:
+- call: !Unary control
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 78
+examples:
+- private _w = ctrlTextWidth _ctrl;

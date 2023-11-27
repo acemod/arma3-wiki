@@ -1,0 +1,24 @@
+name: setRainbow
+description: Changes the rainbow value smoothly during the given time (in seconds). A time of zero means there will be an immediate change.
+groups:
+- Environment
+syntax:
+- call: !Binary
+  - time
+  - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: time
+    type: Unknown
+  - name: value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 360 setRainbow 1;

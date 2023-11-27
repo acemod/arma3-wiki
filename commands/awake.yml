@@ -1,0 +1,31 @@
+name: awake
+description: |-
+  Wakes up sleeping PhysX object or puts a PhysX object to sleep. In 2.10 this command can be used on corpses of type {{hl|Man}} and has no effect on [[alive]] units. When unit gets killed it goes into ragdoll state for a short while, then the units get frozen and any simulation and collision is removed to save system resources. As a result, corpses do not react to their surrounding any more. Using this command will temporarily re-enable ragdoll state of a corpse to the same state it was when unit died. If this command is used in "enable/disable" sequence on a dead body, it gives the corpse a visible nudge (See example 3).
+
+  {{Feature|informative|This command won't have lasting effect on vehicles as vehicles are actively simulated, but it works rather well on smaller PhysX enabled objects.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - object
+  - awake
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    description: PhysX object or dead unit
+    type: Unknown
+  - name: awake
+    description: '[[true]] to awake the object, [[false]] - to put it to sleep'
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- _object awake false;
+- 'Since 2.10: <sqf>_deadUnit awake true;'
+- "Make corpse react to explosion (since 2.10): <sqf>_deadUnit addEventHandler [\"Explosion\", \n{\n\tparams [\"_unit\", \"_damage\"];\n\tif (_damage < 0.01) exitWith {};\n\t_unit awake true;\n\t_unit awake false;\n}];"

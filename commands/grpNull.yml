@@ -1,0 +1,37 @@
+name: grpNull
+description: "A non-existing [[Group]]. To compare non-existent groups use [[isNull]] or [[isEqualTo]]:\n<sqf>\ngrpNull == grpNull;\t\t\t// false\nisNull grpNull;\t\t\t\t// true\ngrpNull isEqualTo grpNull;\t// true\n</sqf>"
+groups:
+- Groups
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '!isNull grpNull; // false'
+- str grpNull; // <NULL-group>

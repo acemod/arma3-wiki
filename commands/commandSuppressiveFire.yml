@@ -1,0 +1,27 @@
+name: commandSuppressiveFire
+description: "Orders the given unit or a group of units to suppress the given position or target (with radio messages, see [[doSuppressiveFire]] if you don't want messages). \n* When an [[Array]] of units is passed as param, only units from the same [[Group]] as the first unit in array are considered. \n* The unit (units) starts firing at the given target or position random amount of shots (exact formula unknown, but seems to depend on amount of ammo unit has) after which it stops. \n* [[currentCommand]] shows {{hl|\"Suppress\"}} and there is no way of stopping unit before it completes random amount of rounds. \n* If position is passed as target param, it stays fixed. \n* If object is passed as target param, it depends on what kind of object. If it is considered a proper target by the unit, it is tracked by the unit dynamically. If it is not, the position gets obtained via [[getPosWorld]], which could be different from [[Position#PositionASL|PositionASL]] of the object, and it is fixed even if the target is able to change position later."
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - unit
+  - target
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: a single unit or array of units
+    type: Unknown
+  - name: target
+    description: actual target or position of the target in format [[Position#PositionASL|PositionASL]]
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 60
+examples:
+- _soldier commandSuppressiveFire [1869.508,5760.962,0.000];
+- _soldier commandSuppressiveFire cursorTarget;

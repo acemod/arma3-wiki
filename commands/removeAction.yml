@@ -1,0 +1,44 @@
+name: removeAction
+description: Removes user added action with given ID. This only removes actions added with the [[addAction]] command. You cannot remove default game actions, such as reload.
+groups:
+- Interaction
+syntax:
+- call: !Binary
+  - unit
+  - actionID
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: unit, vehicle or static object
+    type: Unknown
+  - name: actionID
+    description: action ID returned by [[addAction]]
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 20
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player removeAction 0;

@@ -1,0 +1,28 @@
+name: getBackpackCargo
+description: Returns all backpack types and count from the cargo space.
+groups:
+- Containers
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    description: object to check
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 55
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _content = getBackpackCargo carName;
+- _content = getBackpackCargo ammoBoxName;

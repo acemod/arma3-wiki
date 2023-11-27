@@ -1,0 +1,22 @@
+name: ropeLength
+description: |-
+  Return rope length in meters (set by [[ropeCreate]], [[ropeCut]], [[ropeUnwind]]).
+  {{Feature|Informative|Returned rope length will remain the same, even if the rope is stretched.}}
+groups:
+- Ropes and Sling Loading
+syntax:
+- call: !Unary rope
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: rope
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- _length = ropeLength (ropes heli1 select 0);

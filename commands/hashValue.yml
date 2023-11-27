@@ -1,0 +1,23 @@
+name: hashValue
+description: |-
+  Processes provided ''value''<nowiki/>'s hash, and encodes it using {{Link|https://en.wikipedia.org/wiki/Base64|Base64}}. The hash algorithm is {{Link|https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function|FNV-1A 64bit}}.
+  {{Feature|informative|A hash value remains the same between game restarts but for [[Object]] and [[Group]] type, their hash being based on their [[netId]].}}
+groups:
+- HashMap
+syntax:
+- call: !Unary value
+  ret:
+  - Unknown
+  - base64-encoded 64 bits hash
+  params:
+  - name: value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- private _valueHash = hashValue "Hello There";
+- private _isCorrectPW = hashValue _enteredPassword == "eWkXUUqiinE";

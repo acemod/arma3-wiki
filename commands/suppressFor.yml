@@ -1,0 +1,33 @@
+name: suppressFor
+description: Force [[Suppressive Fire|suppressive fire]] from the unit.
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - unit
+  - duration
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: duration
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 5
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldier1 suppressFor 10; // Will force soldier1 to do suppressive fire to known enemies for 10 seconds

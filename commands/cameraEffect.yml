@@ -1,0 +1,99 @@
+name: cameraEffect
+description: |-
+  Sets the given effect on the given camera. If you want to switch the screen directly to the first-person, aiming, third-person or group view of an object, use [[switchCamera]] instead. The effect type "Terminate" is used to exit the current camera view and switch back to the player's view. Does not need [[camCommit]].
+  <br><br>
+  Since {{GVI|arma3|1.74}}, it is possible to terminate individual r2t source. For example:
+  <sqf>
+  cam cameraEffect ["terminate", "back", "rtt1"]; // would terminate "rtt1" r2t source
+  cam cameraEffect ["terminate", "back"]; // would terminate all r2t sources
+  </sqf>
+  {{Feature|important|
+  One cannot mix and match [[cameraEffect]] and can either have multiple [[r2t]] cameras or a single camera for the whole screen.
+  If one needs a background stream overlayed with [[r2t]] streams, this could be achieved by creating an object and using [[switchCamera]] to switch to it for background image, while using [[cameraEffect]] for [[r2t]] overlay (see {{Link|#Example 4}}).
+  }}
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - camera
+  - - effectName
+    - effectPosition
+    - r2tName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: camera
+    description: object of type "camera"
+    type: Unknown
+  - name: effectName
+    description: 'the effect type (defined in main config or [[Description.ext#CfgCameraEffects|CfgCameraEffects]] >> Array). Defaults are: {{hl|"Internal"}}, {{hl|"External"}}, {{hl|"Fixed"}}, {{hl|"FixedWithZoom"}}, {{hl|"Terminate"}}'
+    type: Unknown
+  - name: effectPosition
+    description: |-
+      position of the effect. Can be one of:
+      {{Columns|5|
+      * {{hl|"TOP"}}
+      * {{hl|"LEFT"}}
+      * {{hl|"RIGHT"}}
+      * {{hl|"FRONT"}}
+      * {{hl|"BACK"}}
+      * {{hl|"LEFT FRONT"}}
+      * {{hl|"RIGHT FRONT"}}
+      * {{hl|"LEFT BACK"}}
+      * {{hl|"RIGHT BACK"}}
+      * {{hl|"LEFT TOP"}}
+      * {{hl|"RIGHT TOP"}}
+      * {{hl|"FRONT TOP"}}
+      * {{hl|"BACK TOP"}}
+      * {{hl|"BOTTOM"}}
+      }}
+      These are usually used with "Fixed" and "FixedWithZoom" effect types. If not sure which position to use, set it to {{hl|"BACK"}}.
+    type: Unknown
+  - name: r2tName
+    description: '[[Procedural_Textures#Render_To_Texture|Render To Texture]] surface reference'
+    type: Unknown
+    optional: true
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _cam cameraEffect ["internal", "BACK"];
+- _cam cameraEffect ["internal", "back", "rendersurface"];
+- |
+  cam = "seagull" camCreate (player modelToWorld [0,0,100]);
+  cam cameraEffect ["FIXED", "LEFT TOP"];
+  cam camCommand "MANUAL ON";
+- |
+  _ctrl = findDisplay 46 createDisplay "RscDisplayEmpty" ctrlCreate ["RscPicture", -1];
+  _ctrl ctrlSetPosition [0.5, 0, 0.5, 0.5];
+  _ctrl ctrlSetText "#(argb,512,512,1)r2t(rtt1,1.0)";
+  _ctrl ctrlCommit 0;
+  _cam1 = "camera" camCreate (ASLToAGL eyePos player vectorAdd [0, -10, 0]);
+  _cam1 cameraEffect ["Internal", "Back", "rtt1"];
+  _cam2 = "Land_HandyCam_F" createVehicle [0,0,0];
+  _cam2 enableSimulation false;
+  _cam2 setPos (ASLToAGL eyePos player vectorAdd [0, 10, 0]);
+  _cam2 setDir (_cam2 getDir player);
+  switchCamera _cam2;

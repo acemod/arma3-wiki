@@ -1,0 +1,20 @@
+name: getPylonMagazines
+description: Return array of magazines on pylons.
+groups:
+- Vehicle Loadouts
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - magazine names
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- getPylonMagazines vehicle player;

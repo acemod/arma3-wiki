@@ -1,0 +1,50 @@
+name: openMap
+description: |-
+  Opens or closes in-game map.
+  {{Feature|warning|
+  If {{hl|forced}} param is set to [[true]] and map is set to open, when the map is opened it cannot be closed manually and the user can get stuck requiring the game restart.
+  Make sure you provide scripted mechanics to resolve this, should you need to force the map.
+  Useful when you wish to keep user for example on respawn screen, where they could still interact with the map but cannot enter the game until the time is up.
+  }}
+groups:
+- Map
+- Interaction
+syntax:
+- call: !Unary show
+  ret:
+  - Unknown
+  - equivalent of [[visibleMap]]
+  params:
+  - name: show
+    description: if [[true]] opens map, if [[false]] closes map, provided it is not ''forced''
+    type: Unknown
+- call: !Unary
+  - show
+  - forced
+  ret:
+  - Unknown
+  - equivalent of [[visibleMap]]
+  params:
+  - name: show
+    description: if [[true]] opens map, if [[false]] closes map, provided it is not ''forced''.
+    type: Unknown
+  - name: forced
+    description: if [[true]] keeps map from closing when map is open. {{GVI|arma3|2.06|size= 0.75}} if [[false]], forces map to stay closed if ''show'' is [[false]] (see {{Link|#Example 1}})
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 3
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "openMap [true, false];\t// opens map normally\nopenMap [false, false];\t// closes an opened map normally\nopenMap [true, true];\t// force opens map and keeps it open (the user cannot close it on their own)\nopenMap [false, true];\t// since {{arma3}} 2.06: prevents map from opening, closes open map and forces it to stay close (the user cannot open it on their own)\n"

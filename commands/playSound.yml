@@ -1,0 +1,67 @@
+name: playSound
+description: Plays a sound from CfgSounds. Sound can be defined in [[missionConfigFile]], [[configFile]] or [[campaignConfigFile]].
+groups:
+- Sounds
+syntax:
+- call: !Unary soundName
+  ret:
+  - Unknown
+  - the speaker object ([[Nothing]] before {{GVI|arma3|2.00|size= 0.75}})
+  params:
+  - name: soundName
+    type: Unknown
+- call: !Unary
+  - soundName
+  - isSpeech
+  - offset
+  ret:
+  - Unknown
+  - the speaker object ([[Nothing]] before {{GVI|arma3|2.00|size= 0.75}})
+  params:
+  - name: soundName
+    type: Unknown
+  - name: isSpeech
+    description: |-
+      * 0/[[false]] = play as sound ([[fadeSound]] applies)
+      * 1/[[true]] = play as speech ([[fadeSpeech]] applies), filters are not applied to it (i.e. house or vehicle interior one)
+      * 2 = play as sound ([[fadeSound]] applies) without interior/vehicle muffling
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+  - name: offset
+    description: offset in seconds. Same as [[playMusic]]
+    type: Unknown
+    optional: true
+    default: '0'
+    since:
+      arma_3:
+        major: 2
+        minor: 0
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- playSound "soundname";
+- "Start a sound and then stop it after 1.2 second:\n<sqf>\nplaySound \"AlarmCar\";\n0 spawn\n{\n\t_sound = ASLToAGL [0,0,0] nearestObject \"#soundonvehicle\";\n\tsleep 1.2;\n\tdeleteVehicle _sound;\n};\n\n// since {{arma3}} v2.00\n_source = playSound \"AlarmCar\";\n_source spawn\n{\n\tsleep 1.2;\n\tdeleteVehicle _this;\n};\n"
+- "Start a sound and wait until it is finished:\n<sqf>\nplaySound \"Alarm\";\nhint \"Started!\";\n0 spawn\n{\n\t_sound = ASLToAGL [0,0,0] nearestObject \"#soundonvehicle\";\n\twaitUntil {isNull _sound};\n\thint \"Finished!\";\n};\n\n// since {{arma3}} v2.00\nprivate _source = playSound \"Alarm\";\n_source spawn\n{\n\twaitUntil { isNull _this };\n\thint \"Finished!\";\n};\n"

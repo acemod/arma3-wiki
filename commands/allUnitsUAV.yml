@@ -1,0 +1,20 @@
+name: allUnitsUAV
+description: Return a list of all UAV vehicles.
+groups:
+- Remote Control
+- Object Detection
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - array of UAV vehicles
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 76
+examples:
+- 'hint format ["Number of UAV(s) on the map: %1", count allUnitsUAV];'
+- '{ _x setDamage 1 } forEach allUnitsUAV;'

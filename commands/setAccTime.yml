@@ -1,0 +1,42 @@
+name: setAccTime
+description: Set simulation acceleration coefficient. May also be used to slow time in cutscenes.
+multiplayer_note: Command is disabled in multiplayer.
+problem_notes:
+- This command is '''not''' clamped and incorrect values may be entered (negative values, high values, etc - game behaviour is then undefined).
+groups:
+- Time
+syntax:
+- call: !Unary accFactor
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: accFactor
+    description: time factor; 2 will make time go twice as fast, 0.5 half of it, etc
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setAccTime 0.1;

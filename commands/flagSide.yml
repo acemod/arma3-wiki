@@ -1,0 +1,21 @@
+name: flagSide
+description: Returns [[Side]] of the [[Multiplayer Scripting#Locality|local]] instance of the flag. A getter for [[setFlagSide]].
+groups:
+- Flags
+syntax:
+- call: !Unary flag
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: flag
+    description: flag
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 54
+examples:
+- _flagSide =  flagSide flag;

@@ -1,0 +1,22 @@
+name: allUsers
+description: |-
+  Returns a list of [[getPlayerID|player ids]] of all the users on an MP server.
+  {{Feature|informative|This also lists [[Arma 3: Headless Client|Headless Clients]].}}
+groups:
+- Multiplayer
+- Object Detection
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- "if (isServer) then\n{\n\tprivate _allUserIDs = allUsers;\n\tfor \"_i\" from 0 to (count _allUserIds - 1) do\n\t{\n\t\tdiag_log format [\"User #%1 ID: %2\", _i + 1, _allUserIds select _i];\n\t};\n};\n"

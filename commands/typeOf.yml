@@ -1,0 +1,38 @@
+name: typeOf
+description: Returns the class name of a given object.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary obj
+  ret:
+  - Unknown
+  - config class name, or empty string if ''obj'' does not have a class
+  params:
+  - name: obj
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 90
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (typeOf vehicle player == "B_Heli_Light_01_armed_F") then { hint "Player is in a AH-9 Pawnee"; };

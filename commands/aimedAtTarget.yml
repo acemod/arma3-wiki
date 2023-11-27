@@ -1,0 +1,36 @@
+name: aimedAtTarget
+description: Returns how good the weapon of the vehicle is aimed at the target.
+groups:
+- Object Manipulation
+- Weapons
+syntax:
+- call: !Binary
+  - vehicle
+  - - target
+    - weapon
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: target
+    type: Unknown
+  - name: weapon
+    type: Unknown
+    optional: true
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _aimingQuality = heli aimedAtTarget [target];
+- _aimingQuality = heli aimedAtTarget [target, "M197"];

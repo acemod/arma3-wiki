@@ -1,0 +1,71 @@
+name: setMimic
+description: |-
+  Sets person's facial expression. To set it back to default, use "".
+  {{Feature|arma3|Prior to {{arma3}} v2.01.146630 Mimics must be written in all lower case letters.}}
+groups:
+- Object Manipulation
+- Unit Identity
+syntax:
+- call: !Binary
+  - person
+  - mimic
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: person
+    type: Unknown
+  - name: mimic
+    description: |-
+      can be one of:
+      {{{!}} class="valign-top"
+      ! style="padding-right: 2em" {{!}} Before Arma 2 OA v1.6x !! Since Arma 2 OA v1.6x
+      {{!}}-
+      {{!}}
+      * "Default"
+      * "Normal"
+      * "Smile"
+      * "Hurt"
+      * "Ironic"
+      * "Sad"
+      * "Cynic"
+      * "Surprised"
+      * {{sic|"Agresive"}}
+      * "Angry"
+      {{!}}
+      * "neutral"
+      * "dead"
+      * "danger"
+      * "hurt"
+      * "aware"
+      * "safe"
+      * "combat"
+      * "unconscious"
+      {{!}}}
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldier1 setMimic "hurt";

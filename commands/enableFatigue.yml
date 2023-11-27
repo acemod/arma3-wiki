@@ -1,0 +1,25 @@
+name: enableFatigue
+description: Enables/Disables the person's fatigue.
+groups:
+- Stamina System
+syntax:
+- call: !Binary
+  - unit
+  - enable
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: enable
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player enableFatigue false;
+- '{ _x enableFatigue false; } forEach (units group player);'

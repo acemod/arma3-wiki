@@ -1,0 +1,34 @@
+name: addMagazineAmmoCargo
+description: Adds magazines with specified ammo count to the cargo space of a vehicle or a container.
+groups:
+- Vehicle Inventory
+syntax:
+- call: !Binary
+  - cargospace
+  - - magazine
+    - quantity
+    - ammocount
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: cargospace
+    description: vehicle or container or weaponholder
+    type: Unknown
+  - name: magazine
+    description: magazine class name
+    type: Unknown
+  - name: quantity
+    description: number of magazines to add. Since Arma 3 v2.14, negative count will remove magazines.
+    type: Unknown
+  - name: ammocount
+    description: ammo count in each magazine
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- _ammobox addMagazineAmmoCargo ["30Rnd_65x39_caseless_mag", 2, 5];

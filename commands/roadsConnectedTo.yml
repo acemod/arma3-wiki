@@ -1,0 +1,56 @@
+name: roadsConnectedTo
+description: |-
+  Find the road segments connected to the given road segment.
+  {{Feature |Important|Pedestrian roads such as {{hl|"TRAIL"}}s are missing connection information by design, therefore basic command will return empty array for those. Use the alternative syntax to return pedestrian roads.}}
+groups:
+- Roads and Airports
+syntax:
+- call: !Unary roadSegment
+  ret:
+  - Unknown
+  - connected road segments
+  params:
+  - name: roadSegment
+    description: road segment
+    type: Unknown
+- call: !Unary
+  - roadSegment
+  - extended
+  ret:
+  - Unknown
+  - connected road segments
+  params:
+  - name: roadSegment
+    description: road segment
+    type: Unknown
+  - name: extended
+    description: when [[true]], performs a more thorough search on top of base behaviour, slower but returns pedestrian and other missing road segments
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+  since:
+    arma_3:
+      major: 2
+      minor: 0
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _road = (player nearRoads 50) select 0;
+  _connectedRoads = roadsConnectedTo _road;
+- |-
+  _road = (player nearRoads 50) select 0;
+  _connectedRoadsIncPedestrian = roadsConnectedTo [_road, true];

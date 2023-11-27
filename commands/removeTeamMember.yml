@@ -1,0 +1,33 @@
+name: removeTeamMember
+description: Remove given member from given team. Effect is local, unless both member and team are local to PC on which command is executed, then effect is global.
+groups:
+- Teams
+syntax:
+- call: !Binary
+  - team
+  - member
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: team
+    type: Unknown
+  - name: member
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _team removeTeamMember _teamMember;

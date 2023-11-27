@@ -1,0 +1,21 @@
+name: getTextureInfo
+description: Return texture information - resolution in pixels (mipmap level 0) and average colour. Multiply the pixel values by [[pixelW]] and [[pixelH]] to get screen coordinates.
+groups:
+- System
+syntax:
+- call: !Unary texture
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: texture
+    description: texture path (.paa, .jpg, .ogv)
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- getTextureInfo "a3\characters_f\blufor\data\clothing1_co.paa"; // [2048, 2048, [0.458824, 0.427451, 0.34902, 1]]

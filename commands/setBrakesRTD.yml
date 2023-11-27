@@ -1,0 +1,42 @@
+name: setBrakesRTD
+description: |-
+  Enable landing gear wheel brakes for a helicopter.
+  * value 0: brakes off
+  * value 1: brakes on
+
+  * index 1: left wheels
+  * index 2: right wheels
+  * index 3: both sides
+  {{Feature|afm}}
+  {{Feature|Informative|This command is implemented, but not fully supported.}}
+groups:
+- RTD
+syntax:
+- call: !Binary
+  - helicopterRTD
+  - - value
+    - wheelIndex
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: helicopterRTD
+    description: helicopter
+    type: Unknown
+  - name: value
+    description: value of the brakes
+    type: Unknown
+  - name: wheelIndex
+    description: wheel index
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- myHelicopterRTD setBrakesRTD [1, 3];

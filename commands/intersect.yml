@@ -1,0 +1,43 @@
+name: intersect
+description: "Finds named selections in object which are in specified LOD, intersected by given section of a line. Return value is in the form of [selection, distance]. Multiple returned arrays are nested within a single array. No intersection returns []. ''lodName'' could be one of the following: \n* \"FIRE\"\n* \"VIEW\"\n* \"GEOM\"\n* \"IFIRE\" - (\"I\" stands for Indirect, almost the same as FIRE)\n* {{GVI|arma3|2.02|size= 0.75}} \"PHYSX\" - PhysX geometry LOD"
+groups:
+- Math - Geometry
+syntax:
+- call: !Binary
+  - - object
+    - lodName
+  - - begPos
+    - endPos
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: lodName
+    type: Unknown
+  - name: begPos
+    type: Unknown
+  - name: endPos
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '[_tank, "VIEW"] intersect [[1500, 1500, 2], [1550, 1500, 2]];'
+- "sphere = \"Sign_Sphere10cm_F\" createVehicle [0,0,0];\nonEachFrame {\n\t_begPos = positionCameraToWorld [0,0,0];\n\t_begPosASL = AGLToASL _begPos;\n\t_endPos = positionCameraToWorld [0,0,1000];\n\t_endPosASL = AGLToASL _endPos;\n\t_ins = lineIntersectsSurfaces [_begPosASL, _endPosASL, player, objNull, true, 1, \"FIRE\", \"NONE\"];\n\tif (_ins isEqualTo []) exitWith {sphere setPosASL [0,0,0]};\n\t_ins select 0 params [\"_pos\", \"_norm\", \"_obj\", \"_parent\"];\n\tif !(getModelInfo _parent select 2) exitWith {sphere setPosASL [0,0,0]};\n\t_ins2 = [_parent, \"FIRE\"] intersect [_begPos, _endPos];\n\tif (_ins2 isEqualTo []) exitWith {sphere setPosASL [0,0,0]};\n\t_ins2 select 0 params [\"_name\", \"_dist\"];\n\t_posASL = _begPosASL vectorAdd ((_begPosASL vectorFromTo _endPosASL) vectorMultiply _dist);\n\tdrawIcon3D [\"\", [1,1,1,1], ASLToAGL _posASL, 0, 0, 0, _name, 1, 0.03, \"PuristaMedium\"];\n\tsphere setPosASL _posASL;\n};"

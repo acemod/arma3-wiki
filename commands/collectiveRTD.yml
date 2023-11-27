@@ -1,0 +1,24 @@
+name: collectiveRTD
+description: "Returns the current position of a helicopter's collective pitch control.\n* 0: fully lowered\n* 1: fully raised \n{{Feature|afm}}"
+groups:
+- RTD
+syntax:
+- call: !Unary helicopterRTD
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: helicopterRTD
+    description: helicopter
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- _collective = collectiveRTD vehicle player;

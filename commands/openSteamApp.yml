@@ -1,0 +1,20 @@
+name: openSteamApp
+description: Opens a Steam application, returns false if it was not possible to run the application.
+groups:
+- System
+syntax:
+- call: !Unary appID
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: appID
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 78
+examples:
+- openSteamApp 553228;

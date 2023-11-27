@@ -1,0 +1,37 @@
+name: commandGetOut
+description: "Orders one or multiple units to get out from the vehicle (via the radio). Same as [[doGetOut]] with latter being silent. \n{{Feature|informative|\n* Works for both AI and player entities\n* AI unit gets back in - unless is under player command or combined with other sqf commands ([[orderGetIn]] false, [[allowGetIn]] false or [[leaveVehicle]])\n* Ignores vehicle's lock state - unlike [[Arma 3 Actions#Eject|action \"Eject\"]] and [[moveOut]]\n* AI waits for execution until vehicle has stopped/is no longer flying (unclear if any timeout exists for order to be discarded) - unlike [[Arma 3 Actions#Eject|action \"Eject\"]] and [[moveOut]]\n* Plays the vehicle's position's get out animation (same as [[Arma 3 Actions#Eject|action \"Eject\"]]) - unlike [[moveOut]]\n* When execute for multiple units, it waits till the action is completed, before the next to take his turn (same as [[Arma 3 Actions#Eject|action \"Eject\"]]) - unlike [[moveOut]]\n* AI gets back into formation afterwards\n* Works only on alive units - unlike [[Arma 3 Actions#Eject|action \"Eject\"]] (one after another) or [[moveOut]] (instantly)\n* Does not work on [[setUnconscious|unconscious]] units - unless the AI is under player command. Unlike [[moveOut]] or [[Arma 3 Actions#Eject|action \"Eject\"]] (but one after another)\n}}"
+multiplayer_note: This command is only effective when used on local units. When used on a remote unit, this command will create radio dialogue on the machine the unit is local to, but the unit will not leave the vehicle.
+groups:
+- Unit Control
+syntax:
+- call: !Unary unit(s)
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit(s)
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- commandGetOut _unitOne;
+- commandGetOut [_unitOne,_unitTwo];

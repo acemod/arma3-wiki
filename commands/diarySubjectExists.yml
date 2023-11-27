@@ -1,0 +1,33 @@
+name: diarySubjectExists
+description: Checks whether given subject is present in the [[Diary]] of given player.
+groups:
+- Briefing
+syntax:
+- call: !Binary
+  - player
+  - name
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: player
+    type: Unknown
+  - name: name
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _exists = player diarySubjectExists "subjectName";

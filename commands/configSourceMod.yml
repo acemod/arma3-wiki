@@ -1,0 +1,21 @@
+name: configSourceMod
+description: Returns modDir of the mod that given config class was loaded from.
+groups:
+- Mods and Addons
+syntax:
+- call: !Unary config
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: config
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 38
+examples:
+- configSourceMod (configFile >> "CfgVehicles" >> "Heli_Transport_04_base_F"); // returns "heli"
+- configSourceMod (configFile >> "CfgVehicles" >> "Car"); // returns "A3"

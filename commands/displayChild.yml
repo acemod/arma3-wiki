@@ -1,0 +1,20 @@
+name: displayChild
+description: Returns child display of the given display.
+groups:
+- GUI Control
+syntax:
+- call: !Unary display
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: display
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- '_display = displayChild findDisplay 313; // display #46'

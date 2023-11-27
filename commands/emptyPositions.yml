@@ -1,0 +1,52 @@
+name: emptyPositions
+description: |-
+  Returns the number of given empty positions in the vehicle.
+  {{Feature|informative|To return the actual units in the vehicle use [[fullCrew]]. However if only the number is desired, use [[emptyPositions]] because it is faster.}}
+groups:
+- Object Manipulation
+- Unit Control
+syntax:
+- call: !Binary
+  - vehicle
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: position
+    description: |-
+      can be one of:
+      {{Columns|2|
+      * {{hl|"Commander"}}
+      * {{hl|"Driver"}}
+      * {{hl|"Gunner"}}
+      * {{hl|"Cargo"}} - all cargo positions, FFV or not
+      * {{GVI|arma3|2.10|size= 0.75}} {{hl|""}} - all empty positions
+      * {{GVI|arma3|2.10|size= 0.75}} {{hl|"CargoNoFFV"}} - non-FFV cargo
+      * {{GVI|arma3|2.10|size= 0.75}} {{hl|"CargoFFV"}} - FFV cargo
+      * {{GVI|arma3|2.14|size= 0.75}} {{hl|"Turret"}} - empty turrets (no FFV turrets, they are included in "CargoFFV")
+      }}
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _freeCargoAndFFVPositions = vehicle player emptyPositions "Cargo";
+- _freeCargoOnlyPositions = vehicle player emptyPositions "CargoNoFFV";

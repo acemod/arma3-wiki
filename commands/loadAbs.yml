@@ -1,0 +1,23 @@
+name: loadAbs
+description: Returns current sum of mass from items stored in all unit's containers, linked items and weapons.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: (before {{GVI|arma3|2.08|size= 0.75}} the command did not support containers, ammo boxes, weapon holders, vehicle cargos)
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  Player weight:
+  <sqf>_weight = loadAbs player;

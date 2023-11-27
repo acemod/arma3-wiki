@@ -1,0 +1,48 @@
+name: buttonAction
+description: 'Returns the action assigned to a control of the currently active user dialog. Can be used for buttons and active texts. Read [[Arma: GUI Configuration]] for more information about user dialogs and controls.'
+groups:
+- GUI Control
+syntax:
+- call: !Unary idc
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    description: button IDC
+    type: Unknown
+- call: !Unary control
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  buttonSetAction [100, { player exec "reply.sqs" }]
+  _action = buttonAction 100; // Returns { player exec "reply.sqs" }

@@ -1,0 +1,24 @@
+name: setCollisionLight
+description: Switches collision lights of a vehicle on/off.
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - vehicle
+  - set
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: set
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- heli setCollisionLight true;

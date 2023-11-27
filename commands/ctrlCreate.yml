@@ -1,0 +1,98 @@
+name: ctrlCreate
+description: |-
+  Creates a new control in the given display.<br>
+  The control class could be an existing class from the [[configFile | main config]] or a custom class defined in the [[missionConfigFile | mission config]].
+  The main config is searched first, if the class does not exist there, the mission config is searched.
+  Some of the common controls defined in the main config that can be used with this command:
+  <spoiler text="Show list">
+  {{Feature|informative|This list contains controls which are guaranteed to work with this command. However, controls not listed here should work as well - as long as they are properly defined.}}
+
+  {{{!}} class="wikitable" width="100%"
+  ! Class !! Description !! Available since
+  {{!}}-
+  {{!}} RscText {{!}}{{!}} simple text box {{!}}{{!}}
+  {{!}}-
+  {{!}} RscStructuredText {{!}}{{!}} text box which supports [[Structured Text|structured text]] {{!}}{{!}}
+  {{!}}-
+  {{!}} RscTextMulti {{!}}{{!}} simple multiline text box {{!}}{{!}}
+  {{!}}-
+  {{!}} RscPicture {{!}}{{!}} simple picture box {{!}}{{!}}
+  {{!}}-
+  {{!}} RscPictureKeepAspect {{!}}{{!}} picture box that doesn't stretch picture {{!}}{{!}}
+  {{!}}-
+  {{!}} RscEdit {{!}}{{!}} input box {{!}}{{!}}
+  {{!}}-
+  {{!}} RscEditMulti {{!}}{{!}} multiline input box {{!}}{{!}}
+  {{!}}-
+  {{!}} RscEditReadOnly {{!}}{{!}} input box with [[DialogControls-EditBox | {{hl|c= canModify {{=}} false;}}]] {{!}}{{!}} {{GVI|arma3|1.98}}
+  {{!}}-
+  {{!}} RscEditMultiReadOnly {{!}}{{!}} multiline input box with [[DialogControls-EditBox | {{hl|c= canModify {{=}} false;}}]]{{!}}{{!}} {{GVI|arma3|1.98}}
+  {{!}}-
+  {{!}} RscTree {{!}}{{!}} tree view control {{!}}{{!}}
+  {{!}}-
+  {{!}} RscTreeMulti {{!}}{{!}} multi-select tree view {{!}}{{!}} {{GVI|arma3|2.02}}
+  {{!}}-
+  {{!}} RscTreeSearch {{!}}{{!}} searchable tree view control (see Example 4) {{!}}{{!}}
+  {{!}}-
+  {{!}} RscVideo {{!}}{{!}} picture control with autostart for video texture (see [[BIS_fnc_playVideo]]) {{!}}{{!}}
+  {{!}}-
+  {{!}} RscVideoKeepAspect {{!}}{{!}} picture control for video to keep original video aspect ratio {{!}}{{!}}
+  {{!}}-
+  {{!}} RscButtonMenuBIKI {{!}}{{!}} shortcut button with url pointing to "https://community.bistudio.com/wiki/" {{!}}{{!}} {{GVI|arma3|1.98}}
+  {{!}}-
+  {{!}} RscControlsGroup {{!}}{{!}} default controls group {{!}}{{!}}
+  {{!}}-
+  {{!}} RscControlsGroupNoScrollbars {{!}}{{!}} controls group without scrollbars {{!}}{{!}}
+  {{!}}-
+  {{!}} RscControlsGroupNoHScrollbars {{!}}{{!}} controls group without horizontal scrollbar {{!}}{{!}}
+  {{!}}-
+  {{!}} RscControlsGroupNoVScrollbars {{!}}{{!}} controls group without vertical scrollbar {{!}}{{!}}
+  {{!}}}
+  </spoiler>
+  {{Feature|important|If you are creating [[CT_MAP]] control dynamically, use [[ctrlMapSetPosition]] to update control position instead of [[ctrlSetPosition]].}}
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - display
+  - - class
+    - idc
+    - controlsGroup
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: display
+    description: display in which control will be created
+    type: Unknown
+  - name: class
+    description: existing classname (see [[ctrlCreate/classnames]]) of the new control;  {{GVI|arma3|1.70|size= 0.75}} it is possible to use classes defined in mission config
+    type: Unknown
+  - name: idc
+    description: |-
+      IDC of the new control. Use -1 if not needed
+      {{Feature|warning|Be careful when setting the IDC to {{hl|-1}} if the GUI also contains a [[CT_LISTNBOX]] since {{hl|idcLeft}} and {{hl|idcRight}} by default have <syntaxhighlight lang="cpp" inline>idc = -1;</syntaxhighlight>.}}
+    type: Unknown
+  - name: controlsGroup
+    description: creates controls in existing controls group
+    type: Unknown
+    optional: true
+    default: '[[controlNull]]'
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 26
+examples:
+- _display ctrlCreate ["RscText", 1234];
+- |
+  _map = findDisplay 46 ctrlCreate ["RscMapControl", -1];
+  _multiLineText = findDisplay 46 ctrlCreate ["RscTextMulti", -1];
+  _multiLineEdit = findDisplay 46 ctrlCreate ["RscEditMulti", -1];
+- myControl = findDisplay 0 ctrlCreate ["RscText", 1234, findDisplay 0 displayCtrl 2300];
+- "Create Tree View control with search. Available {{hl|RscTreeSearch}} class is hardcoded to be used with {{hl|RscEdit}} with idc {{hl|645}}.\nExample below demonstrates how to. After tree is generated, try typing something in the top box.\n<sqf>\n0 spawn \n{\n\tdisableSerialization;\n\n\t_display = (if (is3DEN) then {findDisplay 313} else {[] call BIS_fnc_displayMission}) createDisplay \"RscDisplayEmpty\";\n\n\t_edit = _display ctrlCreate [\"RscEdit\", 645];\n\t_edit ctrlSetPosition [0,0,1,0.04];\n\t_edit ctrlSetBackgroundColor [0,0,0,1];\n\t_edit ctrlCommit 0;\n\n\t_tv = _display ctrlCreate [\"RscTreeSearch\", -1];\n\t_tv ctrlSetFont \"EtelkaMonospacePro\";\n\t_tv ctrlSetFontHeight 0.03;\n\t_tv ctrlSetPosition [0,0.06,1,0.94];\n\t_tv ctrlSetBackgroundColor [0,0,0,1];\n\t_tv ctrlCommit 0;\n\n\t_classes = \"true\" configClasses (configFile >> \"CfgVehicles\");\n\n\tfor \"_i\" from 0 to 5 do\n\t{\n\t\t_tv tvAdd [[], configName selectRandom _classes];\n\t\tfor \"_j\" from 0 to 5 do\n\t\t{\n\t\t\t_tv tvAdd [[_i], configName selectRandom _classes];\n\t\t\tfor \"_k\" from 0 to 5 do\n\t\t\t{\n\t\t\t\t_tv tvAdd [[_i, _j], configName selectRandom _classes];\n\t\t\t\tfor \"_n\" from 0 to 5 do\n\t\t\t\t{\n\t\t\t\t\t_tv tvAdd [[_i, _j, _k], configName selectRandom _classes];\n\t\t\t\t};\n\t\t\t};\n\t\t};\n\t};\n};\n"
+- "Create a simple submit edit box and show content in hint:\n<sqf>\ndisableSerialization;\nprivate _display = findDisplay 46 createDisplay \"RscDisplayEmpty\";\nprivate _ctrlGroup = _display ctrlCreate [\"RscControlsGroupNoScrollbars\", -1];\nprivate _ctrlBackground = _display ctrlCreate [\"RscTextMulti\", -1, _ctrlGroup];\nIDD_EDIT_BOX = 123;\nprivate _ctrlEdit = _display ctrlCreate [\"RscEditMulti\", IDD_EDIT_BOX, _ctrlGroup];\nprivate _ctrlButton = _display ctrlCreate [\"RscShortcutButton\", -1, _ctrlGroup];\n_ctrlGroup ctrlSetPosition [0.5, 0.5, 0, 0];\n_ctrlGroup ctrlCommit 0;\n_ctrlBackground ctrlSetPosition [0, 0, 0.5, 0.5];\n_ctrlBackground ctrlSetBackgroundColor [0.5, 0.5, 0.5, 0.9];\n_ctrlBackground ctrlSetText \"ENTER TEXT:\";\n_ctrlBackground ctrlEnable false;\n_ctrlBackground ctrlCommit 0;\n_ctrlEdit ctrlSetPosition [0.01, 0.05, 0.48, 0.34];\n_ctrlEdit ctrlSetBackgroundColor [0, 0, 0, 0.5];\n_ctrlEdit ctrlCommit 0;\n_ctrlButton ctrlSetPosition [0.185, 0.42, 0.13, 0.05];\n_ctrlButton ctrlCommit 0;\n_ctrlButton ctrlSetText \"SUBMIT\";\n_ctrlButton ctrlAddEventHandler [\"ButtonClick\", \n{\n\tparams [\"_ctrl\"];\n\t_display = ctrlParent _ctrl;\n\t_text = ctrlText (_display displayCtrl IDD_EDIT_BOX);\n\tif (_text == \"\") then { _text = \"EMPTY\" };\n\thint _text;\n\t_display closeDisplay 1;\n}];\nctrlSetFocus _ctrlEdit;\n_ctrlGroup ctrlSetPosition [0.25, 0.25, 0.5, 0.5];\n_ctrlGroup ctrlCommit 0.1;\nplaySound \"Hint3\";\n"
+- |
+  // since {{arma3}} v2.14
+  findDisplay 46 createDisplay "RscDisplayEmpty" ctrlCreate [configFile >> "RscDisplayBootcampMsgBox" >> "controls" >> "BootcampMessageBox", -1];

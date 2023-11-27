@@ -1,0 +1,21 @@
+name: getDebriefingText
+description: A getter for [[setDebriefingText]].
+groups:
+- Briefing
+syntax:
+- call: !Unary end
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: end
+    description: end type
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- private _debriefingTextDeath = getDebriefingText "endDeath";

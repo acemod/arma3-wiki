@@ -1,0 +1,27 @@
+name: tvSetSelected
+description: Sets the selection state of given treeview item in multi-select control.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Binary
+  - control
+  - - path
+    - selected
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    type: Unknown
+  - name: selected
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- _control tvSetSelected [[0], true];

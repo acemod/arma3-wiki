@@ -1,0 +1,42 @@
+name: moveInTurret
+description: |-
+  Moves the soldier into the vehicle's turret. (Immediately, without animation).
+  {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
+  {{Feature|Important|If the unit is already in a vehicle, nothing will happen. You should use [[moveOut]] to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.}}
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - unitName
+  - - vehicle
+    - turretPath
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
+  - name: vehicle
+    type: Unknown
+  - name: turretPath
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldierOne moveInTurret [_tank, [0, 0]];

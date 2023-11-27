@@ -1,0 +1,52 @@
+name: setWaypointBehaviour
+description: |-
+  Switches the unit behaviour when the waypoint becomes active.
+  <br>
+  <br>
+  Possible values are:
+  * "UNCHANGED"
+  * "CARELESS"
+  * "SAFE"
+  * "AWARE"
+  * "COMBAT"
+  * "STEALTH"
+
+  See the [[AIBehaviour]] page for details of the effect of this command on AI units.
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - waypoint
+  - mode
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: waypoint
+    type: Unknown
+  - name: mode
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Global
+server_exec: false
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '[_grp, 2] setWaypointBehaviour "AWARE";'

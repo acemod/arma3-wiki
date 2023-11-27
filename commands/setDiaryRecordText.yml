@@ -1,0 +1,42 @@
+name: setDiaryRecordText
+description: Set text of a log record.
+groups:
+- Briefing
+syntax:
+- call: !Binary
+  - unit
+  - - - subject
+      - diaryRecord
+    - - title
+      - text
+      - icon
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: subject
+    type: Unknown
+  - name: diaryRecord
+    type: Unknown
+  - name: title
+    type: Unknown
+  - name: text
+    type: Unknown
+  - name: icon
+    description: icon to show next to the title. "" to remove.
+    type: Unknown
+    optional: true
+    since:
+      arma_3:
+        major: 2
+        minor: 10
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 96
+examples:
+- player setDiaryRecordText [["diary", _diaryRec], ["Kill all enemies.", "The enemies are the bad guys. Kill them because you are the good guy."]];

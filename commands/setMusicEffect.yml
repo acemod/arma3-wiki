@@ -1,0 +1,58 @@
+name: setMusicEffect
+description: |-
+  Defines a music track played on activation. If another track is playing already, this will stop it and start the new track.
+
+  Track is a subclass name of CfgMusic. In addition, "$STOP$" (stops the current music track) or use <sqf inline>playMusic ""</sqf>.
+  When used in a trigger, the track starts on activation but does not automatically stop on deactivation.
+groups:
+- Sounds
+- Triggers
+- Waypoints
+syntax:
+- call: !Binary
+  - trigger
+  - track
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: trigger
+    type: Unknown
+  - name: track
+    type: Unknown
+- call: !Binary
+  - waypoint
+  - track
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    type: Unknown
+  - name: track
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _trigger setMusicEffect "Track1";
+- '[_group1,1] setMusicEffect "$STOP$";'

@@ -1,0 +1,26 @@
+name: disableBrakes
+description: Disables autobrake, which is engaged when vehicle is stationary and stops wheels from rotating freely when vehicle is pushed.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - transport
+  - disable
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: transport
+    description: PhysX car or tank
+    type: Unknown
+  - name: disable
+    description: '[[true]] to disable autobrake. The autobrake is re-enabled if the driver uses brakes'
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- myCar disableBrakes true;

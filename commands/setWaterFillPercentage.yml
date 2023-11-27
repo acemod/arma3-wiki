@@ -1,0 +1,26 @@
+name: setWaterFillPercentage
+description: Set an object's water filling.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - obj
+  - level
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    description: object to manipulate
+    type: Unknown
+  - name: level
+    description: water level in range 0..1 (empty to full)
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- "if (getWaterLeakiness _myCar > 0 && surfaceIsWater getPosASL _myCar) then\n{\n\t_myCar setWaterFillPercentage 1;\n\thint \"I told you not to go in the water!\";\n};\n"

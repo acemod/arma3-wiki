@@ -1,0 +1,38 @@
+name: hideObjectGlobal
+description: This command is designed for MP. Hides object on all connected clients as well as JIP. Can be used on static objects. In singleplayer this command behaves just like [[hideObject]].
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    description: object to hide
+    type: Unknown
+- call: !Binary
+  - object
+  - hidden
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: hidden
+    description: '[[true]] &rarr; hidden; [[false]] &rarr; visible'
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 12
+examples:
+- |-
+  hideObjectGlobal myObject; // hides myObject
+  hideObjectGlobal nearestBuilding [2500, 2500, 0];
+- "myObject hideObjectGlobal true;\t// hides myObject\nmyObject hideObjectGlobal false;\t// shows myObject"
+- '[myObject, true] remoteExec ["hideObjectGlobal", 2]; // remote-executes hideObjectGlobal from a client to the server'

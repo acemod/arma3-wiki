@@ -1,0 +1,27 @@
+name: remoteExecutedOwner
+description: |-
+  Returns the [[Multiplayer_Scripting#Machine_network_ID | machine network ID]] of the client that initiated [[Remote Execution]].
+  {{Feature|important|
+  Running this command
+  * in a Single Player environment
+  * outside of a remote-executed context
+  * in a remote-executed context received from a [[Arma 3: Headless Client|Headless Client]]
+  will return '''0''' by design. To check if the context is remote executed, use [[isRemoteExecuted]] or [[isRemoteExecutedJIP]].
+  }}
+groups:
+- Multiplayer
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - returns zero in the specific cases listed in the {{Link|#Description}}
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- private _callerRE = remoteExecutedOwner;
+- "Send request to the server and get immediate response:\n<sqf>\n{\n\t// in this scope, the remoteExecutedOwner equals clientOwner of the sender\n\t// so using it as target in remoteExec will send response right back at him\n\t[\n\t\ttime, // mission time value on the server\n\t\t{\n\t\t\thint format\n\t\t\t[\n\t\t\t\t\"Request recieved!\\nMission time value on the server is: %1\",\n\t\t\t\t_this\n\t\t\t];\n\t\t}\n\t]\n\tremoteExec [\"call\", remoteExecutedOwner]; // server response to the sender\n} \nremoteExec [\"call\", 2]; // send request to server\n"

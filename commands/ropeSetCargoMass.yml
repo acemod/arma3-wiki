@@ -1,0 +1,32 @@
+name: ropeSetCargoMass
+description: |-
+  Set the simulated mass of an object attached to a rope.
+  {{Feature|arma3|This command is not present in {{arma3}}. Use [[setMass]] instead.}}
+groups:
+- Ropes and Sling Loading
+syntax:
+- call: !Unary
+  - rope
+  - cargo
+  - mass
+  ret:
+  - Unknown
+  - object mass
+  params:
+  - name: rope
+    description: rope object
+    type: Unknown
+  - name: cargo
+    description: cargo object
+    type: Unknown
+  - name: mass
+    description: override cargo mass, if mass < 1 then original mass is used
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+examples:
+- ropeSetCargoMass [myRope, myCargo, 1138];

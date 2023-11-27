@@ -1,0 +1,23 @@
+name: removeAllMusicEventHandlers
+description: Removes all music track event handlers of given type.
+groups:
+- Event Handlers
+- Sounds
+syntax:
+- call: !Unary type
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: type
+    description: '"MusicStart" or "MusicStop"'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- removeAllMusicEventHandlers "MusicStart";
+- removeAllMusicEventHandlers "MusicStop";

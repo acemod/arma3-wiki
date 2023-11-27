@@ -1,0 +1,27 @@
+name: linkItem
+description: Create and assign item to the correct slot. If there is an item in the targeted slot, it gets replaced. See also [[assignItem]].
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - unit
+  - item
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: item
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  bluforUnit linkItem "NVGoggles";
+  opforUnit linkItem "NVGoggles_OPFOR";
+  independentUnit linkItem "NVGoggles_INDEP";

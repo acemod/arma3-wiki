@@ -1,0 +1,45 @@
+name: moveInGunner
+description: |-
+  Move soldier into vehicle gunner position (Immediate, no animation).
+  {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
+  {{Feature|Important|If the unit is already in a vehicle, nothing will happen. You should use [[moveOut]] to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.}}
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - unitName
+  - vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
+  - name: vehicle
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- soldierOne moveInGunner tankOne;

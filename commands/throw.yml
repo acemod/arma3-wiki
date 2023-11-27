@@ -1,0 +1,54 @@
+name: throw
+description: |-
+  Throws an exception. The exception is processed by first [[catch]] block. This command will terminate further execution of the code.
+
+  {{Feature | important | Avoid using alternative shorthand syntax if you are planning on preparing your exception information dynamically, as it will have to be generated first regardless of the condition of the [[if]] statement before it, as shown in {{Link|#Example 3}}.}}
+groups:
+- Program Flow
+syntax:
+- call: !Unary expression
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: expression
+    type: Unknown
+- call: !Binary
+  - if (condition)
+  - exception
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: if (condition)
+    description: if (condition) returns [[true]], "exception" is thrown
+    type: Unknown
+  - name: exception
+    description: value that will be put into ''_exception'' variable inside [[catch]] block
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 54
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- try {throw "invalid argument"} catch {hint str _exception};
+- 123 try { if (_this != 123) throw "invalid argument" } catch { hint str _exception };
+- "The correct usage of shorthand alt syntax:\n<sqf>\ntry {\n\tif (a > b) throw \"Error: some error\"; // OK\n\t// the command argument is static\n} catch {\n\thint str _exception;\n};\n\ntry {\n\t_someFunc = {\n\t\t// ...\n\t};\n\tif (a > b) throw (call _someFunc); // NOT OK\n\t// The command argument is dynamic\n\t// _someFunc is called first to get the value regardless of (a > b) outcome\n} catch {\n\thint str _exception;\n};\n\ntry {\n\t_someFunc = {\n\t\t// ...\n\t};\n\tif (a > b) then {throw (call _someFunc)}; /// OK\n\t// the command argument is dynamic\n\t// _someFunc is only called when (a > b) is true\n} catch {\n\thint str _exception;\n};\n"

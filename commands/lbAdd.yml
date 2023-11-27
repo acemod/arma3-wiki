@@ -1,0 +1,59 @@
+name: lbAdd
+description: |-
+  Adds an item with the given text to the [[CT_LISTBOX]] or [[CT_COMBO]] or [[CT_TOOLBOX]].
+
+  {{Feature|Informative| If using {{hl|RscToolBox}} as template with [[ctrlCreate]], clear it first with [[lbClear]]}}
+groups:
+- GUI Control - ListBox
+syntax:
+- call: !Unary
+  - idc
+  - text
+  ret:
+  - Unknown
+  - index (row) of newly added item
+  params:
+  - name: idc
+    description: control IDC
+    type: Unknown
+  - name: text
+    description: visible text
+    type: Unknown
+- call: !Binary
+  - control
+  - text
+  ret:
+  - Unknown
+  - index (row) of newly added item
+  params:
+  - name: control
+    type: Unknown
+  - name: text
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _index = lbAdd [101, "First item"];
+- _index = _control lbAdd "First item";

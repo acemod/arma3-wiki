@@ -1,0 +1,23 @@
+name: freeExtension
+description: |-
+  Unloads given extension loaded previously with [[callExtension]] so that extension developer could rapidly tweak developed extension without restarting the game.
+  {{Feature|important|This command was introduced in {{arma3}} dev v2.11.149751 and is only effective in DevBranch; it does nothing in stable branch.}}
+groups:
+- System
+syntax:
+- call: !Unary extension
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: extension
+    description: extension name (see [[callExtension]])
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- freeExtension "myExt";

@@ -1,0 +1,58 @@
+name: drawRectangle
+description: Draws a rectangle on the map.<br> [[File:drawRectangle.jpg|250px]]
+groups:
+- GUI Control - Map
+syntax:
+- call: !Binary
+  - map
+  - - centre
+    - halfWidth
+    - halfHeight
+    - angle
+    - color
+    - fill
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: map
+    type: Unknown
+  - name: centre
+    description: rectangle's centre
+    type: Unknown
+  - name: halfWidth
+    description: 1/2 width of rectangle in meters
+    type: Unknown
+  - name: halfHeight
+    description: 1/2 height of rectangle in meters
+    type: Unknown
+  - name: angle
+    description: angle of rotation in degrees
+    type: Unknown
+  - name: color
+    description: line color
+    type: Unknown
+  - name: fill
+    description: fill texture file or [[Procedural Textures]]. Note that the file texture will not rotate with rectangle, use [[drawIcon]] for that. If fill texture is not empty, set line color to white <sqf inline>[1,1,1,1]</sqf>
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "_ctrl drawRectangle [\n\tgetPos player,\n\t20,\n\t20,\n\tgetDir player,\n\t[0,0,1,1],\n\t\"\"\n];\n"
+- "_ctrl drawRectangle [\n\tplayer,\n\t10,\n\t20,\n\tgetDir player,\n\t[1,1,1,1],\n\t\"#(rgb,8,8,3)color(1,0,0,1)\"\n];\n"

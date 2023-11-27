@@ -1,0 +1,27 @@
+name: connectTerminalToUAV
+description: |-
+  Connect person with UAV terminal to UAV unit. UAV Terminal item needs to be assigned to GPS slot.
+  If UAV is already connected to another terminal, this new connection will fail.
+groups:
+- Remote Control
+syntax:
+- call: !Binary
+  - person
+  - uav
+  ret:
+  - Unknown
+  - '[[true]] on success'
+  params:
+  - name: person
+    type: Unknown
+  - name: uav
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 76
+examples:
+- bool = player connectTerminalToUAV uav1;
+- player connectTerminalToUAV objNull; //disconnect

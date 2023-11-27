@@ -1,0 +1,43 @@
+name: setPylonLoadout
+description: Adds/overrides loadout to a vehicle pylon. {{hl|TransportPylonsComponent}} in vehicle config and {{hl|pylonWeapon}} in the magazine config are required to run.
+groups:
+- Vehicle Loadouts
+syntax:
+- call: !Binary
+  - vehicle
+  - - pylon
+    - magazine
+    - forced
+    - turret
+  ret:
+  - Unknown
+  - '[[true]] on success'
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: pylon
+    description: pylon index (index starts from 1) or pylon name (see [[getCompatiblePylonMagazines]] Example 4)
+    type: Unknown
+  - name: magazine
+    description: magazine name
+    type: Unknown
+  - name: forced
+    description: '[[true]] to force incompatible magazine'
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+  - name: turret
+    description: turret path
+    type: Unknown
+    optional: true
+    default: <sqf inline>[]</sqf>
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- vehicle player setPylonLoadout ["pylon1", ""];
+- "Make all of your pylon weapons Twin Cannon 30 mm:\n<sqf>\nfor \"_i\" from 1 to 100 do {\n\tvehicle player setPylonLoadout [_i, \"PylonWeapon_300Rnd_20mm_shells\", true];\n};\n"
+- "Showcase all possible magazines:\n<sqf>\n[] spawn {\n\t{\n\t\tfor \"_i\" from 1 to 100 do {\n\t\t\tvehicle player setPylonLoadout [_i, configName _x, true];\n\t\t};\n\t\thint configName _x;\n\t\tsleep 1.5;\n\t} forEach (\"getText (_x >> 'pylonWeapon') != ''\" configClasses (configFile >> \"CfgMagazines\"));\n};\n"

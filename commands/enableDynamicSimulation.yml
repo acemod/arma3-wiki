@@ -1,0 +1,24 @@
+name: enableDynamicSimulation
+description: 'Enables or disables [[Arma 3: Dynamic Simulation]] for given non AI object.'
+groups:
+- Dynamic Simulation
+syntax:
+- call: !Binary
+  - object
+  - enable
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: enable
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 68
+examples:
+- _myObject enableDynamicSimulation true;

@@ -1,0 +1,25 @@
+name: isVehicleSensorEnabled
+description: Returns class name (to identify list based on component name) and info if given sensor is enabled.
+groups:
+- Sensors
+syntax:
+- call: !Binary
+  - vehicle
+  - componentName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: componentName
+    description: the component's name (can either be it is "real name" or it is className)
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 72
+examples:
+- vehicle player isVehicleSensorEnabled "PassiveRadarSensorComponent"; // [["PassiveRadarSensorComponent", true]]

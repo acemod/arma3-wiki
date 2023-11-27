@@ -1,0 +1,25 @@
+name: ctrlAnimationPhaseModel
+description: Returns current animation phase of given source. Similar to [[animationSourcePhase]].
+groups:
+- GUI Control - Object
+syntax:
+- call: !Binary
+  - control
+  - source
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    description: 3D control
+    type: Unknown
+  - name: source
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 84
+examples:
+- private _phase = _control3D ctrlAnimationPhaseModel "Close";

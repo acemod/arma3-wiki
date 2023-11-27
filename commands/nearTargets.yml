@@ -1,0 +1,36 @@
+name: nearTargets
+description: Returns a list of targets within the defined range. "Targets" are not restricted to enemy units.
+groups:
+- Object Detection
+syntax:
+- call: !Binary
+  - unit
+  - range
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: range
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 7
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "player nearTargets 100;\n// can return e.g\n/*\n\t[\n\t\t[[2555.33,2535.33,1.32708],\"SoldierEB\",EAST,214222,EAST 1-1-A:1],\n\t\t[[2550.39,2482.5,1.32696],\"SoldierWB\",WEST,0,WEST 1-1-A:2]\n\t]\n*/\n"

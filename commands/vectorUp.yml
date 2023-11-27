@@ -1,0 +1,36 @@
+name: vectorUp
+description: |-
+  [[File:arma3_object-vectors.jpg|thumb|right|An object with its [[vectorDir]], [[vectorUp]] and [[vectorSide]] (vectors not to scale)]]
+  Returns an object's up vector in world space.
+
+  {{Feature|important|The vector is '''not necessarily [[vectorNormalized|normalized]]'''. The [[vectorMagnitude|magnitude]] of the vector depends on the [[getObjectScale|object's scale]].}}
+groups:
+- Math - Vectors
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _vecUp = vectorUp MyObject;

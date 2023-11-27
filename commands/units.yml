@@ -1,0 +1,42 @@
+name: units
+description: Returns an array with all the units in the group or unit's group, or all units belonging to a certain side.
+groups:
+- Groups
+- Object Detection
+syntax:
+- call: !Unary type
+  ret:
+  - Unknown
+  - if ''type'' is a destroyed object, an empty array is returned
+  params:
+  - name: type
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _myUnitCount = count units player;
+- _isInMyGroup = _soldier1 in units player;
+- private _unitsEast = units opfor;
+- "// both methods are the same, the latter is preferred for performance reason\nunits group player;\t\t// [B Alpha 1-1:1 (R3vo), B Alpha 1-1:2, B Alpha 1-1:3, B Alpha 1-1:4, B Alpha 1-1:5, B Alpha 1-1:6, B Alpha 1-1:7, B Alpha 1-1:8]\nunits player;\t\t\t// [B Alpha 1-1:1 (R3vo), B Alpha 1-1:2, B Alpha 1-1:3, B Alpha 1-1:4, B Alpha 1-1:5, B Alpha 1-1:6, B Alpha 1-1:7, B Alpha 1-1:8]\n"

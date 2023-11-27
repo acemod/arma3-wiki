@@ -1,0 +1,42 @@
+name: setCenterOfMass
+description: Changes the center of mass of an object smoothly during the given time (in seconds). A time of zero (or using the alternative syntax) means an immediate change.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - myObject
+  - - centerOfMass
+    - time
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: myObject
+    type: Unknown
+  - name: centerOfMass
+    description: '[x,y,z] offset relative to the model centre'
+    type: Unknown
+  - name: time
+    description: transition time, 0 for instant center of mass transfer
+    type: Unknown
+- call: !Binary
+  - myObject
+  - centerOfMass
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: myObject
+    type: Unknown
+  - name: centerOfMass
+    description: '[x,y,z] offset relative to the model centre'
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 2
+examples:
+- myObject setCenterOfMass [[0,-1,0], 0.5];
+- myObject setCenterOfMass [0,-1,0];

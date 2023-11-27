@@ -1,0 +1,25 @@
+name: setWaypointLoiterType
+description: Sets the waypoint loiter type.
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - waypoint
+  - type
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: waypoint
+    type: Unknown
+  - name: type
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- '[_grp, 2] setWaypointLoiterType "CIRCLE";'
+- '[_grp, 2] setWaypointLoiterType "CIRCLE_L";'

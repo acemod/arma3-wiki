@@ -1,0 +1,20 @@
+name: listVehicleSensors
+description: Returns an array of the sensors in the given vehicle's config (configFile >> "CfgVehicles" >> ''vehicle'' >> "Components" >> "SensorsManagerComponent" >> "Components").
+groups:
+- Sensors
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 72
+examples:
+- "private _sensors = listVehicleSensors _v44blackfish;\nhint str _sensors;\n/*\n\te.g for a V44 Blackfish:\n\t[\n\t\t[\"IRSensorComponent\", \"IRSensorComponent\"],\n\t\t[\"VisualSensorComponent\", \"VisualSensorComponent\"],\n\t\t[\"ActiveRadarSensorComponent\", \"ActiveRadarSensorComponent\"],\n\t\t[\"PassiveRadarSensorComponent\", \"PassiveRadarSensorComponent\"],\n\t\t[\"LaserSensorComponent\", \"LaserSensorComponent\"],\n\t\t[\"NVSensorComponent\", \"NVSensorComponent\"]\n\t]\n*/\n"

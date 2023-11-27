@@ -1,0 +1,45 @@
+name: namedProperties
+description: Returns a list of named properties on Geometry LOD.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+- call: !Binary
+  - object
+  - - LOD
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: LOD
+    description: |-
+      can be one of:
+      * {{hl|"Memory"}}
+      * {{hl|"Geometry"}}
+      * {{hl|"FireGeometry"}}
+      * {{hl|"LandContact"}}
+      * {{hl|"HitPoints"}}
+      * {{hl|"ViewGeometry"}}
+      When [[Number]] is used, command searches for a LOD with the similar [[LOD resolutions|LOD resolution]]
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 14
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 0
+examples:
+- private _properties = namedProperties _object; // [["sbsource","shadowvolume"],["prefershadowvolume","1"],["reversed","1"],["buoyancy","1"]]
+- private _namedProperties = cursorObject namedProperties ["FireGeometry"];

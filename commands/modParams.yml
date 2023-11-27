@@ -1,0 +1,26 @@
+name: modParams
+description: Returns list of mod parameters according to given options, values are in same order as the given options.
+groups:
+- Mods and Addons
+syntax:
+- call: !Unary
+  - modClass
+  - options
+  ret:
+  - Unknown
+  - retrieved requested data on success or empty array {{hl|[]}}
+  params:
+  - name: modClass
+    description: mod classname
+    type: Unknown
+  - name: options
+    description: "can be: <spoiler>\n{{{!}} class=\"wikitable\"\n! Option\n! [[:Category:Data Types|Data Type]]\n! Description\n{{!}}-\n{{!}} {{hl|\"name\"}}\n{{!}} [[String]]\n{{!}} Name to be shown (Arma 3 instead of A3, etc.)\n{{!}}-\n{{!}} {{hl|\"picture\"}}\n{{!}} [[String]]\n{{!}} Picture shown in Mod Launcher\n{{!}}-\n{{!}} {{hl|\"logo\"}}\n{{!}} [[String]]\n{{!}} Logo to be shown in Main Menu\n{{!}}-\n{{!}} {{hl|\"logoOver\"}}\n{{!}} [[String]]\n{{!}} Logo to be shown in Main Menu when mouse is over\n{{!}}-\n{{!}} {{hl|\"logoSmall\"}}\n{{!}} [[String]]\n{{!}} Small version of logo, prepared for drawing small icons\n{{!}}-\n{{!}} {{hl|\"tooltip\"}}\n{{!}} [[String]]\n{{!}} Tooltip to be shown on mouse over \n{{!}}-\n{{!}} {{hl|\"tooltipOwned\"}}\n{{!}} [[String]]\n{{!}} Tooltip to be shown on mouse over the icon when DLC is owned by player\n{{!}}-\n{{!}} {{hl|\"action\"}}\n{{!}} [[String]]\n{{!}} URL to be triggered when mod button is clicked\n{{!}}-\n{{!}} {{hl|\"actionName\"}}\n{{!}} [[String]]\n{{!}} What to put on Action Button\n{{!}}-\n{{!}} {{hl|\"overview\"}}\n{{!}} [[String]]\n{{!}} Overview text visible in expansion menu\n{{!}}-\n{{!}} {{hl|\"hidePicture\"}}\n{{!}} [[Boolean]]\n{{!}} Do not show mod picture icon in the main menu mod list\n{{!}}-\n{{!}} {{hl|\"hideName\"}}\n{{!}} [[Boolean]]\n{{!}} Do not show mod name in the main menu mod list\n{{!}}-\n{{!}} {{hl|\"defaultMod\"}}\n{{!}} [[Boolean]]\n{{!}} Default mods cannot be moved or disabled by Mod Launcher\n{{!}}-\n{{!}} {{hl|\"serverOnly\"}}\n{{!}} [[Boolean]]\n{{!}} Mod does not have to be installed on client in order to play on server with this mod running\n{{!}}-\n{{!}} {{hl|\"active\"}}\n{{!}} [[Boolean]]\n{{!}} Active mod (activated through command line or stored in profile by mod launcher)\n{{Feature|important|Note that {{hl|\"active\"}} does not actually tell if a mod is actually running.}}\n{{!}}}\n</spoiler>"
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- _data = modParams ["Kart", ["name", "logo", "picture"]];

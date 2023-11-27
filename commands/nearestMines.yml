@@ -1,0 +1,49 @@
+name: nearestMines
+description: |-
+  Returns a list of nearest mines of the given types to the given position or object, within the specified distance.
+  If more than one mine are found they will be ordered by proximity by default, the closest one will be first in the array. The sorting can be turned off.
+groups:
+- Object Detection
+syntax:
+- call: !Unary
+  - position
+  - types
+  - radius
+  - sort
+  - 2Dmode
+  ret:
+  - Unknown
+  - found mines as array of [[Object]]s
+  params:
+  - name: position
+    description: search position centre
+    type: Unknown
+  - name: types
+    description: list of class name of the objects to search for (uses [[isKindOf]] comparison instead of direct class name == comparison). Use an empty array <sqf inline>[]</sqf> to search for all classes
+    type: Unknown
+  - name: radius
+    description: search range
+    type: Unknown
+  - name: sort
+    description: '[[true]] to sort the results closest first, [[false]] to turn off sorting'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+  - name: 2Dmode
+    description: '[[true]] for 2D distance, [[false]] for 3D distance comparison'
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- nearestMines [player, ["MineBase"], 20];
+- nearestMines [position player, ["DirectionalBombBase"], 500, true];
+- nearestMines [[2716,2949,0], ["APERSTripMine_Wire_Ammo", "APERSMine_Range_Ammo"], 100, false, true];
+- |-
+  Return every mine in 50 metres radius around player sorted by distance:
+  <sqf>nearestMines [player, [], 50];

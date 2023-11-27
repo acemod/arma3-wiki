@@ -1,0 +1,154 @@
+name: createUnit
+description: |-
+  Create a unit of the provided [[:Category:CfgVehicles|CfgVehicles]] class.
+
+  {{Feature|warning|The unit will not be created if the passed group does not exist (a.k.a [[grpNull]]); this can happen if [[createGroup]] fails because the '''group limit has been reached''' (see [[createGroup]] for respective game limits).}}
+
+  {{{!}} class="wikitable" style="width: 100%"
+  !
+  ! style="width: 50%" {{!}} {{Link|#Syntax 1}}
+  ! style="width: 50%" {{!}} {{Link|#Syntax 2}}
+  {{!}}-
+  ! Group's&nbsp;locality
+  {{!}} the provided group ''can'' be non-[[Multiplayer Scripting#Locality|local]], but a warning will be logged
+  {{!}} the provided group '''must''' be [[Multiplayer Scripting#Locality|local]]
+  {{!}}-
+  ! Unit's [[side]]
+  {{!}} using a classname from a different side than the provided group will result in the unit itself being of a (config-defined) side inside a group of another side - see {{Link|#Example 6}} for more information
+  {{!}} using a classname from a different side than the provided group will result in the unit being of the same side as the provided group
+  {{!}}-
+  ! Other
+  {{!}} the unit's init code will execute after a slight delay if the provided group is not local
+  {{!}} this syntax does '''not''' return a reference to the created unit (see {{Link|#Example 7}})
+  {{!}}}
+
+  {{Feature | arma1 | {{GVI|ofp|1.34}} {{GVI|arma1|1.00}} This command could be bugged in {{ofp}} or {{arma1}}; an additional [[join]] may solve the problem.<br>
+  However, some commands such as [[setUnitPos]] only work if run before the [[join]].}}
+multiplayer_note: It is recommended to create the unit where the group is '''[[Multiplayer Scripting#Locality|local]]''' - use [[remoteExec]] if needed.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - group
+  - - type
+    - position
+    - markers
+    - placement
+    - special
+  ret:
+  - Unknown
+  - the created unit
+  params:
+  - name: group
+    description: existing group new unit will join; if the group is not [[local]], a warning will be logged
+    type: Unknown
+  - name: type
+    description: classname of unit to be created as per [[CfgVehicles]]
+    type: Unknown
+  - name: position
+    description: location where to create the unit. In case of [[Group]], the [[group]] [[leader]]'s position is used
+    type: Unknown
+  - name: markers
+    description: placement markers
+    type: Unknown
+  - name: placement
+    description: placement radius
+    type: Unknown
+  - name: special
+    description: |-
+      unit placement special, one of:
+      * {{hl|"NONE"}} - The unit will be created at the first available free position nearest to given position
+      <!-- * {{hl|"FORM"}} - Not implemented, currently functions the same as "NONE" -->
+      * {{hl|"CAN_COLLIDE"}} - The unit will be created exactly at passed position
+      * {{hl|"CARGO"}} - The unit will be created in cargo of the group's vehicle, regardless of the passed position (see {{Link|#Example 5}}). If group has no vehicle or there is no cargo space available, the unit will be placed according to {{hl|"NONE"}}. {{hl|"CARGO"}} placement excludes cargo positions with personal FFV turrets. To check available cargo space use:
+      {{{!}} style="width: 100%"
+      {{!}} rowspan="2" style="width: 2em" {{!}}
+      ! {{GVI|arma3|1.34}} FFV
+      {{!}} <sqf>private _hasCargo = { isNull (_x select 0) } count (fullCrew [_veh, "cargo", true]) > 0;</sqf>
+      {{!}}-
+      ! before
+      {{!}} <sqf>_hasCargo = _veh emptyPositions "CARGO" > 0;</sqf>
+      {{!}}}
+    type: Unknown
+- call: !Binary
+  - type
+  - - position
+    - group
+    - init
+    - skill
+    - rank
+  ret:
+  - Unknown
+  - this syntax does '''not''' return a unit reference! See {{Link|#Example 7}} for a workaround.}}
+  params:
+  - name: type
+    description: classname of unit to be created as per [[CfgVehicles]]
+    type: Unknown
+  - name: position
+    description: location at which the unit is created. In case of [[Group]] position of the [[group]] [[leader]] is used
+    type: Unknown
+  - name: group
+    description: existing group the new unit will join
+    type: Unknown
+  - name: init
+    description: unit init statement, similar to unit init field in the editor. The code placed in unit init will run upon unit creation for every client on network, present and future. The code itself receives the reference to the created unit via local variable [[Magic Variables#this_2|this]]. Do not use global commands in a unit's ''init'' as it runs on every client.
+    type: Unknown
+    optional: true
+    default: '""'
+  - name: skill
+    description: unit [[skill]]
+    type: Unknown
+    optional: true
+    default: '0.5'
+  - name: rank
+    description: unit [[rank]]
+    type: Unknown
+    optional: true
+    default: '"PRIVATE"'
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 34
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _unit = group player createUnit ["B_RangeMaster_F", position player, [], 0, "FORM"];
+- '"B_RangeMaster_F" createUnit [position player, group player];'
+- '"B_RangeMaster_F" createUnit [getMarkerPos "barracks", _groupAlpha];'
+- "\"B_RangeMaster_F\" createUnit [\n\tgetMarkerPos \"marker_1\",\n\t_groupAlpha,\n\t\"loon1 = this; this addWeapon 'BAF_L85A2_RIS_SUSAT'\",\n\t0.6,\n\t\"corporal\"\n];\n"
+- |
+  <!-- referenced in parameters (p6) -->
+  <sqf>
+  _veh = "O_Quadbike_01_F" createVehicle (player getRelPos [10, 0]);
+  _grp = createVehicleCrew _veh;
+  _unit = _grp createUnit [typeOf driver _veh, _grp, [], 0, "CARGO"];
+- |
+  <!-- referenced in the description -->Creating a unit from a different side may lead to issues:
+  <sqf>
+  _grp = createGroup east;
+  hint str side _grp; // EAST
+  _ap = _grp createUnit ["C_man_p_beggar_F", position player, [], 0, "FORM"];
+  hint str side _ap; // CIV, not EAST
+
+  // workaround
+  [_ap] joinSilent _grp;
+  hint str side _ap; // EAST
+- "<!-- referenced in alternative result (r2) -->\nReference the created unit through a global variable:\n<sqf>\n_myUnit = \"B_RangeMaster_F\" createUnit [position player, group player];\t\t// wrong - this syntax does not return a reference\n\n\"B_RangeMaster_F\" createUnit [position player, group player, \"myUnit = this\"];\t// correct - the unit is myUnit\n"

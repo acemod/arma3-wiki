@@ -1,0 +1,30 @@
+name: setThrottleRTD
+description: "Set the throttle for the given engine(s) of a helicopter. \n* engine index 0: engine #1\n* engine index 1: engine #2\n* engine index 2: engine #3\n* engine index -1: all engines\n\n* throttle 0: fully closed\n* throttle ~0.15: average flight idle\n* throttle 1: full"
+groups:
+- RTD
+syntax:
+- call: !Binary
+  - helicopterRTD
+  - - value
+    - engineIndex
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: helicopterRTD
+    description: helicopter
+    type: Unknown
+  - name: value
+    description: throttle level
+    type: Unknown
+  - name: engineIndex
+    description: engine index
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+examples:
+- vehicle player setThrottleRTD [0.5, 1];

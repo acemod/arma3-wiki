@@ -1,0 +1,35 @@
+name: getCompatiblePylonMagazines
+description: Get array of compatible pylon magazines
+groups:
+- Vehicle Loadouts
+syntax:
+- call: !Binary
+  - vehicle
+  - pylon
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: aircraft object or config class
+    type: Unknown
+  - name: pylon
+    description: "pylon class name from {{hl|TransportPylonsComponent &gt;&gt; pylons}} class \n* If [[Number]] - pylon ID\n* If an invalid pylon ID or class name is provided, such as 0 or \"\", all compatible magazines from all pylons are returned."
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 72
+examples:
+- |
+  // returns array of arrays containing all compatible magazines
+  vehicle player getCompatiblePylonMagazines 0;
+- |
+  // returns array of compatible magazines for the 3rd pylon if it exists; otherwise returns array of arrays (see above)
+  jet1 getCompatiblePylonMagazines 3;
+- |
+  // returns array of compatible magazines for "pylon1" class, defined in
+  // configFile >> "CfgVehicles" >> "B_Plane_CAS_01_dynamicLoadout_F" >> "Components" >> "TransportPylonsComponent" >> "Pylons"
+  "B_Plane_CAS_01_dynamicLoadout_F" getCompatiblePylonMagazines "pylon1";

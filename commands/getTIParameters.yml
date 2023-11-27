@@ -1,0 +1,33 @@
+name: getTIParameters
+description: |-
+  Returns all Thermal Imaging parameters.
+  {{{!}} class="wikitable align-center-col-2"
+  ! Parameter
+  ! Default Value
+  ! Description
+  {{!}}-
+  {{!}} {{hl|OutputRangeStart}}
+  {{!}} 0.1
+  {{!}} Thermal output minimal value
+  {{!}}-
+  {{!}} {{hl|OutputRangeWidth}}
+  {{!}} 0.8
+  {{!}} Thermal output width
+  {{!}}}
+  {{Feature|informative|The output formula is as follows: {{hl|OutputRangeStart + ''thermalValue'' &times; OutputRangeWidth}}, making the default range 0.1..0.9.}}
+groups:
+- Environment
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- if (getTIParameters get "OutputRangeStart" == 0.1) then { hint "default Start" };

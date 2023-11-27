@@ -1,0 +1,20 @@
+name: removeAllSecondaryWeaponItems
+description: Removes all items from [[secondaryWeapon]], except magazine.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- removeAllSecondaryWeaponItems player;

@@ -1,0 +1,21 @@
+name: goggles
+description: Returns name of currently used goggles (for NVGoggles use [[hmd]]).
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _goggles = goggles assaultDiver; //G_Diving
+- _goggles = goggles reconTeamLeader; //G_Shades_Black

@@ -1,0 +1,27 @@
+name: enablePersonTurret
+description: Enables or disables firing from a vehicle cargo position. To get the turret path use [[assignedVehicleRole]] or [[getCargoIndex]] command.
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - - turretPath
+    - enable
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: turretPath
+    type: Unknown
+  - name: enable
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- heli enablePersonTurret [[1], true];

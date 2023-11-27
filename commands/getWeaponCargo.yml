@@ -1,0 +1,29 @@
+name: getWeaponCargo
+description: Returns all weapons types and count from the cargo space
+groups:
+- Vehicle Inventory
+- Containers
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    description: object to check
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 54
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _content = getWeaponCargo carName;
+- _content = getWeaponCargo ammoBoxName;

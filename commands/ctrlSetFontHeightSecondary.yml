@@ -1,0 +1,24 @@
+name: ctrlSetFontHeightSecondary
+description: Sets the font size of the secondary text of given control.
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - ctrl
+  - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    type: Unknown
+  - name: value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- _control [[ctrlSetFontHeightSecondary]] 0.05;

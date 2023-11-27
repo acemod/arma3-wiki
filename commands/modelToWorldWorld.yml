@@ -1,0 +1,29 @@
+name: modelToWorldWorld
+description: |-
+  Converts position from object model space to world space in [[Position#PositionASL|PositionASL]] format from the object's centre position.
+  {{Feature|important|
+  For [[setObjectScale|scaled objects]], the relative position will first be [[vectorMultiply|multiplied]] by the object scale.<br>
+  For example, if the object scale is 2, <sqf inline>_obj modelToWorldWorld [0,1,0]</sqf> will be offset '''2 meters''' from the model center (<sqf inline>[0,0,0]</sqf>).
+  }}
+groups:
+- Positions
+syntax:
+- call: !Binary
+  - obj
+  - modelPos
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    type: Unknown
+  - name: modelPos
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- private _playersFrontWorld = player modelToWorldWorld [0,1,0];

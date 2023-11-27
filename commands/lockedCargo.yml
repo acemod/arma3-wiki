@@ -1,0 +1,33 @@
+name: lockedCargo
+description: Check whether cargo position of the vehicle is locked.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - vehicle
+  - cargoIndex
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: cargoIndex
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _result = vehicleName lockedCargo 0;

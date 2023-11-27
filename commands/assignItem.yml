@@ -1,0 +1,30 @@
+name: assignItem
+description: Assigns existing item from inventory (uniform, vest, backpack) to a correct slot. If the slot is occupied by another item, it gets replaced. See also [[linkItem]].
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - unit
+  - item
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: item
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  bluforUnit addItem "NVGoggles";
+  bluforUnit assignItem "NVGoggles";
+  opforUnit addItem "NVGoggles_OPFOR";
+  opforUnit assignItem "NVGoggles_OPFOR";
+  independentUnit addItem "NVGoggles_INDEP";
+  independentUnit assignItem "NVGoggles_INDEP";

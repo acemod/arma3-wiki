@@ -1,0 +1,24 @@
+name: setAutonomous
+description: Sets UAV autonomous mode.
+groups:
+- Remote Control
+syntax:
+- call: !Binary
+  - uav
+  - bool
+  ret:
+  - Unknown
+  - whether the operation was successful. Returns [[false]] when the object is not a uav.
+  params:
+  - name: uav
+    type: Unknown
+  - name: bool
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- uav setAutonomous true;

@@ -1,0 +1,20 @@
+name: waypointName
+description: Gets the waypoint name.
+groups:
+- Waypoints
+syntax:
+- call: !Unary waypoint
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: waypoint
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _wpName = waypointName [_grp, 2];

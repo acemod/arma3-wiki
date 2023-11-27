@@ -1,0 +1,48 @@
+name: displayCtrl
+description: Return child control with specified idc.
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - display
+  - idc
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: display
+    type: Unknown
+  - name: idc
+    type: Unknown
+- call: !Unary idc
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 6
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _displayControl = _ParentDisplay displayCtrl 101;
+- _dialogControl = displayCtrl 101;

@@ -1,0 +1,38 @@
+name: ctrlSetAutoScrollRewind
+description: |-
+  Defines if scroll should rewind when auto-scroll reach end. Setter for [[ctrlAutoScrollRewind]].
+  <br><br>
+  Autorscroll is available for [[DialogControls-ListBoxes|CT_LISTBOX]] and [[CT_CONTROLS_GROUP]] types of controls only. Autoscroll will wait [[ctrlAutoScrollDelay]] seconds (must be  > 0) and then will scroll the scroll bar down to the bottom. [[ctrlAutoScrollSpeed]] defines the speed with which scrollbar is scrolled. If [[ctrlAutoScrollRewind]] is [[true]], the control will fade out, immediately rewind to the top, then fade in, wait [[ctrlAutoScrollDelay]] seconds and then repeat the scrolling in a loop. If user focuses on the control, autoscrolling is interrupted.
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - control
+  - set
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    description: '[[DialogControls-ListBoxes|CT_LISTBOX]] or [[CT_CONTROLS_GROUP]]'
+    type: Unknown
+  - name: set
+    description: '[[true]] to enable rewind'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _ctrlGroup ctrlSetAutoScrollRewind true;

@@ -1,0 +1,43 @@
+name: modelToWorld
+description: |-
+  Translates relative position from object model space to world space in [[Position#PositionAGL|PositionAGL]] format.<br>
+  This command will take into account [[vectorUp]] of the object when calculating relative coordinates.
+  For the [[Position#PositionASL|PositionASL]] version of this command, see [[modelToWorldWorld]].
+
+  {{Feature|important|For [[setObjectScale|scaled objects]], the relative position will first be [[vectorMultiply|multiplied]] by the object scale.<br>
+  For example, if the object scale is 2, <sqf inline>_obj modelToWorld [0,1,0]</sqf> will be offset '''2 meters''' from the model center (<sqf inline>[0,0,0]</sqf>).}}
+groups:
+- Positions
+syntax:
+- call: !Binary
+  - model
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: model
+    type: Unknown
+  - name: position
+    description: '[x,y,z] offset relative to the model centre'
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _aboveAndBehindPlayer = player modelToWorld [0,-1,3];

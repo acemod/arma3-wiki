@@ -1,0 +1,44 @@
+name: say2D
+description: Plays given sound in 2D.
+groups:
+- Sounds
+syntax:
+- call: !Binary
+  - from
+  - sound
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: from
+    description: |-
+      the sound source
+      * [[Array]] - format [from, to]:
+      ** from: [[Object]] - sound source
+      ** to: [[Object]] - target
+    type: Unknown
+  - name: sound
+    description: |-
+      - max. distance in meters at which the sound can be heard
+      ** speed: [[Number]] (Optional, default 1) - pitch of the sound
+    type: Unknown
+    optional: true
+    default: '100'
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player say2D "HelloThere";
+- '[player, _officer] say2D ["HelloThere", 50, 0.9];'

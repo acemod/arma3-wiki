@@ -1,0 +1,56 @@
+name: setEffectCondition
+description: |-
+  The statement is executed when the trigger or waypoint is activated and the effects are launched depending on the result.
+
+  *If the result is a [[Boolean|boolean]] and [[true]], the effect is launched.
+  *If the result is an [[object]], the effect is launched if the result is the player or the player vehicle.
+  *If the result is an [[Array|array]], the effect is launched if the result contains the player or the player vehicle.
+groups:
+- Triggers
+syntax:
+- call: !Binary
+  - trigger
+  - statement
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: trigger
+    type: Unknown
+  - name: statement
+    type: Unknown
+- call: !Binary
+  - waypoint
+  - statement
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: waypoint
+    description: '[[Array]] format [[Waypoint]]'
+    type: Unknown
+  - name: statement
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _triggerObj setEffectCondition "thisList";

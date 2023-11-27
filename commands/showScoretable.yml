@@ -1,0 +1,21 @@
+name: showScoretable
+description: Forces the score table to be shown, hidden or reset to default functionality. Forcing score table will make it show even in SP. When score table is forced opened it cannot be  closed manually, when it is force closed, it cannot be opened manually.
+groups:
+- Interaction
+syntax:
+- call: !Unary force
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: force
+    description: 1 to force visible, 0 to force invisible, -1 default
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 60
+examples:
+- showScoretable 1;

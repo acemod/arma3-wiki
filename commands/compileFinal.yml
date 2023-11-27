@@ -1,0 +1,32 @@
+name: compileFinal
+description: |-
+  Compiles an expression / takes an existing [[HashMap]] and makes it final, preventing it from being modified or overwritten (by [[=]] assignation, [[publicVariable]], [[set]] or any other command).
+  {{Feature|informative|This feature is only available in the retail version of {{arma3}}.}}
+groups:
+- Strings
+syntax:
+- call: !Unary expression
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: expression
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 56
+examples:
+- "_myCode = compileFinal \"a = a + 1\";\ncall _myCode;\n \n// repeated compile won't have any effect\n_myCode = compileFinal \"a = a + 2\";\n"
+- |
+  // duplicate code will be final as well
+  _myDuplicateCode = _myCode;
+
+  // an alternative is to copy str'd code (since Arma 3 v2.02)
+  private _myNonFinalCopy = compile toString _myCode;
+- |
+  // since {{arma3}} v2.14
+  private _readonlyCode = compileFinal { systemChat "Hello World!"; };
+  private _readonlyHashMap = compileFinal _myHashMap;

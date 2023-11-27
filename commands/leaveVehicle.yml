@@ -1,0 +1,45 @@
+name: leaveVehicle
+description: |-
+  Ceases the using of the vehicle by a group and unassigns vehicle from the group.
+  If the argument is a single unit, the vehicle will be unassigned from unit's group.
+  After vehicle is unassigned from the group, each individual crew member then unassigned from the vehicle.<br>
+  <br>
+  In short the command could be hypothetically presented as:<br>
+  <sqf>leaveVehicle = un-addVehicle + unassignVehicle forEach crew</sqf>
+
+  However, to make it more reliable, it is best to move unit out of the vehicle manually with [[moveOut]] and force unassign the vehicle with [[unassignVehicle]].
+  {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
+groups:
+- Unit Control
+- Groups
+syntax:
+- call: !Binary
+  - group
+  - vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: group
+    description: object's [[Group]] is used
+    type: Unknown
+  - name: vehicle
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _unit leaveVehicle _vehicle;
+- _grp leaveVehicle _vehicle;

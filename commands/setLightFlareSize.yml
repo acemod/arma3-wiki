@@ -1,0 +1,24 @@
+name: setLightFlareSize
+description: Sets relative size of the flare for the light.
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - light
+  - size
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: light
+    type: Unknown
+  - name: size
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- myLight setLightFlareSize 5;

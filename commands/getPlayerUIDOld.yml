@@ -1,0 +1,26 @@
+name: getPlayerUIDOld
+description: |-
+  Returns the old UniqueID of Arma 2 OA of the given unit as string if it is player and empty value if it is AI. The uniqueID may be up to 100 characters long and may contain numbers, uppercase letters and underscores (the value can be used to construct a valid variable name by appending to another valid variable name).
+
+  {{Feature | important | While for [[:Category:Arma 2|{{arma2}}]] or [[{{arma2oa}}]] until version 1.60 the result always contains a number, it should be always handled as an opaque string. Converting it to a [[Number]] can cause precision problems, as it cannot accurately represent integers above 16777216 (2^24).<br>Moreover, game versions since [[{{arma2oa}}]] 1.61 provide a non-numeric value as a result.}}
+
+  {{Feature|arma3|Not present in {{arma3}}.}}
+multiplayer_note: UID string is returned only in multiplayer.
+groups:
+- Multiplayer
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 63
+examples:
+- _uid = getPlayerUIDOld player;

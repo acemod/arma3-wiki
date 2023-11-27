@@ -1,0 +1,43 @@
+name: onHCGroupSelectionChanged
+description: |-
+  Defines an action performed when [[High Command|high command]] group selection has been changed.<br>
+  Command receives 2 variables:
+  * _group: [[Group]] - last selected/deselected group
+  * _isSelected: [[Boolean]] - new selection state of the specific group
+  The code is executed on every [[High Command|hc]] group selection change until it is replaced or removed (see {{Link|#Example 3}}).
+  {{Feature|important|Using the command again will '''overwrite''' the previously set code.}}
+  {{Feature|Informative|Since {{arma3}} v1.58 a stackable version of this EH is available: [[Arma 3: Mission Event Handlers#HCGroupSelectionChanged|HCGroupSelectionChanged]]}}
+groups:
+- High Command
+- Event Handlers
+syntax:
+- call: !Unary code
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: code
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "onHCGroupSelectionChanged {\n\tif (_isSelected) then\n\t{\n\t\thint format [\"Group %1 has been selected.\", _group];\n\t}\n\telse\n\t{\n\t\thint format [\"Group %1 has been deselected.\", _group];\n\t};\n};"
+- onHCGroupSelectionChanged "player globalChat 'HC group selection has been changed.';";
+- |-
+  Remove event handler:
+  <sqf>onHCGroupSelectionChanged "";
+  // or
+  onHCGroupSelectionChanged {};

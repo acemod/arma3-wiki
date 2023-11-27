@@ -1,0 +1,24 @@
+name: currentMagazineDetailTurret
+description: Returns the class name of currently used magazine on specified turret. Use turret path [-1] for driver's turret. Note that a turret is not loaded until unit enters it, so this command will return "".
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: turretPath
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 12
+examples:
+- _magazineDetail = MBT_Kuma currentMagazineDetailTurret [0];

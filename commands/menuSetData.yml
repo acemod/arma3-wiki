@@ -1,0 +1,41 @@
+name: menuSetData
+description: Sets data into menu entry on given path.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - data
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: path
+    type: Unknown
+  - name: data
+    type: Unknown
+- call: !Binary
+  - control
+  - - path
+    - data
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    type: Unknown
+  - name: data
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- findDisplay 313 displayCtrl 120 menuSetData [[0, 1], "[true, player, 'Hello World!', 1337]"];

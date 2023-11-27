@@ -1,0 +1,20 @@
+name: configNull
+description: "A non-existing [[Config]].\n\n{{Feature|important|\nUnlike other null values ([[objNull]], [[grpNull]], etc), [[configNull]] returns [[true]] when compared to itself.\n<sqf>\nconfigNull == configNull;\t\t\t\t\t\t\t// returns true\nisNull configNull;\t\t\t\t\t\t\t\t\t// returns true\nconfigNull isEqualTo configNull;\t\t\t\t\t// returns true\nconfigNull == configFile >> \"ANonExistentEntry\";\t// returns true\n</sqf>\n}}"
+groups:
+- Variables
+- Config
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- _config = missionNamespace getVariable ["myConfig", configNull];
+- str configNull; // returns ""

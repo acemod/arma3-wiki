@@ -1,0 +1,25 @@
+name: ctFindHeaderRows
+description: Gets array of indices of rows under this header.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Binary
+  - ctrl
+  - index
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    type: Unknown
+  - name: index
+    description: header's index
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- private _indices = _control ctFindHeaderRows 0;

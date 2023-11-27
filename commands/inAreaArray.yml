@@ -1,0 +1,73 @@
+name: inAreaArray
+description: Returns given list of [[Object]]s and/or [[Position]]s that are in the given area, area defined by a trigger, marker, location or array.
+groups:
+- Triggers
+- Markers
+- Locations
+- Positions
+syntax:
+- call: !Binary
+  - positions
+  - area
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: positions
+    type: Unknown
+  - name: area
+    description: |-
+      the defined area:
+      * [[Object]] - trigger
+      * [[Location]] - location
+      * [[String]] - marker name
+    type: Unknown
+- call: !Binary
+  - positions
+  - - center
+    - a
+    - b
+    - angle
+    - isRectangle
+    - c
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: positions
+    description: '[[Object]]s and/or [[Position]]s to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D'
+    type: Unknown
+  - name: center
+    type: Unknown
+  - name: a
+    description: x axis (x / 2)
+    type: Unknown
+  - name: b
+    description: y axis (y / 2)
+    type: Unknown
+  - name: angle
+    description: rotation angle
+    type: Unknown
+    optional: true
+    default: '0'
+  - name: isRectangle
+    description: '[[true]] if rectangle, [[false]] if ellipse'
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+  - name: c
+    description: z axis (z / 2)
+    type: Unknown
+    optional: true
+    default: '-1: unlimited'
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 66
+examples:
+- vehicles inAreaArray myTrigger;
+- allUnits inAreaArray "myMarker";
+- allPlayers inAreaArray myLocation;
+- allDead inAreaArray [[100, 100, 0], 20, 30, 45, false, 10];

@@ -1,0 +1,30 @@
+name: enableCopilot
+description: Enables copilot actions, toggles availability of the actions related to copilots, such as taking over controls, suspending controls, etc. This command triggers the {{hl|"ControlsShifted"}} event handler.
+multiplayer_note: Execute this command globally (e.g with [[remoteExec]]) to have it synced on all clients.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - vehicle
+  - enable
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: vehicle on which to toggle copilot actions
+    type: Unknown
+  - name: enable
+    description: enable or disable
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 1
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (!isCopilotEnabled myHeli) then\n{\n\tmyHeli enableCopilot true;\n};"

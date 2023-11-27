@@ -1,0 +1,35 @@
+name: moveToCompleted
+description: Check if latest low level moveTo command is finished.
+groups:
+- Unit Control
+syntax:
+- call: !Unary person
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: person
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _isCompleted = moveToCompleted _unit;

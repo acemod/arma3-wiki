@@ -1,0 +1,50 @@
+name: lockCargo
+description: |-
+  Lock all cargo positions of a vehicle or lock by index.
+  This command will remove user "get in" action (not get out) but will also stop player getting into vehicle via script commands (e.g [[moveInCargo]]) unlike [[lock]] command.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - vehicle
+  - lock
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: lock
+    type: Unknown
+- call: !Binary
+  - vehicle
+  - - index
+    - lock
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: index
+    type: Unknown
+  - name: lock
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- vehicleName lockCargo true;
+- vehicleName lockCargo [0, true];

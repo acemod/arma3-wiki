@@ -1,0 +1,21 @@
+name: brakesDisabled
+description: Returns the status of autobrake (see [[disableBrakes]]).
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary transport
+  ret:
+  - Unknown
+  - '[[true]] if autobrake is disabled'
+  params:
+  - name: transport
+    description: PhysX car or tank
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- "if !(brakesDisabled _vehicle) then\n{\n\tdisableBrakes _vehicle;\n};\n"

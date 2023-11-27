@@ -1,0 +1,41 @@
+name: menuSetShortcut
+description: Sets shortcut of given menu strip entry.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - shortcut
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: path
+    type: Unknown
+  - name: shortcut
+    type: Unknown
+- call: !Binary
+  - control
+  - - path
+    - shortcut
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    type: Unknown
+  - name: shortcut
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- _ctrlMenuStrip menuSetShortcut [[0,0], 2048 + 0x16]; // ALT + U

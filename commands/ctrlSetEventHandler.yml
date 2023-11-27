@@ -1,0 +1,51 @@
+name: ctrlSetEventHandler
+description: |-
+  {{Feature|obsolete|Use [[ctrlAddEventHandler]] instead as it can stack event handlers.|arma2|1.00}}
+  Sets given event handler of given control: any previously added event handler is removed.
+
+  {{Feature|informative|
+  * See [[User Interface Event Handlers]] for the full list of handler names
+  * See also [[DIK KeyCodes]] for a list of key code constants relevant to key-related events like [[User_Interface_Event_Handlers#onKeyDown|KeyDown]] and [[User_Interface_Event_Handlers#onKeyUp|KeyUp]]
+  }}
+
+  {{Feature|important|When using the event names listed [[User Interface Event Handlers|here]] with the [[ctrlAddEventHandler]], [[ctrlSetEventHandler]], [[displayAddEventHandler]] or [[displaySetEventHandler]] commands, the prefix "on" in the event name must be removed (e.g. ''''ButtonDown'''' instead of ''''onButtonDown'''').}}
+groups:
+- GUI Control - Event Handlers
+- Event Handlers
+syntax:
+- call: !Binary
+  - controlName
+  - - handlerName
+    - function
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: controlName
+    type: Unknown
+  - name: handlerName
+    type: Unknown
+  - name: function
+    description: should return a [[Boolean]] indicating that the event has handled this event fully or not and whether the engine should execute its default code or not afterwards
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _control ctrlSetEventHandler ["KeyDown", ""];
+- (_display displayCtrl 108) ctrlSetEventHandler ["LBSelChanged","['ListChange',_this] call FireEvents"];

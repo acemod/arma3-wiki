@@ -1,0 +1,21 @@
+name: getAnimSpeedCoef
+description: Get coefficient for animation speed.
+groups:
+- Animations
+- Stamina System
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 54
+examples:
+- if (getAnimSpeedCoef player > 1) then { hint "Speedy Gonzales!" };

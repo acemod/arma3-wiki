@@ -1,0 +1,112 @@
+name: random
+description: |-
+  [[File:bellcurve.jpg|thumb|120px|[[#Syntax 2|Syntax&nbsp;2]]'s distribution]]
+  {{{!}}
+  ! style="padding-right: 1em; vertical-align: top; white-space: nowrap" {{!}} {{Link|#Syntax 1}}
+  {{!}} generates a random floating point value
+  {{!}}-
+  ! style="padding-right: 1em; vertical-align: top; white-space: nowrap" {{!}}  {{Link|#Syntax 2}}
+  {{!}} generates a {{Link|https://en.wikipedia.org/wiki/Normal_distribution|Gaussian Distribution}}<ref>Technically, it is a rescaled {{Link|https://en.wikipedia.org/wiki/Bates_distribution}} with n = 4. The distribution is split in two at its midpoint and scaled linearly such that its maximum lies at the specified midpoint.</ref>. It uses the same method as [[setTriggerTimeout]] command and is quite useful for e.g spawning loot, making more valuable items more rare
+  {{!}}-
+  ! style="padding-right: 1em; vertical-align: top; white-space: nowrap" {{!}}  {{Link|#Syntax 3}}
+  {{!}} generates a {{Link|https://en.wikipedia.org/wiki/Random_seed|seed-based}} random number
+  {{!}}-
+  ! style="padding-right: 1em; vertical-align: top; white-space: nowrap" {{!}}  {{Link|#Syntax 4}}
+  {{!}} generates a {{Link|https://en.wikipedia.org/wiki/Random_seed|seed-based}} random noise ('''not''' Perlin) texture based on provided seed and returning the value at supplied coordinates
+  {{!}}}
+groups:
+- Math
+syntax:
+- call: !Unary x
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: x
+    type: Unknown
+- call: !Unary
+  - min
+  - mid
+  - max
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: min
+    type: Unknown
+  - name: mid
+    type: Unknown
+  - name: max
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 56
+- call: !Binary
+  - seed
+  - x
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: seed
+    description: an '''integer'''. Any float value will be truncated (e.g -0.9, -0.1, 0.1 or 0.9 will be read as '''0''')
+    type: Unknown
+  - name: x
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 68
+- call: !Binary
+  - seed
+  - - x
+    - y
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: seed
+    type: Unknown
+  - name: x
+    description: x texture position
+    type: Unknown
+  - name: y
+    description: y texture position
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 68
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _rNumber = random 1;
+- _rNumber = random -10;
+- |-
+  Generate a random position inside a circle (see also [[Example Code: Random Area Distribution]])
+  <sqf>_center getPos [_radius * sqrt random 1, random 360];
+- "Select a random value from an array:\n<sqf>\n_array = [\"apples\", \"pears\", \"bananas\", \"M16\"];\n\n_random = _array select floor random count _array;\t// before {{arma2}}\n_random = _array call BIS_fnc_selectRandom;\t\t\t// since {{arma2}}\n_random = selectRandom _array;\t\t\t\t\t\t// since {{arma3}} v1.56\n"
+- "Visualization of Syntax 4 (warning, it takes a bit to execute to draw):\n<sqf>\nprivate _parent = call BIS_fnc_displayMission;\nif (is3DEN) then { _parent = findDisplay 313 };\nprivate _disp = _parent createDisplay \"RscDisplayEmpty\";\nprivate _BG = _disp ctrlCreate [\"RscBackground\", -1];\n\nprivate _coef = 0.1;\n\nfor \"_x\" from 1 to 100 do\n{\n\tfor \"_y\" from 1 to 100 do\n\t{\n\t\tprivate _random = 0 random [_x * _coef, _y * _coef];\n\t\tprivate _dot = _disp ctrlCreate [\"RscBackground\", -1];\n\n\t\t_dot ctrlSetPosition [0.5 + pixelW * _x, 0.5 + pixelH * _y, pixelW, pixelH];\n\t\t_dot ctrlSetBackgroundColor [_random, _random, _random, 1];\n\t\t_dot ctrlCommit 0;\n\t};\n};\n</sqf>\n[[File:A3 random syntax4.png|thumb|left|Example result]]"

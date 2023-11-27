@@ -1,0 +1,46 @@
+name: scudState
+description: Return the current state of given Scud launcher.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary scudName
+  ret:
+  - Unknown
+  - |-
+    can be one of:
+    * 0 - No activity
+    * 1 - Launch preparation
+    * 2 - Launch prepared
+    * 3 - Ignition
+    * 4 - Launched
+  params:
+  - name: scudName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 30
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  waitUntil { sleep 1; scudState _scud > 2 };
+  guba say "MasterPlanCompletion";

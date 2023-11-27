@@ -1,0 +1,24 @@
+name: setLightIntensity
+description: "Sets intensity of light.\n{{Feature|informative|Intensity formula is as follows: <sqf>Intensity = Brightness ^ 2 * 2500;</sqf>\n<spoiler text=\"Test code\">\n<sqf>\n[4096, 4096, 10] spawn {\n\tprivate _brightness = 1;\n\tprivate _intensity = _brightness ^ 2 * 2500;\n\n\tprivate _obj = \"Sign_Sphere10cm_F\" createVehicleLocal _this;\n\tprivate _light = \"#lightpoint\" createVehicleLocal _this;\n\t_light setLightDayLight true;\n\t_light setLightAmbient [1, 1, 1];\n\t_light setLightColor [1, 1, 1];\n\n\t_light setLightBrightness _brightness;\n\tsleep 0.2;\n\t_brightness = getLightingAt _obj select 3;\n\n\t_light setLightIntensity _intensity;\n\tsleep 0.2;\n\t_intensity = getLightingAt _obj select 3;\n\n\tsystemChat format [\"%1 (%2, %3)\", _brightness == _intensity, _brightness, _intensity];\n\n\tdeleteVehicle _light;\n\tdeleteVehicle _obj;\n};\n</sqf>\n</spoiler>\n}}"
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - light
+  - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: light
+    type: Unknown
+  - name: value
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- myLight setLightIntensity 4;

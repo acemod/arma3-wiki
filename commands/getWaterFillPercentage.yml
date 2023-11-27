@@ -1,0 +1,21 @@
+name: getWaterFillPercentage
+description: Get an object's water filling.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary obj
+  ret:
+  - Unknown
+  - water level in range 0..1 (empty to full)
+  params:
+  - name: obj
+    description: object to manipulate
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- "if (getWaterFillPercentage _myCar > 0) then\n{\n\thint \"My feet are wet.\";\n};\n"

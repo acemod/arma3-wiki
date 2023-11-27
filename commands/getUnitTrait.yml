@@ -1,0 +1,29 @@
+name: getUnitTrait
+description: |-
+  Gets the current value of a trait of the given unit.
+  {{Feature|informative|For the default values see {{Link|setUnitTrait}}.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - unit
+  - skillName
+  ret:
+  - Unknown
+  - |-
+    trait's value
+    * [[Nothing]] - if ''unit'' is invalid, e.g an empty vehicle
+  params:
+  - name: unit
+    type: Unknown
+  - name: skillName
+    description: name of the skill
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- player getUnitTrait "Medic";

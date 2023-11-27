@@ -1,0 +1,20 @@
+name: clearItemCargo
+description: Removes all items from ammo box (or any general weapon holder container).
+groups:
+- Containers
+syntax:
+- call: !Unary box
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: box
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- clearItemCargo myBox;

@@ -1,0 +1,31 @@
+name: get3DENAttribute
+description: |-
+  Returns the value of the given entity's [[Eden_Editor:_Entity_Attributes|attribute]] in [[:Category:Eden Editor|Eden Editor]].<br><br>
+  An attribute is identified by its {{hl|property}} ({{hl|data}} when it is engine-drive attribute) value in config. For the list of all attributes with their properties, see [[Eden_Editor:_Setting_Attributes#Attributes|Setting Attributes]].
+
+  {{Feature|important|Attributes are available only within the Eden Editor workspace. You cannot access them in scenario preview or exported scenario!}}
+groups:
+- Eden Editor
+syntax:
+- call: !Binary
+  - entity
+  - attribute
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: entity
+    type: Unknown
+  - name: attribute
+    description: attribute property
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- |-
+  // returns variable name of the object under cursor
+  systemChat str ((get3DENMouseOver select 1) get3DENAttribute "name");

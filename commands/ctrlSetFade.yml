@@ -1,0 +1,38 @@
+name: ctrlSetFade
+description: Sets wanted transparency for control animation. Requires [[ctrlCommit]] to commit changes. To hide or show a control instantly, use [[ctrlShow]].
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - controlName
+  - fade
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: controlName
+    type: Unknown
+  - name: fade
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _control ctrlSetFade 1;
+  _control ctrlCommit 5;

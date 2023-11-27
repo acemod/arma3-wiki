@@ -1,0 +1,25 @@
+name: setSuppression
+description: Sets the given suppression value for the given unit.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - unit
+  - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: value
+    description: suppression value from 0 to 1
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 42
+examples:
+- unit_1 setSuppression 1;

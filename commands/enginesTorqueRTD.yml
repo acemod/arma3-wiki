@@ -1,0 +1,24 @@
+name: enginesTorqueRTD
+description: |-
+  Torque produced by engines in '''N·m''' (Newton &times; meter).
+  {{Feature|afm}}
+groups:
+- RTD
+syntax:
+- call: !Unary RTD_helicopter
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: RTD_helicopter
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- |-
+  _UH80_E1 = (enginesTorqueRTD _UH80) select 0; // engine 1 Torque
+  _UH80_E2 = (enginesTorqueRTD _UH80) select 1; // engine 2 Torque

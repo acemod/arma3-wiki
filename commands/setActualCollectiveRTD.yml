@@ -1,0 +1,29 @@
+name: setActualCollectiveRTD
+description: "Sets the collective pitch control to a specific position, regardless of input devices (until those are changed).\n* 0: collective fully down\n* ~0.7: approximate stable hover position\n* 1: collective fully up \n{{Feature|afm}}"
+groups:
+- RTD
+syntax:
+- call: !Binary
+  - helicopterRTD
+  - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: helicopterRTD
+    description: helicopter
+    type: Unknown
+  - name: value
+    description: collective position
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- myHelicopterRTD setActualCollectiveRTD 0.7;

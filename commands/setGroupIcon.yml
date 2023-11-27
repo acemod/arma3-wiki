@@ -1,0 +1,48 @@
+name: setGroupIcon
+description: Sets group icon properties.
+groups:
+- High Command
+syntax:
+- call: !Binary
+  - group
+  - - id
+    - icon
+    - offset
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: group
+    type: Unknown
+  - name: id
+    description: the icon ID returned by [[addGroupIcon]]
+    type: Unknown
+  - name: icon
+    description: class name of desired icon from CfgGroupIcons
+    type: Unknown
+  - name: offset
+    description: X and Y offsets of the icon in form [offsetX, offsetY]
+    type: Unknown
+    optional: true
+    default: '[0,0]'
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  _target setGroupIcon [_icon, "hc_selectedEnemy"];
+  _target setGroupIcon [_icon, "flag"];
+
+  _group setGroupIcon [_icon, _iconsClass, _offset];

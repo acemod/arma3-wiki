@@ -1,0 +1,82 @@
+name: execVM
+description: |-
+  Compiles and adds an [[SQF Syntax|SQF]] [[Script Handle|script]] to the [[Scheduler|scheduler]] queue and returns script handle (see also {{Link|#Example 4}}).
+  The script does not execute immediately upon running [[execVM]] command but with some delay depending on the VM's scripts queue and engine load.
+
+  {{Feature|informative|
+  * If the same script is to be executed more than one time, declaring it as a [[Arma 3: Functions Library|Function]] is recommended to avoid recompiling and wasting performance with every execution.
+  * The script is searched for in the following directories in that order:
+  ** mission directory
+  ** campaign scripts directory
+  ** global scripts directory.
+  * To see what VM scripts are currently in the scheduler, use [[diag_activeSQFScripts]] command.
+  }}
+
+  {{Feature|important|
+  * The {{hl|.sqf}} file extension is not mandatory but is strongly recommended as using non-standard extensions may cause problems during binarisation
+  * If the script file is not prepared using UTF-8 encoding and contains some characters [[toArray|with codes]] > 127, they might convert incorrectly.
+  }}
+groups:
+- Program Flow
+syntax:
+- call: !Binary
+  - arguments
+  - filename
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: arguments
+    description: arguments accessible as {{hl|[[Magic Variables#this|_this]]}} in the script
+    type: Unknown
+  - name: filename
+    description: path to the [[SQF Syntax|SQF]] script file
+    type: Unknown
+- call: !Unary filename
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: filename
+    description: path to the [[SQF Syntax|SQF]] script file
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- execVM "test.sqf";
+- |
+  _handle = player execVM "test.sqf";
+  waitUntil { scriptDone _handle };
+  </sqf>
+  The following is also possible in {{arma3}}:
+  <sqf>
+  private _handle = execVM "123.sqf";
+  waitUntil { isNull _handle };
+- |
+  [player, 0.75] execVM "setDamage.sqf";</sqf>
+  setDamage.sqf:
+  <sqf>
+  params ["_unit", "_damage"];
+  _unit setDamage _damage;
+- |
+  [[execVM]] equivalence:
+  <sqf>
+  private _handle = _args execVM "someFile.sqf";
+  // is practically identical to
+  private _handle = _args spawn compile preprocessFileLineNumbers "someFile.sqf";

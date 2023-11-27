@@ -1,0 +1,20 @@
+name: className
+description: Returns short name of location. For config class name, see [[configName]]
+groups:
+- Locations
+syntax:
+- call: !Unary location
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: location
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _shortName = className myLocation;

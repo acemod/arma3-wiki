@@ -1,0 +1,56 @@
+name: lnbSetPictureRight
+description: |-
+  Sets the cell's right-picture. The picture is set to the end of the '''row''', the ''column'' parameter does not matter.
+  {{Feature | Informative | The picture is searched in the mission, directory, the campaign directory's dtaExt subdirectory, and the data bank (or directory).}}
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - path
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: row
+    description: 0-based index (first row is 0, second is 1, etc)
+    type: Unknown
+  - name: column
+    description: 0-based index (first column is 0, second is 1, etc)
+    type: Unknown
+  - name: path
+    description: the picture's file path
+    type: Unknown
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - path
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    type: Unknown
+  - name: row
+    description: 0-based index (first row is 0, second is 1, etc)
+    type: Unknown
+  - name: column
+    description: 0-based index (first column is 0, second is 1, etc)
+    type: Unknown
+  - name: path
+    description: the picture's file path
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- lnbSetPictureRight [1, [0, 0], "Picture.paa"];
+- _ctrl lnbSetPictureRight [[0, 0], "\A3\Ui_f\data\GUI\Cfg\Ranks\lieutenant_gs.paa"];

@@ -1,0 +1,28 @@
+name: lockInventory
+description: |-
+  Lock or unlock a vehicle's inventory access.
+  This command can also lock backpack a unit is wearing to prevent access by a third party.
+  If set to [[true]] (locked), the inventory cannot be accessed ''via'' hotkey or action menu.
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - vehicle
+  - lock
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: lock
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 0
+examples:
+- vehicle player lockInventory true;
+- backpackContainer player lockInventory true;

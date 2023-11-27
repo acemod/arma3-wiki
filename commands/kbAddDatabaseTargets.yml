@@ -1,0 +1,35 @@
+name: kbAddDatabaseTargets
+description: |-
+  Register target list knowledge base database to given person. See [[Conversations]] for more details.
+  {{Feature|important|This command is no longer available in {{arma2}} and {{arma3}}.}}
+groups:
+- Conversations
+syntax:
+- call: !Binary
+  - person
+  - fileName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: person
+    type: Unknown
+  - name: fileName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _hasBeenAdded = _unit kbAddDatabaseTargets "chat.txt";

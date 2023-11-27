@@ -1,0 +1,23 @@
+name: isRemoteControlling
+description: |-
+  Returns [[true]] if the given player is remote-controlling a unit.
+  {{Feature|important|See also [[Remote Control Tutorial]].}}
+groups:
+- Remote Control
+syntax:
+- call: !Unary person
+  ret:
+  - Unknown
+  - '[[true]] if the given player is remote controlling a unit'
+  params:
+  - name: person
+    description: a player
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 14
+examples:
+- "if (isRemoteControlling player) then\n{\n\thint format [\"You are controlling %1\", remoteControlled player];\n}\nelse\n{\n\thint \"Why not remote-control something?\";\n};\n"

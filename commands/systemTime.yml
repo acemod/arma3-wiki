@@ -1,0 +1,20 @@
+name: systemTime
+description: Returns system time.
+groups:
+- Time
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 0
+examples:
+- private _currentTime = systemTime;
+- systemTime apply {if (_x < 10) then {"0" + str _x} else {str _x}}; // ["2021","05","03","14","09","37","593"]
+- systemTime params ["_year", "_month", "_day", "_hour", "_minute", "_second", "_millisecond"];

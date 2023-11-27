@@ -1,0 +1,27 @@
+name: directionStabilizationEnabled
+description: |-
+  Get state of direction stabilization. This command returns [[true]] if the current optic mode of the selected turret has direction stabilization configured in config ({{hl|directionStabilized}}) and if it is also not disabled by [[enableDirectionStabilization]].<br>
+  This command can not be used to determine if the current optic of the turret has {{hl|directionStabilized}} enabled in config.
+groups:
+- Camera Control
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
+  - Unknown
+  - whether direction stabilization is enabled
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: turretPath
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- uav directionStabilizationEnabled [0];

@@ -1,0 +1,35 @@
+name: menuChecked
+description: Returns if item on given path is checked or not.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: path
+    type: Unknown
+- call: !Binary
+  - control
+  - path
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- private _isChecked = findDisplay 313 displayCtrl 120 menuChecked [0, 1];

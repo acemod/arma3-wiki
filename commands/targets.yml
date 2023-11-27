@@ -1,0 +1,51 @@
+name: targets
+description: |-
+  Retrieves list of given unit targets matching specified filter. If the filter is not specified, all targets are returned.
+  {{Feature|informative|If a unit is provided, the unit itself will be excluded from results. If a group is provided, its units will be excluded (even if renegades).}}
+groups:
+- Object Detection
+syntax:
+- call: !Binary
+  - unitOrGroup
+  - - enemyOnly
+    - maxDistance
+    - sides
+    - maxAge
+    - alternateCenter
+  ret:
+  - Unknown
+  - '''''unitOrGroup''''<nowiki/>''s targets matching the criteria'
+  params:
+  - name: unitOrGroup
+    description: unit or group which target knowledge is retrieved
+    type: Unknown
+  - name: enemyOnly
+    description: '[[true]] to include only enemy targets, [[false]] to include all targets'
+    type: Unknown
+    optional: true
+  - name: maxDistance
+    description: max. distance based on target's expected position ''(distance is measured in 2D)''; use 0 to ignore the maxDistance filter
+    type: Unknown
+    optional: true
+  - name: sides
+    description: array of accepted sides; use [] to ignore the side filter
+    type: Unknown
+    optional: true
+  - name: maxAge
+    description: max. target age, targets that are known to unit for longer then maxAge are ignored; use 0 to ignore the maxAge filter
+    type: Unknown
+    optional: true
+  - name: alternateCenter
+    description: alternate (2D or 3D) position used for distance check ''(distance is measured in 2D)''; if not specified unit position is being used
+    type: Unknown
+    optional: true
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- private _targets = _unit targets [false, 300, [east, sideEnemy]]; // all targets of east or renegade side in 300m
+- private _targets = _unit targets [true, 300]; // enemy targets in 300m
+- private _targets = _unit targets []; // all targets

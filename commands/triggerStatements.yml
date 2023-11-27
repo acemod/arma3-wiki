@@ -1,0 +1,30 @@
+name: triggerStatements
+description: Returns trigger statements.
+multiplayer_note: The trigger could be [[Multiplayer Scripting#Locality|local]] or remote but the result returned by this command will be for the trigger statements set up locally on the client that executed the command. See [[createTrigger]] for more info.
+groups:
+- Triggers
+syntax:
+- call: !Unary trigger
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: trigger
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _statements = triggerStatements someTrigger;

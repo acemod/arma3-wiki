@@ -1,0 +1,26 @@
+name: enableEngineArtillery
+description: Enable/disable the artillery engine. This allows the user to use the artillery computer on mortar/artillery, and for AI to use it for indirect fire.
+groups:
+- Artillery
+syntax:
+- call: !Unary enabled
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: enabled
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 54
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- enableEngineArtillery false;

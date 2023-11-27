@@ -1,0 +1,32 @@
+name: forceWalk
+description: Forces unit to walk even if run or sprint is selected.
+groups:
+- Stamina System
+syntax:
+- call: !Binary
+  - unit
+  - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: the unit forced to walk
+    type: Unknown
+  - name: value
+    description: true/false
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player forceWalk true;

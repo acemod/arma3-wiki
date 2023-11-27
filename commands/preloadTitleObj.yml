@@ -1,0 +1,51 @@
+name: preloadTitleObj
+description: Preloads data for the given resource object.
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - name
+  - type
+  - speed
+  - showInMap
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: name
+    description: defined in {{hl|[[configFile]] >> "CfgTitles" >> name}}
+    type: Unknown
+  - name: type
+    description: see [[Title Effect Type]]s
+    type: Unknown
+  - name: speed
+    type: Unknown
+    optional: true
+    default: '-1'
+  - name: showInMap
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _ok = preloadTitleObj ["BISLogo", "PLAIN"];

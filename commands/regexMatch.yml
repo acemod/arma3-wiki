@@ -1,0 +1,30 @@
+name: regexMatch
+description: Returns whether the ''haystack'' matches the ''pattern''.
+groups:
+- Strings - Regular Expression
+syntax:
+- call: !Binary
+  - haystack
+  - pattern
+  ret:
+  - Unknown
+  - returns [[true]] if match was found, otherwise [[false]]
+  params:
+  - name: haystack
+    type: Unknown
+  - name: pattern
+    description: 'in format [[Arma 3: Regular Expressions|regex pattern]]'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- '"I''m a coOkIe clicker" regexMatch ".*cookie.*"; // true'
+- '"I''m a coOkIe clicker" regexMatch ".*cookie.*/"; // false, empty flags == case sensitive'
+- |-
+  forceUnicode 1;
+  "I'm a coÖkIe clicker" regexMatch ".*coökie.*";
+- '"Cookie clicker" regexMatch "cookie/i"; // false, pattern does not fully match the haystack'

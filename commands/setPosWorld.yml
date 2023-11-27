@@ -1,0 +1,24 @@
+name: setPosWorld
+description: Sets position of an object based on the model's centre position (see [[getPosWorld]]).
+groups:
+- Positions
+syntax:
+- call: !Binary
+  - object
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: position
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- _obj setPosWorld getPosWorld _obj;

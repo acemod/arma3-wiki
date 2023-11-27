@@ -1,0 +1,32 @@
+name: setShotParents
+description: Sets vehicle and instigator pair for the given projectile.
+groups:
+- Weapons
+syntax:
+- call: !Binary
+  - projectile
+  - - vehicle
+    - instigator
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: projectile
+    description: the actual projectile shot
+    type: Unknown
+  - name: vehicle
+    description: vehicle shooting projectile (appears as the 'killer' in "Killed" EH)
+    type: Unknown
+  - name: instigator
+    description: person pulling the trigger (appears as the 'instigator' in "Killed" EH)
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 66
+examples:
+- myProjectile setShotParents [vehicle bob, bob];
+- tank addEventHandler ["Fired", {_this select 6 setShotParents [tank, commander tank]}];

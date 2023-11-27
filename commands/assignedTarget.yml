@@ -1,0 +1,41 @@
+name: assignedTarget
+description: |-
+  Returns the target assigned to an unit or the vehicle's [[effectiveCommander]]. The target can be assigned by the group/vehicle/formation leader (as player via [[Arma 3 Field Manual - Commanding#Target_Assignment|quick command menu]] or [[Operation Flashpoint: Commander Guide#TARGET .282.29|"target" complex command menu]]).<br>
+  To unassign the target use [[doWatch]] [[objNull]] or [[commandWatch]] [[objNull]] or as player and group leader order "no target" in the [[Operation Flashpoint: Commander Guide#TARGET .282.29|"target" complex command menu]].
+  {{Feature | Informative |
+  * This command does not return the target a unit is actually engaging ("attack unit"). For this information, see [[getAttackTarget]].
+  * If a player is inside a vehicle as the [[effectiveCommander]], the vehicle's crew assignedTarget will always be [[objNull]].
+  }}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary vehicleName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicleName
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _target = assignedTarget _T72;

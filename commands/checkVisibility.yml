@@ -1,0 +1,61 @@
+name: checkVisibility
+description: |-
+  {{{!}} class="wikitable float-right"
+  ! style="width: 50%" {{!}} Affected by
+  ! Not affected by
+  {{!}}-
+  {{!}}
+  * [[getTerrainGrid|terrain grid]]
+  * obstacles
+  * particles<br><span style="font-size: .9em">(with <syntaxhighlight lang="cpp" inline>blockAIVisibility = 1</syntaxhighlight>)</span>
+  {{!}}
+  * [[time|daylight]]
+  * [[distance]]
+  * [[overcast]]
+  * [[fog]]
+  {{!}}}
+  Checks if one position is visible from another position and how much.
+
+  {{Feature|informative|Particles that have {{hl|blockAIVisibility}} set to 1 will influence the result, but will never make [[checkVisibility]] return 0; an extremely small number will be returned instead.}}
+groups:
+- Math - Geometry
+syntax:
+- call: !Binary
+  - - ignore
+    - LOD
+    - ignore2
+  - - beg
+    - end
+  ret:
+  - Unknown
+  - how much end position is visible to start position in range 0..1, where 1 is fully visible.
+  params:
+  - name: ignore
+    description: object to exclude from calculations
+    type: Unknown
+  - name: LOD
+    description: 'level of details to use. Possible values are: {{hl|"FIRE"}}, {{hl|"VIEW"}}, {{hl|"GEOM"}}, {{hl|"IFIRE"}}, and {{GVI|arma3|2.02|size= 0.75}} {{hl|"PHYSX"}}'
+    type: Unknown
+  - name: ignore2
+    description: second object to exclude from calculations
+    type: Unknown
+    optional: true
+    default: '[[objNull]]'
+    since:
+      arma_3:
+        major: 1
+        minor: 62
+  - name: beg
+    description: start position in format [[Position#PositionASL|PositionASL]]
+    type: Unknown
+  - name: end
+    description: end position in format [[Position#PositionASL|PositionASL]]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- private _canSee = [objNull, "VIEW"] checkVisibility [eyePos player, eyePos unit1];

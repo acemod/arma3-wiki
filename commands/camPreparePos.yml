@@ -1,0 +1,37 @@
+name: camPreparePos
+description: Prepares the camera position. Needs the call of [[camCommitPrepared]] to be conducted.
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - camera
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: camera
+    type: Unknown
+  - name: position
+    description: format [[Position]]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _camera camPreparePos getPos player;

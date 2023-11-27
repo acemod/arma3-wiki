@@ -1,0 +1,59 @@
+name: ctrlMapAnimAdd
+description: Adds the next frame to the map animation.
+problem_notes:
+- When used on a [[CT_MAP]] that was created dynamically the target position could be offset. Use [[ctrlMapSetPosition]] before adding animation (Example 3).
+groups:
+- GUI Control - Map
+syntax:
+- call: !Binary
+  - map
+  - - time
+    - zoom
+    - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: map
+    description: '[[CT_MAP]] control'
+    type: Unknown
+  - name: time
+    description: duration of the animation in seconds
+    type: Unknown
+  - name: zoom
+    description: zoom in range from 0.001 (max) to 1 (min). See [[ctrlMapScale]]
+    type: Unknown
+  - name: position
+    description: 'formats: [[Position#Introduction|Position2D]], [[Position#Introduction|Position3D]], [[Object]]'
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _map ctrlMapAnimAdd [1, 0.1, getMarkerPos "anim1"];
+  ctrlMapAnimCommit _map;
+- |
+  Center map on player:
+  <sqf>
+  _ctrl ctrlMapAnimAdd [0, 0.05, player];
+  ctrlMapAnimCommit _ctrl;
+- |
+  _map ctrlMapSetPosition [];
+  _map ctrlMapAnimAdd [1, 0.1, getMarkerPos "anim1"];
+  ctrlMapAnimCommit _map;

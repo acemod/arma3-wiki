@@ -1,0 +1,24 @@
+name: currentWeaponTurret
+description: Returns the name of the currently selected weapon on specified turret. Use turret path [-1] for driver's turret.
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: turretPath
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 12
+examples:
+- _weapon = MBT_Kuma currentWeaponTurret [0];

@@ -1,0 +1,42 @@
+name: setTurretOpticsMode
+description: Set the current optics mode of the optics in the turret occupied by the specified unit. Alt syntax allows a vehicle and turret path to be specified instead of a unit.
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - obj
+  - mode
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    type: Unknown
+  - name: mode
+    description: optic mode index
+    type: Unknown
+- call: !Binary
+  - obj
+  - - turretPath
+    - opticModeIndex
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    type: Unknown
+  - name: turretPath
+    type: Unknown
+  - name: opticModeIndex
+    description: optic mode index
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- player setTurretOpticsMode 0;
+- myTank setTurretOpticsMode [[-1], 1];
+- myAircraft setTurretOpticsMode [[0, 0], 0];

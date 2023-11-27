@@ -1,0 +1,48 @@
+name: selectLeader
+description: |-
+  Select the group's leader. Group locality can be checked with [[local]] command and group ownership with [[groupOwner]] command.
+
+  {{Feature | important | An invalid combination can be provided to this command, e.g ''unitName'' '''not''' being part of ''group''. In that case:
+  * ''unitName'' will be [[leader]] of ''group'', but will not be able to command them
+  * if ''unitName'' is deleted or killed, [[leader]] of ''group'' will be [[objNull]] and will not automatically be reassigned.
+  }}
+groups:
+- Groups
+syntax:
+- call: !Binary
+  - group
+  - unitName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: group
+    type: Unknown
+  - name: unitName
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- group player selectLeader player;
+- |-
+  Make unit a leader from server:
+  <sqf>[group _unit, _unit] remoteExec ["selectLeader", groupOwner group _unit];

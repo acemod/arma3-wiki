@@ -1,0 +1,43 @@
+name: ppEffectAdjust
+description: |-
+  Set [[Post Process Effects|post process effect]] parameters.
+
+  {{Feature | Informative | The two syntaxes differ in what format of the params they accept. The syntax with PP name expects colors to be packed into arrays within main array, while the syntax with PP handle can handle both flat and packed array. Therefore it is recommended to use the universal packed format, such as shown in the examples.}}
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - effect
+  - settings
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: effect
+    description: |-
+      effect name
+      * [[Number]] - effect handle
+    type: Unknown
+  - name: settings
+    description: array of effect params
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"colorCorrections" ppEffectAdjust [1, 1, -0.01, [0, 0, 0, 0], [1.5, 1, 1.2, 0.6], [0.199, 0.587, 0.114, 0]];'
+- |-
+  Black&White:
+  <sqf>_colorCorrectionsEffHandle ppEffectAdjust [1, 0.4, 0, [0, 0, 0, 0], [1, 1, 1, 0], [1, 1, 1, 0]];

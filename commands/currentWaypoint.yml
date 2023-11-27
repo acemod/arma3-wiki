@@ -1,0 +1,38 @@
+name: currentWaypoint
+description: |-
+  Returns the '''index''' of the current waypoint contrary to misleading name.
+
+  To determine the validity of the index, compare it to the waypoints count.
+
+  If all waypoints are completed, then the index is 1 greater than the last valid index.
+
+  If there are no waypoints, then the index is 0.
+
+  By default, a group has 1 waypoint at their starting position, which is considered completed and so the currentWaypoint is 1.
+groups:
+- Waypoints
+syntax:
+- call: !Unary groupName
+  ret:
+  - Unknown
+  - the index of current waypoint
+  params:
+  - name: groupName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _index = currentWaypoint group player;

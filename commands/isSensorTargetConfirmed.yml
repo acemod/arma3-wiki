@@ -1,0 +1,24 @@
+name: isSensorTargetConfirmed
+description: Returns if given unit is confirmed target for given side.
+groups:
+- Sensors
+syntax:
+- call: !Binary
+  - unit
+  - side
+  ret:
+  - Unknown
+  - '[[true]] if confirmed target, otherwise [[false]]'
+  params:
+  - name: unit
+    type: Unknown
+  - name: side
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 72
+examples:
+- private _enemyConfirmed = _possibleEnemy isSensorTargetConfirmed opfor;

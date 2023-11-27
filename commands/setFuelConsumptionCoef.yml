@@ -1,0 +1,25 @@
+name: setFuelConsumptionCoef
+description: Sets the fuel consumption coefficient, which is a multiplier of the [[CfgVehicles_Config_Reference#fuelConsumptionRate|fuel consumption rate]] in config. It doesn't affect fuel leakage or refueling.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - vehicle
+  - coef
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: coef
+    description: consumption coefficient (between 0 and 1000). Values larger than 1 increase fuel consumption, and values between 0 and 1 decrease fuel consumption. 0 disables fuel consumption
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- myTank setFuelConsumptionCoef 10; // consume 10x more fuel than default

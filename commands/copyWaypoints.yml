@@ -1,0 +1,33 @@
+name: copyWaypoints
+description: Copy the chain of waypoints from source to target group. The target group will start to process waypoints from the first one.
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - groupTo
+  - groupFrom
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: groupTo
+    type: Unknown
+  - name: groupFrom
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- group1 copyWaypoints group2;

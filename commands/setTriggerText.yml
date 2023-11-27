@@ -1,0 +1,36 @@
+name: setTriggerText
+description: Sets the text label attached to the trigger object. This is used for example as a radio slot label for radio activated triggers.
+groups:
+- Triggers
+syntax:
+- call: !Binary
+  - trigger
+  - text
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: trigger
+    type: Unknown
+  - name: text
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- trigger setTriggerText "Call for support";

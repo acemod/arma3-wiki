@@ -1,0 +1,29 @@
+name: deleteGroupWhenEmpty
+description: |-
+  Marks given group for auto-deletion when group is empty.
+  [[true]] will mark the group for auto-deletion once empty, [[false]] will simply unmark the group that was marked previously.
+  {{Feature|important|This command does '''not''' prevent group deletion (through e.g [[deleteGroup]] or any engine group management).}}
+groups:
+- Groups
+syntax:
+- call: !Binary
+  - group
+  - delete
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: group
+    type: Unknown
+  - name: delete
+    description: '[[true]] to mark for auto-deletion on empty group, [[false]] to not use this auto-deletion system'
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 68
+examples:
+- _group deleteGroupWhenEmpty true;
+- "Executed on the server:\n<sqf>\nif (local _group) then\n{\n\t_group deleteGroupWhenEmpty true;\n}\nelse // group is local to a client\n{\n\t[_group, true] remoteExec [\"deleteGroupWhenEmpty\", groupOwner _group];\n};\n"

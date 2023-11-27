@@ -1,0 +1,63 @@
+name: action
+description: |-
+  Make a unit perform an action. See [[:Category:Actions]] for action names and syntaxes.
+  {{Feature | informative |
+  * in singleplayer, when user Alt-Tabs the simulation is paused and so the action will also halt until user returns to the game. For example, <sqf inline>player action ["GetInDriver", car];</sqf> executed while user is Alt-Tabbed will result in the user seeing the action happening when he returns to the game screen. This doesn't happen in Multiplayer.
+  * the alternative syntax creates a temporary Logic entity in place of ''unit''.
+  }}
+multiplayer_note: '{{Feature|important|The argument''s [[Multiplayer Scripting#Locality|locality]] is ''''''usually'''''' local, but some actions can take a global argument (e.g "Eject", "GetOut", "GetInXXXX", "MoveToXXXX"). See [[:Category:Actions]] for more details.}}'
+groups:
+- Interaction
+syntax:
+- call: !Binary
+  - unit
+  - actionArray
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: actionArray
+    type: Unknown
+- call: !Unary actionArray
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: actionArray
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 10
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player action ["SitDown", player];
+- _soldier action ["Eject", vehicle _soldier];
+- |
+  player action ["UseWeapon", player, player, 7]; // plays pick up animation before throwing grenade
+  action ["UseWeapon", player, player, 7]; // normal grenade throw

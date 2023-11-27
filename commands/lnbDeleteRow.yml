@@ -1,0 +1,33 @@
+name: lnbDeleteRow
+description: Removes row with the given index from the given listbox or combobox.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Binary
+  - _ctrl
+  - row
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: _ctrl
+    type: Unknown
+  - name: row
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _ctrl lnbDeleteRow 1;

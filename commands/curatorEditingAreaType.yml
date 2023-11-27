@@ -1,0 +1,20 @@
+name: curatorEditingAreaType
+description: Returns type of edit areas assigned to curator (blacklist/whitelist).
+groups:
+- Curator
+syntax:
+- call: !Unary curator
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: curator
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- _isBlacklist = curatorEditingAreaType _curator;

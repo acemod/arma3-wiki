@@ -1,0 +1,25 @@
+name: hasInterface
+description: Returns true if the computer has an interface (a real player). False for a dedicated server or for a headless client.
+groups:
+- Multiplayer
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 63
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _isHC = !(hasInterface || isDedicated);
+- _isHC = !hasInterface && !isDedicated;

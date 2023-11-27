@@ -1,0 +1,38 @@
+name: locationPosition
+description: Returns the [[Position|position]] of a location. If the location is attached to an object, that object's position is returned.
+groups:
+- Locations
+syntax:
+- call: !Unary location
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: location
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 8
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _locationPos = locationPosition myLocation;
+- |
+  _location = nearestLocation [getPos player, "nameCity"];
+  _locationPos = locationPosition _location;
+- |
+  private _landLocation = locationPosition nearestLocation [[2915.2, 6164.52], "NameCityCapital"]; // "Agia Marina" [2915.2, 6164.52, -21.9009]
+  private _waterLocation = locationPosition nearestLocation [[2647.8799, 5989.9502], "NameMarine"]; // "Marina Bay" [2647.88, 5989.95, 0.0161484]

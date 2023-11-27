@@ -1,0 +1,41 @@
+name: east
+description: Pre-defined variable for the eastern [[Side|side]].
+alias:
+- '[[opfor]]'
+groups:
+- Sides
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  [[SQS Syntax|SQS]]:
+  <sqs>? side _unit == east : hint "This is an eastern unit!"</sqs>
+- "[[SQF Syntax|SQF]]:\n<sqf>\nif (side _unit == east) then\n{\n\thint \"This is an eastern unit!\";\n};\n"

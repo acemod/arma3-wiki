@@ -1,0 +1,23 @@
+name: focusedCtrl
+description: Returns display's focused control.
+groups:
+- GUI Control
+syntax:
+- call: !Unary display
+  ret:
+  - Unknown
+  - control which has focus
+  params:
+  - name: display
+    description: parent display
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- private _focusedCtrl = focusedCtrl findDisplay 12;
+- private _isFocused = focusedCtrl _display == _ctrl;
+- private _isFocused = focusedCtrl (ctrlParent _ctrl) == _ctrl;

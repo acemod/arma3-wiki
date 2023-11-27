@@ -1,0 +1,46 @@
+name: setWaypointTimeout
+description: Defines the time between condition satisfaction and waypoint finish (randomly from min to max, with an average value mid).
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - waypoint
+  - - min
+    - mid
+    - max
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    type: Unknown
+  - name: min
+    type: Unknown
+  - name: mid
+    type: Unknown
+  - name: max
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '[_grp, 2] setWaypointTimeout [5, 10, 6];'

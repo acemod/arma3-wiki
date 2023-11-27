@@ -1,0 +1,120 @@
+name: createVehicle
+description: |-
+  Creates an empty object of given classname type.
+  See [[Arma 3: Assets]] / [[Arma 3: createVehicle/vehicles]], or [[:Category:CfgVehicles]] for earlier games.
+
+  {{Feature|informative|
+  * To create objects of type {{hl|"Logic"}}, use [[createUnit]].
+  * To create an editable [[:Category: Eden Editor| Eden Editor]] entity, see [[create3DENEntity]].
+  }}
+
+  {{Feature|arma3|
+  To avoid vehicle randomisation in {{arma3}}, set the {{hl|BIS_enableRandomization}} variable immediately after creating the vehicle:
+  <sqf>
+  private _vehicle = "C_Offroad_01_F" createVehicle position player;
+  _vehicle setVariable ["BIS_enableRandomization", false];
+  </sqf>
+  See the [[Arma 3: Vehicle Customization]] page for more information and settings.
+  }}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - type
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: type
+    description: vehicle/object className
+    type: Unknown
+  - name: position
+    description: desired placement position. If the exact position is occupied, nearest empty position is used.
+    type: Unknown
+- call: !Unary
+  - type
+  - position
+  - markers
+  - placement
+  - special
+  ret:
+  - Unknown
+  - created vehicle or [[objNull]] if failed
+  params:
+  - name: type
+    description: vehicle/object className
+    type: Unknown
+  - name: position
+    description: desired placement position
+    type: Unknown
+  - name: markers
+    description: |-
+      if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position.
+      If any of the markers were given z coordinate with [[setMarkerPos]], the vehicle will also be created at given z coordinate.
+    type: Unknown
+    optional: true
+    default: <sqf inline>[]</sqf>
+  - name: placement
+    description: the vehicle is placed inside a circle with given position as center and placement as its radius.
+    type: Unknown
+    optional: true
+    default: '0'
+  - name: special
+    description: |-
+      can be one of the following:
+      * {{hl|"NONE"}} - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there.
+      * {{hl|"CAN_COLLIDE"}} - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model.
+      * {{hl|"FLY"}} - if vehicle is capable of flying and has crew, it will be made airborne at default height.
+      If ''special'' is "" or not specified, default {{hl|"NONE"}} is used.
+    type: Unknown
+    optional: true
+    default: '"NONE"'
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 34
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _jeep = "Jeep" createVehicle position player;
+- _heli = "AH1Z" createVehicle getMarkerPos "hspawn";
+- _veh = createVehicle ["ah1w", position player, [], 0, "FLY"];
+- _veh = createVehicle ["2S6M_Tunguska", getMarkerPos "marker1", ["marker2", "marker3"], 0, "NONE"];
+- "Objects such as\n* \"test_EmptyObjectForBubbles\"\n* \"test_EmptyObjectForFireBig\"\n* \"test_EmptyObjectForSmoke\"\ncreate additional emitters, which are stored in \"effects\" variable on the object. Since {{arma3}} v1.72 these emitters are automatically deleted when object is deleted\n<sqf>\n[] spawn\n{\n\tprivate _fire = \"test_EmptyObjectForFireBig\" createVehicle position player;\n\tsleep 5;\n\tdeleteVehicle _fire;\n};\n"
+- "The following explosives (ending with {{hl|_Scripted}}) can be set off by applying [[setDamage]] 1 to them for ease of scripting:\n* \"DemoCharge_Remote_Ammo_Scripted\"\n* \"SatchelCharge_Remote_Ammo_Scripted\"\n* \"ClaymoreDirectionalMine_Remote_Ammo_Scripted\"\n<sqf>\n_claymore = \"ClaymoreDirectionalMine_Remote_Ammo_Scripted\" createVehicle position player;\n_claymore spawn\n{\n\tsleep 5;\n\t_this setDamage 1;\n};\n"
+- "Add inventory to objects without inventory:\n<sqf>\n_boxes = \"Land_Pallet_MilBoxes_F\" createVehicle position player;\n_cargo = \"Supply500\" createVehicle [0,0,0];\n_cargo attachTo [_boxes, [0,0,0.85]];\n\n// optional for objects that can take damage\n_boxes addEventHandler [\"Killed\",\n{\n\t{\n\t\tdetach _x,\n\t\tdeleteVehicle _x;\n\t}\n\tforEach attachedObjects (_this select 0);\n}];\n"
+- |
+  Drop player's weapon:
+  <sqf>
+  _weaponHolder = "GroundWeaponHolder_Scripted" createVehicle position player;
+  player action ["DropWeapon", _weaponHolder, currentWeapon player];
+- |
+  The following weapon holders (ending with ''_Scripted'') do '''not''' auto-delete when empty. It is up to the mission maker to take care of these:
+  * "GroundWeaponHolder_Scripted"
+  * "WeaponHolderSimulated_Scripted"
+  * "Weapon_Empty" (a special weaponholder that displays only a single weapon, even if it contains magazines for this weapon)
+  <sqf>
+  private _weaponHolder = createVehicle ["Weapon_Empty", getPosATL player, [], 0, "CAN_COLLIDE"];
+  _weaponHolder addWeaponCargo ["arifle_Katiba_F", 1];
+  hint "You have 5 seconds to grab this weapon";
+  sleep 5;
+  deleteVehicle _weaponHolder;

@@ -1,0 +1,21 @@
+name: setCurrentChannel
+description: "Sets given channel as current chat channel. Scripted way of selecting desired channel on the UI.\nThe given channel may be disabled (see [[enableChannel]]), this is why this command returns boolean, [[true]] on success or [[false]] on failure. \n{{{!}} class=\"wikitable align-center\"\n! colspan=\"16\" {{!}} [[Channel IDs|Channel ID]] number correspondence\n{{!}}-\n{{!}} colspan=\"6\" {{!}} Default Channels\n{{!}} colspan=\"10\" {{!}} Custom Channels\n{{!}}- style=\"font-size: .9em\"\n{{!}} Global\n{{!}} Side\n{{!}} Command\n{{!}} Group\n{{!}} Vehicle\n{{!}} Direct\n{{!}} CC&nbsp;1\n{{!}} CC&nbsp;2\n{{!}} CC&nbsp;3\n{{!}} CC&nbsp;4\n{{!}} CC&nbsp;5\n{{!}} CC&nbsp;6\n{{!}} CC&nbsp;7\n{{!}} CC&nbsp;8\n{{!}} CC&nbsp;9\n{{!}} CC&nbsp;10\n{{!}}-\n{{!}} 0\n{{!}} 1\n{{!}} 2\n{{!}} 3\n{{!}} 4\n{{!}} 5\n{{!}} 6\n{{!}} 7\n{{!}} 8\n{{!}} 9\n{{!}} 10\n{{!}} 11\n{{!}} 12\n{{!}} 13\n{{!}} 14\n{{!}} 15\n{{!}}}\nFor Custom Radio (see [[radioChannelCreate]])"
+groups:
+- Radio and Chat
+syntax:
+- call: !Unary channelID
+  ret:
+  - Unknown
+  - '[[true]] on success'
+  params:
+  - name: channelID
+    description: '[[Channel IDs|channel ID]]'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 42
+examples:
+- _isDirectSelected = setCurrentChannel 5; // sets Direct channel as current active

@@ -1,0 +1,43 @@
+name: setFSMVariable
+description: |-
+  Set variable to given value in the variable space of given FSM.<br>
+  The FSM handle is the number returned by the [[execFSM]] command.
+groups:
+- System
+syntax:
+- call: !Binary
+  - handle
+  - - name
+    - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: handle
+    description: FSM handle
+    type: Unknown
+  - name: name
+    description: name of the FSM variable
+    type: Unknown
+  - name: value
+    description: new value of the FSM variable
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  _handle = execFSM "test.fsm";
+  _handle setFSMVariable ["_foo", 23]; // sets variable _foo in the FSM to 23

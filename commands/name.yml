@@ -1,0 +1,59 @@
+name: name
+description: |-
+  When argument is [[Object]], the command returns the name given to a unit using the [[setIdentity]] instruction or selected randomly by the game engine if [[setIdentity]] has not been used on the unit.
+  If used on vehicle, name of first crew member (in order commander, driver, gunner). If used on an object, "Error: No unit" is being returned.
+multiplayer_note: '[[name]] returns [[profileName]], eventually suffixed by the server in the event of identical names, e.g {{hl|username}}/{{hl|username (2)}}.'
+problem_notes:
+- '{{Feature|important|If the provided unit is dead and has been removed from its group, its identity has then been purged to save memory and using [[name]] on it will result in a logged error.}}'
+groups:
+- Unit Identity
+- Locations
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+- call: !Unary location
+  ret:
+  - Unknown
+  - the location's ''name''. To get its textual value, use [[text]] (see {{Link|#Example 3}})
+  params:
+  - name: location
+    type: Unknown
+  since:
+    armed_assault:
+      major: 1
+      minor: 8
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _name = name player;
+- _locationName = name myLocation;
+- |
+  name nearestLocation [position player, "Hill"]; // ""
+  text nearestLocation [position player, "Hill"]; // "Lesnoy Khrebet"

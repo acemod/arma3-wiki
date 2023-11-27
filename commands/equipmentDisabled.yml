@@ -1,0 +1,20 @@
+name: equipmentDisabled
+description: Returns current state for NVG and TI equipment availability.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- equipmentDisabled tank1 params ["_nvg", "_ti"];

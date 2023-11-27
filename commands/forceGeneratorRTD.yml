@@ -1,0 +1,24 @@
+name: forceGeneratorRTD
+description: Adds force generator to world. {{Feature|afm}}
+groups:
+- RTD
+syntax:
+- call: !Unary index
+  ret:
+  - Unknown
+  - force index
+  params:
+  - name: index
+    description: index
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- forceGeneratorRTD 2;

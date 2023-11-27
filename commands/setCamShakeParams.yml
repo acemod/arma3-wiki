@@ -1,0 +1,44 @@
+name: setCamShakeParams
+description: Sets camera shake parameters. Will not have any effect until shake is started via [[addCamShake]].
+groups:
+- Camera Control
+syntax:
+- call: !Unary
+  - posCoef
+  - vertCoef
+  - horzCoef
+  - bankCoef
+  - interpolation
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: posCoef
+    description: strength of positional movement (how far the whole position can change in X,Y&Z). Should not be bigger than '''0.1''' to prevent the camera from moving into or behind the player
+    type: Unknown
+  - name: vertCoef
+    description: 'strength of vertical camera pan (up/down), practical range: 0..10'
+    type: Unknown
+  - name: horzCoef
+    description: 'strength of horizontal camera pan (left/right), practical range: 0..10'
+    type: Unknown
+  - name: bankCoef
+    description: 'strength of camera tilt/bank, practical range: 0..20'
+    type: Unknown
+  - name: interpolation
+    description: if [[true]], then transitions in the different shaking directions will be smoother
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setCamShakeParams [0.1, 1, 1, 1, true];

@@ -1,0 +1,22 @@
+name: ctrlMapDir
+description: Returns the current orientation angle of the map control in degrees.
+groups:
+- GUI Control - Map
+syntax:
+- call: !Unary ctrl
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 14
+examples:
+- |
+  private _mapControl = findDisplay 12 displayCtrl 51; // get the map
+  private _dir = ctrlMapDir _mapControl; // returns 0 as the main map does not autorotate

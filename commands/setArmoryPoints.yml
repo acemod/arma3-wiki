@@ -1,0 +1,30 @@
+name: setArmoryPoints
+description: Stores passed number into [USERNAME].ArmaXProfile file, where it assigns it as a value to ''armoryPoints'' entry. If entry doesn't exist, it is created.
+groups:
+- System
+syntax:
+- call: !Unary points
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: points
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setArmoryPoints (armoryPoints + 20);
+- setArmoryPoints 3.14;

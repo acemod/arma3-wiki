@@ -1,0 +1,26 @@
+name: activeTitleEffectParams
+description: Returns type, effect, speed and map visibility of the given active title effect (see [[allActiveTitleEffects]])
+groups:
+- GUI Control
+syntax:
+- call: !Unary layer
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: layer
+    description: layer number or -1 (see [[allActiveTitleEffects]])
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- |
+  21 cutText ["Hello World!", "PLAIN", 2];
+  hint str activeTitleEffectParams 21; // ["TXT", "PLAIN", 2, true]
+- |
+  titleText ["Hello World!", "BLACK"];
+  hint str activeTitleEffectParams -1; // ["TXT", "BLACK", 1, true]

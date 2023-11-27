@@ -1,0 +1,83 @@
+name: isNil
+description: |-
+  Tests whether a variable is [[nil]] or undefined from its [[Identifier|identifier]], or whether the given expression evaluates to [[nil]] or [[Nothing]].
+  {{Feature|arma0|This command does not exist in {{ofp}}/{{arma0}} but can be emulated (see {{Link|#Example 5}}).}}
+groups:
+- Variables
+syntax:
+- call: !Unary variableName
+  ret:
+  - Unknown
+  - '[[true]] if variable is [[nil]] or undefined'
+  params:
+  - name: variableName
+    description: '[[missionNamespace]]''s or local [[Variables|variable]]''s [[Identifier|identifier]] (e.g "globalVariable", "_localVariable")'
+    type: Unknown
+- call: !Unary code
+  ret:
+  - Unknown
+  - '[[true]] if ''''code'''' returns [[Nothing]], [[false]] otherwise'
+  params:
+  - name: code
+    description: |-
+      code to evaluate:
+      * the code '''will''' be executed; <sqf inline>isNil { player setDamage 1 };</sqf> ''will'' kill the player
+      * the code will not be allowed to [[canSuspend|suspend]] while expression is evaluated, even if the parent scope allows it (see {{Link|#Example 4}}).
+    type: Unknown
+- call: !Binary
+  - namespace
+  - variableName
+  ret:
+  - Unknown
+  - '[[true]] if variable is [[nil]] or undefined'
+  params:
+  - name: namespace
+    type: Unknown
+  - name: variableName
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 16
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  if (isNil "TAG_globalVariable") then { TAG_globalVariable = 0 };
+  if (isNil "_localVariable") then { hint "_localVariable is nil" };
+- isNil { player getVariable "someVar" };
+- |
+  _myArray = [0, 1];
+  isNil { _myArray select 0 }; // returns false
+  isNil { _myArray select 1 }; // returns false
+  isNil { _myArray select 2 }; // returns true
+  isNil { _myArray select 3 }; // throws a script error. only length+1 select is allowed
+- "This trick forces executing something in [[Scheduler|Unscheduled Environment]]:\n<sqf>\n0 spawn {\n\tsystemChat str canSuspend;\t\t// chat shows true\n\tisNil { hint str canSuspend };\t// hint shows false\n};\n"
+- |
+  {{ofp}} [[String]] comparison workaround<br>
+  [[SQS Syntax]]:
+  <sqs>
+  _nil = format ["%1", _undefinedVariable]
+  ? (format ["%1", variableToTest] == _nil) : hint "variableToTest is nil"
+  </sqs>
+
+  [[SQF Syntax]]:
+  <sqf>
+  _nil = format ["%1", _undefinedVariable];
+  if (format ["%1", variableToTest] == _nil) then { hint "variableToTest is nil" };

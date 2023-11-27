@@ -1,0 +1,25 @@
+name: animationSourcePhase
+description: Returns current animation phase of given source. Similar to [[animationPhase]] or [[doorPhase]] but designed to complement [[animateSource]]. This command could be used to obtain relative turret direction and gun elevation on a vehicle (see {{Link|#Example 2}}).
+groups:
+- Animations
+syntax:
+- call: !Binary
+  - object
+  - source
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: source
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- private _phase = house animationSourcePhase "Door_1_source";
+- "private _mainturretDirection =\tdeg (_marshall animationSourcePhase \"mainturret\"); // relative to Marshall direction\nprivate _maingunElevation =\t\tdeg (_marshall animationSourcePhase \"maingun\");\nprivate _obsturretDirection =\tdeg (_marshall animationSourcePhase \"obsturret\"); // relative to main turret direction\nprivate _obsgunElevation =\t\tdeg (_marshall animationSourcePhase \"obsgun\");\n"

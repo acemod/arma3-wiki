@@ -1,0 +1,20 @@
+name: getAttackTarget
+description: Returns the target given unit is engaging.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 0
+examples:
+- private _unitsTarget = getAttackTarget _unit;

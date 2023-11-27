@@ -1,0 +1,20 @@
+name: getSlingLoad
+description: Return object which is sling loaded by vehicle
+groups:
+- Ropes and Sling Loading
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - the sling loaded vehicle. [[objNull]] if nothing is sling loaded.
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- _cargo = getSlingLoad heli1;

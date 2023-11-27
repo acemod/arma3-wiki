@@ -1,0 +1,21 @@
+name: removeVest
+description: Removes vest from unit.
+groups:
+- Containers
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- removeVest player;

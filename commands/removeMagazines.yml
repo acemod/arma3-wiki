@@ -1,0 +1,42 @@
+name: removeMagazines
+description: Removes all magazines of given type from the unit. If magazine class does not exist, nothing happens, not even .rpt message, unlike with [[addMagazine]] command.
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - unitName
+  - magazineName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
+  - name: magazineName
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player removeMagazines "30Rnd_556x45_Stanag";

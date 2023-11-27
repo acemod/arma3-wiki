@@ -1,0 +1,18 @@
+name: diag stacktrace
+description: Returns an array containing the function name, line number, scope name and all local variables in form of a hashmap.
+groups:
+- Diagnostic
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- "private _testvar = 1;\nprivate _testother = 2;\ncall \n{\n\t_testvar = 3;\n\tif (_testvar == 3) then \n\t{\n\t\t_myVariable = 4;\n\t\thint str diag_stacktrace;\n\t};\n};\n/*\n[\n\t[\"\", 3, \"\", [[\"_this\", []], [\"_testother\", 2], [\"_testvar\", 3]]],\n\t[\"\", 6, \"\", []],\n\t[\"\", 8, \"\", [[\"_myvariable\", 4]]]\n]\n*/\n"

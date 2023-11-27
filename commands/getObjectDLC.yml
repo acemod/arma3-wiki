@@ -1,0 +1,21 @@
+name: getObjectDLC
+description: Returns appID of the DLC the object belongs to or [[nil]] if object is vanilla.
+groups:
+- DLC
+syntax:
+- call: !Unary obj
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 36
+examples:
+- "_appID = getObjectDLC cursorTarget;\nif (!isNil \"_appID\") then {\n\thint format [\"This object belongs to DLC with id: %1\", _appID];\n} else {\n\thint \"This object is vanilla\";\n};"
+- "_akm = createSimpleObject [\"A3\\Weapons_F_Exp\\Rifles\\AKM\\AKM_F.p3d\",getPosASL player];\ngetObjectDLC _akm;\t// 395180"

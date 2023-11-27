@@ -1,0 +1,31 @@
+name: hostMission
+description: Host the multiplayer mission defined in the config class and opens the lobby with the scenario loaded. Must be called in UI action from a dialog.
+groups:
+- Multiplayer
+syntax:
+- call: !Unary
+  - configEntry
+  - activeDisplay
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: configEntry
+    type: Unknown
+  - name: activeDisplay
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 55
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hostMission [configFile >> "CfgMissions" >> "MPMissions" >> _scenarioClassName, _currentlyActiveDisplay];
+- "Launch host mission dialog from a client on dedicated server in {{arma3}}:\n<sqf>hostMission [\n\tconfigFile >> \"CfgMissions\" >> \"MPmissions\" >> \"MP_COOP_m01\",\n\tfindDisplay 46\n];"

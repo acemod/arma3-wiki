@@ -1,0 +1,42 @@
+name: setWeaponReloadingTime
+description: |-
+  Sets reloading '''phase''' on the given weapon's current ammo round.
+  {{Feature|important|This command does '''not''' change a weapon's (e.g soldier's rifle) ''magazine'' reloading time but changes '''the ammo reloading state''' before the next round is shot.}}
+groups:
+- Weapons
+syntax:
+- call: !Binary
+  - vehicle
+  - - gunner
+    - muzzleName
+    - reloadTime
+  ret:
+  - Unknown
+  - '[[true]] if given weapon is found'
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: gunner
+    description: alive and able gunner operating the targeted turret
+    type: Unknown
+  - name: muzzleName
+    description: turret's muzzle
+    type: Unknown
+  - name: reloadTime
+    description: 'in range 0..1 where 0: reload complete, 1: reload started'
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 60
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _success = _vehicle setWeaponReloadingTime [gunner vehicle player, currentMuzzle gunner vehicle player, 0.5];
+- "Boost RPM:\n<sqf>\nunit addEventHandler [\"Fired\", {\n\t_this # 0 setWeaponReloadingTime [_this # 0, _this # 2, 1/3];\n}];\n"

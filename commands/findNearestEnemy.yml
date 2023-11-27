@@ -1,0 +1,37 @@
+name: findNearestEnemy
+description: Finds the nearest enemy to the specified position. Returns a null object if the object's group does not [[knowsAbout|know about]] any enemies. This command will return nearest object that is known to the unit and is considered enemy. An empty vehicle that is part of enemy group assets (see [[addVehicle]]) can be returned as valid nearest target.
+groups:
+- Object Detection
+syntax:
+- call: !Binary
+  - object
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: position
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _myNearestEnemy = (units _myGroup select 0) findNearestEnemy player;
+- _myNearestEnemy = player findNearestEnemy player;

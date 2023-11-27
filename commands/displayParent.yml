@@ -1,0 +1,20 @@
+name: displayParent
+description: Returns parent display of the given display.
+groups:
+- GUI Control
+syntax:
+- call: !Unary display
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: display
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- '_display = displayParent findDisplay 49; // Display #46'

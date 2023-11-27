@@ -1,0 +1,26 @@
+name: ammoOnPylon
+description: Returns ammo count on given pylon (or [[false]] on failure).
+groups:
+- Vehicle Loadouts
+syntax:
+- call: !Binary
+  - vehicle
+  - pylon
+  ret:
+  - Unknown
+  - '[[false]] on failure'
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: pylon
+    description: pylon's name or index
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- private _ammoCount = (vehicle player) ammoOnPylon "pylon1";
+- hint str (vehicle player ammoOnPylon "pylonCenter");

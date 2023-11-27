@@ -1,0 +1,23 @@
+name: removeAllMissionEventHandlers
+description: |-
+  Removes all mission event handlers of the given type which were added by [[addMissionEventHandler]].
+
+  {{Feature | important | Prior to {{GVI|arma3|2.08}} this command would also reset the Event Handler creation index to 0.}}
+groups:
+- Event Handlers
+syntax:
+- call: !Unary type
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: type
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- removeAllMissionEventHandlers "Loaded";

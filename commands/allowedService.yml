@@ -1,0 +1,23 @@
+name: allowedService
+description: |-
+  Returns which types of repair/refuel/rearm service are allowed. The two available types are manual, where the action is displayed to the user, and auto, where the service happens within distance.
+  The engine default is both (manual and auto) for historic reasons.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - '0: none, 1: auto, 2: manual, 3: both, -1: unsupported'
+  params:
+  - name: vehicle
+    description: supply vehicle, i.e. ammo truck
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- if (allowedService _vehicle == -1) then { hint "this is not a service vehicle!" };

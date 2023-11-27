@@ -1,0 +1,20 @@
+name: isAutonomous
+description: Returns whether the UAV is in autonomous mode or not.
+groups:
+- Remote Control
+syntax:
+- call: !Unary uav
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: uav
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- private _isAutonomous = isAutonomous uav;

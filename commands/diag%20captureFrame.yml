@@ -1,0 +1,28 @@
+name: diag captureFrame
+description: |-
+  This command starts counting frames from the moment it is executed and when the count reaches the number passed as param, the current frame is captured and captured data UI dialog appears, similar to [[diag_captureSlowFrame]]. This can also be executed on a dedicated Server and because a Server has no UI it will behave like [[diag_captureFrameToFile]].
+  {{Feature|Important|BattlEye's RCON variant of this command is '''#captureFrame'''}}
+groups:
+- Diagnostic
+- Performance Profiling
+syntax:
+- call: !Unary frame
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: frame
+    description: next n-th frame to be captured
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 63
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- diag_captureFrame 1; // capture the first frame after command execution
+- diag_captureFrame 24; // capture 24th frame after command execution

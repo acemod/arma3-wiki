@@ -1,0 +1,30 @@
+name: setStarterRTD
+description: "Toggle the starter for the given helicopter engine(s) on or off. \n* engine index 0: engine #1\n* engine index 1: engine #2\n* engine index 2: engine #3\n* engine index -1: all engines"
+groups:
+- RTD
+syntax:
+- call: !Binary
+  - helicopterRTD
+  - - enable
+    - engineIndex
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: helicopterRTD
+    description: helicopter
+    type: Unknown
+  - name: enable
+    description: on or off
+    type: Unknown
+  - name: engineIndex
+    description: engine index
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+examples:
+- vehicle player setStarterRTD [true, -1];

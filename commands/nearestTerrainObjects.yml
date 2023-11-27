@@ -1,0 +1,59 @@
+name: nearestTerrainObjects
+description: "Returns a list of nearest terrain objects of the given types to the given position or object, within the specified distance. If more than one object is found they will be ordered according to 3D distance to the object (i.e. the closest one will be first in the array). \nIn contrast to [[nearestObjects]] this command returns terrain placed objects like trees, rocks and buildings which don't necessarily need an associated config class.<br><br>\nPossible type names:\n{{Columns|7|\n* {{hl|\"BUILDING\"}}\n* {{hl|\"BUNKER\"}}\n* {{hl|\"BUSH\"}}\n* {{hl|\"BUSSTOP\"}}\n* {{hl|\"CHAPEL\"}}\n* {{hl|\"CHURCH\"}}\n* {{hl|\"CROSS\"}}\n* {{hl|\"FENCE\"}}\n* {{hl|\"FOREST BORDER\"}}\n* {{hl|\"FOREST SQUARE\"}}\n* {{hl|\"FOREST TRIANGLE\"}}\n* {{hl|\"FOREST\"}}\n* {{hl|\"FORTRESS\"}}\n* {{hl|\"FOUNTAIN\"}}\n* {{hl|\"FUELSTATION\"}}\n* {{hl|\"HIDE\"}}\n* {{hl|\"HOSPITAL\"}}\n* {{hl|\"HOUSE\"}}\n* {{hl|\"LIGHTHOUSE\"}}\n* {{hl|\"MAIN ROAD\"}}\n* {{hl|\"POWER LINES\"}}\n* {{hl|\"POWERSOLAR\"}}\n* {{hl|\"POWERWAVE\"}}\n* {{hl|\"POWERWIND\"}}\n* {{hl|\"QUAY\"}}\n* {{hl|\"RAILWAY\"}}\n* {{hl|\"ROAD\"}}\n* {{hl|\"ROCK\"}}\n* {{hl|\"ROCKS\"}}\n* {{hl|\"RUIN\"}}\n* {{hl|\"SHIPWRECK\"}}\n* {{hl|\"SMALL TREE\"}}\n* {{hl|\"STACK\"}}\n* {{hl|\"TOURISM\"}}\n* {{hl|\"TRACK\"}}\n* {{hl|\"TRAIL\"}}\n* {{hl|\"TRANSMITTER\"}}\n* {{hl|\"TREE\"}}\n* {{hl|\"VIEW-TOWER\"}}\n* {{hl|\"WALL\"}}\n* {{hl|\"WATERTOWER\"}}\n}}\n\n{{Feature|important|The names are / The filter is based on the named property [[Arma 3: Named_Properties#map|map]] - not on the named property ''class'' or any config definition!}}\n\n<spoiler text=\"Terrain object counts\">\n{{Feature|informative|Types which are missing are not present in the given world. [[Virtual Reality]] has no terrain objects. Last updated {{GVI|arma3|2.12}}}}\n<big>[[Stratis]]</big>\n{{Columns|5|\n* BUSH: 47974\n* CHAPEL: 2\n* CROSS: 1\n* FENCE: 1728\n* FUELSTATION: 3\n* HIDE: 70975\n* HOUSE: 684\n* LIGHTHOUSE: 3\n* ROAD: 143\n* ROCK: 820\n* SHIPWRECK: 11\n* TRACK: 2063\n* TRANSMITTER: 11\n* TREE: 40110\n* WALL: 1355\n* WATERTOWER: 1\n}}\n\n<big>[[Altis]]</big>\n{{Columns|5|\n* BUSH: 747193\n* CHAPEL: 165\n* CHURCH: 54\n* CROSS: 48\n* FENCE: 47940\n* FUELSTATION: 32\n* HIDE: 655958\n* HOSPITAL: 1\n* HOUSE: 17472\n* LIGHTHOUSE: 7\n* MAIN ROAD: 2061\n* POWER LINES: 2224\n* POWERSOLAR: 10\n* POWERWAVE: 51\n* POWERWIND: 128\n* ROAD: 4849\n* ROCK: 5483\n* RUIN: 3\n* SHIPWRECK: 43\n* TOURISM: 1\n* TRACK: 26823\n* TRANSMITTER: 23\n* TREE: 263630\n* WALL: 38943\n* WATERTOWER: 10\n}}\n\n<big>[[Malden 2035]]</big>\n{{Columns|5|\n* BUSH: 288461\n* BUSSTOP: 45\n* CHAPEL: 14\n* CHURCH: 14\n* CROSS: 16\n* FENCE: 11189\n* FUELSTATION: 24\n* HIDE: 192553\n* HOUSE: 4062\n* LIGHTHOUSE: 15\n* MAIN ROAD: 1050\n* POWER LINES: 3427\n* POWERSOLAR: 1\n* ROAD: 1442\n* ROCK: 3513\n* SHIPWRECK: 23\n* TRACK: 3489\n* TRANSMITTER: 7\n* TREE: 101960\n* WALL: 14189\n* WATERTOWER: 63\n}}\n\n<big>[[Tanoa]]</big>\n{{Columns|5|\n* BUSH: 754347\n* CHURCH: 21\n* FENCE: 2912\n* FUELSTATION: 85\n* HIDE: 356904\n* HOUSE: 13389\n* MAIN ROAD: 2921\n* POWER LINES: 3985\n* POWERSOLAR: 2\n* POWERWIND: 19\n* RAILWAY: 2138\n* ROAD: 1485\n* ROCK: 8909\n* SHIPWRECK: 58\n* TOURISM: 35\n* TRACK: 9419\n* TRAIL: 6936\n* TRANSMITTER: 16\n* TREE: 506993\n* WALL: 20526\n* WATERTOWER: 73\n}}\n\n<big>[[Livonia]]</big>\n{{Columns|5|\n* BUILDING: 1262\n* BUNKER: 40\n* BUSH: 473543\n* BUSSTOP: 73\n* CHAPEL: 8\n* CHURCH: 17\n* FENCE: 48426\n* FOUNTAIN: 36\n* FUELSTATION: 7\n* HIDE: 474123\n* HOUSE: 6762\n* MAIN ROAD: 2118\n* POWER LINES: 2671\n* POWERSOLAR: 2\n* POWERWIND: 1\n* RAILWAY: 843\n* ROAD: 5378\n* ROCK: 744\n* SHIPWRECK: 4\n* STACK: 11\n* TRACK: 12834\n* TRANSMITTER: 15\n* TREE: 1881630\n* VIEW-TOWER: 239\n* WALL: 4418\n* WATERTOWER: 7\n}}\n\n<big>[[Weferlingen]]</big>\n{{Columns|5|\n* BUILDING: 5072\n* BUSH: 731315\n* BUSSTOP: 106\n* CHAPEL: 13\n* CHURCH: 21\n* FENCE: 83908\n* FUELSTATION: 9\n* HIDE: 231818\n* HOUSE: 4562\n* MAIN ROAD: 1535\n* POWER LINES: 1958\n* RAILWAY: 2324\n* ROAD: 8740\n* STACK: 18\n* TRACK: 24372\n* TRANSMITTER: 1\n* TREE: 829449\n* VIEW-TOWER: 34\n}}\n\n<big>[[Weferlingen (Winter)]]</big>\n{{Columns|5|\n* BUILDING: 5072\n* BUSH: 519827\n* BUSSTOP: 106\n* CHAPEL: 13\n* CHURCH: 21\n* FENCE: 83908\n* FUELSTATION: 9\n* HIDE: 229792\n* HOUSE: 4562\n* MAIN ROAD: 1535\n* POWER LINES: 1958\n* RAILWAY: 2324\n* ROAD: 8740\n* STACK: 18\n* TRACK: 24372\n* TRANSMITTER: 1\n* TREE: 829449\n* VIEW-TOWER: 34\n}}\n\n<big>[[Cam Lao Nam]]</big>\n{{Columns|5|\n* BUILDING: 390\n* BUNKER: 2622\n* BUSH: 1852844\n* CHURCH: 6\n* FENCE: 12346\n* FORTRESS: 2\n* FOUNTAIN: 3\n* FUELSTATION: 32\n* HIDE: 309385\n* HOUSE: 13319\n* LIGHTHOUSE: 3\n* MAIN ROAD: 4162\n* POWER LINES: 1591\n* POWERSOLAR: 5\n* POWERWIND: 5\n* RAILWAY: 1345\n* ROAD: 17621\n* ROCK: 60452\n* SHIPWRECK: 161\n* TOURISM: 18\n* TRACK: 6846\n* TRAIL: 7726\n* TRANSMITTER: 33\n* TREE: 1442842\n* VIEW-TOWER: 529\n* WALL: 19664\n* WATERTOWER: 32\n}}\n\n<big>[[Khe Sanh]]</big>\n{{Columns|5|\n* BUILDING: 91\n* BUNKER: 4861\n* BUSH: 1299130\n* FENCE: 2196\n* FOUNTAIN: 2\n* FUELSTATION: 3\n* HIDE: 228731\n* HOUSE: 5754\n* POWER LINES: 801\n* ROAD: 7755\n* ROCK: 33853\n* TRACK: 8156\n* TRANSMITTER: 3\n* TREE: 1145377\n* VIEW-TOWER: 227\n* WALL: 9078\n* WATERTOWER: 13\n}}\n\n<big>[[The Bra]]</big>\n{{Columns|5|\n* BUILDING: 8\n* BUNKER: 265\n* BUSH: 179428\n* FENCE: 251\n* HIDE: 56960\n* HOUSE: 522\n* POWER LINES: 25\n* ROAD: 7\n* ROCK: 671\n* SHIPWRECK: 2\n* TRACK: 584\n* TRAIL: 2767\n* TRANSMITTER: 1\n* TREE: 203443\n* VIEW-TOWER: 48\n* WALL: 2076\n}}\n\n<big>[[Gabreta]]</big>\n{{Columns|5|\n* BUILDING: 222\n* BUSH: 383449\n* BUSSTOP: 18\n* CHAPEL: 10\n* CHURCH: 11\n* CROSS: 17\n* FENCE: 25616\n* FORTRESS: 149\n* FOUNTAIN: 2\n* FUELSTATION: 11\n* HIDE: 582635\n* HOSPITAL: 1\n* HOUSE: 6352\n* MAIN ROAD: 4427\n* POWER LINES: 502\n* POWERSOLAR: 2\n* RAILWAY: 1923\n* ROAD: 8693\n* ROCK: 918\n* RUIN: 5\n* SHIPWRECK: 1\n* STACK: 6\n* TRACK: 10066\n* TRAIL: 1170\n* TRANSMITTER: 2\n* TREE: 3473175\n* VIEW-TOWER: 39\n* WALL: 6218\n* WATERTOWER: 8\n}}\n\n<big>[[Sefrou-Ramal]]</big>\n{{Columns|5|\n* BUILDING: 2\n* BUSH: 13669\n* FENCE: 5199\n* FUELSTATION: 2\n* HIDE: 23243\n* HOUSE: 1963\n* MAIN ROAD: 403\n* POWER LINES: 565\n* POWERWIND: 19\n* RAILWAY: 135\n* ROAD: 199\n* ROCK: 1183\n* TRACK: 3286\n* TRANSMITTER: 9\n* TREE: 7592\n* WALL: 3560\n* WATERTOWER: 2\n}}\n\n<big>[[Spearhead 1944 Normandy]]</big>\n{{Columns|5|\n* BUILDING: 2918\n* BUNKER: 1703\n* BUSH: 608441\n* CHURCH: 45\n* CROSS: 16\n* FENCE: 288630\n* FORTRESS: 196\n* FOUNTAIN: 1286\n* HIDE: 330656\n* HOUSE: 12837\n* MAIN ROAD: 1981\n* RAILWAY: 776\n* ROAD: 20237\n* ROCK: 837\n* RUIN: 1\n* SMALL TREE: 20\n* TRACK: 29761\n* TRAIL: 6365\n* TREE: 581549\n* VIEW-TOWER: 95\n* WALL: 60793\n* WATERTOWER: 34\n}}\n\n{{Wiki|extractionScript}}\n</spoiler>"
+groups:
+- Object Detection
+syntax:
+- call: !Unary
+  - position
+  - types
+  - radius
+  - sort
+  - 2Dmode
+  ret:
+  - Unknown
+  - array of terrain objects. Before {{arma3}} v2.00 this command did not return roads of type {{hl|"ROAD", "MAIN ROAD", "TRACK", "TRAIL"}}
+  params:
+  - name: position
+    description: where to find objects, center position
+    type: Unknown
+  - name: types
+    description: list of case-insensitive types of the objects to search for. {{hl|[]}} to search without filters
+    type: Unknown
+  - name: radius
+    description: range from center position to search for objects
+    type: Unknown
+  - name: sort
+    description: sort objects by distance to the center or not - setting to [[false]] '''greatly''' improves performance
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+    since:
+      arma_3:
+        major: 1
+        minor: 62
+  - name: 2Dmode
+    description: 'the object search and sorting mode: [[true]] - 2D, [[false]] - 3D'
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 1
+        minor: 66
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 54
+examples:
+- nearestTerrainObjects [player, ["Tree", "Bush"], 200];
+- nearestTerrainObjects [player, ["House"], 200];
+- nearestTerrainObjects [[2716, 2949, 0], ["Chapel", "Fuelstation"], 100];
+- |-
+  Return every terrain object in 50 metres radius around player sorted, closest first:
+  <sqf>nearestTerrainObjects [player, [], 50];
+- |-
+  Return every terrain object in 50 metres radius around player unsorted:
+  <sqf>nearestTerrainObjects [player, [], 50, false];
+- "Hide all terrain objects [[nearestTerrainObjects]] could find:\n<sqf>if (isServer) then\n{\n\tprivate _allTerrainObjects = nearestTerrainObjects\n\t[\n\t\t[worldSize / 2, worldSize / 2],\n\t\t[],\n\t\tworldSize * sqrt 2 / 2,\n\t\tfalse\n\t];\n\n\t{ _x hideObjectGlobal true } forEach _allTerrainObjects;\n};"

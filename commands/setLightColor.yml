@@ -1,0 +1,48 @@
+name: setLightColor
+description: Set diffuse color of light. Illuminates surfaces that are facing the light.
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - light
+  - - r
+    - g
+    - b
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: light
+    type: Unknown
+  - name: r
+    description: red value in range 0..1
+    type: Unknown
+  - name: g
+    description: green value in range 0..1
+    type: Unknown
+  - name: b
+    description: blue value in range 0..1
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- myLight setLightColor [0.5,0,0]; // produces red

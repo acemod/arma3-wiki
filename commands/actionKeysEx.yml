@@ -1,0 +1,40 @@
+name: actionKeysEx
+description: |-
+  Gives a broken down version of [[actionKeys]] return. Returns an [[Array]] containing the breakdowns of the [[DIK_KeyCodes|dikCodes]] of keys, buttons and combos assigned to the given user action.<br>
+  Action names can be found in config class ControllerSchemes or [[:Category:Key Actions|user action names]] or user profile (see {{Link|#Example 1}}).<br>
+  In addition, some of the actions are also listed here: [[inputAction/actions]]
+
+  The Key Device can be one of several types:
+  {{Columns|3|
+  * {{hl|"KEYBOARD"}}
+  * {{hl|"MOUSE_BUTTON"}}
+  * {{hl|"MOUSE_AXIS"}}
+  * {{hl|"JOYSTICK_BUTTON"}}
+  * {{hl|"JOYSTICK_AXIS"}}
+  * {{hl|"JOYSTICK_POV"}}
+  * {{hl|"XINPUT"}} - (Xbox) Controller Input
+  * {{hl|"TRACKER"}} - Motion Tracking (TrackIR, Tobii etc)
+  }}
+groups:
+- Interaction
+syntax:
+- call: !Unary userAction
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: userAction
+    description: user action name (see [[inputAction/actions]])
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- |-
+  To retrieve the following key's data, use the property name without 'key':
+  <syntaxhighlight lang="cpp">keyWatch[] = { 24 };</syntaxhighlight>
+  <sqf>actionKeysEx "Watch"; // [[[24, "KEYBOARD"], [], false]]
+- private _result = actionKeysEx "OpticsMode"; // [[[129,"MOUSE_BUTTON"],[29,"KEYBOARD"],false],[[181,"KEYBOARD"],[],false]]

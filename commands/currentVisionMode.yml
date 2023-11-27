@@ -1,0 +1,85 @@
+name: currentVisionMode
+description: |-
+  Returns current vision mode of unit's weapon. Vision mode could be one of:
+  * 0 - normal vision
+  * 1 - night vision
+  * 2 - thermal vision
+  Alternative syntaxes additionally return FLIR index (see [[setCamUseTI]]) of the thermal vision mode (See also [[Arma_3:_Event_Handlers#VisionModeChanged | "VisionModeChanged"]] entity event handler)
+groups:
+- Weapons
+syntax:
+- call: !Unary entity
+  ret:
+  - Unknown
+  - vision mode
+  params:
+  - name: entity
+    description: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode
+    type: Unknown
+- call: !Unary
+  - entity
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: entity
+    description: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 8
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: vehicle with vision modes
+    type: Unknown
+  - name: turretPath
+    description: path to vehicle's turret. Use [-1] for driver turret, [] for default primary gunner turret
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 8
+- call: !Binary
+  - unit
+  - weapon
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: soldier
+    type: Unknown
+  - name: weapon
+    description: unit's weapon. Use "" for current weapon
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 8
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _visionMode = currentVisionMode gunner _tank;
+- "if (currentVisionMode player == 1) then\n{\n\thint \"nightvision active\";\n};\n"
+- |
+  private _detailedVisionMode = currentVisionMode [gunner _tank];
+  _detailedVisionMode params ["_mode", "_flirIndex"];
+- private _detailedGunnerVisionMode = _tank currentVisionMode [0];
+- private _detailedWeaponVisionMode = player currentVisionMode "";

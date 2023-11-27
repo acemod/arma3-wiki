@@ -1,0 +1,39 @@
+name: addTorque
+description: |-
+  [[File:addTorque_correct.jpg|400px|right]]
+  Applies torque (rotation momentum) to the [[getCenterOfMass | center of mass]] of the given object. Torque force is defined as vector [x, y, z] applied in world space. If you need to define torque in model space, convert the torque vector first by [[vectorModelToWorld]] or [[vectorModelToWorldVisual]] command. The torque applied as impulse. Diagram below explain which way the object would rotate.  For more information see {{Link|http://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/classPxRigidBody.html#acb04ffc816d45afff2d04e93d7446e79|NVIDIA docs}} <br>
+
+  {{Feature|informative|
+  A single application of torque would produce one impulse, which may not be enough. In this case consider applying a series of continuous impulses, for example to make a quad bike to roll forward:
+  <sqf>onEachFrame { quad addTorque (quad vectorModelToWorld [100,0,0]) };</sqf>
+  }}
+  {{Feature|important|This command doesn't follow convention for torque direction, which obeys right-hand rule. To comply, negate all values in the vector.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - object
+  - torque
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    description: PhysX object
+    type: Unknown
+  - name: torque
+    description: world vector in format [x,y,z]
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 72
+examples:
+- |-
+  Apply torque [1000,0,0] to object not factoring object positioning:
+  <sqf>_wheel addTorque [1000,0,0];
+- |-
+  Apply torque [1000,0,0] relative to object:
+  <sqf>_wheel addTorque (_wheel vectorModelToWorld [1000,0,0]);

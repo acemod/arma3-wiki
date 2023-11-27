@@ -1,0 +1,32 @@
+name: getHit
+description: |-
+  Returns selection damage. Same as [[getHitPointDamage]], only the argument is selection part instead of hit point.
+  {{Feature|informative|Some part names are in Czech; see the [[ArmA: Armed Assault: Selection Translations|translation table]].}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - vehicle
+  - selection
+  ret:
+  - Unknown
+  - before {{GVI|arma3|1.94|size= 0.75}}, [[Nothing]] was returned when an invalid ''selection'' was provided (now returns {{hl|0}})
+  params:
+  - name: vehicle
+    description: vehicle to be queried
+    type: Unknown
+  - name: selection
+    description: selection part name
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 64
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- hint str (player getHit "head");
+- private _engineDamage = _car getHit "motor";

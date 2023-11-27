@@ -1,0 +1,56 @@
+name: lnbSetValue
+description: Sets the additional '''integer''' value in the item with the position index of the 2D listbox.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: row
+    type: Unknown
+  - name: column
+    type: Unknown
+  - name: value
+    type: Unknown
+- call: !Binary
+  - control
+  - - - row
+      - column
+    - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: row
+    type: Unknown
+  - name: column
+    type: Unknown
+  - name: value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _ctrl lnbSetValue [[0,0],1];

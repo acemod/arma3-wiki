@@ -1,0 +1,50 @@
+name: addWeaponCargo
+description: |-
+  Add weapons to the cargo space of vehicles, which can be taken out by infantry units. Ignores available cargo space.
+  {{Feature|arma3|In {{arma3}}, arguments for this command must be local ({{Icon|localArgument|32}}). For global variant see [[addWeaponCargoGlobal]].}}
+groups:
+- Containers
+syntax:
+- call: !Binary
+  - vehicleName
+  - - weaponName
+    - count
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicleName
+    description: vehicle to which add the weapons
+    type: Unknown
+  - name: weaponName
+    description: weapon name. See [[:Category:Weapons]] for reference about possible values
+    type: Unknown
+  - name: count
+    description: number of weapons to add. Since Arma 3 v2.14, negative count will remove weapons.
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _truck addWeaponCargo ["M16", 5];

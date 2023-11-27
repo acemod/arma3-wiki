@@ -1,0 +1,28 @@
+name: insideBuilding
+description: |-
+  Returns how much a man is inside a building. The value is the same as normally returned by weapons/ammo sound controller "interior".
+  It is possible to modify an individual object to use sound interior with [[enableAudioFeature]].
+
+  {{Feature|informative|
+  The sound is considered internal when the corresponding surface sound name starts with "int_".
+  An object placed inside a building that does not have model {{hl|CfgSurfaces}}' {{sic|[[Config Properties Megalist#soundEviron|soundEviron]]}} parameter named this way would generate external sound inside the building, and [[insideBuilding]] on top of this object would return 0.
+  }}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary man
+  ret:
+  - Unknown
+  - in range 0..1, where 0 is outside, 1 is inside
+  params:
+  - name: man
+    description: entity of class Man
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- private _isFullyInside = insideBuilding player == 1;

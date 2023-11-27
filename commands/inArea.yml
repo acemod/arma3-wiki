@@ -1,0 +1,73 @@
+name: inArea
+description: |-
+  Checks whether given position or object is inside given area. Use [[inAreaArray]] to check multiple positions/objects within area.
+  {{Feature|informative|This command also supports hexagon area which can be created from ellipse when both a and b are negative.
+  Hexagon ellipses are also supported by both marker creation and [[drawEllipse]].}}
+groups:
+- Triggers
+- Markers
+- Locations
+- Positions
+syntax:
+- call: !Binary
+  - position
+  - area
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: position
+    type: Unknown
+  - name: area
+    description: |-
+      trigger
+      * [[String]] - marker name
+      * [[Location]] - location
+    type: Unknown
+- call: !Binary
+  - position
+  - - center
+    - a
+    - b
+    - angle
+    - isRectangle
+    - c
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: position
+    type: Unknown
+  - name: center
+    description: center of the area in format [[Position#Introduction|Position2D]], [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D), [[Object]] or [[Group]]
+    type: Unknown
+  - name: a
+    description: x axis (x / 2)
+    type: Unknown
+  - name: b
+    description: y axis (y / 2)
+    type: Unknown
+  - name: angle
+    description: rotation angle
+    type: Unknown
+  - name: isRectangle
+    description: '[[true]] if rectangle, [[false]] if ellipse'
+    type: Unknown
+  - name: c
+    description: ) z axis (z / 2)
+    type: Unknown
+    optional: true
+    default: -1 (unlimited
+    since:
+      arma_3:
+        major: 1
+        minor: 60
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- _playerIsInside = player inArea _myTrigger;
+- _positionIsInside = _myPosition inArea [[100, 100, 0], 20, 30, 45, false];

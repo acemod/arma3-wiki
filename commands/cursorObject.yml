@@ -1,0 +1,18 @@
+name: cursorObject
+description: Returns the object under cursor. This command is quite different from [[cursorTarget]] as it is more precise in determining the boundaries of the pointed at object and can detect a larger variety of objects including map objects and trees.
+groups:
+- Object Detection
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- hint str [getModelInfo cursorObject, typeOf cursorObject];

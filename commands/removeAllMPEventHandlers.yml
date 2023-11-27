@@ -1,0 +1,30 @@
+name: removeAllMPEventHandlers
+description: Removes all MP event handlers of the given type which were added by [[addMPEventHandler]]. Command needs to be executed only on one PC for MP event handler to be removed globally.
+groups:
+- Multiplayer
+syntax:
+- call: !Binary
+  - objectName
+  - event
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: objectName
+    type: Unknown
+  - name: event
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 55
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player removeAllMPEventHandlers "MPKilled";

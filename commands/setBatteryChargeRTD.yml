@@ -1,0 +1,29 @@
+name: setBatteryChargeRTD
+description: |-
+  Set the actual battery charge of a helicopter.
+  * 0: no charge
+  * 1: fully charged
+groups:
+- RTD
+syntax:
+- call: !Binary
+  - helicopterRTD
+  - charge
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: helicopterRTD
+    description: helicopter
+    type: Unknown
+  - name: charge
+    description: battery charge level
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+examples:
+- vehicle player setBatteryChargeRTD 0.5;

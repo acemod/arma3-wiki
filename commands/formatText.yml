@@ -1,0 +1,42 @@
+name: formatText
+description: Creates a [[Structured Text]] similar to [[format]] command.
+groups:
+- Strings
+- Structured Text
+syntax:
+- call: !Unary
+  - format
+  - argument1
+  - argument2
+  - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: format
+    description: a string containing text and/or references to the variables listed below in the array. The references appear in the form of %1, %2 etc.
+    type: Unknown
+  - name: argumentN
+    description: use [[Structured Text]] where necessary (see [[#Example|Example 2]])
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 'hint formatText ["Image: %1", image "\a3\Data_f\Flags\flag_Altis_co.paa"];'
+- "hint formatText [\"%1%2%3\", \"line1\", \"<br/>\", \"line2\"];\t\t// result displayed in one line\nhint formatText [\"%1%2%3\", \"line1\", lineBreak, \"line2\"];\t// result displayed in two lines\n"

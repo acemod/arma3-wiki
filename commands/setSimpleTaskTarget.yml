@@ -1,0 +1,34 @@
+name: setSimpleTaskTarget
+description: Attach a target to the simple task.<br>Overrides [[setSimpleTaskDestination]].
+groups:
+- Briefing
+syntax:
+- call: !Binary
+  - task
+  - - target
+    - precisePosition
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: task
+    type: Unknown
+  - name: target
+    type: Unknown
+  - name: precisePosition
+    description: use exact position of the target for map marker / HUD indicator instead of the position known to the owner of the task (depending on the knowledge about the target)
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- task setSimpleTaskTarget [targetVehicle, true];

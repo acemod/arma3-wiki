@@ -1,0 +1,37 @@
+name: triggerAttachVehicle
+description: "Specifies the entity which will activate the selected trigger.<br>\n*If '''[]''' is given, the trigger is decoupled from the assigned vehicle (example 2).\n*If the activation source is '''\"VEHICLE\"''', '''\"GROUP\"''', '''\"LEADER\"''' or '''\"MEMBER\"''', it is changed to '''\"NONE\"'''. \n*If '''[vehicle]''' is given, the trigger is coupled to the vehicle or its group. \n*When the source is '''\"GROUP\"''', '''\"LEADER\"''' or '''\"MEMBER\"''', it is coupled to the group, otherwise it is coupled to the vehicle and the source is changed to '''\"VEHICLE\"'''."
+groups:
+- Triggers
+syntax:
+- call: !Binary
+  - triggerName
+  - objects
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: triggerName
+    type: Unknown
+  - name: objects
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- trigger triggerAttachVehicle [player];
+- trigger triggerAttachVehicle [];

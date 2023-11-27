@@ -1,0 +1,41 @@
+name: camConstuctionSetParams
+description: |-
+  Sets construction camera parameters. To work with "camconstruct" object.
+  {{Feature|important|Beware: {{sic|camCon'''stu'''ctionSetParams|camConstRuctionSetParams}}.}}
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - camera
+  - - position
+    - radius
+    - maxAboveLand
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: camera
+    type: Unknown
+  - name: position
+    type: Unknown
+  - name: radius
+    type: Unknown
+  - name: maxAboveLand
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _camera camConstuctionSetParams [getPos player, 50, 20];

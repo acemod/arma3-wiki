@@ -1,0 +1,36 @@
+name: synchronizeObjectsAdd
+description: Add given objects to the unit's list of synchronized objects.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - unit
+  - objects
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: objects
+    description: array of objects
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  _acm = _groupLogic createUnit ["AmbientCombatManager", position player, [], 0, "NONE"];
+  _acm synchronizeObjectsAdd [player];

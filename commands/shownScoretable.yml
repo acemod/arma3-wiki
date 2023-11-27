@@ -1,0 +1,18 @@
+name: shownScoretable
+description: "Returns the state of the score table set with [[showScoretable]] command. \n{{Feature|Warning|Since Arma 3 v1.64, the previous functionality of this command (score table visibility check) is moved to [[visibleScoretable]] command. Please update your scripts and sorry for any inconvinience.}}"
+groups:
+- Interaction
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - '0: Force hidden, 1: Force shown, -1: Default'
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 60
+examples:
+- _state = shownScoretable;

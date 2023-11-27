@@ -1,0 +1,21 @@
+name: flagTexture
+description: Returns texture of the [[Multiplayer Scripting#Locality|local]] instance of the flag. A getter for [[setFlagTexture]]. It will not return flag textures applied using [[forceFlagTexture]], use [[getForcedFlagTexture]] for that.
+groups:
+- Flags
+syntax:
+- call: !Unary flagCarrier
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: flagCarrier
+    description: vehicle, unit or flag pole
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 54
+examples:
+- _flagTexture = flagTexture _flag1;

@@ -1,0 +1,36 @@
+name: lnbText
+description: Returns the shown text in the item with the given position of the given 2D listbox.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Binary
+  - control
+  - - row
+    - column
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: row
+    type: Unknown
+  - name: column
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _text = _ctrl lnbText [0,0];

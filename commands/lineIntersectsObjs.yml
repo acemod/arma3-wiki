@@ -1,0 +1,42 @@
+name: lineIntersectsObjs
+description: Returns a list of objects intersected by the line from ''begPos'' to ''endPos''.
+groups:
+- Math - Geometry
+syntax:
+- call: !Unary
+  - begPos
+  - endPos
+  - ignoreObj1
+  - ignoreObj2
+  - sortByDistance
+  - flags
+  ret:
+  - Unknown
+  - intersecting objects
+  params:
+  - name: begPos
+    description: virtual line start
+    type: Unknown
+  - name: endPos
+    description: virtual line end
+    type: Unknown
+  - name: ignoreObj1
+    description: object to ignore
+    type: Unknown
+  - name: ignoreObj2
+    description: object to ignore
+    type: Unknown
+  - name: sortByDistance
+    description: '[[true]]: furthest object first, closest object last; [[false]]: unsorted'
+    type: Unknown
+  - name: flags
+    description: "CF_ONLY_WATER \n* 2 - CF_NEAREST_CONTACT \n* 4 - CF_ONLY_STATIC \n* 8 - CF_ONLY_DYNAMIC \n* 16 - CF_FIRST_CONTACT \n* 32 - CF_ALL_OBJECTS (Usable only with CF_FIRST_CONTACT and it will check one contact per object)\nFlags can be combined: 2 + 4 = 6 is CF_NEAREST_OBJECT + CF_ONLY_STATIC"
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 10
+examples:
+- "Sto = [];\nFn = {\n  {\n\tSto set [_foreachindex,lineIntersectsObjs [(eyePos player),(ATLToASL screenToWorld [0.5,0.5]),objNull,objNull,false,_x]];\n  } forEach [1,2,4,8,16,32];\n  hintSilent format [\"\n  ONLY_WATER: %1, \n  NEAREST_CONTACT: %2, \n  ONLY_STATIC: %3, \n  ONLY_DYNAMIC: %4,\n  FIRST_CONTACT: %5,\n  ALL_OBJECTS: %6\",\n  Sto select 0,Sto select 1,Sto select 2,Sto select 3,Sto select 4,Sto select 5];\n};\n[\"sample_id\",\"onEachFrame\",\"Fn\"] call BIS_fnc_addStackedEventHandler;\n//Example display objects' array in the middle of the screen sorted by 6 flags"

@@ -1,0 +1,66 @@
+name: setCruiseControl
+description: |-
+  Limits or sets '''[[local]] [[player]]-controlled''' vehicle's speed through cruise control.
+
+  {{Feature|informative|
+  * this command only works on CarX, TankX, ShipX simulation vehicles
+  * this command is implemented using a PID controller overwriting the vehicle's thrust/brakes input
+  }}
+
+  {{{!}} class="wikitable"
+  ! Speed Limiter
+  ! Cruise Control
+  {{!}}- style="vertical-align: top"
+  {{!}}
+  * the vehicle does not accelerate by itself
+  * manually accelerating is required to move forward
+  * accelerating beyond set speed limit is restricted by the PID controller
+  * applying brakes does not disable Speed Limiter
+  * behaviour:
+  ** if the speed is over 120% the set limit, the vehicle will apply 100% of braking and limit acceleration to 0%
+  ** if the speed is below 80% the set limit, the acceleration and braking are untouched
+  ** between 80 and 120%, the PID controller limits the acceleration and applies brakes if required
+  {{!}}
+  * the vehicle accelerates by itself
+  * manually accelerating is possible
+  * accelerating above set speed limit is possible
+  * applying brakes disables Cruise Control
+  * behaviour:
+  ** if the speed is over 120% the set limit, the vehicle will apply 100% of braking
+  ** if the speed is below 80% the set limit, the vehicle will apply 100% of acceleration
+  ** between 80 and 120%, the PID controller manages the speed
+  {{!}}}
+
+  {{Feature|important|This command should only be called to ''change'' values and '''not''' be called every frame, as it resets the PID controller.}}
+groups:
+- Unit Control
+- Object Manipulation
+syntax:
+- call: !Binary
+  - vehicle
+  - - speed
+    - autoThrust
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: the vehicle to limit; [[local]] [[player]]'s vehicle (<sqf inline>vehicle player</sqf>)
+    type: Unknown
+  - name: speed
+    description: desired/top speed in km/h. 0 to disable any setting. Only positives values are valid, negative values will make the vehicle unable to move forward
+    type: Unknown
+  - name: autoThrust
+    description: |-
+      cruise Control: the vehicle will maintain this speed until brakes is applied or driver dies or leaves the vehicle
+      * [[false]] - Speed Limiter: the vehicle will not accelerate above set speed
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- vehicle player setCruiseControl [50, true]; // sets cruise control to 50 km/h
+- vehicle player setCruiseControl [5, false]; // limits player's vehicle speed to 5 km/h

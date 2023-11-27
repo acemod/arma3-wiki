@@ -1,0 +1,21 @@
+name: vehicleMoveInfo
+description: "Returns current vehicle move/turn info (a getter for [[sendSimpleCommand]]) in format [moveInfo, turnInfo]. Possible values:\n\n{{{!}} class=\"wikitable\"\n! moveInfo\n! turnInfo\n{{!}}- style=\"vertical-align: top\"\n{{!}} width=\"50%\" {{!}}\n* {{hl|\"FORMATION\"}} - vehicle is stationary\n* {{hl|\"FORWARD\"}}  - vehicle is moving forward\n* {{hl|\"FAST\"}} - vehicle is fast moving forward\n* {{hl|\"SLOW\"}} - vehicle is slow moving forward\n* {{hl|\"STOP\"}} - vehicle is stationary\n* {{hl|\"BACK\"}} - vehicle is reversing\n* {{sic|{{hl|\"DirectByComander\"}}}} - keyboard pilot is used, i.e. player is in the vehicle and is the [[effectiveCommander]] pressing any driving key (WASD or arrows). \n{{!}} width=\"50%\" {{!}}\n* {{hl|\"LEFT\"}} - vehicle is turning left (use [[sendSimpleCommand | \"STOPTURNING\"]] to cancel)\n* {{hl|\"RIGHT\"}} - vehicle is turning right (use [[sendSimpleCommand | \"STOPTURNING\"]] to cancel)\n* {{hl|\"NONE\"}} - vehicle is not turning (when script command is used)\n* {{hl|\"ABS\"}} - vehicle is not turning (when keyboard pilot is used)\n{{!}}}"
+groups:
+- Object Manipulation
+- Unit Control
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 98
+examples:
+- onEachFrame { hintSilent str vehicleMoveInfo vehicle player };

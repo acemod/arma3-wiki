@@ -1,0 +1,36 @@
+name: getHideFrom
+description: Returns the [[Position]] where object believes the enemy to be. If there is no direct line of sight between the object and the enemy, this position is extrapolated based on the last known position and speed of the enemy. A returned position of [0,0,0] implies that object does not knowAbout enemy. If enemy is null it is some position in front of the object or enemy position.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - object
+  - enemy
+  ret:
+  - Unknown
+  - '[[ASLToATL]] representation of the believed [[aimPos]] of the enemy object'
+  params:
+  - name: object
+    type: Unknown
+  - name: enemy
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _pos = player getHideFrom _enemy;

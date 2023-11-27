@@ -1,0 +1,28 @@
+name: addCuratorAddons
+description: Allow curator use of given addon.
+groups:
+- Curator
+syntax:
+- call: !Binary
+  - curatorObj
+  - addons
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: curatorObj
+    description: curator module.
+    type: Unknown
+  - name: addons
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- curatorObj addCuratorAddons ["A3_Armor_F_AMV","A3_Armor_F_Panther"];
+- curatorObj addCuratorAddons ["A3_Modules_F_Curator_Lightning"];
+- "Addons can be stacked:\n<sqf>curatorObj addCuratorAddons [\"A3_Armor_F_AMV\",\"A3_Armor_F_Panther\"];\ncuratorObj addCuratorAddons [\"A3_Modules_F_Curator_Lightning\"];\ndiag_log curatorAddons curatorObj;</sqf>\n<br>\n<sqf>[\n\t\"A3_Armor_F_AMV\",\n\t\"A3_Armor_F_Panther\",\n\t\"A3_Modules_F_Curator_Lightning\"\n]"

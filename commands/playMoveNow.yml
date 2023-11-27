@@ -1,0 +1,38 @@
+name: playMoveNow
+description: |-
+  When used on a person,a smooth transition to the given move will be initiated, but all previous playMove are discarded. <br>
+  The difference between [[playMove]] and [[playMoveNow]] is that [[playMove]] adds another move to the move queue, while [[playMoveNow]] replaces the whole move queue with new move (see {{Link|#Example 2}}).
+  {{Feature | Informative | see [[:Category:Moves]] for respective games animations.}}
+groups:
+- Animations
+syntax:
+- call: !Binary
+  - soldier
+  - moveName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: soldier
+    type: Unknown
+  - name: moveName
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player playMoveNow "AmovPercMevaSlowWrflDf";
+- "player switchMove \"AmovPercMstpSrasWrflDnon\";\n[] spawn \n{\n\tsleep 0.5;\n\tplayer playMove \"AmovPpneMstpSrasWrflDnon\"; // player goes prone\n\tplayer playMove \"amovPknlMstpSrasWrflDnon\"; // player gets up on one knee\n};"
+- "player switchMove \"amovpercmstpsraswrfldnon\";\n[] spawn\n{\n\tsleep 0.5;\n\tplayer playMove \"AmovPpneMstpSrasWrflDnon\"; // player never goes prone\n\tplayer playMoveNow \"AmovPknlMstpSrasWrflDnon\"; // player goes down on one knee straight away\n};"

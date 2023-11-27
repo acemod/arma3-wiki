@@ -1,0 +1,27 @@
+name: selectThrowable
+description: Selects [[currentThrowable | current throwable]], which will be launched if the user presses {{Controls|G}}.
+groups:
+- Weapons
+- Unit Inventory
+syntax:
+- call: !Binary
+  - unit
+  - throwable
+  ret:
+  - Unknown
+  - '[[true]] on success'
+  params:
+  - name: unit
+    type: Unknown
+  - name: throwable
+    description: either the name of the throwable magazine or the name of the throwable muzzle
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- player selectThrowable "SmokeShellGreen";
+- player selectThrowable "SmokeShellGreenMuzzle";

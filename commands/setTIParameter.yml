@@ -1,0 +1,30 @@
+name: setTIParameter
+description: |-
+  Sets the provided Thermal Imaging parameter's value.
+  {{Feature|important|The settings are '''not''' saved in savegame and must be reapplied after loading.}}
+groups:
+- Environment
+syntax:
+- call: !Unary
+  - paramName
+  - newValue
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: paramName
+    description: the parameter name. See [[getTIParameters]] for a list of possible values
+    type: Unknown
+  - name: newValue
+    description: '- technically anything --> - the set number'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- |
+  setTIParameter ["OutputRangeStart", 0];
+  setTIParameter ["OutputRangeWidth", 1];

@@ -1,0 +1,20 @@
+name: getPilotCameraOpticsMode
+description: 'Returns the optics mode index (zoom) for the [[Arma 3: Targeting config reference#class pilotCamera|pilotCamera]]'
+groups:
+- Pilot Camera
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - the index of the optic mode
+  params:
+  - name: object
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 14
+examples:
+- getPilotCameraOpticsMode vehicle player

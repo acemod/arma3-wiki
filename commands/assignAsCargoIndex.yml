@@ -1,0 +1,35 @@
+name: assignAsCargoIndex
+description: |-
+  Assigns the character to a specific cargo / passenger index of the given vehicle.
+  {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - character
+  - - vehicle
+    - index
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: character
+    description: character to assign
+    type: Unknown
+  - name: vehicle
+    description: vehicle to assign to
+    type: Unknown
+  - name: index
+    description: cargo / passenger index
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 1
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player assignAsCargoIndex [myHelicopter, 1];

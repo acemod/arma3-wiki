@@ -1,0 +1,28 @@
+name: getAllEnv3DSoundControllers
+description: |-
+  Returns an array containing the names and values of environmental 2D sound controllers, variables that can be used in simple expressions when configuring sounds.
+  {{Feature|important|
+  * Controller names are case sensitive
+  * Wind param difference:
+  ** {{hl|wind}} is for '''3D''' controller
+  ** {{hl|wind'''y'''}} is for '''2D''' controller ([[getAllEnvSoundControllers]])
+  }}
+groups:
+- Sounds
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    description: environmental sound source like a tree or a house, see [[allEnv3DSoundSources]]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- "getAllEnv3DSoundControllers _thatTreeOverThere;\n/*\n\treturns e.g\n\t[\n\t\t[\"rain\",0],\n\t\t[\"night\",0],\n\t\t[\"wind\",0.161588],\n\t\t...\n\t]\n*/\n"

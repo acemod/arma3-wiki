@@ -1,0 +1,44 @@
+name: fadeSound
+description: 'Changes the sound volume smoothly within the given time. {{Feature|Informative|The player''s in-game setting is not changed by this command: {{hl|Final Volume {{=}} Client Setting * Scripted Volume}}.}}'
+groups:
+- Sounds
+syntax:
+- call: !Binary
+  - time
+  - volume
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: time
+    description: fade interval in seconds
+    type: Unknown
+  - name: volume
+    description: sound volume range 0 to 1
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 5 fadeSound 0;

@@ -1,0 +1,38 @@
+name: keyImage
+description: Returns a structured text, containing an image or name (if no image is found) of the button, on the keyboard, mouse or joystick, with the given code.
+groups:
+- System
+syntax:
+- call: !Unary dikCode
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: dikCode
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _image = keyImage 28; // result is "Enter"
+- |-
+  From Arma 3 v2.08:
+  <sqf>_image = keyImage "-1660944350"; // result is "Right Ctrl+G"

@@ -1,0 +1,20 @@
+name: uniformItems
+description: Get array with all items (of any kind, even weapons) from uniform.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "uniformItems player;\n// returns e.g\n/*\n[\n\t\"FirstAidKit\",\n\t\"30Rnd_65x39_caseless_mag\",\n\t\"30Rnd_65x39_caseless_mag\",\n\t\"30Rnd_65x39_caseless_mag\"\n]\n*/\n"

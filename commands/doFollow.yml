@@ -1,0 +1,45 @@
+name: doFollow
+description: |-
+  Order the given unit(s) to follow another from his own group as his [[formLeader|formation leader]] (without radio messages).<br>
+  It is also used to order the unit to '''return to formation''' after e.g [[doStop]] even if it is the leader himself that should return to formation (see [[#Example 2|Example 2]]).
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - unit
+  - unitLead
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: unitLead
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldier1 doFollow _soldier2;
+- units _group doFollow leader _group; // returns all the units to formation

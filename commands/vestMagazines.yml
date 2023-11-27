@@ -1,0 +1,20 @@
+name: vestMagazines
+description: Get array with all magazines from vest of the given unit.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "vestMagazines player;\n// returns e.g\n/*\n[\n\t\"6.5mm 30Rnd STANAG Mag(30/30)[id/cr:4/0](2x)\",\n\t\"9mm 16Rnd Mag(16/16)[id/cr:7/0](2x)\",\n\t\"RGO Frag Grenade(1/1)[id/cr:10/0](2x)\",\n\t\"Smoke Grenade (White)(1/1)[id/cr:12/0](1x)\",\n\t\"Smoke Grenade (Green)(1/1)[id/cr:13/0](1x)\",\n\t\"Chemlight (Green)(1/1)[id/cr:14/0](2x)\"\n]\n*/\n"

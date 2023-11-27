@@ -1,0 +1,25 @@
+name: ppEffectForceInNVG
+description: Forces use of [[Post Process Effects]] in NVG.
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - ppHandle
+  - force
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ppHandle
+    description: handle of the post processing returned by [[ppEffectCreate]]
+    type: Unknown
+  - name: force
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _ppGrain ppEffectForceInNVG true;

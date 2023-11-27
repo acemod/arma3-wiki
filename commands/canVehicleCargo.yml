@@ -1,0 +1,36 @@
+name: canVehicleCargo
+description: Returns bool array if it is possible to load cargo inside vehicle and if possible to load cargo into empty vehicle
+groups:
+- Vehicle in Vehicle Transport
+syntax:
+- call: !Binary
+  - vehicle
+  - cargo
+  ret:
+  - Unknown
+  - '[willFitIntoCurrentVehicle, willFitIntoEmptyVehicle]'
+  params:
+  - name: vehicle
+    description: vehicle carrying cargo
+    type: Unknown
+  - name: cargo
+    description: cargo to put in vehicle
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- |-
+  Blackfish with no vehicle cargo loaded
+  <sqf>private _result = blackfish canVehicleCargo offroad; // [true, true]
+- |-
+  Blackfish with one vehicle cargo called offroad already loaded
+  <sqf>private _result = blackfish canVehicleCargo offroad; // [false, false]</sqf>
+  Even if the Blackfish were empty, the offroad could not be loaded because it is already in a cargo space
+- |-
+  Blackfish with one vehicle cargo called offroad already loaded
+  <sqf>private _result = blackfish canVehicleCargo offroad2; // [false, true]</sqf>
+  offroad2 can't be loaded because there isn't enough space in the Blackfish, but if there were space offroad2 could be loaded into the Blackfish

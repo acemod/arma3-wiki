@@ -1,0 +1,28 @@
+name: move3DENCamera
+description: Moves the [[get3DENCamera|Eden Editor camera]].
+groups:
+- Eden Editor
+syntax:
+- call: !Unary
+  - position
+  - useOffset
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: position
+    description: new position
+    type: Unknown
+  - name: useOffset
+    description: |-
+      25, 25]}}
+      * If [[false]], the camera will be moved to the exact ''position''
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- move3DENCamera [getPosASL player, true];

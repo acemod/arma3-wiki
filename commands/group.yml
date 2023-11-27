@@ -1,0 +1,40 @@
+name: group
+description: Returns the group a unit is assigned to.
+problem_notes:
+- In MP the command is not initialised in functions called by initline or init eventhandlers.
+groups:
+- Groups
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - for dead units, the returned group equals [[grpNull]].
+  params:
+  - name: object
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _playerGrp = group player;

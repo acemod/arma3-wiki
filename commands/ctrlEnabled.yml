@@ -1,0 +1,47 @@
+name: ctrlEnabled
+description: 'Returns if a control on the currently active user dialog is enabled. Disabled controls cannot be focused. Read [[Arma: GUI Configuration]] for more information about user dialogs and controls.'
+groups:
+- GUI Control
+syntax:
+- call: !Unary idc
+  ret:
+  - Unknown
+  - '[[true]] if the control is enabled, [[false]] if not'
+  params:
+  - name: idc
+    description: control's IDC
+    type: Unknown
+- call: !Unary controlName
+  ret:
+  - Unknown
+  - '[[true]] if the control is enabled, [[false]] if not'
+  params:
+  - name: controlName
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if !(ctrlEnabled 100) then\n{\n\tctrlEnable [100, true];\n};\n"
+- _enabled = ctrlEnabled _control;

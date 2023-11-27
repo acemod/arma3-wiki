@@ -1,0 +1,30 @@
+name: setToneMapping
+description: |-
+  Applies a specific tone mapping to the game. The tone mapping can be edited with [[setToneMappingParams]].
+  {{Feature|arma3|This command is not present in {{arma3}}.}}
+groups:
+- System
+syntax:
+- call: !Unary toneName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: toneName
+    description: |-
+      can be one of:
+      * "Arma"
+      * "Filmic"
+      * "Reinhard"
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 62
+  take_on_helicopters:
+    major: 1
+    minor: 0
+examples:
+- setToneMapping "Filmic";

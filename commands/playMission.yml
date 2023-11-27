@@ -1,0 +1,48 @@
+name: playMission
+description: The mission is launched (from the main menu).
+groups:
+- System
+syntax:
+- call: !Unary
+  - campaign
+  - mission
+  - skipBriefing
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: campaign
+    description: directory of Campaign, if empty a single mission is launched
+    type: Unknown
+  - name: mission
+    description: directory if a string
+    type: Unknown
+  - name: skipBriefing
+    description: If true, the intro and briefing are skipped.
+    type: Unknown
+    optional: true
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- playMission ["XOutrage","x05Negotiator.Noe"];
+- playMission ["", configFile >> "CfgMissions" >> "Missions" >> "Armory1"];
+- playMission ["","\A3\Missions_F_Bootcamp\Scenarios\Arsenal.VR"];

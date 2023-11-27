@@ -1,0 +1,29 @@
+name: setObjectMaterial
+description: Sets material of object selection. The selection number is defined through the [[CfgVehicles Config Reference#hiddenSelections|hiddenselection]][] = {} array in the vehicle's config (starting with 0).
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - obj
+  - - selectionNumber
+    - material
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    type: Unknown
+  - name: selectionNumber
+    type: Unknown
+  - name: material
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  car setObjectMaterial [0,"A3\Structures_F\Data\Windows\window_set.rvmat"];
+  car setObjectMaterial [1,"A3\Structures_F\Data\Windows\window_set.rvmat"];

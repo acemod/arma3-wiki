@@ -1,0 +1,21 @@
+name: setHumidity
+description: Sets surface humidity. Affects how footsteps sound (dry / wet). [[humidity]] is increasing when raining and decreasing when not raining. Exception is if the rain is set with 'snow' flag, then [[humidity]] is not updated.
+groups:
+- Environment
+syntax:
+- call: !Unary humidity
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: humidity
+    description: surface humidity in the range 0..1
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- setHumidity 1;

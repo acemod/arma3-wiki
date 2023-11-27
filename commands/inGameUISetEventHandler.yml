@@ -1,0 +1,69 @@
+name: inGameUISetEventHandler
+description: |-
+  Sets given event handler of in-game UI. If EH function returns [[true]], performed action is overridden. Event handlers available are:
+  * "PrevAction" - mouse scroll up
+  * "Action" - action key press
+  * "NextAction" - mouse scroll down
+  In order to remove a previously added event handler, set it again with an empty ''code'' string {{hl|""}}.
+
+  {{Feature|important|This is a "set" command, which means event handlers are not stackable and will replace previously set event handlers of the same type.}}
+
+  {{Feature|arma3|Since {{arma3}} v1.50 the event handler receives an array of the selected/activated action's arguments in {{hl|_this}} variable:
+  <sqf>params ["_target", "_caller", "_index", "_engineName", "_text", "_priority", "_showWindow", "_hideOnUse", "_shortcut", "_visibleMenu", "_eventName"];</sqf>
+  * _target: [[Object]] - target object to which action is attached
+  * _caller: [[Object]] - caller object, basically [[player]]
+  * _index: [[Number]] - index of the action in action menu (0 - top most)
+  * _engineName: [[String]] - engine based action name ("User" for user added actions)
+  * _text: [[String]] - [[localize]]d action plain text as seen by the caller
+  * _priority: [[Number]] - action ''priority'' value
+  * _showWindow: [[Boolean]] - action ''showWindow'' value
+  * _hideOnUse: [[Boolean]] - action ''hideOnUse'' value
+  * _shortcut: [[String]] - action ''shortcut'' name or ""
+  * _visibleMenu: [[Boolean]] - [[isActionMenuVisible|action menu visibility]] - on first scroll or action press the menu is still invisible, the menu is shown but no action is performed
+  * _eventName: [[String]] - event name
+  }}
+groups:
+- GUI Control - Event Handlers
+- Event Handlers
+- Interaction
+syntax:
+- call: !Unary
+  - handlerName
+  - code
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: handlerName
+    type: Unknown
+  - name: code
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  inGameUISetEventHandler ["Action", "hint 'Lights, Camera, Action!'; true"];
+  sleep 10;
+  inGameUISetEventHandler ["Action", ""]; // removes the "Action" EH
+- |-
+  inGameUISetEventHandler ["PrevAction", "hint str _this; false"];
+  inGameUISetEventHandler ["NextAction", "hint str _this; false"];
+  inGameUISetEventHandler ["Action", "hint str _this; false"];
+- "Deny any weapon disassembly:\n<sqf>inGameUISetEventHandler [\"Action\", \"\n\tif (_this select 3 == 'DisAssemble') then {\n\t\thint 'You are not allowed to do this';\n\t\ttrue\n\t}\n\"];"
+- "Detect explosive/mine placement:\n<sqf>private _onMagazineUse = '\n\tparams [\"_target\", \"\", \"\", \"_action\", \"\", \"\", \"\", \"\", \"\", \"\", \"_event\"];\n\tif (_action == \"UseMagazine\") then {\n\t\tif (_event == \"Action\") then {\n\t\t\t_target spawn {\n\t\t\t\twaitUntil {!(all_magazines isEqualTo magazines _this)};\n\t\t\t\t{\n\t\t\t\t\t0 = all_magazines deleteAt (all_magazines find _x);\n\t\t\t\t} count magazines _this;\n\t\t\t\thint format [\"Magazine Used: %1\", all_magazines select 0];\n\t\t\t};\n\t\t} else {\n\t\t\tall_magazines = magazines _target;\n\t\t};\n\t};\n\tfalse\n';\ninGameUISetEventHandler [\"PrevAction\", _onMagazineUse];\ninGameUISetEventHandler [\"NextAction\", _onMagazineUse];\ninGameUISetEventHandler [\"Action\", _onMagazineUse];"

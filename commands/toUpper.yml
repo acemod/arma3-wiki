@@ -1,0 +1,32 @@
+name: toUpper
+description: Converts the supplied Unicode string to all uppercase characters. If the string doesn't have characters with [[toArray|codes]] > 255, use [[toUpperANSI]].
+groups:
+- Strings
+syntax:
+- call: !Unary string
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: string
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 9
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hint toUpper "AaBb1"; // returns "AABB1"

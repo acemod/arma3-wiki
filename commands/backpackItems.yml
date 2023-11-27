@@ -1,0 +1,20 @@
+name: backpackItems
+description: Get array with all items (of any kind, even weapons) in backpack of the given unit.
+groups:
+- Containers
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- backpackItems player; // returns e.g ["hgun_P07_F", "Titan_AT"]

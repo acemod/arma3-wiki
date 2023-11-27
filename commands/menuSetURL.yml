@@ -1,0 +1,41 @@
+name: menuSetURL
+description: Sets weblink (URL) of given menu strip entry, subject to {{hl|allowedHTMLLoadURIs[]}} whitelisting in [[CfgCommands]] config.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - link
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: path
+    type: Unknown
+  - name: link
+    type: Unknown
+- call: !Binary
+  - control
+  - - path
+    - link
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    type: Unknown
+  - name: link
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- _ctrlMenuStrip menuSetURL [[0,0,1], "https://arma3.com/"];

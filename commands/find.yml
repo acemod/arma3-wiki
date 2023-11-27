@@ -1,0 +1,100 @@
+name: find
+description: |-
+  Searches for an array element within an array or an ANSI string within an ANSI string.
+  {{Feature|arma3|If Unicode support is desired, see [[forceUnicode]].}}
+  {{Feature|important|Search is cASe-seNsItiVE!}}
+groups:
+- Strings
+- Arrays
+syntax:
+- call: !Binary
+  - array
+  - element
+  ret:
+  - Unknown
+  - zero-based position of the first array element that matches x, -1 if not found
+  params:
+  - name: array
+    description: array to search in
+    type: Unknown
+  - name: element
+    description: array element to find
+    type: Unknown
+- call: !Binary
+  - string
+  - substring
+  ret:
+  - Unknown
+  - zero-based position of the first sequence of characters that matches substring, -1 if not found
+  params:
+  - name: string
+    description: string to search in
+    type: Unknown
+  - name: substring
+    description: substring to find
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 28
+- call: !Binary
+  - string
+  - - substring
+    - indexStart
+  ret:
+  - Unknown
+  - zero-based position of the first sequence of characters that matches substring, -1 if not found
+  params:
+  - name: string
+    description: string to search in
+    type: Unknown
+  - name: substring
+    description: substring to find
+    type: Unknown
+  - name: indexStart
+    description: zero-based index which defines where find starts from
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 2
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 99
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '["Apples", "Oranges", "Pears"] find "Oranges"; // returns 1'
+- '[1, [2], [[3]]] find [[3]]; // returns 2 - does not work in OFP, returns -1'
+- if (magazines player find "Strela" != -1) then { hint "You've got Strela!"; };
+- hint str ("japa is the man!" find "the man!"); // returns 8
+- '"abc" find ""; // returns 0'
+- |
+  "abcdefghijklmnopqrstuvxyz" find "z"; // returns 24
+  "abcdefghijklmnopqrstuvxyz" find ["z", 20]; // returns 24, better performance
+- |
+  "abcßdef" find "c" // 2
+  "abcßdef" find "ß" // 3
+  "abcßdef" find "d" // 5 - before forceUnicode
+
+  forceUnicode 0; // since {{arma3}} v2.02
+  "abcßdef" find "d" // 4

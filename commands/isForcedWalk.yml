@@ -1,0 +1,26 @@
+name: isForcedWalk
+description: Returns [[true]] if player is forced to walk with [[forceWalk]].
+groups:
+- Stamina System
+syntax:
+- call: !Unary unitName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _bool = isForcedWalk player;

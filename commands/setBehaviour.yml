@@ -1,0 +1,58 @@
+name: setBehaviour
+description: |-
+  Sets individual unit behaviour '''on every unit in a group'''.
+  {{Feature | Important | This command doesn't set AI [[Group]] behaviour, see [[setCombatBehaviour]] or [[setBehaviourStrong]] for this.}}
+  {{Feature | Informative | See [[AI Behaviour]] for details of the effect of this command on AI units.}}
+  <spoiler text="Comparison of Behaviour commands">
+  {| class="wikitable" style="text-align: center"
+  ! Command
+  ! Applies To
+groups:
+- Groups
+- AI Behaviour
+syntax:
+- call: !Binary
+  - groupOrUnit
+  - behaviour
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: groupOrUnit
+    description: unit or a [[group]]
+    type: Unknown
+  - name: behaviour
+    description: |-
+      can be one of:
+      * "CARELESS"
+      * "SAFE"
+      * "AWARE"
+      * "COMBAT"
+      * "STEALTH"
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _group1 setBehaviour "SAFE";

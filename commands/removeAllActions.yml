@@ -1,0 +1,36 @@
+name: removeAllActions
+description: |-
+  Removes all unit's user added actions.
+  {{Feature|informative|This command's syntax was <sqf inline>unit removeAllActions number</sqf> from {{arma3}} v0.50 to v1.06.}}
+  {{Feature|important|Usage of this command is usually a bad practice unless justified by the situation; removing all actions in order to remove all actions that ''one'' added is not a good method as a mod or another script could have added its own actions as well and see them removed. Instead, store the action id returned by [[addAction]] either in a script variable or using [[setVariable]].}}
+groups:
+- Interaction
+syntax:
+- call: !Unary obj
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- removeAllActions player;
+- |
+  Do
+  <sqf>
+  private _actionId = player addAction ["Heal self", { player setDamage 0; }];
+  // ...
+  player removeAction _actionId;
+  </sqf>
+  Don't
+  <sqf>
+  player addAction ["Heal self", { player setDamage 0; }];
+  // ...
+  removeAllActions player;
+- "Do\n<sqf>\nplayer addAction [\"Heal self (once)\", {\n\tparams [\"_target\", \"\", \"_actionId\"];\n\t_target setDamage 0;\n\t_target removeAction _actionId;\n}];\n</sqf>\nDon't\n<sqf>\nplayer addAction [\"Heal self (once)\", {\n\tplayer setDamage 0;\n\tremoveAllActions player;\n}];\n"

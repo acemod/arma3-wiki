@@ -1,0 +1,53 @@
+name: lnbSetPictureColorSelectedRight
+description: Sets the color of the right picture when it is selected.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - color
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: row
+    description: index of the row
+    type: Unknown
+  - name: column
+    description: index of the column
+    type: Unknown
+  - name: color
+    description: color RGBA
+    type: Unknown
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - color
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    type: Unknown
+  - name: row
+    description: index of the row
+    type: Unknown
+  - name: column
+    description: index of the column
+    type: Unknown
+  - name: color
+    description: color RGBA
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- _control lnbSetPictureColorSelectedRight [[0, 0], [1,1,1,0.5]];

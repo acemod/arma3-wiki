@@ -1,0 +1,24 @@
+name: all3DENEntities
+description: |-
+  Returns an array of all currently placed [[Eden Entity|Eden Editor entities]].
+  {{Feature|EdenEditor|This information is only available in [[:Category:Eden Editor|Eden Editor]]. If used during mission, it will return {{hl|[<nowiki/>[],[],[],[],[],[],[],[-999]]}}.}}
+groups:
+- Eden Editor
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- systemChat str all3DENEntities;
+- all3DENEntities params ["_objects", "_groups", "_triggers", "_systems", "_waypoints", "_markers", "_layers", "_comments"];
+- |
+  // select all Eden entities
+  set3DENSelected all3DENEntities;

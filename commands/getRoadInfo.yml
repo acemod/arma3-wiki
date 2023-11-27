@@ -1,0 +1,28 @@
+name: getRoadInfo
+description: |-
+  Returns road piece information.
+  {{Feature|informative|
+  * Bridges are special case. Only large bridges are part of Road Net. Small pedestrian bridges are not recognized as roads. Bridge "mapType" is {{hl|"ROAD"}} so the best way to detect bridges is to check "isBridge" value. Bridges are not part of new roads and don't have the same info as other new roads, so only "mapType", "texture" (maybe "textureEnd"), "begPos", "endPos" and "isBridge" are  updated.
+  * Pedestrian roads "mapType" is usually {{hl|"TRAIL"}}. They are part of Road Net but excluded from path finding. Use [[roadsConnectedTo]] with alternative flag to find the connections between pedestrian roads.
+  }}
+groups:
+- Roads and Airports
+syntax:
+- call: !Unary road
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: road
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 0
+examples:
+- |
+  private _info = getRoadInfo _road;
+  _info params ["_mapType", "_width", "_isPedestrian", "_texture", "_textureEnd", "_material", "_begPos", "_endPos", "_isBridge"];
+  private _roadDirection = _begPos getDir _endPos;

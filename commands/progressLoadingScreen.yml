@@ -1,0 +1,30 @@
+name: progressLoadingScreen
+description: If loading screen is shown, sets progress bar to the given value (interval is from 0 to 1])
+groups:
+- System
+syntax:
+- call: !Unary progress
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: progress
+    description: in range 0..1
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "startLoadingScreen [\"Loading My Mission\"];\n// \n// batch of code\n// \nprogressLoadingScreen 0.25;\n// \n// batch of code\n// \nprogressLoadingScreen 0.50;\n// \n// batch of code\n// \nprogressLoadingScreen 0.95;\n// \n// batch of code\n// \nendLoadingScreen;"

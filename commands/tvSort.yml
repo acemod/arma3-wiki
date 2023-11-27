@@ -1,0 +1,51 @@
+name: tvSort
+description: Sorts all children of given path. Text of [[CT_TREE|Tree View]] entries is used for sorting.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Binary
+  - control
+  - - path
+    - reversed
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    description: '[[Tree View Path]] of the parent item to sort'
+    type: Unknown
+  - name: reversed
+    description: '[[true]] to reverse sort it'
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+- call: !Unary
+  - idc
+  - path
+  - reversed
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    description: control idc
+    type: Unknown
+  - name: path
+    description: '[[Tree View Path]] of the parent item to sort'
+    type: Unknown
+  - name: reversed
+    description: '[[true]] to reverse sort it'
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- control tvSort [[0], true];
+- tvSort [102, [0], true];

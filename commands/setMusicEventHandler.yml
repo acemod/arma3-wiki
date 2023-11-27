@@ -1,0 +1,30 @@
+name: setMusicEventHandler
+description: |-
+  Sets given music track event handler. Will overwrite other music event handlers.
+  {{Feature|obsolete|Use [[addMusicEventHandler]] instead as it can stack music event handlers.}}
+groups:
+- Event Handlers
+- Sounds
+syntax:
+- call: !Unary
+  - type
+  - function
+  ret:
+  - Unknown
+  - id of the event handler
+  params:
+  - name: type
+    description: '"MusicStart" or "MusicStop"'
+    type: Unknown
+  - name: function
+    description: 'script to be executed. Passes params array 0: class name of the sound in [[Description.ext#Music|CfgMusic]], 1: event handler id'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 2
+examples:
+- _ehID = setMusicEventHandler ["MusicStart", "hint str _this"];
+- _ehID = setMusicEventHandler ["MusicStop", "hint str _this"];

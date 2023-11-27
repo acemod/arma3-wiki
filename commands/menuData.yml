@@ -1,0 +1,41 @@
+name: menuData
+description: Returns data stored in menu entry on given path.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: path
+    type: Unknown
+- call: !Binary
+  - control
+  - path
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- |
+  // Create an entry which will return its data once clicked
+  private _ctrlMenuStrip = findDisplay 313 displayCtrl 120;
+  private _indexMain = _ctrlMenuStrip menuAdd [[], "Custom Tools"];
+  private _indexData = _ctrlMenuStrip menuAdd [[_indexMain],"This entry will print its data to system chat when clicked"];
+  _ctrlMenuStrip menuSetData [[_indexMain,_indexData], "[objNull,'Some String',true]"];
+  _ctrlMenuStrip menuSetAction [[_indexMain,_indexData], "systemChat (findDisplay 313 displayCtrl 120 menuData (menuHover (findDisplay 313 displayCtrl 120)));"];

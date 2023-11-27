@@ -1,0 +1,20 @@
+name: airplaneThrottle
+description: Returns throttle position. Works only on player's vehicle.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary airplane
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: airplane
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- private _throttle = airplaneThrottle objectParent player;

@@ -1,0 +1,44 @@
+name: setVectorUp
+description: Set object's up vector. Direction of the object remain unchanged. Default object's [[vectorUp]] is [0,0,1].
+groups:
+- Math - Vectors
+syntax:
+- call: !Binary
+  - object
+  - vectorUp
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: vectorUp
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  Turn object upside down:
+  <sqf>_obj setVectorUp [0,0,-1];
+- |-
+  Align object with the terrain underneath:
+  <sqf>_obj setVectorUp surfaceNormal getPosASL _obj;

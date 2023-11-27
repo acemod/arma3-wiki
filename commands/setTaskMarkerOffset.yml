@@ -1,0 +1,24 @@
+name: setTaskMarkerOffset
+description: Sets the task marker position in model space.
+groups:
+- Briefing
+syntax:
+- call: !Binary
+  - obj
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    type: Unknown
+  - name: position
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- player setTaskMarkerOffset [0,0.5,1];

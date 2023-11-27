@@ -1,0 +1,27 @@
+name: unitTurret
+description: |-
+  Returns the turret path the given vehicle's gunner is in.
+  To get the turret's unit see [[turretUnit]].
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - gunner
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: gunner
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 0
+examples:
+- _vehicle unitTurret _gunner;
+- vehicle player unitTurret player;

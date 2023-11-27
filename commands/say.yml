@@ -1,0 +1,61 @@
+name: say
+description: |-
+  Make unit say given sound. The sound is defined in [[Description.ext#CfgSounds|CfgSounds]].
+  If the [[Object#Unit|unit]] is a [[Object#Person|person]], it will also perform the corresponding lipsync effect provided an appropriate [[Lip File Format|.lip file]] has been [[WaveToLip|created]] for this sound.
+
+  * A dead or non-existent unit obviously cannot say anything.
+  * If the camera is not within given range, title is not shown and the sound will not be heard.
+  * See also [[playSound]] in order to play a sound wherever the [[cameraOn|camera/player]] is.
+
+  {{Feature|informative|[[say]] will mimic either [[say2D]] or [[say3D]] depending on whether it is executed in a cutscene or in a game scene.}}
+groups:
+- Sounds
+syntax:
+- call: !Binary
+  - from
+  - sound
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: from
+    description: |-
+      the sound source
+      * [[Array]] - format [from, to]:
+      ** from: [[Object]] - sound source
+      ** to: [[Object]] - target
+    type: Unknown
+  - name: sound
+    description: |-
+      - max. distance in meters at which the sound can be heard
+      ** speed: [[Number]] (Optional, default 1) - pitch of the sound
+    type: Unknown
+    optional: true
+    default: '100'
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- (units player select 1) say ["whisper1", 5];
+- player say "scuba_breath"; // Arma 3 vanilla sound

@@ -1,0 +1,23 @@
+name: markerShadow
+description: Returns if the marker is drawn with shadow enabled.
+problem_notes:
+- '[[setMarkerType]] will reset the shadow value to the one defined in marker type.'
+groups:
+- Markers
+syntax:
+- call: !Unary marker
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: marker
+    description: the marker
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- private _shadowEnabled = markerShadow _myMarker;

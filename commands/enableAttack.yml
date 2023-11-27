@@ -1,0 +1,37 @@
+name: enableAttack
+description: Set if leader can issue attack commands to the soldiers in his group.
+groups:
+- Groups
+- Unit Control
+syntax:
+- call: !Binary
+  - group
+  - enable
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: group
+    type: Unknown
+  - name: enable
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _group1 enableAttack true;

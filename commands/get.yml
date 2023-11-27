@@ -1,0 +1,25 @@
+name: get
+description: Retrieves a value out of a [[HashMap]] after looking it up by its key.
+groups:
+- HashMap
+syntax:
+- call: !Binary
+  - hashMap
+  - key
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: hashMap
+    type: Unknown
+  - name: key
+    description: case sensitive key
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- private _myValue = _myHashMap get "a";

@@ -1,0 +1,53 @@
+name: currentCommand
+description: |-
+  Return the current command type (empty string when no command) for the commander of given vehicle (or for a given soldier). Returned value can be one of:
+  {{Columns|4|
+  * "WAIT"
+  * "ATTACK"
+  * "HIDE"
+  * "MOVE"
+  * "HEAL"
+  * "REPAIR"
+  * "REFUEL"
+  * "REARM"
+  * "SUPPORT"
+  * "JOIN"
+  * "GET IN"
+  * "FIRE"
+  * "GET OUT"
+  * "STOP"
+  * "EXPECT"
+  * "ACTION"
+  * "ATTACKFIRE"
+  * "Suppress"
+  }}
+groups:
+- Unit Control
+syntax:
+- call: !Unary vehicleName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicleName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _command = currentCommand player;

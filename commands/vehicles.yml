@@ -1,0 +1,30 @@
+name: vehicles
+description: Returns an array of all vehicles available to current client. This command returns both empty and crewed vehicles <u>but not soldiers</u>. It will also return "WeaponHolderSimulated" of dead bodies (weapon on the ground). Vehicles created with [[createVehicleLocal]] will only be returned on the client that created them.
+groups:
+- Object Detection
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _vehicles = vehicles;

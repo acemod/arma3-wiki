@@ -1,0 +1,22 @@
+name: getTowParent
+description: Get the vehicle towing the provided one.
+groups:
+- Object Manipulation
+- Ropes and Sling Loading
+syntax:
+- call: !Unary towedVehicle
+  ret:
+  - Unknown
+  - the object towing the provided object - [[objNull]] if not towed
+  params:
+  - name: towedVehicle
+    description: the towed vehicle
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- private _towParent = getTowParent _towedvehicle;

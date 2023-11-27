@@ -1,0 +1,20 @@
+name: velocityModelSpace
+description: Returns the velocity (speed vector) of the vehicle as an array with format [x, y, z] in metre per second. Vector is in model space.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- velocityModelSpace _chopper; // returns [X (left(-) right(+)), Y (backward(-) forward(+)), Z (down(-) up(+))]

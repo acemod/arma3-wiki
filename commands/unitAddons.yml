@@ -1,0 +1,21 @@
+name: unitAddons
+description: Returns list with addons the unit belongs to.
+groups:
+- Mods and Addons
+syntax:
+- call: !Unary className
+  ret:
+  - Unknown
+  - addon names
+  params:
+  - name: className
+    description: class name of a unit/vehicle or object
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- hint str unitAddons typeOf player; // ["A3_Characters_F_BLUFOR"]

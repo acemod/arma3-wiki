@@ -1,0 +1,38 @@
+name: flagOwner
+description: Returns the global owner of a flag. A getter for [[setFlagOwner]]. Note that owner of a flag is [[Object]] rather than [[Number]], as how it is usually with other [[owner]] commands
+groups:
+- Flags
+syntax:
+- call: !Unary flag
+  ret:
+  - Unknown
+  - the person or vehicle that owns the flag is returned. If used on anything else than a flag, the returned value is [[objNull]]. If the flag is on its pole, the return value is NULL. If the flagowner is dead, the return value is the name of the soldier model
+  params:
+  - name: flag
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _person = flagOwner _flagOne;

@@ -1,0 +1,46 @@
+name: sort
+description: Attempts to sort given array either in ascending ([[true]]) or descending ([[false]]) order. {{Feature|Important|This will '''modify''' the original array!}}
+groups:
+- Arrays
+syntax:
+- call: !Binary
+  - array
+  - order
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: array
+    description: |-
+      array to be sorted, can also be a nested array.<br><br>
+      All array elements should be one of the following types:
+      * [[String]] - Array of strings {{hl|["a","b","c"...]}}
+      * [[Number]] - Array of numbers {{hl|[1,2,3...]}}
+      * [[Array]] - Array of subarrays {{hl|[<nowiki/>["a",1,2],["b",3,4],["c",5,6]...]}}. Subarrays should be of the same structure. Subarray elements other than [[String]] or [[Number]] will be ignored during sorting.
+      Mixed arrays {{hl|["a",1,[true], ...]}} are not supported and results are undefined.<br><br>
+    type: Unknown
+  - name: order
+    description: "sorting order. \n* [[true]]: ascending\n* [[false]]: descending"
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 44
+examples:
+- |-
+  _arr = [5.21725,1.30859,4,5.03028,1];
+  _arr sort true;
+  hint str _arr; //[1,1.30859,4,5.03028,5.21725]
+- |-
+  _dev = ["ja","pa","pa","tram","tara"];
+  _dev sort false;
+  hint str _dev; //["tram","tara","pa","pa","ja"]
+- |
+  #define ASC true
+  #define DESC false
+  _scores = [[123,"bob",15],[123,"bill",20],[200,"dave",21],[200,"steve",11]];
+  _scores sort DESC;
+  hint str _scores; //[[200,"steve",11],[200,"dave",21],[123,"bob",15],[123,"bill",20]]
+- "Sort buildings by distance and return position of the most distant building:\n<sqf>\n_buildings = player nearObjects [\"Land_Cargo_Patrol_V1_F\", 500];\n_buildings = _buildings apply { [_x distance player, _x] };\n_buildings sort false;\nhint format [\n\t\"Most distant building is at %1, distance %2 m\", \n\tgetPos (_buildings select 0 select 1),\n\tround (_buildings select 0 select 0)\n];\n"

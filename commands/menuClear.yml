@@ -1,0 +1,27 @@
+name: menuClear
+description: Removes all entries from given menu strip.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary idc
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+- call: !Unary control
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- menuClear (findDisplay 313 displayCtrl 120); // removes all entries from Eden Editor. Restart the editor to reset the menu.

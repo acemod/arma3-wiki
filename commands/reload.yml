@@ -1,0 +1,67 @@
+name: reload
+description: |-
+  Main syntax: Reload first found muzzle that needs reloading (with some inconsistencies).<br>
+  Alternative syntax: this syntax allows to reload given muzzle with given magazine while playing proper animation.
+  If ''param'' is omitted or is empty string, default value is used. The default behaviour is to find the best matching magazine for the provided muzzle from the pool of available magazines.
+  If specific magazine is requested, the reload will fail if unit has run out of this type of magazines. If an empty array <sqf inline>[]</sqf> is given, the behaviour is similar to pressing the "Reload" key.
+  The command reloads the given muzzle but does not select it. In case of [[currentThrowable|throwable]] muzzles, each throwable has its own muzzle, they are autoreloaded after throw.
+  Using [[reload]] on the throwable muzzle will just swap throwable for another one of the same type from inventory.
+groups:
+- Weapons
+syntax:
+- call: !Unary unitName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
+- call: !Binary
+  - unit
+  - - muzzle
+    - magazine
+  ret:
+  - Unknown
+  - '[[true]] on success'
+  params:
+  - name: unit
+    description: person
+    type: Unknown
+  - name: muzzle
+    description: muzzle name or "" for the current muzzle.
+    type: Unknown
+    optional: true
+    default: '[[currentMuzzle]]'
+  - name: magazine
+    description: magazine name or "" for given muzzle's magazine. If given muzzle is [[currentMuzzle]] then [[currentMagazine]]
+    type: Unknown
+    optional: true
+    default: given muzzle magazine
+  since:
+    arma_3:
+      major: 2
+      minor: 8
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (needReload player == 1) then { reload player };
+- player reload ["GL_3GL_F", "1Rnd_HE_Grenade_shell"];
+- |-
+  Reload current muzzle:
+  <sqf>player reload [];

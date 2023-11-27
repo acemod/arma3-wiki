@@ -1,0 +1,105 @@
+name: difficultyEnabled
+description: Checks specific difficulty settings of the current user. Difficulty flag names can be found in the [[server.armaprofile|ArmA profile]] file under class Difficulties/xxx/Flags (xxx being regular or veteran).
+multiplayer_note: |-
+  This command checks the difficulty flags of the computer (client/server) where it is executed.
+
+  {{Feature|arma3|
+  This command is '''deprecated since {{arma3}} v1.58'''. Since this version it always returns false. Use [[difficultyOption]] instead.
+  See [[Arma 3: Difficulty Settings#Difficulty_Overhaul|Arma 3 Difficulty Overhaul]] for further details.
+  * Stress damage is a separate difficulty setting. There are two dedicated commands for it:
+  ** [[enableStressDamage]]
+  ** [[isStressDamageEnabled]]
+  * Auto trim is also a separate difficulty setting. There are also two dedicated commands for it:
+  ** [[enableAutoTrimRTD]]
+  ** [[isAutoTrimOnRTD]]
+  }}
+groups:
+- Difficulty
+syntax:
+- call: !Unary flagName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: flagName
+    description: |-
+      difficulty flag name. Following values are available:<br>
+      <spoiler text="Arma 3 Flags">
+      {{Columns|5|
+      * 3rdPersonView
+      * armor
+      * autoAim
+      * autoGuideAT
+      * autoSpot
+      * autoTrimEnabled
+      * cameraShake
+      * clockIndicator
+      * deathMessages
+      * enemyTag
+      * extendetInfoType
+      * friendlyTag
+      * hud
+      * hudGroupInfo
+      * hudPerm
+      * hudWp
+      * hudWpPerm
+      * map
+      * mineTag
+      * netStats
+      * roughLanding
+      * stanceIndicator
+      * stressDamageEnabled
+      * unlimitedSaves
+      * vonID
+      * weaponCursor
+      * windEnabled
+      }}
+      </spoiler>
+      <spoiler text="Arma 2 Flags">
+      {{Columns|5|
+      * 3rdPersonView
+      * armor
+      * autoSpot
+      * autoGuideAT
+      * autoAim
+      * allowSeagull
+      * clockIndicator
+      * deathMessages
+      * enemyTag
+      * friendlyTag
+      * hud
+      * hudPerm
+      * hudWp
+      * hudWpPerm
+      * map
+      * netStats
+      * suppressPlayer
+      * tracers
+      * realisticFatigue
+      * ultraAI
+      * unlimitedSaves
+      * weaponCursor
+      }}
+      </spoiler>
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 5
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hint str (difficultyEnabled "armor");
+- "List current difficulty settings:\n<sqf>\ncall {\n\tprivate [\"_diff\", \"_cfg\", \"_flags\", \"_res\"];\n\t_diff = [];\n\t_cfg = configFile >> \"CfgDifficulties\";\n\t{\n\t\t_flags = _cfg >> configName _x >> \"Flags\";\n\t\tfor \"_i\" from 0 to count _flags - 1 do {\n\t\t\t_diff pushBack configName (_flags select _i);\n\t\t};\n\t} forEach (\"true\" configClasses _cfg);\n\t_diff = _diff arrayIntersect _diff;\n\t_diff sort true;\n\t_res = text \"\";\n\t{\n\t\t_res = composeText [_res, parseText format [\n\t\t\t\"<t align='left'>%1 - %2</t>\", \n\t\t\t_x, \n\t\t\t[0, 1] select difficultyEnabled _x\n\t\t], lineBreak];\n\t} forEach _diff;\n\thint _res;\n};\n"

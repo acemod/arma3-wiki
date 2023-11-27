@@ -1,0 +1,27 @@
+name: ctSetValue
+description: Associates metadata (number) with the row determined by the index. Returns Nothing.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Binary
+  - control
+  - - index
+    - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: index
+    type: Unknown
+  - name: value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- _control ctSetValue [0, 23];

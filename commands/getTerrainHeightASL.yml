@@ -1,0 +1,28 @@
+name: getTerrainHeightASL
+description: Returns the terrain height above the sea for the given position.
+groups:
+- Positions
+syntax:
+- call: !Unary position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: position
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 55
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _height = getTerrainHeightASL (getPosATL player);
+- _height = getTerrainHeightASL [5213,3245];
+- _seaDepth = abs (getTerrainHeightASL getPosATL player); // sea depth at player's position

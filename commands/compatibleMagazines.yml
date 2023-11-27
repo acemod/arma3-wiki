@@ -1,0 +1,36 @@
+name: compatibleMagazines
+description: Returns all magazines that can be loaded in the given weapon.
+groups:
+- Weapons
+syntax:
+- call: !Unary weapon
+  ret:
+  - Unknown
+  - all magazines that can be loaded in '''any muzzle''' of the given weapon.
+  params:
+  - name: weapon
+    description: weapon class name
+    type: Unknown
+- call: !Unary
+  - weapon
+  - muzzle
+  ret:
+  - Unknown
+  - all magazines that can be loaded in the given muzzle of the given weapon.
+  params:
+  - name: weapon
+    description: weapon class name
+    type: Unknown
+  - name: muzzle
+    description: muzzle name
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- compatibleMagazines "arifle_Katiba_GL_F";
+- compatibleMagazines ["arifle_Katiba_GL_F", "this"];
+- compatibleMagazines ["arifle_Katiba_GL_F", "EGLM"];

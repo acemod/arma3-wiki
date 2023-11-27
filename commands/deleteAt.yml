@@ -1,0 +1,77 @@
+name: deleteAt
+description: |-
+  Removes array element at the given index and returns removed element (modifies the original array, just like [[resize]] or [[set]]).
+  {{Feature|informative| For the main [[Array]] variant, if the index is a negative [[Number]], no error will appear, making it ideal for using with [[find]] (see {{Link|#Example 2}}) or [[findIf]] (see {{Link|#Example 3}}).}}
+groups:
+- Arrays
+- HashMap
+syntax:
+- call: !Binary
+  - array
+  - index
+  ret:
+  - Unknown
+  - returns the deleted element or [[Nothing]]
+  params:
+  - name: array
+    type: Unknown
+  - name: index
+    type: Unknown
+- call: !Binary
+  - hashMap
+  - key
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: hashMap
+    type: Unknown
+  - name: key
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 2
+- call: !Binary
+  - array
+  - indexes
+  ret:
+  - Unknown
+  - deleted elements in order of user supplied indexes
+  params:
+  - name: array
+    type: Unknown
+  - name: indexes
+    description: multiple indexes, negative indexes are supported and would remove elements counting from the end of array (see {{Link|#Example 4}}).
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 16
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- |
+  _arr = [1,2,3];
+  _rem = _arr deleteAt 1;
+  hint str [_rem, _arr]; // [2, [1, 3]]
+- |
+  _arr = [1,2,3];
+  _arr deleteAt (_arr find 0); // non existent item
+  hint str _arr; // [1,2,3]
+  _arr deleteAt (_arr find 2); // existent item
+  hint str _arr; // [1,3]
+- |
+  _arr = [1,2,3];
+  _arr deleteAt (_arr findIf {(_x % 5) == 0}); // Remove first number that's divisible by 5
+  hint str _arr; // [1,2,3]
+  _arr deleteAt (_arr findIf {(_x % 2) == 0}); // Remove first number that's divisible by 2
+  hint str _arr; // [1,3]
+- |
+  _arr = [1,2,3,4];
+  _res = _arr deleteAt [-1, 0]; // Remove the last and the first array element
+  systemchat str [_res, _arr]; // [[4,1],[2,3]]

@@ -1,0 +1,53 @@
+name: ctrlSetAngle
+description: |-
+  Sets the rotation of a control set as {{hl|ST_PICTURE}}. Rotation will be done within the control boundaries, so if the X and Y are given off center, the picture may get clipped by the control boundaries. Only requires [[ctrlCommit]] when fourth parameter is set to [[false]]. Procedural textures filled controls do not rotate. Supported control types:
+  * [[CT_STATIC]]
+  * [[CT_ACTIVETEXT]] (Since Arma 3 v2.09.149642)
+
+  {{Feature|important|Images that touch borders may "bleed" during rotation transformation, to avoid this, make sure the image has 1px transparent padding}}
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - control
+  - - angle
+    - centerX
+    - centerY
+    - now
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    description: picture control
+    type: Unknown
+  - name: angle
+    description: rotation angle (clockwise)
+    type: Unknown
+  - name: centerX
+    description: rotation center X in range 0 to 1. Control center is 0.5
+    type: Unknown
+  - name: centerY
+    description: rotation center Y in range 0 to 1. Control center is 0.5
+    type: Unknown
+  - name: now
+    description: if [[false]], control will wait for [[ctrlCommit]] input for result to apply
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+    since:
+      arma_3:
+        major: 1
+        minor: 78
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- _control ctrlSetAngle [25, 0.5, 0.5];
+- "with uiNamespace do\n{\n\tctrl = findDisplay 46 ctrlCreate [\"RscPictureKeepAspect\", -1];\n\tctrl ctrlSetPosition [0,0,1,1];\n\tctrl ctrlSetText \"A3\\Missions_F_Exp\\data\\Img\\lobby\\ui_campaign_lobby_background_tablet_radial_left_ca.paa\";\n\tctrl ctrlCommit 0;\n\tangle = 0;\n\tonEachFrame\n\t{\n\t\twith uiNamespace do\n\t\t{\n\t\t\tif (angle > 359) then {angle = 0};\n\t\t\tctrl ctrlSetAngle [angle, 0.5, 0.5];\n\t\t\tangle = angle + 1;\n\t\t};\n\t};\n};"
+- |-
+  _control ctrlSetAngle [25, 0.5, 0.5, false];
+  _control ctrlCommit 1; // Rotation applies smoothly for 1 second.

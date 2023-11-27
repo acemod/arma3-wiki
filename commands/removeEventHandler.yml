@@ -1,0 +1,48 @@
+name: removeEventHandler
+description: Removes a given Event Handler that was added with [[addEventHandler]].
+groups:
+- Event Handlers
+syntax:
+- call: !Binary
+  - target
+  - - type
+    - index
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: target
+    type: Unknown
+  - name: type
+    description: see [[:Category:Event Handlers|Event Handlers]] for the full list of available options
+    type: Unknown
+  - name: index
+    description: the value originally returned by [[addEventHandler]]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 85
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player removeEventHandler ["Killed", 0];
+- "The [[Magic Variables]] <var>_thisEvent</var> and <var>_thisEventHandler</var> can be used to easily remove an Event Handler:\n<sqf>player addEventHandler [\"FiredNear\", {\n\tsystemChat \"This Event Handler is now removing itself!\";\n\tplayer removeEventHandler [_thisEvent, _thisEventHandler];\n}];"

@@ -1,0 +1,28 @@
+name: object
+description: |-
+  Returns [[Object]] with given id. Object's id can be checked in mission editor.
+  {{Feature|important|This command was removed as of {{arma1}} '''v1.08'''; for later versions and titles, use [[nearestObject]] command family instead.}}
+groups:
+- Object Detection
+syntax:
+- call: !Unary id
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: id
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+examples:
+- _object = object 1;

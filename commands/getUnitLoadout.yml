@@ -1,0 +1,52 @@
+name: getUnitLoadout
+description: "Returns a '''[[Unit Loadout Array]]''' with all assigned items, weapons, containers and their stored items.\n\n{{Feature|informative|\nThe config should contain the following standard entries: <spoiler>\n<syntaxhighlight lang=\"cpp\">\nclass MyLoadout\n{\n\tuniformClass = \"U_B_CombatUniform_mcam\";\n\tbackpack = \"B_AssaultPack_mcamo\";\n\tlinkedItems[] = { \"V_PlateCarrier1_rgr\", \"H_HelmetB\", \"ItemCompass\", \"ItemWatch\", \"ItemRadio\", \"NVGoggles\" };\n\tweapons[] = { \"arifle_MX_ACO_pointer_F\", \"hgun_P07_F\" };\n\titems[] = { \"FirstAidKit\", \"FirstAidKit\", \"FirstAidKit\" };\n\tmagazines[] = {\n\t\t\"30Rnd_65x39_caseless_mag\", \"16Rnd_9x21_Mag\",\n\t\t\"SmokeShell\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\"\n\t};\n};\n</syntaxhighlight>\n</spoiler>\n}}"
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+- call: !Unary
+  - unit
+  - fullMagazines
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: fullMagazines
+    description: '[[true]] to top up used magazines'
+    type: Unknown
+- call: !Unary name
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: name
+    description: '{{hl|CfgVehicles}} classname from which to extract the loadout'
+    type: Unknown
+- call: !Unary config
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: config
+    description: loadout config class
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- getUnitLoadout player;
+- getUnitLoadout [player, true];
+- getUnitLoadout "B_Soldier_F";
+- getUnitLoadout (configFile >> "CfgVehicles" >> "B_Soldier_F");
+- getUnitLoadout (missionConfigFile >> "MyLoadout");

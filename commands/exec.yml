@@ -1,0 +1,47 @@
+name: exec
+description: |-
+  Execute a script using (the deprecated but still available) [[SQS Syntax]]. [[SQF Syntax]] (and [[execVM]]) is the most recent scripting language.<br>
+  The magic variable [[Magic_Variables#time|_time]] used within the script contains the elapsed time in seconds since the script started.
+  {{Feature|informative|To see the active SQS scripts currently in the scheduler, use [[diag_activeSQSScripts]] command.}}
+groups:
+- Program Flow
+syntax:
+- call: !Binary
+  - argument
+  - script
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: argument
+    description: the argument passed to the script through the [[Magic_Variables#this|_this]] variable. To pass multiple arguments, use an [[Array]].
+    type: Unknown
+  - name: script
+    description: 'the file path to the script. It should be given relatively to the mission folder, campaign scripts subfolder or global scripts folder and is searched there in the same order.<br>If you refer to a script packed together with an addon, the path should look like this: "\ADDON_PBO_NAME\script.sqs" where ADDON_PBO_NAME is the name of the addon''s [[PBO]] file without extension.'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- <sqs>[player, _jeep] exec "getin.sqs";</sqs>

@@ -1,0 +1,30 @@
+name: disableSerialization
+description: "Disable saving of script containing this command. After this, the script can work with data types which do not support serialization (UI types).\n{{Feature|informative|See [[Namespace#Namespace serialization|Namespace serialization]] for more information.}}\n\n{{Feature|important|\n'''In {{arma2}}''' and up to a certain version of {{arma3}}, <!--\n-->giving a [[Display]] or [[Control]] to [[spawn]]ed code would raise an error due to the usage of the then non-serializable {{hl|[[Magic Variables#this|_this]]}} variable. <!--\n-->Using [[disableSerialization]] or [[uiNamespace]] wouldn't help; the trick here is to pass the argument inside an array:\n<sqf>\n_display = findDisplay 46;\n _display  spawn { hint str _this; };\t\t\t\t// would raise a serialization error\n[_display] spawn { hint str (_this select 0); };\t// OK</sqf>\n}}"
+groups:
+- Namespaces
+- GUI Control
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  disableSerialization;
+  private _display = findDisplay 46;

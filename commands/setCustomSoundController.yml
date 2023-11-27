@@ -1,0 +1,36 @@
+name: setCustomSoundController
+description: |-
+  Sets value of the specified custom sound controller to be used in [[simple expression]]s in config. Returns [[true]] if value was set to the controller, [[false]] if command fails, for example if vehicle is not a transport or controller name is not recognised.
+  {{Feature | important | Custom sound controller name is <u>case sensitive</u> and of the following format:
+  <sqf>format ["CustomSoundController%1", _number];</sqf>
+  Where {{hl|_number}} is a number from 1 to [[getCustomSoundControllerCount]] (currently 32)}}
+groups:
+- Sounds
+syntax:
+- call: !Unary
+  - vehicle
+  - controller
+  - value
+  ret:
+  - Unknown
+  - '[[true]] on success'
+  params:
+  - name: vehicle
+    description: a transport type vehicle. Does not work on characters or buildings
+    type: Unknown
+  - name: controller
+    description: name of the custom sound controller - needs to be full string e.g "CustomSoundController1". It goes from "CustomSoundController1" to "CustomSoundController32"
+    type: Unknown
+  - name: value
+    description: desired value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 86
+examples:
+- |-
+  Change value of CustomSoundController1 to 12
+  <sqf>setCustomSoundController [vehicle player, "CustomSoundController1", 12];

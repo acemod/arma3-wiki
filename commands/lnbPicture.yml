@@ -1,0 +1,56 @@
+name: lnbPicture
+description: Returns the picture name or path of the item with the given position of the 2D listbox.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    description: number of [[Control]]
+    type: Unknown
+  - name: row
+    description: index of Row
+    type: Unknown
+  - name: column
+    description: index of Column
+    type: Unknown
+- call: !Binary
+  - control
+  - - row
+    - column
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: row
+    description: index of Row in given Control
+    type: Unknown
+  - name: column
+    description: index of Column in given Control
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- lnbPicture [200, [1, 1]];
+- _control lnbPicture [1, 1]; // "a3\ui_f\data\gui\cfg\ranks\corporal_gs.paa"

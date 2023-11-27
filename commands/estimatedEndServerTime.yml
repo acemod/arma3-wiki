@@ -1,0 +1,29 @@
+name: estimatedEndServerTime
+description: Estimated end of MP game in seconds converted to [[serverTime]].
+groups:
+- Time
+- Mission Information
+- Multiplayer
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - seconds left
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "Estimated minutes left: \n<sqf>_min = (ceil (estimatedEndServerTime - serverTime) / 60);"

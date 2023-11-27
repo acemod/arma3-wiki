@@ -1,0 +1,55 @@
+name: enableAudioFeature
+description: |-
+  Enable or disable an audio feature. Available features are {{hl|"lowpass"}} and {{hl|"building_interior"}}.<br>
+  Since {{GVI|arma3|2.14}} it is possible to enable {{hl|"building_interior"}} on an object placed in a building.<br>
+  Since {{GVI|arma3|2.14}} if 'enable' argument is omitted, the command returns the current state of the feature.
+multiplayer_note: |-
+  To use this command on objects in multiplayer, [[remoteExec]] it globally with JIP queue enabled:
+  <sqf>[_obj, ["building_interior", true]] remoteExec ["enableAudioFeature", 0, _obj];</sqf>
+groups:
+- Sounds
+syntax:
+- call: !Unary
+  - feature
+  - enable
+  ret:
+  - Unknown
+  - previous state
+  params:
+  - name: feature
+    description: '{{hl|"lowpass"}} or {{hl|"building_interior"}}'
+    type: Unknown
+  - name: enable
+    description: '[[true]] enable, [[false]], disable'
+    type: Unknown
+    optional: true
+- call: !Binary
+  - object
+  - - feature
+    - enable
+  ret:
+  - Unknown
+  - previous state
+  params:
+  - name: object
+    type: Unknown
+  - name: feature
+    description: '{{hl|"building_interior"}} or {{hl|"building_exterior"}} only (mutually exclusive)'
+    type: Unknown
+  - name: enable
+    description: '[[true]] enable, [[false]], disable'
+    type: Unknown
+    optional: true
+  since:
+    arma_3:
+      major: 2
+      minor: 14
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- _prevState = enableAudioFeature ["lowpass", true];
+- _prevState = pallet enableAudioFeature ["building_interior", true];

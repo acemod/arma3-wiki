@@ -1,0 +1,39 @@
+name: setParticleCircle
+description: Updates particle source, creates particles in circle with given radius. Velocity is transformed and added to total velocity.
+groups:
+- Particles
+syntax:
+- call: !Binary
+  - particleSource
+  - - circleRadius
+    - circleVelocity
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: particleSource
+    type: Unknown
+  - name: circleRadius
+    type: Unknown
+  - name: circleVelocity
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _myParticleSource setParticleCircle [3, [0,0,5]];

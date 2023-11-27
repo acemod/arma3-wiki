@@ -1,0 +1,42 @@
+name: addRating
+description: "Add a number to the [[rating]] of a unit - negative values can be used to reduce the rating.\n<br>This command is usually used to reward for completed mission objectives. The rating is given at the end of the mission and is automatically adjusted when killing enemies or friendlies. \n\n<br>When the rating gets below -2000, the unit's side switches to \"ENEMY\" ([[sideEnemy]]) and the unit is attacked by everyone.(see [[ArmA:_Rating Values|Rating Values]])\n\n<br><br>See also: [[Arma_3:_Event_Handlers#HandleRating]]"
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - unitName
+  - rating
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
+  - name: rating
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player addRating 2000;

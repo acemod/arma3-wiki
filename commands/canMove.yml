@@ -1,0 +1,41 @@
+name: canMove
+description: |-
+  Returns if the given vehicle is still able to move.
+  * This command does not check for the amount of fuel the vehicle has, except for helicopters and airplanes.
+  * A helicopter with a damaged tail rotor may return that it cannot move, where a skilled pilot could use it.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - '[[true]] if the vehicle is able to move, [[false]] if not'
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (not canMove _tank) then\n{\n\tplayer sideChat \"He's nailed on the ground! Now hurry!\";\n};"

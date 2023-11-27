@@ -1,0 +1,24 @@
+name: mineDetectedBy
+description: Returns [[true]] if mine has been detected by a given side
+groups:
+- Mines
+syntax:
+- call: !Binary
+  - mine
+  - faction
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: mine
+    type: Unknown
+  - name: faction
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 24
+examples:
+- (allMines select 0) mineDetectedBy west;

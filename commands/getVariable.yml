@@ -1,0 +1,61 @@
+name: getVariable
+description: "Returns the value of variable in the variable space assigned to various data types.\nAll available data types combinations:\n{{{!}} class=\"wikitable\"\n!colspan=\"2\"{{!}}Primary syntax ([[String]]) !! colspan=\"2\"{{!}}Alternative syntax ([[Array]])\n{{!}}-\n{{!}}'''Code'''\n{{!}}'''Since'''\n{{!}}'''Code'''\n{{!}}'''Since'''\n{{!}}-\n{{!}} [[Namespace]] getVariable [[String]] {{!}}{{!}} - {{!}}{{!}} [[Namespace]] getVariable [[Array]] {{!}}{{!}} {{arma2oa}} v1.60\n{{!}}-\n{{!}} [[Object]] getVariable [[String]] {{!}}{{!}} - {{!}}{{!}} [[Object]] getVariable [[Array]] {{!}}{{!}} - \n{{!}}-\n{{!}} [[Group]] getVariable [[String]] {{!}}{{!}} - {{!}}{{!}} [[Group]] getVariable [[Array]] {{!}}{{!}} -\n{{!}}-\n{{!}} [[Team Member]] getVariable [[String]] {{!}}{{!}} - {{!}}{{!}} [[Team Member]] getVariable [[Array]] {{!}}{{!}} - \n{{!}}-\n{{!}} [[Task]] getVariable [[String]] {{!}}{{!}} - {{!}}{{!}} [[Task]] getVariable [[Array]] {{!}}{{!}} {{arma3}} v1.68\n{{!}}-\n{{!}} [[Location]] getVariable [[String]] {{!}}{{!}} - {{!}}{{!}} [[Location]] getVariable [[Array]] {{!}}{{!}} {{arma3}} v1.68\n{{!}}-\n{{!}} [[Control]] getVariable [[String]] {{!}}{{!}} - {{!}}{{!}} [[Control]] getVariable [[Array]] {{!}}{{!}} {{arma3}} v1.56\n{{!}}-\n{{!}} [[Display]] getVariable [[String]] {{!}}{{!}} {{arma3}} v1.56 {{!}}{{!}} [[Display]] getVariable [[Array]] {{!}}{{!}} {{arma3}} v1.56\n{{!}}}\n\n{{Feature|important|When variable is [[setVariable|set]] on a [[Task]], it is not actually set on the task itself, but on the FSM attached to the task.<br>\nIf there is no FSM, [[getVariable]] will not work.}}\n{{Feature| arma3 | In the case of Alt Syntax usage in {{arma3}}, ''defaultValue'' will be returned if:\n* Requested variable is either undefined or [[nil]]\n* Variable namespace is null ([[objNull]], [[grpNull]], etc.)}}"
+groups:
+- Variables
+- Namespaces
+- Multiplayer
+syntax:
+- call: !Binary
+  - varspace
+  - name
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: varspace
+    type: Unknown
+  - name: name
+    description: variable name in given namespace
+    type: Unknown
+- call: !Binary
+  - varspace
+  - - name
+    - defaultValue
+  ret:
+  - Unknown
+  - current value of the variable or ''defaultValue'' if the variable doesn't exist.
+  params:
+  - name: varspace
+    type: Unknown
+  - name: name
+    description: variable name in given namespace
+    type: Unknown
+  - name: defaultValue
+    description: value to return if variable doesn't exist {{Feature|warning|A dynamic ''defaultValue'' e.g <sqf inline>random 500</sqf> will always be executed, even if the variable is defined.}}
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- private _variable = myTruck getVariable "myVariable"; // returns nil if "myVariable" is not set
+- private _variable = myTruck getVariable ["myVariable", 50]; // returns 50 if "myVariable" is not set
+- "for \"_i\" from 0 to 5 do\n{\n\t_car = missionNamespace getVariable (\"car\" + str _i);\n\t_car setDamage 0;\n}; // Set damage of car0..car5 to 0\n"
+- |
+  myMissionVar = 2015;
+  missionNamespace getVariable "myMissionVar"; // returns 2015
+- "Get current value of a variable and if it is undefined, define it and get the defined value:\n<sqf>\nprivate _var = missionNamespace getVariable \"varName\";\nif (isNil \"_var\") then\n{\n\tmissionNamespace setVariable [\"varName\", 123];\n\t_var = 123;\n};\n// _var here will contain current value of the variable varName\n"

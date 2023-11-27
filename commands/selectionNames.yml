@@ -1,0 +1,57 @@
+name: selectionNames
+description: |-
+  Returns the list of model selections. When using default syntax, the named selections are returned from the first [[LOD]] only (LOD index 0).<br>
+  Alternative syntax allows to select LOD by name or by [[LOD_resolutions|LOD resolution]].
+
+  {{Feature|important|
+  Sometimes internally "ViewGeometry" can be equal to "Geometry", and "FireGeometry" could be equal to "ViewGeometry".
+  In order to pinpoint the actual LOD, use [[allLODs]] and [[LOD resolutions|LOD resolution]] as argument for selecting the LOD.
+  }}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - selection names
+  params:
+  - name: object
+    type: Unknown
+- call: !Binary
+  - object
+  - LOD
+  ret:
+  - Unknown
+  - selection names
+  params:
+  - name: object
+    type: Unknown
+  - name: LOD
+    description: |-
+      LOD name; can be one of:
+      ** "Memory"
+      ** "Geometry"
+      ** "FireGeometry"
+      ** "LandContact"
+      ** "HitPoints"
+      ** {{GVI|arma3|2.06|size= 0.75}} "ViewGeometry"
+      * [[Number]] - LOD resolution; command searches for a LOD with the similar [[LOD resolutions|resolution]]
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 0
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- "private _result = \"Land_i_House_Small_02_V3_F\" createVehicle _pos;\nselectionNames _house;\n/*\n[\n\t\"door_1\",\"door_2\",\"damt_1\",\"door_handle_1\",\"door_handle_2\",\"glass_1_hide\",\"glass_2_hide\",\"glass_3_hide\",\n\t\"glass_1_unhide\",\"glass_2_unhide\",\"glass_3_unhide\",\"glass_4_hide\",\"glass_4_unhide\"\n]\n*/\n"
+- "selectionNames player;\n/*\n[\n\t\"spine\",\"spine1\",\"spine2\",\"spine3\",\"head\",\n\t\"leftshoulder\",\"leftarm\",\"leftarmroll\",\"leftforearm\",\"leftforearmroll\",\"lefthand\",\"rightshoulder\",\"rightarm\",\"rightarmroll\",\"rightforearm\",\"rightforearmroll\",\"righthand\",\n\t\"pelvis\",\"leftupleg\",\"leftuplegroll\",\"leftleg\",\"leftlegroll\",\"leftfoot\",\"lefttoebase\",\"rightupleg\",\"rightuplegroll\",\"rightleg\",\"rightlegroll\",\"rightfoot\",\"righttoebase\",\"weapon\",\n\t\"proxy:\\a3\\characters_f\\proxies\\weapon.001\",\"proxy:\\a3\\characters_f\\proxies\\pistol.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\binoculars.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\launcher.001\",\n\t\"launcher\",\"nvg\",\"proxy:\\a3\\characters_f\\proxies\\nvg.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\flag.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\equipment.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\backpack.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\pistol_holstered.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\head_male.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\glasses.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\headgear.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\hair.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\backpack2.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\radio.001\",\n\t\"body_proxy\",\"head_proxy\",\n\t\"lefthandindex1\",\"lefthandindex2\",\"lefthandindex3\",\"lefthandmiddle1\",\"lefthandmiddle2\",\"lefthandmiddle3\",\"lefthandring\",\"lefthandpinky1\",\"lefthandpinky2\",\"lefthandpinky3\",\n\t\"lefthandring1\",\"lefthandring2\",\"lefthandring3\",\"lefthandthumb1\",\"lefthandthumb2\",\"lefthandthumb3\",\n\t\"righthandindex1\",\"righthandindex2\",\"righthandindex3\",\"righthandmiddle1\",\"righthandmiddle2\",\"righthandmiddle3\",\"righthandring\",\"righthandpinky1\",\"righthandpinky2\",\"righthandpinky3\",\n\t\"righthandring1\",\"righthandring2\",\"righthandring3\",\"righthandthumb1\",\"righthandthumb2\",\"righthandthumb3\",\n\t\"injury_hands\",\n\t\"camo\",\n\t\"proxy:\\a3\\characters_f\\heads\\bysta.001\",\n\t\"injury_legs\",\n\t\"proxy:\\a3\\characters_f\\proxies\\hmd.001\",\n\t\"hl\",\"insignia\",\"injury_body\",\"clan\"\n]\n*/\n"
+- "[[Arma 3: Event Handlers#HitPart|HitPart]] hit selections only:\n<sqf>\nselectionNames player select { !(player selectionPosition _x, \"HitPoints\"] isEqualTo [0,0,0]) };\n/*\n[\n\t\"spine1\",\"spine2\",\"spine3\",\"head\",\"leftarm\",\"leftarmroll\",\"leftforearm\",\"rightarm\",\"rightarmroll\",\"rightforearm\",\n\t\"pelvis\",\"leftupleg\",\"leftuplegroll\",\"leftlegroll\",\"leftfoot\",\"rightupleg\",\"rightuplegroll\",\"rightleg\",\"rightlegroll\",\"rightfoot\"\n]\n*/\n"
+- "Copy 5 LODs' selections:\n<sqf>\nprivate _car = \"B_MRAP_01_F\" createVehicle getPos player;\nprivate _return = [];\n{\n\t_return pushBack (_x + \": \" + str (_car selectionNames _x));\n} forEach [\"Memory\", \"Geometry\", \"FireGeometry\", \"LandContact\", \"HitPoints\"];\ncopyToClipboard (_return joinString endl);\n/*\n\tMemory: [\"light_r_end\",\"drivewheel_axis\",\"posun wheel_1_1\",\"posun wheel_1_2\",\"posun wheel_2_1\",\"posun wheel_2_2\",\"wheel_1_1_steering_axis\",\"wheel_2_1_steering_axis\",\"wheel_2_1_axis\",\"wheel_2_2_axis\",\"wheel_1_2_axis\",\"wheel_1_1_axis\",\"basic_damper_destruct_axis\",\"pos cargo\",\"pos cargo dir\",\"pos driver\",\"pos driver dir\",\"circulumreference\",\"zamerny\",\"doplnovani\",\"light_l_end\",\"light_r\",\"light_l\",\"stopa pll\",\"stopa plp\",\"stopa ppl\",\"stopa ppp\",\"stopa zll\",\"stopa zlp\",\"stopa zpl\",\"stopa zpp\",\"exhaust_dir\",\"exhaust_pos\",\"osaveze\",\"mph_axis\",\"rpm_axis\",\"fuel_axis\",\"temp2_axis\",\"temp_axis\",\"pip1_pos\",\"pip1_dir\",\"pip4_dir\",\"pip6_dir\",\"pip5_dir\",\"pip7_dir\",\"pip4_pos\",\"pip6_pos\",\"pip7_pos\",\"pip5_pos\",\"dustfrontright\",\"dustfrontleft\",\"dustbackleft\",\"dustbackright\",\"light_r_flare\",\"light_l_flare\",\"light_r_flare2\",\"light_l_flare2\",\"wheel_1_1_bound\",\"wheel_1_2_bound\",\"wheel_2_1_bound\",\"wheel_2_2_bound\",\"door_1_axis\",\"door_2_axis\",\"door_3_axis\",\"door_4_axis\",\"pedal_thrust_axis\",\"pedal_brake_axis\",\"slingloadcargo1\",\"slingloadcargo2\",\"slingloadcargo3\",\"slingloadcargo4\",\"tow_front_l\",\"tow_rear_r\",\"tow_front_r\",\"tow_rear_l\",\"taskmarker_1_pos\",\"bbox_1_2_pos\",\"bbox_1_1_pos\",\"bbox_2_1_pos\",\"bbox_2_2_pos\",\"pip_1_tl\",\"pip_1_tr\",\"pip_1_bl\",\"pip_1_br\",\"pip_4_tl\",\"pip_4_tr\",\"pip_4_bl\",\"pip_4_br\",\"pip_5_tl\",\"pip_5_tr\",\"pip_5_br\",\"pip_5_bl\"]\n\tGeometry: [\"proxy:\\a3\\data_f\\proxies\\damagewheel\\damagewheel_1.001\",\"wheel_1_1_unhide\",\"proxy:\\a3\\data_f\\proxies\\damagewheel\\damagewheel_1.002\",\"wheel_1_2_unhide\",\"wheel_2_1_unhide\",\"proxy:\\a3\\data_f\\proxies\\damagewheel\\damagewheel_1.003\",\"proxy:\\a3\\data_f\\proxies\\damagewheel\\damagewheel_1.004\",\"wheel_2_2_unhide\",\"damagehide\",\"wheel_1_2_damper\",\"wheel_1_1_damper\",\"wheel_2_2_damper\",\"wheel_2_1_damper\"]\n\tFireGeometry: [\"wheel_2_2_hide\",\"wheel_1_2_hide\",\"wheel_1_1_hide\",\"wheel_2_1_hide\",\"damagehide\",\"glass2\",\"glass3\",\"glass1\",\"proxy:\\a3\\data_f\\proxies\\damagewheel\\damagewheel_1.001\",\"wheel_1_1_unhide\",\"proxy:\\a3\\data_f\\proxies\\damagewheel\\damagewheel_1.002\",\"wheel_1_2_unhide\",\"wheel_2_1_unhide\",\"proxy:\\a3\\data_f\\proxies\\damagewheel\\damagewheel_1.003\",\"proxy:\\a3\\data_f\\proxies\\damagewheel\\damagewheel_1.004\",\"wheel_2_2_unhide\",\"proxy:\\a3\\data_f\\proxies\\passenger_mrap_01_back\\cargo.002\",\"proxy:\\a3\\data_f\\proxies\\passenger_generic01_foldhands\\cargo.003\",\"proxy:\\a3\\data_f\\proxies\\passenger_mrap_01_front\\cargo.001\",\"proxy:\\a3\\data_f\\proxies\\driver_offroad\\driver.001\",\"reserve_wheel\",\"zbytek\",\"glass4\",\"glass5\",\"glass6\",\"hit_engine\",\"hit_fuel\",\"hit_hull\",\"door_1_hide\",\"door_3_hide\"]\n\tLandContact: [\"wheel_2_1_damper_land\",\"wheel_1_2_damper_land\",\"wheel_2_2_damper_land\",\"wheel_1_1_damper_land\"]\n\tHitPoints: [\"wheel_2_1_steering\",\"wheel_2_2_steering\",\"wheel_1_2_steering\",\"wheel_1_1_steering\",\"motor\",\"karoserie\",\"light_r\",\"light_l\",\"glass2\",\"palivo\",\"glass3\",\"glass1\",\"wheel_reserve_hit\",\"light_r2\",\"light_l2\",\"zbytek\",\"door_1\",\"door_2\",\"door_3\",\"door_4\",\"glass4\",\"glass5\",\"glass6\",\"hit_engine_point\",\"hit_fuel_point\",\"hit_hull_point\"]\n*/\n"
+- |-
+  Select "Memory" LOD by its [[LOD resolutions|resolution]]:
+  <sqf>private _memoryLODNamedSelections = player selectionNames 1e15;

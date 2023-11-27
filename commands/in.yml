@@ -1,0 +1,123 @@
+name: in
+description: |-
+  Checks whether value is in array, unit is in vehicle, position is inside location or ANSI string is part of other ANSI string. If Unicode support is desired, see [[forceUnicode]].
+  {{Feature | Informative | [[String]] comparison is case-sensitive (see Examples '''2''' and '''6''').}}
+groups:
+- Strings
+- Arrays
+- Locations
+- HashMap
+- Unit Control
+syntax:
+- call: !Binary
+  - value
+  - array
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: value
+    description: any value (cannot  match [[Array]] before {{arma3}})
+    type: Unknown
+  - name: array
+    description: array of values
+    type: Unknown
+- call: !Binary
+  - unit
+  - vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: entity person
+    type: Unknown
+  - name: vehicle
+    description: entity vehicle
+    type: Unknown
+- call: !Binary
+  - position
+  - location
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: position
+    description: format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]
+    type: Unknown
+  - name: location
+    type: Unknown
+  since:
+    arma_3:
+      major: 0
+      minor: 50
+- call: !Binary
+  - needle
+  - haystack
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: needle
+    description: string to search '''for'''
+    type: Unknown
+  - name: haystack
+    description: string to search '''in'''
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 96
+- call: !Binary
+  - key
+  - hashMap
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: key
+    type: Unknown
+  - name: hashMap
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 2
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 1 in [0, 1, 2]; // true
+- "private _myArray = [\"Aaa\", \"AAa\", \"AAA\"];\n\n\"aaa\" in _myArray; // false\n\"AAa\" in _myArray; // true\n\n// Case-insensitive alternatives:\n_myArray findIf { _x == \"aaa\"; } != -1; // true\n\n({\n\tif (_x == \"aaa\") exitWith { _forEachIndex };\n\t-1\n} forEach _myArray) != -1; // true, less performant but valid before the introduction of the findIf command\n\n{ if (_x == \"aaa\") exitWith { 1 } } count _myArray > 0; // true\n\n{ _x == \"aaa\"; } count _myArray > 0; // true, worst performance, only option available in OFP"
+- '[1,2,3] in [[1,2,3], [4,5,6]]; // true - Arma 3 only'
+- private _isInCar = player in Car;
+- private _isInside = [1000,2000,0] in MyLocation;
+- |-
+  private _isInString = "foo" in "foobar"; // true
+  _isInString = "Foo" in "foobar"; // false
+- |-
+  private _onFoot = _unit in _unit;</sqf>
+  Other options:
+  <sqf>private _onFoot = vehicle _unit == _unit;</sqf>
+  <sqf>private _onFoot = isNull objectParent _unit;

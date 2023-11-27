@@ -1,0 +1,41 @@
+name: type
+description: Returns a string of a [[Location]]'s class name or [[Task]]'s name (same as [[taskName]]).
+groups:
+- Locations
+- Briefing
+syntax:
+- call: !Unary location
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: location
+    type: Unknown
+- call: !Unary task
+  ret:
+  - Unknown
+  - the type of the task
+  params:
+  - name: task
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 8
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _locationType = type myLocation;
+- _taskName = type myTask;

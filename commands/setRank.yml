@@ -1,0 +1,50 @@
+name: setRank
+description: |-
+  Sets rank of given unit.
+
+  {{Feature|arma3|Before {{arma3}} v1.68 and in previous titles, this command was {{Icon|globalArgument|32}} {{Icon|localEffect|32}}.}}
+groups:
+- Unit Identity
+syntax:
+- call: !Binary
+  - unitName
+  - rank
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
+  - name: rank
+    description: |-
+      one of:
+      {{Columns|4|
+      * {{hl|"PRIVATE"}}
+      * {{hl|"CORPORAL"}}
+      * {{hl|"SERGEANT"}}
+      * {{hl|"LIEUTENANT"}}
+      * {{hl|"CAPTAIN"}}
+      * {{hl|"MAJOR"}}
+      * {{hl|"COLONEL"}}
+      }}
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player setRank "COLONEL";

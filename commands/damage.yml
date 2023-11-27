@@ -1,0 +1,39 @@
+name: damage
+description: Return the damage value of an object.
+alias:
+- '[[getDammage|getDammage<sup>sic</sup>]] <!-- cannot use {{sic}} here (counts it as alias link) -->'
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - the returned number in range (healthy) 0..1 (dead).
+  params:
+  - name: object
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 0
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '<sqs>? damage player > 0.1 : player groupChat "I''m hurt! Medic!"</sqs>'
+- "if (damage player > 0.1) then\n{\n\tplayer groupChat \"I'm hurt! Medic!\";\n};\n"
+- private _health = (1 - damage player) * 100; // health in % from 0 to 100

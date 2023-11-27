@@ -1,0 +1,27 @@
+name: lockedCameraTo
+description: |-
+  Return the turret lock target.
+  {{Feature|informative|The command is local to the '''turret''', not the vehicle.}}
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: turretPath
+    description: turret path. Use an empty array to select the gunner's turret by default
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- '    vehicle player lockedCameraTo [];'

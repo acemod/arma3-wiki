@@ -1,0 +1,43 @@
+name: menuAdd
+description: Adds new submenu entry into item on given path.
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - text
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: path
+    type: Unknown
+  - name: text
+    type: Unknown
+- call: !Binary
+  - control
+  - - path
+    - text
+  ret:
+  - Unknown
+  - index of the item
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    description: path where the items should be added
+    type: Unknown
+  - name: text
+    description: displayed name for the entry
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- findDisplay 313 displayCtrl 120 menuAdd [[], "Custom Tools"]; // Add new entry at the top level to the menu strip in Eden Editor

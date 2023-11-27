@@ -1,0 +1,40 @@
+name: dayTime
+description: Returns the current in-game time in hours. For a formatted version of time, see [[BIS_fnc_timeToString]].
+multiplayer_note: Returns the current '''local''' in-game time in hours.
+groups:
+- Environment
+- Mission Information
+- Time
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - day time using a 24 hour clock, using fractions of hours - range [0..24[
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- dayTime; // returns 16.5 given it is 16:30 (4.30pm) in game
+- "Get hour, minute, seconds:\n<sqf>\nprivate _daytime = dayTime; // assuming dayTime returns 1.66046\nprivate _hours = floor _daytime;\t\t\t\t\t\t\t\t\t\t\t//  1\nprivate _minutes = floor ((_daytime - _hours) * 60);\t\t\t\t\t\t// 39\nprivate _seconds = floor ((((_daytime - _hours) * 60) - _minutes) * 60);\t// 37\n"

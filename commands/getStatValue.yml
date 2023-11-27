@@ -1,0 +1,22 @@
+name: getStatValue
+description: |-
+  Returns value of the given stat.<br>
+  A list of possible StatNames can be found here: [[Arma 3: Stat Names]]
+groups:
+- System
+syntax:
+- call: !Unary name
+  ret:
+  - Unknown
+  - (can return [[Nothing]])
+  params:
+  - name: name
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 18
+examples:
+- getStatValue "ExpWarlockDown"; // Checks if the "Warlock Down" Achivement was already aquired

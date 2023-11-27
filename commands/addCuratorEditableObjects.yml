@@ -1,0 +1,29 @@
+name: addCuratorEditableObjects
+description: Register objects which can be edited by a curator.
+groups:
+- Curator
+syntax:
+- call: !Binary
+  - curatorObj
+  - - objects
+    - addCrew
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: curatorObj
+    description: curator module
+    type: Unknown
+  - name: objects
+    type: Unknown
+  - name: addCrew
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- MyCuratorModule addCuratorEditableObjects [[MyCar], true];

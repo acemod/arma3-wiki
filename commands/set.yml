@@ -1,0 +1,91 @@
+name: set
+description: "Changes the element at the given zero-based index of the [[Array|array]]. \n\n{{Feature|informative|If the index is out of bounds, the array will [[resize]] to incorporate the index as its last value, padding with [[nil]] as necessary (see {{Link|#Example 4}}). }}"
+groups:
+- Arrays
+- HashMap
+syntax:
+- call: !Binary
+  - array
+  - - index
+    - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: array
+    type: Unknown
+  - name: index
+    description: 0-based array index. {{GVI|arma3|2.12|size= 0.75}} negative index can be used to select from the end of the array, i.e. -1 means last array element.
+    type: Unknown
+  - name: value
+    type: Unknown
+- call: !Binary
+  - hashMap
+  - - key
+    - value
+    - insertOnly
+  ret:
+  - Unknown
+  - '[[false]] if the key is new to the hashmap, [[true]] if a value got overwritten'
+  params:
+  - name: hashMap
+    type: Unknown
+  - name: key
+    type: Unknown
+  - name: value
+    type: Unknown
+  - name: insertOnly
+    description: if set to [[true]], set the value only if the key does not exist already
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 8
+  since:
+    arma_3:
+      major: 2
+      minor: 2
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _arrayOne set [0, "Hello"];
+- |-
+  Append "Bye" as last element to {{hl|_arrayTwo}}:
+  <sqf>_arrayTwo set [count _arrayTwo, "Bye"];
+- |-
+  Replace the last element of {{hl|_arrayThree}} with 23:
+  <sqf>_arrayThree set [(count _arrayThree) - 1, 23];
+- |
+  Using [[set]] with an index that is out of bounds:
+  <sqf>
+  private _array = ["A"];
+  _array set [2, "C"]; // _array is now ["A", nil, "C"]
+  _array set [1, "B"]; // _array is now ["A", "B", "C"]
+- |
+  private _myHashMap = createHashMap;
+  _myHashMap set ["key", "value1", true]; // "key" value is set to "value1"
+  _myHashMap set ["key", "value2", true]; // "key" value is still "value1" as "key" already exists in the hashmap

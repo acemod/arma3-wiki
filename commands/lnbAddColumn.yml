@@ -1,0 +1,48 @@
+name: lnbAddColumn
+description: Adds a column at given position.
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Binary
+  - control
+  - position
+  ret:
+  - Unknown
+  - returns the zero based index of the new column
+  params:
+  - name: control
+    type: Unknown
+  - name: position
+    description: position of the new column where 0 means all the way to the left and 1 all the way to the right of the control
+    type: Unknown
+- call: !Unary
+  - controlOrIdc
+  - position
+  ret:
+  - Unknown
+  - returns the zero based index of the new column
+  params:
+  - name: controlOrIdc
+    description: control or the idc of the control
+    type: Unknown
+  - name: position
+    description: position of the new column where 0 means all the way to the left and 1 all the way to the right of the control
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _ctrl lnbAddColumn 0.8;
+- lnbAddColumn [105, 0.8];

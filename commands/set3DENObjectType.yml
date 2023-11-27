@@ -1,0 +1,25 @@
+name: set3DENObjectType
+description: 'Sets the classname of one or more given Eden Editor [[Eden Editor: Object|objects]]. For Logic objects use [[set3DENLogicType]].'
+groups:
+- Eden Editor
+syntax:
+- call: !Binary
+  - objects
+  - classname
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: objects
+    type: Unknown
+  - name: classname
+    description: name of the cfgVehicles class
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- '[get3DENMouseOver select 1] set3DENObjectType "B_crew_F"; // turns object under cursor into a blufor crewman'

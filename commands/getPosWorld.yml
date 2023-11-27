@@ -1,0 +1,24 @@
+name: getPosWorld
+description: Returns the provided object's model centre position ([0,0,0]) in [[Position#PositionASL|PositionASL]], rather than the transformed [[boundingCenter]] or [[Oxygen_2_-_Manual#LandContact|LandContact]] vertices.
+groups:
+- Positions
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- _obj setPosWorld getPosWorld _obj;
+- ATLToASL (_groundObj modelToWorld [0,0,0]) isEqualTo getPosWorld _groundObj; // true
+- |-
+  Wave height under a boat:
+  <sqf>private _h = ((boat modelToWorld [0,0,0]) vectorDiff getPosWorld boat) select 2;

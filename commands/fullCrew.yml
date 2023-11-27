@@ -1,0 +1,56 @@
+name: fullCrew
+description: |-
+  Returns an array with all crew inside given vehicle, with or without empty seats.
+
+  {{Feature|important|
+  With the introduction of person turrets (FFV), the returned ''cargoIndex'' works with [[moveInCargo]] but does not with [[action]]s such as "GetInCargo" and "MoveToCargo".
+  To find out indexes for actions, use the "cargo" filter (See {{Link|#Example 3}}).
+  }}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+- call: !Unary
+  - vehicle
+  - type
+  - includeEmpty
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: type
+    description: |-
+      role filter (case-insensitive). An invalid value (e.g "") will return all positions. Available values:
+      * "driver"
+      * "commander"
+      * "gunner"
+      * "turret"
+      * "cargo"
+    type: Unknown
+  - name: includeEmpty
+    description: include empty crew seats
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 1
+        minor: 56
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- "_list = fullCrew vehicle player;\n/*\n\treturns for example (on an armed WY-55 Hellcat):\n\t[\n\t\t[R Alpha 1-1:1, \"driver\", -1, [], false, R Alpha 1-1:1, \"$STR_POSITION_DRIVER\"],\n\t\t[R Alpha 1-1:2, \"turret\", -1, [0], false, R Alpha 1-1:2, \"$STR_A3_COPILOT\"]\n\t]\n*/\n"
+- "_list = fullCrew [vehicle player, \"turret\"];\n/*\n\treturns for example (on an armed WY-55 Hellcat):\n\t[\n\t\t[R Alpha 1-1:2, \"turret\", -1, [0], false, R Alpha 1-1:2, \"$STR_A3_COPILOT\"]\n\t]\n*/\n"
+- "private _actionCompatibleCargoIndexes = fullCrew [heli, \"cargo\", true];\n/*\n\treturns for example (on an empty armed WY-55 Hellcat):\n\t[\n\t\t[objNull, \"cargo\", 2, [], false, objNull, \"$STR_GETIN_POS_PASSENGER\"],\n\t\t[objNull, \"cargo\", 3, [], false, objNull, \"$STR_GETIN_POS_PASSENGER\"],\n\t\t[objNull, \"cargo\", 4, [], false, objNull, \"$STR_GETIN_POS_PASSENGER\"],\n\t\t[objNull, \"cargo\", 5, [], false, objNull, \"$STR_GETIN_POS_PASSENGER\"]\n\t]\n\tusing the element's index is compatible with action cargo commands - see below\n*/\n\n// the following commands will put the player in the same seat:\nplayer moveInCargo [heli, 2];\nplayer action [\"GetInCargo\", heli, 0];\n"

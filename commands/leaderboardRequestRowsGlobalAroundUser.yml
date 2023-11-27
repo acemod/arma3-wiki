@@ -1,0 +1,30 @@
+name: leaderboardRequestRowsGlobalAroundUser
+description: Requests given leaderboard to download values around the user position in the table.
+groups:
+- Leaderboards
+syntax:
+- call: !Unary
+  - leaderboard
+  - offset
+  - rows
+  ret:
+  - Unknown
+  - returns [[true]] if request has been started
+  params:
+  - name: leaderboard
+    description: name of the leaderboard
+    type: Unknown
+  - name: offset
+    description: offset from user position.
+    type: Unknown
+  - name: rows
+    description: defines how many rows are requested
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- _isGettingValues = leaderboardRequestRowsGlobalAroundUser ["TT01", -5, 10];

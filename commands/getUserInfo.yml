@@ -1,0 +1,27 @@
+name: getUserInfo
+description: Returns extended information about given server user.
+groups:
+- Multiplayer
+- Object Detection
+syntax:
+- call: !Unary playerID
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: playerID
+    description: 'user DirectPlay ID (see [[getPlayerID]], [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]])'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- private _randomUserInfo = getUserInfo selectRandom allUsers;
+- |
+  _userInfo params ["_playerID", "_ownerId", "_playerUID", "_profileName", "_displayName", "_steamName", "_clientState", "_isHC", "_adminState", "_networkInfo", "_unit"];
+  _networkInfo params ["_avgPing", "_avgBandwidth", "_desync"];
+- private _myInfo = getUserInfo getPlayerID player; // this particular example only works if player is server host

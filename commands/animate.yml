@@ -1,0 +1,65 @@
+name: animate
+description: |-
+  Activates given object animation. Animation is defined in CfgModels [[Model Config#Animations|animations]] class. Class names listed in CfgVehicles [[Model Config#AnimationSources|AnimationSources]] bound to "Proxy" controller can also be animated with [[animate]] command (see [[Arma 3: createVehicle/vehicles]]).
+  {{Feature|arma3|
+  * It is recommended that [[animateSource]] command is used instead of [[animate]] whenever is possible, as it is more efficient and optimised for multiplayer
+  * Since {{arma3}} v1.58 animation names can be obtained with [[animationNames]]}}
+  {{Feature|warning|Mixing [[animateSource]] command with [[animate]] command to animate the same part may produce some undefined behaviour.}}
+groups:
+- Animations
+syntax:
+- call: !Binary
+  - object
+  - - animationName
+    - phase
+    - speed
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: animationName
+    description: name of the animation. This is the class-name of the animation defined in the config
+    type: Unknown
+  - name: phase
+    description: range 0 (start point of the animation) to 1 (end point of the animation). The speed, in which the animation is processed, is defined in the addon's config.cpp and cannot be changed during running missions
+    type: Unknown
+  - name: speed
+    description: when [[true]] animation is instant; [[Number]] > 0 is treated as config speed value multiplier
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+argument_loc: Global
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _building animate ["maindoor", 1];
+- _building animate ["Door_1_rot", 1, true];
+- |
+  Create Offroad and add flashing police light bar:
+  <sqf>
+  offroad = "C_Offroad_01_F" createVehicle (player getRelPos [5, 0]);
+  offroad animate ["HidePolice", 0];
+  offroad animate ["BeaconsStart", 1];

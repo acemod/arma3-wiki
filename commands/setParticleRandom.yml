@@ -1,0 +1,74 @@
+name: setParticleRandom
+description: "Sets randomization of particle source parameters. Correspondence between CfgCloudlets class param names and command array of params:\n<sqf>particleSource setParticleRandom\n[\n\tlifeTimeVar,\n\tpositionVar,\n\tmoveVelocityVar,\n\trotationVelocityVar,\n\tsizeVar,\n\tcolorVar,\n\trandomDirectionPeriodVar,\n\trandomDirectionIntensityVar,\n\tangleVar,\n\tbounceOnSurfaceVar\n];</sqf>"
+groups:
+- Particles
+syntax:
+- call: !Binary
+  - particleSource
+  - - lifeTime
+    - position
+    - moveVelocity
+    - rotationVelocity
+    - size
+    - color
+    - directionPeriod
+    - directionIntensity
+    - angle
+    - bounceOnSurface
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: particleSource
+    type: Unknown
+  - name: lifeTime
+    type: Unknown
+  - name: position
+    description: in format [randomX, randomY, randomZ]
+    type: Unknown
+  - name: moveVelocity
+    description: in format [randomX, randomY, randomZ]
+    type: Unknown
+  - name: rotationVelocity
+    type: Unknown
+  - name: size
+    type: Unknown
+  - name: color
+    type: Unknown
+  - name: directionPeriod
+    type: Unknown
+  - name: directionIntensity
+    type: Unknown
+  - name: angle
+    type: Unknown
+    optional: true
+  - name: bounceOnSurface
+    type: Unknown
+    optional: true
+    since:
+      arma_3:
+        major: 0
+        minor: 74
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _particleSource setParticleRandom [0, [0.1, 0.1, 0.1], [0, 0, 0.5], 0, 0.1, [0, 0, 0, 0], 0, 0, 45, 0];

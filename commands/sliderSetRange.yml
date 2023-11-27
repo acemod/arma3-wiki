@@ -1,0 +1,64 @@
+name: sliderSetRange
+description: Sets limits of [[CT_SLIDER]] or [[CT_XSLIDER]].
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - idc
+  - min
+  - max
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    description: idc of the control
+    type: Unknown
+  - name: min
+    description: minimal value
+    type: Unknown
+  - name: max
+    description: maximum value
+    type: Unknown
+- call: !Binary
+  - control
+  - - min
+    - max
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: min
+    description: minimal value
+    type: Unknown
+  - name: max
+    description: maximum value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 85
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- sliderSetRange [101, 0, 100];

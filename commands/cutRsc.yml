@@ -1,0 +1,125 @@
+name: cutRsc
+description: |-
+  Display a resource defined in RscTitles of the mission's [[Description.ext]], the campaign's description.ext or the global config.
+  {{Feature|arma3|For greater efficiency and ease of modability, it is recommended to use named layers available with [[String]] and {{Link|#Syntax 2}}.}}
+  {{Feature|Important|To avoid conflicts with existing layers it is recommended to register a layer with [[BIS_fnc_rscLayer]] and to start the name with a TAG:
+  <sqf>
+  ("TAG_myLayer" call BIS_fnc_rscLayer) cutRsc ["myRsc", "PLAIN"];
+  "TAG_myLayer" cutRsc ["myRsc", "PLAIN"];</sqf>
+  }}
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - class
+  - effect
+  - speed
+  - showInMap
+  - drawOverHUD
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: class
+    description: the class name of the resource. ("Default" will remove the current resource.)
+    type: Unknown
+  - name: effect
+    description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.
+    type: Unknown
+  - name: speed
+    description: time in seconds to fade in resource.
+    type: Unknown
+    optional: true
+    default: '-1'
+  - name: showInMap
+    description: '[[false]] to hide the text when the map is opened.'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+  - name: drawOverHUD
+    description: '[[false]] to show the resource under in-game HUD'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 16
+- call: !Binary
+  - layer
+  - - class
+    - effect
+    - speed
+    - showInMap
+    - drawOverHUD
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: layer
+    description: |-
+      layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100
+      * [[String]] - {{GVI|arma3|1.58|size= 0.75}} layer name on which the effect is shown. Layer names are '''CaSe SeNsItIvE'''.
+    type: Unknown
+  - name: class
+    description: the class name of the resource. ("Default" will remove the current resource.)
+    type: Unknown
+  - name: effect
+    description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.
+    type: Unknown
+  - name: speed
+    description: time in seconds to fade in resource.
+    type: Unknown
+    optional: true
+    default: '-1'
+  - name: showInMap
+    description: '[[false]] to hide the text when the map is opened.'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+  - name: drawOverHUD
+    description: '[[false]] to show the resource under in-game HUD'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 16
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  cutRsc ["binocular", "PLAIN"];
+  cutRsc ["binocular", "PLAIN", 2];
+  cutRsc ["binocular", "PLAIN", 2, false];
+- 2 cutRsc ["binocular", "PLAIN", 2];
+- _layer = "layer1" cutRsc ["binocular", "PLAIN", 2];
+- |
+  // create IGUI display
+  // such display can be closed with closeDisplay command or by overwriting the same cut layer with another output.
+  // note that "Unload" EH for some reason does not work with such display.
+  "someLayer" cutRsc ["RscTitleDisplayEmpty", "PLAIN"];
+  private _display = uiNamespace getVariable "RscTitleDisplayEmpty";

@@ -1,0 +1,21 @@
+name: curatorRegisteredObjects
+description: Returns array with all objects that has curator registered and their settings.
+groups:
+- Curator
+syntax:
+- call: !Unary curator
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: curator
+    description: curator module
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- curatorRegisteredObjects _curatorModule;

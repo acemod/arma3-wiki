@@ -1,0 +1,46 @@
+name: displayAddEventHandler
+description: |-
+  Adds an event handler to the given display. See [[User Interface Event Handlers]] for the full list of event names.
+  If applicable, see [[DIK_KeyCodes]] for a list of key code constants, which are relevant to key related user interface events like: [[User Interface Event Handlers#onKeyDown|KeyDown]] & [[User Interface Event Handlers#onKeyUp|KeyUp]].
+  {{Feature|important|Display EHs are processed from last to first added; an input override should be set up in the first added EH.}}
+  {{Feature|informative|The event handler ID can be accessed inside the event handler code using the <sqf inline>_thisEventHandler</sqf> [[Magic_Variables#thisEventHandler|magic variable]].}}
+groups:
+- GUI Control - Event Handlers
+- Event Handlers
+syntax:
+- call: !Binary
+  - display
+  - - eventName
+    - code
+  ret:
+  - Unknown
+  - index of the newly added event handler or {{hl|-1}} if creation failed
+  params:
+  - name: display
+    type: Unknown
+  - name: eventName
+    description: |-
+      event name
+      {{Feature|important|When using the event names listed [[User Interface Event Handlers|here]] with the [[ctrlAddEventHandler]], [[ctrlSetEventHandler]], [[displayAddEventHandler]] or [[displaySetEventHandler]] commands, the prefix "on" in the event name must be removed (e.g. ''''ButtonDown'''' instead of ''''onButtonDown'''').}}
+    type: Unknown
+  - name: code
+    description: the code which gets executed when event is triggered. Returning [[true]] in event handler code will override default engine handling for keyboard events.
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- moduleName_keyDownEHId = findDisplay 46 displayAddEventHandler ["KeyDown", "hint str _this;"];
+- moduleName_keyDownEHId = findDisplay 46 displayAddEventHandler ["KeyDown", { hint str _this }];

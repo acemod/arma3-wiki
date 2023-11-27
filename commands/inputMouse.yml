@@ -1,0 +1,40 @@
+name: inputMouse
+description: "Returns the state of mouse button action, alone or in combination with key presses. For more information on codes and combos see [[Arma_3:_Modded_Keybinding]] and [[DIK_KeyCodes]] but here are some examples of how codes could be hand constructed:\n\n* KEYBOARD_COMBO 16777216 (0x1000000)\n* DEVICE_MOUSE 65536 (0x10000)\n* HOLD_OFFSET 0\n* CLICK_OFFSET 128 (0x80)\n* DOUBLE_CLICK_OFFSET 256 (0x100)\n* SPECIAL_COMBINATIONS 1114112 (0x110000)\n<pre>\nClick + Hold: BUTTON + DEVICE_MOUSE + HOLD_OFFSET = BUTTON + 65536 + 0\nClick: BUTTON + DEVICE_MOUSE + CLICK_OFFSET = BUTTON + 65536 + 128 \nDouble Click: BUTTON + DEVICE_MOUSE + DOUBLE_CLICK_OFFSET = BUTTON + 65536 + 256\n\nRMB Click + Hold:  1 + 65536 + 0 = 65537\nRMB Click: 1 + 65536 + 128 = 65665\nRMB Double Click: 1 + 65536 + 256 = 65793\n\nCombo + Click + Hold: DIK * KEYBOARD_COMBO + SPECIAL_COMBINATIONS + BUTTON + HOLD_OFFSET = DIK * 16777216 + 1114112 + BUTTON + 0\nCombo + Click: DIK * KEYBOARD_COMBO + SPECIAL_COMBINATIONS + BUTTON + CLICK_OFFSET = DIK * 16777216 + 1114112 + BUTTON + 128\nCombo + Double Click: DIK * KEYBOARD_COMBO + SPECIAL_COMBINATIONS + BUTTON + DOUBLE_CLICK_OFFSET = DIK * 16777216 + 1114112 + BUTTON + 256\n\nLShift + RMB Click + Hold: 42 * 16777216 + 1114112 + 1 + 0 = 705757185\nLShift + RMB Click: 42 * 16777216 + 1114112 + 1 + 128 = 705757313\nLShift + RMB Double Click: 42 * 16777216 + 1114112 + 1 + 256 = 705757441\n</pre>"
+groups:
+- Interaction
+syntax:
+- call: !Unary button
+  ret:
+  - Unknown
+  - |-
+    the state of the button:
+    * 0 - released
+    * 1 - click
+    * 2 - click + hold
+    * 3 - double click
+    * 4 - double click + hold
+  params:
+  - name: button
+    description: 'button number 0..7: 0-LMB, 1-RMB, 2-MMB'
+    type: Unknown
+- call: !Unary combocode
+  ret:
+  - Unknown
+  - '[[true]] if given code/combination detected, [[false]] otherwise'
+  params:
+  - name: combocode
+    description: code or combination (see [[actionKeys]])
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- |-
+  State of the RMB:
+  <sqf>onEachFrame { hintSilent str inputMouse 1 };
+- |-
+  Detect LCtrl + 2xRMB:
+  <sqf>onEachFrame { hintSilent str inputMouse "487653633" };

@@ -1,0 +1,34 @@
+name: displayRemoveAllEventHandlers
+description: Remove all event handlers from the given display.
+groups:
+- GUI Control - Event Handlers
+- Event Handlers
+syntax:
+- call: !Binary
+  - display
+  - eventName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: display
+    type: Unknown
+  - name: eventName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- findDisplay 46 displayRemoveAllEventHandlers "KeyDown";

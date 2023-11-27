@@ -1,0 +1,33 @@
+name: ceil
+description: The ceil value of x.
+groups:
+- Math
+syntax:
+- call: !Unary x
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: x
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- ceil 5.25; // Result is 6
+- ceil -5.25; // Result is -5

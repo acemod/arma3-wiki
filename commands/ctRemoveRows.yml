@@ -1,0 +1,26 @@
+name: ctRemoveRows
+description: Takes array of row indices as a parameter and removes rows with those indices. Indices of remaining rows will be recomputed.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Binary
+  - ctrl
+  - - index1
+    - index2
+    - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    type: Unknown
+  - name: indexN
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- _control ctRemoveRows [0, 1, 2];

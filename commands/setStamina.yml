@@ -1,0 +1,24 @@
+name: setStamina
+description: Set units' stamina (seconds until depletion)
+groups:
+- Stamina System
+syntax:
+- call: !Binary
+  - unit
+  - stamina
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: stamina
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 54
+examples:
+- player setStamina 42;

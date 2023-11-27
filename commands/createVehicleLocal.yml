@@ -1,0 +1,86 @@
+name: createVehicleLocal
+description: |-
+  Creates an object of the given type. The Created object is not transferred through network in MP games.
+  [[netId]] of such vehicle in multiplayer will be "0:0". To disable local vehicle creation, use [[CfgDisabledCommands]] to blacklist this command.
+  Alternatively, you can use [[createSimpleObject]] with local option enabled where applicable.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - type
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: type
+    description: vehicle/object className
+    type: Unknown
+  - name: position
+    type: Unknown
+- call: !Unary
+  - type
+  - position
+  - markers
+  - placement
+  - special
+  ret:
+  - Unknown
+  - created vehicle or [[objNull]] if failed
+  params:
+  - name: type
+    description: vehicle/object className
+    type: Unknown
+  - name: position
+    description: desired placement position
+    type: Unknown
+  - name: markers
+    description: |-
+      if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position.
+      If any of the markers were given z coordinate with [[setMarkerPos]], the vehicle will also be created at given z coordinate.
+    type: Unknown
+    optional: true
+    default: <sqf inline>[]</sqf>
+  - name: placement
+    description: the vehicle is placed inside a circle with given position as center and placement as its radius.
+    type: Unknown
+    optional: true
+    default: '0'
+  - name: special
+    description: |-
+      can be one of the following:
+      * {{hl|"NONE"}} - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there.
+      * {{hl|"CAN_COLLIDE"}} - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model.
+      * {{hl|"FLY"}} - if vehicle is capable of flying and has crew, it will be made airborne at default height.
+      If ''special'' is "" or not specified, default {{hl|"NONE"}} is used.
+    type: Unknown
+    optional: true
+    default: '"NONE"'
+  since:
+    arma_3:
+      major: 2
+      minor: 14
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _lightsource = "#lightpoint" createVehicleLocal _pos;
+- _lightsource = "#lightreflector" createVehicleLocal _pos;
+- |
+  // since {{arma3}} v2.14
+  private _lightPoint = createVehicleLocal ["#lightpoint", getMarkerPos "marker1", ["marker2", "marker3"], 0, "NONE"];

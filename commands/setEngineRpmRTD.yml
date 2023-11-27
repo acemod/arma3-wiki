@@ -1,0 +1,37 @@
+name: setEngineRpmRTD
+description: Sets the RPM of given engines. {{Feature|afm}}
+groups:
+- RTD
+syntax:
+- call: !Binary
+  - helicopter
+  - - rpm
+    - engineIndex
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: helicopter
+    type: Unknown
+  - name: rpm
+    description: wanted RPM
+    type: Unknown
+  - name: engineIndex
+    description: |-
+      index of the engine
+      * engine index 0: engine #1
+      * engine index 1: engine #2
+      * engine index 2: engine #3
+      * engine index -1: all engines
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- myHelicopter setEngineRpmRTD [1337, -1];

@@ -1,0 +1,57 @@
+name: addEventHandler
+description: |-
+  Adds an Event Handler to the given object.
+  * As many Event Handlers of any type can be added - existing Event Handlers do not get overwritten
+  * Use [[removeEventHandler]] to remove an Event Handler
+  Read [[:Category:Event Handlers|Event Handlers]] for more information and a list of all available Event Handlers.
+multiplayer_note: Some event handlers are persistent (i.e they stay attached to the unit, even after it dies and respawns).
+groups:
+- Event Handlers
+syntax:
+- call: !Binary
+  - target
+  - - type
+    - code
+  ret:
+  - Unknown
+  - the index of the added Event Handler. Indices start at 0 for each unit and increment with each added Event Handler.
+  params:
+  - name: target
+    type: Unknown
+  - name: type
+    description: see [[:Category:Event Handlers|Event Handlers]] for the full list of available options
+    type: Unknown
+  - name: code
+    description: |-
+      code that should be executed when the Event Handler fires; executed in [[missionNamespace]] by default. Several [[Magic Variables]] are available:
+      * Event Handler parameters are accessible via <sqf inline>_this</sqf>
+      * The Event Handler type is available as <sqf inline>_thisEvent</sqf>
+      * The Event Handler index is available as <sqf inline>_thisEventHandler</sqf>
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 85
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "this addEventHandler [\"Killed\", {\n\tparams [\"_unit\", \"_killer\"];\n\tsystemChat format [\"%1 has been killed by %2.\", _unit, _killer];\n}];\n"
+- <sqs>_index = player addEventHandler ["Killed", { _this exec "playerKilled.sqs" }]</sqs>

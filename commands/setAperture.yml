@@ -1,0 +1,35 @@
+name: setAperture
+description: "Sets custom eye accommodation camera aperture.\n\n{{Feature|informative|\nIf HDR is enabled, when [[setAperture]] {{hl|value}} is used it also forces [[setApertureNew]] to the following values: [{{hl|value}}, {{hl|value}}, {{hl|value}}, 1].\nExecute [[setApertureNew]] after [[setAperture]] to override this default mechanic.\n}}  \n{{Feature|important|\nThe aperture is set to default by the engine at the mission start. If you set it before the mission started it will reset like it never happened.\nMake sure you set it at the right time (see {{Link|#Example 2}}).\n}}"
+groups:
+- Camera Control
+- Lights
+syntax:
+- call: !Unary aperture
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: aperture
+    description: aperture value; a value {{hl|c= <= 0}} will set the aperture automatically. Maximum value which has an effect seems to be {{hl|100}}.
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setAperture 0.3;
+- 0 spawn { sleep 0.1; setAperture 100 };

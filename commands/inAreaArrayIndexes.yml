@@ -1,0 +1,39 @@
+name: inAreaArrayIndexes
+description: Returns positions' indices that are within the provided area.
+groups:
+- Triggers
+- Markers
+- Locations
+- Positions
+- Groups
+syntax:
+- call: !Binary
+  - positions
+  - area
+  ret:
+  - Unknown
+  - indices of ''positions''<nowiki/>'s matching elements
+  params:
+  - name: positions
+    description: |-
+      entities
+      * [[Position]]s - 2D or 3D positions
+      * [[Location]]s - locations
+      * [[String]]s - markers
+      * [[Group]]s - AI groups, the position is the [[leader]]'s position
+    type: Unknown
+  - name: area
+    description: |-
+      in format [center, a, b, angle, isRectangle, c] or polygon in format [point1, point2, point2, ...]
+      * [[Object]] - trigger
+      * [[Location]] - location
+      * [[String]] - marker
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 14
+examples:
+- "private _players = call BIS_fnc_listPlayers;\nprivate _indices = _players inAreaArrayIndexes _marker;\n{\n\tprivate _player = _players select _x;\n\t[\"You are in the marker!\"] remoteExec [\"hint\", _player];\n} forEach _indices;\n"

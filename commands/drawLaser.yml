@@ -1,0 +1,58 @@
+name: drawLaser
+description: |-
+  Draws a laserbeam and a lightpoint at the impact location of the laser.<br>
+  This command has to be executed every frame - see {{Link|Arma 3: Mission Event Handlers#Draw3D}}.<br>
+  Lasers drawn with this command are subject to the same limitations as weapon attachment lasers. These limitations are defined in the {{hl|CfgIRLaserSettings}} config class.
+groups:
+- Interaction
+- Lights
+syntax:
+- call: !Unary
+  - position
+  - direction
+  - beamColor
+  - dotColor
+  - dotSize
+  - beamThickness
+  - beamMaxLength
+  - isIR
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: position
+    description: the laser's origin position
+    type: Unknown
+  - name: direction
+    description: the laser's direction vector
+    type: Unknown
+  - name: beamColor
+    description: laser beam color. The values can go way above the usual 0..1 range as they also act as emissivity brightness
+    type: Unknown
+  - name: dotColor
+    description: impact dot color. Set to <sqf inline>[]</sqf> to use the same value as ''beamColor''.
+    type: Unknown
+  - name: dotSize
+    description: impact dot size; if set to 0 the impact dot will not render
+    type: Unknown
+  - name: beamThickness
+    description: laser beam's thickness scale; if set to 0, the beam will not render
+    type: Unknown
+  - name: beamMaxLength
+    description: laser beam's maximum length. {{hl|-1}} means maximum length (defined in {{hl|CfgIRLaserSettings}}), {{hl|0}} means no length at all and the command is ignored
+    type: Unknown
+    optional: true
+    default: '-1'
+  - name: isIR
+    description: whether the laser and impact dot are only visible with Night Vision / Thermal Imaging
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- "Give the player a laser eye:\n<sqf>\naddMissionEventHandler [\"Draw3D\", {\n\tdrawLaser [\n\t\teyePos player vectorAdd [0, 0, 0.1],\n\t\tgetCameraViewDirection player,\n\t\t[1000, 0, 0], // Bright red\n\t\t[],\n\t\t5,\n\t\t20,\n\t\t-1,\n\t\tfalse\n\t];\n}];\n"

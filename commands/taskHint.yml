@@ -1,0 +1,44 @@
+name: taskHint
+description: |-
+  Shows info about new, changed or failed task. The text can contain several lines. {{hl|\n}} is used to set a line return.
+  {{Feature | arma3 | It is recommended to use [[BIS_fnc_showNotification]] in order to maintain {{arma3}}'s visual style.}}
+groups:
+- Briefing
+syntax:
+- call: !Unary
+  - text
+  - colour
+  - icon
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: text
+    type: Unknown
+  - name: colour
+    type: Unknown
+  - name: icon
+    description: |-
+      one of:
+      * "taskNew"
+      * "taskCurrent"
+      * "taskDone"
+      * "taskFailed"
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- taskHint ["Task failed.\nBad job!", [1, 0, 0, 1], "taskFailed"];

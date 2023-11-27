@@ -1,0 +1,28 @@
+name: setStatValue
+description: |-
+  Sets a value to a given stat. <br>
+  A list of possible StatNames can be found here: [[Arma 3: Stat Names]]<br>
+  Its important to note that most Stats are restricted to scripts and missions in certain paths.<br>
+  For example "ExpWarlockDown" is restricted to scripts in any subdirectory of {{hl|"a3\Missions_F_Exp\Campaign\Missions\"}}
+groups:
+- System
+syntax:
+- call: !Unary
+  - name
+  - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: name
+    type: Unknown
+  - name: value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 18
+examples:
+- setStatValue ["ExpWarlockDown", 1]; // Unlocks the "Warlock Down" Steam achivement

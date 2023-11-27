@@ -1,0 +1,23 @@
+name: ctAddRow
+description: |-
+  Adds one row of controls according to the RowTemplate class. It returns an array containing row index and array of created controls in a format [<rowIndex>, [<control0>, <control1>...<control n>]].
+  <br>
+  Note that rows and headers are indexed separately.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Unary control
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- _array = ctAddRow _control;

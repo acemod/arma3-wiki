@@ -1,0 +1,20 @@
+name: leaderboardRequestRowsFriends
+description: Requests given leaderboard to download friends rows from the given leaderboard
+groups:
+- Leaderboards
+syntax:
+- call: !Unary boardName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: boardName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 42
+examples:
+- leaderboardRequestRowsFriends "TT01";

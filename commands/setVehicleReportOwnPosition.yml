@@ -1,0 +1,24 @@
+name: setVehicleReportOwnPosition
+description: Sets that the vehicle will share its own position via datalink to the [[Side]] center.
+groups:
+- Sensors
+syntax:
+- call: !Binary
+  - vehicle
+  - report
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: report
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- vehicle player setVehicleReportOwnPosition true;

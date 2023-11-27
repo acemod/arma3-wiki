@@ -1,0 +1,21 @@
+name: breakWith
+description: Skips all loop iterations and immediately returns the given value.
+groups:
+- Program Flow
+syntax:
+- call: !Unary return
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: return
+    description: value to be returned when iterations are skipped
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- "// stops once _i reaches 5 and outputs 0, 1, 2, 3, 4, END\nsystemChat call {\n\tfor \"_i\" from 0 to 10 do {\n\t\tif (_i == 5) then { breakWith \"END\"; };\n\t\tsystemChat str _i;\n\t};\n};\n"

@@ -1,0 +1,66 @@
+name: uniqueUnitItems
+description: |-
+  Returns hashmap of all items in units inventory as [classname, count] pairs.
+  {{Feature|informative|
+  * ''weaponItems'', ''uniformItems'', ''vestItems'', ''backpackItems'' arguments use the following [[Number]] values:
+  ** 0: do not return value
+  ** 1: returns container only (weapon or container)
+  ** 2: returns container and its content
+  * weapons/containers that are stored inside containers (e.g weapon in backpack) always return all contents if contents for the parent container are enabled.
+  }}
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+- call: !Unary
+  - unit
+  - weaponsItems
+  - uniformItems
+  - vestItems
+  - backpackItems
+  - assignedItems
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: weaponsItems
+    description: weapons (including binoculars) and their accessories (flashlight etc), loaded magazines
+    type: Unknown
+    optional: true
+    default: '2'
+  - name: uniformItems
+    type: Unknown
+    optional: true
+    default: '2'
+  - name: vestItems
+    type: Unknown
+    optional: true
+    default: '2'
+  - name: backpackItems
+    type: Unknown
+    optional: true
+    default: '2'
+  - name: assignedItems
+    description: returns [[assignedItems]] as well as [[headgear]] and [[hmd|goggles]]
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- |
+  private _unitUniqueItems = uniqueUnitItems [player, 0, 2, 2, 2, true];
+  if (_unitUniqueItems getOrDefault ["FirstAidKit", 0] > 5) then { hint "I'm rich of FAK to give!"; };
+- private _unitUniqueItems = uniqueUnitItems [cursorObject];

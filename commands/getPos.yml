@@ -1,0 +1,83 @@
+name: getPos
+description: |-
+  Returns object or location position. If the argument is an object, the return value is in format [[Position#PositionAGLS|PositionAGLS]].<br>
+  The alternative syntax gets the position given distance and heading away from provided object or position - the command equivalent of [[BIS_fnc_relPos]].
+
+  {{Feature|important|
+  Do '''not''' use this command to get an object's position in 3D format:
+  * the Z value from this command is '''relative''' to the surface underneath, and there is no compatible setter command to use it with;<br>the commonly misused code: <sqf inline>_obj1 setPos getPos _obj2</sqf> is '''absolutely wrong'''
+  * this command is significantly '''slower''' than other [[:Category:Command Group: Positions|position commands]] because it has to calculate the surface below a position from objects in the (2D) area; its performance therefore suffers from areas with a high density of objects such as cities, and can easily be ~20x slower than other, simpler position commands - see [[Code Optimisation#getPos.2A and setPos.2A|this benchmark]].
+  The '''only''' correct usage of this command is to determine the altitude of an object '''from the surface below it''' (see {{Link|#Example 5}}).
+  }}
+groups:
+- Positions
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+- call: !Unary location
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: location
+    type: Unknown
+- call: !Binary
+  - origin
+  - - distance
+    - heading
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: origin
+    type: Unknown
+  - name: distance
+    description: distance from position
+    type: Unknown
+  - name: heading
+    description: in which compass direction
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 56
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hintSilent str getPos player;
+- "[[getPos]] vs. other methods (over sea). Pay attention to Z values:\n<sqf>\ngetPos ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\ngetPosATL ship;\t\t\t\t// [2412.01, 6036.33, 19.4266]\ngetPosASL ship;\t\t\t\t// [2412.01, 6036.33, -0.920066]\ngetPosASLW ship;\t\t\t// [2412.01, 6036.33, -0.865981]\nvisiblePosition ship;\t\t// [2412.02, 6036.33, -0.837952]\nvisiblePositionASL ship;\t// [2412.02, 6036.33, -0.91798]\nposition ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\n"
+- "[[getPos]] vs. other methods (over land, on top of a 100m high building). Pay attention to Z values:\n<sqf>\ngetPos car;\t\t\t\t\t// [2508.64, 5681.47, 0.0609589]\ngetPosATL car;\t\t\t\t// [2508.64, 5681.47, 100.0356369]\ngetPosASL car;\t\t\t\t// [2508.64, 5681.47, 171.718]\ngetPosASLW car;\t\t\t\t// [2508.64, 5681.47, 171.718]\nvisiblePosition car;\t\t// [2508.64, 5681.47, 0.0609512]\nvisiblePositionASL car;\t\t// [2508.64, 5681.47, 171.718]\nposition car;\t\t\t\t// [2508.64, 5681.47, 0.0609589]\n"
+- |-
+  Find position 100 metres and 45 degrees from player position:
+  <sqf>player getPos [100, 45];
+- |-
+  Determine if a free-falling unit is close enough to the surface (including buildings, aircraft carriers etc) below to deploy the parachute:
+  <sqf>waitUntil { sleep 1; getPos player select 2 < 200 };
+  hint "Deploying a parachute might be a good idea";

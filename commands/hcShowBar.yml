@@ -1,0 +1,30 @@
+name: hcShowBar
+description: Shows or hides [[High Command|high command]] bar. There must be some groups under HC command to show HC bar.{{Feature|arma3| Since Arma 3 v1.94 this command returns [[Nothing]] as it should}}
+groups:
+- High Command
+syntax:
+- call: !Unary bool
+  ret:
+  - Unknown
+  - (before {{GVI|arma3|1.94|size= 0.75}} this command returned [[Object]] of [[objNull | null]] value)
+  params:
+  - name: bool
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hcShowBar true;
+- hcShowBar false;

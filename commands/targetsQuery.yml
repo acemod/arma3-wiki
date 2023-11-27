@@ -1,0 +1,56 @@
+name: targetsQuery
+description: Returns sorted array of targets, '''known''' to the enquirer (including own troops), where the accuracy coefficient reflects how close the result matches the query. This command could be CPU intensive.
+groups:
+- Object Detection
+syntax:
+- call: !Binary
+  - enquirer
+  - - targetIgnore
+    - targetSide
+    - targetType
+    - targetPosition
+    - targetMaxAge
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: enquirer
+    description: for whom the query will be made
+    type: Unknown
+  - name: targetIgnore
+    description: target object to exclude from results. [[objNull]] - return every target
+    type: Unknown
+  - name: targetSide
+    description: desired side of the target. [[sideUnknown]] - any side
+    type: Unknown
+  - name: targetType
+    description: desired target [[typeOf]]. "" - any type
+    type: Unknown
+  - name: targetPosition
+    description: desired target position in format of [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (only [x,y] is considered). Position tolerance is 200m from the actual position of the target. [] - any position
+    type: Unknown
+  - name: targetMaxAge
+    description: desired max age of the target. This will limit returned results to the targets younger than specified age. 0 - any age
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  Return all known targets for player:
+  <sqf>_targets = player targetsQuery [objNull, sideUnknown, "", [], 0];
+- |-
+  Prioritise all known OPFOR targets and return targets less than 10 seconds old:
+  <sqf>_targets = player targetsQuery [objNull, east, "", [], 10];

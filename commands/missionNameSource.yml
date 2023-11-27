@@ -1,0 +1,24 @@
+name: missionNameSource
+description: |-
+  Return workshop-compatible currently loaded mission file (path to mission.pbo, relative to game exe).
+
+  {{Feature | Informative |
+  * [[missionName]] will return the Workshop user-friendly mission name, whereas [[missionNameSource]] will take the information from [[Mission.sqm|mission.sqm]].
+  * pre-v2.02 missions may return an empty string.
+  }}
+groups:
+- Mission Information
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- hint format ["You are playing mission ""%1""", missionNameSource];

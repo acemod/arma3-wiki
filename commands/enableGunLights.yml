@@ -1,0 +1,30 @@
+name: enableGunLights
+description: Toggles the target group's gun light(s).
+groups:
+- Lights
+- Weapons
+syntax:
+- call: !Binary
+  - target
+  - state
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: target
+    description: the group forced to use gun lights. If unit is supplied as argument, unit's group is used
+    type: Unknown
+  - name: state
+    description: '[[true]] to enable, [[false]] to disable'
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+examples:
+- _group enableGunLights false;

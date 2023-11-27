@@ -1,0 +1,21 @@
+name: getFatigue
+description: Returns fatigue of given unit.
+groups:
+- Stamina System
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- value = getFatigue player;
+- if (getFatigue player < 0.5) then { player sideChat "I'm good to go!" };

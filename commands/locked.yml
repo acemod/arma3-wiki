@@ -1,0 +1,45 @@
+name: locked
+description: Check if [[vehicle]] is locked. If it is locked, [[Object#Person|Persons]] cannot mount / dismount without order.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - |-
+    since {{GVI|arma3|0.50}}
+    ** 0: Unlocked
+    ** 1: Default - a subordinate player cannot enter without AI leader order
+    ** 2: Locked
+    ** 3: Locked for player
+    ** -1: vehicle [[isNull|is null]]
+    * [[Boolean]] for older games
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _locked = locked _jeepOne;

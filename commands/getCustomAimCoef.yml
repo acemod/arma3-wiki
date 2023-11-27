@@ -1,0 +1,20 @@
+name: getCustomAimCoef
+description: Returns aimPrecision from animation state with custom value that will directly affects weapon sway size and speed.
+groups:
+- Stamina System
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 54
+examples:
+- _coef = getCustomAimCoef player;

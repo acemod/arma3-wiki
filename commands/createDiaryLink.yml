@@ -1,0 +1,40 @@
+name: createDiaryLink
+description: Creates a link to the given diary entry.
+groups:
+- Briefing
+syntax:
+- call: !Unary
+  - subject
+  - record
+  - text
+  ret:
+  - Unknown
+  - empty string or a string similar to the result of <sqf inline>format ["<log subject=""%1"" record=""%2"">%3</log>", subject, processedRecordId, text]</sqf>
+  params:
+  - name: subject
+    type: Unknown
+  - name: record
+    type: Unknown
+  - name: text
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  _diaryRec1 = player createDiaryRecord ["Diary", ["Record 1", "We can not refer to the next record because it does not exist yet."]];
+  _diaryRec2 = player createDiaryRecord ["Diary", ["Record 2", "Go to " + createDiaryLink ["Diary", _diaryRec1, "record 1"]]];
+  _diaryRec3 = player createDiaryRecord ["Diary", ["Record 3", "Go to " + createDiaryLink ["Diary", _diaryRec2, "record 2"]]];
+- "In this example, one can go to any next record.\n<sqf>\nTAG_fnc_processDiaryLink = {\n\tprocessDiaryLink createDiaryLink [\"Diary\", _this, \"\"];\n};\nDiaryRec1 = player createDiaryRecord [\"Diary\", [\"Record 1\", \n\t\"Go to <execute expression='DiaryRec2 call TAG_fnc_processDiaryLink'>Record 2</execute>\"\n]];\nDiaryRec2 = player createDiaryRecord [\"Diary\", [\"Record 2\", \n\t\"Go to <execute expression='DiaryRec3 call TAG_fnc_processDiaryLink'>Record 3</execute>\"\n]];\nDiaryRec3 = player createDiaryRecord [\"Diary\", [\"Record 3\", \n\t\"Go to <execute expression='DiaryRec1 call TAG_fnc_processDiaryLink'>Record 1</execute>\"\n]];\n"

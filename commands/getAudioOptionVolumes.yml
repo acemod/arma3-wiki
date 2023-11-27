@@ -1,0 +1,18 @@
+name: getAudioOptionVolumes
+description: Returns profile audio volumes.
+groups:
+- Sounds
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - "[effects, music, radio, von, UI, map], where:\n* effects: [[Number]] - fx volume factor \n* music: [[Number]] - music volume factor\n* radio: [[Number]] - speech volume factor\n* von: [[Number]] - Voice over Network (VoN) volume factor\n* {{GVI|arma3|2.10|size= 0.75}} UI: [[Number]] - UI volume factor\n* {{GVI|arma3|2.12|size= 0.75}} map: [[Number]] - map volume factor"
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 94
+examples:
+- getAudioOptionVolumes params ["_effects", "_music", "_radio", "_von", "_ui", "_map"];

@@ -1,0 +1,36 @@
+name: playAction
+description: |-
+  When used on a person, a smooth transition to the given action will be initiated.<br>
+  For {{arma3}} actions see: [[playAction/actions]].
+groups:
+- Unit Control
+- Animations
+syntax:
+- call: !Binary
+  - soldier
+  - action
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: soldier
+    type: Unknown
+  - name: action
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- soldierOne playAction "SitDown";

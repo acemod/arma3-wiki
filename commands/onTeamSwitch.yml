@@ -1,0 +1,30 @@
+name: onTeamSwitch
+description: "Defines an action performed when the team switch is finished.\nCommandset receives the following special variables: ''_from'' object previous unit, ''_to'' object current unit.\nConsecutive use of onTeamSwitch command will overwrite previously set commandset. \n{{Feature|Important| This command is deprecated. Since '''Arma 3''' ''v1.57'' a stackable version of this EH is available: [[Arma 3: Mission Event Handlers#TeamSwitch|TeamSwitch]]}}\n<br>\n{{Feature | Informative | When player switches and leaves behind AI unit, you need to enable \"TeamSwitch\" AI on it (with&nbsp;<sqf inline>onTeamSwitch { _from enableAI \"TeamSwitch\" };</sqf>) so that the unit continues with [[waypoints]]. }}"
+groups:
+- Team Switch
+- Event Handlers
+syntax:
+- call: !Unary commandset
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: commandset
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- onTeamSwitch { [_from, _to] execVM "myTeamSwitchScript.sqf"; };

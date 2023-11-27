@@ -1,0 +1,71 @@
+name: reveal
+description: |-
+  Reveals a target to a [[group]]. If ''toWhom'' is a unit, unit's group is considered. If ''toWhom'' is a vehicle, vehicle commander's group is considered.  The [[knowsAbout|knowledge value]] will be set to the highest level any unit of the revealing side has about the revealed target. If the revealing side has ''no'' knowledge about the revealed target, the value will be set to 1.
+
+  {{Feature | informative | The knowledge level can only be increased by this command, not decreased. Use [[forgetTarget]] first if you need to decrease value.}}
+multiplayer_note: '[[targetKnowledge]] and [[knowsAbout]] information only get updated on the PC where this command was executed.'
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - toWhom
+  - target
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: toWhom
+    description: which receives revealing information
+    type: Unknown
+  - name: target
+    description: which is revealed
+    type: Unknown
+- call: !Binary
+  - toWhom
+  - - target
+    - accuracy
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: toWhom
+    description: which receives revealing information
+    type: Unknown
+  - name: target
+    description: which is revealed
+    type: Unknown
+  - name: accuracy
+    description: knowledge value, clamped to 0..4 range
+    type: Unknown
+  since:
+    arma_2_arrowhead:
+      major: 1
+      minor: 60
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldierOne reveal _soldierTwo; // soldierOne knowsAbout information about soldierTwo is updated
+- player reveal cursorObject; // player knowsAbout information about object under cursor is updated
+- _soldierOne reveal [_soldierTwo, 1.5];

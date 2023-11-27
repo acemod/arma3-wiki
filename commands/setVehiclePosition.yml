@@ -1,0 +1,77 @@
+name: setVehiclePosition
+description: |-
+  Moves the object to a given position (same as [[createVehicle]] placement algorithm). Uses either the position that's defined by the ''position'' param, or one of the marker positions from the markers array. The object is placed inside a circle with ''position'' as its center and ''placement'' as its radius. The type of placement could also be controlled with ''special''.<br><br>
+  If position is in water and the vehicle can float, it is placed on water surface, otherwise it is placed on the ground, even if the ground is under water. If roof surfaces support walking, units will be placed on roofs if such position is given.
+groups:
+- Positions
+- Object Manipulation
+syntax:
+- call: !Binary
+  - object
+  - - position
+    - markers
+    - placement
+    - special
+  ret:
+  - Unknown
+  - '[[true]] on success, [[false]] on failure'
+  params:
+  - name: object
+    type: Unknown
+  - name: position
+    description: |-
+      desired placement position.
+      If object is given, object position is used for ''position''. Normally only ''x'' and ''y'' are considered, unless "CAN_COLLIDE" is used for special placement
+    type: Unknown
+  - name: markers
+    description: |-
+      if the markers array contains one or more marker names, the position is chosen randomly and could be one of the marker positions or just the supplied main position.
+      If marker had z coordinate set with [[setMarkerPos]], the vehicle will be placed on the nearest surface below this z coordinate
+    type: Unknown
+  - name: placement
+    description: the vehicle is randomly placed inside a circle with given position as center and placement as its radius
+    type: Unknown
+  - name: special
+    description: "can be one of the following: \n* {{hl|\"NONE\"}} - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there. \n* {{hl|\"CAN_COLLIDE\"}} - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model. \n* {{hl|\"FLY\"}} - if vehicle is capable of flying and has crew, it will be made airborne at default height. \nIf ''special'' is \"\" or not specified, default {{hl|\"NONE\"}} is used."
+    type: Unknown
+    optional: true
+    default: '"NONE"'
+argument_loc: Global
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  // place the player at either [1000,2000], or one of the three markers positions
+  player setVehiclePosition [[1000,2000], ["Pos1","Pos2","Pos3"], 0, "CAN_COLLIDE"];
+- heli setVehiclePosition [player, [], 0, "FLY"];
+- |-
+  _cam = "camera" camCreate [0,0,0];
+  _cam setDir random 360;
+  _cam setVehiclePosition [[5000,5000], [], 1000, "NONE"];
+  _cam setPosWorld (getPosWorld _cam vectorAdd [0,0,1.8]);
+  _cam cameraEffect ["Internal", "Back"];
+- |-
+  private _tablePos = player getRelPos [3, 0];
+  private _table = "Land_CampingTable_F" createVehicle [0,0,0];
+  private _laptop = "Land_Laptop_unfolded_F" createVehicle [0,0,0];
+  _table setPos _tablePos;
+  _laptop setVehiclePosition [_tablePos vectorAdd [0.5, 0.2, 10], [], 0, "CAN_COLLIDE"];
+  _laptop attachTo [_table];

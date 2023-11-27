@@ -1,0 +1,44 @@
+name: setUnitPosWeak
+description: "Set unit position rules. This command is the lowest level of priority for setting unit position and to be used in scripted\t\nFSM's. Priorities are:\n# Unit pos commanded (from the commanding menu, higher priority).\n# Unit pos scripted (from [[setUnitPos]] scripting command, medium priority).\n# Unit pos FSM / '''setUnitPosWeak''' (used in the formation FSM, lowest priority)."
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - unit
+  - mode
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: mode
+    description: |-
+      can be:
+      * "DOWN" - Unit goes prone and stays prone.
+      * "UP" - Unit stands and stays standing.
+      * "MIDDLE" - Kneel Position. {{GVI|arma1|1.04}} - Unit will not kneel if it is unarmed
+      * "AUTO" - Unit chooses mode according to circumstances.
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  armed_assault:
+    major: 1
+    minor: 4
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _soldier disableAI "FSM";
+  _soldier setUnitPosWeak "DOWN";

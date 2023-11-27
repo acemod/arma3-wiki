@@ -1,0 +1,38 @@
+name: allDisplays
+description: |-
+  Returns a list of all opened GUI displays.
+
+  {{Feature | informative | Other displays could be accessed via [[uiNamespace]] variable which is updated every time a display is opened or closed.
+  For example, to access IGUI displays:
+  <sqf>private _iguiDisplays = uiNamespace getVariable ["IGUI_displays", []];</sqf>
+
+  Other display variables:
+  {{Columns|4|
+  * {{hl|"3DENDisplaysTemp_displays"}}
+  * {{hl|"3DENDisplays_displays"}}
+  * {{hl|"BootcampDisplays_displays"}}
+  * {{hl|"BootcampTitles_displays"}}
+  * {{hl|"CuratorDisplays_displays"}}
+  * {{hl|"CuratorTitles_displays"}}
+  * {{hl|"GUI_displays"}}
+  * {{hl|"IGUI_displays"}}
+  * {{hl|"KartDisplays_displays"}}
+  * {{hl|"Loading_displays"}}
+  }}
+  }}
+groups:
+- GUI Control
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 38
+examples:
+- private _allDisps = allDisplays;

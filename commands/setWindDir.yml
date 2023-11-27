@@ -1,0 +1,37 @@
+name: setWindDir
+description: Changes the wind direction smoothly.
+multiplayer_note: Effect is global only when executed on the server. On clients wind direction will sync to server value in a while.
+groups:
+- Environment
+syntax:
+- call: !Binary
+  - time
+  - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: time
+    description: transition time in seconds. {{hl|0}} will cause the change to be immediate
+    type: Unknown
+  - name: value
+    description: azimuth
+    type: Unknown
+- call: !Unary direction
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: direction
+    description: flat wind direction and strength in format [[Position#Introduction|Position2D]]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Global
+server_exec: true
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 60 setWindDir 180;
+- setWindDir [1, -15];

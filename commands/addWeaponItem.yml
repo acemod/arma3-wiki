@@ -1,0 +1,77 @@
+name: addWeaponItem
+description: Adds a weapon item to the specified weapon. The item can be weapon magazine, in which case the amount of ammo and target muzzle could also be specified.
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - unit
+  - - weaponName
+    - itemName
+    - instant
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: weaponName
+    description: name of the weapon to add magazine to
+    type: Unknown
+  - name: itemName
+    description: class name of the item to add (if magazine, muzzle will be autodetected)
+    type: Unknown
+  - name: instant
+    description: '[[true]] to skip animation'
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 1
+        minor: 96
+- call: !Binary
+  - unit
+  - - weaponName
+    - - itemName
+      - ammoCount
+      - muzzleName
+    - instant
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: weaponName
+    description: name of the weapon to add magazine to
+    type: Unknown
+  - name: itemName
+    description: class name of the item to add (if magazine, muzzle will be autodetected unless specified)
+    type: Unknown
+  - name: ammoCount
+    description: optional amount of ammo in magazine
+    type: Unknown
+    optional: true
+  - name: muzzleName
+    description: optional target muzzle to add magazine to
+    type: Unknown
+    optional: true
+  - name: instant
+    description: '[[true]] to skip animation'
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 1
+        minor: 96
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 38
+examples:
+- player addWeaponItem ["arifle_MX_GL_ACO_F", "1Rnd_HE_Grenade_shell"];
+- player addWeaponItem ["arifle_MX_GL_ACO_F", ["1Rnd_HE_Grenade_shell", 1, "GL_3GL_F"]];
+- player addWeaponItem ["LaserDesignator", "LaserBatteries"];

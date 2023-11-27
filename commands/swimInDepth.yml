@@ -1,0 +1,27 @@
+name: swimInDepth
+description: Sets the target depth level for swimming soldier. Depth should be a negative number.
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - unit
+  - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- soldier swimInDepth -20;
+- |-
+  bob swimInDepth -10;
+  bob doMove ASLToAGL getPosASL player;

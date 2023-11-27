@@ -1,0 +1,28 @@
+name: getTerrainHeight
+description: |-
+  Returns terrain height at the specified location.
+  {{Feature|informative|Unlike [[getTerrainHeightASL]] which returns the exact position's height, this command returns the height at the closest terrain grid pixel to the provided position:
+  <sqf>
+  private _cellWidth = getTerrainInfo # 2;
+  getTerrainHeightASL (_pos apply { _cellWidth * round (_x / _cellWidth) });
+  </sqf>
+  }}
+groups:
+- Diagnostic
+syntax:
+- call: !Unary positionWorld
+  ret:
+  - Unknown
+  - terrain height
+  params:
+  - name: positionWorld
+    description: position in world coordinates either in [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- private _gridCellHeight = getTerrainHeight getPosWorld player;

@@ -1,0 +1,20 @@
+name: leaderboardGetRows
+description: Returns values for the given leaderboard; this can be called after the one of the row request function has been called and successfully finished!
+groups:
+- Leaderboards
+syntax:
+- call: !Unary boardName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: boardName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- leaderboardGetRows "TT01";

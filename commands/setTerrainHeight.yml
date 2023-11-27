@@ -1,0 +1,61 @@
+name: setTerrainHeight
+description: |-
+  Set the current terrain's altitude on provided location(s).
+  {{Feature|important|
+  * Heightmap changes:
+  ** are internally converted (rounded) to heightmap coordinates
+  ** are stored in the JIP queue
+  ** are '''not''' removed from the JIP queue if the values are set back to terrain's default value
+  ** are updated in the JIP queue for updated positions '''if''' the same group of positions are edited (order does not matter, but amount does);<br>editing positions by terrain ''sections'' is good for multiplayer optimisation (see {{Link|#Example 2}})
+  ** are '''not''' updated and sent twice (old one then new one) if position edits are not exactly the same (see point above and {{Link|#Example 2}}).
+  * Edited terrain heights are '''not''' saved inside savegames, they need to be restored manually on savegame load.
+  * Known issues:
+  ** Terrain sections can become invisible if the change is too extreme
+  ** Walking on the edge of extreme height changes can catapult the player away
+  }}
+groups:
+- Diagnostic
+syntax:
+- call: !Unary
+  - positionAndAltitudeArray
+  - adjustObjects
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: positionAndAltitudeArray
+    description: '[<nowiki/>[x1, y1, newASLHeight1], [x2, y2, newASLHeight2], ...]'
+    type: Unknown
+  - name: adjustObjects
+    description: |-
+      if true then objects on modified points are moved up/down to keep the same ATL height
+      {{Feature|important|'''All''' objects above modified terrain will be adjusted, even flying ones.}}
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+argument_loc: Unspecified
+effect_loc: Global
+server_exec: false
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- "private _fnc_flattenTerrain =\n{\n\tparams [\"_start\", \"_a\", \"_b\", \"_h\"];\n\tprivate _newPositions = [];\n\n\tfor \"_xStep\" from 0 to _a do\n\t{\n\t\tfor \"_yStep\" from 0 to _b do\n\t\t{\n\t\t\tprivate _newHeight = _start vectorAdd [_xStep, _yStep, 0];\n\t\t\t_newHeight set [2, _h];\n\t\t\t_newPositions pushBack _newHeight;\n\t\t};\n\t};\n\n\t_newPositions;\n};\n\nprivate _desiredTerrainHeight = 150;\nprivate _positionsAndHeights = [getPosWorld player, 50, 50, _desiredTerrainHeight] call _fnc_flattenTerrain;\nsetTerrainHeight [_positionsAndHeights, true];\n"
+- |
+  Bad example:
+  <sqf>
+  // first update
+  setTerrainHeight [[[1000, 1000, 25], [1005, 1000, 25], [1000, 1005, 25], [1005, 1005, 25]]];
+
+  // second update - this will make the JIP queue keep both messages
+  setTerrainHeight [[[1005, 1000, 50]]];
+  </sqf>
+
+  Good example:
+  <sqf>
+  // first update
+  setTerrainHeight [[[1000, 1000, 25], [1005, 1000, 25], [1000, 1005, 25], [1005, 1005, 25]]];
+
+  // second update - this will update the JIP queue properly
+  setTerrainHeight [[[1000, 1000, 25], [1005, 1000, 50], [1000, 1005, 25], [1005, 1005, 25]]];

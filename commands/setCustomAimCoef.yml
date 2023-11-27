@@ -1,0 +1,24 @@
+name: setCustomAimCoef
+description: Set custom aim precision coefficient for weapon sway
+groups:
+- Stamina System
+syntax:
+- call: !Binary
+  - unit
+  - coef
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: coef
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 54
+examples:
+- player setCustomAimCoef 3;

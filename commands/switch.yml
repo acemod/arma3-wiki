@@ -1,0 +1,44 @@
+name: switch
+description: |-
+  Checks if the given parameter matches any [[case]]. If so, the code block of that case will be executed. After that the switch ends so no further cases will be checked.<br>
+  If a case has no code block the code of the next case will automatically be executed, making it possible to formulate a logical "or" for cases which would otherwise contain the exact same code (see {{Link|#Example 2}}).<br>
+  The [[default]] block will be executed '''only''' if no case matches, no matter its position inside the code block. It is not a [[case]], and will '''never''' be entered by fallthrough.
+
+  {{Feature|Informative|
+  * [[String]] comparison is case-sensitive. Use [[toUpper]], [[toLower]], [[toLowerANSI]] or [[toUpperANSI]] to force all [[String|strings]] to the same case.
+  * if no [[default]] block is provided and no [[case]] is matched, the switch block returns the default value [[true]], otherwise it returns what the valid case block returns.
+  }}
+groups:
+- Program Flow
+syntax:
+- call: !Unary value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "switch (floor random 5) do\n{\n\tcase 1: { hint \"one\"; };\n\tcase 2: { hint \"two\"; };\n\tdefault { hint \"zero, three or four\" };\n};\n"
+- "<!-- this example is referenced in Description -->\n<sqf>\nswitch (_condition) do\n{\n\tcase \"string1\";\n\tcase \"string2\": { hint \"string1 or string2\" };\n\tcase \"string3\";\n\tcase \"string4\": { hint \"string3 or string4\" };\n\tcase \"string5\"; // will never enter default's code\n\tdefault { hint \"default\" };\n};\n"
+- "private _color = switch (side player) do\n{\n\tcase west: { \"ColorGreen\" };\n\tcase east: { \"ColorRed\" };\n};\n"
+- "private _fn_moveForward =\t{ /*...code...*/ };\nprivate _fn_moveBackward =\t{ /*...code...*/ };\nprivate _fn_invalidKey =\t{ /*...code...*/ };\n\nswitch true do\n{\n\tcase (_dikCode in actionKeys \"MoveForward\"):\t_fn_moveForward;\n\tcase (_dikCode in actionKeys \"MoveBackward\"):\t_fn_moveBackward;\n\tdefault _fn_invalidKey;\n};\n"
+- "switch _var do\n{\n\tcase \"0\";\n\tdefault { hint str [\"default\", _var] };\n\tcase \"3\": { hint str [\"3\", _var] };\n\tcase \"1\";\n\tcase \"4\";\n\tcase \"2\": { hint str [\"2\", _var] };\n};\n\n_var = \"0\"; // -> [\"3\", \"0\"]\n_var = \"1\"; // -> [\"2\", \"1\"]\n_var = \"2\"; // -> [\"2\", \"2\"]\n_var = \"3\"; // -> [\"3\", \"3\"]\n_var = \"4\"; // -> [\"2\", \"4\"]\n_var = \"5\"; // -> [\"default\", \"5\"]\n"

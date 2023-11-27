@@ -1,0 +1,31 @@
+name: currentWeapon
+description: Return the name of the currently selected weapon (on the primary turret for vehicles).
+groups:
+- Weapons
+- Unit Inventory
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '_weaponClass = currentWeapon (vehicle player);//Example: "M16A2GL"'
+- _weaponClass = currentWeapon player;

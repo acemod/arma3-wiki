@@ -1,0 +1,44 @@
+name: createDisplay
+description: |-
+  Creates child display of given display and loads from "resourceName". The notable difference between [[createDisplay]] and [[createDialog]] is that with [[createDisplay]] the player would be able to move around while the display is shown.<br>
+  Displays created with [[createDisplay]] or [[createDialog]] will take control of the mouse pointer and will close when user presses {{Controls|Esc}}.
+  {{Feature|arma3|Since {{arma3}} v1.50 [[createDisplay]] returns [[Display]] and will first look in [[Description.ext|description.ext]] for resourceName config, if not found, it will then look in main config.}}
+  {{Feature|informative|If an ''overlay'' is needed instead, use [[cutRsc]].}}
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - parent
+  - resourceName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: parent
+    type: Unknown
+  - name: resourceName
+    description: custom display class defined in [[Description.ext|description.ext]] or existing display class from main config
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- findDisplay 46 createDisplay "RscCredits";
+- |-
+  // creates an empty display
+  private _emptyDisplay = findDisplay 46 createDisplay "RscDisplayEmpty";

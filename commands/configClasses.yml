@@ -1,0 +1,32 @@
+name: configClasses
+description: "Returns an array of config entries which meet criteria in condition code. Command iterates through all available config sub classes of the given config class. Current looked at config is stored in _x variable (similar to alternative [[count]] command implementation). Condition has to return [[true]] in order for the looked at config to be added to the resulting array. Slightly faster than [[configProperties]], but doesn't account for config properties or inherited entries.\n{{Feature|important| \n* The condition code passed to [[configClasses]] should only be used for '''simple filter expressions''' and nothing more\n* Do not use {{hl|\"[[isClass]] [[Magic Variables#x|_x]]\"}} in the condition. The engine does this check already<br><br>\n* {{arma3}} v2.02 brought specific engine optimisations for the following conditions:\n** {{hl|\"[[true]]\"}} \n** {{hl|\"[[getNumber]] ([[Magic Variables#x|_x]] >> 'scope') > 0\"}}}}"
+groups:
+- Config
+syntax:
+- call: !Binary
+  - condition
+  - config
+  ret:
+  - Unknown
+  - array of [[Config]]s
+  params:
+  - name: condition
+    type: Unknown
+  - name: config
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 24
+examples:
+- |-
+  collect all CfgVehicles configs:
+  <sqf>_configs = "true" configClasses (configFile >> "CfgVehicles");
+- |-
+  Return all classes that can transport 10 and more soldiers:
+  <sqf>_transporters = "getNumber (_x >> 'transportSoldier') >= 10" configClasses (configFile >> "CfgVehicles");
+- |-
+  Return all classes that inherit from 'RscText':
+  <sqf>hint str ("inheritsFrom _x == (configFile >> 'RscText')" configClasses configFile);

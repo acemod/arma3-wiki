@@ -1,0 +1,21 @@
+name: getPosATLVisual
+description: Returns an object's rendered [[Position#PositionATL|ATL position]] (z value above ground) in render time scope.
+groups:
+- Object Manipulation
+- Render Time Scope
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- _playerRenderedPosATL = getPosATLVisual player;

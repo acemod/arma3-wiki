@@ -1,0 +1,88 @@
+name: setUnitRank
+description: |-
+  Sets rank of given unit.
+
+  Possible rank values, and the associated [[rating]] that is '''set''' (not added, the value replaces previous rating) with it:
+
+  {{{!}} class="wikitable" style="text-align: center"
+  ! colspan="2" {{!}} Ranks
+  ! PRIVATE
+  ! CORPORAL
+  ! SERGEANT
+  ! LIEUTENANT
+  ! CAPTAIN
+  ! MAJOR
+  ! COLONEL
+  {{!}}-
+  ! rowspan="3" {{!}} Ratings
+  !
+  {{Name|arma1|short}}<br>
+  {{Name|arma2|short}}<br>
+  {{Name|arma2oa|short}}<br>
+  {{Name|tkoh|short}}
+  {{!}} 0
+  {{!}} 500
+  {{!}} 1500
+  {{!}} 2500
+  {{!}} 3500
+  {{!}} 5000
+  {{!}} 7500
+  {{!}}-
+  ! {{Name|arma3|short}} (ca 2015)
+  {{!}} 0
+  {{!}} 50
+  {{!}} 150
+  {{!}} 250
+  {{!}} 350
+  {{!}} 500
+  {{!}} 750
+  {{!}}-
+  ! {{Name|arma3|short}}
+  {{!}} 0
+  {{!}} 0
+  {{!}} 0
+  {{!}} 0
+  {{!}} 0
+  {{!}} 0
+  {{!}} 0
+  {{!}}}
+
+  {{Feature|arma3|Before {{arma3}} v1.68 and in previous titles, this command was {{Icon|globalArgument|32}} {{Icon|localEffect|32}}.}}
+groups:
+- Unit Identity
+syntax:
+- call: !Binary
+  - unitName
+  - rank
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
+  - name: rank
+    description: see above. If a wrong string is provided, the command errors and reverts to using "PRIVATE"
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player setUnitRank "COLONEL";

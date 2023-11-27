@@ -1,0 +1,76 @@
+name: selectWeapon
+description: Selects the given weapon.
+groups:
+- Weapons
+syntax:
+- call: !Binary
+  - unitName
+  - muzzleName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
+  - name: muzzleName
+    description: |-
+      name of the weapon or muzzle
+      {{Feature|important|For weapons that have '''more than one muzzle''', you have to input the '''muzzleName''' and not the '''weaponName'''.
+      * In {{ofp}}, in most cases, both names are the same. But check.
+      * In {{arma1}} the weaponNames and muzzleNames are different.
+      * For muzzle names see [[:Category:Weapons|CfgWeapons]].
+      }}
+    type: Unknown
+- call: !Binary
+  - unit
+  - - weapon
+    - muzzle
+    - firemode
+  ret:
+  - Unknown
+  - '[[true]] on success, [[false]] on failure, [[Nothing]] when the call to the command is dispatched over network'
+  params:
+  - name: unit
+    description: person. This argument has to be [[local]], or it can be remote when executed on the [[isServer|server]]
+    type: Unknown
+  - name: weapon
+    description: name of the weapon, personal or vehicle's weapon (see [[weaponState]])
+    type: Unknown
+  - name: muzzle
+    description: name of the selected muzzle (see [[weaponState]])
+    type: Unknown
+  - name: firemode
+    description: name of the firemode (see [[weaponState]])
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 8
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 27
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldier1 selectWeapon "LAWLauncher";
+- player selectWeapon "M203Muzzle";
+- player selectWeapon ["arifle_MX_GL_ACO_F", "arifle_MX_GL_ACO_F", "FullAuto"];

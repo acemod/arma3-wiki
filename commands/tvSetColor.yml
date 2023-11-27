@@ -1,0 +1,46 @@
+name: tvSetColor
+description: Sets text color on given Tree View Item
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - color
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: path
+    description: '[[Tree View Path]] of the item'
+    type: Unknown
+  - name: color
+    description: item text color
+    type: Unknown
+- call: !Binary
+  - control
+  - - path
+    - color
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    description: '[[Tree View Path]] of the item'
+    type: Unknown
+  - name: color
+    description: item text color in format [r,g,b,a]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvSetColor [101, [0,0], [1,0,0,1]];
+- _ctrl tvSetColor [[0,0], [1,0,0,1]];

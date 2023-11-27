@@ -1,0 +1,35 @@
+name: menuShortcut
+description: Returns shortcut related to menu entry on given path in form of a bitflag. To get the shortcut text use [[menuShortcutText]].
+groups:
+- GUI Control - Menu
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: path
+    type: Unknown
+- call: !Binary
+  - control
+  - path
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- findDisplay 313 displayCtrl 120 menuShortcut [0, 1];

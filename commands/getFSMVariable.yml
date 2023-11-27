@@ -1,0 +1,55 @@
+name: getFSMVariable
+description: Return the value of variable in the variable space of given FSM. The FSM handle is the number returned by the [[execFSM]] command.
+groups:
+- Variables
+syntax:
+- call: !Binary
+  - FSMhandle
+  - name
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: FSMhandle
+    type: Unknown
+  - name: name
+    description: name of the variable
+    type: Unknown
+- call: !Binary
+  - FSMhandle
+  - - name
+    - defaultValue
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: FSMhandle
+    type: Unknown
+  - name: name
+    description: name of the variable
+    type: Unknown
+  - name: defaultValue
+    description: value to return if variable is [[nil]]
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 68
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _handle getFSMVariable "_foo";
+- _handle getFSMVariable ["_foo", 123];

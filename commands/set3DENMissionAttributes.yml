@@ -1,0 +1,38 @@
+name: set3DENMissionAttributes
+description: |-
+  Set [[Eden_Editor:_Scenario_Atttributes|scenario attributes]].
+  An attribute is identified by its {{hl|property}} ({{hl|data}} when it is an engine-driven attribute) value in config.
+  For the list of all attributes with their properties, see [[Eden_Editor:_Setting_Attributes#Scenario|Mission Attributes]].
+
+  {{Feature|important|Attributes are available only within the Eden Editor workspace. You cannot access them in scenario preview or exported scenario!}}
+groups:
+- Eden Editor
+syntax:
+- call: !Unary
+  - - section1
+    - class1
+    - value1
+  - '...'
+  ret:
+  - Unknown
+  - '[[true]] if the value was set'
+  params:
+  - name: sectionN
+    description: attribute section. See [[Eden_Editor:_Setting_Attributes#Sections_.26_Properties|Sections & Properties]]
+    type: Unknown
+  - name: classN
+    description: attribute name
+    type: Unknown
+  - name: valueN
+    description: new attribute value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- |
+  // set respawn type to 3 and respawn delay to 10 seconds
+  set3DENMissionAttributes [["Multiplayer", "respawn", 3], ["Multiplayer", "respawnDelay", 10]];

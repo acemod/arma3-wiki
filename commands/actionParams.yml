@@ -1,0 +1,26 @@
+name: actionParams
+description: Returns [[Array]] with params for given user action id (similar to [[addAction]] param array).
+groups:
+- Interaction
+syntax:
+- call: !Binary
+  - entity
+  - id
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: entity
+    description: entity with added user actions
+    type: Unknown
+  - name: id
+    description: id of existing user action (returned by [[addAction]] or [[actionIDs]])
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- _params = player actionParams 0;

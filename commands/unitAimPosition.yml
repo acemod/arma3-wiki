@@ -1,0 +1,21 @@
+name: unitAimPosition
+description: Returns the position on the unit other units can aim at. Same as [[aimPos]] only returns position in [[Position#PositionAGL|PositionAGL]] format and has render scope alternative [[unitAimPositionVisual]].
+groups:
+- Object Manipulation
+- Positions
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- unitAimPosition player;

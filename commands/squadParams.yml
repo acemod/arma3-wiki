@@ -1,0 +1,24 @@
+name: squadParams
+description: |-
+  Returns data about squad of given unit loaded from [[squad.xml]] as well as the unit itself.
+  {{Feature|informative|This command returns an empty array in single player.}}
+groups:
+- Object Manipulation
+- System
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 18
+examples:
+- _info = squadParams player;
+- squadParams player params ["_squadInfo", "_memberInfo", "_squadID", "_a3unitsID"];

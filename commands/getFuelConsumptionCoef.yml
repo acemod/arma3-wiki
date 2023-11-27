@@ -1,0 +1,20 @@
+name: getFuelConsumptionCoef
+description: Returns the fuel consumption coefficient, which is a multiplier of the [[CfgVehicles_Config_Reference#fuelConsumptionRate|fuel consumption rate]] in config.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - fuel consumption coefficient
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- if (getFuelConsumptionCoef myCar > 1) then { hint "You should have a mechanic look at your engine!" }

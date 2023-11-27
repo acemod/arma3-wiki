@@ -1,0 +1,21 @@
+name: secondaryWeaponMagazine
+description: Collects all loaded [[magazines]] from all [[secondaryWeapon]] muzzles and returns them in [[Array]], otherwise it returns []. This command is used for infantry weapons only.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 70
+examples:
+- hint str secondaryWeaponMagazine player; //["NLAW_F"]
+- "_array = secondaryWeaponMagazine player;\nif (count _array > 0) then {\n\thint (\"Secondary weapon is loaded with \" + (_array select 0) + \"!\");\n} else {\n\tif (secondaryWeapon player != \"\") then {\n\t\thint \"Secondary weapon is not loaded!\";\n\t} else {\n\t\thint \"Player doesn't have a secondary weapon!\";\n\t};\n};\n"

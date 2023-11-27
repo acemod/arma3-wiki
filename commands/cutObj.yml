@@ -1,0 +1,154 @@
+name: cutObj
+description: |-
+  Displays an object defined in the global config in {{hl|CfgTitles}}.
+  {{Feature|arma3|For greater efficiency and ease of modability, it is recommended to use named layers with {{Link|#Syntax 3}}.}}
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - class
+  - type
+  - speed
+  - showInMap
+  - drawOverHUD
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: class
+    description: the className of the object defined in {{hl|[[configFile]] >> "CfgTitles" >> class}}
+    type: Unknown
+  - name: type
+    description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values
+    type: Unknown
+  - name: speed
+    description: time in seconds to fade in resource
+    type: Unknown
+    optional: true
+    default: '-1'
+  - name: showInMap
+    description: '[[false]] to hide the text when the map is opened'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+  - name: drawOverHUD
+    description: '[[false]] to show the object under in-game HUD'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 16
+- call: !Binary
+  - layer
+  - - class
+    - type
+    - speed
+    - showInMap
+    - drawOverHUD
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: layer
+    description: layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100
+    type: Unknown
+  - name: class
+    description: the className of the object defined in {{hl|[[configFile]] >> "CfgTitles" >> class}}
+    type: Unknown
+  - name: type
+    description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.
+    type: Unknown
+  - name: speed
+    description: time in seconds to fade in resource
+    type: Unknown
+    optional: true
+    default: '-1'
+  - name: showInMap
+    description: '[[false]] to hide the text when the map is opened'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+  - name: drawOverHUD
+    description: '[[false]] to show the object under in-game HUD'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 16
+- call: !Binary
+  - layerName
+  - - class
+    - type
+    - speed
+    - showInMap
+    - drawOverHUD
+  ret:
+  - Unknown
+  - number of the allocated layer
+  params:
+  - name: layerName
+    description: layer name on which the effect is shown. Layer names are CaSe SeNsItIvE
+    type: Unknown
+  - name: class
+    description: the className of the object defined in {{hl|[[configFile]] >> "CfgTitles" >> class}}
+    type: Unknown
+  - name: type
+    description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values
+    type: Unknown
+  - name: speed
+    description: time in seconds to fade in resource
+    type: Unknown
+    optional: true
+    default: '-1'
+  - name: showInMap
+    description: '[[false]] to hide the text when the map is opened'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+  - name: drawOverHUD
+    description: '[[false]] to show the object under in-game HUD'
+    type: Unknown
+    optional: true
+    default: '[[true]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 16
+  since:
+    arma_3:
+      major: 1
+      minor: 58
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  cutObj ["TVSet", "PLAIN"];
+  cutObj ["TVSet", "PLAIN", 2];
+- 2 cutObj ["Sphere", "PLAIN"];
+- private _layer = "layer1" cutObj ["BISLogo", "PLAIN"];

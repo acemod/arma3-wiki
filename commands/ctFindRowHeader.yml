@@ -1,0 +1,24 @@
+name: ctFindRowHeader
+description: Gets index of the closest header above this row.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Binary
+  - ctrl
+  - rowIndex
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    type: Unknown
+  - name: rowIndex
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- private _index = _control ctFindRowHeader 0;

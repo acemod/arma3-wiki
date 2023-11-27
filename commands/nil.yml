@@ -1,0 +1,37 @@
+name: nil
+description: Nil value. This value can be used to undefine existing [[Variables|variables]].
+groups:
+- Variables
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- variableToDestroy = nil;
+- "private _variable = 50;\n_variable = nil;\nhint format [\"Variable = %1\", _variable];\t// will display \"Variable = any\" in {{Link|Scheduler#Unscheduled Environment|unscheduled environment}}\n\t\t\t\t\t\t\t\t\t\t\t// will output \"Error Undefined variable in expression: _variable\" in {{Link|Scheduler#Scheduled Environment|scheduled environment}}\n// identical to\nhint format [\"Variable = %1\", _variableThatWasNeverDefined];\n"

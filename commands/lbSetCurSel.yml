@@ -1,0 +1,61 @@
+name: lbSetCurSel
+description: |-
+  Selects the item with the given index in the listbox, listnbox, combobox, xcombobox, xlistbox<br>
+  {{Feature|important|'''The following only applies to the {{Link|#Syntax 2|Alternative Syntax}} when used with [[CT_LISTBOX]] and [[CT_LISTNBOX]].'''<br>
+  To deselect all entries, use -1: <sqf inline>_ctrl lbSetCurSel -1;</sqf> For listbox of style LB_MULTI use [[lbSetSelected]] instead.<br>
+  [[CT_COMBO]] does not allow deselecting entries, it will instead select the first one as it is not a combobox usual behaviour.
+  If you really need to deselect a combobox, see {{Link|#Notes|DreadedEntity's note}}.
+  }}
+groups:
+- GUI Control - ListBox
+syntax:
+- call: !Unary
+  - idc
+  - index
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    description: control's IDC
+    type: Unknown
+  - name: index
+    type: Unknown
+- call: !Binary
+  - control
+  - index
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: index
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- lbSetCurSel [101, 0];
+- _control lbSetCurSel 0;

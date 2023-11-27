@@ -1,0 +1,38 @@
+name: joinSilent
+description: Join all units in the array to given group silently (without radio message). To have a group member leave a group, join him with the [[grpNull]] group (e.g. {{hl|[guy1] [[joinSilent]] [[grpNull]]}}), but '''beware''', as brand new group is created for the leaving unit and this could result in the number of groups in a mission growing out of control.
+groups:
+- Groups
+syntax:
+- call: !Binary
+  - unitArray
+  - group
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitArray
+    description: units to join group
+    type: Unknown
+  - name: group
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  armed_assault:
+    major: 1
+    minor: 6
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '[_unitOne, _unitTwo] joinSilent (group player);'
+- '[_unitOne, _unitTwo] joinSilent player;'

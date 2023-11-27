@@ -1,0 +1,63 @@
+name: calculatePath
+description: |-
+  Spawns an agent that will execute an AI path calculation and fire the {{hl|"PathCalculated"}} [[Arma 3: Event Handlers#PathCalculated | event handler]].
+  The vehicle type to simulate could be one of the following presets:
+  {{Columns|2|
+  * {{hl|"man"}} (will use "C_man_1")
+  * {{hl|"car"}} (will use "C_Offroad_01_F")
+  * {{hl|"tank"}} (will use "B_MBT_01_cannon_F")
+  * {{hl|"wheeled_APC"}} (will use "B_APC_Tracked_01_rcws_F")
+  * {{hl|"boat"}} (will use "C_Rubberboat")
+  * {{hl|"plane"}} (will use "B_Plane_CAS_01_dynamicLoadout_F")
+  * {{hl|"helicopter"}} (will use "B_Heli_Light_01_F")
+  }}
+
+  If the given vehicle type is not one of the above presets, the exact given type is used.
+  {{Feature|important|
+  In order to guarantee that the event handler is added to the result of this command before the path is calculated, use [[isNil]] to run the code in an [[Scheduler#Unscheduled Environment|Unscheduled Environment]]:
+  <sqf>isNil { calculatePath ["man", "safe", _startPos, _endPos] addEventHandler ["PathCalculated", { hint str _this }] };</sqf>
+  }}
+
+  {{Feature|informative|
+  If an exact path is desired, it is recommended to avoid this command and simply use the [[Arma_3:_Event_Handlers#PathCalculated|PathCalculated]] event handler.
+  Paths to long distances are typically calculated in segments. This command only gives the first calculated segment.
+  }}
+problem_notes:
+- |-
+  For some unknown reason, the "PathCalculated" Event Handler is fired twice, first with the calculated path and second with an array consisting of 2 elements, which are identical and are equal to the end point.
+  See '''{{Link|#Examples|Example 3 &amp; 4}}''' for a workaround.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary
+  - type
+  - behaviour
+  - from
+  - to
+  ret:
+  - Unknown
+  - 'the agent to [[addEventHandler|add]] the [[Arma 3: Event Handlers#PathCalculated|{{hl|"PathCalculated"}} Event Handler]] to.'
+  params:
+  - name: type
+    description: vehicle type to simulate (see description)
+    type: Unknown
+  - name: behaviour
+    description: AI [[behaviour]], one of "CARELESS", "SAFE", "AWARE", "COMBAT" or "STEALTH"
+    type: Unknown
+  - name: from
+    description: start position in format [x,y,z]
+    type: Unknown
+  - name: to
+    description: end position in format [x,y,z]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 94
+examples:
+- calculatePath ["car", "safe", [2150.67,5778.19,0], [2184.11,5802.28,0]];
+- "Draws the path from South West to North East of Agia Marina:\n<sqf>\n(calculatePath [\"man\", \"safe\", [2832.9,5927.79,0], [3107.46,6036.61,0]]) addEventHandler [\"PathCalculated\", {\n\t{\n\t\tprivate _marker = createMarker [\"marker\" + str _forEachIndex, _x];\n\t\t_marker setMarkerType \"mil_dot\";\n\t\t_marker setMarkerText str _forEachIndex;\n\t} forEach (_this select 1);\n}];\n"
+- "Alternative usage of [[calculatePath]] functionality that is free of the double execution bug (and calculatePath command):\n<sqf>\nprivate _agent = createAgent [typeOf player, position player, [], 0, \"NONE\"];\n_agent addEventHandler [\"PathCalculated\",\n{ \n\t{ \n\t\tprivate _marker = createMarker [\"marker\" + str _forEachIndex, _x];\n\t\t_marker setMarkerType \"mil_dot\";\n\t\t_marker setMarkerText str _forEachIndex;\n\t} \n\tforEach (_this select 1);\n}];\n_agent setDestination [player getRelPos [500, 0], \"LEADER PLANNED\", true];\n"
+- "Same as above but for a vehicle:\n<sqf>\nprivate _agent = createAgent [typeOf player, position player, [], 0, \"NONE\"];\nprivate _car = \"B_Quadbike_01_F\" createVehicle position player;\n_agent moveInDriver _car;\n_agent addEventHandler [\"PathCalculated\",\n{ \n\t{ \n\t\tprivate _marker = createMarker [\"marker\" + str _forEachIndex, _x];\n\t\t_marker setMarkerType \"mil_dot\";\n\t\t_marker setMarkerText str _forEachIndex;\n\t} \n\tforEach (_this select 1);\n}];\n_agent setDestination [player getRelPos [500, 0], \"LEADER PLANNED\", true];\n"

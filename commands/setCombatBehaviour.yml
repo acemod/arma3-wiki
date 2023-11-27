@@ -1,0 +1,41 @@
+name: setCombatBehaviour
+description: "Sets an individual unit entity behaviour (main syntax) or a group entity behaviour (alternative syntax). The group in this case is a [[Group]] entity and not a simple collection of units. To retrieve unit or group behaviour see [[combatBehaviour]]. The behaviour is one of: \n* \"CARELESS\"\n* \"SAFE\"\n* \"AWARE\"\n* \"COMBAT\"\n* \"STEALTH\"\n{{Feature|informative|See [[AI Behaviour]] for details of the effect of this command on AI units. Group behaviour usually is \"CARELESS\" or \"SAFE\"}}\n\n<spoiler text=\"Comparison of Behaviour commands\">\n{| class=\"wikitable\" style=\"text-align: center\"\n! Command\n! Applies To"
+groups:
+- AI Behaviour
+- Groups
+syntax:
+- call: !Binary
+  - unit
+  - behaviour
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: AI unit
+    type: Unknown
+  - name: behaviour
+    description: see description
+    type: Unknown
+- call: !Binary
+  - group
+  - behaviour
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: group
+    description: AI group
+    type: Unknown
+  - name: behaviour
+    description: see description
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- unit1 setCombatBehaviour "SAFE";
+- group1 setCombatBehaviour "CARELESS";

@@ -1,0 +1,21 @@
+name: getWeaponSway
+description: Returns current size of weapon sway of a given unit, in [[rad|radians]].
+groups:
+- Stamina System
+- Weapons
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - weapon sway
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 62
+examples:
+- _sway = getWeaponSway player;

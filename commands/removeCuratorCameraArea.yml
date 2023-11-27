@@ -1,0 +1,26 @@
+name: removeCuratorCameraArea
+description: Removes curator camera area.
+groups:
+- Curator
+syntax:
+- call: !Binary
+  - curatorObj
+  - cameraAreaID
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: curatorObj
+    description: curator module.
+    type: Unknown
+  - name: cameraAreaID
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- myCurator removeCuratorCameraArea 3;

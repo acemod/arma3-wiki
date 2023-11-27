@@ -1,0 +1,31 @@
+name: getMissionLayerEntities
+description: |-
+  Returns all entities within the specific [[Eden Editor: Layer|Eden Editor layer]] and its sub-layers.
+  To be used when the scenario is running, not in the editor workspace.
+  Useful to disable/enable whole parts of the scenario if layers are used during mission design.
+  {{Feature|informative|Default layers are not returned.}}
+groups:
+- Eden Editor
+- Mission Information
+syntax:
+- call: !Unary layerName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: layerName
+    description: |-
+      case-insensitive; layer name in the editor. If multiple layers with the same name are present in the scenario, the first found one is used
+      * [[Number]] - layer ID in the editor
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- private _base = getMissionLayerEntities "Base";
+- "delete all objects within that layer after the player is over 800m away from _someObject:\n<sqf>\nwaitUntil { sleep 1; (player distance _someObject) > 800 };\nprivate _simpleObjects = (getMissionLayerEntities \"Simple Objects\") select 0;\n{\n\tdeleteVehicle _x;\n} forEach _simpleObjects;\n"
+- private _layer1337Entities = getMissionLayerEntities 1337;

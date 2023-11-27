@@ -1,0 +1,20 @@
+name: isMissionProfileNamespaceLoaded
+description: The [[missionProfileNamespace]] variables are loaded at the start of a mission, before 'init.sqf' is executed. If the file with saved variables for current mission exists in user profile and is loaded, the command returns [[true]]. It also will return [[true]] after the first execution of [[saveMissionProfileNamespace]] command, which also creates the file.
+groups:
+- Namespaces
+- Variables
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - '[[true]] if mission profile variables file exists and is loaded.'
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- private _isLoaded = isMissionProfileNamespaceLoaded;

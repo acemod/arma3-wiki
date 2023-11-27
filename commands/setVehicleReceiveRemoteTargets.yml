@@ -1,0 +1,24 @@
+name: setVehicleReceiveRemoteTargets
+description: Sets that the vehicle will be able to receive targets acquired by someone else via datalink from the [[Side]] center.
+groups:
+- Sensors
+syntax:
+- call: !Binary
+  - vehicle
+  - bool
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: bool
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- vehicle player setVehicleReceiveRemoteTargets true;

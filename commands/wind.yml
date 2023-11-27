@@ -1,0 +1,32 @@
+name: wind
+description: |-
+  Returns the current wind vector (in m/s) as array [x, y, z].<br>
+  {{Feature|informative|The last value (z, "up-down") always returns 0 – wind being only horizontal.}}
+groups:
+- Environment
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _windArray = wind;

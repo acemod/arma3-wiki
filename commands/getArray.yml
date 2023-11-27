@@ -1,0 +1,32 @@
+name: getArray
+description: Extract array from config entry.
+groups:
+- Config
+syntax:
+- call: !Unary config
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: config
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _array = getArray (configFile >> "CfgVehicles" >> "Thing" >> "threat");

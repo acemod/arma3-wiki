@@ -1,0 +1,38 @@
+name: nearSupplies
+description: Find supplies (weapon holders, ammo crates, fuel feeds, other units) in the sphere with given radius.
+groups:
+- Object Detection
+syntax:
+- call: !Binary
+  - origin
+  - radius
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: origin
+    type: Unknown
+  - name: radius
+    type: Unknown
+- call: !Binary
+  - origin
+  - - typeName
+    - radius
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: origin
+    type: Unknown
+  - name: typeName
+    type: Unknown
+  - name: radius
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _list = player nearSupplies 50;

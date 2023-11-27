@@ -1,0 +1,39 @@
+name: setMass
+description: Changes the mass of a PhysX object. When using the alternative syntax the mass change is gradual during the given time. A time of zero means immediate change.{{Feature | important | When main syntax is used on [[Multiplayer Scripting#Locality|local]] vehicle, the change is global. When alternative syntax is used with time transition on [[Multiplayer Scripting#Locality|local]] vehicle, the gradual mass change doesn't happen on remote clients, only final mass is applied after the given time. If you need gradual change on remote clients too, [[remoteExec | remote execute]] [[setMass]] globally. }}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - myObject
+  - mass
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: myObject
+    type: Unknown
+  - name: mass
+    type: Unknown
+- call: !Binary
+  - myObject
+  - - mass
+    - time
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: myObject
+    type: Unknown
+  - name: mass
+    type: Unknown
+  - name: time
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 2
+examples:
+- myObject setMass [10, 0.5];
+- myObject setMass 10;

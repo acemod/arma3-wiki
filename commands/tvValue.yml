@@ -1,0 +1,36 @@
+name: tvValue
+description: Returns numeric value set for given tree view path.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  ret:
+  - Unknown
+  - set value; if no value was set, 0 is returned
+  params:
+  - name: idc
+    type: Unknown
+  - name: path
+    type: Unknown
+- call: !Binary
+  - ctrl
+  - path
+  ret:
+  - Unknown
+  - set value; if no value was set, 0 is returned
+  params:
+  - name: ctrl
+    type: Unknown
+  - name: path
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvValue [101, [0]];
+- _ctrl tvValue [0,0,0];

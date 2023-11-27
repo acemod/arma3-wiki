@@ -1,0 +1,45 @@
+name: tvSetPictureColor
+description: Sets the colour of the picture (set via [[tvSetPicture]]) under the specified tree view path.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary
+  - idc
+  - path
+  - color
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    description: IDC of the tree view control
+    type: Unknown
+  - name: path
+    description: array containing path numbers
+    type: Unknown
+  - name: color
+    type: Unknown
+- call: !Binary
+  - ctrl
+  - - path
+    - color
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    type: Unknown
+  - name: path
+    description: array containing path numbers
+    type: Unknown
+  - name: color
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvSetPictureColor [101, [0,2], [1,0,1,1]];
+- _tree tvSetPictureColor [[0,2], [1,0,1,1]];

@@ -1,0 +1,36 @@
+name: animateDoor
+description: "Animates a door on a vehicle. Animation is defined in config file in [[CfgVehicles]] -> [[Model_Config#AnimationSources| AnimationSources]]. Wanted animation phase is set with phase param. This command works only on animation sources with \"door\" controller. Door_L in the example below can be animated with [[animateDoor]] but not CargoRamp_Open: {{hl|heli [[animateDoor]] [\"Door_L\", 1];}}{{Feature | important | [[animateDoor]] {{hl|phase}} param will be rounded: anything >0.5 will be rounded to 1 and <{{=}}0.5 will be rounded to 0. Therefore it is not possible to open a door half way with this command}}  <br>\n<syntaxhighlight lang=\"cpp\">\nclass AnimationSources\n{\n\tclass CargoRamp_Open\n\t{\n\t\tsource = \"user\";\n\t\tanimPeriod = 5;\n\t\tinitPhase = 0;\n\t};\n\tclass Door_L\n\t{\n\t\tsource = \"door\";\n\t\tanimPeriod = 1.6;\n\t};\n};\n</syntaxhighlight>\nTo animate doors or other sources that have \"user\" controller, use [[animate]] command, or even better, [[animateSource]] (recommended). Sources with \"hit\" controller can be animated with [[setHitPointDamage]] command applied to the name contained in hitpoint property. For availability of animation sources and their controller types see: [[Arma 3: createVehicle/vehicles]]"
+groups:
+- Animations
+syntax:
+- call: !Binary
+  - object
+  - - doorname
+    - phase
+    - instant
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: doorname
+    type: Unknown
+  - name: phase
+    type: Unknown
+  - name: instant
+    description: when [[true]] and phase is either 0 or 1, door will change phase instantaneously
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- Taru animateDoor ["Door_1_source", 1];
+- |-
+  Open left front door on Ifrit instantly:
+  <sqf>Ifrit animateDoor ["Door_LF", 1, true];

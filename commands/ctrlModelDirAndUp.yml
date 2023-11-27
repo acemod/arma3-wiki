@@ -1,0 +1,21 @@
+name: ctrlModelDirAndUp
+description: 'Returns [[vectorDir]] and [[vectorUp]] of the model used in 3D-[[Arma: GUI Configuration|Dialogs]].'
+groups:
+- GUI Control - Object
+syntax:
+- call: !Unary control
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    description: 3D control
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- _vectorDirAndUp = ctrlModelDirAndUp _control3D;

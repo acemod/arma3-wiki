@@ -1,0 +1,41 @@
+name: getPlayerUID
+description: |-
+  Return a UniqueID of the given unit (player).
+
+  {{Feature|arma3|The returned string is the player's steamID64: <sqf inline>private _steamProfileUrl = "http://steamcommunity.com/profiles/" + (getPlayerUID player);</sqf>}}
+
+  {{Feature|important|Prior to [[{{arma2oa}}]] v1.60, the result always consisted of a [[str|stringified]] number (see [[getPlayerUIDOld]]), but always had to be considered and processed as a [[String]].<!--
+  --> Converting it to a [[Number]] could cause precision problems, as [[Number]] cannot accurately represent integers above 16777216 (2<sup>24</sup>).<!--
+  --> Moreover, games since [[{{arma2oa}}]] v1.61 provide a value that is not all-numeric.}}
+
+  {{Feature | Informative | Prior to [[Arma 3]] v2.02, in some cases the identity of certain player units could fail to propagate to other clients and the server, which caused [[isPlayer]] and [[getPlayerUID]] to incorrectly return {{hl|[[false]]}} and {{hl|""}} respectively, where the affected units were [[not]] [[local]]. See {{Link|https://github.com/michail-nikolaev/task-force-arma-3-radio/issues/1096|this bug report (GitHub)}} for more info. This was supposedly fixed, but you should remain vigilant toward false negatives nonetheless. }}
+groups:
+- Multiplayer
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - |-
+    can be "_SP_AI_" or "_SP_PLAYER_" in SP, "" or UID in MP
+    * The unique ID may be up to 100 characters long and may contain numbers, uppercase letters and underscores
+    * The value can be used to construct a valid variable name by appending to another valid variable name, e.g <sqf inline>missionNamespace setVariable ["TAG_player" + _uid, _unit];</sqf>
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 2
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- private _uid = getPlayerUID player;

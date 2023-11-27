@@ -1,0 +1,57 @@
+name: setTowParent
+description: |-
+  {{{!}} class="wikitable float-right align-center-col-2 align-center-col-3"
+  ! Simulation
+  ! Towable
+  ! Can Tow
+  {{!}}-
+  {{!}} CarX
+  {{!}} {{Icon|checked}}
+  {{!}} {{Icon|checked}}
+  {{!}}-
+  {{!}} TankX
+  {{!}} {{Icon|unchecked}}
+  {{!}} {{Icon|checked}}
+  {{!}}-
+  {{!}} AirplaneX
+  {{!}} {{Icon|unchecked}}
+  {{!}} {{Icon|unchecked}}
+  {{!}}-
+  {{!}} BoatX
+  {{!}} {{Icon|unchecked}}
+  {{!}} {{Icon|unchecked}}
+  {{!}}}
+
+  Allows a vehicle to be towed by another. This loosens the towed vehicle's brakes and turns its steering wheels toward the towing vehicle.
+  Supposed to be used together with a rope connecting both vehicles.
+multiplayer_note: |-
+  {{Feature|warning|
+  If a [[player]] enters the towing vehicle, the towed one will try to change its locality to be local to that [[player]].<!--
+  --> This might be problematic if there is another [[player]] already in the towed vehicle.<!--
+  --> It is recommended to not have anyone in the towed vehicle!
+  }}
+groups:
+- Object Manipulation
+- Ropes and Sling Loading
+syntax:
+- call: !Binary
+  - towedVehicle
+  - towingVehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: towedVehicle
+    description: vehicle of type CarX (no tanks, no aircrafts, no boats)
+    type: Unknown
+  - name: towingVehicle
+    description: vehicle of type CarX or TankX (no aircrafts, no boats)
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- "{ moveOut _x } forEach crew _towedVehicle;\t// make sure nobody is in the towed vehicle\n_towedVehicle lock true;\t\t\t\t\t// make sure everybody stays out of it\nropeCreate [_bobcat, [0,-5,0], _towedVehicle, [0,2,0]];\n_towedVehicle setTowParent _bobcat;\n"

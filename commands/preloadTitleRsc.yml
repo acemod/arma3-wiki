@@ -1,0 +1,50 @@
+name: preloadTitleRsc
+description: Resource title - preload data. The resource can be defined in the [[Description.ext]] file.
+groups:
+- GUI Control
+syntax:
+- call: !Unary
+  - name
+  - type
+  - speed
+  - showInMap
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: name
+    description: defined in [[Description.ext]] for the mission
+    type: Unknown
+  - name: type
+    description: e.g "PLAIN"
+    type: Unknown
+  - name: speed
+    description: ignored
+    type: Unknown
+    optional: true
+  - name: showInMap
+    type: Unknown
+    optional: true
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _ok = preloadTitleRsc ["BIS", "PLAIN"];

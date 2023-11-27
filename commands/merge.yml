@@ -1,0 +1,57 @@
+name: merge
+description: Merges two [[HashMap]]s.
+groups:
+- HashMap
+syntax:
+- call: !Binary
+  - hashMap1
+  - hashMap2
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: hashMap1
+    description: this HashMap will be modified
+    type: Unknown
+  - name: hashMap2
+    description: all key-value pairs from this HashMap are added to ''hashMap1''. If a key from ''hashMap2'' already exists in ''hashMap1'', it doesn't overwrite the value in ''hashMap1''.
+    type: Unknown
+- call: !Binary
+  - hashMap1
+  - - hashMap2
+    - overwriteExisting
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: hashMap1
+    description: this HashMap will be modified
+    type: Unknown
+  - name: hashMap2
+    description: all key-value pairs from this HashMap are added to ''hashMap1''
+    type: Unknown
+  - name: overwriteExisting
+    description: if [[true]], keys from ''hashMap1'' that also exist in ''hashMap2'' are overwritten. When set to [[true]], merging is faster
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- _hashMap merge _otherHashMap;
+- |
+  private _hashmap1 = ["cow", "cat", "chicken"] createHashMapFromArray [100, 200, 200];
+  private _hashmap2 = ["cow", "cat", "chicken", "camel"] createHashMapFromArray [150, 300, 400, 800];
+  _hashmap1 merge _hashmap2; // _hashmap is [["cow",100],["cat",200],["chicken",200],["camel",800]]
+- |
+  private _hashmap1 = ["cow", "cat", "chicken"] createHashMapFromArray [100, 200, 200];
+  private _hashmap2 = ["cow", "cat", "chicken", "camel"] createHashMapFromArray [150, 300, 400, 800];
+  _hashmap1 merge [_hashmap2, true]; // _hashmap is [["cow",150],["cat",300],["chicken",400],["camel",800]]
+- |
+  private _hashmap1 = ["cow", "cat", "chicken"] createHashMapFromArray [100, 200, 200];
+  private _hashmap2 = ["cow", "cat", "chicken", "camel"] createHashMapFromArray [150, 300, 400, 800];
+  _hashmap1 merge [_hashmap2, false]; // _hashmap is [["cow",100],["cat",200],["chicken",200],["camel",800]] as Syntax 1

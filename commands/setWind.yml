@@ -1,0 +1,43 @@
+name: setWind
+description: |-
+  Set current or permanent wind vector.
+  {{Feature | important | The effect is global only if it is executed on the server. Wind set locally will sync back to server value in a while.}}
+groups:
+- Environment
+syntax:
+- call: !Unary
+  - x
+  - y
+  - forced
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: x
+    description: easterly component (in m/s, positive = to the east)
+    type: Unknown
+  - name: y
+    description: northerly component (in m/s, positive = to the north)
+    type: Unknown
+  - name: forced
+    description: set to [[true]] to lock the wind to constantly blows in set direction
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setWind [10, 10, true];

@@ -1,0 +1,48 @@
+name: sliderSpeed
+description: Returns slider step value for line and page movement of [[CT_SLIDER]] or [[CT_XSLIDER]].
+groups:
+- GUI Control
+syntax:
+- call: !Unary idc
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+- call: !Unary control
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 85
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- sliderSpeed _ctrlSlider params ["_min", "_max"];
+- |-
+  Since Arma 3 v2.07.148151:
+  <sqf>sliderSpeed _ctrlSlider params ["_min", "_max", "_step"];

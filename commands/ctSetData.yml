@@ -1,0 +1,30 @@
+name: ctSetData
+description: Associates metadata (string) with the row determined by the index. Returns Nothing.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Binary
+  - ctrl
+  - - index
+    - data
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    description: the respective control
+    type: Unknown
+  - name: index
+    description: the row index
+    type: Unknown
+  - name: data
+    description: the data to set
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- _control ctSetData [0, "Test"];

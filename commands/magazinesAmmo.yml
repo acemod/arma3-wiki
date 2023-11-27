@@ -1,0 +1,42 @@
+name: magazinesAmmo
+description: Returns all vehicle's magazines and their ammo count (also works on supply boxes). When applied to a unit (soldier), the command behaves differently and will omit magazines already loaded into unit's weapons. Use [[magazinesAmmoFull]] to return all magazines.
+groups:
+- Unit Inventory
+- Vehicle Inventory
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: unit or vehicle or container. When transport is supplied, the command returns vehicle's magazines not the cargo. When container is supplied, the command behaves identically to [[magazinesAmmoCargo]]
+    type: Unknown
+- call: !Unary
+  - vehicle
+  - includeEmpty
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: unit or vehicle.
+    type: Unknown
+  - name: includeEmpty
+    description: '[[true]] to include empty magazines'
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+  since:
+    arma_3:
+      major: 2
+      minor: 0
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 76
+examples:
+- "_magazinesAmmo = magazinesAmmo player;\n/*\n[\n\t[\"30Rnd_65x39_caseless_mag\",30],\n\t[\"30Rnd_65x39_caseless_mag\",30],\n\t[\"16Rnd_9x21_Mag\",16],\n\t[\"SmokeShellGreen\",1],\n\t[\"Chemlight_green\",1],\n\t[\"HandGrenade\",1]\n]\n*/"
+- "_magazinesAmmo = magazinesAmmo Mi_48;\n/*\n[\n\t[\"250Rnd_30mm_APDS_shells\",250],\n\t[\"250Rnd_30mm_HE_shells\",250],\n\t[\"8Rnd_LG_scalpel\",8],\n\t[\"38Rnd_80mm_rockets\",38]\n]\n*/"

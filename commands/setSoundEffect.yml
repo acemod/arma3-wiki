@@ -1,0 +1,72 @@
+name: setSoundEffect
+description: Defines the different sound effects for a trigger or a waypoint. To stop any sound, deactivate the trigger (might take up to 0.5 seconds to stop) or delete the trigger/waypoint (immediate).
+groups:
+- Sounds
+- Triggers
+- Waypoints
+syntax:
+- call: !Binary
+  - trigger
+  - - sound
+    - voice
+    - soundEnv
+    - soundDet
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: trigger
+    type: Unknown
+  - name: sound
+    description: plays a 2D sound as if [[playSound]] was used from CfgSounds (mission or main config). Use {{hl|"$NONE$"}} for an empty sound
+    type: Unknown
+  - name: voice
+    description: attaches a 3D sound from CfgSounds (mission or main config) to the object that activated the trigger and plays it as if [[say3D]] was used
+    type: Unknown
+  - name: soundEnv
+    description: plays an environmental sound from CfgEnvSounds (mission or main config)
+    type: Unknown
+  - name: soundDet
+    description: creates a dynamic sound object attached to a trigger defined in [[CfgSFX]] (mission or main config)
+    type: Unknown
+- call: !Binary
+  - waypoint
+  - - sound
+    - voice
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: waypoint
+    description: format [[Waypoint]]
+    type: Unknown
+  - name: sound
+    description: plays a 2D sound as if [[playSound]] was used from CfgSounds (mission or main config)
+    type: Unknown
+  - name: voice
+    description: attaches a 3D sound from CfgSounds (mission or main config) to the object that activated the trigger and plays it as if [[say3D]] was used
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _trigger setSoundEffect ["Alarm", "", "", ""];
+- '[_group1, 2] setSoundEffect ["Alarm", ""];'
+- _trigger setSoundEffect ["$NONE$", "Alarm", "", ""];
+- _trigger setSoundEffect ["$NONE$", "", "BattlefieldExplosions3", ""];
+- _trigger setSoundEffect ["$NONE$", "", "", "Owl"];

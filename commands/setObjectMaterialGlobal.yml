@@ -1,0 +1,27 @@
+name: setObjectMaterialGlobal
+description: Set the material of the given selection on all computers in a network session.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - obj
+  - - selection
+    - material
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    type: Unknown
+  - name: selection
+    type: Unknown
+  - name: material
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 54
+examples:
+- player setObjectMaterialGlobal [0, "A3\Structures_F\Data\Windows\window_set.rvmat"];

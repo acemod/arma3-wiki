@@ -1,0 +1,21 @@
+name: getPlayerVoNVolume
+description: Gets provided player's Voice over Network (VoN) volume.
+groups:
+- Radio and Chat
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - 1 in case of error (e.g provided a non-human)
+  params:
+  - name: unit
+    description: the other player's unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 0
+examples:
+- private _volume = getPlayerVoNVolume (units player select 1);

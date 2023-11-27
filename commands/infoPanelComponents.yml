@@ -1,0 +1,45 @@
+name: infoPanelComponents
+description: Returns array of all components available to given object info panel.
+groups:
+- Custom Panels
+syntax:
+- call: !Binary
+  - unit
+  - panelID
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: the concerned vehicle
+    type: Unknown
+  - name: panelID
+    description: '"left" or "right" can be used as panel names'
+    type: Unknown
+- call: !Binary
+  - - unit
+    - turretPath
+  - panelID
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: the concerned vehicle
+    type: Unknown
+  - name: turretPath
+    description: turret index
+    type: Unknown
+  - name: panelID
+    description: '"left" or "right" can be used as panel names'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 72
+examples:
+- |
+  // returns array of all components configured for _helicopter pilot seat
+  private _componentsData = [_helicopter, [-1]] infoPanelComponents "left";

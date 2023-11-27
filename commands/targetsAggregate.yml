@@ -1,0 +1,50 @@
+name: targetsAggregate
+description: Aggregate candidates.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - - speaker
+    - side
+    - classname
+    - position
+    - timeMax
+  - candidates
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: speaker
+    type: Unknown
+  - name: side
+    description: if provided, a target with a side matching ''side'' will see it replaced by {{hl|"$"}}
+    type: Unknown
+  - name: classname
+    description: '{{hl|CfgVehicles}} classname - if provided, a target with a type matching ''''classname'''' will see it replaced by {{hl|"$"}}'
+    type: Unknown
+  - name: position
+    description: value is ignored) - centre of a hardcoded 200m radius
+    type: Unknown
+  - name: timeMax
+    description: max age of the target
+    type: Unknown
+  - name: candidates
+    description: "array of targets in format [<nowiki/>[accuracy, target, targetSide, targetType, targetPosition, targetAge], ...] where:\n* accuracy: [[Number]] - a coefficient, which reflects how close the returned result to the query filter. Range: 0..1, 1 being the best match\n* target: [[Object]] - the actual target object\n* targetSide: [[Side]] - side of the target\n* targetType: [[String]] - target [[typeOf]]\n* targetPosition: [[Array]] format [[Position#Introduction|Position2D]] - [x,y] of the target \n* targetAge: [[Number]] - the actual target age in seconds (can be negative)\n{{Feature|informative|See [[targetsQuery]] format.}}"
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "_aggregation = [player, sideEnemy, \"\", [], 0] targetsAggregate (player targetsQuery [objNull, sideUnknown, \"\", [], 0]);\n/*\n\treturns e.g\n\t[\n\t\t[\n\t\t\t[\"COUNT0\", 1],\n\t\t\t[\"SIDE0\", WEST],\n\t\t\t[\"UNIT0\", \"B_Soldier_F\"],\n\t\t\t[\"PLACE0\", [[<null>,<null>], 0, <null>]],\n\t\t\t[\"TIME0\", [-0.9, -0.9]],\n\t\t\t[\"UCOUNT0\", 1],\n\t\t\t[\"UTYPE0\", ...\n\t\t]\n\t]\n*/\n</sqf>\nwith e.g\n* one Orca Helicopter\n* one T-100 Varsuk tank\n* one T-140K Angara tank\n* one MBT-52 Kuma tank (independent, set as enemy to blufor)\n<sqf>\n/*\n\t[\n\t\t[[\"COUNT0\",1],[\"SIDE0\",EAST],[\"UNIT0\",\"O_Heli_Light_02_dynamicLoadout_F\"],[\"PLACE0\",[[<null>,<null>],0,<null>]],[\"TIME0\",[-0.982,-0.982]],[\"UCOUNT0\",1],[\"UTYPE0\",\"O_Heli_Light_02_dynamicLoadout_F\"]],\n\t\t[[\"COUNT1\",1],[\"SIDE1\",GUER],[\"UNIT1\",\"I_MBT_03_cannon_F\"],[\"PLACE1\",[[<null>,<null>],0,<null>]],[\"TIME1\",[-0.982,-0.982]],[\"UCOUNT1\",1],[\"UTYPE1\",\"I_MBT_03_cannon_F\"]],\n\t\t[[\"COUNT2\",2],[\"SIDE2\",EAST],[\"UNIT2\",\"*Tank_F\"],[\"PLACE2\",[[<null>,<null>],4.34554,<null>]],[\"TIME2\",[-0.982,-0.982]],[\"UCOUNT2\",2],[\"UTYPE2\",\"*O_MBT_02_cannon_F\"]]]\n\t[\n\t\t[[\"COUNT0\",1],[\"SIDE0\",EAST],[\"UNIT0\",\"O_Heli_Light_02_dynamicLoadout_F\"],[\"PLACE0\",[[<null>,<null>],0,<null>]],[\"TIME0\",[-1,-1]],[\"UCOUNT0\",1],[\"UTYPE0\",\"O_Heli_Light_02_dynamicLoadout_F\"]],\n\t\t[[\"COUNT1\",1],[\"SIDE1\",GUER],[\"UNIT1\",\"I_MBT_03_cannon_F\"],[\"PLACE1\",[[<null>,<null>],0,<null>]],[\"TIME1\",[-1,-1]],[\"UCOUNT1\",1],[\"UTYPE1\",\"I_MBT_03_cannon_F\"]],\n\t\t[[\"COUNT2\",2],[\"SIDE2\",EAST],[\"UNIT2\",\"*Tank_F\"],[\"PLACE2\",[[<null>,<null>],4.34565,<null>]],[\"TIME2\",[-1,-1]],[\"UCOUNT2\",2],[\"UTYPE2\",\"*O_MBT_02_cannon_F\"]]\n\t]\n*/\n"

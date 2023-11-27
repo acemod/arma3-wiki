@@ -1,0 +1,29 @@
+name: isAgent
+description: Check if team member is an agent.
+groups:
+- Teams
+syntax:
+- call: !Unary teamMember
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: teamMember
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- isAgent teamMember _unit;

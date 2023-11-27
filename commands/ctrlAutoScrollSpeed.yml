@@ -1,0 +1,34 @@
+name: ctrlAutoScrollSpeed
+description: |-
+  Returns number of seconds to auto-scroll one line. -1 if auto-scroll is disabled. -2 if scrollbar not present.<br><br>
+  Autoscroll is available for [[DialogControls-ListBoxes|CT_LISTBOX]] and [[CT_CONTROLS_GROUP]] types of controls only. Autoscroll will wait [[ctrlAutoScrollDelay]] seconds (must be  > 0) and then will scroll the scroll bar down to the bottom. [[ctrlAutoScrollSpeed]] defines the speed with which scrollbar is scrolled. If [[ctrlAutoScrollRewind]] is [[true]], the control will fade out, immediately rewind to the top, then fade in, wait [[ctrlAutoScrollDelay]] seconds and then repeat the scrolling in a loop. If user focuses on the control, autoscrolling is interrupted.
+groups:
+- GUI Control
+- GUI Control - ListBox
+- GUI Control - ListNBox
+syntax:
+- call: !Unary control
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    description: '[[DialogControls-ListBoxes|CT_LISTBOX]] or [[CT_CONTROLS_GROUP]]'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _ctrlSpeed =  ctrlAutoScrollSpeed _ctrlGroup;

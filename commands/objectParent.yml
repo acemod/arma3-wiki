@@ -1,0 +1,33 @@
+name: objectParent
+description: |-
+  [[File:objectParent.jpg|right|500px]]
+  Returns the parent of an object if said object is a proxy.
+
+  {{Feature|important|
+  Use [[objectParent]] instead of [[vehicle]] to get a soldier's vehicle.
+  Apart from being faster it is also more reliable, as when used on dead [[crew]], [[vehicle]] command may surprisingly return the unit itself.
+  }}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 50
+examples:
+- "_isOnFoot = isNull objectParent player;\t\t\t\t\t\t\t// check if the player is on foot\n_isCommander = player isEqualTo commander objectParent player;\t// check if the player is in a vehicle and is its commander\n\n_holder = objectParent _myBackpack;\t\t\t\t\t\t\t\t// return:\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// - the weapon holder of a dropped backpack\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// - the cargo space of a vehicle holding this backpack\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// - the dead unit holding the backpack\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// works for a backpack, a vest or a uniform\n\n_isDeployed = isNull objectParent _deployableStaticMG;\t\t\t// true if deployed, false if in a backpack\n\n_ropeParent = objectParent _ropeSegment;\t\t\t\t\t\t// since {{arma3}} v2.12\n"
+- |
+  Create and place a created backpack in front of player:
+  <sqf>
+  _backpackContainer = "B_TacticalPack_rgr" createVehicle [0, 0, 0];
+  _weaponHolder = objectParent _backpackContainer;
+  _weaponHolder setPosWorld (player modelToWorldWorld [0, 5, 0]);

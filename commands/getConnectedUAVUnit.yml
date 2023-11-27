@@ -1,0 +1,21 @@
+name: getConnectedUAVUnit
+description: Returns UAV/UGV AI unit, which player is controlling. To return UAV vehicle, see [[getConnectedUAV]]
+groups:
+- Remote Control
+syntax:
+- call: !Unary person
+  ret:
+  - Unknown
+  - UAV unit (AI driver or AI gunner), [[objNull]] otherwise
+  params:
+  - name: person
+    description: unit controlling the UAV/UGV
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- private _playersDrone = getConnectedUAVUnit player;

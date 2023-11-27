@@ -1,0 +1,46 @@
+name: allowGetIn
+description: |-
+  Set if the units given in the list are allowed to enter vehicles.
+  {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
+groups:
+- Object Manipulation
+- Unit Control
+syntax:
+- call: !Binary
+  - unitArray
+  - allow
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitArray
+    type: Unknown
+  - name: allow
+    description: '[[true]] allows the [[units]] to enter, [[false]] denies them'
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '[_soldier1, _soldier2] allowGetIn true;'

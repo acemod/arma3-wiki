@@ -1,0 +1,30 @@
+name: getGroupIconParams
+description: Returns group icons params used for command bar drawing such as color, text, scale, visibility, waypoint visibility, waypoint color.
+groups:
+- High Command
+syntax:
+- call: !Unary group
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: group
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _iconParams = getGroupIconParams group player;
+- getGroupIconParams group player params ["_color", "_text", "_scale", "_visibility", "_WPVisibility", "_WPColor"];

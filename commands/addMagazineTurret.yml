@@ -1,0 +1,45 @@
+name: addMagazineTurret
+description: |-
+  Adds a magazine to the turret. Use turret path [-1] for driver's turret.
+  {{Feature|Important|You may create invalid combinations by using this function, for example by adding 20 grenades. When doing so, application behaviour is undefined.}}
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - - magazineName
+    - turretPath
+    - ammoCount
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: magazineName
+    type: Unknown
+  - name: turretPath
+    type: Unknown
+  - name: ammoCount
+    description: desired ammo count
+    type: Unknown
+    optional: true
+    since:
+      arma_3:
+        major: 1
+        minor: 56
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 52
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _tank addMagazineTurret ["SmokeLauncherMag", [0,0]];
+- _tank addMagazineTurret ["20Rnd_120mmSABOT_M1A2", [0]];

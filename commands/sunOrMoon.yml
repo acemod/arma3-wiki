@@ -1,0 +1,68 @@
+name: sunOrMoon
+description: |-
+  {{{!}} class="wikitable float-right align-center-col-1" style="font-size: 0.85em; min-width: 15em"
+  ! Time
+  ! [[sunOrMoon]]
+  {{!}}-
+  {{!}} 12:00
+  {{!}} 1
+  {{!}}-
+  {{!}} (...)
+  {{!}} 1
+  {{!}}-
+  {{!}} 18:39
+  {{!}} 0.911201
+  {{!}}-
+  {{!}} 18:42
+  {{!}} 0.576303
+  {{!}}-
+  {{!}} 18:45
+  {{!}} 0.240862
+  {{!}}-
+  {{!}} 18:48
+  {{!}} 0
+  {{!}}-
+  {{!}} (...)
+  {{!}} 0
+  {{!}}-
+  {{!}} 06:00
+  {{!}} 0.695308
+  {{!}}-
+  {{!}} 06:03
+  {{!}} 0.739519
+  {{!}}-
+  {{!}} 06:09
+  {{!}} 1
+  {{!}}-
+  {{!}} (...)
+  {{!}} 1
+  {{!}}}
+  Returns the moon to sun transition state in range 0..1.<br>
+  The return value is either 0 or 1 most of the time, the in-between values only returned during a few minutes in the morning and in the evening, depending on the [[date]], and could be similar to shown here:
+
+  <gallery mode="packed">
+  File:sunOrMoon VR up.png|200px|thumb|left|Sunrise in {{arma3}} VR
+  File:sunOrMoon VR down.png|200px|thumb|left|Sunset in {{arma3}} VR
+  </gallery>
+groups:
+- Environment
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - 0 for night (moon), 1 for day (sun)
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 62
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- private _transitionState = sunOrMoon;

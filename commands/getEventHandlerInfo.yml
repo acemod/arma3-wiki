@@ -1,0 +1,47 @@
+name: getEventHandlerInfo
+description: Queries given event handler's information.
+groups:
+- Event Handlers
+syntax:
+- call: !Binary
+  - oper
+  - - type
+    - id
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: oper
+    description: subject to which event handler is assigned
+    type: Unknown
+  - name: type
+    description: event handler name
+    type: Unknown
+  - name: id
+    description: event handler id returned by [[addEventHandler]], [[ctrlAddEventHandler]], [[displayAddEventHandler]], or [[addMPEventHandler]]
+    type: Unknown
+- call: !Unary
+  - type
+  - id
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: type
+    description: event handler name
+    type: Unknown
+  - name: id
+    description: event handler id returned by [[addMissionEventHandler]] or [[addMusicEventHandler]]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- "private _info = player getEventHandlerInfo [\"MPKilled\", 1];\t\t// object EH"
+- "private _info = getEventHandlerInfo [\"EachFrame\", 0];\t\t\t\t// mission EH"
+- "private _info = _bullet getEventHandlerInfo [\"Deflected\", 0];\t\t// projectile EH"
+- "private _info = _group getEventHandlerInfo [\"EnemyDetected\", 1];\t// group EH"
+- "private _info = _control getEventHandlerInfo [\"ButtonClick\", 1];\t// control (UI) EH"

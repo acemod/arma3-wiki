@@ -1,0 +1,25 @@
+name: setPitch
+description: Sets the pitch of a persons voice.
+groups:
+- Unit Identity
+- Sounds
+syntax:
+- call: !Binary
+  - person
+  - pitch
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: person
+    type: Unknown
+  - name: pitch
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 2
+examples:
+- unit1 setPitch 0.5;

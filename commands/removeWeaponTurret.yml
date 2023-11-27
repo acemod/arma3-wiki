@@ -1,0 +1,31 @@
+name: removeWeaponTurret
+description: Removes weapon from the turret. Use turret path [-1] for driver's turret.
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - - weaponName
+    - turretPath
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: weaponName
+    type: Unknown
+  - name: turretPath
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 64
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- _tank removeWeaponTurret ["LMG_M200", [0,0]];
+- vehicle player removeWeaponTurret ["SportCarHorn", [-1]];

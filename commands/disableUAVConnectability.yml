@@ -1,0 +1,28 @@
+name: disableUAVConnectability
+description: Disables unit's AV terminal(s) connecting to UAV.
+groups:
+- Remote Control
+syntax:
+- call: !Binary
+  - object
+  - - uav
+    - checkAllItems
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: uav
+    type: Unknown
+  - name: checkAllItems
+    description: '[[true]] to disable all terminals in unit''s inventory, [[false]] to only disable the currently assigned terminal.'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 24
+examples:
+- myUnit disableUAVConnectability [myUav, true];

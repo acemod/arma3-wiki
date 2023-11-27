@@ -1,0 +1,48 @@
+name: animateBay
+description: |-
+  Forces animation of bay to given state, -1 for reset to engine handling, can cause weapon inoperative, because weapon is released when bay state == 1.
+  {{Feature|informative|
+  While there is no getter to read the animation phase of the given bay, the [[animationPhase]] command can be used with the individual bay door name from [[animationNames]] as a workaround (See {{Link|#Example 3}}).
+  }}
+groups:
+- Animations
+- Vehicle Loadouts
+syntax:
+- call: !Binary
+  - vehicle
+  - - bay
+    - animphase
+    - instant
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: bay
+    description: bay index (index starts from 1 and different from pylon index)
+    type: Unknown
+  - name: animphase
+    description: animation phase in range 0..1
+    type: Unknown
+  - name: instant
+    description: animate immediately
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- vehicle player animateBay [1, 0.5];
+- vehicle player animateBay [1, 1, true];
+- |
+  Getter example, here for the UCAV Sentinel:<sqf>
+  ucav animateBay [1, 1];
+  // can be checked with
+  ucav animationPhase "weapons_bay_l_1";
+  // or
+  ucav animationPhase "weapons_bay_l_2";

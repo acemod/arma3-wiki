@@ -1,0 +1,52 @@
+name: checkAIFeature
+description: Checks if the given AI feature is currently enabled.
+groups:
+- AI Behaviour
+syntax:
+- call: !Unary feature
+  ret:
+  - Unknown
+  - '[[true]] if is enabled'
+  params:
+  - name: feature
+    description: |-
+      can be one of:
+      * {{hl|"AwareFormationSoft"}}
+      * {{hl|"CombatFormationSoft"}}
+      * AI skill - see {{Link|disableAI#Syntax 1}} (since {{arma3}} v1.96)
+    type: Unknown
+- call: !Binary
+  - unit
+  - feature
+  ret:
+  - Unknown
+  - '[[true]] if is enabled'
+  params:
+  - name: unit
+    description: unit to test AI feature for
+    type: Unknown
+  - name: feature
+    description: '[[disableAI]] / [[enableAI]] feature'
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 96
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 5
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _featureUsed = checkAIFeature "AwareFormationSoft";
+- _autotargetOn = bob checkAIFeature "AUTOTARGET";

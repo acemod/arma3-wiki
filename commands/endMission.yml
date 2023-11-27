@@ -1,0 +1,47 @@
+name: endMission
+description: |-
+  Finish the mission.
+  '''Mission saves are deleted'''. Use [[failMission]] if they should not be.
+  {{Feature|arma3|To maintain {{arma3}} visual style, it is recommended to use [[BIS_fnc_endMission]] instead.}}
+multiplayer_note: To end mission properly so that everyone goes to debriefing at the same time, this command should be executed on every machine (see {{Link|#Example 2}}).
+groups:
+- Mission Information
+syntax:
+- call: !Unary endType
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: endType
+    description: |-
+      can be a custom one {{GVI|arma3|1.00|size= 0.75}}, or one of:
+      {{Columns|2|
+      * "CONTINUE" (does nothing)
+      * "KILLED"
+      * "LOSER"
+      * "END1"
+      * "END2"
+      * "END3"
+      * "END4"
+      * "END5"
+      * "END6"
+      }}
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- endMission "END1";
+- '["END1"] remoteExec ["endMission", 0, true]; // Arma 3'

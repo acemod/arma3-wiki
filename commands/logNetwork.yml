@@ -1,0 +1,27 @@
+name: logNetwork
+description: |-
+  Registers new log file recording a network traffic and returns handle of the log. The log file is saved inside the {{arma3}} root folder.
+  {{Feature|important|[[logNetwork]] can potentially create a large log file.}}
+groups:
+- Multiplayer
+- Diagnostic
+syntax:
+- call: !Unary logFile
+  ret:
+  - Unknown
+  - handle for the logging
+  params:
+  - name: logFile
+    description: where to store the log
+    type: Unknown
+  - name: filter
+    description: ????
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- _handle = logNetwork ["myLog.txt", [""]];

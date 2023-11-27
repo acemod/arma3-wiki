@@ -1,0 +1,33 @@
+name: allControls
+description: Returns a list of all controls for desired existing display. Returned controls also include controls from [[CT_CONTROLS_GROUP]]s.
+groups:
+- GUI Control
+syntax:
+- call: !Unary display
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: display
+    type: Unknown
+- call: !Unary controlsGroup
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: controlsGroup
+    description: '[[CT_CONTROLS_GROUP]]'
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 4
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 38
+examples:
+- _allCtrls = allControls findDisplay 46;
+- _allSubCtrls = allControls _myControlsGroup;

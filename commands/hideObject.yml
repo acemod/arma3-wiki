@@ -1,0 +1,42 @@
+name: hideObject
+description: Hide entity. Can be used on soldiers and vehicles, also on static objects.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+- call: !Binary
+  - object
+  - hidden
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: hidden
+    description: '[[true]]->hidden; [[false]]->visible'
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 6
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hideObject unitName;
+- objectName hideObject true;

@@ -1,0 +1,39 @@
+name: nearestBuilding
+description: Finds the nearest building to a given object or position. A "building" is defined as an object that is of class "House" and contains a path LOD.
+groups:
+- Object Detection
+syntax:
+- call: !Unary position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: position
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _nBuilding = nearestBuilding player;
+- _nBuilding = nearestBuilding position player;

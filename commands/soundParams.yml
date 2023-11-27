@@ -1,0 +1,21 @@
+name: soundParams
+description: Returns various params for the given sound
+groups:
+- Sounds
+syntax:
+- call: !Unary id
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: id
+    description: id returned by [[playSoundUI]] and [[playSound3D]] commands
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- _params = soundParams 10;

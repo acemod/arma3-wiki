@@ -1,0 +1,44 @@
+name: allowFleeing
+description: "Sets the cowardice level (the lack of courage or bravery) of a group or unit. \n<br><br>\nNotes:\n* Fleeing only affects AI led groups.\n* Only the group as a whole can flee (or not).\n* The courage of the AI group is based on the group's leader [[Arma_3_AI_Skill#Sub-Skills|courage subskill]].\n* Each group has a max strength (summed \"armor\" of all infantry units - plus armor when inside vehicles).\n* If the group losses by injury/damage or death/destruction are higher than the max strength, multiplied by leader's courage or [[allowFleeing]] level , then the group will start fleeing.\n* As result primarily the AI flees to a nearby \"supply point\" (some friendly units - preferably with medic or engineer, or a vehicle with repair/ammo/fuel cargo). Alternatively it will try to find a safe position within a 600m radius from the initial waypoint (danger, distance, amount of cover positions are taken into account).\n* After the fleeing has been finished the group's initial strength is reset.\n* Fleeing units in [[combatMode]] red, will be set to yellow when fleeing to avoid engaging enemies while doing so.\n* While fleeing, the group leader will be set to green, to avoid giving engage or fire orders, unless in [[combatMode]] blue already. Also [[speedMode]] is set to full.\n* When reaching their flee point/destination, they will change to [[combatMode]] yellow and [[speedMode]] normal.\n* With [[allowFleeing]] one can make unit's flee earlier (or essentially never flee). Apply it, overrides the courage subskill influence."
+groups:
+- Object Manipulation
+- Groups
+syntax:
+- call: !Binary
+  - unitOrGroup
+  - cowardice
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitOrGroup
+    type: Unknown
+  - name: cowardice
+    description: 1 is maximum cowardice and 0 minimum. A value of 0 will disable fleeing all together
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _group1 allowFleeing 0;

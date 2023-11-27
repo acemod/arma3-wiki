@@ -1,0 +1,51 @@
+name: camPrepareTarget
+description: Prepares the camera target to a position or to a target. Needs the call of [[camCommitPrepared]] to be conducted.
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - camera
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: camera
+    description: object of type "camera"
+    type: Unknown
+  - name: position
+    description: target location
+    type: Unknown
+- call: !Binary
+  - camera
+  - target
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: camera
+    description: object of type "camera"
+    type: Unknown
+  - name: target
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _camera camPrepareTarget getPos player;
+- _camera camPrepareTarget player;

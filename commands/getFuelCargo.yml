@@ -1,0 +1,22 @@
+name: getFuelCargo
+description: |-
+  Returns the fuel amount (1 is full) in the cargo space of a refueling vehicle.
+  {{Feature | Informative | Since Arma 3 v1.96 the return value for vehicles that are not configured to have ability to refuel other vehicles is -1. (Prior to that the value was negative infinity)}}
+groups:
+- Vehicle Inventory
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - fuel cargo value, -1 if fuel cargo is not supported, 0 if the vehicle is ![[alive]] or [[isNull]]
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 56
+examples:
+- value = getFuelCargo myVehicleName;

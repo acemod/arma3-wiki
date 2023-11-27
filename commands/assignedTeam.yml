@@ -1,0 +1,34 @@
+name: assignedTeam
+description: |-
+  Returns the team the unit belongs to. Possible values:
+
+  * {{hl|"MAIN"}} (default and white)
+  * {{hl|"RED"}}
+  * {{hl|"GREEN"}}
+  * {{hl|"BLUE"}}
+  * {{hl|"YELLOW"}}
+  * {{GVI|arma3|1.94}} {{hl|""}} if given unit is [[objNull]] or [[remoteControl]]ling another unit
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary unitName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2_arrowhead:
+    major: 1
+    minor: 60
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _team = assignedTeam player;

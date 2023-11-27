@@ -1,0 +1,26 @@
+name: allDiaryRecords
+description: Returns array with all [[Diary]] Records for the given subject available to the given person. See [[Diary]] for the explanation on the available subjects and their structure.
+groups:
+- Briefing
+syntax:
+- call: !Binary
+  - person
+  - subject
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: person
+    description: unit
+    type: Unknown
+  - name: subject
+    description: subject
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 10
+examples:
+- player allDiaryRecords "Diary";

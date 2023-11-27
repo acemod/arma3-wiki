@@ -1,0 +1,34 @@
+name: sizeOf
+description: |-
+  Returns the diameter of bounding sphere of the object of given classname in meters. If you need to estimate the size of the object more precisely, use [[boundingBox]] or [[boundingBoxReal]].
+  {{Feature | important | At least one object of the given classname has to be present in the current mission otherwise zero will be returned.}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary classname
+  ret:
+  - Unknown
+  - size returned is usually bigger than the biggest size of the object along any of the axes. For example if object is 10 x 4 x 5 the [[sizeOf]] value returned expected to be around 10.
+  params:
+  - name: classname
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 8
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _dimension = sizeOf "M1Abrams"; // Returns 10.7833

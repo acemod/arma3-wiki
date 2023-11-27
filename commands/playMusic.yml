@@ -1,0 +1,61 @@
+name: playMusic
+description: |-
+  Plays music defined in [[Description.ext#CfgMusic|Description.ext's CfgMusic]] or config.cpp. If the ''musicName'' could not be found a message is logged into the .rpt file: {{hl|Music <''musicName''> not found}}.
+  * [[Arma 3: CfgMusic]]
+  * [[Arma 2: CfgMusic]]
+  * [[ArmA: Armed Assault: CfgMusic]]
+  * [[Operation Flashpoint: CfgMusic]]
+
+  {{Feature|informative|To stop the music, use <sqf inline>playMusic "";</sqf>.}}
+groups:
+- Sounds
+syntax:
+- call: !Unary musicName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: musicName
+    description: music classname
+    type: Unknown
+- call: !Unary
+  - musicName
+  - start
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: musicName
+    description: music classname
+    type: Unknown
+  - name: start
+    description: start, in seconds. Can be negative.
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- playMusic "RadioAmbient1";
+- playMusic ["RadioAmbient3", 3]; // start to play from 00:00:03
+- "Play from 00:00:01 to 00:00:05:\n<sqf>\n[] spawn {\n\tplayMusic [\"RadioAmbient5\", 1];\n\tsleep 4;\n\tplayMusic \"\";\n};\n"

@@ -1,0 +1,36 @@
+name: unitPos
+description: |-
+  Return the unit position rules.<br>
+  The return value is always "Auto" unless the unit has gotten a [[setUnitPos]] command. In that case the value is the last stance the unit was ordered to.<br>
+  Available modes are listed at [[setUnitPos]].
+multiplayer_note: Unit pos set by [[setUnitPosWeak]] is not returned for remote (non-local) units.
+groups:
+- Unit Control
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - one of {{hl|"Auto"}}, {{hl|"Up"}}, {{hl|"Middle"}}, {{hl|"Down"}} (as of {{arma3}})
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hint str unitPos _unit;

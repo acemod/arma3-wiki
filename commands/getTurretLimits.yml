@@ -1,0 +1,28 @@
+name: getTurretLimits
+description: Returns the rotation and elevation limits for the given turret.
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - turret
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: vehicle the turret belongs to
+    type: Unknown
+  - name: turret
+    description: turret path
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 12
+examples:
+- |
+  private _turretLimits = m2 getTurretLimits [0];
+  _turretLimits params ["_minTurn", "_maxTurn", "_minElev", "_maxElev", "_overridden"];

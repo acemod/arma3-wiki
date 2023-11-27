@@ -1,0 +1,20 @@
+name: clearItemCargoGlobal
+description: Removes all items from ammo box (or any general weapon holder container). It also removes vests and uniforms.
+groups:
+- Containers
+syntax:
+- call: !Unary box
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: box
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- clearItemCargoGlobal _ammoBox;

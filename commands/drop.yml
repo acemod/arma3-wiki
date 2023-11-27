@@ -1,0 +1,42 @@
+name: drop
+description: |-
+  Creates a particle effect.
+  This command is used to create smoke, fire and similar effects.
+  The particles are single polygons with single textures that always face the player.
+  They can be set to dynamically change their position, size, direction, can be set to different weights and to be more or less dependent on the wind.
+groups:
+- Particles
+syntax:
+- call: !Unary parameters
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: parameters
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "drop [\"cl_basic\", \"\", \"Billboard\", 1, 1,\n\t[-3.5 * (sin (direction xural)), -3.5 * (cos (direction xural)), 0],\n\t[random 0.1, random 0.1, random 0.5],\n\t1, 0.005, 0.0042, 0.7, [0.3,3],\n\t[[0.5,0.5,0.5,0], [0.7,0.7,0.7,0.5], [0.9,0.9,0.9,0]],\n\t[0,1,0,1,0,1],\n\t0.2, 0.2, \"\", \"\", xural];"

@@ -1,0 +1,31 @@
+name: lnbSize
+description: Returns size of [[CT_LISTNBOX]]. This command supports [[CT_TOOLBOX]] control since Arma 3 v2.06. For [[CT_COMBO]] or [[CT_LISTBOX]] see [[lbSize]].
+groups:
+- GUI Control - ListNBox
+syntax:
+- call: !Unary controlOrIDC
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: controlOrIDC
+    description: control or control's IDC
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- lnbSize _control;
+- lnbSize _someIDC;

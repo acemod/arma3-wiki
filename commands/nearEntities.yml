@@ -1,0 +1,60 @@
+name: nearEntities
+description: |-
+  [[File:sphere_radius.jpg|right|200px]]
+  Finds entities inside a sphere with the given radius. If the alternative syntax is used, only entities of given types or subtypes are listed. Entities returned are not sorted by distance. This command doesn't return dead entities or entities inside vehicles. If you need to return those, use [[entities]] command.{{Feature|Informative|This command is much [[Code_Optimisation#nearEntities_and_nearestObjects | faster]] than [[nearestObjects]] for on-foot soldier and vehicle detection.}}
+groups:
+- Object Detection
+syntax:
+- call: !Binary
+  - position
+  - radius
+  ret:
+  - Unknown
+  - not sorted
+  params:
+  - name: position
+    description: center of the sphere
+    type: Unknown
+  - name: radius
+    description: radius of the sphere
+    type: Unknown
+- call: !Binary
+  - position
+  - - type
+    - radius
+  ret:
+  - Unknown
+  - not sorted
+  params:
+  - name: position
+    description: center of the sphere
+    type: Unknown
+  - name: type
+    description: type(s) to search for. See [[isKindOf]]
+    type: Unknown
+  - name: radius
+    description: radius of the sphere
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  _list = player nearEntities 20;
+  _list = ASLToAGL getPosASL player nearEntities 50;
+  _list = player nearEntities ["Man", 1000];
+  _list = ASLToAGL getPosASL player nearEntities ["LaserTarget", 3000];
+  _list = player nearEntities [["Car", "Motorcycle", "Tank"], 50];
+  _list = ASLToAGL getPosASL player nearEntities [["Man", "Air", "Car", "Motorcycle", "Tank"], 200];

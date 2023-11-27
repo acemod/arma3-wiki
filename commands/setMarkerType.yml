@@ -1,0 +1,45 @@
+name: setMarkerType
+description: |-
+  Sets marker type. Marker type is a class name from [[CfgMarkers]].
+  {{Feature|Informative|'''Multiplayer optimisation:''' Global marker commands always broadcast the ''entire'' marker state over the network. As such, the number of network messages exchanged when creating or editing a marker can be reduced by performing all but the last operation using local marker commands, then using a global marker command for the last change (and subsequent global broadcast of all changes applied to the marker).}}
+groups:
+- Markers
+syntax:
+- call: !Binary
+  - markerName
+  - type
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: markerName
+    type: Unknown
+  - name: type
+    description: see [[CfgMarkers]]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"MarkerOne" setMarkerType "Warning";'

@@ -1,0 +1,30 @@
+name: loadGame
+description: |-
+  Loads game from the last autosave made with [[saveGame]]. If no autosave exists, restarts the mission. When used in campaign it will also deduct 1 life, defined in:<br>
+  <sqf>campaignConfigFile >> "Campaign" / <battle> / <mission> / "lives"</sqf>
+  {{Feature|informative|A {{hl|[[Arma 3: Mission Event Handlers#Loaded | "Loaded"]]}} [[addMissionEventHandler|mission event handler]] is available and it is important that it is added in {{hl|preInit}} in order for it to fire on load from save.}}
+groups:
+- Mission Information
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- loadGame;

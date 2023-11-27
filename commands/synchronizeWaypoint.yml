@@ -1,0 +1,45 @@
+name: synchronizeWaypoint
+description: Synchronizes the trigger or the waypoint with an array of waypoints.
+groups:
+- Waypoints
+- Triggers
+syntax:
+- call: !Binary
+  - triggerOrWaypoint
+  - waypoints
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: triggerOrWaypoint
+    description: |-
+      can be:
+      * [[Object]] - [[Trigger|trigger]]
+      * [[Waypoint]] - [[Array]] in format of [[Waypoint]]
+    type: Unknown
+  - name: waypoints
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _myTrigger synchronizeWaypoint [[_group2, 3]];
+- '[_group1, 2] synchronizeWaypoint [[_group2, 3]];'

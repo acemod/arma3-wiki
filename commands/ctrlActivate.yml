@@ -1,0 +1,52 @@
+name: ctrlActivate
+description: Launches action attached to given (button based) control. Command ignores control disabled state. (Example 2). Main syntax command only triggers engine-based actions (cancel or ok codes) and will not trigger button related [[User_Interface_Event_Handlers|User Interface Event Handlers]] or [[buttonAction]], use the alternative syntax for this. "ButtonClick" UI event handler will also be triggered with the alternative syntax. Use [[isUIContext]] to distinguish between scripted activation and user activation.<br>
+groups:
+- GUI Control
+syntax:
+- call: !Unary control
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+- call: !Binary
+  - control
+  - full
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    description: button based control ([[CT_BUTTON]], [[CT_XBUTTON]], [[CT_SHORTCUTBUTTON]], [[CT_ACTIVETEXT]])
+    type: Unknown
+  - name: full
+    description: '[[true]] to simulate button click in full including UI event handling'
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 16
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- ctrlActivate _control;
+- |-
+  _control ctrlEnable false;
+  ctrlActivate _control; // Action fired.

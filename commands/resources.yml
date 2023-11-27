@@ -1,0 +1,29 @@
+name: resources
+description: Returns the resources of a team member. Results are local to the PC on which command was executed.
+groups:
+- Teams
+syntax:
+- call: !Unary member
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: member
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- resources teamMember _unit;

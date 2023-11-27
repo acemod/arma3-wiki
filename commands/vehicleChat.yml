@@ -1,0 +1,59 @@
+name: vehicleChat
+description: |-
+  Types text to the vehicle radio channel. The text will be visible only on the PC where command was executed. If you need the message to show on all computers, you have to execute it globally, see [[remoteExec]].
+
+  {{Feature|Informative|
+  * Object parameter must be a vehicle, not a player
+  * If you are in a crew seat (i.e. driver, gunner or commander), then it will include that role in the chat name output (Eg: Driver (you_name): "Message")}}
+groups:
+- Radio and Chat
+syntax:
+- call: !Binary
+  - vehicleName
+  - chatText
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicleName
+    description: vehicle unit is in
+    type: Unknown
+  - name: chatText
+    description: message to transmit
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 34
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- vehicle player vehicleChat "Show this text";
+- |
+  [[File:xChat.jpg|right]]
+  <sqf>
+  driver vehicle player sideChat "sideChat";
+  driver vehicle player globalChat "globalChat";
+  driver vehicle player groupChat "groupChat";
+  vehicle player vehicleChat "vehicleChat";
+  driver vehicle player commandChat "commandChat";
+  driver vehicle player customChat [1, "customChat"];
+  systemChat "systemChat";

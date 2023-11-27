@@ -1,0 +1,26 @@
+name: setWaterLeakiness
+description: Set an object's water intake ratio when immersed.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - obj
+  - leakiness
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    description: object to manipulate
+    type: Unknown
+  - name: leakiness
+    description: in range 0..1 where 0 is waterproof and 1 is full leak
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- "private _veh = vehicle player;\nif (surfaceIsWater getPosASL _veh) then\n{\n\t_veh setWaterLeakiness 1;\n};\n"

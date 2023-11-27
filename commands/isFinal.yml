@@ -1,0 +1,27 @@
+name: isFinal
+description: Checks if [[Code]] or a variable was compiled final with [[compileFinal]].
+groups:
+- Variables
+syntax:
+- call: !Unary variable
+  ret:
+  - Unknown
+  - '[[true]] if final, [[false]] if not'
+  params:
+  - name: variable
+    description: |-
+      the name of the variable holding [[Code]]
+      * {{GVI|arma3|2.14|size= 0.75}} [[Array]] - an array that is a [[HashMapKey]], a trigger's <sqf inline>thisList</sqf> array, made final with [[compileFinal]] etc.
+      * {{GVI|arma3|2.14|size= 0.75}} [[HashMap]] - a hashmap made final with [[compileFinal]]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 0
+examples:
+- "private _myCode = compileFinal \"a = a + 1\";\nsystemChat format [\"isFinal \"\"_myCode\"\": %1\", isFinal \"_myCode\"];\t\t\t\t// true\nsystemChat format [\"isFinal _myCode: %1\", isFinal _myCode];\t\t\t\t\t\t// true\nsystemChat format [\"isFinal some code: %1\", isFinal { hint \"Hello there\" }];\t// false\n\nprivate _myArray1 = list _myTrigger;\nsystemChat format [\"isFinal _myArray1: %1\", isFinal _myArray1];\t\t\t\t\t// true\n\nprivate _myArray2 = [1, 2, 3];\nsystemChat format [\"isFinal _myArray2: %1\", isFinal _myArray2];\t\t\t\t\t// false\n\nprivate _myHashMap = compileFinal createHashMap;\nsystemChat format [\"isFinal _myHashMap: %1\", isFinal _myHashMap];\t\t\t\t// true\n"
+- |-
+  Avoid .rpt's overwrite warnings:
+  <sqf>if (!isFinal fnc_myCode) then { fnc_myCode = compileFinal str_myCode };

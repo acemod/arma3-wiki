@@ -1,0 +1,20 @@
+name: isCopilotEnabled
+description: Returns true if copilots actions are enabled.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (!isCopilotEnabled myHeli) then {\n\tmyHeli enableCopilot true;\n};"

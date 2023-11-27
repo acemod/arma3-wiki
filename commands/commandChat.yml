@@ -1,0 +1,78 @@
+name: commandChat
+description: |-
+  Types text to the command radio channel. The text will be visible only on the PC where command was executed. If you need the message to show on all computers, you have to execute it globally (see [[remoteExec]])
+
+  {{Feature|important|The unit must have an [[assignItem|assigned]] radio item (such as '''''"ItemRadio"''''') to see or transmit the messages. A radio item must have the property <syntaxhighlight lang="cpp" inline>simulation = "ItemRadio";</syntaxhighlight> in its [[CfgWeapons_Config_Reference#simulation.3D.22Weapon.22|CfgWeapons config]].}}
+groups:
+- Radio and Chat
+- Sounds
+syntax:
+- call: !Binary
+  - unitName
+  - chatText
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    description: unit transmitting message
+    type: Unknown
+  - name: chatText
+    description: message to transmit
+    type: Unknown
+- call: !Binary
+  - - side
+    - identity
+  - chatText
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: side
+    description: side to which the message will be seen
+    type: Unknown
+  - name: identity
+    description: |-
+      class name of one of the identities in CfgHQIdentities. Possible identities in {{arma3}} are:
+      {{Columns|2|
+      * "Base"
+      * "HQ"
+      * "PAPA_BEAR"
+      * "AirBase"
+      * "BLU"
+      * "OPF"
+      * "IND"
+      * "IND_G"
+      }}
+    type: Unknown
+  - name: chatText
+    description: message to transmit
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldierOne commandChat "Show this text";
+- '[playerSide, "HQ"] commandChat "Do this! That''s an order!";'
+- |
+  [[File:xChat.jpg|right]]
+  <sqf>
+  driver vehicle player sideChat "sideChat";
+  driver vehicle player globalChat "globalChat";
+  driver vehicle player groupChat "groupChat";
+  vehicle player vehicleChat "vehicleChat";
+  driver vehicle player commandChat "commandChat";
+  driver vehicle player customChat [1, "customChat"];
+  systemChat "systemChat";

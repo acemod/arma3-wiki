@@ -1,0 +1,21 @@
+name: getAllSoundControllers
+description: Returns an array containing names and values of the sound controllers that can be used in simple expressions when configuring sounds.
+groups:
+- Sounds
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: a '''vehicle''' - this does not work on humans
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- "getAllSoundControllers vehicle player;\n/*\n\treturns e.g\n\t[\n\t\t[\"rpm\",0],\n\t\t[\"randomizer\",0.874332],\n\t\t[\"speed\",0],\n\t\t[\"thrust\",0],\n\t\t...\n\t]\n*/\n"

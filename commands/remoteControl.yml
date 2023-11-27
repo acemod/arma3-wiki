@@ -1,0 +1,51 @@
+name: remoteControl
+description: |-
+  Switches on remote control of the unit. The command was {{Icon|globalArgument|32}} prior to {{GVI|arma3|2.14}}). For more info see [[Remote Control Tutorial]].
+
+  If the drone is remote it will get transferred to the player's PC.
+  {{Feature|informative|See also [[remoteControlled]], [[isRemoteControlling]], and {{Link|#Example 4}} for a getter workaround for earlier game versions.}}
+  {{Feature|warning|Always use [[switchCamera]] first (when needed) before using [[remoteControl]] as doing it after may lead to unpredictable results.}}
+groups:
+- Remote Control
+syntax:
+- call: !Binary
+  - who
+  - whom
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: who
+    description: controlling unit
+    type: Unknown
+  - name: whom
+    description: controlled unit
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  Set player remote control of driver:
+  <sqf>
+  driver UAV switchCamera "Internal"; // switchCamera required
+  player remoteControl driver UAV;
+  // sometimes switchCamera is not needed
+  player remoteControl driver UAV;
+- 'Return control to player: <sqf>objNull remoteControl driver UAV;'
+- |-
+  {{GVI|arma3|2.14|size= 0.75}} Return control to player:
+  <sqf>player remoteControl objNull;
+- "A dirty hack to return controlling unit because of the absence of dedicated getter:\n<sqf>\nSQF_fnc_remoteControlledBy =\n{\n\tparams [\"_obj\"];\n\tif (!isNull objectParent _obj) exitWith { UAVControl _obj select 0 };\n\tprivate _res = [objNull];\n\tisNil\n\t{\n\t\tprivate _pos = getPosWorld _obj;\n\t\tprivate _dirUp = [vectorDirVisual _obj, vectorUpVisual _obj];\n\t\tprivate _anim = animationState _obj;\n\t\tprivate _dummy = \"PaperCar\" createVehicleLocal [0,0,0];\n\t\t_obj moveInAny _dummy;\n\t\t_res = uavControl _dummy;\n\t\t_obj setPosWorld _pos;\n\t\t_obj setVectorDirAndUp _dirUp;\n\t\t_obj switchMove _anim;\n\t\tdeleteVehicle _dummy;\n\t};\n\t_res select 0\n};\n</sqf>\nUsage (could be scheduled or unscheduled):\n<sqf>\n[] spawn\n{\n\tplayer remoteControl bob;\n\tsystemChat str (bob call SQF_fnc_remoteControlledBy); // B Alpha 1-1:1 (KK)\n\tobjNull remoteControl bob;\n\tsystemChat str (bob call SQF_fnc_remoteControlledBy); // <NULL-object>\n};\n"

@@ -1,0 +1,51 @@
+name: toString
+description: Converts the supplied [[Array]] of [[Number]]s into a [[String]] through {{Link|https://en.wikipedia.org/wiki/Unicode}} characters representation conversion, or provided [[Code]] to [[compile|compilable]] [[String]].
+groups:
+- Strings
+- Arrays
+syntax:
+- call: !Unary array
+  ret:
+  - Unknown
+  - '{{Link|https://en.wikipedia.org/wiki/Unicode}} numbers converted to [[String]] of characters'
+  params:
+  - name: array
+    description: 'number values, the following error might appear in .rpt file: {{hl|Bad conversion: scalar}}}}'
+    type: Unknown
+- call: !Unary code
+  ret:
+  - Unknown
+  - '[[compile|compilable]] [[String]] from provided code'
+  params:
+  - name: code
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 2
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 9
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- hint toString [65,97,338]; // returns "AaŒ"
+- '["test", "test"] joinString toString [12345] splitString toString [12345]; // ["test", "test"]'
+- |
+  private _compilableString = toString { hint "it works!" };
+  hint _compilableString; // hints ' hint "it works!" '
+  sleep 2;
+  call compile _compilableString; // hints ' it works! '

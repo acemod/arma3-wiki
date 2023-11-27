@@ -1,0 +1,27 @@
+name: tvClear
+description: Removes all items from Tree View with given idc.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Unary idc
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+- call: !Unary control
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 74
+examples:
+- tvClear 101;

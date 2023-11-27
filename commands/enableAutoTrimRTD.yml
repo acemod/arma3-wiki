@@ -1,0 +1,29 @@
+name: enableAutoTrimRTD
+description: "Toggle auto-trim for RTD helicopters. \n{{Feature|afm}}"
+groups:
+- RTD
+syntax:
+- call: !Binary
+  - helicopterRTD
+  - enable
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: helicopterRTD
+    description: helicopter
+    type: Unknown
+  - name: enable
+    description: enable or disable
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- myHelicopterRTD enableAutoTrimRTD true;

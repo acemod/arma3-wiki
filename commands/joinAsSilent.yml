@@ -1,0 +1,37 @@
+name: joinAsSilent
+description: Joins the unit to the given group, if position id is available, this one is used. Avoid any radio communication related to joining.
+groups:
+- Groups
+syntax:
+- call: !Binary
+  - unit
+  - - group
+    - id
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: group
+    type: Unknown
+  - name: id
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- player joinAsSilent [_group, 4];
+- "To get the position id:\n<sqf>\ngetUnitPositionId = {\n\tprivate [\"_vvn\", \"_str\"];\n\t_vvn = vehicleVarName _this;\n\t_this setVehicleVarName \"\";\n\t_str = str _this;\n\t_this setVehicleVarName _vvn;\n\tparseNumber (_str select [(_str find \":\") + 1])\n};\nplayer joinAsSilent [createGroup west, 5];\n_id = player call getUnitPositionId;\nhint str _id; // 5\n"

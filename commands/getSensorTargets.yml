@@ -1,0 +1,21 @@
+name: getSensorTargets
+description: Returns vehicle sensors' potential targets.
+groups:
+- Sensors
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: the sensors-equipped vehicle
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 6
+examples:
+- "private _radarTargets = getSensorTargets vehicle player;\n/*\n\treturns e.g\n\t[\n\t\t[O Alpha 1-3:1, \"air\", \"unknown\", [\"ir\", \"activeradar\", \"visual\"]],\n\t\t[17750112040# 163957: apc_tracked_01_aa_f.p3d, \"ground\", \"unknown\", [\"datalink\"]]\n\t]\n*/\n"

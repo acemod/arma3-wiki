@@ -1,0 +1,24 @@
+name: setLightFlareMaxDistance
+description: Sets max distance where the flare is visible.
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - light
+  - distance
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: light
+    type: Unknown
+  - name: distance
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- myLight setLightFlareMaxDistance 500;

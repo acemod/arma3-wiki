@@ -1,0 +1,40 @@
+name: preloadCamera
+description: |-
+  Preload all textures and models around given [[Position]] to avoid visual artifacts after camera is moved.
+
+  Should be used before any abrupt camera change/cut.
+
+  Returns true once all data is ready. See [[camPreload]] for alternative, more flexible camera preloading.
+groups:
+- Camera Control
+syntax:
+- call: !Unary position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: position
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- waitUntil {preloadCamera markerPos "cam_location_2"};

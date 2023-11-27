@@ -1,0 +1,38 @@
+name: setMousePosition
+description: Moves mouse pointer to specified position on the screen. '''x''' and '''y''' could be any number, but will be clipped so mouse never leaves the screen area.
+groups:
+- GUI Control - Positioning
+syntax:
+- call: !Unary
+  - x
+  - y
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: x
+    description: x in screen coordinates
+    type: Unknown
+  - name: y
+    description: y in screen coordinates
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setMousePosition [0.5, 0.5];

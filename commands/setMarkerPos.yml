@@ -1,0 +1,45 @@
+name: setMarkerPos
+description: |-
+  Moves the marker. If position is given in 3D format, {{hl|z}} coordinate is stored with the marker and will be used when marker is passed to commands like [[createVehicle]], [[createUnit]], [[createAgent]], [[createMine]], [[setVehiclePosition]] for example. When [[Object]] is used for position, its [[getPosWorld]] is used.
+  {{Feature|Informative|'''Multiplayer optimisation:''' Global marker commands always broadcast the ''entire'' marker state over the network. As such, the number of network messages exchanged when creating or editing a marker can be reduced by performing all but the last operation using local marker commands, then using a global marker command for the last change (and subsequent global broadcast of all changes applied to the marker).}}
+groups:
+- Markers
+syntax:
+- call: !Binary
+  - markerName
+  - pos
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: markerName
+    type: Unknown
+  - name: pos
+    description: object's '''model centre'''<nowiki/>'s position is used (see [[getPosWorld]])
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"MarkerOne" setMarkerPos getMarkerPos "MarkerTwo";'

@@ -1,0 +1,44 @@
+name: lbSetPictureRightColorDisabled
+description: |-
+  Sets the disabled color of second (right aligned) picture of the item with the given index of the listbox with id idc of the topmost user dialog to the given color.
+  Color which consists from only zeros means disable this override.
+groups:
+- GUI Control - ListBox
+syntax:
+- call: !Unary
+  - idc
+  - index
+  - color
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: idc
+    type: Unknown
+  - name: index
+    type: Unknown
+  - name: color
+    type: Unknown
+- call: !Binary
+  - control
+  - - index
+    - color
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: index
+    type: Unknown
+  - name: color
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 20
+examples:
+- lbSetPictureRightColorDisabled [101, 0, [1, 1, 1, 0.25]];
+- _ctrl lbSetPictureRightColorDisabled [0, [1, 1, 1, 0.25]];

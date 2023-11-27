@@ -1,0 +1,20 @@
+name: taskName
+description: Returns the name of the given task.
+groups:
+- Briefing
+syntax:
+- call: !Unary task
+  ret:
+  - Unknown
+  - task name
+  params:
+  - name: task
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- private _taskName = taskName _mytask;

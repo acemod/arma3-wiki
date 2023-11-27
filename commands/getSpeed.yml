@@ -1,0 +1,43 @@
+name: getSpeed
+description: |-
+  Get the speed for the given speed mode.
+
+  SpeedMode can be:
+  *"AUTO"
+  *"SLOW"
+  *"NORMAL"
+  *"FAST"
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - object
+  - speedMode
+  ret:
+  - Unknown
+  - m/s
+  params:
+  - name: object
+    type: Unknown
+  - name: speedMode
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _spd = player getSpeed "FAST";

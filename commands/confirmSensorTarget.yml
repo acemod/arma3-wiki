@@ -1,0 +1,27 @@
+name: confirmSensorTarget
+description: Sets for which [[Side]] the entity becomes a "confirmed hostile" target - a target that becomes highlighted red on the sensors display.
+groups:
+- Sensors
+syntax:
+- call: !Binary
+  - vehicle
+  - - side
+    - isConfirmed
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    type: Unknown
+  - name: side
+    type: Unknown
+  - name: isConfirmed
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- vehicle player confirmSensorTarget [blufor, true];

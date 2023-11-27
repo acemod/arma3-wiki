@@ -1,0 +1,46 @@
+name: position
+description: |-
+  Returns position of an object (alias of [[getPos]]) or location (alias of [[locationPosition]]).
+  {{Feature|important|Do '''not''' use this command to get an object's position in 3D. See [[getPos]] for an explanation and alternatives.}}
+groups:
+- Positions
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+- call: !Unary location
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: location
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 0
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- private _pos = position player;
+- _myLocationHomePos = position myLocation;
+- "private _location = createLocation [\"b_inf\", [1000, 1000], 1, 1];\n_location attachObject player;\nlocationPosition _location;\t// [1916.03,5711.98,12.208]\ngetPos _location;\t\t\t// [1916.03,5711.98,12.208]\nposition _location;\t\t\t// [1000,1000,0]\n"

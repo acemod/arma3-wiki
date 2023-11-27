@@ -1,0 +1,25 @@
+name: simulCloudDensity
+description: Returns density of clouds at given position.
+problem_notes:
+- '{{Feature|edeneditor|SimulWeather seems to be disabled in [[:Category:Eden Editor|Eden Editor]] and scenario preview.}}'
+groups:
+- Environment
+syntax:
+- call: !Unary pos
+  ret:
+  - Unknown
+  - |-
+    density (0-1)
+    * [[Nothing]] - If arguments are incorrect
+    * [[Boolean]] - Returns [[false]] if simulWeather is disabled
+  params:
+  - name: pos
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+examples:
+- simulCloudDensity getPos player;

@@ -1,0 +1,43 @@
+name: waypointAttachVehicle
+description: |-
+  Attaches the [[Waypoint]] to the provided vehicle [[Object]].
+  {{Feature | important | Use this command to associate a transport with {{hl|"GETIN"}} waypoint, other types of waypoints might or might not work.
+  See also [[setWaypointType]] to set the waypoint type to "GETIN".}}
+groups:
+- Waypoints
+syntax:
+- call: !Binary
+  - waypoint
+  - vehicleName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: waypoint
+    type: Unknown
+  - name: vehicleName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '[_grp, 2] waypointAttachVehicle vehicle player;'
+- ((waypoints player) select 0) waypointAttachVehicle _soldier1;

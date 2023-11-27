@@ -1,0 +1,26 @@
+name: ctrlSetModelDirAndUp
+description: Sets orientation of 3D control model. It is similar to [[setVectorDirAndUp]] command for an object.
+groups:
+- GUI Control - Object
+syntax:
+- call: !Binary
+  - control
+  - dirAndUp
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    description: 3D control
+    type: Unknown
+  - name: dirAndUp
+    description: '[<nowiki/>[[vectorDir]], [[vectorUp]]]'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 32
+examples:
+- _ctrl3D ctrlSetModelDirAndUp [[0,1,0],[0,0,1]]; //default orientation

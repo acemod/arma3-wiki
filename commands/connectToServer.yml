@@ -1,0 +1,33 @@
+name: connectToServer
+description: |-
+  Connects the client to the provided server.
+  {{Feature|informative|
+  * only works on the [[Arma 3 Main Menu|Main Menu]].
+  * must be executed from [[isUIContext | UI context]], such as ''onButtonDown'' or similar events (see [[User Interface Event Handlers]]).
+  }}
+groups:
+- System
+syntax:
+- call: !Unary
+  - ip
+  - port
+  - password
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ip
+    type: Unknown
+  - name: port
+    type: Unknown
+  - name: password
+    description: '"" if no password'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 0
+examples:
+- connectToServer ["192.168.0.2", 2302, "test"];

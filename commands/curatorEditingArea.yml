@@ -1,0 +1,21 @@
+name: curatorEditingArea
+description: Returns all curator editing areas.
+groups:
+- Curator
+syntax:
+- call: !Unary curator
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: curator
+    description: curator module.
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- _editingAreas = curatorEditingArea myCurator;

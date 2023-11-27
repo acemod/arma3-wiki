@@ -1,0 +1,79 @@
+name: say3D
+description: |-
+  Lets an object say given sound in 3D space.
+  This allows broadcasting of positional music or sound from a source, without having to script a fade sound or music command.
+  Compare this with [[say2D]] which will always play a sound at the location of the player after he has been in the vicinity of a broadcasting sound.
+  Sound is defined in {{Link|Description.ext#CfgSounds|"CfgSounds"}} of the [[Description.ext]] or main config.
+
+  {{Feature|informative|
+  * an object can only "say" '''one''' sound at a time
+  * in order to stop a [[say3D]] sound:
+  ** delete the returned '''sound source''' with [[deleteVehicle]], or
+  ** kill the '''sound source''' with e.g [[setDamage]].
+  * prior to {{GVI|arma3|2.00}}, the '''sound source''' object was not returned by the command, so the '''from''' object had to be deleted instead (see Examples [[#Example 2|2]] and [[#Example 3|3]]).
+  * forcing the speed of sound simulation:
+  ** may delay the queued sound to play right after the previous sound, even if the second sound does not simulate sound delay (e.g sound 1 plays with a 5s delay, ends, ''then'' sound 2 plays)
+  ** if the queued sound uses speed of sound simulation, it will be delayed from the end of the first sound (they will not follow "as expected")
+  ** makes the ''offset'' parameter ignored.
+  }}
+problem_notes:
+- If the player is in first person view inside a vehicle at the moment of command execution, the sound created is greatly attenuated.
+groups:
+- Sounds
+syntax:
+- call: !Binary
+  - from
+  - sound
+  ret:
+  - Unknown
+  - the sound source (was [[Nothing]] before {{GVI|arma3|2.00|size= 0.75}})
+  params:
+  - name: from
+    description: |-
+      origin of the sound
+      * [[Array]] - format is [from, to] where:
+      ** from: [[Object]] - origin of the sound
+      ** to: [[Object]] - target
+    type: Unknown
+  - name: sound
+    description: |-
+      maximum distance in meters at which the sound can be heard
+      ** pitch: [[Number]] - (Optional, default 1) pitch of the sound
+      ** {{GVI|arma3|1.92|size= 0.75}} isSpeech: [[Boolean]] or {{GVI|arma3|2.04|size= 0.75}} [[Number]] - (Optional, default [[false]])
+      *** 0/[[false]] = play as sound ([[fadeSound]] applies)
+      *** 1/[[true]] = play as speech ([[fadeSpeech]] applies), filters are not applied to it (i.e. house or vehicle interior one)
+      *** 2 = play as sound ([[fadeSound]] applies) without interior/vehicle muffling
+      ** {{GVI|arma3|2.00|size= 0.75}} offset: [[Number]] - (Optional, default 0) offset in seconds; ignored when ''simulateSpeedOfSound'' is used
+      ** {{GVI|arma3|2.16|size= 0.75}} simulateSpeedOfSound: [[Boolean]] - (Optional, default [[false]]) [[true]] to simulate speed of sound (see description note)
+    type: Unknown
+    optional: true
+    default: '100'
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  All possible combinations:
+  <sqf>
+  helicopter1 say3D "FortunateSon";
+  helicopter1 say3D ["FortunateSon", 500, 1, 0, 0, true];
+  [helicopter1, player] say3D "FortunateSon";
+  [helicopter1, player] say3D ["FortunateSon", 500, 1, 0, 0, true];
+- "Workaround for dead bodies:\n<sqf>\nprivate _dummy = \"#particlesource\" createVehicleLocal ASLToAGL getPosWorld _corpse;\n_dummy say3D \"whatever\";\n_dummy spawn {\n\tsleep 5; // at least the length of your sound\n\tdeleteVehicle _this;\n};\n"
+- |
+  // Since {{arma3}} v2.00, the sound source is returned and can be deleted directly
+  _soundSrc = helicopter1 say3D "Fortunateson";
+  sleep 5;
+  deleteVehicle _soundSrc; // stop the sound after ~5 seconds

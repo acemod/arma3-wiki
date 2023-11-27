@@ -1,0 +1,23 @@
+name: stopEngineRTD
+description: "Instant engines stop. \n{{Feature|afm}}"
+groups:
+- RTD
+syntax:
+- call: !Unary heli
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: heli
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- '[[stopEngineRTD]] myHeli'

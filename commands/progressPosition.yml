@@ -1,0 +1,30 @@
+name: progressPosition
+description: Returns the current position in the [[CT_PROGRESS|progress bar]].
+groups:
+- GUI Control
+syntax:
+- call: !Unary control
+  ret:
+  - Unknown
+  - progress from 0 to 1
+  params:
+  - name: control
+    description: progress bar
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _progress = progressPosition _control;

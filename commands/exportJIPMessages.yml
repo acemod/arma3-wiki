@@ -1,0 +1,22 @@
+name: exportJIPMessages
+description: 'Export list of JIP to a file. <br>Special: BattlEye''s RCON variant of this command is #exportJIPqueue (see also [[Multiplayer_Server_Commands]])'
+groups:
+- Diagnostic
+- Multiplayer
+syntax:
+- call: !Unary fileName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: fileName
+    description: file where to store the list
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- exportJIPMessages "myFileNameWithoutExtension";

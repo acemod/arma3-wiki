@@ -1,0 +1,55 @@
+name: commandWatch
+description: Orders the unit(s) to watch the given position or target (via the radio). Use [[objNull]] as the target to order a unit to stop watching a position/target.
+multiplayer_note: This command is only effective when used on local units. When used on a remote unit, this command will create radio dialogue on the machine the unit is local to, but the unit will not watch the target object/position.
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - units
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: units
+    type: Unknown
+  - name: position
+    type: Unknown
+- call: !Binary
+  - units
+  - target
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: units
+    type: Unknown
+  - name: target
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldierOne commandWatch markerPos "MarkerMoveOne";
+- '[s1, s2] commandWatch player;'

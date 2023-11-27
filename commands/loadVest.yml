@@ -1,0 +1,23 @@
+name: loadVest
+description: |-
+  Returns current percentage of mass from items stored in a vest relative to the maximum capacity of the vest. <br>
+  It is equivalent to this formula:
+  <sqf>_loadVest = massOfAllItemsInVest / getContainerMaxLoad vest player;</sqf>
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _weight = loadVest player;

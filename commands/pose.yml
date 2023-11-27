@@ -1,0 +1,20 @@
+name: pose
+description: Returns the pose of the given unit.
+groups:
+- Unit Control
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - 'can be one of:'
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- if (pose player == "SurfaceSwimming") then { hint "How's water?" };

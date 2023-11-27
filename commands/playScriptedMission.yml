@@ -1,0 +1,43 @@
+name: playScriptedMission
+description: |-
+  Load the given world, launch an empty mission, and execute the given expression.
+  If provided, ''config'' can reference to the config entry, replacing [[Description.ext]] for this mission.
+groups:
+- System
+syntax:
+- call: !Unary
+  - world
+  - expression
+  - config
+  - ignoreChildWindow
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: world
+    type: Unknown
+  - name: expression
+    type: Unknown
+  - name: config
+    type: Unknown
+    optional: true
+  - name: ignoreChildWindow
+    type: Unknown
+    optional: true
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "playScriptedMission\n[\n\t\"desert_e\",\n\t{\n\t\texecVM \"\\ca\\missions_e\\data\\scenes\\credits1\\init.sqf\";\n\t},\n\tconfigFile / \"CfgMissions\" / \"Cutscenes\" / \"Credits\"\n];"

@@ -1,0 +1,43 @@
+name: text
+description: Creates a structured text containing the given plain text if argument is [[String]]. Use [[setAttributes]] to set additional [[Structured_Text#Attributes | attributes]] on the text. If the argument is [[location]], returns location's text value (see Alt Syntax).
+groups:
+- Locations
+- Strings
+- Structured Text
+syntax:
+- call: !Unary string
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: string
+    type: Unknown
+- call: !Unary location
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: location
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _stxt2 = text "Hello world.";
+- _townName = text myTownLocation;
+- _loc = text nearestLocation [position player, "NameMarine"]; //"Marina Bay"

@@ -1,0 +1,37 @@
+name: setWantedRPMRTD
+description: "Tell the helicopter engine RPMs to reach the given value within a period of time. The simulation will try to reach the RPMs, but it does not guarantee it will reach the precise value!\n* engine index 0: engine #1\n* engine index 1: engine #2\n* engine index 2: engine #3\n* engine index -1: all engines \n{{Feature|afm}}"
+groups:
+- RTD
+syntax:
+- call: !Binary
+  - helicopterRTD
+  - - value
+    - time
+    - engineIndex
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: helicopterRTD
+    description: helicopter
+    type: Unknown
+  - name: value
+    description: engine RPMs
+    type: Unknown
+  - name: time
+    description: time to reach desired RPMs (seconds)
+    type: Unknown
+  - name: engineIndex
+    description: engine index
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 1
+    minor: 34
+examples:
+- vehicle player setWantedRPMRTD [2500, 30, 0];

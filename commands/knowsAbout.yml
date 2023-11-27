@@ -1,0 +1,70 @@
+name: knowsAbout
+description: |-
+  Checks if a group or a side knows about target.
+  * Enemy knowledge is instantly shared among the group units
+  * Units in the same group always perfectly know about each others
+  * AI knowledge cannot check beyond current [[viewDistance]] and it resets to zero as soon as the target's distance is over it<br>Note: neither fog nor daylight affect this behaviour
+  * Losing sight of a target for more than 120 seconds resets its [[knowsAbout]] to zero as well
+  * '''Magic number''' is the value that must be reached for a unit to shoot at an enemy (used by "Detected by" triggers as well):
+  :{{{!}}class="wikitable align-center"
+  ! Game
+  {{!}} {{GVI|ofp|1.46}}
+  {{!}} {{GVI|ofpr|1.96}}
+  {{!}} {{GVI|arma1|1.18}}
+  {{!}} {{GVI|arma2|1.11}}
+  {{!}} {{GVI|arma2oa|1.62}}
+  {{!}} {{GVI|arma3|1.82}}
+  {{!}}-
+  ! Magic value
+  {{!}} 0.7
+  {{!}} 0.105
+  {{!}} ?
+  {{!}} ?
+  {{!}} ?
+  {{!}} ?
+  {{!}}}
+multiplayer_note: '''''who'''' ''''''must'''''' be local, while ''''target'''' can be remote.'
+groups:
+- Object Manipulation
+- Sides
+syntax:
+- call: !Binary
+  - who
+  - target
+  ret:
+  - Unknown
+  - in range of 0..4, where 4 is maximum knowledge.
+  params:
+  - name: who
+    description: if a unit, unit's [[group]] is considered; if a vehicle, vehicle commander's [[group]] is used.
+    type: Unknown
+  - name: target
+    type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _knowledge = player knowsAbout _target;
+- _knowledge = (group player) knowsAbout _target;
+- _knowledge = (side player) knowsAbout _target;

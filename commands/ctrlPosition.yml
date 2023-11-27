@@ -1,0 +1,35 @@
+name: ctrlPosition
+description: |-
+  Returns the current position of 2D control as {{hl|[x, y, w, h]}} array. For 3D control it returns relative {{hl|[x, y, z]}}.<br>
+  If the control is within a [[CT_CONTROLS_GROUP]], the returned position will be relative to the group's position.<br>
+  If the control is a [[CT_CONTROLS_TABLE]] header or row the returned position is relative to the table's position.
+groups:
+- GUI Control - Positioning
+syntax:
+- call: !Unary controlName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: controlName
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _pos = ctrlPosition _control;

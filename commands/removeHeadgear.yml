@@ -1,0 +1,20 @@
+name: removeHeadgear
+description: Removes headgear from a unit. If unit has no headgear command quietly fails.
+groups:
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- removeHeadgear player;

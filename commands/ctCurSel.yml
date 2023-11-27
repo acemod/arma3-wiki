@@ -1,0 +1,20 @@
+name: ctCurSel
+description: Returns index of the selected row. Will take only rows, but not headers into account.
+groups:
+- GUI Control - Controls Table
+syntax:
+- call: !Unary ctrl
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: ctrl
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 70
+examples:
+- _curSel = ctCurSel _control;

@@ -1,0 +1,27 @@
+name: allActiveTitleEffects
+description: Returns a list of all layers that have currently active title effect. Numbers equal to or greater than 0 represent cut layers, where as -1 represents title layer (see [[Title Effect Type]]). Named layers are represented by their respective index.{{Feature | Informative | Effects created with [[titleText]], [[titleRsc]] and [[titleObj]] commands do not have a numbered layer, so they are represented as -1 layer in the result. Effects created with [[cutText]], [[cutRsc]] and [[cutObj]] are created either on layer 0, if no layer is specified, or on the given layer, if the layer index is specified, so they are represented by the layer index.}}
+groups:
+- GUI Control
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 98
+examples:
+- |-
+  cutText ["Hello World!" ,"PLAIN", 2];
+  hint str allActiveTitleEffects; // [0]
+- |-
+  21 cutText ["Hello World!", "PLAIN", 2];
+  hint str allActiveTitleEffects; // [21]
+- |-
+  cutText ["Hello World!", "PLAIN", 2];
+  titleText ["Hello World!", "PLAIN", 2];
+  hint str allActiveTitleEffects; // [-1, 0]

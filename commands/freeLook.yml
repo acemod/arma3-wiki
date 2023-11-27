@@ -1,0 +1,18 @@
+name: freeLook
+description: Returns if freelook is active on the current machine's controlled character.
+groups:
+- Object Manipulation
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - '[[true]] if freelook is active, [[false]] otherwise'
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if freeLook then\n{\n\tsystemChat \"Quit looking around, soldier!\";\n};"

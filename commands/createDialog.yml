@@ -1,0 +1,63 @@
+name: createDialog
+description: |-
+  Creates a dialog which is defined either in the mission's [[Description.ext|description.ext]], in the campaign's description.ext or in the global [[Resource.cpp/bin|resource.cpp]]. The given name has to be the class name used in one of these files. If another dialog is already opened, the desired dialog is created as a child dialog of the one already opened.
+
+  {{Feature|informative|By default, displays created with [[createDisplay]] are rendered on top of dialogs created with [[createDialog]]. If ''forceOnTop'' is set to [[true]], the dialog will be rendered on top of displays.}}
+groups:
+- GUI Control
+syntax:
+- call: !Unary dialogName
+  ret:
+  - Unknown
+  - '[[true]] when the dialog was created successfully'
+  params:
+  - name: dialogName
+    description: class name used in the description.ext, resource.cpp or config.cpp
+    type: Unknown
+- call: !Unary
+  - dialogName
+  - forceOnTop
+  ret:
+  - Unknown
+  - created dialog
+  params:
+  - name: dialogName
+    description: class name used in the description.ext, resource.cpp or config.cpp
+    type: Unknown
+  - name: forceOnTop
+    description: if [[true]], dialog will be rendered on top of displays
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+  since:
+    arma_3:
+      major: 2
+      minor: 8
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |
+  private _ok = createDialog "RscDisplayGame";
+  if (!_ok) then { hint "Dialog could not be opened!" };

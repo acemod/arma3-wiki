@@ -1,0 +1,64 @@
+name: lockCameraTo
+description: |-
+  Lock/Unlock stabilized camera to target. Works only on turrets which have optic mode selected with [[directionStabilizationEnabled|direction stabilization enabled]].
+
+  {{Feature|informative|Since {{GVI|arma3|2.08}} the command also works with non-stabilized turrets (such as main turret of a tank). See {{Link|#Alternative_Syntax|syntax 2}}.}}
+
+  {{Feature|informative|The command is local to the '''turret''' gunner, not the vehicle.}}
+groups:
+- Camera Control
+syntax:
+- call: !Binary
+  - vehicle
+  - - target
+    - turretPath
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: UAV
+    type: Unknown
+  - name: target
+    description: use [[objNull]] to unlock
+    type: Unknown
+  - name: turretPath
+    description: path to the turret with required camera
+    type: Unknown
+- call: !Binary
+  - vehicle
+  - - target
+    - turretPath
+    - temporary
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: UAV
+    type: Unknown
+  - name: target
+    description: use [[objNull]] to unlock
+    type: Unknown
+  - name: turretPath
+    description: path to the turret with required camera
+    type: Unknown
+  - name: temporary
+    description: |-
+      if set to [[true]], the engine will automatically remove the lock-on once the turret reaches its target.
+      If the target is out of turret's reach, the turret will move to the maximum of its capacity towards the target.
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 8
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 26
+examples:
+- uav lockCameraTo [vehicle, [0,0]];
+- uav lockCameraTo [objNull, [0,0]]; // unlocks the turret
+- vehicle player lockCameraTo [enemyTarget, vehicle player unitTurret player, false];

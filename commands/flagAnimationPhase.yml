@@ -1,0 +1,22 @@
+name: flagAnimationPhase
+description: Returns flag position on the flag pole.
+multiplayer_note: The result is local to the PC on which command is executed.
+groups:
+- Flags
+syntax:
+- call: !Unary flag
+  ret:
+  - Unknown
+  - flag position in range from 0 to 1, where 0 is bottom of the flag pole, 1 is the top of the flag pole
+  params:
+  - name: flag
+    description: flag pole of the type {{hl|"FlagCarrier"}}
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 68
+examples:
+- flagAnimationPhase _flag1;

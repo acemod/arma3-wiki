@@ -1,0 +1,21 @@
+name: uniformMagazines
+description: Get array with all magazines from uniform of the given unit.
+groups:
+- Containers
+- Unit Inventory
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "uniformMagazines player;\n// returns e.g\n/*\n[\n\t\"6.5mm 30Rnd STANAG Mag(30/30)[id/cr:1/0](3x)\"\n]\n*/\n"

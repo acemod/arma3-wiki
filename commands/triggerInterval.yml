@@ -1,0 +1,21 @@
+name: triggerInterval
+description: "Returns trigger condition check frequency in seconds. <br><br> \n\n{{Feature | important | The trigger could be [[Multiplayer Scripting#Locality|local]] or remote but the result returned by this command will be for the trigger interval set up locally on the client that executed the command. See [[createTrigger]] for more info.}}"
+groups:
+- Triggers
+syntax:
+- call: !Unary trigger
+  ret:
+  - Unknown
+  - trigger interval in seconds
+  params:
+  - name: trigger
+    description: trigger object
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 98
+examples:
+- _interval = triggerInterval someTrigger;

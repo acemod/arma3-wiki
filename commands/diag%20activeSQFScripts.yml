@@ -1,0 +1,20 @@
+name: diag activeSQFScripts
+description: Returns information about active [[SQF Syntax|SQF]] scripts. To see number of all scripts currently in the scheduler use [[diag_activeScripts]].
+groups:
+- Diagnostic
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 44
+examples:
+- '[] spawn { hint str diag_activeSQFScripts; }; // displays [["<spawn> hint str diag_activeSQFScripts;", "", true, 1]]'
+- "[] spawn {\n\thint str diag_activeSQFScripts; // displays [[\"<spawn> hint str diag_activeSQFScripts;\", \"\", true, 2]]\n};"
+- "[] spawn {\n\tscriptName \"aScript\";\n\thint str diag_activeSQFScripts; // displays [[\"aScript\", \"\", true, 3]]\n};"

@@ -1,0 +1,88 @@
+name: call
+description: |-
+  Adds given set of compiled instructions to the current stack and waits for it to finish and return, provides an option to pass arguments to the executed [[Code]].
+  See [[Scheduler]] to learn more about how the code is executed and behaves.
+groups:
+- Program Flow
+syntax:
+- call: !Unary code
+  ret:
+  - Unknown
+  - the last value given in the function is returned. See the topic [[Function#Return_Values|Function]] for more information.
+  params:
+  - name: code
+    description: |-
+      [[compile]]d instructions
+      {{Feature|ofp|{{ofp}} takes [[String]].}}
+    type: Unknown
+- call: !Binary
+  - args
+  - code
+  ret:
+  - Unknown
+  - the last value given in the function is returned. See the topic [[Function#Return_Values|Function]] for more information.
+  params:
+  - name: args
+    description: arguments that are passed to the function in the <sqf inline>_this</sqf> variable
+    type: Unknown
+  - name: code
+    description: |-
+      [[compile]]d instructions
+      {{Feature|ofp|{{ofp}} takes [[String]].}}
+    type: Unknown
+- call: !Binary
+  - hashMapObj
+  - - methodName
+    - arguments
+  ret:
+  - Unknown
+  - the value returned by the ''methodName'' method
+  params:
+  - name: hashMapObj
+    description: the HashMap (not necessarily created through [[createHashMapObject]]) to call the method on
+    type: Unknown
+  - name: methodName
+    description: the name of the method to call (the method must be defined in ''hashMapObj''; see [[createHashMapObject]])
+    type: Unknown
+  - name: arguments
+    description: arguments that are passed to the method in the <sqf inline>_this</sqf> variable
+    type: Unknown
+    optional: true
+    default: '[[nil]]'
+  since:
+    arma_3:
+      major: 2
+      minor: 14
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 85
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- call { hint str 123; };
+- 123 call { hint str _this; };
+- |
+  _sum = [1, 2] call { (_this select 0) + (_this select 1); };
+  hint str _sum; // displays 3
+- 123 call compile "hint str _this;";
+- _result = 123 call compile preprocessFileLineNumbers "myFile.sqf";
+- "private _hashMapObj = createHashMapObject [[\n\t[\"MyMethod\", { systemChat (\"MyMethod has been called with the following arguments: \" + str _this); }]\n]];\n\n_hashMapObj call [\"MyMethod\", [\"Hello there\", player, 123]]; // hints 'MyMethod has been called with the following arguments: [\"Hello there\", player, 123]'\n"

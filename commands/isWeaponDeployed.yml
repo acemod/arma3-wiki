@@ -1,0 +1,38 @@
+name: isWeaponDeployed
+description: Returns true if weapon is currently deployed.
+groups:
+- Weapons
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+- call: !Unary
+  - unit
+  - onGround
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: onGround
+    description: '[[true]] to check if deployed on ground, [[false]] to check if deployed on object. Omitted - same as main syntax.'
+    type: Unknown
+    optional: true
+  since:
+    arma_3:
+      major: 2
+      minor: 6
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 42
+examples:
+- _dep = isWeaponDeployed player;
+- _depOnObj = isWeaponDeployed [player, false];

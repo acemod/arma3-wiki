@@ -1,0 +1,55 @@
+name: lbValue
+description: Returns the additional integer value of the item with the given index of the [[CT_LISTBOX]] or [[CT_COMBO]].
+groups:
+- GUI Control - ListBox
+syntax:
+- call: !Unary
+  - idc
+  - index
+  ret:
+  - Unknown
+  - only integers
+  params:
+  - name: idc
+    description: control IDC
+    type: Unknown
+  - name: index
+    type: Unknown
+- call: !Binary
+  - control
+  - index
+  ret:
+  - Unknown
+  - only integers
+  params:
+  - name: control
+    type: Unknown
+  - name: index
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 75
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _value = lbValue [101, 0];
+- _value = _control lbValue 0;

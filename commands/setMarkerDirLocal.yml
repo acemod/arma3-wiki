@@ -1,0 +1,37 @@
+name: setMarkerDirLocal
+description: Sets the orientation of the marker.
+groups:
+- Markers
+syntax:
+- call: !Binary
+  - markerName
+  - angle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: markerName
+    type: Unknown
+  - name: angle
+    description: angle of the marker in degree
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 4
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"Marker1" setMarkerDirLocal 90;'

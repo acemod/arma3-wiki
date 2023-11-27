@@ -1,0 +1,18 @@
+name: is3DEN
+description: Returns [[true]] if the [[:Category:Eden Editor|Eden Editor]] is currently being used.
+groups:
+- Eden Editor
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - '[[true]] when inside editor environment, [[false]] when outside of editor environment'
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- if is3DEN then {systemChat "Welcome to Eden Editor!"};

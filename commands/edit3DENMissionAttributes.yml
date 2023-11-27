@@ -1,0 +1,21 @@
+name: edit3DENMissionAttributes
+description: Open a window with [[Eden_Editor:_Scenario_Atttributes|scenario attribute]] in given section.
+groups:
+- Eden Editor
+syntax:
+- call: !Unary section
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: section
+    description: attribute section from {{hl|[[configFile]] >> "Cfg3DEN" >> "Mission"}}
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- edit3DENMissionAttributes "Multiplayer";

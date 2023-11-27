@@ -1,0 +1,53 @@
+name: setUserActionText
+description: '[[File:setUserActionText.jpg|right|350px]] Changes user added action (see [[addAction]]) menu item text. <br><br>'
+groups:
+- Interaction
+syntax:
+- call: !Binary
+  - object
+  - - actionIndex
+    - textMenu
+    - textWindowBackground
+    - textWindowForeground
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    description: object the action is added to
+    type: Unknown
+  - name: actionIndex
+    description: action id returned by [[addAction]]
+    type: Unknown
+  - name: textMenu
+    description: text title shown in scroll action menu
+    type: Unknown
+  - name: textWindowBackground
+    description: background text
+    type: Unknown
+    optional: true
+    default: '""'
+    since:
+      arma_3:
+        major: 1
+        minor: 62
+  - name: textWindowForeground
+    description: foreground text
+    type: Unknown
+    optional: true
+    default: '""'
+    since:
+      arma_3:
+        major: 1
+        minor: 62
+argument_loc: Global
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- |-
+  _id = player addAction ["Hello", ""];
+  player setUserActionText [_id, "Good Bye"];
+- "_id = billboard addAction [\"Some Action\", {}];\nbillboard setUserActionText [\n\t_id, \n\t\"Some Action\", \n\t\"<t color='#ff0000'>Background-----------------</t><br>Multiline<br>Multiline<br>Multiline<br>. . .\", \n\t\"<t color='#00ff00'>-----------------Foreground</t>\"\n];\n"

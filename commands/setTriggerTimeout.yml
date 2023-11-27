@@ -1,0 +1,47 @@
+name: setTriggerTimeout
+description: |-
+  Defines the time between condition satisfaction and trigger activation (randomly from min to max, with an average value mid). If the last argument is true, the condition must be fullfilled all the time. <br><br>
+  For a normal trigger, ''min'', ''mid'' and ''max'' are used to generate random duration according to {{Link|https://en.wikipedia.org/wiki/Normal_distribution|Gaussian Distribution}}<ref>Technically, it is a rescaled {{Link|https://en.wikipedia.org/wiki/Bates_distribution|Bates distribution}} with n = 4. The distribution is split in two at its midpoint and scaled linearly such that its maximum lies at the specified midpoint.</ref>. For a "Seized" type of trigger, the duration value is generated using side ruling power
+groups:
+- Triggers
+syntax:
+- call: !Binary
+  - trigger
+  - - min
+    - mid
+    - max
+    - interruptable
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: trigger
+    type: Unknown
+  - name: min
+    type: Unknown
+  - name: mid
+    type: Unknown
+  - name: max
+    type: Unknown
+  - name: interruptable
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _trigger setTriggerTimeout [5, 10, 7, false];

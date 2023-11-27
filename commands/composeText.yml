@@ -1,0 +1,38 @@
+name: composeText
+description: Creates a [[Structured Text]] by joining the given [[Structured Text | structured]] or [[String | plain]] text arguments.
+groups:
+- Strings
+- Structured Text
+syntax:
+- call: !Unary arguments
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: arguments
+    description: use [[Structured Text]] where necessary (see {{Link|#Example 2}})
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- 'hint composeText ["Image: ", image "\a3\Data_f\Flags\flag_Altis_co.paa"];'
+- "hint composeText [\"line1\", \"<br/>\", \"line2\"];\t\t// result displayed in one line\nhint composeText [\"line1\", lineBreak, \"line2\"];\t// result displayed in two lines\n"

@@ -1,0 +1,25 @@
+name: addItemToBackpack
+description: Create new item and store it to soldier's backpack. The item can also be a weapon or a magazine.
+groups:
+- Containers
+syntax:
+- call: !Binary
+  - unit
+  - item
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: item
+    type: Unknown
+argument_loc: Global
+effect_loc: Global
+since:
+  arma_3:
+    major: 1
+    minor: 4
+examples:
+- player addItemToBackpack "arifle_MXM_Hamr_pointer_F";
+- player addItemToBackpack "itemGPS";

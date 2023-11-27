@@ -1,0 +1,21 @@
+name: flatten
+description: Flattens an array.
+groups:
+- Arrays
+syntax:
+- call: !Unary array
+  ret:
+  - Unknown
+  - flattened array
+  params:
+  - name: array
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- flatten [1, [2], [[3]], [[[4]]]]; // returns [1, 2, 3, 4]
+- flatten getUnitLoadout player;

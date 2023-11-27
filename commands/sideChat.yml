@@ -1,0 +1,87 @@
+name: sideChat
+description: "Types text to the side radio channel by the specified unit. \n{{Feature | Important | The unit must have an [[assignItem|assigned]] radio item (such as '''''\"ItemRadio\"''''') to see or transmit the messages. A radio item must have the property <syntaxhighlight lang=\"cpp\" inline\">simulation = \"ItemRadio\";</syntaxhighlight> in its [[CfgWeapons_Config_Reference#simulation.3D.22Weapon.22|CfgWeapons config]].}}"
+groups:
+- Radio and Chat
+syntax:
+- call: !Binary
+  - unit
+  - chatText
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: unit transmitting message
+    type: Unknown
+  - name: chatText
+    description: message to transmit
+    type: Unknown
+- call: !Binary
+  - - side
+    - identity
+  - chatText
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: side
+    description: side to which the message will be seen
+    type: Unknown
+  - name: identity
+    description: |-
+      class name of one of the identities in CfgHQIdentities. Possible identities in {{arma3}} are:
+      {{Columns|4|
+      * "Base"
+      * "HQ"
+      * "PAPA_BEAR"
+      * "AirBase"
+      * "BLU"
+      * "OPF"
+      * "IND"
+      * "IND_G"
+      }}
+    type: Unknown
+  - name: chatText
+    description: message to transmit
+    type: Unknown
+argument_loc: Global
+effect_loc: Local
+since:
+  flashpoint:
+    major: 1
+    minor: 34
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldierOne sideChat "Show this text";
+- '[west, "HQ"] sideChat "Hi there";'
+- |
+  [[File:xChat.jpg|right]]
+  <sqf>
+  driver vehicle player sideChat "sideChat";
+  driver vehicle player globalChat "globalChat";
+  driver vehicle player groupChat "groupChat";
+  vehicle player vehicleChat "vehicleChat";
+  driver vehicle player commandChat "commandChat";
+  driver vehicle player customChat [1, "customChat"];
+  systemChat "systemChat";
+- '[[blufor, "BLU"], "message"] remoteExec ["sideChat"]; // shows the message to all players'
+- |
+  unit setGroupId ["Cpt. Miller"]; // changes the group's callsign
+  unit sideChat "Hello ladies!";

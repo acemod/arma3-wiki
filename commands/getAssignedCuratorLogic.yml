@@ -1,0 +1,20 @@
+name: getAssignedCuratorLogic
+description: Returns curator logic to which given player has access.
+groups:
+- Curator
+syntax:
+- call: !Unary player
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: player
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 16
+examples:
+- (getAssignedCuratorLogic player) removeCuratorEditableObjects [allDead, true];

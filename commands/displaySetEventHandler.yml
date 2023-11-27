@@ -1,0 +1,42 @@
+name: displaySetEventHandler
+description: "Sets given event handler of given display.\nThe return code of the provided function should indicate whether this event was handled correctly. This implies telling the engine whether it is default code should be executed. \nSee [[User Interface Event Handlers]] for the full list of handler names.<br>\nIf applicable, see [[DIK KeyCodes]] for a list of key code constants, which are relevant to key related user interface events like {{Link|User Interface Event Handlers#onKeyDown|onKeyDown}} and {{Link|User Interface Event Handlers#onKeyUp|onKeyUp}}.\n{{Feature|important|When using the event names listed [[User Interface Event Handlers|here]] with the [[ctrlAddEventHandler]], [[ctrlSetEventHandler]], [[displayAddEventHandler]] or [[displaySetEventHandler]] commands, the prefix \"on\" in the event name must be removed (e.g. ''''ButtonDown'''' instead of ''''onButtonDown'''').}}"
+groups:
+- GUI Control - Event Handlers
+- Event Handlers
+syntax:
+- call: !Binary
+  - display
+  - - handlerName
+    - function
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: display
+    type: Unknown
+  - name: handlerName
+    type: Unknown
+  - name: function
+    description: code
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _control displaySetEventHandler ["KeyDown", ""];
+- "{{hl|init.sqf}}:\n<sqf>KeysPressed = compile preprocessFile \"keysPressed.sqf\";\nprivate _display = findDisplay 46;\n_display displaySetEventHandler [\"KeyDown\", \"_this call KeysPressed\"];</sqf>\n\n{{hl|keysPressed.sqf}}:\n<sqf>private _handled = false;\nswitch (_this select 1) do {\n\t// F key\n\tcase 33: {\n\t\t// code here\n\t\t_handled = true;\n\t};\n};\n_handled;"

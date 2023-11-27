@@ -1,0 +1,60 @@
+name: enableAIFeature
+description: Enables/disables given AI feature.
+groups:
+- AI Behaviour
+syntax:
+- call: !Binary
+  - feature
+  - enable
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: feature
+    description: |-
+      can be:
+      * {{hl|"AwareFormationSoft"}}
+      * {{hl|"CombatFormationSoft"}}
+    type: Unknown
+  - name: enable
+    description: '[[true]] to enable, [[false]] to disable'
+    type: Unknown
+- call: !Binary
+  - unit
+  - - feature
+    - enable
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: unit to test AI feature for
+    type: Unknown
+  - name: feature
+    description: see [[disableAI]] / [[enableAI]] for possible values
+    type: Unknown
+  - name: enable
+    description: '[[true]] to enable, [[false]] to disable'
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 96
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 5
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- '"AwareFormationSoft" enableAIFeature true;'
+- bob enableAIFeature ["AUTOTARGET", false];

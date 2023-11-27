@@ -1,0 +1,24 @@
+name: setLightUseFlare
+description: Sets if light has flare.
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - light
+  - bool
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: light
+    type: Unknown
+  - name: bool
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- myLight setLightUseFlare true;

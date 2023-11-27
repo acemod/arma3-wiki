@@ -1,0 +1,21 @@
+name: isAllowedCrewInImmobile
+description: Whether or not units can be in a vehicle with broken tracks/wheels.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Unknown
+  - '[[true]] - allowed, [[false]] - not allowed'
+  params:
+  - name: vehicle
+    description: transport
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 8
+examples:
+- "if !(isAllowedCrewInImmobile _tank) then\n{\n\t_tank allowCrewInImmobile true;\n};\n"

@@ -1,0 +1,33 @@
+name: setObjectViewDistance
+description: Sets the rendering distance of objects and shadows.
+groups:
+- System
+- Environment
+syntax:
+- call: !Unary objectDistance
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: objectDistance
+    type: Unknown
+- call: !Unary
+  - objectDistance
+  - shadowDistance
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: objectDistance
+    type: Unknown
+  - name: shadowDistance
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- setObjectViewDistance 2000;
+- setObjectViewDistance [2000, 800];

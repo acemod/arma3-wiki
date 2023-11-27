@@ -1,0 +1,44 @@
+name: commandMove
+description: Order the given unit(s) to move to the given location (via the radio). Exactly the same as [[doMove]], except this command displays a radio message. The command will not put a visible waypoint marker unlike when move command is given via commanding menu.
+multiplayer_note: When used on a remote unit, this command will still create a radio message on the remote machine but the unit will not move.
+groups:
+- Groups
+syntax:
+- call: !Binary
+  - unitName
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
+  - name: position
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _soldier1 commandMove getMarkerPos "Marker1";
+- '[_soldier1, _soldier2] commandMove getMarkerPos "Marker1";'

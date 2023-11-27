@@ -1,0 +1,24 @@
+name: tvIsSelected
+description: Returns true if given treeview item is selected.
+groups:
+- GUI Control - Tree View
+syntax:
+- call: !Binary
+  - control
+  - path
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: path
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+examples:
+- _control tvIsSelected [0];

@@ -1,0 +1,30 @@
+name: markerBrush
+description: Gets the marker brush. See [[setMarkerBrush]].
+groups:
+- Markers
+syntax:
+- call: !Unary name
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: name
+    description: marker name
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (markerBrush "Marker1" == "Solid") then { hint "Marker1 is solid!" };

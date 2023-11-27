@@ -1,0 +1,20 @@
+name: getObjectMaterials
+description: Gets all custom materials associated with the object.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary obj
+  ret:
+  - Unknown
+  - array of materials
+  params:
+  - name: obj
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 38
+examples:
+- _materials = getObjectMaterials car;

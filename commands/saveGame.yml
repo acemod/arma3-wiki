@@ -1,0 +1,38 @@
+name: saveGame
+description: |-
+  Autosaves the game (used for Retry). The saving is not started immediately, the request for autosave is made instead. To check the status of the request, use [[isSaving]]. The game can then be loaded from the last autosave with [[loadGame]]. Will not save if the player is [[objNull | null]] or dead.
+  {{Feature|arma3|Since {{GVI|arma3|1.88}} a {{hl|[[Arma 3: Scripted Event Handlers#Events | "OnSaveGame"]]}} [[BIS_fnc_addScriptedEventHandler | scripted event handler]] is available.}}
+groups:
+- Mission Information
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- saveGame;

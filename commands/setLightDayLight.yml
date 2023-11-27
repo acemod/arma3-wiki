@@ -1,0 +1,24 @@
+name: setLightDayLight
+description: Sets if light can be used during the day.
+groups:
+- Lights
+syntax:
+- call: !Binary
+  - light
+  - bool
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: light
+    type: Unknown
+  - name: bool
+    type: Unknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- myLight setLightDayLight true;

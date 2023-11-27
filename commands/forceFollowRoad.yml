@@ -1,0 +1,26 @@
+name: forceFollowRoad
+description: Forces the vehicle to stay on road.
+groups:
+- Unit Control
+syntax:
+- call: !Binary
+  - vehicle
+  - state
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: vehicle
+    type: Unknown
+  - name: state
+    description: 'true: Force on road, false: default behaviour'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- car forceFollowRoad true;

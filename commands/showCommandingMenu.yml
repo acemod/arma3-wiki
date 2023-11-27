@@ -1,0 +1,38 @@
+name: showCommandingMenu
+description: |-
+  Create the commanding menu described by the given config class or menu name. When the name is empty, the current menu is hidden.<br><br>
+  If commanding menu has "expression" set up, the expression will receive the following arguments when user activated the menu item:
+  * Local variable  {{hl|_target}}: [[Object]] - Target under the cursor. This works in both 3D and 2D (when cursor is over the unit icon on the map).
+  * Local variable {{hl|_pos}}: [[Array]] - Cursor position.
+  * Local variable {{hl|_is3D}}: [[Boolean]] - [[false]] if cursor is over the map, otherwise [[true]].
+groups:
+- Interaction
+syntax:
+- call: !Unary name
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: name
+    description: 'class name or user menu name (with "#USER:" prefix and "_#" page number suffix, where # is the page number starting with 0).'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- showCommandingMenu "";
+- showCommandingMenu "MyClassName";
+- showCommandingMenu "#USER:Tag_Menu_myMenu_0";
+- showCommandingMenu "RscMainMenu";

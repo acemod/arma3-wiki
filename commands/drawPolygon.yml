@@ -1,0 +1,28 @@
+name: drawPolygon
+description: Draws given polygon on the given map control with given color. The polygon must consist of at least 3 points. Unlike with other {{hl|draw*}} commands and due to complexity, this command does not support filling of the polygon with color. Use [[drawTriangle]] command to construct and fill polygon shape as a workaround.
+groups:
+- GUI Control - Map
+syntax:
+- call: !Binary
+  - map
+  - - polygon
+    - color
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: map
+    type: Unknown
+  - name: polygon
+    type: Unknown
+  - name: color
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- "test_polygon = [];\nfor \"_i\" from 1 to 12 do \n{\n\ttest_polygon pushBack (player getPos [10 + random 100, 360 / _i]);\n};\n\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\", \n{\n\tparams [\"_control\"];\n\t_control drawPolygon [test_polygon, [0,0,1,1]];\n}];\n"
+- "Draw a polygon by adjusting the {{hl|_radius}} and {{hl|_numVertices}}\n<sqf>\nvertices = [];\nprivate _numVertices = 2;\nprivate _numVertices = _numVertices max 3;\nprivate _radius = 100;\n\nfor \"_i\" from 1 to _numVertices do\n{\n\tvertices pushBack (player getRelPos [_radius, 360 / _numVertices * _i]);\n};\n\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\",\n{\n\tparams [\"_control\"];\n\t_control drawPolygon [vertices, [0,0,1,1]];\n}];\n"

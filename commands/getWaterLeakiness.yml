@@ -1,0 +1,21 @@
+name: getWaterLeakiness
+description: Get an object's water intake ratio when immersed.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary obj
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    description: object to check
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- "if (getWaterLeakiness _myCar > 0) then\n{\n\thint \"don't go in the water with it!\";\n};\n"

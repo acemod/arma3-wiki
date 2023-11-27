@@ -1,0 +1,25 @@
+name: getAllEnvSoundControllers
+description: |-
+  Returns an array containing the names and values of environmental 2D sound controllers, variables that can be used in simple expressions when configuring sounds.
+  {{Feature|important|
+  * Controller names are case sensitive
+  * Please note that the name for the wind param for '''2D''' controller is 'windy', 'wind' being the name for the '''3D''' controller [[getAllEnv3DSoundControllers]].
+  }}
+groups:
+- Sounds
+syntax:
+- call: !Unary position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: position
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 64
+examples:
+- "getAllEnvSoundControllers position player;\n/*\n\treturns e.g\n\t[\n\t\t[\"rain\",0],\n\t\t[\"night\",0],\n\t\t[\"windy\",0.161588],\n\t\t...\n\t]\n*/\n"

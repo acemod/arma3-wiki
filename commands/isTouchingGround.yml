@@ -1,0 +1,21 @@
+name: isTouchingGround
+description: Returns true if object is touching the ground.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- if (isTouchingGround player) then { hint "Terraferma!" };
+- "A full \"is safely parked\" method for air, ground and water vehicles:\n<sqf>\n// get if a vehicle is properly parked - covers e.g helicopter landed on a building, boat (beached or not) and underwater or not submarine\n// return false on null, disabled or destroyed vehicle\nprivate _isSafelyParked = {\n\tparams [\n\t\t[\"_vehicle\", objNull, [objNull]],\t\t\t\t// 0: OBJECT - vehicle - a null object returns false\n\t\t[\"_altitudeTolerance\", 0.1, [0]],\t\t\t\t// 1: NUMBER - altitude tolerance - in metre\n\t\t[\"_velocityTolerance\", 0.01, [0]]\t\t\t\t// 2: NUMBER - velocity tolerance - in km/h\n\t];\n\n\tif (not canMove _vehicle) exitWith { false };\t\t// returns false for null as well\n\n\tif (_vehicle isKindOf \"Ship\") then\n\t{\n\t\t// surfaceIsWater getPosASL _vehicle\t\t\t\t\t\t// a beached boat is fine\n\t\tvelocity _vehicle params [\"_velX\", \"_velY\"];\n\t\tsqrt (_velX * _velX + _velY * _velY) < _velocityTolerance\t// only 2D speed matters (think waves)\n\t\t&& {\n\t\t\tgetPosASLW _vehicle < _altitudeTolerance\t\t\t\t// underwater submarines are OK\n\t\t\t|| { getPos _vehicle select 2 < _altitudeTolerance }\t// beached boat\n\t\t};\n\t}\n\telse\n\t{\n\t\t// over -a- ground and not over ocean\n\t\t(isTouchingGround _vehicle || {\n\t\t\tgetPosASLW _vehicle select 2 >= _altitudeTolerance\t\t// not in water\n\t\t\t&& { getPos _vehicle select 2 < _altitudeTolerance }\n\t\t})\n\t\t&& { vectorMagnitude velocity _vehicle * 3.6 < _velocityTolerance }\n\t}\n};\n\nobjectParent player call _isSafelyParked;\n"

@@ -1,0 +1,52 @@
+name: getClientStateNumber
+description: |-
+  Returns client state in network game. Works on both, client and dedicated server. The following states are possible:
+
+  {{{!}} class{{=}}"wikitable"
+  ! [[getClientStateNumber]]
+  ! [[getClientState]]
+  ! Description
+  {{!}}-
+  {{!}} 0 {{!}}{{!}} "NONE" {{!}}{{!}} No client (or singleplayer)
+  {{!}}-
+  {{!}} 1 {{!}}{{!}} "CREATED" {{!}}{{!}} Client is created
+  {{!}}-
+  {{!}} 2 {{!}}{{!}} "CONNECTED" {{!}}{{!}} Client is connected to server, message formats are registered
+  {{!}}-
+  {{!}} 3 {{!}}{{!}} "LOGGED IN" {{!}}{{!}} Identity is created
+  {{!}}-
+  {{!}} 4 {{!}}{{!}} "MISSION SELECTED" {{!}}{{!}}Mission is selected
+  {{!}}-
+  {{!}} 5 {{!}}{{!}} "MISSION ASKED" {{!}}{{!}} Server was asked to send / not send mission
+  {{!}}-
+  {{!}} 6 {{!}}{{!}} "ROLE ASSIGNED" {{!}}{{!}} Role was assigned (and confirmed)
+  {{!}}-
+  {{!}} 7 {{!}}{{!}} "MISSION RECEIVED" {{!}}{{!}} Mission received
+  {{!}}-
+  {{!}} 8 {{!}}{{!}} "GAME LOADED" {{!}}{{!}} Island loaded, vehicles received
+  {{!}}-
+  {{!}} 9 {{!}}{{!}} "BRIEFING SHOWN" {{!}}{{!}} Briefing was displayed
+  {{!}}-
+  {{!}} 10 {{!}}{{!}} "BRIEFING READ" {{!}}{{!}} Ready to play mission
+  {{!}}-
+  {{!}} 11 {{!}}{{!}} "GAME FINISHED" {{!}}{{!}} Game was finished
+  {{!}}-
+  {{!}} 12 {{!}}{{!}} "DEBRIEFING READ" {{!}}{{!}} Debriefing read, ready to continue with next mission
+  {{!}}}
+groups:
+- Multiplayer
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - client state (see table above)
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- _state = getClientStateNumber;
+- _inGame = getClientStateNumber > 8;

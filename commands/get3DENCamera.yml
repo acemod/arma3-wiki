@@ -1,0 +1,19 @@
+name: get3DENCamera
+description: Returns the camera [[Object]] used by the [[:Category:Eden Editor|Eden Editor]].
+groups:
+- Eden Editor
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - '[[:Category:Eden Editor|Eden Editor]] camera'
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 56
+examples:
+- "// set exact yaw, pitch, and roll\n_y = 45; _p = -80; _r = 0;\nget3DENCamera setVectorDirAndUp [\n\t[sin _y * cos _p,cos _y * cos _p,sin _p],\n\t[[sin _r,-sin _p,cos _r * cos _p],-_y] call BIS_fnc_rotateVector2D\n];"
+- "//Look at player\n_a = positionCameraToWorld [0,0,0] vectorFromTo (getPosATL player);\n_y = asin(_a select 0);\n_b = [_a,_y] call BIS_fnc_rotateVector2D;\n_z = _b select 2;\n_p = asin(_z / sqrt((_b select 1)^2 + _z^2));\nget3DENCamera setVectorDirAndUp [\n\t_a,\n\t[[0,-sin _p,cos _p],-_y] call BIS_fnc_rotateVector2D\n];"
