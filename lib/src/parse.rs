@@ -20,6 +20,7 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
     }
     source = source.replace("<nowiki>", "");
     source = source.replace("</nowiki>", "");
+    source = source.replace("<nowiki/>", "");
 
     let lines = source
         .split("\n|")
