@@ -1,0 +1,53 @@
+name: local
+description: |-
+  Check if given unit is local on the computer in multiplayer games - see {{Link|Multiplayer Scripting#Locality}}.<br>
+  This can be used to determine on which computer some code must be run. In single player all objects are local.
+multiplayer_note: |-
+  A few things to note [[Multiplayer Scripting#General information about locality|amongst others]]:
+  * A game logic / module is always local to the server
+  * Terrain objects are local to every machine
+groups:
+- Multiplayer
+syntax:
+- call: !Unary object
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (not local _unit) then\n{\n\thint format [\"%1 is remote\", name _unit];\n};\n"
+- _isLocalGroup = local group _unit;
+- |
+  Sets variable's [[Variables#Scopes|scope]]:
+  <sqf>
+  // from Arma 2 v1.00 until Arma 3v1.54
+  local _myVariable = 42;
+
+  // since {{arma3}} v1.54
+  private _myVariable = 42;
