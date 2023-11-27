@@ -23,6 +23,7 @@ macro_rules! command {
 impl GitHub {
     pub fn new() -> Self {
         if std::env::var("CI").is_ok() {
+            println!("CI, Setting up git");
             command!([
                 "config",
                 "--global",
@@ -30,6 +31,8 @@ impl GitHub {
                 "hello@synixe.contractors"
             ]);
             command!(["config", "--global", "user.name", "SynixeBrodsky"]);
+        } else {
+            println!("Local, Skipping git setup");
         }
         Self(
             Octocrab::builder()
