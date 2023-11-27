@@ -1,0 +1,42 @@
+name: setVariable
+description: |-
+  Set variable to given value in the variable space of given element. Can be used to broadcast variables over the network.<br>
+  To remove a variable, set it to [[nil]] (see {{Link|#Example 5}}) - note that this does not work on [[Object]] and [[createLocation|scripted]] [[Location]] namespaces (the variable will be set to [[nil]] but will remain listed by [[allVariables]]).
+
+  {{Feature|warning|
+  [[missionNamespace]], [[uiNamespace]], [[parsingNamespace]] and [[profileNamespace]] variables '''cannot''' be named as commands - e.g <sqf inline>missionNamespace setVariable ["west", 123];</sqf> conflicts with the [[west]] command and will result in a {{hl|Reserved variable in expression}} error, [[west]] being a scripting command (other namespaces do not have such limitation).
+  See also [[:Category:Scripting Commands|all available script commands]].
+  }}
+groups:
+- Variables
+- Namespaces
+- Multiplayer
+syntax: []
+argument_loc: Global
+effect_loc: Local
+since:
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _myTruck setVariable ["TAG_myPublicVariable", 123, true];
+- _myTruck setVariable ["TAG_myLocalVariable", ["321", _var], owner driver _myTruck];
+- |-
+  missionNamespace setVariable ["TAG_myName", "Brian"];
+  hint TAG_myName; // hints "Brian"
+- "Get the current value of a variable or, if it is undefined, define it and then get the value:\n<sqf>\nprivate _var = missionNamespace getVariable \"VarName\";\nif (isNil \"_var\") then\n{\n\t_var = 123;\n\tmissionNamespace setVariable [\"VarName\", _var];\n};\n// _var now contains the current value of the missionNamespace's variable varName\n"
+- |-
+  Remove {{hl|TAG_myPublicVariable}} from [[missionNamespace]] (globally):
+  <sqf>missionNamespace setVariable ["TAG_myPublicVariable", nil, true];
