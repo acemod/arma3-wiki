@@ -2,7 +2,25 @@ name: removeWeaponAttachmentCargo
 description: "Remove attachment linked to a weapon from the vehicle cargo space. \n{{Feature|Warning|This is unofficial documentation. All Information here is as it exists in the Engine. It might not reflect the reality.}}"
 groups:
 - Vehicle Inventory
-syntax: []
+syntax:
+- call: !Binary
+  - object
+  - - weaponID
+    - creatorID
+    - attachment
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    description: vehicle or ammo box
+    type: Unknown
+  - name: weaponID
+    type: Unknown
+  - name: creatorID
+    type: Unknown
+  - name: attachment
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

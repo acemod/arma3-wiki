@@ -5,7 +5,65 @@ description: |-
   The "Call" in [[remoteExecCall]] only means that the remote execution will take place in [[Scheduler#Unscheduled Environment|unscheduled environment]] and does '''not''' mean it will happen right away (see {{Link|#Example 3}}).}}
 groups:
 - Multiplayer
-syntax: []
+syntax:
+- call: !Binary
+  - params
+  - - order
+    - targets
+    - JIP
+  ret:
+  - Unknown
+  - |-
+    In case of error.
+    * [[String]] - In case of success.
+    ** If the '''JIP''' parameter was [[false]] or an empty string, the return value is "".
+    ** If the '''JIP''' parameter was [[true]] or a custom JIP ID, the JIP ID is returned.
+    ** If the '''JIP''' parameter was an [[Object]], a [[Group]] or a [[netId]], the (corresponding) [[netId]] is returned.
+  params:
+  - name: params
+    description: '''''order''''''s parameter {{Feature|important|[[Structured Text]] is ''''''not'''''' meant to be sent over network.}}'
+    type: Unknown
+  - name: order
+    description: 'function or command name; while any function or command can be used here, only those allowed by [[Arma 3: CfgRemoteExec|CfgRemoteExec]] will actually be executed'
+    type: Unknown
+  - name: targets
+    description: |-
+      2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12
+      * [[Object]] - the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]
+      * [[String]] - interpreted as an [[Identifier]] (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [[Multiplayer Scripting#Locality|local]]
+      * [[Side]] - the order will be executed on machines where the player is on the specified side
+      * [[Group]] - the order will be executed on machines '''where the player is in the specified group''' ('''not''' where said group is local!)
+      * [[Array]] - array of any combination of the types listed above
+    type: Unknown
+  - name: JIP
+    description: |-
+      if [[true]], a unique JIP ID is generated and the [[remoteExec]] statement is added to the JIP queue from which it will be executed for every JIP
+      * [[String]]:
+      ** ff the string is empty, it is interpreted as [[false]]
+      ** ff the string is in format "[[Number]]:[[Number]]" (e.g. "0:0"), it is interpreted as a [[netId]] (see below)
+      ** else the string is treated as a custom JIP ID and the [[remoteExec]] statement is added to the JIP queue, replacing statements that have the same JIP ID
+      * [[Object]], [[Group]] or [[netId]] - the persistent execution of the [[remoteExec]] statement is attached to the given object or group.<br>When the object / group is deleted, the [[remoteExec]] statement is automatically removed from the JIP queue
+
+      The '''JIP''' parameter can only be used if the '''targets''' parameter is 0 or a negative number.<br>
+      See also [[#Example 3|Example 3]] on how to remove statements from the JIP queue.
+    type: Unknown
+- call: !Unary
+  - functionName
+  - targets
+  - JIP
+  ret:
+  - Unknown
+  - see the main syntax above for more details.
+  params:
+  - name: functionName
+    description: see the main syntax above for more details.
+    type: Unknown
+  - name: targets
+    description: see the main syntax above for more details.
+    type: Unknown
+  - name: JIP
+    description: see the main syntax above for more details.
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -13,23 +13,6 @@ syntax:
   params:
   - name: expression
     type: Unknown
-- call: !Binary
-  - if (condition)
-  - exception
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: if (condition)
-    description: if (condition) returns [[true]], "exception" is thrown
-    type: Unknown
-  - name: exception
-    description: value that will be put into ''_exception'' variable inside [[catch]] block
-    type: Unknown
-  since:
-    arma_3:
-      major: 1
-      minor: 54
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

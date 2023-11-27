@@ -17,6 +17,23 @@ syntax:
   params:
   - name: command
     type: Unknown
+- call: !Binary
+  - password
+  - command
+  ret:
+  - Unknown
+  - '[[false]] if command failed at some stage. [[true]] doesn''t mean that command succeeded.'
+  params:
+  - name: password
+    description: case-sensitive password defined in [[server.cfg]] with {{hl|serverCommandPassword}} param
+    type: Unknown
+  - name: command
+    description: server command
+    type: Unknown
+  since:
+    arma_3:
+      major: 1
+      minor: 40
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

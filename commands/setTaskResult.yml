@@ -2,7 +2,21 @@ name: setTaskResult
 description: Set a result of the task.
 groups:
 - Briefing
-syntax: []
+syntax:
+- call: !Binary
+  - task
+  - - state
+    - result
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: task
+    type: Unknown
+  - name: state
+    type: Unknown
+  - name: result
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

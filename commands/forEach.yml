@@ -6,7 +6,44 @@ groups:
 - Program Flow
 - Arrays
 - HashMap
-syntax: []
+syntax:
+- call: !Binary
+  - code
+  - array
+  ret:
+  - Unknown
+  - will return the value of last executed statement
+  params:
+  - name: code
+    description: |-
+      available variables:
+      * {{hl|[[Magic Variables#x|_x]]}}: iterated item
+      * {{GVI|arma2oa|1.55|size= 0.75}} {{hl|[[Magic Variables#forEachIndex|_forEachIndex]]}}: item's index
+    type: Unknown
+  - name: array
+    description: the array to iterate over
+    type: Unknown
+- call: !Binary
+  - code
+  - hashMap
+  ret:
+  - Unknown
+  - will return the value of last executed statement
+  params:
+  - name: code
+    description: |-
+      code applied to each key-value pair - available variables:
+      * {{hl|[[Magic Variables#x|_x]]}}: key
+      * {{hl|[[Magic Variables#x|_y]]}}: value
+      * {{hl|[[Magic Variables#forEachIndex|_forEachIndex]]}}: iteration number
+    type: Unknown
+  - name: hashMap
+    description: the HashMap to iterate over
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 2
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

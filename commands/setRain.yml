@@ -32,6 +32,32 @@ syntax:
   - name: rain
     description: new rain value in range 0..1.
     type: Unknown
+- call: !Unary rainParams
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: rainParams
+    description: 'array of custom [[Arma 3: CfgWorlds Config Reference#class RainParticles | {{hl|RainParticles}}]] params - see [[rainParams]]. Use empty array [] to reset to default config values'
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 8
+  effect: Local
+- call: !Unary config
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: config
+    description: 'config path to a custom class, which contains [[Arma 3: CfgWorlds Config Reference#class RainParticles | {{hl|RainParticles}}]] class. Use [[configNull]] to reset to default config values'
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 8
+  effect: Local
 argument_loc: Unspecified
 effect_loc: Global
 server_exec: false

@@ -4,7 +4,44 @@ problem_notes:
 - Two units cannot talk on the same channel at the same time, this can lead to weird effects for non-local listeners; make sure not to use the same channel at the same time in multiplayer. [[radioChannelCreate|Custom channels]] are considered as one channel for this matter.
 groups:
 - Conversations
-syntax: []
+syntax:
+- call: !Binary
+  - person
+  - - receiver
+    - topicName
+    - sentenceClass
+    - argumentArray1
+    - argumentArray2
+    - '...'
+    - forceRadio
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: person
+    type: Unknown
+  - name: receiver
+    type: Unknown
+  - name: topicName
+    type: Unknown
+  - name: sentenceClass
+    type: Unknown
+  - name: argumentArrayN
+    description: |-
+      format [argumentName, argumentValue, argumentText, argumentSpeech]:
+      * argumentName: [[String]]
+      * argumentValue: [[Code]]
+      * argumentText: [[String]]
+      * argumentSpeech: [[Array]] of [[String]]s - each string is an already defined word in config.
+    type: Unknown
+    optional: true
+  - name: forceRadio
+    description: |-
+      * [[Boolean]] true/false to force use of radio
+      * [[Number]] 1-10 to force use of custom radio channel
+      * [[String]] name of radio channel to use, from: 'GLOBAL', 'SIDE', 'GROUP', 'VEHICLE', 'DIRECT', 'COMMAND'
+    type: Unknown
+    optional: true
 argument_loc: Local
 effect_loc: Global
 since:

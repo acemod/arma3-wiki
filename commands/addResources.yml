@@ -2,7 +2,20 @@ name: addResources
 description: Adds resources to a team member.
 groups:
 - Teams
-syntax: []
+syntax:
+- call: !Binary
+  - teamMember
+  - - resource1
+    - resource2
+    - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: teamMember
+    type: Unknown
+  - name: resourceN
+    type: Unknown
 argument_loc: Global
 effect_loc: Local
 since:
