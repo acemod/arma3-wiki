@@ -1,0 +1,130 @@
+{{RV|type=command
+
+|game1= arma1
+|version1= 1.00
+
+|game2= arma2
+|version2= 1.00
+
+|game3= arma2oa
+|version3= 1.50
+
+|game4= tkoh
+|version4= 1.00
+
+|game5= arma3
+|version5= 0.50
+
+|arg= global
+
+|eff= local
+
+|gr1= Variables
+
+|gr2= Namespaces
+
+|gr3= Multiplayer
+
+|descr= Set variable to given value in the variable space of given element. Can be used to broadcast variables over the network.<br>
+To remove a variable, set it to [[nil]] (see {{Link|#Example 5}}) - note that this does not work on [[Object]] and [[createLocation|scripted]] [[Location]] namespaces (the variable will be set to [[nil]] but will remain listed by [[allVariables]]).
+
+{{Feature|warning|
+[[missionNamespace]], [[uiNamespace]], [[parsingNamespace]] and [[profileNamespace]] variables '''cannot''' be named as commands - e.g <sqf inline>missionNamespace setVariable ["west", 123];</sqf> conflicts with the [[west]] command and will result in a {{hl|Reserved variable in expression}} error, [[west]] being a scripting command (other namespaces do not have such limitation).
+See also [[:Category:Scripting Commands|all available script commands]].
+}}
+
+|s1= varspace [[setVariable]] [name, value, public]
+
+|p1= varspace: variable space in which variable can be set. Can be one of:
+{{Columns|2|
+* [[Namespace]]
+* [[Object]]
+** {{Icon|checked}} {{GVI|arma3|2.10|size= 0.75}} {{hl|CfgAmmo}} [[Object]]s (bullets, mines etc)
+** {{Icon|unchecked}} {{hl|CfgNonAIVehicles}} [[Object]]s (butterflies, etc)
+* [[Group]]
+* [[Location]] ({{GVI|arma3|2.10|size= 0.75}} [[createLocation|scripted ones]] only)
+* {{GVI|arma2|1.00|size= 0.75}} [[Team Member]]
+* {{GVI|arma2|1.00|size= 0.75}} [[Task]] - ''value'' will actually be set on the [[Task]]'s [[FSM]] '''if''' it exists.
+* {{GVI|arma3|0.50|size= 0.75}} [[Control]]
+* {{GVI|arma3|0.50|size= 0.75}} [[Display]]
+}}
+
+|p2= name: [[String]] - variable name ([[Identifier]])
+
+|p3= value: [[Anything]] - variable value
+
+|p4= public - (Optional, default [[false]]) can be one of:
+* [[Boolean]] - if set to [[true]], the variable is broadcast globally and is persistent ([[Multiplayer Scripting#Join In Progress|JIP]] compatible) {{Icon|globalEffect|32}}
+* [[Number]] - the variable is only set on the client with the given [[Multiplayer Scripting#Machine network ID|Machine network ID]]. If the number is negative, the variable is set on every client except for the one with the given ID.
+* [[Array]] of [[Number]]s - array of [[Multiplayer Scripting#Machine network ID|Machine network IDs]]
+
+This parameter is only available if the '''varspace''' parameter is a [[Namespace]], [[Object]] or [[Group]]. Furthermore, only the following [[:Category: Data Types|Data Types]] can be broadcast:
+{{{!}} class="wikitable align-center"
+! Type
+{{!}} [[Number]]
+{{!}} [[Boolean]]
+{{!}} [[Object]]
+{{!}} [[Group]]
+{{!}} [[String]]
+{{!}} [[Structured Text|Text]]
+{{!}} [[Array]]
+{{!}} [[Code]]
+{{!}} [[Nothing]] ([[nil]])
+{{!}} [[HashMap]]
+{{!}}-
+! Since
+{{!}} colspan="6" {{!}} {{GVI|arma1|1.00}}
+{{!}} colspan="2" {{!}} {{GVI|arma1|1.09}}
+{{!}} {{GVI|arma3|1.26}}
+{{!}} {{GVI|arma3|2.02}}
+{{!}}}
+|p4since= arma2 1.00
+
+|r1= [[Nothing]]
+
+|x1= <sqf>_myTruck setVariable ["TAG_myPublicVariable", 123, true];</sqf>
+
+|x2= <sqf>_myTruck setVariable ["TAG_myLocalVariable", ["321", _var], owner driver _myTruck];</sqf>
+
+|x3= <sqf>missionNamespace setVariable ["TAG_myName", "Brian"];
+hint TAG_myName; // hints "Brian"</sqf>
+
+|x4= Get the current value of a variable or, if it is undefined, define it and then get the value:
+<sqf>
+private _var = missionNamespace getVariable "VarName";
+if (isNil "_var") then
+{
+	_var = 123;
+	missionNamespace setVariable ["VarName", _var];
+};
+// _var now contains the current value of the missionNamespace's variable varName
+</sqf>
+
+|x5= Remove {{hl|TAG_myPublicVariable}} from [[missionNamespace]] (globally):
+<sqf>missionNamespace setVariable ["TAG_myPublicVariable", nil, true];</sqf>
+
+|seealso= [[getVariable]] [[allVariables]] [[setFSMVariable]]
+}}
+
+{{Note
+|user= Killswitch
+|timestamp= 20070818095100
+|text= According to {{User|Suma}}, beginning with {{Name|arma1|short}} version 1.08:
+{{Feature|quote|
+[[setVariable]] now should work on any entity which can be targeted by AI, including soldier and game logic units. This includes most buildings, but not other static objects.
+'''Using it with buildings one should be aware the building may be discarded because of streaming'''. In such case the variable space is lost. When used for buildings, the storage should therefore be considered non-reliable.
+| {{User|Suma}}
+| Talk:setVariable#setVariable local or global in Multiplayer}}
+}}
+
+{{Note
+|user= Commy2
+|timestamp= 20151209201800
+|text= This command does not work with CfgAmmo or CfgNonAIVehicles objects, like bullets, mines or butterflies.
+}}
+
+{{Note
+|user= Leopard20
+|timestamp= 20220323085950
+|text= Since {{GVI|arma3|2.10}} [[setVariable]] works on CfgAmmo objects (such as bullets, missiles, grenades, mines, etc) as well.
+}}

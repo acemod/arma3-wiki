@@ -1,8 +1,8 @@
 use serde::{Deserialize, Serialize};
 
-use super::{Call, Param, Since, Value};
+use super::{Call, Locality, Param, Since, Value};
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Syntax {
     pub(crate) call: Call,
     pub(crate) ret: (Value, Option<String>),
@@ -10,6 +10,9 @@ pub struct Syntax {
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub(crate) since: Option<Since>,
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub(crate) effect: Option<Locality>,
 }
 
 impl Syntax {

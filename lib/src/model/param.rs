@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use super::{Since, Value};
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct Param {
     pub(crate) name: String,
     #[serde(default)]

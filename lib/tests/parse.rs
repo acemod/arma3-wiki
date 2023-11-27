@@ -30,3 +30,8 @@ parse!(drawIcon);
 parse!(activatedAddons);
 parse!(addAction);
 parse!(local);
+parse!(teamSwitch);
+parse!(forEach);
+parse!(remoteExec);
+parse!(setRain);
+parse!(setVariable);

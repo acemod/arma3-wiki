@@ -1,5 +1,5 @@
 use crate::{
-    model::{Call, Command, Param, Since, Syntax, Value, Version},
+    model::{Call, Command, Locality, Param, Since, Syntax, Value, Version},
     ParseError,
 };
 
@@ -108,7 +108,7 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
                         continue;
                     }
                     // ==== End Of Special Cases ====
-                    match syntax(value, &mut lines) {
+                    match syntax(command.name(), value, &mut lines) {
                         Ok(syntax) => {
                             command.add_syntax(syntax);
                             syntax_counter += 1;
@@ -146,12 +146,14 @@ pub fn locality(source: &str) -> Result<crate::model::Locality, String> {
 }
 
 pub fn syntax(
+    command: &str,
     usage: &str,
     lines: &mut std::iter::Peekable<std::vec::IntoIter<(&str, &str)>>,
 ) -> Result<crate::model::Syntax, String> {
     let mut params = Vec::new();
     let mut ret = None;
     let mut since: Option<Since> = None;
+    let mut effect: Option<Locality> = None;
     while let Some((key, value)) = lines.peek() {
         if key.starts_with('p') {
             if key.ends_with("since") {
@@ -161,9 +163,17 @@ pub fn syntax(
                 };
                 last_param.since_mut().set_from_wiki(game, version)?;
             } else {
-                let Some((mut name, typ)) = value.split_once(':') else {
+                // ==== Special Cases ====
+                let value = if command == "forEach" {
+                    value.trim_start_matches("{{{!}} class=\"wikitable align-center float-right\"\n! Game\n{{!}} {{GVI|ofp|1.00}}\n{{!}} {{GVI|arma1|1.00}}\n{{!}} {{GVI|arma2|1.00}}\n{{!}} {{GVI|arma2oa|1.50}}\n{{!}} {{GVI|arma3|1.00}}\n{{!}} {{GVI|tkoh|1.00}}\n{{!}}-\n! [[String]] support\n{{!}} colspan=\"2\" {{!}} {{Icon|checked}}\n{{!}} colspan=\"4\" {{!}} {{Icon|unchecked}}\n{{!}}-\n! [[Code]] support\n{{!}} {{Icon|unchecked}}\n{{!}} colspan=\"5\" {{!}} {{Icon|checked}}\n{{!}}}\n").to_string()
+                } else {
+                    value.to_string()
+                };
+                // ==== End Of Special Cases ====
+                let Some((name, typ)) = value.split_once(' ') else {
                     return Err(format!("Invalid param: {}", value));
                 };
+                let mut name = name.trim_end_matches(':').trim_matches('\'');
                 let typ = typ.trim();
                 let (typ, desc) = typ.split_once('-').unwrap_or((typ, ""));
                 let optional = desc.contains("(Optional");
@@ -233,6 +243,11 @@ pub fn syntax(
                 since = Some(new_since);
             }
             lines.next();
+        } else if key.starts_with('s') && key.ends_with("effect") {
+            effect = Some(locality(value)?);
+            lines.next();
+        } else if key.starts_with('s') && key.ends_with("exec") {
+            lines.next();
         } else {
             break;
         }
@@ -290,5 +305,6 @@ pub fn syntax(
         },
         params,
         since,
+        effect,
     })
 }

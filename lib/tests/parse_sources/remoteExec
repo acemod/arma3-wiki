@@ -1,0 +1,195 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 1.50
+
+|gr1= Multiplayer
+
+|descr= Asks the server to execute the given function or script command on the given target machine(s).
+* Functions are executed in the [[Scheduler#Scheduled Environment|scheduled environment]]; suspension is allowed.
+* Script commands are executed in the [[Scheduler#Unscheduled Environment|unscheduled environment]]; suspension is not allowed (see {{Link|#Example 7}}).
+
+Read [[Arma 3: Remote Execution]] for more information about remote execution, security features and JIP techniques.
+
+{{Feature|informative|[[remoteExec]]/[[remoteExecCall]] can be used in single player as well, as it is considered as player-hosted multiplayer.}}
+
+{{Feature|important|The direct execution of [[call]] or [[spawn]] via [[remoteExec]] (or [[remoteExecCall]]) should be avoided to prevent issues in cases where the remote execution of [[call]] or [[spawn]] is blocked by [[Arma 3: CfgRemoteExec|CfgRemoteExec]]. It is instead recommended to create a function to be itself remote-executed.}}
+
+|mp= Remote executions are queued and are therefore executed in the same order on remote clients (see {{Link|#Example 8}}).
+
+|s1= params [[remoteExec]] [order, targets, JIP]
+
+|p1= '''params''': [[Anything]] '''but''' [[Structured Text]] - ''order''<nowiki/>'s parameter {{Feature|important|[[Structured Text]] is '''not''' meant to be sent over network.}}
+
+|p2= '''order''': [[String]] - function or command name; while any function or command can be used here, only those allowed by [[Arma 3: CfgRemoteExec|CfgRemoteExec]] will actually be executed
+
+|p3= '''targets''' (Optional, default 0):
+* [[Number]] (See also [[Multiplayer Scripting#Machine network ID|Machine network ID]]):
+** '''0:''' the order will be executed globally, i.e. on the server and every connected client, including the machine where [[remoteExec]] originated
+** '''2:''' the order will only be executed on the server
+** '''Other number:''' the order will be executed on the machine where [[clientOwner]] matches the given number
+** '''Negative number:''' the effect is inverted: '''-2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12
+* [[Object]] - the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]
+* [[String]] - interpreted as an [[Identifier]] (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [[Multiplayer Scripting#Locality|local]]
+* [[Side]] - the order will be executed on machines where the player is on the specified side
+* [[Group]] - the order will be executed on machines '''where the player is in the specified group''' ('''not''' where said group is local!)
+* [[Array]] - array of any combination of the types listed above
+
+|p4= '''JIP''' (Optional, default [[false]]):
+* [[Boolean]] - if [[true]], a unique JIP ID is generated and the [[remoteExec]] statement is added to the JIP queue from which it will be executed for every JIP
+* [[String]]:
+** ff the string is empty, it is interpreted as [[false]]
+** ff the string is in format "[[Number]]:[[Number]]" (e.g. "0:0"), it is interpreted as a [[netId]] (see below)
+** else the string is treated as a custom JIP ID and the [[remoteExec]] statement is added to the JIP queue, replacing statements that have the same JIP ID
+* [[Object]], [[Group]] or [[netId]] - the persistent execution of the [[remoteExec]] statement is attached to the given object or group.<br>When the object / group is deleted, the [[remoteExec]] statement is automatically removed from the JIP queue
+
+The '''JIP''' parameter can only be used if the '''targets''' parameter is 0 or a negative number.<br>
+See also [[#Example 3|Example 3]] on how to remove statements from the JIP queue.
+
+|r1=
+* [[nil]] - In case of error.
+* [[String]] - In case of success.
+** If the '''JIP''' parameter was [[false]] or an empty string, the return value is "".
+** If the '''JIP''' parameter was [[true]] or a custom JIP ID, the JIP ID is returned.
+** If the '''JIP''' parameter was an [[Object]], a [[Group]] or a [[netId]], the (corresponding) [[netId]] is returned.
+
+|s2= [[remoteExec]] [functionName, targets, JIP]
+
+|p21= '''functionName''': [[String]] - see the main syntax above for more details.
+
+|p22= '''targets''' (Optional, default 0): [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - see the main syntax above for more details.
+
+|p23= '''JIP''' (Optional, default [[false]]): [[Boolean]], [[String]], [[Object]], [[Group]] or [[netId]] - see the main syntax above for more details.
+
+|r2= [[nil]] or [[String]] - see the main syntax above for more details.
+
+
+<!-- Don't place links within strings in these examples. -->
+
+
+|x1= How to write [[remoteExec]]/[[remoteExecCall]]:
+<code style="display: block">{{Color|darkorange|hint}} {{Color|teal|"Hello"}};
+{{cc|becomes}}
+[{{Color|teal|"Hello"}}] remoteExec ["{{Color|darkorange|hint}}"];
+{{Color|teal|"Hello"}} remoteExec ["{{Color|darkorange|hint}}"]; {{cc|alternatively}}</code>
+
+<code style="display: block">{{Color|green|unit1}} {{Color|darkorange|setFace}} {{Color|teal|"Miller"}};
+{{cc|becomes}}
+[{{Color|green|unit1}}, {{Color|teal|"Miller"}}] remoteExec ["{{Color|darkorange|setFace}}"];</code>
+
+<code style="display: block">{{Color|darkorange|cutRsc}} {{Color|darkred|["", "BLACK OUT"]}};
+{{cc|becomes}}
+[{{Color|darkred|["", "BLACK OUT"]}}] remoteExec ["{{Color|darkorange|cutRsc}}"]; {{cc|double brackets are needed as the unary command takes an array}}</code>
+
+<code style="display: block">{{cc|functions, however, do not need double squared brackets}}
+{{Color|teal|["line 1", "line 2"]}} spawn {{Color|darkorange|BIS_fnc_infoText}};
+{{cc|becomes}}
+{{Color|teal|["line 1", "line 2"]}} remoteExec ["{{Color|darkorange|BIS_fnc_infoText}}"];</code>
+
+|x2= send an order to specific machines:
+<sqf>
+"message" remoteExec ["hint", 0];				// sends a hint message to everyone, identical to "message" remoteExec ["hint"]
+"message" remoteExec ["hint", -2];				// sends a hint message to everybody but the server
+"message" remoteExec ["hint", myCar];			// sends a hint message where myCar is local
+"message" remoteExec ["hint", -clientOwner];	// sends a hint message to everybody but the current machine
+</sqf>
+
+|x3= <!-- This example is referenced in the Syntax section. -->
+Add statements to the JIP queue:
+<sqf>
+private _jipId = ["mission state: the car is broken"] remoteExec ["systemChat", 0, true]; // adds the hint to the JIP queue and returns the JIP queue order id
+waitUntil { canMove _car };
+remoteExec ["", _jipId]; // the systemChat order is removed from the JIP queue
+</sqf>
+
+<sqf>
+["mission state: the car is broken"] remoteExec ["systemChat", 0, _queueObject];
+// ...
+remoteExec ["", _queueObject]; // the order attached to _queueObject is removed
+</sqf>
+
+<sqf>
+private _jipId = ["mission state: the car is broken"] remoteExec ["systemChat", 0, "MY_JIP_ID"]; // _jipId is actually "MY_JIP_ID" now
+waitUntil { canMove _car };
+["mission state: the car is repaired"] remoteExec ["systemChat", 0, "MY_JIP_ID"]; // this order replaces the previous one
+// ...
+remoteExec ["", "MY_JIP_ID"]; // the "MY_JIP_ID" order is removed from the JIP queue
+</sqf>
+
+|x4= Some more complex examples:
+<sqf>
+["Open", true] remoteExec ["BIS_fnc_arsenal", MyTargetPlayer];
+[MyCurator, [[MyObject1, MyObject2], false]] remoteExec ["addCuratorEditableObjects", 2];
+</sqf>
+
+|x5= A tricky example: executing <sqf inline>player setAmmo [primaryWeapon player, 1];</sqf> (on machines where the player is in MyGroup):
+<sqf>
+[player, [primaryWeapon player, 1]] remoteExec ["setAmmo", MyGroup]; // WRONG: the local player object is used here!
+{ player setAmmo [primaryWeapon player, 1]; } remoteExec ["call", MyGroup]; // CORRECT: the remote player object is used here
+</sqf>
+
+|x6= '''[[Multiplayer Scripting]] "performance trick"'''<br>
+This <sqf inline>[0, -2] select isDedicated</sqf> check is worth to avoid '''function''' server-side calculations only:
+<sqf>
+["message"] remoteExec ["BIS_fnc_infoText"];								// not ideal - the function will still run on the dedicated server for nothing
+["message"] remoteExec ["BIS_fnc_infoText", [0, -2] select isDedicated];	// ideal - the dedicated server will not run the code, a player-hosted server will
+
+"message" remoteExec ["hint", [0, -2] select isDedicated];	// the check is too costy to be worthy
+"message" remoteExec ["hint"];								// the (dedicated) server will automatically ditch hint usage due to it not having an interface
+</sqf>
+
+|x7= <!-- This example is referenced in the Description section. -->
+As said in the description: '''commands''' will be executed in an [[Scheduler#Unscheduled Environment|unscheduled environment]]
+<sqf>[{ sleep 1 }] remoteExec ["call"]; // will throw an error: it is forbidden to use sleep (or waitUntil, etc) in unscheduled environment</sqf>
+
+|x8= <!-- This example is referenced in the Description section. -->
+<sqf>
+"Message 1" remoteExec ["systemChat"];
+"Message 2" remoteExec ["systemChat"];
+// will result in
+// "Message 1"
+// "Message 2"
+// in this exact order on clients
+</sqf>
+
+|seealso= [[remoteExecCall]] [[remoteExecutedOwner]] [[isRemoteExecuted]] [[isRemoteExecutedJIP]] [[Arma 3: Remote Execution]] [[canSuspend]] [[BIS_fnc_MP]]
+}}
+
+
+{{GameCategory|arma3|Remote Execution}}
+
+
+{{Note
+|user= AgentRev
+|timestamp= 20151229202800
+|text= [[remoteExec]] and [[remoteExecCall]] are currently filtered by BattlEye's remoteexec.txt, the string analyzed by BE is formatted the same way as the following example's output:
+<sqf>format ["%1 %2", functionName, str params]</sqf>
+If [[CfgRemoteExec]] {{hl|class Functions}} is set to {{hl|c= mode = 1;}}, the following remoteexec.txt exclusion can be used to safely allow all whitelisted *_fnc_* functions taking an array as parameter to go through:
+<sqf>!="\w+?_fnc_\w+? \[[\S\s]*\]"</sqf>
+Any attempt to exploit this exclusion using other RE methods like [[createUnit]] will run into "Error Missing ;" without any malicious code being executed. Mod makers should refrain from remote-executing raw commands from clients, as they require individual exclusions, and instead use *_fnc_* functions taking an array as parameter, which are covered by the above exclusion.
+}}
+
+{{Note
+|user= Pierre MGI
+|timestamp= 20170130183500
+|text= <sqf>[someArgs] remoteExec ['someCommand', 2, true];</sqf> 
+will fail, as you can't use JIP and remoteExec on server only
+<sqf>[someArgs] remoteExec ['someCommand', 2]; // works</sqf>
+}}
+
+{{Note
+|user= 7erra
+|timestamp= 20210305004800
+|text= The [[remoteExec]]'ed function only has to exist on the target machine. For example:
+<sqf>
+// initPlayerLocal.sqf
+TAG_fnc_testRemote = {
+	hint "Remote Exec Received";
+};
+</sqf>
+<sqf>
+// executed on a DEDICATED server
+remoteExec ["TAG_fnc_testRemote", -2];
+</sqf>
+Will display a hint for every client. This is especially useful for when the server is running a mod that is not required by clients.
+}}

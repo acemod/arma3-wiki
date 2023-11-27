@@ -1,0 +1,67 @@
+{{RV|type=command
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|gr1= Multiplayer
+
+|arg= global
+
+|descr= Check if given unit is local on the computer in multiplayer games - see {{Link|Multiplayer Scripting#Locality}}.<br>
+This can be used to determine on which computer some code must be run. In single player all objects are local.
+
+|mp= A few things to note [[Multiplayer Scripting#General information about locality|amongst others]]:
+* A game logic / module is always local to the server
+* Terrain objects are local to every machine
+
+|s1= [[local]] object
+
+|p1= object: [[Object]] or [[Group]] (since {{GVI|arma3|1.32|size= 0.75}})
+
+|r1= [[Boolean]]
+
+|s2= [[local]] variable = value
+<span style="margin-left: 7em">'''{{Color|red|From {{arma2}} v1.00 until {{arma3}} v1.54}}''' - see '''[[private]]''' for later versions</span>
+
+|s2since= arma2 1.00
+
+|r2= [[Nothing]]
+
+|x1= <sqf>
+if (not local _unit) then
+{
+	hint format ["%1 is remote", name _unit];
+};
+</sqf>
+
+|x2= <sqf>_isLocalGroup = local group _unit;</sqf>
+
+|x3= Sets variable's [[Variables#Scopes|scope]]:
+<sqf>
+// from Arma 2 v1.00 until Arma 3v1.54
+local _myVariable = 42;
+
+// since {{arma3}} v1.54
+private _myVariable = 42;
+</sqf>
+
+|seealso= [[Arma 3: Event Handlers#Local|"Local" Event Handler]] [[owner]] [[setOwner]]
+}}

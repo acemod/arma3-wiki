@@ -4,11 +4,23 @@ mod list;
 
 #[tokio::main]
 async fn main() {
+    let args: Vec<_> = std::env::args().skip(1).collect();
     let tmp = std::env::temp_dir().join("a3_wiki_fetch");
     if !tmp.exists() {
         std::fs::create_dir(&tmp).unwrap();
     }
-    let commands = list::read_list().await;
+    let commands = if args.is_empty() {
+        list::read_list().await
+    } else {
+        args.into_iter()
+            .map(|arg| {
+                (
+                    arg.clone(),
+                    format!("https://community.bistudio.com/wiki/{}", arg),
+                )
+            })
+            .collect()
+    };
     let mut failed = Vec::new();
     let mut changed = Vec::new();
     println!("Commands: {}", commands.len());

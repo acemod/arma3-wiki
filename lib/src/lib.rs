@@ -3,7 +3,7 @@ use std::fmt::Display;
 pub mod model;
 pub mod parse;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq)]
 pub enum ParseError {
     Syntax(String),
 }

@@ -1,0 +1,173 @@
+{{RV|type=command
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|gr1= Program Flow
+|gr2= Arrays
+|gr3= HashMap
+
+|descr= Executes the given command(s) on every item of an [[Array]] or a [[HashMap]].
+{{Feature|arma2|Since {{arma2}}, the variable [[Magic Variables#x|_x]] is always [[private]] to the [[forEach]] block so it is safe to nest them (see {{Link|#Example 8}}).}}
+
+|s1= code [[forEach]] array
+
+|p1= <nowiki/>
+{{{!}} class="wikitable align-center float-right"
+! Game
+{{!}} {{GVI|ofp|1.00}}
+{{!}} {{GVI|arma1|1.00}}
+{{!}} {{GVI|arma2|1.00}}
+{{!}} {{GVI|arma2oa|1.50}}
+{{!}} {{GVI|arma3|1.00}}
+{{!}} {{GVI|tkoh|1.00}}
+{{!}}-
+! [[String]] support
+{{!}} colspan="2" {{!}} {{Icon|checked}}
+{{!}} colspan="4" {{!}} {{Icon|unchecked}}
+{{!}}-
+! [[Code]] support
+{{!}} {{Icon|unchecked}}
+{{!}} colspan="5" {{!}} {{Icon|checked}}
+{{!}}}
+code: [[String]] only in {{ofp}} and {{arma1}}, {{GVI|arma1|1.00|size= 0.75}} [[Code]] since {{arma1}} - available variables:
+* {{hl|[[Magic Variables#x|_x]]}}: iterated item
+* {{GVI|arma2oa|1.55|size= 0.75}} {{hl|[[Magic Variables#forEachIndex|_forEachIndex]]}}: item's index
+
+|p2= array: [[Array]] - the array to iterate over
+
+|r1= [[Anything]] - will return the value of last executed statement
+
+|s2= code [[forEach]] hashMap
+
+|s2since= arma3 2.02
+
+|p21= code: [[Code]] - code applied to each key-value pair - available variables:
+* {{hl|[[Magic Variables#x|_x]]}}: key
+* {{hl|[[Magic Variables#x|_y]]}}: value
+* {{hl|[[Magic Variables#forEachIndex|_forEachIndex]]}}: iteration number
+
+|p22= hashMap : [[HashMap]] - the HashMap to iterate over
+
+|r2= [[Anything]] - will return the value of last executed statement
+
+|x1= <sqf>
+// SQF
+{ _x setDamage 1 } forEach units player;
+</sqf>
+<sqs>
+; SQS
+"_x setDammage 1" forEach units player
+</sqs>
+
+|x2= This command can also easily be used to execute a single command multiple times without respect to the array items - see also [[for]]
+<sqf>
+{ player addMagazine "30Rnd_556x45_Stanag" } forEach [1, 2, 3, 4];
+// equivalent to
+for "_i" from 1 to 4 do { player addMagazine "30Rnd_556x45_Stanag" };
+</sqf>
+
+|x3= You can also use multiple commands in the same block:
+<sqf>
+{
+	_x setCaptive true;
+	removeAllWeapons _x;
+	doStop _x;
+} forEach units group this;
+</sqf>
+
+|x4= To get the index of a [[forEach]] loop, use [[Magic Variables#forEachIndex|_forEachIndex]]:
+<sqf>{ systemChat str _forEachIndex; } forEach ["a", "b", "c"]; // will return: "0", "1", "2" in systemChat messages</sqf>
+
+|x5= Iterating a [[HashMap]]'s [[Magic Variables#forEachIndex|_forEachIndex]]:
+<sqf>
+// shows "0, k1, v1", "1, k2, v2" in systemChat messages
+{
+	systemChat format ["%1, %2, %3", _forEachIndex, _x, _y];
+} forEach createHashMapFromArray [
+	["k1", "v1"],
+	["k2", "v2"]
+];
+</sqf>
+
+|x6= [[findIf]] equivalent for [[HashMap]]:
+<sqf>
+private _resultKey = {
+	if (_y isEqualTo "wantedValue") exitWith { _x };
+	""
+} forEach _hashmap;
+</sqf>
+
+|x7= Array is edited by reference:
+<sqf>
+_arr1 = [1,2,3];
+_arr2 = [6,7,8];
+_arr3 = [0];
+{ _x set [1, "changed"] } forEach [_arr1, _arr2, _arr3];
+// _arr1 = [1, "changed", 3]
+// _arr2 = [6, "changed", 8]
+// _arr3 = [0, "changed"]
+</sqf>
+
+|x8= <sqf>
+{
+	private _verticalValue = _x; // needed, otherwise _horizontalValues' _x made this one inaccessible
+	{
+		[_x, _verticalValue] call TAG_fnc_doSomething;
+	} forEach _horizontalValues;
+} forEach _verticalValues;
+</sqf>
+
+|seealso= [[Control Structures]] [[for]] [[apply]] [[while]] [[select]] [[findIf]] [[count]] [[forEachReversed]]
+}}
+
+{{Note
+|user= Dedmen
+|timestamp= 20171128134600
+|text= Be careful when deleting ([[deleteAt]]) elements from an Array while you iterate over it.<br>
+[[forEachIndex|_forEachIndex]] will not move to reflect your change.<br>
+
+The forEach code is doing the same as
+<sqf>
+private _forEachIndex = 0;
+while { _forEachIndex < count _array } do
+{
+	(_array select _forEachIndex) call code;
+	_forEachIndex = _forEachIndex + 1;
+};
+</sqf>
+
+So if you delete your current element from the array the other elements will shift forward. Meaning you skip one element.<br>
+Example:
+<sqf>
+_array = [1,2,3,4,5,6];
+{ _array deleteAt _forEachIndex } forEach _array;
+</sqf>
+After the first iteration your Array will be [2,3,4,5,6] and the _forEachIndex will be 1.<br>
+So on next iteration you get the element at index 1 which will be 3. So you've just skipped the 2.<br>
+So in the end you will only iterate over 1, 3 and 6.
+}}
+
+{{Note
+|user= Samatra
+|timestamp= 20230402090428
+|text= Use new [[forEachReversed]] command for deleting array items with [[deleteAt]]. Check its examples for details.
+}}

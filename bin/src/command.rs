@@ -1,6 +1,6 @@
 use std::path::Path;
 
-use a3_wiki_lib::ParseError;
+use a3_wiki_lib::{model::Command, ParseError};
 use reqwest::{header::LAST_MODIFIED, Client};
 
 const SKIP_IF_LESS_THAN: u64 = 12;
@@ -17,7 +17,7 @@ pub async fn command(
         let metadata = std::fs::metadata(&dist_path).unwrap();
         let modified: std::time::SystemTime = metadata.modified().unwrap();
         if modified.elapsed().unwrap().as_secs() < 60 * 60 * SKIP_IF_LESS_THAN {
-            std::env::var("CI").is_ok()
+            !dist_path.exists() || std::env::var("CI").is_ok()
         } else {
             let res = match client.head(&url).send().await {
                 Ok(res) => res,
@@ -62,8 +62,19 @@ pub async fn command(
         content
     };
     match a3_wiki_lib::parse::command(&name, &content) {
-        Ok((parsed, errors)) => {
+        Ok((mut parsed, mut errors)) => {
             println!("Saving to {}", dist_path.display());
+            if name == "remoteExecCall" {
+                println!("Copying remoteExec syntax to remoteExecCall");
+                // copy syntax from remoteExec
+                let remote_exec =
+                    std::fs::read_to_string("./dist/commands/remoteExec.yml").unwrap();
+                let remote_exec: Command = serde_yaml::from_str(&remote_exec).unwrap();
+                parsed.set_syntax(remote_exec.syntax().to_vec());
+                errors.retain(|e| {
+                    e != &ParseError::Syntax(String::from("Invalid call: see [[remoteExec]]"))
+                });
+            }
             if dist_path.exists() {
                 // Check if the file has changed
                 let old = std::fs::read_to_string(&dist_path).unwrap();

@@ -1,0 +1,28 @@
+{{RV|type=command
+
+|game1= arma3
+|version1= 1.14
+
+|gr1= Mods and Addons
+
+|descr= Returns a list of all activated addons.
+
+|s1= '''activatedAddons'''
+
+|r1= [[Array]]
+
+|x1= <sqf>_addons = activatedAddons;</sqf>
+
+|seealso= [[activateAddons]]
+}}
+
+<dl class="command_description">
+
+<dt></dt>
+<dd class="notedate">Posted on 2014-03-28 - 20:21</dd>
+<dt class="note">[[User:Tankbuster|Tankbuster]]</dt>
+<dd class="note">
+This command can return a large array, often too large to be diag_log'd or hinted. At the time of writing, my game returned an array with 389 elements. The code below will ignore all the BI addons (they start with a3_) and writes the rest (ie, all your custom addons) to the RPT.
+<sqf>{if (! (["a3_", _x] call BIS_fnc_inString)) then {diag_log _x;}  } forEach activatedAddons;</sqf>
+
+</dl>

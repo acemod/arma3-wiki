@@ -1,0 +1,79 @@
+{{RV|type=command
+
+|game1= arma2
+|version1= 1.00
+
+|game2= arma2oa
+|version2= 1.50
+
+|game3= tkoh
+|version3= 1.00
+
+|game4= arma3
+|version4= 0.50
+
+|gr1= Conversations
+
+|arg= local
+
+|eff= global
+
+|descr= Make the person tell to the receiver the sentence. See [[Conversations]] for more details.
+
+|pr= Two units cannot talk on the same channel at the same time, this can lead to weird effects for non-local listeners; make sure not to use the same channel at the same time in multiplayer. [[radioChannelCreate|Custom channels]] are considered as one channel for this matter.
+
+|s1= person [[kbTell]] [receiver, topicName, sentenceClass, argumentArray1, argumentArray2, ..., forceRadio]
+
+|p1= person: [[Object]]
+
+|p2= receiver: [[Object]]
+
+|p3= topicName: [[String]]
+
+|p4= sentenceClass: [[String]]
+
+|p5= argumentArrayN: [[Array]] - (Optional) format [argumentName, argumentValue, argumentText, argumentSpeech]:
+* argumentName: [[String]]
+* argumentValue: [[Code]]
+* argumentText: [[String]]
+* argumentSpeech: [[Array]] of [[String]]s - each string is an already defined word in config.
+
+|p6= forceRadio: [[Boolean]], [[Number]] or [[String]] (''last value of the array'') - (Optional)
+* [[Boolean]] true/false to force use of radio
+* [[Number]] 1-10 to force use of custom radio channel
+* [[String]] name of radio channel to use, from: 'GLOBAL', 'SIDE', 'GROUP', 'VEHICLE', 'DIRECT', 'COMMAND'
+
+|r1= [[Nothing]]
+
+|x1= <sqf>player kbTell [BIS_HQ, "myTopic", "playerSentence1"];</sqf>
+
+|x2= <sqf>player kbTell [
+	BIS_HQ,										// to
+	"Airstrike",								// topic
+	"AirstrikeRequest",							// sentence
+	["Team", {}, "Anvil", ["Anvil"]],			// argument 1
+	["Location", {}, "Strelka", ["Strelka"]],	// argument 2
+	true];										// use radio</sqf>
+in given .bikb:
+<syntaxhighlight lang="cpp">
+class AirstrikeRequest 
+{
+	text = "%team requesting close air support at grid %location ";
+	speech[] = { %Team, RequestingCloseAirSupportAtGrid, %Location };
+	class Arguments 
+	{
+		class Team		{ type = "simple"; };
+		class Location	{ type = "simple"; };
+	};
+};
+</syntaxhighlight>
+
+|x3= <sqf>player kbTell [
+	BIS_HQ,										// to
+	"Airstrike",								// topic
+	"AirstrikeRequest",							// sentence
+	["argumentName", argumentValue],			// argument 1
+	true];										// use radio</sqf>
+
+|seealso= [[Conversations]] [[kbAddTopic]] [[kbHasTopic]] [[kbReact]] [[kbRemoveTopic]] [[kbAddDatabase]] [[kbAddDatabaseTargets]] [[FSM]] [[FSM Editor]]
+}}
