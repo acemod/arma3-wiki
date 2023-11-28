@@ -107,8 +107,19 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
                         // syntax 3 is not a regular command
                         continue;
                     }
+                    let value = if command.name() == "addMagazine" {
+                        if syntax_counter == 1 {
+                            value.replace("<br>\n{{Icon|localArgument|32}}{{Icon|globalEffect|32}}", "")
+                        } else if syntax_counter == 2 {
+                            value.replace("<br>\n{{GVI|arma2oa|1.62}} {{Icon|localArgument|32}}{{Icon|globalEffect|32}}<br>\n{{GVI|arma3|1.00}} {{Icon|globalArgument|32}}{{Icon|globalEffect|32}}", "")
+                        } else {
+                            value.to_string()
+                        }
+                    } else {
+                        value.to_string()
+                    };
                     // ==== End Of Special Cases ====
-                    match syntax(command.name(), value, &mut lines) {
+                    match syntax(command.name(), &value, &mut lines) {
                         Ok(syntax) => {
                             command.add_syntax(syntax);
                             syntax_counter += 1;
