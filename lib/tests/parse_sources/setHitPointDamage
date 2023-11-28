@@ -1,0 +1,77 @@
+{{RV|type=command
+
+|game1= tkoh
+|version1= 1.00
+
+|game2= arma3
+|version2= 0.50
+
+|arg= local
+
+|eff= global
+
+|gr1= Object Manipulation
+
+|descr=
+{{{!}} class="wikitable float-right align-center-col-2"
+{{!}}+ 
+! {{Link|:Category: Event Handlers|Event Handler}}
+! Triggered
+{{!}}-
+{{!}} {{hl|Hit}}
+{{!}} {{Icon|unchecked}}
+{{!}}-
+{{!}} {{hl|HandleDamage}}
+{{!}} {{Icon|unchecked}}
+{{!}}-
+{{!}} {{hl|Killed}}
+{{!}} {{Icon|checked}}
+{{!}}-
+{{!}} {{hl|MPKilled}}
+{{!}} {{Icon|checked}}
+{{!}}}
+
+Set the current level of damage for a specific Hit Point (specified by its config class). This command has no effect when [[allowDamage]] is set to [[false]].
+{{Feature|informative|See also [[BIS_fnc_setHitPointDamage]] for setting hit with dependency.}}
+
+|s1= vehicle [[setHitPointDamage]] [hitPointName, damage, useEffects, killer, instigator]
+
+|p1= vehicle : [[Object]] - vehicle to be damaged
+
+|p2= hitPointName: [[String]] - name of the Hit Point class
+
+|p3= damage: [[Number]] - level of damage, in range 0..1
+
+|p4= useEffects: [[Boolean]] - (Optional, default [[true]]) [[false]] to skip destruction effects
+|p4since= arma3 1.68
+
+|p5= {{Icon|serverExec|28}} killer: [[Object]] - (Optional, default [[objNull]]) the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill. <br>
+* It can be used to show "killed by player" in debriefing statistics and kill messages in the chat (if death messages are enabled). <br>
+* It will alter the killer's [[rating]] as if the killer directly killed the unit. <br>
+* It will be listed as <sqf inline>_killer</sqf> parameter in the [[Arma_3:_Event_Handlers#Killed|Killed]] event handler.
+|p5since= arma3 2.08
+
+|p6= {{Icon|serverExec|28}} instigator: [[Object]] - (Optional, default [[objNull]]) the person that instigated the damage.
+* if a tank is a killer, the tank gunner that pulled the trigger is instigator
+* it will be listed as <sqf inline>_instigator</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler.
+|p6since= arma3 2.12
+
+|r1= [[Nothing]]
+
+|x1= <sqf>vehicle player setHitPointDamage ["hitEngine2", 1.0];</sqf>
+
+|x2= <sqf>
+player setHitPointDamage ["hitHead", 0.5];
+player setHitPointDamage ["hitBody", 0.5];
+player setHitPointDamage ["hitHands", 0.5];
+player setHitPointDamage ["hitLegs", 0.5];
+</sqf>
+
+|seealso= [[getHitPointDamage]] [[getAllHitPointsDamage]] [[setHit]] [[getHit]] [[setDamage]] [[damage]] [[getHitIndex]] [[setHitIndex]] [[BIS_fnc_setHitPointDamage]] [[getHitPointDamage#Notes|Common TKOH Hit Points]]
+}}
+
+{{Note
+|user= Master85
+|timestamp= 20120830135400
+|text= This command is using the Hit Points (defined in the {{hl|HitPoints}} class in the config) while [[setHit]] is using [[Named Selection]]s (defined in the model itself).
+}}
