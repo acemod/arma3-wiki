@@ -6,7 +6,41 @@ description: |-
   {{Feature|informative|Use [[addMagazine]] ''before'' [[addWeapon]] for the weapon to be loaded with the magazine automatically.}}
 groups:
 - Unit Inventory
-syntax: []
+syntax:
+- call: !Binary
+  - unitName
+  - magazineName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    description: person to add the magazines to
+    type: Unknown
+  - name: magazineName
+    description: magazine name. See the topic [[:Category:Weapons]] for reference about possible values.
+    type: Unknown
+- call: !Binary
+  - unitName
+  - - magazineName
+    - ammoCount
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    description: person to add the magazines to
+    type: Unknown
+  - name: magazineName
+    description: magazine name. See the topic [[:Category:Weapons]] for reference about possible values.
+    type: Unknown
+  - name: ammoCount
+    description: ammo quantity to be added to magazine. If it goes beyond maximum magazine capacity, the magazine will be given full and not overloaded.
+    type: Unknown
+  since:
+    arma_2_arrowhead:
+      major: 1
+      minor: 62
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
