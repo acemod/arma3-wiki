@@ -65,7 +65,7 @@ pub async fn commands(github: &mut GitHub, args: &[String]) {
     }
 }
 
-const SKIP_IF_LESS_THAN: u64 = 12;
+const SKIP_IF_LESS_THAN: u64 = 48;
 
 pub async fn command(
     client: &Client,

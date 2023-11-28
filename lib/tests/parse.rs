@@ -35,3 +35,4 @@ parse!(forEach);
 parse!(remoteExec);
 parse!(setRain);
 parse!(setVariable);
+parse!(setHitPointDamage);

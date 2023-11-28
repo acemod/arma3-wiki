@@ -11,6 +11,7 @@ use crate::ParseError;
 /// # Panics
 /// Panics if the parameters are invalid.
 pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), String> {
+    println!("Parsing {name}");
     let mut errors = Vec::new();
 
     let mut source = source.to_string();
@@ -203,6 +204,12 @@ pub fn syntax(
                     (*value).to_string()
                 };
                 // ==== End Of Special Cases ====
+                let mut value = value.trim().to_string();
+                value = if value.starts_with("{{") {
+                    value.split_once("}} ").unwrap().1.trim().to_string()
+                } else {
+                    value
+                };
                 let Some((name, typ)) = value.split_once(' ') else {
                     return Err(format!("Invalid param: {value}"));
                 };
@@ -235,19 +242,14 @@ pub fn syntax(
                 };
                 params.push(Param::new(
                     {
-                        let mut name = name.trim().to_string();
-                        name = if name.starts_with("{{") {
-                            name.split_once("}} ").unwrap().1.trim().to_string()
-                        } else {
-                            name
-                        };
+                        let mut name = name.to_string();
                         if name.starts_with("'''") {
                             name = name.trim_start_matches("'''").to_string();
                         }
                         if name.ends_with("'''") {
                             name = name.trim_end_matches("'''").to_string();
                         }
-                        name
+                        name.to_string()
                     },
                     if desc.trim().is_empty() {
                         None

@@ -21,7 +21,10 @@ pub async fn fetch() -> HashMap<String, String> {
     let mut list = HashMap::new();
 
     for cap in regex.captures_iter(&body) {
-        list.insert(cap[2].to_string(), cap[1].to_string());
+        let name = cap[1]
+            .trim_start_matches("https://community.bistudio.com/wiki/")
+            .to_string();
+        list.insert(name, cap[1].to_string());
     }
     list
 }
