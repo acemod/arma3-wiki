@@ -100,9 +100,9 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
                     command.since_mut().set_from_wiki(value, next.1)?;
                 } else if key.starts_with("gr") {
                     command.add_group(value.to_string());
-                    if value.contains("Broken Commands") {
-                        break;
-                    }
+                    // if value.contains("Broken Commands") {
+                    //     break;
+                    // }
                 } else if key == format!("s{syntax_counter}") {
                     // ==== Special Cases ====
                     if command.name() == "local" && syntax_counter == 2 {

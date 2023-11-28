@@ -36,3 +36,4 @@ parse!(remoteExec);
 parse!(setRain);
 parse!(setVariable);
 parse!(setHitPointDamage);
+parse!(createSoundSource);
