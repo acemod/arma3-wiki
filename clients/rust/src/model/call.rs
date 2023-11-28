@@ -10,8 +10,8 @@ pub enum Arg {
 impl Arg {
     pub fn names(&self) -> Vec<String> {
         match self {
-            Arg::Item(name) => vec![name.clone()],
-            Arg::Array(args) => args.iter().flat_map(|arg| arg.names()).collect(),
+            Self::Item(name) => vec![name.clone()],
+            Self::Array(args) => args.iter().flat_map(Self::names).collect(),
         }
     }
 }
@@ -24,35 +24,43 @@ pub enum Call {
 }
 
 impl Call {
+    /// Parses a call from the wiki.
+    ///
+    /// # Errors
+    /// Returns an error if the call is invalid.
+    ///
+    /// # Panics
+    /// Panics if the parameters are invalid.
     pub fn from_wiki(source: &str) -> Result<Self, String> {
         if !source.contains(' ') {
-            return Ok(Call::Nular);
+            return Ok(Self::Nular);
         }
         let Some((left, right)) = source.split_once("[[") else {
-            return Err(format!("Invalid call: {}", source));
+            return Err(format!("Invalid call: {source}"));
         };
         let Some((_, right)) = right.split_once("]]") else {
-            return Err(format!("Invalid call: {}", source));
+            return Err(format!("Invalid call: {source}"));
         };
         let left = left.trim();
         let right = right.trim();
         if left.is_empty() {
             if right.is_empty() {
-                Ok(Call::Nular)
+                Ok(Self::Nular)
             } else {
-                Ok(Call::Unary(Self::parse_params(right).unwrap()))
+                Ok(Self::Unary(Self::parse_params(right).unwrap()))
             }
         } else {
             if right.is_empty() {
-                return Err(format!("Invalid call: {}", source));
+                return Err(format!("Invalid call: {source}"));
             }
-            Ok(Call::Binary(
+            Ok(Self::Binary(
                 Self::parse_params(left).unwrap(),
                 Self::parse_params(right).unwrap(),
             ))
         }
     }
 
+    #[must_use]
     pub fn parse_params(source: &str) -> Option<Arg> {
         let mut chars = source.trim().chars().peekable();
         Self::parse_arg(&mut chars)
@@ -63,7 +71,7 @@ impl Call {
         I: Iterator<Item = char>,
     {
         match chars.peek() {
-            Some('[') => Self::parse_array(chars),
+            Some('[') => Some(Self::parse_array(chars)),
             _ => Self::parse_item(chars),
         }
     }
@@ -89,7 +97,7 @@ impl Call {
         Some(Arg::Item(item.to_owned()))
     }
 
-    fn parse_array<I>(chars: &mut std::iter::Peekable<I>) -> Option<Arg>
+    fn parse_array<I>(chars: &mut std::iter::Peekable<I>) -> Arg
     where
         I: Iterator<Item = char>,
     {
@@ -99,7 +107,7 @@ impl Call {
             match c {
                 ']' => {
                     chars.next(); // Consume the ']'
-                    return Some(Arg::Array(array));
+                    return Arg::Array(array);
                 }
                 ',' => {
                     chars.next(); // Consume the ','
@@ -108,20 +116,21 @@ impl Call {
                     if let Some(arg) = Self::parse_arg(chars) {
                         array.push(arg);
                     }
-                    if let Some(&',') = chars.peek() {
+                    if chars.peek() == Some(&',') {
                         chars.next(); // Consume the ','
                     }
                 }
             }
         }
-        Some(Arg::Array(array))
+        Arg::Array(array)
     }
 
+    #[must_use]
     pub fn param_names(&self) -> Vec<String> {
         match self {
-            Call::Nular => Vec::new(),
-            Call::Unary(arg) => arg.names(),
-            Call::Binary(arg1, arg2) => {
+            Self::Nular => Vec::new(),
+            Self::Unary(arg) => arg.names(),
+            Self::Binary(arg1, arg2) => {
                 let names1 = arg1.names();
                 let names2 = arg2.names();
                 let mut arg = Vec::with_capacity(names1.len() + names2.len());

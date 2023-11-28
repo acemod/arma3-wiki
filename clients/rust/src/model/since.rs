@@ -28,7 +28,8 @@ pub struct Since {
 }
 
 impl Since {
-    pub fn flashpoint(&self) -> Option<&Version> {
+    #[must_use]
+    pub const fn flashpoint(&self) -> Option<&Version> {
         self.flashpoint.as_ref()
     }
 
@@ -36,7 +37,8 @@ impl Since {
         self.flashpoint = flashpoint;
     }
 
-    pub fn flashpoint_elite(&self) -> Option<&Version> {
+    #[must_use]
+    pub const fn flashpoint_elite(&self) -> Option<&Version> {
         self.flashpoint_elite.as_ref()
     }
 
@@ -44,7 +46,8 @@ impl Since {
         self.flashpoint_elite = flashpoint_elite;
     }
 
-    pub fn armed_assault(&self) -> Option<&Version> {
+    #[must_use]
+    pub const fn armed_assault(&self) -> Option<&Version> {
         self.armed_assault.as_ref()
     }
 
@@ -52,7 +55,8 @@ impl Since {
         self.armed_assault = armed_assault;
     }
 
-    pub fn arma_2(&self) -> Option<&Version> {
+    #[must_use]
+    pub const fn arma_2(&self) -> Option<&Version> {
         self.arma_2.as_ref()
     }
 
@@ -60,7 +64,8 @@ impl Since {
         self.arma_2 = arma_2;
     }
 
-    pub fn arma_2_arrowhead(&self) -> Option<&Version> {
+    #[must_use]
+    pub const fn arma_2_arrowhead(&self) -> Option<&Version> {
         self.arma_2_arrowhead.as_ref()
     }
 
@@ -68,7 +73,8 @@ impl Since {
         self.arma_2_arrowhead = arma_2_arrowhead;
     }
 
-    pub fn take_on_helicopters(&self) -> Option<&Version> {
+    #[must_use]
+    pub const fn take_on_helicopters(&self) -> Option<&Version> {
         self.take_on_helicopters.as_ref()
     }
 
@@ -76,7 +82,8 @@ impl Since {
         self.take_on_helicopters = take_on_helicopters;
     }
 
-    pub fn arma_3(&self) -> Option<&Version> {
+    #[must_use]
+    pub const fn arma_3(&self) -> Option<&Version> {
         self.arma_3.as_ref()
     }
 
@@ -84,6 +91,10 @@ impl Since {
         self.arma_3 = arma_3;
     }
 
+    /// Sets the version from the wiki.
+    ///
+    /// # Errors
+    /// Returns an error if the key is unknown.
     pub fn set_from_wiki(&mut self, key: &str, value: &str) -> Result<(), String> {
         match key.to_lowercase().as_str() {
             "ofp" => {
@@ -108,12 +119,16 @@ impl Since {
                 self.set_arma_3(Some(Version::from_wiki(value)?));
             }
             _ => {
-                panic!("Unknown since key: {}", key);
+                return Err(format!("Unknown since key: {key}"));
             }
         }
         Ok(())
     }
 
+    /// Sets the version from the wiki.
+    ///
+    /// # Errors
+    /// Returns an error if the key is unknown.
     pub fn set_version(&mut self, key: &str, version: Version) -> Result<(), String> {
         match key.to_lowercase().as_str() {
             "ofp" => {
@@ -138,7 +153,7 @@ impl Since {
                 self.set_arma_3(Some(version));
             }
             _ => {
-                panic!("Unknown since key: {}", key);
+                return Err(format!("Unknown since key: {key}"));
             }
         }
         Ok(())

@@ -1,8 +1,15 @@
-use crate::{
-    model::{Call, Command, Locality, Param, Since, Syntax, Value, Version},
-    ParseError,
-};
+use a3_wiki::model::{Call, Command, Locality, Param, Since, Syntax, Value, Version};
 
+use crate::ParseError;
+
+#[allow(clippy::too_many_lines)]
+/// Parses a command from the wiki.
+///
+/// # Errors
+/// Returns an error if the command is invalid.
+///
+/// # Panics
+/// Panics if the parameters are invalid.
 pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), String> {
     let mut errors = Vec::new();
 
@@ -10,8 +17,7 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
     while let Some(start) = source.find("<!--") {
         let end = source[start..]
             .find("-->")
-            .map(|i| i + start + 3)
-            .unwrap_or_else(|| source.len());
+            .map_or_else(|| source.len(), |i| i + start + 3);
         source.replace_range(start..end, "");
     }
 
@@ -22,6 +28,7 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
     source = source.replace("</nowiki>", "");
     source = source.replace("<nowiki/>", "");
 
+    #[allow(clippy::needless_collect)] // needed because I don't want to deal with args on syntax()
     let lines = source
         .split("\n|")
         .filter(|l| !l.is_empty() && !l.starts_with('{') && !l.starts_with('}') && l.contains('='))
@@ -95,7 +102,7 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
                     if value.contains("Broken Commands") {
                         break;
                     }
-                } else if key == format!("s{}", syntax_counter) {
+                } else if key == format!("s{syntax_counter}") {
                     // ==== Special Cases ====
                     if command.name() == "local" && syntax_counter == 2 {
                         // syntax 2 is not a regular command, and deprecated
@@ -109,7 +116,10 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
                     }
                     let value = if command.name() == "addMagazine" {
                         if syntax_counter == 1 {
-                            value.replace("<br>\n{{Icon|localArgument|32}}{{Icon|globalEffect|32}}", "")
+                            value.replace(
+                                "<br>\n{{Icon|localArgument|32}}{{Icon|globalEffect|32}}",
+                                "",
+                            )
                         } else if syntax_counter == 2 {
                             value.replace("<br>\n{{GVI|arma2oa|1.62}} {{Icon|localArgument|32}}{{Icon|globalEffect|32}}<br>\n{{GVI|arma3|1.00}} {{Icon|globalArgument|32}}{{Icon|globalEffect|32}}", "")
                         } else {
@@ -138,7 +148,7 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
                             .to_string(),
                     );
                 } else {
-                    println!("Unknown key: {}", key);
+                    println!("Unknown key: {key}");
                 }
             }
         }
@@ -146,21 +156,33 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
     Ok((command, errors))
 }
 
-pub fn locality(source: &str) -> Result<crate::model::Locality, String> {
+/// Parses a locality from the wiki.
+///
+/// # Errors
+/// Returns an error if the locality is unknown.
+pub fn locality(source: &str) -> Result<Locality, String> {
     match source {
-        "local" => Ok(crate::model::Locality::Local),
-        "global" => Ok(crate::model::Locality::Global),
-        "server" => Ok(crate::model::Locality::Server),
-        "" => Ok(crate::model::Locality::Unspecified),
-        _ => Err(format!("Unknown locality: {}", source)),
+        "local" => Ok(Locality::Local),
+        "global" => Ok(Locality::Global),
+        "server" => Ok(Locality::Server),
+        "" => Ok(Locality::Unspecified),
+        _ => Err(format!("Unknown locality: {source}")),
     }
 }
 
+#[allow(clippy::too_many_lines)]
+/// Parses a syntax from the wiki.
+///
+/// # Errors
+/// Returns an error if the syntax is invalid.
+///
+/// # Panics
+/// Panics if the parameters are invalid.
 pub fn syntax(
     command: &str,
     usage: &str,
     lines: &mut std::iter::Peekable<std::vec::IntoIter<(&str, &str)>>,
-) -> Result<crate::model::Syntax, String> {
+) -> Result<Syntax, String> {
     let mut params = Vec::new();
     let mut ret = None;
     let mut since: Option<Since> = None;
@@ -170,7 +192,7 @@ pub fn syntax(
             if key.ends_with("since") {
                 let last_param: &mut Param = params.last_mut().unwrap();
                 let Some((game, version)) = value.split_once(' ') else {
-                    return Err(format!("Invalid since: {}", value));
+                    return Err(format!("Invalid since: {value}"));
                 };
                 last_param.since_mut().set_from_wiki(game, version)?;
             } else {
@@ -178,15 +200,15 @@ pub fn syntax(
                 let value = if command == "forEach" {
                     value.trim_start_matches("{{{!}} class=\"wikitable align-center float-right\"\n! Game\n{{!}} {{GVI|ofp|1.00}}\n{{!}} {{GVI|arma1|1.00}}\n{{!}} {{GVI|arma2|1.00}}\n{{!}} {{GVI|arma2oa|1.50}}\n{{!}} {{GVI|arma3|1.00}}\n{{!}} {{GVI|tkoh|1.00}}\n{{!}}-\n! [[String]] support\n{{!}} colspan=\"2\" {{!}} {{Icon|checked}}\n{{!}} colspan=\"4\" {{!}} {{Icon|unchecked}}\n{{!}}-\n! [[Code]] support\n{{!}} {{Icon|unchecked}}\n{{!}} colspan=\"5\" {{!}} {{Icon|checked}}\n{{!}}}\n").to_string()
                 } else {
-                    value.to_string()
+                    (*value).to_string()
                 };
                 // ==== End Of Special Cases ====
                 let Some((name, typ)) = value.split_once(' ') else {
-                    return Err(format!("Invalid param: {}", value));
+                    return Err(format!("Invalid param: {value}"));
                 };
                 let mut name = name.trim_end_matches(':').trim_matches('\'');
                 let typ = typ.trim();
-                let (typ, desc) = typ.split_once('-').unwrap_or((typ, ""));
+                let (_typ, desc) = typ.split_once('-').unwrap_or((typ, ""));
                 let optional = desc.contains("(Optional");
                 let mut desc = desc.to_string();
                 let default = if desc.contains("(Optional, default ") {
@@ -211,8 +233,8 @@ pub fn syntax(
                 } else {
                     None
                 };
-                params.push(Param {
-                    name: {
+                params.push(Param::new(
+                    {
                         let mut name = name.trim().to_string();
                         name = if name.starts_with("{{") {
                             name.split_once("}} ").unwrap().1.trim().to_string()
@@ -227,16 +249,16 @@ pub fn syntax(
                         }
                         name
                     },
-                    description: if desc.trim().is_empty() {
+                    if desc.trim().is_empty() {
                         None
                     } else {
                         Some(desc.trim().to_string())
                     },
+                    Value::Unknown,
                     optional,
-                    typ: Value::Unknown,
                     default,
                     since,
-                });
+                ));
             }
             lines.next();
         } else if key.starts_with('r') {
@@ -244,7 +266,7 @@ pub fn syntax(
             lines.next();
         } else if key.starts_with('s') && key.ends_with("since") {
             let Some((game, version)) = value.split_once(' ') else {
-                return Err(format!("Invalid since: {}", value));
+                return Err(format!("Invalid since: {value}"));
             };
             if let Some(since) = &mut since {
                 since.set_from_wiki(game, version)?;
@@ -282,28 +304,28 @@ pub fn syntax(
             }
             root.push('N');
             if !params.iter().any(|p| p.name() == root) {
-                println!("params: {:?}", params);
-                return Err(format!("Missing param: {}", arg));
+                println!("params: {params:?}");
+                return Err(format!("Missing param: {arg}"));
             }
             list = true;
         }
     }
-    Ok(Syntax {
+    Ok(Syntax::new(
         call,
-        ret: {
+        {
             let Some(mut ret) = ret else {
                 return Err("Missing return".to_string());
             };
             if ret.contains("\n{{") {
                 let Some((ret_trim, _)) = ret.split_once("\n{{") else {
-                    return Err(format!("Invalid return: {}", ret));
+                    return Err(format!("Invalid return: {ret}"));
                 };
                 ret = ret_trim.trim().to_string();
             }
             if ret.contains(" format") {
                 (Value::Unknown, None)
             } else {
-                let (typ, desc) = ret.split_once('-').unwrap_or((&ret, ""));
+                let (_typ, desc) = ret.split_once('-').unwrap_or((&ret, ""));
                 (
                     Value::Unknown,
                     if desc.is_empty() {
@@ -317,5 +339,5 @@ pub fn syntax(
         params,
         since,
         effect,
-    })
+    ))
 }

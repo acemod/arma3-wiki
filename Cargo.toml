@@ -2,5 +2,14 @@
 resolver = "2"
 members = [ 
     "bin",
+    "clients/rust",
     "lib",
 ]
+
+[workspace.dependencies]
+serde_yaml = { version = "0.9.27" }
+
+[workspace.lints.clippy]
+all = "deny"
+nursery = "deny"
+pedantic = "warn"

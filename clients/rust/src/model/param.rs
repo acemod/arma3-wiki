@@ -22,23 +22,47 @@ pub struct Param {
 }
 
 impl Param {
+    #[must_use]
+    pub const fn new(
+        name: String,
+        description: Option<String>,
+        typ: Value,
+        optional: bool,
+        default: Option<String>,
+        since: Option<Since>,
+    ) -> Self {
+        Self {
+            name,
+            description,
+            typ,
+            optional,
+            default,
+            since,
+        }
+    }
+
+    #[must_use]
     pub fn name(&self) -> &str {
         &self.name
     }
 
+    #[must_use]
     pub fn description(&self) -> Option<&str> {
         self.description.as_deref()
     }
 
-    pub fn typ(&self) -> &Value {
+    #[must_use]
+    pub const fn typ(&self) -> &Value {
         &self.typ
     }
 
+    #[must_use]
     pub fn default(&self) -> Option<&str> {
         self.default.as_deref()
     }
 
-    pub fn since(&self) -> Option<&Since> {
+    #[must_use]
+    pub const fn since(&self) -> Option<&Since> {
         self.since.as_ref()
     }
 

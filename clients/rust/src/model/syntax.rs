@@ -16,19 +16,40 @@ pub struct Syntax {
 }
 
 impl Syntax {
-    pub fn call(&self) -> &Call {
+    #[must_use]
+    pub const fn new(
+        call: Call,
+        ret: (Value, Option<String>),
+        params: Vec<Param>,
+        since: Option<Since>,
+        effect: Option<Locality>,
+    ) -> Self {
+        Self {
+            call,
+            ret,
+            params,
+            since,
+            effect,
+        }
+    }
+
+    #[must_use]
+    pub const fn call(&self) -> &Call {
         &self.call
     }
 
-    pub fn ret(&self) -> &(Value, Option<String>) {
+    #[must_use]
+    pub const fn ret(&self) -> &(Value, Option<String>) {
         &self.ret
     }
 
+    #[must_use]
     pub fn params(&self) -> &[Param] {
         &self.params
     }
 
-    pub fn since(&self) -> Option<&Since> {
+    #[must_use]
+    pub const fn since(&self) -> Option<&Since> {
         self.since.as_ref()
     }
 

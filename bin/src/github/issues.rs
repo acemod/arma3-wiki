@@ -35,10 +35,10 @@ impl Issues {
 
     pub async fn failed_command_create(&self, gh: &GitHub, command: &str, reason: String) -> bool {
         if std::env::var("CI").is_err() {
-            println!("Local, Skipping issue creation for {}", command);
+            println!("Local, Skipping issue creation for {command}");
             return false;
         }
-        let title = format!("Parse Failed: {}", command);
+        let title = format!("Parse Failed: {command}");
         if let Some(issue) = self.issues.iter().find(|i| i.title == title) {
             if Some(&reason) == issue.body.as_ref() {
                 return false;
@@ -71,7 +71,7 @@ impl Issues {
     }
 
     pub async fn failed_command_close(&self, gh: &GitHub, command: &str) -> bool {
-        let title = format!("Parse Failed: {}", command);
+        let title = format!("Parse Failed: {command}");
         if let Some(issue) = self.issues.iter().find(|i| i.title == title) {
             let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
             if rate != 0 && rate % 20 == 0 {

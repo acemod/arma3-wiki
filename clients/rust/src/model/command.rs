@@ -32,62 +32,77 @@ pub struct Command {
 }
 
 impl Command {
+    #[must_use]
     pub fn name(&self) -> &str {
         &self.name
     }
 
+    #[must_use]
     pub fn description(&self) -> &str {
         &self.description
     }
 
+    #[must_use]
     pub fn alias(&self) -> &[String] {
         &self.alias
     }
 
+    #[must_use]
     pub fn multiplayer_note(&self) -> Option<&str> {
         self.multiplayer_note.as_deref()
     }
 
+    #[must_use]
     pub fn problem_notes(&self) -> &[String] {
         &self.problem_notes
     }
 
+    #[must_use]
     pub fn groups(&self) -> &[String] {
         &self.groups
     }
 
+    #[must_use]
     pub fn syntax(&self) -> &[Syntax] {
         &self.syntax
     }
 
-    pub fn argument_loc(&self) -> &Locality {
+    #[must_use]
+    pub const fn argument_loc(&self) -> &Locality {
         &self.argument_loc
     }
 
-    pub fn effect_loc(&self) -> &Locality {
+    #[must_use]
+    pub const fn effect_loc(&self) -> &Locality {
         &self.effect_loc
     }
 
-    pub fn server_exec(&self) -> Option<bool> {
+    #[must_use]
+    pub const fn server_exec(&self) -> Option<bool> {
         self.server_exec
     }
 
-    pub fn since(&self) -> &Since {
+    #[must_use]
+    pub const fn since(&self) -> &Since {
         &self.since
     }
 
+    #[must_use]
     pub fn since_mut(&mut self) -> &mut Since {
         &mut self.since
     }
 
+    #[must_use]
     pub fn branch(&self) -> Option<&str> {
         self.branch.as_deref()
     }
 
+    #[must_use]
     pub fn branch_mut(&mut self) -> &mut Option<String> {
         &mut self.branch
     }
 
+    #[must_use]
     pub fn examples(&self) -> &[String] {
         &self.examples
     }

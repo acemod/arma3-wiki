@@ -46,18 +46,37 @@ impl GitHub {
 impl GitHub {
     pub async fn command_pr(&mut self, command: &str) {
         if std::env::var("CI").is_err() {
-            println!("Local, Skipping PR creation for {}", command);
+            println!("Local, Skipping PR creation for {command}");
             return;
         }
-        let head = format!("command/{}", command);
+        let head = format!("command/{command}");
         command!(["checkout", "dist"]);
         command!(["checkout", "-b", head.as_str()]);
-        command!(["add", format!("commands/{}.yml", command).as_str()]);
-        command!(["commit", "-m", format!("Update {}", command).as_str()]);
+        command!(["add", format!("commands/{command}.yml").as_str()]);
+        command!(["commit", "-m", format!("Update {command}").as_str()]);
         command!(["push", "--set-upstream", "origin", head.as_str()]);
         self.0
             .pulls("BrettMayson", "a3_wiki")
-            .create(format!("Update {}", command), head, "dist")
+            .create(format!("Update {command}"), head, "dist")
+            .send()
+            .await
+            .unwrap();
+    }
+
+    pub async fn version_pr(&mut self, version: &str) {
+        if std::env::var("CI").is_err() {
+            println!("Local, Skipping PR creation for version");
+            return;
+        }
+        let head = "version";
+        command!(["checkout", "dist"]);
+        command!(["checkout", "-b", head]);
+        command!(["add", "version.txt"]);
+        command!(["commit", "-m", "Update version"]);
+        command!(["push", "--set-upstream", "origin", head]);
+        self.0
+            .pulls("BrettMayson", "a3_wiki")
+            .create(format!("Update version to {version}"), head, "dist")
             .send()
             .await
             .unwrap();

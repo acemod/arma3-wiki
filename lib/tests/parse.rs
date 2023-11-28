@@ -15,7 +15,7 @@ macro_rules! parse(
 fn parse(path: &str) {
     let content = std::fs::read_to_string(Path::new(ROOT).join(path)).unwrap();
     let result = a3_wiki_lib::parse::command(path, &content);
-    println!("{:?}", result);
+    println!("{result:?}");
     let result = result.unwrap();
     assert!(result.1.is_empty());
 }

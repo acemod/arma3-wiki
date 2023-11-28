@@ -7,45 +7,56 @@ pub struct Version {
 }
 
 impl Version {
-    pub fn new(major: u8, minor: u8) -> Self {
+    #[must_use]
+    pub const fn new(major: u8, minor: u8) -> Self {
         Self { major, minor }
     }
 
+    /// Parses a version string from the wiki.
+    ///
+    /// # Errors
+    /// Errors if the version string is invalid.
     pub fn from_wiki(source: &str) -> Result<Self, String> {
         if source.is_empty() {
             return Ok(Self::new(0, 0));
         }
         let Some((major, minor)) = source.split_once('.') else {
-            return Err(format!("Invalid version: {}", source));
+            return Err(format!("Invalid version: {source}"));
         };
         let Ok(major) = major.trim().parse::<u8>() else {
-            return Err(format!("Invalid version: {}", source));
+            return Err(format!("Invalid version: {source}"));
         };
         let Ok(minor) = minor.trim().parse::<u8>() else {
-            return Err(format!("Invalid version: {}", source));
+            return Err(format!("Invalid version: {source}"));
         };
-        Ok(Version { major, minor })
+        Ok(Self { major, minor })
     }
 
+    /// Parses a version string from the icon.
+    ///
+    /// # Errors
+    /// Errors if the version string is invalid.
     pub fn from_icon(source: &str) -> Result<(String, Self), String> {
         // {{GVI|arma3|2.06|size= 0.75}}
         let Some((_, source)) = source.split_once("{{GVI|") else {
-            return Err(format!("Invalid version: {}", source));
+            return Err(format!("Invalid version: {source}"));
         };
         let Some((game, source)) = source.split_once('|') else {
-            return Err(format!("Invalid version: {}", source));
+            return Err(format!("Invalid version: {source}"));
         };
         let Some((version, _)) = source.split_once('|') else {
-            return Err(format!("Invalid version: {}", source));
+            return Err(format!("Invalid version: {source}"));
         };
         Ok((game.to_string(), Self::from_wiki(version)?))
     }
 
-    pub fn major(&self) -> u8 {
+    #[must_use]
+    pub const fn major(&self) -> u8 {
         self.major
     }
 
-    pub fn minor(&self) -> u8 {
+    #[must_use]
+    pub const fn minor(&self) -> u8 {
         self.minor
     }
 }

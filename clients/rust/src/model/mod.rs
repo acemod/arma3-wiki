@@ -16,7 +16,7 @@ pub use syntax::Syntax;
 pub use value::Value;
 pub use version::Version;
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Default, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Locality {
     #[default]
     Unspecified,

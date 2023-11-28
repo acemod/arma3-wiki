@@ -1,7 +1,69 @@
 use std::path::Path;
 
-use a3_wiki_lib::{model::Command, ParseError};
+use a3_wiki::model::Command;
+use a3_wiki_lib::ParseError;
 use reqwest::{header::LAST_MODIFIED, Client};
+
+use crate::github::{GitHub, Issues};
+
+pub async fn commands(github: &mut GitHub, args: &[String]) {
+    let commands = if args.is_empty() {
+        super::list::fetch().await
+    } else {
+        args.iter()
+            .map(|arg| {
+                (
+                    arg.clone(),
+                    format!("https://community.bistudio.com/wiki/{arg}"),
+                )
+            })
+            .collect()
+    };
+    let mut failed = Vec::new();
+    let mut changed = Vec::new();
+    println!("Commands: {}", commands.len());
+    let issues = Issues::new(github).await;
+    let client = reqwest::Client::new();
+    for (name, url) in commands {
+        let result = command(&client, name.clone(), url.clone()).await;
+        if let Err(e) = result {
+            println!("Failed {name}");
+            failed.push((name, e));
+        } else if let Ok((did_change, errors)) = result {
+            if !errors.is_empty() {
+                issues
+                    .failed_command_create(
+                        github,
+                        &name,
+                        errors
+                            .iter()
+                            .map(std::string::ToString::to_string)
+                            .collect::<Vec<_>>()
+                            .join("\n"),
+                    )
+                    .await;
+            }
+            if did_change {
+                if errors.is_empty() {
+                    issues.failed_command_close(github, &name).await;
+                }
+                changed.push(name);
+            }
+        }
+    }
+    if !failed.is_empty() {
+        failed.sort();
+        println!("Complete Fails: {failed:?}");
+        for (name, reason) in failed {
+            issues.failed_command_create(github, &name, reason).await;
+        }
+    }
+    if !changed.is_empty() {
+        for name in changed {
+            github.command_pr(&name).await;
+        }
+    }
+}
 
 const SKIP_IF_LESS_THAN: u64 = 12;
 
@@ -22,7 +84,7 @@ pub async fn command(
             let res = match client.head(&url).send().await {
                 Ok(res) => res,
                 Err(e) => {
-                    println!("Failed to fetch {}: {}", name, e);
+                    println!("Failed to fetch {name}: {e}");
                     return Err(e.to_string());
                 }
             };
@@ -40,20 +102,20 @@ pub async fn command(
         false
     };
 
-    let url = format!("{}?action=raw", url);
+    let url = format!("{url}?action=raw");
     let temp = std::env::temp_dir().join("a3_wiki_fetch");
     let path = temp.join(urlencoding::encode(&name).to_string());
     let content = if path.exists() {
         std::fs::read_to_string(&path).unwrap()
     } else {
         if skip {
-            println!("Skipping {}, less than {}h", name, SKIP_IF_LESS_THAN);
+            println!("Skipping {name}, less than {SKIP_IF_LESS_THAN}h");
             return Ok((false, Vec::new()));
         }
         let res = match client.get(&url).send().await {
             Ok(res) => res,
             Err(e) => {
-                println!("Failed to fetch {}: {}", name, e);
+                println!("Failed to fetch {name}: {e}");
                 return Err(e.to_string());
             }
         };
@@ -86,8 +148,8 @@ pub async fn command(
             Ok((true, errors))
         }
         Err(e) => {
-            println!("Failed to parse {}", name);
-            Err(e.to_string())
+            println!("Failed to parse {name}");
+            Err(e)
         }
     }
 }
