@@ -1,11 +1,21 @@
 name: getPersonUsedDLCs
-description: ''
+description: Returns a list of all DLCs objects the unit is currently using. For example if a unit is inside a vehicle from DLC, it will return the code of that DLC.
 groups:
 - Broken Commands
-syntax: []
+- DLC
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
 argument_loc: Global
 effect_loc: Unspecified
 since:
   arma_3:
     major: 1
     minor: 36
+examples:
+- _objects = getPersonUsedDLCs player;

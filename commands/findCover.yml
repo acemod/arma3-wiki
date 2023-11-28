@@ -1,8 +1,42 @@
 name: findCover
-description: ''
+description: |-
+  Returns the object around where the unit finds cover. The minDist, visibilityPosition and ignoreObject parameters are optional.
+  {{Feature|important|Not implemented in {{arma2}} and later titles (always returns [[objNull]]).}}
 groups:
 - Broken Commands
-syntax: []
+syntax:
+- call: !Binary
+  - object
+  - - position
+    - hidePosition
+    - maxDist
+    - minDist
+    - visibilityPosition
+    - ignoreObject
+  ret:
+  - Unknown
+  - always [[objNull]]
+  params:
+  - name: object
+    type: Unknown
+  - name: position
+    type: Unknown
+  - name: hidePosition
+    description: '[[getHideFrom]]-like position from which the unit should hide'
+    type: Unknown
+  - name: maxDist
+    type: Unknown
+  - name: minDist
+    type: Unknown
+    optional: true
+  - name: visibilityPosition
+    description: used to select cover that unit can see in that direction from
+    type: Unknown
+    optional: true
+  - name: ignoreObject
+    description: ignore this object in visibility check
+    type: Unknown
+    optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -21,3 +55,5 @@ since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- unit1 findCover [ASLToATL aimPos unit2, 30];

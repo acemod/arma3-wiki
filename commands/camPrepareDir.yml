@@ -1,8 +1,20 @@
 name: camPrepareDir
-description: ''
+description: "Prepares the camera heading. \n{{Feature|Warning|This command is '''non-functional'''!}}"
 groups:
 - Broken Commands
-syntax: []
+- Camera Control
+syntax:
+- call: !Binary
+  - camera
+  - direction
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: camera
+    type: Unknown
+  - name: direction
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -21,3 +33,5 @@ since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- _camera camPrepareDir 150;

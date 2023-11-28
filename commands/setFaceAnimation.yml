@@ -1,9 +1,23 @@
 name: setFaceAnimation
-description: ''
+description: |-
+  Sets facial animation phase (eye blinking).
+  {{Feature|arma3|This command is not functional in {{arma3}}.}}
 groups:
 - Animations
 - Broken Commands
-syntax: []
+syntax:
+- call: !Binary
+  - unit
+  - blink
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: blink
+    description: range 0..1
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -28,3 +42,5 @@ since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- _soldier1 setFaceAnimation 0.5;

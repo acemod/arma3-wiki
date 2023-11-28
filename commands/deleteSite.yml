@@ -1,11 +1,22 @@
 name: deleteSite
-description: ''
+description: |-
+  Removes the site.
+  {{Feature | Warning | This command is considered deprecated and is no longer supported}}
 groups:
 - Broken Commands
-syntax: []
+syntax:
+- call: !Unary site
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: site
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- '-'

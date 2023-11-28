@@ -1,11 +1,25 @@
 name: createSite
-description: ''
+description: "Create a new site. \n{{Feature|warning|This command is considered deprecated and is no longer supported}}"
 groups:
 - Broken Commands
-syntax: []
+- Sides
+syntax:
+- call: !Binary
+  - type
+  - pos
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: type
+    type: Unknown
+  - name: pos
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- '-'

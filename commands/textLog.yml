@@ -1,8 +1,17 @@
 name: textLog
-description: ''
+description: |-
+  Dump argument value to debugging output. <br>
+  {{Feature|Warning|This command is non-functional in the retail version}}
 groups:
 - Broken Commands
-syntax: []
+syntax:
+- call: !Unary anything
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: anything
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -27,3 +36,5 @@ since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- textLog player;

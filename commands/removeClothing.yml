@@ -1,12 +1,27 @@
 name: removeClothing
-description: ''
+description: Removes specified named clothes selections from unit. {{Feature | important | Result of April Fool's Day 2008. Don't even try ingame ;)}}
 groups:
 - Unit Inventory
 - Broken Commands
-syntax: []
+syntax:
+- call: !Binary
+  - unit
+  - item
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    description: unit
+    type: Unknown
+  - name: item
+    description: arrays of named selections ([[String]]s)
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
   armed_assault:
     major: 1
     minor: 11
+examples:
+- "_unit removeClothing [\"shirt\"];</sqf> \n[[File:rc_sample.jpg|200px]]"

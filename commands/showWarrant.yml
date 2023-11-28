@@ -1,9 +1,17 @@
 name: showWarrant
-description: ''
+description: Enable ID card. {{Feature|Warning|Obsolete command.}}
 groups:
 - Interaction
 - Broken Commands
-syntax: []
+syntax:
+- call: !Unary show
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: show
+    description: (default [[false]])
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -28,3 +36,5 @@ since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- showWarrant true;

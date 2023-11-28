@@ -1,8 +1,30 @@
 name: createTarget
-description: ''
+description: Create a target.
+problem_notes:
+- '{{Feature|Warning|This command is not implemented.}}'
 groups:
 - Broken Commands
-syntax: []
+syntax:
+- call: !Binary
+  - obj
+  - - type
+    - position
+    - typeAccuracy
+    - posAccuracy
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: obj
+    type: Unknown
+  - name: type
+    type: Unknown
+  - name: position
+    type: Unknown
+  - name: typeAccuracy
+    type: Unknown
+  - name: posAccuracy
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -21,3 +43,5 @@ since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- _target = createTarget ["targetType", [0,0,0], 1, 1];

@@ -1,7 +1,10 @@
 name: setMagazineTurretAmmo
-description: ''
+description: |-
+  Sets ammo count to given amount for given turret.
+  {{Feature|warning|Broken when vehicle has multiple magazines of the same type.}}
 groups:
 - Broken Commands
+- Turrets
 syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
@@ -9,3 +12,5 @@ since:
   arma_3:
     major: 1
     minor: 34
+examples:
+- myMRAP setMagazineTurretAmmo ["200Rnd_127x99_mag_Tracer_Red", 30, [0]]];

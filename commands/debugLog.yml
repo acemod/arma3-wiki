@@ -1,8 +1,15 @@
 name: debugLog
-description: ''
+description: "Dump argument type and value to debugging output. \n\n{{Feature|Warning|This command is non-functional in the retail version. Use [[diag_log]] instead.}}"
 groups:
 - Broken Commands
-syntax: []
+syntax:
+- call: !Unary anything
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: anything
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -27,3 +34,5 @@ since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- debugLog player;

@@ -1,8 +1,18 @@
 name: setPlayable
-description: ''
+description: Create a multiplayer role for the unit. The roles created this way are used for [[Multiplayer Scripting#Join In Progress|Join In Progress]] and [[Team Switch]].
+problem_notes:
+- '{{Feature|warning|This command does not work as intended and currently does nothing in {{arma3}}.}}'
 groups:
 - Broken Commands
-syntax: []
+- Multiplayer
+syntax:
+- call: !Unary unitName
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unitName
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -24,3 +34,5 @@ since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- setPlayable _aPerson;

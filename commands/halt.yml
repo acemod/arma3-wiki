@@ -1,9 +1,14 @@
 name: halt
-description: ''
+description: 'This command was meant to break the script into debugger, however currently ''''''it does not do anything'''''' except displaying and logging the following error: {{hl|Error Debugger breakpoint hit}}.'
 groups:
 - Program Flow
 - Broken Commands
-syntax: []
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - always returns [[false]]
+  params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -22,3 +27,5 @@ since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- if (_displayAnError) then {halt};

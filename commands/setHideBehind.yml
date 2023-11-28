@@ -1,8 +1,25 @@
 name: setHideBehind
-description: ''
+description: |-
+  Sets the data for hiding. objectWhereHide can be taken using [[findCover]]. hidePosition can be taken using [[getHideFrom]]. Command is not functional in Arma 2.
+  {{Feature|Warning| This command is not implemented!}}
 groups:
 - Broken Commands
-syntax: []
+syntax:
+- call: !Binary
+  - object
+  - - objectWhereHide
+    - hidePosition
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: object
+    type: Unknown
+  - name: objectWhereHide
+    type: Unknown
+  - name: hidePosition
+    description: format [[getHideFrom]]
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -24,3 +41,5 @@ since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- '-'

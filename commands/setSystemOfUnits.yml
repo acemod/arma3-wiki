@@ -1,12 +1,28 @@
 name: setSystemOfUnits
-description: ''
+description: |-
+  Set system of units. This will only impact gauges from advanced flight model.
+  {{Feature|important|This command is buggy: any value other than 0 (metric) will display both units at the same time.}}
 groups:
 - System
 - Broken Commands
-syntax: []
+syntax:
+- call: !Unary value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: value
+    description: |-
+      possible values are:
+      * 0 - metric
+      * 1 - mixed
+      * 2 - imperial
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Local
 since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- if (player in _myHelicopter) then { setSystemOfUnits 2; };

@@ -1,9 +1,16 @@
 name: echo
-description: ''
+description: Sends any text into the debugger console or the logfile. This command is only '''present in internal version ''' not in the retail version. Use [[diag_log]] instead!
 groups:
 - Diagnostic
 - Broken Commands
-syntax: []
+syntax:
+- call: !Unary text
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: text
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -22,3 +29,5 @@ since:
   arma_3:
     major: 0
     minor: 50
+examples:
+- echo "Text in logfile";
