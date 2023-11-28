@@ -1,0 +1,19 @@
+name: playerTargetLock
+description: Get the local player's current locked target (with weapons that can lock on).
+groups:
+- Object Manipulation
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- "playerTargetLock params [\"_target\", \"_lock\", \"_cfg\"];\nif (_lock == 1) then\n{\n\thint format [\"%1 locked %2\", getText (_cfg >> \"displayName\"), getText (configOf _target >> \"displayName\")];\n};\n"
+- playerTargetLock; // returns [objNull, 0, configNull] if no lock is being done
