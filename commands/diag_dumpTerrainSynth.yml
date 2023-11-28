@@ -1,0 +1,21 @@
+name: diag_dumpTerrainSynth
+description: 'Returns [[Arma 3: CfgWorlds Config Reference#class OutsideTerrain|OutsideTerrain]]''s current world''s values.'
+groups:
+- Diagnostic
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - |-
+    altitude analysis distance from terrain's border towards its centre
+    * min1..512: [[Number]] - minimum altitude
+    * max1..512: [[Number]] - maximum altitude
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- private _terrainSynth = diag_dumpTerrainSynth;

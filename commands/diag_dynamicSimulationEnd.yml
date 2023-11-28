@@ -1,0 +1,35 @@
+name: diag_dynamicSimulationEnd
+description: |-
+  Ends dynamic simulation data gathering and writes collected data into given (txt) file. The file is saved in the {{arma3}} installation folder.
+  <syntaxhighlight lang="cpp">
+  // Example output
+  Enabled time (in % of collection time)       Subject name
+    1.$                                          O Bravo 1-5
+    1.$                                          O Bravo 1-6
+    1.$                                          extraction_bike (B_Quadbike_01_F) - [3151,9662,59]
+    .....                                          ..................................
+    -1.$                                         O Bravo 1-4
+    -1.$                                         target_1 (O_SAM_System_04_F) - [3571,9878,70]
+    -1.$                                         O Alpha 3-4
+  Collection took 0.0s
+  </syntaxhighlight>
+groups:
+- Diagnostic
+- Dynamic Simulation
+syntax:
+- call: !Unary file
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: file
+    description: file name without extension
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 1
+    minor: 68
+examples:
+- diag_dynamicSimulationEnd "dynSimDebugData"; // creates a file called "dynSimDebugData_runtimelog.txt"

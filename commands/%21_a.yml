@@ -1,0 +1,41 @@
+name: '!_a'
+description: Returns the negation of a Boolean expression. This means {{hl|[[true]]}} becomes {{hl|[[false]]}} and vice versa.
+alias:
+- '[[not]]'
+groups:
+- Variables
+- Math
+syntax:
+- call: !Unary a
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: a
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "The code\n<sqf>private _isAlive = alive player;\nif (!_isAlive) then\n{\n\thint \"The player is dead!\";\n};</sqf>\nis the same as\n<sqf>private _isAlive = alive player;\nif (not _isAlive) then\n{\n\thint \"The player is dead!\";\n};"

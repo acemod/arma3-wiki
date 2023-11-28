@@ -1,0 +1,32 @@
+name: diag_mergeConfigFile
+description: |-
+  Updates config without restarting. Attributes and classes can not be deleted unless {{hl|[[Class Inheritance#delete|delete]]}} is used. Changes to the config are applied to all new entities, a mission restart is not necessarily required. Spawning the vehicle again or switching weapons works too. Since {{GVI|arma3|1.70}} CfgAmmo should be mergeable as well.
+  {{Feature|Warning|Merging a config with an [[PreProcessor_Commands#.23include|include]] statement, that points to a non existing file, will crash the game.}}
+groups:
+- Diagnostic
+- Config
+syntax:
+- call: !Unary
+  - path
+  - userdir
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: path
+    description: absolute or relative path
+    type: Unknown
+  - name: userdir
+    description: path is relative to the user directory, otherwise it is relative to the mission directory
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 0
+branch: diag
+examples:
+- diag_mergeConfigFile ["O:\Arma3\A3\Stuff_F\config.cpp"]

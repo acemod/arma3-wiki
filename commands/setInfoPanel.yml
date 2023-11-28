@@ -2,7 +2,19 @@ name: setInfoPanel
 description: Opens given component or first component of given component type on specified info panel.
 groups:
 - Custom Panels
-syntax: []
+syntax:
+- call: !Unary
+  - infoPanelId
+  - componentClassOrType
+  ret:
+  - Unknown
+  - '[[true]] if panel was successfully opened, [[false]] otherwise (e.g. opening GPS on player without GPS item or setting panel to vehicle that doesn''t have such capability configured)'
+  params:
+  - name: infoPanelId
+    description: info panel classname, or "left" or "right"
+    type: Unknown
+  - name: componentClassOrType
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

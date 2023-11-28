@@ -1,0 +1,49 @@
+name: diag_exportTerrainSVG
+description: |-
+  [[File: A3 diag exportTerrainSVG Example.jpg|thumb|400px|Highly detailed map of [[Stratis]]|right]]
+  Like the old [[Arma 3: Cheats#TOPOGRAPHY|TOPOGRAPHY]] cheat code, exports terrain, but in modern SVG format instead of the proprietary EMF format.
+groups:
+- Diagnostic
+syntax:
+- call: !Unary
+  - filePath
+  - drawLocationNames
+  - drawGrid
+  - drawCountlines
+  - drawTreeObjects
+  - drawMountainHeightpoints
+  - simpleRoads
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: filePath
+    description: path on disk. File name and extension have to be included
+    type: Unknown
+  - name: drawLocationNames
+    description: whether or not to draw location names
+    type: Unknown
+  - name: drawGrid
+    description: whether or not to draw grid
+    type: Unknown
+  - name: drawCountlines
+    description: whether or not to count lines
+    type: Unknown
+  - name: drawTreeObjects
+    description: whether or not to draw trees
+    type: Unknown
+  - name: drawMountainHeightpoints
+    description: whether or not to draw mountain height spots
+    type: Unknown
+  - name: simpleRoads
+    description: simplify roads. Draw roads as one long polyline instead of separate segments. Uses average road width as overall width
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 2
+branch: diag
+examples:
+- diag_exportTerrainSVG ["C:\Users\USERNAME\Desktop\Stratis_Map.svg", true, true, true, true, true, false]; // replace USERNAME with your username!

@@ -1,0 +1,48 @@
+name: diag_codePerformance
+description: |-
+  Attempts to run given code with given arguments given number of cycles in unscheduled environment and returns average time it took to run the code as well as actual number of executions performed.
+  The command will return as soon as possible if the tested code is slow and the duration of the command exceeds 1 second.
+  Engine alternative to [[BIS_fnc_codePerformance]].
+multiplayer_note: 'For security purposes, this command will only run for 1 cycle in multiplayer, unless in-game [[Arma 3: Debug Console|debug console]] is available via [[Description.ext|description.ext]] option or [[:Category:Eden Editor|Eden]] attribute setting.'
+groups:
+- Diagnostic
+- Performance Profiling
+syntax:
+- call: !Unary
+  - code
+  - arguments
+  - cycles
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: code
+    description: code to compare performance
+    type: Unknown
+  - name: arguments
+    description: 'arguments to pass to the code in _this variable. Default: [[nil]]'
+    type: Unknown
+    optional: true
+    default: '[[nil]]'
+  - name: cycles
+    description: wanted number of cycles to run the given code. > 1000 is recommended
+    type: Unknown
+    optional: true
+    default: '100000'
+  - name: ignoreTimeLimit
+    description: '- ignore the 1 second timelimit, and always run the provided number of cycles (except in multiplayer)'
+    type: Unknown
+    optional: true
+    default: 'false'
+    since:
+      arma_3:
+        major: 2
+        minor: 14
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 58
+examples:
+- private _result = diag_codePerformance [{ private _a = 123; }, 0, 10000];

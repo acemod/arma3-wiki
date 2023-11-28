@@ -11,6 +11,23 @@ syntax:
   - name: vehicle
     description: vehicle with turrets
     type: Unknown
+- call: !Unary
+  - vehicle
+  - excludePersonTurrets
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: vehicle
+    description: vehicle with turrets
+    type: Unknown
+  - name: excludePersonTurrets
+    description: when [[true]] only vehicle's turrets are queried
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 8
 argument_loc: Global
 effect_loc: Unspecified
 since:

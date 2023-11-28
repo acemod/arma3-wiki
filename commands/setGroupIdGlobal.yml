@@ -2,7 +2,25 @@ name: setGroupIdGlobal
 description: A [[Multiplayer Scripting#Locality|global]] equivalent of  [[setGroupId]].
 groups:
 - Groups
-syntax: []
+syntax:
+- call: !Binary
+  - group
+  - - format
+    - keyword1
+    - keyword2
+    - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: group
+    type: Unknown
+  - name: format
+    description: format template (e.g "%keyword1 - %keyword2 / %keyword4 (%keyword3)")
+    type: Unknown
+  - name: keywordN
+    description: keyword value
+    type: Unknown
 argument_loc: Global
 effect_loc: Global
 since:

@@ -1,0 +1,20 @@
+name: diag_deltaTime
+description: Returns the duration of the previous frame in seconds
+groups:
+- Diagnostic
+- Time
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 1
+    minor: 96
+examples:
+- private _frameTime = diag_deltaTime;
+- private _fps = 1 / diag_deltaTime;

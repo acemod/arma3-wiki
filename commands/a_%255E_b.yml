@@ -1,18 +1,28 @@
-name: teamSwitchEnabled
-description: |-
-  Check if [[Team Switch]] is currently enabled.
-  Team Switch is enabled by default.
+name: a_%5E_b
+description: '''''a'''' raised to the power of ''''b'''''
 groups:
-- Team Switch
+- Math
 syntax:
-- call: Nular
+- call: !Binary
+  - a
+  - b
   ret:
   - Unknown
   - null
-  params: []
+  params:
+  - name: a
+    type: Unknown
+  - name: b
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
   armed_assault:
     major: 1
     minor: 0
@@ -29,4 +39,4 @@ since:
     major: 0
     minor: 50
 examples:
-- _isTeamSwitchEnabled = teamSwitchEnabled;
+- 5 ^ 2 // 5², result is 25

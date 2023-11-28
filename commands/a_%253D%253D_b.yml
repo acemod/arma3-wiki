@@ -1,0 +1,36 @@
+name: a_%3D%3D_b
+description: |-
+  Check if ''a'' is equal to ''b''. String comparison is case-'''in'''sensitive  - use [[isEqualTo]] if case sensitivity is needed.
+  {{Feature|important|''a'' and ''b'' types '''must''' match: comparing e.g [[String]] with [[Number]] is invalid.}}
+groups:
+- Math
+- Variables
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (player == leader group player) then\n{\n\thint \"You are the leader of your group.\";\n}\nelse\n{\n\thint \"Someone else is the boss\";\n};"
+- '"MyRabbit" == "MYRABBIT"; // returns true'
+- if (alive _unit1 == alive _unit2) then { hint "Both units are either dead or both alive" };

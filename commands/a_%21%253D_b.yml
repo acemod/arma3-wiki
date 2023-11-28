@@ -1,0 +1,37 @@
+name: a_!%3D_b
+description: |-
+  Returns whether one value is '''not''' equal to another. String comparison is case-'''in'''sensitive (e.g <sqf inline>"STRINGtext" != "stringTEXT" // returns false - strings are equivalent</sqf>).
+  {{Feature|important|''a'' and ''b'' types '''must''' match: comparing e.g [[String]] with [[Number]] is invalid.}}
+groups:
+- Variables
+- Math
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- "if (_counter != 4) then\n{\n\thint \"The counter is not equal to the number 4\";\n};\n"
+- "if (vehicle player != player) then\n{\n\thint \"you are in a vehicle\";\n}\nelse\n{\n\thint \"you are on foot\";\n};\n"
+- "if (fuel truck1 != 1) then\n{\n\thint \"Truck1 has less than a full tank of fuel.\";\n};\n"
+- if (alive _unit1 != alive _unit2) then { hint "One of the units is dead while another is alive" };

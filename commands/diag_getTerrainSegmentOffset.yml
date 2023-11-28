@@ -1,0 +1,26 @@
+name: diag_getTerrainSegmentOffset
+description: |-
+  Returns the terrain segment. It is basically the same as:
+  <sqf>
+  _worldPos params ["_x", "_y"];
+  [floor (_x / diag_getTerrainGrid), floor (_y / diag_getTerrainGrid)];
+  </sqf>
+groups:
+- Diagnostic
+syntax:
+- call: !Unary worldPos
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: worldPos
+    description: world coordinates
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 4
+examples:
+- private _segmentOffset = diag_getTerrainSegmentOffset getPosWorld player;

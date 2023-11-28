@@ -1,0 +1,63 @@
+name: a_/_b
+description: |-
+  Returns the quotient of two numbers. If the divisor is 0 a ''Division by zero'' error is shown but the script does not stop and the result of such division is assumed to be 0.<br><br>
+  Alternative syntax returns [[Config]] entry with given name (alias for [[config greater greater name|>>]], slightly slower but with [[SQF Syntax#Rules of Precedence | higher precedence]]).
+groups:
+- Math
+- Config
+syntax:
+- call: !Binary
+  - a
+  - b
+  ret:
+  - Unknown
+  - quotient
+  params:
+  - name: a
+    description: dividend
+    type: Unknown
+  - name: b
+    description: divisor
+    type: Unknown
+- call: !Binary
+  - config
+  - name
+  ret:
+  - Unknown
+  - config entry
+  params:
+  - name: config
+    type: Unknown
+  - name: name
+    type: Unknown
+  since:
+    armed_assault:
+      major: 1
+      minor: 0
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _result = 15 / 3; // result is 5
+- _cfgVehicles = configFile / "CfgVehicles"; // identical to configFile >> "CfgVehicles" (but the order of precedence)

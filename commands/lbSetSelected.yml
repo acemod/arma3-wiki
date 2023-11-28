@@ -5,7 +5,31 @@ description: |-
   For single selection listbox use [[lbSetCurSel]] instead.
 groups:
 - GUI Control - ListBox
-syntax: []
+syntax:
+- call: !Binary
+  - control
+  - - index
+    - selected
+    - forceEH
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Unknown
+  - name: index
+    type: Unknown
+  - name: selected
+    type: Unknown
+  - name: forceEH
+    description: will force [[User_Interface_Event_Handlers#onLBSelChanged | lbSelChanged]] EH to fire
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 12
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

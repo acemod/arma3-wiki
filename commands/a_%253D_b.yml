@@ -1,0 +1,48 @@
+name: a_%3D_b
+description: |-
+  Assigns the result of expression on the right to the variable on the left. Technically this is not a command and it is not listed in [[supportInfo]]; this is more of a compiler instruction.
+  {{Feature|important|The following structure is invalid: <sqf inline>a = b = c = 4;</sqf>.}}
+groups:
+- Variables
+syntax:
+- call: !Binary
+  - variable
+  - value
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: variable
+    description: see [[Identifier]]
+    type: Unknown
+  - name: value
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  flashpoint:
+    major: 1
+    minor: 0
+  flashpoint_elite:
+    major: 1
+    minor: 0
+  armed_assault:
+    major: 1
+    minor: 0
+  arma_2:
+    major: 1
+    minor: 0
+  arma_2_arrowhead:
+    major: 1
+    minor: 50
+  take_on_helicopters:
+    major: 1
+    minor: 0
+  arma_3:
+    major: 0
+    minor: 50
+examples:
+- _value = 5;
+- _mygroup = group player;
+- _greeting = "Hello!";
+- private _enemyTank = myTank1;
