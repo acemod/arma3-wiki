@@ -1,0 +1,24 @@
+name: get3DENMissionAttributes
+description: Retrieve all attributes and their values from the specified section/category (category is optional).
+groups:
+- Eden Editor
+syntax:
+- call: !Binary
+  - section
+  - category
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: section
+    type: Unknown
+  - name: category
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- private _result = "Multiplayer" get3DENMissionAttributes "";
