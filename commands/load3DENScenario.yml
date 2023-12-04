@@ -1,0 +1,22 @@
+name: load3DENScenario
+description: Load the provided scenario or an empty scenario in the provided world.
+groups:
+- Eden Editor
+syntax:
+- call: !Unary scenarioOrWorld
+  ret:
+  - Unknown
+  - '[[true]] on success, [[false]] otherwise'
+  params:
+  - name: scenarioOrWorld
+    description: scenario name or world name
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- load3DENScenario "MyMission.VR";
+- load3DENScenario "Stratis";
