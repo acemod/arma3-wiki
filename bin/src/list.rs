@@ -6,7 +6,7 @@ const URL: &str = "https://community.bistudio.com/wiki/Category:Scripting_Comman
 
 pub async fn fetch() -> HashMap<String, String> {
     let tmp = std::env::temp_dir()
-        .join("a3_wiki_fetch")
+        .join("arma3-wiki-fetch")
         .join("command_list.html");
 
     let body: String = if tmp.exists() {

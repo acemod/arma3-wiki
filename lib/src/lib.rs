@@ -2,6 +2,9 @@ use std::fmt::Display;
 
 pub mod parse;
 
+pub const REPO_ORG: &str = "acemod";
+pub const REPO_NAME: &str = "arma3-wiki";
+
 #[derive(Debug, PartialEq, Eq)]
 pub enum ParseError {
     Syntax(String),

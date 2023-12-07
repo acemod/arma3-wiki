@@ -1,7 +1,7 @@
 use std::path::Path;
 
-use a3_wiki::model::Command;
-use a3_wiki_lib::ParseError;
+use arma3_wiki::model::Command;
+use arma3_wiki_lib::ParseError;
 use reqwest::{header::LAST_MODIFIED, Client};
 
 use crate::github::{GitHub, Issues};
@@ -103,7 +103,7 @@ pub async fn command(
     };
 
     let url = format!("{url}?action=raw");
-    let temp = std::env::temp_dir().join("a3_wiki_fetch");
+    let temp = std::env::temp_dir().join("arma3-wiki-fetch");
     let path = temp.join(urlencoding::encode(&name).to_string());
     let content = if path.exists() {
         std::fs::read_to_string(&path).unwrap()
@@ -123,7 +123,7 @@ pub async fn command(
         std::fs::write(&path, &content).unwrap();
         content
     };
-    match a3_wiki_lib::parse::command(&name, &content) {
+    match arma3_wiki_lib::parse::command(&name, &content) {
         Ok((mut parsed, mut errors)) => {
             println!("Saving to {}", dist_path.display());
             if name == "remoteExecCall" {

@@ -1,5 +1,6 @@
 use std::sync::atomic::AtomicUsize;
 
+use arma3_wiki_lib::{REPO_NAME, REPO_ORG};
 use octocrab::{
     models::{issues::Issue, IssueState},
     params::State,
@@ -19,10 +20,9 @@ impl Issues {
         Self {
             issues: gh
                 .as_ref()
-                .issues("BrettMayson", "a3_wiki")
+                .issues(REPO_ORG, "arma3-wiki")
                 .list()
                 .state(State::Open)
-                .creator("SynixeBrodsky")
                 .per_page(100)
                 .page(1u32)
                 .send()
@@ -48,7 +48,7 @@ impl Issues {
                 tokio::time::sleep(std::time::Duration::from_secs(RATE_SLEEP)).await;
             }
             gh.as_ref()
-                .issues("BrettMayson", "a3_wiki")
+                .issues(REPO_ORG, REPO_NAME)
                 .update(issue.number)
                 .body(&reason)
                 .send()
@@ -60,7 +60,7 @@ impl Issues {
                 tokio::time::sleep(std::time::Duration::from_secs(3)).await;
             }
             gh.as_ref()
-                .issues("BrettMayson", "a3_wiki")
+                .issues(REPO_ORG, REPO_NAME)
                 .create(title)
                 .body(reason)
                 .send()
@@ -78,7 +78,7 @@ impl Issues {
                 tokio::time::sleep(std::time::Duration::from_secs(RATE_SLEEP)).await;
             }
             gh.as_ref()
-                .issues("BrettMayson", "a3_wiki")
+                .issues(REPO_ORG, REPO_NAME)
                 .update(issue.number)
                 .state(IssueState::Closed)
                 .send()

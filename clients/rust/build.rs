@@ -1,11 +1,11 @@
 pub fn main() {
     use git2::Repository;
-    let tmp = std::env::temp_dir().join("a3_wiki");
+    let tmp = std::env::temp_dir().join("arma3-wiki");
     let repo = Repository::open(&tmp).map_or_else(
         |_| {
             git2::build::RepoBuilder::new()
                 .branch("dist")
-                .clone("https://github.com/brettmayson/a3_wiki", &tmp)
+                .clone("https://github.com/acemod/arma3-wiki", &tmp)
                 .map_err(|e| format!("Failed to clone repository: {e}"))
                 .unwrap()
         },

@@ -1,5 +1,6 @@
 use std::process::Command;
 
+use arma3_wiki_lib::{REPO_NAME, REPO_ORG};
 use octocrab::Octocrab;
 
 mod issues;
@@ -22,21 +23,9 @@ macro_rules! command {
 
 impl GitHub {
     pub fn new() -> Self {
-        if std::env::var("CI").is_ok() {
-            println!("CI, Setting up git");
-            command!([
-                "config",
-                "--global",
-                "user.email",
-                "hello@synixe.contractors"
-            ]);
-            command!(["config", "--global", "user.name", "SynixeBrodsky"]);
-        } else {
-            println!("Local, Skipping git setup");
-        }
         Self(
             Octocrab::builder()
-                .personal_token(std::env::var("BRODSKY_GITHUB").expect("Missing BRODSKY_GITHUB"))
+                .personal_token(std::env::var("GITHUB_TOKEN").expect("Missing GITHUB_TOKEN"))
                 .build()
                 .unwrap(),
         )
@@ -56,7 +45,7 @@ impl GitHub {
         command!(["commit", "-m", format!("Update {command}").as_str()]);
         command!(["push", "--set-upstream", "origin", head.as_str()]);
         self.0
-            .pulls("BrettMayson", "a3_wiki")
+            .pulls(REPO_ORG, REPO_NAME)
             .create(format!("Update {command}"), head, "dist")
             .send()
             .await
@@ -75,7 +64,7 @@ impl GitHub {
         command!(["commit", "-m", "Update version"]);
         command!(["push", "--set-upstream", "origin", head]);
         self.0
-            .pulls("BrettMayson", "a3_wiki")
+            .pulls(REPO_ORG, REPO_NAME)
             .create(format!("Update version to {version}"), head, "dist")
             .send()
             .await

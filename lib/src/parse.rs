@@ -1,4 +1,4 @@
-use a3_wiki::model::{Call, Command, Locality, Param, Since, Syntax, Value, Version};
+use arma3_wiki::model::{Call, Command, Locality, Param, Since, Syntax, Value, Version};
 
 use crate::ParseError;
 

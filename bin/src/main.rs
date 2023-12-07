@@ -8,7 +8,7 @@ mod version;
 #[tokio::main]
 async fn main() {
     let args: Vec<_> = std::env::args().skip(1).collect();
-    let tmp = std::env::temp_dir().join("a3_wiki_fetch");
+    let tmp = std::env::temp_dir().join("arma3-wiki-fetch");
     if !tmp.exists() {
         std::fs::create_dir(&tmp).unwrap();
     }
