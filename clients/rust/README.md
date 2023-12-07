@@ -4,7 +4,7 @@
 
 ```toml
 [dependencies]
-arma3-wiki = "0.1.0"
+arma3-wiki = "0.1.1"
 ```
 
 ```rs

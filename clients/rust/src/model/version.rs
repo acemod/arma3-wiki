@@ -63,7 +63,8 @@ impl Version {
 
 impl std::fmt::Display for Version {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        write!(f, "{}.{}", self.major, self.minor)
+        // Pad the minor version with a zero if it's a single digit.
+        write!(f, "{}.{:02}", self.major, self.minor)
     }
 }
 
@@ -80,5 +81,24 @@ impl std::cmp::PartialOrd for Version {
         } else {
             self.major.partial_cmp(&other.major)
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn from_wiki() {
+        assert_eq!(Version::from_wiki(""), Ok(Version::new(0, 0)));
+        assert_eq!(Version::from_wiki("1.00"), Ok(Version::new(1, 0)));
+        assert_eq!(Version::from_wiki("1.0"), Ok(Version::new(1, 0)));
+    }
+
+    #[test]
+    fn display() {
+        assert_eq!(Version::new(1, 0).to_string(), "1.00");
+        assert_eq!(Version::new(1, 1).to_string(), "1.01");
+        assert_eq!(Version::new(1, 16).to_string(), "1.16");
     }
 }
