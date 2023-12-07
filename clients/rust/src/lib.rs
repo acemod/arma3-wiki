@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+use git2::Repository;
 use model::{Command, Version};
 use rust_embed::RustEmbed;
 
@@ -9,12 +10,13 @@ pub mod model;
 #[folder = "dist"]
 struct Asset;
 
-pub struct A3Wiki {
+pub struct Wiki {
     version: Version,
     commands: HashMap<String, Command>,
+    updated: bool,
 }
 
-impl A3Wiki {
+impl Wiki {
     #[must_use]
     pub const fn version(&self) -> &Version {
         &self.version
@@ -23,6 +25,11 @@ impl A3Wiki {
     #[must_use]
     pub const fn commands(&self) -> &HashMap<String, Command> {
         &self.commands
+    }
+
+    #[must_use]
+    pub const fn updated(&self) -> bool {
+        self.updated
     }
 
     #[must_use]
@@ -43,7 +50,6 @@ impl A3Wiki {
     /// # Panics
     /// Panics if the structure of the repository is invalid.
     pub fn load_git() -> Result<Self, String> {
-        use git2::Repository;
         let tmp = std::env::temp_dir().join("arma3-wiki");
         let repo = if let Ok(repo) = Repository::open(&tmp) {
             repo
@@ -53,30 +59,7 @@ impl A3Wiki {
                 .clone("https://github.com/acemod/arma3-wiki", &tmp)
                 .map_err(|e| format!("Failed to clone repository: {e}"))?
         };
-        repo.find_remote("origin")
-            .and_then(|mut r| r.fetch(&["dist"], None, None))
-            .map_err(|e| format!("Failed to fetch remote: {e}"))?;
-        let fetch_head = repo
-            .find_reference("FETCH_HEAD")
-            .map_err(|e| format!("Failed to find FETCH_HEAD: {e}"))?;
-        let commit = repo
-            .reference_to_annotated_commit(&fetch_head)
-            .map_err(|e| format!("Failed to find FETCH_HEAD: {e}"))?;
-        let analysis = repo
-            .merge_analysis(&[&commit])
-            .map_err(|e| format!("Failed to analyze merge: {e}"))?;
-        if !analysis.0.is_up_to_date() && analysis.0.is_fast_forward() {
-            let mut reference = repo
-                .find_reference("refs/heads/dist")
-                .map_err(|e| format!("Failed to find reference: {e}"))?;
-            reference
-                .set_target(commit.id(), "Fast-Forward")
-                .map_err(|e| format!("Failed to set reference: {e}"))?;
-            repo.set_head("refs/heads/dist")
-                .map_err(|e| format!("Failed to set HEAD: {e}"))?;
-            repo.checkout_head(Some(git2::build::CheckoutBuilder::default().force()))
-                .map_err(|e| format!("Failed to checkout HEAD: {e}"))?;
-        }
+        let updated = Self::update_git(&repo).is_ok();
         let mut commands = HashMap::new();
         for entry in std::fs::read_dir(tmp.join("commands")).unwrap() {
             let path = entry.unwrap().path();
@@ -94,6 +77,7 @@ impl A3Wiki {
             )
             .map_err(|e| format!("Failed to parse version: {e}"))?,
             commands,
+            updated,
         })
     }
 
@@ -126,6 +110,35 @@ impl A3Wiki {
             )
             .unwrap(),
             commands,
+            updated: false,
         }
+    }
+
+    fn update_git(repo: &Repository) -> Result<(), String> {
+        repo.find_remote("origin")
+            .and_then(|mut r| r.fetch(&["dist"], None, None))
+            .map_err(|e| format!("Failed to fetch remote: {e}"))?;
+        let fetch_head = repo
+            .find_reference("FETCH_HEAD")
+            .map_err(|e| format!("Failed to find FETCH_HEAD: {e}"))?;
+        let commit = repo
+            .reference_to_annotated_commit(&fetch_head)
+            .map_err(|e| format!("Failed to find FETCH_HEAD: {e}"))?;
+        let analysis = repo
+            .merge_analysis(&[&commit])
+            .map_err(|e| format!("Failed to analyze merge: {e}"))?;
+        if !analysis.0.is_up_to_date() && analysis.0.is_fast_forward() {
+            let mut reference = repo
+                .find_reference("refs/heads/dist")
+                .map_err(|e| format!("Failed to find reference: {e}"))?;
+            reference
+                .set_target(commit.id(), "Fast-Forward")
+                .map_err(|e| format!("Failed to set reference: {e}"))?;
+            repo.set_head("refs/heads/dist")
+                .map_err(|e| format!("Failed to set HEAD: {e}"))?;
+            repo.checkout_head(Some(git2::build::CheckoutBuilder::default().force()))
+                .map_err(|e| format!("Failed to checkout HEAD: {e}"))?;
+        }
+        Ok(())
     }
 }

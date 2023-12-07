@@ -171,6 +171,7 @@ pub fn locality(source: &str) -> Result<Locality, String> {
     }
 }
 
+#[allow(clippy::similar_names)]
 #[allow(clippy::too_many_lines)]
 /// Parses a syntax from the wiki.
 ///

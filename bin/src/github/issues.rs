@@ -20,7 +20,7 @@ impl Issues {
         Self {
             issues: gh
                 .as_ref()
-                .issues(REPO_ORG, "arma3-wiki")
+                .issues(REPO_ORG, REPO_NAME)
                 .list()
                 .state(State::Open)
                 .per_page(100)
