@@ -79,7 +79,7 @@ pub async fn command(
         let metadata = std::fs::metadata(&dist_path).unwrap();
         let modified: std::time::SystemTime = metadata.modified().unwrap();
         if modified.elapsed().unwrap().as_secs() < 60 * 60 * SKIP_IF_LESS_THAN {
-            !dist_path.exists() || std::env::var("CI").is_ok()
+            std::env::var("CI").is_err()
         } else {
             let res = match client.head(&url).send().await {
                 Ok(res) => res,
