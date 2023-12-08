@@ -1,0 +1,47 @@
+name: sendCloudRequestServer
+description: Sends a server request to the {{Name|bi|short}} cloud service and executes callback code with server's response.
+multiplayer_note: '{{Feature|informative|Only works on dedicated servers and {{Link|Arma 3: Headless Client|headless clients}}; for clients, use [[sendCloudRequestClient]]).}}'
+groups:
+- Argo
+syntax:
+- call: !Unary
+  - requestName
+  - callback
+  - data
+  - httpMethod
+  ret:
+  - Unknown
+  - '[[true]] on success, [[false]] otherwise'
+  params:
+  - name: requestName
+    description: can be anything but "users"
+    type: Unknown
+  - name: callback
+    description: code to be executed on request completion
+    type: Unknown
+    optional: true
+    default: '""'
+  - name: data
+    description: JSON data to be sent
+    type: Unknown
+    optional: true
+    default: '""'
+  - name: httpMethod
+    description: |-
+      can be one of:
+      * "POST"
+      * "GET"
+      * "DELETE"
+      * "PUT"
+    type: Unknown
+    optional: true
+    default: '"GET", or "POST" if ''''data'''' is provided - case-insensitive'
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  argo:
+    major: 1
+    minor: 0
+examples:
+- _result = sendCloudRequestServer ["users/current", "hint 'success'", player];
