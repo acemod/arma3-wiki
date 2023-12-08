@@ -1,0 +1,18 @@
+name: onOfficialServer
+description: Get if the current machine is an official server or is connected to one.
+groups:
+- Argo
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - '[[true]] if the machine is an official server or is connected to one, [[false]] otherwise (e.g disconnected or single player)'
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  argo:
+    major: 1
+    minor: 0
+examples:
+- "if (onOfficialServer) then\n{\n\tsystemChat \"I am safe here! Wait, why is this bush crawling towards me\";\n};\n"
