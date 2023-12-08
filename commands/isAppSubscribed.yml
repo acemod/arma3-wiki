@@ -1,0 +1,23 @@
+name: isAppSubscribed
+description: Find if the provided appId's game/DLC is owned by the currently logged Steam account.
+groups:
+- Argo
+syntax:
+- call: !Unary appId
+  ret:
+  - Unknown
+  - '[[true]] if the current Steam account has said app, [[false]] otherwise'
+  params:
+  - name: appId
+    description: '{{Link|Steam}}''s appId'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  argo:
+    major: 1
+    minor: 0
+examples:
+- |
+  if (isAppSubscribed 107410) then { systemChat "You have Arma 3, my dude!"; };
+  if (isAppSubscribed 571710) then { systemChat "You even own Laws of War, excellent!!"; };
