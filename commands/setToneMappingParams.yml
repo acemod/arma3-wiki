@@ -1,6 +1,6 @@
 name: setToneMappingParams
 description: |-
-  Edits tone mapping parameters.
+  Edits tone mapping parameters. Settings are stored even if the concerned tone is not the one currently in use.
   {{Feature|arma3|This command is not present in {{arma3}}.}}
 groups:
 - System
@@ -20,7 +20,10 @@ syntax:
       * "Reinhard"
     type: Unknown
   - name: params
-    description: (''please populate'')
+    description: |-
+      no parameters
+      * "Filmic" - format [shoulderStrength, linearStrength, linearAngle, toeStrength, toeNumerator, toeDenominator, linearWhite, exposureBias]
+      * "Reinhard" - format [linearWhite, saturation]
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Local
@@ -32,5 +35,10 @@ since:
     major: 1
     minor: 0
 examples:
-- '"Filmic" setToneMappingParams [0.2, 0.30, 0.20, 0.30, 0.01, 3.750, 6, 4];'
+- '"Filmic" setToneMappingParams [0.2, 0.3, 0.2, 0.3, 0.01, 3.750, 6, 4];'
 - '"Reinhard" setToneMappingParams [0.9, -0.003];'
+- |
+  // default values
+  // "Arma" setToneMappingParams []; // no params for "Arma" tone mapping
+  "Filmic" setToneMappingParams [0.153, 0.357, 0.231, 0.1573, 0.011, 3.75, 6, 4]; // {{arma3}} uses [0.22, 0.3, 0.1, 0.2, 0.01, 0.3, 11.2, 2] for terrains
+  "Reinhard" setToneMappingParams [0.9, 0];
