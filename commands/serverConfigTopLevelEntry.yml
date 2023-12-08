@@ -1,0 +1,23 @@
+name: serverConfigTopLevelEntry
+description: Get top-level entry (i.e. entry directly below config root) of the desired name from the {{Link|server.cfg|server config}}, making it some kind of secured '''''serverConfigFile''''' command.
+multiplayer_note: Only works on '''dedicated''' servers.
+groups:
+- Argo
+syntax:
+- call: !Unary configEntry
+  ret:
+  - Unknown
+  - requested server config entry or [[configNull]] on error
+  params:
+  - name: configEntry
+    description: any [[server.cfg]] entry but {{hl|password}} and {{hl|passwordAdmin}} which are ignored
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  argo:
+    major: 1
+    minor: 0
+examples:
+- _kickDupes = getNumber serverConfigTopLevelEntry "kickDuplicate" != 0;
