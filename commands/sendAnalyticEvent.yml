@@ -1,0 +1,30 @@
+name: sendAnalyticEvent
+description: Generates new analytics events with given values, acceptable value types are string, scalar and bool.
+multiplayer_note: '{{Feature|informative|Analytics are reserved to official server instances (server or client).}}'
+groups:
+- Argo
+syntax:
+- call: !Unary
+  - eventName
+  - keyValuePairs
+  ret:
+  - Unknown
+  - '[[true]] when done (not if the analytics were sent), [[false]] if the provided array is wrong'
+  params:
+  - name: eventName
+    description: '''''unknown possible values'''''
+    type: Unknown
+  - name: keyValuePairs
+    description: |-
+      format [key, value] where:
+      * key: [[String]] entry's name
+      * value: [[String]], [[Number]], [[Boolean]] or [[Array]] - entry's value; if an [[Array]], inserts its content at the end of ''keyValuePairs''; if any other [[Data Type]], it is ignored
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  argo:
+    major: 1
+    minor: 0
+examples:
+- "if (onOfficialServer) then\n{\n\tsendAnalyticEvent [\"EventName\", [\"key1\", false], [\"key2\", 1], [\"key3\", \"two\"]];\n};\n"
