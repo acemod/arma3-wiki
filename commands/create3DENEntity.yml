@@ -44,9 +44,9 @@ syntax:
   - name: group
     description: |-
       group in which an AI character or waypoint is created.
-      * When missing for AI characters, new group is created for them
+      * When missing for AI characters, a new group is created for them
       * When missing for waypoints, an error is logged and nothing is created
-      * When used on any other mode, group is ignored and entity is created as usual
+      * When used on any other mode, it is ignored and the entity is created as usual
     type: Unknown
   - name: mode
     description: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
@@ -65,6 +65,6 @@ since:
 examples:
 - dude1 = create3DENEntity ["Object", "B_Soldier_F", screenToWorld [0.5, 0.5]];
 - dude2 = group dude1 create3DENEntity ["Object", "B_Soldier_AR_F", screenToWorld [0.5, 0.5]];
-- myMarker = create3DENEntity ["Marker", "mil_warning", position player];
-- mytrigger = create3DENEntity ["Trigger", "EmptyDetectorArea10x10", position player];
-- "{{GVI|arma3|2.06|size= 0.75}} Create a shape marker:\n<sqf>\nm = create3DENEntity [\"Marker\", \"\", position player];\t// default rectangular marker\nm set3DENAttribute [\"markerType\", 1];\t\t\t\t\t// 0 - rectangle; 1 - ellipse\nm set3DENAttribute [\"brush\", \"DiagGrid\"];\n"
+- myMarker = create3DENEntity ["Marker", "mil_warning", getPosATL player];
+- mytrigger = create3DENEntity ["Trigger", "EmptyDetectorArea10x10", getPosATL player];
+- "{{GVI|arma3|2.06|size= 0.75}} Create a shape marker:\n<sqf>\nm = create3DENEntity [\"Marker\", \"\", getPosATL player];\t// default rectangular marker\nm set3DENAttribute [\"markerType\", 1];\t\t\t\t\t// 0 - rectangle; 1 - ellipse\nm set3DENAttribute [\"brush\", \"DiagGrid\"];\n"
