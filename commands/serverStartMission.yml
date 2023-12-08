@@ -1,0 +1,23 @@
+name: serverStartMission
+description: Start the provided mission (if it exists) on a dedicated server.
+multiplayer_note: Only works on a '''dedicated''' server.
+groups:
+- Argo
+syntax:
+- call: !Unary missionName
+  ret:
+  - Unknown
+  - '[[true]] if the mission could be started on a dedicated server, [[false]] otherwise'
+  params:
+  - name: missionName
+    description: mission name with terrain extension
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  argo:
+    major: 1
+    minor: 0
+examples:
+- "if (!isServer) exitWith {};\n\nif (isDedicated) then\n{\n\tserverStartMission \"TestMission.Malden\";\n}\nelse // hasInterface\n{\n\thint \"You must choose a mission now.\";\n};\n"
