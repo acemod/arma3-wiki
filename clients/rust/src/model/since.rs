@@ -25,6 +25,9 @@ pub struct Since {
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
     arma_3: Option<Version>,
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    argo: Option<Version>,
 }
 
 impl Since {
@@ -91,38 +94,21 @@ impl Since {
         self.arma_3 = arma_3;
     }
 
+    #[must_use]
+    pub const fn argo(&self) -> Option<&Version> {
+        self.argo.as_ref()
+    }
+
+    pub fn set_argo(&mut self, argo: Option<Version>) {
+        self.argo = argo;
+    }
+
     /// Sets the version from the wiki.
     ///
     /// # Errors
     /// Returns an error if the key is unknown.
     pub fn set_from_wiki(&mut self, key: &str, value: &str) -> Result<(), String> {
-        match key.to_lowercase().as_str() {
-            "ofp" => {
-                self.set_flashpoint(Some(Version::from_wiki(value)?));
-            }
-            "ofpe" => {
-                self.set_flashpoint_elite(Some(Version::from_wiki(value)?));
-            }
-            "arma1" => {
-                self.set_armed_assault(Some(Version::from_wiki(value)?));
-            }
-            "arma2" => {
-                self.set_arma_2(Some(Version::from_wiki(value)?));
-            }
-            "arma2oa" => {
-                self.set_arma_2_arrowhead(Some(Version::from_wiki(value)?));
-            }
-            "tkoh" => {
-                self.set_take_on_helicopters(Some(Version::from_wiki(value)?));
-            }
-            "arma3" => {
-                self.set_arma_3(Some(Version::from_wiki(value)?));
-            }
-            _ => {
-                return Err(format!("Unknown since key: {key}"));
-            }
-        }
-        Ok(())
+        self.set_version(key, Version::from_wiki(value)?)
     }
 
     /// Sets the version from the wiki.
@@ -151,6 +137,9 @@ impl Since {
             }
             "arma3" => {
                 self.set_arma_3(Some(version));
+            }
+            "argo" => {
+                self.set_argo(Some(version));
             }
             _ => {
                 return Err(format!("Unknown since key: {key}"));
