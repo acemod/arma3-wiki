@@ -23,6 +23,15 @@ macro_rules! command {
 
 impl GitHub {
     pub fn new() -> Self {
+        if std::env::var("CI").is_ok() {
+            println!("CI, Setting git user");
+            command!([
+                "config",
+                "user.email",
+                "41898282+github-actions[bot]@users.noreply.github.com"
+            ]);
+            command!(["config", "user.name", "github-actions[bot]"]);
+        }
         Self(
             Octocrab::builder()
                 .personal_token(std::env::var("GITHUB_TOKEN").expect("Missing GITHUB_TOKEN"))
