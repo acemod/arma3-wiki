@@ -1,0 +1,20 @@
+name: gameValueToJson
+description: Generate a JSON string from the provided array values.
+groups:
+- Argo
+syntax:
+- call: !Unary data
+  ret:
+  - Unknown
+  - a JSON string or an empty string if ''data'' is not an array
+  params:
+  - name: data
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  argo:
+    major: 1
+    minor: 0
+examples:
+- "_json = gameValueToJson [[\"ID\", 42], [\"Message\", \"Hello there!\"], [\"HasHighGround\", true]];</sqf>\nresult:\n<syntaxhighlight lang=\"json\">\n{\n\t\"ID\": 42,\n\t\"Message\": \"Hello there!\",\n\t\"HasHighGround\": true\n}\n</syntaxhighlight>"
