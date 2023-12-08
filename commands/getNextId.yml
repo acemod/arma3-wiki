@@ -1,0 +1,18 @@
+name: getNextId
+description: Generate a new random-based UUID version 4 string as described in {{Link|https://tools.ietf.org/html/rfc4122#section-4.4}}.
+groups:
+- Argo
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  argo:
+    major: 1
+    minor: 0
+examples:
+- _uuid = getNextId; // e.g 5806a469-d1b2-404c-b0ac-8e51d0f533e4
