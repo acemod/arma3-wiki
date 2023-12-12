@@ -93,10 +93,12 @@ examples:
   {{cc|becomes}}
   [{{Color|darkred|["", "BLACK OUT"]}}] remoteExec ["{{Color|darkorange|cutRsc}}"]; {{cc|double brackets are needed as the unary command takes an array}}</code>
 
-  <code style="display: block">{{cc|functions, however, do not need double squared brackets}}
+  <code style="display: block">
+  {{cc|functions, however, do not need double squared brackets}}
   {{Color|teal|["line 1", "line 2"]}} spawn {{Color|darkorange|BIS_fnc_infoText}};
   {{cc|becomes}}
-  {{Color|teal|["line 1", "line 2"]}} remoteExec ["{{Color|darkorange|BIS_fnc_infoText}}"];</code>
+  {{Color|teal|["line 1", "line 2"]}} remoteExec ["{{Color|darkorange|BIS_fnc_infoText}}"];
+  </code>
 - "send an order to specific machines:\n<sqf>\n\"message\" remoteExec [\"hint\", 0];\t\t\t\t// sends a hint message to everyone, identical to \"message\" remoteExec [\"hint\"]\n\"message\" remoteExec [\"hint\", -2];\t\t\t\t// sends a hint message to everybody but the server\n\"message\" remoteExec [\"hint\", myCar];\t\t\t// sends a hint message where myCar is local\n\"message\" remoteExec [\"hint\", -clientOwner];\t// sends a hint message to everybody but the current machine\n"
 - |
   Add statements to the JIP queue:
@@ -123,12 +125,8 @@ examples:
   <sqf>
   ["Open", true] remoteExec ["BIS_fnc_arsenal", MyTargetPlayer];
   [MyCurator, [[MyObject1, MyObject2], false]] remoteExec ["addCuratorEditableObjects", 2];
-- |
-  A tricky example: executing <sqf inline>player setAmmo [primaryWeapon player, 1];</sqf> (on machines where the player is in MyGroup):
-  <sqf>
-  [player, [primaryWeapon player, 1]] remoteExec ["setAmmo", MyGroup]; // WRONG: the local player object is used here!
-  { player setAmmo [primaryWeapon player, 1]; } remoteExec ["call", MyGroup]; // CORRECT: the remote player object is used here
-- "'''[[Multiplayer Scripting]] \"performance trick\"'''<br>\nThis <sqf inline>[0, -2] select isDedicated</sqf> check is worth to avoid '''function''' server-side calculations only:\n<sqf>\n[\"message\"] remoteExec [\"BIS_fnc_infoText\"];\t\t\t\t\t\t\t\t// not ideal - the function will still run on the dedicated server for nothing\n[\"message\"] remoteExec [\"BIS_fnc_infoText\", [0, -2] select isDedicated];\t// ideal - the dedicated server will not run the code, a player-hosted server will\n\n\"message\" remoteExec [\"hint\", [0, -2] select isDedicated];\t// the check is too costy to be worthy\n\"message\" remoteExec [\"hint\"];\t\t\t\t\t\t\t\t// the (dedicated) server will automatically ditch hint usage due to it not having an interface\n"
+- "A tricky example: executing <sqf inline>player setAmmo [primaryWeapon player, 1];</sqf> (on machines where the player is in MyGroup):\n<sqf>\n[player, [primaryWeapon player, 1]] remoteExec [\"setAmmo\", MyGroup];\t\t// WRONG: the local player object is used here!\n{ player setAmmo [primaryWeapon player, 1]; } remoteExec [\"call\", MyGroup];\t// CORRECT: the remote player object is used here\n"
+- "'''[[Multiplayer Scripting]] \"performance trick\"'''<br>\nThis <sqf inline>[0, -2] select isDedicated</sqf> check is worth it to avoid '''function''' server-side calculations only:\n<sqf>\n[\"message\"] remoteExec [\"BIS_fnc_infoText\"];\t\t\t\t\t\t\t\t// not ideal - the function will still run on the dedicated server for nothing\n[\"message\"] remoteExec [\"BIS_fnc_infoText\", [0, -2] select isDedicated];\t// ideal - the dedicated server will not run the code, a player-hosted server will\n\n[\"message\"] remoteExec [\"hint\", [0, -2] select isDedicated];\t// the check is too expensive to be worthy - it becomes worthy if the server logs an RPT warning\n[\"message\"] remoteExec [\"hint\"];\t\t\t\t\t\t\t\t// the (dedicated) server will automatically ditch hint usage due to it not having an interface\n\nprivate _allPlayersTarget = [0, -2] select isDedicated;\t\t\t// caching the result for multiple usages makes it worthy - think of {{Link|Arma 3: Headless_Client|headless clients}} as well\n[\"message 1\"] remoteExec [\"hint\", _allPlayersTarget];\n[\"message 2\"] remoteExec [\"hint\", _allPlayersTarget];\n"
 - |-
   As said in the description: '''commands''' will be executed in an [[Scheduler#Unscheduled Environment|unscheduled environment]]
   <sqf>[{ sleep 1 }] remoteExec ["call"]; // will throw an error: it is forbidden to use sleep (or waitUntil, etc) in unscheduled environment
