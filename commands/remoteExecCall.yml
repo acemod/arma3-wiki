@@ -28,7 +28,9 @@ syntax:
     type: Unknown
   - name: targets
     description: |-
-      2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12
+      is both dedicated and hosted server. See [[Multiplayer_Scripting#Different_machines_and_how_to_target_them|for more info]]
+      ** '''Other number:''' the order will be executed on the machine where [[clientOwner]] matches the given number
+      ** '''Negative number:''' the effect is inverted: '''-2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12
       * [[Object]] - the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]
       * [[String]] - interpreted as an [[Identifier]] (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [[Multiplayer Scripting#Locality|local]]
       * [[Side]] - the order will be executed on machines where the player is on the specified side
