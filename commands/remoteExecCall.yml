@@ -41,8 +41,8 @@ syntax:
     description: |-
       if [[true]], a unique JIP ID is generated and the [[remoteExec]] statement is added to the JIP queue from which it will be executed for every JIP
       * [[String]]:
-      ** ff the string is empty, it is interpreted as [[false]]
-      ** ff the string is in format "[[Number]]:[[Number]]" (e.g. "0:0"), it is interpreted as a [[netId]] (see below)
+      ** if the string is empty, it is interpreted as [[false]]
+      ** if the string is in format "[[Number]]:[[Number]]" (e.g. "0:0"), it is interpreted as a [[netId]] (see below)
       ** else the string is treated as a custom JIP ID and the [[remoteExec]] statement is added to the JIP queue, replacing statements that have the same JIP ID
       * [[Object]], [[Group]] or [[netId]] - the persistent execution of the [[remoteExec]] statement is attached to the given object or group.<br>When the object / group is deleted, the [[remoteExec]] statement is automatically removed from the JIP queue
 
