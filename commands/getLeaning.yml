@@ -1,0 +1,20 @@
+name: getLeaning
+description: Returns the leaning factor of the given unit.
+groups:
+- Unit Control
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - leaning factor from -1 to 1
+  params:
+  - name: unit
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- if (getLeaning player < 0) then { systemChat "player is leaning left" };
