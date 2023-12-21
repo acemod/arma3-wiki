@@ -1,0 +1,20 @@
+name: save3DENPreferences
+description: Saves current 3DEN preferences into .3den.Arma3Profile file.
+groups:
+- Eden Editor
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - '[[true]] on success'
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- |-
+  "Preferences" set3DENMissionAttribute ["SaveBinarized", true];
+  save3DENPreferences;
