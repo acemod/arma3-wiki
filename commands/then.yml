@@ -17,8 +17,8 @@ syntax:
     type: Unknown
   - name: thenCode
     description: |-
-      code block to execure if ''ifType'''s condition is [[true]]
-      * [[Array]] of [[Code]]- array of two [[Code|code]] elements in format [thenCode, elseCode]; see {{Link|#Example 3}}
+      code block to execute if ''ifType'''s condition is [[true]]
+      * [[Array]] of [[Code]] - array of two [[Code]] elements in format [thenCode, elseCode]; see {{Link|#Example 3}}
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
@@ -46,6 +46,6 @@ since:
     minor: 50
 examples:
 - if (a > b) then { hint "a is greater than b!"; };
-- "private _c = 0;\nif (a > b) then\n{\n\t_c = 1;\n}\nelse\n{\n\t_c = 2;\n};"
+- "private _c = 0;\nif (_a > _b) then\n{\n\t_c = 1;\n}\nelse\n{\n\t_c = 2;\n};\n"
 - if (alive player) then [{ hint "player is alive"; }, { hint "player is dead"; }];
 - private _value = if (alive player) then { 1 } else { 0 };
