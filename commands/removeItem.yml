@@ -1,5 +1,5 @@
 name: removeItem
-description: Removes item from the inventory.
+description: Removes item from the inventory. The removal order by containers is [[uniform]] &rarr; [[vest]] &rarr; [[backpack]].
 groups:
 - Unit Inventory
 syntax:
@@ -21,7 +21,7 @@ since:
     major: 0
     minor: 50
 examples:
-- |-
+- |
   bluforUnit unassignItem "NVGoggles";
   bluforUnit removeItem "NVGoggles";
   opforUnit unassignItem "NVGoggles_OPFOR";
