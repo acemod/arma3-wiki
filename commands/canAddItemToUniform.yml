@@ -18,6 +18,7 @@ syntax:
   - unit
   - - item
     - count
+    - ignoreSoldierMaxLoad
   ret:
   - Unknown
   - null
@@ -28,6 +29,13 @@ syntax:
     type: Unknown
   - name: count
     type: Unknown
+  - name: ignoreSoldierMaxLoad
+    description: '[[true]] to ignore ''soldierMaxLoad'' param, container [[maxLoad]] is still counted. Default: [[false]]'
+    type: Unknown
+    since:
+      arma_3:
+        major: 2
+        minor: 16
   since:
     arma_3:
       major: 1
