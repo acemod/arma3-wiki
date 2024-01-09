@@ -29,3 +29,4 @@ examples:
 - private _base = getMissionLayerEntities "Base";
 - "delete all objects within that layer after the player is over 800m away from _someObject:\n<sqf>\nwaitUntil { sleep 1; (player distance _someObject) > 800 };\nprivate _simpleObjects = (getMissionLayerEntities \"Simple Objects\") select 0;\n{\n\tdeleteVehicle _x;\n} forEach _simpleObjects;\n"
 - private _layer1337Entities = getMissionLayerEntities 1337;
+- getMissionLayerEntities 42 params [["_objects", []], ["_markers", []], ["_groups", []]];
