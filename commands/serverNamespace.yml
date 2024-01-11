@@ -1,8 +1,8 @@
 name: serverNamespace
 description: |-
   Returns server's [[Namespace|namespace]].
-  This namespace is only available on the server for the server's uptime duration (same as [[uiNamespace]]).
-  Server event handlers, which are available in server config, all use this namespace.
+  This namespace is only available on the server for the server's uptime duration (same as [[uiNamespace]]).<br>
+  All [[Arma 3: Server Side Scripting|server event handlers]], which are available in [[Arma 3: Server Config File|server config]], use this namespace.
 groups:
 - Namespaces
 - Variables
@@ -21,4 +21,4 @@ since:
     major: 2
     minor: 6
 examples:
-- private _serverVars = allVariables serverNamespace;
+- "if (isServer) then\n{\n\thint str allVariables serverNamespace;\n}\nelse\n{\n\thint \"you do not have permission!\";\n};\n"
