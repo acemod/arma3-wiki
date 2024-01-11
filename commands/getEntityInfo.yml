@@ -1,0 +1,20 @@
+name: getEntityInfo
+description: Returns various properties for the given entity.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary entity
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: entity
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- private _entityInfo = getEntityInfo ent1;
