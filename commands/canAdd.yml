@@ -1,5 +1,7 @@
 name: canAdd
-description: Checks if given object can be stored in inventory of given object or any inventory container ([[uniform]], [[vest]], [[backpack]]) of given unit. Since Arma 3 v2.09 this command will count unit storage space as whole, instead of as biggest container, when multiple items are queried.
+description: |-
+  Checks if given object can be stored in inventory of given object or any inventory container ([[uniform]], [[vest]], [[backpack]]) of given unit.<br>
+  Before {{arma3}} v2.10 this comment verified only the biggest container when multiple items were queried; now it checks all containers.
 groups:
 - Unit Inventory
 syntax:
@@ -35,8 +37,10 @@ syntax:
     description: desired quantity
     type: Unknown
   - name: ignoreSoldierMaxLoad
-    description: '[[true]] to ignore ''soldierMaxLoad'' param, container [[maxLoad]] is still counted. Default: [[false]]'
+    description: '[[true]] to ignore ''soldierMaxLoad'' param, container''s [[maxLoad]] is still counted'
     type: Unknown
+    optional: true
+    default: '[[false]]'
     since:
       arma_3:
         major: 2
@@ -111,8 +115,8 @@ since:
     major: 0
     minor: 70
 examples:
-- "if (player canAdd \"FirstAidKit\") then\n{\n\tplayer addItem \"FirstAidKit\";\n}\nelse\n{\n\thint \"Not enough space\";\n};"
-- "if (_box canAdd \"FirstAidKit\") then\n{\n\t_box addWeaponCargo [\"FirstAidKit\", 1];\n}\nelse\n{\n\thint \"Not enough space\";\n};"
+- "<sqf\n>if (player canAdd \"FirstAidKit\") then\n{\n\tplayer addItem \"FirstAidKit\";\n}\nelse\n{\n\thint \"Not enough space\";\n};\n"
+- "if (_box canAdd \"FirstAidKit\") then\n{\n\t_box addWeaponCargo [\"FirstAidKit\", 1];\n}\nelse\n{\n\thint \"Not enough space\";\n};\n"
 - car canAdd [currentWeapon player, 50];
 - |
   // check if attachment can be loaded
