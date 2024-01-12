@@ -10,6 +10,18 @@ syntax:
   params:
   - name: entity
     type: Unknown
+- call: !Binary
+  - entity
+  - index
+  ret:
+  - Unknown
+  - depends on the requested property, or [[Nothing]]
+  params:
+  - name: entity
+    type: Unknown
+  - name: index
+    description: property index (see main syntax, 2 - isDeadSet for example)
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -18,3 +30,4 @@ since:
     minor: 16
 examples:
 - private _entityInfo = getEntityInfo ent1;
+- private _isMan = ent1 getEntityInfo 0;
