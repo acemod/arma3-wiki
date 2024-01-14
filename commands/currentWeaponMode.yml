@@ -1,6 +1,6 @@
 name: currentWeaponMode
 description: |-
-  Returns current weapon mode of unit's weapon. Result can be: "Single", "Burst", "FullAuto", "manual", "player"
+  Returns current weapon mode of unit's weapon.
 
   {{Feature|Warning|This command will return 0 [[Number]] if given object is a vehicle instead of a person.<br>
   You can alternatively use <sqf>_muzzle = weaponState player select 2;</sqf>}}
@@ -10,7 +10,7 @@ syntax:
 - call: !Unary gunner
   ret:
   - Unknown
-  - null
+  - current mode's classname
   params:
   - name: gunner
     type: Unknown
