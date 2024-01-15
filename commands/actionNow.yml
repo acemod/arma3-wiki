@@ -1,0 +1,32 @@
+name: actionNow
+description: Make a unit perform an action immediately (without any animation/pre-processing). See the [[action]] command for more information.
+groups:
+- Interaction
+syntax:
+- call: !Binary
+  - unit
+  - actionArray
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+  - name: actionArray
+    type: Unknown
+- call: !Unary actionArray
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: actionArray
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- player actionNow ["TakeBag", _backpack]; // pick up a backpack without any animation
+- vehicle player actionNow ["Gear", player]; // open inventory while in vehicle
