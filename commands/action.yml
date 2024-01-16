@@ -1,6 +1,7 @@
 name: action
 description: |-
   Make a unit perform an action. See [[:Category:Actions]] for action names and syntaxes.
+  {{Feature | arma3 | Since Arma3 2.16 it's possible to use [[actionNow]] to perform some actions immediately without any animation. However, note that some actions do require animations (for example, opening inventory while on foot), otherwise they'll get canceled. }}
   {{Feature | informative |
   * in singleplayer, when user Alt-Tabs the simulation is paused and so the action will also halt until user returns to the game. For example, <sqf inline>player action ["GetInDriver", car];</sqf> executed while user is Alt-Tabbed will result in the user seeing the action happening when he returns to the game screen. This doesn't happen in Multiplayer.
   * the alternative syntax creates a temporary Logic entity in place of ''unit''.
