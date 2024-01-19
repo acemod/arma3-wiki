@@ -35,6 +35,81 @@ syntax:
   - name: radius
     description: radius of the sphere
     type: Unknown
+- call: !Binary
+  - marker
+  - - types
+    - matchExactType
+    - aliveOnly
+  ret:
+  - Unknown
+  - not sorted
+  params:
+  - name: marker
+    description: marker area
+    type: Unknown
+  - name: types
+    description: type(s) to search for or [] empty array to return every type
+    type: Unknown
+  - name: matchExactType
+    description: '[[true]]: exact type match, [[false]]: [[isKindOf]] match. Default: [[false]]'
+    type: Unknown
+  - name: aliveOnly
+    description: '[[true]]: ignore dead entities, [[false]]: include dead entites. Default: [[true]]'
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 18
+- call: !Binary
+  - trigger
+  - - types
+    - matchExactType
+    - aliveOnly
+  ret:
+  - Unknown
+  - not sorted
+  params:
+  - name: trigger
+    description: trigger area
+    type: Unknown
+  - name: types
+    description: type(s) to search for or [] empty array to return every type
+    type: Unknown
+  - name: matchExactType
+    description: '[[true]]: exact type match, [[false]]: [[isKindOf]] match. Default: [[false]]'
+    type: Unknown
+  - name: aliveOnly
+    description: '[[true]]: ignore dead entities, [[false]]: include dead entites. Default: [[true]]'
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 18
+- call: !Binary
+  - area
+  - - types
+    - matchExactType
+    - aliveOnly
+  ret:
+  - Unknown
+  - not sorted
+  params:
+  - name: area
+    description: area in format [center, a, b, angle, isRectangular, c] (see [[inArea]] for explanation)
+    type: Unknown
+  - name: types
+    description: type(s) to search for or [] empty array to return every type
+    type: Unknown
+  - name: matchExactType
+    description: '[[true]]: exact type match, [[false]]: [[isKindOf]] match. Default: [[false]]'
+    type: Unknown
+  - name: aliveOnly
+    description: '[[true]]: ignore dead entities, [[false]]: include dead entites. Default: [[true]]'
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 18
 argument_loc: Global
 effect_loc: Unspecified
 since:
