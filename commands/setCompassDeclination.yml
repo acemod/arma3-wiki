@@ -1,0 +1,21 @@
+name: setCompassDeclination
+description: Sets the {{Link|https://en.wikipedia.org/wiki/Magnetic_declination|declination angle}} of player's compass, which is the difference between magnetic north and true north.
+groups:
+- Interaction
+syntax:
+- call: !Unary angleRad
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: angleRad
+    description: Declination angle in radians. Use 0 to reset it to default.
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 16
+examples:
+- setCompassDeclination rad 10; // declination angle is 10 degrees
