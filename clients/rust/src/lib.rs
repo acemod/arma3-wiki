@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, time::SystemTime};
 
 use git2::Repository;
 use model::{Command, Version};
@@ -51,22 +51,24 @@ impl Wiki {
     /// Panics if the structure of the repository is invalid.
     pub fn load_git() -> Result<Self, String> {
         let tmp = std::env::temp_dir().join("arma3-wiki");
-        let repo = if let Ok(repo) = Repository::open(&tmp) {
-            repo
-        } else {
-            git2::build::RepoBuilder::new()
-                .branch("dist")
-                .clone("https://github.com/acemod/arma3-wiki", &tmp)
-                .map_err(|e| format!("Failed to clone repository: {e}"))?
-        };
-        let updated = Self::update_git(&repo).is_ok();
-        let mut commands = HashMap::new();
-        for entry in std::fs::read_dir(tmp.join("commands")).unwrap() {
-            let path = entry.unwrap().path();
-            if path.is_file() {
-                let command: Command =
-                    serde_yaml::from_reader(std::fs::File::open(path).unwrap()).unwrap();
-                commands.insert(command.name().to_string(), command);
+        if !Self::recently_updated(&tmp) {
+            let repo = if let Ok(repo) = Repository::open(&tmp) {
+                repo
+            } else {
+                git2::build::RepoBuilder::new()
+                    .branch("dist")
+                    .clone("https://github.com/acemod/arma3-wiki", &tmp)
+                    .map_err(|e| format!("Failed to clone repository: {e}"))?
+            };
+            let updated = Self::update_git(&repo).is_ok();
+            let mut commands = HashMap::new();
+            for entry in std::fs::read_dir(tmp.join("commands")).unwrap() {
+                let path = entry.unwrap().path();
+                if path.is_file() {
+                    let command: Command =
+                        serde_yaml::from_reader(std::fs::File::open(path).unwrap()).unwrap();
+                    commands.insert(command.name().to_string(), command);
+                }
             }
         }
         Ok(Self {
@@ -139,6 +141,30 @@ impl Wiki {
             repo.checkout_head(Some(git2::build::CheckoutBuilder::default().force()))
                 .map_err(|e| format!("Failed to checkout HEAD: {e}"))?;
         }
+        std::env::temp_dir()
+            .join("arma3-wiki.timestamp")
+            .write_to_string(
+                &SystemTime::now()
+                    .duration_since(SystemTime::UNIX_EPOCH)
+                    .unwrap()
+                    .as_secs()
+                    .to_string(),
+            );
         Ok(())
+    }
+
+    fn recently_updated(path: &std::path::Path) -> bool {
+        if let Ok(timestamp) = std::fs::read_to_string(path.join("arma3-wiki.timestamp")) {
+            if let Ok(timestamp) = timestamp.parse::<u64>() {
+                if let Ok(elapsed) = SystemTime::now()
+                    .duration_since(SystemTime::UNIX_EPOCH)
+                    .map(|t| t.as_secs())
+                {
+                    // Update every 6 hours
+                    return elapsed - timestamp < 60 * 60 * 6;
+                }
+            }
+        }
+        false
     }
 }
