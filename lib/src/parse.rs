@@ -28,6 +28,7 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
     source = source.replace("<nowiki>", "");
     source = source.replace("</nowiki>", "");
     source = source.replace("<nowiki/>", "");
+    source = source.replace("\r\n", "\n");
 
     #[allow(clippy::needless_collect)] // needed because I don't want to deal with args on syntax()
     let lines = source
@@ -204,6 +205,7 @@ pub fn syntax(
                 } else {
                     (*value).to_string()
                 };
+                println!("value: {value:?}");
                 // ==== End Of Special Cases ====
                 let mut value = value.trim().to_string();
                 value = if value.starts_with("{{") {

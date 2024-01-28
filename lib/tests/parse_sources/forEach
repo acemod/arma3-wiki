@@ -88,9 +88,9 @@ for "_i" from 1 to 4 do { player addMagazine "30Rnd_556x45_Stanag" };
 |x3= You can also use multiple commands in the same block:
 <sqf>
 {
-	_x setCaptive true;
-	removeAllWeapons _x;
-	doStop _x;
+    _x setCaptive true;
+    removeAllWeapons _x;
+    doStop _x;
 } forEach units group this;
 </sqf>
 
@@ -101,18 +101,18 @@ for "_i" from 1 to 4 do { player addMagazine "30Rnd_556x45_Stanag" };
 <sqf>
 // shows "0, k1, v1", "1, k2, v2" in systemChat messages
 {
-	systemChat format ["%1, %2, %3", _forEachIndex, _x, _y];
+    systemChat format ["%1, %2, %3", _forEachIndex, _x, _y];
 } forEach createHashMapFromArray [
-	["k1", "v1"],
-	["k2", "v2"]
+    ["k1", "v1"],
+    ["k2", "v2"]
 ];
 </sqf>
 
 |x6= [[findIf]] equivalent for [[HashMap]]:
 <sqf>
 private _resultKey = {
-	if (_y isEqualTo "wantedValue") exitWith { _x };
-	""
+    if (_y isEqualTo "wantedValue") exitWith { _x };
+    ""
 } forEach _hashmap;
 </sqf>
 
@@ -129,10 +129,10 @@ _arr3 = [0];
 
 |x8= <sqf>
 {
-	private _verticalValue = _x; // needed, otherwise _horizontalValues' _x made this one inaccessible
-	{
-		[_x, _verticalValue] call TAG_fnc_doSomething;
-	} forEach _horizontalValues;
+    private _verticalValue = _x; // needed, otherwise _horizontalValues' _x made this one inaccessible
+    {
+        [_x, _verticalValue] call TAG_fnc_doSomething;
+    } forEach _horizontalValues;
 } forEach _verticalValues;
 </sqf>
 
@@ -150,8 +150,8 @@ The forEach code is doing the same as
 private _forEachIndex = 0;
 while { _forEachIndex < count _array } do
 {
-	(_array select _forEachIndex) call code;
-	_forEachIndex = _forEachIndex + 1;
+    (_array select _forEachIndex) call code;
+    _forEachIndex = _forEachIndex + 1;
 };
 </sqf>
 

@@ -1,4 +1,4 @@
-use std::{collections::HashMap, time::SystemTime};
+use std::{collections::HashMap, fs::File, io::Write, time::SystemTime};
 
 use git2::Repository;
 use model::{Command, Version};
@@ -13,6 +13,7 @@ struct Asset;
 pub struct Wiki {
     version: Version,
     commands: HashMap<String, Command>,
+    /// Whether the wiki was just updated.
     updated: bool,
 }
 
@@ -51,7 +52,7 @@ impl Wiki {
     /// Panics if the structure of the repository is invalid.
     pub fn load_git() -> Result<Self, String> {
         let tmp = std::env::temp_dir().join("arma3-wiki");
-        if !Self::recently_updated(&tmp) {
+        let updated = if !Self::recently_updated(&tmp) {
             let repo = if let Ok(repo) = Repository::open(&tmp) {
                 repo
             } else {
@@ -60,15 +61,17 @@ impl Wiki {
                     .clone("https://github.com/acemod/arma3-wiki", &tmp)
                     .map_err(|e| format!("Failed to clone repository: {e}"))?
             };
-            let updated = Self::update_git(&repo).is_ok();
-            let mut commands = HashMap::new();
-            for entry in std::fs::read_dir(tmp.join("commands")).unwrap() {
-                let path = entry.unwrap().path();
-                if path.is_file() {
-                    let command: Command =
-                        serde_yaml::from_reader(std::fs::File::open(path).unwrap()).unwrap();
-                    commands.insert(command.name().to_string(), command);
-                }
+            Self::update_git(&repo).is_ok()
+        } else {
+            false
+        };
+        let mut commands = HashMap::new();
+        for entry in std::fs::read_dir(tmp.join("commands")).unwrap() {
+            let path = entry.unwrap().path();
+            if path.is_file() {
+                let command: Command =
+                    serde_yaml::from_reader(std::fs::File::open(path).unwrap()).unwrap();
+                commands.insert(command.name().to_string(), command);
             }
         }
         Ok(Self {
@@ -141,15 +144,17 @@ impl Wiki {
             repo.checkout_head(Some(git2::build::CheckoutBuilder::default().force()))
                 .map_err(|e| format!("Failed to checkout HEAD: {e}"))?;
         }
-        std::env::temp_dir()
-            .join("arma3-wiki.timestamp")
-            .write_to_string(
-                &SystemTime::now()
-                    .duration_since(SystemTime::UNIX_EPOCH)
-                    .unwrap()
-                    .as_secs()
-                    .to_string(),
-            );
+        let Ok(mut file) = File::create(std::env::temp_dir().join("arma3-wiki.timestamp")) else {
+            return Ok(());
+        };
+        let _ = file.write_all(
+            SystemTime::now()
+                .duration_since(SystemTime::UNIX_EPOCH)
+                .unwrap()
+                .as_secs()
+                .to_string()
+                .as_bytes(),
+        );
         Ok(())
     }
 
