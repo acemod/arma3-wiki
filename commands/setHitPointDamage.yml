@@ -10,6 +10,7 @@ syntax:
     - useEffects
     - killer
     - instigator
+    - breakRotor
   ret:
   - Unknown
   - null
@@ -57,6 +58,15 @@ syntax:
       arma_3:
         major: 2
         minor: 12
+  - name: breakRotor
+    description: if the hitpoint is rotor on a helicopter, [[true]] will break the rotor as well as play corresponding sound if 'useEffects' is also [[true]].
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 16
 argument_loc: Local
 effect_loc: Global
 since:
