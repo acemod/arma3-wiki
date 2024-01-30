@@ -1,0 +1,34 @@
+name: getSelectionBones
+description: Returns an array of bone names that are attached to the specified selection.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - object
+  - - selectionName
+    - LOD
+  ret:
+  - Unknown
+  - Array of bone names
+  params:
+  - name: object
+    type: Unknown
+  - name: selectionName
+    type: Unknown
+  - name: LOD
+    description: |-
+      can be one of:
+      * {{hl|"Memory"}}
+      * {{hl|"Geometry"}}
+      * {{hl|"FireGeometry"}}
+      * {{hl|"LandContact"}}
+      * {{hl|"HitPoints"}}
+      * {{hl|"ViewGeometry"}}
+      When [[Number]] is used, command searches for a LOD with the same [[LOD resolutions|LOD resolution]]
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 16
