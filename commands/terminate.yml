@@ -12,6 +12,18 @@ syntax:
   params:
   - name: scriptHandle
     type: Unknown
+- call: !Unary FSMHandle
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: FSMHandle
+    description: The FSM script must be launched with 'allowTermination' flag for this command to work (see [[execFSM]]).
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 16
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
