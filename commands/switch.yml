@@ -4,7 +4,7 @@ description: |-
   If a case has no code block the code of the next case will automatically be executed, making it possible to formulate a logical "or" for cases which would otherwise contain the exact same code (see {{Link|#Example 2}}).<br>
   The [[default]] block will be executed '''only''' if no case matches, no matter its position inside the code block. It is not a [[case]], and will '''never''' be entered by fallthrough.
 
-  {{Feature|Informative|
+  {{Feature|informative|
   * [[String]] comparison is case-sensitive. Use [[toUpper]], [[toLower]], [[toLowerANSI]] or [[toUpperANSI]] to force all [[String|strings]] to the same case.
   * if no [[default]] block is provided and no [[case]] is matched, the switch block returns the default value [[true]], otherwise it returns what the valid case block returns.
   }}
