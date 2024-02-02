@@ -1,10 +1,4 @@
-use std::{
-    collections::HashMap,
-    fs::File,
-    io::Write,
-    path::{Path, PathBuf},
-    time::SystemTime,
-};
+use std::{collections::HashMap, fs::File, io::Write, path::PathBuf, time::SystemTime};
 
 use git2::Repository;
 use model::{Command, Version};
