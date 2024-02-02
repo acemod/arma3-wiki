@@ -3,7 +3,7 @@ description: |-
   Sorts given multi-column ListNBox in the given column by either [[lnbText]], [[lnbValue]] or [[lnbData]] in normal or reversed order, using case-sensitive or case-insensitive comparison. Unlike the older '''lnbSortXXX''' commands, this command supports UNICODE characters out of the box.<br>
   When sorting by {{hl|"VALUE"}}, the rows with the same [[lnbValue]] will additionally be sorted by [[lnbText]] in the order specified by the ''reversedOrder'' flag, text specified by `useTextRight` flag and case-sensitivity specified by `caseSensitive` flag.
 
-  {{Feature|Important|
+  {{Feature|important|
   * This command supports referencing control via IDC as well, but as with any use of IDC in UI [[Control]] commands, a [[dialog]] should be present, i.e. UI user interaction is created with [[createDialog]] rather than [[createDisplay]].
   * As this command supports UNICODE by default, which may result in slower sorting, you can switch it off with {{hl|unicodeOff}} param.
   }}
