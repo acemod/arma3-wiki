@@ -3,8 +3,8 @@ description: |-
   Returns an array of config entries which meet criteria in condition code. Command iterates through available classes and config properties for given config entry.
   If 3rd param is [[true]] the search also includes inherited properties. Current looked at config is stored in _x variable (similar to alternative [[count]] command implementation).
   Condition has to return [[true]] in order for the looked at property to be added to the resulting array. A bit slower than [[configClasses]] but allows to access inherited entries.
-  {{Feature|Warning|The condition code passed to [[configProperties]] should only be used for '''simple filter expressions''' and nothing more.}}
-  {{Feature|Informative|Since {{GVI|arma3|2.02}} the following conditions are optimised for performance:
+  {{Feature|warning|The condition code passed to [[configProperties]] should only be used for '''simple filter expressions''' and nothing more.}}
+  {{Feature|informative|Since {{GVI|arma3|2.02}} the following conditions are optimised for performance:
   * {{hl|"true"}} (omitted condition)
   * {{hl|"isClass _x"}}
   * {{hl|"isClass _x &amp;&amp; (...)"}}
