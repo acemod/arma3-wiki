@@ -1,4 +1,10 @@
-use std::{collections::HashMap, fs::File, io::Write, time::SystemTime};
+use std::{
+    collections::HashMap,
+    fs::File,
+    io::Write,
+    path::{Path, PathBuf},
+    time::SystemTime,
+};
 
 use git2::Repository;
 use model::{Command, Version};
@@ -51,22 +57,23 @@ impl Wiki {
     /// # Panics
     /// Panics if the structure of the repository is invalid.
     pub fn load_git() -> Result<Self, String> {
-        let tmp = std::env::temp_dir().join("arma3-wiki");
-        let updated = if !Self::recently_updated(&tmp) {
-            let repo = if let Ok(repo) = Repository::open(&tmp) {
+        let appdata = get_appdata();
+        let updated = if Self::recently_updated(&appdata) {
+            false
+        } else {
+            let repo = if let Ok(repo) = Repository::open(&appdata) {
                 repo
             } else {
                 git2::build::RepoBuilder::new()
                     .branch("dist")
-                    .clone("https://github.com/acemod/arma3-wiki", &tmp)
+                    .clone("https://github.com/acemod/arma3-wiki", &appdata)
                     .map_err(|e| format!("Failed to clone repository: {e}"))?
             };
+            println!("Updating wiki...");
             Self::update_git(&repo).is_ok()
-        } else {
-            false
         };
         let mut commands = HashMap::new();
-        for entry in std::fs::read_dir(tmp.join("commands")).unwrap() {
+        for entry in std::fs::read_dir(appdata.join("commands")).unwrap() {
             let path = entry.unwrap().path();
             if path.is_file() {
                 let command: Command =
@@ -76,7 +83,7 @@ impl Wiki {
         }
         Ok(Self {
             version: Version::from_wiki(
-                std::fs::read_to_string(tmp.join("version.txt"))
+                std::fs::read_to_string(appdata.join("version.txt"))
                     .unwrap()
                     .trim(),
             )
@@ -144,7 +151,7 @@ impl Wiki {
             repo.checkout_head(Some(git2::build::CheckoutBuilder::default().force()))
                 .map_err(|e| format!("Failed to checkout HEAD: {e}"))?;
         }
-        let Ok(mut file) = File::create(std::env::temp_dir().join("arma3-wiki.timestamp")) else {
+        let Ok(mut file) = File::create(get_appdata().join("last-update.timestamp")) else {
             return Ok(());
         };
         let _ = file.write_all(
@@ -159,7 +166,7 @@ impl Wiki {
     }
 
     fn recently_updated(path: &std::path::Path) -> bool {
-        if let Ok(timestamp) = std::fs::read_to_string(path.join("arma3-wiki.timestamp")) {
+        if let Ok(timestamp) = std::fs::read_to_string(path.join("last-update.timestamp")) {
             if let Ok(timestamp) = timestamp.parse::<u64>() {
                 if let Ok(elapsed) = SystemTime::now()
                     .duration_since(SystemTime::UNIX_EPOCH)
@@ -172,4 +179,12 @@ impl Wiki {
         }
         false
     }
+}
+
+fn get_appdata() -> PathBuf {
+    let dirs = directories::ProjectDirs::from("com", "acemod", "arma3-wiki")
+        .expect("Failed to find appdata directory");
+    let appdata = dirs.data_local_dir();
+    std::fs::create_dir_all(appdata).unwrap();
+    appdata.to_path_buf()
 }
