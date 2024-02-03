@@ -63,7 +63,6 @@ impl Wiki {
                     .clone("https://github.com/acemod/arma3-wiki", &appdata)
                     .map_err(|e| format!("Failed to clone repository: {e}"))?
             };
-            println!("Updating wiki...");
             Self::update_git(&repo).is_ok()
         };
         let mut commands = HashMap::new();
