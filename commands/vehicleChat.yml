@@ -2,20 +2,20 @@ name: vehicleChat
 description: |-
   Types text to the vehicle radio channel. The text will be visible only on the PC where command was executed. If you need the message to show on all computers, you have to execute it globally, see [[remoteExec]].
 
-  {{Feature|Informative|
+  {{Feature|informative|
   * Object parameter must be a vehicle, not a player
   * If you are in a crew seat (i.e. driver, gunner or commander), then it will include that role in the chat name output (Eg: Driver (you_name): "Message")}}
 groups:
 - Radio and Chat
 syntax:
 - call: !Binary
-  - vehicleName
+  - vehicle
   - chatText
   ret:
   - Unknown
   - null
   params:
-  - name: vehicleName
+  - name: vehicle
     description: vehicle unit is in
     type: Unknown
   - name: chatText
