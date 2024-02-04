@@ -1,7 +1,7 @@
 name: ctrlMapSetPosition
 description: |-
   Sets position and size of the given map control and recalculates control center. The effect is immediate and no [[ctrlCommit]] is necessary, unlike with [[ctrlSetPosition]] command.
-  {{Feature|Informative|The [[CT_MAP|Map control]] is different from other controls and normally does not behave well inside [[CT_CONTROLS_GROUP|Controls Groups]]. When this command is used on the [[CT_MAP|Map control]] inside a [[CT_CONTROLS_GROUP|Controls Group]], The ''x'' and ''y'' will be treated as relative position to the top left of [[CT_CONTROLS_GROUP|Controls Group]]. Use this command to set position before you use [[ctrlMapAnimAdd]]. Use this command to update [[CT_MAP|Map control]] after its position or size had been changed or the [[CT_MAP|Map control]] was created dynamically (Example 2). If you move [[CT_CONTROLS_GROUP|Controls Group]], use this command to refresh [[CT_MAP|Map control]] (Example 3). }}
+  {{Feature|informative|The [[CT_MAP|Map control]] is different from other controls and normally does not behave well inside [[CT_CONTROLS_GROUP|Controls Groups]]. When this command is used on the [[CT_MAP|Map control]] inside a [[CT_CONTROLS_GROUP|Controls Group]], The ''x'' and ''y'' will be treated as relative position to the top left of [[CT_CONTROLS_GROUP|Controls Group]]. Use this command to set position before you use [[ctrlMapAnimAdd]]. Use this command to update [[CT_MAP|Map control]] after its position or size had been changed or the [[CT_MAP|Map control]] was created dynamically (Example 2). If you move [[CT_CONTROLS_GROUP|Controls Group]], use this command to refresh [[CT_MAP|Map control]] (Example 3). }}
 groups:
 - GUI Control - Map
 syntax:
