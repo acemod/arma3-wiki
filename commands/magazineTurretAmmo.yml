@@ -1,7 +1,6 @@
 name: magazineTurretAmmo
-description: "Returns ammo count of given type from given turret \n{{Feature|warning|Broken when vehicle has multiple magazines of the same type.}}"
+description: Returns ammo count of given magazine from given turret (see [[setMagazineTurretAmmo]] for more info)
 groups:
-- Broken Commands
 - Turrets
 syntax:
 - call: !Binary
@@ -17,6 +16,7 @@ syntax:
   - name: magazineClass
     type: Unknown
   - name: turretPath
+    description: 1] for driver turret is supported
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
