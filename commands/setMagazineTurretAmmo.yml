@@ -1,9 +1,9 @@
 name: setMagazineTurretAmmo
 description: |-
-  Sets ammo count to given amount for given turret.
-  {{Feature|warning|Broken when vehicle has multiple magazines of the same type.}}
+  Sets ammo count to given amount for given turret magazine.
+  {{Feature|informative|Since Arma 3 v2.16 the magazine is first checked if it is loaded into the turret weapon, if not, the command falls back to old behaviour of selecting the first magazine from the list of available magazines. In most cases this will be the loaded magazine anyway.}}
+  {{Feature|important|The turret containing magazine <b>must</b> be local (see [[turretLocal]], [[turretOwner]])}}
 groups:
-- Broken Commands
 - Turrets
 syntax: []
 argument_loc: Unspecified
@@ -14,3 +14,9 @@ since:
     minor: 34
 examples:
 - myMRAP setMagazineTurretAmmo ["200Rnd_127x99_mag_Tracer_Red", 30, [0]]];
+- |-
+  Set ammo count on commander turret from server: <sqf>_tank = tank;
+  _turret = [0,0];
+  _magazine = "200Rnd_127x99_mag_Tracer_Red";
+  _ammo = 10;
+  [_tank, [_magazine, _ammo, _turret]] remoteExec ["setMagazineTurretAmmo", _tank turretOwner _turret];
