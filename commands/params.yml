@@ -2,9 +2,9 @@ name: params
 description: |-
   Parses input argument into array of [[private]] variables. When used without argument, as shown in main syntax, internal variable [[Magic Variables#this|_this]], which is usually available inside functions and event handlers, is used as argument.<br><br>
   In addition to simple parsing directly into variables, input can be tested in case it is undefined, of the wrong type or of the wrong size (if array) and substituted if necessary with default values. Since Arma 3 v1.54, onscreen errors are displayed for when the input is of the wrong type or size.
-  {{Feature|Warning| All variables names must start with underscore and be enclosed in quotes: {{hl|c= [[params]] [<span style{{=}}"color:red;font-weight:bold">"_</span>myVar1<span style{{=}}"color:red;font-weight:bold">"</span>, <span style{{=}}"color:red;font-weight:bold">"_</span>myVar2<span style{{=}}"color:red;font-weight:bold">"</span>];}}
+  {{Feature|warning| All variables names must start with underscore and be enclosed in quotes: {{hl|c= [[params]] [<span style{{=}}"color:red;font-weight:bold">"_</span>myVar1<span style{{=}}"color:red;font-weight:bold">"</span>, <span style{{=}}"color:red;font-weight:bold">"_</span>myVar2<span style{{=}}"color:red;font-weight:bold">"</span>];}}
   }}
-  {{Feature|Informative| It is a good practice to make your local variables '''private''' (through [[private]] or [[params]]) in order to avoid overwriting a local variable of the same name.}}
+  {{Feature|informative| It is a good practice to make your local variables '''private''' (through [[private]] or [[params]]) in order to avoid overwriting a local variable of the same name.}}
 groups:
 - Variables
 - Arrays
