@@ -19,7 +19,7 @@ effect_loc: Global
 since:
   arma_3:
     major: 2
-    minor: 16
+    minor: 18
 examples:
 - forceHitPointsDamageSync house1;
 - "house1 addEventHandler [\"HandleDamage\", \n{\n  if (_this select 9 == 2) then { _this spawn { if (isServer) then { forceHitPointsDamageSync (_this select 0); } } };\n  if (_this select 7 find \"glass\" >= 0) then { _this select 2 } else { 0 };\n}];\n"
