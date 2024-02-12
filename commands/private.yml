@@ -58,6 +58,6 @@ examples:
   _varname1 = "variable 1";
   _varname2 = "variable 2";
 - |
-  _lol =  123; call { hint str [_lol] }; // [123]
-  _lol =  123; call { private "_lol"; hint str [_lol] }; // [any]
+  _lol = 123; call { hint str [_lol] }; // [123]
+  _lol = 123; call { private "_lol"; hint str [_lol] }; // [any]
 - "_myvar = 123;\nsystemChat str [_myvar];\t\t// [123]\ncall {\n\tsystemChat str [_myvar];\t// [123]\n\tprivate \"_myvar\";\n\tsystemChat str [_myvar];\t// [any]\n\t_myvar = 345;\n\tsystemChat str [_myvar];\t// [345]\n};\nsystemChat str [_myvar];\t\t// [123]\n"
