@@ -1,19 +1,17 @@
 name: setDammage
-description: Damages/hurts or repairs/heals object/unit. Damage 0 means fully functional, damage 1 means completely destroyed / dead. {{Feature|Warning|Do '''not''' use this command. Use [[setDamage]] instead!}}
+description: |-
+  Entirely identical to [[setDamage]] that was introduced to fix a typographical error in the command's name.
+  {{Feature|informative|See [[setDamage]] for this command's documentation.}}
+alias:
+- '[[setDamage]]'
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - damage
+- call: Nular
   ret:
   - Unknown
   - null
-  params:
-  - name: object
-    type: Unknown
-  - name: damage
-    type: Unknown
+  params: []
 argument_loc: Global
 effect_loc: Global
 since:
@@ -39,4 +37,4 @@ since:
     major: 0
     minor: 50
 examples:
-- _soldier1 setDammage 1;
+- '-'
