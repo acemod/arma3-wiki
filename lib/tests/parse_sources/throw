@@ -1,0 +1,77 @@
+{{RV|type=command
+
+|game1= arma1
+|version1= 1.00
+
+|game2= arma2
+|version2= 1.00
+
+|game3= arma2oa
+|version3= 1.50
+
+|game4= tkoh
+|version4= 1.00
+
+|game5= arma3
+|version5= 0.50
+
+|gr1= Program Flow
+
+|descr= Throws an exception. The exception is processed by first [[catch]] block. This command will terminate further execution of the code.
+
+{{Feature | important | Avoid using alternative shorthand syntax if you are planning on preparing your exception information dynamically, as it will have to be generated first regardless of the condition of the [[if]] statement before it, as shown in {{Link|#Example 3}}.}}
+
+|s1= [[throw]] expression
+
+|p1= expression: [[Anything]]
+
+|r1= [[Nothing]]
+
+|s2= if (condition) [[throw]] exception
+
+|s2since= arma3 1.54
+
+|p21= if (condition): [[If Type]]  - if (condition) returns [[true]], "exception" is thrown
+
+|p22= exception: [[Anything]] - value that will be put into ''_exception'' variable inside [[catch]] block
+
+|r2= [[Nothing]]
+
+|x1= <sqf>try {throw "invalid argument"} catch {hint str _exception};</sqf>
+
+|x2= <sqf>123 try { if (_this != 123) throw "invalid argument" } catch { hint str _exception };</sqf>
+
+|x3= The correct usage of shorthand alt syntax:
+<sqf>
+try {
+	if (a > b) throw "Error: some error"; // OK
+	// the command argument is static
+} catch {
+	hint str _exception;
+};
+
+try {
+	_someFunc = {
+		// ...
+	};
+	if (a > b) throw (call _someFunc); // NOT OK
+	// The command argument is dynamic
+	// _someFunc is called first to get the value regardless of (a > b) outcome
+} catch {
+	hint str _exception;
+};
+
+try {
+	_someFunc = {
+		// ...
+	};
+	if (a > b) then {throw (call _someFunc)}; /// OK
+	// the command argument is dynamic
+	// _someFunc is only called when (a > b) is true
+} catch {
+	hint str _exception;
+};
+</sqf>
+
+|seealso= [[Exception handling]] [[try]] [[catch]]
+}}

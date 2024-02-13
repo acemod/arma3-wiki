@@ -202,6 +202,8 @@ pub fn syntax(
                 // ==== Special Cases ====
                 let value = if command == "forEach" {
                     value.trim_start_matches("{{{!}} class=\"wikitable align-center float-right\"\n! Game\n{{!}} {{GVI|ofp|1.00}}\n{{!}} {{GVI|arma1|1.00}}\n{{!}} {{GVI|arma2|1.00}}\n{{!}} {{GVI|arma2oa|1.50}}\n{{!}} {{GVI|arma3|1.00}}\n{{!}} {{GVI|tkoh|1.00}}\n{{!}}-\n! [[String]] support\n{{!}} colspan=\"2\" {{!}} {{Icon|checked}}\n{{!}} colspan=\"4\" {{!}} {{Icon|unchecked}}\n{{!}}-\n! [[Code]] support\n{{!}} {{Icon|unchecked}}\n{{!}} colspan=\"5\" {{!}} {{Icon|checked}}\n{{!}}}\n").to_string()
+                } else if command == "throw" && value.starts_with("if (condition)") {
+                    value.replace("if (condition)", "condition")
                 } else {
                     (*value).to_string()
                 };
@@ -294,6 +296,9 @@ pub fn syntax(
     let mut list = false;
     for arg in call.param_names() {
         if arg == "..." && list {
+            continue;
+        }
+        if command == "throw" && arg == "if (condition)" {
             continue;
         }
         if !params.iter().any(|p| p.name() == arg) {
