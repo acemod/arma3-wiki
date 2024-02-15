@@ -12,6 +12,23 @@ syntax:
   - name: playerID
     description: 'user DirectPlay ID (see [[getPlayerID]], [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]])'
     type: Unknown
+- call: !Binary
+  - playerID
+  - infoIndex
+  ret:
+  - Unknown
+  - depends on the requested index (see main syntax) or [[Nothing]]
+  params:
+  - name: playerID
+    description: 'user DirectPlay ID (see [[getPlayerID]], [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]])'
+    type: Unknown
+  - name: infoIndex
+    description: the index of the data in the return array (see main syntax)
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 18
 argument_loc: Unspecified
 effect_loc: Unspecified
 server_exec: false
