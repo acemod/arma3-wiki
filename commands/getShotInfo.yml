@@ -1,0 +1,33 @@
+name: getShotInfo
+description: Returns various properties for the given shot.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary shot
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: shot
+    type: Unknown
+- call: !Binary
+  - shot
+  - index
+  ret:
+  - Unknown
+  - depends on the requested property, or [[Nothing]]
+  params:
+  - name: shot
+    type: Unknown
+  - name: index
+    description: property index (see main syntax, for example 1 for fuseDistanceLeft)
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
+examples:
+- private _shotInfo = getShotInfo shot1;
+- private _fuseDistanceLeft = shot1 getShotInfo 1;
