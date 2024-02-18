@@ -27,7 +27,12 @@ pub async fn fetch() -> HashMap<String, String> {
             .to_string();
         list.insert(
             name,
-            format!("https://community.bistudio.com/wiki/{}", &cap[1]),
+            format!(
+                "https://community.bistudio.com/wiki/{}",
+                &cap[1]
+                    .trim_start_matches("https://community.bistudio.com")
+                    .trim_start_matches("/wiki/")
+            ),
         );
     }
     list

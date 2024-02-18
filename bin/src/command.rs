@@ -136,6 +136,10 @@ pub async fn command(
             }
         };
         let content = res.text().await.unwrap();
+        if content.is_empty() {
+            println!("Failed to fetch {name} from {url}");
+            return Err("Empty".to_string());
+        }
         std::fs::write(&path, &content).unwrap();
         content
     };
