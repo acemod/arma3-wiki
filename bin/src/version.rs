@@ -4,7 +4,7 @@ use regex::Regex;
 
 use crate::github::GitHub;
 
-pub async fn version(github: &mut GitHub) {
+pub async fn version(github: Option<&mut GitHub>) {
     let regex = Regex::new(r"(?m)   (\d\.\d\d)   ").unwrap();
     let text = reqwest::get("https://community.bistudio.com/wiki?title=Template:GVI&action=raw")
         .await
@@ -25,8 +25,12 @@ pub async fn version(github: &mut GitHub) {
             println!("Version unchanged: {version}");
             return;
         }
+    } else {
+        let _ = std::fs::create_dir_all(path.parent().unwrap());
     }
     std::fs::write(path, &version).unwrap();
     println!("New version: {version}");
-    github.version_pr(&version).await;
+    if let Some(github) = github {
+        github.version_pr(&version).await;
+    }
 }

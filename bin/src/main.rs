@@ -13,6 +13,6 @@ async fn main() {
         std::fs::create_dir(&tmp).unwrap();
     }
     let mut github = GitHub::new();
-    command::commands(&mut github, &args).await;
-    version::version(&mut github).await;
+    command::commands(github.as_mut(), &args).await;
+    version::version(github.as_mut()).await;
 }

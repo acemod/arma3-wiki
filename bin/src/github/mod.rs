@@ -22,7 +22,11 @@ macro_rules! command {
 }
 
 impl GitHub {
-    pub fn new() -> Self {
+    pub fn new() -> Option<Self> {
+        let Ok(token) = std::env::var("GITHUB_TOKEN") else {
+            println!("No GITHUB_TOKEN, executing dry-run");
+            return None;
+        };
         if std::env::var("CI").is_ok() {
             println!("CI, Setting git user");
             command!([
@@ -32,12 +36,13 @@ impl GitHub {
             ]);
             command!(["config", "user.name", "github-actions[bot]"]);
         }
-        Self(
-            Octocrab::builder()
-                .personal_token(std::env::var("GITHUB_TOKEN").expect("Missing GITHUB_TOKEN"))
-                .build()
-                .unwrap(),
-        )
+        Some(Self(
+            if let Ok(octo) = Octocrab::builder().personal_token(token).build() {
+                octo
+            } else {
+                return None;
+            },
+        ))
     }
 }
 

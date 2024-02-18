@@ -6,7 +6,7 @@ use reqwest::{header::LAST_MODIFIED, Client};
 
 use crate::github::{GitHub, Issues};
 
-pub async fn commands(github: &mut GitHub, args: &[String]) {
+pub async fn commands(mut github: Option<&mut GitHub>, args: &[String]) {
     let commands = if args.is_empty() {
         super::list::fetch().await
     } else {
@@ -22,7 +22,11 @@ pub async fn commands(github: &mut GitHub, args: &[String]) {
     let mut failed = Vec::new();
     let mut changed = Vec::new();
     println!("Commands: {}", commands.len());
-    let issues = Issues::new(github).await;
+    let issues = if let Some(github) = &github {
+        Some(Issues::new(github).await)
+    } else {
+        None
+    };
     let client = reqwest::Client::new();
     for (name, url) in commands {
         let result = command(&client, name.clone(), url.clone()).await;
@@ -31,21 +35,27 @@ pub async fn commands(github: &mut GitHub, args: &[String]) {
             failed.push((name, e));
         } else if let Ok((did_change, errors)) = result {
             if !errors.is_empty() {
-                issues
-                    .failed_command_create(
-                        github,
-                        &name,
-                        errors
-                            .iter()
-                            .map(std::string::ToString::to_string)
-                            .collect::<Vec<_>>()
-                            .join("\n"),
-                    )
-                    .await;
+                if let Some(issues) = &issues {
+                    issues
+                        .failed_command_create(
+                            github.as_ref().unwrap(),
+                            &name,
+                            errors
+                                .iter()
+                                .map(std::string::ToString::to_string)
+                                .collect::<Vec<_>>()
+                                .join("\n"),
+                        )
+                        .await;
+                }
             }
             if did_change {
                 if errors.is_empty() {
-                    issues.failed_command_close(github, &name).await;
+                    if let Some(issues) = &issues {
+                        issues
+                            .failed_command_close(github.as_ref().unwrap(), &name)
+                            .await;
+                    }
                 }
                 changed.push(name);
             }
@@ -55,12 +65,18 @@ pub async fn commands(github: &mut GitHub, args: &[String]) {
         failed.sort();
         println!("Complete Fails: {failed:?}");
         for (name, reason) in failed {
-            issues.failed_command_create(github, &name, reason).await;
+            if let Some(issues) = &issues {
+                issues
+                    .failed_command_create(github.as_ref().unwrap(), &name, reason)
+                    .await;
+            }
         }
     }
     if !changed.is_empty() {
         for name in changed {
-            github.command_pr(&name).await;
+            if let Some(github) = github.as_mut() {
+                github.command_pr(&name).await;
+            }
         }
     }
 }
