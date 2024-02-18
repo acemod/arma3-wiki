@@ -1,27 +1,7 @@
 name: targetKnowledge
-description: Returns unit's knowledge about target.
-groups:
-- Object Detection
-syntax:
-- call: !Binary
-  - unit
-  - target
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: unit
-    type: Unknown
-  - name: target
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 50
-examples:
-- |-
-  private _allInfo = _soldierOne targetKnowledge _jeepOne;
-  _allInfo params ["_knownByGroup", "_knownByUnit", "_lastSeen", "_lastThreat", "_side", "_errorMargin", "_position"];
-- private _posError = (_soldierOne targetKnowledge _jeepOne) select 5;
+since: {}
