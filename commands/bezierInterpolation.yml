@@ -1,28 +1,7 @@
 name: bezierInterpolation
-description: |-
-  Gets interpolated value based on {{Link|https://en.wikipedia.org/wiki/Bézier_curve|Bézier curve}} with given control points (progress value is 0...1 for a curve that starts at pos0 and finishes at posN) <br>
-  [[File:bezierInterpolation2.jpg|400px]]
-groups:
-- Math
-syntax:
-- call: !Binary
-  - progress
-  - positions
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: progress
-    description: interpolation value
-    type: Unknown
-  - name: positions
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 92
-examples:
-- "Quick demonstration that spawns some spheres around player object:\n<sqf>\nfor \"_i\" from 0 to 1 step 0.05 do {\n\tcreateVehicle [\"Sign_Sphere10cm_F\", (_i bezierInterpolation [\n\t\tplayer modelToWorld [0,0,0],\n\t\tplayer modelToWorld [0,2,2],\n\t\tplayer modelToWorld [2,0,2],\n\t\tplayer modelToWorld [0,0,4]\n\t]), [], 0, \"CAN_COLLIDE\"];\n};\n"
-- "Create a map marker curve from 4 control points with overlap (progress is -0.5...1.5 instead of 0...1):\n<sqf>\nprivate _controlPoints = [[100,-90], [200,-30], [150,60], [100,90]] apply { player getRelPos _x };\n{\n\tprivate _marker = createMarkerLocal [str _x, _x];\n\t_marker setMarkerTypeLocal \"mil_objective\";\n\t_marker setMarkerTextLocal (\"P\" + str _forEachIndex);\n}\nforEach _controlPoints;\n\nfor \"_i\" from -0.5 to 1.5 step 0.01 do\n{\n\tprivate _marker = createMarkerLocal [str _i, _i bezierInterpolation _controlPoints];\n\t_marker setMarkerTypeLocal \"mil_dot\";\n};\nopenMap true;\n"
+since: {}
