@@ -1,7 +1,7 @@
 name: getSelectionBones
 description: |-
   Returns an array of bone names that are attached to the specified selection.
-  {{Feature|important|This command is relatively slow, because it searches in all vertices of every bone. }}
+  {{Feature|important|This command is relatively slow because it searches in all vertices of every bone.}}
 groups:
 - Object Manipulation
 syntax:
@@ -11,7 +11,7 @@ syntax:
     - LOD
   ret:
   - Unknown
-  - Array of bone names
+  - array of bone names
   params:
   - name: object
     type: Unknown
@@ -20,12 +20,14 @@ syntax:
   - name: LOD
     description: |-
       can be one of:
+      {{Columns|2|
       * {{hl|"Memory"}}
       * {{hl|"Geometry"}}
       * {{hl|"FireGeometry"}}
       * {{hl|"LandContact"}}
       * {{hl|"HitPoints"}}
       * {{hl|"ViewGeometry"}}
+      }}
       When [[Number]] is used, command searches for a LOD with the same [[LOD resolutions|LOD resolution]]
     type: Unknown
 argument_loc: Unspecified
