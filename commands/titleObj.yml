@@ -1,56 +1,7 @@
 name: titleObj
-description: Shows object defined in global config in CfgTitles
-groups:
-- GUI Control
-syntax:
-- call: !Unary
-  - class
-  - type
-  - speed
-  - showInMap
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: class
-    description: defined in {{hl|[[configFile]] >> "CfgTitles" >> class}}
-    type: Unknown
-  - name: type
-    description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values
-    type: Unknown
-  - name: speed
-    description: time in seconds to fade in resource
-    type: Unknown
-    optional: true
-    default: '-1'
-  - name: showInMap
-    description: '[[false]] to hide the text when the map is opened'
-    type: Unknown
-    optional: true
-    default: '[[true]]'
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- titleObj ["BISLogo", "PLAIN"];
+since: {}
