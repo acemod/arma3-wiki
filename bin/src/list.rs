@@ -22,8 +22,8 @@ pub async fn fetch() -> HashMap<String, String> {
 
     for cap in regex.captures_iter(&body) {
         let name = cap[1]
-            .trim_start_matches("https://community.bistudio.com/")
-            .trim_start_matches("wiki/")
+            .trim_start_matches("https://community.bistudio.com")
+            .trim_start_matches("/wiki/")
             .to_string();
         list.insert(name, cap[1].to_string());
     }
