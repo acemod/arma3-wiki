@@ -1,5 +1,11 @@
 name: skill
-description: Returns current skill of a unit, in range between 0 to 1, 1 being the highest level of skill.
+description: |-
+  Returns current skill of a unit, in range between 0 to 1, 1 being the highest level of skill.
+
+  {{Feature|informative|
+  * Skill of AI units set via the slider in unit placement screen varies from 0.2 to 1.0.
+  * If the '''superAI''' difficulty settings is enabled, all units have skill of 1.0 regardless of the skill slider.
+  }}
 groups:
 - AI Behaviour
 syntax:
@@ -22,6 +28,7 @@ syntax:
   - name: skillName
     description: |-
       possible values are:
+      {{Columns|5|
       * "aimingAccuracy"
       * "aimingShake"
       * "aimingSpeed"
@@ -32,6 +39,7 @@ syntax:
       * "reloadSpeed"
       * "commanding"
       * "general"
+      }}
     type: Unknown
   since:
     armed_assault:
