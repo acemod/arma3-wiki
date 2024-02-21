@@ -1,20 +1,6 @@
 name: setMarkerBrush
 description: |-
-  Selects the fill texture for the marker ("RECTANGLE" or "ELLIPSE"). Brush is the name of the subclass in CfgMarkerBrushes.
-  <br>
-  <br>
-  ''brush'' can be:
-  * "Solid"
-  * "SolidFull" (A3 only)
-  * "Horizontal"
-  * "Vertical"
-  * "Grid"
-  * "FDiagonal"
-  * "BDiagonal"
-  * "DiagGrid"
-  * "Cross"
-  * "Border"  (Not present in A1)
-  * "SolidBorder"  (Not present in A1)
+  Selects the fill texture for the marker ("RECTANGLE" or "ELLIPSE"). Brush is the name of the subclass in {{hl|CfgMarkerBrushes}}.
   {{Feature|informative|'''Multiplayer optimisation:''' Global marker commands always broadcast the ''entire'' marker state over the network. As such, the number of network messages exchanged when creating or editing a marker can be reduced by performing all but the last operation using local marker commands, then using a global marker command for the last change (and subsequent global broadcast of all changes applied to the marker).}}
 groups:
 - Markers
@@ -29,6 +15,21 @@ syntax:
   - name: markerName
     type: Unknown
   - name: brush
+    description: |-
+      (case-insensitive) can be one of:
+      {{Columns|4|
+      * "Solid"
+      * {{GVI|arma3|0.50|size= 0.75}} "SolidFull"
+      * "Horizontal"
+      * "Vertical"
+      * "Grid"
+      * "FDiagonal"
+      * "BDiagonal"
+      * "DiagGrid"
+      * "Cross"
+      * {{GVI|arma2|1.00|size= 0.75}} "Border"
+      * {{GVI|arma2|1.00|size= 0.75}} "SolidBorder"
+      }}
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Global
