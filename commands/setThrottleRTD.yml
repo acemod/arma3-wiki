@@ -1,5 +1,5 @@
 name: setThrottleRTD
-description: "Set the throttle for the given engine(s) of a helicopter. \n* engine index 0: engine #1\n* engine index 1: engine #2\n* engine index 2: engine #3\n* engine index -1: all engines\n\n* throttle 0: fully closed\n* throttle ~0.15: average flight idle\n* throttle 1: full"
+description: Set the throttle for the given engine(s) of a helicopter.
 groups:
 - RTD
 syntax:
@@ -15,10 +15,19 @@ syntax:
     description: helicopter
     type: Unknown
   - name: value
-    description: throttle level
+    description: |-
+      throttle level
+      * throttle 0: fully closed
+      * throttle ~0.15: average flight idle
+      * throttle 1: full
     type: Unknown
   - name: engineIndex
-    description: engine index
+    description: |-
+      engine index
+      * engine index 0: engine #1
+      * engine index 1: engine #2
+      * engine index 2: engine #3
+      * engine index -1: all engines
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
