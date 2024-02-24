@@ -1,11 +1,15 @@
 name: getMissionConfigValue
 description: |-
-  Returns value of the given scenario attribute from the 1st tier. Since only config properties have values, the attribute should be config property. If it is not found or config class is given, the return is [[nil]]. If the attribute defined in multiple places, the command checks them in the following order:
-  # External ''[[Description.ext]]'' file
-  # [[Eden_Editor:_Scenario_Atttributes|Eden Editor]] scenario attribute
-  So if attribute exists in both places, attribute from [[Description.ext|description.ext]] is used. Previously, scenario attributes were extracted from ''Description.ext'' using [[missionConfigFile]]. That still works, but it ignores attributes set directly in the editor and it should not be used anymore.<br><br>
+  Returns value of the given scenario attribute from the 1st tier. Since only config properties have values, the attribute should be config property.
+  If it is not found or config class is given, the return is [[nil]]. If the attribute defined in multiple places, the command checks them in the following order:
+  # [[Description.ext]] entry
+  # [[Eden Editor: Scenario Attributes|Eden Editor]] scenario attribute
 
-  {{Feature | important | This command cannot force return type, it will return the value of the type given in config. Use [[isEqualType]] to additionally reaffirm the correct type if necessary to account for human error.}}
+  So if an attribute exists in both places, the [[Description.ext]] value is used.
+  Previously, scenario attributes were extracted from Description.ext using [[missionConfigFile]].
+  That still works, but it ignores attributes set directly in the editor and should not be used anymore.
+
+  {{Feature|important|This command cannot force return type, it will return the value of the type given in config. Use [[isEqualType]] to additionally reaffirm the correct type if necessary to account for human error.}}
 groups:
 - Config
 - Mission Information
@@ -38,7 +42,4 @@ since:
     major: 1
     minor: 56
 examples:
-- |-
-  _respawnDelay = getMissionConfigValue ["respawnDelay",0];</sqf>
-  Returns respawn delay value. Replaces the previous approach which would scan only the external ''Description.ext file'', but ignore the value set in the Eden Editor:
-  <sqf>_respawnDelay = getNumber (missionConfigFile >> "respawnDelay"); // Old approach
+- "private _respawnDelay = getMissionConfigValue [\"respawnDelay\", 0];\t\t\t// returns the real, defined respawn delay value\nprivate _respawnDelay = getNumber (missionConfigFile >> \"respawnDelay\");\t// old approach, ignoring the Eden Editor-set value\n"
