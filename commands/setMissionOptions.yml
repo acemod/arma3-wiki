@@ -1,18 +1,23 @@
 name: setMissionOptions
 description: |-
-  Sets various mission options. The options are automatically reset before and after the mission. Currently supported options are:
-  * ignoreNoDamage: [[Boolean]] - [[true]] to filter out no change in damage from [[Arma_3:_Event_Handlers#HandleDamage | HandleDamage]] calls. Default: [[false]]
-  * ignoreFakeHeadHit: [[Boolean]] - [[true]] to filter out FakeHeadHit context from [[Arma_3:_Event_Handlers#HandleDamage | HandleDamage]] calls. Default: [[false]]
+  Sets various mission options. The options are automatically reset between missions and are saved/restored with the save system.
+
+  Providing an empty array will reset all options to defaults.
 groups:
 - System
 syntax:
-- call: !Unary options
+- call: !Unary
+  - ignoreNoDamage
+  - ignoreFakeHeadHit
   ret:
   - Unknown
   - null
   params:
-  - name: options
-    description: array of options (see description). Empty array [] will reset all options to defaults.
+  - name: ignoreNoDamage
+    description: '(default [[false]]) [[true]] to filter out no change in damage from {{Link|Arma 3: Event Handlers#HandleDamage|HandleDamage}} calls'
+    type: Unknown
+  - name: ignoreFakeHeadHit
+    description: '(default [[false]]) [[true]] to filter out FakeHeadHit context from {{Link|Arma 3: Event Handlers#HandleDamage|HandleDamage}} calls'
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Local
@@ -21,5 +26,5 @@ since:
     major: 2
     minor: 18
 examples:
-- |
-  setMissionOptions [true, true];
+- setMissionOptions [true, true];
+- setMissionOptions []; // reset options to default
