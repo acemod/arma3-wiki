@@ -3,7 +3,7 @@ description: "Suspends execution of [[Scheduler|scheduled]] script until the giv
 problem_notes:
 - |-
   For some unknown reason if you have [[waitUntil]] loop active and game is '''saved/loaded''', some variables in the expression may appear undefined for a short time. As a workaround, assign expression to a variable and make sure it is defined before [[waitUntil]] checks it:
-  <sqf>waitUntil { private _expression = var1 && (var2 > 10); !isNil "_expression" && { _expression } };</sqf>
+  <sqf>waitUntil { private _expression = someBooleanVar && (someNumberVar > 10); !isNil "_expression" && { _expression } };</sqf>
 groups:
 - Program Flow
 syntax:
