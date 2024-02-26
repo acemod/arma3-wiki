@@ -163,7 +163,7 @@ pub fn command(name: &str, source: &str) -> Result<(Command, Vec<ParseError>), S
 /// # Errors
 /// Returns an error if the locality is unknown.
 pub fn locality(source: &str) -> Result<Locality, String> {
-    match source {
+    match source.to_lowercase().as_str() {
         "local" => Ok(Locality::Local),
         "global" => Ok(Locality::Global),
         "server" => Ok(Locality::Server),

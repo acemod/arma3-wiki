@@ -175,7 +175,7 @@ impl Wiki {
 }
 
 fn get_appdata() -> PathBuf {
-    let dirs = directories::ProjectDirs::from("com", "acemod", "arma3-wiki")
+    let dirs = directories::ProjectDirs::from("org", "acemod", "arma3-wiki")
         .expect("Failed to find appdata directory");
     let appdata = dirs.data_local_dir();
     std::fs::create_dir_all(appdata).unwrap();
