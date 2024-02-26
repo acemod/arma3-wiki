@@ -1,0 +1,35 @@
+name: getUnitMovesInfo
+description: Returns various information about the unit moves (primary animation) and gestures (masked animation)
+groups:
+- Animations
+syntax:
+- call: !Unary unit
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Unknown
+- call: !Binary
+  - unit
+  - index
+  ret:
+  - Unknown
+  - Value of the requested property, or [[Nothing]] if index is invalid. See the main syntax.
+  params:
+  - name: unit
+    type: Unknown
+  - name: index
+    description: index of property from the main syntax
+    type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
+examples:
+- |
+  _animInfo = getUnitMovesInfo player;
+  // velocity = displacement / time
+  _animVelocity = _animInfo#4 vectorMultiply -1 / _animInfo#2; // -1 is because man model is reversed, so rtm animation moves "backwards"
