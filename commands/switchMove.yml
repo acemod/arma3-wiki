@@ -1,7 +1,8 @@
 name: switchMove
 description: |-
   Immediately applies given animation to the unit. For a smooth transition from the current animation, use [[playMove]].
-  {{Feature | Informative | see [[:Category:Moves]] for respective games animations.}}
+  {{Feature|informative|see [[:Category:Moves]] for respective games animations.}}
+
   This command first resets the unit's animation states (including aiming state, gesture state, etc.) then puts the unit in the first frame of the animation (therefore showing no transition).
   If an invalid animation is provided, the unit's animations will be reset but no new animation will be played (see {{Link|#Example 3}}).
 
@@ -11,7 +12,11 @@ description: |-
   _unit playMoveNow "myMove";
   </sqf>
   }}
-multiplayer_note: This command has a global effect when executed locally to the unit and will synchronise properly for JIP. In this case the animation on the executing machine is immediate while on remote machines it will be transitional. In order for the animation to change immediately on every PC in multiplayer, use global remote execution (see {{Link|#Example 2}}). When the argument is remote, the animation change on the executing PC is only temporary.
+multiplayer_note: |-
+  This command has a global effect when executed locally to the unit and will synchronise properly for JIP.
+  In this case the animation on the executing machine is immediate while on remote machines it will be transitional.
+  In order for the animation to change immediately on every PC in multiplayer, use global remote execution (see {{Link|#Example 2}}).
+  When the argument is remote, the animation change on the executing PC is only temporary.
 groups:
 - Animations
 syntax:
@@ -42,20 +47,23 @@ syntax:
     description: unit
     type: Unknown
   - name: moveName
-    description: Entry from {{hl|"CfgMovesMaleSdr" >> "states"}} or {{hl|"CfgGesturesMale" >> "states"}}
+    description: entry from {{hl|"CfgMovesMaleSdr" >> "states"}} or {{hl|"CfgGesturesMale" >> "states"}}
     type: Unknown
   - name: time
-    description: '(Optional, default: 0) progress time, in range 0-1, where 0 = beginning of the animation, and 1 = end of the animation'
+    description: progress time, in range 0..1, where 0 = beginning of the animation, and 1 = end of the animation
     type: Unknown
     optional: true
+    default: '0'
   - name: blendFactor
-    description: '(Optional, default: 0) In range 0-1. How much to blend the new animation with the current animation.'
+    description: blending of the new animation with the current animation, in range 0..1
     type: Unknown
     optional: true
+    default: '0'
   - name: resetAim
-    description: '(Optional, default: true) Whether the aim/head direction should be reset after switching'
+    description: whether the aim/head direction should be reset after switching
     type: Unknown
     optional: true
+    default: 'true'
   since:
     arma_3:
       major: 2
@@ -94,4 +102,4 @@ examples:
 - |-
   Resets unit's animation:
   <sqf>_unit switchMove "";
-- "// Create a dummy agent that copies your moves\nai1 = createAgent [typeOf player, getPosATL player, [], 0, \"NONE\"];\nai1 disableAI \"ALL\";\nonEachFrame\n{\n\tai1 setAnimSpeedCoef getAnimSpeedCoef player;\n\tai1 setVectorDir vectorDir player;\n\t_m = animationState player;\n\t_g = gestureState player;\n\t_i = getUnitMovesInfo player;\n\t_a = getUnitMovesInfo ai1;\n\t\n\tif (animationState ai1 != _m || abs(_i#1 - _a#1) > 0.1) then {\n\t\tai1 switchMove [_m, _i#0, _i#3, false];\n\t};\n\tif ((gestureState ai1 != _g || abs(_i#6 - _a#6) > 0.1) && (_g != \"<none>\" && _g find \"_player\" < 0)) then {\n\t\tai1 switchGesture [_g, _i#5, _i#8, false];\n\t};\n}\n"
+- "// Create a dummy agent that copies your moves\nai1 = createAgent [typeOf player, getPosATL player, [], 0, \"NONE\"];\nai1 disableAI \"ALL\";\nonEachFrame\n{\n\tai1 setAnimSpeedCoef getAnimSpeedCoef player;\n\tai1 setVectorDir vectorDir player;\n\tprivate _m = animationState player;\n\tprivate _g = gestureState player;\n\tprivate _i = getUnitMovesInfo player;\n\tprivate _a = getUnitMovesInfo ai1;\n\t\n\tif (animationState ai1 != _m || abs(_i#1 - _a#1) > 0.1) then\n\t{\n\t\tai1 switchMove [_m, _i#0, _i#3, false];\n\t};\n\n\tif ((gestureState ai1 != _g || abs(_i#6 - _a#6) > 0.1) && (_g != \"<none>\" && _g find \"_player\" < 0)) then\n\t{\n\t\tai1 switchGesture [_g, _i#5, _i#8, false];\n\t};\n}\n"
