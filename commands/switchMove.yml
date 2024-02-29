@@ -6,11 +6,12 @@ description: |-
   This command first resets the unit's animation states (including aiming state, gesture state, etc.) then puts the unit in the first frame of the animation (therefore showing no transition).
   If an invalid animation is provided, the unit's animations will be reset but no new animation will be played (see {{Link|#Example 3}}).
 
-  {{Feature|informative|It is a good practice to always use [[playMoveNow]] after [[switchMove]] to make sure the animation plays correctly:
+  {{Feature|informative|It is a good practice to always use [[playMoveNow]] after [[switchMove]] to make sure the animation plays correctly when using the first syntax:
   <sqf>
   _unit switchMove "myMove";
   _unit playMoveNow "myMove";
   </sqf>
+  The alternative syntax does this automatically.
   }}
 multiplayer_note: |-
   This command has a global effect when executed locally to the unit and will synchronise properly for JIP.
