@@ -14,6 +14,37 @@ syntax:
     type: Unknown
   - name: moveName
     type: Unknown
+- call: !Binary
+  - soldier
+  - - moveName
+    - time
+    - blendFactor
+    - resetAim
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: soldier
+    type: Unknown
+  - name: moveName
+    description: Entry from {{hl|"CfgMovesMaleSdr" >> "states"}} or {{hl|"CfgGesturesMale" >> "states"}}
+    type: Unknown
+  - name: time
+    description: '(Optional, default: 0) normalized time, in range 0-1, where 0 = beginning of the animation, and 1 = end of the animation'
+    type: Unknown
+    optional: true
+  - name: blendFactor
+    description: '(Optional, default: 0) In range 0-1. How much to blend the new animation with the current animation.'
+    type: Unknown
+    optional: true
+  - name: resetAim
+    description: '(Optional, default: true) Whether the aim/head direction should be reset after switching'
+    type: Unknown
+    optional: true
+  since:
+    arma_3:
+      major: 2
+      minor: 18
 argument_loc: Local
 effect_loc: Global
 since:
@@ -31,4 +62,4 @@ since:
     minor: 50
 examples:
 - soldierOne switchGesture "Wave";
-- "// Create a dummy agent that copies your moves\nai1 = createAgent [typeOf player, getPosATL player, [], 0, \"NONE\"];\nai1 disableAI \"ALL\";\nonEachFrame\n{\n\tai1 setAnimSpeedCoef getAnimSpeedCoef player;\n\tai1 setVectorDir vectorDir player;\n\t_m = animationState player;\n\t_g = gestureState player;\n\t_i = getUnitMovesInfo player;\n\t_a = getUnitMovesInfo ai1;\n\t\n\tif (animationState ai1 != _m || abs(_i#1 - _a#1) > 0.1) then {\n\t\tai1 switchMove [_m, _i#0, _i#3, false];\n\t};\n\tif ((gestureState ai1 != _g || abs(_i#6 - _a#6) > 0.1) && (_g != \"<none>\" && _g find \"_player\" < 0)) then {\n\t\tai1 switchGesture [_g, _i#5, _i#8, false];\n\t};\n}\n"
+- "// Create a dummy agent that copies your moves\nai1 = createAgent [typeOf player, getPosATL player, [], 0, \"NONE\"];\nai1 disableAI \"ALL\";\nonEachFrame\n{\n\tai1 setAnimSpeedCoef getAnimSpeedCoef player;\n\tai1 setVectorDir vectorDir player;\n\t_m = animationState player;\n\t_g = gestureState player;\n\t_i = getUnitMovesInfo player;\n\t_a = getUnitMovesInfo ai1;\n\n\tif (animationState ai1 != _m || abs(_i#1 - _a#1) > 0.1) then {\n\t\tai1 switchMove [_m, _i#0, _i#3, false];\n\t};\n\tif ((gestureState ai1 != _g || abs(_i#6 - _a#6) > 0.1) && (_g != \"<none>\" && _g find \"_player\" < 0)) then {\n\t\tai1 switchGesture [_g, _i#5, _i#8, false];\n\t};\n}\n"
