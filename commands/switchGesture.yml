@@ -34,9 +34,10 @@ syntax:
     type: Unknown
     optional: true
   - name: blendFactor
-    description: '(Optional, default: 0) In range 0-1. How much to blend the new animation with the current animation.'
+    description: how much to blend the current animation with the new animation, in range 0..1, where 0 = current animation, and 1 = new animation. When 1 is used, the switching is instant (not smooth).
     type: Unknown
     optional: true
+    default: '1'
   - name: resetAim
     description: '(Optional, default: true) Whether the aim/head direction should be reset after switching'
     type: Unknown
