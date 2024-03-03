@@ -56,10 +56,10 @@ syntax:
     optional: true
     default: '0'
   - name: blendFactor
-    description: blending of the new animation with the current animation, in range 0..1
+    description: how much to blend the current animation with the new animation, in range 0..1, where 0 = current animation, and 1 = new animation. When 1 is used, the switching is instant (not smooth), similar to the first syntax.
     type: Unknown
     optional: true
-    default: '0'
+    default: '1'
   - name: resetAim
     description: whether the aim/head direction should be reset after switching
     type: Unknown
