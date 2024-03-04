@@ -44,7 +44,7 @@ syntax:
       ** if the string is empty, it is interpreted as [[false]]
       ** if the string is in format "[[Number]]:[[Number]]" (e.g. "0:0"), it is interpreted as a [[netId]] (see below)
       ** else the string is treated as a custom JIP ID and the [[remoteExec]] statement is added to the JIP queue, replacing statements that have the same JIP ID
-      * [[Object]], [[Group]] or [[netId]] - the persistent execution of the [[remoteExec]] statement is attached to the given object or group.<br>When the object / group is deleted, the [[remoteExec]] statement is automatically removed from the JIP queue
+      * [[Object]], [[Group]] or [[netId]] - the persistent execution of the [[remoteExec]] statement is attached to the given object or group, replacing any previous statement that has the same JIP ID.<br>When the object / group is deleted, the [[remoteExec]] statement is automatically removed from the JIP queue
 
       The '''JIP''' parameter can only be used if the '''targets''' parameter is 0 or a negative number.<br>
       See also [[#Example 3|Example 3]] on how to remove statements from the JIP queue.
