@@ -79,8 +79,8 @@ since:
     major: 0
     minor: 50
 examples:
-- _lightsource = "#lightpoint" createVehicleLocal _pos;
-- _lightsource = "#lightreflector" createVehicleLocal _pos;
+- _lightSource = "#lightpoint" createVehicleLocal _pos;
+- "Multiple types:\n<sqf>\nprivate _lightSource =\t\t\"#lightsource\"\t\tcreateVehicleLocal _pos;\t// see [[Light Source Tutorial]]\nprivate _lightReflector =\t\"#lightreflector\"\tcreateVehicleLocal _pos;\t// see [[Light Source Tutorial]] - since {{arma3}} v2.06\nprivate _particleSource =\t\"#particlesource\"\tcreateVehicleLocal _pos;\t// see [[Particles Tutorial]]\nprivate _dynamicSound =\t\t\"#dynamicsound\"\t\tcreateVehicleLocal _pos;\t// see [[createSoundSource]]\n"
 - |
   // since {{arma3}} v2.14
   private _lightPoint = createVehicleLocal ["#lightpoint", getMarkerPos "marker1", ["marker2", "marker3"], 0, "NONE"];
