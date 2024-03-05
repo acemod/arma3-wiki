@@ -36,64 +36,6 @@ syntax:
     description: radius of the sphere
     type: Unknown
 - call: !Binary
-  - marker
-  - - types
-    - matchExactType
-    - aliveOnly
-    - includeCrew
-  ret:
-  - Unknown
-  - not sorted
-  params:
-  - name: marker
-    description: marker area
-    type: Unknown
-  - name: types
-    description: type(s) to search for or [] empty array to return every type
-    type: Unknown
-  - name: matchExactType
-    description: '[[true]]: exact type match, [[false]]: [[isKindOf]] match. Default: [[false]]'
-    type: Unknown
-  - name: aliveOnly
-    description: '[[true]]: ignore dead entities, [[false]]: include dead entites. Default: [[true]]'
-    type: Unknown
-  - name: includeCrew
-    description: '[[true]]: to include crew of vehicles in search. Default: [[false]]'
-    type: Unknown
-  since:
-    arma_3:
-      major: 2
-      minor: 18
-- call: !Binary
-  - trigger
-  - - types
-    - matchExactType
-    - aliveOnly
-    - includeCrew
-  ret:
-  - Unknown
-  - not sorted
-  params:
-  - name: trigger
-    description: trigger area
-    type: Unknown
-  - name: types
-    description: type(s) to search for or [] empty array to return every type
-    type: Unknown
-  - name: matchExactType
-    description: '[[true]]: exact type match, [[false]]: [[isKindOf]] match. Default: [[false]]'
-    type: Unknown
-  - name: aliveOnly
-    description: '[[true]]: ignore dead entities, [[false]]: include dead entites. Default: [[true]]'
-    type: Unknown
-  - name: includeCrew
-    description: '[[true]]: to include crew of vehicles in search. Default: [[false]]'
-    type: Unknown
-  since:
-    arma_3:
-      major: 2
-      minor: 18
-- call: !Binary
   - area
   - - types
     - matchExactType
@@ -104,20 +46,29 @@ syntax:
   - not sorted
   params:
   - name: area
-    description: area in format [center, a, b, angle, isRectangular, c] (see [[inArea]] for explanation)
+    description: |-
+      marker name
+      * [[Object]] - trigger
+      * [[Array]] - format [center, a, b, angle, isRectangular, c] (see [[inArea]])
     type: Unknown
   - name: types
     description: type(s) to search for or [] empty array to return every type
     type: Unknown
   - name: matchExactType
-    description: '[[true]]: exact type match, [[false]]: [[isKindOf]] match. Default: [[false]]'
+    description: '[[true]] for an exact type match, [[false]] for an [[isKindOf]] match'
     type: Unknown
+    optional: true
+    default: '[[false]]'
   - name: aliveOnly
-    description: '[[true]]: ignore dead entities, [[false]]: include dead entites. Default: [[true]]'
+    description: '[[true]] to ignore dead entities, [[false]] to include them'
     type: Unknown
+    optional: true
+    default: '[[true]]'
   - name: includeCrew
-    description: '[[true]]: to include crew of vehicles in search. Default: [[false]]'
+    description: '[[true]] to include crew of vehicles in search'
     type: Unknown
+    optional: true
+    default: '[[false]]'
   since:
     arma_3:
       major: 2
