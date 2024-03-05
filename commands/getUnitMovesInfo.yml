@@ -29,8 +29,8 @@ since:
     major: 2
     minor: 18
 examples:
-- |2
-   // Getting the move velocity of the animation
-  _animInfo = getUnitMovesInfo player;
+- |
+  // Getting the move velocity of the animation
+  private _animInfo = getUnitMovesInfo player;
   // velocity = displacement / time
-  _animVelocity = _animInfo#4 vectorMultiply -1 / _animInfo#2; // -1 is because man model is reversed, so rtm animation moves "backwards"
+  private _animVelocity = _animInfo # 4 vectorMultiply -1 / _animInfo # 2; // -1 is because man model is reversed, so the rtm animation moves "backwards"
