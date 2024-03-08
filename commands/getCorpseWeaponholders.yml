@@ -1,0 +1,22 @@
+name: getCorpseWeaponholders
+description: Returns primary and secondary weapon holders of a dead unit. If a unit had weapons at the moment of death, primary weapon is dropped into primary weaponholder and secondary weapon is dropped into secondary.
+groups:
+- Unit Inventory
+- Object Manipulation
+syntax:
+- call: !Unary corpse
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: corpse
+    description: dead unit
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
+examples:
+- systemChat str getCorpseWeaponholders cursorObject;
