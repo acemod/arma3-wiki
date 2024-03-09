@@ -1,7 +1,7 @@
 name: visiblePosition
 description: |-
   Returns an object's rendered position (z value above surface underneath) in render time scope. Same as [[getPosVisual]].
-  {{Feature | Important | This command '''should not''' be used for actual 3D calculations. See [[getPos]] for more details.}}
+  {{Feature|important|This command must '''not''' be used for actual 3D calculations. See [[getPos]] for an explanation.}}
 groups:
 - Positions
 - Render Time Scope
@@ -27,4 +27,4 @@ since:
     major: 0
     minor: 50
 examples:
-- playerRenderedPos = visiblePosition player;
+- _playerRenderedPos = visiblePosition player;
