@@ -2,7 +2,7 @@ name: date
 description: Return the actual in-mission date and time.
 multiplayer_note: |-
   Returns the current '''local''' (MP client) in-game date.
-  {{Feature|arma3 |Clients' local date is [[Multiplayer Scripting#JIP Synchronisation|automatically and periodically synchronised]] with the server date.}}
+  {{Feature|arma3|Clients' local date is [[Multiplayer Scripting#JIP Synchronisation|automatically and periodically synchronised]] with the server date.}}
 groups:
 - Environment
 syntax:
@@ -30,5 +30,5 @@ since:
     major: 0
     minor: 50
 examples:
-- "// in Arma 3\ndate params [\"_year\", \"_month\", \"_day\", \"_hours\", \"_minutes\"];\n\n// pre Arma 3\n_now = date;\t// [2014,10,30,2,30] a.k.a Oct. 30th, 2:30am\n_year\t\t= _now select 0;\n_month\t\t= _now select 1;\n_day\t\t= _now select 2;\n_hours\t\t= _now select 3;\n_minutes\t= _now select 4;\n"
+- "// in {{arma3}}\ndate params [\"_year\", \"_month\", \"_day\", \"_hours\", \"_minutes\"];\n\n// pre {{arma3}}\nprivate [\"_now\", \"_year\", \"_month\", \"_day\", \"_hours\", \"_minutes\"];\n_now = date;\t// [2014,10,30,2,30] a.k.a Oct. 30th, 2:30am\n_year\t\t= _now select 0;\n_month\t\t= _now select 1;\n_day\t\t= _now select 2;\n_hours\t\t= _now select 3;\n_minutes\t= _now select 4;\n"
 - "if (date select 3 >= 19) then\t\t// 7pm\n{\n\thintSilent \"ah, Arma sunset\";\t// ...cue bad guys\n};\n"
