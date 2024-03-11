@@ -1,28 +1,28 @@
 name: random
 description: |-
   [[File:bellcurve.jpg|thumb|120px|[[#Syntax 2|Syntax&nbsp;2]]'s distribution]]
-  {{{!}}
-  ! style="padding-right: 1em; vertical-align: top; white-space: nowrap" {{!}} {{Link|#Syntax 1}}
+  {{{!}} class="valign-top"
+  ! style="padding-right: 1em; white-space: nowrap" {{!}} {{Link|#Syntax 1}}
   {{!}} generates a random floating point value
   {{!}}-
-  ! style="padding-right: 1em; vertical-align: top; white-space: nowrap" {{!}}  {{Link|#Syntax 2}}
+  ! style="padding-right: 1em; white-space: nowrap" {{!}}  {{Link|#Syntax 2}}
   {{!}} generates a {{Link|https://en.wikipedia.org/wiki/Normal_distribution|Gaussian Distribution}}<ref>Technically, it is a rescaled {{Link|https://en.wikipedia.org/wiki/Bates_distribution}} with n = 4. The distribution is split in two at its midpoint and scaled linearly such that its maximum lies at the specified midpoint.</ref>. It uses the same method as [[setTriggerTimeout]] command and is quite useful for e.g spawning loot, making more valuable items more rare
   {{!}}-
-  ! style="padding-right: 1em; vertical-align: top; white-space: nowrap" {{!}}  {{Link|#Syntax 3}}
+  ! style="padding-right: 1em; white-space: nowrap" {{!}}  {{Link|#Syntax 3}}
   {{!}} generates a {{Link|https://en.wikipedia.org/wiki/Random_seed|seed-based}} random number
   {{!}}-
-  ! style="padding-right: 1em; vertical-align: top; white-space: nowrap" {{!}}  {{Link|#Syntax 4}}
+  ! style="padding-right: 1em; white-space: nowrap" {{!}}  {{Link|#Syntax 4}}
   {{!}} generates a {{Link|https://en.wikipedia.org/wiki/Random_seed|seed-based}} random noise ('''not''' Perlin) texture based on provided seed and returning the value at supplied coordinates
   {{!}}}
 groups:
 - Math
 syntax:
-- call: !Unary x
+- call: !Unary ceiling
   ret:
   - Unknown
   - null
   params:
-  - name: x
+  - name: ceiling
     type: Unknown
 - call: !Unary
   - min
@@ -109,4 +109,4 @@ examples:
   Generate a random position inside a circle (see also [[Example Code: Random Area Distribution]])
   <sqf>_center getPos [_radius * sqrt random 1, random 360];
 - "Select a random value from an array:\n<sqf>\n_array = [\"apples\", \"pears\", \"bananas\", \"M16\"];\n\n_random = _array select floor random count _array;\t// before {{arma2}}\n_random = _array call BIS_fnc_selectRandom;\t\t\t// since {{arma2}}\n_random = selectRandom _array;\t\t\t\t\t\t// since {{arma3}} v1.56\n"
-- "Visualization of Syntax 4 (warning, it takes a bit to execute to draw):\n<sqf>\nprivate _parent = call BIS_fnc_displayMission;\nif (is3DEN) then { _parent = findDisplay 313 };\nprivate _disp = _parent createDisplay \"RscDisplayEmpty\";\nprivate _BG = _disp ctrlCreate [\"RscBackground\", -1];\n\nprivate _coef = 0.1;\n\nfor \"_x\" from 1 to 100 do\n{\n\tfor \"_y\" from 1 to 100 do\n\t{\n\t\tprivate _random = 0 random [_x * _coef, _y * _coef];\n\t\tprivate _dot = _disp ctrlCreate [\"RscBackground\", -1];\n\n\t\t_dot ctrlSetPosition [0.5 + pixelW * _x, 0.5 + pixelH * _y, pixelW, pixelH];\n\t\t_dot ctrlSetBackgroundColor [_random, _random, _random, 1];\n\t\t_dot ctrlCommit 0;\n\t};\n};\n</sqf>\n[[File:A3 random syntax4.png|thumb|left|Example result]]"
+- "Visualisation of {{Link|#Syntax 4}} (warning, it takes a bit to execute and draw):<br>\n[[File:A3 random syntax4.png|thumb|right|Result]]\n<sqf>\nprivate _parent = call BIS_fnc_displayMission;\nif (is3DEN) then { _parent = findDisplay 313 };\nprivate _disp = _parent createDisplay \"RscDisplayEmpty\";\nprivate _BG = _disp ctrlCreate [\"RscBackground\", -1];\n\nprivate _coef = 0.1;\n\nfor \"_x\" from 1 to 100 do\n{\n\tfor \"_y\" from 1 to 100 do\n\t{\n\t\tprivate _random = 0 random [_x * _coef, _y * _coef];\n\t\tprivate _dot = _disp ctrlCreate [\"RscBackground\", -1];\n\n\t\t_dot ctrlSetPosition [0.5 + pixelW * _x, 0.5 + pixelH * _y, pixelW, pixelH];\n\t\t_dot ctrlSetBackgroundColor [_random, _random, _random, 1];\n\t\t_dot ctrlCommit 0;\n\t};\n};\n"
