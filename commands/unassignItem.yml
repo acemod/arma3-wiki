@@ -21,14 +21,11 @@ since:
     major: 0
     minor: 50
 examples:
-- |-
+- |
   _bluforUnit unassignItem "NVGoggles";
   _bluforUnit removeItem "NVGoggles";
   _opforUnit unassignItem "NVGoggles_OPFOR";
   _opforUnit removeItem "NVGoggles_OPFOR";
   _independentUnit unassignItem "NVGoggles_INDEP";
   _independentUnit removeItem "NVGoggles_INDEP";
-- |-
-  {
-     _x unassignItem hmd _x; // Unassign (not remove) NVGs from all units. The class name of the NVG is not needed
-  } forEach allUnits;
+- "{\n\t_x unassignItem hmd _x; // unassign (not remove) NVGs from all units\n} forEach allUnits;\n"
