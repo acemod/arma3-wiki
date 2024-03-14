@@ -1,23 +1,22 @@
 name: setMissionOptions
 description: |-
-  Sets various mission options. The options are automatically reset between missions and are saved/restored with the save system.
+  Sets various mission options. The options are automatically reset between missions and are saved/restored with the save system.<br>
+  Available Options:
 
-  Providing an empty array will reset all options to defaults.
+  * IgnoreNoDamage: [[Boolean]] - (default [[false]]) [[true]] to filter out no change in damage from {{Link|Arma 3: Event Handlers#HandleDamage|HandleDamage}} calls
+  * IgnoreFakeHeadHit: [[Boolean]] - (default [[false]]) [[true]] to filter out FakeHeadHit context from {{Link|Arma 3: Event Handlers#HandleDamage|HandleDamage}} calls
+
+  Providing a empty HashMap will reset all options to defaults.
 groups:
 - System
 syntax:
-- call: !Unary
-  - ignoreNoDamage
-  - ignoreFakeHeadHit
+- call: !Unary options
   ret:
   - Unknown
   - null
   params:
-  - name: ignoreNoDamage
-    description: '(default [[false]]) [[true]] to filter out no change in damage from {{Link|Arma 3: Event Handlers#HandleDamage|HandleDamage}} calls'
-    type: Unknown
-  - name: ignoreFakeHeadHit
-    description: '(default [[false]]) [[true]] to filter out FakeHeadHit context from {{Link|Arma 3: Event Handlers#HandleDamage|HandleDamage}} calls'
+  - name: options
+    description: A HashMap containing all the options to be changed
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Local
@@ -26,5 +25,5 @@ since:
     major: 2
     minor: 18
 examples:
-- setMissionOptions [true, true];
-- setMissionOptions []; // reset options to default
+- setMissionOptions createHashMapFromArray [["IgnoreNoDamage", true], ["IgnoreFakeHeadHit", true]];
+- setMissionOptions createHashMap; // reset options to default
