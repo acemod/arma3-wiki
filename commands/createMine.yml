@@ -1,13 +1,14 @@
 name: createMine
 description: |-
   Creates a mine of the given type.<br>
-  If the ''markers'' array only contains one marker name, it is ignored and the ''position'' parameter is used instead. If ''markers'' contains multiple marker names, one of them is chosen randomly and used as the center of the placement area.<br><br>
+  If the ''markers'' array only contains one marker name, it is ignored and the ''position'' parameter is used instead.
+  If ''markers'' contains multiple marker names, one of them is chosen randomly and used as the center of the placement area.<br><br>
   This command creates objects of the {{hl|CfgAmmo}} class named in <sqf inline>configFile >> "CfgVehicles" >> _type >> "ammo"</sqf>.
 
   {{Feature|informative|
   Unit ability to detect mines depends on many factors:
   The starting value is defined in config, for example {{hl|./CfgVehicles/B_soldier_F/detectSkill}}, which in this case is 12.
-  Mine specialist value for example, defined in  {{hl|./CfgVehicles/B_soldier_exp_F/detectSkill}} is 38.
+  Mine specialist value for example, defined in {{hl|./CfgVehicles/B_soldier_exp_F/detectSkill}} is 38.
   This value is then dynamically reduced depending on factors such as distance, if a unit is in a vehicle, if it is day or night time, how directly unit is looking at the mine, how fast unit is moving, how inconspicuous is the mine or even if it is visible.
   }}
 groups:
