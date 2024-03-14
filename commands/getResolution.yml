@@ -2,7 +2,8 @@ name: getResolution
 description: |-
   Returns an array containing all information about current client screen resolution.
 
-  {{Feature | arma3 | '''Render resolution''' is not returned by this command.<br>
+  {{Feature|arma3|
+  '''Render resolution''' is not returned by this command.<br>
   A sampling setting of '''50%''' means half of native width ''and'' half of native height, resulting in a render resolution of '''''25%''''' the original resolution.}}
   {{Feature | important | The engine default value for {{hl|fovTop}} is '''0.75''' in case it is needed to calculate difference with custom FOV.}}
   {{Feature | Informative | The {{hl|aspectRatio}} is calculated as {{hl|fovLeft&nbsp;/&nbsp;fovTop}} and should be the same as {{hl|screenW&nbsp;/&nbsp;screenH}} for undistorted image if the FOV is custom. Some of the common values:
@@ -19,7 +20,7 @@ syntax:
 - call: Nular
   ret:
   - Unknown
-  - "{{hl|[screenW, screenH, viewPortW, viewPortH, aspectRatio, uiScale, fovTop, fovLeft, tripleHead, textureQuality]}}\n* {{hl|screenW}}: [[Number]] - width of the screen in pixels\n* {{hl|screenH}}: [[Number]] - height of the screen in pixels\n* {{hl|viewPortW}}: [[Number]] - width of the '''4:3''' view port in pixels\n* {{hl|viewPortH}}: [[Number]] - height of the '''4:3''' view port in pixels \n* {{hl|aspectRatio}}: [[Number]] - screen aspect ratio\n* {{hl|uiScale}}: [[Number]] - the scale of the UI, which affects view port size:\n: {{{!}} class{{=}}\"wikitable\" style{{=}}\"margin-top: -0.5em\""
+  - "{{hl|[screenW, screenH, viewPortW, viewPortH, aspectRatio, uiScale, fovTop, fovLeft, tripleHead, textureQuality]}}\n* {{hl|screenW}}: [[Number]] - width of the screen in pixels\n* {{hl|screenH}}: [[Number]] - height of the screen in pixels\n* {{hl|viewPortW}}: [[Number]] - width of the '''4:3''' view port in pixels\n* {{hl|viewPortH}}: [[Number]] - height of the '''4:3''' view port in pixels \n* {{hl|aspectRatio}}: [[Number]] - screen aspect ratio\n* {{hl|uiScale}}: [[Number]] - the scale of the UI, which affects view port size:\n: {{{!}} class=\"wikitable\" style=\"margin-top: -0.5em\""
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
@@ -34,4 +35,4 @@ since:
     major: 0
     minor: 50
 examples:
-- "private _res = getResolution;</sqf>\nExample result with a single 16:9 monitor:\n<sqf>[\n\t1920,\t\t// width\n\t1080,\t\t// height\n\t792,\t\t// 2D viewport width\n\t594,\t\t// 2D viewport height\n\t1.77778,\t// aspect ratio\n\t0.55,\t\t// UI scale\n\t0.75,\t\t// fovTop\n\t1.33333,\t// fovLeft\n\tfalse\t\t// tripleHead\n]</sqf>\nExample result with a triple 16:9 monitor setup:\n<sqf>[\n\t5760,\t\t// width\n\t1080,\t\t// height\n\t792,\t\t// 2D viewport width\n\t594,\t\t// 2D viewport height\n\t5.33333,\t// aspect ratio\n\t0.55\t\t// UI scale\n]</sqf>\nExample result on a dedicated server:\n<sqf>[\n\t160,\t\t// width\n\t120,\t\t// height\n\t136,\t\t// 2D viewport width\n\t102,\t\t// 2D viewport height\n\t1.33333,\t// aspect ratio\n\t0.85\t\t// UI scale\n]"
+- "private _res = getResolution;</sqf>\n\nExample result with a single 16:9 monitor:\n<sqf>\n[\n\t1920,\t\t// width\n\t1080,\t\t// height\n\t792,\t\t// 2D viewport width\n\t594,\t\t// 2D viewport height\n\t1.77778,\t// aspect ratio\n\t0.55,\t\t// UI scale\n\t0.75,\t\t// fovTop\n\t1.33333,\t// fovLeft\n\tfalse\t\t// tripleHead\n]\n</sqf>\nExample result with a triple 16:9 monitor setup:\n<sqf>\n[\n\t5760,\t\t// width\n\t1080,\t\t// height\n\t792,\t\t// 2D viewport width\n\t594,\t\t// 2D viewport height\n\t5.33333,\t// aspect ratio\n\t0.55\t\t// UI scale\n]\n</sqf>\nExample result on a dedicated server:\n<sqf>\n[\n\t160,\t\t// width\n\t120,\t\t// height\n\t136,\t\t// 2D viewport width\n\t102,\t\t// 2D viewport height\n\t1.33333,\t// aspect ratio\n\t0.85\t\t// UI scale\n]\n"
