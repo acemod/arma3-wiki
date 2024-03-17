@@ -1,7 +1,7 @@
 name: atan2
 description: |-
   [[File:atan.jpg|right|200px]] ArcTangent of ''y/x''. Used to determine the angle of a vector ''[y,x]''. Result in [[Number#Degrees|Degrees]] between -180 and 180.
-  {{Feature | Informative | This command can handle ''x'' being 0, unlike when using [[atan]], and will return 90 }}
+  {{Feature|informative|This command can handle ''x'' being 0, unlike when using [[atan]], and will return 90}}
   {{Feature | important | Even though this command is a binary operator just like [[select]] command, it has [[SQF Syntax#Rules_of_Precedence | higher precedence]] than [[select]] command, therefore the following expression: <br><sqf inline>_pos select 0 atan2 (_pos select 1)</sqf><br> will produce an error. The correct usage in this case will be: <br><sqf inline>(_pos select 0) atan2 (_pos select 1)</sqf><br> Alternatively, consider using the [[a_hash_b|#]] operator:<br>
   <sqf inline>_pos#0 atan2 _pos#1</sqf>
   }}
