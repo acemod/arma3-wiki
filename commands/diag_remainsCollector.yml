@@ -1,0 +1,21 @@
+name: diag_remainsCollector
+description: Returns current settings for the remains collector and the list of monitored units if any.
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary option
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: option
+    description: '0: corpses, 1: wrecks, 2: weaponholders'
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
+examples:
+- hintSilent str diag_remainsCollector 0;
