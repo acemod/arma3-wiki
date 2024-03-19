@@ -1,7 +1,12 @@
 name: saveMissionProfileNamespace
 description: |-
-  [[missionProfileNamespace]] provides long term storage solution for mission variables. When this namespace has variables set with [[setVariable]] and is saved, the variables are saved into {{hl|''[[missionName]]''.vars}} file into current soldier [[profileName]] folder. Next time when the same mission is loaded by the client with the same soldier profile, the saved variables can be read normally with [[getVariable]] command. This way each mission maker can create persistent data that is both mission and soldier profile specific. This is default behaviour. The file is only created when save operation is invoked with this command.<br><br>
-  It is also possible to share the same mission profile variables between several missions. To override default behaviour one needs to create an entry {{hl|1= missionGroup}} in [[Description.ext#missionGroup | Description.ext]], for example {{hl|1= missionGroup = "MyMissionCollectionName";}}. This will create {{hl|MyMissionCollectionName.vars}} file instead of default one, which would be loaded into every mission with matching {{hl|missionGroup}} entry.
+  [[missionProfileNamespace]] provides long-term storage solution for mission variables.
+  When this namespace has variables set with [[setVariable]] and is saved, the variables are saved into {{hl|''[[missionName]]''.vars}} file into the current player's [[profileName]] folder.
+  Next time when the same mission is loaded by the client with the same player profile, the saved variables can be read normally with [[getVariable]] command.
+  This way each mission maker can create persistent data that is both mission and player profile specific. The file is only created when the save operation is invoked with this command.<br><br>
+  It is also possible to share the same mission profile variables between several missions.
+  To override the default behaviour, create a {{hl|missionGroup}} entry in [[Description.ext#missionGroup|Description.ext]], for example <syntaxhighlight lang="cpp" inline>missionGroup = "TAG_MyMissionCollectionName";</syntaxhighlight>.
+  This will create {{hl|TAG_MyMissionCollectionName.vars}} file instead of the default-named one, which would be loaded into every mission with a matching {{hl|missionGroup}} entry.
 groups:
 - Namespaces
 - Variables
@@ -9,7 +14,7 @@ syntax:
 - call: Nular
   ret:
   - Unknown
-  - null
+  - '[[true]] in case of success, [[false]] otherwise (e.g trying to save in [[:Category:Eden Editor|Eden Editor]] or trying to save into existing save file but the file wasn''t loaded yet)'
   params: []
 argument_loc: Unspecified
 effect_loc: Local
