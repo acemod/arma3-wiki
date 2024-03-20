@@ -1,7 +1,7 @@
 name: a_hash_b
 description: |-
-  Selects an element from an [[Array | array]], same as [[select]] command for arrays, but has [[Order_of_Precedence | higher precedence]]
-  {{Feature | Informative | '''#''' has higher precedence than all binary operators, but it has lower precedence than unary operators (see Example 3)}}
+  Selects an element from an [[Array]], same as [[select]] command for arrays, but has [[Order of Precedence|higher precedence]].
+  {{Feature|informative|'''#''' has higher precedence than all binary operators, but it has lower precedence than unary operators (see {{Link|#Example 3}}).}}
 groups:
 - Variables
 syntax:
@@ -23,7 +23,7 @@ since:
     major: 1
     minor: 82
 examples:
-- "[1,2,3,4] # 2;\t\t\t// result is 3"
+- "[1, 2, 3, 4] # 2;\t\t\t// result is 3"
 - "getPosASL player # 2;\t\t// result is Z component of player's position"
 - |
   //'getPosASL' is unary; '#' and '+' are binary; precedence is: 'getPosASL' > '#' > '+'
