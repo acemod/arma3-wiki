@@ -1,8 +1,13 @@
 name: loadGame
 description: |-
-  Loads game from the last autosave made with [[saveGame]]. If no autosave exists, restarts the mission. When used in campaign it will also deduct 1 life, defined in:<br>
-  <sqf>campaignConfigFile >> "Campaign" / <battle> / <mission> / "lives"</sqf>
-  {{Feature|informative|A {{hl|[[Arma 3: Mission Event Handlers#Loaded | "Loaded"]]}} [[addMissionEventHandler|mission event handler]] is available and it is important that it is added in {{hl|preInit}} in order for it to fire on load from save.}}
+  Loads game from the last autosave made with [[saveGame]].
+  If no autosave exists, restarts the mission. When used in campaign it will also deduct 1 life, defined in:
+  <sqf>campaignConfigFile >> "Campaign" / "ChapterName" / "MissionName" / "lives"</sqf>
+
+  {{Feature|informative|
+  A {{hl|[[Arma 3: Mission Event Handlers#Loaded|"Loaded"]]}} [[addMissionEventHandler|mission event handler]] is available;
+  it is important that it is added in {{hl|preInit}} in order for it to fire on load from save.
+  }}
 groups:
 - Mission Information
 syntax:
