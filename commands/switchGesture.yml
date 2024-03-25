@@ -7,13 +7,13 @@ syntax:
   - soldier
   - moveName
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: soldier
-    type: Unknown
+    type: Object
   - name: moveName
-    type: Unknown
+    type: String
 - call: !Binary
   - soldier
   - - moveName
@@ -21,11 +21,11 @@ syntax:
     - blendFactor
     - resetAim
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: soldier
-    type: Unknown
+    type: Object
   - name: moveName
     description: Entry from {{hl|"CfgMovesMaleSdr" >> "states"}} or {{hl|"CfgGesturesMale" >> "states"}}
     type: Unknown

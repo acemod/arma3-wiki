@@ -6,12 +6,12 @@ syntax:
 - call: !Unary person
   ret:
   - Unknown
-  - UAV unit (AI driver or AI gunner), [[objNull]] otherwise
+  - UAV unit (AI driver or AI gunner) or [[objNull]] otherwise including if the connected person is remote
   params:
   - name: person
     description: unit controlling the UAV/UGV
     type: Unknown
-argument_loc: Unspecified
+argument_loc: Local
 effect_loc: Unspecified
 since:
   arma_3:

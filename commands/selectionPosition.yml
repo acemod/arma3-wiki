@@ -19,9 +19,9 @@ syntax:
   - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned.'
   params:
   - name: object
-    type: Unknown
+    type: Object
   - name: selectionName
-    type: Unknown
+    type: String
 - call: !Binary
   - object
   - - selectionName
@@ -32,9 +32,9 @@ syntax:
   - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
   params:
   - name: object
-    type: Unknown
+    type: Object
   - name: selectionName
-    type: Unknown
+    type: String
   - name: LOD
     description: |-
       can be one of:
@@ -78,9 +78,9 @@ syntax:
   - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
   params:
   - name: object
-    type: Unknown
+    type: Object
   - name: selectionName
-    type: Unknown
+    type: String
   - name: LODIndex
     description: the index of the target LOD (see [[allLODs]])
     type: Unknown

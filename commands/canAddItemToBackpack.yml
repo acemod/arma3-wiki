@@ -7,28 +7,28 @@ syntax:
   - unit
   - item
   ret:
-  - Unknown
+  - Boolean
   - null
   params:
   - name: unit
-    type: Unknown
+    type: Object
   - name: item
-    type: Unknown
+    type: String
 - call: !Binary
   - unit
   - - item
     - count
     - ignoreSoldierMaxLoad
   ret:
-  - Unknown
+  - Boolean
   - null
   params:
   - name: unit
-    type: Unknown
+    type: Object
   - name: item
-    type: Unknown
+    type: String
   - name: count
-    type: Unknown
+    type: Number
   - name: ignoreSoldierMaxLoad
     description: '[[true]] to ignore ''soldierMaxLoad'' param, container [[maxLoad]] is still counted. Default: [[false]]'
     type: Unknown

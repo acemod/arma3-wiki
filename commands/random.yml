@@ -24,7 +24,7 @@ syntax:
   - null
   params:
   - name: x
-    type: Unknown
+    type: Number
 - call: !Unary
   - min
   - mid
@@ -34,11 +34,11 @@ syntax:
   - '''''''can'''''' be higher than max (maximum value is {{hl|min + max - mid}})'
   params:
   - name: min
-    type: Unknown
+    type: Number
   - name: mid
-    type: Unknown
+    type: Number
   - name: max
-    type: Unknown
+    type: Number
   since:
     arma_3:
       major: 1
@@ -54,7 +54,7 @@ syntax:
     description: an '''integer'''. Any float value will be truncated (e.g -0.9, -0.1, 0.1 or 0.9 will be read as '''0''')
     type: Unknown
   - name: x
-    type: Unknown
+    type: Number
   since:
     arma_3:
       major: 1
@@ -68,7 +68,7 @@ syntax:
   - null
   params:
   - name: seed
-    type: Unknown
+    type: Number
   - name: x
     description: x texture position
     type: Unknown

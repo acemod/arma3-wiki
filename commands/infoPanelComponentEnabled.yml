@@ -18,14 +18,14 @@ syntax:
     description: '"left" or "right" can be used as panel names'
     type: Unknown
   - name: componentClassOrType
-    type: Unknown
+    type: String
 - call: !Binary
   - - unit
     - turretPath
   - - panelID
     - componentClassOrType
   ret:
-  - Unknown
+  - Boolean
   - null
   params:
   - name: unit
@@ -38,7 +38,7 @@ syntax:
     description: '"left" or "right" can be used as panel names'
     type: Unknown
   - name: componentClassOrType
-    type: Unknown
+    type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -11,28 +11,28 @@ syntax:
   - unit
   - vehicle
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: unit
-    type: Unknown
+    type: Object
   - name: vehicle
-    type: Unknown
+    type: Object
 - call: !Binary
   - unit
   - - vehicle
     - cargoIndex
     - canReassign
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: unit
-    type: Unknown
+    type: Object
   - name: vehicle
-    type: Unknown
+    type: Object
   - name: cargoIndex
-    type: Unknown
+    type: Number
   - name: canReassign
     description: try to move ''unit'' into the first free ''vehicle'' cargo seat if ''cargoIndex'' is already occupied
     type: Unknown

@@ -1,7 +1,5 @@
 name: connectTerminalToUAV
-description: |-
-  Connect person with UAV terminal to UAV unit. UAV Terminal item needs to be assigned to GPS slot.
-  If UAV is already connected to another terminal, this new connection will fail.
+description: Connect person with UAV terminal to UAV unit. UAV Terminal item needs to be assigned to GPS slot. In MP the connection is handled [[local]]ly, therefore it is possible for multiple MP clients to connect to the same UAV. However, each UAV can only have one connection to a terminal per MP client, so if UAV is already connected to another terminal on the same MP client, this new connection will fail.
 groups:
 - Remote Control
 syntax:
@@ -13,9 +11,9 @@ syntax:
   - '[[true]] on success'
   params:
   - name: person
-    type: Unknown
+    type: Object
   - name: uav
-    type: Unknown
+    type: Object
 argument_loc: Global
 effect_loc: Global
 since:

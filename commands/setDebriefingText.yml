@@ -1,5 +1,11 @@
 name: setDebriefingText
-description: "Sets debriefing title, text, subtitle, picture and background for a mission ending. The end type could be the engine-defined (\"CONTINUE\", \"KILLED\", \"LOSER\", \"END1\", \"END2\", \"END3\", \"END4\", \"END5\", \"END6\"), config-defined (see [[Debriefing#Configuration|CfgDebriefing]]) or, with an alternative syntax of this command, any [[String]]. Given texts will be used to replace the corresponding texts on the debriefing screen. \n\n{{Feature | Important | In order to benefit from alternative syntax functionality, there will have to be at least 3 arguments passed to the command. 2 arguments will trigger the old behaviour.}}\n[[File:endMission.jpg|400px]] [[File:failMission.jpg|400px]]"
+description: |-
+  Sets debriefing title, text, subtitle, picture and background for a mission ending.
+  The end type could be the engine-defined ("CONTINUE", "KILLED", "LOSER", "END1", "END2", "END3", "END4", "END5", "END6"), config-defined (see [[Debriefing#Configuration|CfgDebriefing]]) or, with an alternative syntax of this command, any [[String]].
+  Given texts will be used to replace the corresponding texts on the debriefing screen.
+
+  {{Feature|important|In order to benefit from alternative syntax functionality, there will have to be at least '''three''' arguments passed to the command; '''two''' arguments will trigger the old behaviour.}}
+  [[File:endMission.jpg|400px]] [[File:failMission.jpg|400px]]
 groups:
 - Briefing
 syntax:
@@ -8,7 +14,7 @@ syntax:
   - - title
     - description
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: endType
@@ -28,7 +34,7 @@ syntax:
     - picture
     - background
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: endType
@@ -41,7 +47,7 @@ syntax:
     description: description text on the debriefing screen
     type: Unknown
   - name: subtitle
-    description: subtitle text on the debriefing screen ('''Must be set to use this syntax, even if to empty string ""''')
+    description: subtitle text on the debriefing screen ('''must''' be defined in order to trigger this syntax of the command)
     type: Unknown
   - name: picture
     description: title picture
@@ -62,6 +68,6 @@ since:
     major: 0
     minor: 50
 examples:
-- |-
-  _currentObjective = (taskDescription (currentTask player)) select 2;
-  "endDeath" setDebriefingText ["You Lose","All of your men were killed while assaulting the " + _currentObjective];
+- |
+  _currentObjective = (taskDescription currentTask player) select 2;
+  "endDeath" setDebriefingText ["You Lose", "All of your men were killed while assaulting the " + _currentObjective];

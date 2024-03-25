@@ -13,7 +13,7 @@ syntax:
     - valuesToInsert
     - onlyIfUnique
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: array
@@ -51,7 +51,7 @@ syntax:
       - value2
     - '...'
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: hashMap
@@ -59,7 +59,7 @@ syntax:
   - name: keyN
     type: Unknown
   - name: valueN
-    type: Unknown
+    type: Anything
   since:
     arma_3:
       major: 2
@@ -69,7 +69,7 @@ syntax:
   - - splitArray
     - - keysAndValues
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: hashMap

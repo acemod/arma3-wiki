@@ -40,7 +40,7 @@ syntax:
   - '[[grpNull]] if the group limit is reached'
   params:
   - name: side
-    type: Unknown
+    type: Side
 - call: !Unary
   - side
   - deleteWhenEmpty
@@ -49,7 +49,7 @@ syntax:
   - '[[grpNull]] if the group limit is reached'
   params:
   - name: side
-    type: Unknown
+    type: Side
   - name: deleteWhenEmpty
     description: |-
       [[true]] to [[deleteGroupWhenEmpty|delete the group when empty]].

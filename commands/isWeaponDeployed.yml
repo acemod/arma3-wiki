@@ -5,20 +5,20 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - Unknown
+  - Boolean
   - null
   params:
   - name: unit
-    type: Unknown
+    type: Object
 - call: !Unary
   - unit
   - onGround
   ret:
-  - Unknown
+  - Boolean
   - null
   params:
   - name: unit
-    type: Unknown
+    type: Object
   - name: onGround
     description: '[[true]] to check if deployed on ground, [[false]] to check if deployed on object. Omitted - same as main syntax.'
     type: Unknown

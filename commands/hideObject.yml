@@ -5,20 +5,20 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: object
-    type: Unknown
+    type: Object
 - call: !Binary
   - object
   - hidden
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: object
-    type: Unknown
+    type: Object
   - name: hidden
     description: '[[true]]->hidden; [[false]]->visible'
     type: Unknown

@@ -9,23 +9,23 @@ syntax:
   - vehicle
   - allow
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: vehicle
-    type: Unknown
+    type: Object
   - name: allow
-    type: Unknown
+    type: Boolean
 - call: !Binary
   - vehicle
   - - brokenWheels
     - upsideDown
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: vehicle
-    type: Unknown
+    type: Object
   - name: brokenWheels
     description: do not auto eject when vehicle has broken wheels
     type: Unknown

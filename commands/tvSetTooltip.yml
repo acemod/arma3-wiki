@@ -8,7 +8,7 @@ syntax:
   - path
   - text
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: idc
@@ -18,22 +18,22 @@ syntax:
     description: array containing path numbers
     type: Unknown
   - name: text
-    type: Unknown
+    type: String
 - call: !Binary
   - ctrl
   - - path
     - text
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: ctrl
-    type: Unknown
+    type: Control
   - name: path
     description: array containing path numbers
     type: Unknown
   - name: text
-    type: Unknown
+    type: String
 argument_loc: Local
 effect_loc: Local
 since:

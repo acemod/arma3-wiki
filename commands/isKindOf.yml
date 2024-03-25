@@ -9,38 +9,38 @@ syntax:
   - object
   - typeName
   ret:
-  - Unknown
+  - Boolean
   - null
   params:
   - name: object
-    type: Unknown
+    type: Object
   - name: typeName
-    type: Unknown
+    type: String
 - call: !Binary
   - class1
   - class2
   ret:
-  - Unknown
+  - Boolean
   - null
   params:
   - name: class1
-    type: Unknown
+    type: String
   - name: class2
-    type: Unknown
+    type: String
 - call: !Binary
   - class1
   - - class2
     - targetConfig
   ret:
-  - Unknown
+  - Boolean
   - null
   params:
   - name: class1
-    type: Unknown
+    type: String
   - name: class2
-    type: Unknown
+    type: String
   - name: targetConfig
-    type: Unknown
+    type: Config
   since:
     arma_3:
       major: 1

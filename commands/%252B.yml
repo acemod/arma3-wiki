@@ -21,16 +21,16 @@ syntax:
   - the sum of ''numberA'' and ''numberB''
   params:
   - name: numberA
-    type: Unknown
+    type: Number
   - name: numberB
-    type: Unknown
+    type: Number
 - call: !Unary number
   ret:
   - Unknown
   - the value of the parameter ''number''
   params:
   - name: number
-    type: Unknown
+    type: Number
 - call: !Binary
   - arrayA
   - arrayB
@@ -50,9 +50,9 @@ syntax:
   - a string concatenating ''stringA'' and ''stringB''
   params:
   - name: stringA
-    type: Unknown
+    type: String
   - name: stringB
-    type: Unknown
+    type: String
 - call: !Unary array
   ret:
   - Unknown

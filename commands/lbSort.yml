@@ -5,20 +5,20 @@ groups:
 syntax:
 - call: !Unary control
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: control
-    type: Unknown
+    type: Control
 - call: !Unary
   - control
   - sortOrder
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: control
-    type: Unknown
+    type: Control
   - name: sortOrder
     description: '"ASC": ascending, "DESC": descending'
     type: Unknown
@@ -28,11 +28,11 @@ syntax:
       minor: 18
 - call: !Unary idc
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: idc
-    type: Unknown
+    type: Number
   since:
     arma_3:
       major: 1
@@ -41,11 +41,11 @@ syntax:
   - idc
   - sortOrder
   ret:
-  - Unknown
+  - Nothing
   - null
   params:
   - name: idc
-    type: Unknown
+    type: Number
   - name: sortOrder
     description: '"ASC": ascending, "DESC": descending'
     type: Unknown

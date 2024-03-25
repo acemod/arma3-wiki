@@ -19,7 +19,7 @@ syntax:
   - handler ID or -1 if failed
   params:
   - name: control
-    type: Unknown
+    type: Control
   - name: handler
     description: handler name, see [[User Interface Event Handlers]]
     type: Unknown
@@ -48,3 +48,4 @@ since:
 examples:
 - _map ctrlAddEventHandler ["draw", "_this call BIS_fnc_strategicMapOpen_draw"];
 - _map ctrlAddEventHandler ["draw", { hintSilent str _this }];
+- findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["draw", { hintSilent str _this }]; //Arma 3 map control
