@@ -18,6 +18,5 @@ since:
     major: 0
     minor: 50
 examples:
-- |-
-  Player weight:
-  <sqf>_weight = loadAbs player;
+- 'Player weight: <sqf>_weight = loadAbs player;'
+- "private _loadUniform = loadAbs uniformContainer player;\nprivate _loadVest = loadAbs vestContainer player;\nprivate _loadBackpack = loadAbs backpackContainer player;\nhint format [\n\t\"Player's load:\\nUniform: %1\\nVest:%2\\nBackpack: $3\\nTotal: %4\",\n\t_loadUniform,\n\t_loadVest,\n\t_loadBackpack,\n\t_loadUniform + _loadVest + _loadBackpack\n];\n"
