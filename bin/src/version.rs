@@ -5,7 +5,7 @@ use regex::Regex;
 use crate::github::GitHub;
 
 pub async fn version(github: Option<&mut GitHub>) {
-    let regex = Regex::new(r"(?m)   (\d\.\d\d)   ").unwrap();
+    let regex = Regex::new(r"(?m)(\d\.\d\d)\|").unwrap();
     let text = reqwest::get("https://community.bistudio.com/wiki?title=Template:GVI&action=raw")
         .await
         .unwrap()

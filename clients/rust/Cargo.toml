@@ -10,14 +10,15 @@ workspace = true
 
 [dependencies]
 directories = "5.0.1"
-serde = { version = "1.0.196", features = ["derive"] }
+regex = "1.10.4"
+serde = { version = "1.0.197", features = ["derive"] }
 serde_yaml = { workspace = true }
 
 # Local
-rust-embed = "8.2.0"
+rust-embed = "8.3.0"
 
 # Remote
-git2 = { version = "0.18.1", optional = true }
+git2 = { version = "0.18.3", optional = true }
 
 [features]
 default = ["remote"]
@@ -25,5 +26,5 @@ remote = ["git2"]
 
 [build-dependencies]
 directories = "5.0.1"
-git2 = { version = "0.18.1" }
+git2 = { version = "0.18.3" }
 fs_extra = { version = "1.3.0" }

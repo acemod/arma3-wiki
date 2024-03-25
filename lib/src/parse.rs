@@ -220,7 +220,7 @@ pub fn syntax(
                 };
                 let mut name = name.trim_end_matches(':').trim_matches('\'');
                 let typ = typ.trim();
-                let (_typ, desc) = typ.split_once('-').unwrap_or((typ, ""));
+                let (typ, desc) = typ.split_once('-').unwrap_or((typ, ""));
                 let optional = desc.contains("(Optional");
                 let mut desc = desc.to_string();
                 let default = if desc.contains("(Optional, default ") {
@@ -261,7 +261,7 @@ pub fn syntax(
                     } else {
                         Some(desc.trim().to_string())
                     },
-                    Value::Unknown,
+                    Value::from_wiki(typ).map_or_else(|_| Value::Unknown, |value| value),
                     optional,
                     default,
                     since,
@@ -335,9 +335,9 @@ pub fn syntax(
             if ret.contains(" format") {
                 (Value::Unknown, None)
             } else {
-                let (_typ, desc) = ret.split_once('-').unwrap_or((&ret, ""));
+                let (typ, desc) = ret.split_once('-').unwrap_or((&ret, ""));
                 (
-                    Value::Unknown,
+                    Value::from_wiki(typ).map_or_else(|_| Value::Unknown, |value| value),
                     if desc.is_empty() {
                         None
                     } else {
