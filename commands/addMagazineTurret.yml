@@ -1,7 +1,7 @@
 name: addMagazineTurret
 description: |-
-  Adds a magazine to the turret. Use turret path [-1] for driver's turret.
-  {{Feature|important|You may create invalid combinations by using this function, for example by adding 20 grenades. When doing so, application behaviour is undefined.}}
+  Adds a magazine to the turret. Use turret path {{hl|[-1]}} for driver's turret.
+  {{Feature|important|Invalid combinations may be created by using this command, for example by adding 20 grenades. In these cases, behaviour is undefined.}}
 groups:
 - Turrets
 syntax:
@@ -43,4 +43,4 @@ since:
 examples:
 - _tank addMagazineTurret ["SmokeLauncherMag", [0,0]];
 - _tank addMagazineTurret ["20Rnd_120mmSABOT_M1A2", [0]];
-- _tank addMagazineTurret ["20Rnd_120mmSABOT_M1A2", [0], 10]; //Add magazine with 10 rounds
+- _tank addMagazineTurret ["20Rnd_120mmSABOT_M1A2", [0], 10]; // add magazine with 10 rounds
