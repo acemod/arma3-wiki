@@ -69,8 +69,10 @@ impl Wiki {
         for entry in std::fs::read_dir(appdata.join("commands")).unwrap() {
             let path = entry.unwrap().path();
             if path.is_file() {
-                let command: Command =
-                    serde_yaml::from_reader(std::fs::File::open(path).unwrap()).unwrap();
+                let command: Command = serde_yaml::from_reader(std::fs::File::open(&path).unwrap())
+                    .unwrap_or_else(|_| {
+                        panic!("Failed to parse command: {path}", path = path.display())
+                    });
                 commands.insert(command.name().to_string(), command);
             }
         }
