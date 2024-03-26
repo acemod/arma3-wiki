@@ -14,7 +14,98 @@ description: |-
   }}
 groups:
 - Interaction
-syntax: []
+syntax:
+- call: !Unary
+  - texture
+  - color
+  - position
+  - width
+  - height
+  - angle
+  - text
+  - shadow
+  - textSize
+  - font
+  - textAlign
+  - drawSideArrows
+  - offsetX
+  - offsetY
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: texture
+    description: icon texture
+    type: Unknown
+  - name: color
+    description: |-
+      icon color
+      * {{GVI|arma3|2.04|size= 0.75}} [[Array]] of two [[Array]]s format [[Color|Color (RGBA)]] - Icon and text color
+    type: Unknown
+  - name: position
+    description: icon position
+    type: Unknown
+  - name: width
+    description: icon width
+    type: Unknown
+  - name: height
+    description: icon height
+    type: Unknown
+  - name: angle
+    description: icon rotation angle
+    type: Unknown
+  - name: text
+    description: text label to display next to the icon
+    type: Unknown
+    optional: true
+    default: '""'
+  - name: shadow
+    description: |-
+      outline
+      ** [[false]] - no shadow
+    type: Unknown
+  - name: textSize
+    description: text size
+    type: Unknown
+    optional: true
+    default: size of system
+  - name: font
+    description: font class name from {{hl|CfgFontFamilies}} (see {{Link|FXY File Format#Available Fonts}})
+    type: Unknown
+    optional: true
+    default: '"RobotoCondensedBold"'
+  - name: textAlign
+    description: |-
+      text alignment, can be one of:
+      * "left"
+      * "center"
+      * "right"
+    type: Unknown
+    optional: true
+    default: '"center"'
+  - name: drawSideArrows
+    description: '[[true]] to draw arrows and the text label at edge of screen when the icon moves off the screen'
+    type: Unknown
+    optional: true
+    default: '[[false]]'
+  - name: offsetX
+    description: X offset for the icon text
+    type: Unknown
+    optional: true
+    default: '0'
+    since:
+      arma_3:
+        major: 2
+        minor: 4
+  - name: offsetY
+    description: Y offset for the icon text
+    type: Unknown
+    optional: true
+    default: '0'
+    since:
+      arma_3:
+        major: 2
+        minor: 4
 argument_loc: Unspecified
 effect_loc: Local
 since:
@@ -24,5 +115,5 @@ since:
 examples:
 - "Icon and text:\n<sqf>\naddMissionEventHandler [\"Draw3D\", {\n\tdrawIcon3D [\"targetIcon.paa\", [1,1,1,1], ASLToAGL getPosASLVisual cursorTarget, 1, 1, 45, \"Target\", 1, 0.05, \"TahomaB\"];\n}];\n"
 - "Just text:\n<sqf>\naddMissionEventHandler [\"Draw3D\", {\n\tdrawIcon3D [\"\", [1,0,0,1], ASLToAGL getPosASLVisual cursorTarget, 0, 0, 0, \"Target\", 1, 0.05, \"PuristaMedium\"];\n}];\n"
-- "iconPos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler [\"draw3D\",\n{\n\tdrawIcon3D\n\t[\n\t\t\"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa\",\n\t\t[0,0,1,1],\n\t\ticonPos,\n\t\t5,\n\t\t5,\n\t\tgetDirVisual player,\n\t\t\"COMPASS\",\n\t\t0,\n\t\t0.3,\n\t\t\"PuristaMedium\",\n\t\t\"center\",\n\t\ttrue\n\t];\n}];\n"
-- "Since {{GVI|arma3|2.04}}\n<sqf>\npos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler [\"draw3D\",\n{\n\t_k = 10 / (player distance pos);\n\tdrawIcon3D\n\t[\n\t\t\"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa\",\n\t\t[1,0,0,1],\n\t\tpos,\n\t\t1 * _k,\n\t\t1 * _k,\n\t\t0,\n\t\tname player,\n\t\t0,\n\t\t0.04 * _k,\n\t\t\"RobotoCondensed\",\n\t\t\"right\",\n\t\ttrue,\n\t\t0.005 * _k,\n\t\t-0.035 * _k\n\t];\n}];\n"
+- "iconPos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler [\"draw3D\", \n{\n\tdrawIcon3D \n\t[\n\t\t\"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa\",\n\t\t[0,0,1,1],\n\t\ticonPos,\n\t\t5,\n\t\t5,\n\t\tgetDirVisual player,\n\t\t\"COMPASS\",\n\t\t0,\n\t\t0.3,\n\t\t\"PuristaMedium\",\n\t\t\"center\",\n\t\ttrue\n\t];\n}];\n"
+- "Since {{GVI|arma3|2.04}}\n<sqf>\npos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler [\"draw3D\", \n{\n\t_k = 10 / (player distance pos);\n\tdrawIcon3D \n\t[\n\t\t\"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa\", \n\t\t[1,0,0,1], \n\t\tpos,\n\t\t1 * _k, \n\t\t1 * _k, \n\t\t0, \n\t\tname player, \n\t\t0, \n\t\t0.04 * _k, \n\t\t\"RobotoCondensed\",\n\t\t\"right\", \n\t\ttrue, \n\t\t0.005 * _k,  \n\t\t-0.035 * _k\n\t];\n}];\n"
