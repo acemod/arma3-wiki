@@ -1,5 +1,7 @@
 name: scopeName
-description: Defines name of current scope. Name is visible in debugger, and name is also used as reference in some commands like [[breakOut]] and [[breakTo]]. Scope name should be defined only once per scope. Trying to set a different name on the scope that has already defined scope name will result in error.
+description: |-
+  Defines name of current scope. Name is visible in debugger, and name is also used as reference in some commands like [[breakOut]] and [[breakTo]].
+  Scope name should be defined only once per scope. Trying to set a different name on the scope that has already defined scope name will result in error.
 groups:
 - Program Flow
 syntax:
@@ -29,4 +31,5 @@ since:
     major: 0
     minor: 50
 examples:
-- "scopeName \"main\";\nwhile {true} do {\n\tscopeName \"loop1\";\n\twhile {true} do {\n\t\tscopeName \"loop2\";\n\t\t// ...\n\t};\n};"
+- "scopeName \"main\";\nwhile { sleep 0.1; true } do\n{\n\tscopeName \"loop1\";\n\n\twhile { sleep 0.1; true } do\n\t{\n\t\tscopeName \"loop2\";\n\n\t\t// ...\n\t};\n};\n"
+- "if (true) then\n{\n\tscopeName \"mainScope\";\n\tscopeName \"main_scope\"; // error\n};\n"
