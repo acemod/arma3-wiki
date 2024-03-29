@@ -25,34 +25,15 @@ syntax:
   params:
   - name: camera
     description: object of type "camera"
-    type: Unknown
+    type: Object
   - name: effectName
     description: 'the effect type (defined in main config or [[Description.ext#CfgCameraEffects|CfgCameraEffects]] >> Array). Defaults are: {{hl|"Internal"}}, {{hl|"External"}}, {{hl|"Fixed"}}, {{hl|"FixedWithZoom"}}, {{hl|"Terminate"}}'
-    type: Unknown
+    type: String
   - name: effectPosition
-    description: |-
-      position of the effect. Can be one of:
-      {{Columns|5|
-      * {{hl|"TOP"}}
-      * {{hl|"LEFT"}}
-      * {{hl|"RIGHT"}}
-      * {{hl|"FRONT"}}
-      * {{hl|"BACK"}}
-      * {{hl|"LEFT FRONT"}}
-      * {{hl|"RIGHT FRONT"}}
-      * {{hl|"LEFT BACK"}}
-      * {{hl|"RIGHT BACK"}}
-      * {{hl|"LEFT TOP"}}
-      * {{hl|"RIGHT TOP"}}
-      * {{hl|"FRONT TOP"}}
-      * {{hl|"BACK TOP"}}
-      * {{hl|"BOTTOM"}}
-      }}
-      These are usually used with "Fixed" and "FixedWithZoom" effect types. If not sure which position to use, set it to {{hl|"BACK"}}.
     type: Unknown
   - name: r2tName
     description: '[[Procedural_Textures#Render_To_Texture|Render To Texture]] surface reference'
-    type: Unknown
+    type: String
     optional: true
 argument_loc: Local
 effect_loc: Local
