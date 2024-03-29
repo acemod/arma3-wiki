@@ -2,7 +2,19 @@ name: camSetDir
 description: Sets the orientation of the given camera in the direction of the given vector. Needs [[camCommit]].
 groups:
 - Camera Control
-syntax: []
+syntax:
+- call: !Binary
+  - camera
+  - direction
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: camera
+    description: object of type "camera"
+    type: Object
+  - name: direction
+    type: Unknown
 argument_loc: Local
 effect_loc: Local
 since:
