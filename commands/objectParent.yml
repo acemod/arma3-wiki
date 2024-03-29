@@ -7,6 +7,10 @@ description: |-
   Use [[objectParent]] instead of [[vehicle]] to get a soldier's vehicle.
   Apart from being faster it is also more reliable, as when used on dead [[crew]], [[vehicle]] command may surprisingly return the unit itself.
   }}
+
+  {{Feature|informative|
+  Since {{arma3}} v2.18 [[objectParent]] can return the creator of a weaponholder if the weaponholder was created through some user action.
+  }}
 groups:
 - Object Manipulation
 syntax:
@@ -24,7 +28,7 @@ since:
     major: 1
     minor: 50
 examples:
-- "_isOnFoot = isNull objectParent player;\t\t\t\t\t\t\t// check if the player is on foot\n_isCommander = player isEqualTo commander objectParent player;\t// check if the player is in a vehicle and is its commander\n\n_holder = objectParent _myBackpack;\t\t\t\t\t\t\t\t// return:\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// - the weapon holder of a dropped backpack\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// - the cargo space of a vehicle holding this backpack\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// - the dead unit holding the backpack\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// works for a backpack, a vest or a uniform\n\n_isDeployed = isNull objectParent _deployableStaticMG;\t\t\t// true if deployed, false if in a backpack\n\n_ropeParent = objectParent _ropeSegment;\t\t\t\t\t\t// since {{arma3}} v2.12\n"
+- "_isOnFoot = isNull objectParent player;\t\t\t\t\t\t\t// check if the player is on foot\n_isCommander = player isEqualTo commander objectParent player;\t// check if the player is in a vehicle and is its commander\n\n_holder = objectParent _myBackpack;\t\t\t\t\t\t\t\t// return:\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// - the weapon holder of a dropped backpack\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// - the cargo space of a vehicle holding this backpack\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// - the dead unit holding the backpack\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// works for a backpack, a vest or a uniform\n\n_isDeployed = isNull objectParent _deployableStaticMG;\t\t\t// true if deployed, false if in a backpack\n\n_ropeParent = objectParent _ropeSegment;\t\t\t\t\t\t// since {{arma3}} v2.12\n_creatorUnit = objectParent _weaponholder;\t\t\t\t\t\t// since {{arma3}} v2.18\n"
 - |
   Create and place a created backpack in front of player:
   <sqf>
