@@ -17,10 +17,10 @@ syntax:
   params:
   - name: varName
     description: '[[missionNamespace]] variable name'
-    type: Unknown
+    type: String
   - name: code
     description: by default, the code is executed in [[missionNamespace]]
-    type: Unknown
+    type: Code
 - call: !Binary
   - varName
   - - target
@@ -31,7 +31,7 @@ syntax:
   params:
   - name: varName
     description: name of the variable set on target with [[setVariable]]
-    type: Unknown
+    type: String
   - name: target
     type: Unknown
   - name: code

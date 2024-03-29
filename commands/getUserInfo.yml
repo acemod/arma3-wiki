@@ -11,7 +11,7 @@ syntax:
   params:
   - name: playerID
     description: 'user DirectPlay ID (see [[getPlayerID]], [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]])'
-    type: Unknown
+    type: String
 - call: !Binary
   - playerID
   - infoIndex
@@ -21,10 +21,10 @@ syntax:
   params:
   - name: playerID
     description: 'user DirectPlay ID (see [[getPlayerID]], [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]])'
-    type: Unknown
+    type: String
   - name: infoIndex
     description: the index of the data in the return array (see main syntax)
-    type: Unknown
+    type: Number
   since:
     arma_3:
       major: 2

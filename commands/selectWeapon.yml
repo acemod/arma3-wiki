@@ -13,13 +13,6 @@ syntax:
   - name: unitName
     type: Object
   - name: muzzleName
-    description: |-
-      name of the weapon or muzzle
-      {{Feature|important|For weapons that have '''more than one muzzle''', you have to input the '''muzzleName''' and not the '''weaponName'''.
-      * In {{ofp}}, in most cases, both names are the same. But check.
-      * In {{arma1}} the weaponNames and muzzleNames are different.
-      * For muzzle names see [[:Category:Weapons|CfgWeapons]].
-      }}
     type: Unknown
 - call: !Binary
   - unit
@@ -32,16 +25,16 @@ syntax:
   params:
   - name: unit
     description: person. This argument has to be [[local]], or it can be remote when executed on the [[isServer|server]]
-    type: Unknown
+    type: Object
   - name: weapon
     description: name of the weapon, personal or vehicle's weapon (see [[weaponState]])
-    type: Unknown
+    type: String
   - name: muzzle
     description: name of the selected muzzle (see [[weaponState]])
-    type: Unknown
+    type: String
   - name: firemode
     description: name of the firemode (see [[weaponState]])
-    type: Unknown
+    type: String
   since:
     arma_3:
       major: 2

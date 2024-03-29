@@ -10,7 +10,7 @@ syntax:
   params:
   - name: object
     description: unit or vehicle
-    type: Unknown
+    type: Object
 - call: !Binary
   - object
   - - weaponClass
@@ -21,13 +21,13 @@ syntax:
   params:
   - name: object
     description: unit or vehicle
-    type: Unknown
+    type: Object
   - name: weaponClass
     description: class name of weapon
-    type: Unknown
+    type: String
   - name: muzzleClass
     description: muzzle classname
-    type: Unknown
+    type: String
     optional: true
     default: currently active muzzle or first that is found
   since:

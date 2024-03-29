@@ -9,11 +9,6 @@ syntax:
   - '[[true]] if is enabled'
   params:
   - name: feature
-    description: |-
-      can be one of:
-      * {{hl|"AwareFormationSoft"}}
-      * {{hl|"CombatFormationSoft"}}
-      * AI skill - see {{Link|disableAI#Syntax 1}} (since {{arma3}} v1.96)
     type: Unknown
 - call: !Binary
   - unit
@@ -24,10 +19,10 @@ syntax:
   params:
   - name: unit
     description: unit to test AI feature for
-    type: Unknown
+    type: Object
   - name: feature
     description: '[[disableAI]] / [[enableAI]] feature'
-    type: Unknown
+    type: String
   since:
     arma_3:
       major: 1

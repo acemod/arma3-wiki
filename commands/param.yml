@@ -18,10 +18,10 @@ syntax:
   params:
   - name: index
     description: index of required item in the input array.
-    type: Unknown
+    type: Number
   - name: defaultValue
     description: a default value to return if input is undefined, of the wrong type or of the wrong length (if the item is an array).
-    type: Unknown
+    type: Anything
     optional: true
   - name: expectedDataTypes
     description: 'checks if passed value is one of listed [[:Category: Data Types| Data Types]]. If not, default value is used instead. Empty array [] means every data type is accepted.'
@@ -43,13 +43,13 @@ syntax:
   params:
   - name: argument
     description: a usual array of params is expected. If a non-array value is passed, it will be converted to 1 element array
-    type: Unknown
+    type: Anything
   - name: index
     description: index of required item in the input array.
-    type: Unknown
+    type: Number
   - name: defaultValue
     description: a default value to return if input is undefined, of the wrong type or of the wrong length (if the item is an array).
-    type: Unknown
+    type: Anything
     optional: true
   - name: expectedDataTypes
     description: 'checks if passed value is one of listed [[:Category: Data Types| Data Types]]. If not, default value is used instead. Empty array [] means every data type is accepted.'

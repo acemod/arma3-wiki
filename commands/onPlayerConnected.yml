@@ -13,14 +13,6 @@ syntax:
   - null
   params:
   - name: code
-    description: |-
-      has access to the following variables:
-      * '''_id''': [[Number]] - is the unique DirectPlay ID. Quite useless as the number is too big for in-built string representation and gets rounded. It is also the same id used for user placed markers.
-      * '''_uid''': [[String]] - is [[getPlayerUID]] of the joining player. In Arma 3 it is also the same as Steam ID.
-      * '''_name''': [[String]] - is [[profileName]] of the joining player.
-      * {{GVI|arma3|1.50}} '''_jip''': [[Boolean]] - is a flag that indicates whether or not the player joined after the mission has started ('''J'''oined '''I'''n '''P'''rogress). [[true]] when the player is [[Multiplayer Scripting#Join In Progress|JIP]], otherwise [[false]].
-      * {{GVI|arma3|1.50}} '''_owner''': [[Number]] - is [[owner]] id of the joining player. Can be used for kick or ban purposes or just for [[publicVariableClient]].
-      * {{GVI|arma3|1.96}} '''_idstr''': [[String]] - same as {{hl|_id}} but in string format, so could be exactly compared to [[allMapMarkers | user marker]] ids.
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -4,7 +4,7 @@ description: |-
 
   {{Feature|informative|Prior to {{arma3}} v2.02, in some cases the identity of certain player units could fail to propagate to other clients and the server, which caused [[isPlayer]] and [[getPlayerUID]] to incorrectly return {{hl|[[false]]}} and {{hl|""}} respectively, where the affected units were [[not]] [[local]]. See {{Link|https://github.com/michail-nikolaev/task-force-arma-3-radio/issues/1096|this GitHub bug report}} for more info. Remain vigilant toward potential false negatives.}}
 
-  {{Feature|important|When used on vehicles, this command will return [[true]] if [[effectiveCommander]] of the vehicle is player. Just because it returns [[true]] does not automatically mean we have a [[player]] unit. Unlike main syntax, alternative syntax always returns [[false]] when used on vehicles, even if they're controlled by a player.}}
+  {{Feature|important|This command will also return [[true]] when used on player controlled vehicles. Just because it returns [[true]] does not automatically mean we have a [[player]] unit.}}
 groups:
 - Multiplayer
 syntax:
@@ -23,7 +23,7 @@ syntax:
   params:
   - name: person
     description: dead or alive unit
-    type: Unknown
+    type: Object
   since:
     arma_3:
       major: 2

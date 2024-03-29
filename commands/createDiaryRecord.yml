@@ -24,36 +24,16 @@ syntax:
   - name: subject
     type: String
   - name: textInfo
-    description: |-
-      can be:
-      * [[String]] - the record's content - its title will be empty
-      * [[Array]] of [[String]]s - format [title, text, icon]:
-      ** title: [[String]]
-      ** text: [[String]]
-      ** {{GVI|arma3|2.10|size= 0.75}} icon: [[String]] -  icon to show next to the title
     type: Unknown
-    optional: true
   - name: task
-    type: Unknown
+    type: Task
     optional: true
     default: '[[taskNull]]'
   - name: taskState
-    description: |-
-      changes the state of the given task. Can be one of:
-      {{Columns|3|
-      * {{hl|"NONE"}}
-      * {{hl|"CREATED"}}
-      * {{hl|"ASSIGNED"}}
-      * {{hl|"SUCCEEDED"}}
-      * {{hl|"FAILED"}}
-      * {{hl|"CANCELED"}}
-      }}
     type: Unknown
-    optional: true
-    default: '{{hl|"NONE"}}'
   - name: showTitle
     description: whether or not to show title in the description section as well
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
     since:

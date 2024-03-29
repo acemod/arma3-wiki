@@ -16,10 +16,10 @@ syntax:
   params:
   - name: unitName
     description: person to add the magazines to
-    type: Unknown
+    type: Object
   - name: magazineName
     description: magazine name. See the topic [[:Category:Weapons]] for reference about possible values.
-    type: Unknown
+    type: String
 - call: !Binary
   - unitName
   - - magazineName
@@ -30,13 +30,13 @@ syntax:
   params:
   - name: unitName
     description: person to add the magazines to
-    type: Unknown
+    type: Object
   - name: magazineName
     description: magazine name. See the topic [[:Category:Weapons]] for reference about possible values.
-    type: Unknown
+    type: String
   - name: ammoCount
     description: ammo quantity to be added to magazine. If it goes beyond maximum magazine capacity, the magazine will be given full and not overloaded.
-    type: Unknown
+    type: Number
   since:
     arma_2_arrowhead:
       major: 1

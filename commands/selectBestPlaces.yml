@@ -18,29 +18,12 @@ syntax:
   - name: radius
     type: Number
   - name: expression
-    description: |-
-      arithmetic expression. [[Simple_Expression|Simple expression]] var names containing values from 0 to 1 depending on location (see also [[Ambient Parameters]]):
-      {{Columns|5|
-      * forest
-      * trees
-      * meadow
-      * hills
-      * houses
-      * sea
-      * coast
-      * night
-      * rain
-      * windy
-      * deadBody
-      * waterDepth
-      * camDepth
-      }}
     type: Unknown
   - name: precision
     type: Number
   - name: sourcesCount
     description: max results to return. The maximum possible is the number of random samples, which is '''n = (2 * radius / precision)^2'''
-    type: Unknown
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

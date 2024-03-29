@@ -27,21 +27,9 @@ syntax:
   - name: sentenceClass
     type: String
   - name: argumentArrayN
-    description: |-
-      format [argumentName, argumentValue, argumentText, argumentSpeech]:
-      * argumentName: [[String]]
-      * argumentValue: [[Code]]
-      * argumentText: [[String]]
-      * argumentSpeech: [[Array]] of [[String]]s - each string is an already defined word in config.
     type: Unknown
-    optional: true
   - name: forceRadio
-    description: |-
-      * [[Boolean]] true/false to force use of radio
-      * [[Number]] 1-10 to force use of custom radio channel
-      * [[String]] name of radio channel to use, from: 'GLOBAL', 'SIDE', 'GROUP', 'VEHICLE', 'DIRECT', 'COMMAND'
     type: Unknown
-    optional: true
 argument_loc: Local
 effect_loc: Global
 since:

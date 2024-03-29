@@ -27,17 +27,10 @@ syntax:
   - name: vehicle
     type: Object
   - name: type
-    description: |-
-      role filter (case-insensitive). An invalid value (e.g "") will return all positions. Available values:
-      * "driver"
-      * "commander"
-      * "gunner"
-      * "turret"
-      * "cargo"
     type: Unknown
   - name: includeEmpty
     description: include empty crew seats
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:

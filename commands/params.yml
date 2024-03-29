@@ -18,13 +18,7 @@ syntax:
   - '[[false]] if error occurred or default value has been used, otherwise [[true]]'
   params:
   - name: elementN
-    description: |-
-      name of a [[private]] variable (must begin with underscore _, e.g. "_myVar")
-      ** defaultValue: [[Anything]] - default value to return if input element is undefined, of the wrong type or of the wrong size (if array).
-      ** expectedDataTypes: [[Array]] of direct [[:Category: Data Types|Data Types]] -  checks if passed value is one of listed Data Types. If not, default value is used instead. Empty array [] means every data type is accepted.
-      ** expectedArrayCount: [[Number]] or [[Array]] -  a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted.
     type: Unknown
-    optional: true
 - call: !Binary
   - argument
   - - element1
@@ -36,15 +30,9 @@ syntax:
   params:
   - name: argument
     description: a usual array of params is expected. If a non-array argument is passed, it will be converted to 1 element array
-    type: Unknown
+    type: Anything
   - name: elementN
-    description: |-
-      name of a [[private]] variable (must begin with underscore _, e.g. "_myVar")
-      ** defaultValue: [[Anything]] - default value to return if input element is undefined, of the wrong type or of the wrong size (if array).
-      ** expectedDataTypes: [[Array]] of direct [[:Category: Data Types|Data Types]] -  checks if passed value is one of listed Data Types. If not, default value is used instead. Empty array [] means every data type is accepted.
-      ** expectedArrayCount: [[Number]] or [[Array]] -  a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted.
     type: Unknown
-    optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

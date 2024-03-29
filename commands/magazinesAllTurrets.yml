@@ -10,7 +10,7 @@ syntax:
   params:
   - name: vehicle
     description: vehicle with turrets
-    type: Unknown
+    type: Object
 - call: !Unary
   - vehicle
   - excludePersonTurrets
@@ -20,10 +20,10 @@ syntax:
   params:
   - name: vehicle
     description: vehicle with turrets
-    type: Unknown
+    type: Object
   - name: excludePersonTurrets
     description: when [[true]] only vehicle's turrets are queried
-    type: Unknown
+    type: Boolean
   since:
     arma_3:
       major: 2

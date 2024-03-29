@@ -16,20 +16,14 @@ syntax:
   params:
   - name: mode
     description: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
-    type: Unknown
+    type: String
   - name: class
-    description: |-
-      entity class, defined in one of the following classes:
-      * {{hl|CfgVehicles}} - objects and logic entities
-      * {{hl|CfgNonAIVehicles}} - triggers
-      * {{hl|CfgWaypoint}} - waypoints
-      * {{hl|CfgMarkers}} - markers
     type: Unknown
   - name: position
     type: Unknown
   - name: isEmpty
     description: '[[true]] to create vehicle without crew'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
 - call: !Binary
@@ -42,18 +36,13 @@ syntax:
   - null
   params:
   - name: group
-    description: |-
-      group in which an AI character or waypoint is created.
-      * When missing for AI characters, a new group is created for them
-      * When missing for waypoints, an error is logged and nothing is created
-      * When used on any other mode, it is ignored and the entity is created as usual
     type: Unknown
   - name: mode
     description: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
-    type: Unknown
+    type: String
   - name: class
     description: entity class
-    type: Unknown
+    type: String
   - name: position
     type: Unknown
 argument_loc: Unspecified

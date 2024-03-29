@@ -14,10 +14,10 @@ syntax:
   params:
   - name: object
     description: unit or container
-    type: Unknown
+    type: Object
   - name: item
     description: config class
-    type: Unknown
+    type: String
 - call: !Binary
   - object
   - - item
@@ -29,16 +29,16 @@ syntax:
   params:
   - name: object
     description: unit or container
-    type: Unknown
+    type: Object
   - name: item
     description: config class
-    type: Unknown
+    type: String
   - name: count
     description: desired quantity
-    type: Unknown
+    type: Number
   - name: ignoreSoldierMaxLoad
     description: '[[true]] to ignore ''soldierMaxLoad'' param, container''s [[maxLoad]] is still counted'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:
@@ -58,10 +58,10 @@ syntax:
   params:
   - name: weapon
     description: weapon class name
-    type: Unknown
+    type: String
   - name: item
     description: config class of magazine or attachment
-    type: Unknown
+    type: String
   since:
     arma_3:
       major: 2
@@ -76,13 +76,13 @@ syntax:
   params:
   - name: weapon
     description: weapon class name
-    type: Unknown
+    type: String
   - name: attachment
     description: attachment class name
-    type: Unknown
+    type: String
   - name: slot
     description: slot class name (defined under '''WeaponSlotsInfo''' class in weapon config)
-    type: Unknown
+    type: String
   since:
     arma_3:
       major: 2
@@ -97,13 +97,13 @@ syntax:
   params:
   - name: weapon
     description: weapon class name
-    type: Unknown
+    type: String
   - name: magazine
     description: magazine class name
-    type: Unknown
+    type: String
   - name: muzzle
     description: muzzle class name
-    type: Unknown
+    type: String
   since:
     arma_3:
       major: 2

@@ -28,7 +28,7 @@ syntax:
   params:
   - name: type
     description: vehicle/object className
-    type: Unknown
+    type: String
   - name: position
     description: desired placement position. If the exact position is occupied, nearest empty position is used.
     type: Unknown
@@ -44,7 +44,7 @@ syntax:
   params:
   - name: type
     description: vehicle/object className
-    type: Unknown
+    type: String
   - name: position
     description: desired placement position
     type: Unknown
@@ -57,19 +57,11 @@ syntax:
     default: <sqf inline>[]</sqf>
   - name: placement
     description: the vehicle is placed inside a circle with given position as center and placement as its radius.
-    type: Unknown
+    type: Number
     optional: true
     default: '0'
   - name: special
-    description: |-
-      can be one of the following:
-      * {{hl|"NONE"}} - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there.
-      * {{hl|"CAN_COLLIDE"}} - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model.
-      * {{hl|"FLY"}} - if vehicle is capable of flying and has crew, it will be made airborne at default height.
-      If ''special'' is "" or not specified, default {{hl|"NONE"}} is used.
     type: Unknown
-    optional: true
-    default: '"NONE"'
 argument_loc: Unspecified
 effect_loc: Global
 since:

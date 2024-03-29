@@ -32,42 +32,31 @@ syntax:
     type: Unknown
   - name: minDistance
     description: minimum (2D) distance from other objects (range 0..50). -1 to ignore proximity check
-    type: Unknown
+    type: Number
     optional: true
     default: '-1'
   - name: mode
     description: position check mode ('''ALWAYS USE DEFAULT VALUE''')
-    type: Unknown
+    type: Number
     optional: true
     default: '-1'
   - name: maxGradient
     description: maximum terrain steepness allowed. -1 to ignore
-    type: Unknown
+    type: Number
     optional: true
     default: '-1'
   - name: maxGradientRadius
     description: how far to extend gradient check
-    type: Unknown
+    type: Number
     optional: true
     default: '1'
   - name: overLandOrWater
-    description: |-
-      * 0: position cannot be over water
-      * 2: position cannot be over land
-      * -1 to ignore
     type: Unknown
-    optional: true
-    default: '0'
   - name: shoreLine
-    description: |-
-      * [[true]]: position is over shoreline (< ~25 m from water)
-      * [[false]] to ignore
     type: Unknown
-    optional: true
-    default: '[[false]]'
   - name: ignoreObject
     description: object to ignore in proximity checks. [[objNull]] to ignore
-    type: Unknown
+    type: Object
     optional: true
     default: '[[objNull]]'
 argument_loc: Unspecified

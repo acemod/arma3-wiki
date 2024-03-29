@@ -17,16 +17,16 @@ syntax:
   params:
   - name: object
     description: '[[local]] object'
-    type: Unknown
+    type: Object
   - name: part
     description: name of the part ([[Named_Selection|selection]] name)
-    type: Unknown
+    type: String
   - name: damage
     description: damage value ranging 0..1, 0 being fully functional, 1 being destroyed
-    type: Unknown
+    type: Number
   - name: useEffects
     description: '[[false]] to skip destruction effects'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
     since:
@@ -34,33 +34,20 @@ syntax:
         major: 1
         minor: 68
   - name: killer
-    description: |-
-      the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill.
-      * it can be used to show "killed by player" in debriefing statistics and kill messages in the chat (if death messages are enabled).
-      * it will alter the killer's [[rating]] as if the killer directly killed the unit.
-      * it will be listed as <sqf inline>_killer</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler.
     type: Unknown
-    optional: true
-    default: '[[objNull]]'
     since:
       arma_3:
         major: 2
         minor: 8
   - name: instigator
-    description: |-
-      the person that instigated the damage.
-      * if a tank is a killer, the tank gunner that pulled the trigger is instigator
-      * it will be listed as <sqf inline>_instigator</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler.
     type: Unknown
-    optional: true
-    default: '[[objNull]]'
     since:
       arma_3:
         major: 2
         minor: 12
   - name: breakRotor
     description: if the hitpoint is rotor on a helicopter, [[true]] will break the rotor as well as play corresponding sound if 'useEffects' is also [[true]].
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:

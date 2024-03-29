@@ -11,14 +11,10 @@ syntax:
   - null
   params:
   - name: feature
-    description: |-
-      can be:
-      * {{hl|"AwareFormationSoft"}}
-      * {{hl|"CombatFormationSoft"}}
     type: Unknown
   - name: enable
     description: '[[true]] to enable, [[false]] to disable'
-    type: Unknown
+    type: Boolean
 - call: !Binary
   - unit
   - - feature
@@ -29,13 +25,13 @@ syntax:
   params:
   - name: unit
     description: unit to test AI feature for
-    type: Unknown
+    type: Object
   - name: feature
     description: see [[disableAI]] / [[enableAI]] for possible values
-    type: Unknown
+    type: String
   - name: enable
     description: '[[true]] to enable, [[false]] to disable'
-    type: Unknown
+    type: Boolean
   since:
     arma_3:
       major: 1

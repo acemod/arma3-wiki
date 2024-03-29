@@ -12,7 +12,7 @@ syntax:
   params:
   - name: type
     description: if an empty string {{hl|""}} is provided, all entities are returned
-    type: Unknown
+    type: String
 - call: !Unary
   - typesInclude
   - typesExclude
@@ -30,12 +30,12 @@ syntax:
     type: Unknown
   - name: includeCrews
     description: include crews currently in vehicles
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   - name: excludeDead
     description: exclude dead entities
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   since:

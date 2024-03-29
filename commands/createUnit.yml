@@ -41,10 +41,10 @@ syntax:
   params:
   - name: group
     description: existing group new unit will join; if the group is not [[local]], a warning will be logged
-    type: Unknown
+    type: Group
   - name: type
     description: classname of unit to be created as per [[CfgVehicles]]
-    type: Unknown
+    type: String
   - name: position
     description: location where to create the unit. In case of [[Group]], the [[group]] [[leader]]'s position is used
     type: Unknown
@@ -53,22 +53,8 @@ syntax:
     type: Unknown
   - name: placement
     description: placement radius
-    type: Unknown
+    type: Number
   - name: special
-    description: |-
-      unit placement special, one of:
-      * {{hl|"NONE"}} - The unit will be created at the first available free position nearest to given position
-
-      * {{hl|"CAN_COLLIDE"}} - The unit will be created exactly at passed position
-      * {{hl|"CARGO"}} - The unit will be created in cargo of the group's vehicle, regardless of the passed position (see {{Link|#Example 5}}). If group has no vehicle or there is no cargo space available, the unit will be placed according to {{hl|"NONE"}}. {{hl|"CARGO"}} placement excludes cargo positions with personal FFV turrets. To check available cargo space use:
-      {{{!}} style="width: 100%"
-      {{!}} rowspan="2" style="width: 2em" {{!}}
-      ! {{GVI|arma3|1.34}} FFV
-      {{!}} <sqf>private _hasCargo = { isNull (_x select 0) } count (fullCrew [_veh, "cargo", true]) > 0;</sqf>
-      {{!}}-
-      ! before
-      {{!}} <sqf>_hasCargo = _veh emptyPositions "CARGO" > 0;</sqf>
-      {{!}}}
     type: Unknown
 - call: !Binary
   - type
@@ -83,26 +69,26 @@ syntax:
   params:
   - name: type
     description: classname of unit to be created as per [[CfgVehicles]]
-    type: Unknown
+    type: String
   - name: position
     description: location at which the unit is created. In case of [[Group]] position of the [[group]] [[leader]] is used
     type: Unknown
   - name: group
     description: existing group the new unit will join
-    type: Unknown
+    type: Group
   - name: init
     description: unit init statement, similar to unit init field in the editor. The code placed in unit init will run upon unit creation for every client on network, present and future. The code itself receives the reference to the created unit via local variable [[Magic Variables#this_2|this]]. Do not use global commands in a unit's ''init'' as it runs on every client.
-    type: Unknown
+    type: String
     optional: true
     default: '""'
   - name: skill
     description: unit [[skill]]
-    type: Unknown
+    type: Number
     optional: true
     default: '0.5'
   - name: rank
     description: unit [[rank]]
-    type: Unknown
+    type: String
     optional: true
     default: '"PRIVATE"'
 argument_loc: Local

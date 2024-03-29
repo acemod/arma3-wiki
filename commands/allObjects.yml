@@ -13,31 +13,8 @@ syntax:
   - array of [[Object]]s
   params:
   - name: objectType
-    description: |-
-      type can be a combination of types according to bit flag operation (see [[getObjectType]]):
-      * -1 - {{GVI|arma3|2.12|size= 0.75}} All types incl. nulls (nulls exist with 'objectCollection' 7 and 8)
-      * 1 - Primary - normal object placed in Terrain Builder, part of landscape
-      * 2 - Network - road placed in Terrain Builder, part of landscape
-      * 4 - Temporary - temporary object (like vehicle tracks)
-      * 8 - TypeVehicle - entity added by game
-      * 16 - TypeTempVehicle - temporary entity
-      * 32 - LandDecal - land decal
-      For example if required objects are both TerrainBuilder-placed ('''1''') and dynamically placed ('''8''') the combination type will be  8&nbsp;+&nbsp;1&nbsp;=&nbsp;'''9'''
-      {{Feature|informative|Use '''63''' (1&nbsp;+&nbsp;2&nbsp;+&nbsp;4&nbsp;+&nbsp;8&nbsp;+&nbsp;16&nbsp;+&nbsp;32) to return objects of all types (excl. nulls).}}
     type: Unknown
   - name: objectCollection
-    description: |-
-      supported values:
-      * 0 - Slow (and very slow) entities: some houses, rubbles, street lamps, churches, etc
-      * 1 - Normal entities: vehicles etc
-      * 2 - Fast entities: shots and other high precision entities
-      * 3 - Cloudlets: smokes, dust, etc
-      * 4 - Out vehicles: objects that are not listed anywhere else, holders, etc
-      * 5 - Animals: animals, birds, insects, etc
-      * 6 - Mines: mines
-      * 7 - {{GVI|arma3|2.12|size= 0.75}} Sensor map: ordered triggers. When trigger is created it is added to this collection in the order of creation. When deleted it becomes null. Use 'objectType' -1 to include nulls
-      * 8 - {{GVI|arma3|2.12|size= 0.75}} Vehicle map: ordered vehicles. When vehicle is created it is added to this collection in the order of creation. When deleted it becomes null. Use 'objectType' -1 to include nulls
-      * 9 - {{GVI|arma3|2.18|size= 0.75}} Vehicles and [[crew]]: normal entities as in 1 as well as crew if an entity is a vehcile with crew.
     type: Unknown
 - call: !Binary
   - objectType
@@ -48,10 +25,10 @@ syntax:
   params:
   - name: objectType
     description: type of the objects (will exact match return of [[typeOf]])
-    type: Unknown
+    type: String
   - name: objectCollection
     description: see main syntax above
-    type: Unknown
+    type: Number
   since:
     arma_3:
       major: 2
@@ -65,7 +42,7 @@ since:
 examples:
 - private _visitorBuildings = 1 allObjects 0;
 - private _userPlacedBuildings = 8 allObjects 0;
-- "onEachFrame\n{\n\thintSilent str\n\t[\n\t\tcount (63 allObjects 0),\n\t\tcount (63 allObjects 1),\n\t\tcount (63 allObjects 2),\n\t\tcount (63 allObjects 3),\n\t\tcount (63 allObjects 4),\n\t\tcount (63 allObjects 5),\n\t\tcount (63 allObjects 6)\n\t];\n};\n"
-- |
+- "onEachFrame\n{\n\thintSilent str\n\t[\n\t\tcount (63 allObjects 0),\n\t\tcount (63 allObjects 1),\n\t\tcount (63 allObjects 2),\n\t\tcount (63 allObjects 3),\n\t\tcount (63 allObjects 4),\n\t\tcount (63 allObjects 5),\n\t\tcount (63 allObjects 6)\n\t];\n};"
+- |-
   private _allGroundWeaponHolders = "GroundWeaponHolder" allObjects 0;
   private _allSimulatedWeaponHolders = "WeaponHolderSimulated" allObjects 1;

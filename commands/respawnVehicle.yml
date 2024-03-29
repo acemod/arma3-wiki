@@ -22,19 +22,19 @@ syntax:
   params:
   - name: vehicle
     description: transport
-    type: Unknown
+    type: Object
   - name: respawnDelay
     description: (Optional since 2.18, default -1) delay in seconds between respawns. (-1 to use 3DEN vehicle respawn delay or ''respawnVehicleDelay'' from [[Description.ext|description.ext]])
-    type: Unknown
+    type: Number
     optional: true
   - name: respawnCount
     description: how many times to respawn vehicle in total. (since 2.18 -1 unlimited respawns, 0 stop respawning)
-    type: Unknown
+    type: Number
     optional: true
     default: unlimited respawns
   - name: deleteOldWreck
     description: '- deletes old wreck automatically after vehicle respawns'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:
@@ -43,7 +43,7 @@ syntax:
         minor: 18
   - name: respawnOnServer
     description: '- wreck is always transferred to the server and the new vehicle always respawns on server'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:
@@ -52,7 +52,7 @@ syntax:
         minor: 18
   - name: respawnFlying
     description: '- by default all vehicles placed on the ground, [[true]] overrides this'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:
@@ -61,7 +61,7 @@ syntax:
         minor: 18
   - name: respawnUnit
     description: '- unit that would be put in the driver seat after vehicle respawns'
-    type: Unknown
+    type: Object
     optional: true
     default: '[[objNull]]'
     since:
@@ -79,7 +79,7 @@ syntax:
         minor: 18
   - name: respawnSide
     description: '- sets respawn side for the purpouse of selecting respawn marker'
-    type: Unknown
+    type: Side
     optional: true
     default: typical vehicle [[side]]
     since:
@@ -88,7 +88,7 @@ syntax:
         minor: 18
   - name: useRespawnMarkerDir
     description: '- respawn vehicle matches respawn marker direction or the old wreck direction. [[false]] - random direction.'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:

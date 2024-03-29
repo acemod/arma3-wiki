@@ -12,10 +12,10 @@ syntax:
   params:
   - name: unit
     description: unit transmitting message
-    type: Unknown
+    type: Object
   - name: chatText
     description: message to transmit
-    type: Unknown
+    type: String
 - call: !Binary
   - - side
     - identity
@@ -26,24 +26,12 @@ syntax:
   params:
   - name: side
     description: side to which the message will be seen
-    type: Unknown
+    type: Side
   - name: identity
-    description: |-
-      class name of one of the identities in CfgHQIdentities. Possible identities in {{arma3}} are:
-      {{Columns|4|
-      * "Base"
-      * "HQ"
-      * "PAPA_BEAR"
-      * "AirBase"
-      * "BLU"
-      * "OPF"
-      * "IND"
-      * "IND_G"
-      }}
     type: Unknown
   - name: chatText
     description: message to transmit
-    type: Unknown
+    type: String
 argument_loc: Global
 effect_loc: Local
 since:

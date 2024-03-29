@@ -19,18 +19,11 @@ syntax:
   params:
   - name: object
     description: object to monitor
-    type: Unknown
+    type: Object
   - name: type
     description: event handler name
-    type: Unknown
+    type: String
   - name: expression
-    description: |-
-      expression to execute.<br>
-      If EH has some data to return upon event (e.g. the "MPKilled" EH will return an array with 2 elements: the killed unit, and the killer), it is passed in {{hl|_this}} variable.
-      {{Feature|arma3|Since Arma 3 v.1.64 the EH handle is also stored in {{hl|_thisEventHandler}} variable and is available during EH code execution.}}
-      * Event Handler parameters are accessible via <sqf inline>_this</sqf>
-      * The Event Handler type is available as <sqf inline>_thisEvent</sqf>
-      * The Event Handler index is available as <sqf inline>_thisEventHandler</sqf>
     type: Unknown
 argument_loc: Global
 effect_loc: Global

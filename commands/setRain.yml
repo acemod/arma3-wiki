@@ -28,10 +28,10 @@ syntax:
   params:
   - name: time
     description: transition time in seconds to the new value
-    type: Unknown
+    type: Number
   - name: rain
     description: new rain value in range 0..1.
-    type: Unknown
+    type: Number
 - call: !Unary rainParams
   ret:
   - Nothing
@@ -52,7 +52,7 @@ syntax:
   params:
   - name: config
     description: 'config path to a custom class, which contains [[Arma 3: CfgWorlds Config Reference#class RainParticles | {{hl|RainParticles}}]] class. Use [[configNull]] to reset to default config values'
-    type: Unknown
+    type: Config
   since:
     arma_3:
       major: 2

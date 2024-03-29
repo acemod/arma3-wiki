@@ -32,7 +32,7 @@ syntax:
   params:
   - name: code
     description: code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
-    type: Unknown
+    type: Code
 - call: !Binary
   - - text
     - tooltip
@@ -44,20 +44,20 @@ syntax:
   params:
   - name: text
     description: text of the entry that is added to the history list
-    type: Unknown
+    type: String
   - name: tooltip
     description: ) - tooltip of the entry
-    type: Unknown
+    type: String
     optional: true
     default: '"Batch Change" ([[isLocalized|localized]]'
   - name: icon
     description: '- path to the icon that is displayed left of the ''''text''''. ''''''Must not start with a {{hl|\}}!'''''''
-    type: Unknown
+    type: String
     optional: true
     default: '"a3\3den\data\cfg3den\history\multipleoperations_ca.paa"'
   - name: code
     description: code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
-    type: Unknown
+    type: Code
   since:
     arma_3:
       major: 2

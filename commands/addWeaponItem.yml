@@ -16,13 +16,13 @@ syntax:
     type: Object
   - name: weaponName
     description: name of the weapon to add magazine to
-    type: Unknown
+    type: String
   - name: itemName
     description: class name of the item to add (if magazine, muzzle will be autodetected)
-    type: Unknown
+    type: String
   - name: instant
     description: '[[true]] to skip animation'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:
@@ -44,21 +44,21 @@ syntax:
     type: Object
   - name: weaponName
     description: name of the weapon to add magazine to
-    type: Unknown
+    type: String
   - name: itemName
     description: class name of the item to add (if magazine, muzzle will be autodetected unless specified)
-    type: Unknown
+    type: String
   - name: ammoCount
     description: optional amount of ammo in magazine
-    type: Unknown
+    type: Number
     optional: true
   - name: muzzleName
     description: optional target muzzle to add magazine to
-    type: Unknown
+    type: String
     optional: true
   - name: instant
     description: '[[true]] to skip animation'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:

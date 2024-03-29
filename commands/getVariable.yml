@@ -16,7 +16,7 @@ syntax:
     type: Unknown
   - name: name
     description: variable name in given namespace
-    type: Unknown
+    type: String
 - call: !Binary
   - varspace
   - - name
@@ -29,10 +29,10 @@ syntax:
     type: Unknown
   - name: name
     description: variable name in given namespace
-    type: Unknown
+    type: String
   - name: defaultValue
     description: value to return if variable doesn't exist {{Feature|warning|A dynamic ''defaultValue'' e.g <sqf inline>random 500</sqf> will always be executed, even if the variable is defined.}}
-    type: Unknown
+    type: Anything
 argument_loc: Global
 effect_loc: Unspecified
 since:

@@ -24,40 +24,28 @@ syntax:
   params:
   - name: fromObject
     description: '[[ropeCreate/transport | transport]] where the rope originates and which fly behavior will be affected'
-    type: Unknown
+    type: Object
   - name: fromPoint
     description: position for the rope start, either a memory point [[String]] or relative offset [[Array]]
     type: Unknown
   - name: toObject
     description: entity which is automatically [[ropeAttachTo | attached to]] the end of the rope
-    type: Unknown
+    type: Object
   - name: toPoint
     description: position for the rope end, either a memory point [[String]] or relative offset [[Array]]
     type: Unknown
   - name: length
     description: rope length in meters
-    type: Unknown
+    type: Number
     optional: true
     default: '-1'
   - name: ropeStart
-    description: |-
-      array in format [ropeStartType, ropeStartDownVector] where:
-      * ropeStartType: [[String]] - type of the rope start (see description)
-      * ropeStartDownVector: [[String]] or [[Array]], either a memory point [[String]] or relative vector [[Array]]. If [[String]] is given, then {{hl|ropeStartDownVector}} is calculated from {{hl|fromPoint}} towards {{hl|ropeStartDownVector}} memory point
     type: Unknown
-    optional: true
-    default: '["", [0,0,-1]]'
   - name: ropeEnd
-    description: |-
-      array in format [ropeEndType, ropeEndDownVector] where:
-      * ropeEndType: [[String]] - type of the rope end (see description)
-      * ropeEndDownVector: [[String]] or [[Array]], either a memory point [[String]] or relative vector [[Array]]. If [[String]] is given, then {{hl|ropeEndDownVector}} is calculated from {{hl|toPoint}} towards {{hl|ropeEndDownVector}} memory point
     type: Unknown
-    optional: true
-    default: '["", [0,0,-1]]'
   - name: ropeType
     description: '- rope type, {{hl|CfgVehicles}}'' classname'
-    type: Unknown
+    type: String
     optional: true
     default: '"Rope"'
     since:
@@ -66,7 +54,7 @@ syntax:
         minor: 6
   - name: nSegments
     description: '- number of rope segments (max 63)'
-    type: Unknown
+    type: Number
     optional: true
     default: '-1'
     since:
@@ -87,32 +75,20 @@ syntax:
   params:
   - name: fromObject
     description: '[[ropeCreate/transport | transport]] where the rope originates and which fly behavior will be affected'
-    type: Unknown
+    type: Object
   - name: fromPoint
     description: position for the rope start, either a memory point [[String]] or relative offset [[Array]]
     type: Unknown
   - name: length
     description: rope length in meters
-    type: Unknown
+    type: Number
   - name: ropeStart
-    description: |-
-      array in format [ropeStartType, ropeStartDownVector] where:
-      * ropeStartType: [[String]] - type of the rope start (see description)
-      * ropeStartDownVector: [[String]] or [[Array]], either a memory point [[String]] or relative vector [[Array]]. If [[String]] is given, then {{hl|ropeStartDownVector}} is calculated from {{hl|fromPoint}} towards {{hl|ropeStartDownVector}} memory point
     type: Unknown
-    optional: true
-    default: '["", [0,0,-1]]'
   - name: ropeEnd
-    description: |-
-      array in format [ropeEndType, ropeEndDownVector] where:
-      * ropeEndType: [[String]] - type of the rope end (see description)
-      * ropeEndDownVector: [[Array]] - relative vector
     type: Unknown
-    optional: true
-    default: '["", [0,0,-1]]'
   - name: ropeType
     description: '- rope type, {{hl|CfgVehicles}}'' classname'
-    type: Unknown
+    type: String
     optional: true
     default: '"Rope"'
     since:
@@ -121,7 +97,7 @@ syntax:
         minor: 6
   - name: nSegments
     description: '- number of rope segments (max 63)'
-    type: Unknown
+    type: Number
     optional: true
     default: '-1'
     since:

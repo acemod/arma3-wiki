@@ -14,7 +14,7 @@ syntax:
     type: Object
   - name: skill
     description: general skill in range 0..1
-    type: Unknown
+    type: Number
 - call: !Binary
   - unit
   - - skillName
@@ -26,24 +26,10 @@ syntax:
   - name: unit
     type: Object
   - name: skillName
-    description: |-
-      available sub-skills are:
-      {{Columns|6|
-      * {{hl|"general"}}
-      * {{hl|"courage"}}
-      * {{hl|"aimingAccuracy"}}
-      * {{hl|"aimingShake"}}
-      * {{hl|"aimingSpeed"}}
-      * {{hl|"commanding"}}
-      * {{hl|"endurance"}}
-      * {{hl|"spotDistance"}}
-      * {{hl|"spotTime"}}
-      * {{hl|"reloadSpeed"}}
-      }}
     type: Unknown
   - name: value
     description: value in range 0..1
-    type: Unknown
+    type: Number
   since:
     armed_assault:
       major: 1

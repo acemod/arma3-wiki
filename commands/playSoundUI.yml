@@ -15,25 +15,22 @@ syntax:
   params:
   - name: sound
     description: '[[CfgSounds]] class or file as used in [[playSound3D]] (see [[Arma 3: Sound Files]] for available file names)'
-    type: Unknown
+    type: String
   - name: volume
     description: sound volume clamped in range 0..5
-    type: Unknown
+    type: Number
     optional: true
     default: '1'
   - name: soundPitch
-    description: "* 1.0 &rarr; normal \n* 0.5 &rarr; Darth Vader\n* 2.0 &rarr; Chipmunks"
     type: Unknown
-    optional: true
-    default: '1'
   - name: isEffect
     description: if [[true]], diverts sound through effects channel (see [[fadeSound]], [[soundVolume]])
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   - name: offset
     description: offset in seconds. Same as with [[playSound3D]]
-    type: Unknown
+    type: Number
     optional: true
     default: '0'
     since:

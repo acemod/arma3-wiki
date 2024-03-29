@@ -14,7 +14,7 @@ syntax:
     description: |-
       [[compile]]d instructions
       {{Feature|ofp|{{ofp}} takes [[String]].}}
-    type: Unknown
+    type: Code
 - call: !Binary
   - args
   - code
@@ -24,12 +24,12 @@ syntax:
   params:
   - name: args
     description: arguments that are passed to the function in the <sqf inline>_this</sqf> variable
-    type: Unknown
+    type: Anything
   - name: code
     description: |-
       [[compile]]d instructions
       {{Feature|ofp|{{ofp}} takes [[String]].}}
-    type: Unknown
+    type: Code
 - call: !Binary
   - hashMapObj
   - - methodName
@@ -43,10 +43,10 @@ syntax:
     type: Unknown
   - name: methodName
     description: the name of the method to call (the method must be defined in ''hashMapObj''; see [[createHashMapObject]])
-    type: Unknown
+    type: String
   - name: arguments
     description: arguments that are passed to the method in the <sqf inline>_this</sqf> variable
-    type: Unknown
+    type: Anything
     optional: true
     default: '[[nil]]'
   since:

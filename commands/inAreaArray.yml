@@ -16,11 +16,6 @@ syntax:
   - name: positions
     type: Unknown
   - name: area
-    description: |-
-      the defined area:
-      * [[Object]] - trigger
-      * [[Location]] - location
-      * [[String]] - marker name
     type: Unknown
 - call: !Binary
   - positions
@@ -41,23 +36,23 @@ syntax:
     type: Unknown
   - name: a
     description: x axis (x / 2)
-    type: Unknown
+    type: Number
   - name: b
     description: y axis (y / 2)
-    type: Unknown
+    type: Number
   - name: angle
     description: rotation angle
-    type: Unknown
+    type: Number
     optional: true
     default: '0'
   - name: isRectangle
     description: '[[true]] if rectangle, [[false]] if ellipse'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   - name: c
     description: z axis (z / 2)
-    type: Unknown
+    type: Number
     optional: true
     default: '-1: unlimited'
 argument_loc: Unspecified

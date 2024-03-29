@@ -16,22 +16,22 @@ syntax:
   params:
   - name: enquirer
     description: for whom the query will be made
-    type: Unknown
+    type: Object
   - name: targetIgnore
     description: target object to exclude from results. [[objNull]] - return every target
-    type: Unknown
+    type: Object
   - name: targetSide
     description: desired side of the target. [[sideUnknown]] - any side
-    type: Unknown
+    type: Side
   - name: targetType
     description: desired target [[typeOf]]. "" - any type
-    type: Unknown
+    type: String
   - name: targetPosition
     description: desired target position in format of [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (only [x,y] is considered). Position tolerance is 200m from the actual position of the target. [] - any position
     type: Unknown
   - name: targetMaxAge
     description: desired max age of the target. This will limit returned results to the targets younger than specified age. 0 - any age
-    type: Unknown
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

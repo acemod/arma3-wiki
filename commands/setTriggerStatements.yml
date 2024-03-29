@@ -14,24 +14,12 @@ syntax:
   params:
   - name: trigger
     description: trigger object
-    type: Unknown
+    type: Object
   - name: condition
-    description: |-
-      code containing trigger condition. Special variables available here:
-      * [[Magic Variables#this_2|this]] ([[Boolean]]) - detection event
-      * [[thisTrigger]] ([[Object]]) - trigger instance
-      * [[thisList]] ([[Array]]) - array of all detected entities
     type: Unknown
   - name: activation
-    description: |-
-      code that is executed when the trigger is activated. Special variables available here:
-      * [[thisTrigger]] ([[Object]]) - trigger instance
-      * [[thisList]] ([[Array]]) - array of all detected entities
     type: Unknown
   - name: deactivation
-    description: |-
-      code that is executed when the trigger is deactivated. Special variable available here:
-      * [[thisTrigger]] ([[Object]]) - trigger instance
     type: Unknown
 argument_loc: Global
 effect_loc: Local

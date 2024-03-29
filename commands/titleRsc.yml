@@ -16,18 +16,18 @@ syntax:
   params:
   - name: text
     description: the class name of the resource. ("Default" will remove the current resource)
-    type: Unknown
+    type: String
   - name: type
     description: 'can be one of: "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN"; see [[Title Effect Type]]s for more information about these values'
-    type: Unknown
+    type: String
   - name: speed
     description: time in seconds to fade in resource
-    type: Unknown
+    type: Number
     optional: true
     default: '-1'
   - name: showInMap
     description: '[[false]] to hide the text when the map is opened'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
 argument_loc: Unspecified

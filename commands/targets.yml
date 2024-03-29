@@ -21,11 +21,11 @@ syntax:
     type: Unknown
   - name: enemyOnly
     description: '[[true]] to include only enemy targets, [[false]] to include all targets'
-    type: Unknown
+    type: Boolean
     optional: true
   - name: maxDistance
     description: max. distance based on target's expected position ''(distance is measured in 2D)''; use 0 to ignore the maxDistance filter
-    type: Unknown
+    type: Number
     optional: true
   - name: sides
     description: array of accepted sides; use [] to ignore the side filter
@@ -33,7 +33,7 @@ syntax:
     optional: true
   - name: maxAge
     description: max. target age, targets that are known to unit for longer than maxAge are ignored; use 0 to ignore the maxAge filter
-    type: Unknown
+    type: Number
     optional: true
   - name: alternateCenter
     description: alternate (2D or 3D) position used for distance check ''(distance is measured in 2D)''; if not specified unit position is being used

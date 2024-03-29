@@ -17,10 +17,10 @@ syntax:
   params:
   - name: plane
     description: a plane
-    type: Unknown
+    type: Object
   - name: ID
     description: '[[Arma: Airport IDs|Airport ID]]'
-    type: Unknown
+    type: Number
 - call: !Binary
   - plane
   - airportObject
@@ -46,13 +46,13 @@ syntax:
   params:
   - name: heli
     description: Helicopter/VTOL aircraft
-    type: Unknown
+    type: Object
   - name: heliPad
     description: A helipad object (can be an invisible helipad)
-    type: Unknown
+    type: Object
   - name: mode
     description: Landing mode. See the [[land]] command
-    type: Unknown
+    type: String
   since:
     arma_3:
       major: 2

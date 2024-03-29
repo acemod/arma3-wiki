@@ -20,13 +20,13 @@ syntax:
     type: Unknown
   - name: index
     description: index at which the values will be inserted, -1 for append, {{GVI|arma3|2.14|size= 0.75}} -2 for inserting at the second-to-last position, -3 before that, etc.
-    type: Unknown
+    type: Number
   - name: valuesToInsert
     description: values to insert at the specified index
     type: Unknown
   - name: onlyIfUnique
     description: only insert if the value is unique in the array, like [[pushBackUnique]]
-    type: Unknown
+    type: Boolean
 - call: !Binary
   - string
   - - index
@@ -36,13 +36,13 @@ syntax:
   - the new string
   params:
   - name: string
-    type: Unknown
+    type: String
   - name: index
     description: index at which the values will be inserted, -1 for append
-    type: Unknown
+    type: Number
   - name: substring
     description: string to insert
-    type: Unknown
+    type: String
 - call: !Binary
   - hashMap
   - - - key1
@@ -76,12 +76,8 @@ syntax:
     type: Unknown
   - name: splitArray
     description: determines ''keysAndValues'' format (see ''keysAndValues'''s description)
-    type: Unknown
+    type: Boolean
   - name: keysAndValues
-    description: |-
-      in format depending on ''splitArray'''s value:
-      * [[true]] - {{hl|[[key1, key2, ...], [value1, value2, ...]]}}
-      * [[false]] - {{hl|[[key1, value1], [key2, value2], ...]}} (same as {{Link|#Syntax 3}})
     type: Unknown
   since:
     arma_3:

@@ -30,44 +30,33 @@ syntax:
     type: Unknown
   - name: ignoreObj1
     description: first object to ignore
-    type: Unknown
+    type: Object
     optional: true
     default: '[[objNull]]'
   - name: ignoreObj2
     description: second object to ignore
-    type: Unknown
+    type: Object
     optional: true
     default: '[[objNull]]'
   - name: sortMode
     description: '[[true]]: closest to furthest, [[false]]: furthest to closest'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
   - name: maxResults
     description: max results to return. -1 to return every result
-    type: Unknown
+    type: Number
     optional: true
     default: '1'
   - name: LOD1
-    description: |-
-      primary [[LOD]] to look for intersection. Can be one of:
-      * "FIRE"
-      * "VIEW"
-      * "GEOM"
-      * "IFIRE" - ("I" stands for Indirect, ''almost'' identical to "FIRE")
-      * "NONE"
-      * {{GVI|arma3|2.02|size= 0.75}} "PHYSX" - PhysX geometry LOD
-      * {{GVI|arma3|2.08|size= 0.75}} "ROADWAY" - only works from the top
     type: Unknown
-    optional: true
-    default: '"VIEW"'
     since:
       arma_3:
         major: 1
         minor: 52
   - name: LOD2
     description: secondary [[LOD]] to look for intersection. See ''LOD1'' for possible values
-    type: Unknown
+    type: String
     optional: true
     default: '"FIRE"'
     since:
@@ -76,7 +65,7 @@ syntax:
         minor: 52
   - name: returnUnique
     description: when [[false]], all intersections in the same object are included, otherwise only the first one
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
     since:

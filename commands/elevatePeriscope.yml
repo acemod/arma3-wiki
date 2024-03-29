@@ -22,13 +22,13 @@ syntax:
   params:
   - name: vehicle
     description: vehicle with periscope tech
-    type: Unknown
+    type: Object
   - name: turret
     description: turret on which periscope is located
     type: Unknown
   - name: elevation
     description: elevation range 0..1
-    type: Unknown
+    type: Number
   - name: speed
     description: config anim speed multiplier, 2 - twice as fast, 0.5 - twice as slow, etc. -1 - default config speed. If [[true]] is used as param, the change in elevation is almost instant
     type: Unknown
@@ -36,7 +36,7 @@ syntax:
     default: '-1'
   - name: blockUserInput
     description: '[[true]] to disable user ability to control periscope with keyboard. The change is persistent unless set to [[false]] again'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
 argument_loc: Unspecified

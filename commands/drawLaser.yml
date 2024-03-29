@@ -34,18 +34,18 @@ syntax:
     type: Unknown
   - name: dotSize
     description: impact dot size; if set to 0 the impact dot will not render
-    type: Unknown
+    type: Number
   - name: beamThickness
     description: laser beam's thickness scale; if set to 0, the beam will not render
-    type: Unknown
+    type: Number
   - name: beamMaxLength
     description: laser beam's maximum length. {{hl|-1}} means maximum length (defined in {{hl|CfgIRLaserSettings}}), {{hl|0}} means no length at all and the command is ignored
-    type: Unknown
+    type: Number
     optional: true
     default: '-1'
   - name: isIR
     description: whether the laser and impact dot are only visible with Night Vision / Thermal Imaging
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
 argument_loc: Unspecified

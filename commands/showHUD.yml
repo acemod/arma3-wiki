@@ -36,45 +36,45 @@ syntax:
   params:
   - name: scriptedHUD
     description: show scripted HUD such as weapon crosshair, action menu and overlays created with [[cutRsc]] and [[titleRsc]]. Same as [[showHUD]]'s first syntax
-    type: Unknown
+    type: Boolean
   - name: info
     description: show vehicle, soldier and weapon info
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
   - name: radar
     description: show vehicle radar
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
   - name: compass
     description: show vehicle compass
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
   - name: direction
     description: show tank direction indicator. Not present in vanilla {{arma3}}
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
   - name: menu
     description: show commanding menu (HC related menus)
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
   - name: group
     description: show group info bar (Squad leader info bar)
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
   - name: cursors
     description: show HUD weapon cursors (connected with scripted HUD)
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
   - name: panels
     description: 'show [[Arma 3: Custom Info]]'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
     since:
@@ -83,7 +83,7 @@ syntax:
         minor: 70
   - name: kills
     description: show "x killed by y" [[systemChat]] messages
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
   - name: showIcon3D

@@ -27,7 +27,7 @@ syntax:
     type: Control
   - name: texture
     description: icon texture
-    type: Unknown
+    type: String
   - name: color
     description: text and icon color in format [[Color|Color(RGBA)]]
     type: Unknown
@@ -35,29 +35,22 @@ syntax:
     type: Unknown
   - name: width
     description: width of the icon (but not the text)
-    type: Unknown
+    type: Number
   - name: height
     description: height of the icon (but not the text)
-    type: Unknown
+    type: Number
   - name: angle
     description: rotation angle of the icon (but not the text)
-    type: Unknown
+    type: Number
   - name: text
-    type: Unknown
+    type: String
     optional: true
     default: '""'
   - name: shadow
-    description: |-
-      can be one of:
-      * 0 ([[false]]): no shadow
-      * 1: shadow (for text)
-      * 2 ([[true]]): outline (works for text and for icon only if icon angle is 0)
     type: Unknown
-    optional: true
-    default: '[[false]]'
   - name: textSize
     description: size of the text in UI units
-    type: Unknown
+    type: Number
     optional: true
     default: '-1'
     since:
@@ -66,7 +59,7 @@ syntax:
         minor: 72
   - name: font
     description: text's font
-    type: Unknown
+    type: String
     optional: true
     default: '""'
     since:
@@ -74,14 +67,7 @@ syntax:
         major: 0
         minor: 72
   - name: align
-    description: |-
-      text alignment. Can be:
-      * "left"
-      * "right"
-      * "center"
     type: Unknown
-    optional: true
-    default: '"right"'
     since:
       arma_3:
         major: 0

@@ -16,10 +16,10 @@ syntax:
   params:
   - name: unit
     description: unit to transmit
-    type: Unknown
+    type: Object
   - name: radioName
     description: class name from {{hl|CfgRadio}}
-    type: Unknown
+    type: String
 - call: !Binary
   - - side
     - identity
@@ -30,24 +30,12 @@ syntax:
   params:
   - name: side
     description: side to which the transmission will be played
-    type: Unknown
+    type: Side
   - name: identity
-    description: |-
-      class name of one of the identities in CfgHQIdentities. Possible identities in {{arma3}} are:
-      {{Columns|4|
-      * "Base"
-      * "HQ"
-      * "PAPA_BEAR"
-      * "AirBase"
-      * "BLU"
-      * "OPF"
-      * "IND"
-      * "IND_G"
-      }}
     type: Unknown
   - name: radioName
     description: class name from {{hl|CfgRadio}}
-    type: Unknown
+    type: String
 argument_loc: Global
 effect_loc: Local
 since:

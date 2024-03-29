@@ -12,10 +12,10 @@ syntax:
   params:
   - name: heli
     description: a helicopter
-    type: Unknown
+    type: Object
   - name: cargo
     description: an entity
-    type: Unknown
+    type: Object
 - call: !Binary
   - typeOfHeli
   - typeOfCargo
@@ -25,10 +25,10 @@ syntax:
   params:
   - name: typeOfHeli
     description: a config type of helicopter
-    type: Unknown
+    type: String
   - name: typeOfCargo
     description: a config type of cargo (the object of type cargo has to exist in the mission)
-    type: Unknown
+    type: String
   since:
     arma_3:
       major: 2

@@ -21,16 +21,10 @@ syntax:
   - name: soundName
     type: String
   - name: isSpeech
-    description: |-
-      * 0/[[false]] = play as sound ([[fadeSound]] applies)
-      * 1/[[true]] = play as speech ([[fadeSpeech]] applies), filters are not applied to it (i.e. house or vehicle interior one)
-      * 2 = play as sound ([[fadeSound]] applies) without interior/vehicle muffling
     type: Unknown
-    optional: true
-    default: '[[false]]'
   - name: offset
     description: offset in seconds. Same as [[playMusic]]
-    type: Unknown
+    type: Number
     optional: true
     default: '0'
     since:

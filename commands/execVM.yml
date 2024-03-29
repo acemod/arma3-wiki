@@ -28,10 +28,10 @@ syntax:
   params:
   - name: arguments
     description: arguments accessible as {{hl|[[Magic Variables#this|_this]]}} in the script
-    type: Unknown
+    type: Anything
   - name: filename
     description: path to the [[SQF Syntax|SQF]] script file
-    type: Unknown
+    type: String
 - call: !Unary filename
   ret:
   - Unknown
@@ -39,7 +39,7 @@ syntax:
   params:
   - name: filename
     description: path to the [[SQF Syntax|SQF]] script file
-    type: Unknown
+    type: String
 argument_loc: Global
 effect_loc: Local
 since:

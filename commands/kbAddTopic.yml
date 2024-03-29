@@ -19,19 +19,12 @@ syntax:
     type: Object
   - name: topicName
     description: the topic id for further reference
-    type: Unknown
+    type: String
   - name: conversationFile
     description: .bikb file path
-    type: Unknown
+    type: String
   - name: fsmFile
-    description: |-
-      .fsm file path. Receives the following parameters:
-      * '''_sentenceId:''' the sentence as defined in the .bikb file
-      * '''_topic:''' TopicName registered via kbAddTopic
-      * '''_this:''' the person that was talked to (receiver)
-      * '''_from:''' the person that talked to the receiver and triggered the script
     type: Unknown
-    optional: true
   - name: eventHandler
     description: |-
       code to execute - given String will be [[compile]]d. This is '''not''' an sqf file path.<br>

@@ -64,7 +64,7 @@ syntax:
   params:
   - name: display
     description: display in which control will be created
-    type: Unknown
+    type: Display
   - name: class
     description: existing classname (see [[ctrlCreate/classnames]]) of the new control;  {{GVI|arma3|1.70|size= 0.75}} it is possible to use classes defined in mission config
     type: Unknown
@@ -72,10 +72,10 @@ syntax:
     description: |-
       IDC of the new control. Use -1 if not needed
       {{Feature|warning|Be careful when setting the IDC to {{hl|-1}} if the GUI also contains a [[CT_LISTNBOX]] since {{hl|idcLeft}} and {{hl|idcRight}} by default have <syntaxhighlight lang="cpp" inline>idc = -1;</syntaxhighlight>.}}
-    type: Unknown
+    type: Number
   - name: controlsGroup
     description: creates controls in existing controls group
-    type: Unknown
+    type: Control
     optional: true
     default: '[[controlNull]]'
 argument_loc: Unspecified

@@ -14,7 +14,7 @@ syntax:
   params:
   - name: entity
     description: entity to be attached to the end of rope
-    type: Unknown
+    type: Object
   - name: toPoint
     description: position for the rope end, either a memory point [[String]] or relative offset [[Array]]
     type: Unknown
@@ -26,7 +26,7 @@ syntax:
     default: '[0,0,-1]'
   - name: rope
     description: the rope to which entity will be attached to
-    type: Unknown
+    type: Object
 - call: !Binary
   - entity
   - rope
@@ -36,10 +36,10 @@ syntax:
   params:
   - name: entity
     description: entity to be attached to the end of rope
-    type: Unknown
+    type: Object
   - name: rope
     description: the rope to which entity will be attached to
-    type: Unknown
+    type: Object
   since:
     arma_3:
       major: 2

@@ -10,12 +10,6 @@ syntax:
   - null
   params:
   - name: command
-    description: |-
-      code executed on click. The following variables are available:
-      * _pos: [[Array]] - Clicked position
-      * _units: [[Array]] - Units which were selected (via function keys) '''before''' opening the map (''may be non-functional in Arma'')
-      * _shift: [[Boolean]] - Whether {{Controls|Shift}} was pressed when clicking on the map
-      * _alt: [[Boolean]] - Whether {{Controls|Alt}} was pressed when clicking on the map
     type: Unknown
 - call: !Binary
   - params
@@ -27,13 +21,6 @@ syntax:
   - name: params
     type: Anything
   - name: command
-    description: |-
-      code executed on click. The following variables are available:
-      * _this: [[Anything]] - Params passed to onMapSingleClick
-      * _pos: [[Array]] - Clicked position
-      * _units: [[Array]] - Units which were selected (via function keys) '''before''' opening the map (''may be non-functional in Arma'')
-      * _shift: [[Boolean]] - Whether {{Controls|Shift}} was pressed when clicking on the map
-      * _alt: [[Boolean]] - Whether {{Controls|Alt}} was pressed when clicking on the map
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

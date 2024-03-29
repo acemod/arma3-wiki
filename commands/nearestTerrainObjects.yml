@@ -21,10 +21,10 @@ syntax:
     type: Unknown
   - name: radius
     description: range from center position to search for objects
-    type: Unknown
+    type: Number
   - name: sort
     description: sort objects by distance to the center or not - setting to [[false]] '''greatly''' improves performance
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
     since:
@@ -33,7 +33,7 @@ syntax:
         minor: 62
   - name: 2Dmode
     description: 'the object search and sorting mode: [[true]] - 2D, [[false]] - 3D'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:

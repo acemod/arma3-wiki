@@ -18,73 +18,14 @@ syntax:
   params:
   - name: trigger
     description: trigger object
-    type: Unknown
+    type: Object
   - name: by
-    description: |-
-      who activates trigger. Can be {{hl|"NONE"}}, or:
-      {{{!}} class="wikitable valign-top"
-      ! Side
-      ! Radio
-      ! Object
-      ! Status
-      {{!}}-
-      {{!}}
-      {{Columns|2|
-      * {{hl|"EAST"}}
-      * {{hl|"WEST"}}
-      * {{hl|"GUER"}}
-      * {{hl|"CIV"}}
-      * {{hl|"LOGIC"}}
-      * {{hl|"ANY"}}
-      * {{GVI|arma3|1.68|size= 0.75}} {{hl|"ANYPLAYER"}}
-      }}
-      {{!}}
-      {{Columns|3|
-      * {{hl|"ALPHA"}}
-      * {{hl|"BRAVO"}}
-      * {{hl|"CHARLIE"}}
-      * {{hl|"DELTA"}}
-      * {{hl|"ECHO"}}
-      * {{hl|"FOXTROT"}}
-      * {{hl|"GOLF"}}
-      * {{hl|"HOTEL"}}
-      * {{hl|"INDIA"}}
-      * {{hl|"JULIET"}}
-      }}
-      {{!}}
-      {{Columns|3|
-      * {{hl|"STATIC"}}
-      * {{hl|"VEHICLE"}}
-      * {{hl|"GROUP"}}
-      * {{hl|"LEADER"}}
-      * {{hl|"MEMBER"}}
-      }}
-      {{!}}
-      * {{hl|"WEST SEIZED"}}
-      * {{hl|"EAST SEIZED"}}
-      * {{hl|"GUER SEIZED"}}
-      {{!}}}
     type: Unknown
   - name: type
-    description: |-
-      how trigger is it activated. Can be:
-      {{{!}} class="wikitable valign-top"
-      ! Presence
-      ! Detection
-      {{!}}-
-      {{!}}
-      * {{hl|"PRESENT"}}
-      * {{hl|"NOT PRESENT"}}
-      {{!}}
-      * {{hl|"WEST D"}}
-      * {{hl|"EAST D"}}
-      * {{hl|"GUER D"}}
-      * {{hl|"CIV D"}}
-      {{!}}}
     type: Unknown
   - name: repeating
     description: activation can happen repeatedly
-    type: Unknown
+    type: Boolean
 argument_loc: Global
 effect_loc: Local
 since:

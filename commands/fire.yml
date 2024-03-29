@@ -15,10 +15,10 @@ syntax:
   params:
   - name: unit
     description: unit that is supposed to fire
-    type: Unknown
+    type: Object
   - name: muzzle
     description: name of the muzzle to be fired
-    type: Unknown
+    type: String
 - call: !Binary
   - unit
   - - muzzle
@@ -35,7 +35,7 @@ syntax:
   - name: mode
     type: String
   - name: magazine
-    type: Unknown
+    type: String
     optional: true
 argument_loc: Local
 effect_loc: Global

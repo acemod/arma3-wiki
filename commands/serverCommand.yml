@@ -16,7 +16,7 @@ syntax:
   - '[[false]] if a non valid command is used ("#blah"), false otherwise (was always [[true]] before {{GVI|arma3|1.40|size= 0.75}})'
   params:
   - name: command
-    type: Unknown
+    type: String
 - call: !Binary
   - password
   - command
@@ -26,10 +26,10 @@ syntax:
   params:
   - name: password
     description: case-sensitive password defined in [[server.cfg]] with {{hl|serverCommandPassword}} param
-    type: Unknown
+    type: String
   - name: command
     description: server command
-    type: Unknown
+    type: String
   since:
     arma_3:
       major: 1

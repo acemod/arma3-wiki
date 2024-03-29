@@ -13,13 +13,13 @@ syntax:
   params:
   - name: shapeName
     description: path to the 3d model (can be obtained with [[getModelInfo]] command)
-    type: Unknown
+    type: String
   - name: positionWorld
     description: placement position by the '''model centre''''s position (see [[getPosWorld]])
     type: Unknown
   - name: local
     description: '[[true]] to create a local instance only'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:
@@ -36,13 +36,13 @@ syntax:
   params:
   - name: className
     description: '[[CfgVehicles]] class name'
-    type: Unknown
+    type: String
   - name: positionASL
     description: placement position
     type: Unknown
   - name: local
     description: '[[true]] to create a local instance only'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:

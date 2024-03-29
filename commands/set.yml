@@ -16,7 +16,7 @@ syntax:
     type: Unknown
   - name: index
     description: 0-based array index. {{GVI|arma3|2.12|size= 0.75}} negative index can be used to select from the end of the array, i.e. -1 means last array element.
-    type: Unknown
+    type: Number
   - name: value
     type: Anything
 - call: !Binary
@@ -36,7 +36,7 @@ syntax:
     type: Anything
   - name: insertOnly
     description: if set to [[true]], set the value only if the key does not exist already
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:

@@ -62,10 +62,10 @@ syntax:
   params:
   - name: channelID
     description: '[[Channel IDs|channel ID]]'
-    type: Unknown
+    type: Number
   - name: enable
     description: '[[true]] to enable, [[false]] to disable (both VoN and chat)'
-    type: Unknown
+    type: Boolean
 - call: !Binary
   - channelID
   - - chat
@@ -76,13 +76,13 @@ syntax:
   params:
   - name: channelID
     description: '[[Channel IDs|channel ID]]'
-    type: Unknown
+    type: Number
   - name: chat
     description: '[[true]] to enable text chat'
-    type: Unknown
+    type: Boolean
   - name: VoN
     description: '[[true]] to enable voice chat'
-    type: Unknown
+    type: Boolean
   since:
     arma_3:
       major: 1

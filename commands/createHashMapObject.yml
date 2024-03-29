@@ -19,22 +19,10 @@ syntax:
   - null
   params:
   - name: classDefinition
-    description: |-
-      this is the hashmap object's constructor
-      * {{hl|"#clone"}}: [[Code]] - this is code happening when cloning is done on this hashmap object
-      * {{hl|"#delete"}}: [[Code]] - this is the hashmap object's destructor. It will always be executed inside [[missionNamespace]].
-      * {{hl|"#str"}}: [[Code]] - code that is used to evaluate what is displayed when the [[str]] function is called on the object - '''must''' return [[String]]
-      * {{hl|"#flags"}}: [[Array]] of [[String]]s - case-''in''sensitive flags regarding this hashmap object
-      ** "noCopy": forbids copying, <sqf inline>+_hashMapObject</sqf> will throw an error
-      ** "sealed": prevents from adding and removing any keys - key values can still be edited
-      ** "unscheduled": all methods (including {{hl|#clone}} and {{hl|#create}}) will be executed in {{Link|Scheduler#Unscheduled Environment|unscheduled environment}}
-      * {{hl|"#base"}}: [[Array]] or [[HashMap]] - declaration of base class for inheritance
-      * {{hl|"#type"}}: [[Any]] - can be used to give a object a "type name", on inheritance types will be merged into an [[Array]]
-      Note that all entries beginning with {{hl|#}} are reserved, the engine might use these internally without their use being documented.
     type: Unknown
   - name: constructorArguments
     description: passed as <sqf inline>_this</sqf> argument to the "#create" method.
-    type: Unknown
+    type: Anything
     optional: true
     default: '[[Nothing]]'
 argument_loc: Unspecified

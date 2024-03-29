@@ -29,25 +29,9 @@ syntax:
   - the sound source (was [[Nothing]] before {{GVI|arma3|2.00|size= 0.75}})
   params:
   - name: from
-    description: |-
-      origin of the sound
-      * [[Array]] - format is [from, to] where:
-      ** from: [[Object]] - origin of the sound
-      ** to: [[Object]] - target
     type: Unknown
   - name: sound
-    description: |-
-      maximum distance in meters at which the sound can be heard
-      ** pitch: [[Number]] - (Optional, default 1) pitch of the sound
-      ** {{GVI|arma3|1.92|size= 0.75}} isSpeech: [[Boolean]] or {{GVI|arma3|2.04|size= 0.75}} [[Number]] - (Optional, default [[false]])
-      *** 0/[[false]] = play as sound ([[fadeSound]] applies)
-      *** 1/[[true]] = play as speech ([[fadeSpeech]] applies), filters are not applied to it (i.e. house or vehicle interior one)
-      *** 2 = play as sound ([[fadeSound]] applies) without interior/vehicle muffling
-      ** {{GVI|arma3|2.00|size= 0.75}} offset: [[Number]] - (Optional, default 0) offset in seconds; ignored when ''simulateSpeedOfSound'' is used
-      ** {{GVI|arma3|2.18|size= 0.75}} simulateSpeedOfSound: [[Boolean]] - (Optional, default [[false]]) [[true]] to simulate speed of sound (see description note)
     type: Unknown
-    optional: true
-    default: '100'
 argument_loc: Global
 effect_loc: Local
 since:

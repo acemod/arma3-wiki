@@ -18,10 +18,10 @@ syntax:
   params:
   - name: feature
     description: '{{hl|"lowpass"}} or {{hl|"building_interior"}}'
-    type: Unknown
+    type: String
   - name: enable
     description: '[[true]] enable, [[false]], disable'
-    type: Unknown
+    type: Boolean
     optional: true
 - call: !Binary
   - object
@@ -35,10 +35,10 @@ syntax:
     type: Object
   - name: feature
     description: '{{hl|"building_interior"}} or {{hl|"building_exterior"}} only (mutually exclusive)'
-    type: Unknown
+    type: String
   - name: enable
     description: '[[true]] enable, [[false]], disable'
-    type: Unknown
+    type: Boolean
     optional: true
   since:
     arma_3:

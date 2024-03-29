@@ -15,27 +15,19 @@ syntax:
   params:
   - name: requestName
     description: can be anything but "users"
-    type: Unknown
+    type: String
   - name: callback
     description: code to be executed on request completion
-    type: Unknown
+    type: String
     optional: true
     default: '""'
   - name: data
     description: JSON data to be sent
-    type: Unknown
+    type: Anything
     optional: true
     default: '""'
   - name: httpMethod
-    description: |-
-      can be one of:
-      * "POST"
-      * "GET"
-      * "DELETE"
-      * "PUT"
     type: Unknown
-    optional: true
-    default: '"GET", or "POST" if ''''data'''' is provided - case-insensitive'
 argument_loc: Unspecified
 effect_loc: Unspecified
 server_exec: false

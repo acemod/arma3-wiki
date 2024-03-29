@@ -23,10 +23,10 @@ syntax:
     type: Unknown
   - name: sizeX
     description: in meters
-    type: Unknown
+    type: Number
   - name: sizeY
     description: in meters
-    type: Unknown
+    type: Number
 - call: !Unary
   - location
   ret:
@@ -35,7 +35,7 @@ syntax:
   params:
   - name: location
     description: a terrain's location. If a scripted location is provided, it is simply returned
-    type: Unknown
+    type: Location
   since:
     arma_3:
       major: 2

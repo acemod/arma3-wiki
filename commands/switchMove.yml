@@ -30,10 +30,10 @@ syntax:
   params:
   - name: person
     description: unit
-    type: Unknown
+    type: Object
   - name: moveName
     description: animation state (see [[animationState]])
-    type: Unknown
+    type: String
 - call: !Binary
   - person
   - - moveName
@@ -46,23 +46,23 @@ syntax:
   params:
   - name: person
     description: unit
-    type: Unknown
+    type: Object
   - name: moveName
     description: entry from {{hl|"CfgMovesMaleSdr" >> "states"}} or {{hl|"CfgGesturesMale" >> "states"}}
-    type: Unknown
+    type: String
   - name: time
     description: normalized time, in range 0..1, where 0 = beginning of the animation, and 1 = end of the animation
-    type: Unknown
+    type: Number
     optional: true
     default: '0'
   - name: blendFactor
     description: how much to blend the current animation with the new animation, in range 0..1, where 0 = current animation, and 1 = new animation. When 1 is used, the switching is instant (not smooth), similar to the first syntax.
-    type: Unknown
+    type: Number
     optional: true
     default: '1'
   - name: resetAim
     description: whether the aim/head direction should be reset after switching
-    type: Unknown
+    type: Boolean
     optional: true
     default: 'true'
   since:

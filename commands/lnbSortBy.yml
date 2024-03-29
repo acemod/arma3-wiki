@@ -27,34 +27,27 @@ syntax:
     type: Unknown
   - name: column
     description: column to sort (starts with 0)
-    type: Unknown
+    type: Number
   - name: sortByType
-    description: |-
-      one of:
-      * {{hl|"TEXT"}}
-      * {{hl|"VALUE"}}
-      * {{hl|"DATA"}}
     type: Unknown
-    optional: true
-    default: '"TEXT"'
   - name: reversedOrder
     description: '[[true]] for sorting in reversed order'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   - name: caseSensitive
     description: '[[true]] for using case-sensitive comparison'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   - name: useTextRight
     description: '[[true]] to sort by [[lnbSetTextRight | text right]]'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   - name: unicodeOff
     description: '[[true]] to switch off UNICODE conversion for faster sorting'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
 argument_loc: Unspecified

@@ -20,7 +20,7 @@ syntax:
   params:
   - name: type
     description: class from [[CfgVehicles]]
-    type: Unknown
+    type: String
   - name: position
     description: desired placement position
     type: Unknown
@@ -29,12 +29,8 @@ syntax:
     type: Unknown
   - name: placement
     description: placement radius, the unit is randomly place in a circle with this radius
-    type: Unknown
+    type: Number
   - name: special
-    description: |-
-      one of:
-      * {{hl|"NONE"}} - will look for a suitable empty position near given position (subject to other placement params) before creating the agent
-      * {{hl|"CAN_COLLIDE"}} - creates the agent at given position (subject to other placement params), without checking if others objects can cross its 3D model
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Global

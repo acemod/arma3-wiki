@@ -13,7 +13,7 @@ syntax:
   params:
   - name: dialogName
     description: class name used in the description.ext, resource.cpp or config.cpp
-    type: Unknown
+    type: String
 - call: !Unary
   - dialogName
   - forceOnTop
@@ -23,10 +23,10 @@ syntax:
   params:
   - name: dialogName
     description: class name used in the description.ext, resource.cpp or config.cpp
-    type: Unknown
+    type: String
   - name: forceOnTop
     description: if [[true]], dialog will be rendered on top of displays
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   since:

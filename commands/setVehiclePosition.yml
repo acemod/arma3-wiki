@@ -30,12 +30,9 @@ syntax:
     type: Unknown
   - name: placement
     description: the vehicle is randomly placed inside a circle with given position as center and placement as its radius
-    type: Unknown
+    type: Number
   - name: special
-    description: "can be one of the following: \n* {{hl|\"NONE\"}} - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there. \n* {{hl|\"CAN_COLLIDE\"}} - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model. \n* {{hl|\"FLY\"}} - if vehicle is capable of flying and has crew, it will be made airborne at default height. \nIf ''special'' is \"\" or not specified, default {{hl|\"NONE\"}} is used."
     type: Unknown
-    optional: true
-    default: '"NONE"'
 argument_loc: Global
 effect_loc: Global
 since:

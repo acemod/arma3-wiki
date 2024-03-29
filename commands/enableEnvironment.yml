@@ -24,7 +24,7 @@ syntax:
   params:
   - name: enable
     description: '[[false]] to disable ambient life and ambient sounds, [[true]] to re-enable it'
-    type: Unknown
+    type: Boolean
 - call: !Unary
   - ambientLife
   - ambientSound
@@ -35,13 +35,13 @@ syntax:
   params:
   - name: ambientLife
     description: enable/disable ambient life (bees, rabbits, birds, snakes, fish)
-    type: Unknown
+    type: Boolean
   - name: ambientSound
     description: enable/disable ambient sounds (cicadas, owls, etc)
-    type: Unknown
+    type: Boolean
   - name: windyCoef
     description: howling wind at heights, range 0..1
-    type: Unknown
+    type: Number
     optional: true
     default: '1'
     since:

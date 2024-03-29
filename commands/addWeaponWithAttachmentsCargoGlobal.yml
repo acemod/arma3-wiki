@@ -13,25 +13,12 @@ syntax:
   params:
   - name: container
     description: container to add the weapon to. Might be a backpack, ammobox or vehicle.
-    type: Unknown
+    type: Object
   - name: weaponConfiguration
-    description: |-
-      Weapon class name from [[:Category:CfgWeapons|CfgWeapons]]
-      * muzzle: [[String]] - Muzzle attachment class name. Use "" if not needed.
-      * flashlight: [[String]] - Side rail attachment class name. Use "" if not needed.
-      * optics: [[String]] - Top rail attachment class name. Use "" if not needed.
-      * primaryMuzzle: [[Array]] in format [primaryMuzzleMagazine, primaryAmmoCount] - Use [] if not needed
-      ** primaryMuzzleMagazine: [[String]] - Magazine class name
-      ** primaryAmmoCount: [[Number]] - Ammo count in magazine (will be clipped to values between 0 and the maximum capacity of the magazine class)
-      * secondaryMuzzle: [[Array]] in format [secondaryMuzzleMagazine, secondaryAmmoCount] - Use [] if not needed
-      ** secondaryMuzzleMagazine: [[String]] - Magazine class name
-      ** secondaryAmmoCount: [[Number]] - Ammo count in magazine (will be clipped to values between 0 and the maximum capacity of the magazine class)
-      * bipod: [[String]] - Underbarrel rail attachment class name. Use "" if not needed.
-      This array has the same format as the array returned by the [[weaponsItems]] command.
     type: Unknown
   - name: weaponsCount
     description: number of weapons to add
-    type: Unknown
+    type: Number
 argument_loc: Global
 effect_loc: Global
 since:

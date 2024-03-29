@@ -14,7 +14,7 @@ syntax:
   params:
   - name: entity
     description: unit or vehicle
-    type: Unknown
+    type: Object
 - call: !Unary
   - vehicle
   - includeEmpty
@@ -24,10 +24,10 @@ syntax:
   params:
   - name: vehicle
     description: unit or vehicle
-    type: Unknown
+    type: Object
   - name: includeEmpty
     description: '[[true]] to include empty magazines'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   since:

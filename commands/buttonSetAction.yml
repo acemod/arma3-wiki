@@ -18,10 +18,10 @@ syntax:
   params:
   - name: idc
     description: button IDC
-    type: Unknown
+    type: Number
   - name: action
     description: '''''''[[SQS Syntax|SQS]]'''''' code body that should be executed when the button/active text is clicked'
-    type: Unknown
+    type: String
 - call: !Binary
   - control
   - action
@@ -31,10 +31,10 @@ syntax:
   params:
   - name: control
     description: button control
-    type: Unknown
+    type: Control
   - name: action
     description: '''''''[[SQS Syntax|SQS]]'''''' code body that should be executed when the button/active text is clicked'
-    type: Unknown
+    type: String
 argument_loc: Local
 effect_loc: Local
 since:

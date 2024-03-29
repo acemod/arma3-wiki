@@ -46,14 +46,11 @@ syntax:
   params:
   - name: vehicle
     description: the vehicle to limit; [[local]] [[player]]'s vehicle (<sqf inline>vehicle player</sqf>)
-    type: Unknown
+    type: Object
   - name: speed
     description: desired/top speed in km/h. 0 to disable any setting. Only positives values are valid, negative values will make the vehicle unable to move forward
-    type: Unknown
+    type: Number
   - name: autoThrust
-    description: |-
-      cruise Control: the vehicle will maintain this speed until brakes is applied or driver dies or leaves the vehicle
-      * [[false]] - Speed Limiter: the vehicle will not accelerate above set speed
     type: Unknown
 argument_loc: Local
 effect_loc: Local

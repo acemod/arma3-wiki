@@ -15,7 +15,7 @@ syntax:
   params:
   - name: entity
     description: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode
-    type: Unknown
+    type: Object
 - call: !Unary
   - entity
   ret:
@@ -24,7 +24,7 @@ syntax:
   params:
   - name: entity
     description: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode
-    type: Unknown
+    type: Object
   since:
     arma_3:
       major: 2
@@ -38,7 +38,7 @@ syntax:
   params:
   - name: vehicle
     description: vehicle with vision modes
-    type: Unknown
+    type: Object
   - name: turretPath
     description: path to vehicle's turret. Use [-1] for driver turret, [] for default primary gunner turret
     type: Unknown
@@ -55,10 +55,10 @@ syntax:
   params:
   - name: unit
     description: soldier
-    type: Unknown
+    type: Object
   - name: weapon
     description: unit's weapon. Use "" for current weapon
-    type: Unknown
+    type: String
   since:
     arma_3:
       major: 2

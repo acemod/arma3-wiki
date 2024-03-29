@@ -21,7 +21,7 @@ syntax:
     type: Object
   - name: fullMagazines
     description: '[[true]] to top up used magazines'
-    type: Unknown
+    type: Boolean
 - call: !Unary name
   ret:
   - Unknown
@@ -29,7 +29,7 @@ syntax:
   params:
   - name: name
     description: '{{hl|CfgVehicles}} classname from which to extract the loadout'
-    type: Unknown
+    type: String
 - call: !Unary config
   ret:
   - Unknown
@@ -37,7 +37,7 @@ syntax:
   params:
   - name: config
     description: loadout config class
-    type: Unknown
+    type: Config
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

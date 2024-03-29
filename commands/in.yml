@@ -18,7 +18,7 @@ syntax:
   params:
   - name: value
     description: any value (cannot  match [[Array]] before {{arma3}})
-    type: Unknown
+    type: Anything
   - name: array
     description: array of values
     type: Unknown
@@ -31,10 +31,10 @@ syntax:
   params:
   - name: unit
     description: entity person
-    type: Unknown
+    type: Object
   - name: vehicle
     description: entity vehicle
-    type: Unknown
+    type: Object
 - call: !Binary
   - position
   - location
@@ -60,10 +60,10 @@ syntax:
   params:
   - name: needle
     description: string to search '''for'''
-    type: Unknown
+    type: String
   - name: haystack
     description: string to search '''in'''
-    type: Unknown
+    type: String
   since:
     arma_3:
       major: 1

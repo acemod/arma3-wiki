@@ -25,10 +25,10 @@ syntax:
   params:
   - name: name
     description: name of effect type
-    type: Unknown
+    type: String
   - name: priority
     description: unique priority, defines order of applying effect to the scene. If there is another effect using the same priority, creation will fail
-    type: Unknown
+    type: Number
 - call: !Unary
   - - name1
     - priority1
@@ -39,10 +39,10 @@ syntax:
   params:
   - name: nameN
     description: name of effect type
-    type: Unknown
+    type: String
   - name: priorityN
     description: unique priority, defines order of applying effect to the scene. If there is another effect using the same priority, creation will fail
-    type: Unknown
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

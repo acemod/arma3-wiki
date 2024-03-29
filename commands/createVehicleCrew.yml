@@ -10,7 +10,7 @@ syntax:
   params:
   - name: vehicle
     description: vehicle to populate with crew
-    type: Unknown
+    type: Object
 - call: !Binary
   - group
   - vehicle
@@ -20,10 +20,10 @@ syntax:
   params:
   - name: group
     description: group to put crew in
-    type: Unknown
+    type: Group
   - name: vehicle
     description: vehicle to populate with crew
-    type: Unknown
+    type: Object
   since:
     arma_3:
       major: 2
@@ -37,10 +37,10 @@ syntax:
   params:
   - name: side
     description: side to create crew on
-    type: Unknown
+    type: Side
   - name: vehicle
     description: vehicle to populate with crew
-    type: Unknown
+    type: Object
   since:
     arma_3:
       major: 2

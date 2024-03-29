@@ -19,18 +19,18 @@ syntax:
   params:
   - name: text
     description: text to be displayed
-    type: Unknown
+    type: String
   - name: type
     description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.
-    type: Unknown
+    type: String
   - name: speed
     description: time in seconds to fade in resource. If 0 or less, default value is used
-    type: Unknown
+    type: Number
     optional: true
     default: '1'
   - name: showInMap
     description: '[[false]] to hide the text when the map is opened'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
     since:
@@ -39,7 +39,7 @@ syntax:
         minor: 50
   - name: isStructuredText
     description: '[[true]] to switch support for [[Structured Text]] formatting - see {{Link|#Example 4}}'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:
@@ -48,7 +48,7 @@ syntax:
         minor: 74
   - name: drawOverHUD
     description: '[[false]] to show the text under in-game HUD'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
     since:
@@ -68,29 +68,26 @@ syntax:
   - null
   params:
   - name: layer
-    description: |-
-      layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100.
-      * [[String]] - layer name on which the effect is shown. Layer names are CaSe SeNsItIvE.
     type: Unknown
   - name: text
     description: text to be displayed
-    type: Unknown
+    type: String
   - name: type
     description: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.
-    type: Unknown
+    type: String
   - name: speed
     description: time in seconds to fade in resource. If 0 or less, default value is used
-    type: Unknown
+    type: Number
     optional: true
     default: '-1'
   - name: showInMap
     description: '[[false]] to hide the text when the map is opened'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
   - name: isStructuredText
     description: '[[true]] to switch support for [[Structured Text]] formatting - see {{Link|#Example 4}}'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
     since:
@@ -99,7 +96,7 @@ syntax:
         minor: 74
   - name: drawOverHUD
     description: '[[false]] to show the text under in-game HUD'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
     since:

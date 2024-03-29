@@ -17,7 +17,7 @@ syntax:
     type: Unknown
   - name: radius
     description: radius of the sphere
-    type: Unknown
+    type: Number
 - call: !Binary
   - position
   - - type
@@ -34,7 +34,7 @@ syntax:
     type: Unknown
   - name: radius
     description: radius of the sphere
-    type: Unknown
+    type: Number
 - call: !Binary
   - area
   - - types
@@ -46,27 +46,23 @@ syntax:
   - not sorted
   params:
   - name: area
-    description: |-
-      marker name
-      * [[Object]] - trigger
-      * [[Array]] - format [center, a, b, angle, isRectangular, c] (see [[inArea]])
     type: Unknown
   - name: types
     description: type(s) to search for or [] empty array to return every type
     type: Unknown
   - name: matchExactType
     description: '[[true]] for an exact type match, [[false]] for an [[isKindOf]] match'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   - name: aliveOnly
     description: '[[true]] to ignore dead entities, [[false]] to include them'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
   - name: includeCrew
     description: '[[true]] to include crew of vehicles in search'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   since:

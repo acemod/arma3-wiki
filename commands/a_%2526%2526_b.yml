@@ -17,10 +17,10 @@ syntax:
   params:
   - name: booleanA
     description: test condition or variable
-    type: Unknown
+    type: Boolean
   - name: booleanB
     description: test condition or variable
-    type: Unknown
+    type: Boolean
 - call: !Binary
   - boolean
   - code
@@ -30,10 +30,10 @@ syntax:
   params:
   - name: boolean
     description: test condition or variable
-    type: Unknown
+    type: Boolean
   - name: code
     description: code that once executed returns a [[Boolean]]. The code is not evaluated if '''boolean''' is [[false]].
-    type: Unknown
+    type: Code
   since:
     arma_2_arrowhead:
       major: 1

@@ -19,10 +19,6 @@ syntax:
   - '[[true]] if ''''code'''' returns [[Nothing]], [[false]] otherwise'
   params:
   - name: code
-    description: |-
-      code to evaluate:
-      * the code '''will''' be executed; <sqf inline>isNil { player setDamage 1 };</sqf> ''will'' kill the player
-      * the code will not be allowed to [[canSuspend|suspend]] while expression is evaluated, even if the parent scope allows it (see {{Link|#Example 4}}).
     type: Unknown
 - call: !Binary
   - namespace

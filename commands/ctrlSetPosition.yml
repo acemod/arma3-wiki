@@ -16,13 +16,13 @@ syntax:
   params:
   - name: controlName
     description: 2D control
-    type: Unknown
+    type: Control
   - name: x
     description: position in x
-    type: Unknown
+    type: Number
   - name: y
     description: position in y
-    type: Unknown
+    type: Number
 - call: !Binary
   - controlName
   - - x
@@ -35,19 +35,19 @@ syntax:
   params:
   - name: controlName
     description: 2D control
-    type: Unknown
+    type: Control
   - name: x
     description: position in x
-    type: Unknown
+    type: Number
   - name: y
     description: position in y
-    type: Unknown
+    type: Number
   - name: w
     description: width of the control
-    type: Unknown
+    type: Number
   - name: h
     description: height of the control
-    type: Unknown
+    type: Number
 - call: !Binary
   - controlName
   - - x
@@ -59,16 +59,16 @@ syntax:
   params:
   - name: controlName
     description: 3D control
-    type: Unknown
+    type: Control
   - name: x
     description: screen x
-    type: Unknown
+    type: Number
   - name: z
     description: distance from the screen (depth). If object is too far, it cannot be dragged by the mouse.
-    type: Unknown
+    type: Number
   - name: y
     description: screen y
-    type: Unknown
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

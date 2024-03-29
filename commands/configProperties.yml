@@ -22,15 +22,15 @@ syntax:
   params:
   - name: config
     description: config entry to search
-    type: Unknown
+    type: Config
   - name: condition
     description: expression, which if returns [[true]], adds current property to result
-    type: Unknown
+    type: String
     optional: true
     default: '"true"'
   - name: inherit
     description: include inherited properties
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[true]]'
 argument_loc: Unspecified

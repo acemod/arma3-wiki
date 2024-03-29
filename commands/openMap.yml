@@ -17,7 +17,7 @@ syntax:
   params:
   - name: show
     description: if [[true]] opens map, if [[false]] closes map, provided it is not ''forced''
-    type: Unknown
+    type: Boolean
 - call: !Unary
   - show
   - forced
@@ -27,10 +27,10 @@ syntax:
   params:
   - name: show
     description: if [[true]] opens map, if [[false]] closes map, provided it is not ''forced''.
-    type: Unknown
+    type: Boolean
   - name: forced
     description: if [[true]] keeps map from closing when map is open. {{GVI|arma3|2.06|size= 0.75}} if [[false]], forces map to stay closed if ''show'' is [[false]] (see {{Link|#Example 1}})
-    type: Unknown
+    type: Boolean
 argument_loc: Unspecified
 effect_loc: Local
 since:

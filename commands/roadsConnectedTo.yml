@@ -15,7 +15,7 @@ syntax:
   params:
   - name: roadSegment
     description: road segment
-    type: Unknown
+    type: Object
 - call: !Unary
   - roadSegment
   - extended
@@ -25,10 +25,10 @@ syntax:
   params:
   - name: roadSegment
     description: road segment
-    type: Unknown
+    type: Object
   - name: extended
     description: when [[true]], performs a more thorough search on top of base behaviour, slower but returns pedestrian and other missing road segments
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   since:

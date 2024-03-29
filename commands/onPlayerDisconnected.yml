@@ -14,14 +14,6 @@ syntax:
   - null
   params:
   - name: code
-    description: |-
-      code executed. The code will receive a number of special variables:
-      * _id: [[Number]] - Is the unique DirectPlay ID. Quite useless as the number is too big for in-built string representation and gets rounded. It is also the same id used for user placed markers.
-      * _uid: [[String]] - Is [[getPlayerUID]] of the leaving player. In Arma 3 it is also the same as Steam ID.
-      * _name: [[String]] - Is [[profileName]] of the leaving player.
-      * {{GVI|arma3|1.50|size= 0.75}} _jip: [[Boolean]] - Is a flag that indicated whether or not the player joined after the mission has started ('''J'''oined '''I'''n '''P'''rogress). [[true]] - if the player was JIP, otherwise [[false]].
-      * {{GVI|arma3|1.50|size= 0.75}} _owner: [[Number]] - Is [[owner]] id of the leaving player. Can be used for kick or ban purposes or just for [[publicVariableClient]].
-      * {{GVI|arma3|1.96|size= 0.75}} _idstr:  [[String]] - Same as {{hl|_id}} but in string format, so could be exactly compared to [[allMapMarkers | user marker]] ids.
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

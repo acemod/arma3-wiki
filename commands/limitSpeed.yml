@@ -16,8 +16,8 @@ syntax:
   - name: objectName
     type: Object
   - name: speed
-    description: in km/h; By default, it's {{hl|2 * maxSpeed}} of the vehicle/unit (which is defined in config). See Example 1.
-    type: Unknown
+    description: in km/h; set to {{hl|-1}} (or any <= 0 value) to remove the limit
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -37,7 +37,7 @@ since:
     major: 0
     minor: 50
 examples:
-- "leader player limitSpeed 5;\t\t// set to walking speed\nsleep 30;\nleader player limitSpeed (2 * getNumber(configOf leader player >> \"maxSpeed\"));\t// remove the limit\n"
+- "leader player limitSpeed 5;\t\t// set to walking speed\nsleep 30;\nleader player limitSpeed -1;\t// remove the limit\n"
 - |
   addMissionEventHandler ["OnEachFrame", { hintSilent format ["myVehicle's speed: %1 km/h", speed myVehicle toFixed 2] }];
   sleep 5;

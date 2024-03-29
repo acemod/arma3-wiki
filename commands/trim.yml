@@ -10,7 +10,7 @@ syntax:
   params:
   - name: stringValue
     description: string to be trimmed. spaces, tabs and line returns are removed from both ends of ''stringValue''.
-    type: Unknown
+    type: String
 - call: !Binary
   - string
   - - chars
@@ -21,16 +21,11 @@ syntax:
   params:
   - name: string
     description: string to be trimmed
-    type: Unknown
+    type: String
   - name: chars
     description: list of characters to be trimmed
-    type: Unknown
+    type: String
   - name: where
-    description: |-
-      can be:
-      * 0 - trim at the beginning (left) and the end (right)
-      * 1 - trim at the beginning (left)
-      * 2 - trim at the end (right)
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -21,10 +21,10 @@ syntax:
   params:
   - name: arguments
     description: arguments accessible as {{hl|_this}} in the FSM
-    type: Unknown
+    type: Anything
   - name: fsmFilePath
     description: file with FSM code
-    type: Unknown
+    type: String
 - call: !Unary fsmFilePath
   ret:
   - Unknown
@@ -32,45 +32,7 @@ syntax:
   params:
   - name: fsmFilePath
     description: file with FSM code
-    type: Unknown
-- call: !Binary
-  - arguments
-  - - fsmFilePath
-    - allowTermination
-  ret:
-  - Unknown
-  - FSM handle (also available as {{hl|_thisFSM}} in the FSM)
-  params:
-  - name: arguments
-    description: arguments accessible as {{hl|_this}} in the FSM
-    type: Unknown
-  - name: fsmFilePath
-    description: file with FSM code
-    type: Unknown
-  - name: allowTermination
-    description: '[[true]] to allow FSM termination with [[terminate]] command. Default [[false]]'
-    type: Unknown
-  since:
-    arma_3:
-      major: 2
-      minor: 18
-- call: !Unary
-  - fsmFilePath
-  - allowTermination
-  ret:
-  - Unknown
-  - FSM handle (also available as {{hl|_thisFSM}} in the FSM)
-  params:
-  - name: fsmFilePath
-    description: file with FSM code
-    type: Unknown
-  - name: allowTermination
-    description: '[[true]] to allow FSM termination with [[terminate]] command. Default [[false]]'
-    type: Unknown
-  since:
-    arma_3:
-      major: 2
-      minor: 18
+    type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -12,10 +12,10 @@ syntax:
   params:
   - name: control
     description: '[[CT_CHECKBOXES]] control. If control contain multiple checkboxes, only checkbox with index 0 is queried.'
-    type: Unknown
+    type: Control
   - name: checked
     description: '[[true]] to check, [[false]] to uncheck the checkbox'
-    type: Unknown
+    type: Boolean
 - call: !Binary
   - control
   - - index
@@ -26,13 +26,13 @@ syntax:
   params:
   - name: control
     description: '[[CT_CHECKBOXES]] control'
-    type: Unknown
+    type: Control
   - name: index
     description: checkbox index
-    type: Unknown
+    type: Number
   - name: checked
     description: '[[true]] to check, [[false]] to uncheck the checkbox'
-    type: Unknown
+    type: Boolean
   since:
     arma_3:
       major: 1

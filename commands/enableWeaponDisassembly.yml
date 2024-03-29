@@ -10,7 +10,7 @@ syntax:
   params:
   - name: enable
     description: '[[false]] to prevent local [[player]] from being able to disassemble static weapons'
-    type: Unknown
+    type: Boolean
 - call: !Binary
   - entity
   - enable
@@ -20,10 +20,10 @@ syntax:
   params:
   - name: entity
     description: unit or static weapon
-    type: Unknown
+    type: Object
   - name: enable
     description: '[[false]] to prevent a unit from being able to disassemble static weapons, or to prevent a static weapon from being disassembled by anyone'
-    type: Unknown
+    type: Boolean
 argument_loc: Global
 effect_loc: Global
 since:
