@@ -16,7 +16,7 @@ syntax:
     type: Object
   - name: damage
     description: range 0..1, 0 = pristine/healthy condition, 1 = entirely destroyed/killed
-    type: Unknown
+    type: Number
 - call: !Binary
   - object
   - - damage
@@ -31,34 +31,18 @@ syntax:
     type: Object
   - name: damage
     description: range 0..1, 0 = pristine/healthy condition, 1 = entirely destroyed/killed
-    type: Unknown
+    type: Number
   - name: useEffects
     description: '[[false]] to skip destruction effects'
     type: Unknown
   - name: killer
-    description: |-
-      the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill.
-      * it can be used to show "killed by player" in debriefing statistics and kill messages in the chat (if death messages are enabled).
-      * it will alter the killer's [[rating]] as if the killer directly killed the unit
-      * it will be listed as <sqf inline>_killer</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler
-      * MP restricted similar to [[setShotParents]], will be ignored unless executed on the server or headless client in MP
     type: Unknown
-    optional: true
-    default: '[[objNull]]'
     since:
       arma_3:
         major: 2
         minor: 12
   - name: instigator
-    description: |-
-      the person that instigated the damage.
-      * if a tank is a killer, the tank gunner that pulled the trigger is instigator
-      * it will be listed as <sqf inline>_instigator</sqf> parameter in the [[Arma 3: Event Handlers#Killed|Killed]] event handler
-      * MP restricted similar to [[setShotParents]], will be ignored unless executed on the server or headless client in MP
-      ** the above MP restriction does not apply to trees, poles and walls
     type: Unknown
-    optional: true
-    default: '[[objNull]]'
     since:
       arma_3:
         major: 2
