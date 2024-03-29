@@ -14,6 +14,34 @@ syntax:
     type: Object
   - name: item
     type: String
+- call: !Binary
+  - unit
+  - - item
+    - count
+    - ignoreSoldierMaxLoad
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: unit
+    type: Object
+  - name: item
+    type: String
+  - name: count
+    type: Number
+  - name: ignoreSoldierMaxLoad
+    description: '[[true]] to ignore ''soldierMaxLoad'' param, container [[maxLoad]] is still counted.'
+    type: Boolean
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 18
+  since:
+    arma_3:
+      major: 1
+      minor: 56
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
