@@ -11,7 +11,7 @@ syntax:
   params:
   - name: vehicle
     description: unit or vehicle or container. When transport is supplied, the command returns vehicle's magazines not the cargo. When container is supplied, the command behaves identically to [[magazinesAmmoCargo]]
-    type: Unknown
+    type: Object
 - call: !Unary
   - vehicle
   - includeEmpty
@@ -21,10 +21,10 @@ syntax:
   params:
   - name: vehicle
     description: unit or vehicle.
-    type: Unknown
+    type: Object
   - name: includeEmpty
     description: '[[true]] to include empty magazines'
-    type: Unknown
+    type: Boolean
     optional: true
     default: '[[false]]'
   since:
