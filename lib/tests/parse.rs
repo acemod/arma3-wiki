@@ -22,6 +22,7 @@ fn parse(path: &str) {
 
 parse!(activatedAddons);
 parse!(addAction);
+parse!(camSetDir);
 parse!(createSoundSource);
 parse!(diag_drawMode);
 parse!(drawIcon);

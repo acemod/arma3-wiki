@@ -23,10 +23,10 @@ Read [[Arma 3: Remote Execution]] for more information about remote execution, s
 
 |p2= '''order''': [[String]] - function or command name; while any function or command can be used here, only those allowed by [[Arma 3: CfgRemoteExec|CfgRemoteExec]] will actually be executed
 
-|p3= '''targets''' (Optional, default 0):
+|p3= '''targets''' - (Optional, default 0):
 * [[Number]] (See also [[Multiplayer Scripting#Machine network ID|Machine network ID]]):
 ** '''0:''' the order will be executed globally, i.e. on the server and every connected client, including the machine where [[remoteExec]] originated
-** '''2:''' the order will only be executed on the server
+** '''2:''' the order will only be executed on the server - is both dedicated and hosted server. See [[Multiplayer_Scripting#Different_machines_and_how_to_target_them|for more info]]
 ** '''Other number:''' the order will be executed on the machine where [[clientOwner]] matches the given number
 ** '''Negative number:''' the effect is inverted: '''-2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12
 * [[Object]] - the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]
@@ -35,13 +35,13 @@ Read [[Arma 3: Remote Execution]] for more information about remote execution, s
 * [[Group]] - the order will be executed on machines '''where the player is in the specified group''' ('''not''' where said group is local!)
 * [[Array]] - array of any combination of the types listed above
 
-|p4= '''JIP''' (Optional, default [[false]]):
+|p4= '''JIP''' - (Optional, default [[false]]):
 * [[Boolean]] - if [[true]], a unique JIP ID is generated and the [[remoteExec]] statement is added to the JIP queue from which it will be executed for every JIP
 * [[String]]:
-** ff the string is empty, it is interpreted as [[false]]
-** ff the string is in format "[[Number]]:[[Number]]" (e.g. "0:0"), it is interpreted as a [[netId]] (see below)
+** if the string is empty, it is interpreted as [[false]]
+** if the string is in format "[[Number]]:[[Number]]" (e.g. "0:0"), it is interpreted as a [[netId]] (see below)
 ** else the string is treated as a custom JIP ID and the [[remoteExec]] statement is added to the JIP queue, replacing statements that have the same JIP ID
-* [[Object]], [[Group]] or [[netId]] - the persistent execution of the [[remoteExec]] statement is attached to the given object or group.<br>When the object / group is deleted, the [[remoteExec]] statement is automatically removed from the JIP queue
+* [[Object]], [[Group]] or [[netId]] - the persistent execution of the [[remoteExec]] statement is attached to the given object or group, replacing any previous statement that has the same JIP ID.<br>When the object / group is deleted, the [[remoteExec]] statement is automatically removed from the JIP queue
 
 The '''JIP''' parameter can only be used if the '''targets''' parameter is 0 or a negative number.<br>
 See also [[#Example 3|Example 3]] on how to remove statements from the JIP queue.
@@ -57,9 +57,9 @@ See also [[#Example 3|Example 3]] on how to remove statements from the JIP queue
 
 |p21= '''functionName''': [[String]] - see the main syntax above for more details.
 
-|p22= '''targets''' (Optional, default 0): [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - see the main syntax above for more details.
+|p22= '''targets''': [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - (Optional, default 0) see the main syntax above for more details.
 
-|p23= '''JIP''' (Optional, default [[false]]): [[Boolean]], [[String]], [[Object]], [[Group]] or [[netId]] - see the main syntax above for more details.
+|p23= '''JIP''': [[Boolean]], [[String]], [[Object]], [[Group]] or [[netId]] - (Optional, default [[false]]) see the main syntax above for more details.
 
 |r2= [[nil]] or [[String]] - see the main syntax above for more details.
 
@@ -81,15 +81,17 @@ See also [[#Example 3|Example 3]] on how to remove statements from the JIP queue
 {{cc|becomes}}
 [{{Color|darkred|["", "BLACK OUT"]}}] remoteExec ["{{Color|darkorange|cutRsc}}"]; {{cc|double brackets are needed as the unary command takes an array}}</code>
 
-<code style="display: block">{{cc|functions, however, do not need double squared brackets}}
+<code style="display: block">
+{{cc|functions, however, do not need double squared brackets}}
 {{Color|teal|["line 1", "line 2"]}} spawn {{Color|darkorange|BIS_fnc_infoText}};
 {{cc|becomes}}
-{{Color|teal|["line 1", "line 2"]}} remoteExec ["{{Color|darkorange|BIS_fnc_infoText}}"];</code>
+{{Color|teal|["line 1", "line 2"]}} remoteExec ["{{Color|darkorange|BIS_fnc_infoText}}"];
+</code>
 
 |x2= send an order to specific machines:
 <sqf>
 "message" remoteExec ["hint", 0];				// sends a hint message to everyone, identical to "message" remoteExec ["hint"]
-"message" remoteExec ["hint", -2];				// sends a hint message to everybody but the server
+"message" remoteExec ["hint", -2];				// sends a hint message to everybody but the server (also not hosted server)
 "message" remoteExec ["hint", myCar];			// sends a hint message where myCar is local
 "message" remoteExec ["hint", -clientOwner];	// sends a hint message to everybody but the current machine
 </sqf>
@@ -124,19 +126,24 @@ remoteExec ["", "MY_JIP_ID"]; // the "MY_JIP_ID" order is removed from the JIP q
 
 |x5= A tricky example: executing <sqf inline>player setAmmo [primaryWeapon player, 1];</sqf> (on machines where the player is in MyGroup):
 <sqf>
-[player, [primaryWeapon player, 1]] remoteExec ["setAmmo", MyGroup]; // WRONG: the local player object is used here!
-{ player setAmmo [primaryWeapon player, 1]; } remoteExec ["call", MyGroup]; // CORRECT: the remote player object is used here
+[player, [primaryWeapon player, 1]] remoteExec ["setAmmo", MyGroup];			// WRONG: the local player object is used here!
+[{ player setAmmo [primaryWeapon player, 1]; }] remoteExec ["call", MyGroup];	// CORRECT: the remote player object is used here
 </sqf>
 
 |x6= '''[[Multiplayer Scripting]] "performance trick"'''<br>
-This <sqf inline>[0, -2] select isDedicated</sqf> check is worth to avoid '''function''' server-side calculations only:
+This <sqf inline>[0, -2] select isDedicated</sqf> check is worth it to avoid '''function''' server-side calculations only. See also {{Link|#Example 9}} for an advanced solution.
 <sqf>
 ["message"] remoteExec ["BIS_fnc_infoText"];								// not ideal - the function will still run on the dedicated server for nothing
 ["message"] remoteExec ["BIS_fnc_infoText", [0, -2] select isDedicated];	// ideal - the dedicated server will not run the code, a player-hosted server will
 
-"message" remoteExec ["hint", [0, -2] select isDedicated];	// the check is too costy to be worthy
-"message" remoteExec ["hint"];								// the (dedicated) server will automatically ditch hint usage due to it not having an interface
+["message"] remoteExec ["hint", [0, -2] select isDedicated];	// the check is too expensive to be worthy - it becomes worthy if the server logs an RPT warning
+["message"] remoteExec ["hint"];								// the (dedicated) server will automatically ditch hint usage due to it not having an interface
+
+private _allPlayersTarget = [0, -2] select isDedicated;			// caching the result for multiple usages makes it worthy - think of {{Link|Arma 3: Headless_Client|headless clients}} as well
+["message 1"] remoteExec ["hint", _allPlayersTarget];
+["message 2"] remoteExec ["hint", _allPlayersTarget];
 </sqf>
+{{Feature|informative|See {{Link|#Example 9}} below for an advanced example.}}
 
 |x7= <!-- This example is referenced in the Description section. -->
 As said in the description: '''commands''' will be executed in an [[Scheduler#Unscheduled Environment|unscheduled environment]]
@@ -152,7 +159,65 @@ As said in the description: '''commands''' will be executed in an [[Scheduler#Un
 // in this exact order on clients
 </sqf>
 
-|seealso= [[remoteExecCall]] [[remoteExecutedOwner]] [[isRemoteExecuted]] [[isRemoteExecutedJIP]] [[Arma 3: Remote Execution]] [[canSuspend]] [[BIS_fnc_MP]]
+|x9= <!-- This example is referenced in the Syntax section. -->
+It is possible to create a "to all players" remote exec target variable:
+<sqf>
+if (isServer) then
+{
+	TO_ALL_PLAYERS = [0, -2] select isDedicated;
+	publicVariable "TO_ALL_PLAYERS";
+};
+</sqf>
+<spoiler text="Show HC-compatible version">
+If {{Link|Arma 3: Headless Client|Headless Clients}} are involved:
+<sqf>
+if (isServer) then
+{
+	TO_ALL_PLAYERS = [0, -2] select isDedicated;
+
+	private _allNegativeHCs = allPlayers apply { getPlayerID _x } select { _x != "-1" }	// all valid playerIDs
+		apply { getUserInfo _x } select { _x select 7 }									// filter by HC
+		apply { -(_x select 1) };														// get negative network ID
+
+	if (_allNegativeHCs isNotEqualTo []) then
+	{
+		TO_ALL_PLAYERS = [TO_ALL_PLAYERS] + _allNegativeHCs;
+	};
+
+	publicVariable "TO_ALL_PLAYERS";
+
+	addMissionEventHandler ["OnUserConnected", {
+		params ["_networkId"];
+		private _userInfo = getUserInfo _networkId;
+		if !(_userInfo select 7) exitWith {}; // not a HC
+
+		if (TO_ALL_PLAYERS isEqualType 0) then	// number to array conversion
+		{
+			if (TO_ALL_PLAYERS == 0) then		// player-hosted
+			{
+				TO_ALL_PLAYERS = [-(_userInfo select 1)];
+			}
+			else								// -2, dedicated server
+			{
+				TO_ALL_PLAYERS = [TO_ALL_PLAYERS, -(_userInfo select 1)];
+			};
+		}
+		else									// already an array
+		{
+			TO_ALL_PLAYERS pushBackUnique -(_userInfo select 1);
+		};
+
+		publicVariable "TO_ALL_PLAYERS";
+	}];
+};
+</sqf>
+</spoiler>
+<sqf>
+// client or server will always target the good machines
+["Yay!"] remoteExec ["hint", TO_ALL_PLAYERS];
+</sqf>
+
+|seealso= [[Multiplayer Scripting]] [[remoteExecCall]] [[remoteExecutedOwner]] [[isRemoteExecuted]] [[isRemoteExecutedJIP]] [[Arma 3: Remote Execution]] [[canSuspend]] [[BIS_fnc_MP]]
 }}
 
 

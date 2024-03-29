@@ -199,73 +199,7 @@ pub fn syntax(
                 };
                 last_param.since_mut().set_from_wiki(game, version)?;
             } else {
-                // ==== Special Cases ====
-                let value = if command == "forEach" {
-                    value.trim_start_matches("{{{!}} class=\"wikitable align-center float-right\"\n! Game\n{{!}} {{GVI|ofp|1.00}}\n{{!}} {{GVI|arma1|1.00}}\n{{!}} {{GVI|arma2|1.00}}\n{{!}} {{GVI|arma2oa|1.50}}\n{{!}} {{GVI|arma3|1.00}}\n{{!}} {{GVI|tkoh|1.00}}\n{{!}}-\n! [[String]] support\n{{!}} colspan=\"2\" {{!}} {{Icon|checked}}\n{{!}} colspan=\"4\" {{!}} {{Icon|unchecked}}\n{{!}}-\n! [[Code]] support\n{{!}} {{Icon|unchecked}}\n{{!}} colspan=\"5\" {{!}} {{Icon|checked}}\n{{!}}}\n").to_string()
-                } else if command == "throw" && value.starts_with("if (condition)") {
-                    value.replace("if (condition)", "condition")
-                } else {
-                    (*value).to_string()
-                };
-                println!("value: {value:?}");
-                // ==== End Of Special Cases ====
-                let mut value = value.trim().to_string();
-                value = if value.starts_with("{{") {
-                    value.split_once("}} ").unwrap().1.trim().to_string()
-                } else {
-                    value
-                };
-                let Some((name, typ)) = value.split_once(' ') else {
-                    return Err(format!("Invalid param: {value}"));
-                };
-                let mut name = name.trim_end_matches(':').trim_matches('\'');
-                let typ = typ.trim();
-                let (typ, desc) = typ.split_once('-').unwrap_or((typ, ""));
-                let optional = desc.contains("(Optional");
-                let mut desc = desc.to_string();
-                let default = if desc.contains("(Optional, default ") {
-                    let (_, default) = desc.split_once("(Optional").unwrap();
-                    let (default, desc_trim) = default.split_once(')').unwrap();
-                    let default = default.replace(", default ", "").trim().to_string();
-                    desc = desc_trim.to_string();
-                    Some(default)
-                } else if desc.contains("(Optional)") {
-                    desc = desc.replace("(Optional)", "").trim().to_string();
-                    None
-                } else {
-                    None
-                };
-                let since = if name.contains("{{GVI|") {
-                    let (since, name_trim) = name.split_once("{{GVI|").unwrap();
-                    name = name_trim;
-                    let (game, version) = Version::from_icon(since)?;
-                    let mut since = Since::default();
-                    since.set_version(&game, version)?;
-                    Some(since)
-                } else {
-                    None
-                };
-                params.push(Param::new(
-                    {
-                        let mut name = name.to_string();
-                        if name.starts_with("'''") {
-                            name = name.trim_start_matches("'''").to_string();
-                        }
-                        if name.ends_with("'''") {
-                            name = name.trim_end_matches("'''").to_string();
-                        }
-                        name.to_string()
-                    },
-                    if desc.trim().is_empty() {
-                        None
-                    } else {
-                        Some(desc.trim().to_string())
-                    },
-                    Value::from_wiki(typ).map_or_else(|_| Value::Unknown, |value| value),
-                    optional,
-                    default,
-                    since,
-                ));
+                params.push(Param::from_wiki(command, value)?);
             }
             lines.next();
         } else if key.starts_with('r') {

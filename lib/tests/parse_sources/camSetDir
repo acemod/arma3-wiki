@@ -1,0 +1,83 @@
+{{RV|type=command
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|gr1= Camera Control
+
+|arg= local
+
+|eff= local
+
+|descr= Sets the orientation of the given camera in the direction of the given vector. Needs [[camCommit]].
+
+|s1= camera [[camSetDir]] direction
+
+|p1= camera: [[Object]] - object of type "camera"
+
+|p2= direction:
+* [[Number]] (before {{GVI|arma3|0.50}}) - camera azimuth
+* [[Array]] in format [x,y,z] (since {{GVI|arma3|0.50}}) - direction of camera. Must be a valid vector.
+
+|r1= [[Nothing]]
+
+|x1= Since {{arma3}}:
+<sqf>
+private _pos1 = player modelToWorld [0, 5, 5];
+private _pos2 = player modelToWorld [0, 50, 50];
+
+private _cam = "camera" camCreate _pos1;
+_cam cameraEffect ["INTERNAL", "BACK"];
+
+_cam camSetPos _pos2;
+_cam camSetDir (_pos2 vectorFromTo _pos1);
+_cam camCommit 5;
+waitUntil { camCommitted _cam };
+
+_cam camSetPos _pos1;
+_cam camCommit 5;
+</sqf>
+
+|x2= Before {{arma3}}:
+<sqf>
+private _pos1 = player modelToWorld [0, 5, 5];
+private _pos2 = player modelToWorld [0, 50, 50];
+
+private _cam = "camera" camCreate _pos1;
+_cam cameraEffect ["INTERNAL", "BACK"];
+
+_cam camSetPos _pos2;
+_cam camSetDir 180;
+_cam camCommit 5;
+waitUntil { camCommitted _cam };
+
+_cam camSetPos _pos1;
+_cam camCommit 5;
+</sqf>
+
+|seealso= [[direction]] [[setDir]] [[camSetTarget]] [[getCameraViewDirection]]
+}}
+
+{{Note
+|user= Killzone_Kid
+|timestamp= 20160509194700
+|text= [[cameraEffect]] "INTERNAL" works better than "EXTERNAL" with this command.
+}}
