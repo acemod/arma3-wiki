@@ -23,22 +23,27 @@ syntax:
     description: '[[true]] to include only enemy targets, [[false]] to include all targets'
     type: Boolean
     optional: true
+    default: '[[false]]'
   - name: maxDistance
-    description: max. distance based on target's expected position ''(distance is measured in 2D)''; use 0 to ignore the maxDistance filter
+    description: maximum '''2D''' distance based on target's expected position; use 0 to ignore the filter
     type: Number
     optional: true
+    default: '-1'
   - name: sides
-    description: array of accepted sides; use [] to ignore the side filter
+    description: array of accepted sides; use {{hl|[]}} to ignore the side filter
     type: Unknown
     optional: true
+    default: '{{hl|[]}}'
   - name: maxAge
     description: max. target age, targets that are known to unit for longer than maxAge are ignored; use 0 to ignore the maxAge filter
     type: Number
     optional: true
+    default: '0'
   - name: alternateCenter
-    description: alternate (2D or 3D) position used for distance check ''(distance is measured in 2D)''; if not specified unit position is being used
+    description: alternate (2D or 3D) position used for '''2D''' distance check
     type: Unknown
     optional: true
+    default: '''''unitOrGroup''''''s position'
 argument_loc: Global
 effect_loc: Unspecified
 since:
