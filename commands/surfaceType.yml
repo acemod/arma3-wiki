@@ -164,13 +164,28 @@ description: |-
 groups:
 - Positions
 syntax:
-- call: !Unary position
+- call: !Unary
+  - x
+  - y
+  - z or useLayerMask
   ret:
-  - String
-  - null
+  - Unknown
+  - Surface type
   params:
-  - name: position
-    description: when using [[Position#Introduction|Position3D]] Z will be ignored
+  - name: x
+    description: world x coordinate of the position
+    type: Number
+  - name: y
+    description: world y coordinate of the position
+    type: Number
+    since:
+      arma_3:
+        major: 2
+        minor: 18
+  - name: z or useLayerMask
+    description: |-
+      When a number is provided (Z in 3D positions), it is ignored. When a boolean is provided, it defines whether the layer mask should be used. Using the layer mask is more accurate but slightly slower.
+      [[File:Capture.png|thumb|256px|The patches of "dirt" are defined using a layer mask. The "concrete" is the primary surface texture.]]
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
@@ -195,4 +210,8 @@ since:
     minor: 50
 examples:
 - private _surface = surfaceType [4500, 4500];
-- hint surfaceType position player;
+- hint surfaceType getPosWorld player;
+- |
+  private _pos = getPosWorld player;
+  _pos set [2, true]; // use layer mask
+  surfaceType _pos;
