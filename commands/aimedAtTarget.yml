@@ -1,5 +1,5 @@
 name: aimedAtTarget
-description: Returns how good the weapon of the vehicle is aimed at the target.
+description: Returns how good a vehicle's weapon is aimed at the target.
 groups:
 - Object Manipulation
 - Weapons
@@ -10,13 +10,15 @@ syntax:
     - weapon
   ret:
   - Unknown
-  - null
+  - 0 if no weapons or if ''weapon'' was provided and not found
   params:
   - name: vehicle
+    description: vehicle only, not unit
     type: Object
   - name: target
     type: Object
   - name: weapon
+    description: if not provided, checks all weapons; if provided, checks that weapon only
     type: String
     optional: true
 argument_loc: Unspecified
