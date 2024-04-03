@@ -1,5 +1,10 @@
 name: tvSetPicture
-description: Sets picture to item selected by path. IDC means id of parent Tree View. Name is picture name. The picture is searched in the mission directory.
+description: |-
+  Sets picture to item selected by path. IDC means id of parent Tree View. Name is picture name. The picture is searched in the mission directory.
+  {{Feature|informative|
+  Adding pictures to lists is very slow. In order to prevent the filling of the list to be slowed down, add the pictures in a '''scheduled''' environment - See {{Link|#Example 3}}.
+  One drawback of this method is that sorting the entries is not easily possible.
+  }}
 groups:
 - GUI Control - Tree View
 syntax:
@@ -40,3 +45,4 @@ since:
 examples:
 - tvSetPicture [101, [0], "picture"];
 - _ctrl tvSetPicture [[0,0,0], getText (configFile >> "CfgWeapons" >> "optic_NVS" >> "picture")];
+- "Adding images in a scheduled environment:\n<sqf>\nprivate _path = _ctrlTV tvAdd [[], \"Some Entry\"];\n[_ctrlTV, _path] spawn {\n\t(_this select 0) tvSetPictureRight [[_this select 1], \"someImage.paa\"];\n};\n"
