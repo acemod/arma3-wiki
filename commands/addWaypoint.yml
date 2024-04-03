@@ -4,7 +4,6 @@ description: |-
 
   The waypoint is placed randomly within a circle with the given center and radius.
 
-  The function returns a waypoint with format [group, index].
   {{Feature|informative|For older titles and prior to {{arma3}} v1.90, use [[setWaypointPosition]] if you need exact waypoint placement.}}
 groups:
 - Waypoints
@@ -27,13 +26,15 @@ syntax:
     description: random waypoint placement within ''radius'' from ''center''; {{GVI|arma3|1.90|size= 0.75}} -1 can be used for exact waypoint placement
     type: Number
   - name: index
-    description: can be used to insert a waypoint in between existing waypoints
+    description: can be used to insert a waypoint in between existing waypoints; if it is invalid, the waypoint will be added at the end
     type: Number
     optional: true
+    default: '-1'
   - name: name
     description: '[[waypointName]]'
     type: String
     optional: true
+    default: '""'
 argument_loc: Global
 effect_loc: Global
 since:
