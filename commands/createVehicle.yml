@@ -99,14 +99,4 @@ examples:
   <sqf>
   _weaponHolder = "GroundWeaponHolder_Scripted" createVehicle position player;
   player action ["DropWeapon", _weaponHolder, currentWeapon player];
-- |
-  The following weapon holders (ending with ''_Scripted'') do '''not''' auto-delete when empty. It is up to the mission maker to take care of these:
-  * "GroundWeaponHolder_Scripted"
-  * "WeaponHolderSimulated_Scripted"
-  * "Weapon_Empty" (a special weaponholder that displays only a single weapon, even if it contains magazines for this weapon)
-  <sqf>
-  private _weaponHolder = createVehicle ["Weapon_Empty", getPosATL player, [], 0, "CAN_COLLIDE"];
-  _weaponHolder addWeaponCargo ["arifle_Katiba_F", 1];
-  hint "You have 5 seconds to grab this weapon";
-  sleep 5;
-  deleteVehicle _weaponHolder;
+- "The following weapon holders (ending with ''_Scripted'') do '''not''' auto-delete when empty. It is up to the mission maker to take care of these:\n* \"GroundWeaponHolder_Scripted\"\n* \"WeaponHolderSimulated_Scripted\"\n* \"Weapon_Empty\" (a special weaponholder that displays only a single weapon, even if it contains magazines for this weapon)\n<sqf>\n[] spawn \n{\n\tprivate _weaponHolder = createVehicle [\"Weapon_Empty\", getPosATL player, [], 0, \"CAN_COLLIDE\"];\n\t_weaponHolder addWeaponCargo [\"arifle_Katiba_F\", 1];\n\thint \"You have 5 seconds to grab this weapon\";\n\tsleep 5;\n\tdeleteVehicle _weaponHolder;\n};\n"
