@@ -1,14 +1,14 @@
 name: isAwake
 description: |-
-  Returns resting state of a PhysX (EPE) object. Some EPE objects are deliberately put to sleep by the engine to save resources. This command returns [[true]] when object is simulating and [[false]] when it is put to sleep. With units of type {{hl|Man}} the behaviour is slightly different. As units never get put to sleep, the command outputs ragdoll state of a unit instead. There are 6 states for the output of the command:
-  * EPE object is simulaing - [[true]]
+  Returns resting state of a PhysX (EPE) object. Some EPE objects are deliberately put to sleep by the engine to save resources.
+  This command returns [[true]] when object is simulating and [[false]] when it is put to sleep. With units of type {{hl|Man}} the behaviour is slightly different.
+  As units never get put to sleep, the command outputs ragdoll state of a unit instead. There are 6 states for the output of the command:
+  * EPE object is simulating - [[true]]
   * EPE object is put to sleep - [[false]]
   * Unit is [[alive]], ragdoll is active - [[false]]
   * Unit is [[alive]], ragdoll is NOT active - [[true]]
-  * {{GVI|arma3|2.10}} Unit is NOT [[alive]], ragdoll is active - [[true]]
-  * {{GVI|arma3|2.10}} Unit is NOT [[alive]], ragdoll is NOT active - [[false]]
-  It may look counter-intuitive but there is a simple formula to return ragdoll state of a unit (since {{GVI|arma3|2.10}}):
-  <sqf>private _unitIsInRagdoll = alive _unit != isAwake _unit;</sqf>
+  * {{GVI|arma3|2.10|size= 0.75}} Unit is NOT [[alive]], ragdoll is active - [[true]]
+  * {{GVI|arma3|2.10|size= 0.75}} Unit is NOT [[alive]], ragdoll is NOT active - [[false]]
 groups:
 - Object Manipulation
 syntax:
@@ -28,3 +28,6 @@ since:
     minor: 8
 examples:
 - private _isAwake = isAwake _object;
+- |-
+  {{GVI|arma3|2.10|size= 0.75}} Here is a simple formula to return ragdoll state of a unit:
+  <sqf>private _unitIsInRagdoll = alive _unit != isAwake _unit;
