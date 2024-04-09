@@ -1,8 +1,27 @@
 name: textLogFormat
-description: "Debugging output. \n{{Feature|warning|This command is non-functional in the retail version}}"
+description: |-
+  Debugging output.
+  {{Feature|warning|This command is non-functional in the retail version}}
 groups:
 - Broken Commands
-syntax: []
+syntax:
+- call: !Unary
+  - format
+  - arg1
+  - arg2
+  - argN
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: format
+    type: String
+  - name: arg1
+    type: Anything
+  - name: arg2
+    type: Anything
+  - name: argN
+    type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
