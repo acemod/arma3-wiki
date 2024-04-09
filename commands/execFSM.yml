@@ -33,6 +33,44 @@ syntax:
   - name: fsmFilePath
     description: file with FSM code
     type: String
+- call: !Binary
+  - arguments
+  - - fsmFilePath
+    - allowTermination
+  ret:
+  - Unknown
+  - FSM handle (also available as {{hl|_thisFSM}} in the FSM)
+  params:
+  - name: arguments
+    description: arguments accessible as {{hl|_this}} in the FSM
+    type: Anything
+  - name: fsmFilePath
+    description: file with FSM code
+    type: String
+  - name: allowTermination
+    description: '[[true]] to allow FSM termination with [[terminate]] command. Optional, default [[false]]'
+    type: Boolean
+  since:
+    arma_3:
+      major: 2
+      minor: 18
+- call: !Unary
+  - fsmFilePath
+  - allowTermination
+  ret:
+  - Unknown
+  - FSM handle (also available as {{hl|_thisFSM}} in the FSM)
+  params:
+  - name: fsmFilePath
+    description: file with FSM code
+    type: String
+  - name: allowTermination
+    description: '[[true]] to allow FSM termination with [[terminate]] command. Optional, default [[false]]'
+    type: Boolean
+  since:
+    arma_3:
+      major: 2
+      minor: 18
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
