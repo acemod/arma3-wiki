@@ -4,7 +4,21 @@ description: |-
   {{Feature|informative|Some Old Editor Command}}
 groups:
 - Game 2 Editor
-syntax: []
+syntax:
+- call: !Binary
+  - map
+  - - text
+    - priority
+  ret:
+  - Number
+  - null
+  params:
+  - name: map
+    type: Control
+  - name: text
+    type: String
+  - name: priority
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
