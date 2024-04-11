@@ -3,7 +3,14 @@ description: Return whether the vehicle has set the [[hideBehindScripted]] to [[
 groups:
 - Broken Commands
 - Object Manipulation
-syntax: []
+syntax:
+- call: !Unary vehicle
+  ret:
+  - Boolean
+  - null
+  params:
+  - name: vehicle
+    type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
