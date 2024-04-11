@@ -2,7 +2,18 @@ name: setDynamicSimulationDistance
 description: 'Sets activation distance of [[Arma 3: Dynamic Simulation]] for given category.'
 groups:
 - Dynamic Simulation
-syntax: []
+syntax:
+- call: !Binary
+  - category
+  - distance
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: category
+    type: Unknown
+  - name: distance
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
