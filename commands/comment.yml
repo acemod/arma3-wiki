@@ -1,8 +1,14 @@
 name: comment
 description: |-
   Defines a comment. See {{Link|SQF Syntax#Comments}} to learn more about comments.
-  {{Feature|warning|This command is evaluated during execution, and as such is infinitely slower than other SQF comment methods (<sqf inline>// comment</sqf> or <sqf inline>/* comment */</sqf>) which get preprocessed and do not exist at runtime). See [[SQF Syntax|SQF Syntax]] for additional documentation on comments.}}
-  {{Feature|informative|This command is only used to place comments in unpreprocessed codes, such as trigger On Activation field, object init field, etc. Alternatively, one can use a plain string followed by a semicolon as a way to comment; e.g <sqf inline>"Some comment";</sqf>.}}
+  {{Feature|warning|
+  This command is evaluated during execution, and as such is infinitely slower than other SQF comment methods (<sqf inline>// comment</sqf> or <sqf inline>/* comment */</sqf>) which get preprocessed and do not exist at runtime).
+  See [[SQF Syntax|SQF Syntax]] for additional documentation on comments.
+  }}
+  {{Feature|informative|
+  This command is only used to place comments in unpreprocessed codes, such as trigger On Activation field, object init field, etc.
+  Alternatively, one can use a plain string followed by a semicolon as a way to comment; e.g <sqf inline>"Some comment";</sqf>.
+  }}
 groups:
 - Strings
 syntax:
@@ -39,7 +45,7 @@ since:
     major: 0
     minor: 50
 examples:
-- "In a preprocessed SQF script (e.g. when doing {{ic|execVM \"myScript.sqf\"}})\n<sqf>\ncomment \"This is a commented line\";\t\t// bad\n\"This is a commented line\";\t\t\t\t// slightly better\n// This is a commented line\t\t\t\t// perfect\n"
+- "In a preprocessed SQF script (e.g. when doing <sqf inline>execVM \"myScript.sqf\"</sqf>)\n<sqf>\ncomment \"This is a commented line\";\t\t// bad\n\"This is a commented line\";\t\t\t\t// slightly better\n// This is a commented line\t\t\t\t// perfect\n"
 - |
   In an object init field (in editor):
   <sqf>
