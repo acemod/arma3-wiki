@@ -5,20 +5,6 @@ description: |-
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Unary
-  - idc
-  - index
-  - color
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: idc
-    type: Unknown
-  - name: index
-    type: Number
-  - name: color
-    type: Unknown
 - call: !Binary
   - control
   - - index
@@ -40,5 +26,4 @@ since:
     major: 1
     minor: 20
 examples:
-- lbSetPictureRightColorSelected [101, 0, [0, 1, 0, 0.5]];
 - _ctrl lbSetPictureRightColorSelected [0, [1, 1, 1, 1]];
