@@ -1,5 +1,5 @@
 name: landResult
-description: Return the result of helicopter landing position searching (performed, after land command).
+description: Return the result of helicopter landing position searching (performed after the [[land]] command).
 groups:
 - Unit Control
 syntax:
@@ -8,10 +8,10 @@ syntax:
   - Unknown
   - |-
     result, can be:
-    *"Found" (Position found)
-    *"NotFound" (Position not found)
-    *"NotReady" (Position searching is still in progess
-    *" " (Empty string when wrong was argument)
+    * {{hl|"Found"}} - position found
+    * {{hl|"NotFound"}} - position not found
+    * {{hl|"NotReady"}} - position searching is still in progress
+    * {{hl|""}} - empty string when the provided ''helicopter'' is invalid
   params:
   - name: helicopter
     type: Object
