@@ -1,46 +1,7 @@
 name: ctrlAddEventHandler
-description: |-
-  Add an event handler to the given control.
-
-  {{Feature|important|
-  * Control event handlers are processed in reversed order, i.e. last added: first, first added: last. So if you have an override it should be set up in the 1st added EH.
-  * When using the event names listed [[User Interface Event Handlers|here]] with the [[ctrlAddEventHandler]], [[ctrlSetEventHandler]], [[displayAddEventHandler]] or [[displaySetEventHandler]] commands, the prefix "on" in the event name must be removed (e.g. ''''ButtonDown'''' instead of ''''onButtonDown'''').
-  }}
-groups:
-- GUI Control - Event Handlers
-- Event Handlers
-syntax:
-- call: !Binary
-  - control
-  - - handler
-    - function
-  ret:
-  - Unknown
-  - handler ID or -1 if failed
-  params:
-  - name: control
-    type: Control
-  - name: handler
-    description: handler name, see [[User Interface Event Handlers]]
-    type: String
-  - name: function
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- _map ctrlAddEventHandler ["draw", "_this call BIS_fnc_strategicMapOpen_draw"];
-- _map ctrlAddEventHandler ["draw", { hintSilent str _this }];
-- findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["draw", { hintSilent str _this }]; //Arma 3 map control
+since: {}
