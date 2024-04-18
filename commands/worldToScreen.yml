@@ -1,36 +1,7 @@
 name: worldToScreen
-description: |-
-  Converts position in world space into screen (UI) space. If a specified position is not within the current screen view, an empty array is returned.
-  {{Feature | informative | [[SafeZone]]s should be considered:
-  * the result can be out of the [0,0]..[1,1] range
-  * the result can be a filled array even if the position is not displayed on screen if it would appear on a triplescreen setup
-  }}
-groups:
-- Positions
-syntax:
-- call: !Unary position
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: position
-    description: world position 2D [x,y] or [[Position#PositionAGL|PositionAGL]]
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- _screenPos = worldToScreen ASLToAGL getPosASL soldier1;
-- _screenPos = worldToScreen (player modelToWorld [0,10,0]);
+since: {}
