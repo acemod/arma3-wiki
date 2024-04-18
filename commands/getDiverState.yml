@@ -1,26 +1,7 @@
 name: getDiverState
-description: |-
-  Returns [[true]] when object is in diver state - e.g when the unit would put diving [[goggles]] on.
-  {{Feature|informative|
-  Diving [[goggles]] remove blurriness underwater, however when assigned, they do not appear on the face of the unit until the unit steps into the water.
-  This command allows to detect the moment when the goggles are visible.
-  If the unit doesn't have diving goggles assigned, this command would still return [[true]] at appropriate time if the unit steps into the water.
-  }}
-groups:
-- Object Manipulation
-syntax:
-- call: !Unary unit
-  ret:
-  - Unknown
-  - '[[true]] when diving [[goggles]] are visible'
-  params:
-  - name: unit
-    type: Object
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 96
-examples:
-- private _gogglesOn = getDiverState player;
+since: {}
