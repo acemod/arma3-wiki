@@ -1,5 +1,8 @@
 name: ctrlFade
-description: Returns the current fade factor of control.
+description: |-
+  Returns the current fade factor of control.<br>
+  {{ Feature | Informative | Despite having <syntaxhighlight lang="cpp" inline>fade = 1;</syntaxhighlight> inside a control's config, <sqf inline>ctrlFade</sqf> will '''still report a fade of 0'''.<br>
+  Only the value actually set by [[ctrlSetFade]] will be returned by [[ctrlFade]].}}
 groups:
 - GUI Control
 syntax:
@@ -29,4 +32,4 @@ since:
     major: 0
     minor: 50
 examples:
-- _scale = ctrlFade _control;
+- _fade = ctrlFade _control;
