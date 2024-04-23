@@ -1,5 +1,9 @@
 name: ctrlSetFade
-description: Sets wanted transparency for control animation. Requires [[ctrlCommit]] to commit changes. To hide or show a control instantly, use [[ctrlShow]].
+description: |-
+  Sets wanted transparency for control animation. Requires [[ctrlCommit]] to commit changes. To hide or show a control instantly, use [[ctrlShow]].
+  {{ Feature | Informative | Despite having <syntaxhighlight lang="cpp" inline>fade = 1;</syntaxhighlight> inside a control's config, <sqf inline>ctrlFade</sqf> will '''still report a fade of 0'''.<br>
+  Which results in <sqf inline>ctrlSetFade 0</sqf> '''doing nothing in that situation'''.<br>
+  To counter that, first use <sqf inline>ctrlSetFade 1</sqf>, then <sqf inline>ctrlCommit 0</sqf> ( to instantly apply it ), and then you can use [[ctrlSetFade]] to set the fade to any value you wish.}}
 groups:
 - GUI Control
 syntax:
