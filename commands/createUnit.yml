@@ -2,7 +2,10 @@ name: createUnit
 description: |-
   Create a unit of the provided [[:Category:CfgVehicles|CfgVehicles]] class.
 
-  {{Feature|warning|The unit will not be created if the passed group does not exist (a.k.a [[grpNull]]); this can happen if [[createGroup]] fails because the '''group limit has been reached''' (see [[createGroup]] for respective game limits).}}
+  {{Feature|warning|
+  The unit will not be created if the passed group does not exist (a.k.a [[grpNull]]);
+  this can happen if [[createGroup]] fails because the '''group limit has been reached''' (see [[createGroup]] for respective game limits).
+  }}
 
   {{{!}} class="wikitable" style="width: 100%"
   !
@@ -22,8 +25,10 @@ description: |-
   {{!}} this syntax does '''not''' return a reference to the created unit (see {{Link|#Example 7}})
   {{!}}}
 
-  {{Feature | arma1 | {{GVI|ofp|1.34}} {{GVI|arma1|1.00}} This command could be bugged in {{ofp}} or {{arma1}}; an additional [[join]] may solve the problem.<br>
-  However, some commands such as [[setUnitPos]] only work if run before the [[join]].}}
+  {{Feature|arma1|
+  {{GVI|ofp|1.34}} {{GVI|arma1|1.00}} This command could be bugged in {{ofp}} or {{arma1}}; an additional [[join]] may solve the problem.<br>
+  However, some commands such as [[setUnitPos]] only work if run before the [[join]].
+  }}
 multiplayer_note: It is recommended to create the unit where the group is '''[[Multiplayer Scripting#Locality|local]]''' - use [[remoteExec]] if needed.
 groups:
 - Object Manipulation
