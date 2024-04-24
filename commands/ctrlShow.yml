@@ -1,5 +1,8 @@
 name: ctrlShow
-description: 'Shows or hides a control. Read [[Arma: GUI Configuration]] for more information about user dialogs and controls.'
+description: |-
+  Shows or hides a control, or group of controls together with all the controls inside that group of controls.<br>
+  Read [[Arma: GUI Configuration]] for more information about user dialogs and controls.<br>
+  {{ Feature | Informative | <sqf inline>ctrlShow</sqf> '''will hide or show every single control inside a ControlsGroup, even if they are placed inside of a ControlsGroup, which itself is inside of a ControlsGroup and so on.'''<br>Keep that in mind when designing a Graphical User Interface. }}
 groups:
 - GUI Control
 syntax:
@@ -14,7 +17,7 @@ syntax:
     description: control IDC
     type: Number
   - name: show
-    description: '[[true]] if the control should be shown, [[false]] if not'
+    description: for showing, use [[true]]. for hiding, use [[false]].
     type: Boolean
 - call: !Binary
   - controlName
