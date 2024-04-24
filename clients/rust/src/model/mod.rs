@@ -7,7 +7,7 @@ mod syntax;
 mod value;
 mod version;
 
-pub use call::Call;
+pub use call::{Arg, Call};
 pub use command::Command;
 pub use locality::Locality;
 pub use param::Param;
