@@ -121,7 +121,7 @@ since:
     major: 0
     minor: 50
 examples:
-- _unit = group player createUnit ["B_RangeMaster_F", position player, [], 0, "FORM"];
+- _unit = group player createUnit ["B_RangeMaster_F", position player, [], 0, "NONE"];
 - '"B_RangeMaster_F" createUnit [position player, group player];'
 - '"B_RangeMaster_F" createUnit [getMarkerPos "barracks", _groupAlpha];'
 - "\"B_RangeMaster_F\" createUnit [\n\tgetMarkerPos \"marker_1\",\n\t_groupAlpha,\n\t\"loon1 = this; this addWeapon 'BAF_L85A2_RIS_SUSAT'\",\n\t0.6,\n\t\"corporal\"\n];\n"
@@ -134,7 +134,7 @@ examples:
   <sqf>
   _grp = createGroup east;
   hint str side _grp; // EAST
-  _ap = _grp createUnit ["C_man_p_beggar_F", position player, [], 0, "FORM"];
+  _ap = _grp createUnit ["C_man_p_beggar_F", position player, [], 0, "NONE"];
   hint str side _ap; // CIV, not EAST
 
   // workaround
