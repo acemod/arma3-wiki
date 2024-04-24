@@ -1,13 +1,16 @@
 [workspace]
 resolver = "2"
 members = [ 
-    "bin",
+    "bin-github",
+    "bin-parse",
+
     "clients/rust",
-    "lib",
 ]
 
 [workspace.dependencies]
+serde_json = "1.0.116"
 serde_yaml = { version = "0.9.34+deprecated" }
+tokio = "1.37.0"
 
 [workspace.lints.clippy]
 all = "deny"

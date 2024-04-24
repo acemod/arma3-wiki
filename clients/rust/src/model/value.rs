@@ -83,6 +83,7 @@ static REGEX_TYPE: OnceLock<Regex> = OnceLock::new();
 // static REGEX_ARRAY_IN_FORMAT: OnceLock<Regex> = OnceLock::new();
 
 impl Value {
+    #[cfg(feature = "wiki")]
     /// Parses a value string from the wiki.
     ///
     /// # Errors
@@ -116,26 +117,26 @@ impl Value {
             "code" => Ok(Self::Code),
             "config" => Ok(Self::Config),
             "control" => Ok(Self::Control),
-            "diaryrecord" => Ok(Self::DiaryRecord),
+            "diary record" | "diaryrecord" => Ok(Self::DiaryRecord),
             "display" => Ok(Self::Display),
-            "edenentity" => Ok(Self::EdenEntity),
+            "eden entity" | "edenentity" => Ok(Self::EdenEntity),
             "edenid" => Ok(Self::EdenID),
-            "exceptionhandle" => Ok(Self::ExceptionHandle),
-            "fortype" => Ok(Self::ForType),
+            "exception handle" | "exceptionhandle" => Ok(Self::ExceptionHandle),
+            "for type" | "fortype" => Ok(Self::ForType),
             "group" => Ok(Self::Group),
-            "iftype" => Ok(Self::IfType),
+            "if type" | "iftype" => Ok(Self::IfType),
             "location" => Ok(Self::Location),
             "namespace" => Ok(Self::Namespace),
             "nothing" => Ok(Self::Nothing),
             "number" => Ok(Self::Number),
             "object" => Ok(Self::Object),
-            "scripthandle" => Ok(Self::ScriptHandle),
+            "script handle" | "scripthandle" => Ok(Self::ScriptHandle),
             "side" => Ok(Self::Side),
             "string" => Ok(Self::String),
             "structuredtext" => Ok(Self::StructuredText),
-            "switchtype" => Ok(Self::SwitchType),
+            "switch type" | "switchtype" => Ok(Self::SwitchType),
             "task" => Ok(Self::Task),
-            "teammember" => Ok(Self::TeamMember),
+            "team member" | "teammember" => Ok(Self::TeamMember),
             "turretpath" => Ok(Self::TurretPath),
             "unitloadoutarray" => Ok(Self::UnitLoadoutArray),
             "position" => Ok(Self::Position),
@@ -149,14 +150,15 @@ impl Value {
             "position3drelative" => Ok(Self::Position3dRelative),
             "vector3d" => Ok(Self::Vector3d),
             "waypoint" => Ok(Self::Waypoint),
-            "whiletype" => Ok(Self::WhileType),
-            "withtype" => Ok(Self::WithType),
+            "while type" | "whiletype" => Ok(Self::WhileType),
+            "with type" | "withtype" => Ok(Self::WithType),
             _ => Err(format!("Unknown value: {value}")),
         }
     }
 }
 
 #[cfg(test)]
+#[cfg(feature = "wiki")]
 mod tests {
     use crate::model::Value;
 
@@ -165,5 +167,12 @@ mod tests {
         assert_eq!(Value::from_wiki("[[Anything]]"), Ok(Value::Anything));
         assert_eq!(Value::from_wiki("[[Boolean]]"), Ok(Value::Boolean));
         assert_eq!(Value::from_wiki("[[Code]]"), Ok(Value::Code));
+        assert_eq!(Value::from_wiki("[[String]]"), Ok(Value::String));
+        assert_eq!(
+            Value::from_wiki("[[StructuredText]]"),
+            Ok(Value::StructuredText)
+        );
+        assert_eq!(Value::from_wiki("[[Number]]"), Ok(Value::Number));
+        assert_eq!(Value::from_wiki("[[Object]]"), Ok(Value::Object));
     }
 }

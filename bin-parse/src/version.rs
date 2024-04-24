@@ -1,10 +1,9 @@
 use std::path::PathBuf;
 
+use arma3_wiki::model::Version;
 use regex::Regex;
 
-use crate::github::GitHub;
-
-pub async fn version(github: Option<&mut GitHub>) {
+pub async fn version() -> Version {
     let regex = Regex::new(r"(?m)(\d\.\d\d)\|").unwrap();
     let text = reqwest::get("https://community.bistudio.com/wiki?title=Template:GVI&action=raw")
         .await
@@ -17,20 +16,19 @@ pub async fn version(github: Option<&mut GitHub>) {
         .map(|cap| cap[1].to_string())
         .collect::<Vec<_>>();
     assert!(versions.len() == 1, "Expected 1 version, got {versions:?}");
-    let version = versions.pop().unwrap();
+    let version_string = versions.pop().unwrap();
+    let version = Version::from_wiki(&version_string).unwrap();
     let path = PathBuf::from("dist/version.txt");
     if path.exists() {
         let old_version = std::fs::read_to_string(&path).unwrap();
-        if old_version == version {
+        if old_version == version_string {
             println!("Version unchanged: {version}");
-            return;
+            return version;
         }
     } else {
         let _ = std::fs::create_dir_all(path.parent().unwrap());
     }
-    std::fs::write(path, &version).unwrap();
+    std::fs::write(path, &version_string).unwrap();
     println!("New version: {version}");
-    if let Some(github) = github {
-        github.version_pr(&version).await;
-    }
+    version
 }

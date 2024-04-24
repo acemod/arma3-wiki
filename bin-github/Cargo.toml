@@ -1,0 +1,16 @@
+[package]
+name = "arma3-wiki-github"
+version = "0.1.0"
+authors = ["Brett Mayson"]
+edition = "2021"
+
+[lints]
+workspace = true
+
+[dependencies]
+arma3-wiki = { path = "../clients/rust" }
+
+octocrab = { version = "0.38.0" }
+serde = { version = "1.0.198", features = ["derive"] }
+serde_json = { workspace = true }
+tokio = { workspace = true , features = ["full"] }

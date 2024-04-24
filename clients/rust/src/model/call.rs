@@ -24,6 +24,7 @@ pub enum Call {
 }
 
 impl Call {
+    #[cfg(feature = "wiki")]
     /// Parses a call from the wiki.
     ///
     /// # Errors
@@ -176,6 +177,7 @@ fn parse() {
 }
 
 #[test]
+#[cfg(feature = "wiki")]
 fn test_call_from_wiki() {
     assert_eq!(Call::from_wiki("[[addScore]]"), Ok(Call::Nular));
     assert_eq!(

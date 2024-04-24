@@ -103,6 +103,7 @@ impl Since {
         self.argo = argo;
     }
 
+    #[cfg(feature = "wiki")]
     /// Sets the version from the wiki.
     ///
     /// # Errors

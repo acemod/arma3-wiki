@@ -1,7 +1,8 @@
 use std::process::Command;
 
-use arma3_wiki_lib::{REPO_NAME, REPO_ORG};
-use octocrab::Octocrab;
+use octocrab::{models::pulls::PullRequest, Octocrab};
+
+use crate::{REPO_NAME, REPO_ORG};
 
 mod issues;
 
@@ -47,10 +48,10 @@ impl GitHub {
 }
 
 impl GitHub {
-    pub async fn command_pr(&mut self, command: &str) {
+    pub async fn command_pr(&mut self, command: &str) -> Result<Option<PullRequest>, String> {
         if std::env::var("CI").is_err() {
             println!("Local, Skipping PR creation for {command}");
-            return;
+            return Ok(None);
         }
         let head = format!("command/{command}");
         command!(["checkout", "dist"]);
@@ -63,7 +64,8 @@ impl GitHub {
             .create(format!("Update {command}"), head, "dist")
             .send()
             .await
-            .unwrap();
+            .map_err(|e| e.to_string())
+            .map(Some)
     }
 
     pub async fn version_pr(&mut self, version: &str) {

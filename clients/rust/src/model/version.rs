@@ -36,7 +36,7 @@ impl Version {
     ///
     /// # Errors
     /// Errors if the version string is invalid.
-    pub fn from_icon(source: &str) -> Result<(String, Self), String> {
+    pub fn from_wiki_icon(source: &str) -> Result<(String, Self), String> {
         // {{GVI|arma3|2.06|size= 0.75}}
         let Some((_, source)) = source.split_once("{{GVI|") else {
             return Err(format!("Invalid version: {source}"));
@@ -85,6 +85,7 @@ impl std::cmp::PartialOrd for Version {
 }
 
 #[cfg(test)]
+#[cfg(feature = "wiki")]
 mod tests {
     use super::*;
 

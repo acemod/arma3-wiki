@@ -1,12 +1,12 @@
 use std::sync::atomic::AtomicUsize;
 
-use arma3_wiki_lib::{REPO_NAME, REPO_ORG};
 use octocrab::{
     models::{issues::Issue, IssueState},
     params::State,
 };
 
 use super::GitHub;
+use crate::{REPO_NAME, REPO_ORG};
 
 const RATE_SLEEP: u64 = 120;
 
@@ -18,30 +18,51 @@ pub struct Issues {
 impl Issues {
     pub async fn new(gh: &GitHub) -> Self {
         Self {
-            issues: gh
-                .as_ref()
-                .issues(REPO_ORG, REPO_NAME)
-                .list()
-                .state(State::Open)
-                .per_page(100)
-                .page(1u32)
-                .send()
-                .await
-                .unwrap()
-                .take_items(),
+            issues: {
+                let mut issues = Vec::new();
+                let mut page: u32 = 1;
+                loop {
+                    let fetched = gh
+                        .as_ref()
+                        .issues(REPO_ORG, REPO_NAME)
+                        .list()
+                        .state(State::Open)
+                        .per_page(100)
+                        .page(page)
+                        .send()
+                        .await
+                        .unwrap()
+                        .take_items();
+                    let count = fetched.len();
+                    issues.extend(fetched);
+                    if count == 100 {
+                        page += 1;
+                        tokio::time::sleep(std::time::Duration::from_secs(1)).await;
+                    } else {
+                        break;
+                    }
+                }
+                issues
+            },
             rate: AtomicUsize::new(0),
         }
     }
 
-    pub async fn failed_command_create(&self, gh: &GitHub, command: &str, reason: String) -> bool {
+    pub async fn failed_command_create(
+        &self,
+        gh: &GitHub,
+        command: &str,
+        reasons: &[String],
+    ) -> Result<Option<Issue>, String> {
         if std::env::var("CI").is_err() {
             println!("Local, Skipping issue creation for {command}");
-            return false;
+            return Ok(None);
         }
         let title = format!("Parse Failed: {command}");
+        let reason = reasons.join("\n");
         if let Some(issue) = self.issues.iter().find(|i| i.title == title) {
             if Some(&reason) == issue.body.as_ref() {
-                return false;
+                return Ok(Some(issue.clone()));
             }
             let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
             if rate != 0 && rate % 20 == 0 {
@@ -53,7 +74,8 @@ impl Issues {
                 .body(&reason)
                 .send()
                 .await
-                .unwrap();
+                .map(Some)
+                .map_err(|e| e.to_string())
         } else {
             let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
             if rate != 0 && rate % 20 == 0 {
@@ -65,12 +87,16 @@ impl Issues {
                 .body(reason)
                 .send()
                 .await
-                .unwrap();
+                .map(Some)
+                .map_err(|e| e.to_string())
         }
-        true
     }
 
-    pub async fn failed_command_close(&self, gh: &GitHub, command: &str) -> bool {
+    pub async fn failed_command_close(
+        &self,
+        gh: &GitHub,
+        command: &str,
+    ) -> Result<Option<Issue>, String> {
         let title = format!("Parse Failed: {command}");
         if let Some(issue) = self.issues.iter().find(|i| i.title == title) {
             let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
@@ -83,10 +109,10 @@ impl Issues {
                 .state(IssueState::Closed)
                 .send()
                 .await
-                .unwrap();
-            true
+                .map(Some)
+                .map_err(|e| e.to_string())
         } else {
-            false
+            Ok(None)
         }
     }
 }
