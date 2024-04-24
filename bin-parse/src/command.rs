@@ -78,7 +78,6 @@ pub async fn command(
     } else if dist_path.exists() {
         let metadata = std::fs::metadata(&dist_path).unwrap();
         let modified: std::time::SystemTime = metadata.modified().unwrap();
-        println!("Modified {} ago", modified.elapsed().unwrap().as_secs());
         if modified.elapsed().unwrap().as_secs() < 60 * 60 * SKIP_IF_LESS_THAN {
             (std::env::var("CI").is_err(), false)
         } else {
