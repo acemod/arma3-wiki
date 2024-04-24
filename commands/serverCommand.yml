@@ -12,7 +12,7 @@ groups:
 syntax:
 - call: !Unary command
   ret:
-  - Unknown
+  - Boolean
   - '[[false]] if a non valid command is used ("#blah"), false otherwise (was always [[true]] before {{GVI|arma3|1.40|size= 0.75}})'
   params:
   - name: command
@@ -21,7 +21,7 @@ syntax:
   - password
   - command
   ret:
-  - Unknown
+  - Boolean
   - '[[false]] if command failed at some stage. [[true]] doesn''t mean that command succeeded.'
   params:
   - name: password
