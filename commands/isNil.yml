@@ -7,7 +7,7 @@ groups:
 syntax:
 - call: !Unary variableName
   ret:
-  - Unknown
+  - Boolean
   - '[[true]] if variable is [[nil]] or undefined'
   params:
   - name: variableName
@@ -15,7 +15,7 @@ syntax:
     type: Unknown
 - call: !Unary code
   ret:
-  - Unknown
+  - Boolean
   - '[[true]] if ''''code'''' returns [[Nothing]], [[false]] otherwise'
   params:
   - name: code
@@ -24,7 +24,7 @@ syntax:
   - namespace
   - variableName
   ret:
-  - Unknown
+  - Boolean
   - '[[true]] if variable is [[nil]] or undefined'
   params:
   - name: namespace
