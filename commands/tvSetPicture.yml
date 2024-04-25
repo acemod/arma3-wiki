@@ -43,6 +43,6 @@ since:
     major: 0
     minor: 74
 examples:
-- tvSetPicture [101, [0], "picture"];
-- _ctrl tvSetPicture [[0,0,0], getText (configFile >> "CfgWeapons" >> "optic_NVS" >> "picture")];
-- "Adding images in a scheduled environment:\n<sqf>\nprivate _path = _ctrlTV tvAdd [[], \"Some Entry\"];\n[_ctrlTV, _path] spawn {\n\t(_this select 0) tvSetPictureRight [[_this select 1], \"someImage.paa\"];\n};\n"
+- <sqf>tvSetPicture [101, [0], "picture"];</sqf>
+- <sqf>_ctrl tvSetPicture [[0,0,0], getText (configFile >> "CfgWeapons" >> "optic_NVS" >> "picture")];</sqf>
+- "Adding images in a scheduled environment:\n<sqf>\nprivate _path = _ctrlTV tvAdd [[], \"Some Entry\"];\n[_ctrlTV, _path] spawn {\n\t(_this select 0) tvSetPictureRight [[_this select 1], \"someImage.paa\"];\n};\n</sqf>"

@@ -21,11 +21,13 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   _bluforUnit unassignItem "NVGoggles";
   _bluforUnit removeItem "NVGoggles";
   _opforUnit unassignItem "NVGoggles_OPFOR";
   _opforUnit removeItem "NVGoggles_OPFOR";
   _independentUnit unassignItem "NVGoggles_INDEP";
   _independentUnit removeItem "NVGoggles_INDEP";
-- "{\n\t_x unassignItem hmd _x; // unassign (not remove) NVGs from all units\n} forEach allUnits;\n"
+  </sqf>
+- "<sqf>\n{\n\t_x unassignItem hmd _x; // unassign (not remove) NVGs from all units\n} forEach allUnits;\n</sqf>"

@@ -60,7 +60,9 @@ since:
     major: 2
     minor: 6
 examples:
-- |
+- |-
+  <sqf>
   private _unitUniqueItems = uniqueUnitItems [player, 0, 2, 2, 2, true];
   if (_unitUniqueItems getOrDefault ["FirstAidKit", 0] > 5) then { hint "I'm rich of FAK to give!"; };
-- private _unitUniqueItems = uniqueUnitItems [cursorObject];
+  </sqf>
+- <sqf>private _unitUniqueItems = uniqueUnitItems [cursorObject];</sqf>

@@ -34,10 +34,10 @@ since:
     major: 0
     minor: 50
 examples:
-- "onHCGroupSelectionChanged {\n\tif (_isSelected) then\n\t{\n\t\thint format [\"Group %1 has been selected.\", _group];\n\t}\n\telse\n\t{\n\t\thint format [\"Group %1 has been deselected.\", _group];\n\t};\n};"
-- onHCGroupSelectionChanged "player globalChat 'HC group selection has been changed.';";
+- "<sqf>onHCGroupSelectionChanged {\n\tif (_isSelected) then\n\t{\n\t\thint format [\"Group %1 has been selected.\", _group];\n\t}\n\telse\n\t{\n\t\thint format [\"Group %1 has been deselected.\", _group];\n\t};\n};</sqf>"
+- <sqf>onHCGroupSelectionChanged "player globalChat 'HC group selection has been changed.';";</sqf>
 - |-
   Remove event handler:
   <sqf>onHCGroupSelectionChanged "";
   // or
-  onHCGroupSelectionChanged {};
+  onHCGroupSelectionChanged {};</sqf>

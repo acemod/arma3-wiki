@@ -22,9 +22,9 @@ since:
     major: 2
     minor: 6
 examples:
-- '"I''m a coOkIe clicker" regexMatch ".*cookie.*"; // true'
-- '"I''m a coOkIe clicker" regexMatch ".*cookie.*/"; // false, empty flags == case sensitive'
+- <sqf>"I'm a coOkIe clicker" regexMatch ".*cookie.*"; // true</sqf>
+- <sqf>"I'm a coOkIe clicker" regexMatch ".*cookie.*/"; // false, empty flags == case sensitive</sqf>
 - |-
-  forceUnicode 1;
-  "I'm a coÖkIe clicker" regexMatch ".*coökie.*";
-- '"Cookie clicker" regexMatch "cookie/i"; // false, pattern does not fully match the haystack'
+  <sqf>forceUnicode 1;
+  "I'm a coÖkIe clicker" regexMatch ".*coökie.*";</sqf>
+- <sqf>"Cookie clicker" regexMatch "cookie/i"; // false, pattern does not fully match the haystack</sqf>

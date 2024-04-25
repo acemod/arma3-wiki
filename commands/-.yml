@@ -60,11 +60,13 @@ since:
     major: 0
     minor: 50
 examples:
-- _result = 10 - 7; // result is 3
-- |
+- <sqf>_result = 10 - 7; // result is 3</sqf>
+- |-
+  <sqf>
   _numA = 4;
   _numB = -_numA; // result is -4
   _numB = -_numB; // result is  4
-- _result = [1, 2, 2, player, "String"] - [2, player, player, "String"]; // _result is [1]
-- _result = [0, [0], [[0]]] - [0]; // [[0], [[0]]]
-- "_result = [0, [0], [[0]]] - [[0]];\t\t// [0, [[0]]]\t- Since {{arma3}}\n_result = [0, [0], [[0]]] - [[[0]]];\t// [0, [0]]\t\t- Since {{arma3}}\n"
+  </sqf>
+- <sqf>_result = [1, 2, 2, player, "String"] - [2, player, player, "String"]; // _result is [1]</sqf>
+- <sqf>_result = [0, [0], [[0]]] - [0]; // [[0], [[0]]]</sqf>
+- "<sqf>\n_result = [0, [0], [[0]]] - [[0]];\t\t// [0, [[0]]]\t- Since {{arma3}}\n_result = [0, [0], [[0]]] - [[[0]]];\t// [0, [0]]\t\t- Since {{arma3}}\n</sqf>"

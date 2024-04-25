@@ -42,10 +42,12 @@ since:
     major: 0
     minor: 50
 examples:
-- hint toString [65,97,338]; // returns "AaŒ"
-- '["test", "test"] joinString toString [12345] splitString toString [12345]; // ["test", "test"]'
-- |
+- <sqf>hint toString [65,97,338]; // returns "AaŒ"</sqf>
+- <sqf>["test", "test"] joinString toString [12345] splitString toString [12345]; // ["test", "test"]</sqf>
+- |-
+  <sqf>
   private _compilableString = toString { hint "it works!" };
   hint _compilableString; // hints ' hint "it works!" '
   sleep 2;
   call compile _compilableString; // hints ' it works! '
+  </sqf>

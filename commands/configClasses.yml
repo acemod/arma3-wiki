@@ -23,10 +23,10 @@ since:
 examples:
 - |-
   collect all CfgVehicles configs:
-  <sqf>_configs = "true" configClasses (configFile >> "CfgVehicles");
+  <sqf>_configs = "true" configClasses (configFile >> "CfgVehicles");</sqf>
 - |-
   Return all classes that can transport 10 and more soldiers:
-  <sqf>_transporters = "getNumber (_x >> 'transportSoldier') >= 10" configClasses (configFile >> "CfgVehicles");
+  <sqf>_transporters = "getNumber (_x >> 'transportSoldier') >= 10" configClasses (configFile >> "CfgVehicles");</sqf>
 - |-
   Return all classes that inherit from 'RscText':
-  <sqf>hint str ("inheritsFrom _x == (configFile >> 'RscText')" configClasses configFile);
+  <sqf>hint str ("inheritsFrom _x == (configFile >> 'RscText')" configClasses configFile);</sqf>

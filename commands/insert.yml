@@ -90,8 +90,9 @@ since:
     major: 2
     minor: 2
 examples:
-- "\"Test\" insert [0, \"Radio\"];\t\t// returns \"RadioTest\"\n\"Test\" insert [2, \"Radio\"];\t\t// returns \"TeRadiost\"\n\"Test\" insert [-1, \"Radio\"];\t// returns \"TestRadio\"\n"
-- |
+- "<sqf>\n\"Test\" insert [0, \"Radio\"];\t\t// returns \"RadioTest\"\n\"Test\" insert [2, \"Radio\"];\t\t// returns \"TeRadiost\"\n\"Test\" insert [-1, \"Radio\"];\t// returns \"TestRadio\"\n</sqf>"
+- |-
+  <sqf>
   private _array = ["a", "b", "c"];
   _array insert [0, ["w"]]; // _array is now ["w", "a", "b", "c"]
 
@@ -100,3 +101,4 @@ examples:
 
   private _array = ["a", "b", "c"];
   _array insert [-2, ["w"]]; // _array is now ["a", "b", "w", "c"] // Arma 3 v2.14
+  </sqf>

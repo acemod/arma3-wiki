@@ -59,8 +59,10 @@ since:
     major: 0
     minor: 50
 examples:
-- _location = createLocation ["NameVillage", [4035,2151,10], 100, 100];
-- |
+- <sqf>_location = createLocation ["NameVillage", [4035,2151,10], 100, 100];</sqf>
+- |-
+  <sqf>
   _location = createLocation ["NameVillage", [4035,2151,10], 30, 30];
   _location setText "Player town";
-- "private _terrainLocation = nearestLocation [player, \"nameCity\"];\t// assuming it returns a built-in location\n_terrainLocation setType \"Invisible\";\t\t\t\t\t\t\t\t// does not do anything\nprivate _editableLocation = createLocation [_terrainLocation];\t\t// does the conversion\n_editableLocation setType \"Invisible\";\t\t\t\t\t\t\t\t// hides the location\n"
+  </sqf>
+- "<sqf>\nprivate _terrainLocation = nearestLocation [player, \"nameCity\"];\t// assuming it returns a built-in location\n_terrainLocation setType \"Invisible\";\t\t\t\t\t\t\t\t// does not do anything\nprivate _editableLocation = createLocation [_terrainLocation];\t\t// does the conversion\n_editableLocation setType \"Invisible\";\t\t\t\t\t\t\t\t// hides the location\n</sqf>"

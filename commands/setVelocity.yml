@@ -42,5 +42,5 @@ since:
     major: 0
     minor: 50
 examples:
-- _truck1 setVelocity [20, 0, 0];
-- "Advanced method used for relative acceleration:\n<sqf>\n_vel = velocity _vehicle;\n_dir = getDir _vehicle;\n_additionalSpeed = 10; // in m/s\n_vehicle setVelocity [\n\t(_vel select 0) + (sin _dir * _additionalSpeed), \n\t(_vel select 1) + (cos _dir * _additionalSpeed), \n\t(_vel select 2) // horizontal only\n];\n"
+- <sqf>_truck1 setVelocity [20, 0, 0];</sqf>
+- "Advanced method used for relative acceleration:\n<sqf>\n_vel = velocity _vehicle;\n_dir = getDir _vehicle;\n_additionalSpeed = 10; // in m/s\n_vehicle setVelocity [\n\t(_vel select 0) + (sin _dir * _additionalSpeed), \n\t(_vel select 1) + (cos _dir * _additionalSpeed), \n\t(_vel select 2) // horizontal only\n];\n</sqf>"

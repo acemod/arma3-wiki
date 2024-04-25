@@ -34,8 +34,8 @@ since:
     major: 1
     minor: 34
 examples:
-- myMRAP setMagazineTurretAmmo ["200Rnd_127x99_mag_Tracer_Red", 30, [0]];
-- |
+- <sqf>myMRAP setMagazineTurretAmmo ["200Rnd_127x99_mag_Tracer_Red", 30, [0]];</sqf>
+- |-
   Set ammo count on commander turret from server:
   <sqf>
   _tank = tank;
@@ -43,3 +43,4 @@ examples:
   _magazine = "200Rnd_127x99_mag_Tracer_Red";
   _ammo = 10;
   [_tank, [_magazine, _ammo, _turret]] remoteExec ["setMagazineTurretAmmo", _tank turretOwner _turret];
+  </sqf>

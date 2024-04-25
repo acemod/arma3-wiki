@@ -57,9 +57,9 @@ since:
     major: 0
     minor: 50
 examples:
-- _soldierOne sideChat "Show this text";
-- '[west, "HQ"] sideChat "Hi there";'
-- |
+- <sqf>_soldierOne sideChat "Show this text";</sqf>
+- <sqf>[west, "HQ"] sideChat "Hi there";</sqf>
+- |-
   [[File:xChat.jpg|right]]
   <sqf>
   driver vehicle player sideChat "sideChat";
@@ -69,7 +69,10 @@ examples:
   driver vehicle player commandChat "commandChat";
   driver vehicle player customChat [1, "customChat"];
   systemChat "systemChat";
-- '[[blufor, "BLU"], "message"] remoteExec ["sideChat"]; // shows the message to all players'
-- |
+  </sqf>
+- <sqf>[[blufor, "BLU"], "message"] remoteExec ["sideChat"]; // shows the message to all players</sqf>
+- |-
+  <sqf>
   unit setGroupId ["Cpt. Miller"]; // changes the group's callsign
   unit sideChat "Hello ladies!";
+  </sqf>

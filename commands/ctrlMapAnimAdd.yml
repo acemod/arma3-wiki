@@ -46,14 +46,17 @@ since:
     minor: 50
 examples:
 - |-
-  _map ctrlMapAnimAdd [1, 0.1, getMarkerPos "anim1"];
-  ctrlMapAnimCommit _map;
-- |
+  <sqf>_map ctrlMapAnimAdd [1, 0.1, getMarkerPos "anim1"];
+  ctrlMapAnimCommit _map;</sqf>
+- |-
   Center map on player:
   <sqf>
   _ctrl ctrlMapAnimAdd [0, 0.05, player];
   ctrlMapAnimCommit _ctrl;
-- |
+  </sqf>
+- |-
+  <sqf>
   _map ctrlMapSetPosition [];
   _map ctrlMapAnimAdd [1, 0.1, getMarkerPos "anim1"];
   ctrlMapAnimCommit _map;
+  </sqf>

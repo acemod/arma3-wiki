@@ -25,30 +25,15 @@ syntax:
     type: Unknown
   - name: order
     description: 'function or command name; while any function or command can be used here, only those allowed by [[Arma 3: CfgRemoteExec|CfgRemoteExec]] will actually be executed'
-    type: Unknown
+    type: String
   - name: targets
-    description: |-
-      is both dedicated and hosted server. See [[Multiplayer_Scripting#Different_machines_and_how_to_target_them|for more info]]
-      ** '''Other number:''' the order will be executed on the machine where [[clientOwner]] matches the given number
-      ** '''Negative number:''' the effect is inverted: '''-2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12
-      * [[Object]] - the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]
-      * [[String]] - interpreted as an [[Identifier]] (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [[Multiplayer Scripting#Locality|local]]
-      * [[Side]] - the order will be executed on machines where the player is on the specified side
-      * [[Group]] - the order will be executed on machines '''where the player is in the specified group''' ('''not''' where said group is local!)
-      * [[Array]] - array of any combination of the types listed above
     type: Unknown
+    optional: true
+    default: '0'
   - name: JIP
-    description: |-
-      if [[true]], a unique JIP ID is generated and the [[remoteExec]] statement is added to the JIP queue from which it will be executed for every JIP
-      * [[String]]:
-      ** if the string is empty, it is interpreted as [[false]]
-      ** if the string is in format "[[Number]]:[[Number]]" (e.g. "0:0"), it is interpreted as a [[netId]] (see below)
-      ** else the string is treated as a custom JIP ID and the [[remoteExec]] statement is added to the JIP queue, replacing statements that have the same JIP ID
-      * [[Object]], [[Group]] or [[netId]] - the persistent execution of the [[remoteExec]] statement is attached to the given object or group, replacing any previous statement that has the same JIP ID.<br>When the object / group is deleted, the [[remoteExec]] statement is automatically removed from the JIP queue
-
-      The '''JIP''' parameter can only be used if the '''targets''' parameter is 0 or a negative number.<br>
-      See also [[#Example 3|Example 3]] on how to remove statements from the JIP queue.
     type: Unknown
+    optional: true
+    default: '[[false]]'
 - call: !Unary
   - functionName
   - targets
@@ -59,13 +44,17 @@ syntax:
   params:
   - name: functionName
     description: see the main syntax above for more details.
-    type: Unknown
+    type: String
   - name: targets
     description: see the main syntax above for more details.
     type: Unknown
+    optional: true
+    default: '0'
   - name: JIP
     description: see the main syntax above for more details.
     type: Unknown
+    optional: true
+    default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -73,6 +62,6 @@ since:
     major: 1
     minor: 50
 examples:
-- "[\"hello\"] remoteExec [\"hint\"];\t\t// runs unscheduled\n[\"hello\"] remoteExecCall [\"hint\"];\t// no difference at all"
-- "[\"my message\"] remoteExec [\"BIS_fnc_infoText\"];\t\t// correct\n[\"my message\"] remoteExecCall [\"BIS_fnc_infoText\"];\t// wrong - BIS_fnc_infoText needs a scheduled environment, see its spawn need"
-- "remoteExecCall [\"fnc1\"];\ncall fnc2;\t// fnc1 may or may not be executed after fnc2\n\ncall fnc1;\ncall fnc2;\t// fnc2 will be executed after fnc1"
+- "<sqf>[\"hello\"] remoteExec [\"hint\"];\t\t// runs unscheduled\n[\"hello\"] remoteExecCall [\"hint\"];\t// no difference at all</sqf>"
+- "<sqf>[\"my message\"] remoteExec [\"BIS_fnc_infoText\"];\t\t// correct\n[\"my message\"] remoteExecCall [\"BIS_fnc_infoText\"];\t// wrong - BIS_fnc_infoText needs a scheduled environment, see its spawn need</sqf>"
+- "<sqf>remoteExecCall [\"fnc1\"];\ncall fnc2;\t// fnc1 may or may not be executed after fnc2\n\ncall fnc1;\ncall fnc2;\t// fnc2 will be executed after fnc1</sqf>"

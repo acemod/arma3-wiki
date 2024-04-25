@@ -33,12 +33,12 @@ since:
     major: 0
     minor: 50
 examples:
-- camUseNVG true;
+- <sqf>camUseNVG true;</sqf>
 - |-
-  setDate [2000,12,31,0,0];
+  <sqf>setDate [2000,12,31,0,0];
   _cam = "camera" camCreate [0,0,0];
   _cam camSetTarget player;
   _cam camSetRelPos [0,-5,3];
   _cam cameraEffect ["Internal","Back"];
   _cam camCommit 0;
-  camUseNVG true;
+  camUseNVG true;</sqf>

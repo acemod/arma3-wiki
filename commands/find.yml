@@ -83,18 +83,22 @@ since:
     major: 0
     minor: 50
 examples:
-- '["Apples", "Oranges", "Pears"] find "Oranges"; // returns 1'
-- '[1, [2], [[3]]] find [[3]]; // returns 2 - does not work in OFP, returns -1'
-- if (magazines player find "Strela" != -1) then { hint "You've got Strela!"; };
-- hint str ("japa is the man!" find "the man!"); // returns 8
-- '"abc" find ""; // returns 0'
-- |
+- <sqf>["Apples", "Oranges", "Pears"] find "Oranges"; // returns 1</sqf>
+- <sqf>[1, [2], [[3]]] find [[3]]; // returns 2 - does not work in OFP, returns -1</sqf>
+- <sqf>if (magazines player find "Strela" != -1) then { hint "You've got Strela!"; };</sqf>
+- <sqf>hint str ("japa is the man!" find "the man!"); // returns 8</sqf>
+- <sqf>"abc" find ""; // returns 0</sqf>
+- |-
+  <sqf>
   "abcdefghijklmnopqrstuvxyz" find "z"; // returns 24
   "abcdefghijklmnopqrstuvxyz" find ["z", 20]; // returns 24, better performance
-- |
+  </sqf>
+- |-
+  <sqf>
   "abcßdef" find "c" // 2
   "abcßdef" find "ß" // 3
   "abcßdef" find "d" // 5 - before forceUnicode
 
   forceUnicode 0; // since {{arma3}} v2.02
   "abcßdef" find "d" // 4
+  </sqf>

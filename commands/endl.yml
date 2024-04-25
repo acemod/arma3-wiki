@@ -15,9 +15,11 @@ since:
     major: 1
     minor: 70
 examples:
-- diag_log ("line1" + endl + "line2");
-- |
+- <sqf>diag_log ("line1" + endl + "line2");</sqf>
+- |-
+  <sqf>
   _ctrl = findDisplay 46 ctrlCreate ["RscTextMulti", -1];
   _ctrl ctrlSetPosition [0,0,1,1];
   _ctrl ctrlCommit 0;
   _ctrl ctrlSetText format ["line1%1line2%1line3", endl];
+  </sqf>

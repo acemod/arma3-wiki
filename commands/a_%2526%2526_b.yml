@@ -63,6 +63,6 @@ since:
     major: 0
     minor: 50
 examples:
-- "private _allEnemiesKilled = true;\nif (alive player && _allEnemiesKilled) then\n{\n\thint \"you win !\";\n};"
-- "if ((count _array > 0) && { (_array select 0) == player }) then // an error would be thrown without lazy evaluation\n{\n\thint \"It works!\";\n};"
-- "if ((alive player) && { player setDamage 0.5; true }) then // valid AS LONG AS the code block returns a Boolean\n{\n\thint \"It works!\";\n};"
+- "<sqf>private _allEnemiesKilled = true;\nif (alive player && _allEnemiesKilled) then\n{\n\thint \"you win !\";\n};</sqf>"
+- "<sqf>if ((count _array > 0) && { (_array select 0) == player }) then // an error would be thrown without lazy evaluation\n{\n\thint \"It works!\";\n};</sqf>"
+- "<sqf>if ((alive player) && { player setDamage 0.5; true }) then // valid AS LONG AS the code block returns a Boolean\n{\n\thint \"It works!\";\n};</sqf>"

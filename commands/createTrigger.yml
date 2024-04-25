@@ -70,9 +70,11 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   _trg = createTrigger ["EmptyDetector", getPos player];
   _trg setTriggerArea [5, 5, 0, false];
   _trg setTriggerActivation ["CIV", "PRESENT", true];
   _trg setTriggerStatements ["this", "hint 'Civilian near player'", "hint 'no civilian near'"];
-- "Open/close Bar Gate automatically:\n<sqf>\n//--- init of the Bar Gate\nif (isServer) then\n{\t\n\t_gateTrigger = createTrigger [\"EmptyDetector\", getPosWorld this, false];\n\t_gateTrigger setVariable [\"BarGateObj\", this];\n\t_gateTrigger setTriggerActivation [\"ANYPLAYER\", \"PRESENT\", true];\n\t_gateTrigger setTriggerArea [5, 25, getDir this, true];\n\t_gateTrigger setTriggerStatements \n\t[\n\t\t\"this\", \n\t\t\"thisTrigger getVariable \"\"BarGateObj\"\" animateSource [\"\"Door_1_sound_source\"\", 1]\", \n\t\t\"thisTrigger getVariable \"\"BarGateObj\"\" animateSource [\"\"Door_1_sound_source\"\", 0]\"\n\t];\n};\n"
+  </sqf>
+- "Open/close Bar Gate automatically:\n<sqf>\n//--- init of the Bar Gate\nif (isServer) then\n{\t\n\t_gateTrigger = createTrigger [\"EmptyDetector\", getPosWorld this, false];\n\t_gateTrigger setVariable [\"BarGateObj\", this];\n\t_gateTrigger setTriggerActivation [\"ANYPLAYER\", \"PRESENT\", true];\n\t_gateTrigger setTriggerArea [5, 25, getDir this, true];\n\t_gateTrigger setTriggerStatements \n\t[\n\t\t\"this\", \n\t\t\"thisTrigger getVariable \"\"BarGateObj\"\" animateSource [\"\"Door_1_sound_source\"\", 1]\", \n\t\t\"thisTrigger getVariable \"\"BarGateObj\"\" animateSource [\"\"Door_1_sound_source\"\", 0]\"\n\t];\n};\n</sqf>"

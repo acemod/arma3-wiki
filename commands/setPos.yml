@@ -45,7 +45,8 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   player setPos [getPos player select 0, getPos player select 1, (getPos player select 2) +10];
 
   // the same as above using set (OFP:R v1.75)
@@ -58,5 +59,6 @@ examples:
 
   // the same as above using vectorAdd (Arma 3 v1.22)
   player setPos (getPos player vectorAdd [0,0,10]);
-- _obj setPos [getPos _obj select 0, getPos _obj select 1, -5];
-- player setPos (getPos _obj);
+  </sqf>
+- <sqf>_obj setPos [getPos _obj select 0, getPos _obj select 1, -5];</sqf>
+- <sqf>player setPos (getPos _obj);</sqf>

@@ -37,9 +37,11 @@ since:
     major: 0
     minor: 50
 examples:
-- "leader player limitSpeed 5;\t\t// set to walking speed\nsleep 30;\nleader player limitSpeed (2 * getNumber(configOf leader player >> \"maxSpeed\"));\t// remove the limit\n"
-- |
+- "<sqf>\nleader player limitSpeed 5;\t\t// set to walking speed\nsleep 30;\nleader player limitSpeed (2 * getNumber(configOf leader player >> \"maxSpeed\"));\t// remove the limit\n</sqf>"
+- |-
+  <sqf>
   addMissionEventHandler ["OnEachFrame", { hintSilent format ["myVehicle's speed: %1 km/h", speed myVehicle toFixed 2] }];
   sleep 5;
   myVehicle limitSpeed 5;
-- "// it was necessary to use limitSpeed repeatedly before Arma 3 1.24\n_this setVariable [\"speedLimit\", 50];\n_this spawn {\n\twhile { sleep 0.1; canMove _this } do\n\t{\n\t\t_this limitSpeed (_this getVariable \"speedLimit\");\n\t};\n};\nsleep 10;\n_this setVariable [\"speedLimit\", 100]; // update the speed limit\n"
+  </sqf>
+- "<sqf>\n// it was necessary to use limitSpeed repeatedly before Arma 3 1.24\n_this setVariable [\"speedLimit\", 50];\n_this spawn {\n\twhile { sleep 0.1; canMove _this } do\n\t{\n\t\t_this limitSpeed (_this getVariable \"speedLimit\");\n\t};\n};\nsleep 10;\n_this setVariable [\"speedLimit\", 100]; // update the speed limit\n</sqf>"

@@ -17,8 +17,8 @@ since:
     major: 1
     minor: 32
 examples:
-- _obj setPosWorld getPosWorld _obj;
-- ATLToASL (_groundObj modelToWorld [0,0,0]) isEqualTo getPosWorld _groundObj; // true
+- <sqf>_obj setPosWorld getPosWorld _obj;</sqf>
+- <sqf>ATLToASL (_groundObj modelToWorld [0,0,0]) isEqualTo getPosWorld _groundObj; // true</sqf>
 - |-
   Wave height under a boat:
-  <sqf>private _h = ((boat modelToWorld [0,0,0]) vectorDiff getPosWorld boat) select 2;
+  <sqf>private _h = ((boat modelToWorld [0,0,0]) vectorDiff getPosWorld boat) select 2;</sqf>

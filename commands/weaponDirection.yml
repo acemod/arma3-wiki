@@ -39,5 +39,5 @@ since:
     major: 0
     minor: 50
 examples:
-- _weaponVectorDir = player weaponDirection currentWeapon player;
-- "Draw AI eye direction (green) and weapon direction (red) in 3D:\n<sqf>bob = createGroup east createUnit [\"O_Soldier_F\", [0,0,0], [], 0, \"NONE\"];\nbob setVehiclePosition [player modelToWorld [0,100,0], [], 0, \"NONE\"];\nonEachFrame\n{\n\t_beg = ASLToAGL eyePos bob;\n\t_endE = _beg vectorAdd (eyeDirection bob vectorMultiply 100);\n\tdrawLine3D [_beg, _endE, [0,1,0,1]];\n\t_endW = _beg vectorAdd (bob weaponDirection currentWeapon bob vectorMultiply 100);\n\tdrawLine3D [_beg, _endW, [1,0,0,1]];\n};"
+- <sqf>_weaponVectorDir = player weaponDirection currentWeapon player;</sqf>
+- "Draw AI eye direction (green) and weapon direction (red) in 3D:\n<sqf>bob = createGroup east createUnit [\"O_Soldier_F\", [0,0,0], [], 0, \"NONE\"];\nbob setVehiclePosition [player modelToWorld [0,100,0], [], 0, \"NONE\"];\nonEachFrame\n{\n\t_beg = ASLToAGL eyePos bob;\n\t_endE = _beg vectorAdd (eyeDirection bob vectorMultiply 100);\n\tdrawLine3D [_beg, _endE, [0,1,0,1]];\n\t_endW = _beg vectorAdd (bob weaponDirection currentWeapon bob vectorMultiply 100);\n\tdrawLine3D [_beg, _endW, [1,0,0,1]];\n};</sqf>"

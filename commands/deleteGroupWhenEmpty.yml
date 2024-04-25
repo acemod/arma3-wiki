@@ -25,5 +25,5 @@ since:
     major: 1
     minor: 68
 examples:
-- _group deleteGroupWhenEmpty true;
-- "Executed on the server:\n<sqf>\nif (local _group) then\n{\n\t_group deleteGroupWhenEmpty true;\n}\nelse // group is local to a client\n{\n\t[_group, true] remoteExec [\"deleteGroupWhenEmpty\", groupOwner _group];\n};\n"
+- <sqf>_group deleteGroupWhenEmpty true;</sqf>
+- "Executed on the server:\n<sqf>\nif (local _group) then\n{\n\t_group deleteGroupWhenEmpty true;\n}\nelse // group is local to a client\n{\n\t[_group, true] remoteExec [\"deleteGroupWhenEmpty\", groupOwner _group];\n};\n</sqf>"

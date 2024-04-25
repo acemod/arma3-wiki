@@ -60,13 +60,16 @@ since:
     major: 0
     minor: 50
 examples:
-- _cam cameraEffect ["internal", "BACK"];
-- _cam cameraEffect ["internal", "back", "rendersurface"];
-- |
+- <sqf>_cam cameraEffect ["internal", "BACK"];</sqf>
+- <sqf>_cam cameraEffect ["internal", "back", "rendersurface"];</sqf>
+- |-
+  <sqf>
   cam = "seagull" camCreate (player modelToWorld [0,0,100]);
   cam cameraEffect ["FIXED", "LEFT TOP"];
   cam camCommand "MANUAL ON";
-- |
+  </sqf>
+- |-
+  <sqf>
   _ctrl = findDisplay 46 createDisplay "RscDisplayEmpty" ctrlCreate ["RscPicture", -1];
   _ctrl ctrlSetPosition [0.5, 0, 0.5, 0.5];
   _ctrl ctrlSetText "#(argb,512,512,1)r2t(rtt1,1.0)";
@@ -78,3 +81,4 @@ examples:
   _cam2 setPos (ASLToAGL eyePos player vectorAdd [0, 10, 0]);
   _cam2 setDir (_cam2 getDir player);
   switchCamera _cam2;
+  </sqf>

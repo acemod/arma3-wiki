@@ -60,6 +60,6 @@ since:
     major: 0
     minor: 50
 examples:
-- hint format ["%1", toArray "AaŒ"];// Returns "[65,97,338]"
-- toArray _hashMap params ["_keys", "_values"];
-- "private _hashmap = [\"cow\", \"cat\", \"chicken\"] createHashMapFromArray [10000, 20000, 20000];\n_hashmap toArray true;\t// returns [[\"cow\", \"cat\", \"chicken\"], [10000, 20000, 20000]] - same as Syntax 2\n_hashmap toArray false;\t// returns [[\"cow\", 10000], [\"cat\", 20000], [\"chicken\", 20000]]\n"
+- <sqf>hint format ["%1", toArray "AaŒ"];// Returns "[65,97,338]"</sqf>
+- <sqf>toArray _hashMap params ["_keys", "_values"];</sqf>
+- "<sqf>\nprivate _hashmap = [\"cow\", \"cat\", \"chicken\"] createHashMapFromArray [10000, 20000, 20000];\n_hashmap toArray true;\t// returns [[\"cow\", \"cat\", \"chicken\"], [10000, 20000, 20000]] - same as Syntax 2\n_hashmap toArray false;\t// returns [[\"cow\", 10000], [\"cat\", 20000], [\"chicken\", 20000]]\n</sqf>"

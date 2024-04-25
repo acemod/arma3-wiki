@@ -61,6 +61,7 @@ since:
     minor: 50
 examples:
 - |-
+  <sqf>
   // SQF
   { _x setDamage 1 } forEach units player;
   </sqf>
@@ -68,19 +69,20 @@ examples:
   ; SQS
   "_x setDammage 1" forEach units player
   </sqs>
-- |
+- |-
   This command can also easily be used to execute a single command multiple times without respect to the array items - see also [[for]]
   <sqf>
   { player addMagazine "30Rnd_556x45_Stanag" } forEach [1, 2, 3, 4];
   // equivalent to
   for "_i" from 1 to 4 do { player addMagazine "30Rnd_556x45_Stanag" };
-- "You can also use multiple commands in the same block:\n<sqf>\n{\n\t_x setCaptive true;\n\tremoveAllWeapons _x;\n\tdoStop _x;\n} forEach units group this;\n"
+  </sqf>
+- "You can also use multiple commands in the same block:\n<sqf>\n{\n\t_x setCaptive true;\n\tremoveAllWeapons _x;\n\tdoStop _x;\n} forEach units group this;\n</sqf>"
 - |-
   To get the index of a [[forEach]] loop, use [[Magic Variables#forEachIndex|_forEachIndex]]:
-  <sqf>{ systemChat str _forEachIndex; } forEach ["a", "b", "c"]; // will return: "0", "1", "2" in systemChat messages
-- "Iterating a [[HashMap]]'s [[Magic Variables#forEachIndex|_forEachIndex]]:\n<sqf>\n// shows \"0, k1, v1\", \"1, k2, v2\" in systemChat messages\n{\n\tsystemChat format [\"%1, %2, %3\", _forEachIndex, _x, _y];\n} forEach createHashMapFromArray [\n\t[\"k1\", \"v1\"],\n\t[\"k2\", \"v2\"]\n];\n"
-- "[[findIf]] equivalent for [[HashMap]]:\n<sqf>\nprivate _resultKey = {\n\tif (_y isEqualTo \"wantedValue\") exitWith { _x };\n\t\"\"\n} forEach _hashmap;\n"
-- |
+  <sqf>{ systemChat str _forEachIndex; } forEach ["a", "b", "c"]; // will return: "0", "1", "2" in systemChat messages</sqf>
+- "Iterating a [[HashMap]]'s [[Magic Variables#forEachIndex|_forEachIndex]]:\n<sqf>\n// shows \"0, k1, v1\", \"1, k2, v2\" in systemChat messages\n{\n\tsystemChat format [\"%1, %2, %3\", _forEachIndex, _x, _y];\n} forEach createHashMapFromArray [\n\t[\"k1\", \"v1\"],\n\t[\"k2\", \"v2\"]\n];\n</sqf>"
+- "[[findIf]] equivalent for [[HashMap]]:\n<sqf>\nprivate _resultKey = {\n\tif (_y isEqualTo \"wantedValue\") exitWith { _x };\n\t\"\"\n} forEach _hashmap;\n</sqf>"
+- |-
   Array is edited by reference:
   <sqf>
   _arr1 = [1,2,3];
@@ -90,4 +92,5 @@ examples:
   // _arr1 = [1, "changed", 3]
   // _arr2 = [6, "changed", 8]
   // _arr3 = [0, "changed"]
-- "{\n\tprivate _verticalValue = _x; // needed, otherwise _horizontalValues' _x made this one inaccessible\n\t{\n\t\t[_x, _verticalValue] call TAG_fnc_doSomething;\n\t} forEach _horizontalValues;\n} forEach _verticalValues;\n"
+  </sqf>
+- "<sqf>\n{\n\tprivate _verticalValue = _x; // needed, otherwise _horizontalValues' _x made this one inaccessible\n\t{\n\t\t[_x, _verticalValue] call TAG_fnc_doSomething;\n\t} forEach _horizontalValues;\n} forEach _verticalValues;\n</sqf>"

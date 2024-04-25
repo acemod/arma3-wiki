@@ -57,5 +57,5 @@ since:
     major: 0
     minor: 50
 examples:
-- '{ if (lifeState _x == "UNCONSCIOUS") then { moveOut _x } } forEach crew cursorTarget;'
-- "Move out player just before he dies:\n<sqf>\nplayer addEventHandler [\n\t\"HandleDamage\", \n\tformat [\n\t\t'if (switch (_this select 1) do {\n\t\t\tcase \"\": { _this select 2 >= 1 };\n\t\t\tcase \"head\": {_this select 2 >= %1};\n\t\t\tcase \"body\": {_this select 2 >= %2};\n\t\t\tdefault {false};\n\t\t}) then {moveOut player}',\n\t\tgetNumber (configFile >> \"CfgFirstAid\" >> \"CriticalHeadHit\"),\n\t\tgetNumber (configFile >> \"CfgFirstAid\" >> \"CriticalBodyHit\")\n\t]\n];\n"
+- <sqf>{ if (lifeState _x == "UNCONSCIOUS") then { moveOut _x } } forEach crew cursorTarget;</sqf>
+- "Move out player just before he dies:\n<sqf>\nplayer addEventHandler [\n\t\"HandleDamage\", \n\tformat [\n\t\t'if (switch (_this select 1) do {\n\t\t\tcase \"\": { _this select 2 >= 1 };\n\t\t\tcase \"head\": {_this select 2 >= %1};\n\t\t\tcase \"body\": {_this select 2 >= %2};\n\t\t\tdefault {false};\n\t\t}) then {moveOut player}',\n\t\tgetNumber (configFile >> \"CfgFirstAid\" >> \"CriticalHeadHit\"),\n\t\tgetNumber (configFile >> \"CfgFirstAid\" >> \"CriticalBodyHit\")\n\t]\n];\n</sqf>"

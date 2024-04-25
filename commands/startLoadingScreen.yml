@@ -31,12 +31,14 @@ since:
     major: 0
     minor: 50
 examples:
-- startLoadingScreen ["Loading My Mission, please wait..."];
-- startLoadingScreen ["Can't skip loading time...", "MyLoadingRsc"];
-- |
+- <sqf>startLoadingScreen ["Loading My Mission, please wait..."];</sqf>
+- <sqf>startLoadingScreen ["Can't skip loading time...", "MyLoadingRsc"];</sqf>
+- |-
+  <sqf>
   startLoadingScreen ["Loading My Mission"];
   // code
   progressLoadingScreen 0.5;
   // code
   endLoadingScreen;
-- "// this structure prevents error-prone or lengthy code to miss endLoadingScreen.\nprivate _maxTime = diag_tickTime + 30; // max 30s of loading\n\nstartLoadingScreen [\"Loading\"];\nprivate _handle = [] spawn {\n\t// code that may crash or take too long\n};\n\nwaitUntil { uiSleep .1; scriptDone _handle || diag_tickTime > _maxTime };\nendLoadingScreen;\n"
+  </sqf>
+- "<sqf>\n// this structure prevents error-prone or lengthy code to miss endLoadingScreen.\nprivate _maxTime = diag_tickTime + 30; // max 30s of loading\n\nstartLoadingScreen [\"Loading\"];\nprivate _handle = [] spawn {\n\t// code that may crash or take too long\n};\n\nwaitUntil { uiSleep .1; scriptDone _handle || diag_tickTime > _maxTime };\nendLoadingScreen;\n</sqf>"

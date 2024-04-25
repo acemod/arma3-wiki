@@ -68,6 +68,8 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   _currentObjective = (taskDescription currentTask player) select 2;
   "endDeath" setDebriefingText ["You Lose", "All of your men were killed while assaulting the " + _currentObjective];
+  </sqf>

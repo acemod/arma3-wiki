@@ -39,8 +39,10 @@ since:
     major: 0
     minor: 50
 examples:
-- player setPosASL [getPosASL player select 0, (getPosASL player select 1) + 10, getPosASL player select 2];
-- |
+- <sqf>player setPosASL [getPosASL player select 0, (getPosASL player select 1) + 10, getPosASL player select 2];</sqf>
+- |-
+  <sqf>
   _position = getPosASL _object;
   _position set [2, 10]; // 10m above sea level
   _object setPosASL _position;
+  </sqf>

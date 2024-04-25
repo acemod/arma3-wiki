@@ -121,23 +121,26 @@ since:
     major: 0
     minor: 50
 examples:
-- _unit = group player createUnit ["B_RangeMaster_F", position player, [], 0, "NONE"];
-- '"B_RangeMaster_F" createUnit [position player, group player];'
-- '"B_RangeMaster_F" createUnit [getMarkerPos "barracks", _groupAlpha];'
-- "\"B_RangeMaster_F\" createUnit [\n\tgetMarkerPos \"marker_1\",\n\t_groupAlpha,\n\t\"loon1 = this; this addWeapon 'BAF_L85A2_RIS_SUSAT'\",\n\t0.6,\n\t\"corporal\"\n];\n"
-- |
+- <sqf>_unit = group player createUnit ["B_RangeMaster_F", position player, [], 0, "FORM"];</sqf>
+- <sqf>"B_RangeMaster_F" createUnit [position player, group player];</sqf>
+- <sqf>"B_RangeMaster_F" createUnit [getMarkerPos "barracks", _groupAlpha];</sqf>
+- "<sqf>\n\"B_RangeMaster_F\" createUnit [\n\tgetMarkerPos \"marker_1\",\n\t_groupAlpha,\n\t\"loon1 = this; this addWeapon 'BAF_L85A2_RIS_SUSAT'\",\n\t0.6,\n\t\"corporal\"\n];\n</sqf>"
+- |-
+  <sqf>
   _veh = "O_Quadbike_01_F" createVehicle (player getRelPos [10, 0]);
   _grp = createVehicleCrew _veh;
   _unit = _grp createUnit [typeOf driver _veh, _grp, [], 0, "CARGO"];
-- |
+  </sqf>
+- |-
   Creating a unit from a different side may lead to issues:
   <sqf>
   _grp = createGroup east;
   hint str side _grp; // EAST
-  _ap = _grp createUnit ["C_man_p_beggar_F", position player, [], 0, "NONE"];
+  _ap = _grp createUnit ["C_man_p_beggar_F", position player, [], 0, "FORM"];
   hint str side _ap; // CIV, not EAST
 
   // workaround
   [_ap] joinSilent _grp;
   hint str side _ap; // EAST
-- "Reference the created unit through a global variable:\n<sqf>\n_myUnit = \"B_RangeMaster_F\" createUnit [position player, group player];\t\t// wrong - this syntax does not return a reference\n\n\"B_RangeMaster_F\" createUnit [position player, group player, \"myUnit = this\"];\t// correct - the unit is myUnit\n"
+  </sqf>
+- "Reference the created unit through a global variable:\n<sqf>\n_myUnit = \"B_RangeMaster_F\" createUnit [position player, group player];\t\t// wrong - this syntax does not return a reference\n\n\"B_RangeMaster_F\" createUnit [position player, group player, \"myUnit = this\"];\t// correct - the unit is myUnit\n</sqf>"

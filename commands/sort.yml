@@ -22,17 +22,19 @@ since:
     minor: 44
 examples:
 - |-
-  _arr = [5.21725,1.30859,4,5.03028,1];
+  <sqf>_arr = [5.21725,1.30859,4,5.03028,1];
   _arr sort true;
-  hint str _arr; //[1,1.30859,4,5.03028,5.21725]
+  hint str _arr; //[1,1.30859,4,5.03028,5.21725]</sqf>
 - |-
-  _dev = ["ja","pa","pa","tram","tara"];
+  <sqf>_dev = ["ja","pa","pa","tram","tara"];
   _dev sort false;
-  hint str _dev; //["tram","tara","pa","pa","ja"]
-- |
+  hint str _dev; //["tram","tara","pa","pa","ja"]</sqf>
+- |-
+  <sqf>
   #define ASC true
   #define DESC false
   _scores = [[123,"bob",15],[123,"bill",20],[200,"dave",21],[200,"steve",11]];
   _scores sort DESC;
   hint str _scores; //[[200,"steve",11],[200,"dave",21],[123,"bob",15],[123,"bill",20]]
-- "Sort buildings by distance and return position of the most distant building:\n<sqf>\n_buildings = player nearObjects [\"Land_Cargo_Patrol_V1_F\", 500];\n_buildings = _buildings apply { [_x distance player, _x] };\n_buildings sort false;\nhint format [\n\t\"Most distant building is at %1, distance %2 m\", \n\tgetPos (_buildings select 0 select 1),\n\tround (_buildings select 0 select 0)\n];\n"
+  </sqf>
+- "Sort buildings by distance and return position of the most distant building:\n<sqf>\n_buildings = player nearObjects [\"Land_Cargo_Patrol_V1_F\", 500];\n_buildings = _buildings apply { [_x distance player, _x] };\n_buildings sort false;\nhint format [\n\t\"Most distant building is at %1, distance %2 m\", \n\tgetPos (_buildings select 0 select 1),\n\tround (_buildings select 0 select 0)\n];\n</sqf>"

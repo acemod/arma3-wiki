@@ -41,15 +41,15 @@ since:
     major: 1
     minor: 66
 examples:
-- 123 toFixed 2; // "123.00"
+- <sqf>123 toFixed 2; // "123.00"</sqf>
 - |-
-  2.34 toFixed 1; // "2.3"
-  2.35 toFixed 1; // "2.4"
-- "Convert position to string preserving position precision:\n<sqf>fn_posToString = \n{\n\tformat [\n\t\t\"[%1,%2,%3]\", \n\t\t_this select 0 toFixed 8, \n\t\t_this select 1 toFixed 8, \n\t\t_this select 2 toFixed 8\n\t]\n};\nstr getPos player;\t\t\t\t\t// \"[3231.05,171.802,0.00143862]\"\ngetPos player call fn_posToString;\t// \"[3231.04882813,171.80192566,0.00143862]\""
+  <sqf>2.34 toFixed 1; // "2.3"
+  2.35 toFixed 1; // "2.4"</sqf>
+- "Convert position to string preserving position precision:\n<sqf>fn_posToString = \n{\n\tformat [\n\t\t\"[%1,%2,%3]\", \n\t\t_this select 0 toFixed 8, \n\t\t_this select 1 toFixed 8, \n\t\t_this select 2 toFixed 8\n\t]\n};\nstr getPos player;\t\t\t\t\t// \"[3231.05,171.802,0.00143862]\"\ngetPos player call fn_posToString;\t// \"[3231.04882813,171.80192566,0.00143862]\"</sqf>"
 - |-
   Same as '''Example 3''' only using new alternative syntax:
   <sqf>str getPos player; // "[3231.05,171.802,0.00143862]"
   toFixed 8;
-  str getPos player; // "[3231.04882813,171.80192566,0.00143862]"
-- "systemChat str position player;\t\t// [11580.3,11797.7,0.00146675]\ncall\n{\n\ttoFixed 6;\n\tsystemChat str position player;\t// [11580.341797,11797.737305,0.001467]\n};\nsystemChat str position player;\t\t// [11580.341797,11797.737305,0.001467]\ntoFixed -1;\nsystemChat str position player;\t\t// [11580.3,11797.7,0.00146675]\n</sqf>\nIdeal to be used when saving data to a database when more precise positioning is required."
-- "str (pi/100000);\t\t// \"3.14159e-005\" - scientific notation\n(pi/100000) toFixed 10;\t// \"0.0000314159\" - no scientific notation\nstr pi;\t\t\t\t\t// \"3.14159\" - 6 significant figures (default)\npi toFixed 6;\t\t\t// \"3.141593\" - forced to 7 significant figures\npi toFixed 7;\t\t\t// \"3.1415927\" - forced to 8 significant figures\n"
+  str getPos player; // "[3231.04882813,171.80192566,0.00143862]"</sqf>
+- "<sqf>\nsystemChat str position player;\t\t// [11580.3,11797.7,0.00146675]\ncall\n{\n\ttoFixed 6;\n\tsystemChat str position player;\t// [11580.341797,11797.737305,0.001467]\n};\nsystemChat str position player;\t\t// [11580.341797,11797.737305,0.001467]\ntoFixed -1;\nsystemChat str position player;\t\t// [11580.3,11797.7,0.00146675]\n</sqf>\nIdeal to be used when saving data to a database when more precise positioning is required."
+- "<sqf>\nstr (pi/100000);\t\t// \"3.14159e-005\" - scientific notation\n(pi/100000) toFixed 10;\t// \"0.0000314159\" - no scientific notation\nstr pi;\t\t\t\t\t// \"3.14159\" - 6 significant figures (default)\npi toFixed 6;\t\t\t// \"3.141593\" - forced to 7 significant figures\npi toFixed 7;\t\t\t// \"3.1415927\" - forced to 8 significant figures\n</sqf>"

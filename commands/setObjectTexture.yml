@@ -52,14 +52,14 @@ since:
     minor: 50
 examples:
 - |-
-  _objectname setObjectTexture [0, "\pboname\texture.paa"];
-  _objectname setObjectTexture [1, "\pboname\texture2.paa"];
-- _obj setObjectTexture [0, "#(rgb,8,8,3)color(1,0,0,1)"];
-- _obj setObjectTexture [0, "#(argb,512,512,1)r2t(rendersurface,1.333)"];
+  <sqf>_objectname setObjectTexture [0, "\pboname\texture.paa"];
+  _objectname setObjectTexture [1, "\pboname\texture2.paa"];</sqf>
+- <sqf>_obj setObjectTexture [0, "#(rgb,8,8,3)color(1,0,0,1)"];</sqf>
+- <sqf>_obj setObjectTexture [0, "#(argb,512,512,1)r2t(rendersurface,1.333)"];</sqf>
 - |-
   Disable randomization before applying a texture to a vehicle in the Editor (if it is a vehicle that supports randomization):
   <sqf>this setVariable ["BIS_enableRandomization", false];
-  this setObjectTexture [0,"#(rgb,8,8,3)color(1,0,0,1)"];
+  this setObjectTexture [0,"#(rgb,8,8,3)color(1,0,0,1)"];</sqf>
 - |-
   The {{hl|"clan"}} selection can be used to apply a texture to the areas that usually display the [[squad.xml]] logo:
-  <sqf>MyVehicle setObjectTexture ["clan", "\a3\missions_f_epa\data\img\orbat\b_111_texture_ca.paa"];
+  <sqf>MyVehicle setObjectTexture ["clan", "\a3\missions_f_epa\data\img\orbat\b_111_texture_ca.paa"];</sqf>

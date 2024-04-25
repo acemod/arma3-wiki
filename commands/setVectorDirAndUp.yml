@@ -47,17 +47,17 @@ since:
     major: 0
     minor: 50
 examples:
-- "// set exact yaw, pitch, and roll\n_yaw = 45; _pitch = -80; _roll = 0;\n_myObject setVectorDirAndUp [\n\t[sin _yaw * cos _pitch, cos _yaw * cos _pitch, sin _pitch],\n\t[[sin _roll, -sin _pitch, cos _roll * cos _pitch], -_yaw] call BIS_fnc_rotateVector2D\n];\n"
+- "<sqf>\n// set exact yaw, pitch, and roll\n_yaw = 45; _pitch = -80; _roll = 0;\n_myObject setVectorDirAndUp [\n\t[sin _yaw * cos _pitch, cos _yaw * cos _pitch, sin _pitch],\n\t[[sin _roll, -sin _pitch, cos _roll * cos _pitch], -_yaw] call BIS_fnc_rotateVector2D\n];\n</sqf>"
 - |-
   To rotate _myObject on Z axis 90 degrees clockwise, change its [[vectorDir]] but leave [[vectorUp]] unchanged.
-  <sqf>_myObject setVectorDirAndUp [[1,0,0], [0,0,1]];
+  <sqf>_myObject setVectorDirAndUp [[1,0,0], [0,0,1]];</sqf>
 - |-
   To rotate _myObject on Y axis 90 degrees clockwise, change its [[vectorUp]] but leave [[vectorDir]] unchanged.
-  <sqf>_myObject setVectorDirAndUp [[0,1,0], [1,0,0]];
+  <sqf>_myObject setVectorDirAndUp [[0,1,0], [1,0,0]];</sqf>
 - |-
   To rotate _myObject on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
-  <sqf>_myObject setVectorDirAndUp [[0,0,-1], [0,1,0]];
-- |
+  <sqf>_myObject setVectorDirAndUp [[0,0,-1], [0,1,0]];</sqf>
+- |-
   More complex orientations
   <sqf>
   // tilt forward 90 + rotate left 90
@@ -66,3 +66,4 @@ examples:
   _myObject setVectorDirAndUp [[0,0.5,0.5], [0,-0.5,0.5]];
   // tilt forward 30 degrees
   _myObject setVectorDirAndUp [[0,0.66,-0.33], [0,0.33,0.66]];
+  </sqf>

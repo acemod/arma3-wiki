@@ -52,10 +52,12 @@ since:
     major: 0
     minor: 50
 examples:
-- private _variable = myTruck getVariable "myVariable"; // returns nil if "myVariable" is not set
-- private _variable = myTruck getVariable ["myVariable", 50]; // returns 50 if "myVariable" is not set
-- "for \"_i\" from 0 to 5 do\n{\n\t_car = missionNamespace getVariable (\"car\" + str _i);\n\t_car setDamage 0;\n}; // Set damage of car0..car5 to 0\n"
-- |
+- <sqf>private _variable = myTruck getVariable "myVariable"; // returns nil if "myVariable" is not set</sqf>
+- <sqf>private _variable = myTruck getVariable ["myVariable", 50]; // returns 50 if "myVariable" is not set</sqf>
+- "<sqf>\nfor \"_i\" from 0 to 5 do\n{\n\t_car = missionNamespace getVariable (\"car\" + str _i);\n\t_car setDamage 0;\n}; // Set damage of car0..car5 to 0\n</sqf>"
+- |-
+  <sqf>
   myMissionVar = 2015;
   missionNamespace getVariable "myMissionVar"; // returns 2015
-- "Get current value of a variable and if it is undefined, define it and get the defined value:\n<sqf>\nprivate _var = missionNamespace getVariable \"varName\";\nif (isNil \"_var\") then\n{\n\tmissionNamespace setVariable [\"varName\", 123];\n\t_var = 123;\n};\n// _var here will contain current value of the variable varName\n"
+  </sqf>
+- "Get current value of a variable and if it is undefined, define it and get the defined value:\n<sqf>\nprivate _var = missionNamespace getVariable \"varName\";\nif (isNil \"_var\") then\n{\n\tmissionNamespace setVariable [\"varName\", 123];\n\t_var = 123;\n};\n// _var here will contain current value of the variable varName\n</sqf>"

@@ -23,5 +23,5 @@ since:
     major: 1
     minor: 32
 examples:
-- player addBackpackGlobal "B_AssaultPack_khk";
-- "_unit spawn \n{\n\tif (!isNull backpackContainer _this) then\n\t{\n\t\tremoveBackpackGlobal _this;\n\t\twaitUntil { isNull backpackContainer _this };\n\t};\n\t_this addBackpackGlobal \"B_AssaultPack_khk\";\n\twaitUntil { !isNull backpackContainer _this };\n\tbackpackContainer _this addMagazineCargoGlobal [\"30Rnd_556x45_Stanag\",5];\n};"
+- <sqf>player addBackpackGlobal "B_AssaultPack_khk";</sqf>
+- "<sqf>_unit spawn \n{\n\tif (!isNull backpackContainer _this) then\n\t{\n\t\tremoveBackpackGlobal _this;\n\t\twaitUntil { isNull backpackContainer _this };\n\t};\n\t_this addBackpackGlobal \"B_AssaultPack_khk\";\n\twaitUntil { !isNull backpackContainer _this };\n\tbackpackContainer _this addMagazineCargoGlobal [\"30Rnd_556x45_Stanag\",5];\n};</sqf>"

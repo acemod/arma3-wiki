@@ -26,9 +26,11 @@ since:
     major: 0
     minor: 50
 examples:
-- diag_log time;
-- diag_log format ["%1, %2", player, time];
-- "_array = [1, \"foo\", player, \"bar\"];\n{\n\tdiag_log _x;\n} forEach _array ; // creates 4 entries on 4 lines\n"
-- |
+- <sqf>diag_log time;</sqf>
+- <sqf>diag_log format ["%1, %2", player, time];</sqf>
+- "<sqf>\n_array = [1, \"foo\", player, \"bar\"];\n{\n\tdiag_log _x;\n} forEach _array ; // creates 4 entries on 4 lines\n</sqf>"
+- |-
+  <sqf>
   _array = [1, "foo", player, "bar"];
   diag_log _array; // Creates one entry of e.g. [1,"foo",B Alpha 1-1:1 (Player Name),"bar"]
+  </sqf>

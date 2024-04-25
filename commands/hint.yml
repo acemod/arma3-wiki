@@ -46,14 +46,18 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   // outputs the following:
   // Press W to move forward.
   // Press S to move backwards.
   hint "Press W to move forward.\nPress S to move backwards."
-- hint format ["Hello, %1!", name player];
-- |
+  </sqf>
+- <sqf>hint format ["Hello, %1!", name player];</sqf>
+- |-
+  <sqf>
   hint str count allPlayers;
   sleep 10;
   hintSilent ""; // hides the previous hint display
-- hint parseText "<t size='2.0'>Large text</t>"; // displays text twice as large as the default one
+  </sqf>
+- <sqf>hint parseText "<t size='2.0'>Large text</t>"; // displays text twice as large as the default one</sqf>

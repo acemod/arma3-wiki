@@ -42,16 +42,22 @@ since:
     major: 2
     minor: 2
 examples:
-- _hashMap merge _otherHashMap;
-- |
+- <sqf>_hashMap merge _otherHashMap;</sqf>
+- |-
+  <sqf>
   private _hashmap1 = ["cow", "cat", "chicken"] createHashMapFromArray [100, 200, 200];
   private _hashmap2 = ["cow", "cat", "chicken", "camel"] createHashMapFromArray [150, 300, 400, 800];
   _hashmap1 merge _hashmap2; // _hashmap is [["cow",100],["cat",200],["chicken",200],["camel",800]]
-- |
+  </sqf>
+- |-
+  <sqf>
   private _hashmap1 = ["cow", "cat", "chicken"] createHashMapFromArray [100, 200, 200];
   private _hashmap2 = ["cow", "cat", "chicken", "camel"] createHashMapFromArray [150, 300, 400, 800];
   _hashmap1 merge [_hashmap2, true]; // _hashmap is [["cow",150],["cat",300],["chicken",400],["camel",800]]
-- |
+  </sqf>
+- |-
+  <sqf>
   private _hashmap1 = ["cow", "cat", "chicken"] createHashMapFromArray [100, 200, 200];
   private _hashmap2 = ["cow", "cat", "chicken", "camel"] createHashMapFromArray [150, 300, 400, 800];
   _hashmap1 merge [_hashmap2, false]; // _hashmap is [["cow",100],["cat",200],["chicken",200],["camel",800]] as Syntax 1
+  </sqf>

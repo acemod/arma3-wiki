@@ -35,5 +35,5 @@ since:
     major: 1
     minor: 6
 examples:
-- player setObjectTextureGlobal [0, "\MyAddon\blue.paa"];
-- "// Set up a persistent texture keeper\nplayer addEventHandler [\"Take\", {\n\t(getObjectTextures player + [uniformContainer player getVariable \"texture\"])\n\tparams [\"_texUniform\", \"_texInsignia\", \"_texCustom\"];\n\tif (isNil \"_texCustom\") exitWith {};\n\tif (_texUniform == _texCustom) exitWith {};\n\tplayer setObjectTextureGlobal [0, _texCustom];\n\tfalse\n}];\n\n// Example: make current uniform persistently blue\n\nprivate _texture = \"#(rgb,8,8,3)color(0,0,1,1)\"; // blue texture\nplayer setObjectTextureGlobal [0, _texture]; // set it on player\nuniformContainer player setVariable [\"texture\", _texture, true]; // store it on uniform\n"
+- <sqf>player setObjectTextureGlobal [0, "\MyAddon\blue.paa"];</sqf>
+- "<sqf>\n// Set up a persistent texture keeper\nplayer addEventHandler [\"Take\", {\n\t(getObjectTextures player + [uniformContainer player getVariable \"texture\"])\n\tparams [\"_texUniform\", \"_texInsignia\", \"_texCustom\"];\n\tif (isNil \"_texCustom\") exitWith {};\n\tif (_texUniform == _texCustom) exitWith {};\n\tplayer setObjectTextureGlobal [0, _texCustom];\n\tfalse\n}];\n\n// Example: make current uniform persistently blue\n\nprivate _texture = \"#(rgb,8,8,3)color(0,0,1,1)\"; // blue texture\nplayer setObjectTextureGlobal [0, _texture]; // set it on player\nuniformContainer player setVariable [\"texture\", _texture, true]; // store it on uniform\n</sqf>"

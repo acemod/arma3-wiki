@@ -82,17 +82,19 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   _nObject = nearestObject [2345, 6789];
   _nObject = nearestObject [player, "StreetLamp"];
+  </sqf>
 - |-
   Return the object with ID 123456:
-  <sqf>_nObject = [0,0,0] nearestObject 123456;
-- _nObject = getPos player nearestObject "StreetLamp";
+  <sqf>_nObject = [0,0,0] nearestObject 123456;</sqf>
+- <sqf>_nObject = getPos player nearestObject "StreetLamp";</sqf>
 - |-
   Return the nearest object with ([[typeOf]] _nObject == "#XXXX") -> #mark, #slop, etc. Unlimited search range:
   <sqf>_nObject = _position nearestObject -1;</sqf>
 
   Return the nearest object with ([[typeOf]] _nObject != ""). Search range is 50m:
-  <sqf>_nObject = nearestObject _position;
-- "(See also [[allMissionObjects]]):\n<sqf>\n_blood\t= nearestObject [player, \"#slop\"];\n_step\t= nearestObject [player, \"#mark\"];\n_track\t= nearestObject [player, \"#track\"];\n_crater\t= nearestObject [player, \"#crater\"];\n"
+  <sqf>_nObject = nearestObject _position;</sqf>
+- "(See also [[allMissionObjects]]):\n<sqf>\n_blood\t= nearestObject [player, \"#slop\"];\n_step\t= nearestObject [player, \"#mark\"];\n_track\t= nearestObject [player, \"#track\"];\n_crater\t= nearestObject [player, \"#crater\"];\n</sqf>"

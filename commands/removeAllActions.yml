@@ -20,8 +20,8 @@ since:
     major: 0
     minor: 50
 examples:
-- removeAllActions player;
-- |
+- <sqf>removeAllActions player;</sqf>
+- |-
   Do
   <sqf>
   private _actionId = player addAction ["Heal self", { player setDamage 0; }];
@@ -33,4 +33,5 @@ examples:
   player addAction ["Heal self", { player setDamage 0; }];
   // ...
   removeAllActions player;
-- "Do\n<sqf>\nplayer addAction [\"Heal self (once)\", {\n\tparams [\"_target\", \"\", \"_actionId\"];\n\t_target setDamage 0;\n\t_target removeAction _actionId;\n}];\n</sqf>\nDon't\n<sqf>\nplayer addAction [\"Heal self (once)\", {\n\tplayer setDamage 0;\n\tremoveAllActions player;\n}];\n"
+  </sqf>
+- "Do\n<sqf>\nplayer addAction [\"Heal self (once)\", {\n\tparams [\"_target\", \"\", \"_actionId\"];\n\t_target setDamage 0;\n\t_target removeAction _actionId;\n}];\n</sqf>\nDon't\n<sqf>\nplayer addAction [\"Heal self (once)\", {\n\tplayer setDamage 0;\n\tremoveAllActions player;\n}];\n</sqf>"

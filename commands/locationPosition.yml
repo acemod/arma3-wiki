@@ -29,10 +29,14 @@ since:
     major: 0
     minor: 50
 examples:
-- _locationPos = locationPosition myLocation;
-- |
+- <sqf>_locationPos = locationPosition myLocation;</sqf>
+- |-
+  <sqf>
   _location = nearestLocation [getPos player, "nameCity"];
   _locationPos = locationPosition _location;
-- |
+  </sqf>
+- |-
+  <sqf>
   private _landLocation = locationPosition nearestLocation [[2915.2, 6164.52], "NameCityCapital"]; // "Agia Marina" [2915.2, 6164.52, -21.9009]
   private _waterLocation = locationPosition nearestLocation [[2647.8799, 5989.9502], "NameMarine"]; // "Marina Bay" [2647.88, 5989.95, 0.0161484]
+  </sqf>

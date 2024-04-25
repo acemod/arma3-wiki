@@ -23,8 +23,10 @@ since:
     major: 1
     minor: 82
 examples:
-- "[1, 2, 3, 4] # 2;\t\t\t// result is 3"
-- "getPosASL player # 2;\t\t// result is Z component of player's position"
-- |
+- "<sqf>[1, 2, 3, 4] # 2;\t\t\t// result is 3</sqf>"
+- "<sqf>getPosASL player # 2;\t\t// result is Z component of player's position</sqf>"
+- |-
+  <sqf>
   //'getPosASL' is unary; '#' and '+' are binary; precedence is: 'getPosASL' > '#' > '+'
   getPosASL player # 2 + 1; // equivalent to (getPosASL player # 2) + 1, not (getPosASL player)#(2+1)
+  </sqf>

@@ -25,7 +25,9 @@ since:
     major: 1
     minor: 92
 examples:
-- missile1 setMissileTargetPos unitAimPosition tank1;
-- |
+- <sqf>missile1 setMissileTargetPos unitAimPosition tank1;</sqf>
+- |-
+  <sqf>
   private _missile = createVehicle ["M_Scalpel_AT", player modelToWorld [0,0,100], [], 0, "CAN_COLLIDE"];
   _missile setMissileTargetPos (player modelToWorld [0,100,0]);
+  </sqf>

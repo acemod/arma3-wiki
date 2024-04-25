@@ -61,6 +61,6 @@ since:
     major: 0
     minor: 50
 examples:
-- lbSetPicture [101, 0, "iskoda.paa"];
-- _control lbSetPicture [0, "iskoda.paa"];
-- "{{Feature|informative|\nAdding pictures to lists is very slow. In order to prevent a list filling's possible slowdown, add the pictures in the '''scheduled''' environment using [[spawn]].<br>\nOne drawback of that method is that sorting the entries is not easily possible.\n}}\n<sqf>\nprivate _path = _ctrlTV tvAdd [[], \"Some Entry\"];\n[_ctrlTV, _path] spawn {\n\t(_this select 0) tvSetPictureRight [[_this select 1], \"someImage.paa\"];\n};\n"
+- <sqf>lbSetPicture [101, 0, "iskoda.paa"];</sqf>
+- <sqf>_control lbSetPicture [0, "iskoda.paa"];</sqf>
+- "{{Feature|informative|\nAdding pictures to lists is very slow. In order to prevent a list filling's possible slowdown, add the pictures in the '''scheduled''' environment using [[spawn]].<br>\nOne drawback of that method is that sorting the entries is not easily possible.\n}}\n<sqf>\nprivate _path = _ctrlTV tvAdd [[], \"Some Entry\"];\n[_ctrlTV, _path] spawn {\n\t(_this select 0) tvSetPictureRight [[_this select 1], \"someImage.paa\"];\n};\n</sqf>"

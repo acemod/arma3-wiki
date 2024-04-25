@@ -26,8 +26,10 @@ since:
     major: 0
     minor: 50
 examples:
-- processDiaryLink createDiaryLink ["Tasks", (simpleTasks player) select 0, ""]; // Select a task in the Task menu
-- |
+- <sqf>processDiaryLink createDiaryLink ["Tasks", (simpleTasks player) select 0, ""]; // Select a task in the Task menu</sqf>
+- |-
+  <sqf>
   // To select various tabs in the map screen:
   processDiaryLink createDiaryLink ["selected_tab", player, ""];
   // ... where "selected_tab" can be "Tasks", "Diary", "Units", "Players", "Statistics", other user created subjects
+  </sqf>

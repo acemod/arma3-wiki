@@ -23,15 +23,19 @@ since:
     major: 2
     minor: 10
 examples:
-- |
+- |-
+  <sqf>
   private _cfg = loadConfig "a3\data_f\default_super.rvmat"; // note: very slow! ~0.1200 ms on tested system
   getText (_cfg >> "Stage2" >> "uvSource");
-- |
+  </sqf>
+- |-
+  <sqf>
   // INCORRECT - the config is destroyed after the first operator >> accesses it
   getNumber (loadConfig "mission.sqm" >> "ScenarioData" >> "respawnDelay");
 
   // CORRECT - the config is destroyed only when the variable _cfg is destroyed
   _cfg = loadConfig "mission.sqm";
   getNumber (_cfg >> "ScenarioData" >> "respawnDelay");
-- "// using a hashmap to cache loaded configs, since loading configs is very slow and should be done once.\nprivate _fnc_loadConfig = {\n\tparams [\"_path\"];\n\t// initialize cache if not initialized yet\n\tif (isNil \"TAG_configCache\") then\n\t{\n\t\tTAG_configCache = createHashMap;\n\t};\n\tprivate _cfg = TAG_configCache getOrDefault [_path, configNull];\n\t// if path doesn't exist in the cache or cfg is null, load the config\n\tif (isNull _cfg) then\n\t{\n\t\t_cfg = loadConfig _path;\n\t\tTAG_configCache set [_path, _cfg];\n\t};\n\t_cfg;\n};\n// the first call will be slow (~0.1200 ms), but subsequent calls are fast (~0.0050 ms)\n[\"a3\\data_f\\default_super.rvmat\"] call _fnc_loadConfig;\n"
-- "// converting a config into hashmap\nprivate _fnc_convertClass = {\n\tparams [\"_cfgClass\"];\n\n\tprivate _result = createHashMap;\n\tprivate _props = configProperties [_cfgClass, \"true\", true];\n\t// note: Hashmaps are case-sensitive so configName cases have to be consistent (e.g. all lowercase)\n\t{\n\t\tif (isNumber _x)\tthen { _result set [toLowerANSI configName _x, getNumber _x];\tcontinue; };\n\t\tif (isText _x)\t\tthen { _result set [toLowerANSI configName _x, getText _x];\t\tcontinue; };\n\t\tif (isArray _x)\t\tthen { _result set [toLowerANSI configName _x, getArray _x];\tcontinue; };\n\t} forEach _props;\n\n\tprivate _classes = \"true\" configClasses _cfgClass;\n\t{\n\t\t_result set [toLowerANSI configName _x, _x call _fnc_convertClass];\n\t} forEach _classes;\n\n\t_result;\n};\n\nprivate _cfg = loadConfig \"mission.sqm\";\nprivate _cfgMap = _cfg call _fnc_convertClass;\n\n// the following expression is similar to getNumber(_cfg >> \"EditorData\" >> \"moveGridStep\")\n// note that all strings are lowercase (which is how they were stored in hashmap)\n_cfgMap get \"editordata\" get \"movegridstep\";\n"
+  </sqf>
+- "<sqf>\n// using a hashmap to cache loaded configs, since loading configs is very slow and should be done once.\nprivate _fnc_loadConfig = {\n\tparams [\"_path\"];\n\t// initialize cache if not initialized yet\n\tif (isNil \"TAG_configCache\") then\n\t{\n\t\tTAG_configCache = createHashMap;\n\t};\n\tprivate _cfg = TAG_configCache getOrDefault [_path, configNull];\n\t// if path doesn't exist in the cache or cfg is null, load the config\n\tif (isNull _cfg) then\n\t{\n\t\t_cfg = loadConfig _path;\n\t\tTAG_configCache set [_path, _cfg];\n\t};\n\t_cfg;\n};\n// the first call will be slow (~0.1200 ms), but subsequent calls are fast (~0.0050 ms)\n[\"a3\\data_f\\default_super.rvmat\"] call _fnc_loadConfig;\n</sqf>"
+- "<sqf>\n// converting a config into hashmap\nprivate _fnc_convertClass = {\n\tparams [\"_cfgClass\"];\n\n\tprivate _result = createHashMap;\n\tprivate _props = configProperties [_cfgClass, \"true\", true];\n\t// note: Hashmaps are case-sensitive so configName cases have to be consistent (e.g. all lowercase)\n\t{\n\t\tif (isNumber _x)\tthen { _result set [toLowerANSI configName _x, getNumber _x];\tcontinue; };\n\t\tif (isText _x)\t\tthen { _result set [toLowerANSI configName _x, getText _x];\t\tcontinue; };\n\t\tif (isArray _x)\t\tthen { _result set [toLowerANSI configName _x, getArray _x];\tcontinue; };\n\t} forEach _props;\n\n\tprivate _classes = \"true\" configClasses _cfgClass;\n\t{\n\t\t_result set [toLowerANSI configName _x, _x call _fnc_convertClass];\n\t} forEach _classes;\n\n\t_result;\n};\n\nprivate _cfg = loadConfig \"mission.sqm\";\nprivate _cfgMap = _cfg call _fnc_convertClass;\n\n// the following expression is similar to getNumber(_cfg >> \"EditorData\" >> \"moveGridStep\")\n// note that all strings are lowercase (which is how they were stored in hashmap)\n_cfgMap get \"editordata\" get \"movegridstep\";\n</sqf>"

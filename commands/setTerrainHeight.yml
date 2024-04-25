@@ -41,8 +41,8 @@ since:
     major: 2
     minor: 10
 examples:
-- "private _fnc_flattenTerrain =\n{\n\tparams [\"_start\", \"_a\", \"_b\", \"_h\"];\n\tprivate _newPositions = [];\n\n\tfor \"_xStep\" from 0 to _a do\n\t{\n\t\tfor \"_yStep\" from 0 to _b do\n\t\t{\n\t\t\tprivate _newHeight = _start vectorAdd [_xStep, _yStep, 0];\n\t\t\t_newHeight set [2, _h];\n\t\t\t_newPositions pushBack _newHeight;\n\t\t};\n\t};\n\n\t_newPositions;\n};\n\nprivate _desiredTerrainHeight = 150;\nprivate _positionsAndHeights = [getPosWorld player, 50, 50, _desiredTerrainHeight] call _fnc_flattenTerrain;\nsetTerrainHeight [_positionsAndHeights, true];\n"
-- |
+- "<sqf>\nprivate _fnc_flattenTerrain =\n{\n\tparams [\"_start\", \"_a\", \"_b\", \"_h\"];\n\tprivate _newPositions = [];\n\n\tfor \"_xStep\" from 0 to _a do\n\t{\n\t\tfor \"_yStep\" from 0 to _b do\n\t\t{\n\t\t\tprivate _newHeight = _start vectorAdd [_xStep, _yStep, 0];\n\t\t\t_newHeight set [2, _h];\n\t\t\t_newPositions pushBack _newHeight;\n\t\t};\n\t};\n\n\t_newPositions;\n};\n\nprivate _desiredTerrainHeight = 150;\nprivate _positionsAndHeights = [getPosWorld player, 50, 50, _desiredTerrainHeight] call _fnc_flattenTerrain;\nsetTerrainHeight [_positionsAndHeights, true];\n</sqf>"
+- |-
   Bad example:
   <sqf>
   // first update
@@ -59,3 +59,4 @@ examples:
 
   // second update - this will update the JIP queue properly
   setTerrainHeight [[[1000, 1000, 25], [1005, 1000, 50], [1000, 1005, 25], [1005, 1005, 25]]];
+  </sqf>

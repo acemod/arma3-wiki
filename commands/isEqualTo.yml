@@ -45,10 +45,14 @@ since:
     major: 1
     minor: 16
 examples:
-- |
+- |-
+  <sqf>
   _arr1 = [1, [2, [3]]];
   _arr2 = [1, [2, [3]]];
   if (_arr1 isEqualTo _arr2) then { hint "Arrays match!" };
-- |
+  </sqf>
+- |-
+  <sqf>
   if (a isEqualTo b) then { hint "a is equal to b" };
   if !(a isEqualTo b) then { hint "a is not equal to b" };
+  </sqf>

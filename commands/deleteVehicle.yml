@@ -50,10 +50,11 @@ since:
     major: 0
     minor: 50
 examples:
-- deleteVehicle _house1;
-- |
+- <sqf>deleteVehicle _house1;</sqf>
+- |-
   Deleting a vehicle with crew:
   <sqf>
   // might want to make sure that the car is local
   { car deleteVehicleCrew _x } forEach crew car;
   deleteVehicle car;
+  </sqf>

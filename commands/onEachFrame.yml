@@ -29,18 +29,20 @@ since:
     major: 0
     minor: 50
 examples:
-- onEachFrame { hintSilent str getPosWorld player }; // hints position every frame
-- |
+- <sqf>onEachFrame { hintSilent str getPosWorld player }; // hints position every frame</sqf>
+- |-
   Private variables defined outside of the [[onEachFrame]] scope are not inherited:
   <sqf>
   _myVar = "bob";
   MyVar = "bill";
   onEachFrame { hintSilent str [_myVar, MyVar]; };
   // Result: [any, "bill"]
-- "Only one [[onEachFrame]] loop can exist at any time:\n<sqf>\nonEachFrame { player sideChat \"first\"; };\nonEachFrame { player sideChat \"second\"; };\t// replaces the first one\nonEachFrame {};\t\t\t\t\t\t\t\t// reset to the initial state\n"
-- |
+  </sqf>
+- "Only one [[onEachFrame]] loop can exist at any time:\n<sqf>\nonEachFrame { player sideChat \"first\"; };\nonEachFrame { player sideChat \"second\"; };\t// replaces the first one\nonEachFrame {};\t\t\t\t\t\t\t\t// reset to the initial state\n</sqf>"
+- |-
   Script suspension is not permitted within [[onEachFrame]] scope:
   <sqf>
   // will throw an error
   onEachFrame { sleep 1; };
-- "onEachFrame { if (diag_frameNo mod 60 isEqualTo 0) then { /* code */ } };\t// executes every 60 frames (every second @ 60 FPS, every two seconds @ 30 FPS, etc)\n\nonEachFrame {\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// this version is the closest to a precise 1 second tick\n\tif (isNil \"TAG_LastHint\") then\n\t{\n\t\tTAG_LastHint = diag_tickTime;\n\t}\n\telse\n\t{\n\t\tif (diag_tickTime - TAG_LastHint >= 1) then // set the duration in seconds here\n\t\t{\n\t\t\thint format [\"a second has passed (%1s since game start)\", diag_tickTime];\n\t\t\tTAG_LastHint = diag_tickTime;\n\t\t};\n\t};\n};\n"
+  </sqf>
+- "<sqf>\nonEachFrame { if (diag_frameNo mod 60 isEqualTo 0) then { /* code */ } };\t// executes every 60 frames (every second @ 60 FPS, every two seconds @ 30 FPS, etc)\n\nonEachFrame {\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// this version is the closest to a precise 1 second tick\n\tif (isNil \"TAG_LastHint\") then\n\t{\n\t\tTAG_LastHint = diag_tickTime;\n\t}\n\telse\n\t{\n\t\tif (diag_tickTime - TAG_LastHint >= 1) then // set the duration in seconds here\n\t\t{\n\t\t\thint format [\"a second has passed (%1s since game start)\", diag_tickTime];\n\t\t\tTAG_LastHint = diag_tickTime;\n\t\t};\n\t};\n};\n</sqf>"

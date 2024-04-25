@@ -18,4 +18,4 @@ since:
     major: 2
     minor: 2
 examples:
-- "private _text = getText (configFile >> \"CfgVehicles\" >> \"Thing\" >> \"displayName\");\t\t\t// \"Get in %1 as Driver\"\nprivate _rawText = getTextRaw (configFile >> \"CfgVehicles\" >> \"Thing\" >> \"displayName\");\t// \"$STR_ACTION_GETIN_DRIVER\"\nprivate _localized = localize _text;\t\t\t\t\t\t\t\t\t\t\t\t\t\t// \"Get in %1 as Driver\"\n_localized == _text; // true\n"
+- "<sqf>\nprivate _text = getText (configFile >> \"CfgVehicles\" >> \"Thing\" >> \"displayName\");\t\t\t// \"Get in %1 as Driver\"\nprivate _rawText = getTextRaw (configFile >> \"CfgVehicles\" >> \"Thing\" >> \"displayName\");\t// \"$STR_ACTION_GETIN_DRIVER\"\nprivate _localized = localize _text;\t\t\t\t\t\t\t\t\t\t\t\t\t\t// \"Get in %1 as Driver\"\n_localized == _text; // true\n</sqf>"

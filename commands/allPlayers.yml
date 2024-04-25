@@ -27,13 +27,15 @@ since:
     major: 1
     minor: 48
 examples:
-- |
+- |-
   Get human players (i.e. all players excluding Headless Clients):
   <sqf>
   private _players = allPlayers - entities "HeadlessClient_F";
-- |
+  </sqf>
+- |-
   Get non-virtual players (i.e. all players excluding Virtual Entities):
   <sqf>
   private _players = allPlayers select {!(_x isKindOf "VirtualMan_F")};
-- "{\n\tsystemChat format [\n\t\t\"Player %1 is %2\", \n\t\tname _x, \n\t\t[\"dead\", \"alive\"] select alive _x\n\t];\n} forEach allPlayers;"
-- private _bluforPlayers = blufor countSide allPlayers;
+  </sqf>
+- "<sqf>{\n\tsystemChat format [\n\t\t\"Player %1 is %2\", \n\t\tname _x, \n\t\t[\"dead\", \"alive\"] select alive _x\n\t];\n} forEach allPlayers;</sqf>"
+- <sqf>private _bluforPlayers = blufor countSide allPlayers;</sqf>

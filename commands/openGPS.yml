@@ -18,12 +18,15 @@ since:
     major: 2
     minor: 4
 examples:
-- |
+- |-
+  <sqf>
   player linkItem "ItemGPS";
   private _success = openGPS true;
-- |
+  </sqf>
+- |-
   To close all opened minimaps:
   <sqf>
   while { openGPS false } do { };
   // or
   while { visibleGPS } do { openGPS false };
+  </sqf>

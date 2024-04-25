@@ -76,11 +76,12 @@ since:
     major: 0
     minor: 50
 examples:
-- _plane1 landAt 1;
+- <sqf>_plane1 landAt 1;</sqf>
 - |-
-  _dynamicAirport1 = "DynamicAirport_01_F" createVehicle position player;
-  _plane1 landAt _dynamicAirport1;
-- |
-  _hpad = "Land_HelipadEmpty_F" createVehicle [0,0,0];
+  <sqf>_dynamicAirport1 = "DynamicAirport_01_F" createVehicle position player;
+  _plane1 landAt _dynamicAirport1;</sqf>
+- |-
+  <sqf>_hpad = "Land_HelipadEmpty_F" createVehicle [0,0,0];
   _hpad setPosASL _pos;
   heli landAt [_hpad, "LAND"];
+  </sqf>

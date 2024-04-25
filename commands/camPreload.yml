@@ -33,5 +33,5 @@ since:
     major: 0
     minor: 50
 examples:
-- _camera camPreload 5;
-- "Preload camera around player to avoid stuttering on optics zooming:\n<sqf>[] spawn \n{\n\t_cam = \"camera\" camCreate (player selectionPosition \"camera\");\n\tfor \"_i\" from 0 to 359 do\n\t{\n\t\t_cam setDir _i;\n\t\t_cam camPrepareFov 0.25;\n\t\t_cam camPreload 0;\n\t\twaitUntil { camPreloaded _cam };\n\t};\n\tcamDestroy _cam;\n};"
+- <sqf>_camera camPreload 5;</sqf>
+- "Preload camera around player to avoid stuttering on optics zooming:\n<sqf>[] spawn \n{\n\t_cam = \"camera\" camCreate (player selectionPosition \"camera\");\n\tfor \"_i\" from 0 to 359 do\n\t{\n\t\t_cam setDir _i;\n\t\t_cam camPrepareFov 0.25;\n\t\t_cam camPreload 0;\n\t\twaitUntil { camPreloaded _cam };\n\t};\n\tcamDestroy _cam;\n};</sqf>"

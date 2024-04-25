@@ -43,7 +43,7 @@ since:
     major: 0
     minor: 50
 examples:
-- skipTime 5;
-- skipTime (5/60); // be sure to use parentheses, otherwise here (skipTime 5)/60 will happen
-- "while {true} do \n{\n\tskipTime 0.00333;\n\tsleep 0.1; // smooth time transition\n};\n"
-- skipTime ((_timeToSkipTo - dayTime + 24) % 24); // skip forward to a specific time, irrespective of the current mission time
+- <sqf>skipTime 5;</sqf>
+- <sqf>skipTime (5/60); // be sure to use parentheses, otherwise here (skipTime 5)/60 will happen</sqf>
+- "<sqf>\nwhile {true} do \n{\n\tskipTime 0.00333;\n\tsleep 0.1; // smooth time transition\n};\n</sqf>"
+- <sqf>skipTime ((_timeToSkipTo - dayTime + 24) % 24); // skip forward to a specific time, irrespective of the current mission time</sqf>

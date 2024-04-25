@@ -17,7 +17,7 @@ syntax:
   - numberA
   - numberB
   ret:
-  - Unknown
+  - Number
   - the sum of ''numberA'' and ''numberB''
   params:
   - name: numberA
@@ -26,7 +26,7 @@ syntax:
     type: Number
 - call: !Unary number
   ret:
-  - Unknown
+  - Number
   - the value of the parameter ''number''
   params:
   - name: number
@@ -46,7 +46,7 @@ syntax:
   - stringA
   - stringB
   ret:
-  - Unknown
+  - String
   - a string concatenating ''stringA'' and ''stringB''
   params:
   - name: stringA
@@ -96,19 +96,23 @@ since:
     major: 0
     minor: 50
 examples:
-- "<sqf notrim>\n 5 +  3\t// returns  8\n-5 + -3\t// returns -8\n"
-- "+  2\t// returns  2\n+ -7\t// returns -7\n"
-- |
+- "<sqf notrim>\n 5 +  3\t// returns  8\n-5 + -3\t// returns -8\n</sqf>"
+- "<sqf>\n+  2\t// returns  2\n+ -7\t// returns -7\n</sqf>"
+- |-
+  <sqf>
   _arrayA = [1,2,3];
   _arrayB = [3,4,5];
   _arrayAB = _arrayA + _arrayB; // _arrayAB = [1,2,3,3,4,5]
   // _arrayA and _arrayB remain unchanged
-- _result = "Hello" + " " + "there"; // "Hello there"
-- |
+  </sqf>
+- <sqf>_result = "Hello" + " " + "there"; // "Hello there"</sqf>
+- |-
+  <sqf>
   _arrayA = [1,2,3];
   _arrayB = + _arrayA;
   _arrayB set [0, 99]; // _arrayA = [1,2,3], _arrayB = [99,2,3]
-- |
+  </sqf>
+- |-
   Shallow copy with {{hl|ARRAY + []}}:
   <sqf>
   private _subArray = [1, 2, 3];
@@ -125,3 +129,4 @@ examples:
   private _array2 = + _array1;
   _array2 select 0 set [0, "oops"];
   hint str _subArray; // [1, 2, 3]
+  </sqf>

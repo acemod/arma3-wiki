@@ -85,10 +85,12 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   _list = player nearEntities 20;
   _list = ASLToAGL getPosASL player nearEntities 50;
   _list = player nearEntities ["Man", 1000];
   _list = ASLToAGL getPosASL player nearEntities ["LaserTarget", 3000];
   _list = player nearEntities [["Car", "Motorcycle", "Tank"], 50];
   _list = ASLToAGL getPosASL player nearEntities [["Man", "Air", "Car", "Motorcycle", "Tank"], 200];
+  </sqf>

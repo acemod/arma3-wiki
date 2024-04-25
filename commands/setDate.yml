@@ -43,6 +43,6 @@ since:
     major: 0
     minor: 50
 examples:
-- setDate [1986, 2, 25, 16, 0]; // 4:00pm February 25, 1986
-- "// Set the real date:\nif (isServer) then\n{\n\twaitUntil { time > 0 };\n\t[systemTime select [0, 5]] remoteExec [\"setDate\"];\n};\n"
-- "Using [[setDate]] with an incorrect (like negative or exceeding) value will still work properly:\n<sqf>\nprivate _date = date;\n_date set [3, 25];\t// set hour to 25\nsetDate _date;\t\t// date = next day 1am\n"
+- <sqf>setDate [1986, 2, 25, 16, 0]; // 4:00pm February 25, 1986</sqf>
+- "<sqf>\n// Set the real date:\nif (isServer) then\n{\n\twaitUntil { time > 0 };\n\t[systemTime select [0, 5]] remoteExec [\"setDate\"];\n};\n</sqf>"
+- "Using [[setDate]] with an incorrect (like negative or exceeding) value will still work properly:\n<sqf>\nprivate _date = date;\n_date set [3, 25];\t// set hour to 25\nsetDate _date;\t\t// date = next day 1am\n</sqf>"

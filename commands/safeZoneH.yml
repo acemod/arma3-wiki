@@ -29,11 +29,11 @@ since:
     major: 0
     minor: 50
 examples:
-- _screenHeight = safeZoneH;
+- <sqf>_screenHeight = safeZoneH;</sqf>
 - |-
-  _screenTopBorderY = safeZoneY;
-  _screenBottomBorderY = safeZoneH + safeZoneY;
-- |
+  <sqf>_screenTopBorderY = safeZoneY;
+  _screenBottomBorderY = safeZoneH + safeZoneY;</sqf>
+- |-
   Create control 50% wide, 30% tall, centered on screen:
   <sqf>
   private _ctrl = findDisplay 46 createDisplay "RscDisplayEmpty" ctrlCreate ["RscText", -1];
@@ -45,3 +45,4 @@ examples:
   _ctrl ctrlSetPositionX ((safeZoneW - _ctrlWidth) / 2 + safeZoneX); // center it horizontally
   _ctrl ctrlSetPositionY ((safeZoneH - _ctrlHeight) / 2 + safeZoneY); // center it vertically
   _ctrl ctrlCommit 0;
+  </sqf>

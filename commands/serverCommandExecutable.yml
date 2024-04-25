@@ -18,5 +18,5 @@ since:
     major: 1
     minor: 34
 examples:
-- _canKick = serverCommandAvailable "#kick";
-- "Add button to the main map to lock server, which could only be activated by admin:\n<sqf>with uiNamespace do {\n\tctrl = findDisplay 12 ctrlCreate [\"RscButton\", -1];\n\tctrl ctrlSetPosition [0, 0, 0.5, 0.1];\n\tctrl ctrlCommit 0;\n\tctrl ctrlSetText \"LOCK SERVER\";\n\tctrl ctrlAddEventHandler [\"ButtonDown\",\n\t{\t\n\t\tif (serverCommandExecutable \"#lock\") then {\n\t\t\tserverCommand \"#lock\";\n\t\t} else {\n\t\t\thint \"You need to be logged in as admin to do this\";\n\t\t};\n\t}];\n};"
+- <sqf>_canKick = serverCommandAvailable "#kick";</sqf>
+- "Add button to the main map to lock server, which could only be activated by admin:\n<sqf>with uiNamespace do {\n\tctrl = findDisplay 12 ctrlCreate [\"RscButton\", -1];\n\tctrl ctrlSetPosition [0, 0, 0.5, 0.1];\n\tctrl ctrlCommit 0;\n\tctrl ctrlSetText \"LOCK SERVER\";\n\tctrl ctrlAddEventHandler [\"ButtonDown\",\n\t{\t\n\t\tif (serverCommandExecutable \"#lock\") then {\n\t\t\tserverCommand \"#lock\";\n\t\t} else {\n\t\t\thint \"You need to be logged in as admin to do this\";\n\t\t};\n\t}];\n};</sqf>"

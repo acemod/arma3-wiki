@@ -56,6 +56,6 @@ since:
     major: 0
     minor: 50
 examples:
-- playSound "soundname";
-- "Start a sound and then stop it after 1.2 second:\n<sqf>\nplaySound \"AlarmCar\";\n0 spawn\n{\n\t_sound = ASLToAGL [0,0,0] nearestObject \"#soundonvehicle\";\n\tsleep 1.2;\n\tdeleteVehicle _sound;\n};\n\n// since {{arma3}} v2.00\n_source = playSound \"AlarmCar\";\n_source spawn\n{\n\tsleep 1.2;\n\tdeleteVehicle _this;\n};\n"
-- "Start a sound and wait until it is finished:\n<sqf>\nplaySound \"Alarm\";\nhint \"Started!\";\n0 spawn\n{\n\t_sound = ASLToAGL [0,0,0] nearestObject \"#soundonvehicle\";\n\twaitUntil {isNull _sound};\n\thint \"Finished!\";\n};\n\n// since {{arma3}} v2.00\nprivate _source = playSound \"Alarm\";\n_source spawn\n{\n\twaitUntil { isNull _this };\n\thint \"Finished!\";\n};\n"
+- <sqf>playSound "soundname";</sqf>
+- "Start a sound and then stop it after 1.2 second:\n<sqf>\nplaySound \"AlarmCar\";\n0 spawn\n{\n\t_sound = ASLToAGL [0,0,0] nearestObject \"#soundonvehicle\";\n\tsleep 1.2;\n\tdeleteVehicle _sound;\n};\n\n// since {{arma3}} v2.00\n_source = playSound \"AlarmCar\";\n_source spawn\n{\n\tsleep 1.2;\n\tdeleteVehicle _this;\n};\n</sqf>"
+- "Start a sound and wait until it is finished:\n<sqf>\nplaySound \"Alarm\";\nhint \"Started!\";\n0 spawn\n{\n\t_sound = ASLToAGL [0,0,0] nearestObject \"#soundonvehicle\";\n\twaitUntil {isNull _sound};\n\thint \"Finished!\";\n};\n\n// since {{arma3}} v2.00\nprivate _source = playSound \"Alarm\";\n_source spawn\n{\n\twaitUntil { isNull _this };\n\thint \"Finished!\";\n};\n</sqf>"

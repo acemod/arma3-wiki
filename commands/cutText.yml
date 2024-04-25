@@ -132,11 +132,15 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   cutText ["", "BLACK OUT"];
   cutText ["Hello World!", "PLAIN", 2];
-- 2 cutText ["Hello World!", "PLAIN", 2]; // returns nothing
-- |
+  </sqf>
+- <sqf>2 cutText ["Hello World!", "PLAIN", 2]; // returns nothing</sqf>
+- |-
+  <sqf>
   private _layer1 = "normal" cutText ["In The Centre", "PLAIN"];
   private _layer2 = "down" cutText ["At The Bottom", "PLAIN DOWN"];
-- cutText ["<t color='#ff0000' size='5'>RED ALERT!</t><br/>***********", "PLAIN", -1, true, true];
+  </sqf>
+- <sqf>cutText ["<t color='#ff0000' size='5'>RED ALERT!</t><br/>***********", "PLAIN", -1, true, true];</sqf>

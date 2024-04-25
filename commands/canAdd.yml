@@ -115,15 +115,19 @@ since:
     major: 0
     minor: 70
 examples:
-- "<sqf\n>if (player canAdd \"FirstAidKit\") then\n{\n\tplayer addItem \"FirstAidKit\";\n}\nelse\n{\n\thint \"Not enough space\";\n};\n"
-- "if (_box canAdd \"FirstAidKit\") then\n{\n\t_box addWeaponCargo [\"FirstAidKit\", 1];\n}\nelse\n{\n\thint \"Not enough space\";\n};\n"
-- car canAdd [currentWeapon player, 50];
-- |
+- "<sqf\n>if (player canAdd \"FirstAidKit\") then\n{\n\tplayer addItem \"FirstAidKit\";\n}\nelse\n{\n\thint \"Not enough space\";\n};\n</sqf>"
+- "<sqf>\nif (_box canAdd \"FirstAidKit\") then\n{\n\t_box addWeaponCargo [\"FirstAidKit\", 1];\n}\nelse\n{\n\thint \"Not enough space\";\n};\n</sqf>"
+- <sqf>car canAdd [currentWeapon player, 50];</sqf>
+- |-
+  <sqf>
   // check if attachment can be loaded
   "arifle_Katiba_GL_F" canAdd "acc_pointer_IR";
   "arifle_Katiba_GL_F" canAdd ["acc_pointer_IR", "PointerSlot"];
-- |
+  </sqf>
+- |-
+  <sqf>
   // check if magazine can be loaded
   "arifle_Katiba_GL_F" canAdd "30Rnd_65x39_caseless_green";
   "arifle_Katiba_GL_F" canAdd ["30Rnd_65x39_caseless_green", "this"];
   "arifle_Katiba_GL_F" canAdd ["1Rnd_SmokeRed_Grenade_shell", "EGLM"];
+  </sqf>

@@ -45,11 +45,13 @@ since:
     major: 0
     minor: 50
 examples:
-- west setFriend [resistance, 0]; // west will not like resistance from now on
-- |
+- <sqf>west setFriend [resistance, 0]; // west will not like resistance from now on</sqf>
+- |-
+  <sqf>
   resistance setFriend [east, 0];
   east setFriend [resistance, 0]; // both are enemies
 
   resistance setFriend [east, 1];
   east setFriend [resistance, 0]; // resistance likes east, but east does not like resistance
-- west setFriend [west, 0]; // free for all deathmatch! works with west/blufor, east/opfor, independent/resistance and civilian
+  </sqf>
+- <sqf>west setFriend [west, 0]; // free for all deathmatch! works with west/blufor, east/opfor, independent/resistance and civilian</sqf>

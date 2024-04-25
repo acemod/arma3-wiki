@@ -37,6 +37,6 @@ since:
     major: 0
     minor: 50
 examples:
-- onPlayerConnected "[_id, _name] execVM 'PlayerConnected.sqf';";
-- onPlayerConnected { diag_log [_id, _uid, _name] };
-- "From {{arma3}} v1.49:\n<sqf>onPlayerConnected {\n\tsomevar = random 123;\n\t_owner publicVariableClient \"somevar\";\n\t// this will define \"somevar\" to a random value on the joining machine\n};"
+- <sqf>onPlayerConnected "[_id, _name] execVM 'PlayerConnected.sqf';";</sqf>
+- <sqf>onPlayerConnected { diag_log [_id, _uid, _name] };</sqf>
+- "From {{arma3}} v1.49:\n<sqf>onPlayerConnected {\n\tsomevar = random 123;\n\t_owner publicVariableClient \"somevar\";\n\t// this will define \"somevar\" to a random value on the joining machine\n};</sqf>"

@@ -36,9 +36,9 @@ since:
     major: 0
     minor: 50
 examples:
-- _control ctrlSetStructuredText parseText "First line<img image=data\isniper.paa /><br />Second line"
-- "To adjust text vertically, add extra line above with blank space (&amp;#160;) and set its size accordingly:\n<sqf>\nwith uiNamespace do {\n\tbutton = findDisplay 46 ctrlCreate [\"RscShortcutButton\", -1];\n\tbutton ctrlSetPosition [0,0,0.3,0.1];\n\tbutton ctrlCommit 0;\n\tbutton ctrlSetStructuredText parseText \n\t\"<t size='0.5'>&#160;</t><br/><t size='1' align='center'>Button Text&#160;&#160;</t>\";\n};\n"
-- |
+- <sqf>_control ctrlSetStructuredText parseText "First line<img image=data\isniper.paa /><br />Second line"</sqf>
+- "To adjust text vertically, add extra line above with blank space (&amp;#160;) and set its size accordingly:\n<sqf>\nwith uiNamespace do {\n\tbutton = findDisplay 46 ctrlCreate [\"RscShortcutButton\", -1];\n\tbutton ctrlSetPosition [0,0,0.3,0.1];\n\tbutton ctrlCommit 0;\n\tbutton ctrlSetStructuredText parseText \n\t\"<t size='0.5'>&#160;</t><br/><t size='1' align='center'>Button Text&#160;&#160;</t>\";\n};\n</sqf>"
+- |-
   There is a bug with {{hl|valign}} that requires adding 1 extra trailing space per line to the displayed text in order to keep it centered horizontally:
   <sqf>
   disableSerialization;
@@ -51,3 +51,4 @@ examples:
   private _trailingSpace = "";
   for "_i" from 1 to _linesTotal do { _trailingSpace = _trailingSpace + " " };
   _ctrl ctrlSetStructuredText parseText format ["<t size='%1'><t size='1' align='center' valign='middle'>%2%3</t> </t>", _linesTotal, "------ Centered Text ------", _trailingSpace];
+  </sqf>

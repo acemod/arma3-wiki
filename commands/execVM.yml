@@ -59,8 +59,9 @@ since:
     major: 0
     minor: 50
 examples:
-- execVM "test.sqf";
-- |
+- <sqf>execVM "test.sqf";</sqf>
+- |-
+  <sqf>
   _handle = player execVM "test.sqf";
   waitUntil { scriptDone _handle };
   </sqf>
@@ -68,15 +69,18 @@ examples:
   <sqf>
   private _handle = execVM "123.sqf";
   waitUntil { isNull _handle };
-- |
-  [player, 0.75] execVM "setDamage.sqf";</sqf>
+  </sqf>
+- |-
+  <sqf>[player, 0.75] execVM "setDamage.sqf";</sqf>
   setDamage.sqf:
   <sqf>
   params ["_unit", "_damage"];
   _unit setDamage _damage;
-- |
+  </sqf>
+- |-
   [[execVM]] equivalence:
   <sqf>
   private _handle = _args execVM "someFile.sqf";
   // is practically identical to
   private _handle = _args spawn compile preprocessFileLineNumbers "someFile.sqf";
+  </sqf>

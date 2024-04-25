@@ -35,8 +35,8 @@ since:
     major: 0
     minor: 50
 examples:
-- "After leaving menu, deselect all units (command menu is not opened → no selection)\n<sqf>\n{\n\tplayer groupSelectUnit [_x, false];\n} forEach (groupSelectedUnits player);\n"
-- "Select all units when player is the leader:\n<sqf>\n{\n\tplayer groupSelectUnit [_x, true];\n} forEach units player;\n"
+- "After leaving menu, deselect all units (command menu is not opened → no selection)\n<sqf>\n{\n\tplayer groupSelectUnit [_x, false];\n} forEach (groupSelectedUnits player);\n</sqf>"
+- "Select all units when player is the leader:\n<sqf>\n{\n\tplayer groupSelectUnit [_x, true];\n} forEach units player;\n</sqf>"
 - |-
   Open communication with group leader:
-  <sqf>player groupSelectUnit [leader player, true];
+  <sqf>player groupSelectUnit [leader player, true];</sqf>

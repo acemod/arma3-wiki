@@ -35,7 +35,7 @@ since:
     major: 1
     minor: 34
 examples:
-- "_turretPaths = allTurrets _mySlammerUP;\t\t\t\t// [[0],[0,0]]\n_turretPaths = allTurrets [_mySlammerUP, true];\t\t// [[0],[0,0]] <- commander turret is also an FFV turret\n_turretPaths = allTurrets [_mySlammerUP, false];\t// [[0]]\n"
+- "<sqf>\n_turretPaths = allTurrets _mySlammerUP;\t\t\t\t// [[0],[0,0]]\n_turretPaths = allTurrets [_mySlammerUP, true];\t\t// [[0],[0,0]] <- commander turret is also an FFV turret\n_turretPaths = allTurrets [_mySlammerUP, false];\t// [[0]]\n</sqf>"
 - |-
   Return FFV turrets only:
-  <sqf>_FFVTurrets = allTurrets [tank, true] - allTurrets [tank, false];
+  <sqf>_FFVTurrets = allTurrets [tank, true] - allTurrets [tank, false];</sqf>

@@ -23,6 +23,6 @@ since:
     major: 0
     minor: 50
 examples:
-- hint str productVersion; // would return ["Arma 2 OA", "arma2oa", 162, 95208] on Arma 2 OA 1.62.95208
-- hint str productVersion; // ["Arma 3", "Arma3", 137, 128764, "Development", false, "Windows"]
-- ' format ["%1.%2", (productVersion select 2) * 0.01 toFixed 2, productVersion select 3]; // returns version e.g.: "2.00.146773"'
+- <sqf>hint str productVersion; // would return ["Arma 2 OA", "arma2oa", 162, 95208] on Arma 2 OA 1.62.95208</sqf>
+- <sqf>hint str productVersion; // ["Arma 3", "Arma3", 137, 128764, "Development", false, "Windows"]</sqf>
+- '<sqf> format ["%1.%2", (productVersion select 2) * 0.01 toFixed 2, productVersion select 3]; // returns version e.g.: "2.00.146773"</sqf>'

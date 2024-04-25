@@ -60,10 +60,12 @@ since:
     major: 0
     minor: 50
 examples:
-- _trigger setTriggerArea [100, 50, 45, false];
-- _trigger setTriggerArea [100, 50, 45, false, 100];
-- |
+- <sqf>_trigger setTriggerArea [100, 50, 45, false];</sqf>
+- <sqf>_trigger setTriggerArea [100, 50, 45, false, 100];</sqf>
+- |-
+  <sqf>
   _trg = createTrigger ["EmptyDetector", getPos player, false];
   _trg setTriggerArea [5, 5, 0, false];
   _trg setTriggerActivation ["CIV", "PRESENT", true];
   _trg setTriggerStatements ["this", "hint 'Civilian near player'", "hint 'no civilian near'"];
+  </sqf>

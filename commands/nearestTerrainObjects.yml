@@ -47,13 +47,13 @@ since:
     major: 1
     minor: 54
 examples:
-- nearestTerrainObjects [player, ["Tree", "Bush"], 200];
-- nearestTerrainObjects [player, ["House"], 200];
-- nearestTerrainObjects [[2716, 2949, 0], ["Chapel", "Fuelstation"], 100];
+- <sqf>nearestTerrainObjects [player, ["Tree", "Bush"], 200];</sqf>
+- <sqf>nearestTerrainObjects [player, ["House"], 200];</sqf>
+- <sqf>nearestTerrainObjects [[2716, 2949, 0], ["Chapel", "Fuelstation"], 100];</sqf>
 - |-
   Return every terrain object in 50 metres radius around player sorted, closest first:
-  <sqf>nearestTerrainObjects [player, [], 50];
+  <sqf>nearestTerrainObjects [player, [], 50];</sqf>
 - |-
   Return every terrain object in 50 metres radius around player unsorted:
-  <sqf>nearestTerrainObjects [player, [], 50, false];
-- "Hide all terrain objects [[nearestTerrainObjects]] could find:\n<sqf>if (isServer) then\n{\n\tprivate _allTerrainObjects = nearestTerrainObjects\n\t[\n\t\t[worldSize / 2, worldSize / 2],\n\t\t[],\n\t\tworldSize * sqrt 2 / 2,\n\t\tfalse\n\t];\n\n\t{ _x hideObjectGlobal true } forEach _allTerrainObjects;\n};"
+  <sqf>nearestTerrainObjects [player, [], 50, false];</sqf>
+- "Hide all terrain objects [[nearestTerrainObjects]] could find:\n<sqf>if (isServer) then\n{\n\tprivate _allTerrainObjects = nearestTerrainObjects\n\t[\n\t\t[worldSize / 2, worldSize / 2],\n\t\t[],\n\t\tworldSize * sqrt 2 / 2,\n\t\tfalse\n\t];\n\n\t{ _x hideObjectGlobal true } forEach _allTerrainObjects;\n};</sqf>"

@@ -16,7 +16,7 @@ since:
     major: 2
     minor: 0
 examples:
-- isNull diaryRecordNull; // true
-- isNull (objNull createDiaryRecord ["Diary", ["Title", "Text"]]); // true - objNull cannot take diary records
-- str diaryRecordNull; // "No diary record"
-- "private _diaryRecord = diaryRecordNull;\nif (damage player > 0.5) then\n{\n\t_diaryRecord = player createDiaryRecord [\"Diary\", [\"Heal yourself\", \"Ask a medic\"]];\n};\n\nif (not isNull _diaryRecord) then { hint \"Diary record added.\"; };\n"
+- <sqf>isNull diaryRecordNull; // true</sqf>
+- <sqf>isNull (objNull createDiaryRecord ["Diary", ["Title", "Text"]]); // true - objNull cannot take diary records</sqf>
+- <sqf>str diaryRecordNull; // "No diary record"</sqf>
+- "<sqf>\nprivate _diaryRecord = diaryRecordNull;\nif (damage player > 0.5) then\n{\n\t_diaryRecord = player createDiaryRecord [\"Diary\", [\"Heal yourself\", \"Ask a medic\"]];\n};\n\nif (not isNull _diaryRecord) then { hint \"Diary record added.\"; };\n</sqf>"

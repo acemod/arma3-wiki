@@ -33,6 +33,6 @@ since:
     major: 0
     minor: 50
 examples:
-- _float = dateToNumber [2035,7,6,12,0]; // 0.510959
-- dateToNumber date; // returns float number for the current date
-- "Calculate days from 1/1/1970:\n<sqf>\nfnc_daysFromEpoc = \n{\n\tprivate _year = param [0];\n\tprivate _days = 0;\n\tfor \"_i\" from 1970 to _year - 1 do \n\t{\n\t\t_days = _days + round linearConversion [0, 1, dateToNumber [_i, 12, 31, 23, 59], 0, 365, false];\n\t};\n\t_days + linearConversion [0, 1, dateToNumber _this, 0, 365, false];\n};\n\nhint str (date call fnc_daysFromEpoc);\n"
+- <sqf>_float = dateToNumber [2035,7,6,12,0]; // 0.510959</sqf>
+- <sqf>dateToNumber date; // returns float number for the current date</sqf>
+- "Calculate days from 1/1/1970:\n<sqf>\nfnc_daysFromEpoc = \n{\n\tprivate _year = param [0];\n\tprivate _days = 0;\n\tfor \"_i\" from 1970 to _year - 1 do \n\t{\n\t\t_days = _days + round linearConversion [0, 1, dateToNumber [_i, 12, 31, 23, 59], 0, 365, false];\n\t};\n\t_days + linearConversion [0, 1, dateToNumber _this, 0, 365, false];\n};\n\nhint str (date call fnc_daysFromEpoc);\n</sqf>"

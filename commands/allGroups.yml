@@ -25,9 +25,10 @@ since:
     major: 0
     minor: 50
 examples:
-- '{ leader _x sideChat "Go ! Go ! Go !" } forEach allGroups;'
-- |
+- <sqf>{ leader _x sideChat "Go ! Go ! Go !" } forEach allGroups;</sqf>
+- |-
   All groups with players:
   <sqf>
   private _allGroupsWithPlayers = [];
   { _allGroupsWithPlayers pushBackUnique group _x } forEach allPlayers;
+  </sqf>

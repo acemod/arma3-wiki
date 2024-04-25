@@ -31,8 +31,8 @@ since:
 examples:
 - |-
   Apply force [0,1000,0] defined in world space (not factoring object actual positioning) to object position [1,0,0]:
-  <sqf>_object addForce [[0,1000,0], [1,0,0]];
+  <sqf>_object addForce [[0,1000,0], [1,0,0]];</sqf>
 - |-
   Apply force [0,1000,0] defined in model space (relative to object) to object position [1,0,0]:
-  <sqf>_object addForce [_object vectorModelToWorld [0,1000,0], [1,0,0]];
-- "Can be used on units since {{arma3}} v2.04:\n<sqf>\nif (local bob) then\n{\n\t[] spawn \n\t{\n\t\tbob addForce [bob vectorModelToWorld [0,-200,0], bob selectionPosition \"rightfoot\"];\n\t\tsleep 5;\n\t\tbob setUnconscious false;\n\t};\n};\n"
+  <sqf>_object addForce [_object vectorModelToWorld [0,1000,0], [1,0,0]];</sqf>
+- "Can be used on units since {{arma3}} v2.04:\n<sqf>\nif (local bob) then\n{\n\t[] spawn \n\t{\n\t\tbob addForce [bob vectorModelToWorld [0,-200,0], bob selectionPosition \"rightfoot\"];\n\t\tsleep 5;\n\t\tbob setUnconscious false;\n\t};\n};\n</sqf>"

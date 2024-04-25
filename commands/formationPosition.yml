@@ -29,5 +29,5 @@ since:
     major: 0
     minor: 50
 examples:
-- _pos = formationPosition _unit;
-- "// Reposition entire group to a new position (ground level)\nprivate _group = group player;\nprivate _leader = leader _group;\n\n// Set the leader to the spawn position\n_leader setPosATL markerPos \"spawn_position\";\n\n// Reposition all units of the group except the leader\n{\n\tprivate _formationPos = formationPosition _x;\n\t_formationPos set [2, 0];\n\t_x setPosATL _formationPos;\n} forEach (units _group - [_leader]);\n"
+- <sqf>_pos = formationPosition _unit;</sqf>
+- "<sqf>\n// Reposition entire group to a new position (ground level)\nprivate _group = group player;\nprivate _leader = leader _group;\n\n// Set the leader to the spawn position\n_leader setPosATL markerPos \"spawn_position\";\n\n// Reposition all units of the group except the leader\n{\n\tprivate _formationPos = formationPosition _x;\n\t_formationPos set [2, 0];\n\t_x setPosATL _formationPos;\n} forEach (units _group - [_leader]);\n</sqf>"

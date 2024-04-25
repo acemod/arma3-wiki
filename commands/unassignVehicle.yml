@@ -39,13 +39,14 @@ since:
     major: 0
     minor: 50
 examples:
-- unassignVehicle player;
+- <sqf>unassignVehicle player;</sqf>
 - |-
   Make all the occupants of a vehicle disembark:
-  <sqf>{ unassignVehicle _x } forEach crew _vehicle;
-- |
+  <sqf>{ unassignVehicle _x } forEach crew _vehicle;</sqf>
+- |-
   Make all the occupants of a vehicle disembark and unable to get back in:
   <sqf>
   private _crew = crew _vehicle;
   { unassignVehicle _x } forEach _crew;
   _crew allowGetIn false;
+  </sqf>

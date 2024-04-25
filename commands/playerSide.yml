@@ -29,9 +29,9 @@ since:
     major: 0
     minor: 50
 examples:
-- "if (side man1 == playerSide) then\n{\n\thint \"man1 is on your side!\";\n};\n"
-- "switch (playerSide) do\n{\n\tcase west: { hint \"You are BLUFOR\"; };\n\tcase east: { hint \"You are OPFOR\"; };\n};\n"
-- |
+- "<sqf>\nif (side man1 == playerSide) then\n{\n\thint \"man1 is on your side!\";\n};\n</sqf>"
+- "<sqf>\nswitch (playerSide) do\n{\n\tcase west: { hint \"You are BLUFOR\"; };\n\tcase east: { hint \"You are OPFOR\"; };\n};\n</sqf>"
+- |-
   the following code will change the side of the player including [[playerSide]]:
   <sqf>
   private _player = player;
@@ -39,3 +39,4 @@ examples:
   selectNoPlayer;
   selectPlayer _player;
   hint str playerSide; // EAST
+  </sqf>

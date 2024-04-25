@@ -24,5 +24,5 @@ since:
     major: 1
     minor: 58
 examples:
-- "test_polygon = [];\nfor \"_i\" from 1 to 12 do \n{\n\ttest_polygon pushBack (player getPos [10 + random 100, 360 / _i]);\n};\n\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\", \n{\n\tparams [\"_control\"];\n\t_control drawPolygon [test_polygon, [0,0,1,1]];\n}];\n"
-- "Draw a polygon by adjusting the {{hl|_radius}} and {{hl|_numVertices}}\n<sqf>\nvertices = [];\nprivate _numVertices = 2;\nprivate _numVertices = _numVertices max 3;\nprivate _radius = 100;\n\nfor \"_i\" from 1 to _numVertices do\n{\n\tvertices pushBack (player getRelPos [_radius, 360 / _numVertices * _i]);\n};\n\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\",\n{\n\tparams [\"_control\"];\n\t_control drawPolygon [vertices, [0,0,1,1]];\n}];\n"
+- "<sqf>\ntest_polygon = [];\nfor \"_i\" from 1 to 12 do \n{\n\ttest_polygon pushBack (player getPos [10 + random 100, 360 / _i]);\n};\n\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\", \n{\n\tparams [\"_control\"];\n\t_control drawPolygon [test_polygon, [0,0,1,1]];\n}];\n</sqf>"
+- "Draw a polygon by adjusting the {{hl|_radius}} and {{hl|_numVertices}}\n<sqf>\nvertices = [];\nprivate _numVertices = 2;\nprivate _numVertices = _numVertices max 3;\nprivate _radius = 100;\n\nfor \"_i\" from 1 to _numVertices do\n{\n\tvertices pushBack (player getRelPos [_radius, 360 / _numVertices * _i]);\n};\n\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\",\n{\n\tparams [\"_control\"];\n\t_control drawPolygon [vertices, [0,0,1,1]];\n}];\n</sqf>"

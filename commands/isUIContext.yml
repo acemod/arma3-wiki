@@ -16,6 +16,6 @@ since:
     major: 1
     minor: 76
 examples:
-- if (isUIContext) then { hint "UI control event" };
-- _button ctrlSetEventHandler ["ButtonDown", "call { diag_log isUIContext }"]; // outputs true
-- _button ctrlSetEventHandler ["ButtonDown", "0 spawn { diag_log isUIContext }"]; // outputs false
+- <sqf>if (isUIContext) then { hint "UI control event" };</sqf>
+- <sqf>_button ctrlSetEventHandler ["ButtonDown", "call { diag_log isUIContext }"]; // outputs true</sqf>
+- <sqf>_button ctrlSetEventHandler ["ButtonDown", "0 spawn { diag_log isUIContext }"]; // outputs false</sqf>

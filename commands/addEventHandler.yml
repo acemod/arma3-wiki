@@ -48,5 +48,5 @@ since:
     major: 0
     minor: 50
 examples:
-- "this addEventHandler [\"Killed\", {\n\tparams [\"_unit\", \"_killer\"];\n\tsystemChat format [\"%1 has been killed by %2.\", _unit, _killer];\n}];\n"
+- "<sqf>\nthis addEventHandler [\"Killed\", {\n\tparams [\"_unit\", \"_killer\"];\n\tsystemChat format [\"%1 has been killed by %2.\", _unit, _killer];\n}];\n</sqf>"
 - <sqs>_index = player addEventHandler ["Killed", { _this exec "playerKilled.sqs" }]</sqs>

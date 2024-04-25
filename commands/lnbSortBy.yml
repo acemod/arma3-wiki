@@ -57,4 +57,4 @@ since:
     major: 2
     minor: 6
 examples:
-- "with uiNamespace do\n{\n\tprivate _column = 1;\n\tprivate _lnb = findDisplay 46 createDisplay \"RscDisplayEmpty\" ctrlCreate [\"RscListNBox\", -1];\n\t_lnb ctrlSetPosition [0,0,1,1];\n\t_lnb ctrlCommit 0;\n\tlnbClear _lnb;\n\t{ \n\t\t_lnb lnbAddRow [format [\"Row %1\", _forEachIndex], _x select 0];\n\t\t_lnb lnbSetValue [[_forEachIndex, _column], _x select 1];\n\t} \n\tforEach [[\"В\",1], [\"Я\",0], [\"Б\",1], [\"Ю\",0], [\"А\",1]];\n\t[_lnb, _column] lnbSortBy [\"VALUE\", true, false];\n};\n"
+- "<sqf>\nwith uiNamespace do\n{\n\tprivate _column = 1;\n\tprivate _lnb = findDisplay 46 createDisplay \"RscDisplayEmpty\" ctrlCreate [\"RscListNBox\", -1];\n\t_lnb ctrlSetPosition [0,0,1,1];\n\t_lnb ctrlCommit 0;\n\tlnbClear _lnb;\n\t{ \n\t\t_lnb lnbAddRow [format [\"Row %1\", _forEachIndex], _x select 0];\n\t\t_lnb lnbSetValue [[_forEachIndex, _column], _x select 1];\n\t} \n\tforEach [[\"В\",1], [\"Я\",0], [\"Б\",1], [\"Ю\",0], [\"А\",1]];\n\t[_lnb, _column] lnbSortBy [\"VALUE\", true, false];\n};\n</sqf>"

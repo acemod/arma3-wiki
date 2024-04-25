@@ -30,10 +30,14 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   _string = "a = a + 1";
   _code = compile _string;
   call _code;
-- |
+  </sqf>
+- |-
+  <sqf>
   hint str compile "a = b";
   // result: { a = b }
+  </sqf>

@@ -47,17 +47,23 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   private _varname = "this is my new variable"; // since {{arma3}} v1.54
 
   // identical, but less performant
   private "_varname";
   _varname = "this is my new variable";
-- |
+  </sqf>
+- |-
+  <sqf>
   private ["_varname1", "_varname2"];
   _varname1 = "variable 1";
   _varname2 = "variable 2";
-- |
+  </sqf>
+- |-
+  <sqf>
   _lol = 123; call { hint str [_lol] }; // [123]
   _lol = 123; call { private "_lol"; hint str [_lol] }; // [any]
-- "_myvar = 123;\nsystemChat str [_myvar];\t\t// [123]\ncall {\n\tsystemChat str [_myvar];\t// [123]\n\tprivate \"_myvar\";\n\tsystemChat str [_myvar];\t// [any]\n\t_myvar = 345;\n\tsystemChat str [_myvar];\t// [345]\n};\nsystemChat str [_myvar];\t\t// [123]\n"
+  </sqf>
+- "<sqf>\n_myvar = 123;\nsystemChat str [_myvar];\t\t// [123]\ncall {\n\tsystemChat str [_myvar];\t// [123]\n\tprivate \"_myvar\";\n\tsystemChat str [_myvar];\t// [any]\n\t_myvar = 345;\n\tsystemChat str [_myvar];\t// [345]\n};\nsystemChat str [_myvar];\t\t// [123]\n</sqf>"

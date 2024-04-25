@@ -28,8 +28,9 @@ since:
     major: 2
     minor: 0
 examples:
-- _control ctrlSetTextSelection [5, 10];
-- |
+- <sqf>_control ctrlSetTextSelection [5, 10];</sqf>
+- |-
+  <sqf>
   disableSerialization;
   private _ctrl = findDisplay 46 createDisplay "RscDisplayEmpty" ctrlCreate ["RscEditMulti", -1];
   _ctrl ctrlSetPosition [0,0,0.5,0.3];
@@ -37,6 +38,7 @@ examples:
   _ctrl ctrlSetText "Hello World";
   _ctrl ctrlSetTextSelection [6, 5]; // selects World
   ctrlSetFocus _ctrl;
+  </sqf>
 - |-
   Select text from right to left:
-  <sqf>_control ctrlSetTextSelection [5, -4];
+  <sqf>_control ctrlSetTextSelection [5, -4];</sqf>

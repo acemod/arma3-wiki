@@ -45,11 +45,12 @@ since:
     major: 0
     minor: 50
 examples:
-- "In a preprocessed SQF script (e.g. when doing <sqf inline>execVM \"myScript.sqf\"</sqf>)\n<sqf>\ncomment \"This is a commented line\";\t\t// bad\n\"This is a commented line\";\t\t\t\t// slightly better\n// This is a commented line\t\t\t\t// perfect\n"
-- |
+- "In a preprocessed SQF script (e.g. when doing <sqf inline>execVM \"myScript.sqf\"</sqf>)\n<sqf>\ncomment \"This is a commented line\";\t\t// bad\n\"This is a commented line\";\t\t\t\t// slightly better\n// This is a commented line\t\t\t\t// perfect\n</sqf>"
+- |-
   In an object init field (in editor):
   <sqf>
   comment "This comment works";
   "This comment works too";
   // This doesn't work
   /* This doesn't work either */
+  </sqf>

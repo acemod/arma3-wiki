@@ -58,12 +58,12 @@ since:
     minor: 50
 examples:
 - |-
-  inGameUISetEventHandler ["Action", "hint 'Lights, Camera, Action!'; true"];
+  <sqf>inGameUISetEventHandler ["Action", "hint 'Lights, Camera, Action!'; true"];
   sleep 10;
-  inGameUISetEventHandler ["Action", ""]; // removes the "Action" EH
+  inGameUISetEventHandler ["Action", ""]; // removes the "Action" EH</sqf>
 - |-
-  inGameUISetEventHandler ["PrevAction", "hint str _this; false"];
+  <sqf>inGameUISetEventHandler ["PrevAction", "hint str _this; false"];
   inGameUISetEventHandler ["NextAction", "hint str _this; false"];
-  inGameUISetEventHandler ["Action", "hint str _this; false"];
-- "Deny any weapon disassembly:\n<sqf>inGameUISetEventHandler [\"Action\", \"\n\tif (_this select 3 == 'DisAssemble') then {\n\t\thint 'You are not allowed to do this';\n\t\ttrue\n\t}\n\"];"
-- "Detect explosive/mine placement:\n<sqf>private _onMagazineUse = '\n\tparams [\"_target\", \"\", \"\", \"_action\", \"\", \"\", \"\", \"\", \"\", \"\", \"_event\"];\n\tif (_action == \"UseMagazine\") then {\n\t\tif (_event == \"Action\") then {\n\t\t\t_target spawn {\n\t\t\t\twaitUntil {!(all_magazines isEqualTo magazines _this)};\n\t\t\t\t{\n\t\t\t\t\t0 = all_magazines deleteAt (all_magazines find _x);\n\t\t\t\t} count magazines _this;\n\t\t\t\thint format [\"Magazine Used: %1\", all_magazines select 0];\n\t\t\t};\n\t\t} else {\n\t\t\tall_magazines = magazines _target;\n\t\t};\n\t};\n\tfalse\n';\ninGameUISetEventHandler [\"PrevAction\", _onMagazineUse];\ninGameUISetEventHandler [\"NextAction\", _onMagazineUse];\ninGameUISetEventHandler [\"Action\", _onMagazineUse];"
+  inGameUISetEventHandler ["Action", "hint str _this; false"];</sqf>
+- "Deny any weapon disassembly:\n<sqf>inGameUISetEventHandler [\"Action\", \"\n\tif (_this select 3 == 'DisAssemble') then {\n\t\thint 'You are not allowed to do this';\n\t\ttrue\n\t}\n\"];</sqf>"
+- "Detect explosive/mine placement:\n<sqf>private _onMagazineUse = '\n\tparams [\"_target\", \"\", \"\", \"_action\", \"\", \"\", \"\", \"\", \"\", \"\", \"_event\"];\n\tif (_action == \"UseMagazine\") then {\n\t\tif (_event == \"Action\") then {\n\t\t\t_target spawn {\n\t\t\t\twaitUntil {!(all_magazines isEqualTo magazines _this)};\n\t\t\t\t{\n\t\t\t\t\t0 = all_magazines deleteAt (all_magazines find _x);\n\t\t\t\t} count magazines _this;\n\t\t\t\thint format [\"Magazine Used: %1\", all_magazines select 0];\n\t\t\t};\n\t\t} else {\n\t\t\tall_magazines = magazines _target;\n\t\t};\n\t};\n\tfalse\n';\ninGameUISetEventHandler [\"PrevAction\", _onMagazineUse];\ninGameUISetEventHandler [\"NextAction\", _onMagazineUse];\ninGameUISetEventHandler [\"Action\", _onMagazineUse];</sqf>"

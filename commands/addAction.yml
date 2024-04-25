@@ -100,16 +100,18 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   // short and sweet
   player addAction ["a useless action that does nothing", {}];
   player addAction ["<t color='#FF0000'>This Useless Action Is RED</t>", { hint "RED" }];
   player addAction ["Hint Hello!", { hint format ["Hello %1!", name player] }];
   player addAction ["String Exec", "hint 'this is also compiled'"];
+  </sqf>
 - |-
-  _actionID = player addAction ["Exec the file", "scriptFile.sqf"];</sqf>
+  <sqf>_actionID = player addAction ["Exec the file", "scriptFile.sqf"];</sqf>
   '''scriptFile.sqf:'''
-  <sqf>hint str _this;
-- "// create object on the server and add action to the object on every client\nif (isServer) then\n{\n\tprivate _object = \"some_obj_class\" createVehicle [1234, 1234, 0];\n\t[_object, [\"Greetings!\", { hint \"Hello!\"; }]] remoteExec [\"addAction\"]; // Note: does not return action id\n};\n"
-- "Default parameters:\n<sqf>\nthis addAction\n[\n\t\"title\",\n\t{\n\t\tparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"];\n\t},\n\tnil,\n\t1.5,\n\ttrue,\n\ttrue,\n\t\"\",\n\t\"true\",\n\t50,\n\tfalse,\n\t\"\",\n\t\"\"\n];\n"
-- "Default parameters with comments:\n<sqf>this addAction\n[\n\t\"title\",\t// title\n\t{\n\t\tparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"]; // script\n\t},\n\tnil,\t\t// arguments\n\t1.5,\t\t// priority\n\ttrue,\t\t// showWindow\n\ttrue,\t\t// hideOnUse\n\t\"\",\t\t\t// shortcut\n\t\"true\",\t\t// condition\n\t50,\t\t\t// radius\n\tfalse,\t\t// unconscious\n\t\"\",\t\t\t// selection\n\t\"\"\t\t\t// memoryPoint\n];\n"
+  <sqf>hint str _this;</sqf>
+- "<sqf>\n// create object on the server and add action to the object on every client\nif (isServer) then\n{\n\tprivate _object = \"some_obj_class\" createVehicle [1234, 1234, 0];\n\t[_object, [\"Greetings!\", { hint \"Hello!\"; }]] remoteExec [\"addAction\"]; // Note: does not return action id\n};\n</sqf>"
+- "Default parameters:\n<sqf>\nthis addAction\n[\n\t\"title\",\n\t{\n\t\tparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"];\n\t},\n\tnil,\n\t1.5,\n\ttrue,\n\ttrue,\n\t\"\",\n\t\"true\",\n\t50,\n\tfalse,\n\t\"\",\n\t\"\"\n];\n</sqf>"
+- "Default parameters with comments:\n<sqf>this addAction\n[\n\t\"title\",\t// title\n\t{\n\t\tparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"]; // script\n\t},\n\tnil,\t\t// arguments\n\t1.5,\t\t// priority\n\ttrue,\t\t// showWindow\n\ttrue,\t\t// hideOnUse\n\t\"\",\t\t\t// shortcut\n\t\"true\",\t\t// condition\n\t50,\t\t\t// radius\n\tfalse,\t\t// unconscious\n\t\"\",\t\t\t// selection\n\t\"\"\t\t\t// memoryPoint\n];\n</sqf>"

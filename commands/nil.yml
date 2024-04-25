@@ -33,5 +33,5 @@ since:
     major: 0
     minor: 50
 examples:
-- variableToDestroy = nil;
-- "private _variable = 50;\n_variable = nil;\nhint format [\"Variable = %1\", _variable];\t// will display \"Variable = any\" in {{Link|Scheduler#Unscheduled Environment|unscheduled environment}}\n\t\t\t\t\t\t\t\t\t\t\t// will output \"Error Undefined variable in expression: _variable\" in {{Link|Scheduler#Scheduled Environment|scheduled environment}}\n// identical to\nhint format [\"Variable = %1\", _variableThatWasNeverDefined];\n"
+- <sqf>variableToDestroy = nil;</sqf>
+- "<sqf>\nprivate _variable = 50;\n_variable = nil;\nhint format [\"Variable = %1\", _variable];\t// will display \"Variable = any\" in {{Link|Scheduler#Unscheduled Environment|unscheduled environment}}\n\t\t\t\t\t\t\t\t\t\t\t// will output \"Error Undefined variable in expression: _variable\" in {{Link|Scheduler#Scheduled Environment|scheduled environment}}\n// identical to\nhint format [\"Variable = %1\", _variableThatWasNeverDefined];\n</sqf>"

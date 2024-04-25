@@ -37,14 +37,19 @@ since:
     major: 2
     minor: 2
 examples:
-- |
+- |-
+  <sqf>
   _vehicle attachTo [player, [0,0,0]];
   _vehicle setObjectScale 0.1;
-- |
+  </sqf>
+- |-
+  <sqf>
   // select an object in Eden Editor and execute the following code in the Debug Console. When moving the object, the effect is reset!
   private _object = get3DENSelected "Object" select 0;
   _object setObjectScale 0.1;
-- |
+  </sqf>
+- |-
+  <sqf>
   // multiple MP-compatible options
 
   // global simple object
@@ -59,5 +64,6 @@ examples:
   // local simple object
   private _localSimpleObject = createSimpleObject ["C_Offroad_01_F", getPosASL player, true];
   _localSimpleObject setObjectScale 0.1; // once is enough as long as it is not moved
-- "// a not-so-great EachFrame workaround for a non-attached object\n\n// a normal object that is not attached must be scaled each frame\n// make sure the object is LOCAL in order to not saturate the network!\nprivate _localNormalObject = \"C_Offroad_01_F\" createVehicleLocal getPosATL player;\n// the object is not attached to anything\naddMissionEventHandler [\n\t\"EachFrame\",\n\t{ _thisArgs params [\"_obj\", \"_scale\"]; _obj setObjectScale _scale; },\n\t[_localNormalObject, 0.1]\n];\n"
-- "// only do the following in single player;\n// NEVER do such EachFrame in multiplayer!!\n// the performance will be terrible, the network will be saturated, the scaling may desync and not be perfect\nprivate _globalNormalObject = \"C_Offroad_01_F\" createVehicle getPosATL player;\naddMissionEventHandler [\n\t\"EachFrame\",\n\t{ _thisArgs params [\"_obj\", \"_scale\"]; _obj setObjectScale _scale; },\n\t[_globalNormalObject, 0.1]\n];\n"
+  </sqf>
+- "<sqf>\n// a not-so-great EachFrame workaround for a non-attached object\n\n// a normal object that is not attached must be scaled each frame\n// make sure the object is LOCAL in order to not saturate the network!\nprivate _localNormalObject = \"C_Offroad_01_F\" createVehicleLocal getPosATL player;\n// the object is not attached to anything\naddMissionEventHandler [\n\t\"EachFrame\",\n\t{ _thisArgs params [\"_obj\", \"_scale\"]; _obj setObjectScale _scale; },\n\t[_localNormalObject, 0.1]\n];\n</sqf>"
+- "<sqf>\n// only do the following in single player;\n// NEVER do such EachFrame in multiplayer!!\n// the performance will be terrible, the network will be saturated, the scaling may desync and not be perfect\nprivate _globalNormalObject = \"C_Offroad_01_F\" createVehicle getPosATL player;\naddMissionEventHandler [\n\t\"EachFrame\",\n\t{ _thisArgs params [\"_obj\", \"_scale\"]; _obj setObjectScale _scale; },\n\t[_globalNormalObject, 0.1]\n];\n</sqf>"

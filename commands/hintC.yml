@@ -51,12 +51,14 @@ since:
     major: 0
     minor: 50
 examples:
-- hintC "Press W to move forward";
-- "Same as the above in {{arma3}} but without second [[hint]] displayed:<br>[[File:HintC.jpg|400px|right]]\n<sqf>\nhintC \"Press W to move forward\";\nhintC_EH = findDisplay 57 displayAddEventHandler [\"Unload\", {\n\t_this spawn {\n\t\t_this select 0 displayRemoveEventHandler [\"Unload\", hintC_EH];\n\t\thintSilent \"\";\n\t};\n}];\n"
-- "\"Instructions\" hintC [\n\t\"Press W to move forward.\",\n\t\"Press S to move backwards.\",\n\t\"Use the mouse to turn right or left.\",\n\t\"Press V for weapon sights.\"\n];\n"
-- "Same as the above in {{arma3}} but without second [[hint]] displayed:<br>[[File:HintC_array.jpg|400px|right]]\n<sqf>\n\"Instructions\" hintC [\n\t\"Press W to move forward.\",\n\t\"Press S to move backwards.\",\n\t\"Use the mouse to turn right or left.\",\n\t\"Press V for weapon sights.\"\n];\nhintC_EH = findDisplay 72 displayAddEventHandler [\"Unload\", {\n\t_this spawn {\n\t\t_this select 0 displayRemoveEventHandler [\"Unload\", hintC_EH];\n\t\thintSilent \"\";\n\t};\n}];\n"
-- |
+- <sqf>hintC "Press W to move forward";</sqf>
+- "Same as the above in {{arma3}} but without second [[hint]] displayed:<br>[[File:HintC.jpg|400px|right]]\n<sqf>\nhintC \"Press W to move forward\";\nhintC_EH = findDisplay 57 displayAddEventHandler [\"Unload\", {\n\t_this spawn {\n\t\t_this select 0 displayRemoveEventHandler [\"Unload\", hintC_EH];\n\t\thintSilent \"\";\n\t};\n}];\n</sqf>"
+- "<sqf>\n\"Instructions\" hintC [\n\t\"Press W to move forward.\",\n\t\"Press S to move backwards.\",\n\t\"Use the mouse to turn right or left.\",\n\t\"Press V for weapon sights.\"\n];\n</sqf>"
+- "Same as the above in {{arma3}} but without second [[hint]] displayed:<br>[[File:HintC_array.jpg|400px|right]]\n<sqf>\n\"Instructions\" hintC [\n\t\"Press W to move forward.\",\n\t\"Press S to move backwards.\",\n\t\"Use the mouse to turn right or left.\",\n\t\"Press V for weapon sights.\"\n];\nhintC_EH = findDisplay 72 displayAddEventHandler [\"Unload\", {\n\t_this spawn {\n\t\t_this select 0 displayRemoveEventHandler [\"Unload\", hintC_EH];\n\t\thintSilent \"\";\n\t};\n}];\n</sqf>"
+- |-
+  <sqf>
   private _separator = parseText "<br/>------------------------<br/>";
   private _image = "\ca\ui\textures\aus_flag.paa";
   private _message = composeText [image _image, "Heading Text", _separator, "Content"];
   "" hintC _message;
+  </sqf>

@@ -24,6 +24,6 @@ since:
     major: 0
     minor: 50
 examples:
-- '_markers = allMapMarkers; // returns e.g ["marker1", "_USER_DEFINED #2/0"]'
-- "{\n\tprivate \"_a\";\n\t_a = toArray _x;\n\t_a resize 15;\n\tif (toString _a == \"_USER_DEFINED #\") then\n\t// or if (_x select [0, 15] == \"_USER_DEFINED #\") since {{arma3}} v1.28\n\t{\n\t\tdeleteMarker _x;\n\t};\n} forEach allMapMarkers;\n"
-- "if (_someString in allMapMarkers) then\n{\n\thint (_someString + \" is an existing marker\");\n};\n"
+- '<sqf>_markers = allMapMarkers; // returns e.g ["marker1", "_USER_DEFINED #2/0"]</sqf>'
+- "<sqf>\n{\n\tprivate \"_a\";\n\t_a = toArray _x;\n\t_a resize 15;\n\tif (toString _a == \"_USER_DEFINED #\") then\n\t// or if (_x select [0, 15] == \"_USER_DEFINED #\") since {{arma3}} v1.28\n\t{\n\t\tdeleteMarker _x;\n\t};\n} forEach allMapMarkers;\n</sqf>"
+- "<sqf>\nif (_someString in allMapMarkers) then\n{\n\thint (_someString + \" is an existing marker\");\n};\n</sqf>"

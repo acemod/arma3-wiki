@@ -33,12 +33,15 @@ since:
     major: 1
     minor: 68
 examples:
-- private _arr = parseSimpleArray "[1,2,3]";
-- |
+- <sqf>private _arr = parseSimpleArray "[1,2,3]";</sqf>
+- |-
+  <sqf>
   private _array1 = [1, "2", true, [4, "five", false]];
   private _array2 = parseSimpleArray "[1,""2"",true,[4,""five"",false]]";
   _array1 isEqualTo _array2; // true
-- |
+  </sqf>
+- |-
+  <sqf>
   _bool = true;
   _num = 123.45;
   _str = "ok";
@@ -46,3 +49,4 @@ examples:
   _res = parseSimpleArray format ["[%1,%2,%3,%4]", _bool, _num, str _str, str _arr];
   // note how _bool and _num do not need str, however if used anyway, the result in this case would be identical
   hint str _res;  // returns [true,123.45,"ok",[1,false,"cool"]]
+  </sqf>

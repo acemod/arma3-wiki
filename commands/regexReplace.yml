@@ -26,11 +26,13 @@ since:
     major: 2
     minor: 6
 examples:
-- "\"wookie boOkie cookie\" regexReplace [\".oo/gio\", \"[$']\"];\t\t\t\t\t\t// \"[kie boOkie cookie]kie [kie cookie]kie [kie]kie\""
-- "\"wookie boOkie cookie\" regexReplace [\".oo/gio\", \"[$&]\"];\t\t\t\t\t\t// \"[woo]kie [boO]kie [coo]kie\""
-- "\"wook1e boOk2e cook3e\" regexReplace [\".oo/gio\", \"[$`]\"];\t\t\t\t\t\t// \"[]kie [k1e ]k2e [k2e ]k3e\""
-- "\"wook1e boOk2e cook3e\" regexReplace [\".(oo)(.*?)e\", \"[$2]\"];\t\t\t\t\t// \"[k1] [k2] [k3]\""
-- "\"wOokie boOkie cookie\" regexReplace [\".(?<test>oo)kie/gio\", \"[$+{test}]\"];\t// \"[oo] [oO] [oo]\""
-- |
+- "<sqf>\"wookie boOkie cookie\" regexReplace [\".oo/gio\", \"[$']\"];\t\t\t\t\t\t// \"[kie boOkie cookie]kie [kie cookie]kie [kie]kie\"</sqf>"
+- "<sqf>\"wookie boOkie cookie\" regexReplace [\".oo/gio\", \"[$&]\"];\t\t\t\t\t\t// \"[woo]kie [boO]kie [coo]kie\"</sqf>"
+- "<sqf>\"wook1e boOk2e cook3e\" regexReplace [\".oo/gio\", \"[$`]\"];\t\t\t\t\t\t// \"[]kie [k1e ]k2e [k2e ]k3e\"</sqf>"
+- "<sqf>\"wook1e boOk2e cook3e\" regexReplace [\".(oo)(.*?)e\", \"[$2]\"];\t\t\t\t\t// \"[k1] [k2] [k3]\"</sqf>"
+- "<sqf>\"wOokie boOkie cookie\" regexReplace [\".(?<test>oo)kie/gio\", \"[$+{test}]\"];\t// \"[oo] [oO] [oo]\"</sqf>"
+- |-
+  <sqf>
   // Make captured group all lower case '\L' (lower case) or '\U' (upper case)
   "ArmA 3 is so awesome!" regexReplace ["(rmA 3)", "\L$1"]; // "Arma 3 is so awesome!"
+  </sqf>

@@ -37,14 +37,16 @@ since:
     major: 0
     minor: 50
 examples:
-- "setApertureNew [0.1, 0.2, 0.3, 1];\nsetApertureNew [-1];\t\t\t\t// reset to default\n"
-- |
+- "<sqf>\nsetApertureNew [0.1, 0.2, 0.3, 1];\nsetApertureNew [-1];\t\t\t\t// reset to default\n</sqf>"
+- |-
   Simulate eye adjustment at night:
   <sqf>
   setDate [2016, 8, 10, 4, 0];
   setApertureNew [2, 8, 14, 0.9];
-- |
+  </sqf>
+- |-
   Narrower range for a subtler effect:
   <sqf>
   setDate [2016, 8, 10, 4, 0];
   setApertureNew [2, 5, 9, 0.8];
+  </sqf>

@@ -19,8 +19,10 @@ since:
     major: 2
     minor: 4
 examples:
-- |
+- |-
+  <sqf>
   private _randomKey = selectRandom diag_localized "Global";
   hint format ["Key: %1\nValue: %2", _randomKey, localize _randomKey];
-- private _allTables = diag_localized "";
-- diag_localized "Global" select 0; // "$STR_A3_SHOWCASE_SLINGLOADING_15_AMMODROPPED_PIL_0"
+  </sqf>
+- <sqf>private _allTables = diag_localized "";</sqf>
+- <sqf>diag_localized "Global" select 0; // "$STR_A3_SHOWCASE_SLINGLOADING_15_AMMODROPPED_PIL_0"</sqf>

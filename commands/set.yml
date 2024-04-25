@@ -72,20 +72,23 @@ since:
     major: 0
     minor: 50
 examples:
-- _arrayOne set [0, "Hello"];
+- <sqf>_arrayOne set [0, "Hello"];</sqf>
 - |-
   Append "Bye" as last element to {{hl|_arrayTwo}}:
-  <sqf>_arrayTwo set [count _arrayTwo, "Bye"];
+  <sqf>_arrayTwo set [count _arrayTwo, "Bye"];</sqf>
 - |-
   Replace the last element of {{hl|_arrayThree}} with 23:
-  <sqf>_arrayThree set [(count _arrayThree) - 1, 23];
-- |
+  <sqf>_arrayThree set [(count _arrayThree) - 1, 23];</sqf>
+- |-
   Using [[set]] with an index that is out of bounds:
   <sqf>
   private _array = ["A"];
   _array set [2, "C"]; // _array is now ["A", nil, "C"]
   _array set [1, "B"]; // _array is now ["A", "B", "C"]
-- |
+  </sqf>
+- |-
+  <sqf>
   private _myHashMap = createHashMap;
   _myHashMap set ["key", "value1", true]; // "key" value is set to "value1"
   _myHashMap set ["key", "value2", true]; // "key" value is still "value1" as "key" already exists in the hashmap
+  </sqf>

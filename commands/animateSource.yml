@@ -33,9 +33,11 @@ since:
     major: 1
     minor: 58
 examples:
-- house animateSource ["Door_1_source", 1, true];
-- "Create UGV and manipulate its turret (Not possible to do with [[animate]] command. See [[Arma 3: createVehicle/vehicles]] for reference)\n<sqf>\nugv = \"B_UGV_01_F\" createVehicle (player getRelPos [5, 0]);\nugv addAction [\"Show Turret\",\n{\n\tugv animateSource [\"Turret\", 0];\n\tugv animateSource [\"MainTurret\", rad 0, true];\n\tugv animateSource [\"MainGun\", rad 0, true];\n}];\nugv addAction [\"Hide Turret\",\t{ ugv animateSource [\"Turret\", 1] }];\nugv addAction [\"Turret Left\",\t{ ugv animateSource [\"MainTurret\",\t rad 90] }];\nugv addAction [\"Turret Right\",\t{ ugv animateSource [\"MainTurret\",\t-rad 90] }];\nugv addAction [\"Turret Up\",\t\t{ ugv animateSource [\"MainGun\",\t\t rad 30] }];\nugv addAction [\"Turret Down\",\t{ ugv animateSource [\"MainGun\",\t\t-rad 20] }];\n"
-- |
+- <sqf>house animateSource ["Door_1_source", 1, true];</sqf>
+- "Create UGV and manipulate its turret (Not possible to do with [[animate]] command. See [[Arma 3: createVehicle/vehicles]] for reference)\n<sqf>\nugv = \"B_UGV_01_F\" createVehicle (player getRelPos [5, 0]);\nugv addAction [\"Show Turret\",\n{\n\tugv animateSource [\"Turret\", 0];\n\tugv animateSource [\"MainTurret\", rad 0, true];\n\tugv animateSource [\"MainGun\", rad 0, true];\n}];\nugv addAction [\"Hide Turret\",\t{ ugv animateSource [\"Turret\", 1] }];\nugv addAction [\"Turret Left\",\t{ ugv animateSource [\"MainTurret\",\t rad 90] }];\nugv addAction [\"Turret Right\",\t{ ugv animateSource [\"MainTurret\",\t-rad 90] }];\nugv addAction [\"Turret Up\",\t\t{ ugv animateSource [\"MainGun\",\t\t rad 30] }];\nugv addAction [\"Turret Down\",\t{ ugv animateSource [\"MainGun\",\t\t-rad 20] }];\n</sqf>"
+- |-
+  <sqf>
   barGate animateSource ["Door_1_sound_source", 1]; // Open
   barGate animateSource ["Door_1_sound_source", 0]; // Close
-- "Open/close Bar Gate automatically:\n<sqf>\n// Bar Gate init\nif (isServer) then\n{\t\n\tprivate _gateTrigger = createTrigger [\"EmptyDetector\", getPosWorld this, false];\n\t_gateTrigger setVariable [\"BarGateObj\", this];\n\t_gateTrigger setTriggerActivation [\"ANYPLAYER\", \"PRESENT\", true];\n\t_gateTrigger setTriggerArea [5, 25, getDir this, true];\n\t_gateTrigger setTriggerStatements \n\t[\n\t\t\"this\",\n\t\t\"thisTrigger getVariable 'BarGateObj' animateSource ['Door_1_sound_source', 1]\",\n\t\t\"thisTrigger getVariable 'BarGateObj' animateSource ['Door_1_sound_source', 0]\"\n\t];\n};\n"
+  </sqf>
+- "Open/close Bar Gate automatically:\n<sqf>\n// Bar Gate init\nif (isServer) then\n{\t\n\tprivate _gateTrigger = createTrigger [\"EmptyDetector\", getPosWorld this, false];\n\t_gateTrigger setVariable [\"BarGateObj\", this];\n\t_gateTrigger setTriggerActivation [\"ANYPLAYER\", \"PRESENT\", true];\n\t_gateTrigger setTriggerArea [5, 25, getDir this, true];\n\t_gateTrigger setTriggerStatements \n\t[\n\t\t\"this\",\n\t\t\"thisTrigger getVariable 'BarGateObj' animateSource ['Door_1_sound_source', 1]\",\n\t\t\"thisTrigger getVariable 'BarGateObj' animateSource ['Door_1_sound_source', 0]\"\n\t];\n};\n</sqf>"

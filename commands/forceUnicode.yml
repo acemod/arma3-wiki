@@ -17,8 +17,10 @@ since:
     major: 2
     minor: 2
 examples:
-- |
+- |-
+  <sqf>
   copyToClipboard "д"; // copies "Ð´" to clipboard
   forceUnicode 1;
   copyToClipboard "д"; // copies "д" to clipboard
-- "private _string = \"привет\";\t\t\t// a string that uses Unicode characters\nsystemChat str count _string;\t\t// 12 - the character count is wrong without forceUnicode\n\ncall {\n\tsystemChat str count _string;\t// 12 - identical result\n\tforceUnicode 0;\n\tsystemChat str count _string;\t// 6 - correct result\n};\n\nsystemChat str count _string;\t\t// 6 - outer scope is affected by forceUnicode as well, because the command mode is 0\n\nforceUnicode -1; // cancelled\n\ncall {\n\tsystemChat str count _string;\t// 12 - wrong count\n\tforceUnicode 1;\n\tsystemChat str count _string;\t// 6 - correct result, but Unicode it reset after this operation, because command mode is 1\n};\n\nsystemChat str count _string;\t\t// 12 - outer scope is not affected as it was reset right after count\n"
+  </sqf>
+- "<sqf>\nprivate _string = \"привет\";\t\t\t// a string that uses Unicode characters\nsystemChat str count _string;\t\t// 12 - the character count is wrong without forceUnicode\n\ncall {\n\tsystemChat str count _string;\t// 12 - identical result\n\tforceUnicode 0;\n\tsystemChat str count _string;\t// 6 - correct result\n};\n\nsystemChat str count _string;\t\t// 6 - outer scope is affected by forceUnicode as well, because the command mode is 0\n\nforceUnicode -1; // cancelled\n\ncall {\n\tsystemChat str count _string;\t// 12 - wrong count\n\tforceUnicode 1;\n\tsystemChat str count _string;\t// 6 - correct result, but Unicode it reset after this operation, because command mode is 1\n};\n\nsystemChat str count _string;\t\t// 12 - outer scope is not affected as it was reset right after count\n</sqf>"

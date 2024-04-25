@@ -19,12 +19,13 @@ since:
 examples:
 - |-
   Selection is made from left to right:
-  <sqf>ctrlTextSelection _control; //[0, 11, "Hello World"];
+  <sqf>ctrlTextSelection _control; //[0, 11, "Hello World"];</sqf>
 - |-
   Selection is made from right to left:
-  <sqf>ctrlTextSelection _control; //[11, -11, "Hello World"];
-- |
+  <sqf>ctrlTextSelection _control; //[11, -11, "Hello World"];</sqf>
+- |-
   Find cursor position:
   <sqf>
   ctrlTextSelection _control params ["_start", "_length"];
   private _cursorPos = _start + _length;
+  </sqf>

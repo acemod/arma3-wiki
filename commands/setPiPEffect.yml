@@ -68,9 +68,9 @@ since:
     major: 0
     minor: 50
 examples:
-- '"rendersurface" setPiPEffect [0];'
-- '"rendertarget0" setPiPEffect [3, 1, 1.0, 1.0, 0.0, [0.0, 1.0, 0.0, 0.25], [1.0, 0.0, 1.0, 1.0],  [0.199, 0.587, 0.114, 0.0]];'
-- "private _cam = \"camera\" camCreate (player modelToWorld [0,-5,2]);\n_cam cameraEffect [\"internal\", \"back\", \"rtt\"];\n\"rtt\" setPiPEffect [2];\nwith uiNamespace do {\n\tprivate _pic = findDisplay 46 ctrlCreate [\"RscPicture\", -1];\n\t_pic ctrlSetPosition [0,0,1,1];\n\t_pic ctrlCommit 0;\n\t_pic ctrlSetText \"#(argb,512,512,1)r2t(rtt,1.0)\";\n};\n"
+- <sqf>"rendersurface" setPiPEffect [0];</sqf>
+- <sqf>"rendertarget0" setPiPEffect [3, 1, 1.0, 1.0, 0.0, [0.0, 1.0, 0.0, 0.25], [1.0, 0.0, 1.0, 1.0],  [0.199, 0.587, 0.114, 0.0]];</sqf>
+- "<sqf>\nprivate _cam = \"camera\" camCreate (player modelToWorld [0,-5,2]);\n_cam cameraEffect [\"internal\", \"back\", \"rtt\"];\n\"rtt\" setPiPEffect [2];\nwith uiNamespace do {\n\tprivate _pic = findDisplay 46 ctrlCreate [\"RscPicture\", -1];\n\t_pic ctrlSetPosition [0,0,1,1];\n\t_pic ctrlCommit 0;\n\t_pic ctrlSetText \"#(argb,512,512,1)r2t(rtt,1.0)\";\n};\n</sqf>"
 - |-
   Black & White:
-  <sqf>"rtt" setPiPEffect [3, 1, 1.0, 0.4, 0, [0,0,0,0], [1,1,1,0], [1,1,1,1]];
+  <sqf>"rtt" setPiPEffect [3, 1, 1.0, 0.4, 0, [0,0,0,0], [1,1,1,0], [1,1,1,1]];</sqf>

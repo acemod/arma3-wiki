@@ -37,7 +37,7 @@ since:
     major: 0
     minor: 50
 examples:
-- "hint localize \"STR_West\";\t\t\t\t// returns \"BLUFOR\"\nhint localize \"STR_WEST\";\t\t\t\t// returns \"BLUFOR\"\nhint localize \"STR_weSt\";\t\t\t\t// returns \"BLUFOR\"\nhint localize \"STR_NonExistentString\";\t// returns \"\" and logs \"String STR_NonExistentString not found\"\n"
-- hint format ["Go %1", localize "STR_Q_NORTH"]; // returns "Go North"
-- "hint format \n[\n\tlocalize \"STR_ACTION_DROP_WEAPON\",\t// \"STR_ACTION_DROP_WEAPON\" contains \"Drop %1\"\n\tlocalize \"STR_SN_RIFLE\"\t\t\t\t// \"STR_SN_RIFLE\" contains \"Rifle\"\n]; // returns \"Drop Rifle\"\n"
-- localize "$STR_USRACT_ADJUST"; // returns "Adjust" since Arma 3 v2.04
+- "<sqf>\nhint localize \"STR_West\";\t\t\t\t// returns \"BLUFOR\"\nhint localize \"STR_WEST\";\t\t\t\t// returns \"BLUFOR\"\nhint localize \"STR_weSt\";\t\t\t\t// returns \"BLUFOR\"\nhint localize \"STR_NonExistentString\";\t// returns \"\" and logs \"String STR_NonExistentString not found\"\n</sqf>"
+- <sqf>hint format ["Go %1", localize "STR_Q_NORTH"]; // returns "Go North"</sqf>
+- "<sqf>\nhint format \n[\n\tlocalize \"STR_ACTION_DROP_WEAPON\",\t// \"STR_ACTION_DROP_WEAPON\" contains \"Drop %1\"\n\tlocalize \"STR_SN_RIFLE\"\t\t\t\t// \"STR_SN_RIFLE\" contains \"Rifle\"\n]; // returns \"Drop Rifle\"\n</sqf>"
+- <sqf>localize "$STR_USRACT_ADJUST"; // returns "Adjust" since Arma 3 v2.04</sqf>

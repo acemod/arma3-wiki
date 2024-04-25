@@ -7,7 +7,7 @@ description: |-
 
   {{Feature|informative|
   * To avoid flickering and ensure visual fidelity, always use the [[Position#Formats|visual]] (render time scope) variant of position commands, such as [[getPosASLVisual]].
-  * The ''width'' and ''height'' parameters are multipliers for {{hl|activeWidth}} and {{hl|activeHeight}} set in config. So for example, if one needs to create an icon half the screen wide (<sqf inline>safeZoneW / 2</sqf>) and half the screen tall (<sqf inline>safeZoneH / 2</sqf>), divide these by the config values respectfully: <sqf>
+  * The ''width'' and ''height'' parameters are multipliers for {{hl|activeWidth}} and {{hl|activeHeight}} set in config. So for example, if one needs to create an icon half the screen wide (<sqf inline>safeZoneW / 2</sqf>) and half the screen tall (<sqf inline>safeZoneH / 2</sqf>), divide these by the according config values: <sqf>
   private _iconWidth = (safeZoneW / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeWidth");
   private _iconHeight = (safeZoneH / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeHeight");
   </sqf>
@@ -100,7 +100,7 @@ since:
     major: 0
     minor: 50
 examples:
-- "Icon and text:\n<sqf>\naddMissionEventHandler [\"Draw3D\", {\n\tdrawIcon3D [\"targetIcon.paa\", [1,1,1,1], ASLToAGL getPosASLVisual cursorTarget, 1, 1, 45, \"Target\", 1, 0.05, \"TahomaB\"];\n}];\n"
-- "Just text:\n<sqf>\naddMissionEventHandler [\"Draw3D\", {\n\tdrawIcon3D [\"\", [1,0,0,1], ASLToAGL getPosASLVisual cursorTarget, 0, 0, 0, \"Target\", 1, 0.05, \"PuristaMedium\"];\n}];\n"
-- "iconPos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler [\"draw3D\",\n{\n\tdrawIcon3D\n\t[\n\t\t\"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa\",\n\t\t[0,0,1,1],\n\t\ticonPos,\n\t\t5,\n\t\t5,\n\t\tgetDirVisual player,\n\t\t\"COMPASS\",\n\t\t0,\n\t\t0.3,\n\t\t\"PuristaMedium\",\n\t\t\"center\",\n\t\ttrue\n\t];\n}];\n"
-- "Since {{GVI|arma3|2.04}}\n<sqf>\npos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler [\"draw3D\",\n{\n\t_k = 10 / (player distance pos);\n\tdrawIcon3D\n\t[\n\t\t\"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa\",\n\t\t[1,0,0,1],\n\t\tpos,\n\t\t1 * _k,\n\t\t1 * _k,\n\t\t0,\n\t\tname player,\n\t\t0,\n\t\t0.04 * _k,\n\t\t\"RobotoCondensed\",\n\t\t\"right\",\n\t\ttrue,\n\t\t0.005 * _k,\n\t\t-0.035 * _k\n\t];\n}];\n"
+- "Icon and text:\n<sqf>\naddMissionEventHandler [\"Draw3D\", {\n\tdrawIcon3D [\"targetIcon.paa\", [1,1,1,1], ASLToAGL getPosASLVisual cursorTarget, 1, 1, 45, \"Target\", 1, 0.05, \"TahomaB\"];\n}];\n</sqf>"
+- "Just text:\n<sqf>\naddMissionEventHandler [\"Draw3D\", {\n\tdrawIcon3D [\"\", [1,0,0,1], ASLToAGL getPosASLVisual cursorTarget, 0, 0, 0, \"Target\", 1, 0.05, \"PuristaMedium\"];\n}];\n</sqf>"
+- "<sqf>\niconPos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler [\"draw3D\",\n{\n\tdrawIcon3D\n\t[\n\t\t\"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa\",\n\t\t[0,0,1,1],\n\t\ticonPos,\n\t\t5,\n\t\t5,\n\t\tgetDirVisual player,\n\t\t\"COMPASS\",\n\t\t0,\n\t\t0.3,\n\t\t\"PuristaMedium\",\n\t\t\"center\",\n\t\ttrue\n\t];\n}];\n</sqf>"
+- "Since {{GVI|arma3|2.04}}\n<sqf>\npos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler [\"draw3D\",\n{\n\t_k = 10 / (player distance pos);\n\tdrawIcon3D\n\t[\n\t\t\"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa\",\n\t\t[1,0,0,1],\n\t\tpos,\n\t\t1 * _k,\n\t\t1 * _k,\n\t\t0,\n\t\tname player,\n\t\t0,\n\t\t0.04 * _k,\n\t\t\"RobotoCondensed\",\n\t\t\"right\",\n\t\ttrue,\n\t\t0.005 * _k,\n\t\t-0.035 * _k\n\t];\n}];\n</sqf>"

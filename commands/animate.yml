@@ -55,11 +55,12 @@ since:
     major: 0
     minor: 50
 examples:
-- _building animate ["maindoor", 1];
-- _building animate ["Door_1_rot", 1, true];
-- |
+- <sqf>_building animate ["maindoor", 1];</sqf>
+- <sqf>_building animate ["Door_1_rot", 1, true];</sqf>
+- |-
   Create Offroad and add flashing police light bar:
   <sqf>
   offroad = "C_Offroad_01_F" createVehicle (player getRelPos [5, 0]);
   offroad animate ["HidePolice", 0];
   offroad animate ["BeaconsStart", 1];
+  </sqf>

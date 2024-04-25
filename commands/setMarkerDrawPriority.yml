@@ -3,7 +3,7 @@ description: |-
   Sets marker draw priority. Higher priority markers are drawn on top. Default priority is 0.
   {{Feature|important|Be aware that this command has '''local''' effect despite the command name missing the world '''local'''!}}
 problem_notes:
-- '[[setMarkerDrawPriority]] sorts [[allMapMarkers]] from least to most priority. Before {{GVI|arma3|2.18|size= 0.75}} [[createMarker]]/[[createMarkerLocal]] did ''''''not'''''' care about drawing priority and added the created marker to the end of the array, making it top priority. Running [[setMarkerDrawPriority]] again sorted this issue.'
+- '[[setMarkerDrawPriority]] sorts [[allMapMarkers]] from least to most priority. As of {{GVI|arma3|2.16|size= 0.75}} [[createMarker]]/[[createMarkerLocal]] do ''''''not'''''' care about drawing priority and add the created marker to the end of the array, making it top priority. Running [[setMarkerDrawPriority]] again sorts this issue.'
 groups:
 - Markers
 syntax:
@@ -26,5 +26,5 @@ since:
     major: 2
     minor: 14
 examples:
-- '"MarkerOne" setMarkerDrawPriority 0.5;'
-- '"MarkerTwo" setMarkerDrawPriority -2.1;'
+- <sqf>"MarkerOne" setMarkerDrawPriority 0.5;</sqf>
+- <sqf>"MarkerTwo" setMarkerDrawPriority -2.1;</sqf>

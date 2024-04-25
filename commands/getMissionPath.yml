@@ -20,10 +20,14 @@ since:
     major: 1
     minor: 96
 examples:
-- |
+- |-
+  <sqf>
   // returns e.g "C:\Users\Username\Documents\Arma 3\missions\MissionName.Altis\icons\myIcon.paa"
   private _path = getMissionPath "icons\myIcon.paa";
   private _path = getMissionPath "\icons\myIcon.paa"; // leading \ is also fine
-- |
+  </sqf>
+- |-
+  <sqf>
   // returns e.g "C:\Users\Username\Documents\Arma 3\missions\MissionName.Altis\" with the trailing \
   private _root = getMissionPath "";
+  </sqf>

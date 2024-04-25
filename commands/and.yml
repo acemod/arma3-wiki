@@ -63,5 +63,5 @@ since:
     major: 0
     minor: 50
 examples:
-- "if ((not isNull player) and (alive player) and (_enemycount == 0)) then\n{\n\thint \"you win !\";\n};\n"
-- "if ((count _array > 0) and { (_array select 0) == player }) then\t// works as expected\n{\n\thint \"It works!\";\n};\n\nif ((count _array > 0) and (_array select 0) == player) then\t\t// Error: _array select 0 is evaluated\n{\n\thint \"It... works?\";\n};\n"
+- "<sqf>\nif ((not isNull player) and (alive player) and (_enemycount == 0)) then\n{\n\thint \"you win !\";\n};\n</sqf>"
+- "<sqf>\nif ((count _array > 0) and { (_array select 0) == player }) then\t// works as expected\n{\n\thint \"It works!\";\n};\n\nif ((count _array > 0) and (_array select 0) == player) then\t\t// Error: _array select 0 is evaluated\n{\n\thint \"It... works?\";\n};\n</sqf>"

@@ -71,13 +71,13 @@ since:
     major: 0
     minor: 50
 examples:
-- hintSilent str getPos player;
-- "[[getPos]] vs. other methods (over sea). Pay attention to Z values:\n<sqf>\ngetPos ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\ngetPosATL ship;\t\t\t\t// [2412.01, 6036.33, 19.4266]\ngetPosASL ship;\t\t\t\t// [2412.01, 6036.33, -0.920066]\ngetPosASLW ship;\t\t\t// [2412.01, 6036.33, -0.865981]\nvisiblePosition ship;\t\t// [2412.02, 6036.33, -0.837952]\nvisiblePositionASL ship;\t// [2412.02, 6036.33, -0.91798]\nposition ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\n"
-- "[[getPos]] vs. other methods (over land, on top of a 100m high building). Pay attention to Z values:\n<sqf>\ngetPos car;\t\t\t\t\t// [2508.64, 5681.47, 0.0609589]\ngetPosATL car;\t\t\t\t// [2508.64, 5681.47, 100.0356369]\ngetPosASL car;\t\t\t\t// [2508.64, 5681.47, 171.718]\ngetPosASLW car;\t\t\t\t// [2508.64, 5681.47, 171.718]\nvisiblePosition car;\t\t// [2508.64, 5681.47, 0.0609512]\nvisiblePositionASL car;\t\t// [2508.64, 5681.47, 171.718]\nposition car;\t\t\t\t// [2508.64, 5681.47, 0.0609589]\n"
+- <sqf>hintSilent str getPos player;</sqf>
+- "[[getPos]] vs. other methods (over sea). Pay attention to Z values:\n<sqf>\ngetPos ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\ngetPosATL ship;\t\t\t\t// [2412.01, 6036.33, 19.4266]\ngetPosASL ship;\t\t\t\t// [2412.01, 6036.33, -0.920066]\ngetPosASLW ship;\t\t\t// [2412.01, 6036.33, -0.865981]\nvisiblePosition ship;\t\t// [2412.02, 6036.33, -0.837952]\nvisiblePositionASL ship;\t// [2412.02, 6036.33, -0.91798]\nposition ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\n</sqf>"
+- "[[getPos]] vs. other methods (over land, on top of a 100m high building). Pay attention to Z values:\n<sqf>\ngetPos car;\t\t\t\t\t// [2508.64, 5681.47, 0.0609589]\ngetPosATL car;\t\t\t\t// [2508.64, 5681.47, 100.0356369]\ngetPosASL car;\t\t\t\t// [2508.64, 5681.47, 171.718]\ngetPosASLW car;\t\t\t\t// [2508.64, 5681.47, 171.718]\nvisiblePosition car;\t\t// [2508.64, 5681.47, 0.0609512]\nvisiblePositionASL car;\t\t// [2508.64, 5681.47, 171.718]\nposition car;\t\t\t\t// [2508.64, 5681.47, 0.0609589]\n</sqf>"
 - |-
   Find position 100 metres and 45 degrees from player position:
-  <sqf>player getPos [100, 45];
+  <sqf>player getPos [100, 45];</sqf>
 - |-
   Determine if a free-falling unit is close enough to the surface (including buildings, aircraft carriers etc) below to deploy the parachute:
   <sqf>waitUntil { sleep 1; getPos player select 2 < 200 };
-  hint "Deploying a parachute might be a good idea";
+  hint "Deploying a parachute might be a good idea";</sqf>

@@ -30,12 +30,14 @@ since:
     major: 1
     minor: 98
 examples:
-- _textWidth = "Hello World" getTextWidth ["PuristaMedium", 0.03];
-- _textWidthInclMargins = ("Hello World" getTextWidth ["PuristaMedium", 0.03]) + 0.016;
-- |
+- <sqf>_textWidth = "Hello World" getTextWidth ["PuristaMedium", 0.03];</sqf>
+- <sqf>_textWidthInclMargins = ("Hello World" getTextWidth ["PuristaMedium", 0.03]) + 0.016;</sqf>
+- |-
+  <sqf>
   #define MARGINS 0.0016
   private _ctrl = findDisplay 46 ctrlCreate ["RscText", -1];
   _ctrl ctrlSetText "TestString";
   _ctrl ctrlSetFont "PuristaMedium";
   _ctrl ctrlSetFontHeight 0.04;
   ctrlTextWidth _ctrl == ("TestString" getTextWidth ["PuristaMedium", 0.04]) + MARGINS; // true
+  </sqf>

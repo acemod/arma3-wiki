@@ -108,15 +108,19 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   cutRsc ["binocular", "PLAIN"];
   cutRsc ["binocular", "PLAIN", 2];
   cutRsc ["binocular", "PLAIN", 2, false];
-- 2 cutRsc ["binocular", "PLAIN", 2];
-- _layer = "layer1" cutRsc ["binocular", "PLAIN", 2];
-- |
+  </sqf>
+- <sqf>2 cutRsc ["binocular", "PLAIN", 2];</sqf>
+- <sqf>_layer = "layer1" cutRsc ["binocular", "PLAIN", 2];</sqf>
+- |-
+  <sqf>
   // create IGUI display
   // such display can be closed with closeDisplay command or by overwriting the same cut layer with another output.
   // note that "Unload" EH for some reason does not work with such display.
   "someLayer" cutRsc ["RscTitleDisplayEmpty", "PLAIN"];
   private _display = uiNamespace getVariable "RscTitleDisplayEmpty";
+  </sqf>

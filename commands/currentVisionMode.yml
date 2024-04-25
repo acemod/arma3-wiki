@@ -76,10 +76,12 @@ since:
     major: 0
     minor: 50
 examples:
-- _visionMode = currentVisionMode gunner _tank;
-- "if (currentVisionMode player == 1) then\n{\n\thint \"nightvision active\";\n};\n"
-- |
+- <sqf>_visionMode = currentVisionMode gunner _tank;</sqf>
+- "<sqf>\nif (currentVisionMode player == 1) then\n{\n\thint \"nightvision active\";\n};\n</sqf>"
+- |-
+  <sqf>
   private _detailedVisionMode = currentVisionMode [gunner _tank];
   _detailedVisionMode params ["_mode", "_flirIndex"];
-- private _detailedGunnerVisionMode = _tank currentVisionMode [0];
-- private _detailedWeaponVisionMode = player currentVisionMode "";
+  </sqf>
+- <sqf>private _detailedGunnerVisionMode = _tank currentVisionMode [0];</sqf>
+- <sqf>private _detailedWeaponVisionMode = player currentVisionMode "";</sqf>

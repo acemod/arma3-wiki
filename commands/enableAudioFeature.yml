@@ -51,12 +51,14 @@ since:
     major: 1
     minor: 64
 examples:
-- private _prevState = enableAudioFeature ["lowpass", true];
-- private _prevState = pallet enableAudioFeature ["building_interior", true];
-- |
+- <sqf>private _prevState = enableAudioFeature ["lowpass", true];</sqf>
+- <sqf>private _prevState = pallet enableAudioFeature ["building_interior", true];</sqf>
+- |-
+  <sqf>
   private _currState = pallet enableAudioFeature ["building_interior"];
   private _prevState = pallet enableAudioFeature ["building_interior", !_currState];
   hint str (_currState == _prevState); // true
 
   private _currState = pallet enableAudioFeature ["building_interior"];
   hint str (_currState == _prevState); // false
+  </sqf>

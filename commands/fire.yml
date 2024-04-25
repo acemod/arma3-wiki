@@ -62,11 +62,11 @@ since:
     major: 0
     minor: 50
 examples:
-- _soldier fire "M16";
-- _soldier fire "SmokeShellMuzzle";
-- _soldier fire ["SmokeShellMuzzle", "SmokeShellMuzzle", "SmokeShellRed"];
+- <sqf>_soldier fire "M16";</sqf>
+- <sqf>_soldier fire "SmokeShellMuzzle";</sqf>
+- <sqf>_soldier fire ["SmokeShellMuzzle", "SmokeShellMuzzle", "SmokeShellRed"];</sqf>
 - |-
-  player playActionNow "PutDown";
+  <sqf>player playActionNow "PutDown";
   player selectWeapon "DemoChargeMuzzle";
   player fire ["DemoChargeMuzzle", "DemoChargeMuzzle", "DemoCharge_Remote_Mag"];
-  player setWeaponReloadingTime [player, "DemoChargeMuzzle", 0];
+  player setWeaponReloadingTime [player, "DemoChargeMuzzle", 0];</sqf>

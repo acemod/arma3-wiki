@@ -24,9 +24,9 @@ since:
     major: 0
     minor: 50
 examples:
-- removeMusicEventHandler ["MusicStart", 12];
-- removeMusicEventHandler ["MusicStop", 12];
+- <sqf>removeMusicEventHandler ["MusicStart", 12];</sqf>
+- <sqf>removeMusicEventHandler ["MusicStop", 12];</sqf>
 - |-
-  private _stopMusicEH = addMusicEventHandler ["MusicStop", {}];
+  <sqf>private _stopMusicEH = addMusicEventHandler ["MusicStop", {}];
   // ...
-  removeMusicEventHandler ["MusicStop", _stopMusicEH];
+  removeMusicEventHandler ["MusicStop", _stopMusicEH];</sqf>

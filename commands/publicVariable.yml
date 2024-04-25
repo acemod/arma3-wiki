@@ -68,6 +68,6 @@ since:
     major: 0
     minor: 50
 examples:
-- "TAG_MyPublicVariable = 0;\nTAG_MyPublicVariable = 1;\npublicVariable \"TAG_MyPublicVariable\";\t// other clients will receive the \"TAG_MyPublicVariable\" variable with a 1 value\n\nTAG_MyPublicVariable = 2;\t\t\t\t// needs to be broadcast again - synchronisation is not automatic\n"
-- "JIP example:\n<sqf>\nif (isNil \"TAG_CurrentTarget\") then\t// has the variable already been set and broadcast?\n{\n\tTAG_CurrentTarget = objNull;\t// if not, set it on the local machine\n};\n\nplayer doTarget TAG_CurrentTarget;\n"
-- "TAG_BossName = \"EvilBigBoss\";\n\npublicVariable TAG_BossName;\t// wrong - will try to publicVariable \"EvilBigBoss\" variable, that does not exist\npublicVariable \"TAG_BossName\";\t// correct - important, do not forget the QUOTES\n"
+- "<sqf>\nTAG_MyPublicVariable = 0;\nTAG_MyPublicVariable = 1;\npublicVariable \"TAG_MyPublicVariable\";\t// other clients will receive the \"TAG_MyPublicVariable\" variable with a 1 value\n\nTAG_MyPublicVariable = 2;\t\t\t\t// needs to be broadcast again - synchronisation is not automatic\n</sqf>"
+- "JIP example:\n<sqf>\nif (isNil \"TAG_CurrentTarget\") then\t// has the variable already been set and broadcast?\n{\n\tTAG_CurrentTarget = objNull;\t// if not, set it on the local machine\n};\n\nplayer doTarget TAG_CurrentTarget;\n</sqf>"
+- "<sqf>\nTAG_BossName = \"EvilBigBoss\";\n\npublicVariable TAG_BossName;\t// wrong - will try to publicVariable \"EvilBigBoss\" variable, that does not exist\npublicVariable \"TAG_BossName\";\t// correct - important, do not forget the QUOTES\n</sqf>"

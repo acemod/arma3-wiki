@@ -19,4 +19,4 @@ since:
     major: 2
     minor: 2
 examples:
-- "[] spawn\n{ \n\tsystemChat str diag_scope; // 0\n\tcall \n\t{ \n\t\tcall\n\t\t{ \n\t\t\tsystemChat str diag_scope; // 2\n\t\t\tisNil \n\t\t\t{ \n\t\t\t\tsystemChat str diag_scope; // 0\n\t\t\t\tcall \n\t\t\t\t{\n\t\t\t\t\tsystemChat str diag_scope; // 1\n\t\t\t\t};\n\t\t\t};\n\t\t};\n\t};\n};\n"
+- "<sqf>\n[] spawn\n{ \n\tsystemChat str diag_scope; // 0\n\tcall \n\t{ \n\t\tcall\n\t\t{ \n\t\t\tsystemChat str diag_scope; // 2\n\t\t\tisNil \n\t\t\t{ \n\t\t\t\tsystemChat str diag_scope; // 0\n\t\t\t\tcall \n\t\t\t\t{\n\t\t\t\t\tsystemChat str diag_scope; // 1\n\t\t\t\t};\n\t\t\t};\n\t\t};\n\t};\n};\n</sqf>"

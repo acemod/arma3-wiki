@@ -29,12 +29,14 @@ since:
     major: 0
     minor: 50
 examples:
-- _msg = "hello"; _result = typeName _msg;  //_result will be "STRING"
-- _unit = player; _result = typeName _unit; //_result becomes "OBJECT"
-- "Values representing direct [[:Category: Data Types| Data Types]]:\n<sqf>\nhint typeName 0;\t\t\t\t\t// SCALAR\nhint typeName \"\";\t\t\t\t\t// STRING\nhint typeName true;\t\t\t\t\t// BOOL\nhint typeName [];\t\t\t\t\t// ARRAY\nhint typeName {};\t\t\t\t\t// CODE\nhint typeName scriptNull;\t\t\t// SCRIPT (since Arma 3 v1.32)\nhint typeName objNull;\t\t\t\t// OBJECT\nhint typeName grpNull;\t\t\t\t// GROUP\nhint typeName controlNull;\t\t\t// CONTROL\nhint typeName teamMemberNull;\t\t// TEAM_MEMBER\nhint typeName displayNull;\t\t\t// DISPLAY\nhint typeName taskNull;\t\t\t\t// TASK\nhint typeName locationNull;\t\t\t// LOCATION\nhint typeName sideUnknown;\t\t\t// SIDE\nhint typeName text \"\";\t\t\t\t// TEXT\nhint typeName configFile;\t\t\t// CONFIG\nhint typeName configNull;\t\t\t// CONFIG (since Arma 3 v1.54)\nhint typeName missionNamespace;\t\t// NAMESPACE\nhint typeName diaryRecordNull;\t\t// DIARY_RECORD (since Arma 3 v2.00)\nhint typeName createHashMap;\t\t// HASHMAP (since Arma 3 v2.02)\n"
-- |
+- <sqf>_msg = "hello"; _result = typeName _msg;  //_result will be "STRING"</sqf>
+- <sqf>_unit = player; _result = typeName _unit; //_result becomes "OBJECT"</sqf>
+- "Values representing direct [[:Category: Data Types| Data Types]]:\n<sqf>\nhint typeName 0;\t\t\t\t\t// SCALAR\nhint typeName \"\";\t\t\t\t\t// STRING\nhint typeName true;\t\t\t\t\t// BOOL\nhint typeName [];\t\t\t\t\t// ARRAY\nhint typeName {};\t\t\t\t\t// CODE\nhint typeName scriptNull;\t\t\t// SCRIPT (since Arma 3 v1.32)\nhint typeName objNull;\t\t\t\t// OBJECT\nhint typeName grpNull;\t\t\t\t// GROUP\nhint typeName controlNull;\t\t\t// CONTROL\nhint typeName teamMemberNull;\t\t// TEAM_MEMBER\nhint typeName displayNull;\t\t\t// DISPLAY\nhint typeName taskNull;\t\t\t\t// TASK\nhint typeName locationNull;\t\t\t// LOCATION\nhint typeName sideUnknown;\t\t\t// SIDE\nhint typeName text \"\";\t\t\t\t// TEXT\nhint typeName configFile;\t\t\t// CONFIG\nhint typeName configNull;\t\t\t// CONFIG (since Arma 3 v1.54)\nhint typeName missionNamespace;\t\t// NAMESPACE\nhint typeName diaryRecordNull;\t\t// DIARY_RECORD (since Arma 3 v2.00)\nhint typeName createHashMap;\t\t// HASHMAP (since Arma 3 v2.02)\n</sqf>"
+- |-
+  <sqf>
   if (typeName _this != "ARRAY") exitWith { hint "_this is not an array!" };
   // is the same as
   if (typeName _this != typeName []) exitWith { hint "_this is not an array!" };
   // same result but faster in Arma 3
   if !(_this isEqualType []) exitWith { hint "_this is not an array!" };
+  </sqf>

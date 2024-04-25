@@ -46,15 +46,19 @@ since:
     major: 0
     minor: 50
 examples:
-- myUnit setDir 45; // will set myUnit to face North-East
-- myUnit setDir -675; // will also set myUnit to face North-East (= 45-360-360)
-- |
+- <sqf>myUnit setDir 45; // will set myUnit to face North-East</sqf>
+- <sqf>myUnit setDir -675; // will also set myUnit to face North-East (= 45-360-360)</sqf>
+- |-
+  <sqf>
   MyUnit setDir 30;
   MyUnit setFormDir 30; // needed for AI to keep the given direction
-- |
+  </sqf>
+- |-
+  <sqf>
   // provided _myMine is local
   _myMine setDir 45;
   _myMine setPosWorld getPosWorld _myMine;
 
   // or
   [_myMine, 45] remoteExec ["setDir"];
+  </sqf>

@@ -59,10 +59,10 @@ since:
     major: 0
     minor: 50
 examples:
-- "\"publicThis\" addPublicVariableEventHandler {\n\thint format [\n\t\t\"%1 has been updated to: %2\",\n\t\t_this select 0,\n\t\t_this select 1\n\t]\n};"
+- "<sqf>\"publicThis\" addPublicVariableEventHandler {\n\thint format [\n\t\t\"%1 has been updated to: %2\",\n\t\t_this select 0,\n\t\t_this select 1\n\t]\n};</sqf>"
 - |-
   Client:
   <sqf>"'^:)123BURP,+=lol" addPublicVariableEventHandler {hint ("NUTS are " + (_this select 1))};</sqf>
   Server:
   <sqf>missionNamespace setVariable ["'^:)123BURP,+=lol", "craZZZZy"];
-  publicVariable "'^:)123BURP,+=lol";
+  publicVariable "'^:)123BURP,+=lol";</sqf>

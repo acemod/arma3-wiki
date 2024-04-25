@@ -17,7 +17,7 @@ since:
     major: 2
     minor: 0
 examples:
-- "private _myCode = compileFinal \"a = a + 1\";\nsystemChat format [\"isFinal \"\"_myCode\"\": %1\", isFinal \"_myCode\"];\t\t\t\t// true\nsystemChat format [\"isFinal _myCode: %1\", isFinal _myCode];\t\t\t\t\t\t// true\nsystemChat format [\"isFinal some code: %1\", isFinal { hint \"Hello there\" }];\t// false\n\nprivate _myArray1 = list _myTrigger;\nsystemChat format [\"isFinal _myArray1: %1\", isFinal _myArray1];\t\t\t\t\t// true\n\nprivate _myArray2 = [1, 2, 3];\nsystemChat format [\"isFinal _myArray2: %1\", isFinal _myArray2];\t\t\t\t\t// false\n\nprivate _myHashMap = compileFinal createHashMap;\nsystemChat format [\"isFinal _myHashMap: %1\", isFinal _myHashMap];\t\t\t\t// true\n"
+- "<sqf>\nprivate _myCode = compileFinal \"a = a + 1\";\nsystemChat format [\"isFinal \"\"_myCode\"\": %1\", isFinal \"_myCode\"];\t\t\t\t// true\nsystemChat format [\"isFinal _myCode: %1\", isFinal _myCode];\t\t\t\t\t\t// true\nsystemChat format [\"isFinal some code: %1\", isFinal { hint \"Hello there\" }];\t// false\n\nprivate _myArray1 = list _myTrigger;\nsystemChat format [\"isFinal _myArray1: %1\", isFinal _myArray1];\t\t\t\t\t// true\n\nprivate _myArray2 = [1, 2, 3];\nsystemChat format [\"isFinal _myArray2: %1\", isFinal _myArray2];\t\t\t\t\t// false\n\nprivate _myHashMap = compileFinal createHashMap;\nsystemChat format [\"isFinal _myHashMap: %1\", isFinal _myHashMap];\t\t\t\t// true\n</sqf>"
 - |-
   Avoid .rpt's overwrite warnings:
-  <sqf>if (!isFinal fnc_myCode) then { fnc_myCode = compileFinal str_myCode };
+  <sqf>if (!isFinal fnc_myCode) then { fnc_myCode = compileFinal str_myCode };</sqf>

@@ -38,11 +38,13 @@ since:
     major: 0
     minor: 50
 examples:
-- "private _distanceSquared = 5 * 5;\nif (player distanceSqr leader player < _distanceSquared) then // similar to player distance leader player < 5\n{\n\thint \"You are less than 5m from the leader!\";\n};\n"
-- |
+- "<sqf>\nprivate _distanceSquared = 5 * 5;\nif (player distanceSqr leader player < _distanceSquared) then // similar to player distance leader player < 5\n{\n\thint \"You are less than 5m from the leader!\";\n};\n</sqf>"
+- |-
+  <sqf>
   private _distance = sqrt ((x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2);
   private _distanceSqr = (x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2;
   _distance = [x1, y1, z1] distance [x2, y2, z2];
   _distanceSqr = [x1, y1, z1] distanceSqr [x2, y2, z2];
   _distance = sqrt ([x1, y1, z1] distanceSqr [x2, y2, z2]);
   _distanceSqr = ([x1, y1, z1] distance [x2, y2, z2]) ^ 2;
+  </sqf>

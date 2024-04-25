@@ -48,16 +48,19 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
   All possible combinations:
   <sqf>
   helicopter1 say3D "FortunateSon";
   helicopter1 say3D ["FortunateSon", 500, 1, 0, 0, true];
   [helicopter1, player] say3D "FortunateSon";
   [helicopter1, player] say3D ["FortunateSon", 500, 1, 0, 0, true];
-- "Workaround for dead bodies:\n<sqf>\nprivate _dummy = \"#particlesource\" createVehicleLocal ASLToAGL getPosWorld _corpse;\n_dummy say3D \"whatever\";\n_dummy spawn {\n\tsleep 5; // at least the length of your sound\n\tdeleteVehicle _this;\n};\n"
-- |
+  </sqf>
+- "Workaround for dead bodies:\n<sqf>\nprivate _dummy = \"#particlesource\" createVehicleLocal ASLToAGL getPosWorld _corpse;\n_dummy say3D \"whatever\";\n_dummy spawn {\n\tsleep 5; // at least the length of your sound\n\tdeleteVehicle _this;\n};\n</sqf>"
+- |-
+  <sqf>
   // Since {{arma3}} v2.00, the sound source is returned and can be deleted directly
   _soundSrc = helicopter1 say3D "Fortunateson";
   sleep 5;
   deleteVehicle _soundSrc; // stop the sound after ~5 seconds
+  </sqf>

@@ -45,9 +45,9 @@ since:
     major: 1
     minor: 70
 examples:
-- vehicle player setPylonLoadout ["pylon1", ""];
-- "Make all of your pylon weapons Twin Cannon 30 mm:\n<sqf>\nprivate _vehicle = vehicle player;\nprivate _pylonsIndices = getAllPylonsInfo _vehicle select { _x select 0 };\n{\n\t_vehicle setPylonLoadout [_x, \"PylonWeapon_300Rnd_20mm_shells\", true];\n} forEach _pylonsIndices;\n"
-- "Showcase all possible magazines:\n<sqf>\n[] spawn {\n\tprivate _allPylonMagazines = \"getText (_x >> 'pylonWeapon') != ''\" configClasses (configFile >> \"CfgMagazines\");\n\tprivate _vehicle = vehicle player;\n\tprivate _pylonsIndices = getAllPylonsInfo _vehicle select { _x select 0 };\n\n\t{\n\t\tprivate _configName = configName _x;\n\t\t{\n\t\t\t_vehicle setPylonLoadout [_x, _configName, true];\n\t\t} forEach _pylonsIndices;\n\n\t\thint _configName;\n\t\tsleep 1.5;\n\t} forEach _allPylonMagazines;\n};\n"
+- <sqf>vehicle player setPylonLoadout ["pylon1", ""];</sqf>
+- "Make all of your pylon weapons Twin Cannon 30 mm:\n<sqf>\nprivate _vehicle = vehicle player;\nprivate _pylonsIndices = getAllPylonsInfo _vehicle select { _x select 0 };\n{\n\t_vehicle setPylonLoadout [_x, \"PylonWeapon_300Rnd_20mm_shells\", true];\n} forEach _pylonsIndices;\n</sqf>"
+- "Showcase all possible magazines:\n<sqf>\n[] spawn {\n\tprivate _allPylonMagazines = \"getText (_x >> 'pylonWeapon') != ''\" configClasses (configFile >> \"CfgMagazines\");\n\tprivate _vehicle = vehicle player;\n\tprivate _pylonsIndices = getAllPylonsInfo _vehicle select { _x select 0 };\n\n\t{\n\t\tprivate _configName = configName _x;\n\t\t{\n\t\t\t_vehicle setPylonLoadout [_x, _configName, true];\n\t\t} forEach _pylonsIndices;\n\n\t\thint _configName;\n\t\tsleep 1.5;\n\t} forEach _allPylonMagazines;\n};\n</sqf>"
 - |-
   MP compatible usage:
-  <sqf>[myPlane, [1, "PylonWeapon_300Rnd_20mm_shells", true]] remoteExec ["setPylonLoadout", myPlane];
+  <sqf>[myPlane, [1, "PylonWeapon_300Rnd_20mm_shells", true]] remoteExec ["setPylonLoadout", myPlane];</sqf>

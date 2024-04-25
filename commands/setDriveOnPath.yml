@@ -26,8 +26,10 @@ since:
     major: 1
     minor: 68
 examples:
-- myVehicle setDriveOnPath [getMarkerPos "wp1", getMarkerPos "wp2"];
-- |
+- <sqf>myVehicle setDriveOnPath [getMarkerPos "wp1", getMarkerPos "wp2"];</sqf>
+- |-
+  <sqf>
   private _points = allMapMarkers apply { getMarkerPos _x; }; // getting all marker positions
   { _x pushBack 15; } forEach _points; // setting speed
   myVehicle setDriveOnPath _points;
+  </sqf>

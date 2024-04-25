@@ -25,4 +25,4 @@ since:
     major: 2
     minor: 14
 examples:
-- "private _players = call BIS_fnc_listPlayers;\nprivate _indices = _players inAreaArrayIndexes _marker;\n{\n\tprivate _player = _players select _x;\n\t[\"You are in the marker!\"] remoteExec [\"hint\", _player];\n} forEach _indices;\n"
+- "<sqf>\nprivate _players = call BIS_fnc_listPlayers;\nprivate _indices = _players inAreaArrayIndexes _marker;\n{\n\tprivate _player = _players select _x;\n\t[\"You are in the marker!\"] remoteExec [\"hint\", _player];\n} forEach _indices;\n</sqf>"

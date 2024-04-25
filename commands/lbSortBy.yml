@@ -53,4 +53,4 @@ since:
     major: 2
     minor: 6
 examples:
-- "with uiNamespace do\n{\n\tprivate _lb = findDisplay 46 createDisplay \"RscDisplayEmpty\" ctrlCreate [\"RscListBox\", -1];\n\t_lb ctrlSetPosition [0,0,1,1];\n\t_lb ctrlCommit 0;\n\tlbClear _lb;\n\t{\n\t\t_lb lbAdd (_x select 0);\n\t\t_lb lbSetValue [_forEachIndex, _x select 1];\n\t}\n\tforEach [[\"В\",1], [\"Я\",0], [\"Б\",1], [\"Ю\",0], [\"А\",1]];\n\t_lb lbSortBy [\"VALUE\", false, false];\n};\n"
+- "<sqf>\nwith uiNamespace do\n{\n\tprivate _lb = findDisplay 46 createDisplay \"RscDisplayEmpty\" ctrlCreate [\"RscListBox\", -1];\n\t_lb ctrlSetPosition [0,0,1,1];\n\t_lb ctrlCommit 0;\n\tlbClear _lb;\n\t{\n\t\t_lb lbAdd (_x select 0);\n\t\t_lb lbSetValue [_forEachIndex, _x select 1];\n\t}\n\tforEach [[\"В\",1], [\"Я\",0], [\"Б\",1], [\"Ю\",0], [\"А\",1]];\n\t_lb lbSortBy [\"VALUE\", false, false];\n};\n</sqf>"

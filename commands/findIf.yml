@@ -26,5 +26,5 @@ since:
     major: 1
     minor: 82
 examples:
-- '[unit1, unit2, unit3] findIf {not alive _x}; // return index of the first dead unit)'
-- "// two ways how to 'wait for all units to be dead':\nwaitUntil { [unit1, unit2, unit3] findIf { alive _x } == -1 };\t// fast, terminates as soon as it finds a living unit\nwaitUntil { { alive _x } count [unit1, unit2, unit3] == 0 };\t// slow, always goes through all array elements\n"
+- <sqf>[unit1, unit2, unit3] findIf {not alive _x}; // return index of the first dead unit)</sqf>
+- "<sqf>\n// two ways how to 'wait for all units to be dead':\nwaitUntil { [unit1, unit2, unit3] findIf { alive _x } == -1 };\t// fast, terminates as soon as it finds a living unit\nwaitUntil { { alive _x } count [unit1, unit2, unit3] == 0 };\t// slow, always goes through all array elements\n</sqf>"

@@ -78,11 +78,13 @@ since:
     major: 0
     minor: 50
 examples:
-- call { hint str 123; };
-- 123 call { hint str _this; };
-- |
+- <sqf>call { hint str 123; };</sqf>
+- <sqf>123 call { hint str _this; };</sqf>
+- |-
+  <sqf>
   _sum = [1, 2] call { (_this select 0) + (_this select 1); };
   hint str _sum; // displays 3
-- 123 call compile "hint str _this;";
-- _result = 123 call compile preprocessFileLineNumbers "myFile.sqf";
-- "private _hashMapObj = createHashMapObject [[\n\t[\"MyMethod\", { systemChat (\"MyMethod has been called with the following arguments: \" + str _this); }]\n]];\n\n_hashMapObj call [\"MyMethod\", [\"Hello there\", player, 123]]; // hints 'MyMethod has been called with the following arguments: [\"Hello there\", player, 123]'\n"
+  </sqf>
+- <sqf>123 call compile "hint str _this;";</sqf>
+- <sqf>_result = 123 call compile preprocessFileLineNumbers "myFile.sqf";</sqf>
+- "<sqf>\nprivate _hashMapObj = createHashMapObject [[\n\t[\"MyMethod\", { systemChat (\"MyMethod has been called with the following arguments: \" + str _this); }]\n]];\n\n_hashMapObj call [\"MyMethod\", [\"Hello there\", player, 123]]; // hints 'MyMethod has been called with the following arguments: [\"Hello there\", player, 123]'\n</sqf>"

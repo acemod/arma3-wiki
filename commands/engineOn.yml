@@ -41,7 +41,9 @@ since:
     major: 0
     minor: 50
 examples:
-- if (!isEngineOn _jeep) then { _jeep engineOn true; };
-- |
+- <sqf>if (!isEngineOn _jeep) then { _jeep engineOn true; };</sqf>
+- |-
+  <sqf>
   waitUntil { player == driver _jeep; };
   vehicle player engineOn true;
+  </sqf>

@@ -37,8 +37,10 @@ since:
     major: 2
     minor: 2
 examples:
-- private _myValue = _myHashMap getOrDefault ["a", "Not Found!"];
-- private _myValue = _hashMap getOrDefault ["a", "Not Found!", true]; // will add default value to the hash map if it does not exist
-- |
+- <sqf>private _myValue = _myHashMap getOrDefault ["a", "Not Found!"];</sqf>
+- <sqf>private _myValue = _hashMap getOrDefault ["a", "Not Found!", true]; // will add default value to the hash map if it does not exist</sqf>
+- |-
+  <sqf>
   private _array = _hashmap getOrDefault [_key, [], true]; // a new array will be created if it doesn't exist
   _array pushBack _item; // _item will be added to the array (the one in the hashmap is updated by reference)
+  </sqf>

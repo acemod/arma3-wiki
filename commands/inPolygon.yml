@@ -22,5 +22,5 @@ since:
     major: 1
     minor: 54
 examples:
-- private _isInside = [100, 100, 0] inPolygon [[0, 0, 0], [1000, 1000, 0], [1000, 0, 0]];
-- "private _markerName = \"_USER_DEFINED #0/0/1\";\n\nprivate _xy2DPositions = markerPolyline _markerName;\nprivate _positions = [];\n\n// let's convert these x,y coordinates to \"normal\" position arrays\nfor \"_i\" from 0 to count _xy2DPositions - 1 step 2 do\n{\n\t_positions pushBack [_xy2DPositions select _i, _xy2DPositions select (_i + 1), 0];\n};\n\nplayer inPolygon _positions; // true if in the drawn shape, false if not\n"
+- <sqf>private _isInside = [100, 100, 0] inPolygon [[0, 0, 0], [1000, 1000, 0], [1000, 0, 0]];</sqf>
+- "<sqf>\nprivate _markerName = \"_USER_DEFINED #0/0/1\";\n\nprivate _xy2DPositions = markerPolyline _markerName;\nprivate _positions = [];\n\n// let's convert these x,y coordinates to \"normal\" position arrays\nfor \"_i\" from 0 to count _xy2DPositions - 1 step 2 do\n{\n\t_positions pushBack [_xy2DPositions select _i, _xy2DPositions select (_i + 1), 0];\n};\n\nplayer inPolygon _positions; // true if in the drawn shape, false if not\n</sqf>"

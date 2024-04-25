@@ -17,8 +17,8 @@ since:
 examples:
 - |-
   Open interface:
-  <sqf>openCuratorInterface;
+  <sqf>openCuratorInterface;</sqf>
 - |-
   Close interface:
-  <sqf>findDisplay 312 closeDisplay 2;
-- "Detect if user used \"Zeus\" key to open curator interface in the absence of event handler for it:\n<sqf>\nfindDisplay 46 displayAddEventHandler [\"KeyDown\", {\n\tif (inputAction \"CuratorInterface\" > 0) then\n\t{\n\t\thint \"Curator interface is open\";\n\t};\n\tfalse\n}];\n"
+  <sqf>findDisplay 312 closeDisplay 2;</sqf>
+- "Detect if user used \"Zeus\" key to open curator interface in the absence of event handler for it:\n<sqf>\nfindDisplay 46 displayAddEventHandler [\"KeyDown\", {\n\tif (inputAction \"CuratorInterface\" > 0) then\n\t{\n\t\thint \"Curator interface is open\";\n\t};\n\tfalse\n}];\n</sqf>"

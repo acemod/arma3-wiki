@@ -49,11 +49,13 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   private _bbr = boundingBoxReal vehicle player;
   private _p1 = _bbr select 0;
   private _p2 = _bbr select 1;
   private _maxWidth = abs ((_p2 select 0) - (_p1 select 0));
   private _maxLength = abs ((_p2 select 1) - (_p1 select 1));
   private _maxHeight = abs ((_p2 select 2) - (_p1 select 2));
-- hint str (0 boundingBoxReal cursorObject);
+  </sqf>
+- <sqf>hint str (0 boundingBoxReal cursorObject);</sqf>

@@ -62,11 +62,11 @@ since:
     major: 1
     minor: 58
 examples:
-- player_2 setUnitLoadout (getUnitLoadout player_1); // Copies loadout from player_1 and applies it to player_2
-- player_2 setUnitLoadout [getUnitLoadout player_1, true]; // Copies loadout from player_1 and applies it to player_2 while topping up all magazines
-- _unit setUnitLoadout "B_Soldier_F";
-- _unit setUnitLoadout (configFile >> "CfgVehicles" >> "B_Soldier_F");
-- _unit setUnitLoadout (missionConfigFile >> "MyLoadout");
+- <sqf>player_2 setUnitLoadout (getUnitLoadout player_1); // Copies loadout from player_1 and applies it to player_2</sqf>
+- <sqf>player_2 setUnitLoadout [getUnitLoadout player_1, true]; // Copies loadout from player_1 and applies it to player_2 while topping up all magazines</sqf>
+- <sqf>_unit setUnitLoadout "B_Soldier_F";</sqf>
+- <sqf>_unit setUnitLoadout (configFile >> "CfgVehicles" >> "B_Soldier_F");</sqf>
+- <sqf>_unit setUnitLoadout (missionConfigFile >> "MyLoadout");</sqf>
 - |-
   Strip unit of everything:
-  <sqf>_unit setUnitLoadout (configFile >> "EmptyLoadout");
+  <sqf>_unit setUnitLoadout (configFile >> "EmptyLoadout");</sqf>

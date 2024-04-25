@@ -45,6 +45,6 @@ since:
     major: 0
     minor: 50
 examples:
-- _handle = 0 spawn { player globalChat "Hello world!" };
-- "There is no guarantee that spawned scripts will be executed in the same order they spawned: \n<sqf>\nfor \"_i\" from 0 to 100 do\n{\n\t_i spawn\n\t{\n\t\tdiag_log _this;\n\t};\n}; // Result: 51,1,2...49,50,0,52,53...100\n"
-- "Local variables declared in the main scope are not available in the spawned code. You have to pass them as parameters:\n<sqf>\nprivate _localVariable = 1234;\n[_localVariable] spawn \n{\n\tsystemChat format [\"_localVariable does not exist: %1\", isNil \"_localVariable\"]; // _localVariable does not exist: true\n\tparams [\"_localVariable\"];\n\tsystemChat format [\"_localVariable is now: %1\", _localVariable]; // _localVariable is now: 1234\n};\n"
+- <sqf>_handle = 0 spawn { player globalChat "Hello world!" };</sqf>
+- "There is no guarantee that spawned scripts will be executed in the same order they spawned: \n<sqf>\nfor \"_i\" from 0 to 100 do\n{\n\t_i spawn\n\t{\n\t\tdiag_log _this;\n\t};\n}; // Result: 51,1,2...49,50,0,52,53...100\n</sqf>"
+- "Local variables declared in the main scope are not available in the spawned code. You have to pass them as parameters:\n<sqf>\nprivate _localVariable = 1234;\n[_localVariable] spawn \n{\n\tsystemChat format [\"_localVariable does not exist: %1\", isNil \"_localVariable\"]; // _localVariable does not exist: true\n\tparams [\"_localVariable\"];\n\tsystemChat format [\"_localVariable is now: %1\", _localVariable]; // _localVariable is now: 1234\n};\n</sqf>"

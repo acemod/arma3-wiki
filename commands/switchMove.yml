@@ -96,11 +96,11 @@ since:
 examples:
 - |-
   Prone:
-  <sqf>player switchMove "AmovPpneMstpSrasWrflDnon";
+  <sqf>player switchMove "AmovPpneMstpSrasWrflDnon";</sqf>
 - |-
   Sit player immediately and globally:
-  <sqf>[player, "AmovPsitMstpSlowWrflDnon"] remoteExec ["switchMove"];
+  <sqf>[player, "AmovPsitMstpSlowWrflDnon"] remoteExec ["switchMove"];</sqf>
 - |-
   Resets unit's animation:
-  <sqf>_unit switchMove "";
-- "// Create a dummy agent that copies your moves\nai1 = createAgent [typeOf player, getPosATL player, [], 0, \"NONE\"];\nai1 disableAI \"ALL\";\nonEachFrame\n{\n\tai1 setAnimSpeedCoef getAnimSpeedCoef player;\n\tai1 setVectorDir vectorDir player;\n\tprivate _m = animationState player;\n\tprivate _g = gestureState player;\n\tprivate _i = getUnitMovesInfo player;\n\tprivate _a = getUnitMovesInfo ai1;\n\t\n\tif (animationState ai1 != _m || abs(_i#1 - _a#1) > 0.1) then\n\t{\n\t\tai1 switchMove [_m, _i#0, _i#3, false];\n\t};\n\n\tif ((gestureState ai1 != _g || abs(_i#6 - _a#6) > 0.1) && (_g != \"<none>\" && _g find \"_player\" < 0)) then\n\t{\n\t\tai1 switchGesture [_g, _i#5, _i#8, false];\n\t};\n}\n"
+  <sqf>_unit switchMove "";</sqf>
+- "<sqf>\n// Create a dummy agent that copies your moves\nai1 = createAgent [typeOf player, getPosATL player, [], 0, \"NONE\"];\nai1 disableAI \"ALL\";\nonEachFrame\n{\n\tai1 setAnimSpeedCoef getAnimSpeedCoef player;\n\tai1 setVectorDir vectorDir player;\n\tprivate _m = animationState player;\n\tprivate _g = gestureState player;\n\tprivate _i = getUnitMovesInfo player;\n\tprivate _a = getUnitMovesInfo ai1;\n\t\n\tif (animationState ai1 != _m || abs(_i#1 - _a#1) > 0.1) then\n\t{\n\t\tai1 switchMove [_m, _i#0, _i#3, false];\n\t};\n\n\tif ((gestureState ai1 != _g || abs(_i#6 - _a#6) > 0.1) && (_g != \"<none>\" && _g find \"_player\" < 0)) then\n\t{\n\t\tai1 switchGesture [_g, _i#5, _i#8, false];\n\t};\n}\n</sqf>"

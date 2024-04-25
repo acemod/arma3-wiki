@@ -52,12 +52,12 @@ since:
     major: 0
     minor: 50
 examples:
-- player attachTo [car, [0, 0, 1]];
-- player attachTo [tank, [0, -1, 0], "Usti hlavne"];
+- <sqf>player attachTo [car, [0, 0, 1]];</sqf>
+- <sqf>player attachTo [tank, [0, -1, 0], "Usti hlavne"];</sqf>
 - |-
   Automatic offset:
-  <sqf>ammoCrate attachTo [player];
-- |
+  <sqf>ammoCrate attachTo [player];</sqf>
+- |-
   To set orientation of attached object use [[setVectorDirAndUp]] command:<br>
   [[File:Sbomber.jpg|300x200px|right]]
   <sqf>
@@ -70,10 +70,12 @@ examples:
   _expl3 = "DemoCharge_Remote_Ammo" createVehicle position player;
   _expl3 attachTo [player, [0.1, 0.1, 0.15], "Pelvis"];
   _expl3 setVectorDirAndUp [[0.5, -0.5, 0], [0.5, 0.5, 0]];
-- |
+  </sqf>
+- |-
   [[File:arma3_attachTo-example-worker-drill-and-radio.png|300x200px|right]]
   <sqf>
   _drill attachTo [_worker, [0.0595885,-0.00950365,-0.13495], "RightForeArmRoll", true];
   _drill setVectorDirAndUp [[0.536966,-0.00438141,-0.843605],[0.345872,0.913231,0.215406]];
   _radio attachTo [_worker, [-0.100003,0.069064,0.153719], "Spine3", true];
   _radio setVectorDirAndUp [[-0.144569,-0.48725,0.861354],[0.039712,0.866938,0.497072]];
+  </sqf>

@@ -34,10 +34,11 @@ since:
     major: 1
     minor: 32
 examples:
-- "// delete when knowing the vehicle\n_helicopter deleteVehicleCrew driver _helicopter;\n\n// delete when only knowing the unit\n// vehicle _soldier deleteVehicleCrew _soldier;\t\t// may return the unit itself when used on dead crew\nobjectParent _soldier deleteVehicleCrew _soldier;\t// faster and always returns the vehicle\n"
-- |
+- "<sqf>\n// delete when knowing the vehicle\n_helicopter deleteVehicleCrew driver _helicopter;\n\n// delete when only knowing the unit\n// vehicle _soldier deleteVehicleCrew _soldier;\t\t// may return the unit itself when used on dead crew\nobjectParent _soldier deleteVehicleCrew _soldier;\t// faster and always returns the vehicle\n</sqf>"
+- |-
   Delete entire crew:
   <sqf>
   deleteVehicleCrew _tank; // since v2.06
 
   { _helicopter deleteVehicleCrew _x } forEach crew _helicopter; // before v2.06
+  </sqf>

@@ -18,9 +18,11 @@ since:
     major: 2
     minor: 0
 examples:
-- "/*\nCould return something like this:\n[\n\t[\"Medic\", false],\n\t[\"Engineer\", false],\n\t[\"ExplosiveSpecialist\", false],\n\t[\"UavHacker\", false],\n\t[\"CamouflageCoef\", 1],\n\t[\"AudibleCoef\", 1],\n\t[\"LoadCoef\", 1],\n\t[\"test\", \"custom\"]\n]\n*/\nprivate _playerTraits = getAllUnitTraits player;\n"
-- |
+- "<sqf>\n/*\nCould return something like this:\n[\n\t[\"Medic\", false],\n\t[\"Engineer\", false],\n\t[\"ExplosiveSpecialist\", false],\n\t[\"UavHacker\", false],\n\t[\"CamouflageCoef\", 1],\n\t[\"AudibleCoef\", 1],\n\t[\"LoadCoef\", 1],\n\t[\"test\", \"custom\"]\n]\n*/\nprivate _playerTraits = getAllUnitTraits player;\n</sqf>"
+- |-
+  <sqf>
   private _unitTraits = getAllUnitTraits _unit;
   private _indexes = [_unitTraits, "Medic"] call BIS_fnc_findNestedElement;
   private _unitCanHeal = _unitTraits select (_indexes select 0) select 1;
-- "Since {{GVI|arma3|2.18|size= 0.75}}:\n<sqf>\n/*\n[\n\t[\"Medic\", false],\n\t[\"Engineer\", true],\n\t[\"ExplosiveSpecialist\", true],\n\t[\"UavHacker\", false],\n\t[\"CamouflageCoef\", 1],\n\t[\"AudibleCoef\", 1],\n\t[\"LoadCoef\", 1]\n]\n*/\nhint str getAllUnitTraits \"O_Engineer_F\";\n"
+  </sqf>
+- "Since {{GVI|arma3|2.18|size= 0.75}}:\n<sqf>\n/*\n[\n\t[\"Medic\", false],\n\t[\"Engineer\", true],\n\t[\"ExplosiveSpecialist\", true],\n\t[\"UavHacker\", false],\n\t[\"CamouflageCoef\", 1],\n\t[\"AudibleCoef\", 1],\n\t[\"LoadCoef\", 1]\n]\n*/\nhint str getAllUnitTraits \"O_Engineer_F\";\n</sqf>"

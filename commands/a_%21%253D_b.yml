@@ -10,7 +10,7 @@ syntax:
   - a
   - b
   ret:
-  - Unknown
+  - Boolean
   - '[[true]] if ''''a'''' is different from ''''b'''', [[false]] otherwise'
   params:
   - name: a
@@ -58,7 +58,7 @@ since:
     major: 0
     minor: 50
 examples:
-- "if (_counter != 4) then\n{\n\thint \"The counter is not equal to the number 4\";\n};\n"
-- "if (vehicle player != player) then\n{\n\thint \"you are in a vehicle\";\n}\nelse\n{\n\thint \"you are on foot\";\n};\n"
-- "if (fuel truck1 != 1) then\n{\n\thint \"Truck1 has less than a full tank of fuel.\";\n};\n"
-- if (alive _unit1 != alive _unit2) then { hint "One of the units is dead while another is alive" };
+- "<sqf>\nif (_counter != 4) then\n{\n\thint \"The counter is not equal to the number 4\";\n};\n</sqf>"
+- "<sqf>\nif (vehicle player != player) then\n{\n\thint \"you are in a vehicle\";\n}\nelse\n{\n\thint \"you are on foot\";\n};\n</sqf>"
+- "<sqf>\nif (fuel truck1 != 1) then\n{\n\thint \"Truck1 has less than a full tank of fuel.\";\n};\n</sqf>"
+- <sqf>if (alive _unit1 != alive _unit2) then { hint "One of the units is dead while another is alive" };</sqf>

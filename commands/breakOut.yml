@@ -50,6 +50,6 @@ since:
     major: 0
     minor: 50
 examples:
-- "scopeName \"main\";\nwhile { true } do {\n\tscopeName \"loop1\";\n\twhile {true} do {\n\t\tscopeName \"loop2\";\n\t\tif (condition1) then {breakTo \"main\"}; // Breaks all scopes and return to \"main\"\n\t\tif (condition2) then {breakOut \"loop2\"}; // Breaks scope named \"loop2\"\n\t\tsleep 1;\n\t};\n\tsleep 1;\n};"
-- "call {\n\tscopeName \"main\";\n\tcall {\n\t\t123 breakOut \"main\"\n\t};\n\t345\n}; // call returns 123"
-- "call {\n\tscopeName \"Main\"; // Parent Main\n\tcall {\n\t\tscopeName \"Main\"; // Child Main\n\t\t\"String\" breakOut \"Main\"; // Will break out of child main and return \"String\" to parent main\n\t};\n};"
+- "<sqf>scopeName \"main\";\nwhile { true } do {\n\tscopeName \"loop1\";\n\twhile {true} do {\n\t\tscopeName \"loop2\";\n\t\tif (condition1) then {breakTo \"main\"}; // Breaks all scopes and return to \"main\"\n\t\tif (condition2) then {breakOut \"loop2\"}; // Breaks scope named \"loop2\"\n\t\tsleep 1;\n\t};\n\tsleep 1;\n};</sqf>"
+- "<sqf>call {\n\tscopeName \"main\";\n\tcall {\n\t\t123 breakOut \"main\"\n\t};\n\t345\n}; // call returns 123</sqf>"
+- "<sqf>call {\n\tscopeName \"Main\"; // Parent Main\n\tcall {\n\t\tscopeName \"Main\"; // Child Main\n\t\t\"String\" breakOut \"Main\"; // Will break out of child main and return \"String\" to parent main\n\t};\n};</sqf>"

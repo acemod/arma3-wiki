@@ -60,16 +60,23 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   // will output 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 (the to value being inclusive)
   for "_i" from 1 to 10 do { systemChat str _i; };
-- |
+  </sqf>
+- |-
+  <sqf>
   // will output 9, 7, 5, 3, 1
   for "_i" from 9 to 1 step -2 do { systemChat str _i; };
-- |
+  </sqf>
+- |-
+  <sqf>
   // will output 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
   for [{ _i = 0 }, { _i < 10 }, { _i = _i + 1 }] do { systemChat str _i };
-- |
+  </sqf>
+- |-
+  <sqf>
   // BAD CODE
   _i = 100;
   for [{ _i = 0 }, { _i < 5 }, { _i = _i + 1 }] do { /* code */ };
@@ -84,3 +91,4 @@ examples:
   _i = 100;
   for "_i" from 0 to 4 do { /* code */ };
   hint str _i; // 100
+  </sqf>

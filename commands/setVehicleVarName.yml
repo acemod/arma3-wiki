@@ -38,5 +38,5 @@ since:
     major: 0
     minor: 50
 examples:
-- "private _playersCar = vehicle player;\nsystemChat str _playersCar; // displays e.g \"ce06b00# 164274: offroad_01_unarmed_f.p3d\"\n\n_playersCar setVehicleVarName \"MyOffroad\";\nsystemChat str _playersCar;\t// displays \"MyOffroad\"\n\nisNil \"MyOffroad\";\t\t\t// true - the MyOffroad variable is not set\nMyOffroad = _playersCar;\t// now it is\npublicVariable \"MyOffroad\";\t// broadcasts it over the network\n"
-- _offroad setVehicleVarName ""; // Reset string representation to the default value
+- "<sqf>\nprivate _playersCar = vehicle player;\nsystemChat str _playersCar; // displays e.g \"ce06b00# 164274: offroad_01_unarmed_f.p3d\"\n\n_playersCar setVehicleVarName \"MyOffroad\";\nsystemChat str _playersCar;\t// displays \"MyOffroad\"\n\nisNil \"MyOffroad\";\t\t\t// true - the MyOffroad variable is not set\nMyOffroad = _playersCar;\t// now it is\npublicVariable \"MyOffroad\";\t// broadcasts it over the network\n</sqf>"
+- <sqf>_offroad setVehicleVarName ""; // Reset string representation to the default value</sqf>

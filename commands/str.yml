@@ -31,7 +31,7 @@ since:
     major: 0
     minor: 50
 examples:
-- _s = str (5 + 2); // The value of _s is the string "7"
-- "a = [];\nac = 0;\nwhile { ac < 5 } do\n{\n\tac = count a;\n\ta set [ac, format [\"Index %1\", ac]];\n};\nhintSilent str a; // hints all of [\"Index 0\",\"Index 1\",\"Index 2\",\"Index 3\",\"Index 4\"] including brackets, quotes and commas\n"
-- "str [0, 0, 0] == \"[0, 0, 0]\";\t// false\nstr [0, 0, 0] == \"[0,0,0]\";\t\t// true\n\nstr \"a\";\t\t\t// \"\"\"a\"\"\"\ncount str \"a\";\t\t// 3\nstr text \"a\";\t\t// \"a\"\ncount str text \"a\";\t// 1\n"
-- "str objNull;\t\t// \"<NULL-object>\"\nstr player;\t\t\t// e.g \"B Alpha 1-1:1 (PlayerName)\"\nplayer setVehicleVarName \"PlayerUnit\";\nstr player;\t\t\t// \"PlayerUnit\"\n"
+- <sqf>_s = str (5 + 2); // The value of _s is the string "7"</sqf>
+- "<sqf>\na = [];\nac = 0;\nwhile { ac < 5 } do\n{\n\tac = count a;\n\ta set [ac, format [\"Index %1\", ac]];\n};\nhintSilent str a; // hints all of [\"Index 0\",\"Index 1\",\"Index 2\",\"Index 3\",\"Index 4\"] including brackets, quotes and commas\n</sqf>"
+- "<sqf>\nstr [0, 0, 0] == \"[0, 0, 0]\";\t// false\nstr [0, 0, 0] == \"[0,0,0]\";\t\t// true\n\nstr \"a\";\t\t\t// \"\"\"a\"\"\"\ncount str \"a\";\t\t// 3\nstr text \"a\";\t\t// \"a\"\ncount str text \"a\";\t// 1\n</sqf>"
+- "<sqf>\nstr objNull;\t\t// \"<NULL-object>\"\nstr player;\t\t\t// e.g \"B Alpha 1-1:1 (PlayerName)\"\nplayer setVehicleVarName \"PlayerUnit\";\nstr player;\t\t\t// \"PlayerUnit\"\n</sqf>"

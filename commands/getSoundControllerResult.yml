@@ -23,8 +23,10 @@ since:
     major: 1
     minor: 64
 examples:
-- _result = (vehicle player) getSoundControllerResult (configFile >> "cfgVehicles" >> typeOf (vehicle player) >> "sounds" >> "idle_ext" >> "volume");
-- |
+- <sqf>_result = (vehicle player) getSoundControllerResult (configFile >> "cfgVehicles" >> typeOf (vehicle player) >> "sounds" >> "idle_ext" >> "volume");</sqf>
+- |-
+  <sqf>
   // mission config entry to reverse rain strength:
   // myExpression = "rain factor [1,0]";
   _result = "PaperCar" createVehicleLocal position player getSoundControllerResult (missionConfigFile >> "myExpression");
+  </sqf>

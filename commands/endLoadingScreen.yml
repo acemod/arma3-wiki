@@ -27,10 +27,12 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   startLoadingScreen ["Loading My Mission"];
   // code
   progressLoadingScreen 0.5;
   // code
   endLoadingScreen;
-- "// this structure prevents error-prone or lengthy code to miss endLoadingScreen.\nprivate _maxTime = diag_tickTime + 30; // max 30s of loading\n\nstartLoadingScreen [\"Loading\"];\nprivate _handle = [] spawn {\n\t// code that may crash or take too long\n};\n\nwaitUntil { sleep .01; scriptDone _handle || diag_tickTime > _maxTime };\nendLoadingScreen;\n"
+  </sqf>
+- "<sqf>\n// this structure prevents error-prone or lengthy code to miss endLoadingScreen.\nprivate _maxTime = diag_tickTime + 30; // max 30s of loading\n\nstartLoadingScreen [\"Loading\"];\nprivate _handle = [] spawn {\n\t// code that may crash or take too long\n};\n\nwaitUntil { sleep .01; scriptDone _handle || diag_tickTime > _maxTime };\nendLoadingScreen;\n</sqf>"

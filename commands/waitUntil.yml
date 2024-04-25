@@ -34,13 +34,14 @@ since:
     major: 0
     minor: 50
 examples:
-- waitUntil { not alive player };
-- _i = 0; waitUntil { _i = _i + 1; _i >= 100 };
-- "[[waitUntil]] can lead to performance loss if used improperly:\n<sqf>\nwaitUntil { not alive player };\t\t\t// bad\nwaitUntil { sleep 1; not alive player };\t// good - checks every 1 second\nplayer addEventHandler [\"Killed\", {  }];\t// best - don't forget about Event Handlers\n"
+- <sqf>waitUntil { not alive player };</sqf>
+- <sqf>_i = 0; waitUntil { _i = _i + 1; _i >= 100 };</sqf>
+- "[[waitUntil]] can lead to performance loss if used improperly:\n<sqf>\nwaitUntil { not alive player };\t\t\t// bad\nwaitUntil { sleep 1; not alive player };\t// good - checks every 1 second\nplayer addEventHandler [\"Killed\", {  }];\t// best - don't forget about Event Handlers\n</sqf>"
 - "An on-the-fly custom [[Arma 3: Event Handlers|event handler]]:\n<sqf>\n_myEH = [\"ZoomIn\"] spawn {\n\twhile { true } do\n\t{\n\t\twaitUntil { inputAction (_this select 0) == 1 };\n\t\tdiag_log format [\"%1 @ %2\", _this select 0, diag_tickTime];\n\t};\n};\n</sqf>\nAlthough it may be better to use [[onEachFrame]] ([[BIS_fnc_addStackedEventHandler|stacked]]) [[Arma_3:_Mission_Event_Handlers#EachFrame|mission Event Handler]], depending on the application."
-- |
+- |-
   Use [[getVariable]] with default value to prevent unexcepted script errors:
   <sqf>
   waitUntil { bank getVariable ["money", 0] > 0 };
   waitUntil { missionNamespace getVariable ["isready", false] };
-- "Always return [[Boolean]]:\n<sqf>\nwaitUntil { sleep 1; if (not alive player) exitWith {}; _time = _time + 1 };\t\t\t\t// bad\nwaitUntil { sleep 1; if (not alive player) exitWith { true }; _time = _time + 1; false };\t// good\nwaitUntil { sleep 1; not alive player };\t\t\t\t\t\t\t\t\t\t\t\t\t// perfect\n"
+  </sqf>
+- "Always return [[Boolean]]:\n<sqf>\nwaitUntil { sleep 1; if (not alive player) exitWith {}; _time = _time + 1 };\t\t\t\t// bad\nwaitUntil { sleep 1; if (not alive player) exitWith { true }; _time = _time + 1; false };\t// good\nwaitUntil { sleep 1; not alive player };\t\t\t\t\t\t\t\t\t\t\t\t\t// perfect\n</sqf>"

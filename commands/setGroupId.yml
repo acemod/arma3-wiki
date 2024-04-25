@@ -178,15 +178,15 @@ since:
     major: 0
     minor: 50
 examples:
-- "'''{{arma3}}''':\n<sqf>group player setGroupId [\"Some name for the group\"];\nhint groupId group player;\t// \"Some name for the group\"\nplayer sideChat \"lalala\";\t// Some name for the group (KK): \"lalala\""
-- "'''{{arma3}}''':\n<sqf>group player setGroupId [\"%GroupNames :=: %GroupColors\", \"Alpha\", \"GroupColor2\"];\nhint groupId group player;\t// \"Alpha :=: Red\"\nplayer sideChat \"lalala\";\t// Alpha :=: Red (KK): \"lalala\""
+- "'''{{arma3}}''':\n<sqf>group player setGroupId [\"Some name for the group\"];\nhint groupId group player;\t// \"Some name for the group\"\nplayer sideChat \"lalala\";\t// Some name for the group (KK): \"lalala\"</sqf>"
+- "'''{{arma3}}''':\n<sqf>group player setGroupId [\"%GroupNames :=: %GroupColors\", \"Alpha\", \"GroupColor2\"];\nhint groupId group player;\t// \"Alpha :=: Red\"\nplayer sideChat \"lalala\";\t// Alpha :=: Red (KK): \"lalala\"</sqf>"
 - |-
   '''{{arma1}} / {{arma2}} / {{arma3}}''':
   <sqf>group player setGroupId ["First Assault Recon Team"];</sqf>
   '''{{ofp}}''':
-  <sqf>_group1 setGroupId ["Delta", "GroupColor4"]
+  <sqf>_group1 setGroupId ["Delta", "GroupColor4"]</sqf>
 - |-
   When trying to apply the same callsign to two groups of the same side, the callsigns will simply be swapped, e.g:
   <sqf>group1 setGroupId ["Active Group"];
   group2 setGroupId ["Inactive Group"];
-  group2 setGroupId ["Active Group"]; // group1 is "Inactive Group" now
+  group2 setGroupId ["Active Group"]; // group1 is "Inactive Group" now</sqf>

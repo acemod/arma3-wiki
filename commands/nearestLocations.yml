@@ -45,5 +45,5 @@ since:
     major: 0
     minor: 50
 examples:
-- _nearbyLocations = nearestLocations [getPosATL player, ["RockArea", "VegetationFir"], 100];
-- "Find any of nearest locations:\n<sqf>\nprivate _allLocationTypes = [];\n\"_allLocationTypes pushBack configName _x\" configClasses (configFile >> \"CfgLocationTypes\");\n{\n\tsystemChat format [\n\t\t\"%1 (%2) - %3m\", \n\t\t_x, \n\t\ttext _x, \n\t\tgetPosATL player distance _x\n\t];\n} forEach nearestLocations [player, _allLocationTypes, 500];\n"
+- <sqf>_nearbyLocations = nearestLocations [getPosATL player, ["RockArea", "VegetationFir"], 100];</sqf>
+- "Find any of nearest locations:\n<sqf>\nprivate _allLocationTypes = [];\n\"_allLocationTypes pushBack configName _x\" configClasses (configFile >> \"CfgLocationTypes\");\n{\n\tsystemChat format [\n\t\t\"%1 (%2) - %3m\", \n\t\t_x, \n\t\ttext _x, \n\t\tgetPosATL player distance _x\n\t];\n} forEach nearestLocations [player, _allLocationTypes, 500];\n</sqf>"

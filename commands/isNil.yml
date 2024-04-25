@@ -54,18 +54,22 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   if (isNil "TAG_globalVariable") then { TAG_globalVariable = 0 };
   if (isNil "_localVariable") then { hint "_localVariable is nil" };
-- isNil { player getVariable "someVar" };
-- |
+  </sqf>
+- <sqf>isNil { player getVariable "someVar" };</sqf>
+- |-
+  <sqf>
   _myArray = [0, 1];
   isNil { _myArray select 0 }; // returns false
   isNil { _myArray select 1 }; // returns false
   isNil { _myArray select 2 }; // returns true
   isNil { _myArray select 3 }; // throws a script error. only length+1 select is allowed
-- "This trick forces executing something in [[Scheduler|Unscheduled Environment]]:\n<sqf>\n0 spawn {\n\tsystemChat str canSuspend;\t\t// chat shows true\n\tisNil { hint str canSuspend };\t// hint shows false\n};\n"
-- |
+  </sqf>
+- "This trick forces executing something in [[Scheduler|Unscheduled Environment]]:\n<sqf>\n0 spawn {\n\tsystemChat str canSuspend;\t\t// chat shows true\n\tisNil { hint str canSuspend };\t// hint shows false\n};\n</sqf>"
+- |-
   {{ofp}} [[String]] comparison workaround<br>
   [[SQS Syntax]]:
   <sqs>
@@ -77,3 +81,4 @@ examples:
   <sqf>
   _nil = format ["%1", _undefinedVariable];
   if (format ["%1", variableToTest] == _nil) then { hint "variableToTest is nil" };
+  </sqf>

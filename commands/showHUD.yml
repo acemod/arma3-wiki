@@ -109,8 +109,8 @@ since:
     major: 0
     minor: 50
 examples:
-- showHUD false;
-- "Hide vehicle radar and compass:\n<sqf>\nshowHUD [\n\ttrue, // scriptedHUD\n\ttrue, // info\n\ttrue, // radar\n\ttrue, // compass\n\ttrue, // direction\n\ttrue, // menu\n\ttrue, // group\n\ttrue, // cursors\n\ttrue, // panels\n\ttrue, // kills\n\ttrue  // showIcon3D\n];\n"
+- <sqf>showHUD false;</sqf>
+- "Hide vehicle radar and compass:\n<sqf>\nshowHUD [\n\ttrue, // scriptedHUD\n\ttrue, // info\n\ttrue, // radar\n\ttrue, // compass\n\ttrue, // direction\n\ttrue, // menu\n\ttrue, // group\n\ttrue, // cursors\n\ttrue, // panels\n\ttrue, // kills\n\ttrue  // showIcon3D\n];\n</sqf>"
 - |-
   Check if HUD visibility is hardcoded in mission config and [[showHUD]] command is overridden:
-  <sqf>private _disabledShowHUD = isArray (missionConfigFile >> "showHUD");
+  <sqf>private _disabledShowHUD = isArray (missionConfigFile >> "showHUD");</sqf>

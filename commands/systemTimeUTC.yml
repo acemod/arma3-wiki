@@ -15,6 +15,6 @@ since:
     major: 2
     minor: 0
 examples:
-- private _UKTime = systemTimeUTC;
-- systemTimeUTC apply { if (_x < 10) then { "0" + str _x } else { str _x } }; // ["2021","05","03","14","09","37","593"]
-- "private _timeUTC = systemTimeUTC;\nprivate _time = systemTime;\nprivate _timeDiffH = (_time select 3) - (_timeUTC select 3);\nprivate _timeDiffM = (_time select 4) - (_timeUTC select 4);\nif (_timeDiffM < 0) then\n{\n\t_timeDiffH = _timeDiffH - 1;\n\t_timeDiffM = _timeDiffM + 60;\n};\nif (_timeDiffH < -12) then\n{\n\t_timeDiffH = _timeDiffH + 24;\n};\nif (_timeDiffH > 12) then\n{\n\t_timeDiffH = _timeDiffH - 24;\n};\nprivate _timeZone = [_timeDiffH, _timeDiffM]; // hour (_timeDiffH) is in range -12..+12\n"
+- <sqf>private _UKTime = systemTimeUTC;</sqf>
+- <sqf>systemTimeUTC apply { if (_x < 10) then { "0" + str _x } else { str _x } }; // ["2021","05","03","14","09","37","593"]</sqf>
+- "<sqf>\nprivate _timeUTC = systemTimeUTC;\nprivate _time = systemTime;\nprivate _timeDiffH = (_time select 3) - (_timeUTC select 3);\nprivate _timeDiffM = (_time select 4) - (_timeUTC select 4);\nif (_timeDiffM < 0) then\n{\n\t_timeDiffH = _timeDiffH - 1;\n\t_timeDiffM = _timeDiffM + 60;\n};\nif (_timeDiffH < -12) then\n{\n\t_timeDiffH = _timeDiffH + 24;\n};\nif (_timeDiffH > 12) then\n{\n\t_timeDiffH = _timeDiffH - 24;\n};\nprivate _timeZone = [_timeDiffH, _timeDiffM]; // hour (_timeDiffH) is in range -12..+12\n</sqf>"

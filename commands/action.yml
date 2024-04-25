@@ -64,8 +64,10 @@ since:
     major: 0
     minor: 50
 examples:
-- player action ["SitDown", player];
-- _soldier action ["Eject", vehicle _soldier];
-- |
+- <sqf>player action ["SitDown", player];</sqf>
+- <sqf>_soldier action ["Eject", vehicle _soldier];</sqf>
+- |-
+  <sqf>
   player action ["UseWeapon", player, player, 7]; // plays pick up animation before throwing grenade
   action ["UseWeapon", player, player, 7]; // normal grenade throw
+  </sqf>

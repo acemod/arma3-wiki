@@ -17,5 +17,5 @@ since:
     major: 0
     minor: 70
 examples:
-- hint str secondaryWeaponMagazine player; //["NLAW_F"]
-- "_array = secondaryWeaponMagazine player;\nif (count _array > 0) then {\n\thint (\"Secondary weapon is loaded with \" + (_array select 0) + \"!\");\n} else {\n\tif (secondaryWeapon player != \"\") then {\n\t\thint \"Secondary weapon is not loaded!\";\n\t} else {\n\t\thint \"Player doesn't have a secondary weapon!\";\n\t};\n};\n"
+- <sqf>hint str secondaryWeaponMagazine player; //["NLAW_F"]</sqf>
+- "<sqf>\n_array = secondaryWeaponMagazine player;\nif (count _array > 0) then {\n\thint (\"Secondary weapon is loaded with \" + (_array select 0) + \"!\");\n} else {\n\tif (secondaryWeapon player != \"\") then {\n\t\thint \"Secondary weapon is not loaded!\";\n\t} else {\n\t\thint \"Player doesn't have a secondary weapon!\";\n\t};\n};\n</sqf>"

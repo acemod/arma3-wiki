@@ -46,9 +46,13 @@ since:
     major: 1
     minor: 72
 examples:
-- |
+- |-
+  <sqf>
   // returns true if specific component "SensorDisplay" is enabled on player vehicle's left panel
   _state = [vehicle player, [-1]] infoPanelComponentEnabled ["VehicleSystemsDisplayManagerComponentLeft", "SensorDisplay"];
-- |
+  </sqf>
+- |-
+  <sqf>
   // returns true if all "SensorsDisplayComponent" components are enabled on player vehicle's left panel, otherwise returns false
   _state = [vehicle player, [-1]] infoPanelComponentEnabled ["VehicleSystemsDisplayManagerComponentLeft", "SensorsDisplayComponent"];
+  </sqf>

@@ -25,7 +25,9 @@ since:
     major: 0
     minor: 50
 examples:
-- |
+- |-
+  <sqf>
   missionNamespace setVariable ["StringVariable", "myString"]; // same as: StringVariable = "myString";
   _myStringValue = missionNamespace getVariable "StringVariable";
   hint _myStringValue; // hints "myString"
+  </sqf>

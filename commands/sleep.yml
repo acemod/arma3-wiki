@@ -35,5 +35,5 @@ since:
     major: 0
     minor: 50
 examples:
-- "0 spawn {\n\tsleep 5;\n\thint \"after (at least) 5 seconds...\";\n};\n"
-- "sleep 5 + random 10;\t// incorrect - will only sleep for 5 seconds, as it will be interpreted as (sleep 5) (+(random 10))\nsleep (5 + random 10);\t// correct\n"
+- "<sqf>\n0 spawn {\n\tsleep 5;\n\thint \"after (at least) 5 seconds...\";\n};\n</sqf>"
+- "<sqf>\nsleep 5 + random 10;\t// incorrect - will only sleep for 5 seconds, as it will be interpreted as (sleep 5) (+(random 10))\nsleep (5 + random 10);\t// correct\n</sqf>"

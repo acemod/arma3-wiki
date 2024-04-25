@@ -31,5 +31,5 @@ since:
     major: 0
     minor: 50
 examples:
-- "scopeName \"main\";\nwhile { sleep 0.1; true } do\n{\n\tscopeName \"loop1\";\n\n\twhile { sleep 0.1; true } do\n\t{\n\t\tscopeName \"loop2\";\n\n\t\t// ...\n\t};\n};\n"
-- "if (true) then\n{\n\tscopeName \"mainScope\";\n\tscopeName \"main_scope\"; // error\n};\n"
+- "<sqf>\nscopeName \"main\";\nwhile { sleep 0.1; true } do\n{\n\tscopeName \"loop1\";\n\n\twhile { sleep 0.1; true } do\n\t{\n\t\tscopeName \"loop2\";\n\n\t\t// ...\n\t};\n};\n</sqf>"
+- "<sqf>\nif (true) then\n{\n\tscopeName \"mainScope\";\n\tscopeName \"main_scope\"; // error\n};\n</sqf>"

@@ -49,19 +49,25 @@ since:
 examples:
 - |-
   '''{{arma1}}:''' Creates a soldier unit at the position clicked:
-  <sqf>onMapSingleClick "'SoldierWB' createUnit [_pos, group player]; true";
+  <sqf>onMapSingleClick "'SoldierWB' createUnit [_pos, group player]; true";</sqf>
 - |-
   '''{{arma1}}:''' Orders "grp1" to move to position clicked. Disables further map-click actions:
-  <sqf>onMapSingleClick "grp1 move _pos; onMapSingleClick ''; true";
+  <sqf>onMapSingleClick "grp1 move _pos; onMapSingleClick ''; true";</sqf>
 - |-
   '''{{ofp}}:''' Single quotes cannot be used for string definition, so two double-quotes have to be used instead:
-  <sqf>onMapSingleClick "'SoldierWB' createUnit [_pos, group player]; true";
-- |
+  <sqf>onMapSingleClick "'SoldierWB' createUnit [_pos, group player]; true";</sqf>
+- |-
+  <sqf>
   // The following code will disable Shift+click waypoint marker creation
   onMapSingleClick {_shift};
-- |
+  </sqf>
+- |-
+  <sqf>
   // Pass params to onMapSingleClick code
   player onMapSingleClick { hint ("Hello " + name _this) }; // Hello KK
-- |
+  </sqf>
+- |-
+  <sqf>
   // Pass params to onMapSingleClick code -and- disable Shift+click waypoint marker creation
    player onMapSingleClick "hint (""Hello "" + name _this); _shift"; // Hello KK
+  </sqf>

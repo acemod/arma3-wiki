@@ -46,8 +46,8 @@ since:
     major: 1
     minor: 62
 examples:
-- _control ctrlSetAngle [25, 0.5, 0.5];
-- "with uiNamespace do\n{\n\tctrl = findDisplay 46 ctrlCreate [\"RscPictureKeepAspect\", -1];\n\tctrl ctrlSetPosition [0,0,1,1];\n\tctrl ctrlSetText \"A3\\Missions_F_Exp\\data\\Img\\lobby\\ui_campaign_lobby_background_tablet_radial_left_ca.paa\";\n\tctrl ctrlCommit 0;\n\tangle = 0;\n\tonEachFrame\n\t{\n\t\twith uiNamespace do\n\t\t{\n\t\t\tif (angle > 359) then {angle = 0};\n\t\t\tctrl ctrlSetAngle [angle, 0.5, 0.5];\n\t\t\tangle = angle + 1;\n\t\t};\n\t};\n};"
+- <sqf>_control ctrlSetAngle [25, 0.5, 0.5];</sqf>
+- "<sqf>with uiNamespace do\n{\n\tctrl = findDisplay 46 ctrlCreate [\"RscPictureKeepAspect\", -1];\n\tctrl ctrlSetPosition [0,0,1,1];\n\tctrl ctrlSetText \"A3\\Missions_F_Exp\\data\\Img\\lobby\\ui_campaign_lobby_background_tablet_radial_left_ca.paa\";\n\tctrl ctrlCommit 0;\n\tangle = 0;\n\tonEachFrame\n\t{\n\t\twith uiNamespace do\n\t\t{\n\t\t\tif (angle > 359) then {angle = 0};\n\t\t\tctrl ctrlSetAngle [angle, 0.5, 0.5];\n\t\t\tangle = angle + 1;\n\t\t};\n\t};\n};</sqf>"
 - |-
-  _control ctrlSetAngle [25, 0.5, 0.5, false];
-  _control ctrlCommit 1; // Rotation applies smoothly for 1 second.
+  <sqf>_control ctrlSetAngle [25, 0.5, 0.5, false];
+  _control ctrlCommit 1; // Rotation applies smoothly for 1 second.</sqf>
