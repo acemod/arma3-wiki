@@ -316,14 +316,7 @@ impl Command {
                             }
                         }
                     } else if key.starts_with('x') {
-                        command.add_example(
-                            value
-                                .trim()
-                                .trim_start_matches("<sqf>")
-                                .trim_start_matches('\n')
-                                .trim_end_matches("</sqf>")
-                                .to_string(),
-                        );
+                        command.add_example(value.trim().trim_start_matches('\n').to_string());
                     } else {
                         println!("Unknown key: {key}");
                     }
