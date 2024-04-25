@@ -2,7 +2,7 @@ name: createMarkerLocal
 description: "Creates a [[Multiplayer Scripting#Locality|local]] marker at the given position - the marker only exists on the machine that created it. The marker name has to be unique, if a marker with the given name exists, the command will be ignored. Use [[deleteMarkerLocal]] to delete a local marker.<br><br>\nIf the position is given in 3D format, {{hl|z}} coordinate is stored with the marker and will be used when marker is passed to commands like [[createVehicle]], [[createUnit]], [[createAgent]], [[createMine]], [[setVehiclePosition]] for example. However [[getMarkerPos]] and [[markerPos]] will always return 0 for {{hl|z}}. \n\n{{Feature|important|Local markers have their own set of local commands \"xxMarkerxxLocal\" to work with. If you use global marker commands on a local marker, the local marker will become '''global'''.}}"
 multiplayer_note: '[[createMarkerLocal]] is local, so it should be used along with the other local commands. For global equivalent use [[createMarker]].'
 problem_notes:
-- '[[setMarkerDrawPriority]] sorts [[allMapMarkers]] from least to most priority. As of {{GVI|arma3|2.16|size= 0.75}} [[createMarker]]/[[createMarkerLocal]] do ''''''not'''''' care about drawing priority and add the created marker to the end of the array, making it top priority. Running [[setMarkerDrawPriority]] again sorts this issue.'
+- '[[setMarkerDrawPriority]] sorts [[allMapMarkers]] from least to most priority. Before {{GVI|arma3|2.18|size= 0.75}} [[createMarker]]/[[createMarkerLocal]] did ''''''not'''''' care about drawing priority and added the created marker to the end of the array, making it top priority. Running [[setMarkerDrawPriority]] again sorted this issue.'
 groups:
 - Markers
 syntax:
