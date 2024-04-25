@@ -157,6 +157,89 @@ impl Value {
     }
 }
 
+impl std::fmt::Display for Value {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{:?}",
+            match self {
+                Self::Anything => "Anything".to_string(),
+                Self::ArraySized { types, .. } => format!("Array [{}]", {
+                    let mut result = String::new();
+                    for typ in types {
+                        result.push_str(&typ.name);
+                        result.push_str(": ");
+                        result.push_str(&typ.value.to_string());
+                        result.push_str(" - ");
+                        result.push_str(&typ.desc);
+                        result.push('\n');
+                    }
+                    result
+                }),
+                Self::ArrayUnknown => "Array Unknown".to_string(),
+                Self::ArrayUnsized { typ, .. } => format!("Array of {typ}"),
+                Self::ArrayDate => "Array Date".to_string(),
+                Self::ArrayColor => "Array Color".to_string(),
+                Self::ArrayColorRgb => "Array Color RGB".to_string(),
+                Self::ArrayColorRgba => "Array Color RGBA".to_string(),
+                Self::Boolean => "Boolean".to_string(),
+                Self::Code => "Code".to_string(),
+                Self::Config => "Config".to_string(),
+                Self::Control => "Control".to_string(),
+                Self::DiaryRecord => "Diary Record".to_string(),
+                Self::Display => "Display".to_string(),
+                Self::EdenEntity => "Eden Entity".to_string(),
+                Self::EdenID => "Eden ID".to_string(),
+                Self::ExceptionHandle => "Exception Handle".to_string(),
+                Self::ForType => "For Type".to_string(),
+                Self::Group => "Group".to_string(),
+                Self::HashMapUnknown => "HashMap Unknown".to_string(),
+                Self::HashMapKnownKeys(_) => "HashMap Known Keys".to_string(),
+                Self::HashMapKey => "HashMap Key".to_string(),
+                Self::IfType => "If Type".to_string(),
+                Self::Location => "Location".to_string(),
+                Self::Namespace => "Namespace".to_string(),
+                Self::Nothing => "Nothing".to_string(),
+                Self::Number => "Number".to_string(),
+                Self::Object => "Object".to_string(),
+                Self::ScriptHandle => "Script Handle".to_string(),
+                Self::Side => "Side".to_string(),
+                Self::String => "String".to_string(),
+                Self::StructuredText => "Structured Text".to_string(),
+                Self::SwitchType => "Switch Type".to_string(),
+                Self::Task => "Task".to_string(),
+                Self::TeamMember => "Team Member".to_string(),
+                Self::TurretPath => "Turret Path".to_string(),
+                Self::UnitLoadoutArray => "Unit Loadout Array".to_string(),
+                Self::Position => "Position".to_string(),
+                Self::Position2d => "Position 2D".to_string(),
+                Self::Position3d => "Position 3D".to_string(),
+                Self::Position3dASL => "Position 3D ASL".to_string(),
+                Self::Position3DASLW => "Position 3D ASLW".to_string(),
+                Self::Position3dATL => "Position 3D ATL".to_string(),
+                Self::Position3dAGL => "Position 3D AGL".to_string(),
+                Self::Position3dAGLS => "Position 3D AGLS".to_string(),
+                Self::Position3dRelative => "Position 3D Relative".to_string(),
+                Self::Vector3d => "Vector 3D".to_string(),
+                Self::Waypoint => "Waypoint".to_string(),
+                Self::WhileType => "While Type".to_string(),
+                Self::WithType => "With Type".to_string(),
+                Self::Unknown => "Unknown".to_string(),
+                Self::OneOf(values) => {
+                    let mut result = String::new();
+                    for (value, _) in values {
+                        result.push_str(&value.to_string());
+                        result.push_str(" | ");
+                    }
+                    result.pop();
+                    result.pop();
+                    result
+                }
+            }
+        )
+    }
+}
+
 #[cfg(test)]
 #[cfg(feature = "wiki")]
 mod tests {
