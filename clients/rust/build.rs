@@ -1,8 +1,15 @@
 pub fn main() {
     use git2::Repository;
-    let tmp = std::env::temp_dir().join("arma3-wiki");
+    let mut tmp = std::env::temp_dir().join("arma3-wiki");
     if std::env::var("CI").is_ok() {
-        let _ = std::fs::remove_dir_all(&tmp);
+        use rand::distributions::Alphanumeric;
+        use rand::{thread_rng, Rng};
+        let random: String = thread_rng()
+            .sample_iter(&Alphanumeric)
+            .take(10)
+            .map(char::from)
+            .collect();
+        tmp.push(random);
     }
     let repo = Repository::open(&tmp).map_or_else(
         |_| {
@@ -49,9 +56,12 @@ pub fn main() {
     // copy folder contents to src/dist
     let _ = std::fs::remove_dir_all("dist");
     fs_extra::dir::copy(
-        tmp,
+        &tmp,
         "dist",
         &fs_extra::dir::CopyOptions::new().content_only(true),
     )
     .unwrap();
+    if std::env::var("CI").is_ok() {
+        std::fs::remove_dir_all(tmp).unwrap();
+    }
 }
