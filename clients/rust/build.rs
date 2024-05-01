@@ -1,9 +1,13 @@
+use rand::distributions::Alphanumeric;
+use rand::{thread_rng, Rng};
+
 pub fn main() {
     use git2::Repository;
     let mut tmp = std::env::temp_dir().join("arma3-wiki");
     if std::env::var("CI").is_ok() {
-        use rand::distributions::Alphanumeric;
-        use rand::{thread_rng, Rng};
+        if !tmp.exists() {
+            std::fs::create_dir_all(&tmp).unwrap();
+        }
         let random: String = thread_rng()
             .sample_iter(&Alphanumeric)
             .take(10)
