@@ -1,6 +1,9 @@
 pub fn main() {
     use git2::Repository;
     let tmp = std::env::temp_dir().join("arma3-wiki");
+    if std::env::var("CI").is_ok() {
+        let _ = std::fs::remove_dir_all(&tmp);
+    }
     let repo = Repository::open(&tmp).map_or_else(
         |_| {
             git2::build::RepoBuilder::new()
