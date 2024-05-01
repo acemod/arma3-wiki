@@ -70,6 +70,7 @@ pub fn main() {
     )
     .unwrap();
     if std::env::var("CI").is_ok() {
-        std::fs::remove_dir_all(tmp).unwrap();
+        // we sometimes don't have permission? so don't unwrap
+        let _ = std::fs::remove_dir_all(tmp);
     }
 }
