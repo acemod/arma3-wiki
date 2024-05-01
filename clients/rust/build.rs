@@ -57,7 +57,7 @@ pub fn main() {
     let _ = std::fs::remove_dir_all("dist");
     fs_extra::dir::copy(
         &tmp,
-        "dist",
+        "arma3_wiki_dist",
         &fs_extra::dir::CopyOptions::new().content_only(true),
     )
     .unwrap();
