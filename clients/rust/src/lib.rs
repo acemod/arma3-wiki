@@ -7,7 +7,7 @@ use rust_embed::RustEmbed;
 pub mod model;
 
 #[derive(RustEmbed)]
-#[folder = "arma3_wiki_dist"]
+#[folder = "$OUT_DIR/arma3-wiki"]
 struct Asset;
 
 pub struct Wiki {

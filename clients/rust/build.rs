@@ -53,11 +53,15 @@ pub fn main() {
             .map_err(|e| format!("Failed to checkout HEAD: {e}"))
             .unwrap();
     }
-    // copy folder contents to src/dist
-    let _ = std::fs::remove_dir_all("dist");
+    let dst = {
+        let target_dir = std::env::var("OUT_DIR").unwrap();
+        let target_dir = std::path::Path::new(&target_dir).join("arma3-wiki");
+        target_dir
+    };
+    let _ = std::fs::remove_dir_all(&dst);
     fs_extra::dir::copy(
         &tmp,
-        "arma3_wiki_dist",
+        dst,
         &fs_extra::dir::CopyOptions::new().content_only(true),
     )
     .unwrap();
