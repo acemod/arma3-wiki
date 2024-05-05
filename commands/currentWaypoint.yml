@@ -1,6 +1,6 @@
 name: currentWaypoint
 description: |-
-  Returns the '''index''' of the current waypoint contrary to misleading name.
+  Returns the ''index'' of the current waypoint ('''not''' the waypoint in [[Waypoint|Waypoint Array]] format).
 
   To determine the validity of the index, compare it to the waypoints count.
 
@@ -8,14 +8,14 @@ description: |-
 
   If there are no waypoints, then the index is 0.
 
-  By default, a group has 1 waypoint at their starting position, which is considered completed and so the currentWaypoint is 1.
+  By default, a group has one waypoint at their starting position, which is considered completed so the currentWaypoint is 1.
 groups:
 - Waypoints
 syntax:
 - call: !Unary groupName
   ret:
   - Number
-  - the index of current waypoint
+  - index of the current waypoint
   params:
   - name: groupName
     type: Group
