@@ -51,14 +51,15 @@ since:
 examples:
 - <sqf>_ChildDisplay = _Rootdisplay createMissionDisplay "Tutorial";</sqf>
 - |-
-  In {{arma3}} this creates the scenarios UI
+  In {{arma3}} this creates the scenarios UI:
   <sqf>findDisplay 46 createMissionDisplay "";</sqf>
 - |-
   Other options for {{arma3}}:
   <sqf>
-  (findDisplay 46) createMissionDisplay ["","Cutscenes"];
-  (findDisplay 46) createMissionDisplay ["","Campaigns"];
-  (findDisplay 46) createMissionDisplay ["","MPMissions"];
-  (findDisplay 46) createMissionDisplay ["","Challenges"];
-  (findDisplay 46) createMissionDisplay ["","Showcases"];
+  private _missionDisplay = findDisplay 46;
+  _missionDisplay createMissionDisplay ["", "Cutscenes"];
+  _missionDisplay createMissionDisplay ["", "Campaigns"];
+  _missionDisplay createMissionDisplay ["", "MPMissions"];
+  _missionDisplay createMissionDisplay ["", "Challenges"];
+  _missionDisplay createMissionDisplay ["", "Showcases"];
   </sqf>
