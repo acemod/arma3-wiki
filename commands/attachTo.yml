@@ -1,6 +1,14 @@
 name: attachTo
-description: "Attaches an object to another object.\n* The offset is applied to the object center unless a memory point is provided, in which case the offset will be applied to the memory point position.\n* If no offset is specified, the current offset between the two objects will be used.\n\n{{Feature | Informative | \n* All direction commands, such as [[setDir]], [[setVectorDirAndUp]], etc. for an [[attachedObjects|attached object]] should be used '''relative''' to the reference object's direction (i.e. in model space), e.g <sqf inline>_attachedObj setDir 0</sqf> will make it face the same direction as the reference object, '''90''' face to the right, '''180''' face to the back, etc.<br>\n* Attached triggers only follow the direction of the object to which they are attached, not pitch or roll.}}"
-multiplayer_note: Use <sqf inline>_attachedObj setPosWorld getPosWorld _attachedObj</sqf> after [[setDir]] to synchronise set direction over the network (see [[setDir|setDir's page]] for its MP behaviour).
+description: |-
+  Attaches an object to another object.
+  * The offset is applied to the object center unless a memory point is provided, in which case the offset will be applied to the memory point position.
+  * If no offset is specified, the current offset between the two objects will be used.
+
+  {{Feature|informative|
+  * All direction commands, such as [[setDir]], [[setVectorDirAndUp]], etc. for an [[attachedObjects|attached object]] should be used '''relative''' to the reference object's direction (i.e. in model space), e.g <sqf inline>_attachedObj setDir 0</sqf> will make it face the same direction as the reference object, '''90''' face to the right, '''180''' face to the back, etc.
+  * Attached triggers only follow the direction of the object to which they are attached, not pitch or roll.
+  }}
+multiplayer_note: Use <sqf inline>_attachedObj setPosWorld getPosWorld _attachedObj</sqf> ''after'' [[setDir]] to synchronise direction properly over the network (see {{Link|setDir|setDir's page}} for its MP behaviour).
 groups:
 - Object Manipulation
 syntax:
@@ -18,8 +26,8 @@ syntax:
     description: object to attach
     type: Object
   - name: object2
-    description: object to attach to
-    type: Object
+    description: object to attach to; if a group is provided, its [[leader]] is used
+    type: Unknown
   - name: offset
     description: the position relative to ''object2'''s position
     type: Unknown
