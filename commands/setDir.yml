@@ -62,3 +62,8 @@ examples:
   // or
   [_myMine, 45] remoteExec ["setDir"];
   </sqf>
+- |-
+  <sqf>
+  // Sets the direction of an object relative to a parent object's direction
+  _child setDir (_parentDir + (_childDir - _parentDir))
+  </sqf>
