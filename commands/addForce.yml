@@ -9,6 +9,7 @@ syntax:
   - object
   - - force
     - position
+    - setUnconscious
   ret:
   - Nothing
   - null
@@ -17,11 +18,20 @@ syntax:
     description: PhysX object or {{GVI|arma3|2.04|size= 0.75}}{{Icon|localargument|24}} unit, in which case the unit must be local and will be [[setUnconscious|set unconscious]]
     type: Object
   - name: force
-    description: in format [x,y,z], force vector in '''world''' space. Force is in {{Link|https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/structPxForceMode.html|Newton}}
+    description: in format [x,y,z], force vector in '''world''' space; force is expressed in {{Link|https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/structPxForceMode.html|Newton}}
     type: Unknown
   - name: position
     description: in format [x,y,z], in ''object'''s [[Position#PositionRelative|relative position]]
     type: Unknown
+  - name: setUnconscious
+    description: only applies to "CAManBase" ''object''; set to [[false]] to keep the person conscious
+    type: Boolean
+    optional: true
+    default: '[[true]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 18
 argument_loc: Global
 effect_loc: Global
 since:
@@ -35,4 +45,8 @@ examples:
 - |-
   Apply force [0,1000,0] defined in model space (relative to object) to object position [1,0,0]:
   <sqf>_object addForce [_object vectorModelToWorld [0,1000,0], [1,0,0]];</sqf>
-- "Can be used on units since {{arma3}} v2.04:\n<sqf>\nif (local bob) then\n{\n\t[] spawn \n\t{\n\t\tbob addForce [bob vectorModelToWorld [0,-200,0], bob selectionPosition \"rightfoot\"];\n\t\tsleep 5;\n\t\tbob setUnconscious false;\n\t};\n};\n</sqf>"
+- "Can be used on units since {{arma3}} v2.04:\n<sqf>\nif (local bob) then\n{\n\t0 spawn \n\t{\n\t\tbob addForce [bob vectorModelToWorld [0,-200,0], bob selectionPosition \"rightfoot\"];\n\t\tsleep 5;\n\t\tbob setUnconscious false;\n\t};\n};\n</sqf>"
+- |-
+  <sqf>
+  player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not unconscious
+  </sqf>
