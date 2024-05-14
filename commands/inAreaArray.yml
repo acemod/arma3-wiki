@@ -1,5 +1,8 @@
 name: inAreaArray
-description: Returns given list of [[Object]]s and/or [[Position]]s that are in the given area, area defined by a trigger, marker, location or array.
+description: |-
+  Returns given list of [[Object]]s and/or [[Position]]s that are in the given area, area defined by a trigger, marker, location or array.
+
+  {{Feature|important|Unlike [[inAreaArrayIndexes]], ''area'' position is [[Position#PositionAGL|PositionAGL]].}}
 groups:
 - Triggers
 - Markers
@@ -19,7 +22,7 @@ syntax:
     type: Unknown
 - call: !Binary
   - positions
-  - - center
+  - - centre
     - a
     - b
     - angle
@@ -32,7 +35,7 @@ syntax:
   - name: positions
     description: '[[Object]]s and/or [[Position]]s to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D'
     type: Unknown
-  - name: center
+  - name: centre
     type: Unknown
   - name: a
     description: x axis (x / 2)
