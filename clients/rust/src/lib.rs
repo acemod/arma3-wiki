@@ -13,6 +13,7 @@ struct Asset;
 pub struct Wiki {
     version: Version,
     commands: HashMap<String, Command>,
+    custom: Vec<String>,
     /// Whether the wiki was just updated.
     updated: bool,
 }
@@ -43,6 +44,7 @@ impl Wiki {
     }
 
     pub fn add_custom_command(&mut self, command: Command) {
+        self.custom.push(command.name().to_string());
         self.commands.insert(command.name().to_string(), command);
     }
 
@@ -56,8 +58,18 @@ impl Wiki {
         Ok(command)
     }
 
-    pub fn remove_command(&mut self, name: &str) {
+    pub fn remove_command(&mut self, name: &str) -> bool {
         self.commands.remove(name);
+        if self.custom.contains(&name.to_string()) {
+            self.custom.retain(|c| c != name);
+            true
+        } else {
+            false
+        }
+    }
+
+    pub fn is_custom_command(&self, name: &str) -> bool {
+        self.custom.contains(&name.to_string())
     }
 
     #[cfg(feature = "remote")]
@@ -103,6 +115,7 @@ impl Wiki {
             .map_err(|e| format!("Failed to parse version: {e}"))?,
             commands,
             updated,
+            custom: Vec::new(),
         })
     }
 
@@ -136,6 +149,7 @@ impl Wiki {
             .unwrap(),
             commands,
             updated: false,
+            custom: Vec::new(),
         }
     }
 
