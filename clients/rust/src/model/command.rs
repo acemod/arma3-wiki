@@ -15,6 +15,7 @@ pub struct Command {
     #[serde(default)]
     #[serde(skip_serializing_if = "Vec::is_empty")]
     problem_notes: Vec<String>,
+    #[serde(default)]
     groups: Vec<String>,
     syntax: Vec<Syntax>,
     argument_loc: Locality,
@@ -22,6 +23,7 @@ pub struct Command {
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
     server_exec: Option<bool>,
+    #[serde(default)]
     since: Since,
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
