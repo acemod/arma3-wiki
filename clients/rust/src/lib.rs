@@ -50,10 +50,10 @@ impl Wiki {
     ///
     /// # Errors
     /// Returns an error if the command could not be parsed.
-    pub fn add_custom_command_parse(&mut self, command: &str) -> Result<(), String> {
+    pub fn add_custom_command_parse(&mut self, command: &str) -> Result<Command, String> {
         let command: Command = serde_yaml::from_str(command).map_err(|e| format!("{e}"))?;
-        self.add_custom_command(command);
-        Ok(())
+        self.add_custom_command(command.clone());
+        Ok(command)
     }
 
     pub fn remove_command(&mut self, name: &str) {

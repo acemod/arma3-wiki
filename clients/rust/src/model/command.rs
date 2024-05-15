@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use super::{Locality, ParseError, Since, Syntax};
 
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
 pub struct Command {
     name: String,
     description: String,
