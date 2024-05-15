@@ -42,6 +42,24 @@ impl Wiki {
         Self::load_dist()
     }
 
+    pub fn add_custom_command(&mut self, command: Command) {
+        self.commands.insert(command.name().to_string(), command);
+    }
+
+    /// Adds a custom command to the wiki.
+    ///
+    /// # Errors
+    /// Returns an error if the command could not be parsed.
+    pub fn add_custom_command_parse(&mut self, command: &str) -> Result<(), String> {
+        let command: Command = serde_yaml::from_str(command).map_err(|e| format!("{e}"))?;
+        self.add_custom_command(command);
+        Ok(())
+    }
+
+    pub fn remove_command(&mut self, name: &str) {
+        self.commands.remove(name);
+    }
+
     #[cfg(feature = "remote")]
     /// Loads the wiki from the remote repository.
     ///

@@ -136,6 +136,9 @@ pub async fn command(
             .unwrap();
         content
     };
+    if content.is_empty() {
+        return Err("Empty content returned".to_string());
+    }
     match Command::from_wiki(&name, &content) {
         Ok((mut parsed, mut errors)) => {
             if name == "remoteExecCall" {
