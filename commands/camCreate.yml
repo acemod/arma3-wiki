@@ -1,10 +1,12 @@
 name: camCreate
 description: |-
   Create a camera or a seagull object on the given position. The creation happens immediately and doesn't wait for [[camCommit]].<br>
-  Among other commands, [[cameraEffect]] must be used to enter the camera's view and [[camDestroy]] to delete the created camera. See also [[:Category:Command Group: Camera Control|Camera Control]].{{Feature|important|
+  Among other commands, [[cameraEffect]] must be used to enter the camera's view and [[camDestroy]] to delete the created camera. See also [[:Category:Command Group: Camera Control|Camera Control]].
+  {{Feature|important|
   * Other objects can be created this way, but vehicles created with [[camCreate]] cannot be entered
   * Any unit created with [[camCreate]] will remain static
-  * Unlike [[createVehicle]], objects are created exactly at the given position, without consideration of the surrounding objects}}
+  * Unlike [[createVehicle]], objects are created exactly at the given position, without consideration of the surrounding objects.
+  }}
 multiplayer_note: camCreated objects are only visible locally (meaning they are client-side effects).
 groups:
 - Camera Control
@@ -19,7 +21,7 @@ syntax:
   - name: type
     type: Unknown
   - name: position
-    description: position to create the object at
+    description: position at which to create the object
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Local
