@@ -1,7 +1,7 @@
 name: addPublicVariableEventHandler
 description: "{{Feature|arma3 | This command is deprecated since the introduction of [[remoteExec]] and [[remoteExecCall]].}}\n\nThis event handler will detect if a [[missionNamespace]] variable (it is attached to) has been broadcast over network with [[publicVariable]], [[publicVariableClient]] or [[publicVariableServer]] commands and will execute EH code upon detection. Arguments passed to the code in ''_this'' array are:\n* _this select 0: [[String]] - broadcast variable name (same variable name EH is attached to)\n* _this select 1: [[Anything]] - broadcast variable value \n* _this select 2: [[Object]], [[Group]] - target the variable got set on with [[setVariable]]  (see {{Link|#Alternative Syntax}})\n{{Feature | Informative |\n* This EH works '''only''' in Multiplayer environment\n* There is '''no way to remove''' this EH\n* This EH will not fire on the machine that executed broadcast with [[publicVariable]] command, only on the machines that receive the broadcast\n* The value of broadcast variable can be exactly the same, it is the actual broadcast that triggers EH not the change in variable}}"
 problem_notes:
-- '{{Feature | Warning | Alt syntax of this command doesn''t work as intended.}}'
+- '{{Feature|warning|Alt syntax of this command doesn''t work as intended.}}'
 groups:
 - Broken Commands
 - Event Handlers
