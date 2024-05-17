@@ -15,7 +15,7 @@ description: |-
   * 301: EXECUTION_WARNING_TAKES_TOO_LONG
   Each error will have entry in .rpt file with more details.<br><br>
 
-  The extension execution timeout, after which {{hl|301: EXECUTION_WARNING_TAKES_TOO_LONG}} warning is issued, is hardcoded on clients and is 1000.0 milliseconds (1 second). On the server the default limit is also 1 second, however it is possible to set custom limit with {{hl|callExtReportLimit}} param (see [[server.cfg#Server_Options | Server Options]]).
+  The extension execution timeout, after which {{hl|301: EXECUTION_WARNING_TAKES_TOO_LONG}} warning is issued, is hardcoded on clients and is 1000.0 milliseconds (1 second). On the server the default limit is also 1 second, however it is possible to set custom limit with {{hl|callExtReportLimit}} param (see [[Arma 3: Server Config File#Server_Options | Server Options]]).
   <br><br>
   If an extension with the given name cannot be found (or it is found but doesn't implement the required interface properly / at all) the following error will be written into the RPT (In this example the given dll-name was "MyExtension"):
   <code style="display: block">14:27:07 CallExtension 'MyExtension' could not be found</code>
