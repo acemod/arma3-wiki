@@ -8,13 +8,13 @@ syntax:
 - call: !Unary code
   ret:
   - Anything
-  - the last value given in the function is returned. See the topic [[Function#Return_Values|Function]] for more information.
+  - the last value given in the function is returned - see the topic [[Function#Return_Values|Function]] for more information
   params:
   - name: code
     description: |-
       [[compile]]d instructions
       {{Feature|ofp|{{ofp}} takes [[String]].}}
-      {{Feature|Informative|In Arma 3, this way of calling will silently pass <sqf inline>_this</sqf> to the code. which could be anything from a parent function or parent call.}}
+      {{Feature|informative|This way of calling has access to its parent scope's <sqf inline>_this</sqf>, as all it does is creating a scope.}}
     type: Code
 - call: !Binary
   - args
