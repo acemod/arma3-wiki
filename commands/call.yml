@@ -14,6 +14,7 @@ syntax:
     description: |-
       [[compile]]d instructions
       {{Feature|ofp|{{ofp}} takes [[String]].}}
+      {{Feature|Informative|In Arma 3, this way of calling will silently pass <sqf inline>_this</sqf> to the code. which could be anything from a parent function or parent call.}}
     type: Code
 - call: !Binary
   - args
@@ -23,7 +24,7 @@ syntax:
   - the last value given in the function is returned. See the topic [[Function#Return_Values|Function]] for more information.
   params:
   - name: args
-    description: arguments that are passed to the function in the <sqf inline>_this</sqf> variable
+    description: arguments that are passed to the function in the <sqf inline>_this</sqf> variable.
     type: Anything
   - name: code
     description: |-
