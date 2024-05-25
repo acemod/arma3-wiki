@@ -1,10 +1,15 @@
 name: ctrlSetFade
 description: |-
   Sets wanted transparency for control animation. Requires [[ctrlCommit]] to commit changes. To hide or show a control instantly, use [[ctrlShow]].
-  {{ Feature | Warning| Despite having <syntaxhighlight lang="cpp" inline>fade = 1;</syntaxhighlight> inside the config of a control, <sqf inline>ctrlFade</sqf> will '''still report a fade of 0'''.<br>
-  Which results in <sqf inline>ctrlSetFade 0</sqf> '''doing nothing'''.<br>
-  To counter that, first use <sqf inline>ctrlSetFade 1</sqf>, then <sqf inline>ctrlCommit 0</sqf> ( to instantly apply it ), and then you can use [[ctrlSetFade]] to set the fade to any value you wish.}}
-  {{ Feature | Informative | If there are multiple (interact-able) controls on top of each other but the top-most is faded using <sqf inline>ctrlSetFade 1</sqf>, the top-most control will interfere with controls that were defined earlier and in the exact same position. To counter that, the faded control '''needs to be disabled''' with [[ctrlEnable]].}}
+  {{Feature|informative|
+  If there are multiple (interactable) controls on top of each other but the top-most control is faded using <sqf inline>ctrlSetFade 1</sqf>,
+  this control will interfere with other controls that were defined earlier and in the exact same position.
+  To counter that, the faded control '''must''' be disabled with [[ctrlEnable]].
+  }}
+problem_notes:
+- |-
+  Despite having <syntaxhighlight lang="cpp" inline>fade = 1;</syntaxhighlight> in a control's config, [[ctrlFade]] will still report a fade of 0 - resulting in <sqf inline>ctrlSetFade 0</sqf> doing nothing.<br>
+  To counter that, first use <sqf inline>ctrlSetFade 1</sqf>, then <sqf inline>ctrlCommit 0</sqf> to apply it, and only then [[ctrlSetFade]] can be used as usual.
 groups:
 - GUI Control
 syntax:
