@@ -1,5 +1,12 @@
 name: canAddItemToBackpack
-description: Checks if given object can be stored into soldier's backpack.
+description: |-
+  Checks if given object can be stored into soldier's backpack.
+
+  {{Feature|important|
+  Avoid passing an empty string <sqf inline>""</sqf> to this command as it will create a warning dialog:
+  [[File:a3 warning badvehicletype.jpg|none|400px|alt=Warning Message: Bad vehicle type|Warning Message: Bad vehicle type]]
+  This message will show once per mission restart.
+  }}
 groups:
 - Containers
 syntax:
