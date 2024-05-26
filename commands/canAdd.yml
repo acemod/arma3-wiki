@@ -2,6 +2,12 @@ name: canAdd
 description: |-
   Checks if given object can be stored in inventory of given object or any inventory container ([[uniform]], [[vest]], [[backpack]]) of given unit.<br>
   Before {{arma3}} v2.10 this comment verified only the biggest container when multiple items were queried; now it checks all containers.
+
+  {{Feature|important|
+  Avoid passing an empty string <sqf inline>""</sqf> to this command as it will create a warning dialog:
+  [[File:a3 warning badvehicletype.jpg|none|400px|alt=Warning Message: Bad vehicle type|Warning Message: Bad vehicle type]]
+  This message will show once per mission restart.
+  }}
 groups:
 - Unit Inventory
 syntax:
