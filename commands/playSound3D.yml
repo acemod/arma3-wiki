@@ -18,7 +18,13 @@ syntax:
   - id of the sound (0..65535) (was [[Nothing]] before {{GVI|arma3|2.12|size= 0.75}})
   params:
   - name: filename
-    description: 'see [[Arma 3: Sound Files]] for available file names or {{Link|#Example 3}} to use mission files; {{GVI|arma3|2.10|size= 0.75}} ''''filename'''' can start with a leading slash {{hl|''''''\''''''a3\...}}'
+    description: |-
+      see [[Arma 3: Sound Files]] for available file names or {{Link|#Example 3}} to use mission files
+
+      {{Feature|important|
+      Since {{GVI|arma3|2.10|size= 0.75}} the file name can start with a leading backslash {{hl|'''\'''a3\...}}.<br>
+      However a leading backslash must '''not''' be used for an '''addon''' sound file.
+      }}
     type: String
   - name: soundSource
     description: the object emitting the sound. If ''soundPosition'' below is specified this parameter is ignored
