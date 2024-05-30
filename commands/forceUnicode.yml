@@ -1,5 +1,28 @@
 name: forceUnicode
-description: "<div style=\"float: right\">\nList of the commands that work with [[forceUnicode]]:\n{{Columns|2|\n* [[copyFromClipboard]]\n* [[copyToClipboard]]\n* [[count]]\n* [[find]]\n* [[in]]\n* [[insert]]\n* [[reverse]]\n* [[select]]\n* [[splitString]]\n* [[trim]]\n* [[regexFind]]\n* [[regexMatch]]\n* [[regexReplace]]\n}}\n</div>\nSets the Unicode flag which forces some of the string manipulation commands to switch to {{Link|https://en.wikipedia.org/wiki/Unicode}}.\nThe Unicode flag is always set right after [[forceUnicode]] command execution, but is reset depending on the command mode: \n* 1 - the Unicode flag is reset right after any of the supported commands executed or the end of script, whichever comes earlier.\n* 0 - the Unicode flag is reset at the end of the script.\nWhen the flag is set it will also affect all scopes within the script including child scopes (see [[diag_scope]]).\nThere are many other string manipulation commands like [[ctrlSetText]], [[getTextWidth]], etc. that support Unicode by design so no additional forcing is needed."
+description: |-
+  <div style="float: right">
+  List of the commands that work with [[forceUnicode]]:
+  {{Columns|2|
+  * [[copyFromClipboard]]
+  * [[copyToClipboard]]
+  * [[count]]
+  * [[find]]
+  * [[in]]
+  * [[insert]]
+  * [[reverse]]
+  * [[select]]
+  * [[splitString]]
+  * [[trim]]
+  * [[regexFind]]
+  * [[regexMatch]]
+  * [[regexReplace]]
+  }}
+  </div>
+  Sets the Unicode flag which forces some of the string manipulation commands to switch to {{Link|https://en.wikipedia.org/wiki/Unicode}}.
+  The Unicode flag is always set right after [[forceUnicode]] command execution, but is reset depending on the command mode (see ''{{Link|#Syntax 1|mode}}'').
+
+  When the flag is set it will also affect all scopes within the script including child scopes (see [[diag_scope]]).
+  There are many other string manipulation commands like [[ctrlSetText]], [[getTextWidth]], etc. that support Unicode by design so no additional forcing is needed.
 groups:
 - Strings
 syntax:
