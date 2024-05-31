@@ -68,6 +68,7 @@ impl Wiki {
         }
     }
 
+    #[must_use]
     pub fn is_custom_command(&self, name: &str) -> bool {
         self.custom.contains(&name.to_string())
     }

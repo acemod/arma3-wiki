@@ -11,12 +11,12 @@ pub struct Report {
 
     unknown_types_commands: Vec<(String, String)>,
 
-    current_version: Version,
+    updated_version: Option<Version>,
 }
 
 impl Report {
     #[must_use]
-    pub fn new(current_version: Version) -> Self {
+    pub fn new(updated_version: Option<Version>) -> Self {
         Self {
             passed_commands: Vec::new(),
             failed_commands: HashMap::new(),
@@ -24,7 +24,7 @@ impl Report {
 
             unknown_types_commands: Vec::new(),
 
-            current_version,
+            updated_version,
         }
     }
 
@@ -45,8 +45,8 @@ impl Report {
     }
 
     #[must_use]
-    pub const fn current_version(&self) -> &Version {
-        &self.current_version
+    pub const fn updated_version(&self) -> Option<&Version> {
+        self.updated_version.as_ref()
     }
 
     #[must_use]

@@ -15,16 +15,13 @@ pub fn main() {
             .collect();
         tmp.push(random);
     }
-    let repo = Repository::open(&tmp).map_or_else(
-        |_| {
-            git2::build::RepoBuilder::new()
-                .branch("dist")
-                .clone("https://github.com/acemod/arma3-wiki", &tmp)
-                .map_err(|e| format!("Failed to clone repository: {e}"))
-                .unwrap()
-        },
-        |repo| repo,
-    );
+    let repo = Repository::open(&tmp).unwrap_or_else(|_| {
+        git2::build::RepoBuilder::new()
+            .branch("dist")
+            .clone("https://github.com/acemod/arma3-wiki", &tmp)
+            .map_err(|e| format!("Failed to clone repository: {e}"))
+            .unwrap()
+    });
     repo.find_remote("origin")
         .and_then(|mut r| r.fetch(&["dist"], None, None))
         .map_err(|e| format!("Failed to fetch remote: {e}"))

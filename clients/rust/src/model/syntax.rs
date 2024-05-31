@@ -179,13 +179,10 @@ impl Syntax {
                         let (typ, desc) = ret.split_once('-').unwrap_or((&ret, ""));
                         let typ = typ.trim();
                         (
-                            Value::from_wiki(typ).map_or_else(
-                                |_| {
-                                    errors.push(ParseError::UnknownType(typ.to_string()));
-                                    Value::Unknown
-                                },
-                                |value| value,
-                            ),
+                            Value::from_wiki(typ).unwrap_or_else(|_| {
+                                errors.push(ParseError::UnknownType(typ.to_string()));
+                                Value::Unknown
+                            }),
                             if desc.is_empty() {
                                 None
                             } else {

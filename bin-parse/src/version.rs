@@ -3,7 +3,7 @@ use std::path::PathBuf;
 use arma3_wiki::model::Version;
 use regex::Regex;
 
-pub async fn version() -> Version {
+pub async fn version() -> Option<Version> {
     let regex = Regex::new(r"(?m)(\d\.\d\d)\|").unwrap();
     let text = reqwest::get("https://community.bistudio.com/wiki?title=Template:GVI&action=raw")
         .await
@@ -23,12 +23,12 @@ pub async fn version() -> Version {
         let old_version = std::fs::read_to_string(&path).unwrap();
         if old_version == version_string {
             println!("Version unchanged: {version}");
-            return version;
+            return None;
         }
     } else {
         let _ = std::fs::create_dir_all(path.parent().unwrap());
     }
     std::fs::write(path, &version_string).unwrap();
     println!("New version: {version}");
-    version
+    Some(version)
 }

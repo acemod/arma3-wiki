@@ -20,6 +20,10 @@ async fn main() {
         .unwrap();
     let mut failed = false;
 
+    if let Some(updated_version) = report.updated_version() {
+        github.version_pr(&updated_version.to_string()).await;
+    };
+
     for command in report.passed_commands() {
         match issues.failed_command_close(&github, command).await {
             Err(e) => {
