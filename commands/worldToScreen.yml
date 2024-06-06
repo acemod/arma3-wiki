@@ -16,6 +16,19 @@ syntax:
   - name: position
     description: world position 2D [x,y] or [[Position#PositionAGL|PositionAGL]]
     type: Unknown
+- call: !Binary
+  - camera
+  - position
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: camera
+    description: camera object
+    type: Object
+  - name: position
+    description: world position 2D [x,y] or [[Position#PositionAGL|PositionAGL]]
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
