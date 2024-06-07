@@ -103,6 +103,7 @@ impl Value {
                 return Self::single_match(caps.get(1).unwrap().as_str());
             }
         }
+        println!("unable to parse value: {source}");
         Err("Unknown value".to_string())
     }
 
