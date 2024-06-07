@@ -1,0 +1,23 @@
+id: InventoryOpened
+description: |-
+  Triggered when unit opens inventory. Said unit can be non-local when adding the EH, but '''must''' be local for the EH to trigger. End EH main scope with [[true]] to override the opening of the inventory in case you wish to handle it yourself:
+  To return all nearby containers use [[nearSupplies]] command.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: targetContainer
+  description: connected container or weaponholder
+  type: Object
+- name: secondaryContainer
+  description: second connected container or weaponholder or [[objNull]]
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 22
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "// Create and open an ammo box when \"Inventory\" button is pressed\nplayer addEventHandler [\"InventoryOpened\", {\n\tplayer removeAllEventHandlers \"InventoryOpened\";\n\t_box = \"Box_NATO_Ammo_F\" createVehicle [0,0,0];\n\t_box setPosASL (player modelToWorldVisualWorld [0,1.5,0.5]);\n\tplayer action [\"Gear\", _box];\n\ttrue; // <-- inventory override\n}];"
+- "this addEventHandler [\"InventoryOpened\", {\n\tparams [\"_unit\", \"_container\"];\n}];"

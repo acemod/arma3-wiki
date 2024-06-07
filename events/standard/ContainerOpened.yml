@@ -1,0 +1,20 @@
+id: ContainerOpened
+description: |-
+  Triggers when cargo container is accessed by player.
+  This event handler is similar to [[#InventoryOpened|InventoryOpened]] EH, but needs to be assigned to the container rather than the player and cannot be overridden.
+  Note: will trigger only for the unit opening container.
+params:
+- name: container
+  description: cargo container
+  type: Object
+- name: player
+  description: unit who accessed the container
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 32
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"ContainerOpened\", {\n\tparams [\"_container\", \"_unit\"];\n}];"

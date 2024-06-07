@@ -1,0 +1,13 @@
+id: AnimDone
+description: Triggered every time an animation is finished. Triggered for all animation states in a sequence.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: anim
+  description: name of the anim that has been finished
+  type: String
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"AnimDone\", {\n\tparams [\"_unit\", \"_anim\"];\n}];"

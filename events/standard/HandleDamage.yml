@@ -1,0 +1,62 @@
+id: HandleDamage
+description: |-
+  Triggers when the unit is damaged and fires for each damaged selection separately
+  Note: Currently, in {{arma3}} v1.70 it triggers for every selection of a vehicle, no matter if the section was damaged or not). Works with all vehicles.
+  This EH can accept a remote unit as argument however it will only fire when the unit is [[Multiplayer Scripting#Locality|local]] to the PC this event handler was added on.
+  For example, you can add this event handler to one particular vehicle on every PC.
+  When this vehicle gets hit, only EH on PC where the vehicle is currently [[Multiplayer Scripting#Locality|local]] will fire.
+  If code provided returns a numeric value, this value will overwrite the default damage of given selection after processing.
+  Return value of 0 will make the unit invulnerable if damage is not scripted in other ways (i.e using [[setDamage]] and/or [[setHit]] for additional damage handling).
+  If no value is returned, the default damage processing will be done. This allows for safe stacking of this event handler.
+  Only the return value of the last added "HandleDamage" EH is considered.
+  '''Notes:'''
+  * Multiple "HandleDamage" EHs can be added to the same unit. If multiple EHs return damage value for custom damage handling, only last returned value will be considered by the engine.
+  EHs that do not return value can be safely added after EHs that do return value.
+  * You can save the last event as timestamp ([[diag_tickTime]]) onto the unit, as well as the current health of the unit/its selections, with [[setVariable]] and query it on each "HandleDamage" event with [[getVariable]] to define a system how to handle the "HandleDamage" event.
+  * "HandleDamage" will continue to trigger even if the unit is already dead.
+  * "HandleDamage" is persistent. If you add it to the [[player]] object, it will continue to exist after player respawned.
+  * "HandleDamage" can trigger "twice" per damage event. Once for direct damage, once for indirect damage (explosive damage). This can happen even in the same frame, but is unlikely.
+  * Use [[setMissionOptions]] to filter out no damage calls or fake head hit.
+  Additional {{Link|https://forums.bistudio.com/forums/topic/205515-handledamage-event-handler-explained/|Celery's explanation (Updated by ShadowRanger for {{arma3}})}}.
+  ** "" for overall structural damage
+  ** "?" for unknown selections
+  <br>0 : TotalDamage - total damage adjusted before iteration through hitpoints
+  <br>1 : HitPoint - some hit point processed during iteration
+  <br>2 : LastHitPoint - the last hitpoint from iteration is processed
+  <br>3 : FakeHeadHit - head hit that is added/adjusted
+  <br>4 : TotalDamageBeforeBleeding - total damage is adjusted before calculating bleeding
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: selection
+  description: name of the selection where the unit was damaged.
+  type: String
+- name: damage
+  description: resulting level of damage for the selection
+  type: Number
+- name: source
+  description: the source unit that caused the damage
+  type: Object
+- name: projectile
+  description: classname of the projectile that caused inflicted the damage. ("" for unknown, such as fall damage)
+  type: String
+- name: hitPartIndex
+  description: hit part index of the hit point, -1 otherwise
+  type: Number
+- name: instigator
+  description: person who pulled the trigger
+  type: Object
+- name: hitPoint
+  description: hit point Cfg name
+  type: String
+- name: directHit
+  description: '[[true]] for direct projectile damage, [[false]] for explosion splash damage and all other kinds of damage like fall damage, fire damage, collision damage, etc.'
+  type: Boolean
+- name: context
+  description: 'some additional context for the event:'
+  type: Number
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"HandleDamage\", {\n\tparams [\"_unit\", \"_selection\", \"_damage\", \"_source\", \"_projectile\", \"_hitIndex\", \"_instigator\", \"_hitPoint\", \"_directHit\", \"_context\"];\n}];"

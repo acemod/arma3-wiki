@@ -1,0 +1,21 @@
+id: GetIn
+description: |-
+  Triggers when a unit enters the vehicle to which this EH has been added. This EH is triggered by moveInXXXX commands and "GetInXXXX" [[action]]s, but not upon a seat change within the same vehicle.
+  In vehicles with multi-turret setup, entering any turret will show "gunner" for position.
+params:
+- name: vehicle
+  description: vehicle the event handler is assigned to
+  type: Object
+- name: role
+  description: can be either "driver", "gunner" or "cargo"
+  type: String
+- name: unit
+  description: unit that entered the vehicle
+  type: Object
+- name: turret
+  description: turret path
+  type: Unknown
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"GetIn\", {\n\tparams [\"_vehicle\", \"_role\", \"_unit\", \"_turret\"];\n}];"

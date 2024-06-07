@@ -1,0 +1,23 @@
+id: MarkerCreated
+description: Executes when a marker is created either by a user or via script command.
+params:
+- name: marker
+  description: the name of the created marker, can be used with the [[:Category:Command_Group:_Markers|marker commands]]
+  type: String
+- name: channelNumber
+  description: '[[Channel IDs|channel]] in which the marker was created'
+  type: Number
+- name: owner
+  description: player that created the marker or [[objNull]]
+  type: Object
+- name: local
+  description: '[[true]] if the event originated locally, [[false]] if it came over the network'
+  type: Boolean
+since:
+  arma_3:
+    major: 2
+    minor: 2
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"MarkerCreated\", {\n\tparams [\"_marker\", \"_channelNumber\", \"_owner\", \"_local\"];\n}];"

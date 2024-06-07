@@ -1,0 +1,13 @@
+id: CuratorWaypointPlaced
+description: Triggered when new waypoint is placed in curator interface.
+params:
+- name: curator
+  type: Object
+- name: group
+  type: Group
+- name: waypointID
+  type: Number
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"CuratorWaypointPlaced\", {\n\tparams [\"_curator\", \"_group\", \"_waypointID\"];\n}];"

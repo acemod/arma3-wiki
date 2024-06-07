@@ -1,0 +1,13 @@
+id: CuratorObjectPlaced
+description: |-
+  Triggered when new object is placed in curator interface.
+  This event handler will trigger individually for each unit in a placed group - excluding the crew in vehicles.
+params:
+- name: curator
+  type: Object
+- name: entity
+  type: Object
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"CuratorObjectPlaced\", {\n\tparams [\"_curator\", \"_entity\"];\n}];"

@@ -1,0 +1,23 @@
+id: Explosion
+description: |-
+  Triggered when a vehicle or unit is damaged by a nearby explosion.
+  It can be assigned to a remote unit or vehicle but will only fire on the PC where EH is added and explosion is local, i.e. it really needs to be added on every PC and JIP and will fire only where the explosion is originated.
+  {{Feature|informative|This event will fire even for tiniest of explosion damage (which appears as 0 damage argument), while [[#HitPart|entity HitPart]] could ignore such damage and not fire. Example of such event would be a tank firing AP round and hitting ground a meter away from the vehicle, it doesn't produce an explosion yet its [[CfgAmmo_Config_Reference#indirectHit|indirectHit]] could still cause tiny amount of damage to weak hit points (car wheels, headlights, etc.). In such case you might not get any [[#HitPart|HitPart]] event fires, get some [[#HandleDamage|HandleDamage]] events if target is local, and get this Explosion event.}}
+params:
+- name: vehicle
+  description: object the event handler is assigned to
+  type: Object
+- name: damage
+  description: damage inflicted to the object
+  type: Number
+- name: source
+  description: may be [[objNull]] in some cases
+  type: Object
+since:
+  arma_3:
+    major: 0
+    minor: 76
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Explosion\", {\n\tparams [\"_vehicle\", \"_damage\", \"_source\"];\n}];"

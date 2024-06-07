@@ -1,0 +1,23 @@
+id: LandingCanceled
+description: |-
+  Triggered when AI pilot landing is cancelled (for example new order received to land elsewhere).
+  The exact moment of triggering coincides with retracting of the gear ("Gear" EH).
+  '''Note''': Doesn't trigger if player switches off auto-pilot. Canceled is spelled with one L
+params:
+- name: plane
+  description: object the event handler is assigned to
+  type: Object
+- name: airportID
+  description: ID of the airport or aircraft carrier object (-1 no airport)
+  type: Unknown
+- name: isCarrier
+  description: '[[true]] if landing on aircraft carrier'
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 70
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"LandingCanceled\", {\n\tparams [\"_plane\", \"_airportID\", \"_isCarrier\"];\n}];"

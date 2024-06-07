@@ -1,0 +1,23 @@
+id: Penetrated
+description: This event fires as many times as the projectile penetrates a surface.
+params:
+- name: projectile
+  type: Object
+- name: hitObject
+  type: Object
+- name: surfaceType
+  description: see [[surfaceType]]
+  type: String
+- name: entryPoint
+  description: the projectile's entry point
+  type: Unknown
+- name: exitPoint
+  description: the projectile's exit point
+  type: Unknown
+- name: exitVector
+  description: speed/angle exit vector (see [[vectorMagnitude]] to obtain the speed, in metre per second)
+  type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "_projectile addEventHandler [\"Penetrated\", {\n\tparams [\"_projectile\", \"_hitObject\", \"_surfaceType\", \"_entryPoint\", \"_exitPoint\", \"_exitVector\"];\n}];"

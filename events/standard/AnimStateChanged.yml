@@ -1,0 +1,13 @@
+id: AnimStateChanged
+description: Triggered every time an animation state changes. Triggered for all animation states in a sequence.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: anim
+  description: name of the anim that has been started
+  type: String
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"AnimStateChanged\", {\n\tparams [\"_unit\", \"_anim\"];\n}];"

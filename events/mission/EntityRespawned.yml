@@ -1,0 +1,17 @@
+id: EntityRespawned
+description: Triggered when an entity is respawned.
+params:
+- name: newEntity
+  description: respawned entity
+  type: Object
+- name: oldEntity
+  description: corpse/wreck
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 56
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"EntityRespawned\", {\n\tparams [\"_newEntity\", \"_oldEntity\"];\n}];"

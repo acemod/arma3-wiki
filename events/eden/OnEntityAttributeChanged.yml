@@ -1,0 +1,16 @@
+id: OnEntityAttributeChanged
+description: When an entity's attribute got changed. Fires for each changed attribute separately.
+params:
+- name: entity
+  type: EdenEntity
+- name: property
+  description: property name of the attribute that was changed
+  type: String
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "add3DENEventHandler [\"OnEditableEntityAttributeChanged\", {\n\tparams [\"_entity\", \"_property\"];\n}];"

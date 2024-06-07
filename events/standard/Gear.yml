@@ -1,0 +1,18 @@
+id: Gear
+description: |-
+  Triggered when the unit lowers/retracts the landing gear, whether it is a helicopter or a plane.
+  Also triggered for helicopters in landing mode, regardless if they have retractable gear or not.
+  {{Feature|informative|
+  Not to be confused with ''[[Arma 3: Event Handlers#InventoryOpened|InventoryOpened]]'' and ''[[Arma 3: Event Handlers#InventoryClosed|InventoryClosed]]'' events, ''Gear'' fires when the landing gear state on an aircraft has changed.
+  }}
+params:
+- name: vehicle
+  description: vehicle the event handler is assigned to
+  type: Object
+- name: gearState
+  description: true when the gear is lowered, false when retracted
+  type: Boolean
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Gear\", {\n\tparams [\"_vehicle\", \"_gearState\"];\n}];"

@@ -1,0 +1,24 @@
+id: GetOut
+description: |-
+  Triggers when a unit gets out from the vehicle to which this EH has been added.
+  This EH is triggered by [[moveOut]], "GetOut" & "Eject" [[action]]s, if an [[alive]] [[crew]] member disconnects or is deleted, but not upon a seat change within the same vehicle.
+params:
+- name: vehicle
+  description: vehicle the event handler is assigned to
+  type: Object
+- name: role
+  description: can be either "driver", "gunner" or "cargo"
+  type: String
+- name: unit
+  description: unit that left the vehicle
+  type: Object
+- name: turret
+  description: turret path
+  type: Unknown
+- name: isEject
+  description: '[[true]] if unit used ''Eject'' action'
+  type: Boolean
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"GetOut\", {\n\tparams [\"_vehicle\", \"_role\", \"_unit\", \"_turret\", \"_isEject\"];\n}];"

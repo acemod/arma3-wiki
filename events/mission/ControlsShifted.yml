@@ -1,0 +1,26 @@
+id: ControlsShifted
+description: Triggers when control of a vehicle is shifted (pilot->co-pilot, co-pilot->pilot), usually when user performs an [[action]] such as [[action/Arma_3_Actions_List#TakeVehicleControl | TakeVehicleControl]], [[action/Arma_3_Actions_List#SuspendVehicleControl | SuspendVehicleControl]], [[action/Arma_3_Actions_List#UnlockVehicleControl | UnlockVehicleControl]], [[action/Arma_3_Actions_List#LockVehicleControl | LockVehicleControl]], or when [[enableCopilot]] command is used. This event handler will always fire on the PC where [[action]] is triggered as well as where the vehicle is [[Multiplayer Scripting#Locality|local]] at the time. When control of the vehicle is shifted, the locality of the vehicle changes to the locality of the new controller. Since Arma 3 v1.96 this EH is extended with additional params.
+params:
+- name: newController
+  description: unit currently controlling the vehicle
+  type: Object
+- name: oldController
+  description: unit previously controlling the vehicle
+  type: Object
+- name: vehicle
+  description: the vehicle for which controls shifted
+  type: Object
+- name: copilotEnabled
+  description: '[[true]] if copilot is enabled'
+  type: Boolean
+- name: controlsUnlocked
+  description: '[[true]] if controls are unlocked'
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 0
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"ControlsShifted\", {\n\tparams [\"_newController\", \"_oldController\", \"_vehicle\", \"_copilotEnabled\", \"_controlsUnlocked\"];\n}];"

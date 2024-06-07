@@ -1,0 +1,14 @@
+id: EntityCreated
+description: |-
+  Triggered when an entity is created.
+  {{Feature|informative|Unlike most event handlers, the argument is entity [[Object]] and not an array containing the entity. However, it is recommended to use [[params]] to make sure the code remains compatible in case the event arguments are expanded in the future.}}
+  {{Feature|important|This event is called before variable namespace is copied to '''remote''' respawning entity, keep this in mind so your [[setVariable]]s are not overwritten in the next frame. [[#EntityRespawned|EntityRespawned]] always fires after variable namespace is copied to new entity regardless of locality.}}
+params: []
+since:
+  arma_3:
+    major: 2
+    minor: 10
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"EntityCreated\", {\n\tparams [\"_entity\"];\n}];"

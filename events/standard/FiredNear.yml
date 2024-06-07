@@ -1,0 +1,36 @@
+id: FiredNear
+description: |-
+  Triggered when a weapon is fired somewhere ''near'' the unit or vehicle. It is also triggered if the unit itself is firing.
+  (Exception(s): the Throw weapon wont broadcast the FiredNear event).
+  When "Manual Fire" is used, the ''gunner'' is [[objNull]] if gunner is not present or the ''gunner'' is not the one who fires.
+  To check if "Manual Fire" is on, use [[isManualFire]]. The actual shot instigator could be retrieved with [[getShotParents]] command.
+  {{GVI|arma3|1.30}} Works with thrown weapons.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: firer
+  description: object which fires a weapon near the unit
+  type: Object
+- name: distance
+  description: distance in meters between the ''unit'' and ''firer'' (max. distance ~69m)
+  type: Number
+- name: weapon
+  description: fired weapon
+  type: String
+- name: muzzle
+  description: muzzle that was used
+  type: String
+- name: mode
+  description: current mode of the fired weapon
+  type: String
+- name: ammo
+  description: ammo used
+  type: String
+- name: gunner
+  description: gunner, whose weapons are fired
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"FiredNear\", {\n\tparams [\"_unit\", \"_firer\", \"_distance\", \"_weapon\", \"_muzzle\", \"_mode\", \"_ammo\", \"_gunner\"];\n}];"

@@ -1,0 +1,14 @@
+id: Deleted
+description: Triggered just before the assigned entity is deleted.
+params:
+- name: entity
+  description: object the event handler is assigned to
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 68
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Deleted\", {\n\tparams [\"_entity\"];\n}];"

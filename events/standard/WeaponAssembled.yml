@@ -1,0 +1,19 @@
+id: WeaponAssembled
+description: Triggers when weapon gets assembled. EH should be attached to the unit and not the weapon.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: weapon
+  description: object of the assembled weapon
+  type: Object
+- name: primaryBag
+  description: primary bag (just before it is deleted)
+  type: Object
+- name: secondaryBag
+  description: secondary bag (just before it is deleted)
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"WeaponAssembled\", {\n\tparams [\"_unit\", \"_staticWeapon\", \"_primaryBag\", \"_secondaryBag\"];\n}];"

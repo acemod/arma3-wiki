@@ -1,0 +1,13 @@
+id: Respawn
+description: Triggered when a unit respawns.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: corpse
+  description: object the event handler was assigned to, aka the corpse/unit player was previously controlling
+  type: Object
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Respawn\", {\n\tparams [\"_unit\", \"_corpse\"];\n}];"

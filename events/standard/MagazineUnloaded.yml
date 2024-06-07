@@ -1,0 +1,28 @@
+id: MagazineUnloaded
+description: |-
+  Triggers when a magazine is removed from a weapon manually or via script. Does NOT trigger on {{Link|#Reloaded}} event.
+  ** magazineClass: [[String]] - class name of the magazine
+  ** ammoCount: [[Number]] - amount of ammo in magazine
+  ** magazineID: [[Number]] - global magazine id
+  ** magazineCreator: [[Number]] - owner of the magazine creator
+params:
+- name: unit
+  description: unit or vehicle to which EH is assigned
+  type: Object
+- name: weapon
+  description: weapon that got unloaded
+  type: String
+- name: muzzle
+  description: weapon's muzzle that got unloaded
+  type: String
+- name: newMagazine
+  description: 'new magazine info in format [magazineClass, ammoCount, magazineID, magazineCreator], where:'
+  type: Unknown
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"MagazineUnloaded\", {\n\tparams [\"_unit\", \"_weapon\", \"_muzzle\", \"_magazine\"];\n}];"

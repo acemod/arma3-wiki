@@ -1,0 +1,39 @@
+id: CuratorFeedbackMessage
+description: |-
+  Triggered when curator attempts invalid action in curator interface.
+  Each error has its own unique ID, recognized values are:
+  <spoiler text="show errors list">
+  * 003 - when trying to teleport camera outside of [[curatorCameraArea]]
+  * 101 - trying to place an object when placing is disabled using [[setCuratorCoef]] "place"
+  * 102 - trying to place an object which is too expensive (cost set in ''curatorObjectRegistered'' multiplied by [[setCuratorCoef]] "place" is larger than [[curatorPoints]])
+  * 103 - trying to place an object outside of [[curatorEditingArea]]
+  * 104 - items of a placed composition were skipped / could not be placed (since {{arma3}} v2.06)
+  * 201 - trying to place a waypoint when waypoint placing is disabled
+  * 202 - trying to place a waypoint which is too expensive (cost set by [[setCuratorWaypointCost]] multiplied by [[setCuratorCoef]] "place" is larger than [[curatorPoints]])
+  * 206 - trying to place a waypoint when no AI unit is selected
+  * 301 - trying to move or rotate an entity when editing is disabled using [[setCuratorCoef]] "edit"
+  * 302 - trying to move or rotate an entity when it is too expensive (entity cost multiplied by [[setCuratorCoef]] "edit" is larger than [[curatorPoints]])
+  * 303 - trying to move an entity outside of [[curatorEditingArea]]
+  * 304 - trying to move or rotate an entity which is outside of [[curatorEditingArea]]
+  * 307 - trying to move or rotate a player (players cannot be manipulated with)
+  * 401 - trying to delete an entity when deleting is disabled using [[setCuratorCoef]] "delete"
+  * 402 - trying to delete an entity which is too expensive (cost multiplied by [[setCuratorCoef]] "delete" is larger than [[curatorPoints]])
+  * 404 - trying to delete an entity which is outside of [[curatorEditingArea]]
+  * 405 - trying to delete an entity which has [[curatorEditableObjects|non-editable]] crew in it
+  * 407 - trying to delete a player (players cannot be manipulated with)
+  * 501 - trying to destroy an object when destroying is disabled using [[setCuratorCoef]] "destroy"
+  * 502 - trying to destroy an object which is too expensive (cost multiplied by [[setCuratorCoef]] "destroy" is larger than [[curatorPoints]])
+  * 504 - trying to destroy an object which is outside of [[curatorEditingArea]]
+  * 505 - trying to destroy an object which has [[curatorEditableObjects|non-editable]] crew in it
+  * 506 - trying to destroy an object when no object is selected
+  * 507 - trying to destroy a player (players cannot be manipulated with)
+  </spoiler>
+params:
+- name: curator
+  type: Object
+- name: errorID
+  type: Number
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"CuratorFeedbackMessage\", {\n\tparams [\"_curator\", \"_errorID\"];\n}];"

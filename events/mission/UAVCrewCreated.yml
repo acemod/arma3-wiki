@@ -1,0 +1,20 @@
+id: UAVCrewCreated
+description: Fires when UAV or UGV is assembled from Backpack after the AI crew is created
+params:
+- name: uav
+  description: the assembled weapon
+  type: Object
+- name: driver
+  description: AI driver
+  type: Object
+- name: gunner
+  description: AI gunner
+  type: Object
+since:
+  arma_3:
+    major: 2
+    minor: 14
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"UAVCrewCreated\", {\n\tparams [\"_uav\", \"_driver\", \"_gunner\"];\n}];"

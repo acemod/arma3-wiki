@@ -1,0 +1,22 @@
+id: OnMissionPreview
+description: |-
+  When scenario preview is started. Executed when the scenario is already loaded, so entities in it can be accessed.
+  Each array is in format:
+   [entity1, id1, entity2, id2, ..., entityN, idN]
+params:
+- name: objects
+  type: Unknown
+- name: groups
+  type: Unknown
+- name: waypoints
+  type: Unknown
+- name: markers
+  type: Unknown
+- name: entity
+  type: Unknown
+- name: ID
+  type: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "add3DENEventHandler [\"OnMissionPreview\", {\n\tparams [\"_objects\", \"_groups\", \"_waypoints\", \"_markers\"];\n}];"

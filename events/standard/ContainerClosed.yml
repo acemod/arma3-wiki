@@ -1,0 +1,20 @@
+id: ContainerClosed
+description: |-
+  Triggers when player finished accessing cargo container.
+  This event handler is similar to [[#InventoryClosed|InventoryClosed]] EH, but needs to be assigned to the container rather than the player.
+  Note: will trigger only for the unit opening container.
+params:
+- name: container
+  description: Cargo container.
+  type: Object
+- name: player
+  description: unit who accessed the container
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 32
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"ContainerClosed\", {\n\tparams [\"_container\", \"_unit\"];\n}];"

@@ -1,0 +1,54 @@
+id: HitPart
+description: |-
+  Runs when the object it was added to gets injured/damaged.
+  It returns the position and component that was hit on the object within a nested array, this is because the model may have more than one selection name for the hit component
+  (i.e. a single piece of geometry can be simultaneously part of multiple, overlapping named selections).
+  While you can add "HitPart" handler to a remote unit, the respective [[addEventHandler]] command must be executed on the shooter's PC and will only fire on shooter's PC as well.
+  The event will not fire if the shooter is not local, even if the target itself is local.
+  Additionally, if the unit gets damaged by any means other than ammunition or explosions, such as fall damage and burning, "HitPart" will not fire.
+  Because of this, this event handler is most suitable for when the shooter needs feedback on his shooting, such as target practicing or hitmarker creation.
+  This EH returns array of sub-arrays [[...],[...], ... [...]]. Each sub-array contains data for the part that was hit as usually multiple parts are hit at the same time (see [[HitPart_Sample]]). The structure of each sub-array is listed below.
+  -->In case of explosives that were planted by someone (e.g. satchel charges), that unit is returned
+  {{Feature|informative|There is similar event handler that is attached to [[#HitPart_2|projectile]] instead of entity.}}
+  {{Feature|informative|This event doesn't fire when miniscule explosive damage is dealt to target entity, but [[#Explosion|Explosion]] event will still fire.}}
+params:
+- name: target
+  description: object that got injured/damaged
+  type: Object
+- name: shooter
+  description: unit or vehicle that inflicted the damage. If injured by a vehicle collision, the target itself is returned, or in case of explosions, the [[objNull|null object]].<!--
+  type: Object
+- name: projectile
+  description: object that was fired
+  type: Object
+- name: position
+  description: position the bullet impacted
+  type: Unknown
+- name: velocity
+  description: 3D speed at which the bullet impacted
+  type: Vector3d
+- name: selection
+  description: array of [[String]]s with named selection of the object that were hit, in the FireGeometry LOD.
+  type: Unknown
+- name: ammo
+  description: 'ammo info: [hit value, indirect hit value, indirect hit range, explosive damage, ammo class name]; Or, in case of a vehicle collision: [impulse value, 0, 0, 0]; hit and damage values are derived from the projectile''s [[CfgAmmo Config Reference|CfgAmmo]] class, and do not match the actual damage inflicted, which is usually lower due to armor and other factors'
+  type: Unknown
+- name: vector
+  description: vector that is orthogonal (perpendicular) to the surface struck. For example, if a wall was hit, vector would be pointing out of the wall at a 90 degree angle
+  type: Vector3d
+- name: radius
+  description: radius (size) of component hit
+  type: Number
+- name: surface
+  description: surface type struck
+  type: String
+- name: direct
+  description: '[[true]] if object was directly hit, [[false]] if it was hit by indirect/splash damage'
+  type: Boolean
+- name: instigator
+  description: shot instigator
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"HitPart\", {\n\t(_this select 0) params [\"_target\", \"_shooter\", \"_projectile\", \"_position\", \"_velocity\", \"_selection\", \"_ammo\", \"_vector\", \"_radius\", \"_surfaceType\", \"_isDirect\", \"_instigator\"];\n}];"

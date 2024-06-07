@@ -1,0 +1,20 @@
+id: LeaningChanged
+description: Triggered when a soldier leaning factor is changed between -1 (extreme left), 0 (not leaning) and 1 (extreme right)
+params:
+- name: unit
+  description: soldier
+  type: Object
+- name: newLeaning
+  description: 1 to 1
+  type: Unknown
+- name: oldLeaning
+  description: 1 to 1
+  type: Unknown
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"LeaningChanged\", {\n\tparams [\"_unit\", \"_newLeaning\", \"_oldLeaning\"];\n}];"

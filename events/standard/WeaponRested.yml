@@ -1,0 +1,19 @@
+id: WeaponRested
+description: |-
+  Triggers when weapon rested state changes (weapon near a surface that can provide weapon support).
+  Note: A weapon cannot be rested and deployed at the same time.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: isRested
+  description: true if rested
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 44
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"WeaponRested\", {\n\tparams [\"_unit\", \"_isRested\"];\n}];"

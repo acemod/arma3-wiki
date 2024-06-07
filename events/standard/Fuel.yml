@@ -1,0 +1,13 @@
+id: Fuel
+description: Triggered when the vehicle's fuel status changes between non-empty and empty or between empty and non-empty.
+params:
+- name: vehicle
+  description: vehicle the event handler is assigned to
+  type: Object
+- name: hasFuel
+  description: false when has no fuel, true when has some fuel
+  type: Boolean
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Fuel\", {\n\tparams [\"_vehicle\", \"_hasFuel\"];\n}];"

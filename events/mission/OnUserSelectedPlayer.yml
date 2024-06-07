@@ -1,0 +1,24 @@
+id: OnUserSelectedPlayer
+description: |-
+  Executes assigned code after player object is selected for user to take over control, the ownership information is broadcast and request to sync is made but the object is still owned by previous owner for a short time.
+  {{Feature|important|This is the earliest the player object is known when player joins the server, but it is not local to the user yet, so there is a wait time depending on network connection. When player respawns, the unit created on the client and so it might take a while before server has valid player object. From Arma 3 v2.18 the server will pospone this event until the object is not null, or until it tried 50 times, whichever is earlier. The best approach to handle this matter and get notified about completion of the transfer of the ownership is to use [[Arma_3:_Event_Handlers#Local|"Local"]] entity event handler, like so:
+  Note that the player object would change locality again if the user goes to lobby.}}
+params:
+- name: networkId
+  description: user network id (see [[getPlayerID]], [[allUsers]])
+  type: String
+- name: playerObject
+  description: player object to be controlled by the user (see [[player]], [[selectPlayer]])
+  type: Object
+- name: attempts
+  description: how many times server was trying to obtain non-null playerObject. Current threshold after which the event will fire anyway is 50.
+  type: Number
+since:
+  arma_3:
+    major: 2
+    minor: 6
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"OnUserSelectedPlayer\", {\n\t\tparams [\"_networkId\", \"_playerObject\", \"_attempts\"];\n}];"
+- "addMissionEventHandler [\"OnUserSelectedPlayer\", {\n\tparams [\"_networkId\", \"_playerObject\", \"_attempts\"];\n\t_playerObject addEventHandler [\"Local\",\n\t{\n\t\tparams [\"_player\"];\n\t\t_player removeEventHandler [\"Local\", _thisEventHandler];\n\t\t// code to handle _player\n\t}];\n}];"

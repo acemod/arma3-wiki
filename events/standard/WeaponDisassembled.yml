@@ -1,0 +1,21 @@
+id: WeaponDisassembled
+description: |-
+  Triggers when weapon gets disassembled. EH should be attached to the unit and not the weapon.<br><br>
+  '''NOTE:''' As of {{arma3}} v1.32, this event does not fire if the weapon is not local.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: primaryBag
+  description: first backpack object which was weapon disassembled into
+  type: Object
+- name: secondaryBag
+  description: second backpack object which was weapon disassembled into
+  type: Object
+- name: weapon
+  description: disassembled weapon (just before it is moved out of the world)
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"WeaponDisassembled\", {\n\tparams [\"_unit\", \"_primaryBag\", \"_secondaryBag\", \"_weapon\"];\n}];"

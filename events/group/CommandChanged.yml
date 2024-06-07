@@ -1,0 +1,119 @@
+id: CommandChanged
+description: |-
+  {|
+  | "NO CMD" || NoCommand
+  |-
+  | "WAIT" || Wait
+  |-
+  | "ATTACK" || Attack
+  |-
+  | "Suppress" || Suppress
+  |-
+  | "HIDE" || Hide
+  |-
+  | "MOVE" || Move
+  |-
+  | "HOOK CARGO" || HookCargo
+  |-
+  | "UNHOOK CARGO" || UnhookCargo
+  |-
+  | "VIV GETIN" || ViVGetIn
+  |-
+  | "VIV GETOUT" || ViVGetOut
+  |-
+  | "VIV UNLOAD" || ViVUnload
+  |-
+  | "HEAL" || Heal
+  |-
+  | "REPAIR" || Repair
+  |-
+  | "REFUEL" || Refuel
+  |-
+  | "REARM" || Rearm
+  |-
+  | "SUPPORT" || Support
+  |-
+  | "JOIN" || Join
+  |-
+  | "GET IN" || GetIn
+  |-
+  | "FIRE" || Fire
+  |-
+  | "GET OUT" || GetOut
+  |-
+  | "STOP" || Stop
+  |-
+  | "EXPECT" || Expect
+  |-
+  | "ACTION" || Action
+  |-
+  | "SCRIPTED" || Scripted
+  |-
+  | "DISMISS" || Dismiss
+  |-
+  | "HEAL SOLDIER" || HealSoldier
+  |-
+  | "PATCH SOLDIER" || PatchSoldier
+  |-
+  | "FIRST AID" || FirstAid
+  |-
+  | "HEAL SELF" || HealSoldierSelf
+  |-
+  | "ATTACK AND FIRE" || AttackAndFire
+  |-
+  | "CARRY SOLDIER" || CarrySoldier
+  |-
+  | "DROP CARRIED" || DropCarried
+  |-
+  | "TAKE BAG" || TakeBag
+  |-
+  | "ASSEMBLE" || Assemble
+  |-
+  | "DISASSEMBLE" || DisAssemble
+  |-
+  | "DROP BAG" || DropBag
+  |-
+  | "OPEN BAG" || OpenBag
+  |-
+  | "IRLASER ON" || IRLaserOn
+  |-
+  | "IRLASER OFF" || IRLaserOff
+  |-
+  | "GUN LIGHT ON" || GunLightOn
+  |-
+  | "GUN LIGHT OFF" || GunLightOff
+  |-
+  | "FIRE AT POSITION" || FireAtPosition
+  |-
+  | "REPAIR VEHICLE" || RepairVehicle
+  |-
+  | "OPEN PARA" || OpenParachute
+  |-
+  | "KEEP DEPTH LEADER" || KeepDepthLeader
+  |-
+  | "KEEP DEPTH UND SURF" || KeepDepthUnderSurface
+  |-
+  | "KEEP DEPTH ABV SURF" || KeepDepthAboveSurface
+  |-
+  | "KEEP DEPTH BOTTOM" || KeepDepthBottom
+  |-
+  | "PUT IN" || PutIn
+  |-
+  | "UNLOAD FROM" || UnloadFrom
+  |-
+  | "USE CONTAINER MAGAZINE" || UseContainerMagazine
+  |-
+  | "ACTIVATE MINE" || ActivateMine
+  |-
+  | "DISABLE MINE" || DisableMine
+  |}
+  </spoiler>
+params:
+- name: group
+  type: Group
+- name: newCommand
+  type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "_group addEventHandler [\"CommandChanged\", {\n\tparams [\"_group\", \"_newCommand\"];\n}];"

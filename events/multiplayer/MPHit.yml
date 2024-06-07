@@ -1,0 +1,29 @@
+id: MPHit
+description: |-
+  Triggered when the unit is hit/damaged. EH can be added on any machine and EH code will trigger globally on every connected client and server.
+  This EH is clever enough to be triggered globally only once even if added on all clients or a single client that is then disconnected, EH will still trigger globally only once.
+  Is ''not'' always triggered when unit is killed by a hit.
+  Most of the time only the [[#Killed|killed]] event handler is triggered when a unit dies from a hit.
+  The hit EH will not necessarily fire if only minor damage occurred (e.g. firing a bullet at a tank), even though the damage increased.
+  Can also trigger several times for an explosion (direct and indirect damage). Does not fire when a unit is set to [[allowDamage]] [[false]].
+  However it will fire with "HandleDamage" EH added alongside stopping unit from taking damage (<sqf inline>unit addEventHandler ["HandleDamage", { 0 }];</sqf>.
+  Will not trigger once the unit is dead.
+  Note: call a function from the MPHit EH code space rather than defining the full code in there directly.
+  The reason is the code space will be transferred over network on each event activation - so keep the data as small as possible!
+params:
+- name: unit
+  description: object the event handler is assigned to <br>
+  type: Object
+- name: causedBy
+  description: object that caused the damage. Contains the unit itself in case of collisions. <br>
+  type: Object
+- name: damage
+  description: level of damage caused by the hit
+  type: Number
+- name: instigator
+  description: person who pulled the trigger
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addMPEventHandler [\"MPHit\", {\n\tparams [\"_unit\", \"_causedBy\", \"_damage\", \"_instigator\"];\n}];"

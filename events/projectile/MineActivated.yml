@@ -1,0 +1,12 @@
+id: MineActivated
+description: '{{GVI|arma3|2.14}}'
+params:
+- name: projectile
+  type: Object
+- name: active
+  description: new active state of the mine
+  type: Boolean
+argument_loc: Local
+effect_loc: Local
+examples:
+- "_projectile addEventHandler [\"MineActivated\", {\n\tparams [\"_projectile\", \"_active\"];\n}];"

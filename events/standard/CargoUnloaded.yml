@@ -1,0 +1,19 @@
+id: CargoUnloaded
+description: |-
+  Triggered when a vehicle is unloaded from another vehicle ([[setVehicleCargo|ViV]]).<br>
+  It can be added to either the transport vehicle, or the cargo vehicle, and will fire for both cases.
+params:
+- name: parentVehicle
+  description: the transport (parent) vehicle
+  type: Object
+- name: cargoVehicle
+  description: the cargo (child) vehicle
+  type: Object
+since:
+  arma_3:
+    major: 2
+    minor: 6
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"CargoUnloaded\", {\n\tparams [\"_parentVehicle\", \"_cargoVehicle\"];\n}];"

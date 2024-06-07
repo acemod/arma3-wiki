@@ -1,0 +1,14 @@
+id: Init
+description: |-
+  Triggered whenever an entity is created. Cannot be used in scripts, only inside class Eventhandlers in config.
+  {{Feature|important|It is recommended to use the {{Link|#PostInit}} event handler instead of this one when setting entity textures ([[setObjectTexture]], [[BIS_fnc_initVehicle]] etc) to avoid networking issues.}}
+  e.g:
+  <syntaxhighlight lang="cpp">init = "params ['_entity'];";</syntaxhighlight>
+params:
+- name: entity
+  description: object the event handler is assigned to
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- params ["_entity"];

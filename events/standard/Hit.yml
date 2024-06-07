@@ -1,0 +1,24 @@
+id: Hit
+description: |-
+  Triggered when the unit is hit/damaged.
+  Is ''not'' always triggered when unit is killed by a hit.<br>
+  Most of the time only the [[#Killed|killed]] event handler is triggered when a unit dies from a hit.<br>
+  The hit EH will not necessarily fire if only minor damage occurred (e.g. firing a bullet at a tank), even though the damage increased.<br>
+  Does not fire when a unit is set to allowDamage false.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: source
+  description: object that caused the damage – contains ''unit'' in case of collisions
+  type: Object
+- name: damage
+  description: level of damage caused by the hit
+  type: Number
+- name: instigator
+  description: person who pulled the trigger
+  type: Object
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Hit\", {\n\tparams [\"_unit\", \"_source\", \"_damage\", \"_instigator\"];\n}];"

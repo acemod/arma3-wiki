@@ -1,0 +1,60 @@
+id: HandleChatMessage
+description: |-
+  Fires when a message is received, before adding it to the chat feed. Fires clientside. The output message could be overridden:
+  * Return [[true]] to block incoming chat message from being added to the chat feed.
+  * Return [[String]] to replace the chat message content but not the sender name.
+  * Return [[Array]] [from, text] to replace both the chat message content and the the sender's name.
+  {{Feature|informative|Only the last added EH with override will be used to override the message.}}
+  {{Feature|warning|Do not put any of the chat related script command such as [[systemChat]], [[sideChat]], etc in this EH code as it would naturally cause recursion and the game will freeze.}}
+  ** in SP: 0
+  ** in MP with no sender: [[clientOwner]]
+  ** in MP with sender: sender's [[clientOwner]], or if AI - creator id part of [[netId]] of the AI
+  ** "-1": means not available
+  ** "0": means [[player | isPlayer]] in SP
+  ** "1": means AI in SP or MP
+  ** >1: [[getPlayerID]] in MP
+params:
+- name: channel
+  description: see [[Description.ext#disableChannels|radio channel indices]] (16 for system chat message for example)
+  type: Number
+- name: owner
+  description: '[[owner]] id of the sender:'
+  type: Number
+- name: from
+  description: sender's formatted name as appeared on the chat
+  type: String
+- name: text
+  description: the chat message
+  type: String
+- name: person
+  description: sender's object
+  type: Object
+- name: name
+  description: sender's [[name]], could be different from {{hl|from}}
+  type: String
+- name: strID
+  description: 'sender''s network player ID (marker id):'
+  type: String
+- name: forcedDisplay
+  description: if the message should be displayed when the chat list is disabled (when [[enableRadio]] is set to [[false]] radio protocol messages won't display)
+  type: Boolean
+- name: isPlayerMessage
+  description: if the message is addressed to [[player]]
+  type: Boolean
+- name: sentenceType
+  description: '0: Normal type, 1: Protocol type'
+  type: Number
+- name: chatMessageType
+  description: '0: Generic type, 1: SimpleMove type, 2: KillConfirmation type'
+  type: Number
+- name: params
+  description: sentence parameters, if any
+  type: Unknown
+since:
+  arma_3:
+    major: 2
+    minor: 0
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"HandleChatMessage\", {\n\tparams [\"_channel\", \"_owner\", \"_from\", \"_text\", \"_person\", \"_name\", \"_strID\", \"_forcedDisplay\", \"_isPlayerMessage\", \"_sentenceType\", \"_chatMessageType\", \"_params\"];\n}];"

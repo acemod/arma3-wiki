@@ -1,0 +1,42 @@
+id: FiredMan
+description: |-
+  Triggered when the unit fires a weapon. This EH must be attached to a soldier and unlike with "Fired" EH, it will fire regardless of whether the soldier is on foot or firing vehicle weapon.
+  For [[remoteControl]]ed unit use "Fired" EH instead.
+  {{Feature|warning|
+  '''Special multiplayer behaviour:''' When added to a remote unit or vehicle, this EH will only fire if said entity is within range of the camera.
+  That range is determined by the fired ammo's highest visibleFire and audibleFire config value.
+  In case of units, muzzle attachment coefficients are applied too.
+  }}
+params:
+- name: unit
+  description: unit the event handler is assigned to (the instigator)
+  type: Object
+- name: weapon
+  description: fired weapon
+  type: String
+- name: muzzle
+  description: muzzle that was used
+  type: String
+- name: mode
+  description: current mode of the fired weapon
+  type: String
+- name: ammo
+  description: ammo used
+  type: String
+- name: magazine
+  description: magazine name which was used
+  type: String
+- name: projectile
+  description: object of the projectile that was shot out
+  type: Object
+- name: vehicle
+  description: vehicle, if weapon is vehicle weapon, otherwise [[objNull]]
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 66
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"FiredMan\", {\n\tparams [\"_unit\", \"_weapon\", \"_muzzle\", \"_mode\", \"_ammo\", \"_magazine\", \"_projectile\", \"_vehicle\"];\n}];"

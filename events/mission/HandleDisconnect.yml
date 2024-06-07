@@ -1,0 +1,25 @@
+id: HandleDisconnect
+description: |-
+  Triggered when player disconnects from the game. Similar to [[onPlayerDisconnected]] event but can be stacked and contains the unit occupied by player before disconnect. Must be added on the server and triggers only on the server.
+  '''Override''': if this EH code returns [[true]], the unit, previously occupied by player, gets transferred to the server, becomes AI and continues to live, even with [[Description.ext|description.ext]] param {{hl|disabledAI {{=}} 1;}}.
+params:
+- name: unit
+  description: unit formerly occupied by player
+  type: Object
+- name: id
+  description: same as _id in [[onPlayerDisconnected]]
+  type: Number
+- name: uid
+  description: same as _uid in [[onPlayerDisconnected]]
+  type: String
+- name: name
+  description: same as _name in [[onPlayerDisconnected]]
+  type: String
+since:
+  arma_3:
+    major: 1
+    minor: 32
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"HandleDisconnect\", {\n\tparams [\"_unit\", \"_id\", \"_uid\", \"_name\"];\n\ttrue;\n}];"

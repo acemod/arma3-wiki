@@ -1,0 +1,12 @@
+id: OnGridChange
+description: 'When grid changes, either using [[Eden Editor: Toolbar|Toolbar]] option, ot by scripting command [[set3DENGrid]].'
+params:
+- name: gridType
+  description: can be "translation", "rotation" or "scaling"
+  type: String
+- name: gridValue
+  type: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "add3DENEventHandler [\"OnGridChange\", {\n\tparams [\"_gridType\", \"_gridValue\"];\n}];"

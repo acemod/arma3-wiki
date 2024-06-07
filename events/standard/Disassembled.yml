@@ -1,0 +1,23 @@
+id: Disassembled
+description: Triggers when entity such as weapon/backpack gets disassembled. EH should be attached to the entity.<br>
+params:
+- name: entity
+  description: weapon this event is assigned to (just before is is moved out of the world)
+  type: Object
+- name: primaryBag
+  description: first backpack object which was entity disassembled into
+  type: Object
+- name: secondaryBag
+  description: second backpack object which was entity disassembled into
+  type: Object
+- name: unit
+  description: person who disassembled the weapon
+  type: Object
+since:
+  arma_3:
+    major: 2
+    minor: 0
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Disassembled\", {\n\tparams [\"_entity\", \"_primaryBag\", \"_secondaryBag\", \"_unit\"];\n}];"

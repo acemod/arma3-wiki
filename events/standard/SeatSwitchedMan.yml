@@ -1,0 +1,24 @@
+id: SeatSwitchedMan
+description: |-
+  Triggered when unit changes seat within vehicle. EH returns both units switching seats.
+  If switching seats with an empty seat, one of the returned units will be [[objNull]].
+  The new position can be obtained with [[assignedVehicleRole]] <unit>. This EH must be assigned to a unit and not a vehicle.
+  This EH is persistent and will be transferred to the new unit after respawn, but only if it was assigned where unit was local.
+params:
+- name: unit1
+  description: unit switching seat.
+  type: Object
+- name: unit2
+  description: unit with which unit1 is switching seat.
+  type: Object
+- name: vehicle
+  description: vehicle where switching seats is taking place.
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 58
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"SeatSwitchedMan\", {\n\tparams [\"_unit1\", \"_unit2\", \"_vehicle\"];\n}];"

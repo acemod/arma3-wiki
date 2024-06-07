@@ -1,0 +1,15 @@
+id: AttributesChanged3DEN
+description: |-
+  Fires when object's attributes are changed. Can happen when:
+  * Changing the attributes by dragging, rotating or using one of the widgets
+  * Changing and saving the attributes from within the attributes window
+  * When attributes get changed using scripting commands such as [[set3DENAttributes]] or [[set3DENAttribute]]
+  Unlike ''Dragged3DEN'' this event handler will not fire continuously but only when the attributes were changed '''and''' saved
+params:
+- name: object
+  description: affected object
+  type: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "edenObject addEventHandler [\"AttributesChanged3DEN\", {\n\tparams [\"_object\"];\n}];"

@@ -1,0 +1,33 @@
+id: Dammaged
+description: |-
+  Triggered when the unit is damaged. In ArmA works with all vehicles not only men like in OFP.
+  '''Notes:'''
+  * The typo is "intentional": it is Da'''mm'''aged with two "m".
+  * If simultaneous damage occured (e.g. via grenade) EH might be triggered several times.
+  * The Dammaged EH will not necessarily fire if only minor damage occurred (e.g. firing a bullet at a tank), even though the damage increased.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: hitSelection
+  description: name of the selection where the unit was damaged
+  type: String
+- name: damage
+  description: resulting level of damage
+  type: Number
+- name: hitPartIndex
+  description: hit index of the hit selection
+  type: Number
+- name: hitPoint
+  description: hit point Cfg name
+  type: String
+- name: shooter
+  description: shooter reference (to get instigator use [[getShotParents]] on projectile)
+  type: Object
+- name: projectile
+  description: the projectile that caused damage
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Dammaged\", {\n\tparams [\"_unit\", \"_selection\", \"_damage\", \"_hitIndex\", \"_hitPoint\", \"_shooter\", \"_projectile\"];\n}];"

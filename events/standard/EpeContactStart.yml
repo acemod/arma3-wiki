@@ -1,0 +1,32 @@
+id: EpeContactStart
+description: Triggered when object collision (PhysX) starts.
+params:
+- name: object1
+  description: object with attached handler
+  type: Object
+- name: object2
+  description: object which is colliding with object1
+  type: Object
+- name: select1
+  description: selection of object1 which is colliding - not in use at this moment, empty string is always returned
+  type: String
+- name: select2
+  description: selection of object2 which is colliding - not in use at this moment, empty string is always returned
+  type: String
+- name: force
+  description: force of collision
+  type: Number
+- name: reactVect
+  description: impact reaction force vector
+  type: Unknown
+- name: worldPos
+  description: point of impact in world coordinates
+  type: Unknown
+since:
+  arma_3:
+    major: 1
+    minor: 0
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"EpeContactStart\", {\n\tparams [\"_object1\", \"_object2\", \"_selection1\", \"_selection2\", \"_force\", \"_reactForce\", \"_worldPos\"];\n}];"

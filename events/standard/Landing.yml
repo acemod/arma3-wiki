@@ -1,0 +1,20 @@
+id: Landing
+description: Triggered when an AI pilot (or auto-pilot) is preparing for landing. The exact moment of triggering coincides with lowering of the gear ("Gear" EH)
+params:
+- name: plane
+  description: object the event handler is assigned to
+  type: Object
+- name: airportID
+  description: ID of the airport or aircraft carrier object
+  type: Unknown
+- name: isCarrier
+  description: true if landing on aircraft carrier
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 70
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Landing\", {\n\tparams [\"_plane\", \"_airportID\", \"_isCarrier\"];\n}];"

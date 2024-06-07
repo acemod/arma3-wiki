@@ -1,0 +1,34 @@
+id: ScriptError
+description: |-
+  Triggered when a script error occurs. See also the {{hl|{{Link|Arma 3: Startup Parameters#Developer Options|-showScriptErrors}}}} {{Link|Arma 3: Startup Parameters|startup parameter}}.
+  {{Feature|informative|
+  Event Handlers have a recursion check. Most of them have a level limit set to '''1''';
+  '''ScriptError''' has it set to '''2''' - meaning that an error occuring inside the Event Handler will trigger once more the EH, but no more than two times total.
+  }}
+params:
+- name: errorText
+  description: e.g. "Zero Divisor"
+  type: String
+- name: sourceFile
+  description: empty string if spawned [[Code]]
+  type: String
+- name: lineNumber
+  description: script's line number
+  type: Number
+- name: errorPos
+  description: script's error byte position in the script ''content''
+  type: Number
+- name: content
+  description: the whole script's [[Code]] as [[String]]
+  type: String
+- name: stackTraceOutput
+  description: see [[diag_stacktrace]] output
+  type: Unknown
+since:
+  arma_3:
+    major: 2
+    minor: 14
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"ScriptError\", {\n\tparams [\"_errorText\", \"_sourceFile\", \"_lineNumber\", \"_errorPos\", \"_content\", \"_stackTraceOutput\"];\n}];"

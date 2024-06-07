@@ -1,0 +1,22 @@
+id: RopeBreak
+description: |-
+  Triggered when a rope is detached from an object.<br>
+  In the case of sling loading, this event handler must be assigned to the helicopter and will trigger for each detached rope.
+params:
+- name: object 1
+  description: object to which the event handler is assigned.
+  type: Object
+- name: rope
+  description: the rope being detached between object 1 and object 2.
+  type: Object
+- name: object 2
+  description: the object that is being detached from object 1 via rope.
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 34
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"RopeBreak\", {\n\tparams [\"_object1\", \"_rope\", \"_object2\"];\n}];"

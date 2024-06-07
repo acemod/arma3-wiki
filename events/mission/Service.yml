@@ -1,0 +1,26 @@
+id: Service
+description: Executes assigned code when a serviced vehicle gets rearmed, repaired or refueled. The code executes with interval while the serviced vehicle receives service. If the code returns [[true]] the default on-screen service message is not shown.
+params:
+- name: serviceVehicle
+  description: service vehicle
+  type: Object
+- name: servicedVehicle
+  description: vehicle receiving service
+  type: Object
+- name: serviceType
+  description: 0 - MINOR REPAIR, 1 - REPAIR, 2 - REFUEL, 3 - REARM
+  type: Number
+- name: needsService
+  description: how much serviced vehicle [[needService | needsSevice]], 0..1 where 0 - no need, 1 - need a lot
+  type: Number
+- name: autoSupply
+  description: '[[true]] if supply started by proximity, [[false]] if supply started due to user action'
+  type: Boolean
+since:
+  arma_3:
+    major: 2
+    minor: 12
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"Service\", {\n\tparams [\"_serviceVehicle\", \"_servicedVehicle\", \"_serviceType\", \"_needsService\", \"_autoSupply\"];\n}];"

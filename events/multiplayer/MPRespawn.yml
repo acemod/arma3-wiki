@@ -1,0 +1,18 @@
+id: MPRespawn
+description: |-
+  Triggered when a unit, it is assigned to, respawns. This EH does not work as one would expect MP EH should work like.
+  It is only triggered on one machine where the unit it was assigned to is [[Multiplayer Scripting#Locality|local]].
+  The only difference between '''Respawn''' and '''MPRespawn''' is that '''MPRespawn''' can be assigned from anywhere while '''Respawn''' requires the unit to be local.<br><br>
+  MPRespawn EH expects the EH code to return array in format of [[Position]], which will be used to place respawned unit at desired coordinates.<br>
+  For example: <sqf inline>player addMPEventHandler ["MPRespawn", { [1234, 1234, 0] }];</sqf> will place player at [1234,1234,0] immediately on respawn.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: corpse
+  description: object the event handler was assigned to, aka the corpse/unit player was previously controlling.
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addMPEventHandler [\"MPRespawn\", {\n\tparams [\"_unit\", \"_corpse\"];\n}];"

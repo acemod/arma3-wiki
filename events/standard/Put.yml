@@ -1,0 +1,23 @@
+id: Put
+description: |-
+  Triggers when a unit puts an item in a container.
+  {{GVI|arma3|2.14|size= 0.75}} This event handler can be added to a container.
+  {{Feature|informative|This EH could also trigger when unit replaces magazine in weapon with another magazine from unit containers (uniform, vest, backpack) during reload.}}
+params:
+- name: unit
+  description: unit who put the item in the container
+  type: Object
+- name: container
+  description: the container into which the item was placed (vehicle, box, etc.)
+  type: Object
+- name: item
+  description: the class name of the moved item
+  type: String
+since:
+  arma_3:
+    major: 0
+    minor: 56
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Put\", {\n\tparams [\"_unit\", \"_container\", \"_item\"];\n}];"

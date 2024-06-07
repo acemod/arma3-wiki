@@ -1,0 +1,19 @@
+id: HandleRating
+description: |-
+  Triggered when engine adds rating to overall rating of the unit, usually after a kill or a friendly kill.
+  If EH code returns [[Number]], this will override default engine behaviour and the resulting value added will be the one returned by EH code.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: rating
+  description: rating to be added
+  type: Number
+since:
+  arma_3:
+    major: 1
+    minor: 32
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"HandleRating\", {\n\tparams [\"_unit\", \"_rating\"];\n}];"

@@ -1,0 +1,24 @@
+id: HandleScore
+description: |-
+  Triggered when engine adds score to overall score of the unit, usually after a kill.
+  If the EH code returns [[Nothing]] or [[true]], the default engine scoreboard update (score, vehicle kills, infantry kills, etc) is applied, if it returns [[false]], the engine update is cancelled. To add or modify score, use [[addScore]] and [[addScoreSide]] commands.
+  For remote units like players, the event does not persist after respawn, and must be re-added to the new unit. <br><br>
+  '''NOTE:''' MP only.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: object
+  description: object for which score was awarded
+  type: Object
+- name: score
+  description: score to be added
+  type: Number
+since:
+  arma_3:
+    major: 1
+    minor: 32
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"HandleScore\", {\n\tparams [\"_unit\", \"_object\", \"_score\"];\n}];"

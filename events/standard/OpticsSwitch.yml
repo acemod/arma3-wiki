@@ -1,0 +1,19 @@
+id: OpticsSwitch
+description: |-
+  Triggers at the start of the camera transition from GUNNER to INTERNAL/EXTERNAL and vice-versa.
+  So anytime the right mouse button is pressed and there is a GUNNER view available or are currently in it, this triggers. Works in vehicles and FFV as well. See also [[cameraView]].
+params:
+- name: unit
+  description: the unit
+  type: Object
+- name: isADS
+  description: if the new view is GUNNER
+  type: Boolean
+since:
+  arma_3:
+    major: 2
+    minor: 10
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"OpticsSwitch\", {\n\tparams [\"_unit\", \"_isADS\"];\n}];"

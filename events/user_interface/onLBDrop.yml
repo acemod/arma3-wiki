@@ -1,0 +1,13 @@
+id: onLBDrop
+description: |-
+  * '''Use on:''' Listbox, Combobox, Textbox, ActiveText, Button, ControlsGroup
+  * '''Fired on:''' When a Drag & drop operation is finished.
+  * '''Returns:''' Returns the control, the x and y coordinates in screen space, listbox IDC where item(s) were dragged from and an array of arrays of information on the dropped item(s) (if listbox is of style LB_MULTI then multiple items can be dragged and dropped at the same time).<br>When the Listbox is inside a [[CT_CONTROLS_GROUP]] the Event Handler needs to be added to the [[CT_CONTROLS_GROUP]].<br>Will only work for a [[CT_CONTROLS_GROUP]] that is outside of any other group.
+params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- |-
+  params ["_control", "_xPos", "_yPos", "_listboxIDC", "_listboxInfo"];
+  //Get info of first item being dropped:
+  (_listboxInfo select 0) params ["_lbText", "_lbValue", "_lbData"];

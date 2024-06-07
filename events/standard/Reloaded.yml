@@ -1,0 +1,26 @@
+id: Reloaded
+description: 'Triggers when a weapon is reloaded with a new magazine. For more information see: [[Arma 3: Event Handlers/Reloaded|Reloaded]]'
+params:
+- name: unit
+  description: unit or vehicle to which EH is assigned
+  type: Object
+- name: weapon
+  description: weapon that got reloaded
+  type: String
+- name: muzzle
+  description: weapon's muzzle that got reloaded
+  type: String
+- name: newMagazine
+  description: new magazine info
+  type: Unknown
+- name: oldMagazine
+  description: old magazine info
+  type: Unknown
+since:
+  arma_3:
+    major: 1
+    minor: 58
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Reloaded\", {\n\tparams [\"_unit\", \"_weapon\", \"_muzzle\", \"_newMagazine\", \"_oldMagazine\"];\n}];"

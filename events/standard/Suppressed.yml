@@ -1,0 +1,32 @@
+id: Suppressed
+description: Triggers when enemy projectile is passing by closer than defined suppression radius ammo value in config. Can be made to trigger for the same side if the side is set as enemy to itself (with [[setFriend]]).
+params:
+- name: unit
+  description: unit to which the event is assigned
+  type: Object
+- name: distance
+  description: distance of the projectile pass-by
+  type: Number
+- name: shooter
+  description: who (or what) fired - vehicle or drone
+  type: Object
+- name: instigator
+  description: who pressed the trigger. Instigator is different from the shooter when player is operator of UAV for example
+  type: Object
+- name: ammoObject
+  description: the ammunition itself
+  type: Object
+- name: ammoClassName
+  description: the ammunition's classname
+  type: String
+- name: ammoConfig
+  description: the ammunition's [[CfgAmmo Config Reference|CfgAmmo]] config path
+  type: Config
+since:
+  arma_3:
+    major: 2
+    minor: 2
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Suppressed\", {\n\tparams [\"_unit\", \"_distance\", \"_shooter\", \"_instigator\", \"_ammoObject\", \"_ammoClassName\", \"_ammoConfig\"];\n}];"

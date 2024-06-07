@@ -1,0 +1,23 @@
+id: OnEntityParentChanged
+description: |-
+  Fires when the parent of an entity changes. For example, creating waypoints, moving entities into layers or out of layers.
+  It seems that this EH always fires twice. First event returns [[objNull]] for _newParentEntityID.
+  ** [[Array]] - waypoint
+  ** [[Object]] - trigger, unit, vehicle, logic
+  ** [[String]] - marker
+  ** [[Number]] - layer
+  ** [[Number]]- the new parent entity
+  ** [[objNull]] - If new parent entity is a system layer.
+params:
+- name: affectedEntity
+  type: Unknown
+- name: newParentEntityID
+  type: Unknown
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "add3DENEventHandler [\"OnEntityParentChanged\", {\n\tparams [\"_affectedEntity\", \"_newParentEntityID\"]\n}];"

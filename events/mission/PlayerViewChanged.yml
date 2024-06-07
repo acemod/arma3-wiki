@@ -1,0 +1,29 @@
+id: PlayerViewChanged
+description: Fired on player view change. Player view changes when player is changing body due to [[teamSwitch]], gets in out of a vehicle or operates UAV for example.
+params:
+- name: oldUnit
+  description: player body before EH fired
+  type: Object
+- name: newUnit
+  description: player body after EH fired
+  type: Object
+- name: vehicleIn
+  description: vehicle player is in ([[objNull]] if not in vehicle)
+  type: Object
+- name: oldCameraOn
+  description: '[[cameraOn]] before EH fired'
+  type: Object
+- name: newCameraOn
+  description: '[[cameraOn]] after EH fired'
+  type: Object
+- name: uav
+  description: UAV reference if player is operating one ([[objNull]] if not operating UAV)
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 66
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"PlayerViewChanged\", {\n\tparams [\n\t\t\"_oldUnit\", \"_newUnit\", \"_vehicleIn\",\n\t\t\"_oldCameraOn\", \"_newCameraOn\", \"_uav\"\n\t];\n}];"

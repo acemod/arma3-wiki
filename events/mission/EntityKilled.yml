@@ -1,0 +1,27 @@
+id: EntityKilled
+description: |-
+  Triggered when an entity is killed.
+  ----
+  It's worth noting that ''instigator'' param is [[objNull]] during road kill. To work around this issue try:
+params:
+- name: unit
+  description: entity that was killed
+  type: Object
+- name: killer
+  description: the killer (vehicle or person)
+  type: Object
+- name: instigator
+  description: person who pulled the trigger
+  type: Object
+- name: useEffects
+  description: same as ''useEffects'' in [[setDamage]] alt syntax
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 56
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"EntityKilled\", {\n\tparams [\"_unit\", \"_killer\", \"_instigator\", \"_useEffects\"];\n}];"
+- "addMissionEventHandler [\"EntityKilled\", {\n\tparams [\"_killed\", \"_killer\", \"_instigator\"];\n\tif (isNull _instigator) then { _instigator = UAVControl vehicle _killer select 0 }; // UAV/UGV player operated road kill\n\tif (isNull _instigator) then { _instigator = _killer }; // player driven vehicle road kill\n\thint format [\"Killed By %1\", name _instigator];\n}];"

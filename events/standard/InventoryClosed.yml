@@ -1,0 +1,18 @@
+id: InventoryClosed
+description: Triggered when the unit closes inventory. Said unit can be non-local when adding the EH, but '''must''' be local for the EH to trigger.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: targetContainer
+  description: connected container or weaponholder
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 22
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"InventoryClosed\", {\n\tparams [\"_unit\", \"_container\"];\n}];"
+- "// Delete dropped items when inventory closed\nplayer addEventHandler [\"InventoryClosed\", {\n\tparams [\"_unit\", \"_container\"];\n\tif (_container isKindOf \"WeaponHolder\") then\n\t{\n\t\tdeleteVehicle _container;\n\t};\n}];"

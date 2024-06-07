@@ -1,0 +1,20 @@
+id: BuildingChanged
+description: Fired each time a building model changes, for example due to stages of destruction.
+params:
+- name: from
+  description: building it changes from
+  type: Object
+- name: to
+  description: building it changes to
+  type: Object
+- name: isRuin
+  description: '[[true]] if changes to ruins'
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 68
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"BuildingChanged\", {\n\tparams [\"_from\", \"_to\", \"_isRuin\"];\n}];"

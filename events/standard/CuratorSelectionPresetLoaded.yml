@@ -1,0 +1,15 @@
+id: CuratorSelectionPresetLoaded
+description: Triggered when a selection preset is loaded using the respective number key or through script.
+params:
+- name: curator
+  type: Object
+- name: numkey
+  type: Number
+since:
+  arma_3:
+    major: 2
+    minor: 14
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"CuratorSelectionPresetLoaded\", {\n\tparams [\"_curator\", \"_numkey\"];\n}];"

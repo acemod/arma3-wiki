@@ -1,0 +1,22 @@
+id: IncomingMissile
+description: Triggered when a unit fires a missile or rocket at the target. For projectiles fired by players this EH only triggers for guided missiles that have locked onto the target.
+params:
+- name: target
+  description: object the event handler is assigned to
+  type: Object
+- name: ammo
+  description: ammo type that was fired on the target
+  type: String
+- name: vehicle
+  description: vehicle that fired the weapon. In case of soldier, unit is returned
+  type: Object
+- name: instigator
+  description: person who pulled the trigger
+  type: Object
+- name: missile
+  description: the incoming missile
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"IncomingMissile\", {\n\tparams [\"_target\", \"_ammo\", \"_vehicle\", \"_instigator\", \"_missile\"];\n}];"

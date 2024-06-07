@@ -1,0 +1,40 @@
+id: Fired
+description: |-
+  Triggered when the unit fires a weapon.<br>
+  This EH will not trigger if a unit fires out of a vehicle. For those cases an EH has to be attached to that particular vehicle.
+  When "Manual Fire" is used, the ''gunner'' is [[objNull]] if gunner is not present or the ''gunner'' is not the one who fires.
+  To check if "Manual Fire" is on, use [[isManualFire]]. The actual shot instigator could be retrieved with [[getShotParents]] command.<br>
+  {{Feature|warning|
+  '''Special multiplayer behaviour:''' When added to a remote unit or vehicle, this EH will only fire if said entity is within range of the camera.
+  That range is determined by the fired ammo's highest visibleFire and audibleFire config value.
+  In case of units, muzzle attachment coefficients are applied too.
+  }}
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: weapon
+  description: fired weapon
+  type: String
+- name: muzzle
+  description: muzzle that was used
+  type: String
+- name: mode
+  description: current mode of the fired weapon
+  type: String
+- name: ammo
+  description: ammo used
+  type: String
+- name: magazine
+  description: magazine name which was used
+  type: String
+- name: projectile
+  description: object of the projectile that was shot out
+  type: Object
+- name: gunner
+  description: gunner whose weapons are firing.
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Fired\", {\n\tparams [\"_unit\", \"_weapon\", \"_muzzle\", \"_mode\", \"_ammo\", \"_magazine\", \"_projectile\", \"_gunner\"];\n}];"

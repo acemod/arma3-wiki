@@ -1,0 +1,43 @@
+id: PlayerConnected
+description: |-
+  Executes assigned code when client joins the mission in MP. Stackable version of [[onPlayerConnected]].
+  ----
+  If dedicated server was started without '-autoInit' option and this EH was created on server, on first GUI client this EH also fires against server, but after first client.
+  In mission's {{hl|initServer.sqf}}:
+  In RPT:
+   2016/12/16, 15:39:09 "Client connected"
+   2016/12/16, 15:39:09 [1.51343e+009,"7xxxxxxxxxxxxxxx1","longbow",false,3,"1513430065"]
+   2016/12/16, 15:39:34  Mission id: 5071d20b183e9580d0ee4f95f413ca18681d6165
+   2016/12/16, 15:39:34 "Client connected"
+   2016/12/16, 15:39:34 [2,"","__SERVER__",false,2,"2"]
+  That happens only for GUI clients, if HC client connects first, EH does not fire for server.<br>
+  If dedicated server was started with -autoInit option, this EH does not fire against server, only for future clients, and all further clients appear to be JIP'ed.<br>
+  Interesting moment for headless clients, for headless clients instead of [[getPlayerUID]], handler gets string like "HC12160", where '12160' is headless client process ID (matches HC's PID observed in windows task manager)
+params:
+- name: id
+  description: unique DirectPlay ID (very large number). It is also the same id used for user placed markers (same as {{hl|_id}} param)
+  type: Number
+- name: uid
+  description: '[[getPlayerUID]] of the joining client. The same as Steam ID (same as {{hl|_uid}} param)'
+  type: String
+- name: name
+  description: '[[profileName]] of the joining client (same as {{hl|_name}} param)'
+  type: String
+- name: jip
+  description: '[[didJIP]] of the joining client (same as {{hl|_jip}} param)'
+  type: Boolean
+- name: owner
+  description: '[[owner]] id of the joining client (same as {{hl|_owner}} param)'
+  type: Number
+- name: idstr
+  description: same as id but in string format, so could be exactly compared to [[allMapMarkers | user marker]] ids
+  type: String
+since:
+  arma_3:
+    major: 1
+    minor: 58
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"PlayerConnected\", {\n\tparams [\"_id\", \"_uid\", \"_name\", \"_jip\", \"_owner\", \"_idstr\"];\n}];"
+- "addMissionEventHandler [\"PlayerConnected\", {\n\tdiag_log \"Client connected\";\n\tdiag_log _this;\n}];"

@@ -1,0 +1,11 @@
+id: CuratorObjectDeleted
+description: Triggered when an object is deleted in curator interface.
+params:
+- name: curator
+  type: Object
+- name: entity
+  type: Object
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"CuratorObjectDeleted\", {\n\tparams [\"_curator\", \"_entity\"];\n}];"

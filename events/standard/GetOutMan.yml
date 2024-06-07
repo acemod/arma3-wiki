@@ -1,0 +1,28 @@
+id: GetOutMan
+description: |-
+  Triggers when a unit exits a vehicle. Similar to "GetOut" but must be assigned to a unit and not vehicle.
+  Persistent on respawn if assigned where unit was [[Multiplayer Scripting#Locality|local]]. This EH is triggered by [[moveOut]] and "GetOut" & "Eject" [[action]]s.
+params:
+- name: unit
+  description: unit the event handler is assigned to
+  type: Object
+- name: role
+  description: can be either "driver", "gunner" or "cargo"
+  type: String
+- name: vehicle
+  description: vehicle that the unit left
+  type: Object
+- name: turret
+  description: turret path
+  type: Unknown
+- name: isEject
+  description: '[[true]] if unit used ''Eject'' action'
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 58
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"GetOutMan\", {\n\tparams [\"_unit\", \"_role\", \"_vehicle\", \"_turret\", \"_isEject\"];\n}];"

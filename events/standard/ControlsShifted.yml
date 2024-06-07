@@ -1,0 +1,22 @@
+id: ControlsShifted
+description: |-
+  Triggers when control of a vehicle is shifted (pilot->co-pilot, co-pilot->pilot), usually when user performs an [[action]] such as [[action/Arma_3_Actions_List#TakeVehicleControl | TakeVehicleControl]], [[action/Arma_3_Actions_List#SuspendVehicleControl | SuspendVehicleControl]], [[action/Arma_3_Actions_List#UnlockVehicleControl | UnlockVehicleControl]], [[action/Arma_3_Actions_List#LockVehicleControl | LockVehicleControl]], or when [[enableCopilot]] command is used. This event handler will always fire on the PC where [[action]] is triggered as well as where the vehicle is [[Multiplayer Scripting#Locality|local]] at the time. When control of the vehicle is shifted, the locality of the vehicle changes to the locality of the new controller. For example, if helicopter is [[Multiplayer Scripting#Locality|local]] to the server and co-pilot takes controls, the helicopter changes locality to co-pilot PC.
+  This means that if "ControlsShifted" EH was added on both server and client, "Take Controls" action will trigger EH on both, client and server PC, but subsequent co-pilot "Release Controls" action will trigger only on co-pilot's PC, because vehicle will be local to co-pilot at this point. There is also a slightly better mission version of [[Arma 3: Mission Event Handlers#ControlsShifted | ControlsShifted]] event handler.
+params:
+- name: vehicle
+  description: vehicle which controls were shifted
+  type: Object
+- name: activeCoPilot
+  description: co-pilot unit which controls vehicle after this event. [[objNull]] if co-pilot is not controlling the vehicle
+  type: Object
+- name: oldController
+  description: unit who controlled vehicle before this event
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 0
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"ControlsShifted\", {\n\tparams [\"_vehicle\", \"_activeCoPilot\", \"_oldController\"];\n}];"

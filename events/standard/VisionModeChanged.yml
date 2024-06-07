@@ -1,0 +1,32 @@
+id: VisionModeChanged
+description: Triggers when the assigned vehicle/unit's vision mode has changed.
+params:
+- name: person
+  description: unit for whom the vision mode changes
+  type: Object
+- name: visionMode
+  description: '[[currentVisionMode|vision mode index]]'
+  type: Number
+- name: TIindex
+  description: '[[setCamUseTI|thermal vision mode index]]; will return -1 when ''''visionMode'''' is not 2'
+  type: Number
+- name: visionModePrev
+  description: last vision mode
+  type: Number
+- name: TIindexPrev
+  description: last TI mode; will return -1 when ''visionModePrev'' is not 2
+  type: Number
+- name: vehicle
+  description: if unit is in a vehicle or controlling a UAV, this will be the vehicle
+  type: Object
+- name: turret
+  description: turret path to the turret occupied by the unit, or [] if not on turret
+  type: Unknown
+since:
+  arma_3:
+    major: 2
+    minor: 8
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "player addEventHandler [\"VisionModeChanged\", {\n\tparams [\"_person\", \"_visionMode\", \"_TIindex\", \"_visionModePrev\", \"_TIindexPrev\", \"_vehicle\", \"_turret\"];\n}];"

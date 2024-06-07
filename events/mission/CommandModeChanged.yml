@@ -1,0 +1,17 @@
+id: CommandModeChanged
+description: Executes assigned code when user switches to/from HC command mode ({{Controls|LShift|Space}}). Stackable version of [[onCommandModeChanged]].
+params:
+- name: isHighCommand
+  description: same as {{hl|_isHighCommand}} param
+  type: Boolean
+- name: isForced
+  description: '[[true]] if command mode was forced'
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 58
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"CommandModeChanged\", {\n\tparams [\"_isHighCommand\", \"_isForced\"];\n}];"

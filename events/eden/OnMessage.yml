@@ -1,0 +1,19 @@
+id: OnMessage
+description: |-
+  Handler used for showing on-screen notifications, triggered by various range of events.
+  Message IDs:
+  * 0 - Mission saved
+  * 1 - Mission autosaved
+  * 2 - Trying to move a character into full vehicle
+  * 3 - Moved character into enemy vehicle
+  * 4 - Trying to run mission without any player
+  * 5 - Mission exported to SP
+  * 6 - Mission exported to MP
+  * 7 - Attempting to delete a default layer
+params:
+- name: messageID
+  type: Number
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "add3DENEventHandler [\"OnMessage\", {\n\tparams [\"_messageID\"];\n}];"

@@ -1,0 +1,20 @@
+id: TurnIn
+description: Triggers when member of crew in a vehicle uses Turn In [[action]]
+params:
+- name: vehicle
+  description: the vehicle the event handler is assigned to
+  type: Object
+- name: unit
+  description: the unit performing the Turn In action
+  type: Object
+- name: turret
+  description: turret path
+  type: Unknown
+since:
+  arma_3:
+    major: 1
+    minor: 66
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"TurnIn\", {\n\tparams [\"_vehicle\", \"_unit\", \"_turret\"];\n}];"

@@ -1,0 +1,11 @@
+id: OnBeforeMissionPreview
+description: Runs before the scenario preview is started. If an event handler of this type returns [[true]], the mission preview will not be initialised.
+params: []
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "add3DENEventHandler [\"OnBeforeMissionPreview\", {\n\tparams [\"_isPreviewMultiplayer\"];\n}];"

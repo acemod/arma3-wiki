@@ -1,0 +1,36 @@
+id: SoundPlayed
+description: |-
+  Triggered when player is making noises when injured or fatigued for example. The number param passed to the EH code, points to the sound origin:
+  {{Columns|4|
+  # Breath
+  # Breath Injured
+  # Breath Scuba
+  # Injured
+  # Pulsation
+  # Hit Scream
+  # Burning
+  # Drowning
+  # Drown
+  # Gasping
+  # Stabilizing
+  # Healing
+  # Healing With Medikit
+  # Recovered
+  # Breath Held
+  }}
+  {{Feature|informative|Since {{GVI|arma3|2.12}} returning a [[Number]] from last added EH in range from 0 to 5 will alter the volume of played sound from mute to max volume.}}
+params:
+- name: unit
+  description: Unit to which the event handler is assigned
+  type: Object
+- name: soundID
+  description: sound origin
+  type: Number
+since:
+  arma_3:
+    major: 0
+    minor: 56
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"SoundPlayed\", {\n\tparams [\"_unit\", \"_soundID\"];\n}];"

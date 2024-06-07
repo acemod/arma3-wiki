@@ -1,0 +1,19 @@
+id: PostInit
+description: |-
+  Triggered whenever an entity is created and initialized. Cannot be used in scripts, only inside class Eventhandlers in config.
+  {{Feature|important|It is recommended to use this event handler instead of the {{Link|#Init}} one when setting entity textures ([[setObjectTexture]], [[BIS_fnc_initVehicle]] etc) to avoid networking issues.}}
+  e.g:
+  <syntaxhighlight lang="cpp">postInit = "params ['_entity'];";</syntaxhighlight>
+  <syntaxhighlight lang="cpp">postinit = "params ['_entity']; if (local _entity) then { [_entity, '', [], false] call BIS_fnc_initVehicle };";</syntaxhighlight>
+params:
+- name: entity
+  description: object the event handler is assigned to
+  type: Object
+since:
+  arma_3:
+    major: 2
+    minor: 6
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- params ["_entity"];

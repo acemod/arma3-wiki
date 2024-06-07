@@ -1,0 +1,18 @@
+id: Engine
+description: |-
+  Triggered when the engine of the unit is turned on/off.
+  {{Feature|informative|
+  Although the event is global, on clients (non-server) and applied to remote vehicles, it will fire only if the vehicle is closer than about 6 km from the camera.
+  Should the vehicle be far away, it will fire as soon as the camera and vehicle are close enough together, alongside the [[isEngineOn]] flag change.
+  }}
+params:
+- name: vehicle
+  description: vehicle the event handler is assigned to
+  type: Object
+- name: engineState
+  description: true when the engine is turned on, false when turned off
+  type: Boolean
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Engine\", {\n\tparams [\"_vehicle\", \"_engineState\"];\n}];"

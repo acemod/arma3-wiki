@@ -1,0 +1,13 @@
+id: AnimChanged
+description: Triggered every time a new animation is started. This EH is only triggered for the 1st animation state in a sequence.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: anim
+  description: name of the anim that is started
+  type: String
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"AnimChanged\", {\n\tparams [\"_unit\", \"_anim\"];\n}];"

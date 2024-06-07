@@ -1,0 +1,24 @@
+id: HitExplosion
+description: |-
+  ** position: [[Array]] format [[Position#PositionASL|PositionASL]] - position of impact
+  ** vector: [[Array]] format [[Vector3D]] - vector that is orthogonal (perpendicular) to the surface struck. For example, if a wall was hit, vector would be pointing out of the wall at a 90 degree angle
+  ** selection: [[String]] - Named selection of the object that was hit, in the FireGeometry LOD.
+  ** radius: [[Number]] - radius (size) of component hit
+  ** surface: [[String]] - surface type struck
+params:
+- name: projectile
+  type: Object
+- name: hitEntity
+  type: Object
+- name: projectileOwner
+  type: Object
+- name: hitSelections
+  description: 'Same list of FireGeometry components that [[#HitPart|entity HitPart]] gets but only contains:'
+  type: Unknown
+- name: instigator
+  description: shot instigator
+  type: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "_projectile addEventHandler [\"HitExplosion\", {\n\tparams [\"_projectile\", \"_hitEntity\", \"_projectileOwner\", \"_hitSelections\", \"_instigator\"];\n}];"

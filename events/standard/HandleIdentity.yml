@@ -1,0 +1,14 @@
+id: HandleIdentity
+description: |-
+  Triggered whenever an entity is created. Can be used in scripts if EH is added immediately after unit is created in [[Scheduler#Unscheduled_Environment|unscheduled environment]].
+  Doesn't trigger for editor placed units. Does not work in Multiplayer. If EH scope returns [[true]], the default engine identity application is overridden.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- |-
+  bob = group player createUnit [typeOf player, position player, [], 0, "none"];
+  bob addEventHandler ["HandleIdentity", { hint str _this }];

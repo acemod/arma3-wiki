@@ -1,0 +1,26 @@
+id: OnUserKicked
+description: 'Executes assigned code after after a user has been kicked from the server providing kick reason. The possible values for ''kickTypeNumber'' and ''kickType'' are:<br>0 : {{hl|"TIMEOUT"}}, 1 : {{hl|"DISCONNECTED"}}, 2 : {{hl|"KICKED"}}, 3 : {{hl|"BANNED"}}, 4 : {{hl|"MISSING ADDON"}}, 5 : {{hl|"BAD CD KEY"}}, 6 : {{hl|"CD KEY IN USE"}}, 7 : {{hl|"SESSION LOCKED"}}, 8 : {{hl|"BATTLEYE"}}, 9 : {{hl|"STEAM CHECK"}}, 10 : {{hl|"DLC CONTENT"}}, 11 : {{hl|"GS TIMEOUT"}}, 12 : {{hl|"SCRIPT"}}, 13 : {{hl|"OTHER"}}'
+params:
+- name: networkId
+  description: user network id (see [[getPlayerID]], [[allUsers]])
+  type: String
+- name: kickTypeNumber
+  description: kick type number (see above)
+  type: Number
+- name: kickType
+  description: kick type (see above)
+  type: String
+- name: kickReason
+  description: reason given for the kick by the admin or by other means
+  type: String
+- name: kickMessageIncReason
+  description: formatted engine message including the given reason
+  type: String
+since:
+  arma_3:
+    major: 2
+    minor: 6
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"OnUserKicked\", {\n\tparams [\"_networkId\", \"_kickTypeNumber\", \"_kickType\", \"_kickReason\", \"_kickMessageIncReason\"];\n}];"

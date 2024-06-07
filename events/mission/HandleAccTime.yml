@@ -1,0 +1,20 @@
+id: HandleAccTime
+description: Fires when user changes time acceleration with +/- keys in SP or [[setAccTime]] command. If the code returns [[true]] the on-screen message confirming the change is not displayed. Doesn't fire if desired value is already set.
+params:
+- name: currentTimeAcc
+  description: current value
+  type: Number
+- name: prevTimeAcc
+  description: previous value
+  type: Number
+- name: messageSuppressed
+  description: '[[true]] if on-screen message was suppressed'
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 90
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"HandleAccTime\", {\n\tparams [\"_currentTimeAcc\", \"_prevTimeAcc\", \"_messageSuppressed\"];\n}];"

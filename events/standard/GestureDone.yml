@@ -1,0 +1,17 @@
+id: GestureDone
+description: Triggered every time a gesture is finished.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: gesture
+  description: name of the gesture that has been finished
+  type: String
+since:
+  arma_3:
+    major: 2
+    minor: 6
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"GestureDone\", {\n\tparams [\"_unit\", \"_gesture\"];\n}];"

@@ -1,0 +1,23 @@
+id: OpticsModeChanged
+description: Triggers everytime a local unit changes optic mode. This could be either through the [[setOpticsMode]] command or by the player switching to the next optic mode using e.g {{Controls|NUM /}} or {{Controls|Ctrl|RMB}}.
+params:
+- name: unit
+  description: the unit
+  type: Object
+- name: opticsClass
+  type: String
+- name: newMode
+  type: String
+- name: oldMode
+  type: String
+- name: isADS
+  description: if the new view is GUNNER
+  type: Boolean
+since:
+  arma_3:
+    major: 2
+    minor: 10
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"OpticsModeChanged\", {\n\tparams [\"_unit\", \"_opticsClass\", \"_newMode\", \"_oldMode\", \"_isADS\"];\n}];"

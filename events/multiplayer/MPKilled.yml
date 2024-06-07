@@ -1,0 +1,21 @@
+id: MPKilled
+description: |-
+  Triggered when the unit is killed. EH can be added on any machine and EH code will trigger globally '''on every connected client and server'''.
+  This EH has a safeguard measure so that even if it's added on all clients or a single client that is then disconnected, EH will still trigger globally only once per client.
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: killer
+  description: object that killed the unit. Contains the unit itself in case of collisions
+  type: Object
+- name: instigator
+  description: person who pulled the trigger
+  type: Object
+- name: useEffects
+  description: same as ''useEffects'' in [[setDamage]] alt syntax
+  type: Boolean
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addMPEventHandler [\"MPKilled\", {\n\tparams [\"_unit\", \"_killer\", \"_instigator\", \"_useEffects\"];\n}];"

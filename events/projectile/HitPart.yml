@@ -1,0 +1,32 @@
+id: HitPart
+description: |-
+  Triggered when the projectile hits any surface.
+  {{Feature|important|Only triggers for direct hits and not splash damage, unlike [[#HitPart|entity HitPart]]. For splash damage, use [[#HitExplosion|HitExplosion]].}}
+params:
+- name: projectile
+  type: Object
+- name: hitEntity
+  type: Object
+- name: projectileOwner
+  type: Object
+- name: pos
+  type: Unknown
+- name: velocity
+  type: Unknown
+- name: normal
+  type: Unknown
+- name: components
+  description: The selections that were hit, in the FireGeometry LOD.
+  type: Unknown
+- name: radius
+  description: radius (size) of the hitPoint
+  type: Number
+- name: surfaceType
+  type: String
+- name: instigator
+  description: shot instigator
+  type: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "_projectile addEventHandler [\"HitPart\", {\n\tparams [\"_projectile\", \"_hitEntity\", \"_projectileOwner\", \"_pos\", \"_velocity\", \"_normal\", \"_components\", \"_radius\" ,\"_surfaceType\", \"_instigator\"];\n}];"

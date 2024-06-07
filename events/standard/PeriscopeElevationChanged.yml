@@ -1,0 +1,26 @@
+id: PeriscopeElevationChanged
+description: Fires every frame during periscope elevation animation.
+params:
+- name: vehicle
+  description: the vehicle this EH is assigned to
+  type: Object
+- name: turret
+  description: the turret which periscope is changing elevation
+  type: Unknown
+- name: elevation
+  description: current periscope elevation (changes with each simulation). See also [[periscopeElevation]], [[elevatePeriscope]]
+  type: Number
+- name: direction
+  description: 1:moves up, 0:stopped, -1:moves down; when {{hl|direction}} returns 0, this also means the event handler fired for the last time for this elevation.
+  type: Number
+- name: userIsBlocked
+  description: whether or not the user ability to override is blocked. See also [[periscopeElevation]], [[elevatePeriscope]]
+  type: Boolean
+since:
+  arma_3:
+    major: 2
+    minor: 0
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"PeriscopeElevationChanged\", {\n\tparams [\"_vehicle\", \"_turret\", \"_elevation\", \"_direction\", \"_userIsBlocked\"];\n}];"

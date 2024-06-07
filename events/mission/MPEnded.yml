@@ -1,0 +1,14 @@
+id: MPEnded
+description: |-
+  Triggered when the server switches off from "playing" state (mission ends, server closes, etc.) It's only for MP games, it is called on server and also on clients. It is not called on clients when client disconnects from server (and mission continues). This EH has no arguments passed to the code.
+  If client code must be executed on disconnect, this code can be used instead:
+params: []
+since:
+  arma_3:
+    major: 1
+    minor: 60
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"MPEnded\", {\n\t// no params\n}];"
+- "0 spawn\n{\n\twaitUntil { !isNull findDisplay 46 };\n\tfindDisplay 46 displayAddEventHandler [\"Unload\",\n\t{\n\t\t// code here gets executed on the client at end of mission, whether due to player abort, loss of connection, or mission ended by server; might not work on headless clients\n\t}];\n};"

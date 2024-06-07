@@ -1,0 +1,35 @@
+id: GroupIconOverLeave
+description: Executes assigned code when user moves the pointer away from HC group icon it was over. Fires either for on the HUD icons or the main map HC icons. [[groupIconSelectable]] must be set to [[true]] for this EH to work at all. To set group icon selectable use [[setGroupIconsSelectable]]. Stackable version of [[onGroupIconOverLeave]].
+params:
+- name: is3D
+  description: '[[true]] if HUD icon, [[false]] if main map icon'
+  type: Boolean
+- name: group
+  description: group the icon belonds to
+  type: Group
+- name: waypointId
+  description: waypoint ID
+  type: Number
+- name: posX
+  description: screen X of the mouse
+  type: Number
+- name: posY
+  description: screen Y of the mouse (Y is always 0 when leaving HUD icon for some reason)
+  type: Number
+- name: shift
+  description: '[[true]] if {{Controls|Shift}} key was pressed'
+  type: Boolean
+- name: ctrl
+  description: '[[true]] if {{Controls|Ctrl}} key was pressed'
+  type: Boolean
+- name: alt
+  description: '[[true]] if {{Controls|Alt}} key was pressed'
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 58
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"GroupIconOverLeave\", {\n\tparams [\n\t\t\"_is3D\", \"_group\", \"_waypointId\",\n\t\t\"_posX\", \"_posY\",\n\t\t\"_shift\", \"_control\", \"_alt\"\n\t];\n}];"

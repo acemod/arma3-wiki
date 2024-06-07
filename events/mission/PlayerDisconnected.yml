@@ -1,0 +1,29 @@
+id: PlayerDisconnected
+description: Executes assigned code when client leaves the mission in MP. Stackable version of [[onPlayerDisconnected]].
+params:
+- name: id
+  description: unique DirectPlay ID (very large number). It is also the same id used for user placed markers (same as {{hl|_id}} param)
+  type: Number
+- name: uid
+  description: '[[getPlayerUID]] of the leaving client. The same as Steam ID (same as {{hl|_uid}} param)'
+  type: String
+- name: name
+  description: '[[profileName]] of the leaving client (same as {{hl|_name}} param)'
+  type: String
+- name: jip
+  description: '[[didJIP]] of the leaving client (same as {{hl|_jip}} param)'
+  type: Boolean
+- name: owner
+  description: '[[owner]] id of the leaving client (same as {{hl|_owner}} param)'
+  type: Number
+- name: idstr
+  description: same as id but in string format, so could be exactly compared to [[allMapMarkers | user marker]] ids
+  type: String
+since:
+  arma_3:
+    major: 1
+    minor: 58
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"PlayerDisconnected\", {\n\tparams [\"_id\", \"_uid\", \"_name\", \"_jip\", \"_owner\", \"_idstr\"];\n}];"

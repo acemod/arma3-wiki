@@ -1,0 +1,17 @@
+id: WeaponDeployed
+description: 'Triggers when the deployed state of a weapon or bipod changes. Note: A weapon cannot be rested and deployed at the same time.'
+params:
+- name: unit
+  description: object the event handler is assigned to
+  type: Object
+- name: isDeployed
+  description: true if deployed
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 44
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"WeaponDeployed\", {\n\tparams [\"_unit\", \"_isDeployed\"];\n}];"

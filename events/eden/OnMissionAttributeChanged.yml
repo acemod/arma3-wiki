@@ -1,0 +1,15 @@
+id: OnMissionAttributeChanged
+description: When a mission attribute or the preferences are changed.
+params:
+- name: section - [[String]] - section name, see [[Eden_Editor
+  type: Unknown
+- name: property - [[String]] - property name of the attribute, see [[Eden_Editor
+  type: Unknown
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "add3DENEventHandler [\"OnMissionAttributeChanged\", {\n\tparams [\"_section\", \"_property\"];\n}];"

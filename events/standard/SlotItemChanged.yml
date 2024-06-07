@@ -1,0 +1,26 @@
+id: SlotItemChanged
+description: 'Triggered when any of the following slots get assigned or unassigned: ''''Items'''' - Map, GPS, Radio, Watch, Compass, Helmet, Goggles, NVG; ''''Weapon'''' - Binoculars; ''''Containers'''' - Uniform, Vest, Backpack.'
+params:
+- name: unit
+  description: unit EH assigned to.
+  type: Object
+- name: name
+  description: name of the item/weapon/container (see [[getSlotItemName]]).
+  type: String
+- name: slot
+  description: slot id (see [[getSlotItemName]]).
+  type: Number
+- name: assigned
+  description: '[[true]] assign action, [[false]] unassign action.'
+  type: Boolean
+- name: weapon
+  description: '[[String]] - name of weapon in event that slot changed is a weapon attachment slot'
+  type: Unknown
+since:
+  arma_3:
+    major: 2
+    minor: 14
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"SlotItemChanged\", {\n\tparams [\"_unit\", \"_name\", \"_slot\", \"_assigned\", \"_weapon\"];\n}];"

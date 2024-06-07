@@ -1,0 +1,12 @@
+id: onUnload
+description: |-
+  * '''Use on:''' Display
+  * '''Fired on:''' Display is closed, but no controls are destroyed yet.
+  * '''Returns:''' Returns the display and exit code.
+  {{Feature|informative|The {{hl|onUnload}} event never fires for RscTitles displays created with [[cutRsc]].}}
+  {{Feature|warning|Code or function should be [[call]]ed, otherwise controls might be destroyed before [[spawn]]ed code is executed!}}
+params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- params ["_display", "_exitCode"];

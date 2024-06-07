@@ -1,0 +1,12 @@
+id: CombatModeChanged
+description: Triggers when the group's '''[[AI Behaviour|behaviour]]''' changes (see [[behaviour]], [[setBehaviour]])
+params:
+- name: group
+  type: Group
+- name: newMode
+  description: see [[AI Behaviour]] ('''not''' [[Combat Modes]]!)
+  type: String
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "_group addEventHandler [\"CombatModeChanged\", {\n\tparams [\"_group\", \"_newMode\"];\n}];"

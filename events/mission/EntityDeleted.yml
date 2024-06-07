@@ -1,0 +1,13 @@
+id: EntityDeleted
+description: |-
+  Triggered when an entity is deleted. It only triggers for objects that support the "Deleted" event handler, such as vehicles, soldiers, animals, and houses. Simple objects for example are not supported.
+  {{Feature|informative|Unlike most event handlers, the argument is entity [[Object]] and not an array containing the entity. However, it is recommended to use [[params]] to make sure the code remains compatible in case the event arguments are expanded in the future.}}
+params: []
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"EntityDeleted\", {\n\tparams [\"_entity\"];\n}];"

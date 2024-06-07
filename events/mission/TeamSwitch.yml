@@ -1,0 +1,17 @@
+id: TeamSwitch
+description: Executes assigned code when player teamswitches. Stackable version of [[onTeamSwitch]].
+params:
+- name: previousUnit
+  description: switching from unit (same as {{hl|_from}} param)
+  type: Object
+- name: newUnit
+  description: switching to unit (same as {{hl|_to}} param)
+  type: Object
+since:
+  arma_3:
+    major: 1
+    minor: 58
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"TeamSwitch\", {\n\tparams [\"_previousUnit\", \"_newUnit\"];\n}];"

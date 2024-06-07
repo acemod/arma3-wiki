@@ -1,0 +1,23 @@
+id: MapSingleClick
+description: Executes when the player clicks anywhere on the main map. Stackable version of [[onMapSingleClick]] with the limitation that it does not have the ability to override the click (e.g. to prevent the player from placing the [[customWaypointPosition|custom waypoint]] with {{Controls|LShift|LMB}}). Since the introduction of <sqf inline>_thisArgs</sqf> for [[addMissionEventHandler]] in {{GVI|arma3|2.04}}, this EH also supports custom arguments (just like [[onMapSingleClick]]).
+params:
+- name: units
+  description: leader selected units, same as [[groupSelectedUnits]] (same as [[onMapSingleClick]]'s {{hl|_units}} variable)
+  type: Unknown
+- name: pos
+  description: world [[Position#Introduction|Position3D]] of the click in format {{hl|[x, y, 0]}} (same as [[onMapSingleClick]]'s {{hl|_pos}} variable)
+  type: Unknown
+- name: alt
+  description: '[[true]] if {{Controls|Alt}} key was pressed (same as [[onMapSingleClick]]''s {{hl|_alt}} variable)'
+  type: Boolean
+- name: shift
+  description: '[[true]] if {{Controls|Shift}} key was pressed (same as [[onMapSingleClick]]''s {{hl|_shift}} variable)'
+  type: Boolean
+since:
+  arma_3:
+    major: 1
+    minor: 58
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"MapSingleClick\", {\n\tparams [\"_units\", \"_pos\", \"_alt\", \"_shift\"];\n}];"

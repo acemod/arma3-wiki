@@ -1,0 +1,16 @@
+id: SelectedRotorLibActionPerformed
+description: |-
+  RTM helicopter user action event
+  {{Feature|important|Works only for key press combination {{hl|RightCtrl}} + {{hl|W}}, which is the binding for helicopter wheels brakes. It fires with or without Advanced Flight Model enabled. The enum number returned is 4 and 5, probably because the enum is structured like this:<br>
+  0: HelicopterAutoTrimOn<br>
+  1: HelicopterAutoTrimOff<br>
+  2: HelicopterTrimOn<br>
+  3: HelicopterTrimOff<br>
+  4: WheelsBrakeOn<br>
+  5: WheelsBrakeOff
+  }}
+params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"SelectedRotorLibActionPerformed\", {\n\tparams [\"_caller\", \"_target\", \"_enumNumber\", \"_actionId\"];\n}];"

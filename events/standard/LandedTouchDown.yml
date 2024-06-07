@@ -1,0 +1,16 @@
+id: LandedTouchDown
+description: Triggered when a plane (AI or player) touches the ground.
+params:
+- name: plane
+  description: object the event handler is assigned to
+  type: Object
+- name: airportID
+  description: ID of the airport (-1 for anything else)
+  type: Number
+- name: airportObject
+  description: 'airport object in the event of a [[Arma 3: Dynamic Airport Configuration|Dynamic Airport]], otherwise [[objNull]]'
+  type: Object
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"LandedTouchDown\", {\n\tparams [\"_plane\", \"_airportID\", \"_airportObject\"];\n}];"

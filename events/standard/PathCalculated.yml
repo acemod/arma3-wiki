@@ -1,0 +1,19 @@
+id: PathCalculated
+description: |-
+  Triggers when a path has been calculated for the unit. Works for both agents and normal AI units. <br>
+  Note that paths to far destinations are typically calculated in segments. When the unit completes a segment, a new path is calculated and this is continued until the unit reaches its destination.
+params:
+- name: unit
+  description: the unit/agent for which the path was calculated
+  type: Object
+- name: path
+  description: the array of positions representing the path (PositionASL)
+  type: Unknown
+since:
+  arma_3:
+    major: 1
+    minor: 94
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"PathCalculated\", {\n\tparams [\"_unit\", \"_path\"];\n}];"

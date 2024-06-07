@@ -1,0 +1,16 @@
+id: Local
+description: |-
+  Triggers when locality of object in MP is changed. The event handler only triggers on the computers that are directly involved in change of locality.
+  So if EH is added to every computer on network, it will only trigger on 2 computers, on the computer that receives ownership of the object (new owner), in which case [[Magic Variables#this|_this]] [[select]] 1 will be [[true]],
+  and on the computer from which ownership is transferred (old owner), in which case [[Magic Variables#this|_this]] [[select]] 1 will be [[false]].
+params:
+- name: entity
+  description: the object that changed locality
+  type: Object
+- name: local
+  description: if the object is local on given computer
+  type: Boolean
+argument_loc: Global
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Local\", {\n\tparams [\"_entity\", \"_isLocal\"];\n}];"

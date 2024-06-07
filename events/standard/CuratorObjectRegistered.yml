@@ -1,0 +1,15 @@
+id: CuratorObjectRegistered
+description: |-
+  Triggered when player enters curator interface. Assign curator cost to every object in the game.
+  This is the primary method that a mission designer can use to limit the objects a curator can place.<br>
+  {{Feature|informative|See {{Link|Curator#Manual Assigning}}.}}
+params:
+- name: curator
+  type: Object
+- name: input
+  description: 'all [[Arma 3: Assets|CfgVehicles]] classes'
+  type: Unknown
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"CuratorObjectRegistered\", {\n\tparams [\"_curator\", \"_input\"];\n}];"

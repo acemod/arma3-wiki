@@ -1,0 +1,19 @@
+id: MarkerUpdated
+description: |-
+  Executes when a marker is changed.
+  {{Feature|warning|Changing the marker in the EH code will lead to an infinite loop and the game will crash!}}
+params:
+- name: marker
+  description: the name of the marker
+  type: String
+- name: local
+  description: '[[true]] if the event originated locally, [[false]] if it came over the network'
+  type: Boolean
+since:
+  arma_3:
+    major: 2
+    minor: 2
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"MarkerUpdated\", {\n\tparams [\"_marker\", \"_local\"];\n}];"
