@@ -1,0 +1,23 @@
+id: MusicStart
+description: Triggers when [[Description.ext#cfgMusic|CfgMusic]] sound starts playing, after being executed with [[playMusic]] command.
+params:
+- name: musicClassName
+  description: '[[Description.ext#Music|CfgMusic]] class name of the music that started'
+  type: String
+- name: eventHandlerId
+  description: EH id returned by [[addMusicEventHandler]]
+  type: Number
+- name: currentPosition
+  description: 'current playback position in 0...1 range (see also: [[getMusicPlayedTime]])'
+  type: Number
+- name: totalLength
+  description: track total length in seconds
+  type: Number
+since:
+  arma_3:
+    major: 0
+    minor: 50
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMusicEventHandler [\"MusicStart\", {\n\tparams [\"_musicClassname\", \"_eventHandlerId\", \"_currentPosition\", \"_toralLength\"];\n}];"
