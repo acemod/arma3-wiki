@@ -106,6 +106,7 @@ impl ParsedEventHandler {
         }
     }
 
+    #[cfg(feature = "wiki")]
     fn id_from_arg_title(source: &str) -> Result<(String, Option<Since>), String> {
         let source = if source.contains("&nbsp;") {
             source.split_once("&nbsp;").unwrap().0
@@ -128,6 +129,7 @@ impl ParsedEventHandler {
         Ok((id, since))
     }
 
+    #[cfg(feature = "wiki")]
     fn _from_wiki(source: &str) -> Result<Self, String> {
         let mut id = None;
         let mut description = String::new();
