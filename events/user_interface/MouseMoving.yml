@@ -1,0 +1,17 @@
+id: MouseMoving
+description: |-
+  * '''Fired on:''' Fires continuously while moving the mouse with a certain interval.
+  <hr />
+  * '''Use on:''' Control
+  * '''Returns:''' Returns the control, the x and y coordinates relative to the controls parent and mouseOver.<br>If the controls parent is its display then x and y will be the same as [[getMousePosition]] else it will be relative to its parent control (for instance if inside a [[CT_CONTROLS_GROUP]]).
+  <hr />
+params:
+- name: Use on
+  type: Unknown
+- name: Returns
+  type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- params ["_control", "_xPos", "_yPos", "_mouseOver"];
+- params ["_display", "_xPos", "_yPos"];

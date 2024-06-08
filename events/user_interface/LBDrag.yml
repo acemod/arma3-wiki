@@ -1,0 +1,13 @@
+id: LBDrag
+description: |-
+  * '''Use on:''' Listbox
+  * '''Fired on:''' Drag & drop operation started.
+  * '''Returns:''' Returns the control and an array of arrays of information on the dragged item(s) (if listbox is of style LB_MULTI then multiple items can be dragged and dropped at the same time).<br>Control must have unique IDC and {{hl|canDrag}} parameter enabled in its class in order to work.
+params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- |-
+  params ["_control", "_listboxInfo"];
+  // Get info of first item being dragged:
+  (_listboxInfo select 0) params ["_lbText", "_lbValue", "_lbData"];

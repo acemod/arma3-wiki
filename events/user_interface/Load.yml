@@ -1,0 +1,14 @@
+id: Load
+description: |-
+  * '''Use on:''' Display, Control
+  * '''Fired on:''' Fires when UI container is created, but no action is taken. The {{hl|onLoad}} event for display fires '''after''' the {{hl|onLoad}} events for all controls it contains are fired.
+  * '''Returns:''' Display or control, for controls it also returns the control's config (since {{GVI|arma3|1.56}}).
+  {{Feature|informative|The order of initialisation is as follows:
+  # all controls, top to bottom.
+  # Display
+  This means that during the {{hl|onLoad}} event of the upper controls the lower controls have yet to be created.}}
+params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- params ["_displayOrControl", ["_config", configNull]];
