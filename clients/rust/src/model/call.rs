@@ -141,6 +141,21 @@ impl Call {
             }
         }
     }
+
+    #[must_use]
+    pub const fn is_nular(&self) -> bool {
+        matches!(self, Self::Nular)
+    }
+
+    #[must_use]
+    pub const fn is_unary(&self) -> bool {
+        matches!(self, Self::Unary(_))
+    }
+
+    #[must_use]
+    pub const fn is_binary(&self) -> bool {
+        matches!(self, Self::Binary(_, _))
+    }
 }
 
 #[test]
