@@ -57,6 +57,50 @@ async fn main() {
         }
     }
 
+    for (ns, handlers) in report.passed_event_handlers() {
+        let ns = ns.to_string();
+        for handler in handlers {
+            let handler = handler.id();
+            match issues
+                .failed_event_handler_close(&github, &ns, handler)
+                .await
+            {
+                Err(e) => {
+                    println!("Failed to close issue for {ns}::{handler}: {e}");
+                    failed = true;
+                }
+                Ok(Some(_)) => {
+                    println!("Closed issue for {ns}::{handler}");
+                }
+                _ => (),
+            }
+            if let Err(e) = github.event_handler_pr(&ns, handler).await {
+                println!("Failed to create PR for {ns}::{handler}: {e}");
+                failed = true;
+            }
+        }
+    }
+
+    for (ns, handlers) in report.failed_event_handlers() {
+        let ns = ns.to_string();
+        for handler in handlers {
+            let handler = handler.id();
+            match issues
+                .failed_event_handler_create(&github, &ns, handler, "Unknown Error")
+                .await
+            {
+                Err(e) => {
+                    println!("Failed to create issue for {ns}::{handler}: {e}");
+                    failed = true;
+                }
+                Ok(Some(_)) => {
+                    println!("Created / Updated issue for {ns}::{handler}");
+                }
+                _ => (),
+            }
+        }
+    }
+
     if failed {
         std::process::exit(1);
     }

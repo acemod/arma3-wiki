@@ -115,4 +115,73 @@ impl Issues {
             Ok(None)
         }
     }
+
+    pub async fn failed_event_handler_create(
+        &self,
+        gh: &GitHub,
+        ns: &str,
+        handler: &str,
+        reason: &str,
+    ) -> Result<Option<Issue>, String> {
+        if std::env::var("CI").is_err() {
+            println!("Local, Skipping issue creation for {ns}::{handler}");
+            return Ok(None);
+        }
+        let title = format!("Parse Failed: {ns}::{handler}");
+        if let Some(issue) = self.issues.iter().find(|i| i.title == title) {
+            if Some(reason) == issue.body.as_deref() {
+                return Ok(Some(issue.clone()));
+            }
+            let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+            if rate != 0 && rate % 20 == 0 {
+                tokio::time::sleep(std::time::Duration::from_secs(RATE_SLEEP)).await;
+            }
+            gh.as_ref()
+                .issues(REPO_ORG, REPO_NAME)
+                .update(issue.number)
+                .body(reason)
+                .send()
+                .await
+                .map(Some)
+                .map_err(|e| e.to_string())
+        } else {
+            let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+            if rate != 0 && rate % 20 == 0 {
+                tokio::time::sleep(std::time::Duration::from_secs(3)).await;
+            }
+            gh.as_ref()
+                .issues(REPO_ORG, REPO_NAME)
+                .create(title)
+                .body(reason)
+                .send()
+                .await
+                .map(Some)
+                .map_err(|e| e.to_string())
+        }
+    }
+
+    pub async fn failed_event_handler_close(
+        &self,
+        gh: &GitHub,
+        ns: &str,
+        handler: &str,
+    ) -> Result<Option<Issue>, String> {
+        let title = format!("Parse Failed: {ns}::{handler}");
+        if let Some(issue) = self.issues.iter().find(|i| i.title == title) {
+            let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+            if rate != 0 && rate % 20 == 0 {
+                tokio::time::sleep(std::time::Duration::from_secs(RATE_SLEEP)).await;
+            }
+            gh.as_ref()
+                .issues(REPO_ORG, REPO_NAME)
+                .update(issue.number)
+                .state(IssueState::Closed)
+                .send()
+                .await
+                .map(Some)
+                .map_err(|e| e.to_string())
+        } else {
+            Ok(None)
+        }
+    }
 }

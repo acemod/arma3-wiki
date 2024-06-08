@@ -64,7 +64,7 @@ impl Param {
         // ==== End Of Special Cases ====
         let mut value = value.trim().to_string();
         value = if value.starts_with("{{") {
-            value.split_once("}} ").unwrap().1.trim().to_string()
+            value.split_once("}}").unwrap().1.trim().to_string()
         } else {
             value
         };

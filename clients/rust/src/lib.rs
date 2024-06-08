@@ -1,7 +1,9 @@
-use std::{collections::HashMap, fs::File, io::Write, path::PathBuf, time::SystemTime};
+use std::{
+    collections::HashMap, fs::File, io::Write, path::PathBuf, str::FromStr, time::SystemTime,
+};
 
 use git2::Repository;
-use model::{Command, Version};
+use model::{Command, EventHandlerNamespace, ParsedEventHandler, Version};
 use rust_embed::RustEmbed;
 
 pub mod model;
@@ -13,6 +15,7 @@ struct Asset;
 pub struct Wiki {
     version: Version,
     commands: HashMap<String, Command>,
+    event_handlers: HashMap<EventHandlerNamespace, Vec<ParsedEventHandler>>,
     custom: Vec<String>,
     /// Whether the wiki was just updated.
     updated: bool,
@@ -30,14 +33,19 @@ impl Wiki {
     }
 
     #[must_use]
+    pub const fn event_handlers(&self) -> &HashMap<EventHandlerNamespace, Vec<ParsedEventHandler>> {
+        &self.event_handlers
+    }
+
+    #[must_use]
     pub const fn updated(&self) -> bool {
         self.updated
     }
 
     #[must_use]
-    pub fn load() -> Self {
+    pub fn load(force_pull: bool) -> Self {
         #[cfg(feature = "remote")]
-        if let Ok(a3wiki) = Self::load_git() {
+        if let Ok(a3wiki) = Self::load_git(force_pull) {
             return a3wiki;
         }
         Self::load_dist()
@@ -73,6 +81,17 @@ impl Wiki {
         self.custom.contains(&name.to_string())
     }
 
+    #[must_use]
+    pub fn event_handler(&self, id: &str) -> Vec<(EventHandlerNamespace, &ParsedEventHandler)> {
+        let mut handlers = Vec::new();
+        for (ns, hs) in &self.event_handlers {
+            if let Some(handler) = hs.iter().find(|h| h.id() == id) {
+                handlers.push((*ns, handler));
+            }
+        }
+        handlers
+    }
+
     #[cfg(feature = "remote")]
     /// Loads the wiki from the remote repository.
     ///
@@ -81,21 +100,22 @@ impl Wiki {
     ///
     /// # Panics
     /// Panics if the structure of the repository is invalid.
-    pub fn load_git() -> Result<Self, String> {
+    pub fn load_git(force_pull: bool) -> Result<Self, String> {
         let appdata = get_appdata();
-        let updated = if Self::recently_updated(&appdata) {
-            false
-        } else {
-            let repo = if let Ok(repo) = Repository::open(&appdata) {
-                repo
+        let updated = force_pull
+            || if Self::recently_updated(&appdata) {
+                false
             } else {
-                git2::build::RepoBuilder::new()
-                    .branch("dist")
-                    .clone("https://github.com/acemod/arma3-wiki", &appdata)
-                    .map_err(|e| format!("Failed to clone repository: {e}"))?
+                let repo = if let Ok(repo) = Repository::open(&appdata) {
+                    repo
+                } else {
+                    git2::build::RepoBuilder::new()
+                        .branch("dist")
+                        .clone("https://github.com/acemod/arma3-wiki", &appdata)
+                        .map_err(|e| format!("Failed to clone repository: {e}"))?
+                };
+                Self::update_git(&repo).is_ok()
             };
-            Self::update_git(&repo).is_ok()
-        };
         let mut commands = HashMap::new();
         for entry in std::fs::read_dir(appdata.join("commands")).unwrap() {
             let path = entry.unwrap().path();
@@ -107,6 +127,25 @@ impl Wiki {
                 commands.insert(command.name().to_string(), command);
             }
         }
+        let mut event_handlers = HashMap::new();
+        for ns in EventHandlerNamespace::iter() {
+            let mut handlers = Vec::new();
+            for entry in std::fs::read_dir(appdata.join("events").join(ns.to_string())).unwrap() {
+                let path = entry.unwrap().path();
+                if path.is_file() {
+                    let handler: ParsedEventHandler =
+                        serde_yaml::from_reader(std::fs::File::open(&path).unwrap())
+                            .unwrap_or_else(|_| {
+                                panic!(
+                                    "Failed to parse event handler: {path}",
+                                    path = path.display()
+                                )
+                            });
+                    handlers.push(handler);
+                }
+            }
+            event_handlers.insert(*ns, handlers);
+        }
         Ok(Self {
             version: Version::from_wiki(
                 std::fs::read_to_string(appdata.join("version.txt"))
@@ -115,6 +154,7 @@ impl Wiki {
             )
             .map_err(|e| format!("Failed to parse version: {e}"))?,
             commands,
+            event_handlers,
             updated,
             custom: Vec::new(),
         })
@@ -127,6 +167,7 @@ impl Wiki {
     /// Panics if the assets are not found.
     pub fn load_dist() -> Self {
         let mut commands = HashMap::new();
+        let mut event_handlers = HashMap::new();
         for entry in Asset::iter() {
             let path = entry.as_ref();
             if path.starts_with("commands/")
@@ -139,6 +180,19 @@ impl Wiki {
                 )
                 .unwrap();
                 commands.insert(command.name().to_string(), command);
+            } else if path.starts_with("events/") {
+                let parts: Vec<&str> = path.split('/').collect();
+                if parts.len() == 3 {
+                    let ns = EventHandlerNamespace::from_str(parts[1]).unwrap();
+                    let handler: ParsedEventHandler = serde_yaml::from_str(
+                        std::str::from_utf8(Asset::get(path).unwrap().data.as_ref()).unwrap(),
+                    )
+                    .unwrap();
+                    event_handlers
+                        .entry(ns)
+                        .or_insert_with(Vec::new)
+                        .push(handler);
+                }
             }
         }
         Self {
@@ -149,6 +203,7 @@ impl Wiki {
             )
             .unwrap(),
             commands,
+            event_handlers,
             updated: false,
             custom: Vec::new(),
         }

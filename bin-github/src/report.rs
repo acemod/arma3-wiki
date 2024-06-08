@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use arma3_wiki::model::Version;
+use arma3_wiki::model::{EventHandler, EventHandlerNamespace, ParsedEventHandler, Version};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -10,6 +10,10 @@ pub struct Report {
     outdated_commands: Vec<String>,
 
     unknown_types_commands: Vec<(String, String)>,
+
+    passed_event_handlers: HashMap<EventHandlerNamespace, Vec<ParsedEventHandler>>,
+    failed_event_handlers: HashMap<EventHandlerNamespace, Vec<EventHandler>>,
+    outdated_event_handlers: HashMap<EventHandlerNamespace, Vec<ParsedEventHandler>>,
 
     updated_version: Option<Version>,
 }
@@ -23,6 +27,10 @@ impl Report {
             outdated_commands: Vec::new(),
 
             unknown_types_commands: Vec::new(),
+
+            passed_event_handlers: HashMap::new(),
+            failed_event_handlers: HashMap::new(),
+            outdated_event_handlers: HashMap::new(),
 
             updated_version,
         }
@@ -67,5 +75,55 @@ impl Report {
     #[must_use]
     pub fn unknown_types_commands(&self) -> &[(String, String)] {
         &self.unknown_types_commands
+    }
+
+    #[must_use]
+    pub const fn passed_event_handlers(
+        &self,
+    ) -> &HashMap<EventHandlerNamespace, Vec<ParsedEventHandler>> {
+        &self.passed_event_handlers
+    }
+
+    #[must_use]
+    pub const fn failed_event_handlers(
+        &self,
+    ) -> &HashMap<EventHandlerNamespace, Vec<EventHandler>> {
+        &self.failed_event_handlers
+    }
+
+    #[must_use]
+    pub const fn outdated_event_handlers(
+        &self,
+    ) -> &HashMap<EventHandlerNamespace, Vec<ParsedEventHandler>> {
+        &self.outdated_event_handlers
+    }
+
+    pub fn add_passed_event_handler(
+        &mut self,
+        ns: EventHandlerNamespace,
+        handler: ParsedEventHandler,
+    ) {
+        self.passed_event_handlers
+            .entry(ns)
+            .or_default()
+            .push(handler);
+    }
+
+    pub fn add_failed_event_handler(&mut self, ns: EventHandlerNamespace, handler: EventHandler) {
+        self.failed_event_handlers
+            .entry(ns)
+            .or_default()
+            .push(handler);
+    }
+
+    pub fn add_outdated_event_handler(
+        &mut self,
+        ns: EventHandlerNamespace,
+        handler: ParsedEventHandler,
+    ) {
+        self.outdated_event_handlers
+            .entry(ns)
+            .or_default()
+            .push(handler);
     }
 }

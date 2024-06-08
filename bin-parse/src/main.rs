@@ -1,7 +1,7 @@
 use arma3_wiki_github::report::Report;
 
-mod command;
-mod list;
+mod commands;
+mod event_handlers;
 mod version;
 
 #[tokio::main]
@@ -18,20 +18,36 @@ async fn main() {
         std::fs::create_dir(&tmp).unwrap();
     }
 
+    let do_commands = !dry_run || args.is_empty() || args.iter().any(|arg| arg == "--commands");
+    let do_event_handlers =
+        !dry_run || args.is_empty() || args.iter().any(|arg| arg == "--event-handlers");
+
     let mut report = Report::new(version::version().await);
 
-    command::commands(&mut report, &args, dry_run).await;
+    if do_commands {
+        print!("== Commands");
+        commands::commands(&mut report, &args, dry_run).await;
 
-    for (command, errors) in report.failed_commands() {
-        println!("Failed: {command}");
-        for error in errors {
-            println!("  {error}");
+        for (command, errors) in report.failed_commands() {
+            println!("Failed: {command}");
+            for error in errors {
+                println!("  {error}");
+            }
         }
+
+        println!("Passed:   {}", report.passed_commands().len());
+        println!("Failed:   {}", report.failed_commands().len());
+        println!("Outdated: {}", report.outdated_commands().len());
     }
 
-    println!("Passed:   {}", report.passed_commands().len());
-    println!("Failed:   {}", report.failed_commands().len());
-    println!("Outdated: {}", report.outdated_commands().len());
+    if do_event_handlers {
+        println!("== EventHandlers");
+        let _ = event_handlers::event_handlers(&mut report, dry_run).await;
+
+        println!("Passed:   {}", report.passed_event_handlers().len());
+        println!("Failed:   {}", report.failed_event_handlers().len());
+        println!("Outdated: {}", report.outdated_event_handlers().len());
+    }
 
     // write report
     let report_path = tmp.join("report.json");

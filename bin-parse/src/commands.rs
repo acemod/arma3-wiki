@@ -1,13 +1,50 @@
-use std::path::Path;
+use std::{collections::HashMap, path::Path};
 
 use arma3_wiki::model::{Command, ParseError};
 use arma3_wiki_github::report::Report;
 use indicatif::ProgressBar;
+use regex::Regex;
 use reqwest::{header::LAST_MODIFIED, Client};
+
+pub async fn list() -> HashMap<String, String> {
+    const URL: &str =
+        "https://community.bistudio.com/wiki/Category:Scripting_Commands?action=render";
+    let tmp = std::env::temp_dir()
+        .join("arma3-wiki-fetch")
+        .join("command_list.html");
+
+    let body: String = if tmp.exists() {
+        std::fs::read_to_string(&tmp).unwrap()
+    } else {
+        let content = reqwest::get(URL).await.unwrap().text().await.unwrap();
+        std::fs::write(&tmp, &content).unwrap();
+        content
+    };
+
+    let regex = Regex::new(r#"(?m)<li><a href="(.+?)" title="(.+?)">"#).unwrap();
+    let mut list = HashMap::new();
+
+    for cap in regex.captures_iter(&body) {
+        let name = cap[1]
+            .trim_start_matches("https://community.bistudio.com")
+            .trim_start_matches("/wiki/")
+            .to_string();
+        list.insert(
+            name,
+            format!(
+                "https://community.bistudio.com/wiki/{}",
+                &cap[1]
+                    .trim_start_matches("https://community.bistudio.com")
+                    .trim_start_matches("/wiki/")
+            ),
+        );
+    }
+    list
+}
 
 pub async fn commands(report: &mut Report, args: &[String], dry_run: bool) {
     let commands = if args.is_empty() {
-        super::list::fetch().await
+        list().await
     } else {
         args.iter()
             .map(|arg| {

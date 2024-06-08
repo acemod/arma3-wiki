@@ -57,11 +57,43 @@ impl GitHub {
         command!(["checkout", "dist"]);
         command!(["checkout", "-b", head.as_str()]);
         command!(["add", format!("commands/{command}.yml").as_str()]);
-        command!(["commit", "-m", format!("Update {command}").as_str()]);
+        command!([
+            "commit",
+            "-m",
+            format!("Update Command `{command}`").as_str()
+        ]);
         command!(["push", "--set-upstream", "origin", head.as_str()]);
         self.0
             .pulls(REPO_ORG, REPO_NAME)
-            .create(format!("Update {command}"), head, "dist")
+            .create(format!("Update Command `{command}`"), head, "dist")
+            .send()
+            .await
+            .map_err(|e| e.to_string())
+            .map(Some)
+    }
+
+    pub async fn event_handler_pr(
+        &mut self,
+        ns: &str,
+        handler: &str,
+    ) -> Result<Option<PullRequest>, String> {
+        if std::env::var("CI").is_err() {
+            println!("Local, Skipping PR creation for {ns}::{handler}");
+            return Ok(None);
+        }
+        let head = format!("events/{ns}/{handler}");
+        command!(["checkout", "dist"]);
+        command!(["checkout", "-b", head.as_str()]);
+        command!(["add", format!("events/{ns}/{handler}.yml").as_str()]);
+        command!([
+            "commit",
+            "-m",
+            format!("Update Event `{ns}::{handler}`").as_str()
+        ]);
+        command!(["push", "--set-upstream", "origin", head.as_str()]);
+        self.0
+            .pulls(REPO_ORG, REPO_NAME)
+            .create(format!("Update Event `{ns}::{handler}`"), head, "dist")
             .send()
             .await
             .map_err(|e| e.to_string())
