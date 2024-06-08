@@ -142,7 +142,16 @@ pub async fn event_handlers(
             "https://community.bistudio.com/wiki/User_Interface_Event_Handlers?action=raw",
             "ui",
         )
-        .await,
+        .await
+        .into_iter()
+        .map(|eh| match eh {
+            EventHandler::Parsed(mut eh) => {
+                eh.set_id(eh.id().trim_start_matches("on").to_string());
+                EventHandler::Parsed(eh)
+            }
+            EventHandler::Failed(name, e) => EventHandler::Failed(name, e),
+        })
+        .collect(),
     );
     event_handlers.insert(
         EventHandlerNamespace::Mission,

@@ -40,9 +40,17 @@ impl ParsedEventHandler {
         &self.id
     }
 
+    pub fn set_id(&mut self, id: String) {
+        self.id = id;
+    }
+
     #[must_use]
     pub fn description(&self) -> &str {
         &self.description
+    }
+
+    pub fn set_description(&mut self, description: String) {
+        self.description = description;
     }
 
     #[must_use]
