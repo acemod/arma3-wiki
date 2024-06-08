@@ -103,18 +103,18 @@ impl Wiki {
     pub fn load_git(force_pull: bool) -> Result<Self, String> {
         let appdata = get_appdata();
         let updated = if !force_pull || Self::recently_updated(&appdata) {
-                false
+            false
+        } else {
+            let repo = if let Ok(repo) = Repository::open(&appdata) {
+                repo
             } else {
-                let repo = if let Ok(repo) = Repository::open(&appdata) {
-                    repo
-                } else {
-                    git2::build::RepoBuilder::new()
-                        .branch("dist")
-                        .clone("https://github.com/acemod/arma3-wiki", &appdata)
-                        .map_err(|e| format!("Failed to clone repository: {e}"))?
-                };
-                Self::update_git(&repo).is_ok()
+                git2::build::RepoBuilder::new()
+                    .branch("dist")
+                    .clone("https://github.com/acemod/arma3-wiki", &appdata)
+                    .map_err(|e| format!("Failed to clone repository: {e}"))?
             };
+            Self::update_git(&repo).is_ok()
+        };
         let mut commands = HashMap::new();
         for entry in std::fs::read_dir(appdata.join("commands")).unwrap() {
             let path = entry.unwrap().path();
