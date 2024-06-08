@@ -102,8 +102,7 @@ impl Wiki {
     /// Panics if the structure of the repository is invalid.
     pub fn load_git(force_pull: bool) -> Result<Self, String> {
         let appdata = get_appdata();
-        let updated = force_pull
-            || if Self::recently_updated(&appdata) {
+        let updated = if !force_pull || Self::recently_updated(&appdata) {
                 false
             } else {
                 let repo = if let Ok(repo) = Repository::open(&appdata) {
