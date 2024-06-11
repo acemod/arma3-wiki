@@ -1,0 +1,37 @@
+id: WeaponChanged
+description: |-
+  Fires on weapon switch and firemode switch. Does not fire for player units inside vehicles (but does fire for vehicles with players in them).<br>
+  The locality is unknown, but it is known that this EH behaves like [[currentWeapon]], [[currentWeaponMode]] and [[currentMuzzle]] in terms of locality.
+params:
+- name: object
+  description: the unit or vehicle the event handler is assigned to
+  type: Object
+- name: oldWeapon
+  description: the class name of the previous weapon
+  type: String
+- name: newWeapon
+  description: the class name of the new weapon (same as [[currentWeapon]])
+  type: String
+- name: oldMode
+  description: the previous weapon mode
+  type: String
+- name: newMode
+  description: the new weapon mode (same as [[currentWeaponMode]])
+  type: String
+- name: oldMuzzle
+  description: the previous weapon muzzle
+  type: String
+- name: newMuzzle
+  description: the new weapon muzzle (same as [[currentMuzzle]])
+  type: String
+- name: turretIndex
+  description: the turret path, or [[nil]] if <var>object</var> is not a transport vehicle
+  type: Unknown
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"WeaponChanged\", {\n\tparams [\"_object\", \"_oldWeapon\", \"_newWeapon\", \"_oldMode\", \"_newMode\", \"_oldMuzzle\", \"_newMuzzle\", \"_turretIndex\"];\n}];"
