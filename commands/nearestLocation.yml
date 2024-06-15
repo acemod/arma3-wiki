@@ -1,49 +1,7 @@
 name: nearestLocation
-description: |-
-  Return the closest location of specified class to a given position. Checked range is unlimited (i.e. covers the whole map).
-
-  {{Feature|informative|Although locations can be placed in 3D with [[setPosition]], [[nearestLocations]] search is conducted in 2D.}}
-groups:
-- Locations
-syntax:
-- call: !Unary
-  - position
-  - locationType
-  - maxDistance
-  ret:
-  - Location
-  - null
-  params:
-  - name: position
-    type: Unknown
-  - name: locationType
-    type: Unknown
-  - name: maxDistance
-    description: max search radius. Default - unlimited range.
-    type: Number
-    optional: true
-    since:
-      arma_3:
-        major: 2
-        minor: 14
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  armed_assault:
-    major: 1
-    minor: 8
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>_nearestCity = nearestLocation [getPos player, "nameCity"];</sqf>
-- <sqf>_anyNearestLocation = nearestLocation [player, ""];</sqf>
+since: {}
