@@ -1,26 +1,7 @@
 name: toLowerANSI
-description: |-
-  [[File:ISO-8859-1.jpg|thumb|right|ISO-8859-1]]
-  Converts the supplied string to all lower case characters fast (could be 3&times; faster than [[toLower]]).
-  {{Link|https://stackoverflow.com/questions/701882/what-is-ansi-format/701920|ANSI}} in this case refers to {{Link|https://en.wikipedia.org/wiki/ISO/IEC_8859-1|ISO-8859-1}} code page.
-  The command is primary designed to convert characters with [[toArray | codes]] 0...127 however it will also convert other characters in 128...255 range as long as they are present in ISO-8859-1 codepage.
-  For Unicode alternative see [[toLower]].
-groups:
-- Strings
-syntax:
-- call: !Unary string
-  ret:
-  - String
-  - all lower case string
-  params:
-  - name: string
-    description: string to convert
-    type: String
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 96
-examples:
-- <sqf>hint toLowerANSI "AaBb1"; // returns "aabb1"</sqf>
+since: {}
