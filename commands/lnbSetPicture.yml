@@ -1,57 +1,7 @@
 name: lnbSetPicture
-description: Sets the picture in the item with the given position of the 2D listbox.The picture is searched in the mission, directory, the dtaExt subdirectory of the campaign directory, and the dtaExt directory and the data bank (or directory).
-groups:
-- GUI Control - ListNBox
-syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  - picturePathOrName
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: idc
-    type: Number
-  - name: row
-    type: Number
-  - name: column
-    type: Number
-  - name: picturePathOrName
-    type: String
-- call: !Binary
-  - ctrl
-  - - - row
-      - column
-    - picturePathOrName
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: ctrl
-    type: Control
-  - name: row
-    type: Number
-  - name: column
-    type: Number
-  - name: picturePathOrName
-    type: String
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>lnbSetPicture [1, [0, 0], "Picture"];</sqf>
-- <sqf>_ctrl lnbSetPicture [[0, 0], "\A3\Ui_f\data\GUI\Cfg\Ranks\lieutenant_gs.paa"];</sqf>
+since: {}
