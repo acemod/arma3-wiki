@@ -1,28 +1,7 @@
 name: isUAVConnectable
-description: Returns true if UAV is connectable by AV terminal(s).
-groups:
-- Remote Control
-syntax:
-- call: !Binary
-  - object
-  - - uav
-    - checkAllItems
-  ret:
-  - Boolean
-  - null
-  params:
-  - name: object
-    type: Object
-  - name: uav
-    type: Unknown
-  - name: checkAllItems
-    description: '[[true]] to check all terminals in unit''s inventory, [[false]] to only check assigned terminal.'
-    type: Boolean
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 24
-examples:
-- <sqf>private _canConnect = myUnit isUAVConnectable [myUav, true];</sqf>
+since: {}
