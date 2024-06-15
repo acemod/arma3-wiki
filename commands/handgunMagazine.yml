@@ -1,21 +1,7 @@
 name: handgunMagazine
-description: Collects all loaded [[magazines]] from all [[handgunWeapon]] muzzles and returns them in [[Array]], otherwise it returns []. This command is used for infantry weapons only.
-groups:
-- Unit Inventory
-syntax:
-- call: !Unary unit
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: unit
-    type: Object
-argument_loc: Global
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 0
-    minor: 70
-examples:
-- <sqf>hint str handgunMagazine player; // ["16Rnd_9x21_Mag"]</sqf>
-- "<sqf>\n_array = handgunMagazine player;\nif (count _array > 0) then {\n\thint (\"Handgun is loaded with \" + (_array select 0) + \"!\");\n} else {\n\tif (handgunWeapon player != \"\") then {\n\t\thint \"Handgun is not loaded!\";\n\t} else {\n\t\thint \"Player doesn't have a handgun!\";\n\t};\n};\n</sqf>"
+since: {}
