@@ -1,32 +1,7 @@
 name: a_hash_b
-description: |-
-  Selects an element from an [[Array]], same as [[select]] command for arrays, but has [[Order of Precedence|higher precedence]].
-  {{Feature|informative|'''#''' has higher precedence than all binary operators, but it has lower precedence than unary operators (see {{Link|#Example 3}}).}}
-groups:
-- Variables
-syntax:
-- call: !Binary
-  - array
-  - index
-  ret:
-  - Anything
-  - null
-  params:
-  - name: array
-    type: Unknown
-  - name: index
-    type: Number
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 82
-examples:
-- "<sqf>[1, 2, 3, 4] # 2;\t\t\t// result is 3</sqf>"
-- "<sqf>getPosASL player # 2;\t\t// result is Z component of player's position</sqf>"
-- |-
-  <sqf>
-  //'getPosASL' is unary; '#' and '+' are binary; precedence is: 'getPosASL' > '#' > '+'
-  getPosASL player # 2 + 1; // equivalent to (getPosASL player # 2) + 1, not (getPosASL player)#(2+1)
-  </sqf>
+since: {}

@@ -1,65 +1,7 @@
 name: a_or_b
-description: Returns [[true]] if one or both conditions are [[true]]. In case of the alternative syntax, {{Link|https://en.wikipedia.org/wiki/Lazy_evaluation#Control_structures|lazy evaluation}} is used. That means that if left operand is [[true]], evaluation of the right side is skipped completely.
-alias:
-- '[[or]]'
-groups:
-- Math
-- Variables
-syntax:
-- call: !Binary
-  - a
-  - b
-  ret:
-  - Boolean
-  - null
-  params:
-  - name: a
-    description: test condition or variable
-    type: Boolean
-  - name: b
-    description: test condition or variable
-    type: Boolean
-- call: !Binary
-  - a
-  - b
-  ret:
-  - Boolean
-  - null
-  params:
-  - name: a
-    description: test condition or variable
-    type: Boolean
-  - name: b
-    description: code that returns [[Boolean]]. It is not evaluated if ''a'' returns [[true]]
-    type: Code
-  since:
-    arma_2_arrowhead:
-      major: 1
-      minor: 62
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>if (OBJ1 || _enemycount == 0) then { hint "you win !" };</sqf>
-- "<sqf>\nif (count _array == 0 || { (_array select 0) != player }) then\n{\n\thint \"It works! Without lazy evaluation it would throw an error if array was empty.\";\n};\n</sqf>"
+since: {}
