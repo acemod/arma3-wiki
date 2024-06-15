@@ -16,7 +16,12 @@ pub async fn list() -> HashMap<String, String> {
     let body: String = if tmp.exists() {
         std::fs::read_to_string(&tmp).unwrap()
     } else {
-        let content = reqwest::get(URL).await.unwrap().text().await.unwrap();
+        let request = reqwest::get(URL).await.unwrap();
+        assert!(
+            request.status().is_success(),
+            "Failed to fetch commands list"
+        );
+        let content = request.text().await.unwrap();
         std::fs::write(&tmp, &content).unwrap();
         content
     };
@@ -161,6 +166,7 @@ pub async fn command(
                 return Err(e.to_string());
             }
         };
+        assert!(res.status().is_success(), "Failed to fetch {name}");
         let content = res.text().await.unwrap();
         if content.is_empty() {
             pg.println(format!("Failed to fetch {name} from {url}"));

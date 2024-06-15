@@ -16,7 +16,12 @@ pub async fn event_handlers(
     let body: String = if tmp.exists() {
         std::fs::read_to_string(&tmp).unwrap()
     } else {
-        let content = reqwest::get(URL).await.unwrap().text().await.unwrap();
+        let request = reqwest::get(URL).await.unwrap();
+        assert!(
+            request.status().is_success(),
+            "Failed to fetch event handlers list"
+        );
+        let content = request.text().await.unwrap();
         std::fs::write(&tmp, &content).unwrap();
         content
     };
@@ -213,7 +218,12 @@ async fn subsection(url: &str, tag: &str) -> Vec<EventHandler> {
     let body: String = if tmp.exists() {
         std::fs::read_to_string(&tmp).unwrap()
     } else {
-        let content = reqwest::get(url).await.unwrap().text().await.unwrap();
+        let request = reqwest::get(url).await.unwrap();
+        assert!(
+            request.status().is_success(),
+            "Failed to fetch event handlers list"
+        );
+        let content = request.text().await.unwrap();
         std::fs::write(&tmp, &content).unwrap();
         content
     };

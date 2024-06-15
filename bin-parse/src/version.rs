@@ -5,12 +5,11 @@ use regex::Regex;
 
 pub async fn version() -> Option<Version> {
     let regex = Regex::new(r"(?m)(\d\.\d\d)\|").unwrap();
-    let text = reqwest::get("https://community.bistudio.com/wiki?title=Template:GVI&action=raw")
-        .await
-        .unwrap()
-        .text()
+    let request = reqwest::get("https://community.bistudio.com/wiki?title=Template:GVI&action=raw")
         .await
         .unwrap();
+    assert!(request.status().is_success(), "Failed to fetch version");
+    let text = request.text().await.unwrap();
     let mut versions = regex
         .captures_iter(&text)
         .map(|cap| cap[1].to_string())
