@@ -1,28 +1,7 @@
 name: diag_setTerrainHeight
-description: |-
-  Changes the terrain height of the cell in which given position lies. This command is only available with [[Arma 3: Diagnostics Exe]].
-  [[File:A3 diag setTerrainHeight.png|thumb|350px|See {{Link|#Example 1}} for the code]]
-  {{Feature|warning|This causes an instant CTD when ''position'' is out of the map! ({{hl|&lt; 0}} and/or {{hl|&gt; [[worldSize]]}})}}
-  {{Feature|obsolete|This command is subject to be removed and replaced with: [[setTerrainHeight]]|arma3|2.10}}
-groups:
-- Diagnostic
-syntax:
-- call: !Binary
-  - position
-  - height
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: position
-    type: Unknown
-  - name: height
-    type: Number
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 2
-    minor: 6
-examples:
-- "<sqf>\nprivate _fnc_flattenTerrain =\n{\n\tparams [\"_start\", \"_a\", \"_b\", \"_h\"];\n\n\tfor \"_xStep\" from 0 to _a do\n\t{\n\t\tfor \"_yStep\" from 0 to _b do\n\t\t{\n\t\t\t_start vectorAdd [_xStep, _yStep, 0] diag_setTerrainHeight _h;\n\t\t};\n\t};\n};\n\nprivate _desiredTerrainHeight = 150;\n[getPosWorld player, 50, 50, _desiredTerrainHeight] spawn _fnc_flattenTerrain;\n</sqf>"
+since: {}
