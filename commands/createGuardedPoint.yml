@@ -1,54 +1,7 @@
 name: createGuardedPoint
-description: |-
-  Adds a point guarded by the given side (scripted way of adding equivalent of "GUARDED BY" trigger in [[:Category:Eden Editor|Editor]]). A closest AI group in the given side with assigned "GUARD" waypoint will attempt to secure this guard point. The actual guarded position is determined via the following rules:
-  * Given "position" is always considered. It could be [[Object]], [[Group]], [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]. In every case, z coordinate will be ignored and point will be placed on nearest surface.
-  * If "objectMapID" is not negative, the position of the object with the given ID is used (Overrides "position"). -1 to ignore this argument. z of the object position will be intact.
-  * If the given "vehicle" is valid, the position of the vehicle is extracted and guarded (Overrides both "position" and "objectMapID"). [[objNull]] to ignore. z of the vehicle position will be intact.
-  To be used with "GUARD" [[setWaypointType|waypoint]].
-  {{Feature|informative|To know how does the "GUARD" waypoint work, see [[Waypoint:Guard]].}}
-groups:
-- Waypoints
-syntax:
-- call: !Unary
-  - side
-  - position
-  - objectMapID
-  - vehicle
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: side
-    description: the side which will be guarding
-    type: Side
-  - name: position
-    type: Unknown
-  - name: objectMapID
-    description: static id of map object. -1 to ignore
-    type: Number
-  - name: vehicle
-    description: vehicle to be used for position. [[objNull]] to ignore
-    type: Object
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>createGuardedPoint [east, [0,0], -1, vehicle player];</sqf>
+since: {}
