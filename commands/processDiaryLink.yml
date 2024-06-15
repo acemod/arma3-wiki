@@ -1,35 +1,7 @@
 name: processDiaryLink
-description: Opens the [[Diary]] screen on the subject/record specified by link. To get a valid link format, use [[createDiaryLink]].
-groups:
-- Briefing
-syntax:
-- call: !Unary link
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: link
-    type: String
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>processDiaryLink createDiaryLink ["Tasks", (simpleTasks player) select 0, ""]; // Select a task in the Task menu</sqf>
-- |-
-  <sqf>
-  // To select various tabs in the map screen:
-  processDiaryLink createDiaryLink ["selected_tab", player, ""];
-  // ... where "selected_tab" can be "Tasks", "Diary", "Units", "Players", "Statistics", other user created subjects
-  </sqf>
+since: {}
