@@ -1,59 +1,7 @@
 name: enableInfoPanelComponent
-description: Controls availability of component to given object info panel.
-groups:
-- Custom Panels
-syntax:
-- call: !Binary
-  - unit
-  - - panelID
-    - componentClassOrType
-    - enable
-  ret:
-  - Boolean
-  - '[[true]] if component was successfully enabled on the panel, [[false]] otherwise (e.g. component is not available for the object)'
-  params:
-  - name: unit
-    description: the concerned vehicle
-    type: Object
-  - name: panelID
-    description: '"left" or "right" can be used as panel names'
-    type: String
-  - name: componentClassOrType
-    type: String
-  - name: enable
-    type: Boolean
-- call: !Binary
-  - - unit
-    - turretPath
-  - - panelID
-    - componentClassOrType
-    - enable
-  ret:
-  - Boolean
-  - '[[true]] if component was successfully enabled on the panel, [[false]] otherwise (e.g. component is not available for the object)'
-  params:
-  - name: unit
-    description: the concerned vehicle
-    type: Object
-  - name: turretPath
-    description: turret index
-    type: Unknown
-  - name: panelID
-    description: '"left" or "right" can be used as panel names'
-    type: String
-  - name: componentClassOrType
-    type: String
-  - name: enable
-    type: Boolean
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 72
-examples:
-- |-
-  <sqf>
-  // enables slingload assistant on player's vehicle right panel at driver position
-  [vehicle player, [-1]] enableInfoPanelComponent ["VehicleSystemsDisplayManagerComponentRight", "SlingLoadDisplay", true];
-  </sqf>
+since: {}
