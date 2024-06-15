@@ -1,40 +1,7 @@
 name: parseNumber
-description: |-
-  Parses the string, interpreting its content as a floating point number.
-  {{Feature|important|This command does '''not''' work with strings representing hexadecimal numbers (e.g {{hl|"0xCF"}}).
-  <sqf>
-  parseNumber "512 + 0x2F"; // 512, WRONG!
-  "512 + 0x2F" call BIS_fnc_parseNumber // 559, CORRECT!
-  </sqf>}}
-  {{Feature|informative|Starting whitespaces are discarded, then as many valid characters are used to be interpreted as a number until an invalid character is found then the rest of the string is ignored.}}
-groups:
-- Strings
-syntax:
-- call: !Unary value
-  ret:
-  - Number
-  - the parsed number, {{hl|0}} if no valid number was found; in the case of a passed [[Boolean]], 0 if [[false]], 1 if [[true]]
-  params:
-  - name: value
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- "<sqf>\n_number = parseNumber \"0.125\";\t\t\t// 0.125\n_number = parseNumber \"0050\";\t\t\t// 50\n_number = parseNumber \"\t\t42 yes\";\t// 42\n_number = parseNumber \"3 or 4\";\t\t\t// 3\n_number = parseNumber \"either 3 or 4\";\t// 0\n_number = parseNumber \"0xCF\";\t\t\t// 0\n</sqf>"
-- "since {{arma3}} v1.50:\n<sqf>\n_result = parseNumber false;\t\t\t\t// 0\n_result = parseNumber true;\t\t\t\t\t// 1\n_zeroOneStatus = parseNumber alive player;\t// 0 if the player is dead, 1 if alive\n</sqf>"
+since: {}
