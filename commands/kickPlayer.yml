@@ -1,29 +1,7 @@
 name: kickPlayer
-description: Kick the player controlling the provided unit from the server.
-groups:
-- Argo
-syntax:
-- call: !Unary
-  - unit
-  - kickMessage
-  ret:
-  - Boolean
-  - '[[true]] on success, [[false]] otherwise'
-  params:
-  - name: unit
-    description: the player to kick
-    type: Object
-  - name: kickMessage
-    description: shown as disconnect message on the kicked client
-    type: String
-    optional: true
-argument_loc: Global
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
-since:
-  argo:
-    major: 1
-    minor: 0
-examples:
-- <sqf>kickPlayer [_teamKiller, "We don't do that here."];</sqf>
-- "<sqf>\nif (not isPlayerSupporter _dude) then\n{\n\tkickPlayer [_dude, \"Give money to BI or else!\"];\n};\n</sqf>"
+since: {}
