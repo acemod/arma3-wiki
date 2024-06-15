@@ -1,21 +1,7 @@
 name: continueWith
-description: Skips the current loop iteration, continues with the next one and returns the given value.
-groups:
-- Program Flow
-syntax:
-- call: !Unary return
-  ret:
-  - Anything
-  - null
-  params:
-  - name: return
-    description: value to be returned when iteration is skipped
-    type: Anything
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 2
-    minor: 2
-examples:
-- "<sqf>\n// results in [2, \"TEST\", 4]\nprivate _result = [1, 2, 3] apply {\n\tif (_x == 2) then {\n\t\tcontinueWith \"TEST\";\n\t} else {\n\t\t_x + 1;\n\t};\n};\n</sqf>"
+since: {}
