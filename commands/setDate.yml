@@ -1,48 +1,7 @@
 name: setDate
-description: |-
-  Sets mission date and time. Players joining after mission start will get the current server [[date]] including the year.
-  {{Feature|important|
-  While the game creates February 29th in a leap year, it removes December 31st.<br>
-  For example, <sqf inline>setDate [1980,12,31,12,0]</sqf> will result in the game jumping to [1981,1,1,12,0] as 1980 is a leap year.
-  }}
-multiplayer_note: |-
-  {{Feature|arma3|
-  Clients' local date is [[Multiplayer Scripting#Join In Progress|automatically and periodically synchronised]] with the server date.<br>
-  In order to change the date without waiting for automatic synchronisation, use remote execution: <sqf inline>[[2001,6,22,12,0]] remoteExec ["setDate"];</sqf>.
-  }}
-groups:
-- Mission Information
-- Environment
-syntax:
-- call: !Unary date
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: date
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
-effect_loc: Local
-since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>setDate [1986, 2, 25, 16, 0]; // 4:00pm February 25, 1986</sqf>
-- "<sqf>\n// Set the real date:\nif (isServer) then\n{\n\twaitUntil { time > 0 };\n\t[systemTime select [0, 5]] remoteExec [\"setDate\"];\n};\n</sqf>"
-- "Using [[setDate]] with an incorrect (like negative or exceeding) value will still work properly:\n<sqf>\nprivate _date = date;\n_date set [3, 25];\t// set hour to 25\nsetDate _date;\t\t// date = next day 1am\n</sqf>"
+effect_loc: Unspecified
+since: {}
