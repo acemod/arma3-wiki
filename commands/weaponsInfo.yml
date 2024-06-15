@@ -1,37 +1,7 @@
 name: weaponsInfo
-description: Returns entity's weapons information including weapon index and firemode.
-groups:
-- Weapons
-syntax:
-- call: !Binary
-  - unit
-  - - weaponOrMuzzle
-    - onlyLoaded
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: unit
-    description: person
-    type: Object
-  - name: weaponOrMuzzle
-    description: name of the weapon or muzzle (returns whichever matches first) or "" to return all weapons
-    type: String
-  - name: onlyLoaded
-    description: '[[true]] to return loaded weapons only'
-    type: Boolean
-    optional: true
-    default: '[[false]]'
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 2
-    minor: 10
-examples:
-- |-
-  Find weapon with FullAuto firemode and switch to it: <sqf>
-  private _weapons = player weaponsInfo [currentMuzzle player, true];
-  private _found = _weapons findIf { _x select 4 == "FullAuto" };
-  if (_found > -1) then { action ["SwitchWeapon", player, player, _weapons select _found select 0] };
-  </sqf>
+since: {}
