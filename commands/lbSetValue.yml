@@ -1,63 +1,7 @@
 name: lbSetValue
-description: Sets the additional value in the row with the given index of a [[CT_LISTBOX]] or [[CT_COMBO]] control.
-groups:
-- GUI Control - ListBox
-syntax:
-- call: !Unary
-  - idc
-  - index
-  - value
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: idc
-    description: control IDC
-    type: Number
-  - name: index
-    type: Number
-  - name: value
-    description: only integer values are supported
-    type: Number
-- call: !Binary
-  - control
-  - - index
-    - value
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: control
-    type: Control
-  - name: index
-    type: Number
-  - name: value
-    description: only integer values are supported
-    type: Number
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>lbSetValue [101, 0, 1];</sqf>
-- <sqf>_control lbSetValue [0, 1];</sqf>
+since: {}
