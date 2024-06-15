@@ -1,38 +1,7 @@
 name: setParticleFire
-description: "Set fire parameters to particle effect.\n\nNote: You need to create emitter at first. Basic parameters of particle effect must be defined too. You can use script commands [[setParticleClass]] or [[setParticleParams]] to do so (see example). Correspondence between CfgCloudlets class param names and command array of params:\n<sqf>\nparticleSource setParticleFire\n[\n\tcoreIntensity,\n\tcoreDistance,\n\tdamageTime\n];\n</sqf>"
-groups:
-- Particles
-syntax:
-- call: !Binary
-  - source
-  - - coreIntensity
-    - coreDistance
-    - damageTime
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: source
-    type: Object
-  - name: coreIntensity
-    description: damage in the center of fire
-    type: Number
-  - name: coreDistance
-    description: how far can unit get damage
-    type: Number
-  - name: damageTime
-    description: how often is unit getting damage
-    type: Number
-argument_loc: Global
-effect_loc: Local
-since:
-  arma_3:
-    major: 1
-    minor: 8
-examples:
-- |-
-  <sqf>
-  _emitter = "#particlesource" createVehicleLocal (getPos player);
-  _emitter setParticleClass "MediumSmoke";
-  _emitter setParticleFire [0.3,1.0,0.1];
-  </sqf>
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
