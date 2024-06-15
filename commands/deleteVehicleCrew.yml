@@ -1,44 +1,7 @@
 name: deleteVehicleCrew
-description: |-
-  Deletes a member of or the whole crew of a vehicle. Human players cannot be deleted.
-  {{Feature|informative|This command attempts to move the given [[crew]] member out before deleting it. Made especially for deleting dead crew members, as using conventional [[deleteVehicle]] leads to all sorts of bugs and ghost objects. While the argument is global, you should take extra steps and execute this where vehicle is [[Multiplayer Scripting#Locality|local]] as moving units out of the vehicle happens where vehicle is [[Multiplayer Scripting#Locality|local]] and you want this to always precede deletion.}}
-groups:
-- Object Manipulation
-syntax:
-- call: !Binary
-  - vehicle
-  - unit
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: vehicle
-    type: Object
-  - name: unit
-    type: Object
-- call: !Unary vehicle
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: vehicle
-    type: Object
-  since:
-    arma_3:
-      major: 2
-      minor: 6
-argument_loc: Global
-effect_loc: Global
-since:
-  arma_3:
-    major: 1
-    minor: 32
-examples:
-- "<sqf>\n// delete when knowing the vehicle\n_helicopter deleteVehicleCrew driver _helicopter;\n\n// delete when only knowing the unit\n// vehicle _soldier deleteVehicleCrew _soldier;\t\t// may return the unit itself when used on dead crew\nobjectParent _soldier deleteVehicleCrew _soldier;\t// faster and always returns the vehicle\n</sqf>"
-- |-
-  Delete entire crew:
-  <sqf>
-  deleteVehicleCrew _tank; // since v2.06
-
-  { _helicopter deleteVehicleCrew _x } forEach crew _helicopter; // before v2.06
-  </sqf>
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
