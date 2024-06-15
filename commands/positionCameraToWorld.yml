@@ -1,38 +1,7 @@
 name: positionCameraToWorld
-description: '[[File:PositionCameraToWorld.jpg|right|200px]]Get the world coordinate space ({{Link|Position#PositionAGL|AGL}}) from a camera-relative position.<br>'
-groups:
-- Camera Control
-- Positions
-syntax:
-- call: !Unary cameraPos
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: cameraPos
-    description: |-
-      relative camera position, format '''[x, z, y]''' (X = left-right, Z = below-above, Y = back-front)
-      {{Feature|important|This command has Y and Z axes swapped around, which is different from the usual model space coordinates format ({{Link|Position|[x, y, z]}}).}}
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>_worldPos = positionCameraToWorld _cameraPos;</sqf>
-- "Example demonstrating reversed Y and Z:\n<sqf>\nplayer setDir 0; // assuming player is looking forward\nhint str [positionCameraToWorld [0,0,0], positionCameraToWorld [0,0,1]];\n/*\n[\n\t[2481.35, 5671.21, 1.51395],\n\t[2481.35, 5672.21, 1.46955]\n]\n*/\n</sqf>"
-- <sqf>_cameraAGLPosition = positionCameraToWorld [0,0,0];</sqf>
+since: {}
