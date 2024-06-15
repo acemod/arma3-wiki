@@ -1,52 +1,7 @@
 name: camCreate
-description: |-
-  Create a camera or a seagull object on the given position. The creation happens immediately and doesn't wait for [[camCommit]].<br>
-  Among other commands, [[cameraEffect]] must be used to enter the camera's view and [[camDestroy]] to delete the created camera. See also [[:Category:Command Group: Camera Control|Camera Control]].
-  {{Feature|important|
-  * Other objects can be created this way, but vehicles created with [[camCreate]] cannot be entered
-  * Any unit created with [[camCreate]] will remain static
-  * Unlike [[createVehicle]], objects are created exactly at the given position, without consideration of the surrounding objects.
-  }}
-multiplayer_note: camCreated objects are only visible locally (meaning they are client-side effects).
-groups:
-- Camera Control
-syntax:
-- call: !Binary
-  - type
-  - position
-  ret:
-  - Object
-  - the created camera
-  params:
-  - name: type
-    type: Unknown
-  - name: position
-    description: position at which to create the object
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
-effect_loc: Local
-since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>_cam = "camera" camCreate (ASLToAGL eyePos player);</sqf>
-- <sqf>_flr = "flare" camCreate (position _myPlane); // works too</sqf>
+effect_loc: Unspecified
+since: {}
