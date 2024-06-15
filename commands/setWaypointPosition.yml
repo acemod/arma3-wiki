@@ -1,47 +1,7 @@
 name: setWaypointPosition
-description: "Attempts to move given waypoint to a random position inside a circle with the given center and radius. \nThe waypoint will be placed similar to {{hl|\"NONE\"}} attribute in [[setVehiclePosition]], even if the radius is 0, which means it could still be off center. In order to force waypoint to the exact position, similar to {{hl|\"CAN_COLLIDE\"}} attribute, use a negative radius (see {{Link|#Example 2}})."
-groups:
-- Waypoints
-syntax:
-- call: !Binary
-  - waypoint
-  - - center
-    - radius
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: waypoint
-    description: format [[Waypoint]]
-    type: Unknown
-  - name: center
-    type: Unknown
-  - name: radius
-    description: random placement radius in meters. Set it to -1 and convert center to [[Position#PositionASL|PositionASL]] for the exact center placement
-    type: Number
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>[_grp, 2] setWaypointPosition [position player, 0];</sqf>
-- |-
-  Exact placement using a negative ''radius'' and [[Position#PositionASL|PositionASL]]:
-  <sqf>_wp setWaypointPosition [getPosASL player, -1];</sqf>
+since: {}
