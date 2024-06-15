@@ -1,33 +1,7 @@
 name: unassignItem
-description: Unassigns existing item and tries to put it into inventory. If there is no space in inventory the item simply disappears. See also [[unlinkItem]].
-groups:
-- Unit Inventory
-syntax:
-- call: !Binary
-  - unit
-  - item
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: unit
-    type: Object
-  - name: item
-    type: String
-argument_loc: Global
-effect_loc: Global
-since:
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- |-
-  <sqf>
-  _bluforUnit unassignItem "NVGoggles";
-  _bluforUnit removeItem "NVGoggles";
-  _opforUnit unassignItem "NVGoggles_OPFOR";
-  _opforUnit removeItem "NVGoggles_OPFOR";
-  _independentUnit unassignItem "NVGoggles_INDEP";
-  _independentUnit removeItem "NVGoggles_INDEP";
-  </sqf>
-- "<sqf>\n{\n\t_x unassignItem hmd _x; // unassign (not remove) NVGs from all units\n} forEach allUnits;\n</sqf>"
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
