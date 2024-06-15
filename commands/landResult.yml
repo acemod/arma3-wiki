@@ -1,34 +1,7 @@
 name: landResult
-description: Return the result of helicopter landing position searching (performed after the [[land]] command).
-groups:
-- Unit Control
-syntax:
-- call: !Unary helicopter
-  ret:
-  - String
-  - |-
-    result, can be:
-    * {{hl|"Found"}} - position found
-    * {{hl|"NotFound"}} - position not found
-    * {{hl|"NotReady"}} - position searching is still in progress
-    * {{hl|""}} - empty string when the provided ''helicopter'' is invalid
-  params:
-  - name: helicopter
-    type: Object
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>_result = landResult BIS_heli;</sqf>
+since: {}
