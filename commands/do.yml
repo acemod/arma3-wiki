@@ -1,45 +1,7 @@
 name: do
-description: Executes ''code''. Used as part of a construct, such as [[while]], [[with]], [[for]] and [[switch]]. The ''code'' is always executed in [[missionNamespace]] unless [[do]] is used with [[with]] as an argument.
-groups:
-- Program Flow
-syntax:
-- call: !Binary
-  - construct
-  - code
-  ret:
-  - Anything
-  - null
-  params:
-  - name: construct
-    type: Unknown
-  - name: code
-    type: Code
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint:
-    major: 1
-    minor: 85
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- "<sqf>\nwhile { b > a } do\n{\n\ta = a + 1;\n};\n</sqf>"
-- "<sqf>\nwith uiNamespace do\n{\n\tMyUIVar = MyUIVar + 5;\n};\n</sqf>"
-- "<sqf>\nfor \"_i\" from 1 to 10 do\n{\n\tsystemChat str _i;\n\tsleep 0.5;\n};\n</sqf>"
-- "<sqf>\nswitch (50) do\n{\n\tcase 25: { hint \"25\" };\n\tcase 50: { hint \"50\" }; // hints \"50\"\n\tcase 75: { hint \"75\" };\n\tdefault { hint \"nope\" };\n};\n</sqf>"
+since: {}
