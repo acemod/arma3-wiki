@@ -1,38 +1,7 @@
 name: catch
-description: Processes code when an [[Exception handling|exception]] is thrown in a [[try]] block. The exception caught can be found in the ''_exception'' variable.
-groups:
-- Program Flow
-syntax:
-- call: !Binary
-  - tryBlock
-  - code
-  ret:
-  - Anything
-  - null
-  params:
-  - name: tryBlock
-    type: Unknown
-  - name: code
-    type: Code
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>try { throw "invalid argument" } catch {hint str _exception};</sqf>
-- <sqf>123 try { if (_this != 123) throw "invalid argument" } catch { hint str _exception };</sqf>
-- "The correct usage of shorthand alt syntax:\n<sqf>try {\n\tif (a > b) throw \"Error: some error\"; // OK\n\t// the command argument is static\n} catch {\n\thint str _exception;\n};\n\ntry {\n\t_someFunc = {\n\t\t// ...\n\t};\n\tif (a > b) throw (call _someFunc); // NOT OK\n\t// the command argument is dynamic\n\t// _someFunc is called first to get the value regardless of (a > b) outcome\n} catch {\n\thint str _exception;\n};\n\ntry {\n\t_someFunc = {\n\t\t// ...\n\t};\n\tif (a > b) then { throw (call _someFunc) }; /// OK\n\t// the command argument is dynamic\n\t// _someFunc is only called when (a > b) is true\n} catch {\n\thint str _exception;\n};\n</sqf>"
+since: {}
