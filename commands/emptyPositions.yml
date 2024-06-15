@@ -1,40 +1,7 @@
 name: emptyPositions
-description: |-
-  Returns the number of given empty positions in the vehicle.
-  {{Feature|informative|To return the actual units in the vehicle use [[fullCrew]]. However if only the number is desired, use [[emptyPositions]] because it is faster.}}
-groups:
-- Object Manipulation
-- Unit Control
-syntax:
-- call: !Binary
-  - vehicle
-  - position
-  ret:
-  - Number
-  - null
-  params:
-  - name: vehicle
-    type: Object
-  - name: position
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>_freeCargoAndFFVPositions = vehicle player emptyPositions "Cargo";</sqf>
-- <sqf>_freeCargoOnlyPositions = vehicle player emptyPositions "CargoNoFFV";</sqf>
+since: {}
