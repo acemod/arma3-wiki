@@ -1,34 +1,7 @@
 name: deleteRange
-description: Removes a range of array elements from the given array. Modifies the original array, just like [[resize]] or [[set]].
-groups:
-- Arrays
-syntax:
-- call: !Binary
-  - array
-  - - from
-    - count
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: array
-    type: Unknown
-  - name: from
-    description: array index to start selection from.
-    type: Number
-  - name: count
-    description: number of array elements to remove. If the selected range exceeds source array boundaries, selection will be made up to the end of the array.
-    type: Number
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 32
-examples:
-- |-
-  <sqf>
-  _arr = [1,2,3,4,5,6];
-  _arr deleteRange [1,4];
-  hint str _arr; // [1,6]
-  </sqf>
+since: {}
