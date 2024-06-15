@@ -1,21 +1,7 @@
 name: isUIContext
-description: Returns [[true]] if the script originated from some UI control event, for example from "onButtonDown" EH. Exists within parent scope and immediate child scopes.
-groups:
-- GUI Control
-- Program Flow
-syntax:
-- call: Nular
-  ret:
-  - Boolean
-  - null
-  params: []
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 76
-examples:
-- <sqf>if (isUIContext) then { hint "UI control event" };</sqf>
-- <sqf>_button ctrlSetEventHandler ["ButtonDown", "call { diag_log isUIContext }"]; // outputs true</sqf>
-- <sqf>_button ctrlSetEventHandler ["ButtonDown", "0 spawn { diag_log isUIContext }"]; // outputs false</sqf>
+since: {}
