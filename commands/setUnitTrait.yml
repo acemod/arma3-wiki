@@ -1,45 +1,7 @@
 name: setUnitTrait
-description: |-
-  Enables or disables a trait or alters a trait of the given unit. Unit traits consist of unit abilities, which are [[Boolean]]s and modifiers, which are [[Number]]s. Custom trait can only be a [[Boolean|bool]].<br><br>
-  Abilities:
-  * [[Boolean]] '''engineer''' - Ability to partially repair vehicles with toolkit, equivalent to {{hl|c= engineer = 1;}} in [[CfgVehicles_Config_Reference|CfgVehicles]]
-  * [[Boolean]] '''explosiveSpecialist''' - Ability to defuse mines with toolkit, equivalent to {{hl|c= canDeactivateMines = 1;}} in CfgVehicles
-  * [[Boolean]] '''medic''' - Ability to treat self and others with medikit, equivalent to {{hl|c= attendant = 1;}} in CfgVehicles
-  * [[Boolean]] '''UAVHacker''' - Ability to hack enemy and frendly drones, equivalent to {{hl|c= uavHacker = 1;}} in CfgVehicles
-  Modifiers:
-  * [[Number]] '''audibleCoef''' - A lower value means the unit is harder to hear
-  * [[Number]] '''camouflageCoef''' - A lower value means the unit is harder to spot
-  * [[Number]] '''loadCoef''' - Equipment weight multiplier affecting fatigue and stamina
-groups:
-- Object Manipulation
-syntax:
-- call: !Binary
-  - unit
-  - - skillName
-    - value
-    - isCustom
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: unit
-    description: the unit whose trait should be set
-    type: Object
-  - name: skillName
-    description: name of the skill
-    type: String
-  - name: value
-    description: value (see above)
-    type: Unknown
-  - name: isCustom
-    description: Must be set to [[true]] in case of custom
-    type: Boolean
-    optional: true
-argument_loc: Local
-effect_loc: Global
-since:
-  arma_3:
-    major: 1
-    minor: 58
-examples:
-- <sqf>player setUnitTrait ["Medic", true];</sqf>
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
