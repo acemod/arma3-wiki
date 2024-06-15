@@ -1,38 +1,7 @@
 name: createHashMapObject
-description: |-
-  Create a [[HashMap]] with an {{Link|https://en.wikipedia.org/wiki/Object-oriented_programming|Object-Oriented Programming}} behaviour.<br>
-  Inside a object, Methods (if they are called correctly, either by engine or via {{Link|call#Syntax 3}}) will have the objects instance inside the <sqf inline>_self</sqf> variable.<br>
-  The Destructor ("#delete" method) will be executed when the last reference to the objects variable gets deleted. (Except when the mission is ended and all variables are deleted at once)<br>
-  <br>
-  Inheritance: HashMap objects support a simple form of Inheritance.<br>
-  It behaves similar to the [[merge]] command with overwriteExisting enabled. Sub-class methods and properties with same name, overwrite their Base-class values.<br>
-  Constructor/Destructor/Clone methods will be merged together and executed in sequence.<br>
-  Flags entry will use overwrite behaviour.
-groups:
-- HashMap
-syntax:
-- call: !Unary
-  - classDefinition
-  - constructorArguments
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: classDefinition
-    type: Unknown
-  - name: constructorArguments
-    description: passed as <sqf inline>_this</sqf> argument to the "#create" method.
-    type: Anything
-    optional: true
-    default: '[[Nothing]]'
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 2
-    minor: 14
-examples:
-- "<sqf>\nprivate _declaration = [\n\t[\"#flags\", [\"sealed\"]],\n\t[\"#create\", { hint \"Hello!\" }],\n\t[\"#clone\", { hint \"We were copied!\" }],\n\t[\"#delete\", { hint \"Goodbye\" }],\n\t[\"#str\", { \"My HashMap Object\" }],\n\t[\"Method\", { hint \"Method has been called\" }]\n];\n\nprivate _hashMapObject = createHashMapObject [_declaration];\t// hints \"Hello!\"\n_hashMapObject call [\"Method\"];\t\t\t\t\t\t\t\t\t// hints \"Method has been called\"\nhint str _hashMapObject;\t\t\t\t\t\t\t\t\t\t// hints \"My HashMap Object\"\nprivate _shallowCopy = _hashMapObject;\t\t\t\t\t\t\t// no hint\nprivate _deepCopy = +_hashMapObject;\t\t\t\t\t\t\t// hints \"We were copied!\"\n// at the end of the scope, _hashMapObject is deleted and hints \"Goodbye\"\n</sqf>"
-- "Inheritance constructor/destructor/copy orderings: <sqf>\nprivate _animalDeclaration = [\n\t[\"#type\", \"IAnimal\"],\n\t[\"#create\", { systemChat \"Animal Init\" }],\n\t[\"#clone\", { systemChat \"Animal Copied\" }],\n\t[\"#delete\", { systemChat \"Animal Bye\" }]\n];\n\nprivate _pigDeclaration = [\n\t[\"#base\", _animalDeclaration],\n\t[\"#type\", \"Pig\"],\n\t[\"#create\", { systemChat \"Pig Init\" }],\n\t[\"#clone\", { systemChat \"Pig Copied\" }],\n\t[\"#delete\", { systemChat \"Pig Bye\" }]\n];\n\nprivate _smolPigDeclaration = [\n\t[\"#base\", _pigDeclaration],\n\t[\"#type\", \"SmolPig\"],\n\t[\"#create\", { systemChat \"SmolPig Init\" }],\n\t[\"#clone\", { systemChat \"Smol Copied\" }],\n\t[\"#delete\", { systemChat \"Smol Bye\" }]\n];\n\nprivate _smolPigInstance = createHashMapObject [_smolPigDeclaration]; // prints \"Animal Init\", \"Pig Init\", \"SmolPig Init\"\nprivate _copy = +_smolPigInstance; // prints \"Animal Copied\", \"Pig Copied\", \"SmolPig Copied\"\n_copy = nil; // prints \"SmolPig Bye\", \"Pig Bye\", \"Animal Bye\"\n</sqf>"
-- "Inheritance type checking:\n<sqf>\nprivate _animalDeclaration = [\n\t[\"#type\", \"IAnimal\"],\n\t[\"FurType\", { \"None\" }] // default implementation\n];\n\nprivate _pigDeclaration = [\n\t[\"#base\", _animalDeclaration],\n\t[\"#type\", \"Pig\"],\n\t[\"FurType\", { \"Bristles\" }] // override the base class method\n];\n\nprivate _catDeclaration = [\n\t[\"#base\", _animalDeclaration],\n\t[\"#type\", \"Cat\"],\n\t[\"FurType\", { \"Hair\" }] // override the base class method\n];\n\nprivate _instance = createHashMapObject [selectRandom [_pigDeclaration, _catDeclaration]];\n\nif (\"IAnimal\" in (_instance get \"#type\")) then // check if a object instance is or inherits from a specific type\n{\n\t_instance call [\"FurType\"]; // now that we know it implements IAnimal, we know that \"FurType\" method will be present\n};\n</sqf>"
-- "Destructor: <sqf>\nprivate _temporaryVehicle = [\n\t[\"#create\", {\n\t\tparams [\"_vehicleType\", \"_vehiclePos\", \"_lifetimeSeconds\"]; // handle constructor arguments\n\t\tprivate _newVehicle = _vehicleType createVehicle _vehiclePos;\n\t\t_self set [\"MyVehicle\", _newVehicle]; // Store the vehicle inside the object for later\n\n\t\t// because _self is passed as parameter, it will be referenced by the spawned script until it ends.\n\t\t[_lifetimeSeconds, _self] spawn { params [\"_lifetimeSeconds\", \"_self\"]; sleep _lifetimeSeconds; };\n\t}],\n\t[\"#delete\", {\n\t\tdeleteVehicle (_self get \"MyVehicle\"); // delete the vehicle when we go away\n\t}],\n\t[\"MyVehicle\", objNull] // placeholder, this is not needed\n];\n\n// create a temporary RoadCone, at player position, that will delete itself after 5 seconds.\ncreateHashMapObject [_temporaryVehicle, [\"RoadCone_F\", getPos player, 5]];\n</sqf>"
+since: {}
