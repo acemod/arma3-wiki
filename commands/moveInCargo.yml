@@ -1,71 +1,7 @@
 name: moveInCargo
-description: |-
-  Moves a unit into a vehicle cargo position (immediately and without animation).
-  {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
-  {{Feature|important|If the unit is already in a vehicle, nothing will happen. You should use [[moveOut]] to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.}}
-multiplayer_note: '{{Feature|informative|The command should execute where the ''''''unit'''''' (not ''''''vehicle'''''') is local.}}'
-groups:
-- Unit Control
-syntax:
-- call: !Binary
-  - unit
-  - vehicle
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: unit
-    type: Object
-  - name: vehicle
-    type: Object
-- call: !Binary
-  - unit
-  - - vehicle
-    - cargoIndex
-    - canReassign
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: unit
-    type: Object
-  - name: vehicle
-    type: Object
-  - name: cargoIndex
-    type: Number
-  - name: canReassign
-    description: try to move ''unit'' into the first free ''vehicle'' cargo seat if ''cargoIndex'' is already occupied
-    type: Boolean
-    optional: true
-    default: '[[true]]'
-    since:
-      arma_3:
-        major: 2
-        minor: 8
-argument_loc: Local
-effect_loc: Global
-since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>_soldierOne moveInCargo _jeepOne;</sqf>
-- <sqf>_soldierOne moveInCargo [_jeepOne, 1];</sqf>
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
