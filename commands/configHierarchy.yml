@@ -1,25 +1,7 @@
 name: configHierarchy
-description: Returns hierarchy of the given config class. Just like with [[inheritsFrom]], only complete config classes are supported (before {{GVI|arma3|2.14|size= 0.75}}).
-groups:
-- Config
-syntax:
-- call: !Unary configClass
-  ret:
-  - Unknown
-  - array of parent configs
-  params:
-  - name: configClass
-    description: target config class
-    type: Config
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 48
-examples:
-- |-
-  <sqf>
-  _hierarchy = configHierarchy (configFile >> "CfgVehicles" >> "Car");
-  // [bin\config.bin, bin\config.bin/CfgVehicles, bin\config.bin/CfgVehicles/Car]
-  </sqf>
+since: {}
