@@ -1,48 +1,7 @@
 name: ctrlSetChecked
-description: Sets checked state of a [[CT_CHECKBOXES]] control.
-groups:
-- GUI Control
-syntax:
-- call: !Binary
-  - control
-  - checked
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: control
-    description: '[[CT_CHECKBOXES]] control. If control contain multiple checkboxes, only checkbox with index 0 is queried.'
-    type: Control
-  - name: checked
-    description: '[[true]] to check, [[false]] to uncheck the checkbox'
-    type: Boolean
-- call: !Binary
-  - control
-  - - index
-    - checked
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: control
-    description: '[[CT_CHECKBOXES]] control'
-    type: Control
-  - name: index
-    description: checkbox index
-    type: Number
-  - name: checked
-    description: '[[true]] to check, [[false]] to uncheck the checkbox'
-    type: Boolean
-  since:
-    arma_3:
-      major: 1
-      minor: 72
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>_control ctrlSetChecked true;</sqf>
-- <sqf>_control ctrlSetChecked [3, true];</sqf>
+since: {}
