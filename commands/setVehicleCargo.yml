@@ -1,37 +1,7 @@
 name: setVehicleCargo
-description: Load cargo vehicle inside vehicle if possible, returns bool based on whether the vehicle was able to be loaded.  Can also be used to unload a specific loaded vehicle or all loaded vehicles.
-groups:
-- Vehicle in Vehicle Transport
-syntax:
-- call: !Binary
-  - vehicle
-  - cargo
-  ret:
-  - Boolean
-  - whether or not operation was a success
-  params:
-  - name: vehicle
-    description: vehicle for carrying cargo, [[objNull]] to unload specific loaded cargo
-    type: Object
-  - name: cargo
-    description: cargo to put/loaded in vehicle, [[objNull]] to unload all loaded cargo
-    type: Object
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
-effect_loc: Global
-since:
-  arma_3:
-    major: 1
-    minor: 62
-examples:
-- |-
-  Blackfish with no vehicle cargo loaded
-  <sqf>private _success = blackfish setVehicleCargo offroad; // true</sqf>
-- |-
-  Blackfish with full cargo already loaded
-  <sqf>private _success = blackfish setVehicleCargo offroad; // false</sqf>
-- |-
-  Unload specific loaded vehicle (will paradrop if dropped from high altitude)
-  <sqf>private _success = objNull setVehicleCargo offroad;</sqf>
-- |-
-  Unload all vehicles (will paradrop if dropped from high altitude)
-  <sqf>private _success = blackfish setVehicleCargo objNull;</sqf>
+effect_loc: Unspecified
+since: {}
