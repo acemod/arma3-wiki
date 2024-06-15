@@ -1,39 +1,7 @@
 name: getAssetDLCInfo
-description: Returns DLC information about given object or model.
-groups:
-- DLC
-syntax:
-- call: !Unary asset
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: asset
-    description: object reference or path to the model
-    type: Unknown
-- call: !Unary
-  - class
-  - config
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: class
-    description: class name of the asset
-    type: String
-  - name: config
-    description: config in which to search
-    type: Config
-    optional: true
-    default: <sqf inline>configFile >> "CfgVehicles"</sqf>
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 2
-    minor: 0
-examples:
-- <sqf>getAssetDLCInfo player;</sqf>
-- <sqf>getAssetDLCInfo "a3\Weapons_F_Enoch\Rifles\MSBS\MSBS65_F";</sqf>
-- <sqf>getAssetDLCInfo ["C_Van_01_transport_F"];</sqf>
-- <sqf>getAssetDLCInfo ["arifle_AK12_F", configFile >> "CfgWeapons"];</sqf>
+since: {}
