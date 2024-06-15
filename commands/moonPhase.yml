@@ -1,24 +1,7 @@
 name: moonPhase
-description: |-
-  Returns the phase of the in-game Moon on the given date.
-  According to this command, the fullest Moon in {{arma3}} at midnight is on <sqf inline>setDate [4804, 7, 13, 0, 0];</sqf>.
-  Use the {{Link|Arma 3: Utilities#Moon Phases|Moon Phase Utility}} to find out a scenario date with desired moon.
-groups:
-- Environment
-syntax:
-- call: !Unary date
-  ret:
-  - Unknown
-  - 0 = new Moon, 1 = full Moon
-  params:
-  - name: date
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 58
-examples:
-- <sqf>private _currentMoonPhase = moonPhase date;</sqf>
-- "<sqf>\n// Returns array of dates for given year when moon is at its fullest\nfnc_fullMoonDates = \n{\n\tprivate _year = param [0, 2035];\n\tprivate [\"_date\", \"_phase\", \"_fullMoonDate\"];\n\tprivate _fullMoonPhase = 1;\n\tprivate _waxing = false;\n\tprivate _fullMoonDates = [];\n\tfor \"_i\" from dateToNumber [_year, 1, 1, 0, 0] to dateToNumber [_year, 12, 31, 23, 59] step 1 / 365 do\n\t{\n\t\t_date = numberToDate [_year, _i];\n\t\t_phase = moonPhase _date;\n\n\t\tcall\n\t\t{\n\t\t\tif (_phase > _fullMoonPhase) exitWith\n\t\t\t{\n\t\t\t\t_waxing = true;\n\t\t\t\t_fullMoonDate = _date;\n\t\t\t};\n\n\t\t\tif (_waxing) exitWith \n\t\t\t{\n\t\t\t\t_waxing = false;\n\t\t\t\t_fullMoonDates pushBack _fullMoonDate;\n\t\t\t};\n\t\t};\n\n\t\t_fullMoonPhase = _phase;\n\t};\n\n\t_fullMoonDates;\n};\n\n//set random full moon date in year 1970\nsetDate selectRandom (1970 call fnc_fullMoonDates);\n</sqf>"
+since: {}
