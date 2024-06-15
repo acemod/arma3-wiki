@@ -1,56 +1,7 @@
 name: linearConversion
-description: Converts given value from given "from" range to wanted "to" range. If clipping is set to [[true]], the resulting value is guaranteed to be within "to" range no matter what. {{Feature|arma3|Faster alternative to [[BIS_fnc_linearConversion]].}}
-groups:
-- Math
-syntax:
-- call: !Unary
-  - minFrom
-  - maxFrom
-  - value
-  - minTo
-  - maxTo
-  - clip
-  ret:
-  - Number
-  - respectful value from "to" range
-  params:
-  - name: minFrom
-    description: start "from" range
-    type: Number
-  - name: maxFrom
-    description: end "from" range
-    type: Number
-  - name: value
-    description: given value from "from" range
-    type: Number
-  - name: minTo
-    description: start "to" range
-    type: Number
-  - name: maxTo
-    description: end "to" range
-    type: Number
-  - name: clip
-    description: if [[true]], resulting value cannot leave "to" range
-    type: Boolean
-    optional: true
-    default: '[[false]]'
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- |-
-  <sqf>
-  // Say given range is 0 to 1 and wanted range is 0 to 100 (percent calculation). Given value 0.55 then will be 55
-  linearConversion [0, 1, 0.55, 0, 100];
-
-  // but if given value is 1.1 it will return 110
-  linearConversion [0, 1, 1.1, 0, 100, false];
-
-  // or if clipping is true it will return 100
-  linearConversion [0, 1, 1.1, 0, 100, true];
-  </sqf>
-- <sqf>linearConversion [4, 8, 5, 0, 1, false];</sqf>
-- "<sqf>\n// Calculate days from 1/1/1970\nfnc_daysFromEpoc = \n{\n\tprivate _year = param [0];\n\tprivate _days = 0;\n\tfor \"_i\" from 1970 to _year - 1 do \n\t{\n\t\t_days = _days + round linearConversion [0, 1, dateToNumber [_i, 12, 31, 23, 59], 0, 365, false];\n\t};\n\t_days + linearConversion [0, 1, dateToNumber _this, 0, 365, false];\n};\n\nhint str (date call fnc_daysFromEpoc);\n</sqf>"
+since: {}
