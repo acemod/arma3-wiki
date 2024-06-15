@@ -1,56 +1,7 @@
 name: serverCommand
-description: |-
-  Executes the given [[Multiplayer_Server_Commands|server command]].
-  {{Feature|informative|
-  * Available commands for execution can be found with [[serverCommandAvailable]]
-  * Commands that can be executed can be found with [[serverCommandExecutable]]
-  }}
-
-  {{Feature|important|If [[serverCommand]] is executed on a client, it must be executed from [[isUIContext|UI context]], such as [[User Interface Event Handlers#onButtonDown|"onButtonDown"]] or similar events (see [[User Interface Event Handlers]]).}}
-groups:
-- Multiplayer
-syntax:
-- call: !Unary command
-  ret:
-  - Boolean
-  - '[[false]] if a non valid command is used ("#blah"), false otherwise (was always [[true]] before {{GVI|arma3|1.40|size= 0.75}})'
-  params:
-  - name: command
-    type: String
-- call: !Binary
-  - password
-  - command
-  ret:
-  - Boolean
-  - '[[false]] if command failed at some stage. [[true]] doesn''t mean that command succeeded.'
-  params:
-  - name: password
-    description: 'case-sensitive password defined in [[Arma 3: Server Config File|server config]] with {{hl|serverCommandPassword}} param'
-    type: String
-  - name: command
-    description: server command
-    type: String
-  since:
-    arma_3:
-      major: 1
-      minor: 40
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_2:
-    major: 1
-    minor: 5
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>serverCommand "#logout";</sqf>
-- "Create button on the main map which will show userlist to anyone who clicks on it:\n<sqf>with uiNamespace do \n{\n\tprivate _ctrl = findDisplay 12 ctrlCreate [\"RscButton\", -1];\n\t_ctrl ctrlSetPosition [0,0,0.5,0.1];\n\t_ctrl ctrlSetText \"USERLIST\";\n\t_ctrl ctrlCommit 0;\n\t_ctrl ctrlAddEventHandler [\"ButtonDown\", \n\t{\n\t\tserverCommand \"#userlist\";\n\t}];\n};</sqf>"
-- <sqf>serverCommand format ["#kick %1",_name];</sqf>
-- <sqf>private _passwordWasOK = "MyServerCommandPassword" serverCommand "#lock";</sqf>
+since: {}
