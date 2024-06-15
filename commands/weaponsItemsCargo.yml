@@ -1,39 +1,7 @@
 name: weaponsItemsCargo
-description: "Returns an array with subarrays contains class names and also names of connected items of all the vehicle's cargo weapons in [[weaponsItems]] format. If weapon has no magazine, an empty array [] is returned instead of magazine info. If the argument is a vehicle with weapons, vehicles cargo is searched, unlike with [[weaponsItems]] command, which will return vehicle's weapons instead. \n* Since Arma 3 v1.96 the returned array always contains secondary muzzle magazine info and consistent with [[getUnitLoadout]] format for weapon items."
-groups:
-- Containers
-- Vehicle Inventory
-syntax:
-- call: !Unary vehicle
-  ret:
-  - Unknown
-  - see [[weaponsItems]]
-  params:
-  - name: vehicle
-    type: Unknown
-- call: !Unary
-  - vehicle
-  - extended
-  ret:
-  - Unknown
-  - see [[weaponsItems]]
-  params:
-  - name: vehicle
-    description: ammobox or vehicle
-    type: Object
-  - name: extended
-    description: '[[true]] to include muzzle information'
-    type: Boolean
-  since:
-    arma_3:
-      major: 2
-      minor: 14
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 22
-examples:
-- <sqf>weaponsItemsCargo vehicle player;</sqf>
-- <sqf>weaponsItemsCargo _weaponholder;</sqf>
+since: {}
