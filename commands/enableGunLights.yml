@@ -1,30 +1,7 @@
 name: enableGunLights
-description: |-
-  Toggles the target group's gun lights. [[disableAI]] "LIGHTS" will disable the use of gun lights.
-
-  {{Feature|important|This command acts on each unit of the provided group or provided unit's group; there is no need to apply it on each unit.}}
-groups:
-- Lights
-- Weapons
-syntax:
-- call: !Binary
-  - target
-  - mode
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: target
-    description: the group forced to use gun lights. If unit is supplied as argument, unit's group is used
-    type: Unknown
-  - name: mode
-    type: Unknown
-argument_loc: Local
-effect_loc: Global
-since:
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>_groupA enableGunLights "Auto";</sqf>
-- <sqf>_unit1 enableGunLights "ForceOff"; // sets _unit1's GROUP behaviour to not use gun lights</sqf>
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
