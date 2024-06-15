@@ -1,59 +1,7 @@
 name: create3DENEntity
-description: |-
-  Create new [[Eden Entity]]. Used for creating individual entities; to create a [[Eden_Editor:_Composition|composition]] (e.g., infantry squad), use [[create3DENComposition]] and to create a [[Eden_Editor:_Layer|layer]] use [[add3DENLayer]].<br>
-  This is the only way to add new editable entities to an [[:Category:Eden Editor|Eden Editor]] scenario. Other 'create' commands like [[createVehicle]] or [[createUnit]] will still work, but the resulting entity will not be editable.
-groups:
-- Eden Editor
-syntax:
-- call: !Unary
-  - mode
-  - class
-  - position
-  - isEmpty
-  ret:
-  - EdenEntity
-  - null
-  params:
-  - name: mode
-    description: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
-    type: String
-  - name: class
-    type: Unknown
-  - name: position
-    type: Unknown
-  - name: isEmpty
-    description: '[[true]] to create vehicle without crew'
-    type: Boolean
-    optional: true
-    default: '[[false]]'
-- call: !Binary
-  - group
-  - - mode
-    - class
-    - position
-  ret:
-  - EdenEntity
-  - null
-  params:
-  - name: group
-    type: Unknown
-  - name: mode
-    description: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
-    type: String
-  - name: class
-    description: entity class
-    type: String
-  - name: position
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 56
-examples:
-- <sqf>dude1 = create3DENEntity ["Object", "B_Soldier_F", screenToWorld [0.5, 0.5]];</sqf>
-- <sqf>dude2 = group dude1 create3DENEntity ["Object", "B_Soldier_AR_F", screenToWorld [0.5, 0.5]];</sqf>
-- <sqf>myMarker = create3DENEntity ["Marker", "mil_warning", getPosATL player];</sqf>
-- <sqf>mytrigger = create3DENEntity ["Trigger", "EmptyDetectorArea10x10", getPosATL player];</sqf>
-- "{{GVI|arma3|2.06|size= 0.75}} Create a shape marker:\n<sqf>\nm = create3DENEntity [\"Marker\", \"\", getPosATL player];\t// default rectangular marker\nm set3DENAttribute [\"markerType\", 1];\t\t\t\t\t// 0 - rectangle; 1 - ellipse\nm set3DENAttribute [\"brush\", \"DiagGrid\"];\n</sqf>"
+since: {}
