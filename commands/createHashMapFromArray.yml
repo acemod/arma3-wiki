@@ -1,44 +1,7 @@
 name: createHashMapFromArray
-description: Creates a new [[HashMap]] and initializes it from a key-value pair array
-groups:
-- HashMap
-- Arrays
-syntax:
-- call: !Unary
-  - - key1
-    - value1
-  - - key2
-    - value2
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: keyN
-    type: Unknown
-  - name: valueN
-    type: Anything
-- call: !Binary
-  - keys
-  - values
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: keys
-    type: Unknown
-  - name: values
-    type: Unknown
-  since:
-    arma_3:
-      major: 2
-      minor: 4
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 2
-    minor: 2
-examples:
-- <sqf>createHashMapFromArray [["a", 1], ["b", 2], ["c", 3]];</sqf>
-- <sqf>[1, 2, 3, 4] createHashMapFromArray []; // returns [[1, <null>], [2, <null>], [4, <null>], [3, <null>]]</sqf>
-- <sqf>[1, 2, 3] createHashMapFromArray ["one", "two", "three", "four"]; // returns [[1, "one"], [2, "two"], [3, "three"]]</sqf>
+since: {}
