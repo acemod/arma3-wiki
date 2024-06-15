@@ -1,25 +1,7 @@
 name: forceHitPointsDamageSync
-description: |-
-  Synchronises hitpoints values and total damage across current network clients as well as JIP.
-  Possible uses after executing script commands such as [[setHit]], [[setHitIndex]], [[setHitPointDamage]] or in conjunction with {{Link|Arma 3: Event Handlers#HandleDamage|HandleDamage}} event handler (see {{Link|#Example 2}}).
-  To sync static buildings, execute on the [[isServer|server]].
-groups:
-- Object Manipulation
-syntax:
-- call: !Unary entity
-  ret:
-  - Boolean
-  - '[[true]] if sync was attempted'
-  params:
-  - name: entity
-    description: entity
-    type: Object
-argument_loc: Local
-effect_loc: Global
-since:
-  arma_3:
-    major: 2
-    minor: 18
-examples:
-- <sqf>forceHitPointsDamageSync house1;</sqf>
-- "<sqf>\nhouse1 addEventHandler [\"HandleDamage\", \n{\n\tif (isServer && { _this select 9 == 2 }) then { (_this select 0) spawn { forceHitPointsDamageSync _this; } };\n\tif (_this select 7 find \"glass\" >= 0) then { _this select 2 } else { 0 };\n}];\n</sqf>"
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
