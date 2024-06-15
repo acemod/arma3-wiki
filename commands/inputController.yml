@@ -1,50 +1,7 @@
 name: inputController
-description: |-
-  Returns the state of controller inputs. The controller is a standard XBOX controller which is selected with Windows XBOX controller scheme. The input can be:
-  {{Columns|4|
-  * XBOX_A 0
-  * XBOX_B 1
-  * XBOX_X 2
-  * XBOX_Y 3
-  * XBOX_Up 4
-  * XBOX_Down 5
-  * XBOX_Left 6
-  * XBOX_Right 7
-  * XBOX_Start 8
-  * XBOX_Back 9
-  * XBOX_LeftBumper 10
-  * XBOX_RightBumper 11
-  * XBOX_LeftTrigger 12
-  * XBOX_RightTrigger 13
-  * XBOX_LeftThumb 14
-  * XBOX_RightThumb 15
-  * XBOX_LeftThumbXRight 16
-  * XBOX_LeftThumbYUp 17
-  * XBOX_RightThumbXRight 18
-  * XBOX_RightThumbYUp 19
-  * XBOX_LeftThumbXLeft 20
-  * XBOX_LeftThumbYDown 21
-  * XBOX_RightThumbXLeft 22
-  * XBOX_RightThumbYDown 23
-  }}
-groups:
-- Interaction
-syntax:
-- call: !Unary input
-  ret:
-  - Number
-  - value of the controller input 0...1. When input is -1, return is 1 if controller is available, 0 - if controller is unavailable
-  params:
-  - name: input
-    description: controller input 0...31 (see description) or -1 for controller detection.
-    type: Number
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 2
-    minor: 8
-examples:
-- |-
-  State of the fire trigger:
-  <sqf>onEachFrame { hintSilent str inputController 13 };</sqf>
+since: {}
