@@ -1,46 +1,7 @@
 name: setVelocity
-description: |-
-  Sets [[velocity]] vector of an object in m/s.
-
-  {{Feature|important|Since {{GVI|arma3|2.06|size= 0.75}} each velocity component is limited to the range +-5000 m/s.}}
-groups:
-- Object Manipulation
-syntax:
-- call: !Binary
-  - object
-  - vector
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: object
-    type: Object
-  - name: vector
-    type: Unknown
-argument_loc: Local
-effect_loc: Global
-since:
-  flashpoint:
-    major: 1
-    minor: 80
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>_truck1 setVelocity [20, 0, 0];</sqf>
-- "Advanced method used for relative acceleration:\n<sqf>\n_vel = velocity _vehicle;\n_dir = getDir _vehicle;\n_additionalSpeed = 10; // in m/s\n_vehicle setVelocity [\n\t(_vel select 0) + (sin _dir * _additionalSpeed), \n\t(_vel select 1) + (cos _dir * _additionalSpeed), \n\t(_vel select 2) // horizontal only\n];\n</sqf>"
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
