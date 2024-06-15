@@ -1,65 +1,7 @@
 name: toArray
-description: |-
-  Converts the supplied [[String]] into an [[Array]] of [[Number]]s. The numbers in the created array are the decimal {{Link|https://en.wikipedia.org/wiki/Unicode|Unicode}} representations of characters.
-  {{Feature|arma3|Since v2.04 this command can also handle [[HashMap]]s. See alternative syntax.}}
-groups:
-- Arrays
-- HashMap
-- Strings
-syntax:
-- call: !Unary string
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: string
-    type: String
-- call: !Unary hashMap
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: hashMap
-    type: Unknown
-  since:
-    arma_3:
-      major: 2
-      minor: 4
-- call: !Binary
-  - hashMap
-  - splitArrays
-  ret:
-  - Unknown
-  - null
-  params:
-  - name: hashMap
-    type: Unknown
-  - name: splitArrays
-    description: see return value
-    type: Boolean
-  since:
-    arma_3:
-      major: 2
-      minor: 4
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  armed_assault:
-    major: 1
-    minor: 9
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>hint format ["%1", toArray "AaŒ"];// Returns "[65,97,338]"</sqf>
-- <sqf>toArray _hashMap params ["_keys", "_values"];</sqf>
-- "<sqf>\nprivate _hashmap = [\"cow\", \"cat\", \"chicken\"] createHashMapFromArray [10000, 20000, 20000];\n_hashmap toArray true;\t// returns [[\"cow\", \"cat\", \"chicken\"], [10000, 20000, 20000]] - same as Syntax 2\n_hashmap toArray false;\t// returns [[\"cow\", 10000], [\"cat\", 20000], [\"chicken\", 20000]]\n</sqf>"
+since: {}
