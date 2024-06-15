@@ -1,34 +1,7 @@
 name: setSimpleTaskCustomData
-description: Set custom data for the task. Tooltip will be drawn in task list on the right side. Description will be drawn in task description panel on the bottom.
-groups:
-- Briefing
-syntax:
-- call: !Binary
-  - task
-  - - iconPath
-    - tooltip
-    - description
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: task
-    description: task the custom data are being added to
-    type: Task
-  - name: iconPath
-    description: icon path
-    type: String
-  - name: tooltip
-    description: text displayed next to the icon; max. 3 charactersc
-    type: String
-  - name: description
-    description: text displayed on the task description panel; html format
-    type: String
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 58
-examples:
-- <sqf>_task setSimpleTaskCustomData ["\A3\Ui_f\data\IGUI\Cfg\simpleTasks\letters\h_ca.paa", "This is the tooltip", "This is the description"];</sqf>
+since: {}
