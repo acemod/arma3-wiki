@@ -1,53 +1,7 @@
 name: setPylonLoadout
-description: |-
-  Adds/overrides loadout to a vehicle pylon. {{hl|TransportPylonsComponent}} in vehicle config and {{hl|pylonWeapon}} in the magazine config are required to run.
-  {{Feature|informative|This command also adds the corresponding weapon if the vehicle does not have one, but will not remove one that is no longer used.}}
-multiplayer_note: |-
-  {{Feature|important|
-  This command should run locally to the vehicle itself or it will cause desync issue! (especially upon the locality change, e.g getting in the vehicle).
-  See {{Link|#Example 4}} for an MP-compatible usage.
-  }}
-groups:
-- Vehicle Loadouts
-syntax:
-- call: !Binary
-  - vehicle
-  - - pylon
-    - magazine
-    - forced
-    - turret
-  ret:
-  - Boolean
-  - '[[true]] on success'
-  params:
-  - name: vehicle
-    type: Object
-  - name: pylon
-    description: pylon index (index starts from 1) or pylon name (see {{Link|#Example 1}})
-    type: Unknown
-  - name: magazine
-    description: magazine name
-    type: String
-  - name: forced
-    description: '[[true]] to force an incompatible magazine'
-    type: Boolean
-    optional: true
-    default: '[[false]]'
-  - name: turret
-    description: turret path
-    type: Unknown
-    optional: true
-    default: <sqf inline>[]</sqf>
-argument_loc: Local
-effect_loc: Local
-since:
-  arma_3:
-    major: 1
-    minor: 70
-examples:
-- <sqf>vehicle player setPylonLoadout ["pylon1", ""];</sqf>
-- "Make all of your pylon weapons Twin Cannon 30 mm:\n<sqf>\nprivate _vehicle = vehicle player;\nprivate _pylonsIndices = getAllPylonsInfo _vehicle select { _x select 0 };\n{\n\t_vehicle setPylonLoadout [_x, \"PylonWeapon_300Rnd_20mm_shells\", true];\n} forEach _pylonsIndices;\n</sqf>"
-- "Showcase all possible magazines:\n<sqf>\n[] spawn {\n\tprivate _allPylonMagazines = \"getText (_x >> 'pylonWeapon') != ''\" configClasses (configFile >> \"CfgMagazines\");\n\tprivate _vehicle = vehicle player;\n\tprivate _pylonsIndices = getAllPylonsInfo _vehicle select { _x select 0 };\n\n\t{\n\t\tprivate _configName = configName _x;\n\t\t{\n\t\t\t_vehicle setPylonLoadout [_x, _configName, true];\n\t\t} forEach _pylonsIndices;\n\n\t\thint _configName;\n\t\tsleep 1.5;\n\t} forEach _allPylonMagazines;\n};\n</sqf>"
-- |-
-  MP compatible usage:
-  <sqf>[myPlane, [1, "PylonWeapon_300Rnd_20mm_shells", true]] remoteExec ["setPylonLoadout", myPlane];</sqf>
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
