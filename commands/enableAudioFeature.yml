@@ -1,64 +1,7 @@
 name: enableAudioFeature
-description: |-
-  Get the state of '''or''' enable/disable an audio feature. Available features are {{hl|"lowpass"}} and {{hl|"building_interior"}}.
-  * {{GVI|arma3|2.14|size= 0.75}} it is possible to enable {{hl|"building_interior"}} on an object placed in a building.
-  * {{GVI|arma3|2.14|size= 0.75}} if 'enable' argument is omitted, the command returns the current state of the feature.
-multiplayer_note: |-
-  To use this command on objects in multiplayer, [[remoteExec]] it globally with JIP queue enabled:
-  <sqf>[_obj, ["building_interior", true]] remoteExec ["enableAudioFeature", 0, _obj];</sqf>
-groups:
-- Sounds
-syntax:
-- call: !Unary
-  - feature
-  - enable
-  ret:
-  - Boolean
-  - previous state
-  params:
-  - name: feature
-    description: '{{hl|"lowpass"}} or {{hl|"building_interior"}}'
-    type: String
-  - name: enable
-    description: (Optional, getter if not provided) [[true]] enable, [[false]], disable
-    type: Boolean
-    optional: true
-- call: !Binary
-  - object
-  - - feature
-    - enable
-  ret:
-  - Boolean
-  - previous state
-  params:
-  - name: object
-    type: Object
-  - name: feature
-    description: '{{hl|"building_interior"}} or {{hl|"building_exterior"}} only (mutually exclusive)'
-    type: String
-  - name: enable
-    description: (Optional, getter if not provided) [[true]] enable, [[false]], disable
-    type: Boolean
-    optional: true
-  since:
-    arma_3:
-      major: 2
-      minor: 14
-argument_loc: Global
-effect_loc: Local
-since:
-  arma_3:
-    major: 1
-    minor: 64
-examples:
-- <sqf>private _prevState = enableAudioFeature ["lowpass", true];</sqf>
-- <sqf>private _prevState = pallet enableAudioFeature ["building_interior", true];</sqf>
-- |-
-  <sqf>
-  private _currState = pallet enableAudioFeature ["building_interior"];
-  private _prevState = pallet enableAudioFeature ["building_interior", !_currState];
-  hint str (_currState == _prevState); // true
-
-  private _currState = pallet enableAudioFeature ["building_interior"];
-  hint str (_currState == _prevState); // false
-  </sqf>
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
