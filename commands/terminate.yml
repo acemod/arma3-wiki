@@ -1,52 +1,7 @@
 name: terminate
-description: |-
-  Terminates (aborts) [[spawn]]ed or [[execVM]]ed script.
-  {{Feature | important | The given script will not terminate immediately upon [[terminate]] command execution, it will do so the next time the script is processed by the [[Scheduler|scheduler]]}}
-groups:
-- Program Flow
-syntax:
-- call: !Unary scriptHandle
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: scriptHandle
-    type: ScriptHandle
-- call: !Unary FSMHandle
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: FSMHandle
-    description: The FSM script must be launched with 'allowTermination' flag for this command to work (see [[execFSM]]).
-    type: Number
-  since:
-    arma_3:
-      major: 2
-      minor: 18
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- |-
-  <sqf>_script = [] execVM "script.sqf";
-  sleep 5;
-  terminate _script;</sqf>
+since: {}
