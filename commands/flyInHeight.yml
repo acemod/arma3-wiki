@@ -1,66 +1,7 @@
 name: flyInHeight
-description: |-
-  Sets the flying altitude for aircraft relatively to the ground surface. Avoid too low altitudes, as helicopters and planes won't evade trees and obstacles on the ground. The default flying altitude is 100 meters.
-  {{Feature|informative|Height measurement is relative to the pilot and can be approximated with <sqf inline>ASLToAGL eyePos driver _aircraft;</sqf>.}}
-groups:
-- Object Manipulation
-syntax:
-- call: !Binary
-  - aircraft
-  - altitude
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: aircraft
-    type: Object
-  - name: altitude
-    description: flying altitude in meters
-    type: Number
-- call: !Binary
-  - aircraft
-  - - altitude
-    - forced
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: aircraft
-    type: Object
-  - name: altitude
-    description: flying altitude in meters
-    type: Number
-  - name: forced
-    description: '[[true]] to force altitude in all cases, [[false]] to behave like main syntax'
-    type: Boolean
-  since:
-    arma_3:
-      major: 2
-      minor: 14
-argument_loc: Local
-effect_loc: Global
-since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
-examples:
-- <sqf>_helicopter flyInHeight 40;</sqf>
-- "<sqf>\n// for altitudes below 10m\n_helicopter flyInHeight 5;\t\t\t// helicopter will land\n_helicopter flyInHeight [5, true];\t// helicopter will hover at 5m altitude\n\n// on a landed helicopter\n_helicopter flyInHeight 50;\t\t\t// helicopter will not move until a waypoint is added\n_helicopter flyInHeight [50, true];\t// helicopter will start to rise immediately\n</sqf>"
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
