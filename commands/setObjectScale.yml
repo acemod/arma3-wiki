@@ -1,69 +1,7 @@
 name: setObjectScale
-description: 'Scales an [[attachTo|attached object]] or a [[Arma 3: Simple Objects|Simple Object]]''s model - see {{Link|#Example 3}} for various configurations'' examples.'
-problem_notes:
-- |-
-  The {{arma3}} [[LOD]] limits still apply, meaning walkable surfaces can only be (~70?)m in size, and collision in general will only work up to (?)m from object center.
-  This command works on all objects in [[:Category:Eden Editor|Eden Editor]] or scenario preview, but it will not save and will reset when objects get moved. [[:Category:Eden Editor|Eden Editor]] support is only intended for artists.
-
-  {{Feature|informative|
-  Setting the scale of non-simple objects, such as vehicles with players/AI in them, static objects (<syntaxhighlight lang="cpp" inline>simulation = "house"</syntaxhighlight> in config), etc. might be possible,
-  but not officially supported. You may encounter issues.
-  }}
-
-  {{Feature|important|
-  Changing the direction of the object (e.g. using [[setDir]], [[setVectorDir]], etc.) will reset the object back to its original size (probably because the engine normalises the directions,
-  thus the scale in the transformation matrix becomes 1), so those commands should be run '''before''' resizing the object.
-  }}
-groups:
-- Object Manipulation
-syntax:
-- call: !Binary
-  - object
-  - scale
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: object
-    description: 'must be either an [[attachTo|attached object]] or [[Arma 3: Simple Objects|Simple Object]] - see {{Link|#Example 3}}'
-    type: Object
-  - name: scale
-    description: in range 0.0001..65504, relative to the object model's normal scale
-    type: Number
-argument_loc: Local
-effect_loc: Global
-since:
-  arma_3:
-    major: 2
-    minor: 2
-examples:
-- |-
-  <sqf>
-  _vehicle attachTo [player, [0,0,0]];
-  _vehicle setObjectScale 0.1;
-  </sqf>
-- |-
-  <sqf>
-  // select an object in Eden Editor and execute the following code in the Debug Console. When moving the object, the effect is reset!
-  private _object = get3DENSelected "Object" select 0;
-  _object setObjectScale 0.1;
-  </sqf>
-- |-
-  <sqf>
-  // multiple MP-compatible options
-
-  // global simple object
-  private _globalSimpleObject = createSimpleObject ["C_Offroad_01_F", getPosASL player, false];
-  _globalSimpleObject setObjectScale 0.1; // once is enough as long as it is not moved
-
-  // local normal object
-  private _localNormalObject = "C_Offroad_01_F" createVehicleLocal getPosATL player;
-  _localNormalObject attachTo [player, [0, 2, 1.5]]; // normal object must be attached
-  _localNormalObject setObjectScale 0.1; // once is enough as long as it is not moved
-
-  // local simple object
-  private _localSimpleObject = createSimpleObject ["C_Offroad_01_F", getPosASL player, true];
-  _localSimpleObject setObjectScale 0.1; // once is enough as long as it is not moved
-  </sqf>
-- "<sqf>\n// a not-so-great EachFrame workaround for a non-attached object\n\n// a normal object that is not attached must be scaled each frame\n// make sure the object is LOCAL in order to not saturate the network!\nprivate _localNormalObject = \"C_Offroad_01_F\" createVehicleLocal getPosATL player;\n// the object is not attached to anything\naddMissionEventHandler [\n\t\"EachFrame\",\n\t{ _thisArgs params [\"_obj\", \"_scale\"]; _obj setObjectScale _scale; },\n\t[_localNormalObject, 0.1]\n];\n</sqf>"
-- "<sqf>\n// only do the following in single player;\n// NEVER do such EachFrame in multiplayer!!\n// the performance will be terrible, the network will be saturated, the scaling may desync and not be perfect\nprivate _globalNormalObject = \"C_Offroad_01_F\" createVehicle getPosATL player;\naddMissionEventHandler [\n\t\"EachFrame\",\n\t{ _thisArgs params [\"_obj\", \"_scale\"]; _obj setObjectScale _scale; },\n\t[_globalNormalObject, 0.1]\n];\n</sqf>"
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since: {}
