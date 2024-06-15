@@ -21,11 +21,7 @@ pub enum Value {
         desc: String,
     },
     ArrayUnknown,
-    ArrayUnsized {
-        #[serde(rename = "type")]
-        typ: Box<Value>,
-        desc: String,
-    },
+    ArrayUnsized(Box<Value>),
     ArrayDate,
     ArrayColor,
     ArrayColorRgb,
@@ -34,6 +30,7 @@ pub enum Value {
     Code,
     Config,
     Control,
+    Date,
     DiaryRecord,
     Display,
     EdenEntity,
@@ -59,6 +56,7 @@ pub enum Value {
     TeamMember,
     TurretPath,
     UnitLoadoutArray,
+    ParticleArray,
     Position,
     Position2d,
     Position3d,
@@ -80,6 +78,9 @@ pub enum Value {
 
 // regex once cell
 static REGEX_TYPE: OnceLock<Regex> = OnceLock::new();
+static REGEX_ARRAY_OF: OnceLock<Regex> = OnceLock::new();
+static REGEX_ARRAY_FORMAT: OnceLock<Regex> = OnceLock::new();
+static REGEX_OR: OnceLock<Regex> = OnceLock::new();
 // static REGEX_ARRAY_IN_FORMAT: OnceLock<Regex> = OnceLock::new();
 
 impl Value {
@@ -92,6 +93,14 @@ impl Value {
     /// # Panics
     /// Panics if the regex fails to compile.
     pub fn from_wiki(source: &str) -> Result<Self, String> {
+        // Special Cases
+        if source == "[[Array]] format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]" {
+            return Ok(Self::OneOf(vec![
+                (Self::Position2d, None),
+                (Self::Position3d, None),
+            ]));
+        }
+
         let regex_type = REGEX_TYPE.get_or_init(|| Regex::new(r"(?m)\[\[([^\[\]]+)\]\]").unwrap());
         // let regex_array_in_format = REGEX_ARRAY_IN_FORMAT
         //     .get_or_init(|| Regex::new(r"(?m)\[\[Array\]\] in format \[\[([^\[\]]+)\]\]").unwrap());
@@ -103,6 +112,44 @@ impl Value {
                 return Self::single_match(caps.get(1).unwrap().as_str());
             }
         }
+
+        // Check if the type is an array
+        let regex_array_of = REGEX_ARRAY_OF
+            .get_or_init(|| Regex::new(r"(?m)^\[\[Array\]\] of \[\[([^\]]+?)\]\]s?$").unwrap());
+        if let Some(caps) = regex_array_of.captures(source) {
+            return Ok(Self::ArrayUnsized(Box::new(Self::single_match(
+                caps.get(1).unwrap().as_str(),
+            )?)));
+        }
+
+        // Check if the type is an array with a specific format
+        let regex_array_format = REGEX_ARRAY_FORMAT
+            .get_or_init(|| Regex::new(r"(?m)^\[\[Array\]\] format \[\[([^\]]+?)\]\]$").unwrap());
+        if let Some(caps) = regex_array_format.captures(source) {
+            if let Ok(format) = Self::single_match(caps.get(1).unwrap().as_str()) {
+                return Ok(Self::ArrayUnsized(Box::new(format)));
+            }
+            let format = caps.get(1).unwrap().as_str();
+            if format == "ctrlModelDirAndUp" {
+                println!("ctrlModelDirAndUp");
+                return Err("Unknown value ctrlModelDirAndUp".to_string());
+            }
+            panic!(
+                "Unable to parse array format: {}",
+                caps.get(1).unwrap().as_str()
+            );
+        }
+
+        // Check if the type is an or
+        let regex_or = REGEX_OR
+            .get_or_init(|| Regex::new(r"(?m)^\[\[([^\]]+?)\]\] or \[\[([^\]]+?)\]\]$").unwrap());
+        if let Some(caps) = regex_or.captures(source) {
+            return Ok(Self::OneOf(vec![
+                (Self::single_match(caps.get(1).unwrap().as_str())?, None),
+                (Self::single_match(caps.get(2).unwrap().as_str())?, None),
+            ]));
+        }
+
         println!("unable to parse value: {source}");
         Err("Unknown value".to_string())
     }
@@ -116,12 +163,16 @@ impl Value {
             "anything" => Ok(Self::Anything),
             "boolean" => Ok(Self::Boolean),
             "code" => Ok(Self::Code),
+            "color|color (rgba)" => Ok(Self::ArrayColorRgba),
+            "color|color (rgb)" => Ok(Self::ArrayColorRgb),
+            "color" => Ok(Self::ArrayColor),
             "config" => Ok(Self::Config),
             "control" => Ok(Self::Control),
+            "date" => Ok(Self::Date),
             "diary record" | "diaryrecord" => Ok(Self::DiaryRecord),
             "display" => Ok(Self::Display),
-            "eden entity" | "edenentity" => Ok(Self::EdenEntity),
-            "edenid" => Ok(Self::EdenID),
+            "eden entity" | "edenentity" | "eden entity|eden entities" => Ok(Self::EdenEntity),
+            "eden id" | "edenid" => Ok(Self::EdenID),
             "exception handle" | "exceptionhandle" => Ok(Self::ExceptionHandle),
             "for type" | "fortype" => Ok(Self::ForType),
             "group" => Ok(Self::Group),
@@ -138,17 +189,30 @@ impl Value {
             "switch type" | "switchtype" => Ok(Self::SwitchType),
             "task" => Ok(Self::Task),
             "team member" | "teammember" => Ok(Self::TeamMember),
-            "turretpath" => Ok(Self::TurretPath),
+            "turretpath" | "turret path" => Ok(Self::TurretPath),
             "unitloadoutarray" => Ok(Self::UnitLoadoutArray),
+            "particlearray" => Ok(Self::ParticleArray),
             "position" => Ok(Self::Position),
             "position2d" => Ok(Self::Position2d),
             "position3d" => Ok(Self::Position3d),
-            "position3dasl" => Ok(Self::Position3dASL),
-            "position3daslw" => Ok(Self::Position3DASLW),
-            "position3datl" => Ok(Self::Position3dATL),
-            "position3dagl" => Ok(Self::Position3dAGL),
-            "position3dagls" => Ok(Self::Position3dAGLS),
-            "position3drelative" => Ok(Self::Position3dRelative),
+            "position3dasl" | "position#positionasl|positionasl" | "position#positionasl" => {
+                Ok(Self::Position3dASL)
+            }
+            "position3daslw" | "position#positionaslw|positionaslw" | "position#positionaslw" => {
+                Ok(Self::Position3DASLW)
+            }
+            "position3datl" | "position#positionatl|positionatl" | "position#positionatl" => {
+                Ok(Self::Position3dATL)
+            }
+            "position3dagl" | "position#positionagl|positionagl" | "position#positionagl" => {
+                Ok(Self::Position3dAGL)
+            }
+            "position3dagls" | "position#positionagl|positionagls" | "position#positionagls" => {
+                Ok(Self::Position3dAGLS)
+            }
+            "position3drelative"
+            | "position#positionrelative|positionrelative"
+            | "position#positionrelative" => Ok(Self::Position3dRelative),
             "vector3d" => Ok(Self::Vector3d),
             "waypoint" => Ok(Self::Waypoint),
             "while type" | "whiletype" => Ok(Self::WhileType),
@@ -178,7 +242,7 @@ impl std::fmt::Display for Value {
                     result
                 }),
                 Self::ArrayUnknown => "Array Unknown".to_string(),
-                Self::ArrayUnsized { typ, .. } => format!("Array of {typ}"),
+                Self::ArrayUnsized(value) => format!("Array of {value}"),
                 Self::ArrayDate => "Array Date".to_string(),
                 Self::ArrayColor => "Array Color".to_string(),
                 Self::ArrayColorRgb => "Array Color RGB".to_string(),
@@ -187,6 +251,7 @@ impl std::fmt::Display for Value {
                 Self::Code => "Code".to_string(),
                 Self::Config => "Config".to_string(),
                 Self::Control => "Control".to_string(),
+                Self::Date => "Date".to_string(),
                 Self::DiaryRecord => "Diary Record".to_string(),
                 Self::Display => "Display".to_string(),
                 Self::EdenEntity => "Eden Entity".to_string(),
@@ -212,6 +277,7 @@ impl std::fmt::Display for Value {
                 Self::TeamMember => "Team Member".to_string(),
                 Self::TurretPath => "Turret Path".to_string(),
                 Self::UnitLoadoutArray => "Unit Loadout Array".to_string(),
+                Self::ParticleArray => "Particle Array".to_string(),
                 Self::Position => "Position".to_string(),
                 Self::Position2d => "Position 2D".to_string(),
                 Self::Position3d => "Position 3D".to_string(),
@@ -258,5 +324,13 @@ mod tests {
         );
         assert_eq!(Value::from_wiki("[[Number]]"), Ok(Value::Number));
         assert_eq!(Value::from_wiki("[[Object]]"), Ok(Value::Object));
+    }
+
+    #[test]
+    fn array() {
+        assert_eq!(
+            Value::from_wiki("[[Array]] of [[Boolean]]s"),
+            Ok(Value::ArrayUnsized(Box::new(Value::Boolean)))
+        );
     }
 }

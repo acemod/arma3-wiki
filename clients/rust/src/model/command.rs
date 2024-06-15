@@ -308,9 +308,7 @@ impl Command {
                         match Syntax::from_wiki(command.name(), &value, &mut lines) {
                             Ok((syntax, syntax_errors)) => {
                                 command.add_syntax(syntax);
-                                if false {
-                                    errors.extend(syntax_errors);
-                                }
+                                // errors.extend(syntax_errors);
                                 syntax_counter += 1;
                             }
                             Err(e) => {

@@ -1,10 +1,12 @@
-use std::{collections::HashMap, path::Path};
+use std::{collections::HashMap, path::Path, sync::Arc};
 
 use arma3_wiki::model::{Command, ParseError};
 use arma3_wiki_github::report::Report;
+use futures::{stream::FuturesUnordered, StreamExt};
 use indicatif::ProgressBar;
 use regex::Regex;
 use reqwest::{header::LAST_MODIFIED, Client};
+use tokio::sync::Semaphore;
 
 pub async fn list() -> HashMap<String, String> {
     const URL: &str =
@@ -69,22 +71,39 @@ pub async fn commands(report: &mut Report, args: &[String], dry_run: bool) {
     } else {
         ProgressBar::new(commands.len() as u64)
     };
+    let semaphore = Arc::new(Semaphore::new(10));
+    let mut futures = FuturesUnordered::new();
+
     for (name, url) in commands {
-        let result = command(&pg, &client, name.clone(), url.clone(), dry_run).await;
-        if let Err(e) = result {
-            println!("Failed {name}");
-            failed.push((name, e));
-        } else if let Ok((did_change, errors)) = result {
-            if errors.is_empty() {
-                if did_change {
-                    report.add_passed_command(name);
+        let pg_clone = pg.clone();
+        let client_clone = client.clone();
+        let semaphore_clone = semaphore.clone();
+        let future = async move {
+            let permit = semaphore_clone.acquire().await.unwrap();
+            let result = command(&pg_clone, &client_clone, name, url, dry_run).await;
+            drop(permit);
+            result
+        };
+        futures.push(future);
+    }
+    while let Some(result) = futures.next().await {
+        match result {
+            Ok((name, did_change, errors)) => {
+                if errors.is_empty() {
+                    if did_change {
+                        report.add_passed_command(name);
+                    } else {
+                        report.add_outdated_command(name);
+                    }
                 } else {
-                    report.add_outdated_command(name);
+                    for error in errors {
+                        report.add_failed_command(name.clone(), error.to_string());
+                    }
                 }
-            } else {
-                for error in errors {
-                    report.add_failed_command(name.clone(), error.to_string());
-                }
+            }
+            Err((name, e)) => {
+                println!("Failed {name}");
+                failed.push((name, e));
             }
         }
         pg.inc(1);
@@ -108,7 +127,7 @@ pub async fn command(
     name: String,
     url: String,
     dry_run: bool,
-) -> Result<(bool, Vec<ParseError>), String> {
+) -> Result<(String, bool, Vec<ParseError>), (String, String)> {
     let mut dist_path = Path::new("./dist/commands").join(urlencoding::encode(&name).to_string());
     dist_path.set_extension("yml");
 
@@ -127,9 +146,10 @@ pub async fn command(
                 Ok(res) => res,
                 Err(e) => {
                     pg.println(format!("Failed to fetch {name}: {e}"));
-                    return Err(e.to_string());
+                    return Err((name, e.to_string()));
                 }
             };
+            assert!(res.status().is_success(), "Failed to fetch {name}");
             let headers = res.headers();
             let last_modified = headers
                 .get(LAST_MODIFIED)
@@ -157,20 +177,20 @@ pub async fn command(
     } else {
         if skip {
             pg.println(format!("Skipping {name}, less than {SKIP_IF_LESS_THAN}h"));
-            return Ok((false, Vec::new()));
+            return Ok((name, false, Vec::new()));
         }
         let res = match client.get(&url).send().await {
             Ok(res) => res,
             Err(e) => {
                 pg.println(format!("Failed to fetch {name}: {e}"));
-                return Err(e.to_string());
+                return Err((name, e.to_string()));
             }
         };
         assert!(res.status().is_success(), "Failed to fetch {name}");
         let content = res.text().await.unwrap();
         if content.is_empty() {
             pg.println(format!("Failed to fetch {name} from {url}"));
-            return Err("Empty".to_string());
+            return Err((name, "Empty".to_string()));
         }
         pg.println(format!("Fetching {name} from {url}"));
         let mut file = tokio::fs::File::create(&path).await.unwrap();
@@ -180,7 +200,7 @@ pub async fn command(
         content
     };
     if content.is_empty() {
-        return Err("Empty content returned".to_string());
+        return Err((name, "Empty content returned".to_string()));
     }
     match Command::from_wiki(&name, &content) {
         Ok((mut parsed, mut errors)) => {
@@ -199,7 +219,7 @@ pub async fn command(
                 // Check if the file has changed
                 let old = std::fs::read_to_string(&dist_path).unwrap();
                 if old == serde_yaml::to_string(&parsed).unwrap() {
-                    return Ok((false, errors));
+                    return Ok((name, false, errors));
                 }
             }
             if !dry_run {
@@ -212,11 +232,11 @@ pub async fn command(
                 .await
                 .unwrap();
             }
-            Ok((true, errors))
+            Ok((name, true, errors))
         }
         Err(e) => {
             pg.println(format!("Failed to parse {name}"));
-            Err(e)
+            Err((name, e))
         }
     }
 }

@@ -8,19 +8,18 @@ mod version;
 async fn main() {
     let args: Vec<_> = std::env::args().skip(1).collect();
     let dry_run = args.iter().any(|arg| arg == "--dry-run");
+    let do_commands = !dry_run || args.is_empty() || args.iter().any(|arg| arg == "--commands");
+    let do_event_handlers =
+        !dry_run || args.is_empty() || args.iter().any(|arg| arg == "--event-handlers");
     let args = args
         .iter()
-        .filter(|arg| *arg != "--dry-run")
+        .filter(|arg| !arg.starts_with("--"))
         .cloned()
         .collect::<Vec<_>>();
     let tmp = std::env::temp_dir().join("arma3-wiki-fetch");
     if !tmp.exists() {
         std::fs::create_dir(&tmp).unwrap();
     }
-
-    let do_commands = !dry_run || args.is_empty() || args.iter().any(|arg| arg == "--commands");
-    let do_event_handlers =
-        !dry_run || args.is_empty() || args.iter().any(|arg| arg == "--event-handlers");
 
     let mut report = Report::new(version::version().await);
 
