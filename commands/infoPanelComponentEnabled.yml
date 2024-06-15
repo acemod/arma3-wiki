@@ -1,58 +1,7 @@
 name: infoPanelComponentEnabled
-description: Controls availability of component to given object info panel.
-groups:
-- Custom Panels
-syntax:
-- call: !Binary
-  - unit
-  - - panelID
-    - componentClassOrType
-  ret:
-  - Boolean
-  - '[[true]] if component was successfully enabled on the panel, [[false]] otherwise (e.g. component is not available for the object)'
-  params:
-  - name: unit
-    description: the concerned vehicle
-    type: Object
-  - name: panelID
-    description: '"left" or "right" can be used as panel names'
-    type: String
-  - name: componentClassOrType
-    type: String
-- call: !Binary
-  - - unit
-    - turretPath
-  - - panelID
-    - componentClassOrType
-  ret:
-  - Boolean
-  - null
-  params:
-  - name: unit
-    description: the concerned vehicle
-    type: Object
-  - name: turretPath
-    description: turret index
-    type: Unknown
-  - name: panelID
-    description: '"left" or "right" can be used as panel names'
-    type: String
-  - name: componentClassOrType
-    type: String
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 72
-examples:
-- |-
-  <sqf>
-  // returns true if specific component "SensorDisplay" is enabled on player vehicle's left panel
-  _state = [vehicle player, [-1]] infoPanelComponentEnabled ["VehicleSystemsDisplayManagerComponentLeft", "SensorDisplay"];
-  </sqf>
-- |-
-  <sqf>
-  // returns true if all "SensorsDisplayComponent" components are enabled on player vehicle's left panel, otherwise returns false
-  _state = [vehicle player, [-1]] infoPanelComponentEnabled ["VehicleSystemsDisplayManagerComponentLeft", "SensorsDisplayComponent"];
-  </sqf>
+since: {}
