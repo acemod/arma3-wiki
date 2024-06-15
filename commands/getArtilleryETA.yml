@@ -1,31 +1,7 @@
 name: getArtilleryETA
-description: Returns ETA to the target in seconds for given artillery unit based on target position and used magazine, -1 if target can't be hit.
-groups:
-- Artillery
-syntax:
-- call: !Binary
-  - unit
-  - - targetPosition
-    - magazineType
-  ret:
-  - Number
-  - null
-  params:
-  - name: unit
-    description: artillery unit
-    type: Object
-  - name: targetPosition
-    description: position of the target in format [[Position#PositionAGLS|PositionAGLS]] ([[getPos]], [[position]])
-    type: Position
-  - name: magazineType
-    description: type of magazine used
-    type: String
-argument_loc: Global
+description: ''
+groups: []
+syntax: []
+argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 0
-    minor: 56
-examples:
-- <sqf>_mortar getArtilleryETA [getPos _target, getArtilleryAmmo [_mortar] select 0];</sqf>
-- <sqf>_mortar getArtilleryETA [position _target, currentMagazine _mortar];</sqf>
+since: {}
