@@ -1,26 +1,7 @@
 name: inPolygon
-description: Checks whether position is inside given polygon. The polygon is only checked in 2 dimensions, i.e. the value of Z is ignored.
-groups:
-- Positions
-syntax:
-- call: !Binary
-  - position
-  - polygon
-  ret:
-  - Boolean
-  - null
-  params:
-  - name: position
-    type: Unknown
-  - name: polygon
-    description: 'positions in format: [position1, position2...., positionN]'
-    type: Unknown
+description: ''
+groups: []
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma_3:
-    major: 1
-    minor: 54
-examples:
-- <sqf>private _isInside = [100, 100, 0] inPolygon [[0, 0, 0], [1000, 1000, 0], [1000, 0, 0]];</sqf>
-- "<sqf>\nprivate _markerName = \"_USER_DEFINED #0/0/1\";\n\nprivate _xy2DPositions = markerPolyline _markerName;\nprivate _positions = [];\n\n// let's convert these x,y coordinates to \"normal\" position arrays\nfor \"_i\" from 0 to count _xy2DPositions - 1 step 2 do\n{\n\t_positions pushBack [_xy2DPositions select _i, _xy2DPositions select (_i + 1), 0];\n};\n\nplayer inPolygon _positions; // true if in the drawn shape, false if not\n</sqf>"
+since: {}
