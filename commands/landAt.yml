@@ -1,9 +1,11 @@
 name: landAt
 description: |-
   Order an AI airplane to land at a given airport. '''ID''' is the number to identify which map airport you want the airplane to land at. See [[Arma: Airport IDs]] for more information.
-  {{Feature | arma3 | Since Arma 3 v1.68 it is possible to also make the airplane land at a [[Arma 3: Dynamic Airport Configuration|dynamic airport]] [[object]] (e.g. aircraft carrier, makeshift runway...) – see '''Example 2'''.}}
-  {{Feature | arma3 | Since Arma3 v2.18 it is also possible to make a helicopter land at a specific helipad. }}
-  {{Feature|informative|To make a '''helicopter''' land there is also the [[land]] command.}}
+  {{Feature|arma3|
+  * {{GVI|arma3|1.68|size= 0.75}} it is possible to also make the airplane land at a [[Arma 3: Dynamic Airport Configuration|dynamic airport]] [[object]] (e.g. aircraft carrier, makeshift runway...) – see {{Link|#Example 2}}
+  * {{GVI|arma3|2.18|size= 0.75}} it is also possible to make a helicopter land at a specific helipad.
+  }}
+  {{Feature|informative|To make a '''helicopter''' land, see the [[land]] command.}}
 groups:
 - Unit Control
 - Roads and Airports
@@ -78,10 +80,13 @@ since:
 examples:
 - <sqf>_plane1 landAt 1;</sqf>
 - |-
-  <sqf>_dynamicAirport1 = "DynamicAirport_01_F" createVehicle position player;
-  _plane1 landAt _dynamicAirport1;</sqf>
+  <sqf>
+  _dynamicAirport1 = "DynamicAirport_01_F" createVehicle position player;
+  _plane1 landAt _dynamicAirport1;
+  </sqf>
 - |-
-  <sqf>_hpad = "Land_HelipadEmpty_F" createVehicle [0,0,0];
+  <sqf>
+  _hpad = "Land_HelipadEmpty_F" createVehicle [0,0,0];
   _hpad setPosASL _pos;
   heli landAt [_hpad, "LAND"];
   </sqf>
