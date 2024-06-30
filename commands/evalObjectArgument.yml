@@ -2,7 +2,21 @@ name: evalObjectArgument
 description: "Return argument in mission editor of a given object. \n{{Feature|informative|Some Old Editor Command}}"
 groups:
 - Game 2 Editor
-syntax: []
+syntax:
+- call: !Binary
+  - map
+  - - object
+    - argument
+  ret:
+  - Anything
+  - null
+  params:
+  - name: map
+    type: Control
+  - name: object
+    type: String
+  - name: argument
+    type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
