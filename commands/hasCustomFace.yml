@@ -1,0 +1,20 @@
+name: hasCustomFace
+description: Returns [[true]] if the player has a custom face file available. If the player is using the custom face, [[face]] command will return "Custom".
+groups:
+- Unit Identity
+syntax:
+- call: !Unary person
+  ret:
+  - Boolean
+  - '[[true]] if player has ''face.paa'' or ''face.jpg'' file in their current profile and it is usable.'
+  params:
+  - name: person
+    type: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
+examples:
+- <sqf>hasCustomFace player1;</sqf>
