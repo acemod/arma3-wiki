@@ -12,10 +12,32 @@ syntax:
   - '[[true]] if successful'
   params:
   - name: munition
+    description: missile
     type: Object
   - name: target
-    description: '[[objNull]] to cancel targeting'
+    description: valid missile target or [[objNull]] to cancel targeting
     type: Object
+- call: !Binary
+  - munition
+  - - target
+    - force
+  ret:
+  - Boolean
+  - '[[true]] if successful'
+  params:
+  - name: munition
+    description: missile
+    type: Object
+  - name: target
+    description: valid missile target or [[objNull]] to cancel targeting
+    type: Object
+  - name: force
+    description: '[[true]] to force target (for example to target countermeasure flare object)'
+    type: Boolean
+  since:
+    arma_3:
+      major: 2
+      minor: 18
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -26,3 +48,4 @@ examples:
 - <sqf>missile1 setMissileTarget tank1;</sqf>
 - "<sqf>\n_missile = createVehicle [\"Missile_AGM_01_F\", player modelToWorld [0,0,50], [], 0, \"CAN_COLLIDE\"];\n_missile setDir getDir player;\n_tgt = createVehicle [\"O_APC_Wheeled_02_rcws_v2_F\", player modelToWorld [0,300,0], [], 0, \"CAN_COLLIDE\"];\n_tgt setVehicleTiPars [1, 1, 1];\n[_missile, _tgt] spawn {\n\tparams [\"_missile\", \"_tgt\"];\n\tsleep 0.1;\n\t_missile setMissileTarget _tgt;\n};\n</sqf>"
 - <sqf>_missile setMissileTarget objNull; // cancels targeting</sqf>
+- <sqf>_missile setMissileTarget [flare1, true];</sqf>
