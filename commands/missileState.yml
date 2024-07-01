@@ -1,0 +1,21 @@
+name: missileState
+description: Returns engine and target lock states of the given guided missile.
+groups:
+- Weapons
+syntax:
+- call: !Unary munition
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: munition
+    description: missile
+    type: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
+examples:
+- <sqf>_state = missileState missile1;</sqf>
