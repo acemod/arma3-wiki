@@ -1,5 +1,8 @@
 name: objectFromNetId
-description: Get object with given unique ID. If object is a [[group]] use [[groupFromNetId]]. As this command is MP only, you can use [[BIS_fnc_objectFromNetId]], which extends the use to SP as well.
+description: Get object with given unique ID. For groups, use [[groupFromNetId]].
+multiplayer_note: |-
+  * In singleplayer: {{GVI|arma3|2.18|size= 0.75}} works as described (returned [[objNull]] before v2.18 - see [[BIS_fnc_objectFromNetId]])
+  * In multiplayer: works as described
 groups:
 - Multiplayer
 syntax:
