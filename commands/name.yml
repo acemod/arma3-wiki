@@ -27,6 +27,17 @@ syntax:
     armed_assault:
       major: 1
       minor: 8
+- call: !Unary namespace
+  ret:
+  - String
+  - "namespace's ''name''. Possible values: \n\n* \"mission\" - for [[missionNamespace]]\n* \"profile\" - for [[profileNamespace]]\n* \"ui\" - for [[uiNamespace]]\n* \"parsing\" - for [[parsingNamespace]]\n* \"local\" - for [[localNamespace]]\n* \"missionprofile\" - for [[missionProfileNamespace]]\n* \"server\" - for [[serverNamespace]]\n* \"\" - for some unnamed namespaces like temporary or server config for example.\n* \"null\" - null namespace (this should never happen)"
+  params:
+  - name: namespace
+    type: Namespace
+  since:
+    arma_3:
+      major: 2
+      minor: 18
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -59,3 +70,4 @@ examples:
   name nearestLocation [position player, "Hill"]; // ""
   text nearestLocation [position player, "Hill"]; // "Lesnoy Khrebet"
   </sqf>
+- <sqf>_currentNamespace = name currentNamespace;</sqf>
