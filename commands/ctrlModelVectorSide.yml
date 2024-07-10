@@ -1,0 +1,21 @@
+name: ctrlModelVectorSide
+description: 'Returns [[vectorSide]] of the model used in 3D-[[Arma: GUI Configuration|Dialogs]]. Returns [] if control is null.'
+groups:
+- GUI Control - Object
+syntax:
+- call: !Unary control
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    description: 3D control
+    type: Control
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
+examples:
+- <sqf>_vectorDirAndUp = ctrlModelDirAndUp _control3D;</sqf>
