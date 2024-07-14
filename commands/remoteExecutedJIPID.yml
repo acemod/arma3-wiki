@@ -1,0 +1,19 @@
+name: remoteExecutedJIPID
+description: Returns JIP ID of the persistent call generated from JIP queue for the joining player (see [[remoteExec]]).
+groups:
+- Multiplayer
+syntax:
+- call: Nular
+  ret:
+  - String
+  - JIP ID
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
+examples:
+- <sqf>_jipid = remoteExecutedJIPID;</sqf>
+- "<sqf>\n/* \nHave mission with 2 players.\nFirst player starts local server and executes given code\nSecond player joins the server and sees the 'all good' message\nSecond player logs out \nFirst player kills 'bob'\nSecond player joins back and sees 'removing JIP call' message\nSecond player logs out then joins back in, no message as call was removed\n*/\n\nprivate _fnc = \n{\n\tif (isRemoteExecutedJIP) then\n\t{\n\t\tremoteExecutedJIPID splitString \"|\" params [\"_myID\", \"_netID\"];\n\t\tprivate _obj = objectFromNetId _netID;\n\t\tif (!alive _obj) then\n\t\t{\n\t\t\thint \"object is dead or deleted, removing JIP call\";\n\t\t\tremoteExec [\"\", remoteExecutedJIPID];\n\t\t}\n\t\telse\n\t\t{\n\t\t\thint \"JIP call, all good, doing something\";\n\t\t};\n\t};\n};\n\nprivate _bob = group player createUnit [typeOf player, position player, [], 0, \"NONE\"];\nprivate _myID = \"lalala\";\nprivate _jipID = [_myID, netId _bob] joinString \"|\";\n[[], _fnc] remoteExec [\"call\", 0, _jipId];\n</sqf>"
