@@ -9,6 +9,8 @@ description: |-
   {{Feature|informative|[[remoteExec]]/[[remoteExecCall]] can be used in single player as well, as it is considered as player-hosted multiplayer.}}
 
   {{Feature|important|The direct execution of [[call]] or [[spawn]] via [[remoteExec]] (or [[remoteExecCall]]) should be avoided to prevent issues in cases where the remote execution of [[call]] or [[spawn]] is blocked by [[Arma 3: CfgRemoteExec|CfgRemoteExec]]. It is instead recommended to create a function to be itself remote-executed.}}
+
+  {{Feature|warning|The order of persistent remote execution for JIP players is not guaranteed, i.e. the order in which multiple calls are added is not necessarily the order they will be executed for joining player.}}
 multiplayer_note: Remote executions are queued and are therefore executed in the same order on remote clients (see {{Link|#Example 8}}).
 groups:
 - Multiplayer
