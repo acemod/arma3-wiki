@@ -1,0 +1,25 @@
+name: setPhysicsCollisionFlag
+description: |-
+  Sets physics collision flags.
+  {{Feature|important|This command only disables collision (PhysX and Geometry LODs). Roadway LOD interactions are not affected. For example, if collision is disabled for a house, it is still possible to walk on its floors, but you can walk through its walls. Use the [[allLODs]] command to check if an object has a roadway LOD (normally, if an object is intended to be walkable, it does have a roadway LOD)}}
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - object
+  - value
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    type: Object
+  - name: value
+    description: '[[true]] enables collision, and [[false]] disables it.'
+    type: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
