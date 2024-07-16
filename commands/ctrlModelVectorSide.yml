@@ -1,12 +1,12 @@
 name: ctrlModelVectorSide
-description: 'Returns [[vectorSide]] of the model used in 3D-[[Arma: GUI Configuration|Dialogs]]. Returns [] if control is null.'
+description: 'Get the provided control model''s [[vectorSide]] in 3D-[[Arma: GUI Configuration|Dialogs]].'
 groups:
 - GUI Control - Object
 syntax:
 - call: !Unary control
   ret:
   - Unknown
-  - null
+  - '[[vectorSide]] of the model or empty array if ''''control'''' is null'
   params:
   - name: control
     description: 3D control
@@ -18,4 +18,4 @@ since:
     major: 2
     minor: 18
 examples:
-- <sqf>_vectorDirAndUp = ctrlModelDirAndUp _control3D;</sqf>
+- <sqf>private _vectorSide = ctrlModelVectorSide _control3D;</sqf>
