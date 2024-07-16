@@ -1,5 +1,5 @@
 name: missileState
-description: Returns engine, target lock and flight profile states of the given guided missile.
+description: Get the provided ''guided'' missile's engine, target lock and flight profile states.
 groups:
 - Weapons
 syntax:
@@ -18,4 +18,5 @@ since:
     major: 2
     minor: 18
 examples:
-- <sqf>_state = missileState missile1;</sqf>
+- <sqf>missileState _myMissile params ["_engineState", "_lockState", "_flightState"];</sqf>
+- "<sqf>\n_myHelicopter addEventHandler [\"Fired\", {\n\tprivate _projectile = _this select 6;\n\t// or params [\"\", \"\", \"\", \"\", \"\", \"\", \"_projectile\"];\n\tsystemChat str missileState _projectile;\n}];\n</sqf>"
