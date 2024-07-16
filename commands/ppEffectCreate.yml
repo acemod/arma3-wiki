@@ -60,3 +60,4 @@ since:
     minor: 50
 examples:
 - <sqf>_ppGrain = ppEffectCreate ["filmGrain", 2005];</sqf>
+- "If an effect ID is already used, the effect is not created. Use the following:\n<sqf>\nprivate _name = \"ChromAberration\";\nprivate _priority = 200;\nprivate _handle = -1;\nwhile\n{\n\t_handle = ppEffectCreate [_name, _priority];\n\t_handle < 0;\n} do {\n\t_priority = _priority + 1;\n};\n\n// _handle can be used here as usual\n</sqf>\nor\n<sqf>\nprivate _name = \"ChromAberration\";\nprivate _priority = 200;\nprivate _handle = -1;\nwaitUntil { _handle = ppEffectCreate [_name, _priority]; _priority = _priority + 1; _handle > 0; };\n\n// _handle can be used here as usual\n</sqf>"
