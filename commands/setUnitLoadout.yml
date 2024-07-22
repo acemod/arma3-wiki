@@ -1,5 +1,7 @@
 name: setUnitLoadout
 description: "Creates a loadout from given inventory structure and applies it to a unit.\nWhen [[String]] for class name is supplied, the command will search {{hl|CfgVehicles}} for the given class in order to extract the loadout from config.\nIf [[Config]] is given, it will search given config (including [[missionConfigFile|mission config]]) for the loadout information.\nIn either case, the config should contain the following entries, which is standard for any unit class, for example:\n<syntaxhighlight lang=\"cpp\">\nclass MyLoadout\n{\n\tuniformClass = \"U_B_CombatUniform_mcam\";\n\tbackpack = \"B_AssaultPack_mcamo\";\n\tlinkedItems[] = { \"V_PlateCarrier1_rgr\", \"H_HelmetB\", \"ItemCompass\", \"ItemWatch\", \"ItemRadio\", \"NVGoggles\" };\n\tweapons[] = { \"arifle_MX_ACO_pointer_F\", \"hgun_P07_F\" };\n\titems[] = { \"FirstAidKit\", \"FirstAidKit\", \"FirstAidKit\" };\n\tmagazines[] = {\n\t\t\"30Rnd_65x39_caseless_mag\", \"16Rnd_9x21_Mag\", \"SmokeShell\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\"\n\t};\n};\n</syntaxhighlight>"
+problem_notes:
+- '{{Feature|important|If this command is used on the player, it makes the inventory window bug (if opened) - vest and backpack tabs disappear. Closing and re-opening the inventory solves the issue.}}'
 groups:
 - Unit Inventory
 syntax:
@@ -62,11 +64,8 @@ since:
     major: 1
     minor: 58
 examples:
-- <sqf>player_2 setUnitLoadout (getUnitLoadout player_1); // Copies loadout from player_1 and applies it to player_2</sqf>
-- <sqf>player_2 setUnitLoadout [getUnitLoadout player_1, true]; // Copies loadout from player_1 and applies it to player_2 while topping up all magazines</sqf>
-- <sqf>_unit setUnitLoadout "B_Soldier_F";</sqf>
-- <sqf>_unit setUnitLoadout (configFile >> "CfgVehicles" >> "B_Soldier_F");</sqf>
-- <sqf>_unit setUnitLoadout (missionConfigFile >> "MyLoadout");</sqf>
+- "<sqf>\n_unit setUnitLoadout \"B_Soldier_F\";\t\t\t\t\t\t\t\t\t\t// by class name\n_unit setUnitLoadout (configFile >> \"CfgVehicles\" >> \"B_Soldier_F\");\t// by config entry\n_unit setUnitLoadout (missionConfigFile >> \"MyLoadout\");\t\t\t\t// (also works for mission config)\n_unit setUnitLoadout getUnitLoadout _otherUnit;\t\t\t\t\t\t\t// by loadout array\n</sqf>"
+- "<sqf>\nplayer_2 setUnitLoadout (getUnitLoadout player_1);\t\t\t// Copies loadout from player_1 and applies it to player_2\nplayer_2 setUnitLoadout [getUnitLoadout player_1, true];\t// Copies loadout from player_1 and applies it to player_2 while topping up all magazines\n</sqf>"
 - |-
   Strip unit of everything:
   <sqf>_unit setUnitLoadout (configFile >> "EmptyLoadout");</sqf>
