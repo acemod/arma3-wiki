@@ -1,0 +1,15 @@
+id: Detached
+description: Triggered after an object has been detached from its parent object (see [[detach]]). Does not fire if the parent object was deleted.
+params:
+- name: attachedObj
+  type: Object
+- name: parentObj
+  type: Object
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Detached\", {\n\tparams [\"_attachedObj\", \"_parentObj\"];\n}];"
