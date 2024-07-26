@@ -1,0 +1,24 @@
+id: Attached
+description: Triggered after an object has been attached to another object (see [[attachTo]]).
+params:
+- name: attachedObj
+  type: Object
+- name: parentObj
+  type: Object
+- name: isReattach
+  description: '[[true]] if <var>attachedObj</var> was already attached to <var>parentObj</var>, e.g. if only the offset was changed'
+  type: Boolean
+- name: offset
+  type: Unknown
+- name: memoryPoint
+  type: String
+- name: followBoneRotation
+  type: Boolean
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "this addEventHandler [\"Attached\", {\n\tparams [\"_attachedObj\", \"_parentObj\", \"_isReattach\", \"_offset\", \"_memoryPoint\", \"_followBoneRotation\"];\n}];"
