@@ -100,3 +100,4 @@ examples:
   // since {{arma3}} v2.14
   findDisplay 46 createDisplay "RscDisplayEmpty" ctrlCreate [configFile >> "RscDisplayBootcampMsgBox" >> "controls" >> "BootcampMessageBox", -1];
   </sqf>
+- "<sqf>// Creates a vertical slider. Execute in [[Eden Editor]]\nprivate _display = findDisplay 313 createDisplay \"RscDisplayEmpty\";\nprivate _ctrlSlider = _display ctrlCreate [\"ctrlSliderV\", -1];\n\n_ctrlSlider ctrlSetPosition \n[\n  0.5 - 0.5 * pixelGrid * pixelW * 10, \n  0.5 - 0.5 * pixelGrid * pixelH * 40, \n  0.5 * pixelGrid * pixelW * 20, \n  0.5 * pixelGrid * pixelH * 80\n];\n\n_ctrlSlider ctrlCommit 0;</sqf>"
