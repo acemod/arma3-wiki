@@ -1,0 +1,45 @@
+name: toJSON
+description: Serialise the passed data to {{Link|https://en.wikipedia.org/wiki/JSON|JSON}} format.
+groups:
+- Strings
+syntax:
+- call: !Unary data
+  ret:
+  - String
+  - JSON result
+  params:
+  - name: data
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
+examples:
+- |-
+  <sqf>
+  private _result = toJSON ["this", "is", "an", "array"];
+  </sqf>
+  result:
+  <syntaxhighlight lang="json">
+  ["this","is","an","array"]
+  </syntaxhighlight>
+- |-
+  <sqf>
+  private _hashMap = createHashMap;
+  _hashMap set ["bKey", true];
+  _hashMap set ["sKey", "Hello there"];
+  _hashMap set ["oKey", player];
+  _hashMap set ["nKey", 42];
+  _hashMap set ["hKey", ["key1", "key2", "yolo"] createHashMapFromArray ["General Kenobi", true, "Hello it's me"]];
+  toJSON _hashMap;
+  </sqf>
+  result:
+  <syntaxhighlight lang="json">
+  {"bKey":true,"sKey":"Hello there","oKey":null,"nkey":42,hKey:{"key1":"General Kenobi","key2":true,"yolo":"Hello it's me"}}
+  </syntaxhighlight>
+- |-
+  <sqf>
+  private _jsonPlayer = toJSON player; // empty string - [[Object]] is not supported
+  </sqf>
