@@ -1,26 +1,27 @@
 id: HandleHeal
 description: |-
-  Triggered when unit starts to heal (player using heal action or AI heals after being ordered).
-  Triggers only on PC where EH is added and unit is [[Multiplayer Scripting#Locality|local]].
-  If code returns false, engine side healing follows.
-  Return true if you handle healing in script, use [[AISFinishHeal]] to tell engine that script side healing is done.
-  See also [[lifeState]] and [[setUnconscious]] commands.<br><br>
-  '''NOTE''': This Event Handler is broken but somewhat usable.
-  When attached to a unit it will fire when medic action is started (not finished!) on the unit.
-  <sqf inline>_this select 0</sqf> will be the unit itself, <sqf inline>_this select 1</sqf> will be the healer.
-  The 3rd param will always be [[false]] and neither returning [[true]] nor using [[AISFinishHeal]] will have any effect on the engine default healing behaviour.
-  If unit walks away from the healer during healing action, the heal will not finish but there is no way to detect this within "HandleHeal" framework.<br><br>
-  This code will fix unit to 100% health after self-use of medpack:
+  Triggered when unit starts healing process (player using heal action on self or other unit, scripted [[action]] or AI heals after being ordered or on its own).
+  This event handler must be added to the 'injured' (could be added to Init field in editor) and in multiplayer will trigger only on PC where 'healer' is [[Multiplayer Scripting#Locality|local]]. If code returns anything but [[true]], engine side healing follows, otherwise healing is aborted.
+  {{Feature|important|When AI unit is ordered (or acts at own accord) to heal at a medical vehicle and the event handler returns [[true]], the healing is canceled but AI will try again and again and again. The event handler in this case will fire every second until AI unit is healed by other means.}}
+  '''NOTE''': This Event Handler was broken before Arma 3 v2.18.
 params:
-- name: unit
+- name: injured
+  description: unit EH is attached to
   type: Object
 - name: healer
+  description: unit that does the healing (could be the same unit as 'injured')
   type: Object
 - name: isMedic
-  description: true when healer is corpsman
+  description: true when healer is 'Medic'
   type: Boolean
+- name: atVehicle
+  description: when healing at medical vehicle, this is the vehicle
+  type: Object
+- name: action
+  description: the action that triggered the event handler, for example "SoldierHealSelf"
+  type: String
 argument_loc: Global
 effect_loc: Unspecified
 examples:
-- "this addEventHandler [\"HandleHeal\", {\n\t_this spawn {\n\t\tparams [\"_injured\", \"_healer\"];\n\t\tprivate _damage = damage _injured;\n\t\tif (_injured == _healer) then {\n\t\t\twaitUntil { damage _injured != _damage };\n\t\t\tif (damage _injured < _damage) then {\n\t\t\t\t_injured setDamage 0;\n\t\t\t};\n\t\t};\n\t};\n}];"
-- "this addEventHandler [\"HandleHeal\", {\n\tparams [\"_unit\", \"_healer\", \"_isMedic\"];\n}];"
+- "this addEventHandler [\"HandleHeal\", {\n\t_this spawn {\n\t\tparams [\"_injured\", \"_healer\", \"_isMedic\", \"_atVehicle\", \"_action\"];\n\t\tprivate _damage = damage _injured;\n\t\tif (_injured == _healer) then {\n\t\t\twaitUntil { damage _injured != _damage };\n\t\t\tif (damage _injured < _damage) then {\n\t\t\t\t_injured setDamage 0;\n\t\t\t};\n\t\t};\n\t};\n}];"
+- "this addEventHandler [\"HandleHeal\", {\n\tparams [\"_injured\", \"_healer\", \"_isMedic\", \"_atVehicle\", \"_action\"];\n}];"
