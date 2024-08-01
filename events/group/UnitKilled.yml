@@ -1,0 +1,28 @@
+id: UnitKilled
+description: |-
+  Triggered when a unit in the group is killed.
+  Be careful when the killer has been a vehicle. For most cases the reference of the vehicle is the same as the [[effectiveCommander]], but not always.
+params:
+- name: group
+  description: the group the event handler is assigned to
+  type: Group
+- name: unit
+  description: the unit that was killed
+  type: Object
+- name: killer
+  description: The object that killed the unit. Contains the unit itself in case of collisions.
+  type: Object
+- name: instigator
+  description: the person who pulled the trigger
+  type: Object
+- name: useEffects
+  description: same as ''useEffects'' in [[setDamage]] alt syntax
+  type: Boolean
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Local
+effect_loc: Unspecified
+examples:
+- "_group addEventHandler [\"UnitKilled\", {\n\tparams [\"_group\", \"_unit\", \"_killer\", \"_instigator\", \"_useEffects\"];\n}];"
