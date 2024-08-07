@@ -1,22 +1,22 @@
 name: screenToWorld
-description: "Returns the position on landscape ([[Position#PositionAGL|PositionAGL]]) corresponding to the given point on screen (in UI coordinates). \n{{Feature | informative | This command performs an intersection with the ground/water surface, from the camera position along the [[screenToWorldDirection]] vector up to {{hl|viewDistance}} for terrain intersection and {{hl|2 * viewDistance}} for water intersection. In other words, it's similar to doing: \n<sqf>\nprivate _p1 = AGLtoASL positionCameraToWorld [0,0,0];                  // camera position ASL\nprivate _vector = screenToWorldDirection_screenPos;                      // \"aim\" vector\nprivate _p2 = _p1 vectorAdd (_vector vectorMultiply viewDistance * 2); // the ray doesn't go beyond 2 * view distance\nASLtoAGL terrainIntersectAtASL [_p1, _p2]\n</sqf>\n}}"
+description: "Returns the position on landscape ([[Position#PositionAGL|PositionAGL]]) corresponding to the given point on screen (in UI coordinates). \n{{Feature|informative|\nThis command performs an intersection with the ground/water surface, from the camera position along the [[screenToWorldDirection]] vector up to {{hl|viewDistance}} for terrain intersection and {{hl|2 * viewDistance}} for water intersection. In other words, it is similar to doing: \n<sqf>\nprivate _p1 = AGLToASL positionCameraToWorld [0, 0, 0];\t\t\t\t\t// camera position ASL\nprivate _vector = screenToWorldDirection _screenPos;\t\t\t\t\t// \"aim\" vector\nprivate _p2 = _p1 vectorAdd (_vector vectorMultiply viewDistance * 2);\t// the ray does not go beyond 2 * view distance\nASLToAGL terrainIntersectAtASL [_p1, _p2]\n</sqf>\n}}"
 groups:
 - Positions
 syntax:
 - call: !Unary screen
   ret:
   - Unknown
-  - '[[Position#PositionAGL|PositionAGL]], world position on surface [x,y,0]'
+  - null
   params:
   - name: screen
-    description: screen position [x,y] (see [[SafeZone]] for more info)
+    description: screen position in format [x,y] (see [[SafeZone]] for more info)
     type: Unknown
 - call: !Binary
   - camera
   - position
   ret:
   - Unknown
-  - '[[Position#PositionAGL|PositionAGL]], world position on surface [x,y,0]'
+  - null
   params:
   - name: camera
     description: camera object
@@ -44,4 +44,5 @@ since:
     major: 0
     minor: 50
 examples:
-- <sqf>_wPos = screenToWorld [0.5, 0.5];</sqf>
+- <sqf>private _wPos = screenToWorld [0.5, 0.5];</sqf>
+- <sqf>private _wPos = _myCamera screenToWorld [0.5, 0.5]; // since {{arma3}} 2.18</sqf>
