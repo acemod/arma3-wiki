@@ -48,7 +48,7 @@ impl GitHub {
 }
 
 impl GitHub {
-    pub async fn command_pr(&mut self, command: &str) -> Result<Option<PullRequest>, String> {
+    pub async fn command_pr(&self, command: &str) -> Result<Option<PullRequest>, String> {
         if std::env::var("CI").is_err() {
             println!("Local, Skipping PR creation for {command}");
             return Ok(None);
@@ -73,7 +73,7 @@ impl GitHub {
     }
 
     pub async fn event_handler_pr(
-        &mut self,
+        &self,
         ns: &str,
         handler: &str,
     ) -> Result<Option<PullRequest>, String> {
@@ -100,7 +100,7 @@ impl GitHub {
             .map(Some)
     }
 
-    pub async fn version_pr(&mut self, version: &str) {
+    pub async fn version_pr(&self, version: &str) {
         if std::env::var("CI").is_err() {
             println!("Local, Skipping PR creation for version");
             return;

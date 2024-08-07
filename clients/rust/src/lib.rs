@@ -2,10 +2,12 @@ use std::{
     collections::HashMap, fs::File, io::Write, path::PathBuf, str::FromStr, time::SystemTime,
 };
 
+use commands::Commands;
 use git2::Repository;
 use model::{Command, EventHandlerNamespace, ParsedEventHandler, Version};
 use rust_embed::RustEmbed;
 
+pub mod commands;
 pub mod model;
 
 #[derive(RustEmbed)]
@@ -14,7 +16,8 @@ struct Asset;
 
 pub struct Wiki {
     version: Version,
-    commands: HashMap<String, Command>,
+    // commands: HashMap<String, Command>,
+    commands: Commands,
     event_handlers: HashMap<EventHandlerNamespace, Vec<ParsedEventHandler>>,
     custom: Vec<String>,
     /// Whether the wiki was just updated.
@@ -28,7 +31,7 @@ impl Wiki {
     }
 
     #[must_use]
-    pub const fn commands(&self) -> &HashMap<String, Command> {
+    pub const fn commands(&self) -> &Commands {
         &self.commands
     }
 
@@ -52,8 +55,9 @@ impl Wiki {
     }
 
     pub fn add_custom_command(&mut self, command: Command) {
-        self.custom.push(command.name().to_string());
-        self.commands.insert(command.name().to_string(), command);
+        let name = command.name().to_lowercase();
+        self.custom.push(name.clone());
+        self.commands.raw_mut().insert(name, command);
     }
 
     /// Adds a custom command to the wiki.
@@ -67,9 +71,10 @@ impl Wiki {
     }
 
     pub fn remove_command(&mut self, name: &str) -> bool {
-        self.commands.remove(name);
-        if self.custom.contains(&name.to_string()) {
-            self.custom.retain(|c| c != name);
+        let name = name.to_lowercase();
+        self.commands.raw_mut().remove(&name);
+        if self.custom.contains(&name) {
+            self.custom.retain(|c| c != &name);
             true
         } else {
             false
@@ -78,7 +83,7 @@ impl Wiki {
 
     #[must_use]
     pub fn is_custom_command(&self, name: &str) -> bool {
-        self.custom.contains(&name.to_string())
+        self.custom.contains(&name.to_lowercase())
     }
 
     #[must_use]
@@ -123,7 +128,7 @@ impl Wiki {
                     .unwrap_or_else(|_| {
                         panic!("Failed to parse command: {path}", path = path.display())
                     });
-                commands.insert(command.name().to_string(), command);
+                commands.insert(command.name().to_lowercase(), command);
             }
         }
         let mut event_handlers = HashMap::new();
@@ -152,7 +157,7 @@ impl Wiki {
                     .trim(),
             )
             .map_err(|e| format!("Failed to parse version: {e}"))?,
-            commands,
+            commands: Commands::new(commands),
             event_handlers,
             updated,
             custom: Vec::new(),
@@ -178,7 +183,7 @@ impl Wiki {
                     std::str::from_utf8(Asset::get(path).unwrap().data.as_ref()).unwrap(),
                 )
                 .unwrap();
-                commands.insert(command.name().to_string(), command);
+                commands.insert(command.name().to_lowercase(), command);
             } else if path.starts_with("events/") {
                 let parts: Vec<&str> = path.split('/').collect();
                 if parts.len() == 3 {
@@ -201,7 +206,7 @@ impl Wiki {
                     .trim(),
             )
             .unwrap(),
-            commands,
+            commands: Commands::new(commands),
             event_handlers,
             updated: false,
             custom: Vec::new(),

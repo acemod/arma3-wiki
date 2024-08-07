@@ -12,7 +12,7 @@ mod github;
 async fn main() {
     let tmp = std::env::temp_dir().join("arma3-wiki-fetch");
     let report_path = tmp.join("report.json");
-    let mut github = GitHub::new().unwrap();
+    let github = GitHub::new().unwrap();
     let issues = Issues::new(&github).await;
 
     let report: Report = std::fs::read_to_string(report_path)
