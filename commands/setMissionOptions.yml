@@ -5,6 +5,7 @@ description: |-
 
   * IgnoreNoDamage: [[Boolean]] - (default [[false]]) [[true]] to filter out no change in damage from {{Link|Arma 3: Event Handlers#HandleDamage|HandleDamage}} calls
   * IgnoreFakeHeadHit: [[Boolean]] - (default [[false]]) [[true]] to filter out FakeHeadHit context from {{Link|Arma 3: Event Handlers#HandleDamage|HandleDamage}} calls
+  * IgnoreUpsideDownDamage: [[Boolean]] - (default [[false]]) [[true]] to ignore some minor upside down damage accumulation for a helicopter
 
   Providing a empty HashMap will reset all options to defaults.
 groups:
@@ -25,5 +26,5 @@ since:
     major: 2
     minor: 18
 examples:
-- <sqf>setMissionOptions createHashMapFromArray [["IgnoreNoDamage", true], ["IgnoreFakeHeadHit", true]];</sqf>
+- <sqf>setMissionOptions createHashMapFromArray [["IgnoreNoDamage", true], ["IgnoreFakeHeadHit", true], ["IgnoreUpsideDownDamage", true]];</sqf>
 - <sqf>setMissionOptions createHashMap; // reset options to default</sqf>
