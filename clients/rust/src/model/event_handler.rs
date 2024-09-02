@@ -301,7 +301,7 @@ impl EventHandlerNamespace {
     #[must_use]
     pub fn by_command(command: &str) -> Vec<Self> {
         Self::iter()
-            .filter(|ns| ns.commands().contains(&command))
+            .filter(|ns| ns.commands().any(|c| c.to_lowercase() == command.to_lowercase()))
             .copied()
             .collect()
     }
