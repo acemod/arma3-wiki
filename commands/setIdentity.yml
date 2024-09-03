@@ -42,4 +42,4 @@ since:
     minor: 50
 examples:
 - <sqf>_soldier1 setIdentity "MyLittleSoldier";</sqf>
-- "Clone factory in MP:\n<sqf>for \"_i\" from 1 to 10 do\n{\n\t_bob = group player createUnit [typeOf player, position player, [], 0, \"none\"];\n\t[_bob, \"MyLittleSoldier\"] remoteExec [\"setIdentity\", 0, _bob];\n};</sqf>"
+- "Clone factory in MP:\n<sqf>\nfor \"_i\" from 1 to 10 do\n{\n\t_bob = group player createUnit [typeOf player, position player, [], 0, \"none\"];\n\t[_bob, \"MyLittleSoldier\"] remoteExec [\"setIdentity\", 0, _bob];\n};\n</sqf>"
