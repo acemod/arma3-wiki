@@ -40,4 +40,4 @@ since:
 examples:
 - <sqf>_control htmlLoad "briefing.html";</sqf>
 - <sqf>_control htmlLoad "http://www.bistudio.com/newsfeed/arma3_news.php?build=main&language=English";</sqf>
-- "Display news item:\n<sqf>\n[] spawn {\n\tdisableSerialization;\n\tprivate _html = findDisplay 46 createDisplay \"RscCredits\" ctrlCreate [\"RscHTML\", -1];\n\t_html ctrlSetBackgroundColor [0,0,0,0.8];\n\t_html ctrlSetPosition [safeZoneX, safeZoneY, safeZoneW, safeZoneH];\n\t_html ctrlCommit 0;\n\t_html htmlLoad \"http://www.bistudio.com/newsfeed/arma3_news.php?build=main&language=English\";\n};\n</sqf>"
+- "Display news item:\n<sqf>\n0 spawn {\n\tdisableSerialization;\n\tprivate _html = findDisplay 46 createDisplay \"RscCredits\" ctrlCreate [\"RscHTML\", -1];\n\t_html ctrlSetBackgroundColor [0,0,0,0.8];\n\t_html ctrlSetPosition [safeZoneX, safeZoneY, safeZoneW, safeZoneH];\n\t_html ctrlCommit 0;\n\t_html htmlLoad \"http://www.bistudio.com/newsfeed/arma3_news.php?build=main&language=English\";\n};\n</sqf>"
