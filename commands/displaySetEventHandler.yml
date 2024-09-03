@@ -39,4 +39,4 @@ since:
     minor: 50
 examples:
 - <sqf>_control displaySetEventHandler ["KeyDown", ""];</sqf>
-- "{{hl|init.sqf}}:\n<sqf>KeysPressed = compile preprocessFile \"keysPressed.sqf\";\nprivate _display = findDisplay 46;\n_display displaySetEventHandler [\"KeyDown\", \"_this call KeysPressed\"];</sqf>\n\n{{hl|keysPressed.sqf}}:\n<sqf>private _handled = false;\nswitch (_this select 1) do {\n\t// F key\n\tcase 33: {\n\t\t// code here\n\t\t_handled = true;\n\t};\n};\n_handled;</sqf>"
+- "{{hl|init.sqf}}:\n<sqf>\nKeysPressed = compile preprocessFile \"keysPressed.sqf\";\nprivate _display = findDisplay 46;\n_display displaySetEventHandler [\"KeyDown\", \"_this call KeysPressed\"];\n</sqf>\n\n{{hl|keysPressed.sqf}}:\n<sqf>private _handled = false;\nswitch (_this select 1) do {\n\t// F key\n\tcase 33: {\n\t\t// code here\n\t\t_handled = true;\n\t};\n};\n_handled;</sqf>"
