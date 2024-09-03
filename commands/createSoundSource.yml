@@ -16,16 +16,16 @@ description: |-
   * {{hl|"Sound_Stream"}}
   }}
 
-  Since {{arma3}} v1.70 it is possible to define sounds for use with [[createSoundSource]] in [[Description.ext]].
+  Since {{GVI|arma31.70}} it is possible to define sounds for use with [[createSoundSource]] in [[Description.ext]].
   As mentioned earlier, the sounds needed for this command should be defined inside [[CfgVehicles]] class, which itself references [[CfgSFX]] class.
   If given class searched in main config and is not found, the search will continue in [[Description.ext|description.ext]] - see {{Link|#Example 3}}.<br>
-  Note that the sound created by [[createSoundSource]] will always be looping.
+
+  {{Feature|informative|A sound created by [[createSoundSource]] will always be looping.}}
 multiplayer_note: When a [[CfgSFX]] sound definition contains more than 1 sound, there is no guarantee that the sound played will be the same on every PC in Multiplayer.
 problem_notes:
 - '{{Feature|important|For some unknown reason if at the moment of command execution the player is in first person view and is inside a vehicle, the sound created is greatly attenuated.}}'
 groups:
 - Sounds
-- Broken Commands
 syntax:
 - call: !Unary
   - type
