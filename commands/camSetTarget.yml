@@ -57,9 +57,11 @@ examples:
 - <sqf>_camera camSetTarget player;</sqf>
 - <sqf>_camera camSetTarget [2540,1503,26];</sqf>
 - |-
-  <sqf>_cam = "camera" camCreate (player modelToWorld [0, 100, 10]);
+  <sqf>
+  _cam = "camera" camCreate (player modelToWorld [0, 100, 10]);
   _cam camSetTarget player;
   _cam camSetRelPos [0, 0.5, 1.5];
   _cam cameraEffect ["internal", "back"];
   _cam camCommit 1;
-  player setRandomLip true;</sqf>
+  player setRandomLip true;
+  </sqf>
