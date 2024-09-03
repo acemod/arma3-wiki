@@ -79,5 +79,7 @@ examples:
   <sqf>player getPos [100, 45];</sqf>
 - |-
   Determine if a free-falling unit is close enough to the surface (including buildings, aircraft carriers etc) below to deploy the parachute:
-  <sqf>waitUntil { sleep 1; getPos player select 2 < 200 };
-  hint "Deploying a parachute might be a good idea";</sqf>
+  <sqf>
+  waitUntil { sleep 1; getPos player select 2 < 200 };
+  hint "Deploying a parachute might be a good idea";
+  </sqf>
