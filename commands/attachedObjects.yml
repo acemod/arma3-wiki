@@ -19,10 +19,7 @@ since:
     minor: 14
 examples:
 - |-
-  <sqf>{
-    detach _x;
-  } forEach attachedObjects player;</sqf>
-- |-
-  <sqf>if (count attachedObjects player == 0) then {
-    hint "There are no objects attached to player";
-  };</sqf>
+  <sqf>
+  { detach _x } forEach attachedObjects player;
+  </sqf>
+- "<sqf>\nif (count attachedObjects player == 0) then\n{\n\thint \"There are no objects attached to player\";\n};\n</sqf>"
