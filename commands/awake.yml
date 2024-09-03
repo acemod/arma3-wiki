@@ -28,4 +28,4 @@ since:
 examples:
 - <sqf>_object awake false;</sqf>
 - 'Since 2.10: <sqf>_deadUnit awake true;</sqf>'
-- "Make corpse react to explosion (since 2.10): <sqf>_deadUnit addEventHandler [\"Explosion\", \n{\n\tparams [\"_unit\", \"_damage\"];\n\tif (_damage < 0.01) exitWith {};\n\t_unit awake true;\n\t_unit awake false;\n}];</sqf>"
+- "Make corpse react to explosion (since 2.10): <sqf>\n_deadUnit addEventHandler [\"Explosion\", \n{\n\tparams [\"_unit\", \"_damage\"];\n\tif (_damage < 0.01) exitWith {};\n\t_unit awake true;\n\t_unit awake false;\n}];\n</sqf>"
