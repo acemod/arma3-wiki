@@ -31,9 +31,11 @@ examples:
 - <sqf>true setCamUseTI 1;</sqf>
 - |-
   ''Predator'' vision:
-  <sqf>_cam = "camera" camCreate [0, 0, 0];
+  <sqf>
+  _cam = "camera" camCreate [0, 0, 0];
   _cam camSetTarget player;
   _cam camSetRelPos [0, 1, 1.5];
   _cam cameraEffect ["Internal", "Back"];
   _cam camCommit 0;
-  true setCamUseTI 7;</sqf>
+  true setCamUseTI 7;
+  </sqf>
