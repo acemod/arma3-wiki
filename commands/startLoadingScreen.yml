@@ -41,4 +41,4 @@ examples:
   // code
   endLoadingScreen;
   </sqf>
-- "<sqf>\n// this structure prevents error-prone or lengthy code to miss endLoadingScreen.\nprivate _maxTime = diag_tickTime + 30; // max 30s of loading\n\nstartLoadingScreen [\"Loading\"];\nprivate _handle = [] spawn {\n\t// code that may crash or take too long\n};\n\nwaitUntil { uiSleep .1; scriptDone _handle || diag_tickTime > _maxTime };\nendLoadingScreen;\n</sqf>"
+- "<sqf>\n// this structure prevents error-prone or lengthy code to miss endLoadingScreen.\nprivate _maxTime = diag_tickTime + 30; // max 30s of loading\n\nstartLoadingScreen [\"Loading\"];\nprivate _handle = 0 spawn {\n\t// code that may crash or take too long\n};\n\nwaitUntil { uiSleep .1; scriptDone _handle || diag_tickTime > _maxTime };\nendLoadingScreen;\n</sqf>"
