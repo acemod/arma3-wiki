@@ -34,4 +34,4 @@ since:
 examples:
 - <sqf>tvSetCurSel [101, [0]];</sqf>
 - <sqf>_ctrl tvSetCurSel [0,0,0];</sqf>
-- "<sqf>\n[] spawn\n{\n\tdisableSerialization;\n\t_CT_TREE = findDisplay 46 ctrlCreate [\"RscTree\", -1];\n\t_CT_TREE ctrlSetPosition [0,0,0.3,1];\n\t_CT_TREE ctrlCommit 0;\n\t_CT_TREE tvAdd [[],\"Parent_A\"];\n\t_CT_TREE tvAdd [[0],\"Child_A\"];\n\t_CT_TREE tvAdd [[0,0],\"Grandchild_A\"];\n\t_CT_TREE tvAdd [[],\"Parent_B\"];\n\t_CT_TREE tvAdd [[1],\"Child_B\"];\n\tsleep 1;\n\thint \"SELECT [0,0,0]\";\n\t_CT_TREE tvSetCurSel [0,0,0];\n\tsleep 2;\n\thint \"DESELECT ALL\";\n\t_CT_TREE tvSetCurSel [-1];\n};\n</sqf>"
+- "<sqf>\n0 spawn\n{\n\tdisableSerialization;\n\t_CT_TREE = findDisplay 46 ctrlCreate [\"RscTree\", -1];\n\t_CT_TREE ctrlSetPosition [0,0,0.3,1];\n\t_CT_TREE ctrlCommit 0;\n\t_CT_TREE tvAdd [[],\"Parent_A\"];\n\t_CT_TREE tvAdd [[0],\"Child_A\"];\n\t_CT_TREE tvAdd [[0,0],\"Grandchild_A\"];\n\t_CT_TREE tvAdd [[],\"Parent_B\"];\n\t_CT_TREE tvAdd [[1],\"Child_B\"];\n\tsleep 1;\n\thint \"SELECT [0,0,0]\";\n\t_CT_TREE tvSetCurSel [0,0,0];\n\tsleep 2;\n\thint \"DESELECT ALL\";\n\t_CT_TREE tvSetCurSel [-1];\n};\n</sqf>"
