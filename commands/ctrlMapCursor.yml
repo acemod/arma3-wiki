@@ -68,4 +68,4 @@ examples:
   (uiNamespace getVariable "_map") ctrlMapCursor ["Track", "HC_overFriendly"];
   </sqf>
 - <sqf>findDisplay 12 displayCtrl 51 ctrlMapCursor ["Scroll", "Wait"];</sqf>
-- "Cycle through all available cursors over custom map:\n<sqf>\n[] spawn\n{\n\tdisableSerialization;\n\t_map = findDisplay 46 createDisplay \"RscCredits\" ctrlCreate [\"RscMapControl\", -1];\n\t_map ctrlSetPosition [0,0,1,1];\n\t_map ctrlCommit 0;\n\t{\n\t\t_map ctrlMapCursor [\"\", configName _x]; //<-- the actual usage\n\t\thint format [\"Current cursor: %1\", configName _x];\n\t\tsleep 1;\n\t}\n\tforEach (\"true\" configClasses (configFile >> \"CfgWrapperUI\" >> \"Cursors\"));\n};\n</sqf>"
+- "Cycle through all available cursors over custom map:\n<sqf>\n0 spawn\n{\n\tdisableSerialization;\n\t_map = findDisplay 46 createDisplay \"RscCredits\" ctrlCreate [\"RscMapControl\", -1];\n\t_map ctrlSetPosition [0,0,1,1];\n\t_map ctrlCommit 0;\n\t{\n\t\t_map ctrlMapCursor [\"\", configName _x]; //<-- the actual usage\n\t\thint format [\"Current cursor: %1\", configName _x];\n\t\tsleep 1;\n\t}\n\tforEach (\"true\" configClasses (configFile >> \"CfgWrapperUI\" >> \"Cursors\"));\n};\n</sqf>"
