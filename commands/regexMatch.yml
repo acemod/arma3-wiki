@@ -25,6 +25,8 @@ examples:
 - <sqf>"I'm a coOkIe clicker" regexMatch ".*cookie.*"; // true</sqf>
 - <sqf>"I'm a coOkIe clicker" regexMatch ".*cookie.*/"; // false, empty flags == case sensitive</sqf>
 - |-
-  <sqf>forceUnicode 1;
-  "I'm a coÖkIe clicker" regexMatch ".*coökie.*";</sqf>
+  <sqf>
+  forceUnicode 1;
+  "I'm a coÖkIe clicker" regexMatch ".*coökie.*";
+  </sqf>
 - <sqf>"Cookie clicker" regexMatch "cookie/i"; // false, pattern does not fully match the haystack</sqf>
