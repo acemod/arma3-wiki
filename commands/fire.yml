@@ -66,7 +66,9 @@ examples:
 - <sqf>_soldier fire "SmokeShellMuzzle";</sqf>
 - <sqf>_soldier fire ["SmokeShellMuzzle", "SmokeShellMuzzle", "SmokeShellRed"];</sqf>
 - |-
-  <sqf>player playActionNow "PutDown";
+  <sqf>
+  player playActionNow "PutDown";
   player selectWeapon "DemoChargeMuzzle";
   player fire ["DemoChargeMuzzle", "DemoChargeMuzzle", "DemoCharge_Remote_Mag"];
-  player setWeaponReloadingTime [player, "DemoChargeMuzzle", 0];</sqf>
+  player setWeaponReloadingTime [player, "DemoChargeMuzzle", 0];
+  </sqf>
