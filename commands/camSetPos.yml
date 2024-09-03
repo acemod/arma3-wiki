@@ -1,5 +1,8 @@
 name: camSetPos
-description: Sets the position of the given camera or seagull (see [[camCreate]]). It is worth mentioning that camera position can also be set with [[setPos]], in which case it would be instant. With [[camSetPos]] it is possible to make smooth position transition in time, defined with [[camCommit]], which is required in this case.
+description: |-
+  Sets the position of the given camera or seagull (see [[camCreate]]).
+  It is worth mentioning that camera position can also be set with [[setPos]], in which case it would be instant.
+  With [[camSetPos]] it is possible to make smooth position transition in time, defined with [[camCommit]], which is required in this case.
 groups:
 - Camera Control
 syntax:
@@ -14,7 +17,7 @@ syntax:
     description: object of type "camera" or "seagull"
     type: Object
   - name: position
-    description: '[[PositionAGL]] to set the object to'
+    description: camera destination
     type: Unknown
 argument_loc: Local
 effect_loc: Local
@@ -42,5 +45,7 @@ since:
     minor: 50
 examples:
 - |-
-  <sqf>_cam camSetPos [2300,1000,130];
-  _cam camCommit 10;</sqf>
+  <sqf>
+  _cam camSetPos [2300, 1000, 130];
+  _cam camCommit 10;
+  </sqf>
