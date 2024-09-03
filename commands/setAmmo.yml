@@ -33,7 +33,7 @@ examples:
 - |-
   Set player's current weapon magazine ammo count to 1 round:
   <sqf>player setAmmo [currentWeapon player, 1];</sqf>
-- "If player is a gunner in a vehicle, set current weapon magazine ammo count to 5 rounds:\n<sqf>if (local vehicle player) then {\n\tvehicle player setAmmo [currentWeapon vehicle player, 5];\n} else {\n\thint \"Vehicle must be local to this machine for 'setAmmo' to work\";\n};</sqf>"
+- "If player is a gunner in a vehicle, set current weapon magazine ammo count to 5 rounds:\n<sqf>\nif (local vehicle player) then {\n\tvehicle player setAmmo [currentWeapon vehicle player, 5];\n} else {\n\thint \"Vehicle must be local to this machine for 'setAmmo' to work\";\n};\n</sqf>"
 - |-
   If you try to set more ammo than the magazine can hold, it will be clipped at default magazine capacity:
   <sqf>player setAmmo [primaryWeapon player, 1000000]; // full mag with default ammo count</sqf>
