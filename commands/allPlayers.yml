@@ -37,5 +37,5 @@ examples:
   <sqf>
   private _players = allPlayers select {!(_x isKindOf "VirtualMan_F")};
   </sqf>
-- "<sqf>{\n\tsystemChat format [\n\t\t\"Player %1 is %2\", \n\t\tname _x, \n\t\t[\"dead\", \"alive\"] select alive _x\n\t];\n} forEach allPlayers;</sqf>"
+- "<sqf>\n{\n\tsystemChat format [\n\t\t\"Player %1 is %2\", \n\t\tname _x, \n\t\t[\"dead\", \"alive\"] select alive _x\n\t];\n} forEach allPlayers;\n</sqf>"
 - <sqf>private _bluforPlayers = blufor countSide allPlayers;</sqf>
