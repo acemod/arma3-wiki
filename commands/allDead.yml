@@ -22,4 +22,4 @@ since:
     minor: 50
 examples:
 - <sqf>{ deleteVehicle _x } forEach allDead;</sqf>
-- "allAlive:\n<sqf>_all = allUnits + vehicles;\n{\n\t_all pushBack agent _x;\n} forEach (agents - [teamMemberNull]);\nallAlive = _all - allDead;</sqf>"
+- "allAlive:\n<sqf>\n_all = allUnits + vehicles;\n{\n\t_all pushBack agent _x;\n} forEach (agents - [teamMemberNull]);\nallAlive = _all - allDead;\n</sqf>"
