@@ -33,4 +33,4 @@ since:
     minor: 58
 examples:
 - <sqf>hint str (difficultyOption "friendlyTags");</sqf>
-- "Remember last [[cameraView]] per vehicle:\n<sqf>player addEventHandler [\"GetOutMan\", {\n\tparams [\"_unit\", \"\", \"_vehicle\"];\n\t_unit setVariable [_vehicle call BIS_fnc_netId, cameraView];\n}];\nplayer addEventHandler [\"GetInMan\", {\n\tif (difficultyOption \"thirdPersonView\" == 2) then {\n\t\tparams [\"_unit\", \"\", \"_vehicle\"];\n\t\t_unit switchCamera (_unit getVariable [_vehicle call BIS_fnc_netId, \"INTERNAL\"]);\n\t};\n}];</sqf>"
+- "Remember last [[cameraView]] per vehicle:\n<sqf>\nplayer addEventHandler [\"GetOutMan\", {\n\tparams [\"_unit\", \"\", \"_vehicle\"];\n\t_unit setVariable [_vehicle call BIS_fnc_netId, cameraView];\n}];\nplayer addEventHandler [\"GetInMan\", {\n\tif (difficultyOption \"thirdPersonView\" == 2) then {\n\t\tparams [\"_unit\", \"\", \"_vehicle\"];\n\t\t_unit switchCamera (_unit getVariable [_vehicle call BIS_fnc_netId, \"INTERNAL\"]);\n\t};\n}];\n</sqf>"
