@@ -62,15 +62,19 @@ examples:
   </sqf>
 - <sqf>heli setVehiclePosition [player, [], 0, "FLY"];</sqf>
 - |-
-  <sqf>_cam = "camera" camCreate [0,0,0];
+  <sqf>
+  _cam = "camera" camCreate [0,0,0];
   _cam setDir random 360;
   _cam setVehiclePosition [[5000,5000], [], 1000, "NONE"];
   _cam setPosWorld (getPosWorld _cam vectorAdd [0,0,1.8]);
-  _cam cameraEffect ["Internal", "Back"];</sqf>
+  _cam cameraEffect ["Internal", "Back"];
+  </sqf>
 - |-
-  <sqf>private _tablePos = player getRelPos [3, 0];
+  <sqf>
+  private _tablePos = player getRelPos [3, 0];
   private _table = "Land_CampingTable_F" createVehicle [0,0,0];
   private _laptop = "Land_Laptop_unfolded_F" createVehicle [0,0,0];
   _table setPos _tablePos;
   _laptop setVehiclePosition [_tablePos vectorAdd [0.5, 0.2, 10], [], 0, "CAN_COLLIDE"];
-  _laptop attachTo [_table];</sqf>
+  _laptop attachTo [_table];
+  </sqf>
