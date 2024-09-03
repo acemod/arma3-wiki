@@ -15,5 +15,5 @@ since:
     major: 2
     minor: 18
 examples:
-- "<sqf>{\n\tparams [\"_camera\", \"_r2tInfos\", \"_isPrimary\", \"_ppEffectName\", \"_viewMode\", \"_TIindex\"];\n\t{\n\t\tparams[\"_r2tName\", \"_ppEffectName\", \"_ppEffectType\", \"_TIindex\"];\n\t} forEach _r2tInfos;\n} forEach allCameras;\n</sqf>"
-- "<sqf>\nprivate _allCamerasInfo = allCameras;\n{\n\tparams [\"_camera\", \"\", \"_isPrimary\"];\n\tif (!_isPrimary) then { camDestroy _camera };\n} forEach _allCamerasInfo;</sqf>"
+- "<sqf>\n{\n\tparams [\"_camera\", \"_r2tInfos\", \"_isPrimary\", \"_ppEffectName\", \"_viewMode\", \"_TIindex\"];\n\t{\n\t\tparams[\"_r2tName\", \"_ppEffectName\", \"_ppEffectType\", \"_TIindex\"];\n\t} forEach _r2tInfos;\n} forEach allCameras;\n</sqf>"
+- "<sqf>\nprivate _allCamerasInfo = allCameras;\n{\n\tparams [\"_camera\", \"\", \"_isPrimary\"];\n\tif (!_isPrimary) then { camDestroy _camera };\n} forEach _allCamerasInfo;\n</sqf>"
