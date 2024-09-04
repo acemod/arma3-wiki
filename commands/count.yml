@@ -58,11 +58,15 @@ since:
     minor: 50
 examples:
 - |-
-  <sqf>count [0, 0, 1, 2]; // returns 4
-  count units group player; // returns number of units in player group</sqf>
+  <sqf>
+  count [0, 0, 1, 2]; // returns 4
+  count units group player; // returns number of units in player group
+  </sqf>
 - |-
-  <sqf>private _cnt = { _x == 4 } count [1, 9, 8, 3, 4, 4, 4, 5, 6]; // returns 3
-  _cnt = { alive _x } count allUnits; // returns the number of alive units</sqf>
+  <sqf>
+  private _cnt = { _x == 4 } count [1, 9, 8, 3, 4, 4, 4, 5, 6]; // returns 3
+  _cnt = { alive _x } count allUnits; // returns the number of alive units
+  </sqf>
 - <sqf>private _cnt = count (configFile >> "CfgVehicles");</sqf>
 - <sqf>hint str count "japa is the man!"; // 16</sqf>
 - <sqf>hint format ["There are %1 elements in the provided hashmap", count _myHashMap];</sqf>
