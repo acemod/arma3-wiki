@@ -23,8 +23,10 @@ since:
     minor: 50
 examples:
 - |-
-  <sqf>private _eventHandlerId = addMissionEventHandler ["Ended", { diag_log "mission complete"; }];
+  <sqf>
+  private _eventHandlerId = addMissionEventHandler ["Ended", { diag_log "mission complete"; }];
   // ...
-  removeMissionEventHandler ["Ended", _eventHandlerId];</sqf>
-- "<sqf>for \"_i\" from 0 to 4 do {\n\tmissionNamespace setVariable [format [\"handler%1\",_i], addMissionEventHandler [\"Loaded\",\"hint \"\"_i\"\";\"]];\n};\nremoveMissionEventHandler [\"Loaded\", handler2]; // Remove the third index under type \"Loaded\"</sqf>"
+  removeMissionEventHandler ["Ended", _eventHandlerId];
+  </sqf>
+- "<sqf>\nfor \"_i\" from 0 to 4 do {\n\tmissionNamespace setVariable [format [\"handler%1\",_i], addMissionEventHandler [\"Loaded\",\"hint \"\"_i\"\";\"]];\n};\nremoveMissionEventHandler [\"Loaded\", handler2]; // Remove the third index under type \"Loaded\"\n</sqf>"
 - <sqf>addMissionEventHandler ["entityKilled",{hint "First kill!"; removeMissionEventHandler ["entityKilled", _thisEventHandler]; }];</sqf>
