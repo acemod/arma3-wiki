@@ -109,13 +109,15 @@ since:
     minor: 50
 examples:
 - <sqf>1 in [0, 1, 2]; // true</sqf>
-- "<sqf>private _myArray = [\"Aaa\", \"AAa\", \"AAA\"];\n\n\"aaa\" in _myArray; // false\n\"AAa\" in _myArray; // true\n\n// Case-insensitive alternatives:\n_myArray findIf { _x == \"aaa\"; } != -1; // true\n\n({\n\tif (_x == \"aaa\") exitWith { _forEachIndex };\n\t-1\n} forEach _myArray) != -1; // true, less performant but valid before the introduction of the findIf command\n\n{ if (_x == \"aaa\") exitWith { 1 } } count _myArray > 0; // true\n\n{ _x == \"aaa\"; } count _myArray > 0; // true, worst performance, only option available in OFP</sqf>"
+- "<sqf>\nprivate _myArray = [\"Aaa\", \"AAa\", \"AAA\"];\n\n\"aaa\" in _myArray; // false\n\"AAa\" in _myArray; // true\n\n// Case-insensitive alternatives:\n_myArray findIf { _x == \"aaa\"; } != -1; // true\n\n({\n\tif (_x == \"aaa\") exitWith { _forEachIndex };\n\t-1\n} forEach _myArray) != -1; // true, less performant but valid before the introduction of the findIf command\n\n{ if (_x == \"aaa\") exitWith { 1 } } count _myArray > 0; // true\n\n{ _x == \"aaa\"; } count _myArray > 0; // true, worst performance, only option available in OFP\n</sqf>"
 - <sqf>[1,2,3] in [[1,2,3], [4,5,6]]; // true - Arma 3 only</sqf>
 - <sqf>private _isInCar = player in Car;</sqf>
 - <sqf>private _isInside = [1000,2000,0] in MyLocation;</sqf>
 - |-
-  <sqf>private _isInString = "foo" in "foobar"; // true
-  _isInString = "Foo" in "foobar"; // false</sqf>
+  <sqf>
+  private _isInString = "foo" in "foobar"; // true
+  _isInString = "Foo" in "foobar"; // false
+  </sqf>
 - |-
   <sqf>private _onFoot = _unit in _unit;</sqf>
   Other options:
