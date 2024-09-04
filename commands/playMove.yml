@@ -44,5 +44,5 @@ since:
     minor: 50
 examples:
 - <sqf>soldierOne playMove "Stand";</sqf>
-- "<sqf>player switchMove \"AmovPercMstpSrasWrflDnon\";\n0 spawn \n{\n\tsleep 0.5;\n\tplayer playMove \"AmovPpneMstpSrasWrflDnon\";\t\t// player goes prone\n\tplayer playMove \"amovPknlMstpSrasWrflDnon\";\t\t// player gets up on one knee\n};</sqf>"
-- "<sqf>player switchMove \"AmovPercMstpSrasWrflDnon\";\n0 spawn\n{\n\tsleep 0.5;\n\tplayer playMove \"AmovPpneMstpSrasWrflDnon\";\t\t// player never goes prone\n\tplayer playMoveNow \"AmovPknlMstpSrasWrflDnon\";\t// player goes down on one knee straight away\n};</sqf>"
+- "<sqf>\nplayer switchMove \"AmovPercMstpSrasWrflDnon\";\n0 spawn \n{\n\tsleep 0.5;\n\tplayer playMove \"AmovPpneMstpSrasWrflDnon\";\t\t// player goes prone\n\tplayer playMove \"amovPknlMstpSrasWrflDnon\";\t\t// player gets up on one knee\n};\n</sqf>"
+- "<sqf>\nplayer switchMove \"AmovPercMstpSrasWrflDnon\";\n0 spawn\n{\n\tsleep 0.5;\n\tplayer playMove \"AmovPpneMstpSrasWrflDnon\";\t\t// player never goes prone\n\tplayer playMoveNow \"AmovPknlMstpSrasWrflDnon\";\t// player goes down on one knee straight away\n};\n</sqf>"
