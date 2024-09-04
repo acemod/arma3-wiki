@@ -16,12 +16,18 @@ since:
     minor: 98
 examples:
 - |-
-  <sqf>cutText ["Hello World!" ,"PLAIN", 2];
-  hint str allActiveTitleEffects; // [0]</sqf>
+  <sqf>
+  cutText ["Hello World!" ,"PLAIN", 2];
+  hint str allActiveTitleEffects; // [0]
+  </sqf>
 - |-
-  <sqf>21 cutText ["Hello World!", "PLAIN", 2];
-  hint str allActiveTitleEffects; // [21]</sqf>
+  <sqf>
+  21 cutText ["Hello World!", "PLAIN", 2];
+  hint str allActiveTitleEffects; // [21]
+  </sqf>
 - |-
-  <sqf>cutText ["Hello World!", "PLAIN", 2];
+  <sqf>
+  cutText ["Hello World!", "PLAIN", 2];
   titleText ["Hello World!", "PLAIN", 2];
-  hint str allActiveTitleEffects; // [-1, 0]</sqf>
+  hint str allActiveTitleEffects; // [-1, 0]
+  </sqf>
