@@ -32,7 +32,9 @@ since:
     minor: 12
 examples:
 - |-
-  <sqf>hideObjectGlobal myObject; // hides myObject
-  hideObjectGlobal nearestBuilding [2500, 2500, 0];</sqf>
-- "<sqf>myObject hideObjectGlobal true;\t// hides myObject\nmyObject hideObjectGlobal false;\t// shows myObject</sqf>"
+  <sqf>
+  hideObjectGlobal myObject; // hides myObject
+  hideObjectGlobal nearestBuilding [2500, 2500, 0];
+  </sqf>
+- "<sqf>\nmyObject hideObjectGlobal true;\t// hides myObject\nmyObject hideObjectGlobal false;\t// shows myObject\n</sqf>"
 - <sqf>[myObject, true] remoteExec ["hideObjectGlobal", 2]; // remote-executes hideObjectGlobal from a client to the server</sqf>
