@@ -66,7 +66,7 @@ since:
     major: 1
     minor: 48
 examples:
-- "<sqf>[1, 2, 3] call \n{\n\tprivate _one = param [0, 1];\n\tprivate _two = param [1, 2];\n\tprivate _three = param [2, 3];\n\t// ...\n};</sqf>"
-- "<sqf>[123] call \n{\n\tprivate _val = param [0];\n};\n\n// Below would produce the same result as above\n123 call \n{\n\tprivate _val = param [0];\n};</sqf>"
+- "<sqf>\n[1, 2, 3] call \n{\n\tprivate _one = param [0, 1];\n\tprivate _two = param [1, 2];\n\tprivate _three = param [2, 3];\n\t// ...\n};\n</sqf>"
+- "<sqf>\n[123] call \n{\n\tprivate _val = param [0];\n};\n\n// Below would produce the same result as above\n123 call \n{\n\tprivate _val = param [0];\n};\n</sqf>"
 - "<sqf>\n_z = position player param [2, 0];\nif (_z > 10) then \n{\n\thint \"YOU ARE FLYING!\";\n};\n</sqf>"
 - "<sqf>\nfnc = \n{\n\tprivate _pos = param [0, [0,0,0], [objNull, []], [2,3]];\n\tprivate _rad = param [1, 0, [0]];\n\t_pos nearObjects _rad;\n};\n\n[position player, 25] call fnc; // ok\n[player, 25] call fnc; // ok\n[25, player] call fnc; // default values are used\n</sqf>"
