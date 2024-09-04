@@ -58,9 +58,11 @@ since:
     minor: 50
 examples:
 - |-
-  <sqf>inGameUISetEventHandler ["Action", "hint 'Lights, Camera, Action!'; true"];
+  <sqf>
+  inGameUISetEventHandler ["Action", "hint 'Lights, Camera, Action!'; true"];
   sleep 10;
-  inGameUISetEventHandler ["Action", ""]; // removes the "Action" EH</sqf>
+  inGameUISetEventHandler ["Action", ""]; // removes the "Action" EH
+  </sqf>
 - |-
   <sqf>
   inGameUISetEventHandler ["PrevAction", "hint str _this; false"];
