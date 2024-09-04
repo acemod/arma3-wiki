@@ -60,8 +60,10 @@ examples:
 - <sqf>_myTruck setVariable ["TAG_myPublicVariable", 123, true];</sqf>
 - <sqf>_myTruck setVariable ["TAG_myLocalVariable", ["321", _var], owner driver _myTruck];</sqf>
 - |-
-  <sqf>missionNamespace setVariable ["TAG_myName", "Brian"];
-  hint TAG_myName; // hints "Brian"</sqf>
+  <sqf>
+  missionNamespace setVariable ["TAG_myName", "Brian"];
+  hint TAG_myName; // hints "Brian"
+  </sqf>
 - "Get the current value of a variable or, if it is undefined, define it and then get the value:\n<sqf>\nprivate _var = missionNamespace getVariable \"VarName\";\nif (isNil \"_var\") then\n{\n\t_var = 123;\n\tmissionNamespace setVariable [\"VarName\", _var];\n};\n// _var now contains the current value of the missionNamespace's variable varName\n</sqf>"
 - |-
   Remove {{hl|TAG_myPublicVariable}} from [[missionNamespace]] (globally):
