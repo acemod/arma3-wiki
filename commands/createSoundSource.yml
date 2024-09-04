@@ -16,14 +16,14 @@ description: |-
   * {{hl|"Sound_Stream"}}
   }}
 
-  Since {{GVI|arma31.70}} it is possible to define sounds for use with [[createSoundSource]] in [[Description.ext]].
+  Since {{GVI|arma3|1.70}} it is possible to define sounds for use with [[createSoundSource]] in [[Description.ext]].
   As mentioned earlier, the sounds needed for this command should be defined inside [[CfgVehicles]] class, which itself references [[CfgSFX]] class.
   If given class searched in main config and is not found, the search will continue in [[Description.ext|description.ext]] - see {{Link|#Example 3}}.<br>
 
   {{Feature|informative|A sound created by [[createSoundSource]] will always be looping.}}
+
+  {{Feature|arma3|In earlier {{arma3}} versions, the sound created was greatly attenuated if the player was in first person view inside a vehicle at the moment of execution.}}
 multiplayer_note: When a [[CfgSFX]] sound definition contains more than 1 sound, there is no guarantee that the sound played will be the same on every PC in Multiplayer.
-problem_notes:
-- '{{Feature|important|For some unknown reason if at the moment of command execution the player is in first person view and is inside a vehicle, the sound created is greatly attenuated.}}'
 groups:
 - Sounds
 syntax:
@@ -73,5 +73,5 @@ since:
     minor: 50
 examples:
 - <sqf>_soundSource = createSoundSource ["LittleDog", position player, [], 0];</sqf>
-- "<sqf>0 spawn \n{\n\t_alarm = createSoundSource [\"Sound_Alarm\", position player, [], 0]; // starts alarm\n\tsleep 10;\n\tdeleteVehicle _alarm; // stops alarm\n};</sqf>"
+- "<sqf>\n0 spawn \n{\n\t_alarm = createSoundSource [\"Sound_Alarm\", position player, [], 0]; // starts alarm\n\tsleep 10;\n\tdeleteVehicle _alarm; // stops alarm\n};\n</sqf>"
 - "{{GVI|arma3|1.70}} Here is an example of suitable mission config definition:\n<syntaxhighlight lang=\"cpp\">\n// description.ext\nclass CfgSFX\n{\n\tclass MyOwl\n\t{\n\t\tsound0[] = { \"@A3\\Sounds_F\\environment\\animals\\birds\\owl1\", db-10, 1.0, 1000, 0.2, 0, 15, 30 };\t// path to addon sound\n\t\tsound1[] = { \"@A3\\Sounds_F\\environment\\animals\\birds\\owl2\", db-10, 1.0, 1000, 0.2, 0, 15, 30 };\t// path to addon sound\n\t\tsound2[] = { \"@A3\\Sounds_F\\environment\\animals\\birds\\owl3\", db-10, 1.0, 1000, 0.2, 0, 15, 30 };\t// path to addon sound\n\t\tsounds[] = { \"sound0\", \"sound1\", \"sound2\" };\n\t\tempty[] = { \"\", 0, 0, 0, 0, 0, 0, 0 };\n\t};\n};\n\nclass CfgVehicles\n{\n\tclass MyOwlSound // class name to be used with createSoundSource\n\t{\n\t\tsound = \"MyOwl\"; // reference to CfgSFX class\n\t};\n};\n</syntaxhighlight>\n\n<sqf>private _owl = createSoundSource [\"MyOwlSound\", position player, [], 0];</sqf>"
