@@ -40,15 +40,17 @@ since:
     major: 1
     minor: 48
 examples:
-- "<sqf>[1, 2, 3] call {\n\tprivate [\"_one\", \"_two\", \"_three\"];\n\t_one = _this select 0;\n\t_two = _this select 1;\n\t_three = _this select 2;\n\t// ...\n};\n\n// Same as above, only using params\n[1, 2, 3] call {\n\tparams [\"_one\", \"_two\", \"_three\"];\n\t// ...\n};</sqf>"
-- "<sqf>[123] call {\n\tparams [\"_myvar\"];\n};\n\n// Below would produce the same result as above\n123 call {\n\tparams [\"_myvar\"];\n};</sqf>"
+- "<sqf>\n[1, 2, 3] call {\n\tprivate [\"_one\", \"_two\", \"_three\"];\n\t_one = _this select 0;\n\t_two = _this select 1;\n\t_three = _this select 2;\n\t// ...\n};\n\n// Same as above, only using params\n[1, 2, 3] call {\n\tparams [\"_one\", \"_two\", \"_three\"];\n\t// ...\n};\n</sqf>"
+- "<sqf>\n[123] call {\n\tparams [\"_myvar\"];\n};\n\n// Below would produce the same result as above\n123 call {\n\tparams [\"_myvar\"];\n};\n</sqf>"
 - "<sqf>\nposition player params [\"\", \"\", \"_z\"];\nif (_z > 10) then {\n\thint \"YOU ARE FLYING!\";\n};\n</sqf>"
 - |-
-  <sqf>[1, nil, 2] params ["_var1", "_var2", "_var3"];
+  <sqf>
+  [1, nil, 2] params ["_var1", "_var2", "_var3"];
   // All 3 variables are made private but only _var1 and _var3 are defined
 
   [1, nil, 2] params ["_var1", ["_var2", 23], "_var3"];
-  // All 3 variables are private and defined</sqf>
+  // All 3 variables are private and defined
+  </sqf>
 - "<sqf>\n[1, 2] call {\n\tif (!params [\"_var1\", \"_var2\", [\"_var3\", true, [true]]]) exitWith {\n\t\thint str [_var1, _var2, _var3];\n\t};\n};\n// The hint shows [1,2,true]\n// Script exits, default value was used due to missing value\n\n[1, 2, 3] call {\n\tif (!params [\"_var1\", \"_var2\", [\"_var3\", true, [true]]]) exitWith {\n\t\thint str [_var1, _var2, _var3];\n\t};\n};\n// The hint shows [1,2,true]\n// Script exits, default value was used due incorrect value type\n</sqf>"
 - "<sqf>\n[1, \"ok\", [1, 2, 3]] call {\n\tif (!params [\n\t\t[\"_var1\", 0, [0]],\n\t\t[\"_var2\", \"\", [\"\"]],\n\t\t[\"_var3\", [0,0,0], [[], objNull, 0], [2,3]]\n\t]) exitWith {};\n\thint \"ok\";\n};\n// Passes validation\n\n[1, 2, [3, 4, 5]] call {\n\tif (!params [\"_var1\", \"_var2\", [\"_var3\", [], [[], objNull, 0], 0]]) exitWith {};\n\thint \"ok\";\n};\n// Fails, because passed array is expected to be of 0 length, i.e. empty\n</sqf>"
 - "<sqf>\n[1, 2, 3, [4, 5, 6]] call {\n\tparams [\"_one\", \"_two\", \"_three\"];\n\t_this select 3 params [\"_four\", \"_five\", \"_six\"];\n};\n</sqf>"
