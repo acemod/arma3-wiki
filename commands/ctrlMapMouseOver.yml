@@ -37,5 +37,5 @@ since:
     major: 0
     minor: 50
 examples:
-- "<sqf>(uiNamespace getVariable \"_map\") ctrlMapCursor [\"Track\",\"HC_overFriendly\"];\n\n_mouseover = if (count (ctrlMapMouseOver (uiNamespace getVariable \"_map\")) > 0) then\n{\n\tctrlMapMouseOver (uiNamespace getVariable \"_map\")\n}\nelse\n{\n\t[\"\"]\n};\n\nif (_mouseover select 0 == \"task\" && str(_logic getVariable \"onTaskAssigned\") != str{}) then\n{\n\t//--- Task\n\t(uiNamespace getVariable \"_map\") ctrlMapCursor [\"Track\",\"HC_overMission\"];\n}\nelse\n{\n\t//--- Waypoint\n\t(uiNamespace getVariable \"_map\") ctrlMapCursor [\"Track\",\"HC_move\"];\n};</sqf>"
+- "<sqf>\n(uiNamespace getVariable \"_map\") ctrlMapCursor [\"Track\",\"HC_overFriendly\"];\n\n_mouseover = if (count (ctrlMapMouseOver (uiNamespace getVariable \"_map\")) > 0) then\n{\n\tctrlMapMouseOver (uiNamespace getVariable \"_map\")\n}\nelse\n{\n\t[\"\"]\n};\n\nif (_mouseover select 0 == \"task\" && str(_logic getVariable \"onTaskAssigned\") != str{}) then\n{\n\t//--- Task\n\t(uiNamespace getVariable \"_map\") ctrlMapCursor [\"Track\",\"HC_overMission\"];\n}\nelse\n{\n\t//--- Waypoint\n\t(uiNamespace getVariable \"_map\") ctrlMapCursor [\"Track\",\"HC_move\"];\n};\n</sqf>"
 - <sqf>onEachFrame {hintSilent str ctrlMapMouseOver (findDisplay 12 displayCtrl 51)};</sqf>
