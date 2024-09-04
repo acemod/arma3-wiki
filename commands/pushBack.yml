@@ -22,10 +22,14 @@ since:
     minor: 26
 examples:
 - |-
-  <sqf>_arr = [1,2,3];
+  <sqf>
+  _arr = [1,2,3];
   _arr pushBack 4;
-  hint str _arr; //[1,2,3,4]</sqf>
+  hint str _arr; //[1,2,3,4]
+  </sqf>
 - |-
-  <sqf>_arr = [1,[2,4],3];
+  <sqf>
+  _arr = [1,[2,4],3];
   (_arr select 1) pushBack [5,6];
-  hint str _arr //[1,[2,4,[5,6]],3]</sqf>
+  hint str _arr //[1,[2,4,[5,6]],3]
+  </sqf>
