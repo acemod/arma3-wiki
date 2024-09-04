@@ -62,4 +62,4 @@ since:
     minor: 50
 examples:
 - <sqf>if (_obj1 or (_enemycount == 0) or (not alive _enemyGeneral)) then { hint "you win !"; };</sqf>
-- "<sqf>// without lazy evaluation, select would throw an error in the event of an empty array\nif ((count _array == 0) or { (_array select 0) != player }) then\n{\n\thint \"It works!\";\n};</sqf>"
+- "<sqf>\n// without lazy evaluation, select would throw an error in the event of an empty array\nif ((count _array == 0) or { (_array select 0) != player }) then\n{\n\thint \"It works!\";\n};\n</sqf>"
