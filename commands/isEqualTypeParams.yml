@@ -28,12 +28,16 @@ since:
     minor: 54
 examples:
 - |-
-  <sqf>// These all return true
+  <sqf>
+  // These all return true
   [1,2,player,"10"] isEqualTypeParams [0,0,objNull,""];
   [1,2,player,"10",true] isEqualTypeParams [0,0,nil,""];
-  [1,2,getPos player,"10",true] isEqualTypeParams [0,0,nil,""];</sqf>
+  [1,2,getPos player,"10",true] isEqualTypeParams [0,0,nil,""];
+  </sqf>
 - |-
-  <sqf>// These all return false
+  <sqf>
+  // These all return false
   123 isEqualTypeParams [0,0,objNull,""];
   [] isEqualTypeParams [0,0,objNull,""];
-  [1,2,player] isEqualTypeParams [0,0,objNull,""];</sqf>
+  [1,2,player] isEqualTypeParams [0,0,objNull,""];
+  </sqf>
