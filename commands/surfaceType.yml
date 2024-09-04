@@ -212,7 +212,8 @@ examples:
 - <sqf>private _surface = surfaceType [4500, 4500];</sqf>
 - <sqf>hint surfaceType getPosWorld player;</sqf>
 - |-
-  <sqf>private _pos = getPosWorld player;
+  <sqf>
+  private _pos = getPosWorld player;
   _pos set [2, true]; // use layer mask
   surfaceType _pos;
   </sqf>
