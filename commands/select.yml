@@ -142,3 +142,7 @@ examples:
 - <sqf>_even = [1,2,3,4,5,6,7,8,9,0] select { _x % 2 == 0 }; // returns [2, 4, 6, 8, 0]</sqf>
 - "JavaScript endsWith() alternative:\n<sqf>\nprivate _fnc_endsWith = \n{\n\tparams [\"_string\", \"_endswith\"];\n\t_string select [count _string - count _endswith] isEqualTo _endswith\n};\n\n[\"Arma 3\", \"3\"] call _fnc_endsWith; // true\n[\"Arma 3\", \"4\"] call _fnc_endsWith; // false\n</sqf>"
 - "[[select]] index traps:\n<sqf>\nprivate _array = [\"a\", \"b\", \"c\", \"d\"];\n_array select 0; // \"a\"\n_array select 3; // \"d\"\n_array select 4; // nil - no error shown\n_array select 5; // error\n\n// can sometimes be useful\nprivate _firstEnemyNearMe = allUnits opfor select { player distance _x < 10 } select 0; // nil if no enemies nearby\nif (isNil _firstEnemyNearMe) exitWith { systemChat \"no enemy found\" };\nsystemChat format [\"enemy found: %1\", name _firstEnemyNearMe];\n\n// get the last element properly\n_array select (count _array);\t\t// wrong - nil is returned\n_array select (count _array - 1);\t// correct - \"d\" is returned\n</sqf>"
+- |-
+  {{Feature|arma3|Since {{GVI|arma3|2.12}} {{hl|-1}} can be used to select the last element of an array.}}
+  <sqf>private _array = [1, 2, 3, 4, 5];
+  hint str (_array select -1); // 5</sqf>
