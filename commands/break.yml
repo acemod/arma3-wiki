@@ -18,7 +18,8 @@ examples:
 - "<sqf>\n// prints 0, 1 and then exits\nfor \"_i\" from 0 to 3 do\n{\n\tif (_i == 2) then { break };\n\tsystemChat str _i;\n};\n</sqf>"
 - "<sqf>\nprivate _moneyHolder = objNull;\n{\n\tif (\"Money_roll\" in items _x) then\n\t{\n\t\t_moneyHolder = _x;\n\t\tbreak;\n\t};\n} forEach units group player;\n\nif (isNull _moneyHolder) then\n{\n\thint \"We have to find this money.\";\n}\nelse\n{\n\thint format [\"%1 has the money!\", name _moneyHolder];\n};\n</sqf>"
 - |-
-  <sqf>0 spawn
+  <sqf>
+  0 spawn
   {
     private _n = 0;
 
@@ -32,4 +33,5 @@ examples:
       systemChat str _n; //8 will never be printed
       _n = _n + 1;
     };
-  };</sqf>
+  };
+  </sqf>
