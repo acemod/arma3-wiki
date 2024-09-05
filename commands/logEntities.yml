@@ -1,5 +1,72 @@
 name: logEntities
-description: "Creates a log file containing the list of all game entities in scene. \n<br>File is created in the same directory as [[Crash_Files|.rpt file]]. \n<br>Special: BattlEye's RCON variant of this command is #logEntities (see also [[Multiplayer_Server_Commands]])"
+description: |-
+  Creates a log file containing the list of all game entities in scene.
+  The file is created in the same directory as [[Crash_Files|.rpt file]].
+  {{Feature|informative|[[BattlEye]]'s RCON variant of this command is {{hl|#logEntities}} (see also [[Multiplayer Server Commands]]).}}
+  File name example: {{hl|logEntities_4688_12-04-2014_12-19-39.log}}<br>
+  File content example: <spoiler text="Show example">
+  <pre>
+  ====================== Vehicles =======================
+
+  > Loc:1, ForDel:0, Dstr:0, DmgDstr:0, DmgDead:0, Sim:1, Inv: 0, AnyPl:1, Out: 0, NetID:2:3, Pos: [2476.243896][73.782043], N:B_Soldier_F
+  > Loc:1, ForDel:0, Dstr:0, DmgDstr:0, DmgDead:0, Sim:1, Inv: 0, AnyPl:0, Out: 0, NetID:0:0, Pos: [2471.500977][62.477680], N:Snake_random_F
+  > Loc:1, ForDel:0, Dstr:0, DmgDstr:0, DmgDead:0, Sim:1, Inv: 0, AnyPl:0, Out: 0, NetID:0:0, Pos: [2489.192383][73.935181], N:Snake_random_F
+  > Loc:1, ForDel:0, Dstr:0, DmgDstr:0, DmgDead:0, Sim:1, Inv: 0, AnyPl:0, Out: 0, NetID:0:0, Pos: [2487.953857][73.828362], N:Snake_random_F
+  > Loc:1, ForDel:0, Dstr:0, DmgDstr:0, DmgDead:0, Sim:1, Inv: 0, AnyPl:0, Out: 0, NetID:0:0, Pos: [2800.174805][96.234093], N:Rabbit_F
+  > Loc:1, ForDel:0, Dstr:0, DmgDstr:0, DmgDead:0, Sim:1, Inv: 0, AnyPl:0, Out: 0, NetID:0:0, Pos: [2825.378418][2.068635], N:Rabbit_F
+  > Loc:1, ForDel:0, Dstr:0, DmgDstr:0, DmgDead:0, Sim:1, Inv: 0, AnyPl:0, Out: 0, NetID:0:0, Pos: [2888.919434][6.837101], N:Rabbit_F
+  > Loc:1, ForDel:0, Dstr:0, DmgDstr:0, DmgDead:0, Sim:1, Inv: 0, AnyPl:0, Out: 0, NetID:0:0, Pos: [2910.756104][16.089361], N:Rabbit_F
+  > Loc:0, ForDel:0, Dstr:0, DmgDstr:0, DmgDead:0, Sim:1, Inv: 1, AnyPl:0, Out: 0, NetID:2:0, Pos: [9.000000][9.000000], N:Logic
+
+  Total objects: 9
+  Statistics objects: 9
+
+  IsLocal: 8
+  IsMarkedToDelete: 0
+  IsDestroyed: 0
+  IsDamageDestroyed: 0
+  IsDamageDead: 0
+  IsNotSimulated: 9
+  IsVisible: 1
+  IsAnyPlayer: 1
+  IsOutsideMap: 0
+
+  =================== Slow vehicles =====================
+
+  Total objects: 214
+  Statistics objects: 0
+
+  Static objects are accounted in total object count but not included in statistics
+
+  IsLocal: 0
+  IsMarkedToDelete: 0
+  IsDestroyed: 0
+  IsDamageDestroyed: 0
+  IsDamageDead: 0
+  IsNotSimulated: 0
+  IsVisible: 0
+  IsAnyPlayer: 0
+  IsOutsideMap: 0
+
+  =================== Out vehicles ====================
+
+  > Loc:1, ForDel:0, Dstr:0, DmgDstr:0, DmgDead:0, Sim:1, Inv: 0, AnyPl:0, Out: 0, NetID:2:1, Pos: [2476.243896][73.782043], N:Supply40
+  > Loc:1, ForDel:0, Dstr:0, DmgDstr:0, DmgDead:0, Sim:1, Inv: 0, AnyPl:0, Out: 0, NetID:2:2, Pos: [2476.243896][73.782043], N:Supply140
+
+  Total objects: 2
+  Statistics objects: 2
+
+  IsLocal: 2
+  IsMarkedToDelete: 0
+  IsDestroyed: 0
+  IsDamageDestroyed: 0
+  IsDamageDead: 0
+  IsNotSimulated: 2
+  IsVisible: 0
+  IsAnyPlayer: 0
+  IsOutsideMap: 0
+  </pre>
+  </spoiler>
 groups:
 - Diagnostic
 syntax:
