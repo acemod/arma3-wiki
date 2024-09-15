@@ -1,5 +1,8 @@
 name: effectiveCommander
-description: Returns the effective commander of the vehicle. Effective commander is the player whom driver AI will listen to. So if in a tank there is a gunner and a commander and AI driver, if the [[effectiveCommander]] is gunner, then gunner pressing WASD will give AI orders to move. If gunner jumps out and then enters tank again, the [[effectiveCommander]] role most likely has changed to commander that remained in tank. Also the assignment seems to work on first come first served basis.
+description: |-
+  Returns the effective commander of the vehicle. Effective commander is the player whom driver AI will listen to.
+  So if in a tank there is a gunner and a commander and AI driver, if the [[effectiveCommander]] is gunner, then gunner pressing {{Controls|W}} {{Controls|A}} {{Controls|S}} {{Controls|D}} will give AI orders to move.
+  If gunner jumps out and then enters a tank again, the [[effectiveCommander]] role most likely has changed to commander that remained in tank. Also the assignment seems to work on first come first served basis.
 groups:
 - Unit Control
 syntax:
@@ -29,4 +32,4 @@ since:
     major: 0
     minor: 50
 examples:
-- <sqf>_commander = effectiveCommander tank;</sqf>
+- "<sqf>\n_unit = driver tank;\n_effectiveCommander = effectiveCommander _unit;\t\t\t\t// returns the tank driver itself\n_effectiveCommander = effectiveCommander tank;\t\t\t\t// returns the effective commander (commander or gunner or driver)\n_effectiveCommander = effectiveCommander vehicle _unit;\t\t// identical to the one above - use [[vehicle]] if only the unit is known\n</sqf>"
