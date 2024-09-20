@@ -29,19 +29,16 @@ description: |-
   {{!}} [[teamMemberNull]]
   {{!}}- style="font-size: .85em"
   ! Since
-  {{!}} {{GVI|ofp|1.00}}
-  {{!}} {{GVI|ofp|1.00}}
-  {{!}} {{GVI|arma1|1.00}}
-  {{!}} {{GVI|arma1|1.00}}
-  {{!}} {{GVI|arma2|1.00}}
-  {{!}} {{GVI|arma2|1.00}}
+  {{!}} colspan="2" {{!}} {{GVI|ofp|1.00}}
+  {{!}} colspan="2" {{!}} {{GVI|arma1|1.00}}
+  {{!}} colspan="2" {{!}} {{GVI|arma2|1.00}}
   {{!}} {{GVI|arma3|1.30}}
   {{!}} {{GVI|arma3|1.54}}
   {{!}} {{GVI|arma3|2.00}}
   {{!}} {{GVI|arma3|2.10}}
   {{!}}}
 
-  {{Feature|important|2= A test via [[a == b|==]] does '''not''' work because a null value is not equal to anything, not even itself ([[configNull]] being the exception).
+  {{Feature|important|2= A test ''via'' [[a == b|==]] does '''not''' work because a null value is not equal to anything, not even itself ([[configNull]] being the exception).
   See also [[isEqualTo]].}}
 groups:
 - Variables
@@ -78,7 +75,7 @@ since:
     major: 0
     minor: 50
 examples:
-- "<sqf>\nif (isNull obj) then\n{\n\thint \"obj variable is defined but obj is null\";\n};\n</sqf>"
+- "<sqf>\nif (isNil \"obj\") exitWith { hint \"obj variable is undefined\" };\n\nif (isNull obj) then\n{\n\thint \"obj variable is defined but is null\";\n}\nelse\n{\n\thint \"obj variable is defined and is not null\";\n};\n</sqf>"
 - |-
   [[Diary Record]] support before {{GVI|arma3|2.00}}:
   <sqf>
