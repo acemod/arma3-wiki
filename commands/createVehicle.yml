@@ -1,21 +1,5 @@
 name: createVehicle
-description: |-
-  Creates an empty object of given classname type.
-  See [[Arma 3: Assets]] / [[Arma 3: createVehicle/vehicles]], or [[:Category:CfgVehicles]] for earlier games.
-
-  {{Feature|informative|
-  * To create objects of type {{hl|"Logic"}}, use [[createUnit]].
-  * To create an editable [[:Category: Eden Editor| Eden Editor]] entity, see [[create3DENEntity]].
-  }}
-
-  {{Feature|arma3|
-  To avoid vehicle randomisation in {{arma3}}, set the {{hl|BIS_enableRandomization}} variable immediately after creating the vehicle:
-  <sqf>
-  private _vehicle = "C_Offroad_01_F" createVehicle position player;
-  _vehicle setVariable ["BIS_enableRandomization", false];
-  </sqf>
-  See the [[Arma 3: Vehicle Customisation]] page for more information and settings.
-  }}
+description: "Creates an empty object of given classname type.\nSee [[Arma 3: Assets]] / [[Arma 3: createVehicle/vehicles]], or [[:Category:CfgVehicles]] for earlier games.\n\n{{Feature|informative|\n* To create objects of type {{hl|\"Logic\"}}, use [[createUnit]].\n* To create an editable [[:Category: Eden Editor| Eden Editor]] entity, see [[create3DENEntity]].\n}}\n\n{{Feature|arma3|\nTo avoid vehicle randomisation in {{arma3}}, set the {{hl|BIS_enableRandomization}} variable immediately after creating the vehicle:\n<sqf>\nprivate \"_vehicle\";\nisNil { // run [[Scheduler#Unscheduled Environment|unscheduled]]\n\t_vehicle = \"C_Offroad_01_F\" createVehicle getPosATL player;\n\t_vehicle setVariable [\"BIS_enableRandomization\", false];\n};\n// the _vehicle variable is available after that\n</sqf>\nSee the [[Arma 3: Vehicle Customisation]] page for more information and settings.\n}}"
 groups:
 - Object Manipulation
 syntax:
