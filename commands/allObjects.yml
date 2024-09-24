@@ -1,7 +1,7 @@
 name: allObjects
 description: |-
   Returns array of requested objects as fast as the engine allows it. The objects can be requested by object type and simulation kind.
-  {{Feature|informative|Some terrain placed objects are not part of slow vehicles collection, use [[nearestTerrainObjects]] command to return these objects}}
+  {{Feature|informative|This command does not return terrain placed objects (except for terrain objects with lights, such as lamp posts, etc. which can be found in the slow entities collection). To get all terrain objects, use [[nearestTerrainObjects]] instead.}}
 groups:
 - Object Detection
 syntax:
