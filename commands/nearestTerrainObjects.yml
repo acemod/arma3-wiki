@@ -56,4 +56,4 @@ examples:
 - |-
   Return every terrain object in 50 metres radius around player unsorted:
   <sqf>nearestTerrainObjects [player, [], 50, false];</sqf>
-- "Hide all terrain objects [[nearestTerrainObjects]] could find:\n<sqf>\nif (isServer) then\n{\n\tprivate _allTerrainObjects = nearestTerrainObjects\n\t[\n\t\t[worldSize / 2, worldSize / 2],\n\t\t[],\n\t\tworldSize * sqrt 2 / 2,\n\t\tfalse\n\t];\n\n\t{ _x hideObjectGlobal true } forEach _allTerrainObjects;\n};\n</sqf>"
+- "Hide all terrain objects (run locally for each client):\n<sqf>\nprivate _allTerrainObjects = nearestTerrainObjects\n[\n\t[worldSize / 2, worldSize / 2],\n\t[],\n\tworldSize * sqrt 2 / 2,\n\tfalse,\n\ttrue\n];\n{ _x hideObject true } forEach _allTerrainObjects;\n</sqf>"
