@@ -6,7 +6,8 @@ groups:
 syntax:
 - call: !Binary
   - camera
-  - fovRange
+  - - minFovRange
+    - maxFovRange
   ret:
   - Nothing
   - null
@@ -14,9 +15,10 @@ syntax:
   - name: camera
     description: object of type "camera"
     type: Object
-  - name: fovRange
-    description: zoom level, range 0 to 1 (see description above)
-    type: Unknown
+  - name: minFovRange
+    type: Number
+  - name: maxFovRange
+    type: Number
 argument_loc: Local
 effect_loc: Local
 since:
