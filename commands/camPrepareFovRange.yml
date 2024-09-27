@@ -8,15 +8,18 @@ groups:
 syntax:
 - call: !Binary
   - camera
-  - fovRange
+  - - minFovRange
+    - maxFovRange
   ret:
   - Nothing
   - null
   params:
   - name: camera
     type: Object
-  - name: fovRange
-    type: Unknown
+  - name: minFovRange
+    type: Number
+  - name: maxFovRange
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
