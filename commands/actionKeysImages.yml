@@ -1,8 +1,8 @@
 name: actionKeysImages
 description: |-
   Returns a list of button images or names assigned to the given user action.
-  A maximum of maxKeys keys is listed.
-  You can find the action names in config class ControllerSchemes or [[:Category:Key Actions|user action names]].
+  A maximum of ''maxKeys'' keys is listed.
+  You can find the action names in the ControllerSchemes config class or [[:Category:Key Actions|user action names]].
 groups:
 - Interaction
 syntax:
@@ -47,4 +47,4 @@ since:
     minor: 50
 examples:
 - <sqf>_text = actionKeysImages "ReloadMagazine";</sqf>
-- <sqf>_reload = actionKeysImages ["ReloadMagazine", 1] // will return "R" (incl. the quotation marks!)</sqf>
+- <sqf>_reload = actionKeysImages ["ReloadMagazine", 1] // returns "R" (including the quotation marks!)</sqf>
