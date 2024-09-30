@@ -161,6 +161,11 @@ impl Param {
     }
 
     #[must_use]
+    pub const fn optional(&self) -> bool {
+        self.optional
+    }
+
+    #[must_use]
     pub fn default(&self) -> Option<&str> {
         self.default.as_deref()
     }
