@@ -92,7 +92,7 @@ impl Param {
         };
         let typ = typ.trim();
         let desc = desc.trim();
-        let optional = desc.contains("(Optional");
+        let optional = desc.contains("(Optional") || (desc.is_empty() && value.contains("(Optional"));
         let mut desc = desc.to_string();
         let default = if desc.contains("(Optional, default ") {
             let (_, default) = desc.split_once("(Optional").unwrap();
@@ -235,5 +235,16 @@ mod tests {
         let (targets, _) = Param::from_wiki("remoteExec", "'''targets''': [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - (Optional, default 0) see the main syntax above for more details.").unwrap();
         assert_eq!(targets.name(), "targets");
         assert_eq!(targets.typ(), &Value::Unknown);
+    }
+
+    #[test]
+    fn complicated_multiline() {
+        let (param, _) = Param::from_wiki("setVehiclePosition", r#"special: [[String]] - (Optional, default "NONE") can be one of the following: 
+* {{hl|"NONE"}} - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there. 
+* {{hl|"CAN_COLLIDE"}} - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model. 
+* {{hl|"FLY"}} - if vehicle is capable of flying and has crew, it will be made airborne at default height. 
+If ''special'' is "" or not specified, default {{hl|"NONE"}} is used."#).unwrap();
+        assert_eq!(param.name(), "special");
+        assert_eq!(param.optional(), true);
     }
 }
