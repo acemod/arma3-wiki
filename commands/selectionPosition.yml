@@ -15,7 +15,7 @@ syntax:
   - object
   - selectionName
   ret:
-  - Unknown
+  - ArrayUnknown
   - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned.'
   params:
   - name: object
@@ -28,7 +28,7 @@ syntax:
     - LOD
     - returnMode
   ret:
-  - Unknown
+  - ArrayUnknown
   - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
   params:
   - name: object
@@ -43,6 +43,7 @@ syntax:
         minor: 6
   - name: returnMode
     type: Unknown
+    optional: true
     since:
       arma_3:
         major: 2
@@ -58,7 +59,7 @@ syntax:
   - isVisual
   - returnMode
   ret:
-  - Unknown
+  - ArrayUnknown
   - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
   params:
   - name: object
@@ -75,6 +76,7 @@ syntax:
     default: '[[true]]'
   - name: returnMode
     type: Unknown
+    optional: true
     since:
       arma_3:
         major: 2
