@@ -29,10 +29,10 @@ params:
   type: Vector3d
 - name: selection
   description: array of [[String]]s with named selection of the object that were hit, in the FireGeometry LOD.
-  type: Unknown
+  type: ArrayUnknown
 - name: ammo
   description: 'ammo info: [hit value, indirect hit value, indirect hit range, explosive damage, ammo class name]; Or, in case of a vehicle collision: [impulse value, 0, 0, 0]; hit and damage values are derived from the projectile''s [[CfgAmmo Config Reference|CfgAmmo]] class, and do not match the actual damage inflicted, which is usually lower due to armor and other factors'
-  type: Unknown
+  type: ArrayUnknown
 - name: vector
   description: vector that is orthogonal (perpendicular) to the surface struck. For example, if a wall was hit, vector would be pointing out of the wall at a 90 degree angle
   type: Vector3d
