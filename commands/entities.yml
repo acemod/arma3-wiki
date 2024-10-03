@@ -7,7 +7,7 @@ groups:
 syntax:
 - call: !Unary type
   ret:
-  - Unknown
+  - ArrayUnknown
   - null
   params:
   - name: type
@@ -19,15 +19,15 @@ syntax:
   - includeCrews
   - excludeDead
   ret:
-  - Unknown
+  - ArrayUnknown
   - null
   params:
   - name: typesInclude
     description: in format [type1, type2, ...typeN], where type is a [[String]]. Empty array [] means include every entity. Method used for filtering - [[isKindOf]]
-    type: Unknown
+    type: ArrayUnknown
   - name: typesExclude
     description: in format [type1, type2, ...typeN], where type is a [[String]]. Empty array [] means exclude no entity. Method used for filtering - [[isKindOf]]
-    type: Unknown
+    type: ArrayUnknown
   - name: includeCrews
     description: include crews currently in vehicles
     type: Boolean
