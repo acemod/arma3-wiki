@@ -92,7 +92,13 @@ impl Param {
         };
         let typ = typ.trim();
         let desc = desc.trim();
-        let optional = desc.contains("(Optional") || (desc.is_empty() && value.contains("(Optional"));
+        let optional = desc.contains("(Optional")
+            || (desc.is_empty()
+                && value
+                    .split_once("\n")
+                    .unwrap_or_default()
+                    .0
+                    .contains("(Optional"));
         let mut desc = desc.to_string();
         let default = if desc.contains("(Optional, default ") {
             let (_, default) = desc.split_once("(Optional").unwrap();
@@ -239,12 +245,27 @@ mod tests {
 
     #[test]
     fn complicated_multiline() {
-        let (param, _) = Param::from_wiki("setVehiclePosition", r#"special: [[String]] - (Optional, default "NONE") can be one of the following: 
+        let (special, _) = Param::from_wiki("setVehiclePosition", r#"special: [[String]] - (Optional, default "NONE") can be one of the following: 
 * {{hl|"NONE"}} - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there. 
 * {{hl|"CAN_COLLIDE"}} - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model. 
 * {{hl|"FLY"}} - if vehicle is capable of flying and has crew, it will be made airborne at default height. 
 If ''special'' is "" or not specified, default {{hl|"NONE"}} is used."#).unwrap();
-        assert_eq!(param.name(), "special");
-        assert_eq!(param.optional(), true);
+        assert_eq!(special.name(), "special");
+        assert_eq!(special.optional(), true);
+
+        let (sound, _) = Param::from_wiki("say3D", r#"sound: [[String]] or [[Array]]
+* [[String]] - classname of the sound to be played. Defined in [[CfgSounds]] including [[Description.ext]]
+* [[Array]] format [sound, maxDistance, pitch, isSpeech, offset, simulateSpeedOfSound] where:
+** sound: [[String]] - classname of the sound to be played. Defined in [[Description.ext#CfgSounds|CfgSounds]] including [[Description.ext]]
+** maxDistance: [[Number]] - (Optional, default 100) maximum distance in meters at which the sound can be heard
+** pitch: [[Number]] - (Optional, default 1) pitch of the sound
+** {{GVI|arma3|1.92|size= 0.75}} isSpeech: [[Boolean]] or {{GVI|arma3|2.04|size= 0.75}} [[Number]] - (Optional, default [[false]])
+*** 0/[[false]] = play as sound ([[fadeSound]] applies)
+*** 1/[[true]] = play as speech ([[fadeSpeech]] applies), filters are not applied to it (i.e. house or vehicle interior one)
+*** 2 = play as sound ([[fadeSound]] applies) without interior/vehicle muffling
+** {{GVI|arma3|2.00|size= 0.75}} offset: [[Number]] - (Optional, default 0) offset in seconds; ignored when ''simulateSpeedOfSound'' is used
+** {{GVI|arma3|2.18|size= 0.75}} simulateSpeedOfSound: [[Boolean]] - (Optional, default [[false]]) [[true]] to simulate speed of sound (see description note)"#).unwrap();
+        assert_eq!(sound.name(), "sound");
+        assert_eq!(sound.optional(), false);
     }
 }
