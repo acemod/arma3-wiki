@@ -11,7 +11,7 @@ syntax:
   - condition
   - inherit
   ret:
-  - Unknown
+  - ArrayUnknown
   - array of [[Config]]s
   params:
   - name: config
@@ -19,6 +19,7 @@ syntax:
     type: Config
   - name: condition
     type: Unknown
+    optional: true
   - name: inherit
     description: include inherited properties
     type: Boolean
