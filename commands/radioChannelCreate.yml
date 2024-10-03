@@ -20,7 +20,7 @@ syntax:
   params:
   - name: color
     description: '[[Color|RGBA color]] values'
-    type: Unknown
+    type: ArrayUnknown
   - name: label
     description: label
     type: String
@@ -29,9 +29,10 @@ syntax:
     type: String
   - name: units
     description: list of units in the channel
-    type: Unknown
+    type: ArrayUnknown
   - name: sentenceType
     type: Unknown
+    optional: true
 argument_loc: Global
 effect_loc: Global
 server_exec: false
