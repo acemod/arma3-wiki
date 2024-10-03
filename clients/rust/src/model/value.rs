@@ -114,6 +114,7 @@ impl Value {
     pub fn single_match(value: &str) -> Result<Self, String> {
         match value.to_lowercase().as_str() {
             "anything" => Ok(Self::Anything),
+            "array" => Ok(Self::ArrayUnknown),
             "boolean" => Ok(Self::Boolean),
             "code" => Ok(Self::Code),
             "config" => Ok(Self::Config),
