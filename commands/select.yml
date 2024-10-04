@@ -84,9 +84,10 @@ syntax:
     type: Number
   - name: count
     description: |-
-      ({{GVI|arma3|2.14|size= 0.75}} Optional) number of array elements to select. If the selected range exceeds source array boundaries, selection will be made up to the last element of the array.
+      (Optional after {{GVI|arma3|2.14|size= 0.75}}) number of array elements to select. If the selected range exceeds source array boundaries, selection will be made up to the last element of the array.
       {{Feature|informative|Since v2.14 'count' is optional, if omitted the selection is made from ''start'' until the end of the array.}}
     type: Number
+    optional: true
   since:
     arma_3:
       major: 1
