@@ -138,6 +138,18 @@ pub async fn event_handlers(
         subsection(
             "https://community.bistudio.com/wiki/Arma_3:_Eden_Editor_Event_Handlers?action=raw",
             "eden",
+            None,
+            Some("== Object Event Handlers ==".to_owned()),
+        )
+        .await,
+    );
+    event_handlers.insert(
+        EventHandlerNamespace::Standard,
+        subsection(
+            "https://community.bistudio.com/wiki/Arma_3:_Eden_Editor_Event_Handlers?action=raw",
+            "eden",
+            Some("== Object Event Handlers ==".to_owned()),
+            None,
         )
         .await,
     );
@@ -146,6 +158,8 @@ pub async fn event_handlers(
         subsection(
             "https://community.bistudio.com/wiki/User_Interface_Event_Handlers?action=raw",
             "ui",
+            None,
+            None,
         )
         .await
         .into_iter()
@@ -163,6 +177,8 @@ pub async fn event_handlers(
         subsection(
             "https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers?action=raw",
             "mission",
+            None,
+            None,
         )
         .await,
     );
@@ -210,12 +226,17 @@ pub async fn event_handlers(
     event_handlers
 }
 
-async fn subsection(url: &str, tag: &str) -> Vec<EventHandler> {
+async fn subsection(
+    url: &str,
+    tag: &str,
+    get_from: Option<String>,
+    get_to: Option<String>,
+) -> Vec<EventHandler> {
     let tmp = std::env::temp_dir()
         .join("arma3-wiki-fetch")
         .join(format!("eventhandler_{tag}.html"));
 
-    let body: String = if tmp.exists() {
+    let mut body: String = if tmp.exists() {
         std::fs::read_to_string(&tmp).unwrap()
     } else {
         let request = reqwest::get(url).await.unwrap();
@@ -227,6 +248,13 @@ async fn subsection(url: &str, tag: &str) -> Vec<EventHandler> {
         std::fs::write(&tmp, &content).unwrap();
         content
     };
+
+    if get_from.is_some() {
+        body = body.split_once(&get_from.unwrap()).unwrap().1.to_owned();
+    }
+    if get_to.is_some() {
+        body = body.split_once(&get_to.unwrap()).unwrap().0.to_owned();
+    }
 
     let mut event_handlers = Vec::new();
 
