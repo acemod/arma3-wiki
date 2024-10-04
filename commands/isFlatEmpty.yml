@@ -25,7 +25,7 @@ syntax:
     - shoreLine
     - ignoreObject
   ret:
-  - Unknown
+  - ArrayUnknown
   - empty array [] if check failed or [[Position#PositionASL|PositionASL]] if succeded. Resulting position will be original [[Position#PositionAGL|PositionAGL]] + [[getTerrainHeightASL]]
   params:
   - name: position
@@ -52,8 +52,10 @@ syntax:
     default: '1'
   - name: overLandOrWater
     type: Unknown
+    optional: true
   - name: shoreLine
     type: Unknown
+    optional: true
   - name: ignoreObject
     description: object to ignore in proximity checks. [[objNull]] to ignore
     type: Object
