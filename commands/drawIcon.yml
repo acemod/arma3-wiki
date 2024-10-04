@@ -30,7 +30,7 @@ syntax:
     type: String
   - name: color
     description: text and icon color in format [[Color|Color(RGBA)]]
-    type: Unknown
+    type: ArrayUnknown
   - name: position
     type: Unknown
   - name: width
@@ -48,6 +48,7 @@ syntax:
     default: '""'
   - name: shadow
     type: Unknown
+    optional: true
   - name: textSize
     description: size of the text in UI units
     type: Number
@@ -68,6 +69,7 @@ syntax:
         minor: 72
   - name: align
     type: Unknown
+    optional: true
     since:
       arma_3:
         major: 0
