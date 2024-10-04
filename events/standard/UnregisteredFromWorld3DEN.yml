@@ -1,0 +1,10 @@
+id: UnregisteredFromWorld3DEN
+description: 'When object is removed from the scenario. That happens when you delete it, but also when you undo [[Eden Editor: Entity Placing|placement]] operation.'
+params:
+- name: object
+  description: affected object
+  type: Object
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "edenObject addEventHandler [\"UnregisteredFromWorld3DEN\", {\n\tparams [\"_object\"];\n}];"
