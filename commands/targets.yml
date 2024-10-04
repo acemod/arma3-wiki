@@ -13,7 +13,7 @@ syntax:
     - maxAge
     - alternateCenter
   ret:
-  - Unknown
+  - ArrayUnknown
   - '''''unitOrGroup''''''s targets matching the criteria'
   params:
   - name: unitOrGroup
@@ -31,7 +31,7 @@ syntax:
     default: '-1'
   - name: sides
     description: array of accepted sides; use {{hl|[]}} to ignore the side filter
-    type: Unknown
+    type: ArrayUnknown
     optional: true
     default: '{{hl|[]}}'
   - name: maxAge
@@ -41,7 +41,7 @@ syntax:
     default: '0'
   - name: alternateCenter
     description: alternate (2D or 3D) position used for '''2D''' distance check
-    type: Unknown
+    type: ArrayUnknown
     optional: true
     default: '''''unitOrGroup''''''s position'
 argument_loc: Global
