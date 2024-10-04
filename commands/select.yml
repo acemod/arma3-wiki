@@ -13,7 +13,7 @@ syntax:
   - a <u>reference</u> to the array element given by its index
   params:
   - name: array
-    type: Unknown
+    type: ArrayUnknown
   - name: index
     description: |-
       index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up.<br>
@@ -27,7 +27,7 @@ syntax:
   - a <u>reference</u> to the array element
   params:
   - name: array
-    type: Unknown
+    type: ArrayUnknown
   - name: boolean
     description: '[[false]] selects the ''''''first'''''' element of the [[Array]], [[true]] the ''''''second'''''' one'
     type: Boolean
@@ -74,11 +74,11 @@ syntax:
   - - start
     - count
   ret:
-  - Unknown
+  - ArrayUnknown
   - a <u>new array</u> from selection
   params:
   - name: array
-    type: Unknown
+    type: ArrayUnknown
   - name: start
     description: array index to start selection from
     type: Number
@@ -95,11 +95,11 @@ syntax:
   - array
   - expression
   ret:
-  - Unknown
+  - ArrayUnknown
   - a <u>new array</u> of all elements from the original array that satisfied expression condition
   params:
   - name: array
-    type: Unknown
+    type: ArrayUnknown
   - name: expression
     description: |-
       expression that is expected to return [[Boolean]] or [[Nothing]].
