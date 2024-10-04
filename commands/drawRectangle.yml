@@ -11,6 +11,7 @@ syntax:
     - angle
     - color
     - fill
+    - alignWithMap
   ret:
   - Nothing
   - null
@@ -27,7 +28,7 @@ syntax:
     description: 1/2 height of rectangle in meters
     type: Number
   - name: angle
-    description: angle of rotation in degrees (add to it [[ctrlMapDir]] to show correctly on rotating minimap)
+    description: angle of rotation in degrees
     type: Number
   - name: color
     description: line color
@@ -35,6 +36,13 @@ syntax:
   - name: fill
     description: fill texture file or [[Procedural Textures]]. Note that the file texture will not rotate with rectangle, use [[drawIcon]] for that. If fill texture is not empty, set line color to white <sqf inline>[1,1,1,1]</sqf>
     type: String
+  - name: alignWithMap
+    description: 'when [[false]] the shape will not follow map rotation. Default: [[true]]'
+    type: Unknown
+    since:
+      arma_3:
+        major: 2
+        minor: 18
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
