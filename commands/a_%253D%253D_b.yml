@@ -1,4 +1,4 @@
-name: a_%3D%3D_b
+name: ==
 description: |-
   Check if ''a'' is equal to ''b''. String comparison is case-'''in'''sensitive  - use [[isEqualTo]] if case sensitivity is needed.
   {{Feature|important|''a'' and ''b'' types '''must''' match: comparing e.g [[String]] with [[Number]] is invalid.}}
@@ -58,6 +58,6 @@ since:
     major: 0
     minor: 50
 examples:
-- "<sqf>if (player == leader group player) then\n{\n\thint \"You are the leader of your group.\";\n}\nelse\n{\n\thint \"Someone else is the boss\";\n};</sqf>"
+- "<sqf>\nif (player == leader group player) then\n{\n\thint \"You are the leader of your group.\";\n}\nelse\n{\n\thint \"Someone else is the boss\";\n};\n</sqf>"
 - <sqf>"MyRabbit" == "MYRABBIT"; // returns true</sqf>
 - <sqf>if (alive _unit1 == alive _unit2) then { hint "Both units are either dead or both alive" };</sqf>

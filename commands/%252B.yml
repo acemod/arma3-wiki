@@ -1,4 +1,4 @@
-name: '%2B'
+name: +
 description: |-
   Add two [[Number]]s, concatenate two [[Array]]s or two [[String]]s, or create a copy of an Array or [[HashMap]].
 
@@ -35,13 +35,13 @@ syntax:
   - arrayA
   - arrayB
   ret:
-  - Unknown
+  - ArrayUnknown
   - a new array filled with ''arrayA'' and ''arrayB'' elements, in that order
   params:
   - name: arrayA
-    type: Unknown
+    type: ArrayUnknown
   - name: arrayB
-    type: Unknown
+    type: ArrayUnknown
 - call: !Binary
   - stringA
   - stringB
@@ -55,11 +55,11 @@ syntax:
     type: String
 - call: !Unary array
   ret:
-  - Unknown
+  - ArrayUnknown
   - a new instance of the provided array filled with same elements ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}})
   params:
   - name: array
-    type: Unknown
+    type: ArrayUnknown
 - call: !Unary hashMap
   ret:
   - Unknown
