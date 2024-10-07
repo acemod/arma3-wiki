@@ -1,4 +1,4 @@
-name: '!_a'
+name: '!'
 description: Returns the negation of a Boolean expression. This means {{hl|[[true]]}} becomes {{hl|[[false]]}} and vice versa.
 alias:
 - '[[not]]'
@@ -38,4 +38,4 @@ since:
     major: 0
     minor: 50
 examples:
-- "The code\n<sqf>private _isAlive = alive player;\nif (!_isAlive) then\n{\n\thint \"The player is dead!\";\n};</sqf>\nis the same as\n<sqf>private _isAlive = alive player;\nif (not _isAlive) then\n{\n\thint \"The player is dead!\";\n};</sqf>"
+- "The code\n<sqf>\nprivate _isAlive = alive player;\nif (!_isAlive) then\n{\n\thint \"The player is dead!\";\n};\n</sqf>\nis the same as\n<sqf>\nprivate _isAlive = alive player;\nif (not _isAlive) then\n{\n\thint \"The player is dead!\";\n};\n</sqf>"

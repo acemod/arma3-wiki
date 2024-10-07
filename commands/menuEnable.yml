@@ -1,8 +1,5 @@
 name: menuEnable
-description: |-
-  Enables or disables menu entry on given path.
-
-  {{Feature|important|The old alternative syntax {{hl|control [[menuEnable]] path}} is still in use and left for backward compatibility.}}
+description: Enables or disables menu entry on given path.
 groups:
 - GUI Control - Menu
 syntax:
@@ -17,7 +14,7 @@ syntax:
   - name: idc
     type: Number
   - name: path
-    type: Unknown
+    type: ArrayUnknown
   - name: enable
     description: disabled if [[false]]
     type: Boolean
@@ -38,7 +35,7 @@ syntax:
   - name: control
     type: Control
   - name: path
-    type: Unknown
+    type: ArrayUnknown
   - name: enable
     description: disabled if [[false]]
     type: Boolean
@@ -55,5 +52,5 @@ since:
     major: 1
     minor: 56
 examples:
-- <sqf>findDisplay 313 displayCtrl 120 menuEnable [0];</sqf>
-- <sqf>findDisplay 313 displayCtrl 120 menuEnable [[0, 0, 1], false]; // Since Arma 3 v2.06</sqf>
+- <sqf>findDisplay 313 displayCtrl 120 menuEnable [0]; // old syntax, do not use</sqf>
+- <sqf>findDisplay 313 displayCtrl 120 menuEnable [[0, 0, 1], false]; // since {{arma3}} v2.06</sqf>
