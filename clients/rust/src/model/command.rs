@@ -216,7 +216,7 @@ impl Command {
             })
             .collect::<Vec<_>>();
         let mut command = Self::default();
-        command.set_name(name.to_string());
+        command.set_name(Self::get_cmd_name(name).to_string());
         let mut lines = lines.into_iter().peekable();
         let mut syntax_counter = 1;
 
@@ -326,5 +326,29 @@ impl Command {
             }
         }
         Ok((command, errors))
+    }
+
+    fn get_cmd_name(name: &str) -> &str {
+        match name {
+            "!_a" => "!",
+            "%2B" => "+",
+            "a_*_b" => "*",
+            "a_/_b" => "/",
+            "a_:_b" => ":",
+            "a_%3D%3D_b" => "==",
+            "a_!%3D_b" => "!=",
+            "a_%3D_b" => "=",
+            "a_%5E_b" => "^",
+            "a_%25_b" => "%",
+            "a_%26%26_b" => "&&",
+            "a_greater%3D_b" => ">=",
+            "a_greater_b" => ">",
+            "a_hash_b" => "#",
+            "a_less%3D_b" => "<=",
+            "a_less_b" => "<",
+            "a_or_b" => "||",
+            "config_greater_greater_name" => ">>",
+            _ => name,
+        }
     }
 }
