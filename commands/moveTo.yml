@@ -1,5 +1,5 @@
 name: moveTo
-description: Low level command to person to move to given position.
+description: Low level command to person to move to given position. It is good to check first if AI pilot unit state is COMPLETED [[moveToCompleted]] first as this command will set unit into WAIT state waiting for instruction, but only if the unit has COMPLETED.
 groups:
 - Unit Control
 syntax:
