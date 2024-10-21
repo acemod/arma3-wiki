@@ -42,7 +42,7 @@ since:
 examples:
 - "<sqf>\n[1, 2, 3] call {\n\tprivate [\"_one\", \"_two\", \"_three\"];\n\t_one = _this select 0;\n\t_two = _this select 1;\n\t_three = _this select 2;\n\t// ...\n};\n\n// Same as above, only using params\n[1, 2, 3] call {\n\tparams [\"_one\", \"_two\", \"_three\"];\n\t// ...\n};\n</sqf>"
 - "<sqf>\n[123] call {\n\tparams [\"_myvar\"];\n};\n\n// Below would produce the same result as above\n123 call {\n\tparams [\"_myvar\"];\n};\n</sqf>"
-- "<sqf>\nposition player params [\"\", \"\", \"_z\"];\nif (_z > 10) then {\n\thint \"YOU ARE FLYING!\";\n};\n</sqf>"
+- "Skipping some array elements:\n<sqf>\nposition player params [\"\", \"\", \"_z\"];\nif (_z > 10) then {\n\thint \"YOU ARE FLYING!\";\n};\n</sqf>"
 - |-
   <sqf>
   [1, nil, 2] params ["_var1", "_var2", "_var3"];
