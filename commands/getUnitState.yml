@@ -1,0 +1,32 @@
+name: getUnitState
+description: |-
+  Returns current state of the given AI unit, which could be one of the following:
+  * "WAIT" - another plan is needed (current partial plan was done or is not present)
+  * "INIT" - operative planing should start, endpoint is set
+  * "INITFAILED" - init failed because data are not ready
+  * "BUSY" - operative plan ready and valid
+  * "OK" - completed whole strategic plan
+  * "DELAY" - repeat search, usually when failed
+  * "CARGO" - unit is in vehicle cargo, no planning needed
+  * "STOPPING" - unit is stopping (usually because of getin/getout request/landing)
+  * "REPLAN" - we have a plan, but we would like to search a new one
+  * "STOPPED" - unit is stopped, no planning needed (also landed. Different from [[stop]] command)
+  * "PLANNING" - operative planning pending
+groups:
+- AI Behaviour
+syntax:
+- call: !Unary unit
+  ret:
+  - String
+  - unit state (see description)
+  params:
+  - name: unit
+    type: Object
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
+examples:
+- <sqf>_state = getUnitState bob; //"WAIT"</sqf>
