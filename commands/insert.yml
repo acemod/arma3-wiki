@@ -104,3 +104,12 @@ examples:
   private _array = ["a", "b", "c"];
   _array insert [-2, ["w"]]; // _array is now ["a", "b", "w", "c"] // Arma 3 v2.14
   </sqf>
+- |-
+  <sqf>
+  // Notice how the size of the right array changes depending on the format of keysAndValues format
+  private _map = createHashMap;
+  _map insert [false, ["one", 1]];
+
+  private _map = createHashMap;
+  _map insert [true, ["one"], [1]];
+  </sqf>
