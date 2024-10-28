@@ -40,12 +40,26 @@ syntax:
     description: section duration in seconds
     type: Number
   - name: frameSkip
-    description: number of frames to ignorebefore measuring
+    description: number of frames to ignore before measuring
     type: Number
     since:
       arma_3:
         major: 1
         minor: 18
+  - name: toFile
+    description: if true, doesn't open UI and writes straight to file, note that even if false it might still force to file if it doesn't have a UI, like a server or HC
+    type: Boolean
+    since:
+      arma_3:
+        major: 2
+        minor: 20
+  - name: continuousCounter
+    description: captures N slow frames. Can be aborted by running diag_captureFrame or another captureSlowFrame
+    type: Number
+    since:
+      arma_3:
+        major: 2
+        minor: 20
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -61,3 +75,4 @@ since:
 examples:
 - <sqf>diag_captureSlowFrame ["total", 0.003];</sqf>
 - <sqf>diag_captureSlowFrame ["memAl", 0.0001, 30];</sqf>
+- <sqf>diag_captureSlowFrame ["total", 0, 0, false, 3];</sqf> Will open the capture ui 3 times
