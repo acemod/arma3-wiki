@@ -21,6 +21,13 @@ description: |-
   {{!}}
   * Mjob
   {{!}}}
+
+  {{Feature|informative|
+  '''Chrome export format''':
+  Capturing to file also creates a .trace file, which can be imported into chrome://tracing (in chromium based webbrowsers), or https://ui.perfetto.dev/ <br>
+  The same format can be exported by pressing the "COPY ALL" button, in the capture frame UI, with CTRL key being held down.
+  this is happening automatically now, right? so just part of the description and nothing parameter related
+  }}
 groups:
 - Diagnostic
 - Performance Profiling
@@ -37,7 +44,7 @@ syntax:
     description: case-sensitive
     type: String
   - name: threshold
-    description: section duration in seconds
+    description: section duration in seconds. 0 captures always '''IF''' the section you gave as section filter appears inside the given frame. "total" always appears, while "callExt" might not always appear for example
     type: Number
   - name: frameSkip
     description: number of frames to ignore before measuring
@@ -47,14 +54,14 @@ syntax:
         major: 1
         minor: 18
   - name: toFile
-    description: if true, doesn't open UI and writes straight to file, note that even if false it might still force to file if it doesn't have a UI, like a server or HC
+    description: 'if true, doesn''t open UI and writes straight to file. If logging to file, it automatically also outputs a .trace file. Note: even if false it might still force to file if it doesn''t have a UI, like a server or HC'
     type: Boolean
     since:
       arma_3:
         major: 2
         minor: 20
   - name: continuousCounter
-    description: captures N slow frames. Can be aborted by running diag_captureFrame or another captureSlowFrame
+    description: captures N slow frames. 0 or 1 will only capture one frame - don't set it to negative! Can be aborted by running diag_captureFrame or another captureSlowFrame
     type: Number
     since:
       arma_3:
