@@ -1,18 +1,18 @@
 name: setMarkerColorLocal
-description: 'Sets marker color for the given marker locally. Marker color names and their corresponding RGBA values for Arma 3 could be found in here: [[Arma 3: CfgMarkerColors]]'
+description: 'Set marker''s colour. {{arma3}}''s marker colour names and their corresponding RGBA values can be found here: [[Arma 3: CfgMarkerColors]].'
 groups:
 - Markers
 syntax:
 - call: !Binary
   - markerName
-  - color
+  - colour
   ret:
   - Nothing
   - null
   params:
   - name: markerName
     type: String
-  - name: color
+  - name: colour
     type: Unknown
 argument_loc: Global
 effect_loc: Local
@@ -34,4 +34,4 @@ since:
     minor: 50
 examples:
 - <sqf>"MarkerOne" setMarkerColorLocal "ColorBlack";</sqf>
-- <sqf>"MarkerOne" setMarkerColorLocal "#(1,0,0,1)"; // red color (since Arma 3 v2.20)</sqf>
+- <sqf>"MarkerOne" setMarkerColorLocal "#(1,0,0,1)"; // red color (since {{arma3}} v2.20)</sqf>
