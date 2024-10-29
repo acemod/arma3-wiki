@@ -13,7 +13,7 @@ syntax:
   - name: markerName
     type: String
   - name: color
-    type: String
+    type: Unknown
 argument_loc: Global
 effect_loc: Local
 since:
@@ -34,3 +34,4 @@ since:
     minor: 50
 examples:
 - <sqf>"MarkerOne" setMarkerColorLocal "ColorBlack";</sqf>
+- <sqf>"MarkerOne" setMarkerColorLocal "#(1,0,0,1)"; // red color (since Arma 3 v2.20)</sqf>
