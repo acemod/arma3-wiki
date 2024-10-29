@@ -1,5 +1,5 @@
 name: markerColor
-description: Returns marker color for given marker. See also [[setMarkerColor]].
+description: Returns colour of the given marker. See also [[setMarkerColor]]/[[setMarkerColorLocal|Local]].
 groups:
 - Markers
 syntax:
@@ -36,3 +36,4 @@ since:
     minor: 50
 examples:
 - <sqf>if (markerColor "Marker1" == "ColorRed") then { hint "Marker1 is red!" };</sqf>
+- "<sqf>\n\"mySuperMarker\" setMarkerColor \"#(0,1000,0,0.50000)\";\t// full green, 50% alpha\nprivate _colour = markerColor \"mySuperMarker\";\t\t\t// return properly-formatted custom value, here #(0,1,0,0.5)\nif (_colour select [0, 1] == \"#\") then { hint \"this marker has a custom colour!\" };\n</sqf>"
