@@ -1,19 +1,18 @@
 name: setMarkerPosLocal
-description: Moves the marker. If position is given in 3D format, {{hl|z}} coordinate is stored with the marker and will be used when marker is passed to commands like [[createVehicle]], [[createUnit]], [[createAgent]], [[createMine]], [[setVehiclePosition]] for example. When [[Object]] is used for position, its [[getPosWorld]] is used.
+description: Moves the marker. If position is given in 3D format, {{hl|z}} coordinate is stored with the marker and will be used when marker is passed to commands like [[createVehicle]], [[createUnit]], [[createAgent]], [[createMine]], [[setVehiclePosition]] for example. In case of an object, the object's [[boundingCenter]] is used.
 groups:
 - Markers
 syntax:
 - call: !Binary
   - markerName
-  - pos
+  - position
   ret:
   - Nothing
   - null
   params:
   - name: markerName
     type: String
-  - name: pos
-    description: object's '''model centre''''s position is used (see [[getPosWorld]])
+  - name: position
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Local
