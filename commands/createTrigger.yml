@@ -1,7 +1,7 @@
 name: createTrigger
 description: |-
   Creates a [[Trigger|trigger]] of the given type and at the given position. The type must be a class name in ''CfgNonAIVehicles'' or ''CfgVehicles'' with <syntaxhighlight lang="cpp" inline>simulation = detector</syntaxhighlight>. An array containing all units that have activated the trigger is available via <sqf inline>list triggerobj</sqf>. Since triggers are '''[[Object]]s''', commands such as [[getPosASL]], [[setPosASL]], [[deleteVehicle]] etc. work on them.
-
+  {{Feature|important|Triggers are always created on the road surface (AGL) at provided x, y coordinates. The z param is ignored. In order to place the trigger with a custom z, use a 'setPosXXX' command after trigger creation.}}
   {{Feature|informative|Since {{arma3}} v1.54 triggers can be disabled/enabled using [[enableSimulation]] command.}}
 
   Triggers are created with default parameters:
