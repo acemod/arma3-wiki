@@ -2,7 +2,7 @@ name: inAreaArray
 description: |-
   Returns given list of [[Object]]s and/or [[Position]]s that are in the given area, area defined by a trigger, marker, location or array.
 
-  {{Feature|important|Unlike [[inAreaArrayIndexes]], ''area'' position is [[Position#PositionAGL|PositionAGL]].}}
+  {{Feature|important| By default all positions given as [[Array]] or as objects are treated as [[PositionAGL]]. Since {{GVI|arma3|2.20|size= 0.75}} there is an option to force them to [[PositionWorld]] format.}}
 groups:
 - Triggers
 - Markers
@@ -28,12 +28,13 @@ syntax:
     - angle
     - isRectangle
     - c
+    - usePosWorld
   ret:
   - Unknown
   - null
   params:
   - name: positions
-    description: '[[Object]]s and/or [[Position]]s to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D'
+    description: '[[Object]]s and/or [[Position]]s to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D (see note in description)'
     type: ArrayUnknown
   - name: centre
     type: Unknown
@@ -58,6 +59,35 @@ syntax:
     type: Number
     optional: true
     default: '-1: unlimited'
+  - name: usePosWorld
+    description: set to [[true]] to treat all positions as [[PositionWorld]]
+    type: Boolean
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 20
+- call: !Binary
+  - positions
+  - - pos1
+    - pos2
+    - pos3
+    - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: positions
+    description: '[[Object]]s and/or [[Position]]s to check.'
+    type: ArrayUnknown
+  - name: posN
+    description: polygon vertices in 2d or 3d format (see [[inPolygon]])
+    type: Position
+  since:
+    arma_3:
+      major: 2
+      minor: 20
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
