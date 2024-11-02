@@ -1,6 +1,7 @@
 name: inArea
 description: |-
   Checks whether given position or object is inside given area. Use [[inAreaArray]] to check multiple positions/objects within area.
+  {{Feature|important| By default all positions given as [[Array]] or as objects are treated as [[PositionAGL]]. Since {{GVI|arma3|2.20|size= 0.75}} there is an option to force them to [[PositionWorld]] format.}}
   {{Feature|informative|This command also supports hexagon area which can be created from ellipse when both a and b are negative.
   Hexagon ellipses are also supported by both marker creation and [[drawEllipse]].}}
 groups:
@@ -28,11 +29,13 @@ syntax:
     - angle
     - isRectangle
     - c
+    - usePosWorld
   ret:
   - Boolean
   - null
   params:
   - name: position
+    description: '[[Object]] and/or [[Position]] to check. [[Position]] must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D (see note in description)'
     type: Unknown
   - name: center
     description: center of the area in format [[Position#Introduction|Position2D]], [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D), [[Object]] or [[Group]]
@@ -58,6 +61,15 @@ syntax:
       arma_3:
         major: 1
         minor: 60
+  - name: usePosWorld
+    description: set to [[true]] to treat all positions as [[PositionWorld]]
+    type: Boolean
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 20
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
