@@ -1,0 +1,55 @@
+name: drawXPolygon
+description: Draws an N sided polygon on the map.
+groups:
+- GUI Control - Map
+syntax:
+- call: !Binary
+  - map
+  - - n
+    - centre
+    - a
+    - b
+    - angle
+    - color
+    - fill
+    - alignWithMap
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: map
+    type: Control
+  - name: n
+    description: number of sides 3..720
+    type: Number
+  - name: centre
+    description: ellipse's centre
+    type: Unknown
+  - name: a
+    description: horizontal (x) radius
+    type: Number
+  - name: b
+    description: vertical (y) radius
+    type: Number
+  - name: angle
+    description: angle of rotation in degrees
+    type: Number
+  - name: color
+    description: line color
+    type: Unknown
+  - name: fill
+    description: fill texture file or [[Procedural Textures]]. Note that the file texture will not rotate with polygon, use [[drawIcon]] for that. If fill texture is not empty, set line color to white [1,1,1,1]
+    type: String
+  - name: alignWithMap
+    description: '- when [[false]] the shape will not follow map rotation.'
+    type: Boolean
+    optional: true
+    default: '[[true]]'
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 20
+examples:
+- "<sqf>\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\", \n{\n\t_this select 0 drawXPolygon [\n\t\t5, player, 50, 10, 0, [1, 0, 0, 1], \"\"\n\t];\n\t_this select 0 drawXPolygon [\n\t\t3, player, 10, 50, 0, [1, 1, 1, 1], \"#(rgb,8,8,3)color(1,0.6,0,1)\"\n\t];\n\t_this select 0 drawXPolygon [\n\t\t12, player, 10, 10, 90, [0, 0, 1, 1], \"\"\n\t];\n}];\n</sqf>"
