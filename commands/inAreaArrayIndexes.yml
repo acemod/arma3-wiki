@@ -2,7 +2,8 @@ name: inAreaArrayIndexes
 description: |-
   Returns indices of positions that are within the provided area.
 
-  {{Feature|important|Unlike [[inAreaArray]], all positions sent to this command are treated as [[Position#PositionASL|PositionASL]].}}
+  {{Feature|important|Unlike [[inAreaArray]], all positions sent to this command are treated as [[Position#PositionASL|PositionASL]] but the center as [[PositionAGL]].}}
+  {{Feature|important|Since {{GVI|arma3|2.20|size= 0.75}} this command is fully compatible with [[inAreaArray]], i.e by default all positions given as [[Array]] or as objects are treated as [[PositionAGL]]. There is also an option to force them to [[PositionWorld]] format.}}
 groups:
 - Triggers
 - Markers
@@ -15,12 +16,77 @@ syntax:
   - area
   ret:
   - Unknown
-  - indices of ''positions'''s matching elements
+  - indexes of matched positions in positions array
   params:
   - name: positions
     type: Unknown
   - name: area
     type: Unknown
+- call: !Binary
+  - positions
+  - - centre
+    - a
+    - b
+    - angle
+    - isRectangle
+    - c
+    - usePosWorld
+  ret:
+  - Unknown
+  - indexes of matched positions in positions array
+  params:
+  - name: positions
+    description: '[[Object]]s and/or [[Position]]s to check (see note in description)'
+    type: ArrayUnknown
+  - name: centre
+    description: '[[Position]] [[Object]] or [[Group]] (see note in description)'
+    type: ArrayUnknown
+  - name: a
+    description: x axis (x / 2)
+    type: Number
+  - name: b
+    description: y axis (y / 2)
+    type: Number
+  - name: angle
+    description: rotation angle
+    type: Number
+    optional: true
+    default: '0'
+  - name: isRectangle
+    description: '[[true]] if rectangle, [[false]] if ellipse'
+    type: Boolean
+    optional: true
+    default: '[[false]]'
+  - name: c
+    description: z axis (z / 2)
+    type: Number
+    optional: true
+    default: '-1: unlimited'
+  - name: usePosWorld
+    description: set to [[true]] to treat all positions as [[PositionWorld]]
+    type: Boolean
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 20
+- call: !Binary
+  - positions
+  - - pos1
+    - pos2
+    - pos3
+    - '...'
+  ret:
+  - Unknown
+  - indexes of matched positions in positions array
+  params:
+  - name: positions
+    description: '[[Object]]s and/or [[Position]]s to check.'
+    type: ArrayUnknown
+  - name: posN
+    description: polygon vertices in 2d or 3d format (see [[inPolygon]])
+    type: Position
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
