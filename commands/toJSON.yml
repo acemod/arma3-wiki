@@ -1,14 +1,15 @@
 name: toJSON
-description: Serialise the passed data to {{Link|https://en.wikipedia.org/wiki/JSON|JSON}} format.
+description: Converts data to {{Link|https://en.wikipedia.org/wiki/JSON|JSON}}.
 groups:
 - Strings
 syntax:
 - call: !Unary data
   ret:
   - String
-  - JSON result
+  - JSON string
   params:
   - name: data
+    description: Only certain [[Data Types]] are supported
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
@@ -21,24 +22,11 @@ examples:
   <sqf>
   private _result = toJSON ["this", "is", "an", "array"];
   </sqf>
-  result:
+  Result:
   <syntaxhighlight lang="json">
   ["this","is","an","array"]
   </syntaxhighlight>
-- |-
-  <sqf>
-  private _hashMap = createHashMap;
-  _hashMap set ["bKey", true];
-  _hashMap set ["sKey", "Hello there"];
-  _hashMap set ["oKey", player];
-  _hashMap set ["nKey", 42];
-  _hashMap set ["hKey", ["key1", "key2", "yolo"] createHashMapFromArray ["General Kenobi", true, "Hello it's me"]];
-  toJSON _hashMap;
-  </sqf>
-  result:
-  <syntaxhighlight lang="json">
-  {"bKey":true,"sKey":"Hello there","oKey":null,"nkey":42,hKey:{"key1":"General Kenobi","key2":true,"yolo":"Hello it's me"}}
-  </syntaxhighlight>
+- "<sqf>\nprivate _hashMap = createHashMap;\n_hashMap set [\"bKey\", true];\n_hashMap set [\"sKey\", \"Hello there\"];\n_hashMap set [\"oKey\", player];\n_hashMap set [\"nKey\", 42];\n_hashMap set [\"hKey\", [\"key1\", \"key2\", \"yolo\"] createHashMapFromArray [\"General Kenobi\", true, \"Hello it's me\"]];\ntoJSON _hashMap;\n</sqf>\nResult (formatted for readability):\n<syntaxhighlight lang=\"json\">\n{\n\t\"bKey\": true,\n\t\"sKey\": \"Hello there\",\n\t\"oKey\": null,\n\t\"nkey\": 42,\n\t\"hKey\": {\n\t\t\"key1\": \"General Kenobi\",\n\t\t\"key2\": true,\n\t\t\"yolo\": \"Hello it's me\"\n\t}\n}\n</syntaxhighlight>"
 - |-
   <sqf>
   private _jsonPlayer = toJSON player; // empty string - [[Object]] is not supported
