@@ -30,4 +30,4 @@ since:
     major: 0
     minor: 50
 examples:
-- <sqf>clearRadio;</sqf>
+- "<sqf>\nfor \"_i\" from 3 to 1 step -1 do\n{\n\tsystemChat format [\"The chat history will disappear in %1\", _i];\n\tsleep 1;\n};\n\nclearRadio;\t\t\t// removes previous messages\nenableRadio false;\t// disables the chat\n</sqf>"
