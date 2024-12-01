@@ -31,6 +31,20 @@ syntax:
     type: Object
     optional: true
     default: '[[objNull]]'
+- call: !Unary
+  - element1
+  - element2
+  - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: elementN
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 20
 argument_loc: Global
 effect_loc: Unspecified
 since:
