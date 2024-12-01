@@ -5,6 +5,7 @@ description: |-
   * Does not work under water.
   * Max hardcoded distance is 1000m.
   }}
+  Since {{GVI|arma3|2.20|size= 0.75}}, there is an alternative syntax that does multiple checks at once, faster than multiple calls.
 groups:
 - Math - Geometry
 syntax:
@@ -25,17 +26,31 @@ syntax:
     description: virtual line end
     type: Unknown
   - name: objIgnore1
-    description: object to ignore. When testing intersection from an object/unit/vehicle, pass that object here to prevent intersection inside of the object.
+    description: object to ignore. When testing intersections from an object/unit/vehicle, pass that object here to prevent intersections inside of the object.
     type: Object
     optional: true
   - name: objIgnore2
-    description: another object to ignore. When testing intersection of a line between two objects, pass the second object here to prevent intersection inside of it being reported
+    description: another object to ignore. When testing intersections of a line between two objects, pass the second object here to prevent intersections inside of it being reported
     type: Object
     optional: true
   - name: sortByDistance
     description: '[[true]]: sort by ''''''desc''''''ending distance (furthermost object first, closest object last); [[false]]: unsorted'
     type: Boolean
     optional: true
+- call: !Unary
+  - element1
+  - element2
+  - '...'
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: elementN
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 20
 argument_loc: Global
 effect_loc: Unspecified
 since:
@@ -56,3 +71,10 @@ examples:
 - |-
   Ignore objects:
   <sqf>_objects = lineIntersectsWith [eyePos player, aimPos chopper, player, chopper];</sqf>
+- |-
+  Alternative syntax to check intersections in parallel:
+  <sqf>
+  private _enemies = units opfor;
+  private _enemyDataArray = _enemies apply { [eyePos player, aimPos _x, player, _x, true] };
+  private _result = lineIntersectsWith _enemyDataArray;
+  </sqf>
