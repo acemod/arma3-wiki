@@ -1,9 +1,9 @@
 name: lineIntersects
 description: |-
-  Checks for object intersection with a virtual line between two positions.
+  Checks for object intersection with a virtual line between two positions. Since {{GVI|arma3|2.20|size= 0.75}}, there is an alternative syntax that does multiple checks at once, faster than multiple calls.
   {{Feature|informative|
   * Does not work under water.
-  * Max harcoded distance is 1000m.
+  * Max hardcoded distance is 1000m.
   }}
 groups:
 - Math - Geometry
@@ -22,12 +22,12 @@ syntax:
   - name: endPos
     type: Unknown
   - name: objIgnore1
-    description: object to ignore. When testing intersection from an object/unit/vehicle, pass that object here to prevent intersection inside of the object
+    description: object to ignore. When testing intersections from an object/unit/vehicle, pass that object here to prevent intersections inside of the object
     type: Object
     optional: true
     default: '[[objNull]]'
   - name: objIgnore2
-    description: another object to ignore. When testing intersection of a line between two objects, pass the second object here to prevent intersection inside of it being reported
+    description: another object to ignore. When testing intersections of a line between two objects, pass the second object here to prevent intersections inside of it being reported
     type: Object
     optional: true
     default: '[[objNull]]'
@@ -59,3 +59,10 @@ since:
     minor: 50
 examples:
 - <sqf>private _hasStraightLineToChopper = lineIntersects [eyePos player, aimPos chopper, player, chopper];</sqf>
+- |-
+  Alternative syntax to check intersections in parallel:
+  <sqf>
+  private _enemies = units opfor;
+  private _enemyDataArray = _enemies apply { [eyePos player, aimPos _x, player, _x] };
+  private _result = lineIntersects _enemyDataArray;
+  </sqf>
