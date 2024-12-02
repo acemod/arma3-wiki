@@ -1,9 +1,10 @@
 id: Init
-description: Is executed when [[Eden Editor]] display was created. Only happens when Eden Editor is opened for the first time during game session.
-params:
-- name: display3DEN
-  type: Display
+description: |-
+  Is executed when [[Eden Editor]] display was created. Only happens when Eden Editor is opened for the first time during game session, only available through config modding.
+  <syntaxhighlight lang="cpp">
+  init = " params ['_display3DEN']; systemChat 'First Eden launch this session'; ";
+  </syntaxhighlight>
+  * display3DEN: [[Display]]
+params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-examples:
-- "add3DENEventHandler [\"Init\", {\n\tparams [\"_display3DEN\"];\n}];"
