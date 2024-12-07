@@ -1,10 +1,16 @@
 id: HandleChatMessage
 description: |-
-  Fires when a message is received, before adding it to the chat feed. Fires clientside. The output message could be overridden:
+  Fires when a message is received, before adding it to the chat feed. Fires clientside.
+  {{Feature|informative|
+  * On a dedicated server and headless client it fires only for global (channel 0) and system messages (channel 16).
+  * The HandleChatMessage EH can be used to disable/modify system messages like "player connecting/loosing connection".
+  }}
+  {{Feature|important|Does not trigger for any of the chat related script command such as [[systemChat]], [[sideChat]], or other [[Category:Command_Group:_Radio_and_Chat|chat commands]].}}
+  The output message could be overridden:
   * Return [[true]] to block incoming chat message from being added to the chat feed.
   * Return [[String]] to replace the chat message content but not the sender name.
   * Return [[Array]] [from, text] to replace both the chat message content and the the sender's name.
-  {{Feature|informative|Only the last added EH with override will be used to override the message.}}
+  {{Feature|important|Only the last added HandleChatMessage EH with override will be used to override the message.}}
   {{Feature|warning|Do not put any of the chat related script command such as [[systemChat]], [[sideChat]], etc in this EH code as it would naturally cause recursion and the game will freeze.}}
   ** in SP: 0
   ** in MP with no sender: [[clientOwner]]
