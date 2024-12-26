@@ -1,6 +1,6 @@
 name: sleep
 description: |-
-  Suspends code execution for given time in seconds. The sleep precision is given by a framerate, the delay given is the minimal delay expected. Must be called inside of a context which is interruptible, i.e. a [[Script Handle|script]] executed by [[execVM]] or [[spawn]].
+  Suspends code execution for given [[time]] in seconds. The sleep precision is given by a framerate, the delay given is the minimal delay expected. Must be called inside of a context which is interruptible, i.e. a [[Script Handle|script]] executed by [[execVM]] or [[spawn]].
   {{Feature | Informative |
   * this command will suspend the code for '''''at least''''' the given amount of time, and can be way more if the [[Scheduler|script scheduler]] is busy.
   * this command will suspend the script as the game gets paused in single player (and will resume with it). To avoid this, use [[uiSleep]].
