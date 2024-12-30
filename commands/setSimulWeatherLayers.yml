@@ -1,7 +1,7 @@
 name: setSimulWeatherLayers
 description: Sets number of simul weather layers, affects quality of simul weather clouds.
 problem_notes:
-- The effect of this command seems to be persistent across the game instance, e.g. restarting a mission will not reset it.
+- Prior to Arma 3 v2.20 the effect of this command seems to be persistent across the game instance, e.g. restarting a mission will not reset it.
 groups:
 - Environment
 syntax:
@@ -11,6 +11,7 @@ syntax:
   - null
   params:
   - name: layers
+    description: cloud layers. -1 to reset to defaults (since 2.20), 0 to disable simul weather.
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
