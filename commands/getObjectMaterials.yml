@@ -10,6 +10,23 @@ syntax:
   params:
   - name: obj
     type: Object
+- call: !Binary
+  - obj
+  - sels
+  ret:
+  - Unknown
+  - array of materials in order of 'sels'. Non existing materials filled with [[nil]]s.
+  params:
+  - name: obj
+    description: entity
+    type: Object
+  - name: sels
+    description: array of index(es) and/or selection(s). If array is empty [] - default object materials are returned (see example 3)
+    type: ArrayUnknown
+  since:
+    arma_3:
+      major: 2
+      minor: 20
 argument_loc: Global
 effect_loc: Unspecified
 since:
@@ -18,3 +35,8 @@ since:
     minor: 38
 examples:
 - <sqf>_materials = getObjectMaterials car;</sqf>
+- "<sqf>player setObjectMaterial [\"insignia\", \"A3\\Structures_F\\Data\\Windows\\window_set.rvmat\"];\nplayer getObjectMaterials [\"insignia\", 0, 1, player, \"dskjhkjhsad\"]; \n// [\"a3\\structures_f\\data\\windows\\window_set.rvmat\",\"\",\"a3\\structures_f\\data\\windows\\window_set.rvmat\",<null>,<null>]</sqf>"
+- |-
+  <sqf>player setObjectMaterial [0, "a3\structures_f\data\windows\window_set.rvmat"];
+  getObjectMaterials player; // ["a3\structures_f\data\windows\window_set.rvmat",""]
+  player getObjectMaterials []; // ["",""]</sqf>
