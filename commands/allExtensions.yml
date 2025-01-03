@@ -1,0 +1,34 @@
+name: allExtensions
+description: Returns information about all loaded Extensions
+groups:
+- System
+syntax:
+- call: Nular
+  ret:
+  - ArrayUnknown
+  - |-
+    List of [[HashMap]] for each extension; each one containing the following keys
+    * name: [[String]]
+    * hash: [[String]] - sha1
+    * hasRVExtensionVersion: [[Boolean]]
+    * hasRVExtensionRequestUI: [[Boolean]]
+    * hasRVExtensionArgs: [[Boolean]]
+    * hasRVExtensionContext: [[Boolean]]
+    * hasRVExtensionRegisterCallback: [[Boolean]]
+    * hasRVExtension: [[Boolean]]
+    * hasRVExtensionFeatureFlags: [[Array]]
+    * signatures: [[Array]]
+    * productVersion: [[String]]
+    * dllVersion: [[Boolean]]
+    * fileVersion: [[Boolean]]
+    * dllVersion: [[Boolean]]
+    * mod: [[String]]
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 18
+examples:
+- "<sqf>\n// Get hash for extension emm_api\nprivate _extensionHash = \"\"; \n{ \n    if ((_x getOrDefault [\"name\", \"\"]) == \"emm_api\") exitWith { \n        _extensionHash = _x getOrDefault [\"hash\", \"\"]; \n    }; \n} forEach allExtensions;\n_extensionHash // \"4CD820DBDBCAEBE6FF654762DA41AF6C97D013B4\"\n</sqf>"
