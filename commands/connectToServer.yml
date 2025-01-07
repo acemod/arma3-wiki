@@ -17,6 +17,7 @@ syntax:
   - null
   params:
   - name: ip
+    description: IP in {{Link|https://en.wikipedia.org/wiki/IPv4}} format or {{GVI|arma3|2.20|size= 0.75}} domain name
     type: String
   - name: port
     type: Number
@@ -31,3 +32,4 @@ since:
     minor: 0
 examples:
 - <sqf>connectToServer ["192.168.0.2", 2302, "test"];</sqf>
+- <sqf>connectToServer ["publicserver.mydomain.com", 2302, ""];</sqf>
