@@ -1,0 +1,22 @@
+name: getServerInfo
+description: |-
+  Get the current server instance's settings from {{Link|Arma 3: Server Config File|server config}}.
+  {{Feature|informative|Player-hosted (non-dedicated) servers have fewer entries as they do not use a server config file.}}
+groups:
+- Multiplayer
+syntax:
+- call: Nular
+  ret:
+  - Unknown
+  - null
+  params: []
+argument_loc: Unspecified
+effect_loc: Unspecified
+server_exec: false
+since:
+  arma_3:
+    major: 2
+    minor: 20
+examples:
+- "<sqf>\nprivate _serverInfo = getServerInfo;\n\n// example result:\n/*\n[\n\t[\"persistent\", true],\n\t[\"requiredBuild\", 0],\n\t[\"motd\", []],\n\t[\"isLocked\", false],\n\t[\"estimateTimeLeft\", 15],\n\t[\"disconnectTimeout\", 0],\n\t[\"autoSelectMission\", false],\n\t[\"password\", \"\"],\n\t[\"maxDesync\", 90000],\n\t[\"randomMissionOrder\", false],\n\t[\"overrideHazeQuality\", 0],\n\t[\"missionHeader\", [[\"fileName\", \"DbgZeus4P.VR\"], [\"name\", \"DbgConsole4PZeus\"], [\"description\", \"\"], [\"fileSize\", \"7461\"], [\"steamId\", \"0\"], [\"fileCRC\", \"99816a4\"]]],\n\t[\"hasPasswordAdmin\", true],\n\t[\"forcedDifficulty\", \"Wolf\"],\n\t[\"verifySignatures\", 0],\n\t[\"maxPlayers\", 64],\n\t[\"maxPing\", 8000],\n\t[\"zeusCompositionScriptLevel\", 2],\n\t[\"maxPacketLoss\", 2000],\n\t[\"hostname\", \"Test Server\"],\n\t[\"battlEye\", false]\n]\n*/\n</sqf>"
+- "<sqf>\nif (!isServer) exitWith {};\n\nif (getServerInfo get \"password\" != \"\") then\n{\n\t[\"Welcome, I see you had the password ready!\"] remoteExec [\"hint\"];\n};\n</sqf>"
