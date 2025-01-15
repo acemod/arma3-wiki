@@ -95,7 +95,7 @@ impl Param {
         let optional = desc.contains("(Optional")
             || (desc.is_empty()
                 && value
-                    .split_once("\n")
+                    .split_once('\n')
                     .unwrap_or_default()
                     .0
                     .contains("(Optional"));
@@ -251,9 +251,9 @@ mod tests {
 * {{hl|"FLY"}} - if vehicle is capable of flying and has crew, it will be made airborne at default height. 
 If ''special'' is "" or not specified, default {{hl|"NONE"}} is used."#).unwrap();
         assert_eq!(special.name(), "special");
-        assert_eq!(special.optional(), true);
+        assert!(special.optional());
 
-        let (sound, _) = Param::from_wiki("say3D", r#"sound: [[String]] or [[Array]]
+        let (sound, _) = Param::from_wiki("say3D", r"sound: [[String]] or [[Array]]
 * [[String]] - classname of the sound to be played. Defined in [[CfgSounds]] including [[Description.ext]]
 * [[Array]] format [sound, maxDistance, pitch, isSpeech, offset, simulateSpeedOfSound] where:
 ** sound: [[String]] - classname of the sound to be played. Defined in [[Description.ext#CfgSounds|CfgSounds]] including [[Description.ext]]
@@ -264,8 +264,8 @@ If ''special'' is "" or not specified, default {{hl|"NONE"}} is used."#).unwrap(
 *** 1/[[true]] = play as speech ([[fadeSpeech]] applies), filters are not applied to it (i.e. house or vehicle interior one)
 *** 2 = play as sound ([[fadeSound]] applies) without interior/vehicle muffling
 ** {{GVI|arma3|2.00|size= 0.75}} offset: [[Number]] - (Optional, default 0) offset in seconds; ignored when ''simulateSpeedOfSound'' is used
-** {{GVI|arma3|2.18|size= 0.75}} simulateSpeedOfSound: [[Boolean]] - (Optional, default [[false]]) [[true]] to simulate speed of sound (see description note)"#).unwrap();
+** {{GVI|arma3|2.18|size= 0.75}} simulateSpeedOfSound: [[Boolean]] - (Optional, default [[false]]) [[true]] to simulate speed of sound (see description note)").unwrap();
         assert_eq!(sound.name(), "sound");
-        assert_eq!(sound.optional(), false);
+        assert!(!sound.optional());
     }
 }

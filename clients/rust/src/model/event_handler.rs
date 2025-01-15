@@ -126,7 +126,7 @@ impl ParsedEventHandler {
         let version = Version::from_wiki(
             parts
                 .get(5)
-                .ok_or(format!("Missing param since: {source}"))?
+                .ok_or_else(|| format!("Missing param since: {source}"))?
                 .trim_end_matches('}'),
         )?;
         let since = Some({
@@ -301,7 +301,11 @@ impl EventHandlerNamespace {
     #[must_use]
     pub fn by_command(command: &str) -> Vec<Self> {
         Self::iter()
-            .filter(|ns| ns.commands().iter().any(|c| c.to_lowercase() == command.to_lowercase()))
+            .filter(|ns| {
+                ns.commands()
+                    .iter()
+                    .any(|c| c.to_lowercase() == command.to_lowercase())
+            })
             .copied()
             .collect()
     }
