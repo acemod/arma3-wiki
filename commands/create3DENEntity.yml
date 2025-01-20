@@ -11,7 +11,7 @@ syntax:
   - position
   - isEmpty
   ret:
-  - EdenEntity
+  - Unknown
   - null
   params:
   - name: mode
@@ -32,7 +32,7 @@ syntax:
     - class
     - position
   ret:
-  - EdenEntity
+  - Unknown
   - null
   params:
   - name: group
@@ -57,3 +57,10 @@ examples:
 - <sqf>myMarker = create3DENEntity ["Marker", "mil_warning", getPosATL player];</sqf>
 - <sqf>mytrigger = create3DENEntity ["Trigger", "EmptyDetectorArea10x10", getPosATL player];</sqf>
 - "{{GVI|arma3|2.06|size= 0.75}} Create a shape marker:\n<sqf>\nm = create3DENEntity [\"Marker\", \"\", getPosATL player];\t// default rectangular marker\nm set3DENAttribute [\"markerType\", 1];\t\t\t\t\t// 0 - rectangle; 1 - ellipse\nm set3DENAttribute [\"brush\", \"DiagGrid\"];\n</sqf>"
+- |-
+  {{GVI|arma3|2.14|size= 0.75}} Create a comment:
+  <sqf>
+  myComment = create3DENEntity ["Comment", "loc_talk", [0,0,0]];
+  myComment set3DENAttribute ["name", "Title Here"];
+  myComment set3DENAttribute ["description", "Tooltip Here"];
+  </sqf>
