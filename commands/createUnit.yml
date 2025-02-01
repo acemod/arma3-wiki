@@ -51,7 +51,7 @@ syntax:
     description: classname of unit to be created as per [[CfgVehicles]]
     type: String
   - name: position
-    description: location where to create the unit. In case of [[Group]], the [[group]] [[leader]]'s position is used
+    description: location where to create the unit. In case of [[Group]], the [[group]] [[leader]]'s position is used. The Z component of the position is ignored and the unit is always placed on the surface.
     type: Unknown
   - name: markers
     description: placement markers
@@ -82,12 +82,8 @@ syntax:
     description: existing group the new unit will join
     type: Group
   - name: init
-    description: |-
-      unit init statement, similar to unit init field in the editor. The code placed in unit init will run upon unit creation for every client on network, present and future.
-      The code itself receives the reference to the created unit via local variable [[Magic Variables#this_2|this]]. Do not use global effect commands in a unit's ''init'' as it runs on every client (local effect ones are OK, e.g [[setIdentity]]).
-    type: String
+    type: Unknown
     optional: true
-    default: '""'
   - name: skill
     description: unit [[skill]]
     type: Number
