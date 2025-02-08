@@ -1,6 +1,6 @@
 use std::{collections::HashMap, path::Path};
 
-use arma3_wiki::model::{Command, ParseError};
+use arma3_wiki::model::{Command, ParseError, Value};
 use arma3_wiki_github::report::Report;
 use indicatif::ProgressBar;
 use regex::Regex;
@@ -50,8 +50,33 @@ pub async fn list() -> HashMap<String, String> {
 pub async fn commands(report: &mut Report, args: &[String], dry_run: bool) {
     let commands = if args.is_empty() {
         list().await
+    } else if args.iter().any(|arg| arg == "--bads") {
+        let mut bads = HashMap::new();
+        let wiki = arma3_wiki::Wiki::load_dist();
+        for (_, cmd) in wiki.commands().iter() {
+            let cmd_name_cased = cmd.name();
+            if cmd.syntax().iter().any(|syn| {
+                if syn.ret().0 == Value::Unknown {
+                    println!("cmd {:?} has unknown ret {:?}", cmd_name_cased, syn.ret());
+                    return true;
+                }
+                if syn.params().iter().any(|p| *p.typ() == Value::Unknown) {
+                    println!("cmd {:?} has unknown param {:?}", cmd_name_cased, syn.ret());
+                    return true;
+                }
+                false
+            }) {
+                bads.insert(
+                    cmd_name_cased.to_string(),
+                    format!("https://community.bistudio.com/wiki/{cmd_name_cased}"),
+                );
+            }
+        }
+        println!("Checking {} bad commands", bads.len());
+        bads
     } else {
         args.iter()
+            .filter(|arg| !arg.starts_with("--"))
             .map(|arg| {
                 (
                     arg.clone(),

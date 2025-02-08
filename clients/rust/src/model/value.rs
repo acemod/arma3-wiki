@@ -92,6 +92,9 @@ impl Value {
     /// # Panics
     /// Panics if the regex fails to compile.
     pub fn from_wiki(source: &str) -> Result<Self, String> {
+        if let Some(explicit_match) = Self::match_explicit(source) {
+            return Ok(explicit_match);
+        }
         let regex_type = REGEX_TYPE.get_or_init(|| Regex::new(r"(?m)\[\[([^\[\]]+)\]\]").unwrap());
         // let regex_array_in_format = REGEX_ARRAY_IN_FORMAT
         //     .get_or_init(|| Regex::new(r"(?m)\[\[Array\]\] in format \[\[([^\[\]]+)\]\]").unwrap());
@@ -105,6 +108,23 @@ impl Value {
         }
         println!("unable to parse value: {source}");
         Err("Unknown value".to_string())
+    }
+
+    #[must_use]
+    /// try to match common complex expressions to a value type
+    pub fn match_explicit(source: &str) -> Option<Self> {
+        match source.trim() {
+            "[[Array]] format [[Position]]" => { Some(Self::Position) }
+            "[[Array]] format [[Position#PositionATL]]" | "[[Array]] format [[Position#PositionATL|PositionATL]]" => { Some(Self::Position3dATL) }
+            "[[Array]] format [[Position#PositionAGL|PositionAGL]]" |"[[Position#PositionAGL|PositionAGL]]" |  "[[Array]] - world position in format [[Position#PositionAGL|PositionAGL]] "=> {  Some(Self::Position3dAGL) }
+            "[[Array]] format [[Position#PositionAGLS|PositionAGLS]]" | "[[Position#PositionAGLS|PositionAGLS]]" => {  Some(Self::Position3dAGLS) }
+            "[[Array]] format [[Position#PositionASL|PositionASL]]" | "[[Position#PositionASL|PositionASL]]" => { Some(Self::Position3dASL) }
+            "[[Array]] format [[Position#PositionASLW|PositionASLW]]" | "[[Position#PositionASLW|PositionASLW]]" => { Some(Self::Position3DASLW) }
+            "[[Number]] in range 0..1" | "[[Number]] of control" => { Some(Self::Number) }
+            "[[Color|Color (RGBA)]]" | "[[Array]] of [[Color|Color (RGB)]]" | "[[Array]] format [[Color|Color (RGB)]]" | "[[Array]] of [[Color|Color (RGBA)]]" | "[[Array]] format [[Color|Color (RGBA)]]" | "[[Array]] in format [[Color|Color (RGBA)]]"  => {  Some(Self::ArrayColor) }
+            "[[Array]] with [[Anything]]" | "[[Array]] of [[Team Member]]s" | "[[Array]] of [[Location]]s" | "[[Array]] of [[Boolean]]s" | "[[Array]] of [[Waypoint]]s" | "[[Array]] of [[Group]]s"| "[[Array]] of [[Object]]s" | "[[Array]] - format [[Vector3D]]" | "[[Array]] format [[Vector3D]]" | "[[Array]] of [[Position]]s" | "[[Array]] format [[Waypoint]]" | "[[Array]] of [[String]] and/or [[Structured Text]]" | "[[Array]] format [[ParticleArray]]" | "[[Array]] of [[Number]]s, where each number represents index of currently active effect layer" | "[[Array]] of [[Number]]s" | "[[Array]] of [[Number]]s of any size" | "[[Array]] of GUI [[Display]]s" | "[[Array]] of [[Control]]s" | "[[Array]] of [[String]]" |"[[Array]] of string"| "[[Array]] of [[String]]s" | "[[Array]] of [[Number]]" | "[[Array]] format [[Turret Path]]" => {  Some(Self::ArrayUnknown) }
+            _ => {None}
+        }
     }
 
     /// Parses a single value from a string.
@@ -126,6 +146,7 @@ impl Value {
             "exception handle" | "exceptionhandle" => Ok(Self::ExceptionHandle),
             "for type" | "fortype" => Ok(Self::ForType),
             "group" => Ok(Self::Group),
+            "hashmap" => Ok(Self::HashMapUnknown),
             "if type" | "iftype" => Ok(Self::IfType),
             "location" => Ok(Self::Location),
             "namespace" => Ok(Self::Namespace),
@@ -135,7 +156,7 @@ impl Value {
             "script handle" | "scripthandle" => Ok(Self::ScriptHandle),
             "side" => Ok(Self::Side),
             "string" => Ok(Self::String),
-            "structuredtext" => Ok(Self::StructuredText),
+            "structured text" | "structuredtext" => Ok(Self::StructuredText),
             "switch type" | "switchtype" => Ok(Self::SwitchType),
             "task" => Ok(Self::Task),
             "team member" | "teammember" => Ok(Self::TeamMember),
@@ -259,5 +280,6 @@ mod tests {
         );
         assert_eq!(Value::from_wiki("[[Number]]"), Ok(Value::Number));
         assert_eq!(Value::from_wiki("[[Object]]"), Ok(Value::Object));
+        assert_eq!(Value::from_wiki("[[Array]] with [[Anything]]"), Ok(Value::ArrayUnknown));
     }
 }
