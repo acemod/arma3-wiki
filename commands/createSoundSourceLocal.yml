@@ -2,30 +2,7 @@ name: createSoundSourceLocal
 description: Same as [[createSoundSource]] but with local effect - the created sound is not transferred to other clients.
 groups:
 - Sounds
-syntax:
-- call: !Unary
-  - type
-  - position
-  - markers
-  - placement
-  ret:
-  - Object
-  - null
-  params:
-  - name: type
-    description: '[[CfgVehicles]] class'
-    type: String
-  - name: position
-    description: desired placement position
-    type: Unknown
-  - name: markers
-    description: |-
-      if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position.
-      If any of the markers were given a Z coordinate with [[setMarkerPos]], the sound will also be created at the given Z coordinate
-    type: ArrayUnknown
-  - name: placement
-    description: the sound is placed inside a circle with given position as center and placement as its radius
-    type: Number
+syntax: []
 argument_loc: Global
 effect_loc: Local
 since:

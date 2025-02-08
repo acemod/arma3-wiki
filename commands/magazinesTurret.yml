@@ -9,25 +9,25 @@ syntax:
   - vehicle
   - turretPath
   ret:
-  - Unknown
+  - ArrayUnknown
   - null
   params:
   - name: vehicle
     type: Object
   - name: turretPath
-    type: Unknown
+    type: ArrayUnknown
 - call: !Binary
   - vehicle
   - - turretPath
     - includeEmpty
   ret:
-  - Unknown
+  - ArrayUnknown
   - null
   params:
   - name: vehicle
     type: Object
   - name: turretPath
-    type: Unknown
+    type: ArrayUnknown
   - name: includeEmpty
     description: '- [[true]] = include empty magazines (behaviour as the primary syntax, but consistent), [[false]] = exclude empty magazines'
     type: Boolean
