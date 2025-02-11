@@ -9,7 +9,7 @@ syntax:
   - position
   - radius
   ret:
-  - Unknown
+  - ArrayUnknown
   - not sorted
   params:
   - name: position
@@ -23,7 +23,7 @@ syntax:
   - - type
     - radius
   ret:
-  - Unknown
+  - ArrayUnknown
   - not sorted
   params:
   - name: position
@@ -42,14 +42,14 @@ syntax:
     - aliveOnly
     - includeCrew
   ret:
-  - Unknown
+  - ArrayUnknown
   - not sorted
   params:
   - name: area
     type: Unknown
   - name: types
     description: type(s) to search for or [] empty array to return every type
-    type: Unknown
+    type: ArrayUnknown
   - name: matchExactType
     description: '[[true]] for an exact type match, [[false]] for an [[isKindOf]] match'
     type: Boolean

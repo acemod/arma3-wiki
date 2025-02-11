@@ -12,10 +12,10 @@ syntax:
   params:
   - name: hashMap1
     description: this HashMap will be modified
-    type: Unknown
+    type: HashMapUnknown
   - name: hashMap2
     description: all key-value pairs from this HashMap are added to ''hashMap1''. If a key from ''hashMap2'' already exists in ''hashMap1'', it doesn't overwrite the value in ''hashMap1''.
-    type: Unknown
+    type: HashMapUnknown
 - call: !Binary
   - hashMap1
   - - hashMap2
@@ -26,10 +26,10 @@ syntax:
   params:
   - name: hashMap1
     description: this HashMap will be modified
-    type: Unknown
+    type: HashMapUnknown
   - name: hashMap2
     description: all key-value pairs from this HashMap are added to ''hashMap1''
-    type: Unknown
+    type: HashMapUnknown
   - name: overwriteExisting
     description: if [[true]], keys from ''hashMap1'' that also exist in ''hashMap2'' are overwritten. When set to [[true]], merging is faster
     type: Boolean

@@ -22,16 +22,16 @@ syntax:
   params:
   - name: position
     description: the laser's origin position
-    type: Unknown
+    type: Position3dASL
   - name: direction
     description: the laser's direction vector
     type: Unknown
   - name: beamColor
     description: laser beam color. The values can go way above the usual 0..1 range as they also act as emissivity brightness
-    type: Unknown
+    type: ArrayColor
   - name: dotColor
     description: impact dot color. Set to <sqf inline>[]</sqf> to use the same value as ''beamColor''.
-    type: Unknown
+    type: ArrayColor
   - name: dotSize
     description: impact dot size; if set to 0 the impact dot will not render
     type: Number

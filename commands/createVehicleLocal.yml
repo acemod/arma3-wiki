@@ -17,7 +17,7 @@ syntax:
     description: vehicle/object className
     type: String
   - name: position
-    type: Unknown
+    type: Position3dAGL
 - call: !Unary
   - type
   - position
@@ -38,7 +38,7 @@ syntax:
     description: |-
       if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position.
       If any of the markers were given z coordinate with [[setMarkerPos]], the vehicle will also be created at given z coordinate.
-    type: Unknown
+    type: ArrayUnknown
     optional: true
     default: <sqf inline>[]</sqf>
   - name: placement
