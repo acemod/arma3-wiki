@@ -173,8 +173,13 @@ impl Syntax {
                         ret = ret_trim.trim().to_string();
                     }
                     if ret.contains(" format") {
-                        errors.push(ParseError::Syntax(ret));
-                        (Value::Unknown, None)
+                        Value::match_explicit(&ret).map_or_else(
+                            || {
+                                errors.push(ParseError::Syntax(ret));
+                                (Value::Unknown, None)
+                            },
+                            |explicit_match| (explicit_match, None),
+                        )
                     } else {
                         let (typ, desc) = ret.split_once('-').unwrap_or((&ret, ""));
                         let typ = typ.trim();
