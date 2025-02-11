@@ -1,0 +1,35 @@
+id: ArtilleryShellFired
+description: Global Mission Event Handler. Executes each time a vehicle classified as artillery (has an artillery computer) fires a shell.
+params:
+- name: vehicle
+  description: artillery vehicle firing the shell
+  type: Object
+- name: weapon
+  description: weapon name
+  type: String
+- name: ammo
+  description: ammo name
+  type: String
+- name: gunner
+  description: gunner
+  type: Object
+- name: instigator
+  description: instigator
+  type: Object
+- name: artilleryTarget
+  description: artillery target object
+  type: Object
+- name: targetPosition
+  description: ground position the shell is aimed at
+  type: Position
+- name: shell
+  description: the projectile
+  type: Object
+since:
+  arma_3:
+    major: 2
+    minor: 18
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"ArtilleryShellFired\", {\n\tparams [\"_vehicle\", \"_weapon\", \"_ammo\", \"_gunner\", \"_instigator\", \"_artilleryTarget\", \"_targetPosition\", \"_shell\"];\n}];"
