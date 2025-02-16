@@ -26,3 +26,4 @@ since:
 examples:
 - "<sqf>\n_arr = [1,2,3,4,5,6,7,8,9,0];\n_arr isEqualTypeAll \"\"; // false\n_arr isEqualTypeAll 0;\t// true\n</sqf>"
 - "<sqf>\n[] isEqualTypeAll \"\";\t// false\n[\"\"] isEqualTypeAll \"\";\t// true\n</sqf>"
+- "<sqf>\n0 isEqualTypeAll \"\";\t// false\n0 isEqualTypeAll 0;\t\t// false\n[0] isEqualTypeAll 0;\t// true\n</sqf>"
