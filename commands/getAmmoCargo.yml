@@ -1,14 +1,15 @@
 name: getAmmoCargo
-description: |-
-  Returns the amount (1 is full) of ammo resources in the cargo space of a rearm vehicle.
-  {{Feature|informative|Since Arma 3 v1.96 the return value for vehicles that are not configured to have ability to rearm other vehicles is -1. (Prior to that the value was negative infinity)}}
+description: Returns the amount (1 is full) of ammo resources in the cargo space of a rearm vehicle.
 groups:
 - Vehicle Inventory
 syntax:
 - call: !Unary vehicle
   ret:
   - Number
-  - ammo cargo value, -1 if ammo cargo is not supported, 0 if the vehicle is ![[alive]] or [[isNull]]
+  - |-
+    ammo cargo value between 0 (empty, [[alive|destroyed]] or [[isNull|null]] [[Object]]) and 1 (full), -1 if ammo cargo is not supported<br>
+    before {{GVI|arma3|1.96|size= 0.75}} -[[finite|inf]] was be returned if ''vehicle'' did not support ammo cargo<br>
+    before {{GVI|arma3|1.94|size= 0.75}} [[Nothing]] was be returned if ''vehicle'' was not [[alive]]
   params:
   - name: vehicle
     type: Object
