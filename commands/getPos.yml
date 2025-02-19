@@ -7,7 +7,7 @@ description: |-
   Do '''not''' use this command's first syntax to get an object's position in 3D format:
   * the Z value from this command is '''relative''' to the surface underneath, and there is no compatible setter command to use it with;<br>the commonly misused code: <sqf inline>_obj1 setPos getPos _obj2</sqf> is '''absolutely wrong'''
   * this command is significantly '''slower''' than other [[:Category:Command Group: Positions|position commands]] because it has to calculate the surface below a position from objects in the (2D) area; its performance therefore suffers from areas with a high density of objects such as cities, and can easily be ~20x slower than other, simpler position commands - see [[Code Optimisation#getPos.2A and setPos.2A|this benchmark]].
-  The '''only''' correct usage of this command is to determine the altitude of an object '''from the surface below it''' (see {{Link|#Example 5}}).
+  The '''only''' correct usage of this command is to determine the altitude of an object '''from the surface below it''' (see {{Link|#Example 4}}).
   }}
 groups:
 - Positions
@@ -31,7 +31,7 @@ syntax:
   - - distance
     - heading
   ret:
-  - Position3dAGL
+  - Unknown
   - null
   params:
   - name: origin
@@ -74,10 +74,10 @@ examples:
 - <sqf>hintSilent str getPos player;</sqf>
 - "[[getPos]] vs. other methods (over sea). Pay attention to Z values:\n<sqf>\ngetPos ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\ngetPosATL ship;\t\t\t\t// [2412.01, 6036.33, 19.4266]\ngetPosASL ship;\t\t\t\t// [2412.01, 6036.33, -0.920066]\ngetPosASLW ship;\t\t\t// [2412.01, 6036.33, -0.865981]\nvisiblePosition ship;\t\t// [2412.02, 6036.33, -0.837952]\nvisiblePositionASL ship;\t// [2412.02, 6036.33, -0.91798]\nposition ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\n</sqf>"
 - "[[getPos]] vs. other methods (over land, on top of a 100m high building). Pay attention to Z values:\n<sqf>\ngetPos car;\t\t\t\t\t// [2508.64, 5681.47, 0.0609589]\ngetPosATL car;\t\t\t\t// [2508.64, 5681.47, 100.0356369]\ngetPosASL car;\t\t\t\t// [2508.64, 5681.47, 171.718]\ngetPosASLW car;\t\t\t\t// [2508.64, 5681.47, 171.718]\nvisiblePosition car;\t\t// [2508.64, 5681.47, 0.0609512]\nvisiblePositionASL car;\t\t// [2508.64, 5681.47, 171.718]\nposition car;\t\t\t\t// [2508.64, 5681.47, 0.0609589]\n</sqf>"
-- "Find position 100 metres and 45 degrees from player position, at the same [[Position#PositionAGL|Above Ground Level]] altitude:\n<sqf>\nplayer getPos [100, 45];\t\t\t// if the player is on top of a building, the returned point will have a Z equal/close to zero\nairplane getPos [1000, random 360];\t// result's Z is equal to \"getPos airplane select 2\"\n</sqf>"
 - |-
   Determine if a free-falling unit is close enough to the surface (including buildings, aircraft carriers etc) below to deploy the parachute:
   <sqf>
   waitUntil { sleep 1; getPos player select 2 < 200 };
   hint "Deploying a parachute might be a good idea";
   </sqf>
+- "Find position 100 metres and 45 degrees from player position:\n<sqf>\nplayer getPos [100, 45];\t// e.g [1834, 2230, 0] if resulting pos is over land\n\t\t\t\t\t\t\t// or [120, 256, -271] if resulting pos is over water\n</sqf>"
