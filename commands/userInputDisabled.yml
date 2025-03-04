@@ -1,5 +1,7 @@
 name: userInputDisabled
-description: Returns true if user input is disabled
+description: |-
+  Returns whether or not user input is disabled.
+  {{Feature|important|The disabled input system internally ''counts'' how many times <sqf inline>disableUserInput true</sqf> has been called - see {{Link|#Example 2}}.}}
 groups:
 - Interaction
 syntax:
@@ -16,3 +18,20 @@ since:
     minor: 60
 examples:
 - Toggles user input<sqf>disableUserInput !userInputDisabled;</sqf>
+- |-
+  <sqf>
+  disableUserInput true;
+  disableUserInput true;
+  disableUserInput true;
+
+  diag_log str userInputDisabled; // true
+
+  disableUserInput false;
+  diag_log str userInputDisabled; // true
+
+  disableUserInput false;
+  diag_log str userInputDisabled; // true
+
+  disableUserInput false;
+  diag_log str userInputDisabled; // false - control is regained only here
+  </sqf>
