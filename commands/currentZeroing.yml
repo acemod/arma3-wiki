@@ -9,7 +9,7 @@ syntax:
   - null
   params:
   - name: object
-    description: unit or vehicle
+    description: unit (vehicles are not supported)
     type: Object
 - call: !Binary
   - object
@@ -20,7 +20,7 @@ syntax:
   - null
   params:
   - name: object
-    description: unit or vehicle
+    description: unit (vehicles are not supported)
     type: Object
   - name: weaponClass
     description: class name of weapon
@@ -34,7 +34,7 @@ syntax:
     arma_3:
       major: 2
       minor: 4
-argument_loc: Unspecified
+argument_loc: Local
 effect_loc: Unspecified
 since:
   arma_2_arrowhead:
@@ -49,3 +49,8 @@ since:
 examples:
 - <sqf>private _zeroing = currentZeroing player;</sqf>
 - <sqf>(player currentZeroing ["arifle_MX_GL_F", "GL_3GL_F"]) params ["_distance", "_zeroingIndex"];</sqf>
+- |-
+  <sqf>
+  private _zeroing = currentZeroing myVehicle; // does not work
+  private _zeroing = currentZeroing gunner myVehicle; // works
+  </sqf>
