@@ -1,5 +1,9 @@
 name: selectWeapon
-description: Selects the given weapon.
+description: |-
+  Selects the given weapon.
+  {{Feature|informative|Passing empty string will not deselect current weapon. Use 'SwitchWeapon' [[action]] instead:
+  <sqf>player action ["SwitchWeapon", player, player, -1]</sqf>
+  }}
 groups:
 - Weapons
 syntax:
