@@ -263,7 +263,7 @@ impl EventHandlerNamespace {
     #[must_use]
     pub fn commands(&self) -> Vec<&str> {
         match &self {
-            Self::Standard => vec![
+            Self::Standard | Self::Group | Self::Projectile => vec![
                 "addEventHandler",
                 "removeEventHandler",
                 "removeAllEventHandlers",
@@ -275,7 +275,6 @@ impl EventHandlerNamespace {
             ],
             Self::Mission => vec!["addMissionEventHandler", "removeMissionEventHandler"],
             Self::UserAction => vec!["addUserActionEventHandler", "removeUserActionEventHandler"],
-            Self::Group | Self::Projectile => vec!["addEventHandler", "removeEventHandler"],
             Self::UserInterface => vec![
                 "ctrlAddEventHandler",
                 "ctrlRemoveEventHandler",
