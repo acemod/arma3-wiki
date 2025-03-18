@@ -1,5 +1,5 @@
 name: setUserMFDValue
-description: "When MFD is using user controllers, this command can set values on them. For example, MFD config for Blackfoot has an entry\n<syntaxhighlight lang=\"cpp\">\n// ...\nclass Draw\n{\n\talpha = \"user3\";\n\tcolor[] = {\"user0\",\"user1\",\"user2\"};\n// ...\n</syntaxhighlight>\nwhich could control color of the MFD. See Example 2-3-4 on how to set different colors of the Blackfoot MFD"
+description: "When MFD is using user controllers, this command can set values on them. For example, MFD config for Blackfoot has an entry\n<syntaxhighlight lang=\"cpp\">\n// ...\nclass Draw\n{\n\talpha = \"user3\";\n\tcolor[] = {\"user0\",\"user1\",\"user2\"};\n// ...\n</syntaxhighlight>\nwhich could control color of the MFD. See Example 2-3-4 on how to set different colors of the Blackfoot MFD<br>\n{{Feature|GVI|arma3|2.20|Vehicles can be configured to support more than 50 user sources with \"mfdMaxUserValues {{=}} 50\" entry in CfgVehicles config class. As of 2.20 the limit is 256. It is recommended to configure this also for vehicles that use fewer MFD sources, it improves performance to only set as many as are being used.}}"
 groups:
 - Interaction
 syntax:
