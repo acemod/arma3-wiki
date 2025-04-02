@@ -1,0 +1,26 @@
+name: removeAllMagazinesTurret
+description: Removes all magazines from the given turret or from all turrets. Use turret path [-1] for driver's turret or [] for all turrets.
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    type: Object
+  - name: turretPath
+    description: 1] for driver's turret or [] for all turrets
+    type: Unknown
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 20
+examples:
+- <sqf>vehicle player removeAllMagazinesTurret [-1];</sqf>
+- <sqf>_tank removeAllMagazinesTurret [];</sqf>
