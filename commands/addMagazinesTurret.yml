@@ -1,0 +1,31 @@
+name: addMagazinesTurret
+description: Adds given number of a magazine to the given turret. Use turret path {{hl|[-1]}} for driver's turret.
+groups:
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - - magazineName
+    - turretPath
+    - quantity
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    type: Object
+  - name: magazineName
+    type: String
+  - name: turretPath
+    type: ArrayUnknown
+  - name: quantity
+    description: desired number of the magazines
+    type: Number
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 20
+examples:
+- <sqf>_tank addMagazinesTurret ["20Rnd_120mmSABOT_M1A2", [0], 10];</sqf>
