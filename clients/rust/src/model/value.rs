@@ -280,6 +280,9 @@ mod tests {
         );
         assert_eq!(Value::from_wiki("[[Number]]"), Ok(Value::Number));
         assert_eq!(Value::from_wiki("[[Object]]"), Ok(Value::Object));
-        assert_eq!(Value::from_wiki("[[Array]] with [[Anything]]"), Ok(Value::ArrayUnknown));
+        assert_eq!(
+            Value::from_wiki("[[Array]] with [[Anything]]"),
+            Ok(Value::ArrayUnknown)
+        );
     }
 }

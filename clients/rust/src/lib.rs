@@ -104,8 +104,24 @@ impl Wiki {
     /// Returns an error if the repository could not be cloned or fetched.
     ///
     /// # Panics
-    /// Panics if the structure of the repository is invalid.
+    /// Panics if the structure of the repository is invalid, attempts to delete it and fresh clone it before panicking.
     pub fn load_git(force_pull: bool) -> Result<Self, String> {
+        std::panic::catch_unwind(|| Self::attempt_load_git(force_pull)).unwrap_or_else(|_| {
+            let appdata = get_appdata();
+            std::fs::remove_dir_all(&appdata).unwrap_or_default();
+            Self::attempt_load_git(force_pull)
+        })
+    }
+
+    #[cfg(feature = "remote")]
+    /// Loads the wiki from the remote repository.
+    ///
+    /// # Errors
+    /// Returns an error if the repository could not be cloned or fetched.
+    ///
+    /// # Panics
+    /// Panics if the structure of the repository is invalid.
+    fn attempt_load_git(force_pull: bool) -> Result<Self, String> {
         let appdata = get_appdata();
         let updated = if !force_pull && Self::recently_updated(&appdata) {
             false
