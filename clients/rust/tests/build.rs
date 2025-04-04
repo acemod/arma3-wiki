@@ -1,4 +1,4 @@
-use arma3_wiki::{model::Call, Wiki};
+use arma3_wiki::{Wiki, model::Call};
 
 #[test]
 fn build() {

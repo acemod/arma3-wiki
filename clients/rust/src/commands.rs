@@ -12,7 +12,7 @@ impl Commands {
         &self.commands
     }
 
-    pub fn raw_mut(&mut self) -> &mut HashMap<String, Command> {
+    pub const fn raw_mut(&mut self) -> &mut HashMap<String, Command> {
         &mut self.commands
     }
 

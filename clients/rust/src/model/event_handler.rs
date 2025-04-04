@@ -366,7 +366,10 @@ this addEventHandler ["AnimChanged", {
 "#;
         let event_handler = super::ParsedEventHandler::from_wiki(source).unwrap();
         assert_eq!(event_handler.id, "AnimChanged");
-        assert_eq!(event_handler.description, "Triggered every time a new animation is started. This EH is only triggered for the 1st animation state in a sequence.");
+        assert_eq!(
+            event_handler.description,
+            "Triggered every time a new animation is started. This EH is only triggered for the 1st animation state in a sequence."
+        );
         assert_eq!(event_handler.params.len(), 2);
         assert_eq!(event_handler.params[0].name, "unit");
         assert_eq!(
