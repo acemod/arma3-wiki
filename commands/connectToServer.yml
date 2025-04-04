@@ -5,6 +5,12 @@ description: |-
   * only works on the [[Arma 3: Main Menu|Main Menu]].
   * must be executed from [[isUIContext | UI context]], such as ''onButtonDown'' or similar events (see [[User Interface Event Handlers]]).
   }}
+
+  {{Feature|GVI|arma3|2.20|
+  If port is 0, the IP will be resolved as a SRV DNS Record.<br>
+  ["domain.com", 0, "password"] will be resolved as "_arma3._udp.domain.com".<br>
+  Only the first found record will be used, there is no support for multiple records with priority/weights.
+  }}
 groups:
 - System
 syntax:
