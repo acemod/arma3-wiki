@@ -17,6 +17,29 @@ syntax:
   - name: weapon
     description: weapon class name. See the topic [[:Category:Weapons]] for reference about possible values.
     type: String
+- call: !Binary
+  - object
+  - - weapon
+    - autoselect
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: object
+    description: unit or vehicle to add the weapon to
+    type: Object
+  - name: weapon
+    description: weapon class name. See the topic [[:Category:Weapons]] for reference about possible values.
+    type: String
+  - name: autoselect
+    description: '[[false]] to abort weapon autoselection if no weapon was selected.'
+    type: String
+    optional: true
+    default: '[[true]]'
+  since:
+    arma_3:
+      major: 2
+      minor: 20
 argument_loc: Local
 effect_loc: Global
 since:
