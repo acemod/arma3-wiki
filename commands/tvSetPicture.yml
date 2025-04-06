@@ -2,8 +2,9 @@ name: tvSetPicture
 description: |-
   Sets picture to item selected by path. IDC means id of parent Tree View. Name is picture name. The picture is searched in the mission directory.
   {{Feature|informative|
-  Adding pictures to lists is very slow. In order to prevent the filling of the list to be slowed down, add the pictures in a '''scheduled''' environment - See {{Link|#Example 3}}.
+  * Adding pictures to lists is very slow. In order to prevent the filling of the list to be slowed down, add the pictures in a '''scheduled''' environment - See {{Link|#Example 3}}.
   One drawback of this method is that sorting the entries is not easily possible.
+  * If not all items have a picture but you still want them to be aligned at the front, use a [[Procedural Textures|Procedural Texture]] that is transparent {{hl|#(rgb,32,32,3)color(1,1,1,0)}}.
   }}
 groups:
 - GUI Control - Tree View
