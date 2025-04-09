@@ -101,3 +101,33 @@ examples:
   findDisplay 46 createDisplay "RscDisplayEmpty" ctrlCreate [configFile >> "RscDisplayBootcampMsgBox" >> "controls" >> "BootcampMessageBox", -1];
   </sqf>
 - "<sqf>\n// Creates a vertical slider. Execute in [[Eden Editor]]\nprivate _display = findDisplay 313 createDisplay \"RscDisplayEmpty\";\nprivate _ctrlSlider = _display ctrlCreate [\"ctrlSliderV\", -1];\n\n_ctrlSlider ctrlSetPosition \n[\n  0.5 - 0.5 * pixelGrid * pixelW * 10, \n  0.5 - 0.5 * pixelGrid * pixelH * 40, \n  0.5 * pixelGrid * pixelW * 20, \n  0.5 * pixelGrid * pixelH * 80\n];\n\n_ctrlSlider ctrlCommit 0;\n</sqf>"
+- |-
+  <sqf>
+  // The following script creates a button that follows the position of the player unit in [[Eden Editor]]
+
+  if (isNull player) exitWith {["Place a player entity first", 1] call BIS_fnc_3DENNotification};
+
+  private _display = findDisplay 313;
+
+  private _ctrlButton = _display ctrlCreate ["ctrlButton", 1234];
+  _ctrlButton ctrlSetText "Delete Me";
+
+  _ctrlButton ctrlAddEventHandler ["ButtonClick",
+  {
+      params ["_ctrlButton"];
+
+      onEachFrame {};
+      _ctrlButton spawn {sleep 0.05; ctrlDelete _this};
+  }];
+
+  onEachFrame
+  {
+      private _ctrlButton = findDisplay 313 displayCtrl 1234;
+
+      if (isNull player) exitWith {};
+
+      (worldToScreen getPosWorld player) params ["_xPos", "_yPos"];
+
+      _ctrlButton ctrlSetPosition [_xPos, _yPos, 0.1 * safeZoneW, 0.05 * safeZoneH];
+      _ctrlButton ctrlCommit 0;
+  };</sqf>
