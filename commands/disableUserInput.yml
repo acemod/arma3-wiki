@@ -42,3 +42,4 @@ examples:
   // cutscene
   disableUserInput false;
   </sqf>
+- "Reset user input if a key was pressed:\n<sqf>\ndisableUserInput true;\t// here e.g W was pressed\nsleep 2;\t\t\t\t// the user releases keys\ndisableUserInput false;\t// the game considers W is still pressed as it did not listen to a \"KeyUp\" event\n\ndisableUserInput true;\ndisableUserInput false;\t// this resets released keys making the issue invisible\n\n// this workaround does not fix the mouse input that may get stuck on [[disableUserInput]] call\n</sqf>"
