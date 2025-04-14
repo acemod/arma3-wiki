@@ -3,6 +3,19 @@ description: |-
   * '''Use on:''' Control
   * '''Fired on:''' Activated every time the video ends (when looped, handler is executed after every finished loop).
   * '''Returns:''' Returns the control.
+  {{Sticky|
+  {{Feature|warning|
+  When using the event names via [[:Category:Command Group: GUI Control - Event_Handlers|GUI scripting commands]] (e.g [[ctrlAddEventHandler]], [[displayAddEventHandler]]), the prefix "on" in the name '''must be removed''' (e.g. {{hl|ButtonDown}} instead of {{hl|onButtonDown}})!
+  }}
+  |bottom}}
+  </div><!-- Used to limit Sticky range -->
+  == Event Parameters ==
+  The Event Handlers receive parameters through the [[Magic Variables|magic variable]] <var>_this</var>. Each event passes a different set of parameters (listed above) in an array. The control or display that the event was assigned to is always found in <sqf inline>_this select 0</sqf>.
+  == Scope ==
+  {{GVI|arma1|1.00}} In {{arma1}}, most control-specific events ONLY work for controls and never for displays. The two exceptions being: {{hl|onKeyDown}} and {{hl|onKeyUp}}.<br>
+  {{GVI|arma2|1.00}} Since {{arma2}}, most control-specific events work for both displays and controls.
+  == Defining Events ==
+  User Interface Event Handlers can be assigned in two ways: Via class property definitions or via [[:Category:Scripting Commands|scripting commands]].
 params: []
 since:
   arma_3:
