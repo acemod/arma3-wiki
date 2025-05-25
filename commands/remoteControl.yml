@@ -45,7 +45,9 @@ examples:
   // sometimes switchCamera is not needed
   player remoteControl driver UAV;
   </sqf>
-- 'Return control to player: <sqf>objNull remoteControl driver UAV;</sqf>'
+- |-
+  Return control to player: {{Feature|important|This method will not work if unit is dead, use the method in Example 3 instead}}
+  <sqf>objNull remoteControl driver UAV;</sqf>
 - |-
   {{GVI|arma3|2.14|size= 0.75}} Return control to player:
   <sqf>player remoteControl objNull;</sqf>
