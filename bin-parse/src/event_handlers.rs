@@ -2,9 +2,13 @@ use std::{collections::HashMap, path::Path};
 
 use arma3_wiki::model::{EventHandler, EventHandlerNamespace, ParsedEventHandler};
 use arma3_wiki_github::report::Report;
+use reqwest::Client;
+
+use crate::WafSkip;
 
 #[allow(clippy::too_many_lines)]
 pub async fn event_handlers(
+    client: &Client,
     report: &mut Report,
     dry_run: bool,
 ) -> HashMap<EventHandlerNamespace, Vec<EventHandler>> {
@@ -16,7 +20,7 @@ pub async fn event_handlers(
     let body: String = if tmp.exists() {
         std::fs::read_to_string(&tmp).unwrap()
     } else {
-        let request = reqwest::get(URL).await.unwrap();
+        let request = client.bi_get(URL).send().await.unwrap();
         assert!(
             request.status().is_success(),
             "Failed to fetch event handlers list"
@@ -136,6 +140,7 @@ pub async fn event_handlers(
     event_handlers.insert(
         EventHandlerNamespace::Eden,
         subsection(
+            client,
             "https://community.bistudio.com/wiki/Arma_3:_Eden_Editor_Event_Handlers?action=raw",
             "eden",
             None,
@@ -146,6 +151,7 @@ pub async fn event_handlers(
     event_handlers.insert(
         EventHandlerNamespace::Standard,
         subsection(
+            client,
             "https://community.bistudio.com/wiki/Arma_3:_Eden_Editor_Event_Handlers?action=raw",
             "eden",
             Some("== Object Event Handlers ==".to_owned()),
@@ -156,6 +162,7 @@ pub async fn event_handlers(
     event_handlers.insert(
         EventHandlerNamespace::UserInterface,
         subsection(
+            client,
             "https://community.bistudio.com/wiki/User_Interface_Event_Handlers?action=raw",
             "ui",
             None,
@@ -175,6 +182,7 @@ pub async fn event_handlers(
     event_handlers.insert(
         EventHandlerNamespace::Mission,
         subsection(
+            client,
             "https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers?action=raw",
             "mission",
             None,
@@ -227,6 +235,7 @@ pub async fn event_handlers(
 }
 
 async fn subsection(
+    client: &Client,
     url: &str,
     tag: &str,
     get_from: Option<String>,
@@ -239,7 +248,7 @@ async fn subsection(
     let mut body: String = if tmp.exists() {
         std::fs::read_to_string(&tmp).unwrap()
     } else {
-        let request = reqwest::get(url).await.unwrap();
+        let request = client.bi_get(url).send().await.unwrap();
         assert!(
             request.status().is_success(),
             "Failed to fetch event handlers list"

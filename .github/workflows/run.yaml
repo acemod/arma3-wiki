@@ -21,6 +21,8 @@ jobs:
           key: run
       - name: Parse Commands
         run: cargo run --release --bin arma3-wiki-parse
+        env:
+          BI_WAF_SKIP: ${{ secrets.BI_WAF_SKIP }}
       - name: Update GitHub
         run: cargo run --release --bin arma3-wiki-github
         env:

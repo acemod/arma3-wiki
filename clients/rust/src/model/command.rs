@@ -137,15 +137,15 @@ impl Command {
         self.syntax = syntax;
     }
 
-    pub fn set_argument_loc(&mut self, argument_loc: Locality) {
+    pub const fn set_argument_loc(&mut self, argument_loc: Locality) {
         self.argument_loc = argument_loc;
     }
 
-    pub fn set_effect_loc(&mut self, effect_loc: Locality) {
+    pub const fn set_effect_loc(&mut self, effect_loc: Locality) {
         self.effect_loc = effect_loc;
     }
 
-    pub fn set_server_exec(&mut self, server_exec: Option<bool>) {
+    pub const fn set_server_exec(&mut self, server_exec: Option<bool>) {
         self.server_exec = server_exec;
     }
 

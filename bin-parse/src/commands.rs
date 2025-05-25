@@ -6,7 +6,9 @@ use indicatif::ProgressBar;
 use regex::Regex;
 use reqwest::{header::LAST_MODIFIED, Client};
 
-pub async fn list() -> HashMap<String, String> {
+use crate::WafSkip;
+
+pub async fn list(client: &Client) -> HashMap<String, String> {
     const URL: &str =
         "https://community.bistudio.com/wiki/Category:Scripting_Commands?action=render";
     let tmp = std::env::temp_dir()
@@ -16,7 +18,7 @@ pub async fn list() -> HashMap<String, String> {
     let body: String = if tmp.exists() {
         std::fs::read_to_string(&tmp).unwrap()
     } else {
-        let request = reqwest::get(URL).await.unwrap();
+        let request = client.bi_get(URL).send().await.unwrap();
         assert!(
             request.status().is_success(),
             "Failed to fetch commands list"
@@ -47,9 +49,9 @@ pub async fn list() -> HashMap<String, String> {
     list
 }
 
-pub async fn commands(report: &mut Report, args: &[String], dry_run: bool) {
+pub async fn commands(client: &Client, report: &mut Report, args: &[String], dry_run: bool) {
     let commands = if args.is_empty() {
-        list().await
+        list(client).await
     } else if args.iter().any(|arg| arg == "--bads") {
         let mut bads = HashMap::new();
         let wiki = arma3_wiki::Wiki::load_dist();
@@ -87,7 +89,6 @@ pub async fn commands(report: &mut Report, args: &[String], dry_run: bool) {
     };
     let mut failed = Vec::new();
     println!("Commands: {}", commands.len());
-    let client = reqwest::Client::new();
     let ci = std::env::var("CI").is_ok();
     let pg = if ci {
         ProgressBar::hidden()
@@ -95,7 +96,7 @@ pub async fn commands(report: &mut Report, args: &[String], dry_run: bool) {
         ProgressBar::new(commands.len() as u64)
     };
     for (name, url) in commands {
-        let result = command(&pg, &client, name.clone(), url.clone(), dry_run).await;
+        let result = command(&pg, client, name.clone(), url.clone(), dry_run).await;
         if let Err(e) = result {
             println!("Failed {name}");
             failed.push((name, e));
@@ -184,7 +185,7 @@ pub async fn command(
             pg.println(format!("Skipping {name}, less than {SKIP_IF_LESS_THAN}h"));
             return Ok((false, Vec::new()));
         }
-        let res = match client.get(&url).send().await {
+        let res = match client.bi_get(&url).send().await {
             Ok(res) => res,
             Err(e) => {
                 pg.println(format!("Failed to fetch {name}: {e}"));

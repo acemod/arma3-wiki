@@ -2,10 +2,15 @@ use std::path::PathBuf;
 
 use arma3_wiki::model::Version;
 use regex::Regex;
+use reqwest::Client;
 
-pub async fn version() -> Option<Version> {
+use crate::WafSkip;
+
+pub async fn version(client: &Client) -> Option<Version> {
     let regex = Regex::new(r"(?m)(\d\.\d\d)\|").unwrap();
-    let request = reqwest::get("https://community.bistudio.com/wiki?title=Template:GVI&action=raw")
+    let request = client
+        .bi_get("https://community.bistudio.com/wiki?title=Template:GVI&action=raw")
+        .send()
         .await
         .unwrap();
     assert!(request.status().is_success(), "Failed to fetch version");

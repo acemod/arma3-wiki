@@ -1,4 +1,5 @@
 use arma3_wiki_github::report::Report;
+use reqwest::{Client, RequestBuilder};
 
 mod commands;
 mod event_handlers;
@@ -22,11 +23,13 @@ async fn main() {
     let do_event_handlers =
         !dry_run || args.is_empty() || args.iter().any(|arg| arg == "--event-handlers");
 
-    let mut report = Report::new(version::version().await);
+    let client = reqwest::Client::new();
+
+    let mut report = Report::new(version::version(&client).await);
 
     if do_commands {
         print!("== Commands");
-        commands::commands(&mut report, &args, dry_run).await;
+        commands::commands(&client, &mut report, &args, dry_run).await;
 
         for (command, errors) in report.failed_commands() {
             println!("Failed: {command}");
@@ -42,7 +45,7 @@ async fn main() {
 
     if do_event_handlers {
         println!("== EventHandlers");
-        let _ = event_handlers::event_handlers(&mut report, dry_run).await;
+        let _ = event_handlers::event_handlers(&client, &mut report, dry_run).await;
 
         println!("Passed:   {}", report.passed_event_handlers().len());
         println!("Failed:   {}", report.failed_event_handlers().len());
@@ -54,4 +57,17 @@ async fn main() {
     let report_json = serde_json::to_string_pretty(&report).unwrap();
     std::fs::write(&report_path, report_json).unwrap();
     println!("Report written to {report_path:?}");
+}
+
+trait WafSkip {
+    fn bi_get(&self, url: &str) -> RequestBuilder;
+}
+
+impl WafSkip for Client {
+    fn bi_get(&self, url: &str) -> RequestBuilder {
+        self.get(url).header("User-Agent", "HEMTT Wiki Bot").header(
+            "bi-waf-skip",
+            std::env::var("BI_WAF_SKIP").expect("BI_WAF_SKIP not set"),
+        )
+    }
 }
