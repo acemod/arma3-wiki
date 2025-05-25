@@ -11,4 +11,4 @@ argument_loc: Unspecified
 effect_loc: Unspecified
 examples:
 - "addMissionEventHandler [\"MPEnded\", {\n\t// no params\n}];"
-- "0 spawn\n{\n\twaitUntil { !isNull findDisplay 46 };\n\tfindDisplay 46 displayAddEventHandler [\"Unload\",\n\t{\n\t\t// code here gets executed on the client at end of mission, whether due to player abort, loss of connection, or mission ended by server; might not work on headless clients\n\t}];\n};"
+- "0 spawn\n{\n\twaitUntil { !isNull findDisplay 46 };\n\tfindDisplay 46 displayAddEventHandler [\"Unload\",\n\t{\n\t\t// code here gets executed on the client at end of mission, whether due to player abort, loss of connection, or mission ended by server\n\t\t// might not work on headless clients\n\t}];\n};"
