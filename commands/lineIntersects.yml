@@ -32,9 +32,9 @@ syntax:
     optional: true
     default: '[[objNull]]'
 - call: !Unary
-  - element1
-  - element2
-  - '...'
+  - - element1
+    - element2
+    - '...'
   ret:
   - Unknown
   - null
@@ -64,5 +64,5 @@ examples:
   <sqf>
   private _enemies = units opfor;
   private _enemyDataArray = _enemies apply { [eyePos player, aimPos _x, player, _x] };
-  private _result = lineIntersects _enemyDataArray;
+  private _result = lineIntersects [_enemyDataArray];
   </sqf>
