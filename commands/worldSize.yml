@@ -1,5 +1,5 @@
 name: worldSize
-description: Returns the engine calculated size (terrain side length) of the current world ([[BIS_fnc_mapSize]] may return the same value, but is just a simple look up in [[configFile | config]]).
+description: Returns the engine calculated size (terrain side length) of the current world in meters. In Arma, terrains are always square. ([[BIS_fnc_mapSize]] may return the same value, but is just a simple look up in [[configFile | config]]).
 groups:
 - Mission Information
 syntax:
@@ -15,7 +15,7 @@ since:
     major: 1
     minor: 48
 examples:
-- <sqf>private _size = worldSize;</sqf>
+- '<sqf>private _size = worldSize; // VR and Stratis: 8192; Altis: 30720</sqf>'
 - |-
   <sqf>
   // A round marker that should cover the whole map, placed in the center of the map, should have the following radius (a, b)
