@@ -36,9 +36,9 @@ syntax:
     type: Unknown
     optional: true
 - call: !Unary
-  - element1
-  - element2
-  - '...'
+  - - element1
+    - element2
+    - '...'
   ret:
   - Unknown
   - null
@@ -62,5 +62,5 @@ examples:
   <sqf>
   private _enemies = units opfor;
   private _enemyDataArray = _enemies apply { [eyePos player, aimPos _x, player, _x, true] };
-  private _result = lineIntersectsObjs _enemyDataArray;
+  private _result = lineIntersectsObjs [_enemyDataArray];
   </sqf>
