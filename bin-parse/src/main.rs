@@ -56,7 +56,7 @@ async fn main() {
     let report_path = tmp.join("report.json");
     let report_json = serde_json::to_string_pretty(&report).unwrap();
     std::fs::write(&report_path, report_json).unwrap();
-    println!("Report written to {report_path:?}");
+    println!("Report written to {}", report_path.display());
 }
 
 trait WafSkip {

@@ -56,7 +56,10 @@ impl GitHub {
         let head = format!("command/{command}");
         command!(["checkout", "dist"]);
         command!(["checkout", "-b", head.as_str()]);
-        command!(["add", format!("commands/{command}.yml").as_str()]);
+        command!([
+            "add",
+            format!("commands/{}.yml", urlencoding::encode(command)).as_str()
+        ]);
         command!([
             "commit",
             "-m",
