@@ -1,6 +1,6 @@
 name: switchMove
 description: |-
-  Immediately applies given animation to the unit. For a smooth transition from the current animation, use [[playMove]].
+  Immediately applies given animation to the unit. For a smooth transition from the current animation (by connecting animations successively, e.g {{hl|CurrentAnim -> Intermediate1 -> Intermediate2 -> TargetAnim}}), use [[playMove]] or [[playMoveNow]].
   {{Feature|informative|see [[:Category:Moves]] for respective games animations.}}
 
   This command first resets the unit's animation states (including aiming state, gesture state, etc.) then puts the unit in the first frame of the animation (therefore showing no transition).
