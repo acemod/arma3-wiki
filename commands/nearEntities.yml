@@ -1,7 +1,12 @@
 name: nearEntities
 description: |-
   [[File:sphere_radius.jpg|right|200px]]
-  Finds entities inside a sphere with the given radius. If the alternative syntax is used, only entities of given types or subtypes are listed. Entities returned are not sorted by distance. This command doesn't return dead entities or entities inside vehicles. If you need to return those, use [[entities]] command.{{Feature|informative|This command is much [[Code_Optimisation#nearEntities_and_nearestObjects | faster]] than [[nearestObjects]] for on-foot soldier and vehicle detection.}}
+  Finds entities inside a sphere with the given radius. If the alternative syntax is used, only entities of given types or subtypes are listed.
+  Entities returned are not sorted by distance.
+
+  The main syntax does not return dead entities or entities inside vehicles. If you need to return those, use the {{Link|#Syntax 3|alternative syntax}} (with ''includeCrew'' set to [[true]]) or the [[entities]] command.
+
+  {{Feature|informative|This command is [[Code Optimisation#nearEntities and nearestObjects|much faster]] than [[nearestObjects]] for on-foot soldier and vehicle detection.}}
 groups:
 - Object Detection
 syntax:
@@ -13,7 +18,7 @@ syntax:
   - not sorted
   params:
   - name: position
-    description: center of the sphere
+    description: search centre
     type: Unknown
   - name: radius
     description: radius of the sphere
@@ -27,7 +32,7 @@ syntax:
   - not sorted
   params:
   - name: position
-    description: center of the sphere
+    description: search centre
     type: Unknown
   - name: type
     description: type(s) to search for. See [[isKindOf]]
