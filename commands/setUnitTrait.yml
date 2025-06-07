@@ -1,6 +1,9 @@
 name: setUnitTrait
 description: |-
   Enables or disables a trait or alters a trait of the given unit. Unit traits consist of unit abilities, which are [[Boolean]]s and modifiers, which are [[Number]]s. Custom trait can only be a [[Boolean|bool]].<br><br>
+
+  {{Feature|Informative|The command can also be used on vehicles (and drones), and it will get applied to the [[effectiveCommander]] of the vehicle. In addition, if the [[effectiveCommander]] has a trait, it will get applied to the entire vehicle (for example, the vehicle can become harder to spot due to low '''camouflageCoef''')}}
+
   Abilities:
   * [[Boolean]] '''engineer''' - Ability to partially repair vehicles with toolkit, equivalent to {{hl|c= engineer = 1;}} in [[CfgVehicles_Config_Reference|CfgVehicles]]
   * [[Boolean]] '''explosiveSpecialist''' - Ability to defuse mines with toolkit, equivalent to {{hl|c= canDeactivateMines = 1;}} in CfgVehicles
