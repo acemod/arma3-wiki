@@ -20,7 +20,7 @@ syntax:
   - name: entity
     type: Object
   - name: index
-    description: property index (see main syntax, 2 - isDeadSet for example)
+    description: property index (see {{Link|Syntax 1|main syntax}})
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
@@ -29,5 +29,5 @@ since:
     major: 2
     minor: 18
 examples:
-- <sqf>private _entityInfo = getEntityInfo ent1;</sqf>
+- "<sqf>\nprivate _entityInfo = getEntityInfo ent1;\n_entityInfo params [\n\t\"_isMan\",\n\t\"_isAnimal\",\n\t\"_isDeadSet\",\n\t\"_deadSetTime\",\n\t\"_lastEntityCausingDamage\",\n\t\"_lastDamageTime\",\n\t\"_isUpsideDown\",\n\t\"_upsideDownTime\",\n\t\"_isStopped\",\n\t\"_canFloat\",\n\t\"_hasTerminalOpened\",\n\t\"_isWeaponholder\",\n\t\"_isWreck\",\n\t\"_isSmoking\",\n\t\"_isSetForDeletion\"\n];\n</sqf>"
 - <sqf>private _isMan = ent1 getEntityInfo 0;</sqf>
