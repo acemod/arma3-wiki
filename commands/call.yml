@@ -46,10 +46,10 @@ syntax:
     description: the name of the method to call (the method must be defined in ''hashMapObj''; see [[createHashMapObject]])
     type: String
   - name: arguments
-    description: arguments that are passed to the method in the <sqf inline>_this</sqf> variable
+    description: arguments passed to the method in the <sqf inline>_this</sqf> variable
     type: Anything
     optional: true
-    default: '[[nil]]'
+    default: parent scope's {{hl|_this}}
   since:
     arma_3:
       major: 2
@@ -88,4 +88,4 @@ examples:
   </sqf>
 - <sqf>123 call compile "hint str _this;";</sqf>
 - <sqf>_result = 123 call compile preprocessFileLineNumbers "myFile.sqf";</sqf>
-- "<sqf>\nprivate _hashMapObj = createHashMapObject [[\n\t[\"MyMethod\", { systemChat (\"MyMethod has been called with the following arguments: \" + str _this); }]\n]];\n\n_hashMapObj call [\"MyMethod\", [\"Hello there\", player, 123]]; // hints 'MyMethod has been called with the following arguments: [\"Hello there\", player, 123]'\n</sqf>"
+- "<sqf>\nprivate _hashMapObj = createHashMapObject [[\n\t[\"MyMethod\", { systemChat (\"MyMethod arguments: \" + str _this); }]\n]];\n\n_hashMapObj call [\"MyMethod\", [\"Hello there\", player, 123]]; // hints 'MyMethod arguments: [\"Hello there\", player, 123]'\n</sqf>"
