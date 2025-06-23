@@ -1,5 +1,5 @@
 name: land
-description: Forces a helicopter landing.
+description: Forces a helicopter landing. If there is a helipad nearby, the helicopter will attempt to land on it. VTOL he other hand will just land somewhere. To make helicopter or VTOL land on a specific helipad use [[landAt]].
 groups:
 - Unit Control
 syntax:
@@ -11,7 +11,7 @@ syntax:
   - null
   params:
   - name: helicopter
-    type: Object
+    type: Unknown
   - name: mode
     type: Unknown
 argument_loc: Local
