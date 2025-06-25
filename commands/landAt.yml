@@ -43,6 +43,7 @@ syntax:
   - - position
     - mode
     - waitTime
+    - putOnSurface
   ret:
   - Boolean
   - Returns [[true]] if landing command was processed successfully, [[false]] if failed.
@@ -57,8 +58,16 @@ syntax:
     description: one of "None", "Get In", "Get Out", "Land" and since {{GVI|arma3|2.20|size= 0.75}} also "GetIn", "GetOut".
     type: String
   - name: waitTime
-    description: time to wait after touch down in "GetIn"/"GetOut" mode before taking off to the next waypoint.
+    description: '(Helicopter type only) time to wait after touch down in "GetIn"/"GetOut" mode before taking off to the next waypoint. Default: -1.'
     type: Number
+    optional: true
+    since:
+      arma_3:
+        major: 2
+        minor: 20
+  - name: putOnSurface
+    description: 'when true, the given land position will be adjusted to the nearest surface undertneath. Default: [[false]].'
+    type: Boolean
     optional: true
     since:
       arma_3:
