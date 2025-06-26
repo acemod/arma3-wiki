@@ -1,0 +1,34 @@
+name: setJointDrivePosition
+description: |-
+  {{Wiki|WIP}} Requires that a linear "drive" has been configured in [[attachChild]].
+  Sets the joints target position (relative to the joint's own position).
+  The drive will then behave like a spring (springParameters are configured in the drive), trying to pull the child object to the desired position.
+groups:
+- PhysX
+syntax:
+- call: !Binary
+  - joint
+  - pos
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: joint
+    description: The parent vehicle that has a joint to a child, or the joint itself to be manipulated
+    type: Unknown
+  - name: pos
+    description: target position in XYZ relative to the joint
+    type: ArrayUnknown
+argument_loc: Local
+effect_loc: Local
+server_exec: false
+since:
+  arma_3:
+    major: 2
+    minor: 22
+examples:
+- <sqf></sqf>
+- <sqf></sqf>
+- <sqf></sqf>
+- <sqf></sqf>
+- <sqf></sqf>
