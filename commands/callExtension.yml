@@ -13,6 +13,9 @@ description: |-
   * 102: SYNTAX_ERROR_WRONG_PARAMS_TYPE
   * 201: PARAMS_ERROR_TOO_MANY_ARGS
   * 301: EXECUTION_WARNING_TAKES_TOO_LONG
+  * {{GVI|arma3|2.22|size=.75}} 400: EXTENSION_LOAD_FAILED
+  * {{GVI|arma3|2.22|size=.75}} 403: EXTENSION_BLOCKED_BY_BATTLEYE
+  * {{GVI|arma3|2.22|size=.75}} 404: EXTENSION_NOT_FOUND
   Each error will have entry in .rpt file with more details.<br><br>
 
   The extension execution timeout, after which {{hl|301: EXECUTION_WARNING_TAKES_TOO_LONG}} warning is issued, is hardcoded on clients and is 1000.0 milliseconds (1 second). On the server the default limit is also 1 second, however it is possible to set custom limit with {{hl|callExtReportLimit}} param (see [[Arma 3: Server Config File#Server_Options | Server Options]]).
