@@ -1,6 +1,6 @@
 name: addForce
 description: |-
-  Applies impulse force to unit or given PhysX object at given position.
+  Applies given force for one frame (essentially an impulse) to unit or given PhysX object at given position.
   {{Feature|informative|For more information see {{Link|http://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/classPxRigidBody.html|NVIDIA docs}}.}}
 groups:
 - PhysX
@@ -18,7 +18,9 @@ syntax:
     description: PhysX object or {{GVI|arma3|2.04|size= 0.75}}{{Icon|localargument|24}} unit, in which case the unit must be local and will be [[setUnconscious|set unconscious]]
     type: Object
   - name: force
-    description: in format [x,y,z], force vector in '''world''' space; force is expressed in {{Link|https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/structPxForceMode.html|Newton}}
+    description: |-
+      in format [x,y,z], force vector in '''world''' space; force is expressed in
+      {{Link|https://en.wikipedia.org/wiki/Newton-second|newton-seconds}} (used by {{Link|https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/structPxForceMode.html|PxForceMode::eIMPULSE}})
     type: ArrayUnknown
   - name: position
     description: in format [x,y,z], in ''object'''s [[Position#PositionRelative|relative position]]
