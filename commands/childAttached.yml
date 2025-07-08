@@ -1,0 +1,19 @@
+name: childAttached
+description: Get the child that has been attached via [[attachChild]]
+groups:
+- PhysX
+syntax:
+- call: !Unary parent
+  ret:
+  - Object
+  - null
+  params:
+  - name: parent
+    description: Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
+    type: Object
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 22
