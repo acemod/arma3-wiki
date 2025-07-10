@@ -11,6 +11,22 @@ syntax:
   - name: return
     description: value to be returned when iteration is skipped
     type: Anything
+- call: !Binary
+  - scriptHandle
+  - code
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: scriptHandle
+    type: ScriptHandle
+  - name: code
+    description: Code to execute once the [[Script_Handle#Promise_Handles|Promise]] has completed. The code will be executed in [[Scheduler#Unscheduled_Environment|Unscheduled Environment]].
+    type: Code
+  since:
+    arma_3:
+      major: 2
+      minor: 22
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
