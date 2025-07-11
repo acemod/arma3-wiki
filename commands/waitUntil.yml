@@ -15,6 +15,35 @@ syntax:
   - name: condition
     description: the expression that '''must''' return a [[Boolean]], [[true]] to finish waiting or [[false]] to continue waiting
     type: Code
+- call: !Unary scriptHandle
+  ret:
+  - Anything
+  - The result of the script or [[Script_Handle#Promise_Handles|Promise]]
+  params:
+  - name: scriptHandle
+    description: A script handle or Promise to wait on
+    type: ScriptHandle
+  since:
+    arma_3:
+      major: 2
+      minor: 22
+- call: !Unary
+  - scriptHandle
+  - timeout
+  ret:
+  - Anything
+  - The result of the script or [[Script_Handle#Promise_Handles|Promise]]. Or [[Nothing]] if timed out.
+  params:
+  - name: scriptHandle
+    description: A script handle or Promise to wait on
+    type: ScriptHandle
+  - name: timeout
+    description: A timeout in seconds of game time ([[sleep]] vs [[uiSleep]])
+    type: Number
+  since:
+    arma_3:
+      major: 2
+      minor: 22
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
