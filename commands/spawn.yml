@@ -23,6 +23,29 @@ syntax:
     type: Anything
   - name: code
     type: Code
+- call: !Unary code
+  ret:
+  - ScriptHandle
+  - null
+  params:
+  - name: code
+    type: Code
+  since:
+    arma_3:
+      major: 2
+      minor: 22
+- call: !Unary name
+  ret:
+  - ScriptHandle
+  - A "Empty Handle" to be used as a [[Script_Handle#Promise_Handles|Promise]]
+  params:
+  - name: name
+    description: The name of a "Empty Handle". Behaves like [[scriptName]] inside a function.
+    type: String
+  since:
+    arma_3:
+      major: 2
+      minor: 22
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
