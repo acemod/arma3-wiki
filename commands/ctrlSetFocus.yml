@@ -1,5 +1,11 @@
 name: ctrlSetFocus
-description: Sets the input focus on given control.
+description: |-
+  Sets the input focus on given control.
+
+  {{Feature|important|
+  * [[ctrlSetFocus]] seems to only work on controls that accept any input from keyboard or mouse.
+  * if [[ctrlSetFocus]] is used on a [[CT_CONTROLS_GROUP]] that contains an interactable control, that control will automatically be active.
+  * if [[ctrlSetFocus]] is used on a [[CT_CONTROLS_GROUP]] in which there are no interactable controls, then [[ctrlSetFocus]] will do nothing.}}
 groups:
 - GUI Control
 syntax:
