@@ -1,5 +1,5 @@
 name: triggerTimeoutCurrent
-description: "Returns current timeout of the given trigger or -1 if countdown is not in progress. \n\n{{Feature | important | The trigger could be [[Multiplayer Scripting#Locality|local]] or remote but the result returned by this command will be for the current trigger timeout local to the client that executed the command. See [[createTrigger]] for more info.}}"
+description: "Returns current timeout of the given trigger or -1 if countdown is not in progress. \n\n{{Feature|important|\nThe trigger could be [[Multiplayer Scripting#Locality|local]] or remote but the result returned by this command will be for the current trigger timeout local to the client that executed the command.\nSee [[createTrigger]] for more info.\n}}"
 groups:
 - Triggers
 syntax:
@@ -18,4 +18,4 @@ since:
     major: 1
     minor: 8
 examples:
-- <sqf>private _remaining = triggerTimeoutCurrent _trigger;</sqf>
+- <sqf>_remaining = triggerTimeoutCurrent _trigger;</sqf>
