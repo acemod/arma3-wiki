@@ -11,6 +11,22 @@ syntax:
   params:
   - name: unit
     type: Object
+- call: !Unary
+  - unit
+  - includeEmpty
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: unit
+    type: Object
+  - name: includeEmpty
+    description: when [[true]] returns empty throwables as well.
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 22
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -18,4 +34,4 @@ since:
     major: 2
     minor: 18
 examples:
-- "<sqf>\nthrowables player;\n/*\n\t[\n\t\t[\"HandGrenade\",\"HandGrenadeMuzzle\",[1e+007,0]],\n\t\t[\"SmokeShell\",\"SmokeShellMuzzle\",[1e+007,0]],\n\t\t[\"SmokeShellGreen\",\"SmokeShellGreenMuzzle\",[1e+007,0]],\n\t\t[\"Chemlight_green\",\"ChemlightGreenMuzzle\",[1e+007,0]],\n\t\t[\"Chemlight_green\",\"\",[1e+007,0]],\n\t\t[\"HandGrenade\",\"\",[1e+007,0]]\n\t]\n*/\n</sqf>"
+- "<sqf>\nthrowables player;\n/*\n\t[\n\t\t[\"HandGrenade\",\"HandGrenadeMuzzle\",[1e+007,0],1],\n\t\t[\"SmokeShell\",\"SmokeShellMuzzle\",[1e+007,0],1],\n\t\t[\"SmokeShellGreen\",\"SmokeShellGreenMuzzle\",[1e+007,0],1],\n\t\t[\"Chemlight_green\",\"ChemlightGreenMuzzle\",[1e+007,0],1],\n\t\t[\"Chemlight_green\",\"\",[1e+007,0],1],\n\t\t[\"HandGrenade\",\"\",[1e+007,0],1]\n\t]\n*/\n</sqf>"
