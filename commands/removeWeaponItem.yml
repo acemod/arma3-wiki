@@ -1,0 +1,29 @@
+name: removeWeaponItem
+description: Removes magazine from specified muzzle. It is possible to remove magazine directly from 'Throw' muzzle provided it is configured with <sqf>keepInInventory = 0;</sqf> To add such magazine see [[addWeaponItem]].
+groups:
+- Unit Inventory
+syntax:
+- call: !Binary
+  - unit
+  - - muzzle
+    - magazine
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: unit
+    type: Object
+  - name: muzzle
+    description: name of the muzzle to add magazine to
+    type: String
+  - name: magazine
+    description: class name of the magazine to remove
+    type: String
+argument_loc: Local
+effect_loc: Global
+since:
+  arma_3:
+    major: 2
+    minor: 22
+examples:
+- <sqf>player removeWeaponItem ["arifle_MX_GL_ACO_F", "1Rnd_HE_Grenade_shell"];</sqf>
