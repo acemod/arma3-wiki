@@ -1,13 +1,11 @@
 name: wind
-description: |-
-  Returns the current wind vector (in m/s) as array [x, y, z].<br>
-  {{Feature|informative|The last value (z, "up-down") always returns 0 – wind being only horizontal.}}
+description: Returns the current wind vector (in m/s).
 groups:
 - Environment
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
+  - Unknown
   - null
   params: []
 argument_loc: Unspecified
