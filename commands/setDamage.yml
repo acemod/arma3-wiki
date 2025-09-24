@@ -23,6 +23,7 @@ syntax:
     - useEffects
     - killer
     - instigator
+    - allowResurrection
   ret:
   - Nothing
   - null
@@ -49,6 +50,15 @@ syntax:
       arma_3:
         major: 2
         minor: 12
+  - name: allowResurrection
+    description: '- Will re-set [[alive]] state of previously dead object.'
+    type: Boolean
+    optional: true
+    default: 'false'
+    since:
+      arma_3:
+        major: 2
+        minor: 22
   since:
     arma_3:
       major: 1
