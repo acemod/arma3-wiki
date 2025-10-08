@@ -42,6 +42,6 @@ since:
     major: 0
     minor: 50
 examples:
-- <sqf>unit hcSetGroup [group, "HQ", "teamred"];</sqf>
-- <sqf>player hcSetGroup [group];</sqf>
+- <sqf>unit hcSetGroup [_group, "HQ", "teamred"];</sqf>
+- <sqf>player hcSetGroup [_group];</sqf>
 - "<sqf>\nif (player != hcLeader _group) then\n{\n\thcLeader _group hcRemoveGroup _group;\n\tplayer hcSetGroup [_group];\n};\n</sqf>"
