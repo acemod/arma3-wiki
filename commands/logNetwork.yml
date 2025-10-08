@@ -6,7 +6,9 @@ groups:
 - Multiplayer
 - Diagnostic
 syntax:
-- call: !Unary logFile
+- call: !Unary
+  - logFile
+  - filter
   ret:
   - Number
   - handle for the logging
@@ -17,6 +19,7 @@ syntax:
   - name: filter
     description: ????
     type: ArrayUnknown
+    optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
