@@ -1,5 +1,5 @@
 name: setParticleCircle
-description: Updates particle source, creates particles in circle with given radius. Velocity is transformed and added to total velocity.
+description: Updates particle source, creates particles in circle with given radius. Velocity is transformed and added to total velocity. The random particle positioning is calculated in relation to the nearest surface. Since Arma 3 2.22, this could be overridden (will also override onSurface = true).
 groups:
 - Particles
 syntax:
@@ -7,6 +7,7 @@ syntax:
   - particleSource
   - - circleRadius
     - circleVelocity
+    - ignoreSurfaces
   ret:
   - Nothing
   - null
@@ -14,9 +15,18 @@ syntax:
   - name: particleSource
     type: Object
   - name: circleRadius
+    description: the radius (x,y plain) in which particles are generated
     type: Number
   - name: circleVelocity
+    description: direction and speed of particles movement
     type: Unknown
+  - name: ignoreSurfaces
+    description: '[[true]] to calculate particle position relative to the source position. Default: [[false]]'
+    type: Unknown
+    since:
+      arma_3:
+        major: 2
+        minor: 22
 argument_loc: Global
 effect_loc: Local
 since:
@@ -37,3 +47,4 @@ since:
     minor: 50
 examples:
 - <sqf>_myParticleSource setParticleCircle [3, [0,0,5]];</sqf>
+- <sqf>_myParticleSource setParticleCircle [3, [0,0,5], true];</sqf>
