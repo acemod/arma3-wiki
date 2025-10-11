@@ -95,10 +95,10 @@ examples:
   </sqf>
 - |-
   <sqf>
-  "abcßdef" find "c" // 2
-  "abcßdef" find "ß" // 3
-  "abcßdef" find "d" // 5 - before forceUnicode
+  "abcßdef" find "c"; // 2
+  "abcßdef" find "ß"; // 3
+  "abcßdef" find "d"; // 5 - before forceUnicode
 
   forceUnicode 0; // since {{arma3}} v2.02
-  "abcßdef" find "d" // 4
+  "abcßdef" find "d"; // 4
   </sqf>
