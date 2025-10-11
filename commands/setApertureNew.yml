@@ -30,6 +30,15 @@ syntax:
   - name: luminance
     description: standard luminance
     type: Number
+- call: !Unary
+  - reset
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: reset
+    description: reset to default with -1
+    type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
