@@ -61,3 +61,7 @@ examples:
   hintSilent ""; // hides the previous hint display
   </sqf>
 - <sqf>hint parseText "<t size='2.0'>Large text</t>"; // displays text twice as large as the default one</sqf>
+- |-
+  <sqf>_txt = text "Red text, right align";
+  _txt setAttributes ["color", "#FF0000", "align", "right"];
+  hint composeText [_txt];</sqf>
