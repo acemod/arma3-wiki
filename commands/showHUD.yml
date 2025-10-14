@@ -87,7 +87,7 @@ syntax:
     optional: true
     default: '[[true]]'
   - name: showIcon3D
-    description: '- show icons drawn with [[drawIcon3D]] even when the HUD is hidden'
+    description: show icons drawn with [[drawIcon3D]] even when the HUD is hidden
     type: Boolean
     optional: true
     default: '[[false]]'
@@ -112,7 +112,7 @@ since:
     minor: 50
 examples:
 - <sqf>showHUD false;</sqf>
-- "Hide vehicle radar and compass:\n<sqf>\nshowHUD [\n\ttrue, // scriptedHUD\n\ttrue, // info\n\ttrue, // radar\n\ttrue, // compass\n\ttrue, // direction\n\ttrue, // menu\n\ttrue, // group\n\ttrue, // cursors\n\ttrue, // panels\n\ttrue, // kills\n\ttrue  // showIcon3D\n];\n</sqf>"
+- "Hide vehicle radar and compass:\n<sqf>\nshowHUD [\n\ttrue,  // scriptedHUD\n\ttrue,  // info\n\tfalse, // radar\n\tfalse, // compass\n\ttrue,  // direction\n\ttrue,  // menu\n\ttrue,  // group\n\ttrue,  // cursors\n\ttrue,  // panels\n\ttrue,  // kills\n\ttrue   // showIcon3D\n];\n</sqf>"
 - |-
   Check if HUD visibility is hardcoded in mission config and [[showHUD]] command is overridden:
   <sqf>private _disabledShowHUD = isArray (missionConfigFile >> "showHUD");</sqf>
