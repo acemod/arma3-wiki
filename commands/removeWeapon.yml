@@ -1,8 +1,12 @@
 name: removeWeapon
 description: |-
-  Remove weapon from a unit. The unit must be [[Multiplayer Scripting#Locality|local]] to the computer where command is executed. For a global version of this command see [[removeWeaponGlobal]].
+  Remove weapon from a unit. The unit must be [[Multiplayer Scripting#Locality|local]] to the computer where command is executed.
+  For a global version of this command, see [[removeWeaponGlobal]].
 
-  '''Note''': It is possible to create invalid combinations with this command (ie, attempting to remove a weapon that a unit does not possess). When doing so, application behaviour is undefined.
+  {{Feature|informative|
+  It is possible to create invalid combinations with this command (e.g attempting to remove a weapon that a unit does not possess).
+  When doing so, application behaviour is undefined.
+  }}
 groups:
 - Unit Inventory
 - Vehicle Inventory
