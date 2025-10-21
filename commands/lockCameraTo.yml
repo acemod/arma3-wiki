@@ -46,7 +46,7 @@ syntax:
   - name: temporary
     description: |-
       if set to [[true]], the engine will automatically remove the lock-on once the turret reaches its target.
-      If the target is out of turret's reach, the turret will move to the maximum of its capacity towards the target.
+      If the target is out of turret's reach, once the turret reaches its [[getTurretLimits | limits]] the lock-on will be released.
     type: Boolean
   since:
     arma_3:
