@@ -1,5 +1,5 @@
 name: setTurretLimits
-description: Sets the rotation and elevation limits for the given turret. The limits can only be set within the limits defined in config and cannot exceed them. To reset to config defaults pass the turret argument only (Example 2).
+description: Sets the rotation and elevation limits for the given turret. The limits are relative to model orientation of the turret. For example to allow 360 degree turning it is enough to set turn limits to (-180, 180). The limits can only be set within the limits defined in config and cannot exceed them. To reset to config defaults pass the turret argument only (Example 2).
 groups:
 - Turrets
 syntax:
@@ -10,6 +10,7 @@ syntax:
     - maxTurn
     - minElev
     - maxElev
+    - soft
   ret:
   - Nothing
   - null
@@ -23,19 +24,23 @@ syntax:
   - name: minTurn
     description: from 0 to -angle in degrees (left)
     type: Number
-    optional: true
   - name: maxTurn
     description: from 0 to +angle in degrees (right)
     type: Number
-    optional: true
   - name: minElev
     description: from 0 to -angle in degrees (down)
     type: Number
-    optional: true
   - name: maxElev
     description: from 0 to +angle in degrees (up)
     type: Number
+  - name: soft
+    description: '[[true]] to gradually move turret to the new limits (if turret is currenty oriented out of new limts). [[false]] to snap to the new limits. Default: [[false]]'
+    type: Boolean
     optional: true
+    since:
+      arma_3:
+        major: 2
+        minor: 22
 argument_loc: Local
 effect_loc: Global
 since:
@@ -45,3 +50,4 @@ since:
 examples:
 - <sqf>m2 setTurretLimits [[0], -45, 45, -10, 10];</sqf>
 - <sqf>m2 setTurretLimits [[0]]; //reset</sqf>
+- <sqf>m2 setTurretLimits [[0], -45, 45, -10, 10, true];</sqf>
