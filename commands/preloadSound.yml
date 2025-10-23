@@ -1,5 +1,7 @@
 name: preloadSound
-description: Makes sure that a sound can start playing without any delay once it is needed. Command works in Arma 3, but might not be implemented in earlier Arma installments.
+description: |-
+  Makes sure that a sound can start playing without any delay once it is needed.
+  Command works in {{arma3}} but might not be implemented in earlier {{arma}} installments.
 groups:
 - Sounds
 syntax:
@@ -32,4 +34,8 @@ since:
     major: 0
     minor: 50
 examples:
-- "<sqf>\n{\n\twaitUntil {preloadSound _x};\n} forEach getArray (missionConfigFile >> \"CfgSounds\" >> \"sounds\");\n</sqf>"
+- |-
+  <sqf>
+  private _sounds = getArray (missionConfigFile >> "CfgSounds" >> "sounds");
+  waitUntil { _sounds findIf { !(preloadSound _x) } == -1 };
+  </sqf>
