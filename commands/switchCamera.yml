@@ -3,13 +3,15 @@ description: |-
   Switch camera to given vehicle / camera. Mode is one of:
   * '''"INTERNAL"''': 1st person
   * '''"GUNNER"''': optics / sights
-  * '''"EXTERNAL"''': 3rd person
+  * '''"EXTERNAL"''': 3rd person (inaccessible if difficulty settings do not allow for it)
   * '''"GROUP"''': group
   * '''"CARGO"''': same as "INTERNAL"
 
   If you switch to a unit in a vehicle, this command uses the correct turret.
-  {{Feature|informative|Control over the unit is not given to the player. Use [[selectPlayer]] or a combination of [[switchCamera]] and [[remoteControl]] to achieve this.}}
-  {{Feature|warning|Always [[switchCamera]] first (when needed) before using [[remoteControl]] as doing it after may lead to unpredictable results.}}
+  {{Feature|important|
+  * Control over the unit is not given to the player. Use [[selectPlayer]] or a combination of [[switchCamera]] and [[remoteControl]] to achieve this.
+  * Always [[switchCamera]] first (when needed) '''before''' using [[remoteControl]] as doing it after may lead to unpredictable results.
+  }}
 groups:
 - Camera Control
 syntax:
