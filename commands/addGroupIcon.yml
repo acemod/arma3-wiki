@@ -1,5 +1,5 @@
 name: addGroupIcon
-description: Adds icon to a group leader. Returns icon ID, Control icons visibility with [[setGroupIconsVisible]].
+description: Adds icon to a group leader. Returns icon ID, Control icons visibility with [[setGroupIconsVisible]]. Since Arma 3 v2.22 the offset can be set separately for 2d and 3d.
 problem_notes:
 - The icons will be hidden again after switching to a different unit via [[teamSwitch]]. Execute <sqf inline>setGroupIconsVisible [true, true]; setGroupIconsSelectable true;</sqf> to make them visible again.
 groups:
@@ -20,7 +20,7 @@ syntax:
     description: class name of an icon from {{hl|CfgGroupIcons}}
     type: String
   - name: offset
-    description: X and Y offsets of the icon in format [offsetX, offsetY]
+    description: X and Y offsets of the icon in format [offsetX, offsetY, (offsetX3d), (offsetY3d)]
     type: ArrayUnknown
     optional: true
     default: '[0,0]'
