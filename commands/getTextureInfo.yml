@@ -14,7 +14,6 @@ syntax:
 - call: !Unary
   - texture
   - sizeH
-  - keepAspectRatio
   ret:
   - Unknown
   - null
@@ -25,9 +24,6 @@ syntax:
   - name: sizeH
     description: texture height in screen size
     type: Number
-  - name: keepAspectRatio
-    description: '[[true]] if texture is set to keep aspect ratio. Default [[true]]'
-    type: Unknown
   since:
     arma_3:
       major: 2
@@ -40,6 +36,4 @@ since:
     minor: 6
 examples:
 - <sqf>getTextureInfo "a3\characters_f\blufor\data\clothing1_co.paa"; // [2048, 2048, [0.458824, 0.427451, 0.34902, 1]]</sqf>
-- |-
-  <sqf>getTextureInfo ["\A3\UI_f\Data\Logos\arma3_shadow_ca.paa", 0.1, true]; // [0.1,0.15]
-  getTextureInfo ["\A3\UI_f\Data\Logos\arma3_shadow_ca.paa", 0.1, false]; // [0.1,0.2]</sqf>
+- <sqf>getTextureInfo ["\A3\UI_f\Data\Logos\arma3_shadow_ca.paa", 0.1]; // [0.150111, 0.1]</sqf>
