@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 
 use super::Since;
 
-#[derive(Clone, Debug, Hash, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, Hash, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ArraySizedElement {
     pub name: String,
     pub value: Value,
@@ -13,7 +13,7 @@ pub struct ArraySizedElement {
     pub since: Option<Since>,
 }
 
-#[derive(Clone, Debug, Hash, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, Hash, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Value {
     Anything,
     ArraySized {

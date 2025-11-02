@@ -2,7 +2,7 @@ use std::str::FromStr;
 
 use super::{Locality, Param, Since};
 
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum EventHandler {
     Failed(String, String),
     Parsed(ParsedEventHandler),
@@ -18,7 +18,7 @@ impl EventHandler {
     }
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 #[allow(clippy::module_name_repetitions)]
 pub struct ParsedEventHandler {
     pub(crate) id: String,

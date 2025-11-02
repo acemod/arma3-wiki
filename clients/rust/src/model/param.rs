@@ -4,7 +4,7 @@ use crate::model::Version;
 
 use super::{ParseError, Since, Value};
 
-#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Param {
     pub(crate) name: String,
     #[serde(default)]
