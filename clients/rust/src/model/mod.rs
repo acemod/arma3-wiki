@@ -15,7 +15,7 @@ pub use locality::Locality;
 pub use param::Param;
 pub use since::Since;
 pub use syntax::Syntax;
-pub use value::Value;
+pub use value::{ArraySizedElement, Value};
 pub use version::Version;
 
 #[derive(Debug, PartialEq, Eq)]
