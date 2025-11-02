@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Hash, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Version {
     major: u8,
     minor: u8,
@@ -65,12 +65,6 @@ impl std::fmt::Display for Version {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         // Pad the minor version with a zero if it's a single digit.
         write!(f, "{}.{:02}", self.major, self.minor)
-    }
-}
-
-impl std::cmp::PartialEq for Version {
-    fn eq(&self, other: &Self) -> bool {
-        self.major == other.major && self.minor == other.minor
     }
 }
 

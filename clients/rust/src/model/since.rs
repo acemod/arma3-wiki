@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use super::Version;
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Default, Hash, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Since {
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]

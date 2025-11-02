@@ -269,16 +269,14 @@ impl Wiki {
     }
 
     fn recently_updated(path: &std::path::Path) -> bool {
-        if let Ok(timestamp) = std::fs::read_to_string(path.join("last-update.timestamp")) {
-            if let Ok(timestamp) = timestamp.parse::<u64>() {
-                if let Ok(elapsed) = SystemTime::now()
-                    .duration_since(SystemTime::UNIX_EPOCH)
-                    .map(|t| t.as_secs())
-                {
-                    // Update every 6 hours
-                    return elapsed - timestamp < 60 * 60 * 6;
-                }
-            }
+        if let Ok(timestamp) = std::fs::read_to_string(path.join("last-update.timestamp"))
+            && let Ok(timestamp) = timestamp.parse::<u64>()
+            && let Ok(elapsed) = SystemTime::now()
+                .duration_since(SystemTime::UNIX_EPOCH)
+                .map(|t| t.as_secs())
+        {
+            // Update every 6 hours
+            return elapsed - timestamp < 60 * 60 * 6;
         }
         false
     }

@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 
 use super::Since;
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, Hash, PartialEq, Serialize, Deserialize)]
 pub struct ArraySizedElement {
     pub name: String,
     pub value: Value,
@@ -13,7 +13,7 @@ pub struct ArraySizedElement {
     pub since: Option<Since>,
 }
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, Hash, PartialEq, Serialize, Deserialize)]
 pub enum Value {
     Anything,
     ArraySized {
@@ -23,7 +23,7 @@ pub enum Value {
     ArrayUnknown,
     ArrayUnsized {
         #[serde(rename = "type")]
-        typ: Box<Value>,
+        typ: Box<Self>,
         desc: String,
     },
     ArrayDate,
@@ -75,7 +75,7 @@ pub enum Value {
 
     Unknown,
 
-    OneOf(Vec<(Value, Option<Since>)>),
+    OneOf(Vec<(Self, Option<Since>)>),
 }
 
 // regex once cell

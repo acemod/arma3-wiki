@@ -65,7 +65,7 @@ impl Issues {
                 return Ok(Some(issue.clone()));
             }
             let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
-            if rate != 0 && rate % 20 == 0 {
+            if rate != 0 && rate.is_multiple_of(20) {
                 tokio::time::sleep(std::time::Duration::from_secs(RATE_SLEEP)).await;
             }
             gh.as_ref()
@@ -78,7 +78,7 @@ impl Issues {
                 .map_err(|e| e.to_string())
         } else {
             let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
-            if rate != 0 && rate % 20 == 0 {
+            if rate != 0 && rate.is_multiple_of(20) {
                 tokio::time::sleep(std::time::Duration::from_secs(3)).await;
             }
             gh.as_ref()
@@ -100,7 +100,7 @@ impl Issues {
         let title = format!("Parse Failed: {command}");
         if let Some(issue) = self.issues.iter().find(|i| i.title == title) {
             let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
-            if rate != 0 && rate % 20 == 0 {
+            if rate != 0 && rate.is_multiple_of(20) {
                 tokio::time::sleep(std::time::Duration::from_secs(RATE_SLEEP)).await;
             }
             gh.as_ref()
@@ -133,7 +133,7 @@ impl Issues {
                 return Ok(Some(issue.clone()));
             }
             let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
-            if rate != 0 && rate % 20 == 0 {
+            if rate != 0 && rate.is_multiple_of(20) {
                 tokio::time::sleep(std::time::Duration::from_secs(RATE_SLEEP)).await;
             }
             gh.as_ref()
@@ -146,7 +146,7 @@ impl Issues {
                 .map_err(|e| e.to_string())
         } else {
             let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
-            if rate != 0 && rate % 20 == 0 {
+            if rate != 0 && rate.is_multiple_of(20) {
                 tokio::time::sleep(std::time::Duration::from_secs(3)).await;
             }
             gh.as_ref()
@@ -169,7 +169,7 @@ impl Issues {
         let title = format!("Parse Failed: {ns}::{handler}");
         if let Some(issue) = self.issues.iter().find(|i| i.title == title) {
             let rate = self.rate.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
-            if rate != 0 && rate % 20 == 0 {
+            if rate != 0 && rate.is_multiple_of(20) {
                 tokio::time::sleep(std::time::Duration::from_secs(RATE_SLEEP)).await;
             }
             gh.as_ref()

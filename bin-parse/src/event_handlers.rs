@@ -6,7 +6,7 @@ use reqwest::Client;
 
 use crate::WafSkip;
 
-#[allow(clippy::too_many_lines)]
+#[allow(clippy::too_many_lines, clippy::cognitive_complexity)]
 pub async fn event_handlers(
     client: &Client,
     report: &mut Report,
@@ -258,11 +258,15 @@ async fn subsection(
         content
     };
 
-    if get_from.is_some() {
-        body = body.split_once(&get_from.unwrap()).unwrap().1.to_owned();
+    if let Some(from) = get_from {
+        if let Some((_, rest)) = body.split_once(&from) {
+            body = rest.to_owned();
+        }
     }
-    if get_to.is_some() {
-        body = body.split_once(&get_to.unwrap()).unwrap().0.to_owned();
+    if let Some(to) = get_to {
+        if let Some((rest, _)) = body.split_once(&to) {
+            body = rest.to_owned();
+        }
     }
 
     let mut event_handlers = Vec::new();

@@ -1,6 +1,6 @@
 use std::str::FromStr;
 
-use super::{Locality, Param, Since, Version};
+use super::{Locality, Param, Since};
 
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
 pub enum EventHandler {
@@ -116,6 +116,8 @@ impl ParsedEventHandler {
 
     #[cfg(feature = "wiki")]
     fn id_from_arg_title(source: &str) -> Result<(String, Option<Since>), String> {
+        use crate::model::Version;
+
         let source = if source.contains("&nbsp;") {
             source.split_once("&nbsp;").unwrap().0
         } else {
