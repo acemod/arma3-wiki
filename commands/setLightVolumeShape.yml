@@ -1,5 +1,5 @@
 name: setLightVolumeShape
-description: Sets the lightpoint (directional light {{hl|#lightreflector}})'s volume shape.
+description: Sets the lightpoint (directional light {{hl|#lightreflector}})'s volume shape. An empty shape will switch the light off.
 groups:
 - Lights
 syntax:
@@ -15,6 +15,7 @@ syntax:
     description: object of class {{hl|#lightreflector}})
     type: Object
   - name: shapePath
+    description: '"" to turn the light off'
     type: String
   - name: scale
     description: '[sizeX, sizeY, sizeZ]'
