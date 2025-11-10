@@ -18,7 +18,7 @@ syntax:
     description: event handler name
     type: String
   - name: id
-    description: event handler id returned by [[addEventHandler]], [[ctrlAddEventHandler]], [[displayAddEventHandler]], or [[addMPEventHandler]]
+    description: event handler id returned by [[addEventHandler]], [[ctrlAddEventHandler]], [[displayAddEventHandler]], or [[addMPEventHandler]] - '''not''' any other EH system (e.g [[add3DENEventHandler]] or [[addUserActionEventHandler]])
     type: Number
 - call: !Unary
   - type
@@ -31,7 +31,7 @@ syntax:
     description: event handler name
     type: String
   - name: id
-    description: event handler id returned by [[addMissionEventHandler]] or [[addMusicEventHandler]]
+    description: event handler id returned by [[addMissionEventHandler]] or [[addMusicEventHandler]] '''only'''
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
@@ -40,7 +40,7 @@ since:
     major: 2
     minor: 10
 examples:
-- "<sqf>private _info = player getEventHandlerInfo [\"MPKilled\", 1];\t\t// object EH</sqf>"
+- "<sqf>private _info = player getEventHandlerInfo [\"MPKilled\", 1];\t\t\t// object EH</sqf>"
 - "<sqf>private _info = getEventHandlerInfo [\"EachFrame\", 0];\t\t\t\t// mission EH</sqf>"
 - "<sqf>private _info = _bullet getEventHandlerInfo [\"Deflected\", 0];\t\t// projectile EH</sqf>"
 - "<sqf>private _info = _group getEventHandlerInfo [\"EnemyDetected\", 1];\t// group EH</sqf>"
