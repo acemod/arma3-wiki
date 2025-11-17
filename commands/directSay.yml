@@ -1,5 +1,7 @@
 name: directSay
-description: "Sends given audio message to the direct channel. Command operates just like xxxxRadio commands, but the sound is played over direct channel and is independent of [[fadeSound]]. The message is defined in CfgRadio in the [[Description.ext|description.ext]] file or config radio protocol or a kbAddTopic. The transmission will play only on the PC where command was executed. If you need the transmission to play on all computers, you have to execute it globally (see [[remoteExec]]). \n{{Feature|informative|When transmitting unit gets killed, transmission will be interrupted. However when receiving unit gets killed, the transmission continues to play.}}"
+description: |-
+  Sends given audio message to the direct channel. Command operates just like xxxxRadio commands, but the sound is played over direct channel and is independent of [[fadeSound]]. The message is defined in CfgRadio in the [[Description.ext|description.ext]] file or config radio protocol or a kbAddTopic. The transmission will play only on the PC where command was executed. If you need the transmission to play on all computers, you have to execute it globally (see [[remoteExec]]). Use [[clearRadio]] to clear chat history
+  {{Feature|informative|When transmitting unit gets killed, transmission will be interrupted. However when receiving unit gets killed, the transmission continues to play.}}
 groups:
 - Radio and Chat
 - Sounds
