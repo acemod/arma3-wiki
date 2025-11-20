@@ -12,6 +12,18 @@ syntax:
   - name: customChannelID
     description: '[[Channel IDs|custom channel ID]] returned by [[radioChannelCreate]]'
     type: Number
+- call: !Unary option
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: option
+    description: '[[true]] to return only channels in use, [[false]] to return all available channels'
+    type: Boolean
+  since:
+    arma_3:
+      major: 2
+      minor: 22
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
