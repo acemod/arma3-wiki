@@ -9,7 +9,7 @@ syntax:
   - null
   params:
   - name: id
-    description: id returned by [[playSoundUI]] and [[playSound3D]] commands
+    description: id returned by [[playSoundUI]] and [[playSound3D]] commands, -1 to return all currently playing ids
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
@@ -18,4 +18,10 @@ since:
     major: 2
     minor: 12
 examples:
-- <sqf>_params = soundParams 10;</sqf>
+- <sqf>private _params = soundParams 10;</sqf>
+- |-
+  Wait for sound to end:
+  <sqf>
+  private _sound = playSound3D ["A3\Sounds_F\sfx\blip1.wss", player];
+  waitUntil { soundParams _sound isEqualTo [] };
+  </sqf>
