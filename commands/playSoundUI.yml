@@ -9,6 +9,7 @@ syntax:
   - soundPitch
   - isEffect
   - offset
+  - loop
   ret:
   - Number
   - id of the sound (0..65535) since {{GVI|arma3|2.12|size= 0.75}} (was [[Nothing]] before that)
@@ -30,7 +31,7 @@ syntax:
     optional: true
     default: '[[false]]'
   - name: offset
-    description: offset in seconds. Same as with [[playSound3D]]
+    description: offset in seconds. Same as with [[playSound3D]] (ignored if sound is set to 'loop')
     type: Number
     optional: true
     default: '0'
@@ -38,6 +39,15 @@ syntax:
       arma_3:
         major: 2
         minor: 12
+  - name: loop
+    description: If [[true]] the sound will loop forever. Use [[stopSound]] to stop
+    type: Boolean
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 22
 argument_loc: Unspecified
 effect_loc: Local
 since:
