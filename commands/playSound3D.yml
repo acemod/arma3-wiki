@@ -13,6 +13,7 @@ syntax:
   - distance
   - offset
   - local
+  - loop
   ret:
   - Number
   - id of the sound (0..65535) (was [[Nothing]] before {{GVI|arma3|2.12|size= 0.75}})
@@ -56,7 +57,7 @@ syntax:
     optional: true
     default: '0'
   - name: offset
-    description: offset in seconds. Same as with [[playMusic]]
+    description: offset in seconds. Same as with [[playMusic]] (ignored if sound is set to play repeatedly, see 'loop')
     type: Number
     optional: true
     default: '0'
@@ -73,6 +74,15 @@ syntax:
       arma_3:
         major: 2
         minor: 6
+  - name: loop
+    description: if [[true]] the sound will repeat indefinitely (SP or MP if 'local' is set to [[true]]). Use [[stopSound]] to stop.
+    type: Boolean
+    optional: true
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 22
 argument_loc: Global
 effect_loc: Global
 since:
