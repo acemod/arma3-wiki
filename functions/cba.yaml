@@ -1,0 +1,5790 @@
+- name: cba_accessory_fnc_switchattachment
+  ret: Boolean
+  params: []
+  example: |-
+    (begin example)
+            [1, "next"] call CBA_accessory_fnc_switchAttachment;
+            [2, "prev"] call CBA_accessory_fnc_switchAttachment;
+        (end)
+
+    Author:
+        Robalo, optimized by Anton
+    ----------------------------------------------------------------------------
+- name: cba_diagnostic_fnc_projectiletracking_drawprojectilepaths
+  params:
+  - name: '0'
+    description: args - PerFrameHandler arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: handle - PerFrameHandler handle <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [CBA_diagnostic_fnc_projectileTracking_drawProjectilePaths, 0, []] call CBA_fnc_addPerFrameHandler;
+        (end)
+
+    Author:
+        bux578
+    ----------------------------------------------------------------------------
+- name: cba_diagnostic_fnc_projectiletracking_handlefired
+  params:
+  - name: '0'
+    description: eargs - Fired Event Args <ARRAY>
+    type: ArrayUnknown
+  example: |-
+    (begin example)
+            player addEventHandler ["Fired", CBA_diagnostic_fnc_projectileTracking_handleFired];
+        (end)
+
+    Author:
+        bux578
+    ----------------------------------------------------------------------------
+- name: cba_diagnostic_fnc_projectiletracking_trackprojectile
+  params:
+  - name: '0'
+    description: args - PerFrameHandler arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: handle - PerFrameHandler handle <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [CBA_diagnostic_fnc_projectileTracking_trackProjectile, 0.1, [_projectile, _index]] call CBA_fnc_addPerFrameHandler;
+        (end)
+
+    Author:
+        bux578
+    ----------------------------------------------------------------------------
+- name: cba_diagnostic_fnc_watchinput
+  params:
+  - name: '0'
+    description: event - The event that triggered the function
+    type: Anything
+    optional: true
+  - name: '1'
+    description: args - The arguments passed to the event
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            [1] call CBA_diagnostic_fnc_watchInput;
+        (end)
+
+    Author:
+        Brett Mayson
+    ----------------------------------------------------------------------------
+- name: cba_diagnostic_fnc_watchstart
+  params:
+  - name: '0'
+    description: index - The index in the watch list
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            [1] call CBA_diagnostic_fnc_watchStart;
+        (end)
+
+    Author:
+        Brett Mayson
+    ----------------------------------------------------------------------------
+- name: cba_diagnostic_fnc_watchstop
+  params:
+  - name: '0'
+    description: index - The index in the watch list
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            [1] call CBA_diagnostic_fnc_watchStop;
+        (end)
+
+    Author:
+        Brett Mayson
+    ----------------------------------------------------------------------------
+- name: cba_disposable_fnc_changedisposablelauncherclass
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit - The avatar <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            player call cba_disposable_fnc_changeDisposableLauncherClass;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_disposable_fnc_replacemagazinecargo
+  ret: Nothing
+  params:
+  - name: '0'
+    description: containerType - typeOf _container <STRING>
+    type: String
+  - name: '1'
+    description: container - Any object with cargo <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            [typeOf _container, _container] call cba_disposable_fnc_replaceMagazineCargo
+        (end)
+
+    Author:
+        commy2, johnb43
+    ----------------------------------------------------------------------------
+- name: cba_events_fnc_playerevent
+  ret: Nothing
+  params: []
+  example: |-
+    (begin example)
+            call CBA_events_fnc_playerEvent;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_actionargument
+  params: []
+  example: ''
+- name: cba_fnc_addattachmentcondition
+  ret: Nothing
+  params: []
+  example: |-
+    (begin example)
+            ["ACE_acc_pointer_red", { false }] call CBA_fnc_addAttachmentCondition
+        (end)
+
+    Author:
+        PabstMirror
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addbackpackcargo
+  ret: Boolean
+  params:
+  - name: '0'
+    description: container - the vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: item      - name of backpack <STRING>
+    type: String
+  - name: '2'
+    description: 'count     - number of weapons to add <NUMBER> (Default: 1)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: verify    - if true, then put item on the ground if it can't be added <BOOLEAN>
+    type: Boolean
+  example: |-
+    (begin example)
+            // Add one laser designator to the cargo of SomeTruck
+            _result = [SomeTruck, "B_Kitbag_cbr"] call CBA_fnc_addBackpackCargo
+
+            // Add two MXC rifles to MyAPC. If the inventory is full, then put the rest on the ground
+            _result = [MyAPC, "B_Kitbag_cbr", 2, true] call CBA_fnc_addBackpackCargo
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addbinocularmagazine
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit     - A unit <OBJECT>
+    type: Object
+  - name: '1'
+    description: magazine - The magazine to add <STRING>
+    type: String
+  - name: '2'
+    description: 'ammo     - Ammo count of the magazine (optional, default: full magazine) <NUMBER>'
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+            player addWeapon "Laserdesignator";
+            [player, "Laserbatteries"] call CBA_fnc_addBinocularMagazine;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addbiseventhandler
+  ret: Number
+  params:
+  - name: '0'
+    description: object    - Thing to attach event handler to. <OBJECT, CONTROL, DISPLAY>
+    type: Anything
+  - name: '1'
+    description: type      - Event handler type. <STRING>
+    type: String
+  - name: '2'
+    description: function  - Function to add to event. <CODE>
+    type: Code
+  - name: '3'
+    description: arguments - Arguments to pass to event handler. <Any>
+    type: Anything
+  example: |-
+    (begin example)
+            // one time fired event handler that removes itself
+            _id = [player, "fired", {systemChat _thisArgs; player removeEventHandler ["fired", _thisID]}, "bananas"] call CBA_fnc_addBISEventHandler;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addbisplayereventhandler
+  ret: Boolean
+  params:
+  - name: '0'
+    description: key           - Unique identifier for the event. <STRING>
+    type: String
+  - name: '1'
+    description: eventType     - Type of event to add. Can be any event supported by addEventHandler. <STRING>
+    type: String
+  - name: '2'
+    description: eventCode     - Code to run when event is raised. <CODE>
+    type: Code
+  - name: '3'
+    description: 'ignoreVirtual - Ignore virtual units (spectators, virtual zeus, UAV RC) [optional] (default: true) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            ["TAG_MyFiredNearEvent", "FiredNear", {systemChat str _this}] call CBA_fnc_addBISPlayerEventHandler
+        (end)
+
+    Author:
+        PabstMirror
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addclasseventhandler
+  ret: Boolean
+  params: []
+  example: |-
+    (begin example)
+            ["CAManBase", "fired", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
+            ["All", "init", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
+            ["Car", "init", {(_this select 0) engineOn true}, true, [], true] call CBA_fnc_addClassEventHandler; //Starts all current cars and those created later
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_adddisplayhandler
+  ret: Number
+  params:
+  - name: '0'
+    description: type - Display handler type to attach. <STRING>
+    type: String
+  - name: '1'
+    description: code - Code to execute upon event. <STRING, CODE>
+    type: Anything
+  example: |-
+    (begin example)
+            _id = ["KeyDown", {_this call myKeyDownEH}] call CBA_fnc_addDisplayHandler;
+        (end)
+
+    Author:
+        Sickboy, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addeventhandler
+  params:
+  - name: '0'
+    description: eventName - Type of event to handle. <STRING>
+    type: String
+  - name: '1'
+    description: eventFunc - Function to call when event is raised. <CODE>
+    type: Code
+  example: |-
+    (begin example)
+            _id = ["test", {systemChat str _this}] call CBA_fnc_addEventHandler;
+        (end)
+
+    Author:
+        Spooner, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addeventhandlerargs
+  params:
+  - name: '0'
+    description: eventName - Type of event to handle. <STRING>
+    type: String
+  - name: '1'
+    description: eventFunc - Function to call when event is raised. <CODE>
+    type: Code
+  - name: '2'
+    description: arguments - Arguments to pass to event handler. (optional) <Any>
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            ["test1", {
+                systemChat str _thisArgs;
+                [_thisType, _thisId] call CBA_fnc_removeEventHandler
+            }, "hello world"] call CBA_fnc_addEventHandlerArgs;
+
+            "test1" call CBA_fnc_localEvent;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_additem
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit    - the unit <OBJECT>
+    type: Object
+  - name: '1'
+    description: item    - name of the weapon to add <STRING>
+    type: String
+  - name: '2'
+    description: verify  - if true, then put item in vehicle or on the ground if it can't be added <BOOLEAN>
+    type: Boolean
+  - name: '3'
+    description: 'skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            _result = [player, "Binocular"] call CBA_fnc_addItem
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_additemcargo
+  ret: Boolean
+  params:
+  - name: '0'
+    description: container - the vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: item      - name of item <STRING>
+    type: String
+  - name: '2'
+    description: 'count     - number of weapons to add <NUMBER> (Default: 1)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: verify    - if true, then put item on the ground if it can't be added <BOOLEAN>
+    type: Boolean
+  example: |-
+    (begin example)
+            // Add one laser designator to the cargo of SomeTruck
+            _result = [SomeTruck, "FirstAidKit"] call CBA_fnc_addItemCargo
+
+            // Add two MXC rifles to MyAPC. If the inventory is full, then put the rest on the ground
+            _result = [MyAPC, "LaserDesignator", 2, true] call CBA_fnc_addItemCargo
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_additemcontextmenuoption
+  ret: !OneOf
+  - - String
+    - null
+  - - Nothing
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: item                   - Item classname <STRING>
+    type: String
+  example: |-
+    (begin example)
+            ["#All", "ALL", ">DEBUG ACTION<", nil, nil, {true}, {
+                params ["_unit", "_container", "_item", "_slot", "_params"];
+                systemChat str [name _unit, typeOf _container, _item, _slot, _params];
+                true
+            }, false, [0,1,2]] call CBA_fnc_addItemContextMenuOption;
+        (end)
+
+    Author:
+        commy2, Zorn
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addkeybind
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - Nothing
+    - null
+  params:
+  - name: '0'
+    description: addon          - Name of the registering mod + optional sub-category <STRING, ARRAY>
+    type: Anything
+  - name: '1'
+    description: action         - Id of the key action. <STRING>
+    type: String
+  - name: '2'
+    description: title          - Pretty name, or an array of pretty name and tooltip <STRING or ARRAY>
+    type: !OneOf
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
+  - name: '3'
+    description: downCode       - Code for down event, empty string for no code. <CODE or STRING>
+    type: !OneOf
+    - - Code
+      - null
+    - - String
+      - null
+  - name: '4'
+    description: upCode         - Code for up event, empty string for no code. <CODE or STRING> (optional)
+    type: !OneOf
+    - - Code
+      - null
+    - - String
+      - null
+    optional: true
+  - name: '5'
+    description: defaultKeybind - The keybinding data in the format [DIK, [shift, ctrl, alt]] <ARRAY> (optional)
+    type: ArrayUnknown
+    optional: true
+  - name: '6'
+    description: holdKey        - Will the key fire every frame while down <BOOLEAN> (optional)
+    type: Boolean
+    optional: true
+  - name: '7'
+    description: holdDelay      - How long after keydown will the key event fire, in seconds. <NUMBER> (optional)
+    type: Number
+    optional: true
+  - name: '8'
+    description: overwrite      - Overwrite any previously stored default keybind <BOOLEAN> (optional)
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            // Register a simple keypress to an action
+            #include "\a3\ui_f\hpp\defineDIKCodes.inc"
+
+            ["MyMod", "MyKey", ["My Pretty Key Name", "My Pretty Tool Tip"], {
+                _this call mymod_fnc_keyDown
+            }, {
+                _this call mymod_fnc_keyUp
+            }, [DIK_TAB, [false, false, false]]] call CBA_fnc_addKeybind;
+
+            ["MyMod", "MyOtherKey", "My Other Pretty Key Name", {
+                _this call mymod_fnc_keyDownOther
+            }, {
+                _this call mymod_fnc_keyUpOther
+            }, [DIK_K, [false, false, false]]] call CBA_fnc_addKeybind;
+        (end example)
+
+    Author:
+        Taosenai & Nou, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addkeybindtofleximenu
+  params: []
+  example: |-
+    (begin example)
+     ["Your Mod", "Your_Action_Key", ["Your Action","ToolTip"], ["player", [], -100, "_this call my_menu_code_array"], [15, [true, true, true]]] call cba_fnc_addKeybindToFleximenu;
+        (end example)
+        (begin example)
+     ["Your Mod", "Your_Action_Key", "Your Action", ["player", [], -100, "_this call my_menu_code_array"], [15, [true, true, true]]] call cba_fnc_addKeybindToFleximenu;
+        (end example)
+    Author:
+     ViperMaul
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addkeyhandler
+  ret: String
+  params:
+  - name: '0'
+    description: key       - Key (DIK-Code) to attach action to. <NUMBER>
+    type: Number
+  - name: '1'
+    description: 'settings  - Shift, Ctrl, Alt required. (default: [false, false, false]) <ARRAY>'
+    type: ArrayUnknown
+    optional: true
+  - name: '2'
+    description: code      - Code to execute upon event. <CODE>
+    type: Code
+  - name: '3'
+    description: 'type      - "keydown" or "keyup". [optional] (default: "keydown") <STRING>'
+    type: String
+    optional: true
+  - name: '4'
+    description: hashKey   - Key handler identifier. Randomly generated if not supplied. [optional] <STRING>
+    type: String
+  - name: '5'
+    description: 'allowHold - Will the key fire every frame while hold down? [optional] (default: true) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  - name: '6'
+    description: holdDelay - How long after keydown will the key event fire, in seconds. [optional] <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            _id = [47, [true, false, false], {_this call myAction}] call CBA_fnc_addKeyHandler;
+        (end)
+
+    Author:
+        Sickboy, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addkeyhandlerfromconfig
+  ret: String
+  params:
+  - name: '0'
+    description: component - Classname under "CfgSettings" >> "CBA" >> "events" <STRING>
+    type: String
+  - name: '1'
+    description: action    - Action name <STRING>
+    type: String
+  - name: '2'
+    description: code      - Code to execute upon event. <CODE>
+    type: Code
+  - name: '3'
+    description: 'type      - "keydown" or "keyup". [optional] (default: "keydown") <STRING>'
+    type: String
+    optional: true
+  example: |-
+    (begin example)
+            ["cba_sys_nvg", "nvgon", {_this call myAction}] call CBA_fnc_addKeyHandlerFromConfig
+        (end)
+
+    Author:
+        Sickboy, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addmagazine
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit   - the unit or vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: item   - name of the magazine to add <STRING>
+    type: String
+  - name: '2'
+    description: 'ammo   - ammo count <NUMBER> (Default: -1, which means full magazine)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'verify - if true, then put item in vehicle or on the ground if it can''t be added <BOOLEAN> (Default: false)'
+    type: Boolean
+    optional: true
+  - name: '4'
+    description: 'skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN> (Default: false)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            _result = [player, "SmokeShell"] call CBA_fnc_addMagazine
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addmagazinecargo
+  ret: Boolean
+  params:
+  - name: '0'
+    description: container - the vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: item      - name of magazine to <STRING>
+    type: String
+  - name: '2'
+    description: 'count     - number of magazines to add <NUMBER> (Default: 1)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'verify    - if true, then put item on the ground if it can''t be added <BOOLEAN> (Default: false)'
+    type: Boolean
+    optional: true
+  - name: '4'
+    description: 'ammo      - ammo count <NUMBER> (Default: 1E6)'
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+            // Add one mine to the cargo of SomeTruck
+            _result = [SomeTruck, "ATMine"] call CBA_fnc_addMagazineCargo
+
+            // Add three smoke cans to MyCar. If the inventory is full, then put the rest on the ground
+            _result = [MyCar, "SmokeShell", 3, true] call CBA_fnc_addMagazineCargo
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addmarkereventhandler
+  params:
+  - name: '0'
+    description: eventType - Type of event to add. Can be "created" or "deleted". <STRING>
+    type: String
+  - name: '1'
+    description: function  - Function to call when marker is created or deleted. <CODE>
+    type: Code
+  example: |-
+    (begin example)
+            _id = ["created", {systemChat str _this}] call CBA_fnc_addMarkerEventHandler;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addpausemenuoption
+  ret: Nothing
+  params:
+  - name: '0'
+    description: name   - name of the menu button or array of name and tooltip <STRING, ARRAY>
+    type: Anything
+  - name: '1'
+    description: dialog - Dialog to open when clicking the menu button <STRING>
+    type: String
+  example: |-
+    (begin example)
+            ["Menu Name", "RscDebugConsole"] call CBA_fnc_addPauseMenuOption;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addperframehandler
+  params: []
+  example: ''
+- name: cba_fnc_addplayeraction
+  params:
+  - name: '0'
+    description: actionArray - Array that defines the action, as used in addAction command [Array]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_addplayereventhandler
+  ret: Number
+  params:
+  - name: '0'
+    description: type               - Event handler type. <STRING>
+    type: String
+  - name: '1'
+    description: function           - Function to add to event. <CODE>
+    type: Code
+  - name: '2'
+    description: 'applyRetroactively - Call function immediately if player is defined already (optional, default: false) <BOOL>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            _id = ["unit", {systemChat str _this}] call CBA_fnc_addPlayerEventHandler;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addsetting
+  ret: Boolean
+  params:
+  - name: '0'
+    description: setting     - Unique setting name. Matches resulting variable name <STRING>
+    type: String
+  - name: '1'
+    description: settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
+    type: String
+  - name: '2'
+    description: 'title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>'
+    type: Anything
+    optional: true
+  - name: '3'
+    description: category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
+    type: Anything
+  - name: '4'
+    description: valueInfo   - Extra properties of the setting depending of _settingType. See examples below (optional) <ANY>
+    type: Anything
+    optional: true
+  - name: '5'
+    description: 'isGlobal    - 1: all clients share the same setting, 2: setting can''t be overwritten (optional, default: 0) <BOOL, NUMBER>'
+    type: Anything
+    optional: true
+  - name: '6'
+    description: script      - Script to execute when setting is changed. (optional) <CODE>
+    type: Code
+    optional: true
+  - name: '7'
+    description: needRestart - Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            // CHECKBOX --- extra argument: default value
+            ["Test_Setting_1", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call CBA_fnc_addSetting;
+
+            // LIST --- extra arguments: [_values, _valueTitles, _defaultIndex]
+            ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1, 0], ["enabled","disabled"], 1]] call CBA_fnc_addSetting;
+
+            // SLIDER --- extra arguments: [_min, _max, _default, _trailingDecimals, _isPercentage]
+            ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call CBA_fnc_addSetting;
+
+            // COLOR PICKER --- extra argument: _color
+            ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1, 1, 0]] call CBA_fnc_addSetting;
+
+            // EDITBOX --- extra argument: default value
+            ["Test_Setting_5", "EDITBOX",  ["-test editbox-", "-tooltip-"], "My Category", "defaultValue"] call CBA_fnc_addSetting;
+
+            // TIME PICKER (time in seconds) --- extra arguments: [_min, _max, _default]
+            ["Test_Setting_6", "TIME",     ["-test time-",    "-tooltip-"], "My Category", [0, 3600, 60]] call CBA_fnc_addSetting;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addunittrackprojectiles
+  params:
+  - name: '0'
+    description: unit  - the unit or vehicle to track <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            private _eventId = [player] call CBA_fnc_addUnitTrackProjectiles;
+        (end)
+
+    Author:
+        bux578
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addwaypoint
+  ret: ArrayUnknown
+  params: []
+  example: ''
+- name: cba_fnc_addweapon
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit   - the unit <OBJECT>
+    type: Object
+  - name: '1'
+    description: item   - name of the weapon to add <STRING>
+    type: String
+  - name: '2'
+    description: 'verify - if true, then put item on the ground if it can''t be added <BOOLEAN> (Default: false)'
+    type: Boolean
+    optional: true
+  - name: '3'
+    description: 'skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN> (Default: false)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            _result = [player, "Binocular"] call CBA_fnc_addWeapon
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addweaponcargo
+  ret: Boolean
+  params:
+  - name: '0'
+    description: container - the vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: item      - name of weapon <STRING>
+    type: String
+  - name: '2'
+    description: 'count     - number of weapons to add <NUMBER> (Default: 1)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'verify    - if true, then put item on the ground if it can''t be added <BOOLEAN> (Default: false)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            // Add one laser designator to the cargo of SomeTruck
+            _result = [SomeTruck, "LaserDesignator"] call CBA_fnc_addWeaponCargo
+
+            // Add two MXC rifles to MyAPC. If the inventory is full, then put the rest on the ground
+            _result = [MyAPC, "arifle_MXC_F", 2, true] call CBA_fnc_addWeaponCargo
+        (end)
+
+    Author:
+        Sickboy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_addweaponwithoutitems
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit               - Unit to add the weapon to <OBJECT>
+    type: Object
+  - name: '1'
+    description: weapon             - Weapon to add <STRING>
+    type: String
+  - name: '2'
+    description: 'removeLinkedItems  - If linked items should be removed or not <BOOLEAN> (Default: true)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            [player, "arifle_mx_F"] call CBA_fnc_addWeaponWithoutItems;
+            [player, "arifle_AK12_lush_arco_snds_pointer_bipod_F", false] call CBA_fnc_addWeaponWithoutItems;
+        (end)
+
+    Author:
+        commy2, johnb43
+    ----------------------------------------------------------------------------
+- name: cba_fnc_allnamespaces
+  ret: ArrayUnknown
+  params: []
+  example: |-
+    (begin example)
+            _namespaces = call CBA_fnc_allNamespaces;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_binocularmagazine
+  ret: String
+  params:
+  - name: '0'
+    description: unit - A unit <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            player call CBA_fnc_binocularMagazine
+        (end)
+
+    Author:
+        commy2, johnb43
+    ----------------------------------------------------------------------------
+- name: cba_fnc_bitflagscheck
+  ret: Number
+  params:
+  - name: '0'
+    description: flagset    - flagset to check for flags within <NUMBER>
+    type: Number
+  - name: '1'
+    description: flags      - flags to check for <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [47,22] call CBA_fnc_bitflagsCheck // returns 16
+            // 47's set bits    = 101111 (32,8,4,2,1)
+            // 22's set bits    = 010110 (16,4,2)
+            // common set bits  = 000110 (4,2)
+            // 22's unique bits = 010000 (16)
+            // sum of 22's unique bits = 16
+
+            [47,6] call CBA_fnc_bitflagsCheck // returns 0
+            // 47's set bits    = 101111 (32,8,4,2,1)
+            // 6's set bits     = 000110 (4,2)
+            // common set bits  = 000110 (4,2)
+            // 6's unique bits  = 000000 (0)
+            // sum of 6's unique bits = 0
+        (end)
+
+    Author:
+        Daisy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_bitflagscheckbool
+  ret: Boolean
+  params:
+  - name: '0'
+    description: flagset    - flagset to check for flags within <NUMBER>
+    type: Number
+  - name: '1'
+    description: flags      - flags to check for <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [70,47] call CBA_fnc_bitflagsCheckBool // returns false:
+            // 70's set bits    = 1000110 (64,4,2)
+            // 47's set bits    = 0101111 (32,8,4,2,1)
+            // common set bits  = 0000110 (4,2)
+            // 47's unique bits = 0101001 (32,8,1)
+            // sum of 47's unique bits = 41
+            // 41 != 0 so return false
+        (end)
+
+    Author:
+        Daisy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_bitflagsflip
+  ret: !OneOf
+  - - Number
+    - null
+  - - Boolean
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: flagset    - flagset to flip flags within <NUMBER>
+    type: Number
+  - name: '1'
+    description: flags      - flags to flip <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [62,23] call CBA_fnc_bitflagsFlip; // returns 41
+            // 62's set bits     = 111110 (32,16,8,4,2)
+            // 23's set bits     = 010111 (16,4,2,1)
+            // common set bits   = 010110 (16,4,2,1)
+            // unique set bits   = 101001 (32,8,1)
+            // sum of unique bits = 41
+        (end)
+
+    Author:
+        Daisy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_bitflagsset
+  ret: !OneOf
+  - - Number
+    - null
+  - - Boolean
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: flagset    - flagset to set flags within <NUMBER>
+    type: Number
+  - name: '1'
+    description: flags      - flags to set <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [55,12] call CBA_fnc_bitflagsSet; // returns 63
+            // 55's set bits = 110111 (32,16,4,2,1)
+            // 12's set bits = 001100 (8,4)
+            // all set bits  = 111111 (32,16,8,4,2,1)
+            // sum of all set bits = 63
+        (end)
+
+    Author:
+        Daisy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_bitflagsunset
+  ret: Number
+  params:
+  - name: '0'
+    description: flagset    - flagset to set flags within <NUMBER>
+    type: Number
+  - name: '1'
+    description: flags      - the flags to unset <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [55,14] call CBA_fnc_bitflagsUnset; // returns 49
+            // 55's set bits    = 110111 (32,16,4,2,1)
+            // 14's set bits    = 001110 (8,4,2)
+            // common set bits  = 000110 (4,2)
+            // 55's unique bits = 110001 (32,16,1)
+            // sum of unique bits = 49
+        (end)
+
+    Author:
+        Daisy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_bitwiseand
+  ret: Number
+  params:
+  - name: '0'
+    description: min   -   a number <NUMBER>
+    type: Number
+  - name: '1'
+    description: max   -   another number to compare to the first <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [55,25] call CBA_fnc_bitwiseAND; // returns 17
+            // 55's set bits   = 110111 (32,16,4,2,1)
+            // 25's set bits   = 011001 (16,8,1)
+            // common set bits = 010001 (16,1)
+            // sum of common bits = 17
+        (end)
+
+    Author:
+        Daisy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_bitwiselrot
+  ret: Number
+  params:
+  - name: '0'
+    description: num        -   the number to rotate <NUMBER>
+    type: Number
+  - name: '1'
+    description: numRot     -   the number of rotations to perform <NUMBER>
+    type: Number
+  - name: '2'
+    description: numBits    -   the number of bits this number should occupy (optional) <NUMBER>
+    type: Number
+    optional: true
+  example: "(begin example)\n        25 call CBA_fnc_bitwiseLROT; // returns 19\n        // 25's set bits                =   11001 (16,8,1) \n        // shift left by 1              =  11001_\n        // move leftmost bit to back    =   10011 (16,2,1)\n        // sum of rotated bits = 19\n\n        [25,2] call CBA_fnc_bitwiseLROT; // returns 7\n        // rotates once to      10011 (19)\n        // rotates twice to     00111 (7)\n\n        [25,2,6] call CBA_fnc_bitwiseLROT; // returns 37\n        // 25's set bits       011001\n        // rotates once to     110010 (50)\n        // rotates twice to    100101 (37)\n    (end)\n\nAuthor:\n    Daisy\n----------------------------------------------------------------------------"
+- name: cba_fnc_bitwiselshft
+  ret: Number
+  params:
+  - name: '0'
+    description: num    -   the number to shift <NUMBER>
+    type: Number
+  - name: '1'
+    description: numShift -   the number of shifts to perform <NUMBER>
+    type: Number
+  example: "(begin example)\n        25 call CBA_fnc_bitwiseLSHFT; // returns 50\n        // 25's set bits                                  =     11001 (16,8,1) \n        // shift bits left by 1, fill one's place with 0  =    110010 (32,16,2)\n        // sum of shifted bits = 50\n        [25,3] call CBA_fnc_bitwiseLSHFT; // returns 200\n        // 25's set bits                                  =     11001 (16,8,1) \n        // shift bits left by 3, fill blank places with 0 =  11001000 (128,64,8)\n        // sum of shifted bits = 200\n    (end)\n\nAuthor:\n    Daisy\n----------------------------------------------------------------------------"
+- name: cba_fnc_bitwisenot
+  ret: Number
+  params:
+  - name: '0'
+    description: num        -   the number to invert <NUMBER>
+    type: Number
+  - name: '1'
+    description: numBits    -   the number of bits this number should occupy (optional) <NUMBER>
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+            12 call CBA_fnc_bitwiseNOT; // returns 1
+            // 12's set bits = 110 (8,4)
+            // flip all bits = 001 (1)
+            // sum of bits = 1
+
+            [12,6] call CBA_fnc_bitwiseNOT; // returns 57
+            // 12's set bits = 000110 (8,4)
+            // flip all bits = 111001 (32,16,8,1)
+            // sum of bits = 57
+        (end)
+
+    Author:
+        Daisy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_bitwiseor
+  ret: Number
+  params:
+  - name: '0'
+    description: min   -   a number <NUMBER>
+    type: Number
+  - name: '1'
+    description: max   -   another number to compare to the first <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [55,15] call CBA_fnc_bitwiseOR; // returns 63
+            // 55's set bits = 110111 (32,16,4,2,1)
+            // 15's set bits = 001111 (8,4,2,1)
+            // all set bits  = 111111 (32,16,8,4,2,1)
+            // sum of all set bits = 63
+        (end)
+
+    Author:
+        Daisy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_bitwiserrot
+  ret: Number
+  params:
+  - name: '0'
+    description: num        -   the number to rotate <NUMBER>
+    type: Number
+  - name: '1'
+    description: numRot     -   the number of rotations to perform <NUMBER>
+    type: Number
+  - name: '2'
+    description: numBits    -   the number of bits this number should occupy (optional) <NUMBER>
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+            17 call CBA_fnc_bitwiseRROT; // returns 24
+            // 17's set bits                = 10001   (16,1)
+            // shift right by 1             = _1000|1
+            // move rightmost bit to front  = 11000   (16,8)
+            // sum of rotated bits = 24
+
+            [17,2] call CBA_fnc_bitwiseRROT; // returns 12
+            // rotates once to      11000 (24)
+            // rotates again to     01100 (12)
+
+            [17,2,7] call CBA_fnc_bitwiseRROT; // returns 36
+            // 17's set bits        0010001
+            // rotates once to      1001000 (72)
+            // rotates again to     0100100 (36)
+        (end)
+
+    Author:
+        Daisy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_bitwisershft
+  ret: Number
+  params:
+  - name: '0'
+    description: num    -   the number to shift <NUMBER>
+    type: Number
+  - name: '1'
+    description: numShift -   the number of shifts to perform <NUMBER>
+    type: Number
+  example: "(begin example)\n        25 call CBA_fnc_bitwiseRSHFT; // returns 12\n        // 25's set bits                    = 11001|    (16,8,1) \n        // shift bits right by 1            =  1100|\n        // discard bits after 1's place     =  1100|    (8,4)\n        // sum of shifted bits = 12\n        [25,3] call CBA_fnc_bitwiseRSHFT; // returns 3\n        // 25's set bits                    = 11001|    (16,8,1) \n        // shift bits right by 3            =    11|001\n        // discard bits after 1's place     =    11|     (2,1)\n        // sum of shifted bits = 3\n    (end)\n\nAuthor:\n    Daisy\n----------------------------------------------------------------------------"
+- name: cba_fnc_bitwisexor
+  ret: Number
+  params:
+  - name: '0'
+    description: min   -   a number <NUMBER>
+    type: Number
+  - name: '1'
+    description: max   -   another number to compare to the first <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [55,15] call CBA_fnc_bitwiseXOR; // returns 56
+            // 55's set bits   = 110111 (32,16,4,2,1)
+            // 15's set bits   = 001111 (8,4,2,1)
+            // common set bits = 000111 (4,2,1)
+            // unique set bits = 111000 (32,16,8)
+            // sum of unique bits = 56
+        (end)
+
+    Author:
+        Daisy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_buildingpositions
+  ret: Anything
+  params: []
+  example: ''
+- name: cba_fnc_canadditem
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit          - Unit <OBJECT>
+    type: Object
+  - name: '1'
+    description: item          - Item to store <STRING>
+    type: String
+  - name: '2'
+    description: 'count         - Item count <NUMBER> (Default: 1)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'checkUniform  - Check space in uniform <BOOLEAN> (Default: true)'
+    type: Boolean
+    optional: true
+  - name: '4'
+    description: 'checkVest     - Check space in vest <BOOLEAN> (Default: true)'
+    type: Boolean
+    optional: true
+  - name: '5'
+    description: 'checkBackpack - Check space in backpack <BOOLEAN> (Default: true)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            [player, "acc_flashlight"] call CBA_fnc_canAddItem
+            [player, "30Rnd_556x45_Stanag", 7, false, true, false] call CBA_fnc_canAddItem
+        (end)
+
+    Author:
+        Dystopian
+    ----------------------------------------------------------------------------
+- name: cba_fnc_canuseweapon
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit - A unit <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+        _result = player call CBA_fnc_canUseWeapon;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_capitalize
+  params:
+  - name: '0'
+    description: string - String to capitalize [String]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _result = ["FISH"] call CBA_fnc_capitalize;
+            // _result => "Fish"
+
+            _result = ["frog-headed fish"] call CBA_fnc_capitalize;
+            // _result => "Frog-headed fish"
+        (end)
+
+    Author:
+        Spooner, joko // Jonas
+    ----------------------------------------------------------------------------
+- name: cba_fnc_changekeyhandler
+  ret: Nothing
+  params:
+  - name: '0'
+    description: hashKey  - Key handler identifier. <STRING>
+    type: String
+  - name: '1'
+    description: key      - New key (DIK-Code). <NUMBER>
+    type: Number
+  - name: '2'
+    description: 'settings - New Settings. Shift, Ctrl, Alt required. (default: [false, false, false]) <ARRAY>'
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: 'type     - "keydown" or "keyup". [optional] (default: "keydown") <STRING>'
+    type: String
+    optional: true
+  example: |-
+    (begin example)
+            [_id, 44, [false, false, false]] call CBA_fnc_changeKeyHandler;
+        (end)
+
+    Author:
+        Sickboy, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_clearwaypoints
+  ret: Nothing
+  params: []
+  example: ''
+- name: cba_fnc_colorahextodecimal
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: 'hexString - A hexidecimal color code, "AARRGGBB" with or without a leading # <STRING>'
+    type: String
+  example: |-
+    (begin example)
+            "AABA2619" call CBA_fnc_colorAHEXtoDecimal
+        (end)
+
+    Author:
+        Lambda.Tiger & drofseh
+    ----------------------------------------------------------------------------
+- name: cba_fnc_colorargbtodecimal
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: alpha - The alpha/transparency channel, 0-255 <NUMBER>
+    type: Number
+  - name: '1'
+    description: red - The red channel, 0-255 <NUMBER>
+    type: Number
+  - name: '2'
+    description: green - The green channel, 0-255 <NUMBER>
+    type: Number
+  - name: '3'
+    description: blue - The blue channel, 0-255 <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [255,186,38,25] call CBA_fnc_colorARGBtoDecimal
+        (end)
+
+    Author:
+        drofseh & Lambda.Tiger
+    ----------------------------------------------------------------------------
+- name: cba_fnc_colorhexatodecimal
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: 'hexString - A hexidecimal color code, "RRGGBBAA" with or without a leading # <STRING>'
+    type: String
+  example: |-
+    (begin example)
+            "BA2619AA" call CBA_fnc_colorHEXAtoDecimal
+        (end)
+
+    Author:
+        Lambda.Tiger & drofseh
+    ----------------------------------------------------------------------------
+- name: cba_fnc_colorhextodecimal
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: 'hexString - A hexidecimal color code, "RRGGBB" with or without a leading # <STRING>'
+    type: String
+  example: |-
+    (begin example)
+            "BA2619" call CBA_fnc_colorHEXtoDecimal
+        (end)
+
+    Author:
+        Lambda.Tiger & drofseh
+    ----------------------------------------------------------------------------
+- name: cba_fnc_colorrgbatodecimal
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: red - The red channel, 0-255 <NUMBER>
+    type: Number
+  - name: '1'
+    description: green - The green channel, 0-255 <NUMBER>
+    type: Number
+  - name: '2'
+    description: blue - The blue channel, 0-255 <NUMBER>
+    type: Number
+  - name: '3'
+    description: alpha - The alpha/transparency channel, 0-255 <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [186,38,25,255] call CBA_fnc_colorRGBAtoDecimal
+        (end)
+
+    Author:
+        drofseh & Lambda.Tiger
+    ----------------------------------------------------------------------------
+- name: cba_fnc_colorrgbtodecimal
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: red - The red channel, 0-255 <NUMBER>
+    type: Number
+  - name: '1'
+    description: green - The green channel, 0-255 <NUMBER>
+    type: Number
+  - name: '2'
+    description: blue - The blue channel, 0-255 <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [186,38,25] call CBA_fnc_colorRGBtoDecimal
+        (end)
+
+    Author:
+        drofseh & Lambda.Tiger
+    ----------------------------------------------------------------------------
+- name: cba_fnc_compatibleitems
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: weapon     - A weapons class name <STRING>
+    type: String
+  - name: '1'
+    description: 'typefilter - Optional filter. Can be "muzzle", "optic", "pointer" or "bipod". <STRING, NUMBER> (default: "")'
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _acclist = ["LMG_Mk200_F"] call CBA_fnc_compatibleItems;
+            _muzzleacclist = ["LMG_Mk200_F", "muzzle"] call CBA_fnc_compatibleItems;
+        (end)
+
+    Author:
+        Original by Karel Moricky, Enhanced by Robalo, jokoho, commy2, johnb43
+    ----------------------------------------------------------------------------
+- name: cba_fnc_compatiblemagazines
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: weapon     - Weapon class name or config <STRING, CONFIG>
+    type: Anything
+  - name: '1'
+    description: 'allMuzzles - Get magazines for all muzzles on this weapon (optional, default: false) <BOOL>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            _mags = ["arifle_MX_SW_F"] call CBA_fnc_compatibleMagazines;
+            _mags = [configFile >> "CfgWeapons" >> _rifle >> _glMuzzle] call CBA_fnc_compatibleMagazines;
+        (end)
+
+    Author:
+        PabstMirror, based on code from Dedmen
+    ----------------------------------------------------------------------------
+- name: cba_fnc_compileeventhandlers
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - ArrayUnknown
+    - null
+  - - String
+    - null
+  - - String
+    - null
+  - - Code
+    - null
+  - - Boolean
+    - null
+  - - ArrayUnknown
+    - null
+  params: []
+  example: |-
+    (begin example)
+            configFile call CBA_fnc_compileEventHandlers;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_compilefinal
+  ret: Nothing
+  params:
+  - name: '0'
+    description: name     - Function name <STRING>
+    type: String
+  - name: '1'
+    description: function - A function <CODE>
+    type: Code
+  example: |-
+    (begin example)
+            ["MyFunction", {systemChat str _this}] call CBA_fnc_compileFinal;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_compilefunction
+  ret: Nothing
+  params: []
+  example: |-
+    (begin example)
+            [_funcFile, _funcName] call CBA_fnc_compileFunction;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_compilemusic
+  params: []
+  example: ''
+- name: cba_fnc_consumeitem
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit      - Unit that consumeds item <OBJECT>
+    type: Object
+  - name: '1'
+    description: item      - Item classname <STRING>
+    type: String
+  - name: '2'
+    description: slot      - Inventory slot of the item <STRING>
+    type: String
+  - name: '3'
+    description: container - Container that has the item <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            [player, headgear player, "HEADGEAR"] call CBA_fnc_consumeItem;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_convertstringcode
+  ret: Code
+  params:
+  - name: '0'
+    description: str - Code as String <STRING>
+    type: String
+  example: |-
+    (begin example)
+            getText (_cfg >> "statement") call CBA_fnc_convertStringCode
+        (end)
+
+    Author:
+        OverlordZorn
+    ----------------------------------------------------------------------------
+- name: cba_fnc_createmarker
+  params:
+  - name: '0'
+    description: markerName - Name of marker to create [String]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: 'position - [Array: [x, y]]'
+    type: Anything
+    optional: true
+  - name: '2'
+    description: shape - "ICON", "RECTANGLE" or "ELLIPSE" [String]
+    type: Anything
+    optional: true
+  - name: '3'
+    description: 'size - [Array: [width, height]]'
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            // simple marker creation
+            _marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY]] call CBA_fnc_createMarker;
+            // Color yellow
+            _marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY], "COLOR:", "ColorYellow"] call CBA_fnc_createMarker;
+            // Global marker - will be visible to all players currently ingame
+            _marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY], "COLOR:", "ColorYellow", "GLOBAL"] call CBA_fnc_createMarker;
+            // Global persistent marker - will be visible to all players currently ingame, and also to JIP players
+            _marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY], "COLOR:", "ColorYellow", "PERSIST"] call CBA_fnc_createMarker;
+        (end)
+
+    Author:
+        Sickboy (sb_at_dev-heaven.net) 6thSense.eu Mod
+    ----------------------------------------------------------------------------
+- name: cba_fnc_createnamespace
+  ret: Anything
+  params:
+  - name: '0'
+    description: 'isGlobal - create a global namespace (optional, default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            _namespace = call CBA_fnc_createNamespace;
+
+            My_GlobalNamespace = true call CBA_fnc_createNamespace;
+            publicVariable "My_GlobalNamespace";
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_createperframehandlerobject
+  params: []
+  example: ''
+- name: cba_fnc_createtrigger
+  params:
+  - name: '0'
+    description: pos - Position [Array]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            [_position] call CBA_fnc_createTrigger;
+
+            [_position, "AREA:", [5, 5, 0, false], "ACT:", ["CIV", "PRESENT", true]] call CBA_fnc_createTrigger;
+        (end)
+
+    Author:
+        Sickboy (sb_at_dev-heaven.net)
+    ----------------------------------------------------------------------------
+- name: cba_fnc_createuuid
+  params: []
+  example: ''
+- name: cba_fnc_csscolortodecimal
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: colorKeyword - A color keyword as defined as part of W3c's CSS color module level 3. <STRING>
+    type: String
+  example: |-
+    (begin example)
+            "chartreuse" call CBA_fnc_cssColorToDecimal
+        (end)
+    Author:
+        Lambda.Tiger & drofseh
+    ----------------------------------------------------------------------------
+- name: cba_fnc_csscolortohex
+  ret: String
+  params:
+  - name: '0'
+    description: colorKeyword - A color keyword as defined as part of W3c's CSS color module level 3. <STRING>
+    type: String
+  example: |-
+    (begin example)
+            "paleturquoise" call CBA_fnc_cssColorToHEX
+        (end)
+    Author:
+        Lambda.Tiger & drofseh
+    ----------------------------------------------------------------------------
+- name: cba_fnc_csscolortotexture
+  ret: String
+  params:
+  - name: '0'
+    description: colorKeyword - A color keyword as defined as part of W3c's CSS color module level 3. <STRING>
+    type: String
+  example: |-
+    (begin example)
+            "firebrick" call CBA_fnc_cssColorToTexture
+        (end)
+    Author:
+        Lambda.Tiger & drofseh
+    ----------------------------------------------------------------------------
+- name: cba_fnc_currentmagazineindex
+  ret: String
+  params:
+  - name: '0'
+    description: unit   - Unit to check <OBJECT>
+    type: Object
+  - name: '1'
+    description: turret - What turret should be examined. <ARRAY>
+    type: ArrayUnknown
+  example: ''
+- name: cba_fnc_currentunit
+  ret: Object
+  params: []
+  example: ''
+- name: cba_fnc_debug
+  params:
+  - name: '0'
+    description: message - Message to write <STRING, ARRAY>
+    type: Anything
+  - name: '1'
+    description: 'title   - Message title (optional, default: "cba_diagnostic") <STRING>'
+    type: String
+    optional: true
+  - name: '2'
+    description: type    - Type of message <ARRAY>
+    type: ArrayUnknown
+  example: |-
+    (begin example)
+            // Write the debug message in chat-log of every client
+            ["New Player Joined the Server!", "cba_network", [true, false, true]] call CBA_fnc_debug;
+        (end)
+
+    Author:
+        Sickboy, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_decodeurl
+  ret: String
+  params:
+  - name: '0'
+    description: string - URL encoded text <STRING>
+    type: String
+  example: |-
+    (begin example)
+            "Mission%20Name" call CBA_fnc_decodeURL; // "Mission Name"
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_deleteentity
+  ret: Nothing
+  params:
+  - name: '0'
+    description: entity to delete. Can be array of entites. <ARRAY, OBJECT, GROUP, LOCATION, MARKER>
+    type: Anything
+  example: ''
+- name: cba_fnc_deletenamespace
+  ret: Nothing
+  params:
+  - name: '0'
+    description: namespace - a namespace <LOCATION or OBJECT>
+    type: !OneOf
+    - - Location
+      - null
+    - - Object
+      - null
+  example: |-
+    (begin example)
+            _namespace call CBA_fnc_deleteNamespace;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_deleteperframehandlerobject
+  ret: Nothing
+  params:
+  - name: '0'
+    description: logic - The PFH object <LOCATION>
+    type: Location
+  example: |-
+    (begin example)
+            _pfhLogic call CBA_fnc_deletePerFrameHandlerObject;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_deserializenamespace
+  ret: Anything
+  params:
+  - name: '0'
+    description: hash     - a hash <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: 'isGlobal - create a global namespace (optional, default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            private _hash = profileNamespace getVariable "My_serializedNamespace";
+            My_namespace = [_hash] call CBA_fnc_deserializeNamespace;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_directcall
+  ret: Anything
+  params:
+  - name: '0'
+    description: code      - Code to execute <CODE>
+    type: Code
+  - name: '1'
+    description: arguments - Parameters to call the code with. (optional) <ANY>
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            0 spawn { {systemChat str canSuspend} call CBA_fnc_directCall; };
+            -> false
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_dropitem
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit - the unit that should drop the item <OBJECT>
+    type: Object
+  - name: '1'
+    description: item - class name of the item to drop <STRING>
+    type: String
+  - name: '2'
+    description: 'skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            _result = [player, "FirstAidKit"] call CBA_fnc_dropItem
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_dropmagazine
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit - the unit that should drop a magazine <OBJECT>
+    type: Object
+  - name: '1'
+    description: item - class name of the magazine to drop <STRING>
+    type: String
+  - name: '2'
+    description: ammo - ammo count (optional). If not specified a random magazine is chosen <NUMBER>
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            _result = [player, "SmokeShell"] call CBA_fnc_dropMagazine
+        (end)
+
+    Author:
+        ?, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_dropweapon
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit - the unit that should drop a weapon <OBJECT>
+    type: Object
+  - name: '1'
+    description: item - class name of the weapon to drop <STRING>
+    type: String
+  - name: '2'
+    description: 'skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            _result = [player, primaryWeapon player] call CBA_fnc_dropWeapon
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_encodejson
+  params:
+  - name: '0'
+    description: object - Object to serialize. <ARRAY, ...>
+    type: Anything
+  example: |-
+    (begin example)
+            private _settings = call CBA_fnc_createNamespace;
+            _settings setVariable ["enabled", true];
+            private _json = [_settings] call CBA_fnc_encodeJSON;
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_fnc_error
+  params:
+  - name: '0'
+    description: 'prefix    - Addon name (optional, defaut: "cba") <STRING>'
+    type: String
+    optional: true
+  - name: '1'
+    description: 'component - Component name (optional, default: "diagnostic") <STRING>'
+    type: String
+    optional: true
+  - name: '2'
+    description: title     - Title of the error <STRING>
+    type: String
+  - name: '3'
+    description: message   - Error message (use "\n" for newline) <STRING>
+    type: String
+  - name: '4'
+    description: file      - Name of file <STRING>
+    type: String
+  - name: '5'
+    description: lineNum   - Line of file <NUMBER>
+    type: Number
+  example: ''
+- name: cba_fnc_escaperegex
+  ret: String
+  params:
+  - name: '0'
+    description: string   - String to sanitize <STRING>
+    type: String
+  example: |-
+    (begin example)
+            "\Q.*?AK-15.*?\E" call CBA_fnc_escapeRegex;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_fnc_execafternframes
+  ret: Nothing
+  params:
+  - name: '0'
+    description: function - The function to run. <CODE>
+    type: Code
+  - name: '1'
+    description: 'args     - Parameters passed to the function executing. This will be the same array every execution. (optional, default: []) <ANY>'
+    type: Anything
+    optional: true
+  - name: '2'
+    description: 'frames   - The amount of frames the execution of the function should be delayed by. (optional, default: 0) <NUMBER>'
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+            [{hint "Done!"}, [], 5] call cba_fnc_execAfterNFrames;
+        (end)
+
+    Author:
+        mharis001, donated from ZEN
+    ----------------------------------------------------------------------------
+- name: cba_fnc_execnextframe
+  ret: Nothing
+  params:
+  - name: '0'
+    description: function - The function to run. <CODE>
+    type: Code
+  - name: '1'
+    description: 'args     - Parameters passed to the function executing. This will be the same array every execution. (optional, default: []) <ANY>'
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            [{player sideChat format ["This is frame %1, not %2", diag_frameNo, _this select 0];}, [diag_frameNo]] call CBA_fnc_execNextFrame;
+        (end)
+
+    Author:
+        esteldunedain and PabstMirror, donated from ACE3
+    ----------------------------------------------------------------------------
+- name: cba_fnc_filter
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: array   - Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: filter  - Function to filter each element <CODE>
+    type: Code
+  - name: '2'
+    description: 'inPlace - true: alter array, false: copy array (optional, default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            // Filter to create a new array.
+            _original = [1, 2, 3];
+            _filtered = [_original, {_x + 1}] call CBA_fnc_filter;
+            // _original ==> [1, 2, 3]
+            // _filtered ==> [2, 3, 4]
+
+            // Filter original array in place.
+            _original = [1, 2, 3];
+            [_original, {_x * 10}, true] call CBA_fnc_filter;
+            // _original ==> [10, 20, 30]
+        (end)
+
+    Author:
+        Spooner, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_find
+  params:
+  - name: '0'
+    description: haystack - String in which to search [String or ASCII char array]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: needle - String to search for [String or ASCII char array]
+    type: Anything
+    optional: true
+  - name: '2'
+    description: initialIndex - Initial character index within _haystack to start the
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _result = ["frog-headed fish", "f"] call CBA_fnc_find;
+            // _result => 0
+
+            _result = ["frog-headed fish", "f", 5] call CBA_fnc_find;
+            // _result => 12
+
+            _result = ["frog-headed fish", "fish"] call CBA_fnc_find;
+            // _result => 12
+        (end)
+
+    Author:
+        jaynus
+    ----------------------------------------------------------------------------
+- name: cba_fnc_findentity
+  ret: Nothing
+  params: []
+  example: ''
+- name: cba_fnc_findmax
+  params:
+  - name: '0'
+    description: 'array: Array with Numbers'
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_findmin
+  params:
+  - name: '0'
+    description: 'array: Array with Numbers'
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_findmusic
+  params: []
+  example: ''
+- name: cba_fnc_findnil
+  params:
+  - name: '0'
+    description: index = ["", player, "test", nil, _variable, nil] call CBA_fnc_findNil
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_findnull
+  params:
+  - name: '0'
+    description: index = ["", player, "test", objNull, _variable] call CBA_fnc_findNull
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_findtypename
+  params:
+  - name: '0'
+    description: index = ["OBJECT", ["", Player, "test", nil, VARIABLE, nil]] call CBA_fnc_findTypeName
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_findtypeof
+  params:
+  - name: '0'
+    description: index = [["", Player, "test", nil, VARIABLE, nil], player] call CBA_fnc_findTypeOf
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_fireddisposable
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit       - Unit that fired the disposable weapon <OBJECT>
+    type: Object
+  - name: '1'
+    description: launcher   - Disposable weapon <STRING>
+    type: String
+  - name: '2'
+    description: muzzle     - Muzzle fired by the disposable weapon <STRING>
+    type: String
+  - name: '3'
+    description: mode       - Current weapon mode of the disposable weapon <STRING>
+    type: String
+  - name: '4'
+    description: ammo       - Ammo fired by the disposable weapon <STRING>
+    type: String
+  - name: '5'
+    description: magazine   - Current magazine of the disposable weapon <STRING>
+    type: String
+  - name: '6'
+    description: projectile - Fired projectile <OBJECT>
+    type: Object
+  - name: '7'
+    description: unit       - Always same as element 0 <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            class EventHandlers {
+                fired = "_this call CBA_fnc_firedDisposable";
+            };
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_floattostring
+  params:
+  - name: '0'
+    description: number - Number to format [Number]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _str = 100.12345678 call CBA_fnc_floatToString; // _str = "100.123459", using (str 100.12345678) results in "100.123"
+            _str = 2000.1236 call CBA_fnc_floatToString; // _str = "2000.1236570", using (str 2000.1236) results in "2000.12"
+        (end)
+
+    Author:
+        Nou
+    ----------------------------------------------------------------------------
+- name: cba_fnc_formatelapsedtime
+  params:
+  - name: '0'
+    description: seconds - Number of seconds to format, for example from 'time' command [number]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: 'format - Format to put time into [String: "H:MM:SS", "M:SS",'
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_formatnumber
+  params:
+  - name: '0'
+    description: number - Number to format [Number]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: integerWidth - Minimum width of integer part of number, padded with 0s,
+    type: Anything
+    optional: true
+  - name: '2'
+    description: decimalPlaces - Number of decimal places, padded with trailing 0s,
+    type: Anything
+    optional: true
+  - name: '3'
+    description: separateThousands - True to separate each three digits with a comma
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            // Assumes English formatting.
+            [0.0001, 1, 3] call CBA_fnc_formatNumber;               // => "0.000"
+            [0.0005, 1, 3] call CBA_fnc_formatNumber;               // => "0.001"
+
+            [12345, 1, 0, true] call CBA_fnc_formatNumber;          // => "12,345"
+            [1234567, 1, 0, true] call CBA_fnc_formatNumber;        // => "1,234,567"
+
+            [12345.67, 1, 1, true] call CBA_fnc_formatNumber;       // => "12,345.7"
+            [1234, 1, 3, true] call CBA_fnc_formatNumber;           // => "1,234.000"
+
+            [0.1, 1] call CBA_fnc_formatNumber;                     // => "0"
+            [0.1, 3, 1] call CBA_fnc_formatNumber;                  // => "000.1"
+            [0.1, 0, 2] call CBA_fnc_formatNumber;                  // => ".10"
+            [12, 0] call CBA_fnc_formatNumber;                      // => "12"
+            [12, 3] call CBA_fnc_formatNumber;                      // => "012"
+
+            [-12] call CBA_fnc_formatNumber;                        // => "-12"
+        (end)
+
+    Author:
+        Spooner, PabstMirror
+    ----------------------------------------------------------------------------
+- name: cba_fnc_generateqtesequence
+  ret: Anything
+  params:
+  - name: '0'
+    description: length - Length of QTE sequence <NUMBER>
+    type: Number
+  example: ''
+- name: cba_fnc_getactivefeaturecamera
+  ret: String
+  params: []
+  example: |-
+    (begin example)
+            _result = [] call CBA_fnc_getActiveFeatureCamera
+        (end)
+
+    Author:
+        Sniperwolf572, Jonpas
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getalive
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - Boolean
+    - null
+  params:
+  - name: '0'
+    description: entities - Array or Group <GROUP, ARRAY, OBJECT>
+    type: Anything
+  example: ''
+- name: cba_fnc_getanimtype
+  params: []
+  example: ''
+- name: cba_fnc_getarea
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: area      - The area construct to process <MARKER, TRIGGER, LOCATION, ARRAY>
+    type: Anything
+  example: |-
+    (begin example)
+           _area = [marker] call CBA_fnc_getArea;
+
+           _area = [trigger] call CBA_fnc_getArea;
+
+           _area = [location] call CBA_fnc_getArea;
+
+           _area = [[center, a, b, angle, isRectangle]] call CBA_fnc_getArea;
+       (end)
+
+    Author:
+        SilentSpike
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getarg
+  params: []
+  example: ''
+- name: cba_fnc_getarraydiff
+  params:
+  - name: '0'
+    description: distance = [[0, 0, 1], [0, 0, 0]] call CBA_fnc_getArrayDiff
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_getarrayelements
+  params:
+  - name: '0'
+    description: types = [0, 0, 1, 1, 1, 1] call CBA_fnc_getArrayElements
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_getaspectratio
+  params:
+  - name: '0'
+    description: output - string with one of ["ARRAY","NUMBER","STRING"]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _ratio = "STRING" call CBA_fnc_getAspectRatio;
+            _ratio = "ARRAY" call CBA_fnc_getAspectRatio;
+            _ratio = "NUMBER" call CBA_fnc_getAspectRatio;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getcfgdatahashmap
+  ret: !OneOf
+  - - HashMapUnknown
+    - null
+  - - Nothing
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: cfg        - Entry to get value of <CONFIG>
+    type: Config
+  - name: '1'
+    description: 'condition  - Condition for configProperties (optional, default: "true") <STRING>'
+    type: String
+    optional: true
+  - name: '2'
+    description: 'inherit    - include inherited properties (optional, default: true) <BOOL>'
+    type: Boolean
+    optional: true
+  - name: '3'
+    description: 'convert    - convert certain values - see above (optional, default: true) <BOOL>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            private _hashMap = [configFile >> "CfgJellies" >> "Blue_Jelly"] call CBA_fnc_getCfgDataHashmap;
+        (end)
+
+    Author:
+        OverlordZorn
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getcfgdatarandom
+  ret: !OneOf
+  - - String
+    - null
+  - - Number
+    - null
+  - - Nothing
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: cfg  - Entry to get value of <CONFIG>
+    type: Config
+  example: |-
+    (begin example)
+            [configFile >> "CfgJellies" >> "soundEffects"] call CBA_fnc_getCfgDataRandom
+        (end)
+
+    Author:
+        OverlordZorn
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getconfigentry
+  ret: !OneOf
+  - - Anything
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: configEntry  - Entry to get value of <CONFIG>
+    type: Config
+  - name: '1'
+    description: entryType    - "STRING", "NUMBER" or "ARRAY" <STRING>
+    type: String
+  - name: '2'
+    description: defaultValue - Value to return if config entry unavailable <ANY>
+    type: Anything
+  example: |-
+    (begin example)
+            [configFile >> "CfgJellies" >> "Wobbliness", "NUMBER", 0] call CBA_fnc_getConfigEntry
+        (end)
+
+    Author:
+        Sickboy (sb_at_dev-heaven.net)
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getdistance
+  params:
+  - name: '0'
+    description: distance = [Player, [0,0,0]] call CBA_fnc_getDistance
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_getfirer
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - Object
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: vehicle - a vehicle with turrets <OBJECT>
+    type: Object
+  - name: '1'
+    description: weapon  - a weapon in the vehicles turret <STRING>
+    type: String
+  example: ''
+- name: cba_fnc_getformattedqtesequence
+  ret: String
+  params:
+  - name: '0'
+    description: code - Quick-Time sequence <ARRAY>
+    type: ArrayUnknown
+  example: ''
+- name: cba_fnc_getfov
+  params: []
+  example: |-
+    (begin example)
+            private _fieldOfView = [] call CBA_fnc_getFov select 0;
+            private _zoom = 0.75 call CBA_fnc_getFov select 1;
+        (end)
+
+    Returns:
+        Array [fov,zoom]
+
+    Authors:
+        q1184 (original code and calculation method)
+        ceeeb (improved code and new zoom calculation method)
+        streamlined by commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getgroup
+  params:
+  - name: '0'
+    description: entity - <OBJECT, GROUP>
+    type: Anything
+  example: ''
+- name: cba_fnc_getgroupindex
+  ret: Number
+  params:
+  - name: '0'
+    description: unit - Unit to check <OBJECT>
+    type: Object
+  example: ''
+- name: cba_fnc_getitemconfig
+  ret: Config
+  params:
+  - name: '0'
+    description: item - Any kind of item, weapon or magazine class name <STRING>
+    type: String
+  example: ''
+- name: cba_fnc_getitemcontextmenuoptionids
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: item                   - Item classname <STRING>
+    type: String
+  example: |-
+    (begin example)
+            [""] call CBA_fnc_getItemContextMenuOptionIDs;
+        (end)
+
+    Author:
+        Zorn
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getkeybind
+  params: []
+  example: |-
+    (begin example)
+        _entry = ["your_mod", "openMenu"] call CBA_fnc_getKeybind;
+
+        if (!isNil "_entry") then {
+            _modName     = _entry select 0; // Name of the registering mod ("your_mod")
+            _actionName  = _entry select 1; // Id of the key action ("openMenu")
+            _displayName = _entry select 2; // Pretty name for the key action or an array with ["pretty name", "tool tip"]
+            _downCode    = _entry select 3; // Code to execute on keyDown
+            _upCode      = _entry select 4; // Code to execute on keyUp
+            _firstKeybind= _entry select 5; // [DIK code, [shift, ctrl, alt]] (Only the first one)
+            _holdKey     = _entry select 6; // Will the key fire every frame while held down? (bool)
+            _holdDelay   = _entry select 7; // How long after keydown will the key event fire, in seconds (float)
+            _keybinds    = _entry select 8; // All keybinds (array)
+        };
+        (end example)
+
+    Author:
+     Taosenai
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getloadout
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: unit - The unit to set the loadout on. <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            [player] call CBA_fnc_getLoadout
+        (end)
+    Author:
+        Brett Mayson
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getmacro
+  ret: Nothing
+  params: []
+  example: |-
+    (begin example)
+            "__DATE_ARR__" call CBA_fnc_getMacro;
+        (end)
+
+    Author:
+        PabstMirror
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getmagazineindex
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: unit     - Unit to check <OBJECT>
+    type: Object
+  - name: '1'
+    description: magazine - Magazines to check <STRING>
+    type: String
+  example: ''
+- name: cba_fnc_getmusicdata
+  ret: Anything
+  params: []
+  example: ''
+- name: cba_fnc_getmusicpath
+  params: []
+  example: ''
+- name: cba_fnc_getmusicplaying
+  params: []
+  example: ''
+- name: cba_fnc_getmuzzles
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: weapon - class name of the weapon to examine <STRING>
+    type: String
+  example: |-
+    (begin example)
+            _muzzles = "arifle_AK12_GL_F" call CBA_fnc_getMuzzles
+            -> ["arifle_AK12_GL_F","EGLM"]
+        (end)
+
+    Author:
+        commy2, johnb43
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getnearest
+  params:
+  - name: '0'
+    description: position - <MARKER, OBJECT, LOCATION, GROUP, TASK or POSITION>
+    type: !OneOf
+    - - Anything
+      - null
+    - - Anything
+      - null
+  - name: '1'
+    description: array    - <ARRAY> of <MARKER, OBJECT, LOCATION, GROUP, TASK and/or POSITION>
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - Anything
+      - null
+  - name: '2'
+    description: radius   - Maximum distance from _position <NUMBER>
+    type: Number
+  - name: '3'
+    description: code     - Condition to meet, object is stored in _x variable <CODE>
+    type: Code
+  example: ''
+- name: cba_fnc_getnearestbuilding
+  params:
+  - name: '0'
+    description: position - <OBJECT, ARRAY>
+    type: Anything
+  example: ''
+- name: cba_fnc_getnonpresetclass
+  ret: String
+  params:
+  - name: '0'
+    description: item       - Classname of weapon/container <STRING>
+    type: String
+  - name: '1'
+    description: 'configRoot - Root config ("CfgWeapons", "CfgVehicles", ...) <STRING> (Default: "CfgWeapons")'
+    type: String
+    optional: true
+  example: |-
+    (begin example)
+            // Get parent class without preset attachments of a weapon (returns "arifle_mx_f")
+            _ancestorClass = ["arifle_MX_ACO_pointer_F"] call CBA_fnc_getNonPresetClass;
+        (end)
+
+    Author:
+        Jonpas
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getobjectconfig
+  ret: Config
+  params:
+  - name: '0'
+    description: object - Any kind of object or class name <STRING, OBJECT>
+    type: Anything
+  example: ''
+- name: cba_fnc_getperframehandlerdelay
+  ret: Number
+  params:
+  - name: '0'
+    description: handle   - The existing perFrameHandler's handle. <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            _currentDelay = [_handle] call CBA_fnc_getPerFrameHandlerDelay;
+        (end)
+
+    Author:
+        Mokka, OverlordZorn
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getpos
+  params:
+  - name: '0'
+    description: entity - <MARKER, OBJECT, LOCATION, GROUP, TASK, WAYPOINT or POSITION>
+    type: !OneOf
+    - - Anything
+      - null
+    - - Anything
+      - null
+  example: ''
+- name: cba_fnc_getposfromstring
+  params: []
+  example: ''
+- name: cba_fnc_getsharedgroup
+  ret: Group
+  params:
+  - name: '0'
+    description: side - Side to get group for <SIDE>
+    type: Side
+  example: |-
+    (begin example)
+            _sharedAlliedGroup = west call CBA_fnc_getSharedGroup
+        (end)
+
+    Author:
+        Sickboy, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getterrainprofile
+  params: []
+  example: ''
+- name: cba_fnc_getturret
+  params:
+  - name: '0'
+    description: vehicle    - Vehicle or vehicle class name or vehicle config <STRING, OBJECT, CONFIG>
+    type: Anything
+  - name: '1'
+    description: 'turretPath - Turret path <ARRAY> (Default: [])'
+    type: ArrayUnknown
+    optional: true
+  example: ''
+- name: cba_fnc_getuisize
+  params:
+  - name: '0'
+    description: output - the desired output format, either "NUMBER" or "STRING".
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _uiSize = "STRING" call CBA_fnc_getUISize;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getunitanim
+  params:
+  - name: '0'
+    description: unit - get stance and movement mode for this unit
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+        _result = player call CBA_fnc_getUnitAnim;
+
+        _stance = _result select 0;
+        _speed = _result select 1;
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getunitdeathanim
+  params:
+  - name: '0'
+    description: unit - the unit to get the death animation for. [Object]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+        _anim = player call CBA_fnc_getUnitDeathAnim;
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getvolume
+  ret: Number
+  params:
+  - name: '0'
+    description: object - Object to calculate the volume of <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            private _volume = _vehicle call CBA_fnc_getVolume
+        (end)
+
+    Author:
+        Anton
+    ----------------------------------------------------------------------------
+- name: cba_fnc_getweaponmodes
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: weapon        - class name of the weapon to examine <STRING>
+    type: String
+  - name: '1'
+    description: 'includeHidden - true - report AI only modes, false - report player modes (default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            _modes = "M4A1_RCO_GL" call CBA_fnc_getWeaponModes
+            -> ["M4_ACOG_Muzzle", "M203Muzzle"]
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_globalevent
+  ret: Nothing
+  params:
+  - name: '0'
+    description: eventName - Type of event to publish. <STRING>
+    type: String
+  - name: '1'
+    description: params    - Parameters to pass to the event handlers. <ANY> (optional)
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            ["test", ["global"]] call CBA_fnc_globalEvent;
+        (end)
+
+    Author:
+        Spooner, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_globaleventjip
+  ret: String
+  params:
+  - name: '0'
+    description: eventName - Type of event to publish. <STRING>
+    type: String
+  - name: '1'
+    description: params    - Parameters to pass to the event handlers. <ANY>
+    type: Anything
+  - name: '2'
+    description: 'jipID     - Unique event ID or object. [optional] (default: create unique id) <STRING, OBJECT>'
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_globalexecute
+  ret: Nothing
+  params:
+  - name: '0'
+    description: 'channel    - All: -2, ClientsOnly: -1, ServerOnly: 0 <NUMBER>'
+    type: Number
+  - name: '1'
+    description: code       - Code to execute <CODE>
+    type: Code
+  - name: '2'
+    description: parameters - Parameter to pass in the _this variable. (optional) <ANY>
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_globalsay
+  ret: Nothing
+  params:
+  - name: '0'
+    description: objects - Object or array of objects that perform Say <OBJECT, ARRAY>
+    type: Anything
+  - name: '1'
+    description: params  - [sound, maxTitlesDistance,speed] or "sound" <ARRAY, STRING>
+    type: Anything
+  example: ''
+- name: cba_fnc_globalsay3d
+  ret: Nothing
+  params:
+  - name: '0'
+    description: objects  - Object or array of objects that perform Say <OBJECT, ARRAY>
+    type: Anything
+  - name: '1'
+    description: 'params   - classname or parameter array - see biki: say3d <STRING, ARRAY>'
+    type: Anything
+  - name: '2'
+    description: 'range    - Maximum distance from camera to execute command - will be ignored if _params is an array (optional, default: nil) <NUMBER>'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'attach   - Attach created sound to _object (optional, default: false) <BOOL>'
+    type: Boolean
+    optional: true
+  - name: '4'
+    description: 'instant  - Deletes all previously attached sounds to play the current sound immediately (optional, default: false) <BOOL>'
+    type: Boolean
+    optional: true
+  - name: '5'
+    description: 'rndPitch - Randomizes Pitch. True for a Dynamic Range of 10% - Alternative Number of Dynamic Range in Pecentage. Example: 0.15 -> +- 7.5% (optional, default: false) <BOOL, NUMBER>'
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_hashcreate
+  params:
+  - name: '0'
+    description: array - Array of key-value pairs to create Hash from [Array, defaults to []]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: defaultValue - Default value. Used when key doesn't exist. A key is also removed from the hash if the value is set to this default [Any, defaults to nil]
+    type: Anything
+    optional: true
+  example: |-
+    (begin code)
+        _emptyHash = [] call CBA_fnc_hashCreate;
+        [_emptyHash, "frog"] call CBA_fnc_hashGet; // => nil
+
+        _pairs = [["frog", 12], ["fish", 9]];
+        _animalCounts = [_pairs, 0] call CBA_fnc_hashCreate;
+        [_animalCounts, "frog"] call CBA_fnc_hashGet; // => 12
+        [_animalCounts, "monkey"] call CBA_fnc_hashGet; // => 0
+        [_animalCounts, "monkey", 25] call CBA_fnc_hashGet; // => 25
+    (end code)
+
+    Author:
+        Spooner
+    ----------------------------------------------------------------------------
+- name: cba_fnc_hasheachpair
+  params:
+  - name: '0'
+    description: hash - Hash to iterate [Array which is a Hash structure]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: code - Function to call with each pair [Any]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_hashfilter
+  params:
+  - name: '0'
+    description: hash - Hash to iterate [Array which is a Hash structure]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: code - Function to call with each pair which returns a bool (false will remove key from hash) [Code]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_hashget
+  params:
+  - name: '0'
+    description: hash - Hash to look for key in [Array which is a Hash structure]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: key - Key to search for in Hash [Any]
+    type: Anything
+    optional: true
+  - name: '2'
+    description: defaultOverwrite - Default Overwrite if key is not defined [Any]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_hashhaskey
+  params:
+  - name: '0'
+    description: hash - Hash to look for key in [Array which is a Hash structure]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: key - Key to search for in Hash [Any]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_hashkeys
+  params:
+  - name: '0'
+    description: hash - Hash to get keys for [Array which is a Hash structure]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_hashrem
+  params:
+  - name: '0'
+    description: hash - Hash to use [Hash]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: key - Key to remove from Hash [Any]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_hashset
+  params:
+  - name: '0'
+    description: hash - Hash to use [Hash]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: key - Key to set in Hash [Any]
+    type: Anything
+    optional: true
+  - name: '2'
+    description: value - Value to set [Any]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_hashsize
+  params:
+  - name: '0'
+    description: hash - Hash to check size of [Array which is a Hash structure]
+    type: Anything
+    optional: true
+  example: |-
+    (begin code)
+        _emptyHash = [] call CBA_fnc_hashCreate;
+        [_emptyHash] call CBA_fnc_hashSize; // => 0
+
+        _animalCounts = [[["frog", 12], ["fish", 9]]] call CBA_fnc_hashCreate;
+        [_animalCounts] call CBA_fnc_hashSize; // => 2
+    (end code)
+
+    Author:
+        Killswitch
+    ----------------------------------------------------------------------------
+- name: cba_fnc_hashvalues
+  params:
+  - name: '0'
+    description: hash - Hash to get values for [Array which is a Hash structure]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_headdir
+  ret: !OneOf
+  - - Number
+    - null
+  - - Number
+    - null
+  - - Boolean
+    - null
+  - - Boolean
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: unit - Unit to check [Object]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: object - Relative object/position to get direction to [Object or
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _data = [player] call CBA_fnc_headDir;
+            // => returns direction of head (freelook)
+
+            _data = [player, house1] call CBA_fnc_headDir;
+            // => returns direction of head, difference angle, if house is in fov
+            //    and if 3rd person is on or not
+
+            _data = [ai] call CBA_fnc_headDir;
+            // => returns the direction of ai (not head)
+
+            _data = [ai, getPos player] call CBA_fnc_headDir;
+            // => direction of ai, difference towards players pos, if player is in
+            //    fov of ai, and 3rd person off (default return)
+        (end)
+
+    TODO:
+        Vertical angle.
+
+    ImplementationNote:
+        positionCameraToWorld is only valid for player object, it is not handled for
+        other players or AI!! For these you can only check if its turned towards an
+        object, not looking at it.
+
+    Author:
+        rocko
+    ----------------------------------------------------------------------------
+- name: cba_fnc_inheritsfrom
+  params:
+  - name: '0'
+    description: config - Class to check if it is a descendent of _baseConfig [Config]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: baseConfig - Ancestor config class [Config]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _rifle = configFile >> "CfgWeapons" >> "m16a4_acg_gl";
+            _baseRifle = configFile >> "CfgWeapons" >> "RifleCore";
+            _inherits = [_rifle, _baseRifle] call CBA_fnc_inheritsFrom;
+            // => true in this case, since all rifles are descended from RifleCore.
+        (end)
+
+    Author:
+        Sickboy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_init
+  ret: Nothing
+  params: []
+  example: |-
+    (begin example)
+            [_unit] call CBA_fnc_init;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_initevents
+  ret: Nothing
+  params: []
+  example: |-
+    (begin example)
+            _unit call CBA_fnc_initEvents;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_inject
+  params:
+  - name: '0'
+    description: array - Array of key-value pairs to create Hash from [Array]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: initial - Initial value to pass into the function as _accumulator [Any]
+    type: Anything
+    optional: true
+  - name: '2'
+    description: function - Code to pass values to [Function]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _result = [[1, 2, 3], "", {_accumulator + (str _x)}] call CBA_fnc_inject;
+            // _result ==> "123"
+
+            _result = [[1, 2, 3], " frogs", {(str _x) + _accumulator}] call CBA_fnc_inject;
+            // _result ==> "321 frogs"
+
+            _result = [[1, 2, 3], 0, {_accumulator + _x}] call CBA_fnc_inject;
+            // _result ==> 6
+        (end)
+
+    Author:
+        Spooner
+    ----------------------------------------------------------------------------
+- name: cba_fnc_insert
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: array    - Array to insert at <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: index    - Index of the insertion <NUMBER>
+    type: Number
+  - name: '2'
+    description: elements - Elements to be inserted <ARRAY>
+    type: ArrayUnknown
+  example: |-
+    (begin example)
+            _arr = ["a", "b", "e"];
+            [_arr, 2, ["c", "d"]] call CBA_fnc_insert;
+            // _arr is now ["a", "b", "c", "d", "e"]
+        (end)
+
+    Author:
+        654wak654
+    ----------------------------------------------------------------------------
+- name: cba_fnc_isalive
+  ret: Boolean
+  params:
+  - name: '0'
+    description: entity - Array, Group or Unit <OBJECT, GROUP, ARRAY>
+    type: Anything
+  example: ''
+- name: cba_fnc_ishash
+  params:
+  - name: '0'
+    description: value - Data structure to check [Any]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_ismusicplaying
+  params: []
+  example: ''
+- name: cba_fnc_isperson
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit - A unit or classname <OBJECT, STRING>
+    type: Anything
+  example: |-
+    (begin example)
+        player call CBA_fnc_isPerson;
+        -> true
+
+        "CAManBase" call CBA_fnc_isPerson;
+        -> true
+
+        (vehicle player) call CBA_fnc_isPerson;
+        -> false
+
+        _projectile call CBA_fnc_isPerson;
+        -> false
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_isrecompileenabled
+  ret: Boolean
+  params: []
+  example: |-
+    (begin example)
+            _enabled = ["compile"] call CBA_fnc_isRecompileEnabled;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_isscheduled
+  ret: Boolean
+  params: []
+  example: |-
+    (begin example)
+            _result = call CBA_fnc_isScheduled;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_isterrainobject
+  ret: Boolean
+  params:
+  - name: '0'
+    description: object - any object <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            cursorObject call CBA_fnc_isTerrainObject
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_isturnedout
+  params:
+  - name: '0'
+    description: unit - Unit to check [Object]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+        if ( [player] call CBA_fnc_isTurnedOut ) then
+        {
+            player sideChat "I am turned out!";
+        };
+        (end)
+
+    Author:
+        Nou, courtesy of ACRE project.
+    ----------------------------------------------------------------------------
+- name: cba_fnc_isunitgetoutanim
+  params:
+  - name: '0'
+    description: unit - Unit to check [Object]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            if ( [player] call CBA_fnc_isUnitGetOutAnim ) then
+            {
+                player sideChat "I am turned out!";
+            };
+        (end)
+
+    Author:
+        (c) Denisko-Redisko
+    ----------------------------------------------------------------------------
+- name: cba_fnc_join
+  params:
+  - name: '0'
+    description: array - Array to join together as a string [Array]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: separator - String to put between each element of _array
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_keypressedqte
+  ret: Boolean
+  params:
+  - name: '0'
+    description: eventQTE - Character to test against Quick-Time Event <STRING>
+    type: String
+  example: ''
+- name: cba_fnc_lefttrim
+  params:
+  - name: '0'
+    description: string - String to trim [String]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: 'trim - Characters to trim [String] (default: "")'
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_localevent
+  ret: Anything
+  params:
+  - name: '0'
+    description: eventName - Type of event to publish. <STRING>
+    type: String
+  - name: '1'
+    description: params    - Parameters to pass to the event handlers. <ANY> (optional)
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            ["test", ["local"]] call CBA_fnc_localEvent;
+        (end)
+
+    Author:
+        Spooner, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_localizekey
+  ret: String
+  params:
+  - name: '0'
+    description: key     - DIK code <NUMBER>
+    type: Number
+  - name: '1'
+    description: modifier - Modifier keys <ARRAY, BOOL> (optional)
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            [0x12, [false, false, false]] call CBA_fnc_localizeKey;
+        (end example)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_log
+  params:
+  - name: '0'
+    description: message   - Message <STRING>
+    type: String
+  example: ''
+- name: cba_fnc_logbase2
+  ret: Number
+  params:
+  - name: '0'
+    description: num   -   a number <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            8 call CBA_fnc_logBase2; // returns 3
+
+            -7.62 call CBA_fnc_logBase2; // returns 2.93
+        (end)
+
+    Author:
+        Daisy
+    ----------------------------------------------------------------------------
+- name: cba_fnc_mapdirto
+  params:
+  - name: '0'
+    description: pos1 - Origin position array in format [Easting, Northing] [Array]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: pos2 - End position in format [Easting, Northing] [Array]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _dir = [[024,015], [025,014]] call CBA_fnc_mapDirTo;
+            // _dir will be 45 degrees
+        (end)
+        (begin example)
+            _dir = [["024","015"], ["025","014"]] call CBA_fnc_mapDirTo;
+            // _dir will be 45 degrees
+        (end)
+        (begin example)
+            _dir = ["024015", "025014"] call CBA_fnc_mapDirTo;
+            // _dir will be 45 degrees
+        (end)
+
+
+    Author:
+        Nou (with credit to Headspace for the real math :p)
+    ----------------------------------------------------------------------------
+- name: cba_fnc_mapgridtopos
+  params:
+  - name: '0'
+    description: pos - The position, either an array of strings for the northing & easting or a string.
+    type: Anything
+    optional: true
+  - name: '1'
+    description: doOffSet - If true, return the center of the gridsquare, if false return upper left. Default false.
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _pos = ["024","015"] call CBA_fnc_mapGridToPos;
+        (end)
+        (begin example)
+            _pos = [["024","015"], true] call CBA_fnc_mapGridToPos;
+        (end)
+        (begin example)
+            _pos = "024015" call CBA_fnc_mapGridToPos;
+        (end)
+
+    Author:
+        Nou
+    ----------------------------------------------------------------------------
+- name: cba_fnc_maprelpos
+  params:
+  - name: '0'
+    description: pos - Position in 10 digit grid format [Easting, Northing] [Array]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: dist - Distance from the starting position [Number]
+    type: Anything
+    optional: true
+  - name: '2'
+    description: dir  - Direction from the starting position [Number]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _endPos = [[024,015], 20, 45] call CBA_fnc_mapRelPos;
+        (end)
+        (begin example)
+            // preferred
+            _endPos = [["024","015"], 20, 45] call CBA_fnc_mapRelPos;
+        (end)
+    Author:
+        Nou (with credit to Headspace, Rommel & Meat187 for the real math :p)
+    ----------------------------------------------------------------------------
+- name: cba_fnc_matrixproduct3d
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: matrixA      - first 3x3 matrix. <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: matrixB      - second 3x3 matrix. <ARRAY>
+    type: ArrayUnknown
+  example: |-
+    (begin example)
+        // point reflection at origin [0,0,0] for every vector in matrix B
+        [[[-1,0,0],[0,-1,0],[0,0,-1]], [[1,2,3], [3,1,2], [2,3,1]]] call CBA_fnc_matrixProduct3D;
+        (end)
+
+    Author:
+        Kex
+    ----------------------------------------------------------------------------
+- name: cba_fnc_matrixtranspose
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: matrix       - mxn matrix to transpose. <ARRAY>
+    type: ArrayUnknown
+  example: |-
+    (begin example)
+        // returns the transposed matrix [[1,3,2], [2,1,3], [3,2,1]]
+        [[[1,2,3], [3,1,2], [2,3,1]]] call CBA_fnc_matrixTranspose;
+        (end)
+
+    Author:
+        Kyle Kotowick, Kex
+    ----------------------------------------------------------------------------
+- name: cba_fnc_modelheaddir
+  ret: !OneOf
+  - - Number
+    - null
+  - - Number
+    - null
+  - - Number
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: unit - Unit to check [Object]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _data = [object] call CBA_fnc_headDir;
+            // => returns direction of objects head
+        (end)
+
+    TODO:
+        Check for mem points.
+        Make sure that it doesn't throw an RPT error if executed pre-init/during init
+
+    ImplementationNote:
+        Model must contain the needed mempoints for the calculations to work. This
+        should not be an issue for any ArmA2 models, but I can not guarantee it will
+        work on all models all the time. Until there is a way to test for that it
+        should be used with some caution and if you are getting invalid results
+        then revert to the older method of CBA_fnc_headDir.
+
+    Author:
+        Nou
+    ----------------------------------------------------------------------------
+- name: cba_fnc_moduleattack
+  params: []
+  example: ''
+- name: cba_fnc_moduledefend
+  params: []
+  example: ''
+- name: cba_fnc_modulepatrol
+  params: []
+  example: ''
+- name: cba_fnc_nearplayer
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit     - the entity to check the distance from. <OBJECT>
+    type: Object
+  - name: '1'
+    description: distance - the desired distance. <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [unit, distance] call CBA_fnc_nearPlayer
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_northingreversed
+  params: []
+  example: |-
+    (begin example)
+            _reversed = [] call CBA_fnc_northingReversed
+        (end)
+
+    Author:
+        Nou
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_notify
+  params:
+  - name: '0'
+    description: content   - Notifications content (lines). <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: 'skippable - Skip or overwrite this notification if another entered the queue. (optional, default: false) <BOOL>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            "Banana" call CBA_fnc_notify;
+            ["Banana", 1.5, [1, 1, 0, 1]] call CBA_fnc_notify;
+            [["Banana", 1.5, [1, 1, 0, 1]], ["Not Apple"], true] call CBA_fnc_notify;
+        (end)
+
+    Returns:
+        Nothing
+
+    Authors:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_objectrandom
+  params:
+  - name: '0'
+    description: o - an object to base the random number on. <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            _random = _helicopter call CBA_fnc_objectRandom;
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_openlobbymanager
+  ret: Nothing
+  params: []
+  example: |-
+    (begin example)
+            call (uiNamespace getVariable "CBA_fnc_openLobbyManager");
+        (end)
+
+    Author:
+        commy2, mharis001
+    ----------------------------------------------------------------------------
+- name: cba_fnc_ownerevent
+  ret: Nothing
+  params:
+  - name: '0'
+    description: eventName   - Type of event to publish. <STRING>
+    type: String
+  - name: '1'
+    description: params      - Parameters to pass to the event handlers. <ANY>
+    type: Anything
+  - name: '2'
+    description: targetOwner - Where to execute events. <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            ["test", ["target"], 3] call CBA_fnc_ownerEvent;
+        (end)
+
+    Author:
+        PabstMirror
+    ----------------------------------------------------------------------------
+- name: cba_fnc_parsejson
+  ret: Anything
+  params:
+  - name: '0'
+    description: json       - String containing valid JSON. <STRING>
+    type: String
+  - name: '1'
+    description: objectType - Selects the type used for deserializing objects (optional) <BOOLEAN or NUMBER>
+    type: !OneOf
+    - - Boolean
+      - null
+    - - Number
+      - null
+    optional: true
+  example: |-
+    (begin example)
+            private _json = "{ ""enabled"": true }";
+            private _settings = [_json] call CBA_fnc_parseJSON;
+            private _enabled = _settings getVariable "enabled";
+
+            loadFile "data\config.json" call CBA_fnc_parseJSON
+            [preprocessFile "data\config.json", true] call CBA_fnc_parseJSON
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_fnc_parseyaml
+  params:
+  - name: '0'
+    description: file - Name of Yaml formatted file to parse <STRING>.
+    type: String
+  example: ''
+- name: cba_fnc_players
+  ret: ArrayUnknown
+  params: []
+  example: |-
+    (begin example)
+            [] call CBA_fnc_players
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_playmusic
+  params: []
+  example: ''
+- name: cba_fnc_polar2vect
+  params: []
+  example: |-
+    (begin example)
+
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_postinit
+  ret: Nothing
+  params: []
+  example: ''
+- name: cba_fnc_preinit
+  ret: Nothing
+  params: []
+  example: ''
+- name: cba_fnc_prestart
+  ret: Nothing
+  params: []
+  example: ''
+- name: cba_fnc_prettyformat
+  ret: String
+  params:
+  - name: '0'
+    description: array     - Array to format <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: 'indents   - Indentation string (optional, default: "    ") <STRING>'
+    type: String
+    optional: true
+  - name: '2'
+    description: 'lineBreak - Seperator string (optional, default: endl) <STRING>'
+    type: String
+    optional: true
+  - name: '3'
+    description: 'depth     - Initial indentation count (optional, default: 0) <NUMBER>'
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+            [[0, 1, ["22", 33, []], 4]] call CBA_fnc_prettyFormat;
+            //[
+            //    0,
+            //    1,
+            //    [
+            //        "22",
+            //        33,
+            //        []
+            //    ],
+            //    4
+            //]
+
+            [[0, 1, ["22", 33, []], 4], ">---"] call CBA_fnc_prettyFormat;
+            //[
+            //>---0,
+            //>---1,
+            //>---[
+            //>--->---"22",
+            //>--->---33,
+            //>--->---[]
+            //>---],
+            //>---4
+            //]
+
+            [[0, 1, ["22", 33, []], 4], ">---", "\n"] call CBA_fnc_prettyFormat;
+            //[\n>---0,\n>---1,\n>---[\n>--->---"22",\n>--->---33,\n>--->---[]\n>---],\n>---4\n]
+        (end)
+
+    Author:
+       Terra, Dystopian, commy2
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_progressbar
+  params: []
+  example: ''
+- name: cba_fnc_publicvariable
+  ret: Boolean
+  params:
+  - name: '0'
+    description: varName - Name of the public variable <STRING>
+    type: String
+  - name: '1'
+    description: value   - Value to broadcast <ANY>
+    type: Anything
+  example: ''
+- name: cba_fnc_randomizefacewear
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit - unit <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            [unit] call CBA_fnc_randomizeFacewear;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_randomvector3d
+  ret: ArrayUnknown
+  params: []
+  example: |-
+    (begin example)
+            vectorMagnitude call CBA_fnc_randomVector3D // 1
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_randpos
+  params:
+  - name: '0'
+    description: position  - <MARKER, OBJECT, LOCATION, GROUP, TASK or ARRAY>
+    type: !OneOf
+    - - Anything
+      - null
+    - - ArrayUnknown
+      - null
+  - name: '1'
+    description: radius    - random Radius <NUMBER>
+    type: Number
+  - name: '2'
+    description: 'direction - randomization direction (optional, default: 0) <NUMBER>'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'angle     - the angle of the circular arc in which the random position will end up. (optional, default: 360) <NUMBER>'
+    type: Number
+    optional: true
+  example: ''
+- name: cba_fnc_randposarea
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: area      - The area to find a position within <MARKER, TRIGGER, LOCATION, ARRAY>
+    type: Anything
+  - name: '1'
+    description: 'perimeter - True to return only positions on the area perimeter (optional, default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+           _position = [marker, true] call CBA_fnc_randPosArea;
+
+           _position = [trigger] call CBA_fnc_randPosArea;
+
+          _position = [location] call CBA_fnc_randPosArea;
+
+          _position = [[center, a, b, angle, isRectangle]] call CBA_fnc_randPosArea;
+       (end)
+
+    Author:
+        SilentSpike 2015-07-06
+    ----------------------------------------------------------------------------
+- name: cba_fnc_readkeyfromconfig
+  ret: !OneOf
+  - - Number
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: component - Classname under "CfgSettings" >> "CBA" >> "events" <STRING>
+    type: String
+  - name: '1'
+    description: action    - Action name <STRING>
+    type: String
+  example: |-
+    (begin example)
+            _keyConfig = ["cba_sys_nvg", "nvgon"] call CBA_fnc_readKeyFromConfig;
+        (end)
+
+    Author:
+        Sickboy, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_realheight
+  ret: Number
+  params:
+  - name: '0'
+    description: object - an object <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            _height = _house call CBA_fnc_realHeight;
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_registerchatcommand
+  ret: Boolean
+  params:
+  - name: '0'
+    description: command      - Chat command <STRING>
+    type: String
+  - name: '1'
+    description: code         - Code to execute after command was entered. <CODE>
+    type: Code
+  - name: '2'
+    description: 'availableFor - "all", "admin" or "adminLogged" (optional, default: "admin") <STRING>'
+    type: String
+    optional: true
+  - name: '3'
+    description: 'thisArgs     - Arguments to pass to event chat handler code <ANY> (optional, default: [])'
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            // '#skipTime 12' will make it night
+            ["skipTime", {parseNumber (_this select 0) remoteExec ["skipTime"];}, "admin"] call CBA_fnc_registerChatCommand;
+
+            // "Detonate" will blow up the charge
+            ["Detonate", {_thisArgs setDamage 1}, "admin", _placedDemoCharge] call CBA_fnc_registerChatCommand;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_registerfeaturecamera
+  ret: Boolean
+  params:
+  - name: '0'
+    description: name     - Name (unique/tagged) <STRING>
+    type: String
+  - name: '1'
+    description: callback - Activity check (should return true if active, false otherwise) <CODE>
+    type: Code
+  example: |-
+    (begin example)
+            _result = [
+                "ace_spectator",
+                {!isNull (missionNamespace getVariable ["ace_spectator_isSet", objNull])}
+            ] call CBA_fnc_registerFeatureCamera
+        (end)
+
+    Author:
+        Sniperwolf572, Jonpas
+    ----------------------------------------------------------------------------
+- name: cba_fnc_registerkeybindmodprettyname
+  params:
+  - name: '0'
+    description: addonName  - Name of the registering mod [String]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: prettyName - Pretty name of the mod (localized, etc) [String]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_registerkeybindtofleximenu
+  params: []
+  example: |-
+    (begin example)
+      ["Your Mod", "Your Action", ["player", [], -100, "_this call my_menu_code_array"], [15, [true, true, true]]] call cba_fnc_registerKeybindToFleximenu;
+        (end example)
+
+    Author:
+     Taosenai
+    ----------------------------------------------------------------------------
+- name: cba_fnc_reject
+  params:
+  - name: '0'
+    description: array - Input Array [Array]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: block - Block [Code]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_remoteevent
+  ret: Nothing
+  params:
+  - name: '0'
+    description: eventName - Type of event to publish. <STRING>
+    type: String
+  - name: '1'
+    description: params    - Parameters to pass to the event handlers. <ANY> (optional)
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            ["test", ["remote"]] call CBA_fnc_remoteEvent;
+        (end)
+
+    Author:
+        Spooner, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removebackpackcargo
+  ret: Boolean
+  params:
+  - name: '0'
+    description: container    - Object with cargo <OBJECT>
+    type: Object
+  - name: '1'
+    description: item         - Classname of backpack(s) to remove <STRING>
+    type: String
+  - name: '2'
+    description: 'count        - Number of backpack(s) to remove <NUMBER> (Default: 1)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'keepContents - Keep contents of the removed backpack <BOOLEAN> (Default: false)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+        // Remove 1 Kitbag Tan backpack from a box
+        _success = [myCoolBackpackBox, "B_Kitbag_cbr"] call CBA_fnc_removeBackpackCargo;
+
+        // Remove 2 Carryall Desert Camo backpacks from a box
+        _success = [myCoolBackpackBox, "B_Carryall_ocamo", 2] call CBA_fnc_removeBackpackCargo;
+
+        // Remove 1 Backpack from a box and keep contents
+        _success = [myCoolWeaponBox, "B_AssaultPack_khk", 1, true] call CBA_fnc_removeBackpackCargo;
+        (end)
+
+    Author:
+        Jonpas
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removebinocularmagazine
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit - A unit <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            player call CBA_fnc_removeBinocularMagazine
+        (end)
+
+    Author:
+        commy2, johnb43
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removebisplayereventhandler
+  ret: Boolean
+  params:
+  - name: '0'
+    description: key - Unique identifier for the event. <STRING>
+    type: String
+  example: |-
+    (begin example)
+            ["TAG_MyFiredNearEvent"] call CBA_fnc_removeBISPlayerEventHandler
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removedisplayhandler
+  ret: Nothing
+  params:
+  - name: '0'
+    description: type - Display handler type to remove. <STRING>
+    type: String
+  - name: '1'
+    description: id   - Display handler ID to remove. <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            ["KeyDown", _id] call CBA_fnc_removeDisplayHandler;
+        (end)
+
+    Author:
+        Sickboy, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removeeventhandler
+  ret: Nothing
+  params:
+  - name: '0'
+    description: eventName - Type of event to remove. <STRING>
+    type: String
+  - name: '1'
+    description: eventId   - Unique ID of the event handler to remove. <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            ["test", _id] call CBA_fnc_removeEventHandler;
+        (end)
+
+    Author:
+        Spooner, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removeglobaleventjip
+  ret: Nothing
+  params:
+  - name: '0'
+    description: jipID  - A unique ID from CBA_fnc_globalEventJIP. <STRING>
+    type: String
+  - name: '1'
+    description: 'object - Will remove JIP EH when object is deleted or immediately if omitted. (optional, default: objNull) <OBJECT>'
+    type: Object
+    optional: true
+  example: ''
+- name: cba_fnc_removeitem
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit - the unit <OBJECT>
+    type: Object
+  - name: '1'
+    description: item - name of the item to remove <STRING>
+    type: String
+  example: |-
+    (begin example)
+            _result = [player, "FirstAidKit"] call CBA_fnc_removeItem
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removeitemcargo
+  ret: Boolean
+  params:
+  - name: '0'
+    description: container    - Object with cargo <OBJECT>
+    type: Object
+  - name: '1'
+    description: item         - Classname of item(s) to remove <STRING>
+    type: String
+  - name: '2'
+    description: 'count        - Number of item(s) to remove <NUMBER> (Default: 1)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'keepContents - Keep contents of the removed item (if uniform/vest) <BOOLEAN> (Default: false)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+        // Remove 1 GPS from a box
+        _success = [myCoolItemBox, "ItemGPS"] call CBA_fnc_removeItemCargo;
+
+        // Remove 2 Compasses from a box
+        _success = [myCoolItemBox, "ItemCompass", 2] call CBA_fnc_removeItemCargo;
+
+        // Remove 1 Vest from a box and keep contents
+        _success = [myCoolWeaponBox, "V_PlateCarrier1_rgr", 1, true] call CBA_fnc_removeItemCargo;
+        (end)
+
+    Author:
+        Jonpas
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removeitemcontextmenuoption
+  ret: Boolean
+  params:
+  - name: '0'
+    description: item                   - Item classname <STRING>
+    type: String
+  example: |-
+    (begin example)
+            ["#All", "Tag_myOption_3"] call CBA_fnc_removeItemContextMenuOption;
+        (end)
+
+    Author:
+        Zorn
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removekeyhandler
+  ret: Nothing
+  params:
+  - name: '0'
+    description: hashKey - Key handler identifier. <STRING>
+    type: String
+  - name: '1'
+    description: 'type    - "keydown" or "keyup". [optional] (default: "keydown") <STRING>'
+    type: String
+    optional: true
+  example: |-
+    (begin example)
+            _id call CBA_fnc_removeKeyHandler;
+            ["cba_anothersystem_keyup", "keyup"] call CBA_fnc_removeKeyHandler;
+        (end)
+
+    Author:
+        Sickboy, commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removemagazine
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit - the unit or vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: item - name of the magazine to remove <STRING>
+    type: String
+  - name: '2'
+    description: ammo - ammo count. used to remove a specific magazine (optional) <NUMBER>
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+            _result = [player, "SmokeShell"] call CBA_fnc_removeMagazine
+        (end)
+
+    Author:
+        esteldunedain, johnb43 (from ACE)
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removemagazinecargo
+  ret: Boolean
+  params:
+  - name: '0'
+    description: container - Object with cargo <OBJECT>
+    type: Object
+  - name: '1'
+    description: item      - Classname of magazine(s) to remove <STRING>
+    type: String
+  - name: '2'
+    description: 'count     - Number of magazine(s) to remove <NUMBER> (Default: 1)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'ammo      - Ammo of magazine(s) to remove (-1 for magazine(s) with any ammo) <NUMBER> (Default: -1)'
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+        // Remove 1 Smokegrenade from a box
+        _success = [myCoolMagazineBox, "SmokeShell"] call CBA_fnc_removeMagazineCargo;
+
+        // Remove 2 Handgrenades from a box
+        _success = [myCoolMagazineBox, "HandGrenade_West", 2] call CBA_fnc_removeMagazineCargo;
+
+        // Remove 2 magazines which each have 5 bullets in them from a box
+        _success = [myCoolMagazineBox, "30Rnd_65x39_caseless_mag", 2, 5] call CBA_fnc_removeMagazineCargo;
+        (end)
+
+    Author:
+        silencer.helling3r 2012-12-22, Jonpas, esteldunedain, johnb43 (from ACE)
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removemarkereventhandler
+  ret: Nothing
+  params:
+  - name: '0'
+    description: eventName - Type of event to remove. Can be "created" or "deleted". <STRING>
+    type: String
+  - name: '1'
+    description: eventId   - Unique ID of the event handler to remove. <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            ["created", _id] call CBA_fnc_removeMarkerEventHandler;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removeperframehandler
+  ret: Boolean
+  params:
+  - name: '0'
+    description: handle - The function handle you wish to remove. <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            _handle = [{player sideChat format["every frame! _this: %1", _this];}, 0, ["some","params",1,2,3]] call CBA_fnc_addPerFrameHandler;
+            sleep 10;
+            [_handle] call CBA_fnc_removePerFrameHandler;
+        (end)
+
+    Author:
+        Nou & Jaynus, donated from ACRE project code for use by the community; commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removeplayeraction
+  params:
+  - name: '0'
+    description: actionIndex - Index of action to remove [Number]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_removeplayereventhandler
+  ret: Nothing
+  params:
+  - name: '0'
+    description: type - Event handler type. <STRING>
+    type: String
+  - name: '1'
+    description: id   - The ID of the event handler. <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            ["unit", _id] call CBA_fnc_removePlayerEventHandler;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removeunittrackprojectiles
+  params:
+  - name: '0'
+    description: unit    - the unit or vehicle to track <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            [vehicle player] call CBA_fnc_removeUnitTrackProjectiles;
+        (end)
+
+    Author:
+        bux578
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removeweapon
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit - the unit <OBJECT>
+    type: Object
+  - name: '1'
+    description: item - name of the weapon to remove <STRING>
+    type: String
+  example: |-
+    (begin example)
+            _result = [player, "Binocular"] call CBA_fnc_removeWeapon
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removeweaponcargo
+  ret: Boolean
+  params:
+  - name: '0'
+    description: container       - Object with cargo <OBJECT>
+    type: Object
+  - name: '1'
+    description: item            - Classname of weapon(s) to remove <STRING>
+    type: String
+  - name: '2'
+    description: 'count           - Number of weapon(s) to remove <NUMBER> (Default: 1)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'keepAttachments - Keep attachments/magazines of the removed weapon <BOOLEAN> (Default: false)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+        // Remove 1 Binocular from a box
+        _success = [myCoolWeaponBox, "Binocular"] call CBA_fnc_removeWeaponCargo;
+
+        // Remove 2 M16A2 from a box
+        _success = [myCoolWeaponBox, "M16A2", 2] call CBA_fnc_removeWeaponCargo;
+
+        // Remove 1 MX (with ACO and IR pointer) from a box and keep attachments
+        _success = [myCoolWeaponBox, "arifle_MX_ACO_pointer_F", 1, true] call CBA_fnc_removeWeaponCargo;
+        (end)
+
+    Author:
+        silencer.helling3r 2012-12-22, Jonpas
+    ----------------------------------------------------------------------------
+- name: cba_fnc_removewhitespace
+  ret: String
+  params:
+  - name: '0'
+    description: string   - Any String <STRING>
+    type: String
+  - name: '1'
+    description: 'seperate - Seperate leftovers with spaces? (optional, default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: ''
+- name: cba_fnc_renameinventoryitem
+  params:
+  - name: '0'
+    description: class - Item classname. <STRING>
+    type: String
+  - name: '1'
+    description: name - New item name. <STRING>
+    type: String
+  - name: '2'
+    description: 'picture - New item picture. <STRING> (default: "")'
+    type: String
+    optional: true
+  example: |-
+    (begin example)
+            ["DocumentsSecret", "Brett's secret documents"] call CBA_fnc_renameInventoryItem;
+            ["DocumentsSecret", "Brett's secret documents", "\a3\Missions_F_Oldman\Props\data\FilesSecret_ca.paa"] call CBA_fnc_renameInventoryItem;
+        (end)
+
+    Returns:
+        Nothing
+
+    Authors:
+        Brett Mayson
+    ----------------------------------------------------------------------------
+- name: cba_fnc_replace
+  params:
+  - name: '0'
+    description: string - String to make replacement in [String]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: pattern - Substring to replace [String]
+    type: Anything
+    optional: true
+  - name: '2'
+    description: replacement - String to replace the _pattern with [String]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_righttrim
+  params:
+  - name: '0'
+    description: string - String to trim [String]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: 'trim - Characters to trim [String] (default: "")'
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_runqte
+  ret: Boolean
+  params:
+  - name: '0'
+    description: args - Extra arguments passed to the _on... callbacks <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: 'failCondition - Code condition to fail the Quick-Time Event; arguments passed: [_args, _elapsedTime, _resetCount] <CODE, STRING> (default: {false})'
+    type: Anything
+    optional: true
+  - name: '2'
+    description: 'onDisplay - Code or event callback on keypress; arguments passed: [_args, _qteSequence, _qteHistory, _resetCount, _incorrectInput] <CODE, STRING>'
+    type: Anything
+  - name: '3'
+    description: 'onFinish - Code or event callback on Quick-Time Event completed; arguments passed: [_args, _elapsedTime, _resetCount] <CODE, STRING>'
+    type: Anything
+  - name: '4'
+    description: 'onFail - Code or event callback on Quick-Time Event timeout/outranged; arguments passed: [_args, _elapsedTime, _resetCount] <CODE, STRING>'
+    type: Anything
+  - name: '5'
+    description: qteSequence - Quick-Time sequence made up of ["^", "v", ">", "<"] <ARRAY>
+    type: Anything
+  - name: '6'
+    description: resetUponIncorrectInput - Reset Quick-Time keystroke history if input is incorrect <BOOLEAN>
+    type: Boolean
+  example: ''
+- name: cba_fnc_sanitizehtml
+  ret: String
+  params:
+  - name: '0'
+    description: string - String to sanitize <STRING>
+    type: String
+  example: ''
+- name: cba_fnc_scalevect
+  params: []
+  example: |-
+    (begin example)
+
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_scalevectto
+  params: []
+  example: |-
+    (begin example)
+
+        (end)
+
+    *  @[not needed yet]*  @call sct_simplifyAngle.sqf
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_searchnearby
+  params: []
+  example: ''
+- name: cba_fnc_select
+  params:
+  - name: '0'
+    description: array - Input Array [Array]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: block - Block [Code]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_selectbest
+  params:
+  - name: '0'
+    description: array - Input Array [Array]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: criteria - Code that is passed element and should return an integer value [Code]
+    type: Anything
+    optional: true
+  - name: '2'
+    description: return - default return value if array is empty (optional, default nil) [Any]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_selectrandomarray
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: array  - Input Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: amount - Amount to select <NUMBER>
+    type: Number
+  example: ''
+- name: cba_fnc_selectweapon
+  ret: Boolean
+  params:
+  - name: '0'
+    description: unit   - Unit object to perform function on. <OBJECT>
+    type: Object
+  - name: '1'
+    description: weapon - Weapon or muzzle to select <STRING>
+    type: String
+  - name: '2'
+    description: 'mode   - Weapon mode to switch to [optional] <STRING> (default: "")'
+    type: String
+    optional: true
+  example: |-
+    (begin example)
+        _result = [player, secondaryWeapon player] call CBA_fnc_selectWeapon;
+        _result = [player, currentWeapon player, "FullAuto"] call CBA_fnc_selectWeapon;
+        _result = [player, "LMG_M200_body"] call CBA_fnc_selectWeapon;
+        (end)
+
+    Author:
+        Sickboy, commy2, johnb43
+    ----------------------------------------------------------------------------
+- name: cba_fnc_serializenamespace
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: namespace - a namespace <LOCATION, OBJECT>
+    type: Anything
+  - name: '1'
+    description: defaultValue - Default value. Used when key doesn't exist. A key is also removed from the hash if the value is set to this default [Any, defaults to nil]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            private _hash = _namespace call CBA_fnc_serializeNamespace;
+            profileNamespace setVariable ["My_serializedNamespace", _hash];
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_serverevent
+  ret: Nothing
+  params:
+  - name: '0'
+    description: eventName - Type of event to publish. <STRING>
+    type: String
+  - name: '1'
+    description: params    - Parameters to pass to the event handlers. <ANY> (optional)
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            ["test", ["server"]] call CBA_fnc_serverEvent;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_setcallsign
+  ret: Nothing
+  params:
+  - name: '0'
+    description: group    - A group <GROUP, OBJECT>
+    type: Anything
+  - name: '1'
+    description: callsign - The call sign the group should receive <STRING>
+    type: String
+  example: ''
+- name: cba_fnc_setheight
+  ret: Nothing
+  params:
+  - name: '0'
+    description: object - <OBJECT, LOCATION>
+    type: Anything
+  - name: '1'
+    description: height - Height in metres <NUMBER>
+    type: Number
+  - name: '2'
+    description: 'type   - Mode (optional, default: 1), 0 is AGL, 1 is ASL, 2 is ATL (Default: 1)'
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_setloadout
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit - The unit to set the loadout on. <OBJECT>
+    type: Object
+  - name: '1'
+    description: loadout - The extended loadout to set. <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: 'fullMagazines - Partially emptied magazines will be refilled when the loadout is applied. <BOOL> (Default: false)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            [player] call CBA_fnc_setLoadout
+        (end)
+    Author:
+        Brett Mayson
+    ----------------------------------------------------------------------------
+- name: cba_fnc_setperframehandlerdelay
+  ret: Boolean
+  params:
+  - name: '0'
+    description: handle   - The existing perFrameHandler's handle. <NUMBER>
+    type: Number
+  - name: '1'
+    description: 'delay    - The amount of time in seconds between executions, 0 for every frame. (optional, default: 0) <NUMBER>'
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+            _wasSuccessful = [_handle, _newDelay] call cba_fnc_setPerFrameHandlerDelay ;
+        (end)
+
+    Author:
+        Mokka, OverlordZorn
+    ----------------------------------------------------------------------------
+- name: cba_fnc_setpos
+  params:
+  - name: '0'
+    description: entity   - <MARKER, OBJECT, LOCATION, GROUP, TASK>
+    type: Anything
+  - name: '1'
+    description: position - <MARKER, OBJECT, LOCATION, GROUP, TASK, ARRAY>
+    type: Anything
+  - name: '2'
+    description: radius   - random Radius (optional) <NUMBER>
+    type: Number
+    optional: true
+  example: ''
+- name: cba_fnc_setvarnet
+  ret: Boolean
+  params:
+  - name: '0'
+    description: object  - Object namespace <OBJECT, GROUP>
+    type: Anything
+  - name: '1'
+    description: varName - Name of the public variable <STRING>
+    type: String
+  - name: '2'
+    description: value   - Value to broadcast <ANY>
+    type: Anything
+  example: ''
+- name: cba_fnc_shuffle
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: array - Array of values to shuffle <Array, containing anything except nil>
+    type: Anything
+  - name: '1'
+    description: 'inPlace - true: alter array, false: copy array (optional, default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: ''
+- name: cba_fnc_simplifyangle
+  params:
+  - name: '0'
+    description: angle - The unadjusted angle [Number]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+       _angle = [912] call CBA_fnc_simplifyAngle;
+       (end)
+
+    Author:
+        SilentSpike 2015-27-07
+    ----------------------------------------------------------------------------
+- name: cba_fnc_simplifyangle180
+  params:
+  - name: '0'
+    description: angle - The unadjusted angle [Number]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+       _angle = [912] call CBA_fnc_simplifyAngle180;
+       (end)
+
+    Author:
+        SilentSpike 2015-27-07
+    ----------------------------------------------------------------------------
+- name: cba_fnc_sortnestedarray
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: array - Nested array to be sorted <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: index - Sub array item index to be sorted on <NUMBER>
+    type: Number
+  - name: '2'
+    description: 'order - true: ascending, false: descending (optional, default: true) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: ''
+- name: cba_fnc_split
+  params:
+  - name: '0'
+    description: string - String to split up [String]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: separator - String to split around. If an empty string, "", then split
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _result = ["FISH\Cheese\frog.sqf", "\"] call CBA_fnc_split;
+            _result is ["Fish", "Cheese", "frog.sqf"]
+
+            _result = ["Peas", ""] call CBA_fnc_split;
+            _result is ["P", "e", "a", "s"]
+        (end)
+
+    Author:
+        PabstMirror
+    ----------------------------------------------------------------------------
+- name: cba_fnc_standarddeviation
+  ret: Number
+  params:
+  - name: '0'
+    description: numbers - The array from which the standard deviation is computed <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: 'ddof    - The delta degrees of freedom [optional] <SCALAR> (default: 0)'
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+        // returns roughly 5.564
+        [[1,4,16,4,1]] call CBA_fnc_standardDeviation;
+        // returns roughly 6.221
+        [[1,4,16,4,1], 1] call CBA_fnc_standardDeviation;
+        (end)
+
+    Author:
+        Kex
+    ----------------------------------------------------------------------------
+- name: cba_fnc_startfallbackloop
+  ret: Nothing
+  params: []
+  example: |-
+    (begin example)
+            call CBA_fnc_startFallbackLoop;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_stopmusic
+  ret: Nothing
+  params: []
+  example: ''
+- name: cba_fnc_strlen
+  params:
+  - name: '0'
+    description: string - String to measure [String]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _length = [""] call CBA_fnc_strLen;
+            // _result => 0
+
+            _length = ["frogs are fishy"] call CBA_fnc_strLen;
+            // _result => 15
+        (end)
+
+    Author:
+        Spooner
+    ----------------------------------------------------------------------------
+- name: cba_fnc_substr
+  params:
+  - name: '0'
+    description: string - String to extract from [String]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: startIndex - Index to start the substring extraction [Number]
+    type: Anything
+    optional: true
+  - name: '2'
+    description: length - length of the extracted substring [Number](Optional) if is not set than from _startIndex to end
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_substring
+  params:
+  - name: '0'
+    description: string - String to extract from [String]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: startIndex - Index to start the substring extraction [Number]
+    type: Anything
+    optional: true
+  - name: '2'
+    description: endIndex - Index to end the substring extraction [Number]
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_supportmonitor
+  ret: ArrayUnknown
+  params: []
+  example: |-
+    (begin example)
+            [true] call CBA_fnc_supportMonitor;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_switchableattachments
+  ret: ArrayUnknown
+  params: []
+  example: |-
+    (begin example)
+            "acc_pointer_IR" call CBA_fnc_switchableAttachments
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_switchplayer
+  params: []
+  example: |-
+    (begin example)
+        // Change into a M136 AT rifleman
+        _h = ["USMC_Soldier_LAT"] spawn CBA_fnc_switchPlayer;
+
+        // Switch into a corpsman, but keep the weapons
+        _h = ["USMC_Soldier_Medic", "LEAVEWEAPS"] spawn CBA_fnc_switchPlayer;
+        (end)
+
+    Author:
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_targetevent
+  ret: Nothing
+  params:
+  - name: '0'
+    description: eventName - Type of event to publish. <STRING>
+    type: String
+  - name: '1'
+    description: params    - Parameters to pass to the event handlers. <ANY> (optional)
+    type: Anything
+    optional: true
+  - name: '2'
+    description: targets   - Where to execute events. <OBJECT, GROUP, ARRAY>
+    type: Anything
+  example: |-
+    (begin example)
+            ["test", ["target"], cursorTarget] call CBA_fnc_targetEvent;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_taskattack
+  params: []
+  example: ''
+- name: cba_fnc_taskdefend
+  ret: Nothing
+  params:
+  - name: '0'
+    description: group      - the group <GROUP, OBJECT>
+    type: Anything
+  - name: '1'
+    description: 'position   - centre of area to defend <ARRAY, OBJECT, LOCATION, GROUP> (Default: _group)'
+    type: Anything
+    optional: true
+  - name: '2'
+    description: 'radius     - radius of area to defend <NUMBER> (Default: 50)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'threshold  - minimum building positions required to be considered for garrison <NUMBER> (Default: 3)'
+    type: Number
+    optional: true
+  - name: '4'
+    description: 'patrol     - chance for each unit to patrol instead of garrison, true for default, false for 0% <NUMBER, BOOLEAN> (Default: 0.1)'
+    type: Anything
+    optional: true
+  - name: '5'
+    description: 'hold       - chance for each unit to hold their garrison in combat, true for 100%, false for 0% <NUMBER, BOOLEAN> (Default: 0)'
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            [this] call CBA_fnc_taskDefend
+        (end)
+
+    Author:
+        Rommel, SilentSpike
+    ----------------------------------------------------------------------------
+- name: cba_fnc_taskpatrol
+  params: []
+  example: ''
+- name: cba_fnc_tasksearcharea
+  ret: Nothing
+  params:
+  - name: '0'
+    description: group - The group that will search [Group or Object]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: area - The area to search [Marker, Trigger or Area Array]
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+       [this, "Mark1"] call CBA_fnc_taskSearchArea;
+       [(allGroups select 2), [getPos player, 200, 200, 0, false]] call CBA_fnc_taskSearchArea;
+       (end)
+
+    Author:
+        SilentSpike 2015-08-17
+    ----------------------------------------------------------------------------
+- name: cba_fnc_test
+  params:
+  - name: '0'
+    description: addon - Prefix of addon to test [String, defaulting to "cba"].
+    type: Anything
+    optional: true
+  - name: '1'
+    description: component - Name of component to test. If "main", will
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            [] call CBA_fnc_test; // Test whole of CBA addon.
+        (end)
+
+        (begin example)
+            [nil, "arrays"] call CBA_fnc_test; // Test Arrays component of CBA addon.
+        (end)
+
+        (begin example)
+            ["SPON_Map"] call CBA_fnc_test; // Test whole of SPON_Map addon.
+        (end)
+
+        (begin example)
+            ["SPON_Map", "drawing"] call CBA_fnc_test; // Test Drawing component of SPON_Map addon.
+        (end)
+
+    Author:
+        Spooner
+
+    ----------------------------------------------------------------------------
+- name: cba_fnc_trim
+  params:
+  - name: '0'
+    description: string - String to trim [String]
+    type: Anything
+    optional: true
+  - name: '1'
+    description: 'trim - Characters to trim [String] (default: "")'
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_turretdir
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - Number
+    - null
+  - - Number
+    - null
+  params:
+  - name: '0'
+    description: vehicle         - The Vehicle. <OBJECT>
+    type: Object
+  - name: '1'
+    description: turret          - A Turret. (e.g. [0] for "main turret") <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: 'relativeToModel - false (default): report directions relative to world, true: relative to model <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            [vehicle player, [0], true] call CBA_fnc_turretDir
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_turretevent
+  ret: Nothing
+  params:
+  - name: '0'
+    description: eventName  - Type of event to publish. <STRING>
+    type: String
+  - name: '1'
+    description: params     - Parameters to pass to the event handlers. <ANY>
+    type: Anything
+  - name: '2'
+    description: vehicle    - Vehicle to which the turret belongs. <OBJECT>
+    type: Object
+  - name: '3'
+    description: turretPath - The turret to execute on. Will accept both [] and [-1] for driver's turret. <ARRAY>
+    type: ArrayUnknown
+  example: |-
+    (begin example)
+            ["test", ["turret"], cursorObject, [-1]] call CBA_fnc_turretEvent;
+        (end)
+
+    Author:
+        NeilZar
+    ----------------------------------------------------------------------------
+- name: cba_fnc_turretpath
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: unit - a soldier in a vehicle <OBJECT>
+    type: Object
+  example: ''
+- name: cba_fnc_turretpathweapon
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: vehicle - a vehicle with turrets <OBJECT>
+    type: Object
+  - name: '1'
+    description: weapon  - a weapon in the vehicles turret <STRING>
+    type: String
+  example: ''
+- name: cba_fnc_uniqueunititems
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: unit           - Unit to retrieve the items from
+    type: Anything
+    optional: true
+  - name: '1'
+    description: 'weaponItems    - Include weapons, attachments, loaded magazines (Default: false)'
+    type: Anything
+    optional: true
+  - name: '2'
+    description: 'backpack       - Include items in backpack    (Default: true)'
+    type: Anything
+    optional: true
+  - name: '3'
+    description: 'vest           - Include items in vest        (Default: true)'
+    type: Anything
+    optional: true
+  - name: '4'
+    description: 'uniform        - Include items in uniform     (Default: true)'
+    type: Anything
+    optional: true
+  - name: '5'
+    description: 'assignedItems  - Include assigned items       (Default: true)'
+    type: Anything
+    optional: true
+  - name: '6'
+    description: 'magazines      - Include not loaded magazines (Default: false)'
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_fnc_vect2polar
+  params:
+  - name: '0'
+    description: vx - vector direction in x
+    type: Anything
+    optional: true
+  - name: '1'
+    description: vy - vector direction in y
+    type: Anything
+    optional: true
+  - name: '2'
+    description: vz - vector direction in z
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+        [5, 5, 10] call CBA_fnc_vect2Polar
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vectadd
+  params: []
+  example: |-
+    (begin example)
+
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vectcross
+  params:
+  - name: '0'
+    description: u the first vector.
+    type: Anything
+    optional: true
+  - name: '1'
+    description: v the second vector.
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric,
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vectcross2d
+  params:
+  - name: '0'
+    description: u the first vector.
+    type: Anything
+    optional: true
+  - name: '1'
+    description: v the second vector.
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vectdir
+  params: []
+  example: |-
+    (begin example)
+
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vectdot
+  params:
+  - name: '0'
+    description: u the first vector.
+    type: Anything
+    optional: true
+  - name: '1'
+    description: v the second vector.
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vectelev
+  params: []
+  example: |-
+    (begin example)
+
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vectmagn
+  params: []
+  example: |-
+    (begin example)
+
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vectmagn2d
+  params: []
+  example: |-
+    (begin example)
+
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vectmap3d
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: matrix       - 3x3 matrix, which serves as a map. <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: vector       - 3D vector that is mapped. <ARRAY>
+    type: ArrayUnknown
+  example: |-
+    (begin example)
+        // point reflection at origin [0,0,0]
+        [[[-1,0,0],[0,-1,0],[0,0,-1]], [1,2,3]] call CBA_fnc_vectMap3D;
+        (end)
+
+    Author:
+        Kex
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vectrotate2d
+  params: []
+  example: ''
+- name: cba_fnc_vectrotate3d
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: vector       - 3D vector that is to be rotated <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: rotationAxis - 3D vector that the first argument is rotated around <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: theta        - Angle, in degrees clockwise, about which the first vector is rotated <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+        //Rotate 25 degrees right of player weapon direction;
+        [weaponDirection player, [0,0,1], 25] call CBA_fnc_vectRotate3D;
+
+        //Pitch a projectile's velocity down 10 degrees;
+        [velocity _projectile, (velocity _projectile) vectorCrossProduct [0,0,1], 10] call CBA_fnc_vectRotate3D;
+        (end)
+
+    Author:
+        LorenLuke
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vectsubtract
+  params: []
+  example: |-
+    (begin example)
+
+        (end)
+
+    Author:
+        Vigilante, courtesy by -=ACE=- of Simcentric
+    ----------------------------------------------------------------------------
+- name: cba_fnc_vehiclerole
+  ret: String
+  params:
+  - name: '0'
+    description: unit - a soldier in a vehicle <OBJECT>
+    type: Object
+  example: ''
+- name: cba_fnc_viewdir
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - Number
+    - null
+  - - Number
+    - null
+  params:
+  - name: '0'
+    description: vehicle - The Unit or Vehicle. <OBJECT>
+    type: Object
+  - name: '1'
+    description: weapon  - Weapon. (optional, use the weapons direction instead) <STRING>
+    type: String
+    optional: true
+  example: |-
+    (begin example)
+            player call CBA_fnc_viewDir;
+            [player, currentWeapon player] call CBA_fnc_viewDir;
+            [vehicle player, "M2HB"] call CBA_fnc_viewDir;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_waitandexecute
+  params: []
+  example: ''
+- name: cba_fnc_waituntilandexecute
+  params: []
+  example: ''
+- name: cba_fnc_weaponcomponents
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: weapon - a weapons class name with attachments build in <STRING>
+    type: String
+  example: |-
+    (begin example)
+            _components = (primaryWeapon player) call CBA_fnc_weaponComponents;
+        (end)
+
+    Author:
+        commy2, based on BIS_fnc_weaponComponents by Jiri Wainar
+    ----------------------------------------------------------------------------
+- name: cba_fnc_weaponevents
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit   - Unit that fired the weapon <OBJECT>
+    type: Object
+  - name: '1'
+    description: weapon - The weapon fired by the unit <STRING>
+    type: String
+  example: |-
+    (begin example)
+            fired = "_this call CBA_fnc_weaponEvents";
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_fnc_weekday
+  ret: !OneOf
+  - - Number
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: date - Date of [year, month, day]. <ARRAY>
+    type: ArrayUnknown
+  example: |-
+    (begin example)
+            [systemTimeUTC] call CBA_fnc_weekDay;
+            [date] call CBA_fnc_weekDay;
+            [[2022, 2, 16]] call CBA_fnc_weekDay;
+        (end)
+
+    Author:
+        Jonpas
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_animatescriptedoptic
+  ret: Nothing
+  params:
+  - name: '0'
+    description: display - CBA weapon info display <DISPLAY>
+    type: Display
+  example: |-
+    (begin example)
+            _weaponInfoDisplay call cba_optics_fnc_animateScriptedOptic;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_animatescriptedopticrecoil
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit   - The avatar <OBJECT>
+    type: Object
+  - name: '1'
+    description: weapon - Fired weapon <STRING>
+    type: String
+  example: |-
+    (begin example)
+            [player, currentWeapon player] call cba_optics_fnc_animateScriptedOpticRecoil;
+        (end)
+
+    Author:
+        commy2, (Taosenai, KoffeinFlummi)
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_changecarryhandleopticclass
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit - The avatar <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            player call cba_optics_fnc_changeCarryHandleOpticClass;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_changepipopticclass
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit - The avatar <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            player call cba_optics_fnc_changePIPOpticClass;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_currentoptic
+  ret: String
+  params:
+  - name: '0'
+    description: unit - A unit with weapon <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            player call cba_optics_fnc_currentOptic
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_gunbank
+  params: []
+  example: |-
+    (begin example)
+            call cba_optics_fnc_gunBank;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_loadscriptedoptic
+  ret: Nothing
+  params:
+  - name: '0'
+    description: display - CBA weapon info display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: init    - Begin draw script, true when called from onLoad event <BOOLEAN>
+    type: Boolean
+  example: |-
+    (begin example)
+            _weaponInfoDisplay call cba_optics_fnc_loadScriptedOptic;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_restartcamera
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit  - The avatar <OBJECT>
+    type: Object
+  - name: '1'
+    description: 'reset - Restart PIP camera if true (optional, default: true) <BOOL>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            player call cba_optics_fnc_restartCamera;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_setopticmagnification
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit          - The unit with a weapon <OBJECT>
+    type: Object
+  - name: '1'
+    description: magnification - Magnification to apply <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [player, 3] call cba_optics_fnc_setOpticMagnification;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_setopticmagnificationhelper
+  ret: Nothing
+  params:
+  - name: '0'
+    description: value - Min, max or init optic zoom <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            2 call (uiNamespace getVariable 'cba_optics_fnc_setOpticMagnificationHelper')
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_setopticmagnificationhelperzeroing
+  ret: Nothing
+  params:
+  - name: '0'
+    description: value - "discreteDistanceInitIndex" <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            2 call (uiNamespace getVariable 'cba_optics_fnc_setOpticMagnificationHelperZeroing')
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_optics_fnc_updateopticinfo
+  ret: Nothing
+  params:
+  - name: '0'
+    description: unit - The avatar <OBJECT>
+    type: Object
+  example: |-
+    (begin example)
+            player call cba_optics_fnc_updateOpticInfo;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_check
+  params:
+  - name: '0'
+    description: setting - Name of the setting <STRING>
+    type: String
+  - name: '1'
+    description: value   - Value of to test <ANY>
+    type: Anything
+  example: ''
+- name: cba_settings_fnc_clear
+  ret: Nothing
+  params:
+  - name: '0'
+    description: 'source - Can be "client", "mission" or "server" (optional, default: "client") <STRING>'
+    type: String
+    optional: true
+  example: ''
+- name: cba_settings_fnc_export
+  ret: String
+  params:
+  - name: '0'
+    description: 'source - Can be "client", "mission" or "server" (optional, default: "client") <STRING>'
+    type: String
+    optional: true
+  - name: '1'
+    description: 'exportDefault - true: export all settings,'
+    type: Anything
+    optional: true
+  example: ''
+- name: cba_settings_fnc_get
+  ret: Anything
+  params:
+  - name: '0'
+    description: setting - Name of the setting <STRING>
+    type: String
+  - name: '1'
+    description: 'source  - Can be "client", "mission", "server", "priority" or "default" (optional, default: "priority") <STRING>'
+    type: String
+    optional: true
+  example: |-
+    (begin example)
+            _result = "CBA_TestSetting" call CBA_settings_fnc_get
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_refresh
+  ret: Nothing
+  params: []
+  example: ''
+- name: cba_settings_fnc_gui_savetempdata
+  ret: Nothing
+  params: []
+  example: ''
+- name: cba_settings_fnc_import
+  ret: Nothing
+  params:
+  - name: '0'
+    description: info   - Formated settings info, (from CBA_settings_fnc_export) <STRING>
+    type: String
+  - name: '1'
+    description: 'source - Can be "client", "mission" or "server" (optional, default: "client") <STRING>'
+    type: String
+    optional: true
+  example: ''
+- name: cba_settings_fnc_init
+  ret: !OneOf
+  - - Number
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: setting     - Unique setting name. Matches resulting variable name <STRING>
+    type: String
+  - name: '1'
+    description: settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
+    type: String
+  - name: '2'
+    description: 'title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>'
+    type: Anything
+    optional: true
+  - name: '3'
+    description: category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
+    type: Anything
+  - name: '4'
+    description: valueInfo   - Extra properties of the setting depending of _settingType. See examples below (optional) <ANY>
+    type: Anything
+    optional: true
+  - name: '5'
+    description: 'isGlobal    - 1: all clients share the same setting, 2: setting can''t be overwritten (optional, default: 0) <BOOL, NUMBER>'
+    type: Anything
+    optional: true
+  - name: '6'
+    description: script      - Script to execute when setting is changed. (optional) <CODE>
+    type: Code
+    optional: true
+  - name: '7'
+    description: needRestart - Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            // CHECKBOX --- extra argument: default value
+            ["Test_Setting_1", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call cba_settings_fnc_init;
+
+            // LIST --- extra arguments: [_values, _valueTitles, _defaultIndex]
+            ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1, 0], ["enabled","disabled"], 1]] call cba_settings_fnc_init;
+
+            // SLIDER --- extra arguments: [_min, _max, _default, _trailingDecimals, _isPercentage]
+            ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call cba_settings_fnc_init;
+
+            // COLOR PICKER --- extra argument: _color
+            ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1, 1, 0]] call cba_settings_fnc_init;
+
+            // EDITBOX --- extra argument: default value
+            ["Test_Setting_5", "EDITBOX",  ["-test editbox-", "-tooltip-"], "My Category", "defaultValue"] call cba_settings_fnc_init;
+
+            // TIME PICKER (time in seconds) --- extra arguments: [_min, _max, _default]
+            ["Test_Setting_6", "TIME",     ["-test time-",    "-tooltip-"], "My Category", [0, 3600, 60]] call cba_settings_fnc_init;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_parse
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: info           - Content of file or clipboard to parse. <STRING>
+    type: String
+  - name: '1'
+    description: 'validate       - Check if settings are valid. (optional, default: false) <BOOL>'
+    type: Boolean
+    optional: true
+  - name: '2'
+    description: 'source         - Can be "client", "mission" or "server" (optional, default: "") <STRING>'
+    type: String
+    optional: true
+  - name: '3'
+    description: 'isPreprocessed - If the contents have already been preprocessed or not (optional, default: true) <BOOL>'
+    type: Boolean
+    optional: true
+  example: ''
+- name: cba_settings_fnc_priority
+  ret: !OneOf
+  - - String
+    - null
+  - - Anything
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: setting - Name of the setting <STRING>
+    type: String
+  - name: '1'
+    description: 'source  - Can be "client", "mission", "server" or "priority" (optional, default: "priority") <STRING>'
+    type: String
+    optional: true
+  example: ''
+- name: cba_settings_fnc_set
+  ret: Boolean
+  params:
+  - name: '0'
+    description: setting  - Name of the setting <STRING>
+    type: String
+  - name: '1'
+    description: value    - Value of the setting <ANY>
+    type: Anything
+  - name: '2'
+    description: priority - New setting priority <NUMBER, BOOLEAN>
+    type: Anything
+  - name: '3'
+    description: 'source   - Can be "client", "mission" or "server" (optional, default: "client") <STRING>'
+    type: String
+    optional: true
+  - name: '4'
+    description: 'store    - Store changed setting in profile or mission (optional, default: false) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            ["CBA_TestSetting", 1] call CBA_settings_fnc_set
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_whitelisted
+  ret: Boolean
+  params: []
+  example: |-
+    (begin example)
+            [] call CBA_settings_fnc_whitelisted
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_statemachine_fnc_addeventtransition
+  ret: Boolean
+  params:
+  - name: '0'
+    description: stateMachine   - a state machine <LOCATION>
+    type: Location
+  - name: '1'
+    description: originalState  - state the transition origins from <STRING>
+    type: String
+  - name: '2'
+    description: targetState    - state the transition goes to <STRING>
+    type: String
+  - name: '3'
+    description: events         - list of events that can trigger the transition <ARRAY>
+    type: ArrayUnknown
+  - name: '4'
+    description: condition      - additional condition required for the transition to
+    type: Anything
+    optional: true
+  - name: '5'
+    description: onTransition   - code that gets executed once transition happens <CODE>
+    type: Code
+  - name: '6'
+    description: name           - name for this specific transition <STRING>
+    type: String
+  example: |-
+    (begin example)
+            [_stateMachine, "initial", "end", ["end_statemachine"], {true}, {
+                systemChat format [
+                    "%1 transitioned from %2 to %3 via %4.",
+                    _this, _thisOrigin, _thisTarget, _thisTransition
+                ];
+            }, "dummyTransition"] call CBA_statemachine_fnc_addEventTransition;
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_statemachine_fnc_addstate
+  ret: String
+  params:
+  - name: '0'
+    description: stateMachine   - a state machine <LOCATION>
+    type: Location
+  - name: '1'
+    description: onState        - code that is executed when state is active (frequency
+    type: Anything
+    optional: true
+  - name: '2'
+    description: onStateEntered - code that is executed once when state was entered, after
+    type: Anything
+    optional: true
+  - name: '3'
+    description: onStateLeaving - code that is executed once when exiting state, before
+    type: Anything
+    optional: true
+  - name: '4'
+    description: name           - unique state name <STRING>
+    type: String
+  example: |-
+    (begin example)
+            _name = [_stateMachine, {}] call CBA_statemachine_fnc_addState;
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_statemachine_fnc_addtransition
+  ret: Boolean
+  params:
+  - name: '0'
+    description: stateMachine   - a state machine <LOCATION>
+    type: Location
+  - name: '1'
+    description: originalState  - state the transition origins from <STRING>
+    type: String
+  - name: '2'
+    description: targetState    - state the transition goes to <STRING>
+    type: String
+  - name: '3'
+    description: condition      - condition under which the transition will happen <CODE>
+    type: Code
+  - name: '4'
+    description: onTransition   - code that gets executed once transition happens <CODE>
+    type: Code
+  - name: '5'
+    description: name           - name for this specific transition <STRING>
+    type: String
+  example: |-
+    (begin example)
+            [_stateMachine, "initial", "end", {true}, {
+                systemChat format [
+                    "%1 transitioned from %2 to %3 via %4.",
+                    _this, _thisOrigin, _thisTarget, _thisTransition
+                ];
+            }, "dummyTransition"] call CBA_statemachine_fnc_addTransition;
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_statemachine_fnc_clockwork
+  ret: Nothing
+  params: []
+  example: ''
+- name: cba_statemachine_fnc_create
+  ret: Location
+  params:
+  - name: '0'
+    description: list           - list of anything over which the state machine will run
+    type: Anything
+    optional: true
+  - name: '1'
+    description: skipNull       - skip list items that are null
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _stateMachine = call CBA_statemachine_fnc_create;
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_statemachine_fnc_createfromconfig
+  ret: !OneOf
+  - - Location
+    - null
+  - - Nothing
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: config         - config path that contains a valid state machine config
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _stateMachine = [configFile >> "MyAddon_Statemachine"] call CBA_statemachine_fnc_createFromConfig;
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_statemachine_fnc_delete
+  ret: Nothing
+  params:
+  - name: '0'
+    description: stateMachine   - a state machine <LOCATION>
+    type: Location
+  example: |-
+    (begin example)
+            [_stateMachine] call CBA_statemachine_fnc_delete;
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_statemachine_fnc_dumpperformancecounters
+  ret: Nothing
+  params: []
+  example: |-
+    (begin example)
+            [] call CBA_statemachine_fnc_dumpPerformanceCounters;
+        (end)
+
+    Author:
+        PabstMirror
+    ----------------------------------------------------------------------------
+- name: cba_statemachine_fnc_getcurrentstate
+  ret: String
+  params:
+  - name: '0'
+    description: listItem       - item to get the state of <any namespace type>
+    type: Anything
+  - name: '1'
+    description: stateMachine   - state machine <LOCATION>
+    type: Location
+  example: |-
+    (begin example)
+            _currentState = [player, _stateMachine] call CBA_statemachine_fnc_getCurrentState;
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_statemachine_fnc_manualtransition
+  ret: Nothing
+  params:
+  - name: '0'
+    description: listItem       - the item which should transition <any namespace type>
+    type: Anything
+  - name: '1'
+    description: stateMachine   - a state machine <LOCATION>
+    type: Location
+  - name: '2'
+    description: thisOrigin     - state the transition origins from <STRING>
+    type: String
+  - name: '3'
+    description: thisTarget     - state the transition goes to <STRING>
+    type: String
+  - name: '4'
+    description: 'onTransition   - code that gets executed once transition happens <CODE> (Default: {})'
+    type: Code
+    optional: true
+  - name: '5'
+    description: 'thisTransition - name for this specific transition <STRING> (Default: "MANUAL")'
+    type: String
+    optional: true
+  example: |-
+    (begin example)
+            [_stateMachine, "initial", "end", {
+                systemChat format [
+                    "%1 transitioned from %2 to %3 manually.",
+                    _this, _thisOrigin, _thisTarget
+                ];
+            }, "dummyTransition"] call CBA_statemachine_fnc_manualTransition;
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_statemachine_fnc_tostring
+  ret: String
+  params:
+  - name: '0'
+    description: stateMachine   - a state machine <LOCATION>
+    type: Location
+  - name: '1'
+    description: outputList     - output list over which the state machine runs <BOOL>
+    type: Boolean
+  - name: '2'
+    description: outputCode     - output code details such as the onState value <BOOL>
+    type: Boolean
+  example: |-
+    (begin example)
+            _output = [_stateMachine, true] call CBA_statemachine_fnc_toString;
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_statemachine_fnc_updatelist
+  ret: Nothing
+  params:
+  - name: '0'
+    description: stateMachine   - a state machine <LOCATION>
+    type: Location
+  - name: '1'
+    description: list           - list of anything over which the state machine will run
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            [_stateMachine, _list] call CBA_statemachine_fnc_updateList;
+        (end)
+
+    Author:
+        BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_ui_fnc_getinventoryitemdata
+  params:
+  - name: '0'
+    description: control - RscDisplayInventory control <CONTROL>
+    type: Control
+  - name: '1'
+    description: index   - Item index <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            [_groundContainer, 5] call cba_ui_fnc_getInventoryItemData;
+        (end)
+
+    Author:
+        commy2, Brett Mayson
+    ----------------------------------------------------------------------------
+- name: cba_ui_fnc_openitemcontextmenu
+  ret: Nothing
+  params:
+  - name: '0'
+    description: display - RscDisplayInventory display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: container - Container <OBJECT>
+    type: Object
+  - name: '2'
+    description: item    - Item classname <STRING>
+    type: String
+  - name: '3'
+    description: slot    - Slot type <STRING>
+    type: String
+  example: |-
+    (begin example)
+            call cba_ui_fnc_openItemContextMenu;
+        (end)
+
+    Author:
+        commy2, Zorn
+    ----------------------------------------------------------------------------
+- name: cba_ui_fnc_preload3den
+  ret: Boolean
+  params: []
+  example: |-
+    (begin example)
+            call cba_ui_fnc_preload3DEN
+        (end)
+
+    Notes:
+        To disable cache use: uiNamespace setVariable ["AmmoBox_list", nil];
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_ui_fnc_preloadcurator
+  ret: Boolean
+  params: []
+  example: |-
+    (begin example)
+            call cba_ui_fnc_preloadCurator
+        (end)
+
+    Notes:
+        To disable cache use in init.sqf: RscAttrbuteInventory_weaponAddons = nil;
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
