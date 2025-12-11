@@ -3,11 +3,13 @@ use std::{
 };
 
 use commands::Commands;
+use functions::Functions;
 use git2::Repository;
-use model::{Command, EventHandlerNamespace, ParsedEventHandler, Version};
+use model::{Command, EventHandlerNamespace, Function, ParsedEventHandler, Version};
 use rust_embed::RustEmbed;
 
 pub mod commands;
+pub mod functions;
 pub mod model;
 
 #[derive(RustEmbed)]
@@ -22,6 +24,8 @@ pub struct Wiki {
     custom: Vec<String>,
     /// Whether the wiki was just updated.
     updated: bool,
+    /// Function packages
+    functions: Functions,
 }
 
 impl Wiki {
@@ -43,6 +47,11 @@ impl Wiki {
     #[must_use]
     pub const fn updated(&self) -> bool {
         self.updated
+    }
+
+    #[must_use]
+    pub const fn functions(&self) -> &Functions {
+        &self.functions
     }
 
     #[must_use]
@@ -130,7 +139,7 @@ impl Wiki {
                 repo
             } else {
                 git2::build::RepoBuilder::new()
-                    .branch("dist")
+                    .branch("dist-f")
                     .clone("https://github.com/acemod/arma3-wiki", &appdata)
                     .map_err(|e| format!("Failed to clone repository: {e}"))?
             };
@@ -166,6 +175,25 @@ impl Wiki {
             }
             event_handlers.insert(*ns, handlers);
         }
+        let mut functions = HashMap::new();
+        if let Ok(func_dir) = std::fs::read_dir(appdata.join("functions")) {
+            for entry in func_dir {
+                let Ok(entry) = entry else {
+                    continue;
+                };
+                let path = entry.path();
+                let file_stem = path.file_stem().unwrap_or_default().to_string_lossy();
+                if !path.is_file() || file_stem.is_empty() {
+                    continue;
+                }
+                let file = std::fs::File::open(&path)
+                    .map_err(|e| format!("Failed to open function file: {e}"))?;
+                let file_funcs: Vec<Function> = Functions::from_file(file).map_err(|e| {
+                    format!("Failed to parse function file {}: {e}", path.display())
+                })?;
+                functions.insert(file_stem.to_lowercase(), file_funcs);
+            }
+        }
         Ok(Self {
             version: Version::from_wiki(
                 std::fs::read_to_string(appdata.join("version.txt"))
@@ -177,6 +205,7 @@ impl Wiki {
             event_handlers,
             updated,
             custom: Vec::new(),
+            functions: Functions::new(functions),
         })
     }
 
@@ -188,6 +217,7 @@ impl Wiki {
     pub fn load_dist() -> Self {
         let mut commands = HashMap::new();
         let mut event_handlers = HashMap::new();
+        let mut functions = HashMap::new();
         for entry in Asset::iter() {
             let path = entry.as_ref();
             if path.starts_with("commands/")
@@ -213,6 +243,23 @@ impl Wiki {
                         .or_insert_with(Vec::new)
                         .push(handler);
                 }
+            } else if path.starts_with("functions/") {
+                let v_path = std::path::Path::new(path);
+                let file_stem = v_path.file_stem().unwrap_or_default().to_string_lossy();
+                if file_stem.is_empty()
+                    || !v_path
+                        .extension()
+                        .is_some_and(|ext| ext.eq_ignore_ascii_case("yml"))
+                {
+                    continue;
+                }
+                let data = Asset::get(path).unwrap().data;
+                let file_funcs: Vec<Function> = Functions::from_string(
+                    std::str::from_utf8(&data).unwrap()
+                ).unwrap_or_else(|e| {
+                    panic!("Failed to parse function file {path}: {e}")
+                });
+                functions.insert(file_stem.to_lowercase(), file_funcs);
             }
         }
         Self {
@@ -226,12 +273,13 @@ impl Wiki {
             event_handlers,
             updated: false,
             custom: Vec::new(),
+            functions: Functions::new(functions),
         }
     }
 
     fn update_git(repo: &Repository) -> Result<(), String> {
         repo.find_remote("origin")
-            .and_then(|mut r| r.fetch(&["dist"], None, None))
+            .and_then(|mut r| r.fetch(&["dist-f"], None, None))
             .map_err(|e| format!("Failed to fetch remote: {e}"))?;
         let fetch_head = repo
             .find_reference("FETCH_HEAD")
