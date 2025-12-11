@@ -1,7 +1,9 @@
 use serde::{Deserialize, Serialize};
 
+#[allow(unused_imports, reason = "only used in wiki feature")]
 use crate::model::Version;
 
+#[allow(unused_imports, reason = "only used in wiki feature")]
 use super::{ParseError, Since, Value};
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]

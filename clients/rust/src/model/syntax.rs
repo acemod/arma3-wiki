@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+#[allow(unused_imports, reason = "only used in wiki feature")]
 use super::{Call, Locality, Param, ParseError, Since, Value};
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
