@@ -1,5 +1,6 @@
 name: addOwnedMine
-description: Sets ownership over a remotely detonatable mine to the unit.
+description: Sets ownership of a remotely detonatable mine to a unit. If the unit is a player, an action that allows the player to detonate the mine is added to the action menu.
+multiplayer_note: Multiple players can own the same mine.
 groups:
 - Mines
 syntax:
@@ -15,8 +16,8 @@ syntax:
   - name: mine
     description: the mine object
     type: Object
-argument_loc: Unspecified
-effect_loc: Unspecified
+argument_loc: Global
+effect_loc: Local
 since:
   arma_3:
     major: 1
