@@ -37,7 +37,7 @@ syntax:
     default: '[[false]]'
   - name: soundPosition
     description: |-
-      position for sound emitter, overrides ''soundSource''
+      position for sound emitter, overrides ''soundSource''. [[Object]] is also supported (see note below).
       {{Feature|informative|If a following parameter has to be used, simply use <sqf inline>getPosASL _soundSource</sqf> for ''soundPosition'' instead of <sqf inline>_soundSource</sqf> for ''soundSource''.}}
       {{Feature|important|This parameter also takes [[Object]] but their [[Position#PositionAGL|AGL]] position is used instead of [[Position#PositionASL|ASL]] resulting in sound source being underground if they're above ground, always use [[Position#PositionASL|PositionASL]] instead.}}
     type: Position3dASL
