@@ -1,15 +1,15 @@
 name: compatibleMagazines
-description: Returns all magazines that can be loaded in the given weapon.
+description: Returns all magazines that can be loaded in the given weapon. Since {{GVI|arma3|2.22}} main syntax also accepts ammo class. No compatible magazines are returned for submunition or missiles.
 groups:
 - Weapons
 syntax:
-- call: !Unary weapon
+- call: !Unary weaponOrAmmo
   ret:
   - ArrayUnknown
-  - all magazines that can be loaded in '''any muzzle''' of the given weapon.
+  - all magazines that can be loaded in '''any muzzle''' of the given weapon or magazines containing given ammo.
   params:
-  - name: weapon
-    description: weapon class name
+  - name: weaponOrAmmo
+    description: weapon class name or since {{GVI|arma3|2.22}} ammo class name
     type: String
 - call: !Unary
   - weapon
