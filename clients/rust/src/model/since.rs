@@ -20,7 +20,11 @@ pub struct Since {
     #[serde(skip_serializing_if = "Option::is_none", rename = "arma2oa")]
     arma_2_arrowhead: Option<Version>,
     #[serde(default)]
-    #[serde(skip_serializing_if = "Option::is_none", rename = "tkoh", alias = "tko")]
+    #[serde(
+        skip_serializing_if = "Option::is_none",
+        rename = "tkoh",
+        alias = "tko"
+    )]
     take_on_helicopters: Option<Version>,
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none", rename = "arma3")]

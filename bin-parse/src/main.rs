@@ -23,6 +23,17 @@ async fn main() {
     let do_event_handlers =
         !dry_run || args.is_empty() || args.iter().any(|arg| arg == "--event-handlers");
 
+    println!("Dry run: {dry_run}");
+    println!("Temp dir: {}", tmp.display());
+    println!(
+        "Doing commands: {}",
+        if do_commands { "yes" } else { "no" }
+    );
+    println!(
+        "Doing event handlers: {}",
+        if do_event_handlers { "yes" } else { "no" }
+    );
+
     let client = reqwest::Client::new();
 
     let mut report = Report::new(version::version(&client).await);

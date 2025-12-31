@@ -189,6 +189,20 @@ impl Command {
         self.see_also.push(see_also);
     }
 
+    pub fn has_unknown(&self) -> bool {
+        for syntax in &self.syntax {
+            for param in syntax.params() {
+                if param.typ().is_unknown() {
+                    return true;
+                }
+            }
+            if syntax.ret().typ().is_unknown() {
+                return true;
+            }
+        }
+        false
+    }
+
     #[allow(clippy::too_many_lines)]
     #[cfg(feature = "wiki")]
     /// Parses a command from the wiki.
@@ -263,7 +277,9 @@ impl Command {
                 "eff" => {
                     command.set_effect_loc(Locality::from_wiki(value)?);
                 }
-                "serverExec" => command.set_server_exec(Some(value.trim() == "y" || value.trim() == "true" || value.trim() == "server")),
+                "serverExec" => command.set_server_exec(Some(
+                    value.trim() == "y" || value.trim() == "true" || value.trim() == "server",
+                )),
                 "descr" => {
                     command.set_description(value.to_string());
                 }

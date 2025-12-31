@@ -147,7 +147,7 @@ impl Param {
                 } else {
                     Some(desc.trim().to_string())
                 },
-                Value::from_wiki(typ).unwrap_or_else(|_| {
+                Value::from_wiki(command, typ).unwrap_or_else(|_| {
                     errors.push(ParseError::UnknownType(typ.to_string()));
                     Value::Unknown
                 }),

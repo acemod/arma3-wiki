@@ -31,6 +31,7 @@ pub enum Value {
     ArrayColor,
     ArrayColorRgb,
     ArrayColorRgba,
+    ArrayEdenEntities,
     Boolean,
     Code,
     Config,
@@ -82,9 +83,17 @@ pub enum Value {
 // regex once cell
 #[cfg(feature = "wiki")]
 static REGEX_TYPE: OnceLock<Regex> = OnceLock::new();
-// static REGEX_ARRAY_IN_FORMAT: OnceLock<Regex> = OnceLock::new();
+#[cfg(feature = "wiki")]
+static REGEX_ARRAY_OF: OnceLock<Regex> = OnceLock::new();
+#[cfg(feature = "wiki")]
+static REGEX_OR_PATTERN: OnceLock<Regex> = OnceLock::new();
 
 impl Value {
+    #[must_use]
+    pub const fn is_unknown(&self) -> bool {
+        matches!(self, Self::Unknown | Self::ArrayUnknown)
+    }
+
     #[cfg(feature = "wiki")]
     /// Parses a value string from the wiki.
     ///
@@ -93,15 +102,48 @@ impl Value {
     ///
     /// # Panics
     /// Panics if the regex fails to compile.
-    pub fn from_wiki(source: &str) -> Result<Self, String> {
+    pub fn from_wiki(command: &str, source: &str) -> Result<Self, String> {
         if let Some(explicit_match) = Self::match_explicit(source) {
             return Ok(explicit_match);
         }
+
         let regex_type = REGEX_TYPE.get_or_init(|| {
             Regex::new(r"(?m)\[\[([^\[\]]+)\]\]").expect("Failed to compile regex")
         });
-        // let regex_array_in_format = REGEX_ARRAY_IN_FORMAT
-        //     .get_or_init(|| Regex::new(r"(?m)\[\[Array\]\] in format \[\[([^\[\]]+)\]\]").unwrap());
+        let regex_array_of = REGEX_ARRAY_OF.get_or_init(|| {
+            Regex::new(r"^\[\[Array\]\] of \[\[([^\[\]]+)\]\]s?$").expect("Failed to compile regex")
+        });
+        let regex_or_pattern = REGEX_OR_PATTERN.get_or_init(|| {
+            Regex::new(r"\[\[([^\[\]]+)\]\]").expect("Failed to compile regex")
+        });
+
+        // Check for "Array of X" pattern
+        if let Some(caps) = regex_array_of.captures(source) {
+            let inner_type = caps.get(1).expect("Failed to get capture group 1").as_str();
+            if let Ok(typ) = Self::single_match(inner_type) {
+                return Ok(Self::ArrayUnsized {
+                    typ: Box::new(typ),
+                    desc: String::new(),
+                });
+            }
+        }
+
+        // Check for "X or Y" or "X, Y, Z or W" patterns
+        if source.contains(" or ") {
+            let matches: Vec<_> = regex_or_pattern
+                .captures_iter(source)
+                .filter_map(|cap| {
+                    let value = cap.get(1).expect("Failed to get capture group 1").as_str();
+                    Self::single_match(value).ok()
+                })
+                .collect();
+            
+            if !matches.is_empty() {
+                return Ok(Self::OneOf(
+                    matches.into_iter().map(|v| (v, None)).collect()
+                ));
+            }
+        }
 
         // Check if the entire type is just a single value
         if let Some(caps) = regex_type.captures(source) {
@@ -112,17 +154,31 @@ impl Value {
                 );
             }
         }
-        println!("unable to parse value: {source}");
+
+        // Maybe it's just a raw type with no link?
+        if let Ok(typ) = Self::single_match(source) {
+            return Ok(typ);
+        }
+
+        println!("unable to parse value: {source}, in command: {command}");
         Err("Unknown value".to_string())
     }
 
     #[must_use]
-    /// try to match common complex expressions to a value type
+    /// Try to match common complex expressions to a value type.
+    /// These are specific wiki patterns that don't fit the generic parsing rules.
     pub fn match_explicit(source: &str) -> Option<Self> {
         match source.trim() {
+            // Position types
             "[[Array]] format [[Position]]" => Some(Self::Position),
+
             "[[Array]] format [[Position#PositionATL]]"
             | "[[Array]] format [[Position#PositionATL|PositionATL]]" => Some(Self::Position3dATL),
+
+            "[[Array]] format [[Position#Introduction|Position2D]]"
+            | "[[Position#Introduction|Position2D]]"
+            | "[[Array]] - format [[Position#Introduction|Position2D]]" => Some(Self::Position2d),
+
             "[[Array]] format [[Position#PositionAGL|PositionAGL]]"
             | "[[Position#PositionAGL|PositionAGL]]"
             | "[[Array]] - world position in format [[Position#PositionAGL|PositionAGL]]"
@@ -131,16 +187,33 @@ impl Value {
             | "[[Array]] - camera world position, format [[Position#PositionAGL|PositionAGL]]" => {
                 Some(Self::Position3dAGL)
             }
+
+            "[[Array]] format [[Position#PositionRelative|PositionRelative]]"
+            | "[[Position#PositionRelative|PositionRelative]]" => Some(Self::Position3dRelative),
+
             "[[Array]] format [[Position#PositionAGLS|PositionAGLS]]"
             | "[[Position#PositionAGLS|PositionAGLS]]" => Some(Self::Position3dAGLS),
+
             "[[Array]] format [[Position#PositionASL|PositionASL]]"
             | "[[Position#PositionASL|PositionASL]]"
             | "[[Array]] - format [[Position#PositionASL|PositionASL]]" => {
                 Some(Self::Position3dASL)
             }
+
             "[[Array]] format [[Position#PositionASLW|PositionASLW]]"
             | "[[Position#PositionASLW|PositionASLW]]" => Some(Self::Position3DASLW),
+
+            "[[Array]] format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]" => {
+                Some(Self::OneOf(vec![
+                    (Self::Position2d, None),
+                    (Self::Position3d, None),
+                ]))
+            }
+
+            // Number variants
             "[[Number]] in range 0..1" | "[[Number]] of control" => Some(Self::Number),
+
+            // Color types
             "[[Color|Color (RGBA)]]"
             | "[[Array]] of [[Color|Color (RGB)]]"
             | "[[Array]] format [[Color|Color (RGB)]]"
@@ -148,6 +221,13 @@ impl Value {
             | "[[Array]] format [[Color|Color (RGBA)]]"
             | "[[Array]] in format [[Color|Color (RGBA)]]"
             | "[[Array]] format [[Color|Color (RGBA)]] - text color" => Some(Self::ArrayColor),
+
+            // Eden Entities
+            "[[Array]] format [[Array of Eden Entities]]"
+            | "[[Array of Eden Entities]]" => Some(Self::ArrayEdenEntities),
+
+            // Array patterns (catch-all for various array descriptions)
+            // Note: Simple "Array of X" patterns are handled by regex, these are special cases
             "[[Array]] with [[Anything]]"
             | "[[Array]] of [[Team Member]]s"
             | "[[Array]] of [[Location]]s"
@@ -162,15 +242,11 @@ impl Value {
             | "[[Array]] of [[String]] and/or [[Structured Text]]"
             | "[[Array]] format [[ParticleArray]]"
             | "[[Array]] of [[Number]]s, where each number represents index of currently active effect layer"
-            | "[[Array]] of [[Number]]s"
             | "[[Array]] of [[Number]]s of any size"
             | "[[Array]] of GUI [[Display]]s"
-            | "[[Array]] of [[Control]]s"
-            | "[[Array]] of [[String]]"
             | "[[Array]] of string"
-            | "[[Array]] of [[String]]s"
-            | "[[Array]] of [[Number]]"
             | "[[Array]] format [[Turret Path]]" => Some(Self::ArrayUnknown),
+
             _ => None,
         }
     }
@@ -190,7 +266,7 @@ impl Value {
             "diary record" | "diaryrecord" => Ok(Self::DiaryRecord),
             "display" => Ok(Self::Display),
             "eden entity" | "edenentity" => Ok(Self::EdenEntity),
-            "edenid" => Ok(Self::EdenID),
+            "eden id" | "edenid" => Ok(Self::EdenID),
             "exception handle" | "exceptionhandle" => Ok(Self::ExceptionHandle),
             "for type" | "fortype" => Ok(Self::ForType),
             "group" => Ok(Self::Group),
@@ -223,91 +299,94 @@ impl Value {
             "waypoint" => Ok(Self::Waypoint),
             "while type" | "whiletype" => Ok(Self::WhileType),
             "with type" | "withtype" => Ok(Self::WithType),
-            _ => Err(format!("Unknown value: {value}")),
+            _ => {
+                if value.contains('|') {
+                    let Some((value, _)) = value.split_once('|') else {
+                        return Err(format!("Unknown value: {value}"));
+                    };
+                    let value = value.trim();
+                    match Self::single_match(value) {
+                        Ok(val) => Ok(val),
+                        Err(e) => Err(e),
+                    }
+                } else {
+                    Err(format!("Unknown value: {value}"))
+                }
+            }
         }
     }
 }
 
 impl std::fmt::Display for Value {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(
-            f,
-            "{}",
-            match self {
-                Self::Anything => "Anything".to_string(),
-                Self::ArraySized { types, .. } => format!("Array [{}]", {
-                    let mut result = String::new();
-                    for typ in types {
-                        result.push_str(&typ.name);
-                        result.push_str(": ");
-                        result.push_str(&typ.typ.to_string());
-                        result.push_str(" - ");
-                        result.push_str(&typ.desc);
-                        result.push('\n');
-                    }
-                    result
-                }),
-                Self::ArrayUnknown => "Array Unknown".to_string(),
-                Self::ArrayUnsized { typ, .. } => format!("Array of {typ}"),
-                Self::ArrayDate => "Array Date".to_string(),
-                Self::ArrayColor => "Array Color".to_string(),
-                Self::ArrayColorRgb => "Array Color RGB".to_string(),
-                Self::ArrayColorRgba => "Array Color RGBA".to_string(),
-                Self::Boolean => "Boolean".to_string(),
-                Self::Code => "Code".to_string(),
-                Self::Config => "Config".to_string(),
-                Self::Control => "Control".to_string(),
-                Self::DiaryRecord => "Diary Record".to_string(),
-                Self::Display => "Display".to_string(),
-                Self::EdenEntity => "Eden Entity".to_string(),
-                Self::EdenID => "Eden ID".to_string(),
-                Self::ExceptionHandle => "Exception Handle".to_string(),
-                Self::ForType => "For Type".to_string(),
-                Self::Group => "Group".to_string(),
-                Self::HashMapUnknown => "HashMap Unknown".to_string(),
-                Self::HashMapKnownKeys(_) => "HashMap Known Keys".to_string(),
-                Self::HashMapKey => "HashMap Key".to_string(),
-                Self::IfType => "If Type".to_string(),
-                Self::Location => "Location".to_string(),
-                Self::Namespace => "Namespace".to_string(),
-                Self::Nothing => "Nothing".to_string(),
-                Self::Number => "Number".to_string(),
-                Self::Object => "Object".to_string(),
-                Self::ScriptHandle => "Script Handle".to_string(),
-                Self::Side => "Side".to_string(),
-                Self::String => "String".to_string(),
-                Self::StructuredText => "Structured Text".to_string(),
-                Self::SwitchType => "Switch Type".to_string(),
-                Self::Task => "Task".to_string(),
-                Self::TeamMember => "Team Member".to_string(),
-                Self::TurretPath => "Turret Path".to_string(),
-                Self::UnitLoadoutArray => "Unit Loadout Array".to_string(),
-                Self::Position => "Position".to_string(),
-                Self::Position2d => "Position 2D".to_string(),
-                Self::Position3d => "Position 3D".to_string(),
-                Self::Position3dASL => "Position 3D ASL".to_string(),
-                Self::Position3DASLW => "Position 3D ASLW".to_string(),
-                Self::Position3dATL => "Position 3D ATL".to_string(),
-                Self::Position3dAGL => "Position 3D AGL".to_string(),
-                Self::Position3dAGLS => "Position 3D AGLS".to_string(),
-                Self::Position3dRelative => "Position 3D Relative".to_string(),
-                Self::Vector3d => "Vector 3D".to_string(),
-                Self::Waypoint => "Waypoint".to_string(),
-                Self::WhileType => "While Type".to_string(),
-                Self::WithType => "With Type".to_string(),
-                Self::Unknown => "Unknown".to_string(),
-                Self::OneOf(values) => {
-                    let mut result = String::new();
-                    for (value, _) in values {
-                        result.push_str(&value.to_string());
-                        result.push_str(" | ");
-                    }
-                    result.pop();
-                    result.pop();
-                    result
+        match self {
+            Self::Anything => write!(f, "Anything"),
+            Self::ArraySized { types, .. } => {
+                write!(f, "Array [")?;
+                for typ in types {
+                    writeln!(f, "{}: {} - {}", typ.name, typ.typ, typ.desc)?;
                 }
+                write!(f, "]")
             }
-        )
+            Self::ArrayUnknown => write!(f, "Array Unknown"),
+            Self::ArrayUnsized { typ, .. } => write!(f, "Array of {typ}"),
+            Self::ArrayDate => write!(f, "Array Date"),
+            Self::ArrayColor => write!(f, "Array Color"),
+            Self::ArrayColorRgb => write!(f, "Array Color RGB"),
+            Self::ArrayColorRgba => write!(f, "Array Color RGBA"),
+            Self::ArrayEdenEntities => write!(f, "Array Eden Entities"),
+            Self::Boolean => write!(f, "Boolean"),
+            Self::Code => write!(f, "Code"),
+            Self::Config => write!(f, "Config"),
+            Self::Control => write!(f, "Control"),
+            Self::DiaryRecord => write!(f, "Diary Record"),
+            Self::Display => write!(f, "Display"),
+            Self::EdenEntity => write!(f, "Eden Entity"),
+            Self::EdenID => write!(f, "Eden ID"),
+            Self::ExceptionHandle => write!(f, "Exception Handle"),
+            Self::ForType => write!(f, "For Type"),
+            Self::Group => write!(f, "Group"),
+            Self::HashMapUnknown => write!(f, "HashMap Unknown"),
+            Self::HashMapKnownKeys(_) => write!(f, "HashMap Known Keys"),
+            Self::HashMapKey => write!(f, "HashMap Key"),
+            Self::IfType => write!(f, "If Type"),
+            Self::Location => write!(f, "Location"),
+            Self::Namespace => write!(f, "Namespace"),
+            Self::Nothing => write!(f, "Nothing"),
+            Self::Number => write!(f, "Number"),
+            Self::Object => write!(f, "Object"),
+            Self::ScriptHandle => write!(f, "Script Handle"),
+            Self::Side => write!(f, "Side"),
+            Self::String => write!(f, "String"),
+            Self::StructuredText => write!(f, "Structured Text"),
+            Self::SwitchType => write!(f, "Switch Type"),
+            Self::Task => write!(f, "Task"),
+            Self::TeamMember => write!(f, "Team Member"),
+            Self::TurretPath => write!(f, "Turret Path"),
+            Self::UnitLoadoutArray => write!(f, "Unit Loadout Array"),
+            Self::Position => write!(f, "Position"),
+            Self::Position2d => write!(f, "Position 2D"),
+            Self::Position3d => write!(f, "Position 3D"),
+            Self::Position3dASL => write!(f, "Position 3D ASL"),
+            Self::Position3DASLW => write!(f, "Position 3D ASLW"),
+            Self::Position3dATL => write!(f, "Position 3D ATL"),
+            Self::Position3dAGL => write!(f, "Position 3D AGL"),
+            Self::Position3dAGLS => write!(f, "Position 3D AGLS"),
+            Self::Position3dRelative => write!(f, "Position 3D Relative"),
+            Self::Vector3d => write!(f, "Vector 3D"),
+            Self::Waypoint => write!(f, "Waypoint"),
+            Self::WhileType => write!(f, "While Type"),
+            Self::WithType => write!(f, "With Type"),
+            Self::Unknown => write!(f, "Unknown"),
+            Self::OneOf(values) => {
+                let formatted = values
+                    .iter()
+                    .map(|(value, _)| value.to_string())
+                    .collect::<Vec<_>>()
+                    .join(" | ");
+                write!(f, "{formatted}")
+            }
+        }
     }
 }
 
@@ -318,18 +397,21 @@ mod tests {
 
     #[test]
     fn single_values() {
-        assert_eq!(Value::from_wiki("[[Anything]]"), Ok(Value::Anything));
-        assert_eq!(Value::from_wiki("[[Boolean]]"), Ok(Value::Boolean));
-        assert_eq!(Value::from_wiki("[[Code]]"), Ok(Value::Code));
-        assert_eq!(Value::from_wiki("[[String]]"), Ok(Value::String));
         assert_eq!(
-            Value::from_wiki("[[StructuredText]]"),
+            Value::from_wiki("test", "[[Anything]]"),
+            Ok(Value::Anything)
+        );
+        assert_eq!(Value::from_wiki("test", "[[Boolean]]"), Ok(Value::Boolean));
+        assert_eq!(Value::from_wiki("test", "[[Code]]"), Ok(Value::Code));
+        assert_eq!(Value::from_wiki("test", "[[String]]"), Ok(Value::String));
+        assert_eq!(
+            Value::from_wiki("test", "[[StructuredText]]"),
             Ok(Value::StructuredText)
         );
-        assert_eq!(Value::from_wiki("[[Number]]"), Ok(Value::Number));
-        assert_eq!(Value::from_wiki("[[Object]]"), Ok(Value::Object));
+        assert_eq!(Value::from_wiki("test", "[[Number]]"), Ok(Value::Number));
+        assert_eq!(Value::from_wiki("test", "[[Object]]"), Ok(Value::Object));
         assert_eq!(
-            Value::from_wiki("[[Array]] with [[Anything]]"),
+            Value::from_wiki("test", "[[Array]] with [[Anything]]"),
             Ok(Value::ArrayUnknown)
         );
     }
@@ -337,27 +419,42 @@ mod tests {
     #[test]
     fn array_position() {
         assert_eq!(
-            Value::from_wiki("[[Array]] format [[Position]]"),
+            Value::from_wiki("test", "[[Array]] format [[Position]]"),
             Ok(Value::Position)
         );
         assert_eq!(
-            Value::from_wiki("[[Array]] format [[Position#PositionATL|PositionATL]]"),
+            Value::from_wiki(
+                "test",
+                "[[Array]] format [[Position#PositionATL|PositionATL]]"
+            ),
             Ok(Value::Position3dATL)
         );
         assert_eq!(
-            Value::from_wiki("[[Array]] format [[Position#PositionAGL|PositionAGL]]"),
+            Value::from_wiki(
+                "test",
+                "[[Array]] format [[Position#PositionAGL|PositionAGL]]"
+            ),
             Ok(Value::Position3dAGL)
         );
         assert_eq!(
-            Value::from_wiki("[[Array]] format [[Position#PositionAGLS|PositionAGLS]]"),
+            Value::from_wiki(
+                "test",
+                "[[Array]] format [[Position#PositionAGLS|PositionAGLS]]"
+            ),
             Ok(Value::Position3dAGLS)
         );
         assert_eq!(
-            Value::from_wiki("[[Array]] format [[Position#PositionASL|PositionASL]]"),
+            Value::from_wiki(
+                "test",
+                "[[Array]] format [[Position#PositionASL|PositionASL]]"
+            ),
             Ok(Value::Position3dASL)
         );
         assert_eq!(
-            Value::from_wiki("[[Array]] format [[Position#PositionASLW|PositionASLW]]"),
+            Value::from_wiki(
+                "test",
+                "[[Array]] format [[Position#PositionASLW|PositionASLW]]"
+            ),
             Ok(Value::Position3DASLW)
         );
     }
@@ -365,11 +462,11 @@ mod tests {
     #[test]
     fn array_color() {
         assert_eq!(
-            Value::from_wiki("[[Array]] format [[Color|Color (RGB)]]"),
+            Value::from_wiki("test", "[[Array]] format [[Color|Color (RGB)]]"),
             Ok(Value::ArrayColor)
         );
         assert_eq!(
-            Value::from_wiki("[[Array]] format [[Color|Color (RGBA)]]"),
+            Value::from_wiki("test", "[[Array]] format [[Color|Color (RGBA)]]"),
             Ok(Value::ArrayColor)
         );
     }
@@ -377,20 +474,52 @@ mod tests {
     #[test]
     fn array_unsized() {
         assert_eq!(
-            Value::from_wiki("[[Array]] of [[String]]"),
-            Ok(Value::ArrayUnsized { typ: Box::new(Value::String), desc: String::new() })
+            Value::from_wiki("test", "[[Array]] of [[String]]"),
+            Ok(Value::ArrayUnsized {
+                typ: Box::new(Value::String),
+                desc: String::new()
+            })
         );
         assert_eq!(
-            Value::from_wiki("[[Array]] of [[Number]]s"),
-            Ok(Value::ArrayUnsized { typ: Box::new(Value::Number), desc: String::new() })
+            Value::from_wiki("test", "[[Array]] of [[Number]]s"),
+            Ok(Value::ArrayUnsized {
+                typ: Box::new(Value::Number),
+                desc: String::new()
+            })
         );
     }
 
     #[test]
     fn or() {
-        assert_eq!(Value::from_wiki("[[Nothing]] or [[Boolean]]"), Ok(Value::OneOf(vec![
-            (Value::Nothing, None),
-            (Value::Boolean, None),
-        ])));
+        assert_eq!(
+            Value::from_wiki("test", "[[Nothing]] or [[Boolean]]"),
+            Ok(Value::OneOf(vec![
+                (Value::Nothing, None),
+                (Value::Boolean, None),
+            ]))
+        );
+        assert_eq!(
+            Value::from_wiki("test", "[[Object]], [[Group]], [[Array]] or [[String]]"),
+            Ok(Value::OneOf(vec![
+                (Value::Object, None),
+                (Value::Group, None),
+                (Value::ArrayUnknown, None),
+                (Value::String, None),
+            ]))
+        );
+    }
+
+    #[test]
+    fn or_array() {
+        assert_eq!(
+            Value::from_wiki("test", "[[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]"),
+            Ok(Value::OneOf(vec![
+                (Value::Object, None),
+                (Value::OneOf(vec![
+                    (Value::Position2d, None),
+                    (Value::Position3d, None),
+                ]), None),
+            ]))
+        );
     }
 }

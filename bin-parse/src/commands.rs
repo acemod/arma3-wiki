@@ -101,7 +101,7 @@ pub async fn commands(client: &Client, report: &mut Report, args: &[String], dry
         ProgressBar::new(commands.len() as u64)
     };
     for (name, url) in commands {
-        let result = command(&pg, client, name.clone(), url.clone(), dry_run).await;
+        let result = command(&pg, client, name.clone(), url.clone(), dry_run, false).await;
         if let Err(e) = result {
             println!("Failed {name}");
             failed.push((name, e));
@@ -139,6 +139,7 @@ pub async fn command(
     name: String,
     url: String,
     dry_run: bool,
+    retry: bool,
 ) -> Result<(bool, Vec<ParseError>), String> {
     let mut dist_path = Path::new("./dist/commands").join(urlencoding::encode(&name).to_string());
     dist_path.set_extension("yml");
@@ -146,7 +147,9 @@ pub async fn command(
     let temp = std::env::temp_dir().join("arma3-wiki-fetch");
     let path = temp.join(urlencoding::encode(&name).to_string());
 
-    let (skip, download_newer) = if dry_run {
+    let (skip, download_newer) = if retry {
+        (false, true)
+    } else if dry_run {
         (false, false)
     } else if dist_path.exists() {
         let metadata = fs_err::metadata(&dist_path).expect("Failed to get metadata for dist path");
@@ -241,6 +244,26 @@ pub async fn command(
                     e != &ParseError::Syntax(String::from("Invalid call: see [[remoteExec]]"))
                 });
             }
+            if parsed.has_unknown() {
+                pg.println(format!("{} has unknown types", name));
+                println!("Try again? y/n");
+                let mut input = String::new();
+                std::io::stdin()
+                    .read_line(&mut input)
+                    .expect("Failed to read input");
+                if input.trim().to_lowercase() == "y" {
+                    return Box::pin(command(
+                        pg,
+                        client,
+                        name,
+                        url,
+                        dry_run,
+                        true,
+                    )).await;
+                }
+            } else {
+                pg.println(format!("Parsed {} successfully", name));
+            }
             if dist_path.exists() {
                 // Check if the file has changed
                 let old =
@@ -274,6 +297,23 @@ pub async fn command(
             Ok((true, errors))
         }
         Err(e) => {
+            if std::env::args().any(|arg| arg == "--interactive") {
+                println!("Try again? y/n");
+                let mut input = String::new();
+                std::io::stdin()
+                    .read_line(&mut input)
+                    .expect("Failed to read input");
+                if input.trim().to_lowercase() == "y" {
+                    return Box::pin(command(
+                        pg,
+                        client,
+                        name,
+                        url,
+                        dry_run,
+                        false,
+                    )).await;
+                }
+            }
             pg.println(format!("Failed to parse {name}"));
             Err(e)
         }

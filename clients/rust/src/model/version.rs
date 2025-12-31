@@ -69,8 +69,17 @@ impl<'de> Deserialize<'de> for Version {
                 Ok(Version { major, minor })
             }
         }
-        deserializer.deserialize_str(VersionVisitor)
+        deserializer.deserialize_any(VersionVisitor)
     }
+}
+
+#[test]
+fn test_version_deserialize() {
+    let v: Version = serde_yaml::from_str(r#""1.02""#).expect("Failed to deserialize version");
+    assert_eq!(v, Version::new(1, 2));
+
+    let v: Version = serde_yaml::from_str(r#"{"major":1,"minor":2}"#).expect("Failed to deserialize version");
+    assert_eq!(v, Version::new(1, 2));
 }
 
 impl Version {

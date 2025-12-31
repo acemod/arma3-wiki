@@ -6,17 +6,10 @@ use crate::model::Return;
 
 use super::{Call, Locality, Param, Since, Value};
 
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum BackwardsReturn {
-    Old((Value, Option<String>)),
-    New(Return),
-}
-
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Syntax {
     pub(crate) call: Call,
-    pub(crate) ret: BackwardsReturn,
+    pub(crate) ret: Return,
     pub(crate) params: Vec<Param>,
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -30,7 +23,7 @@ impl Syntax {
     #[must_use]
     pub const fn new(
         call: Call,
-        ret: BackwardsReturn,
+        ret: Return,
         params: Vec<Param>,
         since: Option<Since>,
         effect: Option<Locality>,
@@ -50,14 +43,8 @@ impl Syntax {
     }
 
     #[must_use]
-    pub fn ret(&self) -> Return {
-        match &self.ret {
-            BackwardsReturn::Old((value, desc)) => Return {
-                typ: value.clone(),
-                desc: desc.clone(),
-            },
-            BackwardsReturn::New(ret) => ret.clone(),
-        }
+    pub const fn ret(&self) -> &Return {
+        &self.ret
     }
 
     #[must_use]
@@ -79,7 +66,7 @@ impl Syntax {
     }
 
     pub fn set_ret(&mut self, ret: Return) {
-        self.ret = BackwardsReturn::New(ret);
+        self.ret = ret;
     }
 
     pub fn set_params(&mut self, params: Vec<Param>) {
@@ -194,23 +181,23 @@ impl Syntax {
                         Value::match_explicit(&ret).map_or_else(
                             || {
                                 errors.push(ParseError::Syntax(ret));
-                                BackwardsReturn::New(Return {
+                                Return {
                                     typ: Value::Unknown,
                                     desc: None,
-                                })
+                                }
                             },
                             |explicit_match| {
-                                BackwardsReturn::New(Return {
+                                Return {
                                     typ: explicit_match,
                                     desc: None,
-                                })
+                                }
                             },
                         )
                     } else {
                         let (typ, desc) = ret.split_once('-').unwrap_or((&ret, ""));
                         let typ = typ.trim();
-                        BackwardsReturn::New(Return {
-                            typ: Value::from_wiki(typ).unwrap_or_else(|_| {
+                        Return {
+                            typ: Value::from_wiki(command, typ).unwrap_or_else(|_| {
                                 errors.push(ParseError::UnknownType(typ.to_string()));
                                 Value::Unknown
                             }),
@@ -219,7 +206,7 @@ impl Syntax {
                             } else {
                                 Some(desc.trim().to_string())
                             },
-                        })
+                        }
                     }
                 },
                 params,
