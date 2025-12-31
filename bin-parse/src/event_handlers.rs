@@ -18,15 +18,19 @@ pub async fn event_handlers(
         .join("eventhandler_main.html");
 
     let body: String = if tmp.exists() {
-        std::fs::read_to_string(&tmp).unwrap()
+        fs_err::read_to_string(&tmp).expect("Failed to read cached event handlers")
     } else {
-        let request = client.bi_get(URL).send().await.unwrap();
+        let request = client
+            .bi_get(URL)
+            .send()
+            .await
+            .expect("Failed to send request");
         assert!(
             request.status().is_success(),
             "Failed to fetch event handlers list"
         );
-        let content = request.text().await.unwrap();
-        std::fs::write(&tmp, &content).unwrap();
+        let content = request.text().await.expect("Failed to read response text");
+        fs_err::write(&tmp, &content).expect("Failed to write cached event handlers");
         content
     };
 
@@ -205,8 +209,12 @@ pub async fn event_handlers(
                     let mut write = true;
                     if dist_path.exists() {
                         // Check if the file has changed
-                        let old = std::fs::read_to_string(&dist_path).unwrap();
-                        if old == serde_yaml::to_string(&handler).unwrap() {
+                        let old = fs_err::read_to_string(&dist_path)
+                            .expect("Failed to read existing event handler");
+                        if old
+                            == serde_yaml::to_string(&handler)
+                                .expect("Failed to serialize event handler")
+                        {
                             write = false;
                             report.add_outdated_event_handler(*ns, handler.clone());
                         }
@@ -216,15 +224,20 @@ pub async fn event_handlers(
                     }
                     if !dry_run && write {
                         if !dist_path.parent().expect("parent").exists() {
-                            std::fs::create_dir_all(dist_path.parent().expect("parent")).unwrap();
+                            fs_err::create_dir_all(dist_path.parent().expect("parent"))
+                                .expect("Failed to create parent directory");
                         }
-                        let mut file = tokio::fs::File::create(dist_path).await.unwrap();
+                        let mut file = tokio::fs::File::create(dist_path)
+                            .await
+                            .expect("Failed to create event handler file");
                         tokio::io::AsyncWriteExt::write_all(
                             &mut file,
-                            serde_yaml::to_string(&handler).unwrap().as_bytes(),
+                            serde_yaml::to_string(&handler)
+                                .expect("Failed to serialize event handler")
+                                .as_bytes(),
                         )
                         .await
-                        .unwrap();
+                        .expect("Failed to write event handler file");
                     }
                 }
             }
@@ -246,15 +259,19 @@ async fn subsection(
         .join(format!("eventhandler_{tag}.html"));
 
     let mut body: String = if tmp.exists() {
-        std::fs::read_to_string(&tmp).unwrap()
+        fs_err::read_to_string(&tmp).expect("Failed to read cached event handlers")
     } else {
-        let request = client.bi_get(url).send().await.unwrap();
+        let request = client
+            .bi_get(url)
+            .send()
+            .await
+            .expect("Failed to send request");
         assert!(
             request.status().is_success(),
             "Failed to fetch event handlers list"
         );
-        let content = request.text().await.unwrap();
-        std::fs::write(&tmp, &content).unwrap();
+        let content = request.text().await.expect("Failed to read response text");
+        fs_err::write(&tmp, &content).expect("Failed to write cached event handlers");
         content
     };
 

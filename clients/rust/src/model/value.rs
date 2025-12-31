@@ -79,6 +79,7 @@ pub enum Value {
 }
 
 // regex once cell
+#[cfg(feature = "wiki")]
 static REGEX_TYPE: OnceLock<Regex> = OnceLock::new();
 // static REGEX_ARRAY_IN_FORMAT: OnceLock<Regex> = OnceLock::new();
 
@@ -95,15 +96,19 @@ impl Value {
         if let Some(explicit_match) = Self::match_explicit(source) {
             return Ok(explicit_match);
         }
-        let regex_type = REGEX_TYPE.get_or_init(|| Regex::new(r"(?m)\[\[([^\[\]]+)\]\]").unwrap());
+        let regex_type = REGEX_TYPE.get_or_init(|| {
+            Regex::new(r"(?m)\[\[([^\[\]]+)\]\]").expect("Failed to compile regex")
+        });
         // let regex_array_in_format = REGEX_ARRAY_IN_FORMAT
         //     .get_or_init(|| Regex::new(r"(?m)\[\[Array\]\] in format \[\[([^\[\]]+)\]\]").unwrap());
 
         // Check if the entire type is just a single value
         if let Some(caps) = regex_type.captures(source) {
-            let span = caps.get(0).unwrap().range();
+            let span = caps.get(0).expect("Failed to get capture group 0").range();
             if span.start == 0 && span.end == source.len() {
-                return Self::single_match(caps.get(1).unwrap().as_str());
+                return Self::single_match(
+                    caps.get(1).expect("Failed to get capture group 1").as_str(),
+                );
             }
         }
         println!("unable to parse value: {source}");

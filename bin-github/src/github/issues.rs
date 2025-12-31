@@ -31,7 +31,7 @@ impl Issues {
                         .page(page)
                         .send()
                         .await
-                        .unwrap()
+                        .expect("Failed to fetch issues")
                         .take_items();
                     let count = fetched.len();
                     issues.extend(fetched);

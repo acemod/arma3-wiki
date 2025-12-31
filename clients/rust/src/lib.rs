@@ -5,14 +5,17 @@ use std::{
 use commands::Commands;
 use git2::Repository;
 use model::{Command, EventHandlerNamespace, ParsedEventHandler, Version};
-use rust_embed::RustEmbed;
 
 pub mod commands;
 pub mod model;
 
-#[derive(RustEmbed)]
-#[folder = "$OUT_DIR/arma3-wiki"]
-struct Asset;
+#[allow(clippy::disallowed_methods)]
+mod assets {
+    use rust_embed::RustEmbed;
+    #[derive(RustEmbed)]
+    #[folder = "$OUT_DIR/arma3-wiki"]
+    pub struct Asset;
+}
 
 pub struct Wiki {
     version: Version,
@@ -108,7 +111,7 @@ impl Wiki {
     pub fn load_git(force_pull: bool) -> Result<Self, String> {
         std::panic::catch_unwind(|| Self::attempt_load_git(force_pull)).unwrap_or_else(|_| {
             let appdata = get_appdata();
-            std::fs::remove_dir_all(&appdata).unwrap_or_default();
+            fs_err::remove_dir_all(&appdata).unwrap_or_default();
             Self::attempt_load_git(force_pull)
         })
     }
@@ -137,30 +140,37 @@ impl Wiki {
             Self::update_git(&repo).is_ok()
         };
         let mut commands = HashMap::new();
-        for entry in std::fs::read_dir(appdata.join("commands")).unwrap() {
-            let path = entry.unwrap().path();
+        for entry in
+            fs_err::read_dir(appdata.join("commands")).expect("Failed to read commands directory")
+        {
+            let path = entry.expect("Failed to read command entry").path();
             if path.is_file() {
-                let command: Command = serde_yaml::from_reader(std::fs::File::open(&path).unwrap())
-                    .unwrap_or_else(|_| {
-                        panic!("Failed to parse command: {path}", path = path.display())
-                    });
+                let command: Command = serde_yaml::from_reader(
+                    fs_err::File::open(&path).expect("Failed to open command file"),
+                )
+                .unwrap_or_else(|_| {
+                    panic!("Failed to parse command: {path}", path = path.display())
+                });
                 commands.insert(command.name().to_lowercase(), command);
             }
         }
         let mut event_handlers = HashMap::new();
         for ns in EventHandlerNamespace::iter() {
             let mut handlers = Vec::new();
-            for entry in std::fs::read_dir(appdata.join("events").join(ns.to_string())).unwrap() {
-                let path = entry.unwrap().path();
+            for entry in fs_err::read_dir(appdata.join("events").join(ns.to_string()))
+                .expect("Failed to read event handlers directory")
+            {
+                let path = entry.expect("Failed to read event handler entry").path();
                 if path.is_file() {
-                    let handler: ParsedEventHandler =
-                        serde_yaml::from_reader(std::fs::File::open(&path).unwrap())
-                            .unwrap_or_else(|_| {
-                                panic!(
-                                    "Failed to parse event handler: {path}",
-                                    path = path.display()
-                                )
-                            });
+                    let handler: ParsedEventHandler = serde_yaml::from_reader(
+                        fs_err::File::open(&path).expect("Failed to open event handler file"),
+                    )
+                    .unwrap_or_else(|_| {
+                        panic!(
+                            "Failed to parse event handler: {path}",
+                            path = path.display()
+                        )
+                    });
                     handlers.push(handler);
                 }
             }
@@ -168,8 +178,8 @@ impl Wiki {
         }
         Ok(Self {
             version: Version::from_wiki(
-                std::fs::read_to_string(appdata.join("version.txt"))
-                    .unwrap()
+                fs_err::read_to_string(appdata.join("version.txt"))
+                    .expect("Failed to read version file")
                     .trim(),
             )
             .map_err(|e| format!("Failed to parse version: {e}"))?,
@@ -188,7 +198,7 @@ impl Wiki {
     pub fn load_dist() -> Self {
         let mut commands = HashMap::new();
         let mut event_handlers = HashMap::new();
-        for entry in Asset::iter() {
+        for entry in assets::Asset::iter() {
             let path = entry.as_ref();
             if path.starts_with("commands/")
                 && std::path::Path::new(path)
@@ -196,18 +206,31 @@ impl Wiki {
                     .is_some_and(|ext| ext.eq_ignore_ascii_case("yml"))
             {
                 let command: Command = serde_yaml::from_str(
-                    std::str::from_utf8(Asset::get(path).unwrap().data.as_ref()).unwrap(),
+                    std::str::from_utf8(
+                        assets::Asset::get(path)
+                            .expect("Failed to get command asset")
+                            .data
+                            .as_ref(),
+                    )
+                    .expect("Failed to read command asset"),
                 )
-                .unwrap();
+                .expect("Failed to parse command");
                 commands.insert(command.name().to_lowercase(), command);
             } else if path.starts_with("events/") {
                 let parts: Vec<&str> = path.split('/').collect();
                 if parts.len() == 3 {
-                    let ns = EventHandlerNamespace::from_str(parts[1]).unwrap();
+                    let ns = EventHandlerNamespace::from_str(parts[1])
+                        .expect("Failed to parse event handler namespace");
                     let handler: ParsedEventHandler = serde_yaml::from_str(
-                        std::str::from_utf8(Asset::get(path).unwrap().data.as_ref()).unwrap(),
+                        std::str::from_utf8(
+                            assets::Asset::get(path)
+                                .expect("Failed to get event handler asset")
+                                .data
+                                .as_ref(),
+                        )
+                        .expect("Failed to read event handler asset"),
                     )
-                    .unwrap();
+                    .expect("Failed to parse event handler");
                     event_handlers
                         .entry(ns)
                         .or_insert_with(Vec::new)
@@ -217,11 +240,16 @@ impl Wiki {
         }
         Self {
             version: Version::from_wiki(
-                std::str::from_utf8(Asset::get("version.txt").unwrap().data.as_ref())
-                    .unwrap()
-                    .trim(),
+                std::str::from_utf8(
+                    assets::Asset::get("version.txt")
+                        .expect("Failed to get version asset")
+                        .data
+                        .as_ref(),
+                )
+                .expect("Failed to read version asset")
+                .trim(),
             )
-            .unwrap(),
+            .expect("Failed to parse version"),
             commands: Commands::new(commands),
             event_handlers,
             updated: false,
@@ -260,7 +288,7 @@ impl Wiki {
         let _ = file.write_all(
             SystemTime::now()
                 .duration_since(SystemTime::UNIX_EPOCH)
-                .unwrap()
+                .expect("Failed to get system time")
                 .as_secs()
                 .to_string()
                 .as_bytes(),
@@ -269,7 +297,7 @@ impl Wiki {
     }
 
     fn recently_updated(path: &std::path::Path) -> bool {
-        if let Ok(timestamp) = std::fs::read_to_string(path.join("last-update.timestamp"))
+        if let Ok(timestamp) = fs_err::read_to_string(path.join("last-update.timestamp"))
             && let Ok(timestamp) = timestamp.parse::<u64>()
             && let Ok(elapsed) = SystemTime::now()
                 .duration_since(SystemTime::UNIX_EPOCH)
@@ -286,6 +314,6 @@ fn get_appdata() -> PathBuf {
     let dirs = directories::ProjectDirs::from("org", "acemod", "arma3-wiki")
         .expect("Failed to find appdata directory");
     let appdata = dirs.data_local_dir();
-    std::fs::create_dir_all(appdata).unwrap();
+    fs_err::create_dir_all(appdata).expect("Failed to create appdata directory");
     appdata.to_path_buf()
 }

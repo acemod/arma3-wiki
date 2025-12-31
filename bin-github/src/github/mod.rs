@@ -119,7 +119,7 @@ impl GitHub {
             .create(format!("Update version to {version}"), head, "dist")
             .send()
             .await
-            .unwrap();
+            .expect("Failed to create version PR");
     }
 }
 

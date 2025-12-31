@@ -1,6 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-use super::{Call, Locality, Param, ParseError, Since, Value};
+#[cfg(feature = "wiki")]
+use crate::model::ParseError;
+
+use super::{Call, Locality, Param, Since, Value};
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Syntax {
@@ -69,7 +72,7 @@ impl Syntax {
         self.params = params;
     }
 
-    pub fn set_since(&mut self, since: Option<Since>) {
+    pub const fn set_since(&mut self, since: Option<Since>) {
         self.since = since;
     }
 
@@ -96,7 +99,8 @@ impl Syntax {
         while let Some((key, value)) = lines.peek() {
             if key.starts_with('p') {
                 if key.ends_with("since") {
-                    let last_param: &mut Param = params.last_mut().unwrap();
+                    let last_param: &mut Param =
+                        params.last_mut().expect("No parameters available");
                     let Some((game, version)) = value.split_once(' ') else {
                         return Err(format!("Invalid since: {value}"));
                     };

@@ -12,12 +12,12 @@ mod github;
 async fn main() {
     let tmp = std::env::temp_dir().join("arma3-wiki-fetch");
     let report_path = tmp.join("report.json");
-    let github = GitHub::new().unwrap();
+    let github = GitHub::new().expect("Failed to create GitHub client");
     let issues = Issues::new(&github).await;
 
-    let report: Report = std::fs::read_to_string(report_path)
-        .map(|s| serde_json::from_str(&s).unwrap())
-        .unwrap();
+    let report: Report = fs_err::read_to_string(report_path)
+        .map(|s| serde_json::from_str(&s).expect("Failed to parse report"))
+        .expect("Failed to read report");
     let mut failed = false;
 
     if let Some(updated_version) = report.updated_version() {

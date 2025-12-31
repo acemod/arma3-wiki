@@ -48,15 +48,17 @@ impl Call {
             if right.is_empty() {
                 Ok(Self::Nular)
             } else {
-                Ok(Self::Unary(Self::parse_params(right).unwrap()))
+                Ok(Self::Unary(
+                    Self::parse_params(right).expect("Invalid unary parameters"),
+                ))
             }
         } else {
             if right.is_empty() {
                 return Err(format!("Invalid call: {source}"));
             }
             Ok(Self::Binary(
-                Self::parse_params(left).unwrap(),
-                Self::parse_params(right).unwrap(),
+                Self::parse_params(left).expect("Invalid left binary parameters"),
+                Self::parse_params(right).expect("Invalid right binary parameters"),
             ))
         }
     }
@@ -161,7 +163,7 @@ impl Call {
 #[test]
 fn parse() {
     assert_eq!(
-        Call::parse_params("[idc, path, name]").unwrap(),
+        Call::parse_params("[idc, path, name]").expect("Invalid parameters"),
         Arg::Array(vec![
             Arg::Item("idc".to_string()),
             Arg::Item("path".to_string()),
@@ -169,7 +171,7 @@ fn parse() {
         ])
     );
     assert_eq!(
-        Call::parse_params("[idc, [row, column], colour]").unwrap(),
+        Call::parse_params("[idc, [row, column], colour]").expect("Invalid parameters"),
         Arg::Array(vec![
             Arg::Item("idc".to_string()),
             Arg::Array(vec![
@@ -180,7 +182,7 @@ fn parse() {
         ])
     );
     assert_eq!(
-        Call::parse_params("[[row, column], colour]").unwrap(),
+        Call::parse_params("[[row, column], colour]").expect("Invalid parameters"),
         Arg::Array(vec![
             Arg::Array(vec![
                 Arg::Item("row".to_string()),

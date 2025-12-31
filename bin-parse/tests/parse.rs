@@ -13,10 +13,10 @@ macro_rules! parse(
 );
 
 fn parse(path: &str) {
-    let content = std::fs::read_to_string(Path::new(ROOT).join(path)).unwrap();
+    let content = fs_err::read_to_string(Path::new(ROOT).join(path)).expect("Failed to read file");
     let result = arma3_wiki::model::Command::from_wiki(path, &content);
     println!("{result:?}");
-    let result = result.unwrap();
+    let result = result.expect("Failed to parse command");
     assert!(result.1.is_empty());
 }
 

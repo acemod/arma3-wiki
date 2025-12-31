@@ -16,19 +16,24 @@ pub async fn list(client: &Client) -> HashMap<String, String> {
         .join("command_list.html");
 
     let body: String = if tmp.exists() {
-        std::fs::read_to_string(&tmp).unwrap()
+        fs_err::read_to_string(&tmp).expect("Failed to read cached command list")
     } else {
-        let request = client.bi_get(URL).send().await.unwrap();
+        let request = client
+            .bi_get(URL)
+            .send()
+            .await
+            .expect("Failed to send request");
         assert!(
             request.status().is_success(),
             "Failed to fetch commands list"
         );
-        let content = request.text().await.unwrap();
-        std::fs::write(&tmp, &content).unwrap();
+        let content = request.text().await.expect("Failed to read response text");
+        fs_err::write(&tmp, &content).expect("Failed to write cached command list");
         content
     };
 
-    let regex = Regex::new(r#"(?m)<li><a href="(.+?)" title="(.+?)">"#).unwrap();
+    let regex =
+        Regex::new(r#"(?m)<li><a href="(.+?)" title="(.+?)">"#).expect("Failed to compile regex");
     let mut list = HashMap::new();
 
     for cap in regex.captures_iter(&body) {
@@ -144,9 +149,16 @@ pub async fn command(
     let (skip, download_newer) = if dry_run {
         (false, false)
     } else if dist_path.exists() {
-        let metadata = std::fs::metadata(&dist_path).unwrap();
-        let modified: std::time::SystemTime = metadata.modified().unwrap();
-        if modified.elapsed().unwrap().as_secs() < 60 * 60 * SKIP_IF_LESS_THAN {
+        let metadata = fs_err::metadata(&dist_path).expect("Failed to get metadata for dist path");
+        let modified: std::time::SystemTime = metadata
+            .modified()
+            .expect("Failed to get modified time for dist path");
+        if modified
+            .elapsed()
+            .expect("Failed to get elapsed time")
+            .as_secs()
+            < 60 * 60 * SKIP_IF_LESS_THAN
+        {
             (std::env::var("CI").is_err(), false)
         } else {
             let res = match client.head(&url).send().await {
@@ -159,14 +171,17 @@ pub async fn command(
             let headers = res.headers();
             let last_modified = headers
                 .get(LAST_MODIFIED)
-                .unwrap()
+                .expect("Failed to get Last-Modified header")
                 .to_str()
-                .unwrap()
+                .expect("Failed to convert Last-Modified header to string")
                 .parse::<httpdate::HttpDate>()
-                .unwrap();
+                .expect("Failed to parse Last-Modified header");
             let download_newer = if path.exists() {
-                let metadata = std::fs::metadata(&path).unwrap();
-                let modified: std::time::SystemTime = metadata.modified().unwrap();
+                let metadata =
+                    fs_err::metadata(&path).expect("Failed to get metadata for temp path");
+                let modified: std::time::SystemTime = metadata
+                    .modified()
+                    .expect("Failed to get modified time for temp path");
                 modified < last_modified.into()
             } else {
                 true
@@ -179,7 +194,7 @@ pub async fn command(
 
     let url = format!("{url}?action=raw");
     let content = if path.exists() && !download_newer {
-        std::fs::read_to_string(&path).unwrap()
+        fs_err::read_to_string(&path).expect("Failed to read cached command")
     } else {
         if skip {
             pg.println(format!("Skipping {name}, less than {SKIP_IF_LESS_THAN}h"));
@@ -193,16 +208,18 @@ pub async fn command(
             }
         };
         assert!(res.status().is_success(), "Failed to fetch {name}");
-        let content = res.text().await.unwrap();
+        let content = res.text().await.expect("Failed to read response text");
         if content.is_empty() {
             pg.println(format!("Failed to fetch {name} from {url}"));
             return Err("Empty".to_string());
         }
         pg.println(format!("Fetching {name} from {url}"));
-        let mut file = tokio::fs::File::create(&path).await.unwrap();
+        let mut file = tokio::fs::File::create(&path)
+            .await
+            .expect("Failed to create temp file");
         tokio::io::AsyncWriteExt::write_all(&mut file, content.as_bytes())
             .await
-            .unwrap();
+            .expect("Failed to write to temp file");
         content
     };
     if content.is_empty() {
@@ -213,9 +230,10 @@ pub async fn command(
             if name == "remoteExecCall" {
                 pg.println("Copying remoteExec syntax to remoteExecCall");
                 // copy syntax from remoteExec
-                let remote_exec =
-                    std::fs::read_to_string("./dist/commands/remoteExec.yml").unwrap();
-                let remote_exec: Command = serde_yaml::from_str(&remote_exec).unwrap();
+                let remote_exec = fs_err::read_to_string("./dist/commands/remoteExec.yml")
+                    .expect("Failed to read remoteExec.yml");
+                let remote_exec: Command =
+                    serde_yaml::from_str(&remote_exec).expect("Failed to parse remoteExec.yml");
                 parsed.set_syntax(remote_exec.syntax().to_vec());
                 errors.retain(|e| {
                     e != &ParseError::Syntax(String::from("Invalid call: see [[remoteExec]]"))
@@ -223,20 +241,27 @@ pub async fn command(
             }
             if dist_path.exists() {
                 // Check if the file has changed
-                let old = std::fs::read_to_string(&dist_path).unwrap();
-                if old == serde_yaml::to_string(&parsed).unwrap() {
+                let old =
+                    fs_err::read_to_string(&dist_path).expect("Failed to read existing dist file");
+                if old
+                    == serde_yaml::to_string(&parsed).expect("Failed to serialize parsed command")
+                {
                     return Ok((false, errors));
                 }
             }
             if !dry_run {
                 pg.println(format!("Saving to {}", dist_path.display()));
-                let mut file = tokio::fs::File::create(dist_path).await.unwrap();
+                let mut file = tokio::fs::File::create(dist_path)
+                    .await
+                    .expect("Failed to create dist file");
                 tokio::io::AsyncWriteExt::write_all(
                     &mut file,
-                    serde_yaml::to_string(&parsed).unwrap().as_bytes(),
+                    serde_yaml::to_string(&parsed)
+                        .expect("Failed to serialize parsed command")
+                        .as_bytes(),
                 )
                 .await
-                .unwrap();
+                .expect("Failed to write to dist file");
             }
             Ok((true, errors))
         }

@@ -1,6 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-use super::{Locality, ParseError, Since, Syntax};
+#[cfg(feature = "wiki")]
+use crate::model::ParseError;
+
+use super::{Locality, Since, Syntax};
 
 #[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
 pub struct Command {
@@ -90,7 +93,7 @@ impl Command {
     }
 
     #[must_use]
-    pub fn since_mut(&mut self) -> &mut Since {
+    pub const fn since_mut(&mut self) -> &mut Since {
         &mut self.since
     }
 
@@ -100,7 +103,7 @@ impl Command {
     }
 
     #[must_use]
-    pub fn branch_mut(&mut self) -> &mut Option<String> {
+    pub const fn branch_mut(&mut self) -> &mut Option<String> {
         &mut self.branch
     }
 
@@ -209,7 +212,7 @@ impl Command {
                 !l.is_empty() && !l.starts_with('{') && !l.starts_with('}') && l.contains('=')
             })
             .map(|l| {
-                let (key, value) = l.split_once('=').unwrap();
+                let (key, value) = l.split_once('=').expect("Invalid line without '='");
                 let key = key.trim();
                 let value = value.trim();
                 (key, value)
@@ -264,10 +267,10 @@ impl Command {
                 "seealso" => break,
                 _ => {
                     if key.starts_with("game") {
-                        let mut next = lines.next().unwrap();
+                        let mut next = lines.next().expect("Expected next line");
                         if next.0.starts_with("branch") {
                             *command.branch_mut() = Some(next.1.trim().to_string());
-                            next = lines.next().unwrap();
+                            next = lines.next().expect("Expected next line");
                         }
                         if !next.0.starts_with("version") {
                             Err(format!("Unknown key when expecting version: {}", next.0))?;

@@ -1,14 +1,13 @@
-use rand::distributions::Alphanumeric;
-use rand::{Rng, thread_rng};
+use rand::{Rng, distr::Alphanumeric, rng};
 
 pub fn main() {
     use git2::Repository;
     let mut tmp = std::env::temp_dir().join("arma3-wiki");
     if std::env::var("CI").is_ok() {
         if !tmp.exists() {
-            std::fs::create_dir_all(&tmp).unwrap();
+            fs_err::create_dir_all(&tmp).expect("Failed to create temp dir");
         }
-        let random: String = thread_rng()
+        let random: String = rng()
             .sample_iter(&Alphanumeric)
             .take(10)
             .map(char::from)
@@ -20,53 +19,53 @@ pub fn main() {
             .branch("dist")
             .clone("https://github.com/acemod/arma3-wiki", &tmp)
             .map_err(|e| format!("Failed to clone repository: {e}"))
-            .unwrap()
+            .expect("Failed to clone repository")
     });
     repo.find_remote("origin")
         .and_then(|mut r| r.fetch(&["dist"], None, None))
         .map_err(|e| format!("Failed to fetch remote: {e}"))
-        .unwrap();
+        .expect("Failed to fetch remote");
     let fetch_head = repo
         .find_reference("FETCH_HEAD")
         .map_err(|e| format!("Failed to find FETCH_HEAD: {e}"))
-        .unwrap();
+        .expect("Failed to find FETCH_HEAD");
     let commit = repo
         .reference_to_annotated_commit(&fetch_head)
         .map_err(|e| format!("Failed to find FETCH_HEAD: {e}"))
-        .unwrap();
+        .expect("Failed to find FETCH_HEAD");
     let analysis = repo
         .merge_analysis(&[&commit])
         .map_err(|e| format!("Failed to analyze merge: {e}"))
-        .unwrap();
+        .expect("Failed to analyze merge");
     if !analysis.0.is_up_to_date() && analysis.0.is_fast_forward() {
         let mut reference = repo
             .find_reference("refs/heads/dist")
             .map_err(|e| format!("Failed to find reference: {e}"))
-            .unwrap();
+            .expect("Failed to find reference");
         reference
             .set_target(commit.id(), "Fast-Forward")
             .map_err(|e| format!("Failed to set reference: {e}"))
-            .unwrap();
+            .expect("Failed to set reference");
         repo.set_head("refs/heads/dist")
             .map_err(|e| format!("Failed to set HEAD: {e}"))
-            .unwrap();
+            .expect("Failed to set HEAD");
         repo.checkout_head(Some(git2::build::CheckoutBuilder::default().force()))
             .map_err(|e| format!("Failed to checkout HEAD: {e}"))
-            .unwrap();
+            .expect("Failed to checkout HEAD");
     }
     let dst = {
-        let target_dir = std::env::var("OUT_DIR").unwrap();
+        let target_dir = std::env::var("OUT_DIR").expect("OUT_DIR not set");
         std::path::Path::new(&target_dir).join("arma3-wiki")
     };
-    let _ = std::fs::remove_dir_all(&dst);
+    let _ = fs_err::remove_dir_all(&dst);
     fs_extra::dir::copy(
         &tmp,
         dst,
         &fs_extra::dir::CopyOptions::new().content_only(true),
     )
-    .unwrap();
+    .expect("Failed to copy directory");
     if std::env::var("CI").is_ok() {
         // we sometimes don't have permission? so don't unwrap
-        let _ = std::fs::remove_dir_all(tmp);
+        let _ = fs_err::remove_dir_all(tmp);
     }
 }

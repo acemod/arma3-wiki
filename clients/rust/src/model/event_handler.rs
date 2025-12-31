@@ -119,7 +119,7 @@ impl ParsedEventHandler {
         use crate::model::Version;
 
         let source = if source.contains("&nbsp;") {
-            source.split_once("&nbsp;").unwrap().0
+            source.split_once("&nbsp;").expect("Missing &nbsp;").0
         } else {
             source
         };
@@ -192,10 +192,10 @@ impl ParsedEventHandler {
                 if line.contains("Argument|32") {
                     let word = line
                         .split_once("Argument|32")
-                        .unwrap()
+                        .expect("Missing Argument|32")
                         .0
                         .split_once("{{Icon|")
-                        .unwrap()
+                        .expect("Missing {{Icon|")
                         .1;
                     argument_loc = Locality::from_wiki(word)?;
                     continue;
@@ -203,10 +203,10 @@ impl ParsedEventHandler {
                 if line.contains("Effect|32") {
                     let word = line
                         .split_once("Effect|32")
-                        .unwrap()
+                        .expect("Missing Effect|32")
                         .0
                         .split_once("{{Icon|")
-                        .unwrap()
+                        .expect("Missing {{Icon|")
                         .1;
                     effect_loc = Locality::from_wiki(word)?;
                     continue;
@@ -366,7 +366,8 @@ this addEventHandler ["AnimChanged", {
 * unit: [[Object]] - object the event handler is assigned to
 * anim: [[String]] - name of the anim that is started
 "#;
-        let event_handler = super::ParsedEventHandler::from_wiki(source).unwrap();
+        let event_handler =
+            super::ParsedEventHandler::from_wiki(source).expect("Failed to parse event handler");
         assert_eq!(event_handler.id, "AnimChanged");
         assert_eq!(
             event_handler.description,

@@ -16,7 +16,7 @@ async fn main() {
         .collect::<Vec<_>>();
     let tmp = std::env::temp_dir().join("arma3-wiki-fetch");
     if !tmp.exists() {
-        std::fs::create_dir(&tmp).unwrap();
+        fs_err::create_dir(&tmp).expect("Failed to create temp directory");
     }
 
     let do_commands = !dry_run || args.is_empty() || args.iter().any(|arg| arg == "--commands");
@@ -54,8 +54,8 @@ async fn main() {
 
     // write report
     let report_path = tmp.join("report.json");
-    let report_json = serde_json::to_string_pretty(&report).unwrap();
-    std::fs::write(&report_path, report_json).unwrap();
+    let report_json = serde_json::to_string_pretty(&report).expect("Failed to serialize report");
+    fs_err::write(&report_path, report_json).expect("Failed to write report");
     println!("Report written to {}", report_path.display());
 }
 

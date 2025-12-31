@@ -1,8 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-use crate::model::Version;
+#[cfg(feature = "wiki")]
+use crate::model::ParseError;
 
-use super::{ParseError, Since, Value};
+use super::{Since, Value};
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Param {
@@ -64,7 +65,12 @@ impl Param {
         // ==== End Of Special Cases ====
         let mut value = value.trim().to_string();
         value = if value.starts_with("{{") {
-            value.split_once("}}").unwrap().1.trim().to_string()
+            value
+                .split_once("}}")
+                .expect("Missing closing '}}'")
+                .1
+                .trim()
+                .to_string()
         } else {
             value
         };
@@ -74,7 +80,7 @@ impl Param {
                 return Err(format!("Invalid param: {value}"));
             };
             let desc = if name.contains(" - ") {
-                let (name_inner, desc_inner) = name.split_once(" - ").unwrap();
+                let (name_inner, desc_inner) = name.split_once(" - ").expect("Missing ' - '");
                 name = name_inner;
                 desc_inner
             } else {
@@ -101,8 +107,8 @@ impl Param {
                     .contains("(Optional"));
         let mut desc = desc.to_string();
         let default = if desc.contains("(Optional, default ") {
-            let (_, default) = desc.split_once("(Optional").unwrap();
-            let (default, desc_trim) = default.split_once(')').unwrap();
+            let (_, default) = desc.split_once("(Optional").expect("Missing '(Optional'");
+            let (default, desc_trim) = default.split_once(')').expect("Missing closing ')'");
             let default = default.replace(", default ", "").trim().to_string();
             desc = desc_trim.to_string();
             Some(default)
@@ -113,7 +119,9 @@ impl Param {
             None
         };
         let since = if name.contains("{{GVI|") {
-            let (since, name_trim) = name.split_once("{{GVI|").unwrap();
+            use crate::model::Version;
+
+            let (since, name_trim) = name.split_once("{{GVI|").expect("Missing '{{GVI|'");
             name = name_trim;
             let (game, version) = Version::from_wiki_icon(since)?;
             let mut since = Since::default();
@@ -201,7 +209,7 @@ impl Param {
         self.default = default;
     }
 
-    pub fn set_since(&mut self, since: Option<Since>) {
+    pub const fn set_since(&mut self, since: Option<Since>) {
         self.since = since;
     }
 }
@@ -215,7 +223,8 @@ mod tests {
 
     #[test]
     fn simple() {
-        let (alive, _) = Param::from_wiki("alive", "player: [[Object]] - Player unit.").unwrap();
+        let (alive, _) = Param::from_wiki("alive", "player: [[Object]] - Player unit.")
+            .expect("Failed to parse param");
         assert_eq!(alive.name(), "player");
         assert_eq!(alive.description(), Some("Player unit."));
         assert_eq!(alive.typ(), &Value::Object);
@@ -223,22 +232,22 @@ mod tests {
 
     #[test]
     fn one_of() {
-        let (direction, _) = Param::from_wiki("camSetDir", "direction:\n* [[Number]] (before {{GVI|arma3|0.50}}) - camera azimuth\n* [[Array]] in format [x,y,z] (since {{GVI|arma3|0.50}}) - direction of camera. Must be a valid vector.").unwrap();
+        let (direction, _) = Param::from_wiki("camSetDir", "direction:\n* [[Number]] (before {{GVI|arma3|0.50}}) - camera azimuth\n* [[Array]] in format [x,y,z] (since {{GVI|arma3|0.50}}) - direction of camera. Must be a valid vector.").expect("Failed to parse param");
         assert_eq!(direction.name(), "direction");
         assert_eq!(direction.typ(), &Value::Unknown);
 
-        let (public, _) = Param::from_wiki("setVariable", "public - (Optional, default [[false]]) can be one of:\n* [[Boolean]] - if set to [[true]], the variable is broadcast globally and is persistent ([[Multiplayer Scripting#Join In Progress|JIP]] compatible) {{Icon|globalEffect|32}}\n* [[Number]] - the variable is only set on the client with the given [[Multiplayer Scripting#Machine network ID|Machine network ID]]. If the number is negative, the variable is set on every client except for the one with the given ID.\n* [[Array]] of [[Number]]s - array of [[Multiplayer Scripting#Machine network ID|Machine network IDs]]").unwrap();
+        let (public, _) = Param::from_wiki("setVariable", "public - (Optional, default [[false]]) can be one of:\n* [[Boolean]] - if set to [[true]], the variable is broadcast globally and is persistent ([[Multiplayer Scripting#Join In Progress|JIP]] compatible) {{Icon|globalEffect|32}}\n* [[Number]] - the variable is only set on the client with the given [[Multiplayer Scripting#Machine network ID|Machine network ID]]. If the number is negative, the variable is set on every client except for the one with the given ID.\n* [[Array]] of [[Number]]s - array of [[Multiplayer Scripting#Machine network ID|Machine network IDs]]").expect("Failed to parse param");
         assert_eq!(public.name(), "public");
         assert_eq!(public.typ(), &Value::Unknown);
 
-        let (targets, _) = Param::from_wiki("remoteExec", "'''targets''' - (Optional, default 0):\n* [[Number]] (See also [[Multiplayer Scripting#Machine network ID|Machine network ID]]):\n** '''0:''' the order will be executed globally, i.e. on the server and every connected client, including the machine where [[remoteExec]] originated\n** '''2:''' the order will only be executed on the server - is both dedicated and hosted server. See [[Multiplayer_Scripting#Different_machines_and_how_to_target_them|for more info]]\n** '''Other number:''' the order will be executed on the machine where [[clientOwner]] matches the given number\n** '''Negative number:''' the effect is inverted: '''-2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12\n* [[Object]] - the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]\n* [[String]] - interpreted as an [[Identifier]] (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [[Multiplayer Scripting#Locality|local]]\n* [[Side]] - the order will be executed on machines where the player is on the specified side\n* [[Group]] - the order will be executed on machines '''where the player is in the specified group''' ('''not''' where said group is local!)\n* [[Array]] - array of any combination of the types listed above").unwrap();
+        let (targets, _) = Param::from_wiki("remoteExec", "'''targets''' - (Optional, default 0):\n* [[Number]] (See also [[Multiplayer Scripting#Machine network ID|Machine network ID]]):\n** '''0:''' the order will be executed globally, i.e. on the server and every connected client, including the machine where [[remoteExec]] originated\n** '''2:''' the order will only be executed on the server - is both dedicated and hosted server. See [[Multiplayer_Scripting#Different_machines_and_how_to_target_them|for more info]]\n** '''Other number:''' the order will be executed on the machine where [[clientOwner]] matches the given number\n** '''Negative number:''' the effect is inverted: '''-2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12\n* [[Object]] - the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]\n* [[String]] - interpreted as an [[Identifier]] (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [[Multiplayer Scripting#Locality|local]]\n* [[Side]] - the order will be executed on machines where the player is on the specified side\n* [[Group]] - the order will be executed on machines '''where the player is in the specified group''' ('''not''' where said group is local!)\n* [[Array]] - array of any combination of the types listed above").expect("Failed to parse param");
         assert_eq!(targets.name(), "targets");
         assert_eq!(targets.typ(), &Value::Unknown);
     }
 
     #[test]
     fn or() {
-        let (targets, _) = Param::from_wiki("remoteExec", "'''targets''': [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - (Optional, default 0) see the main syntax above for more details.").unwrap();
+        let (targets, _) = Param::from_wiki("remoteExec", "'''targets''': [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - (Optional, default 0) see the main syntax above for more details.").expect("Failed to parse param");
         assert_eq!(targets.name(), "targets");
         assert_eq!(targets.typ(), &Value::Unknown);
     }
@@ -249,7 +258,7 @@ mod tests {
 * {{hl|"NONE"}} - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there. 
 * {{hl|"CAN_COLLIDE"}} - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model. 
 * {{hl|"FLY"}} - if vehicle is capable of flying and has crew, it will be made airborne at default height. 
-If ''special'' is "" or not specified, default {{hl|"NONE"}} is used."#).unwrap();
+If ''special'' is "" or not specified, default {{hl|"NONE"}} is used."#).expect("Failed to parse param");
         assert_eq!(special.name(), "special");
         assert!(special.optional());
 
@@ -264,7 +273,7 @@ If ''special'' is "" or not specified, default {{hl|"NONE"}} is used."#).unwrap(
 *** 1/[[true]] = play as speech ([[fadeSpeech]] applies), filters are not applied to it (i.e. house or vehicle interior one)
 *** 2 = play as sound ([[fadeSound]] applies) without interior/vehicle muffling
 ** {{GVI|arma3|2.00|size= 0.75}} offset: [[Number]] - (Optional, default 0) offset in seconds; ignored when ''simulateSpeedOfSound'' is used
-** {{GVI|arma3|2.18|size= 0.75}} simulateSpeedOfSound: [[Boolean]] - (Optional, default [[false]]) [[true]] to simulate speed of sound (see description note)").unwrap();
+** {{GVI|arma3|2.18|size= 0.75}} simulateSpeedOfSound: [[Boolean]] - (Optional, default [[false]]) [[true]] to simulate speed of sound (see description note)").expect("Failed to parse param");
         assert_eq!(sound.name(), "sound");
         assert!(!sound.optional());
     }

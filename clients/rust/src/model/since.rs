@@ -36,7 +36,7 @@ impl Since {
         self.flashpoint.as_ref()
     }
 
-    pub fn set_flashpoint(&mut self, flashpoint: Option<Version>) {
+    pub const fn set_flashpoint(&mut self, flashpoint: Option<Version>) {
         self.flashpoint = flashpoint;
     }
 
@@ -45,7 +45,7 @@ impl Since {
         self.flashpoint_elite.as_ref()
     }
 
-    pub fn set_flashpoint_elite(&mut self, flashpoint_elite: Option<Version>) {
+    pub const fn set_flashpoint_elite(&mut self, flashpoint_elite: Option<Version>) {
         self.flashpoint_elite = flashpoint_elite;
     }
 
@@ -54,7 +54,7 @@ impl Since {
         self.armed_assault.as_ref()
     }
 
-    pub fn set_armed_assault(&mut self, armed_assault: Option<Version>) {
+    pub const fn set_armed_assault(&mut self, armed_assault: Option<Version>) {
         self.armed_assault = armed_assault;
     }
 
@@ -63,7 +63,7 @@ impl Since {
         self.arma_2.as_ref()
     }
 
-    pub fn set_arma_2(&mut self, arma_2: Option<Version>) {
+    pub const fn set_arma_2(&mut self, arma_2: Option<Version>) {
         self.arma_2 = arma_2;
     }
 
@@ -72,7 +72,7 @@ impl Since {
         self.arma_2_arrowhead.as_ref()
     }
 
-    pub fn set_arma_2_arrowhead(&mut self, arma_2_arrowhead: Option<Version>) {
+    pub const fn set_arma_2_arrowhead(&mut self, arma_2_arrowhead: Option<Version>) {
         self.arma_2_arrowhead = arma_2_arrowhead;
     }
 
@@ -81,7 +81,7 @@ impl Since {
         self.take_on_helicopters.as_ref()
     }
 
-    pub fn set_take_on_helicopters(&mut self, take_on_helicopters: Option<Version>) {
+    pub const fn set_take_on_helicopters(&mut self, take_on_helicopters: Option<Version>) {
         self.take_on_helicopters = take_on_helicopters;
     }
 
@@ -90,7 +90,7 @@ impl Since {
         self.arma_3.as_ref()
     }
 
-    pub fn set_arma_3(&mut self, arma_3: Option<Version>) {
+    pub const fn set_arma_3(&mut self, arma_3: Option<Version>) {
         self.arma_3 = arma_3;
     }
 
@@ -99,7 +99,7 @@ impl Since {
         self.argo.as_ref()
     }
 
-    pub fn set_argo(&mut self, argo: Option<Version>) {
+    pub const fn set_argo(&mut self, argo: Option<Version>) {
         self.argo = argo;
     }
 
