@@ -126,7 +126,19 @@ impl Wiki {
     /// Panics if the structure of the repository is invalid.
     fn attempt_load_git(force_pull: bool) -> Result<Self, String> {
         let appdata = get_appdata();
-        let updated = if !force_pull && Self::recently_updated(&appdata) {
+        // Validate
+        let mut validated = appdata.join("commands").exists()
+            && appdata.join("commands").is_dir()
+            && appdata.join("version.txt").exists()
+            && appdata.join("version.txt").is_file();
+        for ns in EventHandlerNamespace::iter() {
+            let ns_path = appdata.join("events").join(ns.to_string());
+            if !ns_path.exists() || !ns_path.is_dir() {
+                validated = false;
+                break;
+            }
+        }
+        let updated = if validated &&!force_pull && Self::recently_updated(&appdata) {
             false
         } else {
             let repo = if let Ok(repo) = Repository::open(&appdata) {
