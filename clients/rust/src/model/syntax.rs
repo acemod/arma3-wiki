@@ -2,13 +2,21 @@ use serde::{Deserialize, Serialize};
 
 #[cfg(feature = "wiki")]
 use crate::model::ParseError;
+use crate::model::Return;
 
 use super::{Call, Locality, Param, Since, Value};
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum BackwardsReturn {
+    Old((Value, Option<String>)),
+    New(Return),
+}
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Syntax {
     pub(crate) call: Call,
-    pub(crate) ret: (Value, Option<String>),
+    pub(crate) ret: BackwardsReturn,
     pub(crate) params: Vec<Param>,
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -22,7 +30,7 @@ impl Syntax {
     #[must_use]
     pub const fn new(
         call: Call,
-        ret: (Value, Option<String>),
+        ret: BackwardsReturn,
         params: Vec<Param>,
         since: Option<Since>,
         effect: Option<Locality>,
@@ -42,8 +50,14 @@ impl Syntax {
     }
 
     #[must_use]
-    pub const fn ret(&self) -> &(Value, Option<String>) {
-        &self.ret
+    pub fn ret(&self) -> Return {
+        match &self.ret {
+            BackwardsReturn::Old((value, desc)) => Return {
+                typ: value.clone(),
+                desc: desc.clone(),
+            },
+            BackwardsReturn::New(ret) => ret.clone(),
+        }
     }
 
     #[must_use]
@@ -64,8 +78,8 @@ impl Syntax {
         self.call = call;
     }
 
-    pub fn set_ret(&mut self, ret: (Value, Option<String>)) {
-        self.ret = ret;
+    pub fn set_ret(&mut self, ret: Return) {
+        self.ret = BackwardsReturn::New(ret);
     }
 
     pub fn set_params(&mut self, params: Vec<Param>) {
@@ -180,24 +194,32 @@ impl Syntax {
                         Value::match_explicit(&ret).map_or_else(
                             || {
                                 errors.push(ParseError::Syntax(ret));
-                                (Value::Unknown, None)
+                                BackwardsReturn::New(Return {
+                                    typ: Value::Unknown,
+                                    desc: None,
+                                })
                             },
-                            |explicit_match| (explicit_match, None),
+                            |explicit_match| {
+                                BackwardsReturn::New(Return {
+                                    typ: explicit_match,
+                                    desc: None,
+                                })
+                            },
                         )
                     } else {
                         let (typ, desc) = ret.split_once('-').unwrap_or((&ret, ""));
                         let typ = typ.trim();
-                        (
-                            Value::from_wiki(typ).unwrap_or_else(|_| {
+                        BackwardsReturn::New(Return {
+                            typ: Value::from_wiki(typ).unwrap_or_else(|_| {
                                 errors.push(ParseError::UnknownType(typ.to_string()));
                                 Value::Unknown
                             }),
-                            if desc.is_empty() {
+                            desc: if desc.is_empty() {
                                 None
                             } else {
                                 Some(desc.trim().to_string())
                             },
-                        )
+                        })
                     }
                 },
                 params,

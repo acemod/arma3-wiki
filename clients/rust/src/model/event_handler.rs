@@ -22,7 +22,8 @@ impl EventHandler {
 #[allow(clippy::module_name_repetitions)]
 pub struct ParsedEventHandler {
     pub(crate) id: String,
-    pub(crate) description: String,
+    #[serde(alias = "description")]
+    pub(crate) desc: String,
     pub(crate) params: Vec<Param>,
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -46,11 +47,11 @@ impl ParsedEventHandler {
 
     #[must_use]
     pub fn description(&self) -> &str {
-        &self.description
+        &self.desc
     }
 
-    pub fn set_description(&mut self, description: String) {
-        self.description = description;
+    pub fn set_description(&mut self, desc: String) {
+        self.desc = desc;
     }
 
     #[must_use]
@@ -222,7 +223,7 @@ impl ParsedEventHandler {
         let description = description.trim_end().to_string();
         Ok(Self {
             id,
-            description,
+            desc: description,
             params,
             since,
             argument_loc,
@@ -370,19 +371,19 @@ this addEventHandler ["AnimChanged", {
             super::ParsedEventHandler::from_wiki(source).expect("Failed to parse event handler");
         assert_eq!(event_handler.id, "AnimChanged");
         assert_eq!(
-            event_handler.description,
+            event_handler.desc,
             "Triggered every time a new animation is started. This EH is only triggered for the 1st animation state in a sequence."
         );
         assert_eq!(event_handler.params.len(), 2);
         assert_eq!(event_handler.params[0].name, "unit");
         assert_eq!(
-            event_handler.params[0].description,
+            event_handler.params[0].desc,
             Some("object the event handler is assigned to".to_string())
         );
         assert_eq!(event_handler.params[0].typ, Value::Object);
         assert_eq!(event_handler.params[1].name, "anim");
         assert_eq!(
-            event_handler.params[1].description,
+            event_handler.params[1].desc,
             Some("name of the anim that is started".to_string())
         );
         assert_eq!(event_handler.params[1].typ, Value::String);

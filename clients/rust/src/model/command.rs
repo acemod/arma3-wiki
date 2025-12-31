@@ -8,7 +8,8 @@ use super::{Locality, Since, Syntax};
 #[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
 pub struct Command {
     name: String,
-    description: String,
+    #[serde(alias = "description")]
+    desc: String,
     #[serde(default)]
     #[serde(skip_serializing_if = "Vec::is_empty")]
     alias: Vec<String>,
@@ -34,6 +35,9 @@ pub struct Command {
     #[serde(default)]
     #[serde(skip_serializing_if = "Vec::is_empty")]
     examples: Vec<String>,
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    see_also: Vec<String>,
 }
 
 impl Command {
@@ -44,7 +48,7 @@ impl Command {
 
     #[must_use]
     pub fn description(&self) -> &str {
-        &self.description
+        &self.desc
     }
 
     #[must_use]
@@ -112,12 +116,17 @@ impl Command {
         &self.examples
     }
 
+    #[must_use]
+    pub fn see_also(&self) -> &[String] {
+        &self.see_also
+    }
+
     pub fn set_name(&mut self, name: String) {
         self.name = name;
     }
 
-    pub fn set_description(&mut self, description: String) {
-        self.description = description;
+    pub fn set_description(&mut self, desc: String) {
+        self.desc = desc;
     }
 
     pub fn set_alias(&mut self, alias: Vec<String>) {
@@ -174,6 +183,10 @@ impl Command {
 
     pub fn add_example(&mut self, example: String) {
         self.examples.push(example);
+    }
+
+    pub fn add_see_also(&mut self, see_also: String) {
+        self.see_also.push(see_also);
     }
 
     #[allow(clippy::too_many_lines)]
@@ -250,7 +263,7 @@ impl Command {
                 "eff" => {
                     command.set_effect_loc(Locality::from_wiki(value)?);
                 }
-                "serverExec" => command.set_server_exec(Some(value.trim() == "y")),
+                "serverExec" => command.set_server_exec(Some(value.trim() == "y" || value.trim() == "true" || value.trim() == "server")),
                 "descr" => {
                     command.set_description(value.to_string());
                 }
@@ -264,7 +277,24 @@ impl Command {
                         }
                     });
                 }
-                "seealso" => break,
+                "seealso" => {
+                    // split by whitespace, remove `[[` and `]]`
+                    let mut end = false;
+                    value.split_whitespace().for_each(|v| {
+                        if end {
+                            return;
+                        }
+                        if v == "}}" {
+                            end = true;
+                            return;
+                        }
+                        let v = v.trim().trim_start_matches("[[").trim_end_matches("]]");
+                        if !v.is_empty() {
+                            command.add_see_also(v.to_string());
+                        }
+                    });
+                    break;
+                }
                 _ => {
                     if key.starts_with("game") {
                         let mut next = lines.next().expect("Expected next line");

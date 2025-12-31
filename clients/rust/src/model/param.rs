@@ -8,9 +8,9 @@ use super::{Since, Value};
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Param {
     pub(crate) name: String,
-    #[serde(default)]
+    #[serde(default, alias = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub(crate) description: Option<String>,
+    pub(crate) desc: Option<String>,
     #[serde(rename = "type")]
     pub(crate) typ: Value,
     #[serde(default)]
@@ -28,7 +28,7 @@ impl Param {
     #[must_use]
     pub const fn new(
         name: String,
-        description: Option<String>,
+        desc: Option<String>,
         typ: Value,
         optional: bool,
         default: Option<String>,
@@ -36,7 +36,7 @@ impl Param {
     ) -> Self {
         Self {
             name,
-            description,
+            desc,
             typ,
             optional,
             default,
@@ -166,7 +166,7 @@ impl Param {
 
     #[must_use]
     pub fn description(&self) -> Option<&str> {
-        self.description.as_deref()
+        self.desc.as_deref()
     }
 
     #[must_use]
@@ -197,8 +197,8 @@ impl Param {
         self.name = name;
     }
 
-    pub fn set_description(&mut self, description: Option<String>) {
-        self.description = description;
+    pub fn set_description(&mut self, desc: Option<String>) {
+        self.desc = desc;
     }
 
     pub fn set_typ(&mut self, typ: Value) {

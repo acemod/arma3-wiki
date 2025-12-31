@@ -63,7 +63,7 @@ pub async fn commands(client: &Client, report: &mut Report, args: &[String], dry
         for (_, cmd) in wiki.commands().iter() {
             let cmd_name_cased = cmd.name();
             if cmd.syntax().iter().any(|syn| {
-                if syn.ret().0 == Value::Unknown {
+                if syn.ret().typ() == &Value::Unknown {
                     println!("cmd {:?} has unknown ret {:?}", cmd_name_cased, syn.ret());
                     return true;
                 }
@@ -230,6 +230,8 @@ pub async fn command(
             if name == "remoteExecCall" {
                 pg.println("Copying remoteExec syntax to remoteExecCall");
                 // copy syntax from remoteExec
+                fs_err::create_dir_all("./dist/commands")
+                    .expect("Failed to create dist/commands directory");
                 let remote_exec = fs_err::read_to_string("./dist/commands/remoteExec.yml")
                     .expect("Failed to read remoteExec.yml");
                 let remote_exec: Command =
@@ -251,6 +253,12 @@ pub async fn command(
             }
             if !dry_run {
                 pg.println(format!("Saving to {}", dist_path.display()));
+                fs_err::create_dir_all(
+                    dist_path
+                        .parent()
+                        .expect("Failed to get parent directory of dist path"),
+                )
+                .expect("Failed to create dist directory");
                 let mut file = tokio::fs::File::create(dist_path)
                     .await
                     .expect("Failed to create dist file");

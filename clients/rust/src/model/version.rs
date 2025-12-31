@@ -1,9 +1,76 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Copy, Hash, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Hash, PartialEq, Eq)]
 pub struct Version {
     major: u8,
     minor: u8,
+}
+
+impl Serialize for Version {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        serializer.serialize_str(&format!("{}.{}", self.major, self.minor))
+    }
+}
+
+// Deserialize from major.minor or from keys "major" and "minor"
+impl<'de> Deserialize<'de> for Version {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        struct VersionVisitor;
+        impl<'de> serde::de::Visitor<'de> for VersionVisitor {
+            type Value = Version;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("a version string in the format 'major.minor'")
+            }
+
+            fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
+            where
+                E: serde::de::Error,
+            {
+                Version::from_wiki(v).map_err(serde::de::Error::custom)
+            }
+
+            fn visit_map<M>(self, mut map: M) -> Result<Self::Value, M::Error>
+            where
+                M: serde::de::MapAccess<'de>,
+            {
+                let mut major: Option<u8> = None;
+                let mut minor: Option<u8> = None;
+
+                while let Some(key) = map.next_key::<String>()? {
+                    match key.as_str() {
+                        "major" => {
+                            if major.is_some() {
+                                return Err(serde::de::Error::duplicate_field("major"));
+                            }
+                            major = Some(map.next_value()?);
+                        }
+                        "minor" => {
+                            if minor.is_some() {
+                                return Err(serde::de::Error::duplicate_field("minor"));
+                            }
+                            minor = Some(map.next_value()?);
+                        }
+                        _ => {
+                            let _: serde::de::IgnoredAny = map.next_value()?;
+                        }
+                    }
+                }
+
+                let major = major.ok_or_else(|| serde::de::Error::missing_field("major"))?;
+                let minor = minor.ok_or_else(|| serde::de::Error::missing_field("minor"))?;
+
+                Ok(Version { major, minor })
+            }
+        }
+        deserializer.deserialize_str(VersionVisitor)
+    }
 }
 
 impl Version {

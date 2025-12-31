@@ -126,7 +126,6 @@ impl Wiki {
     /// Panics if the structure of the repository is invalid.
     fn attempt_load_git(force_pull: bool) -> Result<Self, String> {
         let appdata = get_appdata();
-        // Validate
         let mut validated = appdata.join("commands").exists()
             && appdata.join("commands").is_dir()
             && appdata.join("version.txt").exists()

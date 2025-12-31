@@ -11,19 +11,19 @@ pub struct Since {
     #[serde(skip_serializing_if = "Option::is_none")]
     flashpoint_elite: Option<Version>,
     #[serde(default)]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", rename = "arma1")]
     armed_assault: Option<Version>,
     #[serde(default)]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", rename = "arma2")]
     arma_2: Option<Version>,
     #[serde(default)]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", rename = "arma2oa")]
     arma_2_arrowhead: Option<Version>,
     #[serde(default)]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", rename = "tkoh", alias = "tko")]
     take_on_helicopters: Option<Version>,
     #[serde(default)]
-    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(skip_serializing_if = "Option::is_none", rename = "arma3")]
     arma_3: Option<Version>,
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]

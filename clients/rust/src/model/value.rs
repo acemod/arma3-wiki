@@ -8,7 +8,8 @@ use super::Since;
 #[derive(Clone, Debug, Hash, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ArraySizedElement {
     pub name: String,
-    pub value: Value,
+    #[serde(rename = "type")]
+    pub typ: Value,
     pub desc: String,
     pub since: Option<Since>,
 }
@@ -239,7 +240,7 @@ impl std::fmt::Display for Value {
                     for typ in types {
                         result.push_str(&typ.name);
                         result.push_str(": ");
-                        result.push_str(&typ.value.to_string());
+                        result.push_str(&typ.typ.to_string());
                         result.push_str(" - ");
                         result.push_str(&typ.desc);
                         result.push('\n');
@@ -331,5 +332,65 @@ mod tests {
             Value::from_wiki("[[Array]] with [[Anything]]"),
             Ok(Value::ArrayUnknown)
         );
+    }
+
+    #[test]
+    fn array_position() {
+        assert_eq!(
+            Value::from_wiki("[[Array]] format [[Position]]"),
+            Ok(Value::Position)
+        );
+        assert_eq!(
+            Value::from_wiki("[[Array]] format [[Position#PositionATL|PositionATL]]"),
+            Ok(Value::Position3dATL)
+        );
+        assert_eq!(
+            Value::from_wiki("[[Array]] format [[Position#PositionAGL|PositionAGL]]"),
+            Ok(Value::Position3dAGL)
+        );
+        assert_eq!(
+            Value::from_wiki("[[Array]] format [[Position#PositionAGLS|PositionAGLS]]"),
+            Ok(Value::Position3dAGLS)
+        );
+        assert_eq!(
+            Value::from_wiki("[[Array]] format [[Position#PositionASL|PositionASL]]"),
+            Ok(Value::Position3dASL)
+        );
+        assert_eq!(
+            Value::from_wiki("[[Array]] format [[Position#PositionASLW|PositionASLW]]"),
+            Ok(Value::Position3DASLW)
+        );
+    }
+
+    #[test]
+    fn array_color() {
+        assert_eq!(
+            Value::from_wiki("[[Array]] format [[Color|Color (RGB)]]"),
+            Ok(Value::ArrayColor)
+        );
+        assert_eq!(
+            Value::from_wiki("[[Array]] format [[Color|Color (RGBA)]]"),
+            Ok(Value::ArrayColor)
+        );
+    }
+
+    #[test]
+    fn array_unsized() {
+        assert_eq!(
+            Value::from_wiki("[[Array]] of [[String]]"),
+            Ok(Value::ArrayUnsized { typ: Box::new(Value::String), desc: String::new() })
+        );
+        assert_eq!(
+            Value::from_wiki("[[Array]] of [[Number]]s"),
+            Ok(Value::ArrayUnsized { typ: Box::new(Value::Number), desc: String::new() })
+        );
+    }
+
+    #[test]
+    fn or() {
+        assert_eq!(Value::from_wiki("[[Nothing]] or [[Boolean]]"), Ok(Value::OneOf(vec![
+            (Value::Nothing, None),
+            (Value::Boolean, None),
+        ])));
     }
 }
