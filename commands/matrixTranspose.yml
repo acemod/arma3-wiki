@@ -10,12 +10,20 @@ groups:
 syntax:
 - call: !Unary matrix
   ret:
-    type: Unknown
+    type: !ArrayUnsized
+      type: !ArrayUnsized
+        type: Number
+        desc: ''
+      desc: ''
     desc: transposed matrix
   params:
   - name: matrix
     desc: given matrix
-    type: Unknown
+    type: !ArrayUnsized
+      type: !ArrayUnsized
+        type: Number
+        desc: ''
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

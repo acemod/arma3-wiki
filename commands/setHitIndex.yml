@@ -21,7 +21,13 @@ syntax:
     desc: hit part index of the Hit Point
     type: Number
   - name: damage
-    type: Unknown
+    type: !NumberEnum
+    - - 0
+      - no damage
+      - null
+    - - 1
+      - full damage
+      - null
   - name: useEffects
     desc: '[[false]] to skip destruction effects'
     type: Boolean

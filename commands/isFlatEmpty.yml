@@ -51,7 +51,13 @@ syntax:
     optional: true
     default: '1'
   - name: overLandOrWater
-    type: Unknown
+    type: !NumberEnum
+    - - 0
+      - position cannot be over water
+      - null
+    - - 2
+      - position cannot be over land
+      - null
     optional: true
   - name: shoreLine
     type: Unknown

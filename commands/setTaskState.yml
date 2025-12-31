@@ -12,7 +12,25 @@ syntax:
   - name: task
     type: Task
   - name: state
-    type: Unknown
+    type: !StringEnum
+    - - None
+      - null
+      - null
+    - - Created
+      - null
+      - null
+    - - Assigned
+      - null
+      - null
+    - - Succeeded
+      - null
+      - null
+    - - Failed
+      - null
+      - null
+    - - Canceled
+      - null
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

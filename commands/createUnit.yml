@@ -66,8 +66,18 @@ syntax:
     desc: placement radius
     type: Number
   - name: special
-    type: !OneOf
-    - - String
+    type: !StringEnum
+    - - NONE
+      - null
+      - null
+    - - FORM
+      - null
+      - null
+    - - CAN_COLLIDE
+      - null
+      - null
+    - - CARGO
+      - null
       - null
 - call: !Binary
   - type

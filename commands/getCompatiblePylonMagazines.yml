@@ -7,13 +7,17 @@ syntax:
   - vehicle
   - pylon
   ret:
-    type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
+    type: !ArrayUnsized
+      type: !OneOf
+      - - String
+        - null
+      - - !ArrayUnsized
+          type: !ArrayUnsized
+            type: String
+            desc: ''
+          desc: ''
+        - null
+      desc: ''
   params:
   - name: vehicle
     desc: aircraft object or config class

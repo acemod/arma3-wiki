@@ -8,7 +8,22 @@ syntax:
     type: Unknown
   params:
   - name: option
-    type: Unknown
+    type: !NumberEnum
+    - - -1
+      - 'log remains collector entities into a file in the [[arma.RPT|RPT]] directory - see also the {{Link|Arma 3: Cheats#REMAINS|REMAINS}} cheat and the {{hl|{{Link|Multiplayer Server Commands#Performance Profiling|#logremains}}}} {{Link|Multiplayer Server Commands|server command}}.{{Feature|important|Only available in {{Link|Arma 3: Diagnostics Exe|Diagnostic}}/{{Link|Performance Profiling|Profiling}} branch.}}'
+      - arma3: '2.20'
+    - - 0
+      - corpses - returns [disposalPeriod, managerMode, removeLimit, removeMinTime, removeMaxTime, minPlayerDistance, unit1, unit2...]
+      - null
+    - - 1
+      - wrecks - returns [disposalPeriod, managerMode, removeLimit, removeMinTime, removeMaxTime, minPlayerDistance, unit1, unit2...]
+      - null
+    - - 2
+      - weaponholders - returns [disposalPeriod, managerMode, removeLimit, removeMinTime, removeMaxTime, minPlayerDistance, unit1, unit2...]
+      - null
+    - - 3
+      - overrideTimes - returns [overrideTimeCorpses, overrideTimeWrecks, overrideTimeWeaponholders]
+      - arma3: '2.20'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

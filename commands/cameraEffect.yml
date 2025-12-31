@@ -29,7 +29,49 @@ syntax:
     desc: 'the effect type (defined in main config or [[Description.ext#CfgCameraEffects|CfgCameraEffects]] >> Array). Defaults are: {{hl|"Internal"}}, {{hl|"External"}}, {{hl|"Fixed"}}, {{hl|"FixedWithZoom"}}, {{hl|"Terminate"}}'
     type: String
   - name: effectPosition
-    type: Unknown
+    type: !StringEnum
+    - - TOP
+      - null
+      - null
+    - - LEFT
+      - null
+      - null
+    - - RIGHT
+      - null
+      - null
+    - - FRONT
+      - null
+      - null
+    - - BACK
+      - null
+      - null
+    - - LEFT FRONT
+      - null
+      - null
+    - - RIGHT FRONT
+      - null
+      - null
+    - - LEFT BACK
+      - null
+      - null
+    - - RIGHT BACK
+      - null
+      - null
+    - - LEFT TOP
+      - null
+      - null
+    - - RIGHT TOP
+      - null
+      - null
+    - - FRONT TOP
+      - null
+      - null
+    - - BACK TOP
+      - null
+      - null
+    - - BOTTOM
+      - null
+      - null
   - name: r2tName
     desc: '[[Procedural_Textures#Render_To_Texture|Render To Texture]] surface reference'
     type: String

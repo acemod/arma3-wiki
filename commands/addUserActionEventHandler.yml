@@ -15,7 +15,16 @@ syntax:
     desc: action key name - see [[inputAction/actions]]
     type: String
   - name: event
-    type: Unknown
+    type: !StringEnum
+    - - Activate
+      - null
+      - null
+    - - Deactivate
+      - null
+      - null
+    - - Analog
+      - null
+      - null
   - name: expression
     desc: |-
       expression that will be executed in [[missionNamespace]] when event handler fires.<br>

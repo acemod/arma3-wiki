@@ -47,7 +47,25 @@ syntax:
     optional: true
     default: '[[taskNull]]'
   - name: taskState
-    type: Unknown
+    type: !StringEnum
+    - - NONE
+      - null
+      - null
+    - - CREATED
+      - null
+      - null
+    - - ASSIGNED
+      - null
+      - null
+    - - SUCCEEDED
+      - null
+      - null
+    - - FAILED
+      - null
+      - null
+    - - CANCELED
+      - null
+      - null
     optional: true
   - name: showTitle
     desc: whether or not to show title in the description section as well

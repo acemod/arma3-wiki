@@ -17,7 +17,19 @@ syntax:
   - name: colour
     type: ArrayColor
   - name: icon
-    type: Unknown
+    type: !StringEnum
+    - - taskNew
+      - null
+      - null
+    - - taskCurrent
+      - null
+      - null
+    - - taskDone
+      - null
+      - null
+    - - taskFailed
+      - null
+      - null
 argument_loc: Unspecified
 effect_loc: Local
 since:

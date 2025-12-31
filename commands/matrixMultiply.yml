@@ -10,15 +10,27 @@ syntax:
   - matrix1
   - matrix2
   ret:
-    type: Unknown
+    type: !ArrayUnsized
+      type: !ArrayUnsized
+        type: Number
+        desc: ''
+      desc: ''
     desc: resulting matrix of the size {{hl|n}}''(rows)'' &times; {{hl|m}}''(columns)''
   params:
   - name: matrix1
     desc: matrix of the size {{hl|n}}''(rows)'' &times; {{hl|k}}''(columns)''
-    type: Unknown
+    type: !ArrayUnsized
+      type: !ArrayUnsized
+        type: Number
+        desc: ''
+      desc: ''
   - name: matrix2
     desc: matrix of the size {{hl|k}}''(rows)'' &times; {{hl|m}}''(columns)''
-    type: Unknown
+    type: !ArrayUnsized
+      type: !ArrayUnsized
+        type: Number
+        desc: ''
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

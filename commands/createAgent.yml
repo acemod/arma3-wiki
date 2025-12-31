@@ -36,7 +36,13 @@ syntax:
     desc: placement radius, the unit is randomly place in a circle with this radius
     type: Number
   - name: special
-    type: Unknown
+    type: !StringEnum
+    - - NONE
+      - null
+      - null
+    - - CAN_COLLIDE
+      - null
+      - null
 argument_loc: Unspecified
 effect_loc: Global
 since:

@@ -5,7 +5,19 @@ groups:
 syntax:
 - call: !Unary boardname
   ret:
-    type: Unknown
+    type: !NumberEnum
+    - - 0
+      - Busy (async. operation in progress)
+      - null
+    - - 1
+      - Async. operation ended with success
+      - null
+    - - 2
+      - Async. operation ended with error
+      - null
+    - - 3
+      - Invalid board (bad board name, not initialised etc)
+      - null
   params:
   - name: boardname
     type: String

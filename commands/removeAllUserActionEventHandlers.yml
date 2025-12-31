@@ -16,7 +16,16 @@ syntax:
     desc: see [[inputAction/actions]]
     type: String
   - name: eventType
-    type: Unknown
+    type: !StringEnum
+    - - Activate
+      - null
+      - null
+    - - Deactivate
+      - null
+      - null
+    - - Analog
+      - null
+      - null
 argument_loc: Unspecified
 effect_loc: Local
 since:

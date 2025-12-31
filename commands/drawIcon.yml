@@ -50,10 +50,9 @@ syntax:
     optional: true
     default: '""'
   - name: shadow
-    type: !OneOf
-    - - Number
-      - null
-    - - Boolean
+    type: !NumberEnum
+    - - 1
+      - shadow (for text)
       - null
     optional: true
   - name: textSize

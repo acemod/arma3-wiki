@@ -35,9 +35,9 @@ syntax:
   - '...'
   ret:
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - Number
+    - - !ArrayUnsized
+        type: Number
+        desc: ''
       - null
     - - Nothing
       - null

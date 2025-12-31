@@ -49,7 +49,28 @@ syntax:
     optional: true
     default: '1'
   - name: LOD1
-    type: Unknown
+    type: !StringEnum
+    - - FIRE
+      - null
+      - null
+    - - VIEW
+      - null
+      - null
+    - - GEOM
+      - null
+      - null
+    - - IFIRE
+      - null
+      - null
+    - - NONE
+      - null
+      - null
+    - - PHYSX
+      - null
+      - arma3: '2.2'
+    - - ROADWAY
+      - null
+      - arma3: '2.8'
     optional: true
     since:
       arma3: '1.52'
