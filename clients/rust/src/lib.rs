@@ -138,7 +138,7 @@ impl Wiki {
                 break;
             }
         }
-        let updated = if validated &&!force_pull && Self::recently_updated(&appdata) {
+        let updated = if validated && !force_pull && Self::recently_updated(&appdata) {
             false
         } else {
             let repo = if let Ok(repo) = Repository::open(&appdata) {
