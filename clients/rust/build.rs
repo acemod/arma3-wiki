@@ -1,5 +1,7 @@
 use rand::{Rng, distr::Alphanumeric, rng};
 
+const BRANCH: &str = "dist-2";
+
 pub fn main() {
     use git2::Repository;
     let mut tmp = std::env::temp_dir().join("arma3-wiki");
@@ -16,13 +18,13 @@ pub fn main() {
     }
     let repo = Repository::open(&tmp).unwrap_or_else(|_| {
         git2::build::RepoBuilder::new()
-            .branch("dist")
+            .branch(BRANCH)
             .clone("https://github.com/acemod/arma3-wiki", &tmp)
             .map_err(|e| format!("Failed to clone repository: {e}"))
             .expect("Failed to clone repository")
     });
     repo.find_remote("origin")
-        .and_then(|mut r| r.fetch(&["dist"], None, None))
+        .and_then(|mut r| r.fetch(&[BRANCH], None, None))
         .map_err(|e| format!("Failed to fetch remote: {e}"))
         .expect("Failed to fetch remote");
     let fetch_head = repo
@@ -39,14 +41,14 @@ pub fn main() {
         .expect("Failed to analyze merge");
     if !analysis.0.is_up_to_date() && analysis.0.is_fast_forward() {
         let mut reference = repo
-            .find_reference("refs/heads/dist")
+            .find_reference(format!("refs/heads/{BRANCH}").as_str())
             .map_err(|e| format!("Failed to find reference: {e}"))
             .expect("Failed to find reference");
         reference
             .set_target(commit.id(), "Fast-Forward")
             .map_err(|e| format!("Failed to set reference: {e}"))
             .expect("Failed to set reference");
-        repo.set_head("refs/heads/dist")
+        repo.set_head(format!("refs/heads/{BRANCH}").as_str())
             .map_err(|e| format!("Failed to set HEAD: {e}"))
             .expect("Failed to set HEAD");
         repo.checkout_head(Some(git2::build::CheckoutBuilder::default().force()))

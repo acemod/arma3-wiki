@@ -51,11 +51,13 @@ pub enum Value {
     Namespace,
     Nothing,
     Number,
+    NumberEnum(Vec<(i32, Option<String>, Option<Since>)>),
     NumberRange(i32, i32),
     Object,
     ScriptHandle,
     Side,
     String,
+    StringEnum(Vec<(String, Option<String>, Option<Since>)>),
     StructuredText,
     SwitchType,
     Task,
@@ -85,16 +87,137 @@ pub enum Value {
 #[cfg(feature = "wiki")]
 static REGEX_TYPE: OnceLock<Regex> = OnceLock::new();
 #[cfg(feature = "wiki")]
-static REGEX_ARRAY_OF: OnceLock<Regex> = OnceLock::new();
-#[cfg(feature = "wiki")]
 static REGEX_OR_PATTERN: OnceLock<Regex> = OnceLock::new();
 #[cfg(feature = "wiki")]
 static REGEX_NUMBER_RANGE: OnceLock<Regex> = OnceLock::new();
+#[cfg(feature = "wiki")]
+static REGEX_ARRAY_SIZED: OnceLock<Regex> = OnceLock::new();
+#[cfg(feature = "wiki")]
+static REGEX_ARRAY_SIZED_ELEMENT: OnceLock<Regex> = OnceLock::new();
+#[cfg(feature = "wiki")]
+static REGEX_STRING_ENUM_LINE: OnceLock<Regex> = OnceLock::new();
+#[cfg(feature = "wiki")]
+static REGEX_GVI: OnceLock<Regex> = OnceLock::new();
 
 impl Value {
     #[must_use]
     pub const fn is_unknown(&self) -> bool {
         matches!(self, Self::Unknown | Self::ArrayUnknown)
+    }
+
+    #[cfg(feature = "wiki")]
+    /// Helper function to extract version info and clean description text.
+    /// Returns (`cleaned_description``since_version`)
+    fn extract_version_and_clean_desc(
+        text: &str,
+        regex_gvi: &Regex,
+    ) -> (Option<String>, Option<Since>) {
+        let since = regex_gvi.captures(text).map(|caps| {
+            let version = caps.get(1).expect("Failed to get version").as_str();
+            Since::arma3(version)
+        });
+
+        // Remove {{GVI|...}} tags from description
+        let cleaned = regex_gvi.replace_all(text, "").trim().to_string();
+
+        let desc = if cleaned.is_empty() {
+            None
+        } else {
+            Some(cleaned)
+        };
+
+        (desc, since)
+    }
+
+    #[cfg(feature = "wiki")]
+    /// Helper function to parse description from text after a colon.
+    /// Returns (description, since) where description has version tags removed.
+    fn parse_desc_with_colon(text: &str, regex_gvi: &Regex) -> (Option<String>, Option<Since>) {
+        text.find(':').map_or((None, None), |colon_pos| {
+            let raw_desc = text[colon_pos + 1..].trim();
+            if raw_desc.is_empty() {
+                (None, None)
+            } else {
+                Self::extract_version_and_clean_desc(raw_desc, regex_gvi)
+            }
+        })
+    }
+
+    #[cfg(feature = "wiki")]
+    /// Helper function to extract version from line when there's no description.
+    fn extract_version_only(line: &str, regex_gvi: &Regex) -> Option<Since> {
+        regex_gvi.captures(line).map(|caps| {
+            let version = caps.get(1).expect("Failed to get version").as_str();
+            Since::arma3(version)
+        })
+    }
+
+    #[cfg(feature = "wiki")]
+    /// Helper function to parse a value and add it to a list.
+    /// Tries to parse as complete expression first, then falls back to extracting [[Type]].
+    fn parse_and_add_type(
+        command: &str,
+        part: &str,
+        regex_pattern: &Regex,
+        parsed_values: &mut Vec<(Self, Option<Since>)>,
+    ) {
+        if let Ok(val) = Self::from_wiki(command, part) {
+            parsed_values.push((val, None));
+        } else if let Some(caps) = regex_pattern.captures(part) {
+            let value = caps.get(1).expect("Failed to get capture group 1").as_str();
+            if let Ok(val) = Self::single_match(value) {
+                parsed_values.push((val, None));
+            }
+        }
+    }
+
+    #[cfg(feature = "wiki")]
+    /// Helper function to extract string value from enum line.
+    /// Returns (value, `remaining_text_after_value`).
+    fn extract_string_value<'a>(
+        line: &'a str,
+        content: &'a str,
+        regex_string_enum_line: &Regex,
+    ) -> Option<(String, &'a str)> {
+        // Try to extract string from {{hl|"..."}} or plain text with quotes
+        if let Some(caps) = regex_string_enum_line.captures(line) {
+            let val = caps
+                .get(1)
+                .expect("Failed to get string value")
+                .as_str()
+                .to_string();
+            // Find where the {{hl|"..."}} ends to look for description
+            if let Some(hl_end) = line.find("}}") {
+                let remaining = &line[hl_end + 2..];
+                return Some((val, remaining));
+            }
+            return Some((val, ""));
+        }
+
+        if let Some(quote_start) = content.find('"')
+            && let Some(quote_end) = content[quote_start + 1..].find('"')
+        {
+            let val = content[quote_start + 1..quote_start + 1 + quote_end].to_string();
+            let remaining = &content[quote_start + 1 + quote_end + 1..];
+            return Some((val, remaining));
+        }
+
+        // Plain text after "* "
+        if content.is_empty() {
+            None
+        } else {
+            Some((content.to_string(), ""))
+        }
+    }
+
+    #[cfg(feature = "wiki")]
+    /// Helper function to iterate over bulleted lines in source text.
+    /// Returns an iterator over trimmed lines that start with '*'.
+    fn bulleted_lines(source: &str) -> impl Iterator<Item = &str> {
+        source
+            .lines()
+            .map(str::trim)
+            .filter(|line| line.starts_with('*'))
     }
 
     #[cfg(feature = "wiki")]
@@ -113,14 +236,130 @@ impl Value {
         let regex_type = REGEX_TYPE.get_or_init(|| {
             Regex::new(r"(?m)\[\[([^\[\]]+)\]\]").expect("Failed to compile regex")
         });
-        let regex_array_of = REGEX_ARRAY_OF.get_or_init(|| {
-            Regex::new(r"^\[\[Array\]\] of \[\[([^\[\]]+)\]\]s?$").expect("Failed to compile regex")
-        });
         let regex_or_pattern = REGEX_OR_PATTERN
             .get_or_init(|| Regex::new(r"\[\[([^\[\]]+)\]\]").expect("Failed to compile regex"));
         let regex_number_range = REGEX_NUMBER_RANGE.get_or_init(|| {
             Regex::new(r"^\[\[Number\]\].*?(\d+)\.\.(\d+)").expect("Failed to compile regex")
         });
+        let regex_array_sized = REGEX_ARRAY_SIZED.get_or_init(|| {
+            Regex::new(r"^\[\[Array\]\] with \[([^\]]+)\]").expect("Failed to compile regex")
+        });
+        let regex_array_sized_element = REGEX_ARRAY_SIZED_ELEMENT.get_or_init(|| {
+            Regex::new(r"(?m)^\* ([^:]+): \[\[([^\]]+)\]\](?:\s*-\s*(.*))?$")
+                .expect("Failed to compile regex")
+        });
+        let regex_string_enum_line = REGEX_STRING_ENUM_LINE.get_or_init(|| {
+            Regex::new(r#"(?m)^\* (?:.*?)\{\{hl\|"([^"]+)"\}\}"#).expect("Failed to compile regex")
+        });
+        let regex_gvi = REGEX_GVI.get_or_init(|| {
+            Regex::new(r"\{\{GVI\|arma3\|([^\|\}]+)[^\}]*\}\}").expect("Failed to compile regex")
+        });
+
+        // Check for "Array with [name1, name2]" sized array pattern
+        if let Some(caps) = regex_array_sized.captures(source) {
+            let names_str = caps.get(1).expect("Failed to get capture group 1").as_str();
+
+            // Parse the element definitions
+            let mut elements = Vec::new();
+            for cap in regex_array_sized_element.captures_iter(source) {
+                let name = cap
+                    .get(1)
+                    .expect("Failed to get element name")
+                    .as_str()
+                    .trim();
+                let type_str = cap.get(2).expect("Failed to get element type").as_str();
+                let desc = cap
+                    .get(3)
+                    .map_or(String::new(), |m| m.as_str().trim().to_string());
+
+                if let Ok(typ) = Self::single_match(type_str) {
+                    elements.push(ArraySizedElement {
+                        name: name.to_string(),
+                        typ,
+                        desc,
+                        since: None,
+                    });
+                }
+            }
+
+            // Verify we got all expected elements
+            if elements.len() == names_str.split(',').map(str::trim).count() {
+                return Ok(Self::ArraySized {
+                    types: elements,
+                    desc: String::new(),
+                });
+            }
+        }
+
+        // Check for String enum pattern "[[String]] - ...one of:"
+        if source.starts_with("[[String]]") && source.contains("one of:") && source.contains('*') {
+            let mut enum_values = Vec::new();
+
+            for line in Self::bulleted_lines(source) {
+                let content = line.trim_start_matches('*').trim();
+
+                // Extract string value and remaining text
+                let Some((value, after_value)) =
+                    Self::extract_string_value(line, content, regex_string_enum_line)
+                else {
+                    continue;
+                };
+
+                // Parse description and version info
+                let (desc, since) = Self::parse_desc_with_colon(after_value, regex_gvi);
+                let since = since.or_else(|| Self::extract_version_only(line, regex_gvi));
+
+                enum_values.push((value, desc, since));
+            }
+
+            if !enum_values.is_empty() {
+                return Ok(Self::StringEnum(enum_values));
+            }
+        }
+
+        // Check for Number enum pattern "[[Number]]\n* 0: Description\n* 1: Description"
+        if source.starts_with("[[Number]]") && source.contains("\n*") {
+            let mut enum_values = Vec::new();
+
+            for line in Self::bulleted_lines(source) {
+                let content = line.trim_start_matches('*').trim();
+
+                // Parse number and optional description
+                let (number_str, desc_part) =
+                    content.find(':').map_or((content, None), |colon_pos| {
+                        (content[..colon_pos].trim(), Some(&content[colon_pos..]))
+                    });
+
+                if let Ok(number) = number_str.parse::<i32>() {
+                    let (desc, since) = desc_part.map_or((None, None), |desc_text| {
+                        Self::parse_desc_with_colon(desc_text, regex_gvi)
+                    });
+                    enum_values.push((number, desc, since));
+                }
+            }
+
+            if !enum_values.is_empty() {
+                return Ok(Self::NumberEnum(enum_values));
+            }
+        }
+
+        // Check for bulleted list pattern "* [[Type]] - description" (should be OneOf)
+        if source.starts_with('*') && source.contains('\n') {
+            let mut types = Vec::new();
+            for line in Self::bulleted_lines(source) {
+                // Extract [[Type]] from the line
+                if let Some(caps) = regex_type.captures(line) {
+                    let type_str = caps.get(1).expect("Failed to get type").as_str();
+                    if let Ok(typ) = Self::single_match(type_str) {
+                        types.push((typ, None));
+                    }
+                }
+            }
+
+            if !types.is_empty() {
+                return Ok(Self::OneOf(types));
+            }
+        }
 
         // Check for "Number in range X..Y" pattern
         if let Some(caps) = regex_number_range.captures(source) {
@@ -132,11 +371,59 @@ impl Value {
         }
 
         // Check for "Array of X" pattern
-        if let Some(caps) = regex_array_of.captures(source) {
-            let inner_type = caps.get(1).expect("Failed to get capture group 1").as_str();
-            if let Ok(typ) = Self::single_match(inner_type) {
+        if let Some(mut rest) = source.strip_prefix("[[Array]] of ") {
+            // Handle optional trailing 's' (e.g., "[[Number]]s")
+            if rest.ends_with("]]s") {
+                rest = &rest[..rest.len() - 1]; // Remove the trailing 's'
+            }
+
+            // Try to parse the rest recursively, handling both simple and nested cases
+            if let Ok(inner_type) = Self::from_wiki(command, rest) {
+                // Special handling: if inner_type is OneOf containing Nothing,
+                // restructure to OneOf(Array(non-Nothing types), Nothing)
+                // because Array of Nothing doesn't make sense
+                if let Self::OneOf(ref types) = inner_type {
+                    let (nothing_types, other_types): (Vec<_>, Vec<_>) =
+                        types.iter().partition(|(t, _)| matches!(t, Self::Nothing));
+
+                    if !nothing_types.is_empty() && !other_types.is_empty() {
+                        // We have both Nothing and other types
+                        // Create a OneOf with Array(other_types) and Nothing
+                        let mut new_oneof = vec![];
+
+                        if other_types.len() == 1 {
+                            // Single non-Nothing type: Array(that_type)
+                            new_oneof.push((
+                                Self::ArrayUnsized {
+                                    typ: Box::new(other_types[0].0.clone()),
+                                    desc: String::new(),
+                                },
+                                None,
+                            ));
+                        } else {
+                            // Multiple non-Nothing types: Array(OneOf(those_types))
+                            let cloned_types: Vec<(Self, Option<Since>)> = other_types
+                                .iter()
+                                .map(|(t, s)| (t.clone(), s.clone()))
+                                .collect();
+                            new_oneof.push((
+                                Self::ArrayUnsized {
+                                    typ: Box::new(Self::OneOf(cloned_types)),
+                                    desc: String::new(),
+                                },
+                                None,
+                            ));
+                        }
+
+                        // Add Nothing
+                        new_oneof.push((Self::Nothing, None));
+
+                        return Ok(Self::OneOf(new_oneof));
+                    }
+                }
+
                 return Ok(Self::ArrayUnsized {
-                    typ: Box::new(typ),
+                    typ: Box::new(inner_type),
                     desc: String::new(),
                 });
             }
@@ -163,15 +450,12 @@ impl Value {
                         // Parse first i parts
                         for &part in &parts[..i] {
                             let part = part.trim().trim_end_matches(',');
-                            if let Ok(val) = Self::from_wiki(command, part) {
-                                parsed_values.push((val, None));
-                            } else if let Some(caps) = regex_or_pattern.captures(part) {
-                                let value =
-                                    caps.get(1).expect("Failed to get capture group 1").as_str();
-                                if let Ok(val) = Self::single_match(value) {
-                                    parsed_values.push((val, None));
-                                }
-                            }
+                            Self::parse_and_add_type(
+                                command,
+                                part,
+                                regex_or_pattern,
+                                &mut parsed_values,
+                            );
                         }
 
                         // Add the explicit match
@@ -203,18 +487,7 @@ impl Value {
                     }
                 } else {
                     // Single item, try to parse as complete expression first
-                    if let Ok(val) = Self::from_wiki(command, part) {
-                        parsed_values.push((val, None));
-                    } else {
-                        // If that fails, try extracting just the type in [[brackets]]
-                        if let Some(caps) = regex_or_pattern.captures(part) {
-                            let value =
-                                caps.get(1).expect("Failed to get capture group 1").as_str();
-                            if let Ok(val) = Self::single_match(value) {
-                                parsed_values.push((val, None));
-                            }
-                        }
-                    }
+                    Self::parse_and_add_type(command, part, regex_or_pattern, &mut parsed_values);
                 }
             }
 
@@ -408,6 +681,9 @@ impl Value {
     /// * [[Nothing]] - If arguments are incorrect
     /// * [[Boolean]] - Returns [[false]] if simulWeather is disabled
     /// ```
+    ///
+    /// # Errors
+    /// Errors if no list items are found.
     pub fn parse_list(command: &str, source: &str) -> Result<Self, String> {
         let mut items = Vec::new();
         for line in source.lines() {
@@ -464,11 +740,27 @@ impl std::fmt::Display for Value {
             Self::Namespace => write!(f, "Namespace"),
             Self::Nothing => write!(f, "Nothing"),
             Self::Number => write!(f, "Number"),
+            Self::NumberEnum(values) => {
+                let formatted = values
+                    .iter()
+                    .map(|(value, _, _)| value.to_string())
+                    .collect::<Vec<_>>()
+                    .join(" | ");
+                write!(f, "Number Enum ({formatted})")
+            }
             Self::NumberRange(min, max) => write!(f, "Number Range ({min},{max})"),
             Self::Object => write!(f, "Object"),
             Self::ScriptHandle => write!(f, "Script Handle"),
             Self::Side => write!(f, "Side"),
             Self::String => write!(f, "String"),
+            Self::StringEnum(values) => {
+                let formatted = values
+                    .iter()
+                    .map(|(value, _, _)| value.clone())
+                    .collect::<Vec<_>>()
+                    .join(" | ");
+                write!(f, "String Enum ({formatted})")
+            }
             Self::StructuredText => write!(f, "Structured Text"),
             Self::SwitchType => write!(f, "Switch Type"),
             Self::Task => write!(f, "Task"),
@@ -504,7 +796,7 @@ impl std::fmt::Display for Value {
 #[cfg(test)]
 #[cfg(feature = "wiki")]
 mod tests {
-    use crate::model::{ArraySizedElement, Value};
+    use crate::model::{ArraySizedElement, Since, Value};
 
     #[test]
     fn single_values() {
@@ -625,6 +917,16 @@ mod tests {
                 desc: String::new()
             })
         );
+        assert_eq!(
+            Value::from_wiki("test", "[[Array]] of [[Array]] of [[String]]s"),
+            Ok(Value::ArrayUnsized {
+                typ: Box::new(Value::ArrayUnsized {
+                    typ: Box::new(Value::String),
+                    desc: String::new()
+                }),
+                desc: String::new()
+            })
+        );
     }
 
     #[test]
@@ -654,6 +956,141 @@ mod tests {
                 desc: String::new(),
             })
         );
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                "[[Array]] with [thenCode, elseCode]
+* thenCode: [[Code]] - Code ran if the condition is true
+* elseCode: [[Code]] - Code ran if the condition is false"
+            ),
+            Ok(Value::ArraySized {
+                types: vec![
+                    ArraySizedElement {
+                        name: "thenCode".to_string(),
+                        typ: Value::Code,
+                        desc: String::from("Code ran if the condition is true"),
+                        since: None,
+                    },
+                    ArraySizedElement {
+                        name: "elseCode".to_string(),
+                        typ: Value::Code,
+                        desc: String::from("Code ran if the condition is false"),
+                        since: None,
+                    },
+                ],
+                desc: String::new(),
+            })
+        );
+    }
+
+    #[test]
+    fn string_enum() {
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                r#"[[String]] - the shape, can be one of:
+* ICON
+* {{hl|"RECTANGLE"}}
+* {{hl|"ELLIPSE"}}
+* {{GVI|arma3|1.60|size= 0.75}} {{hl|"POLYLINE"}}
+* {{GVI|arma3|2.20|size= 0.75}} {{hl|"TRIANGLE"}}
+* {{GVI|arma3|2.20|size= 0.75}} {{hl|"PENTAGON"}}
+* {{GVI|arma3|2.20|size= 0.75}} {{hl|"HEXAGON"}}
+* {{GVI|arma3|2.20|size= 0.75}} {{hl|"HEPTAGON"}}
+* {{GVI|arma3|2.20|size= 0.75}} {{hl|"OCTAGON"}}
+* {{GVI|arma3|2.20|size= 0.75}} {{hl|"NONAGON"}}
+* {{GVI|arma3|2.20|size= 0.75}} {{hl|"DECAGON"}}"#
+            ),
+            Ok(Value::StringEnum(vec![
+                ("ICON".to_string(), None, None),
+                ("RECTANGLE".to_string(), None, None),
+                ("ELLIPSE".to_string(), None, None),
+                ("POLYLINE".to_string(), None, Some(Since::arma3("1.60"))),
+                ("TRIANGLE".to_string(), None, Some(Since::arma3("2.20"))),
+                ("PENTAGON".to_string(), None, Some(Since::arma3("2.20"))),
+                ("HEXAGON".to_string(), None, Some(Since::arma3("2.20"))),
+                ("HEPTAGON".to_string(), None, Some(Since::arma3("2.20"))),
+                ("OCTAGON".to_string(), None, Some(Since::arma3("2.20"))),
+                ("NONAGON".to_string(), None, Some(Since::arma3("2.20"))),
+                ("DECAGON".to_string(), None, Some(Since::arma3("2.20"))),
+            ]))
+        );
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                r#"[[String]] - one of:
+* {{hl|"Allowed"}}: Indicates allowed state
+* "Denied": Indicates denied state
+* {{hl|"Unknown"}}"#
+            ),
+            Ok(Value::StringEnum(vec![
+                (
+                    "Allowed".to_string(),
+                    Some("Indicates allowed state".to_string()),
+                    None
+                ),
+                (
+                    "Denied".to_string(),
+                    Some("Indicates denied state".to_string()),
+                    None
+                ),
+                ("Unknown".to_string(), None, None),
+            ]))
+        );
+    }
+
+    #[test]
+    fn number_enum() {
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                "[[Number]]
+* 0: Busy (async. operation in progress)
+* 1: Async. operation ended with success
+* 2: Async. operation ended with error
+* 3: Invalid board (bad board name, not initialised etc)"
+            ),
+            Ok(Value::NumberEnum(vec![
+                (
+                    0,
+                    Some("Busy (async. operation in progress)".to_string()),
+                    None
+                ),
+                (
+                    1,
+                    Some("Async. operation ended with success".to_string()),
+                    None
+                ),
+                (
+                    2,
+                    Some("Async. operation ended with error".to_string()),
+                    None
+                ),
+                (
+                    3,
+                    Some("Invalid board (bad board name, not initialised etc)".to_string()),
+                    None
+                ),
+            ]))
+        );
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                "[[Number]] which can be one of:
+* 0: {{GVI|arma3|2.20}} log remaining capacity in the [[arma.RPT|RPT]]
+* 4
+* 8"
+            ),
+            Ok(Value::NumberEnum(vec![
+                (
+                    0,
+                    Some("log remaining capacity in the [[arma.RPT|RPT]]".to_string()),
+                    Some(Since::arma3("2.20"))
+                ),
+                (4, None, None),
+                (8, None, None),
+            ]))
+        );
     }
 
     #[test]
@@ -672,6 +1109,19 @@ mod tests {
                 (Value::Group, None),
                 (Value::ArrayUnknown, None),
                 (Value::String, None),
+            ]))
+        );
+        assert_eq!(
+            Value::from_wiki("test", "[[Array]] of [[Number]]s or [[Nothing]] if failed"),
+            Ok(Value::OneOf(vec![
+                (
+                    Value::ArrayUnsized {
+                        typ: Box::new(Value::Number),
+                        desc: String::new()
+                    },
+                    None
+                ),
+                (Value::Nothing, None),
             ]))
         );
     }

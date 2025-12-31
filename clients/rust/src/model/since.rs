@@ -36,6 +36,18 @@ pub struct Since {
 
 impl Since {
     #[must_use]
+    /// Creates a new Since with only the Arma 3 version set.
+    ///
+    /// # Panics
+    /// Panics if the version string is invalid.
+    pub fn arma3(version: &str) -> Self {
+        Self {
+            arma_3: Some(Version::from_wiki(version).expect("Invalid version string")),
+            ..Self::default()
+        }
+    }
+
+    #[must_use]
     pub const fn flashpoint(&self) -> Option<&Version> {
         self.flashpoint.as_ref()
     }

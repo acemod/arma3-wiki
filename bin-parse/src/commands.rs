@@ -248,8 +248,7 @@ pub async fn command(
                     e != &ParseError::Syntax(String::from("Invalid call: see [[remoteExec]]"))
                 });
             }
-            if parsed.has_unknown() {
-                pg.println(format!("{} has unknown types", name));
+            if parsed.has_unknown() && std::env::args().any(|arg| arg == "--interactive") {
                 println!("Try again? y/n");
                 let mut input = String::new();
                 std::io::stdin()
@@ -258,8 +257,6 @@ pub async fn command(
                 if input.trim().to_lowercase() == "y" {
                     return Box::pin(command(pg, client, name, url, dry_run, true)).await;
                 }
-            } else {
-                pg.println(format!("Parsed {} successfully", name));
             }
             if dist_path.exists() {
                 // Check if the file has changed

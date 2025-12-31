@@ -6,6 +6,8 @@ use commands::Commands;
 use git2::Repository;
 use model::{Command, EventHandlerNamespace, ParsedEventHandler, Version};
 
+pub const BRANCH: &str = "dist-2";
+
 pub mod commands;
 pub mod model;
 
@@ -144,7 +146,7 @@ impl Wiki {
                 repo
             } else {
                 git2::build::RepoBuilder::new()
-                    .branch("dist")
+                    .branch(BRANCH)
                     .clone("https://github.com/acemod/arma3-wiki", &appdata)
                     .map_err(|e| format!("Failed to clone repository: {e}"))?
             };
@@ -270,7 +272,7 @@ impl Wiki {
 
     fn update_git(repo: &Repository) -> Result<(), String> {
         repo.find_remote("origin")
-            .and_then(|mut r| r.fetch(&["dist"], None, None))
+            .and_then(|mut r| r.fetch(&[BRANCH], None, None))
             .map_err(|e| format!("Failed to fetch remote: {e}"))?;
         let fetch_head = repo
             .find_reference("FETCH_HEAD")
@@ -283,12 +285,12 @@ impl Wiki {
             .map_err(|e| format!("Failed to analyze merge: {e}"))?;
         if !analysis.0.is_up_to_date() && analysis.0.is_fast_forward() {
             let mut reference = repo
-                .find_reference("refs/heads/dist")
+                .find_reference(format!("refs/heads/{BRANCH}").as_str())
                 .map_err(|e| format!("Failed to find reference: {e}"))?;
             reference
                 .set_target(commit.id(), "Fast-Forward")
                 .map_err(|e| format!("Failed to set reference: {e}"))?;
-            repo.set_head("refs/heads/dist")
+            repo.set_head(format!("refs/heads/{BRANCH}").as_str())
                 .map_err(|e| format!("Failed to set HEAD: {e}"))?;
             repo.checkout_head(Some(git2::build::CheckoutBuilder::default().force()))
                 .map_err(|e| format!("Failed to checkout HEAD: {e}"))?;

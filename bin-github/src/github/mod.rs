@@ -1,5 +1,6 @@
 use std::process::Command;
 
+use arma3_wiki::BRANCH;
 use octocrab::{models::pulls::PullRequest, Octocrab};
 
 use crate::{REPO_NAME, REPO_ORG};
@@ -54,7 +55,7 @@ impl GitHub {
             return Ok(None);
         }
         let head = format!("command/{command}");
-        command!(["checkout", "dist"]);
+        command!(["checkout", BRANCH]);
         command!(["checkout", "-b", head.as_str()]);
         command!([
             "add",
@@ -68,7 +69,7 @@ impl GitHub {
         command!(["push", "--set-upstream", "origin", head.as_str()]);
         self.0
             .pulls(REPO_ORG, REPO_NAME)
-            .create(format!("Update Command `{command}`"), head, "dist")
+            .create(format!("Update Command `{command}`"), head, BRANCH)
             .send()
             .await
             .map_err(|e| e.to_string())
@@ -85,7 +86,7 @@ impl GitHub {
             return Ok(None);
         }
         let head = format!("events/{ns}/{handler}");
-        command!(["checkout", "dist"]);
+        command!(["checkout", BRANCH]);
         command!(["checkout", "-b", head.as_str()]);
         command!(["add", format!("events/{ns}/{handler}.yml").as_str()]);
         command!([
@@ -96,7 +97,7 @@ impl GitHub {
         command!(["push", "--set-upstream", "origin", head.as_str()]);
         self.0
             .pulls(REPO_ORG, REPO_NAME)
-            .create(format!("Update Event `{ns}::{handler}`"), head, "dist")
+            .create(format!("Update Event `{ns}::{handler}`"), head, BRANCH)
             .send()
             .await
             .map_err(|e| e.to_string())
@@ -109,14 +110,14 @@ impl GitHub {
             return;
         }
         let head = "version";
-        command!(["checkout", "dist"]);
+        command!(["checkout", BRANCH]);
         command!(["checkout", "-b", head]);
         command!(["add", "version.txt"]);
         command!(["commit", "-m", "Update version"]);
         command!(["push", "--set-upstream", "origin", head]);
         self.0
             .pulls(REPO_ORG, REPO_NAME)
-            .create(format!("Update version to {version}"), head, "dist")
+            .create(format!("Update version to {version}"), head, BRANCH)
             .send()
             .await
             .expect("Failed to create version PR");
