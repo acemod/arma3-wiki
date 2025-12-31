@@ -1,21 +1,24 @@
 name: getMissionOptions
-description: Returns various mission options
+desc: Returns various mission options
 groups:
 - System
 syntax:
 - call: Nular
   ret:
-  - HashMapUnknown
-  - Containing the names and values of all options (see [[setMissionOptions]])
+    type: HashMapUnknown
+    desc: Containing the names and values of all options (see [[setMissionOptions]])
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - |-
   <sqf>
   private _missionOptions = getMissionOptions;
   </sqf>
+see_also:
+- setMissionOptions
+- getResolution
+- getAudioOptionVolumes
+- getSubtitleOptions

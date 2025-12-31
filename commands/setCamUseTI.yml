@@ -1,5 +1,5 @@
 name: setCamUseTI
-description: Sets thermal vision mode for currently used camera. This command only works with [[camCreate]] created camera that is currently the main camera for the player (see Example 2).
+desc: Sets thermal vision mode for currently used camera. This command only works with [[camCreate]] created camera that is currently the main camera for the player (see Example 2).
 groups:
 - Camera Control
 syntax:
@@ -7,26 +7,19 @@ syntax:
   - state
   - modeIndex
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: state
-    description: '[[true]] to enable, [[false]] to disable the effect'
+    desc: '[[true]] to enable, [[false]] to disable the effect'
     type: Boolean
   - name: modeIndex
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>true setCamUseTI 1;</sqf>
 - |-
@@ -39,3 +32,6 @@ examples:
   _cam camCommit 0;
   true setCamUseTI 7;
   </sqf>
+see_also:
+- camUseNVG
+- disableTIEquipment

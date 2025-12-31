@@ -1,5 +1,5 @@
 name: nearestLocationWithDubbing
-description: |-
+desc: |-
   Find the nearest location having a non-empty speech.
   {{Feature|arma3|No locations are dubbed in {{arma3}}.}}
 groups:
@@ -7,26 +7,36 @@ groups:
 syntax:
 - call: !Unary position
   ret:
-  - Location
-  - null
+    type: Location
   params:
   - name: position
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Position3dAGL
+      - null
+    - - Position2d
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_location = nearestLocationWithDubbing player;</sqf>
 - <sqf>_location = nearestLocationWithDubbing getMarkerPos "myMarker";</sqf>
+see_also:
+- findNearestEnemy
+- nearestBuilding
+- nearestObject
+- nearestObjects
+- nearObjects
+- nearestLocation
+- nearEntities
+- nearTargets
+- nearSupplies
+- nearObjectsReady
+- nearRoads
+- nearestMines

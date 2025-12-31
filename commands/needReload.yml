@@ -1,52 +1,45 @@
 name: needReload
-description: Returns how much vehicle wants to reload its weapons.
+desc: Returns how much vehicle wants to reload its weapons.
 groups:
 - Weapons
 syntax:
 - call: !Unary entity
   ret:
-  - Number
-  - 'range: 0-1, 0: full mag, 1: empty mag'
+    type: Number
+    desc: 'range: 0-1, 0: full mag, 1: empty mag'
   params:
   - name: entity
-    description: unit or vehicle
+    desc: unit or vehicle
     type: Object
 - call: !Binary
   - entity
   - muzzle
   ret:
-  - Number
-  - 'range: 0-1, 0: full mag, 1: empty mag'
+    type: Number
+    desc: 'range: 0-1, 0: full mag, 1: empty mag'
   params:
   - name: entity
-    description: unit or vehicle
+    desc: unit or vehicle
     type: Object
   - name: muzzle
-    description: muzzle to check. "" to check all muzzles
+    desc: muzzle to check. "" to check all muzzles
     type: String
   since:
-    arma_3:
-      major: 2
-      minor: 22
+    arma3: '2.22'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_seriousness = needReload _vehicle;</sqf>
 - <sqf>if (needReload player == 1) then { reload player };</sqf>
 - <sqf>player needReload currentMuzzle player;</sqf>
+see_also:
+- needService
+- reload
+- reloadEnabled
+- enableReload

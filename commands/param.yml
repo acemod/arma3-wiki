@@ -1,5 +1,5 @@
 name: param
-description: |-
+desc: |-
   Extracts a single value with given index from input argument, similar to [[BIS_fnc_param]].  When used without argument, as shown in main syntax, internal variable [[Magic Variables#this|_this]], which is usually available inside functions and event handlers, is used as argument. If input argument is not an array, it will be converted to 1 element array.
   <br><br>
   If extracted item of input with given index is undefined, of the wrong type or of the wrong length (if the item is an array), default value is used instead. Since Arma 3 v1.54, onscreen errors are displayed for when the input is of the wrong type or size.
@@ -13,23 +13,27 @@ syntax:
   - expectedDataTypes
   - expectedArrayCount
   ret:
-  - Anything
-  - extracted value on success or default value otherwise. [[Nothing]] if syntax error occurred.
+    type: Anything
+    desc: extracted value on success or default value otherwise. [[Nothing]] if syntax error occurred.
   params:
   - name: index
-    description: index of required item in the input array.
+    desc: index of required item in the input array.
     type: Number
   - name: defaultValue
-    description: a default value to return if input is undefined, of the wrong type or of the wrong length (if the item is an array).
+    desc: a default value to return if input is undefined, of the wrong type or of the wrong length (if the item is an array).
     type: Anything
     optional: true
   - name: expectedDataTypes
-    description: 'checks if passed value is one of listed [[:Category: Data Types| Data Types]]. If not, default value is used instead. Empty array [] means every data type is accepted.'
+    desc: 'checks if passed value is one of listed [[:Category: Data Types| Data Types]]. If not, default value is used instead. Empty array [] means every data type is accepted.'
     type: Unknown
     optional: true
   - name: expectedArrayCount
-    description: a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted.
-    type: Unknown
+    desc: a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted.
+    type: !OneOf
+    - - Number
+      - null
+    - - ArrayUnknown
+      - null
     optional: true
 - call: !Binary
   - argument
@@ -38,35 +42,64 @@ syntax:
     - expectedDataTypes
     - expectedArrayCount
   ret:
-  - Anything
-  - extracted value on success or default value otherwise. [[Nothing]] if syntax error occurred.
+    type: Anything
+    desc: extracted value on success or default value otherwise. [[Nothing]] if syntax error occurred.
   params:
   - name: argument
-    description: a usual array of params is expected. If a non-array value is passed, it will be converted to 1 element array
+    desc: a usual array of params is expected. If a non-array value is passed, it will be converted to 1 element array
     type: Anything
   - name: index
-    description: index of required item in the input array.
+    desc: index of required item in the input array.
     type: Number
   - name: defaultValue
-    description: a default value to return if input is undefined, of the wrong type or of the wrong length (if the item is an array).
+    desc: a default value to return if input is undefined, of the wrong type or of the wrong length (if the item is an array).
     type: Anything
     optional: true
   - name: expectedDataTypes
-    description: 'checks if passed value is one of listed [[:Category: Data Types| Data Types]]. If not, default value is used instead. Empty array [] means every data type is accepted.'
+    desc: 'checks if passed value is one of listed [[:Category: Data Types| Data Types]]. If not, default value is used instead. Empty array [] means every data type is accepted.'
     type: Unknown
     optional: true
   - name: expectedArrayCount
-    description: a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted.
-    type: Unknown
+    desc: a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted.
+    type: !OneOf
+    - - Number
+      - null
+    - - ArrayUnknown
+      - null
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 48
+  arma3: '1.48'
 examples:
 - "<sqf>\n[1, 2, 3] call \n{\n\tprivate _one = param [0, 1];\n\tprivate _two = param [1, 2];\n\tprivate _three = param [2, 3];\n\t// ...\n};\n</sqf>"
 - "<sqf>\n[123] call \n{\n\tprivate _val = param [0];\n};\n\n// Below would produce the same result as above\n123 call \n{\n\tprivate _val = param [0];\n};\n</sqf>"
 - "<sqf>\n_z = position player param [2, 0];\nif (_z > 10) then \n{\n\thint \"YOU ARE FLYING!\";\n};\n</sqf>"
 - "<sqf>\nfnc = \n{\n\tprivate _pos = param [0, [0,0,0], [objNull, []], [2,3]];\n\tprivate _rad = param [1, 0, [0]];\n\t_pos nearObjects _rad;\n};\n\n[position player, 25] call fnc; // ok\n[player, 25] call fnc; // ok\n[25, player] call fnc; // default values are used\n</sqf>"
+see_also:
+- params
+- select
+- set
+- resize
+- reverse
+- in
+- find
+- findIf
+- toArray
+- toString
+- forEach
+- count
+- deleteAt
+- deleteRange
+- append
+- sort
+- arrayIntersect
+- splitString
+- joinString
+- isEqualTypeAll
+- isEqualType
+- isEqualTypeParams
+- isEqualTypeArray
+- isEqualTypeAny
+- typeName
+- BIS_fnc_param

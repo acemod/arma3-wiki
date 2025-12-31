@@ -1,18 +1,22 @@
 name: getSubtitleOptions
-description: Returns subtitles settings.
+desc: Returns subtitles settings.
 groups:
 - Radio and Chat
 syntax:
 - call: Nular
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 94
+  arma3: '1.94'
 examples:
 - <sqf>private _subtitleSettings = getSubtitleOptions;</sqf>
+see_also:
+- getAudioOptionVolumes
+- soundVolume
+- musicVolume
+- radioVolume
+- radioEnabled
+- shownSubtitles

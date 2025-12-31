@@ -1,5 +1,5 @@
 name: weaponDisassemblyEnabled
-description: |-
+desc: |-
   Returns if weapon disassembly is enabled. As disassembly can be enabled/disabled on both player and weapon, it might be necessary to check both.
 
   {{Feature|important|
@@ -11,17 +11,20 @@ groups:
 syntax:
 - call: !Unary entity
   ret:
-  - Boolean
-  - '[[true]] if enabled'
+    type: Boolean
+    desc: '[[true]] if enabled'
   params:
   - name: entity
-    description: '[[player]] or weapon'
+    desc: '[[player]] or weapon'
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 14
+  arma3: '2.14'
 examples:
 - <sqf>private _enabled = weaponDisassemblyEnabled player && weaponDisassemblyEnabled _weapon;</sqf>
+see_also:
+- enableWeaponDisassembly
+- weapons
+- action
+- inGameUISetEventHandler

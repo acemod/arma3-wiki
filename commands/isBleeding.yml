@@ -1,20 +1,21 @@
 name: isBleeding
-description: Returns whether the unit is bleeding.
+desc: Returns whether the unit is bleeding.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary unit
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>if (isBleeding player) then { player groupChat "I'm bleeding!!"; };</sqf>
+see_also:
+- getBleedingRemaining
+- isBurning
+- setBleedingRemaining

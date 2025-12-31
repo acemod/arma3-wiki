@@ -1,20 +1,26 @@
 name: getPosASLW
-description: Returns the object position height above water surface (waves and pond objects included).
+desc: Returns the object position height above water surface (waves and pond objects included).
 groups:
 - Positions
 syntax:
 - call: !Unary obj
   ret:
-  - ArrayUnknown
-  - '[[Position#PositionASLW|PositionASLW]]'
+    type: ArrayUnknown
+    desc: '[[Position#PositionASLW|PositionASLW]]'
   params:
   - name: obj
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_pos = getPosASLW _diver;</sqf>
+see_also:
+- setPosASLW
+- position
+- getPos
+- getPosATL
+- getPosASL
+- visiblePosition
+- visiblePositionASL

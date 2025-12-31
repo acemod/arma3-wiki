@@ -1,5 +1,5 @@
 name: ppEffectCreate
-description: |-
+desc: |-
   Creates [[Post Process Effects]] specified by effect name and priority.<br>
   Supported effects:
   {{Columns|4|
@@ -20,44 +20,52 @@ syntax:
   - name
   - priority
   ret:
-  - Number
-  - handle or -1 if failed
+    type: Number
+    desc: handle or -1 if failed
   params:
   - name: name
-    description: name of effect type
+    desc: name of effect type
     type: String
   - name: priority
-    description: unique priority, defines order of applying effect to the scene. If there is another effect using the same priority, creation will fail
+    desc: unique priority, defines order of applying effect to the scene. If there is another effect using the same priority, creation will fail
     type: Number
 - call: !Unary
   - - name1
     - priority1
   - '...'
   ret:
-  - Unknown
-  - null
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - Number
+      - null
+    - - Nothing
+      - null
   params:
   - name: nameN
-    description: name of effect type
+    desc: name of effect type
     type: String
   - name: priorityN
-    description: unique priority, defines order of applying effect to the scene. If there is another effect using the same priority, creation will fail
+    desc: unique priority, defines order of applying effect to the scene. If there is another effect using the same priority, creation will fail
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_ppGrain = ppEffectCreate ["filmGrain", 2005];</sqf>
 - "If an effect ID is already used, the effect is not created. Use the following:\n<sqf>\nprivate _name = \"ChromAberration\";\nprivate _priority = 200;\nprivate _handle = -1;\nwhile\n{\n\t_handle = ppEffectCreate [_name, _priority];\n\t_handle < 0;\n} do {\n\t_priority = _priority + 1;\n};\n\n// _handle can be used here as usual\n</sqf>\nor\n<sqf>\nprivate _name = \"ChromAberration\";\nprivate _priority = 200;\nprivate _handle = -1;\nwaitUntil { _handle = ppEffectCreate [_name, _priority]; _priority = _priority + 1; _handle > 0; };\n\n// _handle can be used here as usual\n</sqf>"
+see_also:
+- Post
+- Process
+- Effects
+- ppEffectForceInNVG
+- ppEffectEnable
+- ppEffectEnabled
+- ppEffectDestroy
+- ppEffectCommit
+- ppEffectCommitted
+- ppEffectAdjust

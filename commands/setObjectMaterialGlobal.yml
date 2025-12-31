@@ -1,5 +1,5 @@
 name: setObjectMaterialGlobal
-description: Set the material of the given selection on all computers in a network session.
+desc: Set the material of the given selection on all computers in a network session.
 groups:
 - Object Manipulation
 syntax:
@@ -8,21 +8,28 @@ syntax:
   - - selection
     - material
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: obj
     type: Object
   - name: selection
-    type: Unknown
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
   - name: material
-    description: material path. Since {{GVI|arma3|2.20}} using '''"#reset"''' would reset to default material.
+    desc: material path. Since {{GVI|arma3|2.20}} using '''"#reset"''' would reset to default material.
     type: String
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 54
+  arma3: '1.54'
 examples:
 - <sqf>player setObjectMaterialGlobal [0, "A3\Structures_F\Data\Windows\window_set.rvmat"];</sqf>
+see_also:
+- setObjectTexture
+- setObjectTextureGlobal
+- getObjectTextures
+- setObjectMaterial
+- getObjectMaterials

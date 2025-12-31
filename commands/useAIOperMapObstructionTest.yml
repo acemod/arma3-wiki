@@ -1,21 +1,22 @@
 name: useAIOperMapObstructionTest
-description: Toggle secondary obstruction test on road paths.
+desc: Toggle secondary obstruction test on road paths.
 groups:
 - System
 syntax:
 - call: !Unary state
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: state
-    description: '[[true]] to enable, [[false]] to disable'
+    desc: '[[true]] to enable, [[false]] to disable'
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 64
+  arma3: '1.64'
 examples:
 - <sqf>useAIOperMapObstructionTest true;</sqf>
+see_also:
+- forceFollowRoad
+- setDriveOnPath
+- setConvoySeparation

@@ -1,40 +1,34 @@
 name: leader
-description: Returns the group leader for the given '''unit''' or '''group'''. For dead units, [[objNull]] is returned.
+desc: Returns the group leader for the given '''unit''' or '''group'''. For dead units, [[objNull]] is returned.
 groups:
 - Groups
 syntax:
 - call: !Unary unitOrGroup
   ret:
-  - Object
-  - null
+    type: Object
   params:
   - name: unitOrGroup
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>leader group player == leader player;</sqf>
 - <sqf>leader group vehicle player;</sqf>
 - <sqf>leader player;</sqf>
+see_also:
+- formationLeader
+- formLeader
+- isFormationLeader
+- selectLeader

@@ -1,5 +1,5 @@
 name: setWindForce
-description: Set max. wind overall wind changes in time. A time of zero means there will be an immediate change. A wind level of zero is minimal changes and a wind level of one means that wind can change rapidly.
+desc: Set max. wind overall wind changes in time. A time of zero means there will be an immediate change. A wind level of zero is minimal changes and a wind level of one means that wind can change rapidly.
 groups:
 - Environment
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - time
   - wind
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: time
     type: Number
@@ -17,8 +16,9 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>1800 setWindForce 0.5;</sqf>
+see_also:
+- setWindStr
+- setWind

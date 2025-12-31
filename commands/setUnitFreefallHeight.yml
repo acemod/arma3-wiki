@@ -1,5 +1,5 @@
 name: setUnitFreefallHeight
-description: Sets minimum freefall height AGL per unit, at which the unit assumes HALO pose. Engine default is 100m. Use -1 to reset the height to default.
+desc: Sets minimum freefall height AGL per unit, at which the unit assumes HALO pose. Engine default is 100m. Use -1 to reset the height to default.
 groups:
 - Object Manipulation
 syntax:
@@ -7,20 +7,21 @@ syntax:
   - unit
   - minHeight
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: unit
+    desc: unit
     type: Object
   - name: minHeight
-    description: min freefall height, -1 to set default
+    desc: min freefall height, -1 to set default
     type: Number
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>player setUnitFreefallHeight 1000;</sqf>
+see_also:
+- getUnitFreefallInfo
+- getPosASL
+- ASLToAGL

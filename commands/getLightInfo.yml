@@ -1,35 +1,49 @@
 name: getLightInfo
-description: Returns various properties for the given {{hl|#lightpoint}} or {{hl|#lightreflector}}. ConePars and VolumeShapePars are exclusive properties of {{hl|#lightreflector}} only.
+desc: Returns various properties for the given {{hl|#lightpoint}} or {{hl|#lightreflector}}. ConePars and VolumeShapePars are exclusive properties of {{hl|#lightreflector}} only.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary light
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: light
-    description: '{{hl|#lightpoint}} or {{hl|#lightreflector}}'
+    desc: '{{hl|#lightpoint}} or {{hl|#lightreflector}}'
     type: Object
 - call: !Binary
   - light
   - index
   ret:
-  - Anything
-  - depends on the requested property, or [[Nothing]]
+    type: Anything
+    desc: depends on the requested property, or [[Nothing]]
   params:
   - name: light
-    description: '{{hl|#lightpoint}} or {{hl|#lightreflector}}'
+    desc: '{{hl|#lightpoint}} or {{hl|#lightreflector}}'
     type: Object
   - name: index
-    description: property index (see main syntax, for example 0 for light intensity)
+    desc: property index (see main syntax, for example 0 for light intensity)
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 22
+  arma3: '2.22'
 examples:
 - <sqf>private _lightInfo = getLightInfo light1;</sqf>
 - <sqf>private _lightIntensity = light1 getLightInfo 0;</sqf>
+see_also:
+- setLightIntensity
+- setLightColor
+- setLightAmbient
+- setLightDayLight
+- setLightIR
+- setLightUseFlare
+- setLightFlareSize
+- setLightFlareMaxDistance
+- setLightAttenuation
+- lightAttachObject
+- lightDetachObject
+- setLightConePars
+- getUnitFreefallInfo
+- setLightConePars
+- getEntityInfo
+- getModelInfo

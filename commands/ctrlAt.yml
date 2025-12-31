@@ -1,5 +1,5 @@
 name: ctrlAt
-description: Returns the control at the specified coordinates.
+desc: Returns the control at the specified coordinates.
 groups:
 - GUI Control
 syntax:
@@ -8,23 +8,25 @@ syntax:
   - - x
     - y
   ret:
-  - Control
-  - the control at the specified coordinates, [[controlNull]] if none
+    type: Control
+    desc: the control at the specified coordinates, [[controlNull]] if none
   params:
   - name: display
-    description: the display to check
+    desc: the display to check
     type: Display
   - name: x
-    description: position (0 = left, 1 = right)
+    desc: position (0 = left, 1 = right)
     type: Number
   - name: y
-    description: position (0 = top, 1 = bottom)
+    desc: position (0 = top, 1 = bottom)
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 12
+  arma3: '2.12'
 examples:
 - <sqf>private _ctrl = _myDisplay ctrlAt [0.5, 0.5];</sqf>
+see_also:
+- ctrlCreate
+- ctrlSetPosition
+- ctrlCommit

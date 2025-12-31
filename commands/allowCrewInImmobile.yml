@@ -1,5 +1,5 @@
 name: allowCrewInImmobile
-description: |-
+desc: |-
   If [[true]], units will remain in a vehicle with broken tracks/wheels; they will still eject if the vehicle is drowning, about to explode or upside down for a while.
   The {{Link|#Syntax 2|alternative syntax}} provides the ability to keep the crew in vehicle when it is upside down.
 groups:
@@ -9,8 +9,7 @@ syntax:
   - vehicle
   - allow
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
@@ -21,32 +20,27 @@ syntax:
   - - brokenWheels
     - upsideDown
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
   - name: brokenWheels
-    description: do not auto eject when vehicle has broken wheels
+    desc: do not auto eject when vehicle has broken wheels
     type: Boolean
   - name: upsideDown
-    description: do not auto eject when vehicle is upside down
+    desc: do not auto eject when vehicle is upside down
     type: Boolean
   since:
-    arma_3:
-      major: 2
-      minor: 10
+    arma3: '2.10'
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 60
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.60'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_vehicle allowCrewInImmobile true;</sqf>
+see_also:
+- isAllowedCrewInImmobile
+- setUnloadInCombat
+- canMove

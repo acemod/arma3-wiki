@@ -1,5 +1,5 @@
 name: moveTo
-description: Low level command to person to move to given position. It is good to check first if AI pilot unit state is COMPLETED [[moveToCompleted]] first as this command will set unit into WAIT state waiting for instruction, but only if the unit has COMPLETED.
+desc: Low level command to person to move to given position. It is good to check first if AI pilot unit state is COMPLETED [[moveToCompleted]] first as this command will set unit into WAIT state waiting for instruction, but only if the unit has COMPLETED.
 groups:
 - Unit Control
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - position
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,20 +16,18 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_myAgent moveTo getPosATL player;</sqf>
+see_also:
+- doMove
+- commandMove
+- setDestination
+- move
+- moveToCompleted
+- moveToFailed
+- addWaypoint

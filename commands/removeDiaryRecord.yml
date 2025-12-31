@@ -1,5 +1,5 @@
 name: removeDiaryRecord
-description: Remove a log record.
+desc: Remove a log record.
 groups:
 - Briefing
 syntax:
@@ -8,8 +8,7 @@ syntax:
   - - subject
     - diaryRecord
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -20,9 +19,7 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 96
+  arma3: '1.96'
 examples:
 - |-
   <sqf>
@@ -30,3 +27,6 @@ examples:
   // ...
   player removeDiaryRecord ["Diary", _diaryRecord];
   </sqf>
+see_also:
+- createDiaryRecord
+- removeDiarySubject

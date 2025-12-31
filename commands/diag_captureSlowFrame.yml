@@ -1,5 +1,5 @@
 name: diag_captureSlowFrame
-description: "[[File:CaptureSlowFrame.jpg|right|200x120px]]\nOpens \"capture frame\" dialog if current frame exceeds set threshold in seconds. One can indicate to either capture duration of a specific profiling selection or the total duration of the frame.\nThe selection names can be obtained by expanding the profiling tree. Clicking on a tree item will highlight the item on the graph and vice versa.\nThe GUI also provides method of copying of the displayed data to clipboard. \n\n{{Feature|informative|\n'''Chrome export format''':\nCapturing to file also creates a .trace file, which can be imported into chrome://tracing (in chromium based webbrowsers), or https://ui.perfetto.dev/ <br>\nThe same format can be exported by pressing the \"COPY ALL\" button, in the capture frame UI, with {{Controls|Ctrl}} key being held down.\n}}"
+desc: "[[File:CaptureSlowFrame.jpg|right|200x120px]]\nOpens \"capture frame\" dialog if current frame exceeds set threshold in seconds. One can indicate to either capture duration of a specific profiling selection or the total duration of the frame.\nThe selection names can be obtained by expanding the profiling tree. Clicking on a tree item will highlight the item on the graph and vice versa.\nThe GUI also provides method of copying of the displayed data to clipboard. \n\n{{Feature|informative|\n'''Chrome export format''':\nCapturing to file also creates a .trace file, which can be imported into chrome://tracing (in chromium based webbrowsers), or https://ui.perfetto.dev/ <br>\nThe same format can be exported by pressing the \"COPY ALL\" button, in the capture frame UI, with {{Controls|Ctrl}} key being held down.\n}}"
 groups:
 - Diagnostic
 - Performance Profiling
@@ -11,52 +11,47 @@ syntax:
   - toFile
   - continuousCounter
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: section
     type: Unknown
   - name: threshold
-    type: Unknown
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
+    - - Number
+      - null
+    - - String
+      - null
   - name: frameSkip
-    description: number of frames to ignore before measuring
+    desc: number of frames to ignore before measuring
     type: Number
     optional: true
     default: '0'
     since:
-      arma_3:
-        major: 1
-        minor: 18
+      arma3: '1.18'
   - name: toFile
-    description: 'if true, doesn''t open UI and writes straight to file. If logging to file, it automatically also outputs a .trace file. Note: even if false it might still force to file if it doesn''t have a UI, like a server or HC'
+    desc: 'if true, doesn''t open UI and writes straight to file. If logging to file, it automatically also outputs a .trace file. Note: even if false it might still force to file if it doesn''t have a UI, like a server or HC'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 2
-        minor: 20
+      arma3: '2.20'
   - name: continuousCounter
-    description: captures N slow frames. 0 or 1 will only capture one frame - do '''not''' set it to negative! Can be aborted by running [[diag_captureFrame]] or another [[diag_captureSlowFrame]] usage
+    desc: captures N slow frames. 0 or 1 will only capture one frame - do '''not''' set it to negative! Can be aborted by running [[diag_captureFrame]] or another [[diag_captureSlowFrame]] usage
     type: Number
     optional: true
     default: '0'
     since:
-      arma_3:
-        major: 2
-        minor: 20
+      arma3: '2.20'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 63
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 1
-    minor: 0
+  arma2oa: '1.63'
+  tkoh: '1.0'
+  arma3: '1.0'
 examples:
 - <sqf>diag_captureSlowFrame ["total", 0.003];</sqf>
 - <sqf>diag_captureSlowFrame ["total", "0.003s"];</sqf>
@@ -64,3 +59,21 @@ examples:
 - <sqf>diag_captureSlowFrame ["total", "333fps"];</sqf>
 - <sqf>diag_captureSlowFrame ["memAl", 0.0001, 30];</sqf>
 - <sqf>diag_captureSlowFrame ["total", 0, 0, false, 3]; // opens the capture UI three times</sqf>
+see_also:
+- Arma
+- '3:'
+- Diagnostics
+- Exe
+- Performance
+- Profiling
+- Arma
+- '3:'
+- Cheats
+- Multiplayer_Server_Commands#Performance_Profiling|Admin
+- chat
+- commands
+- diag_captureFrameToFile
+- diag_captureFrame
+- diag_logSlowFrame
+- logEntities
+- exportJIPMessages

@@ -1,5 +1,5 @@
 name: createMissionDisplay
-description: Create single missions display as a child of given display. The mission dialog will be set to the directory given as an argument "root".
+desc: Create single missions display as a child of given display. The mission dialog will be set to the directory given as an argument "root".
 groups:
 - GUI Control
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - display
   - missionRootDirectoryString
   ret:
-  - Display
-  - null
+    type: Display
   params:
   - name: display
     type: Display
@@ -19,35 +18,24 @@ syntax:
   - - missionRootDirectoryString
     - cfgMissionsClass
   ret:
-  - Display
-  - null
+    type: Display
   params:
   - name: display
     type: Display
   - name: missionRootDirectoryString
-    description: root direction from {{hl|\Arma 3\Missions\ROOT}}
+    desc: root direction from {{hl|\Arma 3\Missions\ROOT}}
     type: String
   - name: cfgMissionsClass
-    description: cfgMissions class to use
+    desc: cfgMissions class to use
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 8
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.8'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_ChildDisplay = _Rootdisplay createMissionDisplay "Tutorial";</sqf>
 - |-
@@ -63,3 +51,8 @@ examples:
   _missionDisplay createMissionDisplay ["", "Challenges"];
   _missionDisplay createMissionDisplay ["", "Showcases"];
   </sqf>
+see_also:
+- createMPCampaignDisplay
+- playMission
+- playScriptedMission
+- hostMission

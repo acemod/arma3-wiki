@@ -1,5 +1,5 @@
 name: setToneMapping
-description: |-
+desc: |-
   Applies a specific tone mapping to the game. The tone mapping can be edited with [[setToneMappingParams]].
   {{Feature|arma3|This command is not present in {{arma3}}.}}
 groups:
@@ -7,19 +7,30 @@ groups:
 syntax:
 - call: !Unary toneName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: toneName
-    type: Unknown
+    type: !StringEnum
+    - - '"Arma"'
+      - null
+    - - '"Filmic"'
+      - null
+    - - '"Reinhard"'
+      - null
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 62
-  take_on_helicopters:
-    major: 1
-    minor: 0
+  arma2oa: '1.62'
+  tkoh: '1.0'
 examples:
 - <sqf>setToneMapping "Filmic";</sqf>
+see_also:
+- setToneMappingParams
+- ppEffectAdjust
+- ppEffectCommit
+- ppEffectCommitted
+- ppEffectCreate
+- ppEffectDestroy
+- Post
+- Process
+- Effects

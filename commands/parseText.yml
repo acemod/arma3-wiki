@@ -1,5 +1,5 @@
 name: parseText
-description: |-
+desc: |-
   Creates a structured text by parsing the given XML description. Do not use [[parseText]] when displaying a localized text from [[Stringtable.xml]].<br>
   A detailed explanation of all formatting possibilities can be found at [[Structured Text]].
 groups:
@@ -8,33 +8,27 @@ groups:
 syntax:
 - call: !Unary text
   ret:
-  - StructuredText
-  - null
+    type: StructuredText
   params:
   - name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _Stxt = parseText "First line<img image='data\isniper.paa'/><br/>Second line";</sqf>
 - <sqf>hintSilent parseText format["<t size='1.25' font='Zeppelin33' color='#ff0000'>%1 lives remaining.</t>", 12];</sqf>
 - <sqf>private _clickableLink = parseText "<a href='http://arma3.com'>A3</a>";</sqf>
+see_also:
+- Structured
+- Text
+- composeText
+- text
+- localize
+- ctrlSetStructuredText

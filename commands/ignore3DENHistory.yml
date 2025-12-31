@@ -1,20 +1,21 @@
 name: ignore3DENHistory
-description: Ignores all history steps created by executing the given code.
+desc: Ignores all history steps created by executing the given code.
 groups:
 - Eden Editor
 syntax:
 - call: !Unary code
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: code
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - "<sqf>\nignore3DENHistory {\n\tcreate3DENEntity [\"Object\", \"B_Soldier_F\", screenToWorld [0.5, 0.5]]; // no Ctrl+Z available for this operation\n};\n</sqf>"
+see_also:
+- collect3DENHistory
+- create3DENEntity
+- set3DENAttributes

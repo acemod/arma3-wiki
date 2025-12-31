@@ -1,5 +1,5 @@
 name: enableStamina
-description: Enable/disable stamina system
+desc: Enable/disable stamina system
 groups:
 - Stamina System
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - enabled
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,8 +16,10 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 54
+  arma3: '1.54'
 examples:
 - <sqf>player enableStamina true;</sqf>
+see_also:
+- Arma
+- '3:'
+- Stamina

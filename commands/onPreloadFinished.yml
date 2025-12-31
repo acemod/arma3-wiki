@@ -1,5 +1,5 @@
 name: onPreloadFinished
-description: |-
+desc: |-
   Defines an action performed after the preload screen finished. Preload event occurs after briefing screen on mission start.
   {{Feature | important | This event handler also fires on client after user closes the main map. }}
   {{Feature|arma3|
@@ -10,26 +10,21 @@ groups:
 syntax:
 - call: !Unary command
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: command
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - Code
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>onPreloadFinished {TAG_ReceivingScreenDone = true};</sqf>
 - |-
@@ -37,3 +32,5 @@ examples:
   // removes the event immediately after the first run again
   onPreloadFinished { TAG_ReceivingScreenDone = true; onPreloadFinished "" };
   </sqf>
+see_also:
+- onPreloadStarted

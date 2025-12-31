@@ -1,5 +1,5 @@
 name: insideBuilding
-description: |-
+desc: |-
   Returns how much a man is inside a building. The value is the same as normally returned by weapons/ammo sound controller "interior".
   It is possible to modify an individual object to use sound interior with [[enableAudioFeature]].
 
@@ -12,17 +12,20 @@ groups:
 syntax:
 - call: !Unary man
   ret:
-  - Number
-  - in range 0..1, where 0 is outside, 1 is inside
+    type: Number
+    desc: in range 0..1, where 0 is outside, 1 is inside
   params:
   - name: man
-    description: entity of class Man
+    desc: entity of class Man
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 12
+  arma3: '2.12'
 examples:
 - <sqf>private _isFullyInside = insideBuilding player == 1;</sqf>
+see_also:
+- buildingPos
+- buildingExit
+- enableAudioFeature
+- BIS_fnc_buildingPositions

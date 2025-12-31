@@ -1,5 +1,5 @@
 name: west
-description: West (BLUFOR) [[Side|side]].
+desc: West (BLUFOR) [[Side|side]].
 alias:
 - '[[blufor]]'
 groups:
@@ -7,35 +7,27 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Side
-  - null
+    type: Side
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   [[SQS Syntax]]:
   <sqs>? side _unit == west : hint "This is a western unit!"</sqs>
 - "[[SQF Syntax]]:\n<sqf>\nif (side _unit == west) then\n{\n\thint \"This is a western unit!\";\n};\n</sqf>"
+see_also:
+- side
+- east
+- resistance
+- civilian
+- sideEmpty
+- sideAmbientLife

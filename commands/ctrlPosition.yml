@@ -1,5 +1,5 @@
 name: ctrlPosition
-description: |-
+desc: |-
   Returns the current position of 2D control as {{hl|[x, y, w, h]}} array. For 3D control it returns relative {{hl|[x, z, y]}}.<br>
   If the control is within a [[CT_CONTROLS_GROUP]], the returned position will be relative to the group's position.<br>
   If the control is a [[CT_CONTROLS_TABLE]] header or row the returned position is relative to the table's position.
@@ -8,28 +8,29 @@ groups:
 syntax:
 - call: !Unary controlName
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: controlName
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_pos = ctrlPosition _control;</sqf>
+see_also:
+- ctrlCreate
+- ctrlDelete
+- ctrlModel
+- ctrlSetModel
+- ctrlSetPosition
+- ctrlClassName
+- displayCtrl
+- ctrlModelScale
+- ctrlSetModelScale
+- ctrlModelDirAndUp
+- ctrlSetModelDirAndUp

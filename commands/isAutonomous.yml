@@ -1,20 +1,22 @@
 name: isAutonomous
-description: Returns whether the UAV is in autonomous mode or not.
+desc: Returns whether the UAV is in autonomous mode or not.
 groups:
 - Remote Control
 syntax:
 - call: !Unary uav
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: uav
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>private _isAutonomous = isAutonomous uav;</sqf>
+see_also:
+- setAutonomous
+- disableAI
+- enableAI
+- checkAIFeature

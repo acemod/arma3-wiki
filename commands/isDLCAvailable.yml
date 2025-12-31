@@ -1,5 +1,5 @@
 name: isDLCAvailable
-description: |-
+desc: |-
   Returns true if the DLC (CDLC included) is marked as available on Steam.
   Official and Creator DLC appIds can be found on [[:Category:Arma 3: DLCs & Expansions|Arma 3: DLCs & Expansions]] and [[:Category:Arma 3: CDLCs|Arma 3: CDLCs]] pages.
   {{Feature|important|This command will return [[true]] if the DLC is owned, even if it is '''not''' installed!}}
@@ -8,20 +8,22 @@ groups:
 syntax:
 - call: !Unary appId
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: appId
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - |-
   <sqf>
   private _karts = 288520;
   isDLCAvailable _karts; // returns true
   </sqf>
+see_also:
+- getDLCs
+- getObjectDLC
+- getPersonUsedDLCs
+- getMissionDLCs

@@ -1,20 +1,20 @@
 name: isWeaponRested
-description: Returns true if weapon is currently rested.
+desc: Returns true if weapon is currently rested.
 groups:
 - Weapons
 syntax:
 - call: !Unary unit
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: unit
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 42
+  arma3: '1.42'
 examples:
 - <sqf>_rest = isWeaponRested player;</sqf>
+see_also:
+- isWeaponDeployed
+- canDeployWeapon

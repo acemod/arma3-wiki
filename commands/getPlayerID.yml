@@ -1,21 +1,25 @@
 name: getPlayerID
-description: 'Returns user DirectPlay ID, which can be used with [[getUserInfo]], and is found in [[allMapMarkers]] results and in some [[Arma 3: Mission Event Handlers|mission event handlers]] such as [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]].'
+desc: 'Returns user DirectPlay ID, which can be used with [[getUserInfo]], and is found in [[allMapMarkers]] results and in some [[Arma 3: Mission Event Handlers|mission event handlers]] such as [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]].'
 groups:
 - Multiplayer
 - Markers
 syntax:
 - call: !Unary unit
   ret:
-  - String
-  - '"-1" if object is not a [[isPlayer|player]]'
+    type: String
+    desc: '"-1" if object is not a [[isPlayer|player]]'
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>getPlayerID player;</sqf>
+see_also:
+- allUsers
+- getUserInfo
+- createMarker
+- createMarkerLocal
+- getObjectID

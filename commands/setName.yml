@@ -1,5 +1,5 @@
 name: setName
-description: Sets the name of a location or a person (person only in single player).
+desc: Sets the name of a location or a person (person only in single player).
 groups:
 - Unit Identity
 - Locations
@@ -8,11 +8,14 @@ syntax:
   - thing
   - name
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: thing
-    type: Unknown
+    type: !OneOf
+    - - Location
+      - null
+    - - Object
+      - null
   - name: name
     type: String
 - call: !Binary
@@ -21,8 +24,7 @@ syntax:
     - firstName
     - lastName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -33,28 +35,21 @@ syntax:
   - name: lastName
     type: String
   since:
-    arma_3:
-      major: 1
-      minor: 2
+    arma3: '1.2'
 argument_loc: Global
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 8
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.8'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>myLocation setName "My Location Name";</sqf>
 - <sqf>player setName "New Name";</sqf>
 - <sqf>player setName ["Ben Kerry","Ben","Kerry"];</sqf>
+see_also:
+- name
+- nameSound
+- setNameSound
+- setIdentity

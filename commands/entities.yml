@@ -1,5 +1,5 @@
 name: entities
-description: |-
+desc: |-
   Returns a list of all alive and dead entities of the given type or deriving from the given type. Units in vehicles are ignored with the primary syntax.
   {{Feature|informative|'''Optimisation tip''': Keep number of types in both ''includeTypes'' and ''excludeTypes'' arrays to a minimum by possibly using parent/base classes.<br>If you have to use several types, arrange them in order so that the more common types go at the beginning of the array.}}
 groups:
@@ -7,11 +7,10 @@ groups:
 syntax:
 - call: !Unary type
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: type
-    description: if an empty string {{hl|""}} is provided, all entities are returned
+    desc: if an empty string {{hl|""}} is provided, all entities are returned
     type: String
 - call: !Unary
   - typesInclude
@@ -19,41 +18,32 @@ syntax:
   - includeCrews
   - excludeDead
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: typesInclude
-    description: in format [type1, type2, ...typeN], where type is a [[String]]. Empty array [] means include every entity. Method used for filtering - [[isKindOf]]
+    desc: in format [type1, type2, ...typeN], where type is a [[String]]. Empty array [] means include every entity. Method used for filtering - [[isKindOf]]
     type: ArrayUnknown
   - name: typesExclude
-    description: in format [type1, type2, ...typeN], where type is a [[String]]. Empty array [] means exclude no entity. Method used for filtering - [[isKindOf]]
+    desc: in format [type1, type2, ...typeN], where type is a [[String]]. Empty array [] means exclude no entity. Method used for filtering - [[isKindOf]]
     type: ArrayUnknown
   - name: includeCrews
-    description: include crews currently in vehicles
+    desc: include crews currently in vehicles
     type: Boolean
     optional: true
     default: '[[false]]'
   - name: excludeDead
-    description: exclude dead entities
+    desc: exclude dead entities
     type: Boolean
     optional: true
     default: '[[false]]'
   since:
-    arma_3:
-      major: 1
-      minor: 66
+    arma3: '1.66'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 60
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.60'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_allCars = entities "Car";</sqf>
 - |-
@@ -65,3 +55,21 @@ examples:
 - |-
   Return all alive [[west]] soldiers on foot:
   <sqf>_footSoldiers = entities [["SoldierWB"], [], false, true];</sqf>
+see_also:
+- nearEntities
+- allGroups
+- allUnits
+- units
+- vehicles
+- agents
+- playableUnits
+- switchableUnits
+- allPlayers
+- allDead
+- allDeadMen
+- allUnitsUAV
+- allCurators
+- allObjects
+- allMissionObjects
+- allSimpleObjects
+- allMines

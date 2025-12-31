@@ -1,23 +1,24 @@
 name: diag_list
-description: Returns an array of all diagnostic modes available in the game.
+desc: Returns an array of all diagnostic modes available in the game.
 groups:
 - Diagnostic
 syntax:
 - call: !Unary mode
   ret:
-  - ArrayUnknown
-  - '["Force", "Animation", "Mines", "HitPoints", "AnimSrcUnit", "AnimSrcTarget", "Suspension", "EPEForce", "EPEVehicle", "ParticleNames", "Particles", "SurfaceUnder", "AISkill", "AIDriving", "AIAiming", "AIBrain", "AIDynamicError", "AISuppression"] {{GVI|arma3|1.66}}'
+    type: ArrayUnknown
+    desc: '["Force", "Animation", "Mines", "HitPoints", "AnimSrcUnit", "AnimSrcTarget", "Suspension", "EPEForce", "EPEVehicle", "ParticleNames", "Particles", "SurfaceUnder", "AISkill", "AIDriving", "AIAiming", "AIBrain", "AIDynamicError", "AISuppression"] {{GVI|arma3|1.66}}'
   params:
   - name: mode
-    description: can be {{hl|"toggle"}} or {{hl|"drawMode"}}
+    desc: can be {{hl|"toggle"}} or {{hl|"drawMode"}}
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 branch: diag
 examples:
 - <sqf>diag_list "toggle";</sqf>
 - <sqf>diag_list "drawMode";</sqf>
+see_also:
+- diag_toggle
+- diag_enable

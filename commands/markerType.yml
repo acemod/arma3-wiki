@@ -1,5 +1,5 @@
 name: markerType
-description: Gets type of marker. See [[CfgMarkers]] for a list of standard markers.
+desc: Gets type of marker. See [[CfgMarkers]] for a list of standard markers.
 alias:
 - '[[getMarkerType]]'
 groups:
@@ -7,34 +7,23 @@ groups:
 syntax:
 - call: !Unary markerName
   ret:
-  - String
-  - marker class name. See [[CfgMarkers]].
+    type: String
+    desc: marker class name. See [[CfgMarkers]].
   params:
   - name: markerName
     type: String
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 0
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '0.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>if (markerType "Marker1" == "") then { hint "Marker1 is not an icon!" };</sqf>
+see_also:
+- setMarkerType
+- setMarkerTypeLocal

@@ -1,5 +1,5 @@
 name: setBehaviour
-description: |-
+desc: |-
   Sets individual unit behaviour '''on every unit in a group'''.
   {{Feature|important|This command doesn't set AI [[Group]] behaviour, see [[setCombatBehaviour]] or [[setBehaviourStrong]] for this.}}
   {{Feature|informative|See [[AI Behaviour]] for details of the effect of this command on AI units.}}
@@ -15,37 +15,51 @@ syntax:
   - groupOrUnit
   - behaviour
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: groupOrUnit
-    description: unit or a [[group]]
-    type: Unknown
+    desc: unit or a [[group]]
+    type: !OneOf
+    - - Group
+      - null
+    - - Object
+      - null
   - name: behaviour
-    type: Unknown
+    type: !StringEnum
+    - - '"CARELESS"'
+      - null
+    - - '"SAFE"'
+      - null
+    - - '"AWARE"'
+      - null
+    - - '"COMBAT"'
+      - null
+    - - '"STEALTH"'
+      - null
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_group1 setBehaviour "SAFE";</sqf>
+see_also:
+- setCombatBehaviour
+- combatBehaviour
+- AIBehaviour
+- behaviour
+- setBehaviourStrong
+- setWaypointBehaviour
+- combatMode
+- setCombatMode
+- skill
+- setSkill
+- Arma
+- '3:'
+- AI
+- Skill

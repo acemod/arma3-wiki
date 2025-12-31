@@ -1,5 +1,5 @@
 name: weaponReloadingTime
-description: Returns current ammo round reloading phase. For a magazine reloading phase see [[weaponState]] command.
+desc: Returns current ammo round reloading phase. For a magazine reloading phase see [[weaponState]] command.
 groups:
 - Weapons
 syntax:
@@ -8,20 +8,22 @@ syntax:
   - - gunner
     - muzzleName
   ret:
-  - Number
-  - ammo round reload phase in range 0..1; -1 when N/A
+    type: Number
+    desc: ammo round reload phase in range 0..1; -1 when N/A
   params:
   - name: vehicle
     type: Object
   - name: gunner
-    description: gunner of desired turret
+    desc: gunner of desired turret
     type: Object
   - name: muzzleName
-    description: muzzle on desired turret
+    desc: muzzle on desired turret
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
+see_also:
+- setWeaponReloadingTime
+- weaponState
+- weaponsInfo

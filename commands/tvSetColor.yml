@@ -1,5 +1,5 @@
 name: tvSetColor
-description: Sets text color on given Tree View Item
+desc: Sets text color on given Tree View Item
 groups:
 - GUI Control - Tree View
 syntax:
@@ -8,39 +8,53 @@ syntax:
   - path
   - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: path
-    description: '[[Tree View Path]] of the item'
+    desc: '[[Tree View Path]] of the item'
     type: ArrayUnknown
   - name: color
-    description: item text color
+    desc: item text color
     type: ArrayUnknown
 - call: !Binary
   - control
   - - path
     - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: path
-    description: '[[Tree View Path]] of the item'
+    desc: '[[Tree View Path]] of the item'
     type: ArrayUnknown
   - name: color
-    description: item text color in format [r,g,b,a]
+    desc: item text color in format [r,g,b,a]
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 74
+  arma3: '0.74'
 examples:
 - <sqf>tvSetColor [101, [0,0], [1,0,0,1]];</sqf>
 - <sqf>_ctrl tvSetColor [[0,0], [1,0,0,1]];</sqf>
+see_also:
+- tvDelete
+- tvAdd
+- tvClear
+- tvCollapse
+- tvCount
+- tvCurSel
+- tvData
+- tvExpand
+- tvPicture
+- tvSetCurSel
+- tvSetData
+- tvSetPicture
+- tvSetValue
+- tvSort
+- tvSortByValue
+- tvText
+- tvValue

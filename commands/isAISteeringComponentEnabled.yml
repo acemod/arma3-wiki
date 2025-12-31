@@ -1,20 +1,21 @@
 name: isAISteeringComponentEnabled
-description: Returns whether the [[useAISteeringComponent|AI steering component]] feature is enabled for the specified vehicle.
+desc: Returns whether the [[useAISteeringComponent|AI steering component]] feature is enabled for the specified vehicle.
 groups:
 - AI Behaviour
 syntax:
 - call: !Unary vehicle
   ret:
-  - Boolean
-  - '[[true]] if AI steering component is supported by the vehicle (i.e. defined in config) and enabled, [[false]] otherwise'
+    type: Boolean
+    desc: '[[true]] if AI steering component is supported by the vehicle (i.e. defined in config) and enabled, [[false]] otherwise'
   params:
   - name: vehicle
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>isAISteeringComponentEnabled myTank;</sqf>
+see_also:
+- useAISteeringComponent
+- isUsingAISteeringComponent

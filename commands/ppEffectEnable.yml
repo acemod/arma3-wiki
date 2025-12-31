@@ -1,5 +1,5 @@
 name: ppEffectEnable
-description: |-
+desc: |-
   Enable / disable [[Post Process Effects]]
   {{Feature | important | If effect fails to get enabled (can check it with [[ppEffectEnabled]]) try adding a little [[sleep]] in front of it. }}
 groups:
@@ -9,11 +9,10 @@ syntax:
   - effect
   - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: effect
-    description: name of the effect
+    desc: name of the effect
     type: String
   - name: enable
     type: Boolean
@@ -21,11 +20,10 @@ syntax:
   - effect
   - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: effect
-    description: handle of the effect
+    desc: handle of the effect
     type: Number
   - name: enable
     type: Boolean
@@ -33,30 +31,34 @@ syntax:
   - effectArray
   - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: effectArray
-    description: array of effect handles
-    type: ArrayUnknown
+    desc: array of effect handles
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   - name: enable
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>"colorCorrections" ppEffectEnable true;</sqf>
 - <sqf>_hndl ppEffectEnable true;</sqf>
 - <sqf>[_hndl1, _hndl2] ppEffectEnable true;</sqf>
+see_also:
+- Post
+- Process
+- Effects
+- ppEffectForceInNVG
+- ppEffectDestroy
+- ppEffectCreate
+- ppEffectEnabled
+- ppEffectCommit
+- ppEffectCommitted
+- ppEffectAdjust

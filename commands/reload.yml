@@ -1,5 +1,5 @@
 name: reload
-description: |-
+desc: |-
   Main syntax: Reload first found muzzle that needs reloading (with some inconsistencies).<br>
   Alternative syntax: this syntax allows to reload given muzzle with given magazine while playing proper animation.
   If ''param'' is omitted or is empty string, default value is used. The default behaviour is to find the best matching magazine for the provided muzzle from the pool of available magazines.
@@ -11,8 +11,7 @@ groups:
 syntax:
 - call: !Unary unitName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitName
     type: Object
@@ -21,47 +20,40 @@ syntax:
   - - muzzle
     - magazine
   ret:
-  - Boolean
-  - '[[true]] on success'
+    type: Boolean
+    desc: '[[true]] on success'
   params:
   - name: unit
-    description: person
+    desc: person
     type: Object
   - name: muzzle
-    description: muzzle name or "" for the current muzzle.
+    desc: muzzle name or "" for the current muzzle.
     type: String
     optional: true
     default: '[[currentMuzzle]]'
   - name: magazine
-    description: magazine name or "" for given muzzle's magazine. If given muzzle is [[currentMuzzle]] then [[currentMagazine]]
+    desc: magazine name or "" for given muzzle's magazine. If given muzzle is [[currentMuzzle]] then [[currentMagazine]]
     type: String
     optional: true
     default: given muzzle magazine
   since:
-    arma_3:
-      major: 2
-      minor: 8
+    arma3: '2.8'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>if (needReload player == 1) then { reload player };</sqf>
 - <sqf>player reload ["GL_3GL_F", "1Rnd_HE_Grenade_shell"];</sqf>
 - |-
   Reload current muzzle:
   <sqf>player reload [];</sqf>
+see_also:
+- reloadEnabled
+- needReload
+- enableReload
+- setWeaponReloadingTime

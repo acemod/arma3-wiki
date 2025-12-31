@@ -1,32 +1,26 @@
 name: registeredTasks
-description: Returns array with all registered task types for the given agent. The values are the names set in {{hl|CfgTasks}} classes {{hl|name}} property. The same names are used for [[unregisterTask]]
+desc: Returns array with all registered task types for the given agent. The values are the names set in {{hl|CfgTasks}} classes {{hl|name}} property. The same names are used for [[unregisterTask]]
 groups:
 - Briefing
 - Teams
 syntax:
 - call: !Unary teamMember
   ret:
-  - ArrayUnknown
-  - names of tasks
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+    desc: names of tasks
   params:
   - name: teamMember
-    description: '[[teamMember]] [[agent]]'
+    desc: '[[teamMember]] [[agent]]'
     type: TeamMember
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>tasklist = registeredTasks teamMember _agent;</sqf>
 - |-
@@ -34,3 +28,10 @@ examples:
   _rabbit = createAgent ["Rabbit_F", position player,[], 0, "None"];
   hint str registeredTasks teamMember _rabbit; // shows ["Animal Main Task"] in Arma 3
   </sqf>
+see_also:
+- registerTask
+- unregisterTask
+- sendTask
+- createTask
+- currentTasks
+- taskCompleted

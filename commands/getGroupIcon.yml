@@ -1,5 +1,5 @@
 name: getGroupIcon
-description: Get group icon properties. Since Arma 3 v2.22 command also returns 3d offsets.
+desc: Get group icon properties. Since Arma 3 v2.22 command also returns 3d offsets.
 groups:
 - High Command
 syntax:
@@ -7,32 +7,37 @@ syntax:
   - group
   - id
   ret:
-  - ArrayUnknown
-  - '[icon,[offsetx,offsety,offsetX3d,offsetY3d]]'
+    type: ArrayUnknown
+    desc: '[icon,[offsetx,offsety,offsetX3d,offsetY3d]]'
   params:
   - name: group
     type: Group
   - name: id
-    description: icon id
+    desc: icon id
     type: Number
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   _grpIconId = _group getVariable "BIS_MARTA_ICON_TYPE";
   _grpIcon = _group getGroupIcon _grpIconId;
   </sqf>
+see_also:
+- addGroupIcon
+- clearGroupIcons
+- getGroupIcons
+- getGroupIconParams
+- groupIconSelectable
+- groupIconsVisible
+- onGroupIconClick
+- removeGroupIcon
+- setGroupIcon
+- setGroupIconParams
+- setGroupIconsSelectable
+- setGroupIconsVisible

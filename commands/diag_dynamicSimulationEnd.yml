@@ -1,5 +1,5 @@
 name: diag_dynamicSimulationEnd
-description: |-
+desc: |-
   Ends dynamic simulation data gathering and writes collected data into given (txt) file. The file is saved in the {{arma3}} installation folder.
   <syntaxhighlight lang="cpp">
   // Example output
@@ -19,17 +19,20 @@ groups:
 syntax:
 - call: !Unary file
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: file
-    description: file name without extension
+    desc: file name without extension
     type: String
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>diag_dynamicSimulationEnd "dynSimDebugData"; // creates a file called "dynSimDebugData_runtimelog.txt"</sqf>
+see_also:
+- Arma
+- '3:'
+- Dynamic
+- Simulation
+- diag_dynamicSimulationStart

@@ -1,19 +1,19 @@
 name: allCameras
-description: Return a list of all existing cameras.
+desc: Return a list of all existing cameras.
 groups:
 - Camera Control
 syntax:
 - call: Nular
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - "<sqf>\n{\n\tparams [\"_camera\", \"_r2tInfos\", \"_isPrimary\", \"_ppEffectName\", \"_viewMode\", \"_TIindex\"];\n\t{\n\t\tparams[\"_r2tName\", \"_ppEffectName\", \"_ppEffectType\", \"_TIindex\"];\n\t} forEach _r2tInfos;\n} forEach allCameras;\n</sqf>"
 - "<sqf>\nprivate _allCamerasInfo = allCameras;\n{\n\tparams [\"_camera\", \"\", \"_isPrimary\"];\n\tif (!_isPrimary) then { camDestroy _camera };\n} forEach _allCamerasInfo;\n</sqf>"
+see_also:
+- camCreate
+- camDestroy

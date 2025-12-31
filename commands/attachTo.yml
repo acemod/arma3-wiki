@@ -1,5 +1,5 @@
 name: attachTo
-description: |-
+desc: |-
   Attaches an object to another object.
   * The offset is applied to the object center unless a memory point is provided, in which case the offset will be applied to the memory point position.
   * If no offset is specified, the current offset between the two objects will be used.
@@ -19,46 +19,39 @@ syntax:
     - memPoint
     - followBoneRotation
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object1
-    description: object to attach
+    desc: object to attach
     type: Object
   - name: object2
-    description: object to attach to; if a group is provided, its [[leader]] is used
-    type: Unknown
+    desc: object to attach to; if a group is provided, its [[leader]] is used
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
   - name: offset
-    description: the position relative to ''object2'''s position
-    type: Unknown
+    desc: the position relative to ''object2'''s position
+    type: Position3dRelative
     optional: true
   - name: memPoint
-    description: 'see {{Link|ArmA: Armed Assault: Selection Translations|Selection Translations}} for czech selections names'
+    desc: 'see {{Link|ArmA: Armed Assault: Selection Translations|Selection Translations}} for czech selections names'
     type: String
     optional: true
   - name: followBoneRotation
-    description: follows the memory point's rotation (if attached to one)
+    desc: follows the memory point's rotation (if attached to one)
     type: Boolean
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 2
+      arma3: '2.2'
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player attachTo [car, [0, 0, 1]];</sqf>
 - <sqf>player attachTo [tank, [0, -1, 0], "Usti hlavne"];</sqf>
@@ -87,3 +80,19 @@ examples:
   _radio attachTo [_worker, [-0.100003,0.069064,0.153719], "Spine3", true];
   _radio setVectorDirAndUp [[-0.144569,-0.48725,0.861354],[0.039712,0.866938,0.497072]];
   </sqf>
+see_also:
+- attachedTo
+- attachedObjects
+- detach
+- getRelPos
+- attachObject
+- attachedObject
+- waypointAttachVehicle
+- waypointAttachedVehicle
+- lightAttachObject
+- triggerAttachVehicle
+- setVectorDir
+- setVectorUp
+- setVectorDirAndUp
+- modelToWorld
+- BIS_fnc_transformVectorDirAndUp

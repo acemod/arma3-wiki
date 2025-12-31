@@ -1,5 +1,5 @@
 name: forEachReversed
-description: Executes the given command(s) on every item of an [[Array]] in reversed order, compared to [[forEach]].
+desc: Executes the given command(s) on every item of an [[Array]] in reversed order, compared to [[forEach]].
 groups:
 - Program Flow
 - Arrays
@@ -8,20 +8,18 @@ syntax:
   - code
   - array
   ret:
-  - Anything
-  - will return the value of last executed statement
+    type: Anything
+    desc: will return the value of last executed statement
   params:
   - name: code
     type: Unknown
   - name: array
-    description: the array to iterate over
+    desc: the array to iterate over
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 14
+  arma3: '2.14'
 examples:
 - |-
   This command lets you easily iterate through an array from last to first element without modifying the array itself with [[reverse]] or using [[for]] loop with negative [[step]].
@@ -31,3 +29,15 @@ examples:
   </sqf>
 - "Can be useful to walk through array while also deleting items from it, which you couldn't do with [[forEach]] as easily:\n<sqf>\nprivate _array = [1, 1, 2, 2, 1, 1, 2, 2];\n{\n\tif (_x == 2) then { _array deleteAt _forEachIndex };\n} forEachReversed _array;\n// _array will be [1,1,1,1] here\n</sqf>\n\nWill not work with [[forEach]] as you might expect it:\n<sqf>\nprivate _array = [1, 1, 2, 2, 1, 1, 2, 2];\n{\n\tif (_x == 2) then { _array deleteAt _forEachIndex };\n} forEach _array;\n// _array will be [1, 1, 2, 1, 1, 2] here\n</sqf>"
 - "Deleting items from array with more complex condition than just comparison.\n<sqf>\n{\n\tif (!alive _x) then { _vehicles deleteAt _forEachIndex };\n} forEachReversed _vehicles;\n</sqf>"
+see_also:
+- Control
+- Structures
+- forEach
+- for
+- apply
+- while
+- select
+- findIf
+- count
+- deleteAt
+- reverse

@@ -1,5 +1,5 @@
 name: isBurning
-description: |-
+desc: |-
   Returns whether the unit is burning.
   This returns true only if unit is damaged by nearby fire, it does '''not''' check whether a fireplace is burning, use [[inflamed]] command for that.
 groups:
@@ -7,16 +7,18 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>if (isBurning player) then { player groupChat "I'm burning!!"; };</sqf>
+see_also:
+- getBleedingRemaining
+- setBleedingRemaining
+- isBleeding
+- inflamed

@@ -1,32 +1,25 @@
 name: reloadEnabled
-description: A getter for [[enableReload]]. The value returned is wether or not auto-reload is enabled for current client only.
+desc: A getter for [[enableReload]]. The value returned is wether or not auto-reload is enabled for current client only.
 groups:
 - Weapons
 syntax:
 - call: !Unary unitName
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: unitName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _aiCanReload = reloadEnabled _unit1;</sqf>
+see_also:
+- enableReload
+- reload
+- needReload

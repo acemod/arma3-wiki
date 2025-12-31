@@ -1,29 +1,31 @@
 name: teamMember
-description: Return an agent for given person.
+desc: Return an agent for given person.
 groups:
 - Teams
 syntax:
 - call: !Unary person
   ret:
-  - TeamMember
-  - null
+    type: TeamMember
   params:
   - name: person
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_agent = teamMember player;</sqf>
+see_also:
+- addTeamMember
+- createTeam
+- deleteTeam
+- forEachMemberTeam
+- removeTeamMember
+- teamName
+- teams
+- teamType
+- forEachMember
+- forEachMemberAgent

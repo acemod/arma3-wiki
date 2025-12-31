@@ -1,5 +1,5 @@
 name: setAttributes
-description: |-
+desc: |-
   Returns a [[Structured Text]] created from the given [[Structured Text|structured]] text and sets [[Structured_Text#Attributes | attributes]] to the given values.
   {{Feature|important|Even though command accepts plain [[String]] too, the argument should be [[Structured Text]] in order for the set attributes to have an effect.
   Additionally the result of the command should be fed to [[composeText]] (See {{Link|#Example 1}}) or [[formatText]].
@@ -16,39 +16,30 @@ syntax:
     - value2
     - '...'
   ret:
-  - StructuredText
-  - null
+    type: StructuredText
   params:
   - name: text
-    description: only passing [[Structured Text]] has any effect
-    type: Unknown
+    desc: only passing [[Structured Text]] has any effect
+    type: !OneOf
+    - - String
+      - null
+    - - StructuredText
+      - null
   - name: nameN
-    description: name of the attribute
+    desc: name of the attribute
     type: String
   - name: valueN
-    description: value of the attribute
+    desc: value of the attribute
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -56,3 +47,9 @@ examples:
   _txt setAttributes ["color", "#FF0000", "align", "right"];
   hint composeText [_txt];
   </sqf>
+see_also:
+- composeText
+- formatText
+- parseText
+- text
+- ctrlSetStructuredText

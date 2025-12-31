@@ -1,5 +1,5 @@
 name: kbTell
-description: Make the person tell to the receiver the sentence. See [[Conversations]] for more details.
+desc: Make the person tell to the receiver the sentence. See [[Conversations]] for more details.
 problem_notes:
 - Two units cannot talk on the same channel at the same time, this can lead to weird effects for non-local listeners; make sure not to use the same channel at the same time in multiplayer. [[radioChannelCreate|Custom channels]] are considered as one channel for this matter.
 groups:
@@ -15,8 +15,7 @@ syntax:
     - '...'
     - forceRadio
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: person
     type: Object
@@ -30,24 +29,39 @@ syntax:
     type: Unknown
     optional: true
   - name: forceRadio
-    type: Unknown
+    type: !OneOf
+    - - Boolean
+      - null
+    - - Number
+      - null
+    - - String
+      - null
+    - - Boolean
+      - null
+    - - Number
+      - null
+    - - String
+      - null
     optional: true
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player kbTell [BIS_HQ, "myTopic", "playerSentence1"];</sqf>
 - "<sqf>\nplayer kbTell [\n\tBIS_HQ,\t\t\t\t\t\t\t\t\t\t// to\n\t\"Airstrike\",\t\t\t\t\t\t\t\t// topic\n\t\"AirstrikeRequest\",\t\t\t\t\t\t\t// sentence\n\t[\"Team\", {}, \"Anvil\", [\"Anvil\"]],\t\t\t// argument 1\n\t[\"Location\", {}, \"Strelka\", [\"Strelka\"]],\t// argument 2\n\ttrue];\t\t\t\t\t\t\t\t\t\t// use radio\n</sqf>\nin given .bikb:\n<syntaxhighlight lang=\"cpp\">\nclass AirstrikeRequest \n{\n\ttext = \"%team requesting close air support at grid %location \";\n\tspeech[] = { %Team, RequestingCloseAirSupportAtGrid, %Location };\n\tclass Arguments \n\t{\n\t\tclass Team\t\t{ type = \"simple\"; };\n\t\tclass Location\t{ type = \"simple\"; };\n\t};\n};\n</syntaxhighlight>"
 - "<sqf>\nplayer kbTell [\n\tBIS_HQ,\t\t\t\t\t\t\t\t\t\t// to\n\t\"Airstrike\",\t\t\t\t\t\t\t\t// topic\n\t\"AirstrikeRequest\",\t\t\t\t\t\t\t// sentence\n\t[\"argumentName\", argumentValue],\t\t\t// argument 1\n\ttrue];\t\t\t\t\t\t\t\t\t\t// use radio\n</sqf>"
+see_also:
+- Conversations
+- kbAddTopic
+- kbHasTopic
+- kbReact
+- kbRemoveTopic
+- kbAddDatabase
+- kbAddDatabaseTargets
+- FSM
+- FSM
+- Editor

@@ -1,5 +1,5 @@
 name: simulSetHumidity
-description: |-
+desc: |-
   Sets simul cloud cover. This command does not affect overcast value.<br /><br />
 
   This command was not implemented up until {{GVI|arma3|2.18}}
@@ -9,18 +9,15 @@ groups:
 syntax:
 - call: !Unary humidity
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: humidity
-    description: '0 (min): clear sky, 1 (max): heavy cloud cover'
+    desc: '0 (min): clear sky, 1 (max): heavy cloud cover'
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>simulSetHumidity 1;</sqf>
 - |-
@@ -30,3 +27,6 @@ examples:
   skipTime 24;
   simulSetHumidity 1;
   </sqf>Creates rainy looking weather, followed by thunder in about 10 seconds and rain in about 20.
+see_also:
+- overcast
+- setOvercast

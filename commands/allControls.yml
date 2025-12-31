@@ -1,33 +1,40 @@
 name: allControls
-description: Returns a list of all controls in the provided display or controls group, including "sub"-controls from other [[CT_CONTROLS_GROUP]]s.
+desc: Returns a list of all controls in the provided display or controls group, including "sub"-controls from other [[CT_CONTROLS_GROUP]]s.
 groups:
 - GUI Control
 syntax:
 - call: !Unary display
   ret:
-  - ArrayUnknown
-  - null
+    type: !ArrayUnsized
+      type: Control
+      desc: ''
   params:
   - name: display
     type: Display
 - call: !Unary controlsGroup
   ret:
-  - ArrayUnknown
-  - null
+    type: !ArrayUnsized
+      type: Control
+      desc: ''
   params:
   - name: controlsGroup
-    description: '[[CT_CONTROLS_GROUP]]'
+    desc: '[[CT_CONTROLS_GROUP]]'
     type: Control
   since:
-    arma_3:
-      major: 2
-      minor: 4
+    arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 38
+  arma3: '1.38'
 examples:
 - <sqf>_allCtrls = allControls findDisplay 46;</sqf>
 - <sqf>_allSubCtrls = allControls _myControlsGroup;</sqf>
+see_also:
+- allDisplays
+- controlsGroupCtrl
+- ctrlCreate
+- allVariables
+- allCurators
+- allGroups
+- allDead
+- allDeadMen

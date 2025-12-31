@@ -1,5 +1,5 @@
 name: menuSize
-description: Returns how many sub entries is in item on given path.
+desc: Returns how many sub entries is in item on given path.
 groups:
 - GUI Control - Menu
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - idc
   - path
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: idc
     type: Number
@@ -18,8 +17,7 @@ syntax:
   - control
   - path
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: control
     type: Control
@@ -28,8 +26,30 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>findDisplay 313 displayCtrl 120 menuSize [];</sqf>
+see_also:
+- menuEnable
+- menuExpand
+- menuCollapse
+- menuSetData
+- menuSetValue
+- menuSetCheck
+- menuSetAction
+- menuDelete
+- menuAdd
+- menuHover
+- menuValue
+- menuURL
+- menuText
+- menuSort
+- menuEnabled
+- menuChecked
+- menuAction
+- menuShortcutText
+- menuShortcut
+- menuPicture
+- menuData
+- menuClear
+- menuSetPicture

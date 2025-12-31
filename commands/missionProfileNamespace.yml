@@ -1,20 +1,23 @@
 name: missionProfileNamespace
-description: This namespace has the same lifetime as [[profileNamespace]] but is also connected to the mission it is saved from. See [[saveMissionProfileNamespace]] for more details.
+desc: This namespace has the same lifetime as [[profileNamespace]] but is also connected to the mission it is saved from. See [[saveMissionProfileNamespace]] for more details.
 groups:
 - Namespaces
 - Variables
 syntax:
 - call: Nular
   ret:
-  - Namespace
-  - namespace
+    type: Namespace
+    desc: namespace
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 server_exec: false
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>private _currentMissionProfileNamespace = missionProfileNamespace;</sqf>
+see_also:
+- missionNamespace
+- profileNamespace
+- saveMissionProfileNamespace
+- isMissionProfileNamespaceLoaded

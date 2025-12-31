@@ -1,5 +1,5 @@
 name: addItemPool
-description: Adds count items of type name into the weapon pool (used in the campaign to transfer items to the next mission)
+desc: Adds count items of type name into the weapon pool (used in the campaign to transfer items to the next mission)
 groups:
 - Weapon Pool
 syntax:
@@ -7,20 +7,19 @@ syntax:
   - itemName
   - count
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: itemName
-    description: item name
+    desc: item name
     type: String
   - name: count
-    description: number of items to add
+    desc: number of items to add
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 4
+  arma3: '1.4'
 examples:
 - <sqf>addItemPool ["ItemGPS", 5];</sqf>
+see_also:
+- clearItemPool

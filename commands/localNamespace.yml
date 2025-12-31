@@ -1,5 +1,5 @@
 name: localNamespace
-description: |-
+desc: |-
   Returns local [[Namespace]] attached to the mission.
   Has the same lifetime as [[missionNamespace]] but variables '''cannot be broadcasted''' out of or into this namespace in multiplayer and will not be serialized when game is saved. UI variables can be safely stored in this namespace.
   Use [[allVariables]] command to save the variables elsewhere if required.
@@ -10,15 +10,19 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Namespace
-  - null
+    type: Namespace
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - <sqf>localNamespace setVariable ["abc", 123];</sqf>
 - <sqf>with localNamespace do { hint str abc };</sqf>
+see_also:
+- missionNamespace
+- uiNamespace
+- parsingNamespace
+- profileNamespace
+- currentNamespace
+- allVariables

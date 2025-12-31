@@ -1,5 +1,5 @@
 name: matrixMultiply
-description: |-
+desc: |-
   [[File:matrixMultiply.jpg|right|600px]]
   Returns resulting matrix from the {{Link|https://en.wikipedia.org/wiki/Matrix_multiplication|multiplication}} of two matrices. First matrix must be of the size n &times; '''k''', while the second must be of the size '''k''' &times; m, i.e {{hl|columns}} matrix1 == {{hl|rows}} matrix2. The resulting matrix will be of the size n &times; m. If the shapes do not match, empty array [] will be returned.
 groups:
@@ -10,21 +10,34 @@ syntax:
   - matrix1
   - matrix2
   ret:
-  - Unknown
-  - resulting matrix of the size {{hl|n}}''(rows)'' &times; {{hl|m}}''(columns)''
+    type: Unknown
+    desc: resulting matrix of the size {{hl|n}}''(rows)'' &times; {{hl|m}}''(columns)''
   params:
   - name: matrix1
-    description: matrix of the size {{hl|n}}''(rows)'' &times; {{hl|k}}''(columns)''
+    desc: matrix of the size {{hl|n}}''(rows)'' &times; {{hl|k}}''(columns)''
     type: Unknown
   - name: matrix2
-    description: matrix of the size {{hl|k}}''(rows)'' &times; {{hl|m}}''(columns)''
+    desc: matrix of the size {{hl|k}}''(rows)'' &times; {{hl|m}}''(columns)''
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 92
+  arma3: '1.92'
 examples:
 - "<sqf>\n[\n\t[2],\n\t[2]\n] \nmatrixMultiply \n[\n\t[3] \n]\n/* returns \n[\n\t[6],\n\t[6]\n] */\n</sqf>"
 - "<sqf>\n[\n\t[-1,0,0],\n\t[0,-1,0]\n] \nmatrixMultiply \n[\n\t[1,2],\n\t[3,1],\n\t[2,3]\n] \n/* returns \n[\n\t[-1,-2],\n\t[-3,-1]\n] */\n</sqf>"
+see_also:
+- matrixTranspose
+- vectorAdd
+- vectorMagnitude
+- vectorNormalized
+- vectorMultiply
+- vectorDotProduct
+- vectorCrossProduct
+- vectorDistance
+- vectorLinearConversion
+- vectorCos
+- vectorFromTo
+- vectorModelToWorld
+- vectorWorldToModel
+- BIS_fnc_transformVectorDirAndUp

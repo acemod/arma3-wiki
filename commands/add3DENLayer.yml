@@ -1,5 +1,5 @@
 name: add3DENLayer
-description: Adds an editing layer in [[:Category:Eden Editor|Eden Editor]].
+desc: Adds an editing layer in [[:Category:Eden Editor|Eden Editor]].
 groups:
 - Eden Editor
 syntax:
@@ -7,21 +7,19 @@ syntax:
   - parentLayerID
   - name
   ret:
-  - Number
-  - layer ID
+    type: Number
+    desc: layer ID
   params:
   - name: parentLayerID
-    description: ID of the parent layer. No layer will be created when the ID does not point to a layer. Use {{hl|-1}} to create the layer to root.
+    desc: ID of the parent layer. No layer will be created when the ID does not point to a layer. Use {{hl|-1}} to create the layer to root.
     type: Number
   - name: name
-    description: layer display name
+    desc: layer display name
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - |-
   <sqf>
@@ -29,3 +27,7 @@ examples:
   _myLayerFort = _myLayer add3DENLayer "Fortifications";
   _myLayerPatrol = _myLayer add3DENLayer "Patrols";
   </sqf>
+see_also:
+- remove3DENLayer
+- set3DENLayer
+- get3DENLayerEntities

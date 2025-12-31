@@ -1,5 +1,5 @@
 name: numberToDate
-description: Convert float number to a date.
+desc: Convert float number to a date.
 groups:
 - Environment
 syntax:
@@ -7,29 +7,26 @@ syntax:
   - year
   - time
   ret:
-  - Unknown
-  - null
+    type: ArrayDate
   params:
   - name: year
-    description: year value, e.g 2035
+    desc: year value, e.g 2035
     type: Number
   - name: time
-    description: year time in range 0..1, from beginning to end of the year (e.g {{hl|0}} is January 1<sup>st</sup> and {{hl|1}} is December 31<sup>st</sup>)
+    desc: year time in range 0..1, from beginning to end of the year (e.g {{hl|0}} is January 1<sup>st</sup> and {{hl|1}} is December 31<sup>st</sup>)
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>setDate numberToDate [2008, 0.5324]; // sets date to [2008,7,13,7,49]</sqf>
+see_also:
+- dateToNumber
+- getNumber
+- isNumber
+- parseNumber
+- playersNumber

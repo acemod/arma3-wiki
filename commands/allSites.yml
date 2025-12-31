@@ -1,5 +1,5 @@
 name: allSites
-description: |-
+desc: |-
   Return all sites in map.
   {{Feature|warning|This command is considered deprecated and is no longer supported}}
 groups:
@@ -8,14 +8,22 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_allSites = allSites;</sqf>
+see_also:
+- deleteSite
+- createSite
+- allGroups
+- allDead
+- playableUnits
+- switchableUnits
+- vehicles
+- allUnitsUAV
+- allCurators
+- allDeadMen

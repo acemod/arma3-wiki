@@ -1,39 +1,50 @@
 name: magazinesAllTurrets
-description: Returns all magazines (including empty) from all vehicle turrets (including driver turret [-1]) and their ammo counts. Since Arma 3 v2.08.148327 it is possible to exclude person turrets from returned results.
+desc: Returns all magazines (including empty) from all vehicle turrets (including driver turret [-1]) and their ammo counts. Since Arma 3 v2.08.148327 it is possible to exclude person turrets from returned results.
 groups:
 - Turrets
 syntax:
 - call: !Unary vehicle
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: vehicle
-    description: vehicle with turrets
+    desc: vehicle with turrets
     type: Object
 - call: !Unary
   - vehicle
   - excludePersonTurrets
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: vehicle
-    description: vehicle with turrets
+    desc: vehicle with turrets
     type: Object
   - name: excludePersonTurrets
-    description: when [[true]] only vehicle's turrets are queried
+    desc: when [[true]] only vehicle's turrets are queried
     type: Boolean
   since:
-    arma_3:
-      major: 2
-      minor: 8
+    arma3: '2.8'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 52
+  arma3: '1.52'
 examples:
 - <sqf>_mags = magazinesAllTurrets vehicle player;</sqf>
 - <sqf>_mags = magazinesAllTurrets [vehicle player, true];</sqf>
+see_also:
+- magazinesTurret
+- allTurrets
+- addMagazineTurret
+- removeMagazinesTurret
+- removeMagazineTurret
+- weaponsTurret
+- loadMagazine
+- magazines
+- magazinesDetail
+- magazinesAmmo
+- magazinesAmmoFull
+- addWeaponTurret
+- removeWeaponTurret
+- turretLocal
+- getPylonMagazines
+- ammoOnPylon

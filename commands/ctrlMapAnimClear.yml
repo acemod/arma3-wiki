@@ -1,32 +1,29 @@
 name: ctrlMapAnimClear
-description: Clears the map animation.
+desc: Clears the map animation.
 groups:
 - GUI Control - Map
 syntax:
 - call: !Unary controlName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: controlName
     type: Control
 argument_loc: Local
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>ctrlMapAnimClear _ctrlMap;</sqf>
+see_also:
+- mapAnimAdd
+- mapAnimClear
+- mapAnimCommit
+- mapAnimDone
+- ctrlMapAnimAdd
+- ctrlMapAnimCommit
+- ctrlMapAnimDone

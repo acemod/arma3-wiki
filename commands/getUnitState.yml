@@ -1,5 +1,5 @@
 name: getUnitState
-description: |-
+desc: |-
   Returns current state of the given AI unit, which could be one of the following:
   * "WAIT" - another plan is needed (current partial plan was done or is not present)
   * "INIT" - operative planing should start, endpoint is set
@@ -17,16 +17,21 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - String
-  - unit state (see description)
+    type: String
+    desc: unit state (see description)
   params:
   - name: unit
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>_state = getUnitState bob; //"WAIT"</sqf>
+see_also:
+- disableAI
+- enableAI
+- checkAIFeature
+- enableAIFeature
+- vehicleMoveInfo
+- expectedDestination

@@ -1,18 +1,24 @@
 name: pixelGridNoUIScale
-description: 'Returns grid size based on screen resolution and configs: uiScaleFactor, uiScaleMaxGrids. As mentioned in the name of this command, the ''''''user interface scale is ignored''''''.'
+desc: 'Returns grid size based on screen resolution and configs: uiScaleFactor, uiScaleMaxGrids. As mentioned in the name of this command, the ''''''user interface scale is ignored''''''.'
 groups:
 - GUI Control - Positioning
 syntax:
 - call: Nular
   ret:
-  - Number
-  - 'grid size, see [[Arma 3: Pixel Grid System]]'
+    type: Number
+    desc: 'grid size, see [[Arma 3: Pixel Grid System]]'
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 62
+  arma3: '1.62'
 examples:
 - <sqf>_gridHeightNoUIScale = pixelH * pixelGridNoUIScale;</sqf>
+see_also:
+- pixelGrid
+- pixelGridBase
+- pixelH
+- pixelW
+- Pixel
+- Grid
+- System

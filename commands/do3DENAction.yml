@@ -1,5 +1,5 @@
 name: do3DENAction
-description: |-
+desc: |-
   Performs given [[Eden Editor: Actions|Eden Editor action]].
   {{Feature|warning|
   Prior to {{GVI|arma3|2.12|size= 0.75}} it was possible to use this command outside of [[:Category:Eden Editor|Eden Editor]].<br>
@@ -10,17 +10,16 @@ groups:
 syntax:
 - call: !Unary action
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: action
-    description: 'see [[Eden Editor: Actions]]'
+    desc: 'see [[Eden Editor: Actions]]'
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>do3DENAction "MissionSave";</sqf>
+see_also:
+- get3DENActionState

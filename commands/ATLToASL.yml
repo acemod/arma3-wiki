@@ -1,28 +1,28 @@
 name: ATLToASL
-description: Converts a position from [[Position#PositionATL|PositionATL]] to [[Position#PositionASL|PositionASL]]
+desc: Converts a position from [[Position#PositionATL|PositionATL]] to [[Position#PositionASL|PositionASL]]
 groups:
 - Positions
 syntax:
 - call: !Unary pos
   ret:
-  - Position3dASL
-  - null
+    type: Position3dASL
   params:
   - name: pos
-    description: position to convert
+    desc: position to convert
     type: Position3dATL
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 62
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.62'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>ATLToASL (getPosATL player) isEqualTo getPosASL player;</sqf>
 - <sqf>_camPosASL = ATLToASL positionCameraToWorld [0,0,0];</sqf>
+see_also:
+- ASLToATL
+- AGLToASL
+- ASLToAGL
+- getPos
+- getPosATL
+- getPosASL

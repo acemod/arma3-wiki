@@ -1,5 +1,5 @@
 name: hasCustomFace
-description: |-
+desc: |-
   Get whether or not a player has an available custom face file.
   {{Feature|informative|To check if this custom face is currently being used, use [[face]] (returns "Custom" in that case).}}
 groups:
@@ -7,16 +7,19 @@ groups:
 syntax:
 - call: !Unary person
   ret:
-  - Boolean
-  - '[[true]] if player has a {{hl|face.paa/jpg}} file in their current profile and it is usable'
+    type: Boolean
+    desc: '[[true]] if player has a {{hl|face.paa/jpg}} file in their current profile and it is usable'
   params:
   - name: person
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - "<sqf>\nif (isPlayer _thisUnit && hasCustomFace _thisUnit && face _thisUnit != \"Custom\") then\n{\n\t[_thisUnit, \"Custom\"] remoteExec [\"setFace\", 0, true];\n};\n</sqf>"
+see_also:
+- face
+- setFace
+- setIdentity
+- setSpeaker

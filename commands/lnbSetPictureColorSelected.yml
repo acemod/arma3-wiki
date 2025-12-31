@@ -1,5 +1,5 @@
 name: lnbSetPictureColorSelected
-description: Sets the cell picture's colour on cell selection.
+desc: Sets the cell picture's colour on cell selection.
 groups:
 - GUI Control - ListNBox
 syntax:
@@ -9,16 +9,15 @@ syntax:
     - column
   - colour
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: row
-    description: 0-based index (first row is 0, second is 1, etc)
+    desc: 0-based index (first row is 0, second is 1, etc)
     type: Number
   - name: column
-    description: 0-based index (first column is 0, second is 1, etc)
+    desc: 0-based index (first column is 0, second is 1, etc)
     type: Number
   - name: colour
     type: ArrayColor
@@ -28,25 +27,24 @@ syntax:
       - column
     - colour
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ctrl
     type: Control
   - name: row
-    description: 0-based index (first row is 0, second is 1, etc)
+    desc: 0-based index (first row is 0, second is 1, etc)
     type: Number
   - name: column
-    description: 0-based index (first column is 0, second is 1, etc)
+    desc: 0-based index (first column is 0, second is 1, etc)
     type: Number
   - name: colour
     type: ArrayColor
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>lnbSetPictureColorSelected [1492, [1,0], [0,0.75,0.3,0.5]];</sqf>
 - <sqf>ctrl lnbSetPictureColorSelected [[0, 3], [1,0,0,1]];</sqf>
+see_also:
+- lnbSetPictureColor

@@ -1,20 +1,20 @@
 name: openSteamApp
-description: Opens a Steam application, returns false if it was not possible to run the application.
+desc: Opens a Steam application, returns false if it was not possible to run the application.
 groups:
 - System
 syntax:
 - call: !Unary appID
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: appID
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 78
+  arma3: '1.78'
 examples:
 - <sqf>openSteamApp 553228;</sqf>
+see_also:
+- getSteamFriendsServers
+- openYoutubeVideo

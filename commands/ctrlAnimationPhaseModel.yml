@@ -1,5 +1,5 @@
 name: ctrlAnimationPhaseModel
-description: Returns current animation phase of given source. Similar to [[animationSourcePhase]].
+desc: Returns current animation phase of given source. Similar to [[animationSourcePhase]].
 groups:
 - GUI Control - Object
 syntax:
@@ -7,19 +7,29 @@ syntax:
   - control
   - source
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: control
-    description: 3D control
+    desc: 3D control
     type: Control
   - name: source
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 84
+  arma3: '1.84'
 examples:
 - <sqf>private _phase = _control3D ctrlAnimationPhaseModel "Close";</sqf>
+see_also:
+- ctrlAnimateModel
+- ctrlCreate
+- ctrlDelete
+- ctrlModel
+- ctrlPosition
+- ctrlSetPosition
+- ctrlClassName
+- displayCtrl
+- ctrlModelScale
+- ctrlSetModelScale
+- ctrlModelDirAndUp
+- ctrlSetModelDirAndUp

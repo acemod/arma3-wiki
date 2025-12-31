@@ -1,5 +1,5 @@
 name: addItem
-description: Creates new item and tries to add it into inventory. Inventory must have enough space to accomodate new item or command will fail.The item can also be a weapon or a magazine.
+desc: Creates new item and tries to add it into inventory. Inventory must have enough space to accomodate new item or command will fail.The item can also be a weapon or a magazine.
 groups:
 - Unit Inventory
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - item
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,9 +16,7 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -34,3 +31,14 @@ examples:
   independentUnit addItem "NVGoggles_INDEP";
   independentUnit assignItem "NVGoggles_INDEP";
   </sqf>
+see_also:
+- removeItem
+- assignItem
+- unassignItem
+- assignedItems
+- linkItem
+- unlinkItem
+- removeAllAssignedItems
+- addItemToUniform
+- addItemToVest
+- addItemToBackpack

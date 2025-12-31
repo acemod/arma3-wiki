@@ -1,5 +1,5 @@
 name: inputController
-description: |-
+desc: |-
   Returns the state of controller inputs. The controller is a standard XBOX controller which is selected with Windows XBOX controller scheme. The input can be:
   {{Columns|4|
   * XBOX_A 0
@@ -32,19 +32,32 @@ groups:
 syntax:
 - call: !Unary input
   ret:
-  - Number
-  - value of the controller input 0...1. When input is -1, return is 1 if controller is available, 0 - if controller is unavailable
+    type: Number
+    desc: value of the controller input 0...1. When input is -1, return is 1 if controller is available, 0 - if controller is unavailable
   params:
   - name: input
-    description: controller input 0...31 (see description) or -1 for controller detection.
+    desc: controller input 0...31 (see description) or -1 for controller detection.
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 8
+  arma3: '2.8'
 examples:
 - |-
   State of the fire trigger:
   <sqf>onEachFrame { hintSilent str inputController 13 };</sqf>
+see_also:
+- inputMouse
+- inputAction
+- actionKeys
+- actionKeysImages
+- actionKeysNames
+- actionIDs
+- actionParams
+- addAction
+- setUserActionText
+- inGameUISetEventHandler
+- showHUD
+- removeAction
+- removeAllActions
+- action

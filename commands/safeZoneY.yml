@@ -1,5 +1,5 @@
 name: safeZoneY
-description: |-
+desc: |-
   [[File:safezone.jpg|right|600px]] Returns the Y of the top border of the screen, which is also a distance in screen measurement units from top left corner of the default viewport (0,0) of the screen to the top border of the screen.
   Since it is going in opposite way of the Y axis, <u>the value is negative</u>. The measurement units depend on the current screen resolution [[getResolution]]. See also [[SafeZone]].
 groups:
@@ -7,24 +7,15 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_screenTopBorderY = safeZoneY; // returns a float value < 0</sqf>
 - |-
@@ -40,3 +31,10 @@ examples:
   _ctrl ctrlSetPositionY ((safeZoneH - _ctrlHeight) / 2 + safeZoneY); // center it vertically
   _ctrl ctrlCommit 0;
   </sqf>
+see_also:
+- SafeZone
+- safeZoneX
+- safeZoneW
+- safeZoneH
+- safeZoneXAbs
+- safeZoneWAbs

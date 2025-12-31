@@ -1,5 +1,5 @@
 name: copyWaypoints
-description: Copy the chain of waypoints from source to target group. The target group will start to process waypoints from the first one.
+desc: Copy the chain of waypoints from source to target group. The target group will start to process waypoints from the first one.
 groups:
 - Waypoints
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - groupTo
   - groupFrom
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: groupTo
     type: Group
@@ -17,17 +16,33 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>group1 copyWaypoints group2;</sqf>
+see_also:
+- waypoints
+- deleteWaypoint
+- setCurrentWaypoint
+- setWaypointBehaviour
+- setWaypointCombatMode
+- setWaypointCompletionRadius
+- setWaypointDescription
+- setWaypointFormation
+- setWaypointHousePosition
+- setWaypointPosition
+- setWaypointScript
+- setWaypointSpeed
+- setWaypointStatements
+- setWaypointTimeout
+- setWaypointType
+- setWaypointVisible
+- waypointAttachVehicle
+- waypointAttachedVehicle
+- setWaypointLoiterRadius
+- waypointLoiterRadius
+- addWaypoint
+- setWaypointLoiterType
+- waypointSpeed

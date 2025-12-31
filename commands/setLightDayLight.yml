@@ -1,5 +1,5 @@
 name: setLightDayLight
-description: Sets if light can be used during the day.
+desc: Sets if light can be used during the day.
 groups:
 - Lights
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - light
   - bool
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: light
     type: Object
@@ -17,8 +16,17 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>myLight setLightDayLight true;</sqf>
+see_also:
+- setLightAmbient
+- setLightColor
+- lightAttachObject
+- lightDetachObject
+- setLightIntensity
+- setLightAttenuation
+- setLightUseFlare
+- setLightFlareSize
+- setLightFlareMaxDistance
+- setLightBrightness

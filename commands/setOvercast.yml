@@ -1,5 +1,5 @@
 name: setOvercast
-description: |-
+desc: |-
   Set overcast to given value smoothly during given time (in seconds). Zero time means immediate change.
   An overcast setting of zero means clear (sunny) weather, and one means storms and rain are very likely. Higher overcast values also result in higher [[wind]] speeds.
 multiplayer_note: '''''''Pre {{arma3}}:'''''' Each client and the server can have differing overcast values. {{Feature|arma3|In {{arma3}} weather values are periodically synchronised with the server.}}'
@@ -10,38 +10,27 @@ syntax:
   - time
   - overcast
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: time
-    description: in seconds
+    desc: in seconds
     type: Number
   - name: overcast
-    description: in range 0..1
+    desc: in range 0..1
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>60 setOvercast 0.5;</sqf>
+see_also:
+- overcast
+- nextWeatherChange
+- simulSetHumidity

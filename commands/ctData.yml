@@ -1,5 +1,5 @@
 name: ctData
-description: Returns metadata associated with a particular row of a [[CT_CONTROLS_TABLE]] control.
+desc: Returns metadata associated with a particular row of a [[CT_CONTROLS_TABLE]] control.
 groups:
 - GUI Control - Controls Table
 syntax:
@@ -7,20 +7,36 @@ syntax:
   - ctrl
   - row
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: ctrl
-    description: the respective control
+    desc: the respective control
     type: Control
   - name: row
-    description: the row index
+    desc: the row index
     type: Number
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>private _data = _ctrl ctData 0;</sqf>
+see_also:
+- ctAddRow
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctSetCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetValue
+- ctValue
+- ctSetData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

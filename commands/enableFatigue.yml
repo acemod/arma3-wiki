@@ -1,5 +1,5 @@
 name: enableFatigue
-description: Enables/Disables the person's fatigue.
+desc: Enables/Disables the person's fatigue.
 groups:
 - Stamina System
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,9 +16,10 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>player enableFatigue false;</sqf>
 - <sqf>{ _x enableFatigue false; } forEach (units group player);</sqf>
+see_also:
+- getFatigue
+- setFatigue

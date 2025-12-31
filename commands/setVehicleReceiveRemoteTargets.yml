@@ -1,5 +1,5 @@
 name: setVehicleReceiveRemoteTargets
-description: Sets that the vehicle will be able to receive targets acquired by someone else via datalink from the [[Side]] center.
+desc: Sets that the vehicle will be able to receive targets acquired by someone else via datalink from the [[Side]] center.
 groups:
 - Sensors
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - vehicle
   - bool
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
@@ -17,8 +16,15 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>vehicle player setVehicleReceiveRemoteTargets true;</sqf>
+see_also:
+- setVehicleRadar
+- vehicleReportRemoteTargets
+- setVehicleReportRemoteTargets
+- vehicleReceiveRemoteTargets
+- vehicleReportOwnPosition
+- setVehicleReportOwnPosition
+- reportRemoteTarget
+- confirmSensorTarget

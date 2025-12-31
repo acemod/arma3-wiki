@@ -1,5 +1,5 @@
 name: with
-description: |-
+desc: |-
   Creates a [[With Type]] that is used inside a [[do]] construct in order to execute code inside a given namespace.
   {{Feature|important|To avoid the below-mentioned issue error (whether in [[Scheduler#Scheduled Environment|scheduled]] or [[Scheduler#Unscheduled Environment|unscheduled]] environment) use [[setVariable]]/[[getVariable]] with the desired [[Namespace]].}}
 problem_notes:
@@ -10,26 +10,22 @@ groups:
 syntax:
 - call: !Unary namespace
   ret:
-  - WithType
-  - null
+    type: WithType
   params:
   - name: namespace
     type: Namespace
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_myWithType = with uiNamespace;</sqf>
 - <sqf>with missionNamespace do { global = global + 1 };</sqf>
+see_also:
+- missionNamespace
+- uiNamespace
+- parsingNamespace
+- currentNamespace

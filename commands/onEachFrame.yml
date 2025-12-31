@@ -1,5 +1,5 @@
 name: onEachFrame
-description: |-
+desc: |-
   Runs given statement every frame in an [[Scheduler#Unscheduled Environment|unscheduled environment]].
   {{Feature|arma3|
   In order to keep compatibility between official and community content:
@@ -11,23 +11,20 @@ groups:
 syntax:
 - call: !Unary statement
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: statement
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - Code
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 63
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.63'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>onEachFrame { hintSilent str getPosWorld player }; // hints position every frame</sqf>
 - |-
@@ -46,3 +43,6 @@ examples:
   onEachFrame { sleep 1; };
   </sqf>
 - "<sqf>\nonEachFrame { if (diag_frameNo mod 60 isEqualTo 0) then { /* code */ } };\t// executes every 60 frames (every second @ 60 FPS, every two seconds @ 30 FPS, etc)\n\nonEachFrame {\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// this version is the closest to a precise 1 second tick\n\tif (isNil \"TAG_LastHint\") then\n\t{\n\t\tTAG_LastHint = diag_tickTime;\n\t}\n\telse\n\t{\n\t\tif (diag_tickTime - TAG_LastHint >= 1) then // set the duration in seconds here\n\t\t{\n\t\t\thint format [\"a second has passed (%1s since game start)\", diag_tickTime];\n\t\t\tTAG_LastHint = diag_tickTime;\n\t\t};\n\t};\n};\n</sqf>"
+see_also:
+- diag_frameNo
+- diag_fps

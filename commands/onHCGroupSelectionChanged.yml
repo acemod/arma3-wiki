@@ -1,5 +1,5 @@
 name: onHCGroupSelectionChanged
-description: |-
+desc: |-
   Defines an action performed when [[High Command|high command]] group selection has been changed.<br>
   Command receives 2 variables:
   * _group: [[Group]] - last selected/deselected group
@@ -13,26 +13,21 @@ groups:
 syntax:
 - call: !Unary code
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: code
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - Code
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nonHCGroupSelectionChanged {\n\tif (_isSelected) then\n\t{\n\t\thint format [\"Group %1 has been selected.\", _group];\n\t}\n\telse\n\t{\n\t\thint format [\"Group %1 has been deselected.\", _group];\n\t};\n};\n</sqf>"
 - <sqf>onHCGroupSelectionChanged "player globalChat 'HC group selection has been changed.';";</sqf>
@@ -43,3 +38,17 @@ examples:
   // or
   onHCGroupSelectionChanged {};
   </sqf>
+see_also:
+- High
+- Command
+- hcAllGroups
+- hcGroupParams
+- hcLeader
+- hcRemoveAllGroups
+- hcRemoveGroup
+- hcSelected
+- hcSelectGroup
+- hcSetGroup
+- hcShowBar
+- hcShownBar
+- onCommandModeChanged

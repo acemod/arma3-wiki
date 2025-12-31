@@ -1,5 +1,5 @@
 name: menuShortcut
-description: Returns shortcut related to menu entry on given path in form of a bitflag. To get the shortcut text use [[menuShortcutText]].
+desc: Returns shortcut related to menu entry on given path in form of a bitflag. To get the shortcut text use [[menuShortcutText]].
 groups:
 - GUI Control - Menu
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - idc
   - path
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: idc
     type: Number
@@ -18,8 +17,7 @@ syntax:
   - control
   - path
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: control
     type: Control
@@ -28,8 +26,9 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>findDisplay 313 displayCtrl 120 menuShortcut [0, 1];</sqf>
+see_also:
+- menuShortcutText
+- menuSetURL

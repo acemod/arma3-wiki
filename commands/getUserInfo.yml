@@ -1,41 +1,36 @@
 name: getUserInfo
-description: Returns extended information about given server user.
+desc: Returns extended information about given server user.
 groups:
 - Multiplayer
 - Object Detection
 syntax:
 - call: !Unary playerID
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: playerID
-    description: 'user DirectPlay ID (see [[getPlayerID]], [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]])'
+    desc: 'user DirectPlay ID (see [[getPlayerID]], [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]])'
     type: String
 - call: !Binary
   - playerID
   - infoIndex
   ret:
-  - Anything
-  - depends on the requested index (see main syntax) or [[Nothing]]
+    type: Anything
+    desc: depends on the requested index (see main syntax) or [[Nothing]]
   params:
   - name: playerID
-    description: 'user DirectPlay ID (see [[getPlayerID]], [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]])'
+    desc: 'user DirectPlay ID (see [[getPlayerID]], [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]])'
     type: String
   - name: infoIndex
-    description: the index of the data in the return array (see main syntax)
+    desc: the index of the data in the return array (see main syntax)
     type: Number
   since:
-    arma_3:
-      major: 2
-      minor: 18
+    arma3: '2.18'
 argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>private _randomUserInfo = getUserInfo selectRandom allUsers;</sqf>
 - |-
@@ -44,3 +39,7 @@ examples:
   _networkInfo params ["_avgPing", "_avgBandwidth", "_desync"];
   </sqf>
 - <sqf>private _myInfo = getUserInfo getPlayerID player; // this particular example only works if player is server host</sqf>
+see_also:
+- allUsers
+- getPlayerID
+- getUnitFreefallInfo

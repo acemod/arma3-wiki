@@ -1,5 +1,5 @@
 name: landAt
-description: |-
+desc: |-
   Order an AI airplane to land at a given airport. '''ID''' is the number to identify which map airport you want the airplane to land at. See [[Arma: Airport IDs]] for more information. See also [[land]].
   {{Feature|arma3|
   * {{GVI|arma3|1.68|size= 0.75}} it is possible to also make the airplane land at a [[Arma 3: Dynamic Airport Configuration|dynamic airport]] [[object]] (e.g. aircraft carrier, makeshift runway...) – see {{Link|#Example 2}}
@@ -14,30 +14,26 @@ syntax:
   - plane
   - ID
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: plane
-    description: a plane
+    desc: a plane
     type: Object
   - name: ID
-    description: '[[Arma: Airport IDs|Airport ID]]'
+    desc: '[[Arma: Airport IDs|Airport ID]]'
     type: Number
 - call: !Binary
   - plane
   - airportObject
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: plane
     type: Object
   - name: airportObject
     type: Object
   since:
-    arma_3:
-      major: 1
-      minor: 68
+    arma3: '1.68'
 - call: !Binary
   - heli
   - - position
@@ -45,68 +41,53 @@ syntax:
     - waitTime
     - putOnSurface
   ret:
-  - Boolean
-  - Returns [[true]] if landing command was processed successfully, [[false]] if failed.
+    type: Boolean
+    desc: Returns [[true]] if landing command was processed successfully, [[false]] if failed.
   params:
   - name: heli
-    description: Helicopter/VTOL aircraft
+    desc: Helicopter/VTOL aircraft
     type: Object
   - name: position
-    description: a helipad object of helipad type (can be an invisible helipad) or since {{GVI|arma3|2.20|size= 0.75}} [[Array]] - [[PositionWorld]] to land at.
-    type: Unknown
+    desc: a helipad object of helipad type (can be an invisible helipad) or since {{GVI|arma3|2.20|size= 0.75}} [[Array]] - [[PositionWorld]] to land at.
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: mode
-    description: one of "None", "Get In", "Get Out", "Land" and since {{GVI|arma3|2.20|size= 0.75}} also "GetIn", "GetOut".
+    desc: one of "None", "Get In", "Get Out", "Land" and since {{GVI|arma3|2.20|size= 0.75}} also "GetIn", "GetOut".
     type: String
   - name: waitTime
-    description: '(Helicopter type only) time to wait after touch down in "GetIn"/"GetOut" mode before taking off to the next waypoint. Default: -1.'
+    desc: '(Helicopter type only) time to wait after touch down in "GetIn"/"GetOut" mode before taking off to the next waypoint. Default: -1.'
     type: Number
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 20
+      arma3: '2.20'
   - name: putOnSurface
-    description: 'when true, the given land position will be adjusted to the nearest surface underneath. Default: [[false]].'
+    desc: 'when true, the given land position will be adjusted to the nearest surface underneath. Default: [[false]].'
     type: Boolean
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 20
+      arma3: '2.20'
   since:
-    arma_3:
-      major: 2
-      minor: 18
+    arma3: '2.18'
 - call: !Unary heli
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: heli
-    description: Helicopter/VTOL aircraft
+    desc: Helicopter/VTOL aircraft
     type: Object
   since:
-    arma_3:
-      major: 2
-      minor: 20
+    arma3: '2.20'
 argument_loc: Local
 effect_loc: Global
 since:
-  armed_assault:
-    major: 1
-    minor: 8
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.8'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_plane1 landAt 1;</sqf>
 - |-
@@ -124,3 +105,11 @@ examples:
   <sqf>
   heli landAt [getPosWorld player vectorAdd [10,10,0], "GetIn", 30];
   </sqf>
+see_also:
+- 'Arma:'
+- Airport
+- IDs
+- land
+- setAirportSide
+- assignToAirport
+- allAirports

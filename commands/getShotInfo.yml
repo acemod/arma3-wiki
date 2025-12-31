@@ -1,35 +1,43 @@
 name: getShotInfo
-description: Returns various properties for the given shot.
+desc: Returns various properties for the given shot.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary shot
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: shot
-    description: shot projectile
+    desc: shot projectile
     type: Object
 - call: !Binary
   - shot
   - index
   ret:
-  - Anything
-  - depends on the requested property, or [[Nothing]]
+    type: Anything
+    desc: depends on the requested property, or [[Nothing]]
   params:
   - name: shot
-    description: shot projectile
+    desc: shot projectile
     type: Object
   - name: index
-    description: property index (see main syntax, for example 1 for fuseDistanceLeft)
+    desc: property index (see main syntax, for example 1 for fuseDistanceLeft)
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>private _shotInfo = getShotInfo shot1;</sqf>
 - <sqf>private _fuseDistanceLeft = shot1 getShotInfo 1;</sqf>
+see_also:
+- getShotParents
+- missileTarget
+- triggerAmmo
+- getObjectType
+- getObjectTextures
+- objectParent
+- setVelocityTransformation
+- getUnitFreefallInfo
+- getEntityInfo
+- getModelInfo

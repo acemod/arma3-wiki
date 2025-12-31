@@ -1,24 +1,26 @@
 name: rotorsRpmRTD
-description: Returns rotors RPM. {{Feature|afm}}
+desc: Returns rotors RPM. {{Feature|afm}}
 groups:
 - RTD
 syntax:
 - call: !Unary RTD_helicopter
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: RTD_helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - |-
   <sqf>
   _mh9_main = (rotorsRpmRTD _MH9) select 0;//main rotor
   _mh9_tail = (rotorsRpmRTD _MH9) select 1;//tail rotor
   </sqf>
+see_also:
+- rotorsForcesRTD
+- weightRTD
+- wingsForcesRTD
+- airDensityRTD

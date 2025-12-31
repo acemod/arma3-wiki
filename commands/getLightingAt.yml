@@ -1,5 +1,5 @@
 name: getLightingAt
-description: |-
+desc: |-
   Gets provided object's lighting information.
   {{Feature|informative|The command will use [[local]] [[player]]'s night vision state to determine whether to include IR lights in the result or not.<br>
   On a dedicated server, [[Arma 3: Headless Client|headless client]] or if the player is [[objNull|null]], the night vision state will always be off.}}
@@ -8,17 +8,19 @@ groups:
 syntax:
 - call: !Unary obj
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: obj
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - <sqf>getLightingAt player; // returns [[1,1,1], 0.5, [0,0,0], 0]</sqf>
 - <sqf>getLightingAt player params ["_ambientLightColour", "_ambientLightBrightness", "_dynamicLightColour", "_dynamicLightBrightness"];</sqf>
+see_also:
+- getLighting
+- Light
+- Source
+- Tutorial

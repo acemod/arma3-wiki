@@ -1,5 +1,5 @@
 name: setSimpleTaskDestination
-description: Attach a destination to the simple task.<br>Overrides [[setSimpleTaskTarget]]
+desc: Attach a destination to the simple task.<br>Overrides [[setSimpleTaskTarget]]
 groups:
 - Briefing
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - task
   - pos
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: task
     type: Task
@@ -17,17 +16,19 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_tskGoHere setSimpleTaskDestination (getMarkerPos "obj1");</sqf>
+see_also:
+- Tasks
+- createSimpleTask
+- removeSimpleTask
+- setSimpleTaskDescription
+- setTaskState
+- setTaskResult
+- taskState
+- taskDestination
+- cancelSimpleTaskDestination

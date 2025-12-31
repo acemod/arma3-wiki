@@ -1,5 +1,5 @@
 name: setMarkerAlphaLocal
-description: Sets the marker alpha. See [[setMarkerAlpha]].
+desc: Sets the marker alpha. See [[setMarkerAlpha]].
 groups:
 - Markers
 syntax:
@@ -7,29 +7,23 @@ syntax:
   - marker
   - alpha
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: marker
     type: String
   - name: alpha
-    description: alpha value from 0 (invisible) to 1 (fully visible)
+    desc: alpha value from 0 (invisible) to 1 (fully visible)
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>"my_marker" setMarkerAlphaLocal 0.5;</sqf>
 - <sqf>"enemy_convoy_marker" setMarkerAlphaLocal 0;</sqf>
+see_also:
+- setMarkerAlpha
+- markerAlpha

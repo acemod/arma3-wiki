@@ -1,5 +1,5 @@
 name: createCenter
-description: |-
+desc: |-
   Instanciate a [[Side]] center. A [[Side]] center is required to be able to [[createGroup|create groups]] of this side.<br>
   Centers can only be created for [[east]], [[west]], [[resistance]], [[civilian]] and [[sideLogic]] [[Side|sides]].<br>
   Created sides must have their "side-friendship" defined with [[setFriend]].
@@ -12,31 +12,25 @@ groups:
 syntax:
 - call: !Unary side
   ret:
-  - Side
-  - null
+    type: Side
   params:
   - name: side
     type: Side
 argument_loc: Unspecified
 effect_loc: Global
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>createCenter east;</sqf>
+see_also:
+- deleteCenter
+- createUnit
+- createGroup
+- createVehicle
+- side
+- Side

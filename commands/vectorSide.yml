@@ -1,5 +1,5 @@
 name: vectorSide
-description: |-
+desc: |-
   [[File:arma3_object-vectors.jpg|thumb|right|An object with its [[vectorDir]], [[vectorUp]] and [[vectorSide]] (vectors not to scale)]]
   Returns an object's side vector in world space.
 
@@ -9,16 +9,34 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 14
+  arma3: '2.14'
 examples:
 - <sqf>_vecSide = vectorSide MyObject;</sqf>
+see_also:
+- vectorSideVisual
+- vectorUpVisual
+- vectorDir
+- setVectorDir
+- setVectorUp
+- setVectorDirAndUp
+- vectorDiff
+- vectorAdd
+- vectorMultiply
+- vectorCrossProduct
+- vectorDistance
+- vectorMagnitudeSqr
+- vectorDistanceSqr
+- vectorCos
+- vectorMagnitude
+- vectorDotProduct
+- vectorNormalized
+- vectorFromTo
+- BIS_fnc_getPitchBank
+- BIS_fnc_transformVectorDirAndUp

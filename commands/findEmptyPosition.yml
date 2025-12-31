@@ -1,5 +1,5 @@
 name: findEmptyPosition
-description: |-
+desc: |-
   Searches for an empty area around the specified position, starting from the ''center'' looking for an empty ''areaRadius'' and looks as far away as ''areaRadius'' + ''maxDistance''.
   This command ignores moving objects present within the search area. The search area can be preloaded with [[findEmptyPositionReady]] command.
 
@@ -16,40 +16,40 @@ syntax:
     - maxDistance
     - vehicleType
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: center
-    description: search area center position in format [x,y] or [x,y,z] in which case z is ignored
-    type: Unknown
+    desc: search area center position in format [x,y] or [x,y,z] in which case z is ignored
+    type: !OneOf
+    - - Position2d
+      - null
+    - - Position3d
+      - null
   - name: areaRadius
-    description: wanted area radius
+    desc: wanted area radius
     type: Number
   - name: maxDistance
-    description: stop searching no further than {{hl|areaRadius + maxDistance}} from the center
+    desc: stop searching no further than {{hl|areaRadius + maxDistance}} from the center
     type: Number
   - name: vehicleType
-    description: classname of a vehicle to accommodate
+    desc: classname of a vehicle to accommodate
     type: String
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_position = getPosASL player findEmptyPosition [0, 100];</sqf>
 - <sqf>_position = _center findEmptyPosition [10,100,"UH60M_EP1"];</sqf>
 - |-
   Check if exact position is empty:
   <sqf>_position = _center findEmptyPosition [0, 0, "B_Boat_Armed_01_minigun_F"];</sqf>
+see_also:
+- findEmptyPositionReady
+- selectBestPlaces
+- isFlatEmpty
+- BIS_fnc_findSafePos

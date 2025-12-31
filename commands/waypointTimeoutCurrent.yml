@@ -1,20 +1,41 @@
 name: waypointTimeoutCurrent
-description: Gets the current timeout for [[currentWaypoint]] of a [[group]] or -1 if countdown is not in progress.
+desc: Gets the current timeout for [[currentWaypoint]] of a [[group]] or -1 if countdown is not in progress.
 groups:
 - Waypoints
 syntax:
 - call: !Unary group
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: group
     type: Group
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 8
+  arma3: '1.8'
 examples:
 - <sqf>_timeout = waypointTimeoutCurrent group player;</sqf>
+see_also:
+- waypoints
+- deleteWaypoint
+- copyWaypoints
+- setCurrentWaypoint
+- setWaypointBehaviour
+- setWaypointCombatMode
+- setWaypointCompletionRadius
+- setWaypointDescription
+- setWaypointFormation
+- setWaypointHousePosition
+- setWaypointPosition
+- setWaypointScript
+- setWaypointSpeed
+- setWaypointStatements
+- setWaypointType
+- setWaypointVisible
+- waypointAttachVehicle
+- waypointAttachedVehicle
+- setWaypointLoiterRadius
+- waypointLoiterRadius
+- addWaypoint
+- setWaypointLoiterType
+- setWaypointTimeout

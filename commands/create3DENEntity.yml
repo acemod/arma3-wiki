@@ -1,5 +1,5 @@
 name: create3DENEntity
-description: |-
+desc: |-
   Create new [[Eden Entity]]. Used for creating individual entities; to create a [[Eden_Editor:_Composition|composition]] (e.g., infantry squad), use [[create3DENComposition]] and to create a [[Eden_Editor:_Layer|layer]] use [[add3DENLayer]].<br>
   This is the only way to add new editable entities to an [[:Category:Eden Editor|Eden Editor]] scenario. Other 'create' commands like [[createVehicle]] or [[createUnit]] will still work, but the resulting entity will not be editable.
 groups:
@@ -11,18 +11,17 @@ syntax:
   - position
   - isEmpty
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: mode
-    description: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
+    desc: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
     type: String
   - name: class
     type: Unknown
   - name: position
     type: Position
   - name: isEmpty
-    description: '[[true]] to create vehicle without crew'
+    desc: '[[true]] to create vehicle without crew'
     type: Boolean
     optional: true
     default: '[[false]]'
@@ -32,25 +31,24 @@ syntax:
     - class
     - position
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: group
-    type: Unknown
+    type: !OneOf
+    - - Group
+      - null
   - name: mode
-    description: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
+    desc: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
     type: String
   - name: class
-    description: entity class
+    desc: entity class
     type: String
   - name: position
     type: Position
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>dude1 = create3DENEntity ["Object", "B_Soldier_F", screenToWorld [0.5, 0.5]];</sqf>
 - <sqf>dude2 = group dude1 create3DENEntity ["Object", "B_Soldier_AR_F", screenToWorld [0.5, 0.5]];</sqf>
@@ -64,3 +62,7 @@ examples:
   myComment set3DENAttribute ["name", "Title Here"];
   myComment set3DENAttribute ["description", "Tooltip Here"];
   </sqf>
+see_also:
+- create3DENComposition
+- delete3DENEntities
+- add3DENLayer

@@ -1,5 +1,5 @@
 name: setLightVolumeShape
-description: Sets the {{hl|#lightreflector}}'s volume shape. An empty shape will switch the light off.
+desc: Sets the {{hl|#lightreflector}}'s volume shape. An empty shape will switch the light off.
 groups:
 - Lights
 syntax:
@@ -8,23 +8,33 @@ syntax:
   - - shapePath
     - scale
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: lightReflector
-    description: object of class {{hl|#lightreflector}})
+    desc: object of class {{hl|#lightreflector}})
     type: Object
   - name: shapePath
-    description: '"" to turn the light off'
+    desc: '"" to turn the light off'
     type: String
   - name: scale
-    description: '[sizeX, sizeY, sizeZ]'
+    desc: '[sizeX, sizeY, sizeZ]'
     type: ArrayUnknown
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>_light setLightVolumeShape ["a3\data_f\VolumeLightFlashlight.p3d", [1, 1, 1]];</sqf>
+see_also:
+- setLightColor
+- setLightAmbient
+- setLightBrightness
+- lightAttachObject
+- lightDetachObject
+- setLightIntensity
+- setLightAttenuation
+- setLightUseFlare
+- setLightFlareSize
+- setLightFlareMaxDistance
+- setLightDayLight
+- setLightIR

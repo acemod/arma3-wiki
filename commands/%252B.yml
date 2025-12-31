@@ -1,5 +1,5 @@
 name: +
-description: |-
+desc: |-
   Add two [[Number]]s, concatenate two [[Array]]s or two [[String]]s, or create a copy of an Array or [[HashMap]].
 
   {{Feature|warning|[[Array]] copy methods {{hl|ARRAY + []}} and {{hl|+ ARRAY}} have different behaviours:
@@ -17,8 +17,8 @@ syntax:
   - numberA
   - numberB
   ret:
-  - Number
-  - the sum of ''numberA'' and ''numberB''
+    type: Number
+    desc: the sum of ''numberA'' and ''numberB''
   params:
   - name: numberA
     type: Number
@@ -26,8 +26,8 @@ syntax:
     type: Number
 - call: !Unary number
   ret:
-  - Number
-  - the value of the parameter ''number''
+    type: Number
+    desc: the value of the parameter ''number''
   params:
   - name: number
     type: Number
@@ -35,8 +35,8 @@ syntax:
   - arrayA
   - arrayB
   ret:
-  - ArrayUnknown
-  - a new array filled with ''arrayA'' and ''arrayB'' elements, in that order
+    type: ArrayUnknown
+    desc: a new array filled with ''arrayA'' and ''arrayB'' elements, in that order
   params:
   - name: arrayA
     type: ArrayUnknown
@@ -46,8 +46,8 @@ syntax:
   - stringA
   - stringB
   ret:
-  - String
-  - a string concatenating ''stringA'' and ''stringB''
+    type: String
+    desc: a string concatenating ''stringA'' and ''stringB''
   params:
   - name: stringA
     type: String
@@ -55,46 +55,30 @@ syntax:
     type: String
 - call: !Unary array
   ret:
-  - ArrayUnknown
-  - a new instance of the provided array filled with same elements ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}})
+    type: ArrayUnknown
+    desc: a new instance of the provided array filled with same elements ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}})
   params:
   - name: array
     type: ArrayUnknown
 - call: !Unary hashMap
   ret:
-  - HashMapUnknown
-  - a new instance of the provided [[HashMap]] filled with the same key-value pairs ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}})
+    type: HashMapUnknown
+    desc: a new instance of the provided [[HashMap]] filled with the same key-value pairs ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}})
   params:
   - name: hashMap
     type: HashMapUnknown
   since:
-    arma_3:
-      major: 2
-      minor: 4
+    arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf notrim>\n 5 +  3\t// returns  8\n-5 + -3\t// returns -8\n</sqf>"
 - "<sqf>\n+  2\t// returns  2\n+ -7\t// returns -7\n</sqf>"
@@ -130,3 +114,8 @@ examples:
   _array2 select 0 set [0, "oops"];
   hint str _subArray; // [1, 2, 3]
   </sqf>
+see_also:
+- Operators
+- pushBack
+- append
+- merge

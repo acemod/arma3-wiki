@@ -1,5 +1,5 @@
 name: gestureState
-description: |-
+desc: |-
   Returns the name of a unit's current gesture. Seems to be forced to lower case in {{arma3}}.
   {{Feature|informative|This command is only for a man unit, other units such as animals cannot use this command.}}
 multiplayer_note: When executed on a client, this command only returns accurate results when the target unit is within sight of the client. When executed on a dedicated server, the returned value is accurate.
@@ -8,16 +8,20 @@ groups:
 syntax:
 - call: !Unary unitName
   ret:
-  - String
-  - empty string if not available
+    type: String
+    desc: empty string if not available
   params:
   - name: unitName
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>private _state = gestureState player;</sqf>
+see_also:
+- switchAction
+- playAction
+- BIS_fnc_ambientAnimGetParams
+- animationState
+- getUnitMovesInfo

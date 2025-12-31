@@ -1,5 +1,5 @@
 name: setHitIndex
-description: Sets the current level of damage for a specific Hit Point. All hit points can be obtained with [[getAllHitPointsDamage]] command.
+desc: Sets the current level of damage for a specific Hit Point. All hit points can be obtained with [[getAllHitPointsDamage]] command.
 groups:
 - Object Manipulation
 syntax:
@@ -12,55 +12,54 @@ syntax:
     - instigator
     - breakRotor
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
-    description: vehicle to be damaged
+    desc: vehicle to be damaged
     type: Object
   - name: hitPartIndex
-    description: hit part index of the Hit Point
+    desc: hit part index of the Hit Point
     type: Number
   - name: damage
     type: Unknown
   - name: useEffects
-    description: '[[false]] to skip destruction effects'
+    desc: '[[false]] to skip destruction effects'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
-      arma_3:
-        major: 1
-        minor: 68
+      arma3: '1.68'
   - name: killer
     type: Unknown
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 8
+      arma3: '2.8'
   - name: instigator
     type: Unknown
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 12
+      arma3: '2.12'
   - name: breakRotor
-    description: if the hitpoint is rotor on a helicopter, [[true]] will break the rotor as well as play corresponding sound if 'useEffects' is also [[true]].
+    desc: if the hitpoint is rotor on a helicopter, [[true]] will break the rotor as well as play corresponding sound if 'useEffects' is also [[true]].
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 2
-        minor: 18
+      arma3: '2.18'
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 50
+  arma3: '1.50'
 examples:
 - <sqf>vehicle player setHitIndex [1, 1];</sqf>
 - <sqf>player setHitIndex [7, 0.5];</sqf>
+see_also:
+- getAllHitPointsDamage
+- getHitIndex
+- getHitPointDamage
+- setHitPointDamage
+- setHit
+- getHit
+- setDamage
+- damage
+- forceHitPointsDamageSync

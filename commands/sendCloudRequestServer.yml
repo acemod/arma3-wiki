@@ -1,5 +1,5 @@
 name: sendCloudRequestServer
-description: Sends a server request to the {{Name|bi|short}} cloud service and executes callback code with server's response.
+desc: Sends a server request to the {{Name|bi|short}} cloud service and executes callback code with server's response.
 multiplayer_note: '{{Feature|informative|Only works on dedicated servers and {{Link|Arma 3: Headless Client|headless clients}}; for clients, use [[sendCloudRequestClient]]).}}'
 groups:
 - Argo
@@ -10,31 +10,40 @@ syntax:
   - data
   - httpMethod
   ret:
-  - Boolean
-  - '[[true]] on success, [[false]] otherwise'
+    type: Boolean
+    desc: '[[true]] on success, [[false]] otherwise'
   params:
   - name: requestName
-    description: can be anything but "users"
+    desc: can be anything but "users"
     type: String
   - name: callback
-    description: code to be executed on request completion
+    desc: code to be executed on request completion
     type: String
     optional: true
     default: '""'
   - name: data
-    description: JSON data to be sent
+    desc: JSON data to be sent
     type: Anything
     optional: true
     default: '""'
   - name: httpMethod
-    type: Unknown
+    type: !StringEnum
+    - - '"POST"'
+      - null
+    - - '"GET"'
+      - null
+    - - '"DELETE"'
+      - null
+    - - '"PUT"'
+      - null
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  argo:
-    major: 1
-    minor: 0
+  argo: '1.0'
 examples:
 - <sqf>_result = sendCloudRequestServer ["users/current", "hint 'success'", player];</sqf>
+see_also:
+- sendCloudRequestClient
+- sendAnalyticEvent

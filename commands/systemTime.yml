@@ -1,20 +1,26 @@
 name: systemTime
-description: Returns system time.
+desc: Returns system time.
 groups:
 - Time
 syntax:
 - call: Nular
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - <sqf>private _currentTime = systemTime;</sqf>
 - <sqf>systemTime apply {if (_x < 10) then {"0" + str _x} else {str _x}}; // ["2021","05","03","14","09","37","593"]</sqf>
 - <sqf>systemTime params ["_year", "_month", "_day", "_hour", "_minute", "_second", "_millisecond"];</sqf>
+see_also:
+- systemTimeUTC
+- date
+- time
+- dayTime
+- diag_tickTime
+- serverTime
+- missionStart
+- diag_deltaTime

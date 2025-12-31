@@ -1,5 +1,5 @@
 name: forceFlagTexture
-description: |-
+desc: |-
   Forces a flag texture onto a flag carrier (unit, vehicle or flag pole).
   No flag holder is required. If {{hl|""}} is used as texture, the texture is removed.
   This will override regularly owned flags.
@@ -13,19 +13,22 @@ syntax:
   - object
   - texture
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
-    description: vehicle, unit or flag pole
+    desc: vehicle, unit or flag pole
     type: Object
   - name: texture
     type: String
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>player forceFlagTexture "\A3\Data_F\Flags\Flag_red_CO.paa";</sqf>
+see_also:
+- getForcedFlagTexture
+- Arma
+- '3:'
+- Flag
+- Textures

@@ -1,5 +1,5 @@
 name: surfaceType
-description: |-
+desc: |-
   Returns what surface type is at the given position. For surface texture see [[surfaceTexture]] command.<br>
   <br>
   {{Feature|informative|The command returns surface type of the ground, even underneath objects such as buildings and roads}}
@@ -169,46 +169,36 @@ syntax:
   - y
   - z or useLayerMask
   ret:
-  - String
-  - Surface type
+    type: String
+    desc: Surface type
   params:
   - name: x
-    description: world x coordinate of the position
+    desc: world x coordinate of the position
     type: Number
   - name: y
-    description: world y coordinate of the position
+    desc: world y coordinate of the position
     type: Number
     since:
-      arma_3:
-        major: 2
-        minor: 18
+      arma3: '2.18'
   - name: z or useLayerMask
-    description: |-
+    desc: |-
       When a number is provided (Z in 3D positions), it is ignored. When a boolean is provided, it defines whether the layer mask should be used. Using the layer mask is more accurate but slightly slower.
       [[File:Capture.png|thumb|256px|The patches of "dirt" are defined using a layer mask. The "concrete" is the primary surface texture.]]
-    type: Unknown
+    type: !OneOf
+    - - Number
+      - null
+    - - Boolean
+      - null
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _surface = surfaceType [4500, 4500];</sqf>
 - <sqf>hint surfaceType getPosWorld player;</sqf>
@@ -218,3 +208,8 @@ examples:
   _pos set [2, true]; // use layer mask
   surfaceType _pos;
   </sqf>
+see_also:
+- surfaceTexture
+- surfaceIsWater
+- surfaceNormal
+- getAllEnvSoundControllers

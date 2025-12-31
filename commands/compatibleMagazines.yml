@@ -1,35 +1,37 @@
 name: compatibleMagazines
-description: Returns all magazines that can be loaded in the given weapon or all magazines containing the provided ammo. No compatible magazines are returned for submunition or missiles.
+desc: Returns all magazines that can be loaded in the given weapon or all magazines containing the provided ammo. No compatible magazines are returned for submunition or missiles.
 groups:
 - Weapons
 syntax:
 - call: !Unary weaponOrAmmo
   ret:
-  - ArrayUnknown
-  - all magazines that can be loaded in '''any muzzle''' of the given weapon or magazines containing given ammo.
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+    desc: all magazines that can be loaded in '''any muzzle''' of the given weapon or magazines containing given ammo.
   params:
   - name: weaponOrAmmo
-    description: weapon class name or {{GVI|arma3|2.22|size= 0.75}} ammo class name
+    desc: weapon class name or {{GVI|arma3|2.22|size= 0.75}} ammo class name
     type: String
 - call: !Unary
   - weapon
   - muzzle
   ret:
-  - ArrayUnknown
-  - all magazines that can be loaded in the given muzzle of the given weapon.
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+    desc: all magazines that can be loaded in the given muzzle of the given weapon.
   params:
   - name: weapon
-    description: weapon class name
+    desc: weapon class name
     type: String
   - name: muzzle
-    description: muzzle name ("this" is supported for primary muzzle)
+    desc: muzzle name ("this" is supported for primary muzzle)
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>compatibleMagazines "arifle_Katiba_GL_F";</sqf>
 - <sqf>compatibleMagazines ["arifle_Katiba_GL_F", "this"];</sqf>
@@ -38,3 +40,8 @@ examples:
   <sqf>
   compatibleMagazines "B_65x39_Caseless_green"; // ["30Rnd_65x39_caseless_green", "30Rnd_65x39_caseless_green_mag_Tracer"]
   </sqf>
+see_also:
+- compatibleWeapons
+- compatibleItems
+- BIS_fnc_compatibleMagazines
+- canAdd

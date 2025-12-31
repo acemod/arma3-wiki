@@ -1,5 +1,5 @@
 name: ropeSegments
-description: |-
+desc: |-
   Returns provided rope's segments.<br>
   {{GVI|arma3|2.12|size= 0.75}} use [[objectParent]] to return the rope parent from a rope segment.
 groups:
@@ -7,16 +7,19 @@ groups:
 syntax:
 - call: !Unary rope
   ret:
-  - ArrayUnknown
-  - the rope's segments
+    type: ArrayUnknown
+    desc: the rope's segments
   params:
   - name: rope
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 4
+  arma3: '2.4'
 examples:
 - <sqf>private _segments = ropeSegments _myRope;</sqf>
+see_also:
+- ropeCreate
+- ropeLength
+- ropeCut
+- ropeEndPosition

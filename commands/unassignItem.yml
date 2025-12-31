@@ -1,5 +1,5 @@
 name: unassignItem
-description: Unassigns existing item and tries to put it into inventory. If there is no space in inventory the item simply disappears. See also [[unlinkItem]].
+desc: Unassigns existing item and tries to put it into inventory. If there is no space in inventory the item simply disappears. See also [[unlinkItem]].
 groups:
 - Unit Inventory
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - item
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,9 +16,7 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -31,3 +28,11 @@ examples:
   _independentUnit removeItem "NVGoggles_INDEP";
   </sqf>
 - "<sqf>\n{\n\t_x unassignItem hmd _x; // unassign (not remove) NVGs from all units\n} forEach allUnits;\n</sqf>"
+see_also:
+- assignItem
+- addItem
+- removeItem
+- linkItem
+- unlinkItem
+- assignedItems
+- removeAllAssignedItems

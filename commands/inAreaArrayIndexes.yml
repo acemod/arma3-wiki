@@ -1,5 +1,5 @@
 name: inAreaArrayIndexes
-description: |-
+desc: |-
   Returns indices of positions that are within the provided area.
 
   {{Feature|important|Unlike [[inAreaArray]], all positions sent to this command are treated as [[Position#PositionASL|PositionASL]] but the center as [[PositionAGL]].}}
@@ -15,13 +15,19 @@ syntax:
   - positions
   - area
   ret:
-  - Unknown
-  - indexes of matched positions in positions array
+    type: Unknown
+    desc: indexes of matched positions in positions array
   params:
   - name: positions
     type: Unknown
   - name: area
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Location
+      - null
+    - - String
+      - null
 - call: !Binary
   - positions
   - - centre
@@ -32,45 +38,43 @@ syntax:
     - c
     - usePosWorld
   ret:
-  - Unknown
-  - indexes of matched positions in positions array
+    type: Unknown
+    desc: indexes of matched positions in positions array
   params:
   - name: positions
-    description: '[[Object]]s and/or [[Position]]s to check (see note in description)'
+    desc: '[[Object]]s and/or [[Position]]s to check (see note in description)'
     type: ArrayUnknown
   - name: centre
-    description: '[[Position]] [[Object]] or [[Group]] (see note in description)'
+    desc: '[[Position]] [[Object]] or [[Group]] (see note in description)'
     type: ArrayUnknown
   - name: a
-    description: x axis (x / 2)
+    desc: x axis (x / 2)
     type: Number
   - name: b
-    description: y axis (y / 2)
+    desc: y axis (y / 2)
     type: Number
   - name: angle
-    description: rotation angle
+    desc: rotation angle
     type: Number
     optional: true
     default: '0'
   - name: isRectangle
-    description: '[[true]] if rectangle, [[false]] if ellipse'
+    desc: '[[true]] if rectangle, [[false]] if ellipse'
     type: Boolean
     optional: true
     default: '[[false]]'
   - name: c
-    description: z axis (z / 2)
+    desc: z axis (z / 2)
     type: Number
     optional: true
     default: '-1: unlimited'
   - name: usePosWorld
-    description: set to [[true]] to treat all positions as [[PositionWorld]]
+    desc: set to [[true]] to treat all positions as [[PositionWorld]]
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 2
-        minor: 20
+      arma3: '2.20'
 - call: !Binary
   - positions
   - - pos1
@@ -78,20 +82,22 @@ syntax:
     - pos3
     - '...'
   ret:
-  - Unknown
-  - indexes of matched positions in positions array
+    type: Unknown
+    desc: indexes of matched positions in positions array
   params:
   - name: positions
-    description: '[[Object]]s and/or [[Position]]s to check.'
+    desc: '[[Object]]s and/or [[Position]]s to check.'
     type: ArrayUnknown
   - name: posN
-    description: polygon vertices in 2d or 3d format (see [[inPolygon]])
+    desc: polygon vertices in 2d or 3d format (see [[inPolygon]])
     type: Position
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 14
+  arma3: '2.14'
 examples:
 - "<sqf>\nprivate _players = call BIS_fnc_listPlayers;\nprivate _indices = _players inAreaArrayIndexes _marker;\n{\n\tprivate _player = _players select _x;\n\t[\"You are in the marker!\"] remoteExec [\"hint\", _player];\n} forEach _indices;\n</sqf>"
+see_also:
+- inAreaArray
+- inArea
+- triggerArea

@@ -1,5 +1,5 @@
 name: loadGame
-description: |-
+desc: |-
   Loads game from the last autosave made with [[saveGame]].
   If no autosave exists, restarts the mission. When used in campaign it will also deduct 1 life, defined in:
   <sqf>campaignConfigFile >> "Campaign" / "ChapterName" / "MissionName" / "lives"</sqf>
@@ -13,23 +13,19 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>loadGame;</sqf>
+see_also:
+- enableSaving
+- saveGame
+- savingEnabled
+- isSaving

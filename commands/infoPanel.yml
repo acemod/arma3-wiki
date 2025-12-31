@@ -1,5 +1,5 @@
 name: infoPanel
-description: |-
+desc: |-
   Returns information about what is currently displayed on given player's info panel.<br>
   Returns ["EmptyDisplay","EmptyDisplayComponent"] when no panel is open.
 groups:
@@ -7,17 +7,25 @@ groups:
 syntax:
 - call: !Unary infoPanelId
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: infoPanelId
-    description: info panel classname, or "left" or "right"
+    desc: info panel classname, or "left" or "right"
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 72
+  arma3: '1.72'
 examples:
 - <sqf>infoPanel "left" params ["_componentClass", "_componentType"];</sqf>
+see_also:
+- Arma
+- '3:'
+- Custom
+- Info
+- infoPanels
+- setInfoPanel
+- infoPanelComponents
+- enableInfoPanelComponent
+- infoPanelComponentEnabled
+- openGPS

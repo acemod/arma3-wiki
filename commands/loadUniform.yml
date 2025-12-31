@@ -1,5 +1,5 @@
 name: loadUniform
-description: |-
+desc: |-
   Returns current percentage of mass from items stored in a uniform relative to the maximum capacity of the uniform.<br>
   It is equivalent to this formula:
   <sqf>private _loadUniform = massOfAllItemsInUniform / getContainerMaxLoad uniform player;</sqf>
@@ -8,16 +8,21 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>private _weight = loadUniform player;</sqf>
+see_also:
+- load
+- loadAbs
+- loadBackpack
+- loadVest
+- getMass
+- weightRTD
+- getContainerMaxLoad

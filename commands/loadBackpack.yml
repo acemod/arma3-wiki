@@ -1,5 +1,5 @@
 name: loadBackpack
-description: |-
+desc: |-
   Returns current percentage of mass from items stored in a backpack relative to the maximum capacity of the backpack.<br>
   It is equivalent to this formula:
   <sqf>_loadBackpack = massOfAllItemsInBackpack / getContainerMaxLoad backpack player;</sqf>
@@ -8,16 +8,37 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>private _myVariable = loadBackpack myUnit;</sqf>
+see_also:
+- load
+- backpackContainer
+- firstBackpack
+- unitBackpack
+- backpack
+- backpackCargo
+- getBackpackCargo
+- backpackItems
+- addBackpack
+- addBackpackCargo
+- removeBackpack
+- clearBackpackCargo
+- clearAllItemsFromBackpack
+- backpackSpaceFor
+- canAddItemToBackpack
+- addItemToBackpack
+- removeItemFromBackpack
+- everyBackpack
+- loadUniform
+- loadVest
+- getMass
+- weightRTD
+- getContainerMaxLoad

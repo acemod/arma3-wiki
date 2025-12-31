@@ -1,5 +1,5 @@
 name: setGroupIconsVisible
-description: Sets if group icons added with [[addGroupIcon]] are visible on map and in the HUD.
+desc: Sets if group icons added with [[addGroupIcon]] are visible on map and in the HUD.
 groups:
 - High Command
 syntax:
@@ -7,33 +7,36 @@ syntax:
   - showOnMap
   - showOnHUD
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: showOnMap
-    description: '[[true]] to show on map. Default is [[false]]'
+    desc: '[[true]] to show on map. Default is [[false]]'
     type: Boolean
   - name: showOnHUD
-    description: '[[true]] to show on HUD. Default is [[false]]'
+    desc: '[[true]] to show on HUD. Default is [[false]]'
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   setGroupIconsVisible [true, true];
   (group player) addGroupIcon ["b_inf", [0, 0]];
   </sqf>
+see_also:
+- addGroupIcon
+- clearGroupIcons
+- getGroupIcon
+- getGroupIconParams
+- groupIconSelectable
+- groupIconsVisible
+- onGroupIconClick
+- removeGroupIcon
+- setGroupIcon
+- setGroupIconParams
+- setGroupIconsSelectable

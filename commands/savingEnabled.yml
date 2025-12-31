@@ -1,5 +1,5 @@
 name: savingEnabled
-description: |-
+desc: |-
   Check if saving the game is enabled.
   {{Feature|arma3|If saving is disabled by [[:Category:Eden Editor|Eden Editor]] mission attribute, this command will still return [[true]].}}
 groups:
@@ -7,23 +7,19 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nif (savingEnabled) then\n{\n\thint \"Saving is enabled!\";\n};\n</sqf>"
+see_also:
+- enableSaving
+- loadGame
+- saveGame
+- isSaving

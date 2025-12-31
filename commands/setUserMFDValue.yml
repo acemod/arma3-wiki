@@ -1,5 +1,5 @@
 name: setUserMFDValue
-description: "When MFD is using user controllers, this command can set values on them. For example, MFD config for Blackfoot has an entry\n<syntaxhighlight lang=\"cpp\">\n// ...\nclass Draw\n{\n\talpha = \"user3\";\n\tcolor[] = {\"user0\",\"user1\",\"user2\"};\n// ...\n</syntaxhighlight>\nwhich could control color of the MFD. See Example 2-3-4 on how to set different colors of the Blackfoot MFD<br>\n{{Feature|GVI|arma3|2.20|Vehicles can be configured to support more than 50 user sources with \"mfdMaxUserValues {{=}} 50\" entry in CfgVehicles config class. As of 2.20 the limit is 256. It is recommended to configure this also for vehicles that use fewer MFD sources, it improves performance to only set as many as are being used.}}"
+desc: "When MFD is using user controllers, this command can set values on them. For example, MFD config for Blackfoot has an entry\n<syntaxhighlight lang=\"cpp\">\n// ...\nclass Draw\n{\n\talpha = \"user3\";\n\tcolor[] = {\"user0\",\"user1\",\"user2\"};\n// ...\n</syntaxhighlight>\nwhich could control color of the MFD. See Example 2-3-4 on how to set different colors of the Blackfoot MFD<br>\n{{Feature|GVI|arma3|2.20|Vehicles can be configured to support more than 50 user sources with \"mfdMaxUserValues {{=}} 50\" entry in CfgVehicles config class. As of 2.20 the limit is 256. It is recommended to configure this also for vehicles that use fewer MFD sources, it improves performance to only set as many as are being used.}}"
 groups:
 - Interaction
 syntax:
@@ -8,27 +8,28 @@ syntax:
   - - index
     - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
-    description: an vehicle with MFD
+    desc: an vehicle with MFD
     type: Object
   - name: index
-    description: index of custom MFD user actions
+    desc: index of custom MFD user actions
     type: Number
   - name: value
-    description: value which should custom source return in MFD
+    desc: value which should custom source return in MFD
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>BIS_Plane setUserMFDValue [0,1]; // user0 in MFD will return 1</sqf>
 - "Set MFD Red:\n<sqf>\nBlackfoot setUserMFDValue [0, 1];\t// \"user0\" - 1\nBlackfoot setUserMFDValue [1, 0];\t// \"user1\" - 0\nBlackfoot setUserMFDValue [2, 0];\t// \"user2\" - 0\nBlackfoot setUserMFDValue [3, 1];\t// \"user3\" - 1\n</sqf>"
 - "Set MFD pale Blue:\n<sqf>\nBlackfoot setUserMFDValue [0, 0];\t// \"user0\" - 0\nBlackfoot setUserMFDValue [1, 0];\t// \"user1\" - 0\nBlackfoot setUserMFDValue [2, 1];\t// \"user2\" - 1\nBlackfoot setUserMFDValue [3, 0.1];\t// \"user3\" - 0.1\n</sqf>"
 - "Hide MFD:\n<sqf>Blackfoot setUserMFDValue [3, 0];\t// \"user3\" - 0</sqf>"
 - "{{GVI|arma3|1.72}} multiple changes at once:\n<sqf>\nmyPlane setUserMFDValue [10, 16, 404, 64];\t// \"user10\" - 16\n\t\t\t\t\t\t\t\t\t\t\t// \"user11\" - 404\n\t\t\t\t\t\t\t\t\t\t\t// \"user12\" - 64\n</sqf>"
+see_also:
+- getUserMFDValue
+- setUserMFDText
+- getUserMFDText

@@ -1,18 +1,19 @@
 name: gusts
-description: Return the current gusts value. Scale is 0 to 1.
+desc: Return the current gusts value. Scale is 0 to 1.
 groups:
 - Environment
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_gustsValue = gusts;</sqf>
+see_also:
+- setGusts
+- windStr
+- wind

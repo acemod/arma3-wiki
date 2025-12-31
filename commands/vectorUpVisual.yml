@@ -1,5 +1,5 @@
 name: vectorUpVisual
-description: |-
+desc: |-
   [[File:arma3_object-vectors.jpg|thumb|right|An object with its [[vectorDirVisual]], [[vectorUpVisual]] and [[vectorSideVisual]] (vectors not to scale)]]
   Returns an object's up vector in world space and [[Simulation vs Render Time Scope|render time scope]].
 
@@ -10,16 +10,34 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>_vecUpVis = vectorUpVisual MyObject;</sqf>
+see_also:
+- vectorUp
+- vectorDirVisual
+- vectorSide
+- vectorSideVisual
+- vectorDir
+- setVectorDir
+- setVectorUp
+- setVectorDirAndUp
+- vectorDiff
+- vectorAdd
+- vectorMultiply
+- vectorCrossProduct
+- vectorDistance
+- vectorMagnitudeSqr
+- vectorDistanceSqr
+- vectorCos
+- vectorMagnitude
+- vectorDotProduct
+- vectorNormalized
+- vectorFromTo

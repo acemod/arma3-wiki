@@ -1,5 +1,5 @@
 name: joinAs
-description: Joins the unit to the given group, if position id is available, this one is used.
+desc: Joins the unit to the given group, if position id is available, this one is used.
 groups:
 - Groups
 syntax:
@@ -8,8 +8,7 @@ syntax:
   - - group
     - id
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -20,18 +19,15 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player joinAs [_group, 4];</sqf>
 - "To get the position id:\n<sqf>\ngetUnitPositionId = {\n\tprivate [\"_vvn\", \"_str\"];\n\t_vvn = vehicleVarName _this;\n\t_this setVehicleVarName \"\";\n\t_str = str _this;\n\t_this setVehicleVarName _vvn;\n\tparseNumber (_str select [(_str find \":\") + 1])\n};\nplayer joinAs [createGroup west, 5];\n_id = player call getUnitPositionId;\nhint str _id; // 5\n</sqf>"
+see_also:
+- join
+- joinAsSilent
+- joinSilent
+- group

@@ -1,5 +1,5 @@
 name: roleDescription
-description: Returns unit description set in the editor and visible on role selection screen in multiplayer.
+desc: Returns unit description set in the editor and visible on role selection screen in multiplayer.
 problem_notes:
 - '''''''Does not'''''' work in single player.'
 groups:
@@ -8,16 +8,21 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 48
+  arma3: '1.48'
 examples:
 - <sqf>_playerRole = roleDescription player;</sqf>
+see_also:
+- name
+- getPlayerUID
+- vehicleVarName
+- worldName
+- briefingName
+- missionName
+- serverName

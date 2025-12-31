@@ -1,18 +1,19 @@
 name: getCurrentPlayerLevel
-description: Get the level of the currently logged client.
+desc: Get the level of the currently logged client.
 groups:
 - Argo
 syntax:
 - call: Nular
   ret:
-  - Number
-  - the current player's level, or -1 if servers are unreachable
+    type: Number
+    desc: the current player's level, or -1 if servers are unreachable
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  argo:
-    major: 1
-    minor: 0
+  argo: '1.0'
 examples:
 - "<sqf>\nif (getCurrentPlayerLevel > 9) then\n{\n\thint \"Wow, you're good!\";\n};\n</sqf>"
+see_also:
+- getPlayerLevel
+- isPlayerSupporter

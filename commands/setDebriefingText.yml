@@ -1,5 +1,5 @@
 name: setDebriefingText
-description: |-
+desc: |-
   Sets debriefing title, text, subtitle, picture and background for a mission ending.
   The end type could be the engine-defined ("CONTINUE", "KILLED", "LOSER", "END1", "END2", "END3", "END4", "END5", "END6"), config-defined (see [[Debriefing#Configuration|CfgDebriefing]]) or, with an alternative syntax of this command, any [[String]].
   Given texts will be used to replace the corresponding texts on the debriefing screen.
@@ -14,17 +14,16 @@ syntax:
   - - title
     - description
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: endType
-    description: engine type
+    desc: engine type
     type: String
   - name: title
-    description: title text on the debriefing screen
+    desc: title text on the debriefing screen
     type: String
   - name: description
-    description: description text on the debriefing screen
+    desc: description text on the debriefing screen
     type: String
 - call: !Binary
   - endType
@@ -34,42 +33,44 @@ syntax:
     - picture
     - background
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: endType
-    description: any name
+    desc: any name
     type: String
   - name: title
-    description: title text on the debriefing screen
+    desc: title text on the debriefing screen
     type: String
   - name: description
-    description: description text on the debriefing screen
+    desc: description text on the debriefing screen
     type: String
   - name: subtitle
-    description: subtitle text on the debriefing screen ('''must''' be defined in order to trigger this syntax of the command)
+    desc: subtitle text on the debriefing screen ('''must''' be defined in order to trigger this syntax of the command)
     type: String
   - name: picture
-    description: title picture
+    desc: title picture
     type: String
     optional: true
   - name: background
-    description: background picture
+    desc: background picture
     type: String
     optional: true
   since:
-    arma_3:
-      major: 2
-      minor: 6
+    arma3: '2.6'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   _currentObjective = (taskDescription currentTask player) select 2;
   "endDeath" setDebriefingText ["You Lose", "All of your men were killed while assaulting the " + _currentObjective];
   </sqf>
+see_also:
+- getDebriefingText
+- disableDebriefingStats
+- enableDebriefingStats
+- endMission
+- failMission
+- missionEnd

@@ -1,5 +1,5 @@
 name: getObjectType
-description: |-
+desc: |-
   Returns object type as a number:
   * 1 - Primary - Normal object placed in Visitor, part of landscape
   * 2 - Network - Road placed in Visitor, part of landscape
@@ -12,17 +12,26 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - Number
-  - object type
+    type: Number
+    desc: object type
   params:
   - name: object
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 50
+  arma3: '1.50'
 examples:
 - <sqf>_objType = getObjectType player;</sqf>
 - <sqf>_objType = getObjectType cursorObject;</sqf>
+see_also:
+- allObjects
+- getObjectFOV
+- cursorObject
+- cursorTarget
+- createSimpleObject
+- allMissionObjects
+- setObjectViewDistance
+- getObjectViewDistance
+- objectParent
+- object

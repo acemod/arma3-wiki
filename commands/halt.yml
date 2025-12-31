@@ -1,31 +1,24 @@
 name: halt
-description: 'This command was meant to break the script into debugger, however currently ''''''it does not do anything'''''' except displaying and logging the following error: {{hl|Error Debugger breakpoint hit}}.'
+desc: 'This command was meant to break the script into debugger, however currently ''''''it does not do anything'''''' except displaying and logging the following error: {{hl|Error Debugger breakpoint hit}}.'
 groups:
 - Program Flow
 - Broken Commands
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - always returns [[false]]
+    type: Boolean
+    desc: always returns [[false]]
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>if (_displayAnError) then {halt};</sqf>
+see_also:
+- assert
+- terminate

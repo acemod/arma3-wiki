@@ -1,5 +1,5 @@
 name: setSystemOfUnits
-description: |-
+desc: |-
   Set system of units. This will only impact gauges from advanced flight model.
   {{Feature|important|This command is buggy: any value other than 0 (metric) will display both units at the same time.}}
 groups:
@@ -8,16 +8,27 @@ groups:
 syntax:
 - call: !Unary value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: value
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>if (player in _myHelicopter) then { setSystemOfUnits 2; };</sqf>
+see_also:
+- Description.ext#forceRotorLibSimulation|forceRotorLibSimulation
+- Advanced
+- Helicopter
+- Flight
+- Model
+- in
+- Arma3|Advanced
+- Helicopter
+- Flight
+- Model
+- :Category:Command_Group:_RTD|RotorLib
+- commands
+- systemOfUnits

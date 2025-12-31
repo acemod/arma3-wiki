@@ -1,5 +1,5 @@
 name: setMarkerBrush
-description: |-
+desc: |-
   Selects the fill texture for the marker ("RECTANGLE" or "ELLIPSE"). Brush is the name of the subclass in {{hl|CfgMarkerBrushes}}.
   {{Feature|informative|
   '''Multiplayer optimisation:''' Global marker commands always broadcast the ''entire'' marker state over the network.
@@ -12,33 +12,60 @@ syntax:
   - markerName
   - brush
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: markerName
     type: String
   - name: brush
-    type: Unknown
+    type: !StringEnum
+    - - '"Solid"'
+      - null
+    - - '{{GVI|arma3|0.50|size= 0.75}} "SolidFull"'
+      - arma3: '0.50'
+    - - '"Horizontal"'
+      - null
+    - - '"Vertical"'
+      - null
+    - - '"Grid"'
+      - null
+    - - '"FDiagonal"'
+      - null
+    - - '"BDiagonal"'
+      - null
+    - - '"DiagGrid"'
+      - null
+    - - '"Cross"'
+      - null
+    - - '{{GVI|arma2|1.00|size= 0.75}} "Border"'
+      - null
+    - - '{{GVI|arma2|1.00|size= 0.75}} "SolidBorder"'
+      - null
 argument_loc: Unspecified
 effect_loc: Global
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>"Marker1" setMarkerBrush "DIAGGRID";</sqf>
+see_also:
+- setMarkerAlpha
+- setMarkerAlphaLocal
+- setMarkerBrushLocal
+- setMarkerColor
+- setMarkerColorLocal
+- setMarkerDir
+- setMarkerDirLocal
+- setMarkerPos
+- setMarkerPosLocal
+- setMarkerShape
+- setMarkerShapeLocal
+- setMarkerSize
+- setMarkerSizeLocal
+- setMarkerText
+- setMarkerTextLocal
+- setMarkerType
+- setMarkerTypeLocal

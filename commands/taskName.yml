@@ -1,20 +1,21 @@
 name: taskName
-description: Returns the name of the given task.
+desc: Returns the name of the given task.
 groups:
 - Briefing
 syntax:
 - call: !Unary task
   ret:
-  - String
-  - task name
+    type: String
+    desc: task name
   params:
   - name: task
     type: Task
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 4
+  arma3: '2.4'
 examples:
 - <sqf>private _taskName = taskName _mytask;</sqf>
+see_also:
+- taskType
+- createSimpleTask

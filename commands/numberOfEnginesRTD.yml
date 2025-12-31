@@ -1,24 +1,19 @@
 name: numberOfEnginesRTD
-description: Returns the number of engines a helicopter has. {{Feature|afm}}
+desc: Returns the number of engines a helicopter has. {{Feature|afm}}
 groups:
 - RTD
 syntax:
 - call: !Unary helicopterRTD
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: helicopterRTD
-    description: helicopter
+    desc: helicopter
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 1
-    minor: 34
+  tkoh: '1.0'
+  arma3: '1.34'
 examples:
 - <sqf>_engineCount = numberOfEnginesRTD vehicle player;</sqf>

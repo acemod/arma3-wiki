@@ -1,5 +1,5 @@
 name: deleteAt
-description: |-
+desc: |-
   Removes array element at the given index and returns removed element (modifies the original array, just like [[resize]] or [[set]]).
   {{Feature|informative| For the main [[Array]] variant, if the index is a negative [[Number]], no error will appear, making it ideal for using with [[find]] (see {{Link|#Example 2}}) or [[findIf]] (see {{Link|#Example 3}}).}}
 groups:
@@ -10,8 +10,8 @@ syntax:
   - array
   - index
   ret:
-  - Anything
-  - returns the deleted element or [[Nothing]]
+    type: Anything
+    desc: returns the deleted element or [[Nothing]]
   params:
   - name: array
     type: ArrayUnknown
@@ -21,39 +21,32 @@ syntax:
   - hashMap
   - key
   ret:
-  - Anything
-  - null
+    type: Anything
   params:
   - name: hashMap
     type: HashMapUnknown
   - name: key
     type: Unknown
   since:
-    arma_3:
-      major: 2
-      minor: 2
+    arma3: '2.2'
 - call: !Binary
   - array
   - indexes
   ret:
-  - ArrayUnknown
-  - deleted elements in order of user supplied indexes
+    type: ArrayUnknown
+    desc: deleted elements in order of user supplied indexes
   params:
   - name: array
     type: ArrayUnknown
   - name: indexes
-    description: multiple indexes, negative indexes are supported and would remove elements counting from the end of array (see {{Link|#Example 4}}).
+    desc: multiple indexes, negative indexes are supported and would remove elements counting from the end of array (see {{Link|#Example 4}}).
     type: ArrayUnknown
   since:
-    arma_3:
-      major: 2
-      minor: 18
+    arma3: '2.18'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - |-
   <sqf>
@@ -83,3 +76,25 @@ examples:
   _res = _arr deleteAt [-1, 0]; // Remove the last and the first array element
   systemchat str [_res, _arr]; // [[4,1],[2,3]]
   </sqf>
+see_also:
+- deleteRange
+- set
+- resize
+- select
+- in
+- find
+- findIf
+- toArray
+- toString
+- forEach
+- count
+- pushBack
+- pushBackUnique
+- apply
+- append
+- sort
+- param
+- params
+- arrayIntersect
+- splitString
+- joinString

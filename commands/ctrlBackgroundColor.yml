@@ -1,20 +1,20 @@
 name: ctrlBackgroundColor
-description: Returns control's background color.
+desc: Returns control's background color.
 groups:
 - GUI Control
 syntax:
 - call: !Unary control
   ret:
-  - ArrayColor
-  - null
+    type: ArrayColor
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>ctrlBackgroundColor _control;</sqf>
+see_also:
+- ctrlSetBackgroundColor
+- ctrlText

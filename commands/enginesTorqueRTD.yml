@@ -1,5 +1,5 @@
 name: enginesTorqueRTD
-description: |-
+desc: |-
   Torque produced by engines in '''N·m''' (Newton &times; meter).
   {{Feature|afm}}
 groups:
@@ -7,20 +7,27 @@ groups:
 syntax:
 - call: !Unary RTD_helicopter
   ret:
-  - ArrayUnknown
-  - torque per engine
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
+    desc: torque per engine
   params:
   - name: RTD_helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - |-
   <sqf>
   _UH80_E1 = (enginesTorqueRTD _UH80) select 0; // engine 1 Torque
   _UH80_E2 = (enginesTorqueRTD _UH80) select 1; // engine 2 Torque
   </sqf>
+see_also:
+- isObjectRTD
+- enginesIsOnRTD
+- enginesRpmRTD
+- weightRTD
+- airDensityRTD
+- wingsForcesRTD

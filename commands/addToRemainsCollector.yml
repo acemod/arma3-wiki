@@ -1,21 +1,22 @@
 name: addToRemainsCollector
-description: Adds an array of vehicles/units to disposal manager for automatic wreck/body removal. The disposal manager follows wreck/body removal values set in [[Description.ext|description.ext]]
+desc: Adds an array of vehicles/units to disposal manager for automatic wreck/body removal. The disposal manager follows wreck/body removal values set in [[Description.ext|description.ext]]
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary remains
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: remains
-    description: array of vehicles/units
+    desc: array of vehicles/units
     type: ArrayUnknown
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>addToRemainsCollector [unit1, unit2, vehicle1];</sqf>
+see_also:
+- removeFromRemainsCollector
+- isInRemainsCollector
+- diag_remainsCollector

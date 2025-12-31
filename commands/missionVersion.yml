@@ -1,5 +1,5 @@
 name: missionVersion
-description: |-
+desc: |-
   Returns the version of the current mission.
   * Mission from the [[2D Editor]]: 12
   * Mission from the [[:Category:Eden Editor|Eden Editor]]: 15 and higher (for example current version for [[:Category:Eden Editor|Eden Editor]] mission in Arma 3 v1.57 is 51)
@@ -8,14 +8,15 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Number
-  - SQM version
+    type: Number
+    desc: SQM version
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>_version = missionVersion;</sqf>
+see_also:
+- Mission.sqm
+- Description.ext

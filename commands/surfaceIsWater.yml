@@ -1,37 +1,35 @@
 name: surfaceIsWater
-description: Returns whether there is water at given position. In Arma 3, it also detects pond objects, but only if they are loaded in memory (normally only true if the objects are within the [[setObjectViewDistance|object view distance]])
+desc: Returns whether there is water at given position. In Arma 3, it also detects pond objects, but only if they are loaded in memory (normally only true if the objects are within the [[setObjectViewDistance|object view distance]])
 groups:
 - Positions
 syntax:
 - call: !Unary position
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: position
-    description: when using [[Position#Introduction|Position3D]] Z will be ignored
-    type: Unknown
+    desc: when using [[Position#Introduction|Position3D]] Z will be ignored
+    type: !OneOf
+    - - Position2d
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _result = surfaceIsWater [1000, 3000];</sqf>
 - <sqf>_isWater = surfaceIsWater position player;</sqf>
+see_also:
+- surfaceType
+- surfaceNormal
+- nearRoads
+- roadsConnectedTo
+- roadAt
+- isOnRoad

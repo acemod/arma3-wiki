@@ -1,44 +1,33 @@
 name: lbSortByValue
-description: Sorts the ListBox entries by [[lbValue]]. The entries are sorted in ascending order. Also note that this command will mix up the entries randomly if multiple entries have the same value. In {{arma3}} use [[lbSortBy]] to avoid this problem.
+desc: Sorts the ListBox entries by [[lbValue]]. The entries are sorted in ascending order. Also note that this command will mix up the entries randomly if multiple entries have the same value. In {{arma3}} use [[lbSortBy]] to avoid this problem.
 groups:
 - GUI Control - ListBox
 syntax:
 - call: !Unary control
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
 - call: !Unary idc
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   since:
-    arma_3:
-      major: 1
-      minor: 68
+    arma3: '1.68'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 8
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.8'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>lbSortByValue _control;</sqf>
 - <sqf>lbSortByValue 101;</sqf>
+see_also:
+- lbSortBy
+- lbSort

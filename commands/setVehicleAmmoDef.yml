@@ -1,5 +1,5 @@
 name: setVehicleAmmoDef
-description: Sets how much ammunition (compared to the configuration of magazines defined in the vehicle's class) the vehicle has. Note that the ammo will only be added to [[Multiplayer Scripting#Locality|local]] turrets. To check the locality of turret use [[turretLocal]].
+desc: Sets how much ammunition (compared to the configuration of magazines defined in the vehicle's class) the vehicle has. Note that the ammo will only be added to [[Multiplayer Scripting#Locality|local]] turrets. To check the locality of turret use [[turretLocal]].
 groups:
 - Unit Inventory
 - Vehicle Inventory
@@ -8,20 +8,23 @@ syntax:
   - unit
   - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: unit or vehicle.
+    desc: unit or vehicle.
     type: Object
   - name: value
-    description: from 0 (no ammo) to 1 (fully loaded).
+    desc: from 0 (no ammo) to 1 (fully loaded).
     type: Number
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>player setVehicleAmmoDef 0;</sqf>
+see_also:
+- setVehicleAmmo
+- ammo
+- setAmmo
+- setAmmoCargo
+- turretLocal

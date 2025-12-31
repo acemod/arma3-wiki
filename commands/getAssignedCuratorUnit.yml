@@ -1,25 +1,24 @@
 name: getAssignedCuratorUnit
-description: Returns unit assigned to curator logic.
+desc: Returns unit assigned to curator logic.
 groups:
 - Curator
 syntax:
 - call: !Unary curatorObj
   ret:
-  - Object
-  - null
+    type: Object
   params:
   - name: curatorObj
-    description: curator module.
+    desc: curator module.
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - |-
   <sqf>
   _curatorUnit = getAssignedCuratorUnit (allCurators select 0);
   _curatorUnit joinAs [createGroup civilian, 0];
   </sqf>
+see_also:
+- getAssignedCuratorLogic

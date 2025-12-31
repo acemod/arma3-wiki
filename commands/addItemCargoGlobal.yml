@@ -1,5 +1,5 @@
 name: addItemCargoGlobal
-description: Global variant of [[addItemCargo]].
+desc: Global variant of [[addItemCargo]].
 groups:
 - Vehicle Inventory
 syntax:
@@ -8,21 +8,27 @@ syntax:
   - - item
     - count
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: box
     type: Object
   - name: item
     type: String
   - name: count
-    description: number of items to add. {{GVI|arma3|2.14|size= 0.75}} negative count will remove items.
+    desc: number of items to add. {{GVI|arma3|2.14|size= 0.75}} negative count will remove items.
     type: Number
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>supplyBox addItemCargoGlobal ["optic_Arco", 10];</sqf>
+see_also:
+- addItemCargo
+- clearItemCargoGlobal
+- addMagazineCargo
+- addMagazineCargoGlobal
+- addWeaponCargo
+- addWeaponCargoGlobal
+- addBackpackCargo
+- addBackpackCargoGlobal

@@ -1,5 +1,5 @@
 name: ropeAttachedTo
-description: |-
+desc: |-
   Returns the owner of the first rope - the transport to which other entities are attached with [[ropes]]. This command is the opposite of [[ropeAttachedObjects]]. To return all owners see [[ropesAttachedTo]].<br><br>
   [[File:ropeAttachedTo.jpg|400px]]
 groups:
@@ -7,17 +7,34 @@ groups:
 syntax:
 - call: !Unary cargo
   ret:
-  - Object
-  - a transport from which the first rope originates, the rope owner
+    type: Object
+    desc: a transport from which the first rope originates, the rope owner
   params:
   - name: cargo
-    description: entity attached to the end of the first rope
+    desc: entity attached to the end of the first rope
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - <sqf>_heli = ropeAttachedTo veh1;</sqf>
+see_also:
+- ropesAttachedTo
+- ropes
+- canSlingLoad
+- enableRopeAttach
+- getSlingLoad
+- ropeAttachedObjects
+- ropeAttachTo
+- ropeDestroy
+- ropeLength
+- ropeUnwound
+- ropeCreate
+- ropeDetach
+- ropeAttachEnabled
+- ropeCut
+- ropeEndPosition
+- ropeUnwind
+- setSlingLoad
+- slingLoadAssistantShown

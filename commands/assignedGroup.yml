@@ -1,21 +1,31 @@
 name: assignedGroup
-description: Returns [[Group]] to which the given vehicle was added last with [[addVehicle]]. To update [[assignedGroup]] to the current group, run [[addVehicle]] to the current group again.
+desc: Returns [[Group]] to which the given vehicle was added last with [[addVehicle]]. To update [[assignedGroup]] to the current group, run [[addVehicle]] to the current group again.
 groups:
 - Groups
 syntax:
 - call: !Unary vehicle
   ret:
-  - Group
-  - null
+    type: Group
   params:
   - name: vehicle
-    description: transport
+    desc: transport
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 12
+  arma3: '2.12'
 examples:
 - <sqf>_group = assignedGroup vehicle player;</sqf>
+see_also:
+- assignedVehicle
+- assignedVehicles
+- addVehicle
+- assignAsDriver
+- assignAsCargo
+- assignAsCommander
+- assignAsGunner
+- assignAsTurret
+- assignAsCargoIndex
+- unassignVehicle
+- leaveVehicle
+- fullCrew

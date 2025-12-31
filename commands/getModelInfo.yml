@@ -1,24 +1,32 @@
 name: getModelInfo
-description: Returns object's model info. Model path is suitable for use with [[createSimpleObject]] command.
+desc: Returns object's model info. Model path is suitable for use with [[createSimpleObject]] command.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary object
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: object
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 50
+  arma3: '1.50'
 examples:
 - <sqf>_modelInfo = getModelInfo player; // ["b_soldier_03.p3d", "a3\characters_f\blufor\b_soldier_03.p3d", true, [0,0,0]]</sqf>
 - <sqf>_modelInfo = getModelInfo cursorObject;</sqf>
 - |-
   Get Z ASL using placing point:
   <sqf>_zASL = (heli modelToWorldWorld (getModelInfo heli select 3)) select 2;</sqf>
+see_also:
+- cursorObject
+- cursorTarget
+- createSimpleObject
+- getObjectType
+- getObjectTextures
+- objectParent
+- setVelocityTransformation
+- getUnitFreefallInfo
+- getEntityInfo
+- getMass

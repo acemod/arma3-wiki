@@ -1,20 +1,21 @@
 name: showCuratorCompass
-description: Hides or shows compass in curator interface.
+desc: Hides or shows compass in curator interface.
 groups:
 - Curator
 syntax:
 - call: !Unary bool
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: bool
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>showCuratorCompass true;</sqf>
+see_also:
+- Arma
+- '3:'
+- Curator

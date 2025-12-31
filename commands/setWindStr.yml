@@ -1,5 +1,5 @@
 name: setWindStr
-description: Changes the wind strength smoothly during the given time (in seconds). A time of zero means there will be an immediate change.
+desc: Changes the wind strength smoothly during the given time (in seconds). A time of zero means there will be an immediate change.
 groups:
 - Environment
 syntax:
@@ -7,19 +7,19 @@ syntax:
   - time
   - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: time
     type: Number
   - name: value
-    description: new value in range 0..1
+    desc: new value in range 0..1
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>60 setWindStr 0.8; // set the wind strength to 0.8 gradually over the next 60 seconds</sqf>
+see_also:
+- setWind
+- setWindForce

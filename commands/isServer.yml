@@ -1,33 +1,25 @@
 name: isServer
-description: Returns [[true]] if the machine executing the command is the server in a multiplayer game or is running single player. It will return [[true]] for both dedicated and player-hosted server. See also [[Multiplayer Scripting#Different machines and how to target them|Multiplayer Scripting/machines]].
+desc: Returns [[true]] if the machine executing the command is the server in a multiplayer game or is running single player. It will return [[true]] for both dedicated and player-hosted server. See also [[Multiplayer Scripting#Different machines and how to target them|Multiplayer Scripting/machines]].
 groups:
 - Multiplayer
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 99
-  armed_assault:
-    major: 1
-    minor: 6
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.99'
+  arma1: '1.6'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>if (!isServer) exitWith {};</sqf>
+see_also:
+- isDedicated
+- isMultiplayer
+- hasInterface
+- local

@@ -1,5 +1,5 @@
 name: ctrlRemoveEventHandler
-description: Remove a given event handler from the given control.
+desc: Remove a given event handler from the given control.
 groups:
 - GUI Control - Event Handlers
 - Event Handlers
@@ -9,8 +9,7 @@ syntax:
   - - type
     - id
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -21,17 +20,12 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_map ctrlRemoveEventHandler ["Draw", _id];</sqf>
+see_also:
+- ctrlAddEventHandler
+- ctrlRemoveAllEventHandlers

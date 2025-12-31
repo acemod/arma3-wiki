@@ -1,5 +1,5 @@
 name: goto
-description: |-
+desc: |-
   Break script flow and go to given label (defined by '''#''' - '''NOT''' to be confused with [[SQF Syntax|SQF]]'s [[a_hash_b|hash sign]]!)
   {{Feature|warning|This command only works in [[SQS Syntax]].}}
   {{Feature|informative|Note that labels are not case sensitive and are searched for from the top of the script, so multiple occurrences of a label will only result in the topmost one ever being found.}}
@@ -8,35 +8,20 @@ groups:
 syntax:
 - call: !Unary label
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: label
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqs>
@@ -46,3 +31,11 @@ examples:
   #myLabel
   hint "you successfully avoided death!"
   </sqs>
+see_also:
+- Control_Structures#SQS_syntax_.28deprecated.29|SQS
+- Control
+- Structures
+- SQS
+- to
+- SQF
+- conversion

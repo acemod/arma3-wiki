@@ -1,5 +1,5 @@
 name: lookAt
-description: Control what the unit(s) is/are looking at (target or [[Position]]). If target is used, it will get revealed fully.
+desc: Control what the unit(s) is/are looking at (target or [[Position]]). If target is used, it will get revealed fully.
 groups:
 - Unit Control
 syntax:
@@ -7,35 +7,33 @@ syntax:
   - unit(s)
   - position
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit(s)
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: position
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_someSoldier lookAt _otherSoldier;</sqf>
 - <sqf>[_someSoldier, _otherSoldier] lookAt markerPos "markerOne";</sqf>
 - "<sqf>\nhint \"R U N !\";\nBFG = \"B_AAA_System_01_F\" createVehicle position player;\ncreateVehicleCrew BFG;\nt = time + 10;\nonEachFrame\n{\n\tBFG lookAt (unitAimPosition player vectorAdd (velocity player vectorMultiply 0.2));\n\tif (time > t && alive player) then\n\t{\n\t\t[BFG,\"weapon_Cannon_Phalanx\",[0]] call BIS_fnc_fire;\n\t};\n};\n</sqf>"
+see_also:
+- glanceAt
+- commandWatch
+- doWatch
+- freeLook

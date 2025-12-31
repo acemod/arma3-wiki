@@ -1,5 +1,5 @@
 name: isFlatEmpty
-description: |-
+desc: |-
   Checks given position against given filter params. Filter includes checks for:
   * If there are any objects closer than given distance from given position (in 2D)
   * If the area around position is flat enough to match given gradient
@@ -25,28 +25,28 @@ syntax:
     - shoreLine
     - ignoreObject
   ret:
-  - ArrayUnknown
-  - empty array [] if check failed or [[Position#PositionASL|PositionASL]] if succeded. Resulting position will be original [[Position#PositionAGL|PositionAGL]] + [[getTerrainHeightASL]]
+    type: ArrayUnknown
+    desc: empty array [] if check failed or [[Position#PositionASL|PositionASL]] if succeded. Resulting position will be original [[Position#PositionAGL|PositionAGL]] + [[getTerrainHeightASL]]
   params:
   - name: position
     type: Position3dAGL
   - name: minDistance
-    description: minimum (2D) distance from other objects (range 0..50). -1 to ignore proximity check
+    desc: minimum (2D) distance from other objects (range 0..50). -1 to ignore proximity check
     type: Number
     optional: true
     default: '-1'
   - name: mode
-    description: position check mode ('''ALWAYS USE DEFAULT VALUE''')
+    desc: position check mode ('''ALWAYS USE DEFAULT VALUE''')
     type: Number
     optional: true
     default: '-1'
   - name: maxGradient
-    description: maximum terrain steepness allowed. -1 to ignore
+    desc: maximum terrain steepness allowed. -1 to ignore
     type: Number
     optional: true
     default: '-1'
   - name: maxGradientRadius
-    description: how far to extend gradient check
+    desc: how far to extend gradient check
     type: Number
     optional: true
     default: '1'
@@ -57,25 +57,17 @@ syntax:
     type: Unknown
     optional: true
   - name: ignoreObject
-    description: object to ignore in proximity checks. [[objNull]] to ignore
+    desc: object to ignore in proximity checks. [[objNull]] to ignore
     type: Object
     optional: true
     default: '[[objNull]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   Check if player position is over land:
@@ -95,3 +87,7 @@ examples:
 - |-
   Check if area 15m around player position is very flat and empty:
   <sqf>_isFlatEmpty = !(position player isFlatEmpty  [15, -1, 0.1, 15, -1, false, player] isEqualTo []);</sqf>
+see_also:
+- BIS_fnc_findSafePos
+- selectBestPlaces
+- findEmptyPosition

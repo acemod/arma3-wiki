@@ -1,5 +1,5 @@
 name: nearestMines
-description: |-
+desc: |-
   Returns a list of nearest mines of the given types to the given position or object, within the specified distance.
   If more than one mine are found they will be ordered by proximity by default, the closest one will be first in the array. The sorting can be turned off.
 groups:
@@ -12,34 +12,38 @@ syntax:
   - sort
   - 2Dmode
   ret:
-  - ArrayUnknown
-  - found mines as array of [[Object]]s
+    type: ArrayUnknown
+    desc: found mines as array of [[Object]]s
   params:
   - name: position
-    description: search position centre
-    type: Unknown
+    desc: search position centre
+    type: !OneOf
+    - - Object
+      - null
+    - - Position3dAGL
+      - null
+    - - Position2d
+      - null
   - name: types
-    description: list of class name of the objects to search for (uses [[isKindOf]] comparison instead of direct class name == comparison). Use an empty array <sqf inline>[]</sqf> to search for all classes
+    desc: list of class name of the objects to search for (uses [[isKindOf]] comparison instead of direct class name == comparison). Use an empty array <sqf inline>[]</sqf> to search for all classes
     type: ArrayUnknown
   - name: radius
-    description: search range
+    desc: search range
     type: Number
   - name: sort
-    description: '[[true]] to sort the results closest first, [[false]] to turn off sorting'
+    desc: '[[true]] to sort the results closest first, [[false]] to turn off sorting'
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: 2Dmode
-    description: '[[true]] for 2D distance, [[false]] for 3D distance comparison'
+    desc: '[[true]] for 2D distance, [[false]] for 3D distance comparison'
     type: Boolean
     optional: true
     default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>nearestMines [player, ["MineBase"], 20];</sqf>
 - <sqf>nearestMines [position player, ["DirectionalBombBase"], 500, true];</sqf>
@@ -47,3 +51,17 @@ examples:
 - |-
   Return every mine in 50 metres radius around player sorted by distance:
   <sqf>nearestMines [player, [], 50];</sqf>
+see_also:
+- nearestTerrainObjects
+- findNearestEnemy
+- nearestBuilding
+- nearestObject
+- nearObjects
+- nearestLocation
+- nearEntities
+- nearTargets
+- nearSupplies
+- nearestLocationWithDubbing
+- nearObjectsReady
+- nearRoads
+- nearestObjects

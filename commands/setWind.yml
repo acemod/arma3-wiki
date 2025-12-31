@@ -1,5 +1,5 @@
 name: setWind
-description: |-
+desc: |-
   Set current or permanent wind vector.
   {{Feature | important | The effect is global only if it is executed on the server. Wind set locally will sync back to server value in a while.}}
 groups:
@@ -10,34 +10,30 @@ syntax:
   - y
   - forced
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: x
-    description: easterly component (in m/s, positive = to the east)
+    desc: easterly component (in m/s, positive = to the east)
     type: Number
   - name: y
-    description: northerly component (in m/s, positive = to the north)
+    desc: northerly component (in m/s, positive = to the north)
     type: Number
   - name: forced
-    description: set to [[true]] to lock the wind to constantly blows in set direction
+    desc: set to [[true]] to lock the wind to constantly blows in set direction
     type: Boolean
     optional: true
     default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Global
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>setWind [10, 10, true];</sqf>
+see_also:
+- wind
+- setWindDir
+- gusts
+- setGusts

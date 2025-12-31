@@ -1,23 +1,34 @@
 name: serverConfigTopLevelEntry
-description: 'Get top-level entry (i.e. entry directly below config root) of the desired name from the {{Link|Arma 3: Server Config File|server config}}, making it some kind of secured ''''''''''serverConfigFile'''''''''' command.'
+desc: 'Get top-level entry (i.e. entry directly below config root) of the desired name from the {{Link|Arma 3: Server Config File|server config}}, making it some kind of secured ''''''''''serverConfigFile'''''''''' command.'
 multiplayer_note: Only works on '''dedicated''' servers.
 groups:
 - Argo
 syntax:
 - call: !Unary configEntry
   ret:
-  - Config
-  - requested server config entry or [[configNull]] on error
+    type: Config
+    desc: requested server config entry or [[configNull]] on error
   params:
   - name: configEntry
-    description: 'any [[Arma 3: Server Config File|server config]] entry but {{hl|password}} and {{hl|passwordAdmin}} which are ignored'
+    desc: 'any [[Arma 3: Server Config File|server config]] entry but {{hl|password}} and {{hl|passwordAdmin}} which are ignored'
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  argo:
-    major: 1
-    minor: 0
+  argo: '1.0'
 examples:
 - <sqf>_kickDupes = getNumber serverConfigTopLevelEntry "kickDuplicate" != 0;</sqf>
+see_also:
+- Arma
+- '3:'
+- Server
+- Config
+- File
+- configFile
+- config
+- greater
+- greater
+- name|config
+- '>>'
+- name

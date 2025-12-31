@@ -1,42 +1,37 @@
 name: markerShape
-description: Returns the shape of given marker.
+desc: Returns the shape of given marker.
 groups:
 - Markers
 syntax:
 - call: !Unary name
   ret:
-  - String
-  - |-
-    shape of given marker. Can be return:
-    * {{hl|"ICON"}}
-    * {{hl|"RECTANGLE"}}
-    * {{hl|"ELLIPSE"}}
-    * {{GVI|arma3|1.60|size= 0.75}} {{hl|"POLYLINE"}} (Hand drawn markers)
-    * {{GVI|arma3|2.20|size= 0.75}} {{hl|"TRIANGLE"}}
-    * {{GVI|arma3|2.20|size= 0.75}} {{hl|"PENTAGON"}}
-    * {{GVI|arma3|2.20|size= 0.75}} {{hl|"HEXAGON"}}
-    * {{GVI|arma3|2.20|size= 0.75}} {{hl|"HEPTAGON"}}
-    * {{GVI|arma3|2.20|size= 0.75}} {{hl|"OCTAGON"}}
-    * {{GVI|arma3|2.20|size= 0.75}} {{hl|"NONAGON"}}
-    * {{GVI|arma3|2.20|size= 0.75}} {{hl|"DECAGON"}}
+    type: String
+    desc: |-
+      shape of given marker. Can be return:
+      * {{hl|"ICON"}}
+      * {{hl|"RECTANGLE"}}
+      * {{hl|"ELLIPSE"}}
+      * {{GVI|arma3|1.60|size= 0.75}} {{hl|"POLYLINE"}} (Hand drawn markers)
+      * {{GVI|arma3|2.20|size= 0.75}} {{hl|"TRIANGLE"}}
+      * {{GVI|arma3|2.20|size= 0.75}} {{hl|"PENTAGON"}}
+      * {{GVI|arma3|2.20|size= 0.75}} {{hl|"HEXAGON"}}
+      * {{GVI|arma3|2.20|size= 0.75}} {{hl|"HEPTAGON"}}
+      * {{GVI|arma3|2.20|size= 0.75}} {{hl|"OCTAGON"}}
+      * {{GVI|arma3|2.20|size= 0.75}} {{hl|"NONAGON"}}
+      * {{GVI|arma3|2.20|size= 0.75}} {{hl|"DECAGON"}}
   params:
   - name: name
-    description: name of the marker
+    desc: name of the marker
     type: String
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>if (markerShape "Marker1" == "RECTANGLE") then { hint "Marker1 is a rectangle!" };</sqf>
+see_also:
+- setMarkerShape
+- setMarkerShapeLocal

@@ -1,20 +1,20 @@
 name: showWaypoints
-description: Shows/Hides task HUD markers and waypoints that will fade out in time. Dependable on difficulty settings.
+desc: Shows/Hides task HUD markers and waypoints that will fade out in time. Dependable on difficulty settings.
 groups:
 - Waypoints
 syntax:
 - call: !Unary enabled
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: enabled
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>showWaypoints true;</sqf>
+see_also:
+- showWaypoint
+- waypointShow

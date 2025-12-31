@@ -1,5 +1,5 @@
 name: selectWeaponTurret
-description: Selects the given weapon on the specified turret. Use turret path [-1] for the driver's turret.
+desc: Selects the given weapon on the specified turret. Use turret path [-1] for the driver's turret.
 groups:
 - Turrets
 syntax:
@@ -10,38 +10,44 @@ syntax:
     - muzzle
     - firemode
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
   - name: weapon
-    description: weapon class name or (since {{GVI|arma3|1.64|size= 0.75}}) muzzle class name
+    desc: weapon class name or (since {{GVI|arma3|1.64|size= 0.75}}) muzzle class name
     type: String
   - name: turretPath
-    type: ArrayUnknown
+    type: TurretPath
   - name: muzzle
-    description: muzzle name
+    desc: muzzle name
     type: String
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 8
+      arma3: '2.8'
   - name: firemode
-    description: firemode name
+    desc: firemode name
     type: String
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 8
+      arma3: '2.8'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 12
+  arma3: '1.12'
 examples:
 - <sqf>MBT_Kuma selectWeaponTurret ["LMG_coax",[0]];</sqf>
 - <sqf>Kamysh selectWeaponTurret ["missiles_titan", [0], "missiles_titan", "topdown"];</sqf>
+see_also:
+- removeWeaponTurret
+- weaponState
+- turretLocal
+- addMagazineTurret
+- magazinesTurret
+- removeMagazinesTurret
+- removeMagazineTurret
+- weaponsTurret
+- currentMagazineDetailTurret
+- currentMagazineTurret
+- currentWeaponTurret
+- addWeaponTurret

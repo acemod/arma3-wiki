@@ -1,5 +1,5 @@
 name: boundingBox
-description: |-
+desc: |-
   [[File:Boundingbox.jpg|right|200px]] Returns a bounding box of given object in model coordinate space, adjusted according to destruction/animation of an object. This command is rather generous on the size estimation, for more precise coordinates use [[boundingBoxReal]].
   {{Feature|informative|In {{GVI|arma3|1.92}} The output of both syntaxes got extended to include bounding sphere diameter. See also [[sizeOf]].}}
 groups:
@@ -7,8 +7,7 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: object
     type: Object
@@ -16,35 +15,27 @@ syntax:
   - clippingType
   - object
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: clippingType
     type: Unknown
   - name: object
     type: Object
   since:
-    arma_3:
-      major: 1
-      minor: 92
+    arma3: '1.92'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _box = boundingBox _abrams;</sqf>
 - <sqf>hint str (0 boundingBox cursorObject);</sqf>
+see_also:
+- sizeOf
+- boundingBoxReal
+- boundingCenter
+- BIS_fnc_boundingBoxDimensions

@@ -1,5 +1,5 @@
 name: setDriveOnPath
-description: |-
+desc: |-
   Sets the path to follow for AI driver. Note that [[unitReady]] will return [[true]] even if AI is still driving through the points.<br>
   Using any other ''move'' command (e.g <sqf inline>_vehicle move getPosATL _vehicle</sqf>) or [[doStop]] will stop the effect of this command.
   {{Feature|important|This command does '''not''' work if the vehicle doesn't have an [[useAISteeringComponent|AI steering component]] defined in its config, or if the component is disabled. Thus, it never works on air vehicles and boats which don't use steering components. Only land vehicles may be compatible. (cars, tanks, APCs, etc.)}}
@@ -11,20 +11,17 @@ syntax:
   - vehicleName
   - points
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicleName
     type: Object
   - name: points
-    description: list of [[Position]]s to format [x,y,z] OR to format [x,y,z, speed], speed being '''in m/s'''.
+    desc: list of [[Position]]s to format [x,y,z] OR to format [x,y,z, speed], speed being '''in m/s'''.
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>myVehicle setDriveOnPath [getMarkerPos "wp1", getMarkerPos "wp2"];</sqf>
 - |-
@@ -33,3 +30,9 @@ examples:
   { _x pushBack 15; } forEach _points; // setting speed
   myVehicle setDriveOnPath _points;
   </sqf>
+see_also:
+- move
+- forceSpeed
+- limitSpeed
+- Waypoint
+- useAISteeringComponent

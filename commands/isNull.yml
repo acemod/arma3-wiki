@@ -1,5 +1,5 @@
 name: isNull
-description: |-
+desc: |-
   Checks whether the tested item is null.<br>
   Which null type the item has to be equal to depends on the type of game entity tested:
 
@@ -45,35 +45,38 @@ groups:
 syntax:
 - call: !Unary entity
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: entity
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Control
+      - null
+    - - Display
+      - null
+    - - Group
+      - null
+    - - Location
+      - null
+    - - Task
+      - null
+    - - ScriptHandle
+      - null
+    - - Config
+      - null
+    - - DiaryRecord
+      - null
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nif (isNil \"obj\") exitWith { hint \"obj variable is undefined\" };\n\nif (isNull obj) then\n{\n\thint \"obj variable is defined but is null\";\n}\nelse\n{\n\thint \"obj variable is defined and is not null\";\n};\n</sqf>"
 - |-
@@ -86,3 +89,14 @@ examples:
 
   [[Team Member]] support before {{GVI|arma3|2.10}}:
   <sqf>private _isNull = _teamMember isEqualTo teamMemberNull;</sqf>
+see_also:
+- controlNull
+- displayNull
+- grpNull
+- locationNull
+- objNull
+- taskNull
+- teamMemberNull
+- scriptNull
+- configNull
+- typeName

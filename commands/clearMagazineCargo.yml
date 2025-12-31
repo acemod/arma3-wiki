@@ -1,38 +1,34 @@
 name: clearMagazineCargo
-description: Remove all magazines from the given vehicle's magazine cargo space.
+desc: Remove all magazines from the given vehicle's magazine cargo space.
 groups:
 - Containers
 syntax:
 - call: !Unary vehicleName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicleName
     type: Object
 argument_loc: Global
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>clearMagazineCargo _truck;</sqf>
+see_also:
+- clearMagazineCargoGlobal
+- addMagazineCargo
+- addWeaponCargo
+- clearWeaponCargo
+- clearWeaponCargoGlobal
+- clearBackpackCargo
+- clearBackpackCargoGlobal
+- clearItemCargo
+- clearItemCargoGlobal
+- addMagazineAmmoCargo

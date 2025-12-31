@@ -1,5 +1,5 @@
 name: menuSetCheck
-description: |-
+desc: |-
   Sets item on given path to be checked or not. By default menu strip entries are not checkable.
   Once this command was executed, an entry can become checked and unchecked.
   If an entry is checked is indicated by a tick to the left of the entry's text.
@@ -12,8 +12,7 @@ syntax:
   - path
   - checked
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
@@ -26,8 +25,7 @@ syntax:
   - - path
     - checked
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -38,8 +36,8 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>findDisplay 313 displayCtrl 120 menuSetCheck [[0,1], true];</sqf>
+see_also:
+- menuChecked

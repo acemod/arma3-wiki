@@ -1,20 +1,19 @@
 name: getVehicleTIPars
-description: Returns TI parameters of a vehicle.
+desc: Returns TI parameters of a vehicle.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary vehicle
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - <sqf>getVehicleTIPars _veh;</sqf>
+see_also:
+- setVehicleTIPars

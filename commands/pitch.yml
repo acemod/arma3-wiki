@@ -1,21 +1,20 @@
 name: pitch
-description: Returns the pitch of a persons voice.
+desc: Returns the pitch of a persons voice.
 groups:
 - Unit Identity
 - Sounds
 syntax:
 - call: !Unary person
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: person
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 2
+  arma3: '1.2'
 examples:
 - <sqf>pitch player;</sqf>
+see_also:
+- setPitch

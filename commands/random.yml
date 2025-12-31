@@ -1,5 +1,5 @@
 name: random
-description: |-
+desc: |-
   {{{!}} class="float-right valign-top"
   {{!}} [[File:bellcurve.jpg|thumb|120px|[[#Syntax 2|Syntax&nbsp;2]]'s distribution]]
   {{!}}  [[File:rv-random rescaled bates distribution graph.png|thumb|120px|[[#Syntax 2|Syntax&nbsp;2]]'s distribution if ''mid'' is off-centre]]
@@ -23,8 +23,7 @@ groups:
 syntax:
 - call: !Unary x
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: x
     type: Number
@@ -33,8 +32,8 @@ syntax:
   - mid
   - max
   ret:
-  - Unknown
-  - '''''''can'''''' be higher than max (maximum value is {{hl|min + max - mid}})'
+    type: Unknown
+    desc: '''''''can'''''' be higher than max (maximum value is {{hl|min + max - mid}})'
   params:
   - name: min
     type: Number
@@ -43,69 +42,47 @@ syntax:
   - name: max
     type: Number
   since:
-    arma_3:
-      major: 1
-      minor: 56
+    arma3: '1.56'
 - call: !Binary
   - seed
   - x
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: seed
-    description: an '''integer'''. Any float value will be truncated (e.g -0.9, -0.1, 0.1 or 0.9 will be read as '''0''')
+    desc: an '''integer'''. Any float value will be truncated (e.g -0.9, -0.1, 0.1 or 0.9 will be read as '''0''')
     type: Number
   - name: x
     type: Number
   since:
-    arma_3:
-      major: 1
-      minor: 68
+    arma3: '1.68'
 - call: !Binary
   - seed
   - - x
     - y
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: seed
     type: Number
   - name: x
-    description: x texture position
+    desc: x texture position
     type: Number
   - name: y
-    description: y texture position
+    desc: y texture position
     type: Number
   since:
-    arma_3:
-      major: 1
-      minor: 68
+    arma3: '1.68'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_rNumber = random 1;</sqf>
 - <sqf>_rNumber = random -10;</sqf>
@@ -114,3 +91,11 @@ examples:
   <sqf>_center getPos [_radius * sqrt random 1, random 360];</sqf>
 - "Select a random value from an array:\n<sqf>\n_array = [\"apples\", \"pears\", \"bananas\", \"M16\"];\n\n_random = _array select floor random count _array;\t// before {{arma2}}\n_random = _array call BIS_fnc_selectRandom;\t\t\t// since {{arma2}}\n_random = selectRandom _array;\t\t\t\t\t\t// since {{arma3}} v1.56\n</sqf>"
 - "Visualisation of {{Link|#Syntax 4}} (warning, it takes a bit to execute and draw):<br>\n[[File:A3 random syntax4.png|thumb|right|Result]]\n<sqf>\nprivate _parent = call BIS_fnc_displayMission;\nif (is3DEN) then { _parent = findDisplay 313 };\nprivate _display = _parent createDisplay \"RscDisplayEmpty\";\nprivate _background = _disp ctrlCreate [\"RscBackground\", -1];\n\nprivate _coef = 0.1;\n\nfor \"_x\" from 1 to 100 do\n{\n\tfor \"_y\" from 1 to 100 do\n\t{\n\t\tprivate _random = 0 random [_x * _coef, _y * _coef];\n\t\tprivate _dot = _display ctrlCreate [\"RscBackground\", -1];\n\n\t\t_dot ctrlSetPosition [0.5 + pixelW * _x, 0.5 + pixelH * _y, pixelW, pixelH];\n\t\t_dot ctrlSetBackgroundColor [_random, _random, _random, 1];\n\t\t_dot ctrlCommit 0;\n\t};\n};\n</sqf>"
+see_also:
+- selectRandom
+- selectRandomWeighted
+- Example
+- 'Code:'
+- Random
+- Area
+- Distribution

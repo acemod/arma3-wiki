@@ -1,5 +1,5 @@
 name: incapacitatedState
-description: |-
+desc: |-
   Returns the incapacitated sub-state of the given unit, when the [[lifeState]] of the unit is "INCAPACITATED". Could be one of:
   * "UNCONSCIOUS"
   * "MOVING"
@@ -9,16 +9,17 @@ groups:
 syntax:
 - call: !Unary person
   ret:
-  - String
-  - incapacitated sub-state (see description) or empty string ""
+    type: String
+    desc: incapacitated sub-state (see description) or empty string ""
   params:
   - name: person
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>_result = incapacitatedState player;</sqf>
+see_also:
+- setUnconscious
+- lifeState

@@ -1,5 +1,5 @@
 name: execFSM
-description: |-
+desc: |-
   Execute scripted [[FSM]] and return the FSM handle or 0 when failed. The FSM file is first searched in the mission folder, then in the campaign scripts folder and finally in the global scripts folder. Argument (if any) are available in {{hl|_this}} variable inside FSM. Variables set inside FSMs can be read/modified externally, using [[setFSMVariable]] and [[getFSMVariable]] commands.<br>
   <br>
   The return value is the FSM handle; it can be used to determine (via [[completedFSM]]) when the FSM has finished.
@@ -16,77 +16,79 @@ syntax:
   - arguments
   - fsmFilePath
   ret:
-  - Number
-  - FSM handle (also available as {{hl|_thisFSM}} in the FSM)
+    type: Number
+    desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
   params:
   - name: arguments
-    description: arguments accessible as {{hl|_this}} in the FSM
+    desc: arguments accessible as {{hl|_this}} in the FSM
     type: Anything
   - name: fsmFilePath
-    description: file with FSM code
+    desc: file with FSM code
     type: String
 - call: !Unary fsmFilePath
   ret:
-  - Number
-  - FSM handle (also available as {{hl|_thisFSM}} in the FSM)
+    type: Number
+    desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
   params:
   - name: fsmFilePath
-    description: file with FSM code
+    desc: file with FSM code
     type: String
 - call: !Binary
   - arguments
   - - fsmFilePath
     - allowTermination
   ret:
-  - Number
-  - FSM handle (also available as {{hl|_thisFSM}} in the FSM)
+    type: Number
+    desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
   params:
   - name: arguments
-    description: arguments accessible as {{hl|_this}} in the FSM
+    desc: arguments accessible as {{hl|_this}} in the FSM
     type: Anything
   - name: fsmFilePath
-    description: file with FSM code
+    desc: file with FSM code
     type: String
   - name: allowTermination
-    description: '[[true]] to allow FSM termination with [[terminate]] command. Optional, default [[false]]'
+    desc: '[[true]] to allow FSM termination with [[terminate]] command. Optional, default [[false]]'
     type: Boolean
   since:
-    arma_3:
-      major: 2
-      minor: 18
+    arma3: '2.18'
 - call: !Unary
   - fsmFilePath
   - allowTermination
   ret:
-  - Number
-  - FSM handle (also available as {{hl|_thisFSM}} in the FSM)
+    type: Number
+    desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
   params:
   - name: fsmFilePath
-    description: file with FSM code
+    desc: file with FSM code
     type: String
   - name: allowTermination
-    description: '[[true]] to allow FSM termination with [[terminate]] command. Optional, default [[false]]'
+    desc: '[[true]] to allow FSM termination with [[terminate]] command. Optional, default [[false]]'
     type: Boolean
   since:
-    arma_3:
-      major: 2
-      minor: 18
+    arma3: '2.18'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_id = player execFSM "test.fsm";</sqf>
 - <sqf>_handle = [_a, _b, _c] execFSM "test.fsm";</sqf>
 - <sqf>_handle = execFSM "test.fsm";</sqf>
+see_also:
+- FSM
+- FSM
+- Editor
+- Manual
+- execVM
+- call
+- spawn
+- exec
+- commandFSM
+- completedFSM
+- doFSM
+- getFSMVariable
+- setFSMVariable

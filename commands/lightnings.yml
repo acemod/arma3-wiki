@@ -1,18 +1,17 @@
 name: lightnings
-description: Return the current lightnings value.
+desc: Return the current lightnings value.
 groups:
 - Environment
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - Get the current ''lightnings'' value:<sqf>_lightningsVal = lightnings;</sqf>
+see_also:
+- setLightnings

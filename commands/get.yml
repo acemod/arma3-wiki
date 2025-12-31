@@ -1,5 +1,5 @@
 name: get
-description: Retrieves a value out of a [[HashMap]] after looking it up by its key.
+desc: Retrieves a value out of a [[HashMap]] after looking it up by its key.
 groups:
 - HashMap
 syntax:
@@ -7,19 +7,23 @@ syntax:
   - hashMap
   - key
   ret:
-  - Unknown
-  - null
+    type: !OneOf
+    - - Anything
+      - null
+    - - Nothing
+      - null
   params:
   - name: hashMap
     type: HashMapUnknown
   - name: key
-    description: case sensitive key
+    desc: case sensitive key
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>private _myValue = _myHashMap get "a";</sqf>
+see_also:
+- HashMap
+- getOrDefault

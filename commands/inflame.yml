@@ -1,5 +1,5 @@
 name: inflame
-description: Sets the state of a fireplace.
+desc: Sets the state of a fireplace.
 groups:
 - Object Manipulation
 syntax:
@@ -7,37 +7,24 @@ syntax:
   - fireplace
   - burn
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: fireplace
     type: Object
   - name: burn
-    description: '[[true]] to let it burn, [[false]] to extinguish it.'
+    desc: '[[true]] to let it burn, [[false]] to extinguish it.'
     type: Boolean
 argument_loc: Global
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_fireplaceOne inflame true;</sqf>
+see_also:
+- inflamed

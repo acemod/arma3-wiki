@@ -1,5 +1,5 @@
 name: lnbPictureRight
-description: Returns the right picture of given row. The ''column'' parameter does not matter.
+desc: Returns the right picture of given row. The ''column'' parameter does not matter.
 groups:
 - GUI Control - ListNBox
 syntax:
@@ -8,38 +8,40 @@ syntax:
   - - row
     - column
   ret:
-  - String
-  - path of image
+    type: String
+    desc: path of image
   params:
   - name: idc
     type: Number
   - name: row
-    description: index of the row
+    desc: index of the row
     type: Number
   - name: column
-    description: index of the column
+    desc: index of the column
     type: Number
 - call: !Binary
   - ctrl
   - - row
     - column
   ret:
-  - String
-  - path of image
+    type: String
+    desc: path of image
   params:
   - name: ctrl
     type: Control
   - name: row
-    description: index of the row
+    desc: index of the row
     type: Number
   - name: column
-    description: index of the column
+    desc: index of the column
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>_path = _control lnbPictureRight [0, 0];</sqf>
+see_also:
+- lnbSetPictureRight
+- lnbSetPicture
+- lnbPicture

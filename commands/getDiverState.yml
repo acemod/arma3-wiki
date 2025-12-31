@@ -1,5 +1,5 @@
 name: getDiverState
-description: |-
+desc: |-
   Returns [[true]] when object is in diver state - e.g when the unit would put diving [[goggles]] on.
   {{Feature|informative|
   Diving [[goggles]] remove blurriness underwater, however when assigned, they do not appear on the face of the unit until the unit steps into the water.
@@ -11,16 +11,18 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - Boolean
-  - '[[true]] when diving [[goggles]] are visible'
+    type: Boolean
+    desc: '[[true]] when diving [[goggles]] are visible'
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 96
+  arma3: '1.96'
 examples:
 - <sqf>private _gogglesOn = getDiverState player;</sqf>
+see_also:
+- goggles
+- removeGoggles
+- addGoggles

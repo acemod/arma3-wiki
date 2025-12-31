@@ -1,21 +1,18 @@
 name: diag_drawMode
-description: Activates a debug visualisation.
+desc: Activates a debug visualisation.
 groups:
 - Diagnostic
 syntax:
 - call: !Unary type
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: type
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 86
+  arma3: '1.86'
 branch: diag
 examples:
 - |-
@@ -25,3 +22,5 @@ examples:
   diag_drawMode "Normal";
   </sqf>
 - "\"Wire\" can be used along other modes:\n<sqf>\ndiag_drawMode \"Wire\";\t\t\t// switch to first Wire mode\ndiag_drawMode \"Roadway\";\t\t// switch to Roadway like usual\n\ndiag_drawMode \"Wire\";\t\t\t// switch to second Wire mode\ndiag_drawMode \"ViewGeometry\";\t// switch to ViewGeometry, keeping the current Wire mode\n\ndiag_drawMode \"Wire\";\t\t\t// disable Wire\n</sqf>"
+see_also:
+- diag_list

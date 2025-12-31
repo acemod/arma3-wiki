@@ -1,5 +1,5 @@
 name: animate
-description: |-
+desc: |-
   Activates given object animation. Animation is defined in CfgModels [[Model Config#Animations|animations]] class. Class names listed in CfgVehicles [[Model Config#AnimationSources|AnimationSources]] bound to "Proxy" controller can also be animated with [[animate]] command (see [[Arma 3: createVehicle/vehicles]]).
   {{Feature|arma3|
   * It is recommended that [[animateSource]] command is used instead of [[animate]] whenever is possible, as it is more efficient and optimised for multiplayer
@@ -14,46 +14,35 @@ syntax:
     - phase
     - speed
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
     type: Object
   - name: animationName
-    description: name of the animation. This is the class-name of the animation defined in the config
+    desc: name of the animation. This is the class-name of the animation defined in the config
     type: String
   - name: phase
-    description: range 0 (start point of the animation) to 1 (end point of the animation). The speed, in which the animation is processed, is defined in the addon's config.cpp and cannot be changed during running missions
+    desc: range 0 (start point of the animation) to 1 (end point of the animation). The speed, in which the animation is processed, is defined in the addon's config.cpp and cannot be changed during running missions
     type: Number
   - name: speed
-    description: when [[true]] animation is instant; [[Number]] > 0 is treated as config speed value multiplier
-    type: Unknown
+    desc: when [[true]] animation is instant; [[Number]] > 0 is treated as config speed value multiplier
+    type: !OneOf
+    - - Boolean
+      - null
+    - - Number
+      - null
     optional: true
     default: '[[false]]'
 argument_loc: Global
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_building animate ["maindoor", 1];</sqf>
 - <sqf>_building animate ["Door_1_rot", 1, true];</sqf>
@@ -64,3 +53,11 @@ examples:
   offroad animate ["HidePolice", 0];
   offroad animate ["BeaconsStart", 1];
   </sqf>
+see_also:
+- animationPhase
+- setFaceAnimation
+- animateSource
+- animationSourcePhase
+- animateDoor
+- doorPhase
+- animationNames

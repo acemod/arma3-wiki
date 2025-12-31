@@ -1,5 +1,5 @@
 id: OnEntityMenu
-description: |-
+desc: |-
   When [[Eden Editor: Entity Context Menu|Entity Context Menu]] is opened.
   ** Entity position when clicked on an entity.
   ** Empty array when clicked on something that doesn't have position (i.e. abstract folder in Edit list like BLUFOR, Trigger, etc.)
@@ -7,12 +7,12 @@ description: |-
   ** Nil when clicked in the scene (we cannot use empty array, because that's a path to root item)
 params:
 - name: position
-  description: '[[Position]] where user clicked to open the menu.'
+  desc: '[[Position]] where user clicked to open the menu.'
   type: ArrayUnknown
 - name: entity
   type: EdenEntity
 - name: listPath
-  description: UI tree path when clicked on entity in the entity list.
+  desc: UI tree path when clicked on entity in the entity list.
   type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified

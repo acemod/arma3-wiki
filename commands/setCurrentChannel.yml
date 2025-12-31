@@ -1,21 +1,25 @@
 name: setCurrentChannel
-description: "Sets given channel as current chat channel. Scripted way of selecting desired channel on the UI.\nThe given channel may be disabled (see [[enableChannel]]), this is why this command returns boolean, [[true]] on success or [[false]] on failure. \n{{{!}} class=\"wikitable align-center\"\n! colspan=\"13\" {{!}} [[Channel IDs|channel ID]] number correspondence\n{{!}}-\n{{!}} {{n/a}}\n{{!}} Global\n{{!}} Side\n{{!}} Command\n{{!}} Group\n{{!}} Vehicle\n{{!}} Direct\n{{!}} Custom1\n{{!}} rowspan=\"2\" {{!}} ..\n{{!}} Custom10\n{{!}} {{GVI|arma3|2.22|size= 0.75}} Custom11\n{{!}} rowspan=\"2\" {{!}} ..\n{{!}} Custom50\n{{!}}-\n{{!}} -1\n{{!}} 0\n{{!}} 1\n{{!}} 2\n{{!}} 3\n{{!}} 4\n{{!}} 5\n{{!}} 6\n{{!}} 15\n{{!}} 26\n{{!}} 65\n{{!}}}"
+desc: "Sets given channel as current chat channel. Scripted way of selecting desired channel on the UI.\nThe given channel may be disabled (see [[enableChannel]]), this is why this command returns boolean, [[true]] on success or [[false]] on failure. \n{{{!}} class=\"wikitable align-center\"\n! colspan=\"13\" {{!}} [[Channel IDs|channel ID]] number correspondence\n{{!}}-\n{{!}} {{n/a}}\n{{!}} Global\n{{!}} Side\n{{!}} Command\n{{!}} Group\n{{!}} Vehicle\n{{!}} Direct\n{{!}} Custom1\n{{!}} rowspan=\"2\" {{!}} ..\n{{!}} Custom10\n{{!}} {{GVI|arma3|2.22|size= 0.75}} Custom11\n{{!}} rowspan=\"2\" {{!}} ..\n{{!}} Custom50\n{{!}}-\n{{!}} -1\n{{!}} 0\n{{!}} 1\n{{!}} 2\n{{!}} 3\n{{!}} 4\n{{!}} 5\n{{!}} 6\n{{!}} 15\n{{!}} 26\n{{!}} 65\n{{!}}}"
 groups:
 - Radio and Chat
 syntax:
 - call: !Unary channelID
   ret:
-  - Boolean
-  - '[[true]] on success'
+    type: Boolean
+    desc: '[[true]] on success'
   params:
   - name: channelID
-    description: '[[Channel IDs|channel ID]]'
+    desc: '[[Channel IDs|channel ID]]'
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 42
+  arma3: '1.42'
 examples:
 - <sqf>_isDirectSelected = setCurrentChannel 5; // sets Direct channel as current active</sqf>
+see_also:
+- getPlayerChannel
+- currentChannel
+- enableChannel
+- channelEnabled
+- radioChannelCreate

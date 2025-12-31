@@ -1,5 +1,5 @@
 name: getTurretLimits
-description: Returns the rotation and elevation limits for the given turret.
+desc: Returns the rotation and elevation limits for the given turret.
 groups:
 - Turrets
 syntax:
@@ -7,24 +7,26 @@ syntax:
   - vehicle
   - turret
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: vehicle
-    description: vehicle the turret belongs to
+    desc: vehicle the turret belongs to
     type: Object
   - name: turret
-    description: turret path
+    desc: turret path
     type: ArrayUnknown
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 12
+  arma3: '2.12'
 examples:
 - |-
   <sqf>
   private _turretLimits = m2 getTurretLimits [0];
   _turretLimits params ["_minTurn", "_maxTurn", "_minElev", "_maxElev", "_overridden"];
   </sqf>
+see_also:
+- setTurretLimits
+- setTurretOpticsMode
+- turretLocal
+- selectWeaponTurret

@@ -1,5 +1,5 @@
 name: getLoadedModsInfo
-description: |-
+desc: |-
   Returns information about all loaded modifications.
 
   {{Feature|informative|The first 7 values are equal to what is printed in [[Crash Files|RPT]] on game startup in the {{hl|c= ======== mods =======}} category.}}
@@ -8,15 +8,12 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - "<sqf>\nprivate _loadedMods = getLoadedModsInfo;\n/*\n\t[\n\t\t[\"Community Base Addons v3.18.1\",\"@cba_a3\",false,false,\"GAME DIR\",\"b256a972cc3a9bde93988e243ad5db85887dece0\",\"7de4bd5c\",\"450814997\"],\n\t\t[\"Arma 3 Art of War\",\"aow\",true,true,\"GAME DIR\",\"c6afb04056f1cea283c60e13b6d5ac8049140341\",\"2ed2ccad\",\"1325500\"],\n\t\t[\"Arma 3 Contact (Platform)\",\"enoch\",true,true,\"GAME DIR\",\"72172fe806a8cd128d5dd5f224dbf754b69af881\",\"32ed0446\",\"1021790\"],\n\t\t[\"Arma 3 Tanks\",\"tank\",true,true,\"GAME DIR\",\"35ef3b19b5ebd31d7da21565717f6d5c768edd59\",\"9c4a0882\",\"798390\"],\n\t\t[\"Arma 3 Tac-Ops\",\"tacops\",true,true,\"GAME DIR\",\"e03d923a8391d527d34c3a2d311e6f2554df18c8\",\"e6729774\",\"744950\"],\n\t\t[\"Arma 3 Laws of War\",\"orange\",true,true,\"GAME DIR\",\"71940c7021e27b4ae72cd6a527ff56784725850a\",\"d27bf111\",\"571710\"],\n\t\t[\"Arma 3 Malden\",\"argo\",true,true,\"GAME DIR\",\"230aad2992427ef22b803e177bdedda7b3f1727d\",\"2e502f53\",\"639600\"],\n\t\t[\"Arma 3 Jets\",\"jets\",true,true,\"GAME DIR\",\"d58526aaa24a73aa53d11b82f00cf49dc3ef3216\",\"d39b144d\",\"601670\"],\n\t\t[\"Arma 3 Apex\",\"expansion\",true,true,\"GAME DIR\",\"dded307173ad9bb62fe09a5084bb7d70c81639d3\",\"57f2ccad\",\"395180\"],\n\t\t[\"Arma 3 Marksmen\",\"mark\",true,true,\"GAME DIR\",\"eb956eb99f1a33cef4f825f8d52bc9ca9ef3d4cd\",\"d605b72\",\"332350\"],\n\t\t[\"Arma 3 Helicopters\",\"heli\",true,true,\"GAME DIR\",\"0e14ac1e91df7c56725b1dc9a939c50c5d93fd4c\",\"a6e7077f\",\"304380\"],\n\t\t[\"Arma 3 Karts\",\"kart\",true,true,\"GAME DIR\",\"f9bac1340520fc3a25c3c4c7b6c48efdba32d535\",\"9b1d75e8\",\"288520\"],\n\t\t[\"Arma 3 Zeus\",\"curator\",true,true,\"GAME DIR\",\"5cfb449d86e7b7e8529909ec1c0656d70e2cfda0\",\"4ccdcca0\",\"275700\"],\n\t\t[\"Arma 3\",\"A3\",true,true,\"GAME DIR\",\"\",\"\",\"0\"]]\n\t]\n*/\n</sqf>"
 - |-
@@ -24,3 +21,5 @@ examples:
   private _modInfo = getLoadedModsInfo select 0;
   _modInfo params ["_modname", "_modDir", "_isDefault", "_isOfficial", "_origin", "_hash", "_hashShort", "_itemID"];
   </sqf>
+see_also:
+- allAddonsInfo

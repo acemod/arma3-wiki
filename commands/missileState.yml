@@ -1,22 +1,24 @@
 name: missileState
-description: Get the provided ''guided'' missile's engine, target lock and flight profile states.
+desc: Get the provided ''guided'' missile's engine, target lock and flight profile states.
 groups:
 - Weapons
 syntax:
 - call: !Unary munition
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: munition
-    description: missile
+    desc: missile
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>missileState _myMissile params ["_engineState", "_lockState", "_flightState"];</sqf>
 - "<sqf>\n_myHelicopter addEventHandler [\"Fired\", {\n\tprivate _projectile = _this select 6;\n\t// or params [\"\", \"\", \"\", \"\", \"\", \"\", \"_projectile\"];\n\tsystemChat str missileState _projectile;\n}];\n</sqf>"
+see_also:
+- missileTargetPos
+- setMissileTargetPos
+- setMissileTarget
+- missileTarget

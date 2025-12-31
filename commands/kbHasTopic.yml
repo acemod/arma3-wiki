@@ -1,5 +1,5 @@
 name: kbHasTopic
-description: Check if conversation topic was registered to given person. See [[Conversations]] for more details.
+desc: Check if conversation topic was registered to given person. See [[Conversations]] for more details.
 groups:
 - Conversations
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - person
   - topicName
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: person
     type: Object
@@ -17,18 +16,21 @@ syntax:
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_obiHasTopic = player kbHasTopic "helloThereGeneralK";</sqf>
 - <sqf>if (player kbHasTopic "dontShoot") then { player kbRemoveTopic "dontShoot"; };</sqf>
+see_also:
+- Conversations
+- kbAddTopic
+- kbTell
+- kbReact
+- kbRemoveTopic
+- kbAddDatabase
+- kbAddDatabaseTargets
+- FSM
+- FSM
+- Editor

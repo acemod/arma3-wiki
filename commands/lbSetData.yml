@@ -1,5 +1,5 @@
 name: lbSetData
-description: |-
+desc: |-
   Sets the additional text (invisible) in the item with the given index of the listbox or combobox with id idc of the topmost user [[dialog]] to the given data.
 
   {{Feature|informative|See more information on the [[CT_LISTBOX]] command family [[CT_LISTBOX#Scripting_Example|here]].}}
@@ -11,11 +11,10 @@ syntax:
   - index
   - data
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
-    description: control's IDC
+    desc: control's IDC
     type: Number
   - name: index
     type: Number
@@ -26,8 +25,7 @@ syntax:
   - - index
     - data
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -38,27 +36,18 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>lbSetData [101, 1, "#1"];</sqf>
 - <sqf>_control lbSetData [1, "#1"];</sqf>
+see_also:
+- lbData
+- lbDelete
+- lbSetValue
+- lbValue

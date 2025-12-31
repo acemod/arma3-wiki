@@ -1,21 +1,28 @@
 name: isThrowable
-description: Returns [[true]] if the given magazine is a throwable.
+desc: Returns [[true]] if the given magazine is a throwable.
 groups:
 - Weapons
 - Unit Inventory
 syntax:
 - call: !Unary magazine
   ret:
-  - Boolean
-  - '[[true]] if throwable'
+    type: Boolean
+    desc: '[[true]] if throwable'
   params:
   - name: magazine
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>isThrowable "HandGrenade"; // true</sqf>
+see_also:
+- selectThrowable
+- currentThrowable
+- throwables
+- selectWeapon
+- currentWeapon
+- currentMagazine
+- currentMuzzle
+- BIS_fnc_isThrowable

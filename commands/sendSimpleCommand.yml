@@ -1,5 +1,5 @@
 name: sendSimpleCommand
-description: |-
+desc: |-
   Sends a simple command to the vehicle's driver / gunner (air vehicles ignore it). See also [[vehicleMoveInfo]].{{Feature | important | Doesn't seem to work if AI driver is alone, needs another unit in the vehicle (could be another AI or player) that is set as [[setEffectiveCommander]]. If driver is [[effectiveCommander]] it will refuse any drive commands.}}
   {{Feature|arma3|Due to some sort of a bug when vehicle is ordered turning ("LEFT" or "RIGHT"), it locks the vehicle ability to respond to any other commands properly. Always use "STOPTURNING" to cancel turning before issuing other move commands}}
   {{{!}} class="valign-top"
@@ -35,8 +35,7 @@ syntax:
   - vehicleName
   - command
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicleName
     type: Object
@@ -45,23 +44,20 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>vehicle player sendSimpleCommand "STOP";</sqf>
+see_also:
+- vehicleMoveInfo
+- useAISteeringComponent
+- effectiveCommander
+- setEffectiveCommander
+- enableAI
+- disableAI
+- enableAIFeature
+- enableSentences

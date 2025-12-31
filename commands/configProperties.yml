@@ -1,5 +1,5 @@
 name: configProperties
-description: |-
+desc: |-
   Returns an array of config entries that meet the criteria in the condition code. The command iterates through available classes and config properties for given config entry.
   Current looked at config is stored in _x variable (similar to alternative [[count]] command implementation).
   The condition has to return [[true]] in order for the looked at property to be added to the resulting array. This command is a bit slower than [[configClasses]] but allows to access inherited entries.
@@ -11,27 +11,31 @@ syntax:
   - condition
   - inherit
   ret:
-  - ArrayUnknown
-  - array of [[Config]]s
+    type: ArrayUnknown
+    desc: array of [[Config]]s
   params:
   - name: config
-    description: config entry to search
+    desc: config entry to search
     type: Config
   - name: condition
     type: Unknown
     optional: true
   - name: inherit
-    description: include inherited properties
+    desc: include inherited properties
     type: Boolean
     optional: true
     default: '[[true]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 36
+  arma3: '1.36'
 examples:
 - <sqf>_configs = configProperties [configFile >> "CfgVehicles" >> "O_Truck_02_box_F"];</sqf>
 - <sqf>_configs = configProperties [configFile >> "RscText", "true", true];</sqf>
 - "Get all hitpoints of a truck:\n<sqf>\n_hitPoints = [];\n_hitPointsCfgs = configProperties [\n\tconfigFile >> \"CfgVehicles\" >> \"O_Truck_02_box_F\" >> \"HitPoints\", \n\t\"true\", \n\ttrue\n];\nhint str _hitPointsCfgs;\n</sqf>"
+see_also:
+- Config
+- configFile
+- missionConfigFile
+- configClasses
+- configHierarchy

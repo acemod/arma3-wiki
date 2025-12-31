@@ -1,5 +1,5 @@
 name: ctrlSetModelDirAndUp
-description: Sets orientation of 3D control model. It is similar to [[setVectorDirAndUp]] command for an object.
+desc: Sets orientation of 3D control model. It is similar to [[setVectorDirAndUp]] command for an object.
 groups:
 - GUI Control - Object
 syntax:
@@ -7,20 +7,32 @@ syntax:
   - control
   - dirAndUp
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
-    description: 3D control
+    desc: 3D control
     type: Control
   - name: dirAndUp
-    description: '[[[vectorDir]], [[vectorUp]]]'
+    desc: '[[[vectorDir]], [[vectorUp]]]'
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>_ctrl3D ctrlSetModelDirAndUp [[0,1,0],[0,0,1]]; //default orientation</sqf>
+see_also:
+- ctrlModelDirAndUp
+- ctrlCreate
+- ctrlDelete
+- ctrlModel
+- ctrlSetModel
+- ctrlModelScale
+- ctrlSetModelScale
+- ctrlPosition
+- ctrlSetPosition
+- ctrlClassName
+- vectorDir
+- vectorUp
+- setVectorDirAndUp
+- ctrlModelVectorSide

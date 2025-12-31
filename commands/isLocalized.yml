@@ -1,23 +1,28 @@
 name: isLocalized
-description: Checks whether given ''stringName'' is [[localize]]d.
+desc: Checks whether given ''stringName'' is [[localize]]d.
 groups:
 - Strings
 - Localization
 syntax:
 - call: !Unary stringName
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: stringName
-    description: string which leads to localisation. Casing does not matter. Since Arma 3 v2.04 a string starting with {{hl|"$"}} is supported as well
+    desc: string which leads to localisation. Casing does not matter. Since Arma 3 v2.04 a string starting with {{hl|"$"}} is supported as well
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - "<sqf>\nif (isLocalized \"STR_USRACT_ADJUST\") then \n{\n\thint localize \"STR_USRACT_ADJUST\";\n} \nelse \n{\n\thint \"STR_USRACT_ADJUST\";\n\tdiag_log \"ToDo: STR_USRACT_ADJUST is not localized\";\n};\n</sqf>"
 - <sqf>isLocalized "$STR_USRACT_ADJUST"; // Since Arma v2.04</sqf>
+see_also:
+- localize
+- diag_localized
+- getTextRaw
+- WFSideText
+- Stringtable.csv
+- Stringtable.xml
+- BIS_fnc_localize

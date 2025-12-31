@@ -1,18 +1,24 @@
 name: windStr
-description: Returns the current wind strength.
+desc: Returns the current wind strength.
 groups:
 - Environment
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>10 setWindStr (0.5 * windStr);</sqf>
+see_also:
+- setWindStr
+- gusts
+- setGusts
+- setWind
+- setWindDir
+- setWindForce
+- wind
+- windDir

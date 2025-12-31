@@ -1,5 +1,5 @@
 name: setWaypointScript
-description: |-
+desc: |-
   Attaches a script to a scripted waypoint. In early versions of Arma, command consisted of a script name and additional script arguments and the script had to use [[SQS Syntax]]. The script receives the following arguments in [[Magic Variables#this|_this]] variable: [group, position, target] + [the optional passed arguments]. The optional arguments are [[append]]ed to the end of the arguments array.
   {{Feature|arma3|In Arma 3, ''command'' argument can be a reference to .sqf script (it will have to explicitly end with '''{{hl|.sqf}}''') or a reference to {{hl|.sqs}} script.}}
 groups:
@@ -9,35 +9,46 @@ syntax:
   - waypoint
   - command
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: waypoint
-    description: format [[Waypoint]]
+    desc: format [[Waypoint]]
     type: ArrayUnknown
   - name: command
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>[_grp, 2] setWaypointScript "find.sqs player";</sqf>
 - <sqf>[_grp, 2] setWaypointScript "somescript.sqf [1,2,3,4,5,6,7,8]";</sqf>
+see_also:
+- waypoints
+- deleteWaypoint
+- copyWaypoints
+- setCurrentWaypoint
+- setWaypointBehaviour
+- setWaypointCombatMode
+- setWaypointCompletionRadius
+- setWaypointDescription
+- setWaypointFormation
+- setWaypointHousePosition
+- setWaypointPosition
+- setWaypointSpeed
+- setWaypointStatements
+- setWaypointTimeout
+- setWaypointType
+- setWaypointVisible
+- waypointAttachVehicle
+- waypointAttachedVehicle
+- setWaypointLoiterRadius
+- waypointLoiterRadius
+- addWaypoint
+- setWaypointLoiterType
+- waypointSpeed

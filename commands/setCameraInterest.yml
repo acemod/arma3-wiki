@@ -1,5 +1,5 @@
 name: setCameraInterest
-description: Set camera interest for given entity. Camera interest is by default 0. Any unit which is speaking has its camera interest raised to 50. Camera interest is used to focus camera to control depth of field in cutscenes. Combination of camera interest, unit position of the screen, unit movement, unit type, and some other properties is used to determine which unit to focus at. Higher camera interest increases the chance of the unit being focused.
+desc: Set camera interest for given entity. Camera interest is by default 0. Any unit which is speaking has its camera interest raised to 50. Camera interest is used to focus camera to control depth of field in cutscenes. Combination of camera interest, unit position of the screen, unit movement, unit type, and some other properties is used to determine which unit to focus at. Higher camera interest increases the chance of the unit being focused.
 groups:
 - Camera Control
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - entity
   - interest
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: entity
     type: Object
@@ -17,23 +16,13 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_soldier setCameraInterest 50;</sqf>
+see_also:
+- cameraInterest

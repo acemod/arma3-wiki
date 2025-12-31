@@ -1,5 +1,5 @@
 name: hcSelectGroup
-description: Select given group in [[High Command|high command]] bar.
+desc: Select given group in [[High Command|high command]] bar.
 groups:
 - High Command
 syntax:
@@ -7,28 +7,32 @@ syntax:
   - unit
   - array
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: HC Owner
+    desc: HC Owner
     type: Object
   - name: array
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player hcSelectGroup [group_1,group_2];</sqf>
+see_also:
+- High
+- Command
+- hcAllGroups
+- hcGroupParams
+- hcLeader
+- hcRemoveAllGroups
+- hcRemoveGroup
+- hcSelected
+- hcSetGroup
+- hcShowBar
+- hcShownBar
+- onHCGroupSelectionChanged

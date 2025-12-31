@@ -1,20 +1,33 @@
 name: markerDrawPriority
-description: Returns marker draw priority.
+desc: Returns marker draw priority.
 groups:
 - Markers
 syntax:
 - call: !Unary markerName
   ret:
-  - Number
-  - draw priority
+    type: Number
+    desc: draw priority
   params:
   - name: markerName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 14
+  arma3: '2.14'
 examples:
 - <sqf>markerDrawPriority "MarkerOne"</sqf>
+see_also:
+- setMarkerDrawPriority
+- setMarkerType
+- setMarkerTypeLocal
+- markerType
+- setMarkerAlphaLocal
+- setMarkerBrush
+- setMarkerColor
+- setMarkerDir
+- setMarkerPos
+- setMarkerShape
+- setMarkerSize
+- setMarkerText
+- createMarker
+- CfgMarkers

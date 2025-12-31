@@ -1,5 +1,5 @@
 name: removeAllAssignedItems
-description: |-
+desc: |-
   Unassigns and deletes all linked items from inventory.
   The commands operates on [[assignedItems]] array, which does not include goggles or headgear but includes binoculars, which is a weapon.<br>
   Use [[removeGoggles]] and [[removeHeadgear]] for those.
@@ -8,8 +8,7 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -18,27 +17,31 @@ syntax:
   - allItems
   - includeBinocs
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: soldier
+    desc: soldier
     type: Object
   - name: allItems
-    description: '[[true]] to include all slot items, [[false]] exclude goggles and headgear'
+    desc: '[[true]] to include all slot items, [[false]] exclude goggles and headgear'
     type: Boolean
   - name: includeBinocs
-    description: '[[true]] to include binoculars (which is a weapon), [[false]] to exclude it'
+    desc: '[[true]] to include binoculars (which is a weapon), [[false]] to exclude it'
     type: Boolean
   since:
-    arma_3:
-      major: 2
-      minor: 14
+    arma3: '2.14'
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>removeAllAssignedItems player;</sqf>
+see_also:
+- assignedItems
+- linkItem
+- unlinkItem
+- assignItem
+- unassignItem
+- addItem
+- removeItem
+- removeAllContainers

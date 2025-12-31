@@ -1,40 +1,40 @@
 name: ppEffectCommitted
-description: Check whether given [[Post Process Effects|post process effect]] is committed.
+desc: Check whether given [[Post Process Effects|post process effect]] is committed.
 groups:
 - Camera Control
 syntax:
 - call: !Unary effect
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: effect
-    description: effect name
+    desc: effect name
     type: String
 - call: !Unary handle
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: handle
-    description: effect handle
+    desc: effect handle
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>ppEffectCommitted "colorCorrection";</sqf>
 - <sqf>ppEffectCommitted _hndl;</sqf>
 - <sqf>if (ppEffectCommitted "colorCorrection") then { hint "alteration done !" };</sqf>
+see_also:
+- Post
+- Process
+- Effects
+- ppEffectForceInNVG
+- ppEffectEnable
+- ppEffectDestroy
+- ppEffectCreate
+- ppEffectCommit
+- ppEffectAdjust

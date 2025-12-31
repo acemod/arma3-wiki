@@ -1,5 +1,5 @@
 name: menuAdd
-description: Adds new submenu entry into item on given path.
+desc: Adds new submenu entry into item on given path.
 groups:
 - GUI Control - Menu
 syntax:
@@ -8,8 +8,7 @@ syntax:
   - path
   - text
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: idc
     type: Number
@@ -22,22 +21,22 @@ syntax:
   - - path
     - text
   ret:
-  - Number
-  - index of the item
+    type: Number
+    desc: index of the item
   params:
   - name: control
     type: Control
   - name: path
-    description: path where the items should be added
+    desc: path where the items should be added
     type: ArrayUnknown
   - name: text
-    description: displayed name for the entry
+    desc: displayed name for the entry
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>findDisplay 313 displayCtrl 120 menuAdd [[], "Custom Tools"]; // Add new entry at the top level to the menu strip in Eden Editor</sqf>
+see_also:
+- menuDelete

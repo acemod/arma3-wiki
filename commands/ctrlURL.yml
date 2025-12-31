@@ -1,20 +1,19 @@
 name: ctrlURL
-description: Returns the URL property of a button control. Getter for [[ctrlSetURL]].
+desc: Returns the URL property of a button control. Getter for [[ctrlSetURL]].
 groups:
 - GUI Control
 syntax:
 - call: !Unary control
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>private _ctrlUrl = ctrlURL _control; // e.g. "http://arma3.com/"</sqf>
+see_also:
+- ctrlSetURL

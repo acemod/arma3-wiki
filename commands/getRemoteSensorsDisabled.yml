@@ -1,18 +1,17 @@
 name: getRemoteSensorsDisabled
-description: Get status of disabled raycasts for remote entities. See [[disableRemoteSensors]] for detailed description.
+desc: Get status of disabled raycasts for remote entities. See [[disableRemoteSensors]] for detailed description.
 groups:
 - Sensors
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 52
+  arma3: '1.52'
 examples:
 - <sqf>_status = getRemoteSensorsDisabled;</sqf>
+see_also:
+- disableRemoteSensors

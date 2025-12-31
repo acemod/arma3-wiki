@@ -1,18 +1,23 @@
 name: environmentVolume
-description: Returns the current environment volume (set by [[fadeEnvironment]])
+desc: Returns the current environment volume (set by [[fadeEnvironment]])
 groups:
 - Sounds
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 4
+  arma3: '2.4'
 examples:
 - <sqf>hint str environmentVolume;</sqf>
+see_also:
+- fadeEnvironment
+- musicVolume
+- soundVolume
+- radioVolume
+- speechVolume
+- getAudioOptionVolumes
+- environmentEnabled

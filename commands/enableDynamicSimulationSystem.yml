@@ -1,21 +1,35 @@
 name: enableDynamicSimulationSystem
-description: 'Enables or disables the whole [[Arma 3: Dynamic Simulation]] system'
+desc: 'Enables or disables the whole [[Arma 3: Dynamic Simulation]] system'
 groups:
 - Dynamic Simulation
 syntax:
 - call: !Unary enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: enable
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Global
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>enableDynamicSimulationSystem true;</sqf>
+see_also:
+- dynamicSimulationSystemEnabled
+- enableDynamicSimulation
+- dynamicSimulationEnabled
+- setDynamicSimulationDistance
+- dynamicSimulationDistance
+- setDynamicSimulationDistanceCoef
+- dynamicSimulationDistanceCoef
+- triggerDynamicSimulation
+- canTriggerDynamicSimulation
+- enableSimulation
+- simulationEnabled
+- enableSimulationGlobal
+- Arma
+- '3:'
+- Dynamic
+- Simulation

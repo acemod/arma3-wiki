@@ -1,5 +1,5 @@
 name: set
-description: "Changes the element at the given zero-based index of the [[Array|array]]. \n\n{{Feature|informative|If the index is out of bounds, the array will [[resize]] to incorporate the index as its last value, padding with [[nil]] as necessary (see {{Link|#Example 4}}). }}"
+desc: "Changes the element at the given zero-based index of the [[Array|array]]. \n\n{{Feature|informative|If the index is out of bounds, the array will [[resize]] to incorporate the index as its last value, padding with [[nil]] as necessary (see {{Link|#Example 4}}). }}"
 groups:
 - Arrays
 - HashMap
@@ -9,13 +9,12 @@ syntax:
   - - index
     - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: array
     type: ArrayUnknown
   - name: index
-    description: 0-based array index. {{GVI|arma3|2.12|size= 0.75}} negative index can be used to select from the end of the array, i.e. -1 means last array element.
+    desc: 0-based array index. {{GVI|arma3|2.12|size= 0.75}} negative index can be used to select from the end of the array, i.e. -1 means last array element.
     type: Number
   - name: value
     type: Anything
@@ -25,8 +24,8 @@ syntax:
     - value
     - insertOnly
   ret:
-  - Boolean
-  - '[[false]] if the key is new to the hashmap, [[true]] if a value got overwritten'
+    type: Boolean
+    desc: '[[false]] if the key is new to the hashmap, [[true]] if a value got overwritten'
   params:
   - name: hashMap
     type: HashMapUnknown
@@ -35,42 +34,24 @@ syntax:
   - name: value
     type: Anything
   - name: insertOnly
-    description: if set to [[true]], set the value only if the key does not exist already
+    desc: if set to [[true]], set the value only if the key does not exist already
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 2
-        minor: 8
+      arma3: '2.8'
   since:
-    arma_3:
-      major: 2
-      minor: 2
+    arma3: '2.2'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_arrayOne set [0, "Hello"];</sqf>
 - |-
@@ -92,3 +73,9 @@ examples:
   _myHashMap set ["key", "value1", true]; // "key" value is set to "value1"
   _myHashMap set ["key", "value2", true]; // "key" value is still "value1" as "key" already exists in the hashmap
   </sqf>
+see_also:
+- resize
+- reverse
+- select
+- deleteAt
+- deleteRange

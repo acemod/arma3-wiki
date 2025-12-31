@@ -1,5 +1,5 @@
 name: htmlLoad
-description: |-
+desc: |-
   Load [[HTML File Format|HTML]] from file or URI using given control. File path is relative to current mission dir or an absolute path (with drive letter etc.).
   The command is subject to restrictions, imposed by [[CfgCommands]] class.
   {{Feature|arma3|Since {{GVI|arma3|2.10|size= 0.75}} the 'title' attribute is supported within &lt;img&gt; and &lt;a&gt; html tags}}
@@ -11,33 +11,30 @@ syntax:
   - control
   - filename
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: filename
-    description: local file name or remote file URL
+    desc: local file name or remote file URL
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_control htmlLoad "briefing.html";</sqf>
 - <sqf>_control htmlLoad "http://www.bistudio.com/newsfeed/arma3_news.php?build=main&language=English";</sqf>
 - "Display news item:\n<sqf>\n0 spawn {\n\tdisableSerialization;\n\tprivate _html = findDisplay 46 createDisplay \"RscCredits\" ctrlCreate [\"RscHTML\", -1];\n\t_html ctrlSetBackgroundColor [0,0,0,0.8];\n\t_html ctrlSetPosition [safeZoneX, safeZoneY, safeZoneW, safeZoneH];\n\t_html ctrlCommit 0;\n\t_html htmlLoad \"http://www.bistudio.com/newsfeed/arma3_news.php?build=main&language=English\";\n};\n</sqf>"
+see_also:
+- ctrlHTMLLoaded
+- loadFile
+- preprocessFile
+- preprocessFileLineNumbers
+- HTML
+- File
+- Format

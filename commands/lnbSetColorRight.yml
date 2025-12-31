@@ -1,5 +1,5 @@
 name: lnbSetColorRight
-description: Sets the right color.
+desc: Sets the right color.
 groups:
 - GUI Control - ListNBox
 syntax:
@@ -9,19 +9,18 @@ syntax:
     - column
   - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: row
-    description: index of the row
+    desc: index of the row
     type: Number
   - name: column
-    description: index of the column
+    desc: index of the column
     type: Number
   - name: color
-    description: color RGBA
+    desc: color RGBA
     type: ArrayUnknown
 - call: !Binary
   - ctrl
@@ -29,25 +28,26 @@ syntax:
       - column
     - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ctrl
     type: Control
   - name: row
-    description: index of the row
+    desc: index of the row
     type: Number
   - name: column
-    description: index of the column
+    desc: index of the column
     type: Number
   - name: color
-    description: color RGBA
+    desc: color RGBA
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>_control lnbSetColorRight [[0, 0], [1,1,1,0.5]];</sqf>
+see_also:
+- lnbSetColor
+- lnbColorRight
+- lnbColor

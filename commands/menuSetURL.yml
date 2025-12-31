@@ -1,5 +1,5 @@
 name: menuSetURL
-description: Sets weblink (URL) of given menu strip entry, subject to {{hl|allowedHTMLLoadURIs[]}} whitelisting in [[CfgCommands]] config.
+desc: Sets weblink (URL) of given menu strip entry, subject to {{hl|allowedHTMLLoadURIs[]}} whitelisting in [[CfgCommands]] config.
 groups:
 - GUI Control - Menu
 syntax:
@@ -8,13 +8,14 @@ syntax:
   - path
   - link
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   - name: link
     type: String
 - call: !Binary
@@ -22,20 +23,22 @@ syntax:
   - - path
     - link
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   - name: link
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>_ctrlMenuStrip menuSetURL [[0,0,1], "https://arma3.com/"];</sqf>
+see_also:
+- menuURL
+- ctrlSetURL

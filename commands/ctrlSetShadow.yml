@@ -1,5 +1,5 @@
 name: ctrlSetShadow
-description: |-
+desc: |-
   Sets 'shadow' property of the control:
   * 0 - no shadow
   * 1 - shadow
@@ -11,19 +11,19 @@ syntax:
   - control
   - shadow
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: shadow
-    description: shadow value, see description
+    desc: shadow value, see description
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>_control ctrlSetShadow 1;</sqf>
+see_also:
+- ctrlShadow
+- ctrlCreate

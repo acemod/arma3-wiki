@@ -1,5 +1,5 @@
 name: setMarkerDrawPriority
-description: |-
+desc: |-
   Sets marker draw priority. Higher priority markers are drawn on top. Default priority is 0.
   {{Feature|important|Be aware that this command has '''local''' effect despite the command name missing the word '''local'''!}}
 problem_notes:
@@ -11,20 +11,32 @@ syntax:
   - markerName
   - priority
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: markerName
     type: String
   - name: priority
-    description: draw priority
+    desc: draw priority
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 14
+  arma3: '2.14'
 examples:
 - <sqf>"MarkerOne" setMarkerDrawPriority 0.5;</sqf>
 - <sqf>"MarkerTwo" setMarkerDrawPriority -2.1;</sqf>
+see_also:
+- markerDrawPriority
+- setMarkerType
+- setMarkerTypeLocal
+- markerType
+- setMarkerAlphaLocal
+- setMarkerBrush
+- setMarkerColor
+- setMarkerDir
+- setMarkerPos
+- setMarkerShape
+- setMarkerSize
+- setMarkerText
+- createMarker
+- CfgMarkers

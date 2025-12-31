@@ -1,20 +1,30 @@
 name: displayParent
-description: Returns parent display of the given display.
+desc: Returns parent display of the given display.
 groups:
 - GUI Control
 syntax:
 - call: !Unary display
   ret:
-  - Display
-  - null
+    type: Display
   params:
   - name: display
     type: Display
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 58
+  arma3: '1.58'
 examples:
 - '<sqf>_display = displayParent findDisplay 49; // Display #46</sqf>'
+see_also:
+- displayChild
+- findDisplay
+- displayCtrl
+- createDisplay
+- createDialog
+- dialog
+- displayNull
+- ctrlCreate
+- controlNull
+- ctrlParent
+- ctrlParentControlsGroup
+- focusedCtrl

@@ -1,5 +1,5 @@
 name: addAction
-description: Adds an entry to the action menu of an object. The action can only be activated when in proximity to the object '''and''' looking at it. Adding an action to the player makes that action available to the player at all times. For event handling of user interaction see [[inGameUISetEventHandler]].
+desc: Adds an entry to the action menu of an object. The action can only be activated when in proximity to the object '''and''' looking at it. Adding an action to the player makes that action available to the player at all times. For event handling of user interaction see [[inGameUISetEventHandler]].
 multiplayer_note: The command will be ignored on dedicated servers, probably because no UI exists.
 groups:
 - Interaction
@@ -19,87 +19,99 @@ syntax:
     - selection
     - memoryPoint
   ret:
-  - Number
-  - the added action's ID. Action can be removed with [[removeAction]] (see also [[removeAllActions]]). IDs are incrementing, the first given action to each unit has the ID 0, the second the ID 1, etc. IDs are also passed to the called script (see the [[#Syntax 2|''script'' parameter]])
+    type: Number
+    desc: the added action's ID. Action can be removed with [[removeAction]] (see also [[removeAllActions]]). IDs are incrementing, the first given action to each unit has the ID 0, the second the ID 1, etc. IDs are also passed to the called script (see the [[#Syntax 2|''script'' parameter]])
   params:
   - name: object
-    description: 'unit, vehicle or static object. ''''''No [[createAgent|agents]] and [[Arma 3: Simple Objects|simple objects]]!'''''''
+    desc: 'unit, vehicle or static object. ''''''No [[createAgent|agents]] and [[Arma 3: Simple Objects|simple objects]]!'''''''
     type: Object
   - name: title
-    description: the action name displayed in the action menu, may contain [[Structured Text]]. Because of that '''<''' and '''>''' symbols will be interpreted as opening and closing XML tags. To avoid this use {{hl|&amp;lt;}} for '''&lt;''' and {{hl|&amp;gt;}} for '''&gt;'''. The title text appearance can be changed with [[setUserActionText]]
+    desc: the action name displayed in the action menu, may contain [[Structured Text]]. Because of that '''<''' and '''>''' symbols will be interpreted as opening and closing XML tags. To avoid this use {{hl|&amp;lt;}} for '''&lt;''' and {{hl|&amp;gt;}} for '''&gt;'''. The title text appearance can be changed with [[setUserActionText]]
     type: String
   - name: script
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - Code
+      - null
+    - - Object
+      - null
+    - - Object
+      - null
+    - - Number
+      - null
+    - - Anything
+      - null
   - name: arguments
-    description: arguments to pass to the script. Accessible with <sqf inline>_this select 3</sqf> inside the script. If [[Array]] is used as an argument for example, its first element reference would be <sqf inline>_this select 3 select 0</sqf>
+    desc: arguments to pass to the script. Accessible with <sqf inline>_this select 3</sqf> inside the script. If [[Array]] is used as an argument for example, its first element reference would be <sqf inline>_this select 3 select 0</sqf>
     type: Anything
     optional: true
     default: '[[nil]]'
   - name: priority
-    description: priority value of the action. Actions will be arranged in descending order according to this value. Every game action has a preset priority value. Value can be negative or decimal fraction. Actions with same values will be arranged in order which they were made, newest at the bottom. The bigger the number the higher the action will be positioned on the menu. Typical range is 0 to 6
+    desc: priority value of the action. Actions will be arranged in descending order according to this value. Every game action has a preset priority value. Value can be negative or decimal fraction. Actions with same values will be arranged in order which they were made, newest at the bottom. The bigger the number the higher the action will be positioned on the menu. Typical range is 0 to 6
     type: Number
     optional: true
     default: '1.5'
   - name: showWindow
-    description: if set to [[true]], players see "Titletext" at mid-lower screen, as they approach the object. Only the title text for the action with highest priority and ''showWindow'' set to [[true]] will be shown
+    desc: if set to [[true]], players see "Titletext" at mid-lower screen, as they approach the object. Only the title text for the action with highest priority and ''showWindow'' set to [[true]] will be shown
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: hideOnUse
-    description: if set to [[true]], it will hide the action menu after selecting it. If set to [[false]], it will leave the action menu open and visible after selecting the action, leaving the same action highlighted, for the purpose of allowing you to re-select that same action quickly, or to select another action
+    desc: if set to [[true]], it will hide the action menu after selecting it. If set to [[false]], it will leave the action menu open and visible after selecting the action, leaving the same action highlighted, for the purpose of allowing you to re-select that same action quickly, or to select another action
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: shortcut
-    description: one of the [[:Category:Key Actions|key names]] defined in bin.pbo (e.g. "moveForward"). Adding available shortcut will bind corresponding keyboard key to this action. Shortcut availability can be tested with [[inputAction]] command
+    desc: one of the [[:Category:Key Actions|key names]] defined in bin.pbo (e.g. "moveForward"). Adding available shortcut will bind corresponding keyboard key to this action. Shortcut availability can be tested with [[inputAction]] command
     type: String
     optional: true
     default: '""'
   - name: condition
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - Object
+      - null
+    - - Object
+      - null
+    - - Object
+      - null
+    - - Number
+      - null
     optional: true
   - name: radius
-    description: maximum 3D [[distance]] in meters between the activating unit's [[eyePos]] and ''object'''s ''memoryPoint'', ''selection'' or [[position]]. -1 disables the radius; hardcoded limit is '''50'''
+    desc: maximum 3D [[distance]] in meters between the activating unit's [[eyePos]] and ''object'''s ''memoryPoint'', ''selection'' or [[position]]. -1 disables the radius; hardcoded limit is '''50'''
     type: Number
     optional: true
     default: '50'
     since:
-      arma_3:
-        major: 1
-        minor: 64
+      arma3: '1.64'
   - name: unconscious
-    description: if [[true]] will be shown to incapacitated player. See also [[setUnconscious]] and [[lifeState]]
+    desc: if [[true]] will be shown to incapacitated player. See also [[setUnconscious]] and [[lifeState]]
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 1
-        minor: 64
+      arma3: '1.64'
   - name: selection
-    description: '''''object''''''s geometry LOD''s named selection'
+    desc: '''''object''''''s geometry LOD''s named selection'
     type: String
     optional: true
     default: '""'
     since:
-      arma_3:
-        major: 1
-        minor: 70
+      arma3: '1.70'
   - name: memoryPoint
-    description: '''''object''''''s memory point. If ''''selection'''' is supplied, ''''memoryPoint'''' is not used'
+    desc: '''''object''''''s memory point. If ''''selection'''' is supplied, ''''memoryPoint'''' is not used'
     type: String
     optional: true
     default: '""'
     since:
-      arma_3:
-        major: 1
-        minor: 82
+      arma3: '1.82'
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -116,3 +128,14 @@ examples:
 - "<sqf>\n// create object on the server and add action to the object on every client\nif (isServer) then\n{\n\tprivate _object = \"some_obj_class\" createVehicle [1234, 1234, 0];\n\t[_object, [\"Greetings!\", { hint \"Hello!\"; }]] remoteExec [\"addAction\"]; // Note: does not return action id\n};\n</sqf>"
 - "Default parameters:\n<sqf>\nthis addAction\n[\n\t\"title\",\n\t{\n\t\tparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"];\n\t},\n\tnil,\n\t1.5,\n\ttrue,\n\ttrue,\n\t\"\",\n\t\"true\",\n\t50,\n\tfalse,\n\t\"\",\n\t\"\"\n];\n</sqf>"
 - "Default parameters with comments:\n<sqf>\nthis addAction\n[\n\t\"title\",\t// title\n\t{\n\t\tparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"]; // script\n\t},\n\tnil,\t\t// arguments\n\t1.5,\t\t// priority\n\ttrue,\t\t// showWindow\n\ttrue,\t\t// hideOnUse\n\t\"\",\t\t\t// shortcut\n\t\"true\",\t\t// condition\n\t50,\t\t\t// radius\n\tfalse,\t\t// unconscious\n\t\"\",\t\t\t// selection\n\t\"\"\t\t\t// memoryPoint\n];\n</sqf>"
+see_also:
+- actionIDs
+- actionParams
+- setUserActionText
+- inGameUISetEventHandler
+- showHUD
+- inputAction
+- removeAction]],
+- removeAllActions]],
+- action]],
+- BIS_fnc_holdActionAdd

@@ -1,5 +1,5 @@
 name: forEach
-description: |-
+desc: |-
   Executes the given command(s) on every item of an [[Array]] or a [[HashMap]].
   {{Feature|arma2|Since {{arma2}}, the variable [[Magic Variables#x|_x]] is always [[private]] to the [[forEach]] block so it is safe to nest them (see {{Link|#Example 8}}).}}
 groups:
@@ -11,54 +11,38 @@ syntax:
   - code
   - array
   ret:
-  - Anything
-  - will return the value of last executed statement
+    type: Anything
+    desc: will return the value of last executed statement
   params:
   - name: code
     type: Unknown
   - name: array
-    description: the array to iterate over
+    desc: the array to iterate over
     type: ArrayUnknown
 - call: !Binary
   - code
   - hashMap
   ret:
-  - Anything
-  - will return the value of last executed statement
+    type: Anything
+    desc: will return the value of last executed statement
   params:
   - name: code
     type: Unknown
   - name: hashMap
-    description: the HashMap to iterate over
+    desc: the HashMap to iterate over
     type: HashMapUnknown
   since:
-    arma_3:
-      major: 2
-      minor: 2
+    arma3: '2.2'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -94,3 +78,13 @@ examples:
   // _arr3 = [0, "changed"]
   </sqf>
 - "<sqf>\n{\n\tprivate _verticalValue = _x; // needed, otherwise _horizontalValues' _x made this one inaccessible\n\t{\n\t\t[_x, _verticalValue] call TAG_fnc_doSomething;\n\t} forEach _horizontalValues;\n} forEach _verticalValues;\n</sqf>"
+see_also:
+- Control
+- Structures
+- for
+- apply
+- while
+- select
+- findIf
+- count
+- forEachReversed

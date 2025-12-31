@@ -1,22 +1,28 @@
 name: loadAbs
-description: Returns current sum of mass from items stored in all unit's containers, linked items and weapons.
+desc: Returns current sum of mass from items stored in all unit's containers, linked items and weapons.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: unit
-    description: (before {{GVI|arma3|2.08|size= 0.75}} the command did not support containers, ammo boxes, weapon holders, vehicle cargos)
+    desc: (before {{GVI|arma3|2.08|size= 0.75}} the command did not support containers, ammo boxes, weapon holders, vehicle cargos)
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - 'Player weight: <sqf>_weight = loadAbs player;</sqf>'
 - "<sqf>\nprivate _loadUniform = loadAbs uniformContainer player;\nprivate _loadVest = loadAbs vestContainer player;\nprivate _loadBackpack = loadAbs backpackContainer player;\nhint format [\n\t\"Player's load:\\nUniform: %1\\nVest:%2\\nBackpack: $3\\nTotal: %4\",\n\t_loadUniform,\n\t_loadVest,\n\t_loadBackpack,\n\t_loadUniform + _loadVest + _loadBackpack\n];\n</sqf>"
+see_also:
+- load
+- maxLoad
+- loadBackpack
+- loadUniform
+- loadVest
+- getMass
+- weightRTD
+- getContainerMaxLoad

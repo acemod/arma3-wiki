@@ -1,5 +1,5 @@
 name: failMission
-description: |-
+desc: |-
   Finish the mission. If the server is set to run persistent mission, [[failMission]] will not end the mission when last player gets kicked to the lobby. Use [[endMission]] to end the mission.
 
   The end type can be:
@@ -21,25 +21,20 @@ groups:
 syntax:
 - call: !Unary endtype
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: endtype
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>failMission "LOSER";</sqf>
+see_also:
+- missionEnd
+- endMission
+- forceEnd

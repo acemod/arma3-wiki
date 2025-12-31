@@ -1,5 +1,5 @@
 name: getWPPos
-description: Returns the position of a selected waypoint of a given group. Waypoints include only those which were placed in the mission editor.
+desc: Returns the position of a selected waypoint of a given group. Waypoints include only those which were placed in the mission editor.
 alias:
 - '[[waypointPosition]]'
 groups:
@@ -9,44 +9,35 @@ syntax:
   - groupOrUnit
   - index
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: groupOrUnit
-    description: the group (or unit) of which to select a waypoint
-    type: Unknown
+    desc: the group (or unit) of which to select a waypoint
+    type: !OneOf
+    - - Group
+      - null
+    - - Object
+      - null
   - name: index
-    description: |-
+    desc: |-
       0 equals the starting position of the group.<br>
       The number used in this and other waypoint commands is ''one more'' than the one displayed in the waypoint window in the editor: e.g if the editor labeled a waypoint {{hl|"0:MOVE"}} then it can be accessed using <sqf inline>getWPPos [grp, 1]</sqf>
     type: Number
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 21
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.21'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   [_group1, 1] setWPPos [200,600,0];
   _pos = getWPPos [_group1, 1]; // returns [200, 600, 0]
   </sqf>
+see_also:
+- setWPPos

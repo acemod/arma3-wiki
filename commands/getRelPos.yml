@@ -1,5 +1,5 @@
 name: getRelPos
-description: Returns position that is given distance and relative direction away from original object. The alternative syntax available from Arma 3 v 2.14, returns the position offset of the attached object. If the animated memory point is used for attachment, the offset is calculated in [[Simulation_vs_Render_Time_Scope#Render_Time_Scope | render scope]].
+desc: Returns position that is given distance and relative direction away from original object. The alternative syntax available from Arma 3 v 2.14, returns the position offset of the attached object. If the animated memory point is used for attachment, the offset is calculated in [[Simulation_vs_Render_Time_Scope#Render_Time_Scope | render scope]].
 groups:
 - Positions
 syntax:
@@ -8,42 +8,46 @@ syntax:
   - - distance
     - direction
   ret:
-  - Position3dAGL
-  - null
+    type: Position3dAGL
   params:
   - name: object
-    description: object
+    desc: object
     type: Object
   - name: distance
-    description: distance from object
+    desc: distance from object
     type: Number
   - name: direction
-    description: direction relative to object's current direction
+    desc: direction relative to object's current direction
     type: Number
 - call: !Binary
   - obj1
   - obj2
   ret:
-  - Unknown
-  - null
+    type: Position3dRelative
   params:
   - name: obj1
-    description: parent object
+    desc: parent object
     type: Object
   - name: obj2
-    description: attached object
+    desc: attached object
     type: Object
   since:
-    arma_3:
-      major: 2
-      minor: 14
+    arma3: '2.14'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - |-
   Find position 100 metres away at player's 3 o'clock:
   <sqf>_relpos = player getRelPos [100, 90];</sqf>
+see_also:
+- getPos
+- getPosASLVisual
+- getPosATLVisual
+- visiblePositionASL
+- visiblePosition
+- position
+- getPosATL
+- getPosASL
+- getPosASLW

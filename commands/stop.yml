@@ -1,5 +1,5 @@
 name: stop
-description: |-
+desc: |-
   Stop an AI unit from turning or moving, preventing it to follow a watched object or engage an enemy properly - although if properly aligned, the unit -will- shoot the enemy. In essense, this is a scripted flag to suppress some of the AI procedures (to check the flag use [[stopped]]).
   It may still change the stance if deemed appropriate (e.g. under fire). Use [[disableAI]] to disable specific AI capabilities.
 groups:
@@ -9,8 +9,7 @@ syntax:
   - unitName
   - toggle
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitName
     type: Object
@@ -19,26 +18,16 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>loon1 stop true;</sqf>
+see_also:
+- stopped
+- doStop
+- commandStop

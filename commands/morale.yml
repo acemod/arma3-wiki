@@ -1,29 +1,27 @@
 name: morale
-description: Get the provided unit's current morale level.
+desc: Get the provided unit's current morale level.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - in range -1..+1
+    type: Number
+    desc: in range -1..+1
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - '<sqf>hint format ["Leader''s morale: %1", morale leader player];</sqf>'
+see_also:
+- skill
+- setSkill
+- ':Category:'
+- 'AI|Category:'
+- AI

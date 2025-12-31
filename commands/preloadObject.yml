@@ -1,5 +1,5 @@
 name: preloadObject
-description: Preloads all textures, materials and proxies needed to render given object. Works with objects and classnames - note that classnames require an object instance in the mission.
+desc: Preloads all textures, materials and proxies needed to render given object. Works with objects and classnames - note that classnames require an object instance in the mission.
 groups:
 - Object Manipulation
 syntax:
@@ -7,35 +7,32 @@ syntax:
   - distance
   - object
   ret:
-  - Boolean
-  - '[[true]] when preload is finished'
+    type: Boolean
+    desc: '[[true]] when preload is finished'
   params:
   - name: distance
-    description: distance at which preload the object
+    desc: distance at which preload the object
     type: Number
   - name: object
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - String
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\n0 spawn \n{\n\twaitUntil { 10 preloadObject \"SoldierW\" };\n\thint \"Preload finished\";\n};\n</sqf>"
 - "<sqf>\n0 spawn \n{\n\twaitUntil { 10 preloadObject leader player };\n\thint \"Preload finished\";\n};\n</sqf>"
+see_also:
+- preloadCamera
+- preloadSound
+- preloadTitleObj
+- preloadTitleRsc

@@ -1,5 +1,5 @@
 name: setSpeedMode
-description: "Sets group speed mode. If unit is passed as param, unit's group is used. Mode may be one of: \n* '''\"UNCHANGED\"''' (unchanged)\n* '''\"LIMITED\"''' (half speed)\n* '''\"NORMAL\"''' (full speed, maintain formation)\n* '''\"FULL\"''' (do not wait for any other units in formation)"
+desc: "Sets group speed mode. If unit is passed as param, unit's group is used. Mode may be one of: \n* '''\"UNCHANGED\"''' (unchanged)\n* '''\"LIMITED\"''' (half speed)\n* '''\"NORMAL\"''' (full speed, maintain formation)\n* '''\"FULL\"''' (do not wait for any other units in formation)"
 groups:
 - Groups
 syntax:
@@ -7,36 +7,29 @@ syntax:
   - groupName
   - mode
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: groupName
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
   - name: mode
     type: String
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_groupOne setSpeedMode "LIMITED";</sqf>
+see_also:
+- speedMode]],
+- getSpeed]],
+- forceSpeed

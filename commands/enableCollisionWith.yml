@@ -1,5 +1,5 @@
 name: enableCollisionWith
-description: |-
+desc: |-
   Cancels the effects of [[disableCollisionWith]]. The collision is always enabled for both objects in the arguments, i.e. vehicle1 with vehicle2 and vehicle2 with vehicle1
   {{Feature|warning|Each object can contain only 1 reference to the object it disabled collision with. This command sets this reference to null. Therefore the command might not work as expected when trying to enable collisions with some objects but not other.}}
 groups:
@@ -9,8 +9,7 @@ syntax:
   - vehicle1
   - vehicle2
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle1
     type: Object
@@ -19,8 +18,9 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>[_veh1, _veh2] remoteExecCall ["enableCollisionWith", 0, _veh1];</sqf>
+see_also:
+- collisionDisabledWith
+- disableCollisionWith

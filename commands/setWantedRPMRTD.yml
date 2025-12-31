@@ -1,5 +1,5 @@
 name: setWantedRPMRTD
-description: "Tell the helicopter engine RPMs to reach the given value within a period of time. The simulation will try to reach the RPMs, but it does not guarantee it will reach the precise value!\n* engine index 0: engine #1\n* engine index 1: engine #2\n* engine index 2: engine #3\n* engine index -1: all engines \n{{Feature|afm}}"
+desc: "Tell the helicopter engine RPMs to reach the given value within a period of time. The simulation will try to reach the RPMs, but it does not guarantee it will reach the precise value!\n* engine index 0: engine #1\n* engine index 1: engine #2\n* engine index 2: engine #3\n* engine index -1: all engines \n{{Feature|afm}}"
 groups:
 - RTD
 syntax:
@@ -9,29 +9,26 @@ syntax:
     - time
     - engineIndex
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: helicopterRTD
-    description: helicopter
+    desc: helicopter
     type: Unknown
   - name: value
-    description: engine RPMs
+    desc: engine RPMs
     type: Number
   - name: time
-    description: time to reach desired RPMs (seconds)
+    desc: time to reach desired RPMs (seconds)
     type: Number
   - name: engineIndex
-    description: engine index
+    desc: engine index
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 1
-    minor: 34
+  tkoh: '1.0'
+  arma3: '1.34'
 examples:
 - <sqf>vehicle player setWantedRPMRTD [2500, 30, 0];</sqf>
+see_also:
+- setEngineRPMRTD

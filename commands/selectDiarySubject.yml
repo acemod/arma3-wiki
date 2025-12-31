@@ -1,5 +1,5 @@
 name: selectDiarySubject
-description: Selects a subject page in the [[Diary|diary]]. The subject page is selected but the command does not open the map by default, which could be opened with [[openMap]] if necessary.
+desc: Selects a subject page in the [[Diary|diary]]. The subject page is selected but the command does not open the map by default, which could be opened with [[openMap]] if necessary.
 groups:
 - Briefing
 syntax:
@@ -7,33 +7,31 @@ syntax:
   - player
   - subject
   ret:
-  - Boolean
-  - '[[true]] if subject was successfully selected'
+    type: Boolean
+    desc: '[[true]] if subject was successfully selected'
   params:
   - name: player
-    description: player
+    desc: player
     type: Object
   - name: subject
-    description: "subject name, for example \"Diary\" (see also [[Diary]]). \n{{Feature|informative|\nIn order to open a specific record inside a subject one can append {{hl|:Record#}} to the subject name. \n<sqf>\nplayer selectDiarySubject \"Diary:Record0\"; // selects the first record in the diary subject (from bottom to top)\nplayer selectDiarySubject \"Diary:Record1\"; // selects the second record\n</sqf>\n}}"
+    desc: "subject name, for example \"Diary\" (see also [[Diary]]). \n{{Feature|informative|\nIn order to open a specific record inside a subject one can append {{hl|:Record#}} to the subject name. \n<sqf>\nplayer selectDiarySubject \"Diary:Record0\"; // selects the first record in the diary subject (from bottom to top)\nplayer selectDiarySubject \"Diary:Record1\"; // selects the second record\n</sqf>\n}}"
     type: String
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   openMap true;
   player selectDiarySubject "Diary";
   </sqf>
+see_also:
+- processDiaryLink
+- createDiaryLink
+- createDiarySubject
+- diarySubjectExists
+- allDiarySubjects

@@ -1,5 +1,5 @@
 name: getAllEnv3DSoundControllers
-description: |-
+desc: |-
   Returns an array containing the names and values of environmental 3D sound controllers, variables that can be used in simple expressions when configuring sounds.
   {{Feature|important|
   * Controller names are case sensitive
@@ -12,17 +12,29 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: object
-    description: environmental sound source like a tree or a house, see [[allEnv3DSoundSources]]
+    desc: environmental sound source like a tree or a house, see [[allEnv3DSoundSources]]
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 8
+  arma3: '2.8'
 examples:
 - "<sqf>\ngetAllEnv3DSoundControllers _thatTreeOverThere;\n/*\n\treturns e.g\n\t[\n\t\t[\"rain\",0],\n\t\t[\"night\",0],\n\t\t[\"wind\",0.161588],\n\t\t...\n\t]\n*/\n</sqf>"
+see_also:
+- getAllEnvSoundControllers
+- getEnv3DSoundController
+- allEnv3DSoundSources
+- selectBestPlaces
+- getSoundController
+- getSoundControllerResult
+- getEnvSoundController
+- getAllSoundControllers
+- getCustomSoundController
+- setCustomSoundController
+- getCustomSoundControllerCount
+- Arma
+- '3:'
+- Sound

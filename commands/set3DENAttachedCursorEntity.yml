@@ -1,21 +1,23 @@
 name: set3DENAttachedCursorEntity
-description: Attach an entity to the [[:Category:Eden Editor|Eden Editor]] cursor.
+desc: Attach an entity to the [[:Category:Eden Editor|Eden Editor]] cursor.
 groups:
 - Eden Editor
 syntax:
 - call: !Unary entityHashMap
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: entityHashMap
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>set3DENAttachedCursorEntity createHashMapFromArray [["type", "object"], ["classname", "B_Survivor_F"]];</sqf>
 - <sqf>set3DENAttachedCursorEntity createHashMapFromArray [["type", "marker"], ["classname", "mil_pickup"], ["markertype", "icon"]];</sqf>
+see_also:
+- Eden
+- 'Editor:'
+- Object
+- typeOf

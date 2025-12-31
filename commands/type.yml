@@ -1,41 +1,32 @@
 name: type
-description: Returns a string of a [[Location]]'s class name or [[Task]]'s name (same as [[taskName]]).
+desc: Returns a string of a [[Location]]'s class name or [[Task]]'s name (same as [[taskName]]).
 groups:
 - Locations
 - Briefing
 syntax:
 - call: !Unary location
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: location
     type: Location
 - call: !Unary task
   ret:
-  - String
-  - the type of the task
+    type: String
+    desc: the type of the task
   params:
   - name: task
     type: Task
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 8
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.8'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_locationType = type myLocation;</sqf>
 - <sqf>_taskName = type myTask;</sqf>
+see_also:
+- setType

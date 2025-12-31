@@ -1,5 +1,5 @@
 name: setDir
-description: |-
+desc: |-
   Sets object heading. Angles are measured in degrees clockwise from north; the regular range goes from 0 to 360 (0° = N, 90° = E, 180° = S, 270° = W). Negative angles represent counter-clockwise angles.
   {{Feature|important|This command resets the object's [[velocity]] and [[vectorUp]]!}}
   {{Feature|informative|In ''some'' earlier titles ({{ofp}}?), this command was {{Icon|localEffect|32}}.}}
@@ -14,8 +14,7 @@ syntax:
   - object
   - heading
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
     type: Object
@@ -24,27 +23,13 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>myUnit setDir 45; // will set myUnit to face North-East</sqf>
 - <sqf>myUnit setDir -675; // will also set myUnit to face North-East (= 45-360-360)</sqf>
@@ -67,3 +52,9 @@ examples:
   // sets the direction of an object relative to a parent object's direction
   _child setDir (_parentDir + (_childDir - _parentDir));
   </sqf>
+see_also:
+- getDir
+- direction
+- setFormDir
+- setVectorDir
+- setVectorDirAndUp

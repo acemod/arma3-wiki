@@ -1,5 +1,5 @@
 name: revealMine
-description: Sets given mine as known to the side. (Knowledge about a mine is always shared across all units in a side.)
+desc: Sets given mine as known to the side. (Knowledge about a mine is always shared across all units in a side.)
 groups:
 - Mines
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - side
   - mine
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: side
     type: Side
@@ -17,8 +16,12 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>west revealMine _mine;</sqf>
+see_also:
+- allMines
+- detectedMines
+- mineDetectedBy
+- createMine
+- mineActive

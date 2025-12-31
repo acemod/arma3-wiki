@@ -1,20 +1,30 @@
 name: isSwitchingWeapon
-description: Returns wether or not the unit is in the process of switching weapon.
+desc: Returns wether or not the unit is in the process of switching weapon.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - Boolean
-  - '[[true]] if the unit is switching weapon.'
+    type: Boolean
+    desc: '[[true]] if the unit is switching weapon.'
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 20
+  arma3: '2.20'
 examples:
 - <sqf>isSwitchingWeapon player;</sqf>
+see_also:
+- primaryWeaponMagazine
+- primaryWeaponItems
+- addPrimaryWeaponItem
+- removePrimaryWeaponItem
+- removeAllPrimaryWeaponItems
+- secondaryWeapon
+- handgunWeapon
+- currentWeapon
+- weapons
+- primaryWeapon
+- setUnitLoadout

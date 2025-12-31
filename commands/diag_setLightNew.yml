@@ -1,5 +1,5 @@
 name: diag_setLightNew
-description: |-
+desc: |-
   Overrides currently used scene lighting. The operand is config that is placed as a string (not file).
   The changes may not be applied immediately, but can be forced by the call of [[simulWeatherSync]].
 groups:
@@ -8,17 +8,16 @@ groups:
 syntax:
 - call: !Unary config
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: config
-    description: config in string form
+    desc: config in string form
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 82
+  arma3: '1.82'
 examples:
 - <sqf>diag_setLightNew "sunOrMoon = 1; diffuse[] = { 0, 0, 0, 0 }; diffuseCloud[] = { 0, 0, 0, 0 }; ambient[] = { 0, 0, 0, 0 }; ... ";</sqf>
+see_also:
+- diag_lightNewLoad

@@ -1,5 +1,5 @@
 name: lbSetCurSel
-description: |-
+desc: |-
   Selects the item with the given index in the listbox, listnbox, combobox, xcombobox, xlistbox<br>
   {{Feature|important|'''The following only applies to the {{Link|#Syntax 2|Alternative Syntax}} when used with [[CT_LISTBOX]] and [[CT_LISTNBOX]].'''<br>
   To deselect all entries, use -1: <sqf inline>_ctrl lbSetCurSel -1;</sqf> For listbox of style LB_MULTI use [[lbSetSelected]] instead.<br>
@@ -13,11 +13,10 @@ syntax:
   - idc
   - index
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
-    description: control's IDC
+    desc: control's IDC
     type: Number
   - name: index
     type: Number
@@ -25,8 +24,7 @@ syntax:
   - control
   - index
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -35,27 +33,15 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>lbSetCurSel [101, 0];</sqf>
 - <sqf>_control lbSetCurSel 0;</sqf>
+see_also:
+- lbCurSel

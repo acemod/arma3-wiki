@@ -1,5 +1,5 @@
 name: assignAsCargoIndex
-description: |-
+desc: |-
   Assigns the character to a specific cargo / passenger index of the given vehicle.
   {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
 groups:
@@ -10,26 +10,31 @@ syntax:
   - - vehicle
     - index
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: character
-    description: character to assign
+    desc: character to assign
     type: Object
   - name: vehicle
-    description: vehicle to assign to
+    desc: vehicle to assign to
     type: Object
   - name: index
-    description: cargo / passenger index
+    desc: cargo / passenger index
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 1
-  arma_3:
-    major: 0
-    minor: 50
+  tkoh: '1.1'
+  arma3: '0.50'
 examples:
 - <sqf>player assignAsCargoIndex [myHelicopter, 1];</sqf>
+see_also:
+- assignAsCargo
+- assignAsDriver
+- assignAsCommander
+- assignAsGunner
+- assignAsTurret
+- getCargoIndex
+- assignedVehicleRole
+- unassignVehicle
+- fullCrew

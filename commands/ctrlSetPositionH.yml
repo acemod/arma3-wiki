@@ -1,5 +1,5 @@
 name: ctrlSetPositionH
-description: Sets the height of a 2D control. [[ctrlCommit]] is required to complete the operation.
+desc: Sets the height of a 2D control. [[ctrlCommit]] is required to complete the operation.
 groups:
 - GUI Control - Positioning
 syntax:
@@ -7,24 +7,26 @@ syntax:
   - control
   - h
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
-    description: 2D control
+    desc: 2D control
     type: Control
   - name: h
-    description: height of the control
+    desc: height of the control
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 92
+  arma3: '1.92'
 examples:
 - |-
   <sqf>
   _ctrl ctrlSetPositionH 0.5;
   _ctrl ctrlCommit 1;
   </sqf>
+see_also:
+- ctrlSetPosition
+- ctrlSetPositionX
+- ctrlSetPositionY
+- ctrlSetPositionW

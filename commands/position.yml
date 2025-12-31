@@ -1,5 +1,5 @@
 name: position
-description: |-
+desc: |-
   Returns position of an object (alias of [[getPos]]) or location (alias of [[locationPosition]]).
   {{Feature|important|Do '''not''' use this command to get an object's position in 3D. See [[getPos]] for an explanation and alternatives.}}
 groups:
@@ -7,40 +7,35 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - Position3dAGLS
-  - null
+    type: Position3dAGLS
   params:
   - name: object
     type: Object
 - call: !Unary location
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: location
     type: Location
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 0
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '0.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _pos = position player;</sqf>
 - <sqf>_myLocationHomePos = position myLocation;</sqf>
 - "<sqf>\nprivate _location = createLocation [\"b_inf\", [1000, 1000], 1, 1];\n_location attachObject player;\nlocationPosition _location;\t// [1916.03,5711.98,12.208]\ngetPos _location;\t\t\t// [1916.03,5711.98,12.208]\nposition _location;\t\t\t// [1000,1000,0]\n</sqf>"
+see_also:
+- getPos
+- getPosATL
+- getPosASL
+- getPosASLW
+- visiblePosition
+- getPosVisual
+- visiblePositionASL
+- locationPosition

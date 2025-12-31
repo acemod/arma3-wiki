@@ -1,5 +1,5 @@
 name: setDynamicSimulationDistanceCoef
-description: 'Sets activation distance multiplier of [[Arma 3: Dynamic Simulation]] for the given class'
+desc: 'Sets activation distance multiplier of [[Arma 3: Dynamic Simulation]] for the given class'
 groups:
 - Dynamic Simulation
 syntax:
@@ -7,19 +7,33 @@ syntax:
   - class
   - multiplier
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: class
     type: Unknown
   - name: multiplier
-    description: distance multiplier
+    desc: distance multiplier
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>"IsMoving" setDynamicSimulationDistanceCoef 3;</sqf>
+see_also:
+- enableDynamicSimulationSystem
+- dynamicSimulationSystemEnabled
+- enableDynamicSimulation
+- dynamicSimulationEnabled
+- setDynamicSimulationDistance
+- dynamicSimulationDistance
+- dynamicSimulationDistanceCoef
+- triggerDynamicSimulation
+- canTriggerDynamicSimulation
+- enableSimulation
+- simulationEnabled
+- enableSimulationGlobal
+- Arma
+- '3:'
+- Dynamic
+- Simulation

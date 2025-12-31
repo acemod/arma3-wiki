@@ -1,5 +1,5 @@
 name: forceWalk
-description: Forces unit to walk even if run or sprint is selected.
+desc: Forces unit to walk even if run or sprint is selected.
 groups:
 - Stamina System
 syntax:
@@ -7,26 +7,24 @@ syntax:
   - unit
   - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: the unit forced to walk
+    desc: the unit forced to walk
     type: Object
   - name: value
-    description: true/false
+    desc: true/false
     type: Boolean
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player forceWalk true;</sqf>
+see_also:
+- isForcedWalk
+- isWalking
+- forceSpeed
+- getSpeed

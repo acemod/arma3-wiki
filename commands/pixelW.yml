@@ -1,18 +1,24 @@
 name: pixelW
-description: Returns width of one pixel for current resolution.
+desc: Returns width of one pixel for current resolution.
 groups:
 - GUI Control - Positioning
 syntax:
 - call: Nular
   ret:
-  - Number
-  - pixel width
+    type: Number
+    desc: pixel width
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 60
+  arma3: '1.60'
 examples:
 - <sqf>_pixelWidth = pixelW;</sqf>
+see_also:
+- pixelGrid
+- pixelGridBase
+- pixelGridNoUIScale
+- pixelH
+- Pixel
+- Grid
+- System

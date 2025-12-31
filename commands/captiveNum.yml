@@ -1,5 +1,5 @@
 name: captiveNum
-description: |-
+desc: |-
   Checks whether the unit is a [[captive]]. If the unit is a vehicle, its commander is checked instead.<br>
   If a unit's captivity level was set as a [[Boolean]], then the returned number is either 0 (for [[false]]) or 1 (for [[true]]).
 groups:
@@ -8,26 +8,18 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - anything from 0 to value set by [[setCaptive]] alt syntax. A non zero value means [[captive]].
+    type: Number
+    desc: anything from 0 to value set by [[setCaptive]] alt syntax. A non zero value means [[captive]].
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_captivity = captiveNum _unit;</sqf>
 - |-
@@ -36,3 +28,6 @@ examples:
   hint str captive _unit; // true
   hint str captiveNum _unit; // 1024
   </sqf>
+see_also:
+- captive
+- setCaptive

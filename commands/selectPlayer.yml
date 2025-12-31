@@ -1,5 +1,5 @@
 name: selectPlayer
-description: |-
+desc: |-
   Move player into given unit. Some usage advices:
   * Avoid using [[selectPlayer]] on editor-placed units in multiplayer, as it may, on occasion, lead to some undefined behaviour.
   * If you need to [[selectPlayer]] into another unit, consider [[createUnit|creating a unit]] dynamically.{{Feature|informative|Before {{arma3}} it was possible to [[selectPlayer]] another player-controlled unit, leading to control issues. }}
@@ -13,31 +13,26 @@ groups:
 syntax:
 - call: !Unary unitName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitName
     type: Object
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>selectPlayer bob;</sqf>
+see_also:
+- selectNoPlayer
+- remoteControl
+- Team
+- Switch
+- switchCamera
+- teamSwitch
+- enableTeamSwitch

@@ -1,5 +1,5 @@
 name: diag_SQFCDebugDump
-description: Dumps the bytecode as {{arma3}} sees it, in a diff friendly way. Useful for testing custom [[SQF Bytecode|SQFC]] compilers.
+desc: Dumps the bytecode as {{arma3}} sees it, in a diff friendly way. Useful for testing custom [[SQF Bytecode|SQFC]] compilers.
 groups:
 - Diagnostic
 syntax:
@@ -7,20 +7,18 @@ syntax:
   - sourcePath
   - targetPath
   ret:
-  - Code
-  - compiled expression (If parsing was successful)
+    type: Code
+    desc: compiled expression (If parsing was successful)
   params:
   - name: sourcePath
-    description: Path to file on drive that should be read
+    desc: Path to file on drive that should be read
     type: String
   - name: targetPath
-    description: Path to file on drive to output to
+    desc: Path to file on drive to output to
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>diag_SQFCDebugDump ["P:/test.sqfc", "P:/dump"];</sqf>

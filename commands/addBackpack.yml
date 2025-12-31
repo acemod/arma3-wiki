@@ -1,5 +1,5 @@
 name: addBackpack
-description: |-
+desc: |-
   Adds a backpack for a unit. If a unit already has a backpack, the old backpack will be placed on the ground under the unit. Items defined in the backpack's config will be added as well.
   {{Feature | Informative |
   Classname list of available backpacks:
@@ -13,8 +13,7 @@ syntax:
   - unit
   - backpackClassName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -23,16 +22,31 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>this addBackpack "TK_RPG_Backpack_EP1";</sqf>
 - <sqf>_mySoldierDude addBackpack "US_Patrol_Pack_EP1";</sqf>
 - <sqf>_mySoldierDude addBackpack "B_AssaultPack_mcamo_Ammo";// Adds backpack prefilled with items defined in its config</sqf>
+see_also:
+- addBackpackGlobal
+- backpackContainer
+- firstBackpack
+- unitBackpack
+- backpack
+- backpackCargo
+- getBackpackCargo
+- backpackItems
+- addBackpackCargo
+- addBackpackCargoGlobal
+- removeBackpack
+- clearBackpackCargo
+- clearBackpackCargoGlobal
+- clearAllItemsFromBackpack
+- loadBackpack
+- backpackSpaceFor
+- canAddItemToBackpack
+- addItemToBackpack
+- removeItemFromBackpack
+- everyBackpack

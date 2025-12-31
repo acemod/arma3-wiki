@@ -1,5 +1,5 @@
 name: tvSort
-description: Sorts all children of given path. Text of [[CT_TREE|Tree View]] entries is used for sorting.
+desc: Sorts all children of given path. Text of [[CT_TREE|Tree View]] entries is used for sorting.
 groups:
 - GUI Control - Tree View
 syntax:
@@ -8,16 +8,15 @@ syntax:
   - - path
     - reversed
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: path
-    description: the parent item to sort
+    desc: the parent item to sort
     type: Unknown
   - name: reversed
-    description: '[[true]] to reverse sort it'
+    desc: '[[true]] to reverse sort it'
     type: Boolean
     optional: true
     default: '[[false]]'
@@ -26,26 +25,29 @@ syntax:
   - path
   - reversed
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
-    description: control idc
+    desc: control idc
     type: Number
   - name: path
-    description: the parent item to sort
+    desc: the parent item to sort
     type: Unknown
   - name: reversed
-    description: '[[true]] to reverse sort it'
+    desc: '[[true]] to reverse sort it'
     type: Boolean
     optional: true
     default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 74
+  arma3: '0.74'
 examples:
 - <sqf>control tvSort [[0], true];</sqf>
 - <sqf>tvSort [102, [0], true];</sqf>
+see_also:
+- lbSortBy
+- lnbSortBy
+- tvSortAll
+- tvSortByValue
+- tvSortByValueAll

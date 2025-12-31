@@ -1,5 +1,5 @@
 name: isEqualTypeAny
-description: Compares type of given value to every type in the given array and if match is found, [[true]] is returned.
+desc: Compares type of given value to every type in the given array and if match is found, [[true]] is returned.
 groups:
 - Variables
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - val
   - types
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: val
     type: Anything
@@ -17,9 +16,7 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 54
+  arma3: '1.54'
 examples:
 - |-
   <sqf>
@@ -27,3 +24,12 @@ examples:
   _var isEqualTypeAny [0, "", objNull]; //false
   _var isEqualTypeAny [0, "", objNull, []]; //true
   </sqf>
+see_also:
+- isEqualType
+- isEqualTypeAll
+- isEqualTypeArray
+- isEqualTypeParams
+- param
+- params
+- isEqualTo
+- typeName

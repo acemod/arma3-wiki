@@ -1,5 +1,5 @@
 name: shownScoretable
-description: Returns the state of the score table set with [[showScoretable]] command.
+desc: Returns the state of the score table set with [[showScoretable]] command.
 problem_notes:
 - '{{Feature|warning|Since {{arma3}} v1.64, the previous functionality of this command (score table visibility check) is moved to [[visibleScoretable]] command. Please update your scripts and sorry for any inconvenience.}}'
 groups:
@@ -7,14 +7,15 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Number
-  - '0: Force hidden, 1: Force shown, -1: Default'
+    type: Number
+    desc: '0: Force hidden, 1: Force shown, -1: Default'
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 60
+  arma3: '1.60'
 examples:
 - <sqf>_state = shownScoretable;</sqf>
+see_also:
+- showScoretable
+- visibleScoretable

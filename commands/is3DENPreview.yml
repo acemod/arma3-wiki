@@ -1,18 +1,46 @@
 name: is3DENPreview
-description: Returns [[true]] if the [[:Category:Eden Editor|Eden Editor]] is currently in mission preview mode, single player or multiplayer. (see also [[is3DEN]], [[is3DENMultiplayer]])
+desc: Returns [[true]] if the [[:Category:Eden Editor|Eden Editor]] is currently in mission preview mode, single player or multiplayer. (see also [[is3DEN]], [[is3DENMultiplayer]])
 groups:
 - Eden Editor
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - <sqf>if is3DENPreview then { systemChat "Welcome to Eden Editor Preview!" };</sqf>
+see_also:
+- get3DENMouseOver
+- add3DENConnection
+- add3DENEventHandler
+- all3DENEntities
+- collect3DENHistory
+- create3DENComposition
+- create3DENEntity
+- current3DENOperation
+- delete3DENEntities
+- do3DENAction
+- get3DENActionState
+- get3DENAttribute
+- get3DENCamera
+- get3DENConnections
+- get3DENEntityID
+- get3DENGrid
+- get3DENIconsVisible
+- get3DENLinesVisible
+- get3DENSelected
+- is3DENMultiplayer
+- is3DEN
+- move3DENCamera
+- remove3DENConnection
+- remove3DENEventHandler
+- removeAll3DENEventHandlers
+- set3DENAttributes
+- set3DENGrid
+- set3DENIconsVisible
+- set3DENLinesVisible
+- set3DENObjectType

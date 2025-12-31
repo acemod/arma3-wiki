@@ -1,5 +1,5 @@
 name: getOrDefaultCall
-description: Retrieves a value from the [[HashMap]] for the given 'key', executes given 'code' if key was not found and returns result. Additionally sets key to the code result value if 'set' is true.
+desc: Retrieves a value from the [[HashMap]] for the given 'key', executes given 'code' if key was not found and returns result. Additionally sets key to the code result value if 'set' is true.
 groups:
 - HashMap
 syntax:
@@ -9,29 +9,30 @@ syntax:
     - code
     - set
   ret:
-  - Anything
-  - null
+    type: Anything
   params:
   - name: hashMap
     type: HashMapUnknown
   - name: key
-    description: case-sensitive key
+    desc: case-sensitive key
     type: Unknown
   - name: code
-    description: '- [[Code]] to execute if the key does not exist'
+    desc: '- [[Code]] to execute if the key does not exist'
     type: Code
     optional: true
     default: '[[nil]]'
   - name: set
-    description: if [[true]] and value does not exist in the provided hash map, the result of the ''code'' execution will be added to the hash map
+    desc: if [[true]] and value does not exist in the provided hash map, the result of the ''code'' execution will be added to the hash map
     type: Boolean
     optional: true
     default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 12
+  arma3: '2.12'
 examples:
 - <sqf>_hashmap getOrDefaultCall [123, { systemChat "The key 123 does not exist and will be created and assigned 345"; 345 }, true];</sqf>
+see_also:
+- getOrDefault
+- HashMap
+- get

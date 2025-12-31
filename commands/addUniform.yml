@@ -1,5 +1,5 @@
 name: addUniform
-description: |-
+desc: |-
   Create a new uniform and try to link it into uniform slot (given uniform has to be supported by allowedUniforms list of target soldier).
   {{Feature | informative | To check if a uniform is allowed use [[isUniformAllowed]], and to force an incompatible uniform use [[forceAddUniform]].}}
 groups:
@@ -9,8 +9,7 @@ syntax:
   - unit
   - type
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -19,8 +18,11 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_unit addUniform "U_B_CombatUniform_mcam";</sqf>
+see_also:
+- forceAddUniform
+- isUniformAllowed
+- removeUniform
+- uniform

@@ -1,5 +1,5 @@
 name: setRotorBrakeRTD
-description: Toggles a helicopter's rotor brake. {{Feature|afm}}
+desc: Toggles a helicopter's rotor brake. {{Feature|afm}}
 groups:
 - RTD
 syntax:
@@ -7,22 +7,19 @@ syntax:
   - helicopterRTD
   - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: helicopterRTD
-    description: helicopter
+    desc: helicopter
     type: Object
   - name: enable
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 1
-    minor: 34
+  tkoh: '1.0'
+  arma3: '1.34'
 examples:
 - <sqf>myHelicopterRTD setRotorBrakeRTD 1;</sqf>
+see_also:
+- getRotorBrakeRTD

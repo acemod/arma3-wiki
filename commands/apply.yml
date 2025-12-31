@@ -1,5 +1,5 @@
 name: apply
-description: Applies the given code to each element of the given data structure and collects the results in an array.
+desc: Applies the given code to each element of the given data structure and collects the results in an array.
 groups:
 - Arrays
 - HashMap
@@ -8,37 +8,33 @@ syntax:
   - array
   - code
   ret:
-  - ArrayUnknown
-  - resulting array
+    type: ArrayUnknown
+    desc: resulting array
   params:
   - name: array
-    description: array of [[Anything]]
+    desc: array of [[Anything]]
     type: ArrayUnknown
   - name: code
-    description: code to be executed on each element of the array. The current element value is stored in the magic variable [[Magic Variables#x|_x]].
+    desc: code to be executed on each element of the array. The current element value is stored in the magic variable [[Magic Variables#x|_x]].
     type: Code
 - call: !Binary
   - hashmap
   - code
   ret:
-  - ArrayUnknown
-  - resulting array
+    type: ArrayUnknown
+    desc: resulting array
   params:
   - name: hashmap
     type: HashMapUnknown
   - name: code
-    description: code to be executed on each key-value pair of the hashmap. The current key is stored in the magic variable [[Magic Variables#x|_x]], the corresponding value is stored in [[Magic Variables#y|_y]].
+    desc: code to be executed on each key-value pair of the hashmap. The current key is stored in the magic variable [[Magic Variables#x|_x]], the corresponding value is stored in [[Magic Variables#y|_y]].
     type: Code
   since:
-    arma_3:
-      major: 2
-      minor: 4
+    arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>private _arr = [1,2,3,4,5,6,7,8,9,0] apply { [1,0] select (_x % 2 == 0) }; // [1,0,1,0,1,0,1,0,1,0]</sqf>
 - <sqf>private _arr = [1,2,3,4,5,6,7,8,9,0] apply { _x ^ _x }; // [1,4,27,256,3125,46656,823543,16777216,387420480,1]</sqf>
@@ -54,3 +50,19 @@ examples:
   private _hashmap = createHashMapFromArray [["Key 1", "Value 1"], ["Key 2", "Value 2"]];
   private _array = _hashmap apply { _y + " Test" }; // ["Value 2 Test","Value 1 Test"]
   </sqf>
+see_also:
+- set
+- resize
+- pushBack
+- pushBackUnique
+- select
+- reverse
+- count
+- find
+- in
+- forEach
+- deleteAt
+- deleteRange
+- append
+- sort
+- arrayIntersect

@@ -1,5 +1,5 @@
 name: createSite
-description: "Create a new site. \n{{Feature|warning|This command is considered deprecated and is no longer supported}}"
+desc: "Create a new site. \n{{Feature|warning|This command is considered deprecated and is no longer supported}}"
 groups:
 - Broken Commands
 - Sides
@@ -8,8 +8,7 @@ syntax:
   - type
   - pos
   ret:
-  - Object
-  - null
+    type: Object
   params:
   - name: type
     type: String
@@ -18,8 +17,9 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - '-'
+see_also:
+- deleteSite
+- allSites

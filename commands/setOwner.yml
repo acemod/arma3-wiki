@@ -1,5 +1,5 @@
 name: setOwner
-description: From server machine, change the ownership of an object to a given client. Using command in an unintended way will log a message to .rpt file. To transfer ownership of all AI units in a group properly, use [[setGroupOwner]] instead.
+desc: From server machine, change the ownership of an object to a given client. Using command in an unintended way will log a message to .rpt file. To transfer ownership of all AI units in a group properly, use [[setGroupOwner]] instead.
 problem_notes:
 - |-
   {{Feature|arma3|Since {{arma3}} v1.40, this command should not be used to transfer ownership of units with AI with the exception of [[agents]].}}
@@ -11,28 +11,27 @@ syntax:
   - object
   - clientID
   ret:
-  - Boolean
-  - returns [[true]] if ownership was successfully transferred, otherwise [[false]]
+    type: Boolean
+    desc: returns [[true]] if ownership was successfully transferred, otherwise [[false]]
   params:
   - name: object
-    description: object to transfer
+    desc: object to transfer
     type: Object
   - name: clientID
-    description: the [[Multiplayer_Scripting#Machine_network_ID | machine network ID]] of the new [[owner]].
+    desc: the [[Multiplayer_Scripting#Machine_network_ID | machine network ID]] of the new [[owner]].
     type: Number
 argument_loc: Global
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 62
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.62'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_someObject setOwner 12;</sqf>
 - <sqf>_someObject setOwner (owner _playerObject);</sqf>
+see_also:
+- owner
+- setGroupOwner
+- groupOwner
+- didJIPOwner

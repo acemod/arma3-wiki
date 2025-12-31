@@ -1,5 +1,5 @@
 name: atan2
-description: |-
+desc: |-
   [[File:atan.jpg|right|300px]] ArcTangent of ''y/x''. Used to determine the angle of a vector ''[y,x]''. Result in [[Number#Degrees|Degrees]] between -180 and 180.
   {{Feature|informative|This command can handle ''x'' being 0, unlike when using [[atan]], and will return 90}}
   {{Feature|important|
@@ -18,8 +18,7 @@ syntax:
   - y
   - x
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: y
     type: Number
@@ -28,27 +27,13 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -69,3 +54,16 @@ examples:
   _dir = (_yx select 0) atan2 (_yx select 1); // _dir range from -180 to +180
   _dir = (_dir + 360) % 360; // _dir range from 0 to 360
   </sqf>
+see_also:
+- atan
+- tan
+- sin
+- cos
+- asin
+- acos
+- rad
+- pi
+- vectorCos
+- BIS_fnc_dirTo
+- getRelPos
+- getRelDir

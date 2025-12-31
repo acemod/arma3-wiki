@@ -1,5 +1,5 @@
 name: removeCuratorEditableObjects
-description: Unregister objects which can be edited by a curator.
+desc: Unregister objects which can be edited by a curator.
 groups:
 - Curator
 syntax:
@@ -8,14 +8,13 @@ syntax:
   - - objects
     - removeCrew
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: curatorObj
-    description: curator module
+    desc: curator module
     type: Object
   - name: objects
-    description: array of [[Object]]s
+    desc: array of [[Object]]s
     type: ArrayUnknown
   - name: removeCrew
     type: Boolean
@@ -23,10 +22,14 @@ syntax:
     default: '[[true]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>curatorModule removeCuratorEditableObjects [[cursorTarget], true];</sqf>
+see_also:
+- Arma
+- '3:'
+- Curator
+- addCuratorEditableObjects
+- curatorEditableObjects

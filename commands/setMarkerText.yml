@@ -1,5 +1,5 @@
 name: setMarkerText
-description: |-
+desc: |-
   Sets the text label of an existing marker.
   {{Feature|informative|
   '''Multiplayer optimisation:''' Global marker commands always broadcast the ''entire'' marker state over the network.
@@ -12,8 +12,7 @@ syntax:
   - markerName
   - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: markerName
     type: String
@@ -22,23 +21,20 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Global
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>"Marker1" setMarkerText "You are here.";</sqf>
+see_also:
+- setMarkerBrush
+- setMarkerColor
+- setMarkerDir
+- setMarkerPos
+- setMarkerShape
+- setMarkerSize
+- setMarkerType
+- setMarkerAlpha

@@ -1,5 +1,5 @@
 name: simulInClouds
-description: Returns if given position is in clouds.
+desc: Returns if given position is in clouds.
 problem_notes:
 - '{{Feature|Eden Editor|SimulWeather seems to be disabled in [[:Category:Eden Editor|Eden Editor]] and scenario preview.}}'
 groups:
@@ -7,18 +7,17 @@ groups:
 syntax:
 - call: !Unary pos
   ret:
-  - Unknown
-  - |-
-    [[true]] if given position is in clouds
-    * [[Nothing]] - If given arguments are incorrect
+    type: Unknown
   params:
   - name: pos
     type: Position
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>simulInClouds getPos player;</sqf>
+see_also:
+- setSimulWeatherLayers
+- simulCloudDensity
+- simulCloudOcclusion

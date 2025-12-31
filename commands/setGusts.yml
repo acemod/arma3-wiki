@@ -1,5 +1,5 @@
 name: setGusts
-description: Changes the gusts value smoothly during the given time (in seconds). A time of zero means there will be an immediate change. Value is 0 to 1.
+desc: Changes the gusts value smoothly during the given time (in seconds). A time of zero means there will be an immediate change. Value is 0 to 1.
 groups:
 - Environment
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - time
   - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: time
     type: Number
@@ -17,8 +16,10 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>60 setGusts 0.75;</sqf>
+see_also:
+- gusts
+- wind
+- setWind

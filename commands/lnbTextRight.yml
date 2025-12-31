@@ -1,5 +1,5 @@
 name: lnbTextRight
-description: Returns [[CT_LISTNBOX]]'s right aligned cell text.
+desc: Returns [[CT_LISTNBOX]]'s right aligned cell text.
 groups:
 - GUI Control - ListNBox
 syntax:
@@ -8,38 +8,36 @@ syntax:
   - - row
     - column
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: idc
     type: Number
   - name: row
-    description: index of the row
+    desc: index of the row
     type: Number
   - name: column
-    description: index of the column
+    desc: index of the column
     type: Number
 - call: !Binary
   - ctrl
   - - row
     - column
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: ctrl
     type: Control
   - name: row
-    description: index of the row
+    desc: index of the row
     type: Number
   - name: column
-    description: index of the column
+    desc: index of the column
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>_text = _control lnbTextRight [0, 0];</sqf>
+see_also:
+- lnbSetTextRight

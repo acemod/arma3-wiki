@@ -1,22 +1,21 @@
 name: logNetworkTerminate
-description: Terminates a network log file started with [[logNetwork]] with the given handle
+desc: Terminates a network log file started with [[logNetwork]] with the given handle
 groups:
 - Multiplayer
 - Diagnostic
 syntax:
 - call: !Unary handle
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: handle
-    description: handle to terminate (created with [[logNetwork]])
+    desc: handle to terminate (created with [[logNetwork]])
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>logNetworkTerminate _someHandle;</sqf>
+see_also:
+- logNetwork

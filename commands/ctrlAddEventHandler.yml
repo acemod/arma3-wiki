@@ -1,5 +1,5 @@
 name: ctrlAddEventHandler
-description: |-
+desc: |-
   Add an event handler to the given control.
 
   {{Feature|important|
@@ -15,32 +15,28 @@ syntax:
   - - handler
     - function
   ret:
-  - Number
-  - handler ID or -1 if failed
+    type: Number
+    desc: handler ID or -1 if failed
   params:
   - name: control
     type: Control
   - name: handler
-    description: handler name, see [[User Interface Event Handlers]]
+    desc: handler name, see [[User Interface Event Handlers]]
     type: String
   - name: function
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_map ctrlAddEventHandler ["Draw", "_this call BIS_fnc_strategicMapOpen_draw"];</sqf>
 - <sqf>_map ctrlAddEventHandler ["Draw", { hintSilent str _this }];</sqf>
 - <sqf>findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["Draw", { hintSilent str _this }]; //Arma 3 map control</sqf>
+see_also:
+- displayAddEventHandler
+- ctrlRemoveEventHandler
+- ctrlRemoveAllEventHandlers

@@ -1,5 +1,5 @@
 name: getClientStateNumber
-description: |-
+desc: |-
   Returns client state in network game. Works on both, client and dedicated server. The following states are possible:
 
   {{{!}} class{{=}}"wikitable"
@@ -38,15 +38,16 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Number
-  - client state (see table above)
+    type: Number
+    desc: client state (see table above)
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>_state = getClientStateNumber;</sqf>
 - <sqf>_inGame = getClientStateNumber > 8;</sqf>
+see_also:
+- getClientState
+- getPlayerUID

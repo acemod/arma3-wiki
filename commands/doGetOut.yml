@@ -1,5 +1,5 @@
 name: doGetOut
-description: |-
+desc: |-
   Orders one or multiple units to get out from the vehicle (silently). Same as [[commandGetOut]] with latter being shown via radio chat.
   <br><br>
   Notes:
@@ -18,32 +18,27 @@ groups:
 syntax:
 - call: !Unary units
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: units
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>doGetOut _unitOne;</sqf>
 - <sqf>doGetOut [_unitOne,_unitTwo];</sqf>
+see_also:
+- commandGetOut
+- moveOut
+- leaveVehicle

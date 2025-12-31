@@ -1,5 +1,5 @@
 name: addItemToUniform
-description: Create new item and store it to soldier's uniform. The item can also be a weapon or a magazine.
+desc: Create new item and store it to soldier's uniform. The item can also be a weapon or a magazine.
 groups:
 - Unit Inventory
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - item
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,9 +16,11 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 4
+  arma3: '1.4'
 examples:
 - <sqf>player addItemToUniform "itemGPS";</sqf>
 - <sqf>player addItemToUniform "hgun_Rook40_F";</sqf>
+see_also:
+- removeItemFromUniform
+- addItemToBackpack
+- addItemToVest

@@ -1,5 +1,5 @@
 name: aimedAtTarget
-description: Returns how good a vehicle's weapon is aimed at the target.
+desc: Returns how good a vehicle's weapon is aimed at the target.
 groups:
 - Object Manipulation
 - Weapons
@@ -9,30 +9,28 @@ syntax:
   - - target
     - weapon
   ret:
-  - Number
-  - 0 if no weapons or if ''weapon'' was provided and not found
+    type: !NumberRange
+    - 0
+    - 1
+    desc: 0 if no weapons or if ''weapon'' was provided and not found
   params:
   - name: vehicle
-    description: vehicle only, not unit
+    desc: vehicle only, not unit
     type: Object
   - name: target
     type: Object
   - name: weapon
-    description: if not provided, checks all weapons; if provided, checks that weapon only
+    desc: if not provided, checks all weapons; if provided, checks that weapon only
     type: String
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_aimingQuality = heli aimedAtTarget [target];</sqf>
 - <sqf>_aimingQuality = heli aimedAtTarget [target, "M197"];</sqf>
+see_also:
+- fireAtTarget

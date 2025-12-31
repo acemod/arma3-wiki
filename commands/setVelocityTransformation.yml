@@ -1,5 +1,5 @@
 name: setVelocityTransformation
-description: |-
+desc: |-
   [[File:setVelocityTransformation.jpg|thumb|right]]
   Interpolates and applies [[Position#PositionASL|PositionASL]], [[velocity]], [[vectorDir]] and [[vectorUp]] to the given object based on the interval value.<br>
 
@@ -37,61 +37,62 @@ syntax:
     - interval
     - customCenter
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
-    description: object to be interpolated
+    desc: object to be interpolated
     type: Object
   - name: fromPosASL
-    description: starting [[getPosASL]] of the object
+    desc: starting [[getPosASL]] of the object
     type: Position3dASL
   - name: toPosASL
-    description: ending [[getPosASL]] of the object
+    desc: ending [[getPosASL]] of the object
     type: Position3dASL
   - name: fromVelocity
-    description: starting [[velocity]] of the object
+    desc: starting [[velocity]] of the object
     type: ArrayUnknown
   - name: toVelocity
-    description: ending [[velocity]] of the object
+    desc: ending [[velocity]] of the object
     type: ArrayUnknown
   - name: fromVectorDir
-    description: starting [[vectorDir]] of the object
+    desc: starting [[vectorDir]] of the object
     type: ArrayUnknown
   - name: toVectorDir
-    description: ending [[vectorDir]] of the object
+    desc: ending [[vectorDir]] of the object
     type: ArrayUnknown
   - name: fromVectorUp
-    description: starting [[vectorUp]] of the object
+    desc: starting [[vectorUp]] of the object
     type: ArrayUnknown
   - name: toVectorUp
-    description: ending [[vectorUp]] of the object
+    desc: ending [[vectorUp]] of the object
     type: ArrayUnknown
   - name: interval
-    description: interpolation interval (variable value, normally between 0 and 1)
+    desc: interpolation interval (variable value, normally between 0 and 1)
     type: Number
   - name: customCenter
-    description: ) custom center [x, y, z] to which transformation would be applied in model coordinates
+    desc: ) custom center [x, y, z] to which transformation would be applied in model coordinates
     type: ArrayUnknown
     optional: true
     default: placing point of the model (see [[getModelInfo]]
     since:
-      arma_3:
-        major: 2
-        minor: 8
+      arma3: '2.8'
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\n_tracker setVelocityTransformation\n[\n\t_currentPos,\n\t_nextPos,\n\t_currentVelocity,\n\t_nextVelocity,\n\t_currentVectorDir,\n\t_nextVectorDir,\n\t_currentVectorUp,\n\t_nextVectorUp,\n\t_interval\n];\n</sqf>"
 - "Bob on imaginary stairway to heaven:\n<sqf>\nbob = createAgent [\"C_man_1\", player getRelPos [5, 0], [], 0, \"CAN_COLLIDE\"];\nbob switchMove \"ladderCivilUpLoop\";\npos1 = getPosASL bob;\npos2 = pos1 vectorAdd [0,0,0.75];\nbob addEventHandler [\"AnimDone\",\n{\n\tpos1 = pos2;\n\tpos2 = pos2 vectorAdd [0,0,0.75]\n}];\n\nonEachFrame\n{\n\tif (!alive bob) then\n\t{\n\t\tonEachFrame {};\n\t\tbob switchMove \"\";\n\t\tbob removeAllEventHandlers \"AnimDone\";\n\t};\n\tbob setVelocityTransformation [\n\t\tpos1,\n\t\tpos2,\n\t\t[0,0,0],\n\t\t[0,0,0],\n\t\t[0,1,0],\n\t\t[0,1,0],\n\t\t[0,0,1],\n\t\t[0,0,1],\n\t\tmoveTime bob\n\t];\n};\n</sqf>"
 - "Advanced trickery with curved movement. The curve is controlled with one control point (controlPointASL), just like quadratic Bézier curve:\n<sqf>\ndisableSerialization;\nplayer setDir 0;\ninterval = 0;\n_disp = findDisplay 46 createDisplay \"RscDisplayEmpty\";\n_ctrl = _disp ctrlCreate [\"RscSlider\", -1];\n_ctrl ctrlSetPosition [safeZoneX + 0.1, 1, safeZoneW - 0.2, 0.1];\n_ctrl ctrlSetActiveColor [1,0,0,1];\n_ctrl ctrlCommit 0;\n_ctrl sliderSetPosition 0;\n_ctrl sliderSetRange [0,1];\n_ctrl sliderSetSpeed [0.1,0.5];\n_ctrl ctrlAddEventHandler [\"SliderPosChanged\", {interval = _this select 1}];\nctrlSetFocus _ctrl;\nbox = \"Land_VR_Shape_01_cube_1m_F\" createVehicle [0,0,0];\ncontrolPointASL = AGLToASL (player getRelPos [70, -30]) vectorAdd [0, 0, 30];\nfromPosASL = AGLToASL (player getRelPos [10, -45]);\ntoPosASL = AGLToASL (player getRelPos [10, 45]);\nfromControlPointOffset = controlPointASL vectorDiff fromPosASL;\ntoControlPointOffset = toPosASL vectorDiff controlPointASL;\nonEachFrame\n{\n\thintSilent format [\"Interval: %1\", interval];\n\tbox setVelocityTransformation\n\t[\n\t\tfromPosASL vectorAdd (fromControlPointOffset vectorMultiply interval),\n\t\tcontrolPointASL vectorAdd (toControlPointOffset vectorMultiply interval),\n\t\t[0,0,0],\n\t\t[0,0,0],\n\t\t[0,1,0],\n\t\t[1,0,0],\n\t\t[0,0,1],\n\t\t[0,1,0],\n\t\tinterval\n\t];\n};\n</sqf>"
+see_also:
+- velocity
+- setVelocity
+- velocityModelSpace
+- setVelocityModelSpace
+- speed
+- moveTime
+- disableBrakes
+- brakesDisabled
+- getModelInfo

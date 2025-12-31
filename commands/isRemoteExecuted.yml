@@ -1,5 +1,5 @@
 name: isRemoteExecuted
-description: |-
+desc: |-
   Returns [[true]] if the code context is being remote executed by [[remoteExec]] or [[remoteExecCall]]. In SP always returns [[false]]. See also [[isRemoteExecutedJIP]]:
   :{{{!}} class="wikitable align-center align-left-col-1 align-center-row-1"
   ! rowspan="2" {{!}} command
@@ -24,14 +24,21 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 66
+  arma3: '1.66'
 examples:
 - <sqf>private _remoteExecuted = isRemoteExecuted;</sqf>
+see_also:
+- isRemoteExecutedJIP
+- remoteExec
+- remoteExecCall
+- canSuspend
+- remoteExecutedOwner
+- isUIContext
+- isGamePaused
+- isGameFocused
+- remoteExecutedJIPID

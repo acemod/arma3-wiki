@@ -1,5 +1,5 @@
 name: tvIsSelected
-description: Returns true if given treeview item is selected.
+desc: Returns true if given treeview item is selected.
 groups:
 - GUI Control - Tree View
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - control
   - path
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: control
     type: Control
@@ -17,8 +16,9 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>_control tvIsSelected [0];</sqf>
+see_also:
+- tvSelection
+- tvSetSelected

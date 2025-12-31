@@ -1,5 +1,5 @@
 name: setDefaultCamera
-description: Sets the position and direction for the camera used after camera is set on no object (log out view when leaving MP game for example)
+desc: Sets the position and direction for the camera used after camera is set on no object (log out view when leaving MP game for example)
 groups:
 - Camera Control
 syntax:
@@ -7,23 +7,34 @@ syntax:
   - position
   - direction
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: position
-    description: position of the camera
+    desc: position of the camera
     type: Position3dASL
   - name: direction
-    description: format [[Vector3D]] - direction of the camera
+    desc: format [[Vector3D]] - direction of the camera
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 10
+  arma3: '1.10'
 examples:
 - <sqf>setDefaultCamera [[5000, 5000, 200], [1, 1, -1]];</sqf>
 - |-
   Lift camera 100m up above current player position and point downwards:
   <sqf>setDefaultCamera [ATLToASL (player modelToWorld [0, 0, 100]), [0, 0, -1]];</sqf>
+see_also:
+- camCreate
+- cameraOn
+- cameraView
+- cameraEffect
+- cameraEffectEnableHUD
+- switchCamera
+- positionCameraToWorld
+- cameraInterest
+- setCameraInterest
+- getEditorCamera
+- mapCenterOnCamera
+- preloadCamera
+- restartEditorCamera

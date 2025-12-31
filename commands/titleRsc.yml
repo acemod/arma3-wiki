@@ -1,5 +1,5 @@
 name: titleRsc
-description: |-
+desc: |-
   Displays a resource defined in RscTitles. Also see [[cutRsc]], with these two commands you can show two different resources at once.
   {{Feature|arma3|{{GVI|arma3|1.58}} Multiple layers and map overlays are possible with [[cutRsc]] which provides more options and handles layers better.}}
 groups:
@@ -11,48 +11,39 @@ syntax:
   - speed
   - showInMap
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: text
-    description: the class name of the resource. ("Default" will remove the current resource)
+    desc: the class name of the resource. ("Default" will remove the current resource)
     type: String
   - name: type
-    description: 'can be one of: "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN"; see [[Title Effect Type]]s for more information about these values'
+    desc: 'can be one of: "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN"; see [[Title Effect Type]]s for more information about these values'
     type: String
   - name: speed
-    description: time in seconds to fade in resource
+    desc: time in seconds to fade in resource
     type: Number
     optional: true
     default: '-1'
   - name: showInMap
-    description: '[[false]] to hide the text when the map is opened'
+    desc: '[[false]] to hide the text when the map is opened'
     type: Boolean
     optional: true
     default: '[[true]]'
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>titleRsc ["BIS", "PLAIN"];</sqf>
+see_also:
+- titleText
+- titleObj
+- cutRsc
+- allActiveTitleEffects
+- activeTitleEffectParams

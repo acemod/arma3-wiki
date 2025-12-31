@@ -1,5 +1,5 @@
 name: getResolution
-description: |-
+desc: |-
   Returns an array containing all information about current client screen resolution.
 
   {{Feature|arma3|
@@ -19,20 +19,22 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - "{{hl|[screenW, screenH, viewPortW, viewPortH, aspectRatio, uiScale, fovTop, fovLeft, tripleHead, textureQuality]}}\n* {{hl|screenW}}: [[Number]] - width of the screen in pixels\n* {{hl|screenH}}: [[Number]] - height of the screen in pixels\n* {{hl|viewPortW}}: [[Number]] - width of the '''4:3''' view port in pixels\n* {{hl|viewPortH}}: [[Number]] - height of the '''4:3''' view port in pixels \n* {{hl|aspectRatio}}: [[Number]] - screen aspect ratio\n* {{hl|uiScale}}: [[Number]] - the scale of the UI, which affects view port size:\n: {{{!}} class=\"wikitable\" style=\"margin-top: -0.5em\""
+    type: ArrayUnknown
+    desc: "{{hl|[screenW, screenH, viewPortW, viewPortH, aspectRatio, uiScale, fovTop, fovLeft, tripleHead, textureQuality]}}\n* {{hl|screenW}}: [[Number]] - width of the screen in pixels\n* {{hl|screenH}}: [[Number]] - height of the screen in pixels\n* {{hl|viewPortW}}: [[Number]] - width of the '''4:3''' view port in pixels\n* {{hl|viewPortH}}: [[Number]] - height of the '''4:3''' view port in pixels \n* {{hl|aspectRatio}}: [[Number]] - screen aspect ratio\n* {{hl|uiScale}}: [[Number]] - the scale of the UI, which affects view port size:\n: {{{!}} class=\"wikitable\" style=\"margin-top: -0.5em\""
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 55
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.55'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>private _res = getResolution;</sqf>\n\nExample result with a single 16:9 monitor:\n<sqf>\n[\n\t1920,\t\t// width\n\t1080,\t\t// height\n\t792,\t\t// 2D viewport width\n\t594,\t\t// 2D viewport height\n\t1.77778,\t// aspect ratio\n\t0.55,\t\t// UI scale\n\t0.75,\t\t// fovTop\n\t1.33333,\t// fovLeft\n\tfalse\t\t// tripleHead\n]\n</sqf>\nExample result with a triple 16:9 monitor setup:\n<sqf>\n[\n\t5760,\t\t// width\n\t1080,\t\t// height\n\t792,\t\t// 2D viewport width\n\t594,\t\t// 2D viewport height\n\t5.33333,\t// aspect ratio\n\t0.55\t\t// UI scale\n]\n</sqf>\nExample result on a dedicated server:\n<sqf>\n[\n\t160,\t\t// width\n\t120,\t\t// height\n\t136,\t\t// 2D viewport width\n\t102,\t\t// 2D viewport height\n\t1.33333,\t// aspect ratio\n\t0.85\t\t// UI scale\n]\n</sqf>"
+see_also:
+- getObjectFOV
+- worldToScreen
+- screenToWorld
+- safeZoneX
+- safeZoneY
+- safeZoneW
+- safeZoneH

@@ -1,5 +1,5 @@
 name: selectionPosition
-description: |-
+desc: |-
   Returns selection position in model space pertaining to the current animation in [[Simulation vs Render Time Scope|render time scope]].
   When the default syntax is used, command searches first in Memory [[LOD]], then in Geometry LOD, FireGeometry LOD, LandContact LOD, HitPoints LOD and finally in ViewGeometry LOD and returns the first matching find.
   The second syntax allows to specify which one of these LODs to search in instead.
@@ -16,8 +16,8 @@ syntax:
   - object
   - selectionName
   ret:
-  - ArrayUnknown
-  - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned.'
+    type: ArrayUnknown
+    desc: '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned.'
   params:
   - name: object
     type: Object
@@ -29,30 +29,42 @@ syntax:
     - LOD
     - returnMode
   ret:
-  - ArrayUnknown
-  - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
+    type: ArrayUnknown
+    desc: '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
   params:
   - name: object
     type: Object
   - name: selectionName
     type: String
   - name: LOD
-    type: Unknown
+    type: !StringEnum
+    - - Memory
+      - null
+    - - Geometry
+      - null
+    - - FireGeometry
+      - null
+    - - LandContact
+      - null
+    - - HitPoints
+      - null
+    - - ViewGeometry
+      - arma3: '2.6'
     since:
-      arma_3:
-        major: 2
-        minor: 6
+      arma3: '2.6'
   - name: returnMode
-    type: Unknown
+    type: !StringEnum
+    - - FirstPoint
+      - null
+    - - AveragePoint
+      - null
+    - - BoundingBox
+      - null
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 8
+      arma3: '2.8'
   since:
-    arma_3:
-      major: 1
-      minor: 50
+    arma3: '1.50'
 - call: !Unary
   - object
   - selectionName
@@ -60,53 +72,53 @@ syntax:
   - isVisual
   - returnMode
   ret:
-  - ArrayUnknown
-  - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
+    type: ArrayUnknown
+    desc: '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
   params:
   - name: object
     type: Object
   - name: selectionName
     type: String
   - name: LODIndex
-    description: the index of the target LOD (see [[allLODs]])
+    desc: the index of the target LOD (see [[allLODs]])
     type: Number
   - name: isVisual
-    description: '[[true]] for Render, [[false]] for Simulation [[Simulation_vs_Render_Time_Scope|time scope]]'
+    desc: '[[true]] for Render, [[false]] for Simulation [[Simulation_vs_Render_Time_Scope|time scope]]'
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: returnMode
-    type: Unknown
+    type: !StringEnum
+    - - FirstPoint
+      - null
+    - - AveragePoint
+      - null
+    - - BoundingBox
+      - null
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 8
+      arma3: '2.8'
   since:
-    arma_3:
-      major: 2
-      minor: 6
+    arma3: '2.6'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_inModelPosition = player selectionPosition "head_hit";</sqf>
 - <sqf>_inModelPosition = player selectionPosition "pelvis";</sqf>
 - <sqf>_inModelPosition = player selectionPosition "head";</sqf>
 - <sqf>_inModelPosition = player selectionPosition "camera";</sqf>
 - "<sqf>\nstomper selectionPosition [\"wheel_1_1\", \"HitPoints\", \"FirstPoint\"];\t// [-0.774058,0.860854,-1.40365]\nstomper selectionPosition [\"wheel_1_1\", \"HitPoints\", \"AveragePoint\"];\t// [-0.597142,1.35486,-1.58345]\nstomper selectionPosition [\"wheel_1_1\", \"HitPoints\", \"BoundingBox\"];\t// [[-0.774058,0.860854,-2.07746],[-0.420225,1.84887,-1.08944]]\n</sqf>"
+see_also:
+- selectionVectorDirAndUp
+- modelToWorld
+- selectionNames
+- getAllHitPointsDamage
+- allLODs
+- LOD
+- resolutions

@@ -1,18 +1,24 @@
 name: cursorObject
-description: Returns the object under cursor. This command is quite different from [[cursorTarget]] as it is more precise in determining the boundaries of the pointed at object and can detect a larger variety of objects including map objects and trees.
+desc: Returns the object under cursor. This command is quite different from [[cursorTarget]] as it is more precise in determining the boundaries of the pointed at object and can detect a larger variety of objects including map objects and trees.
 groups:
 - Object Detection
 syntax:
 - call: Nular
   ret:
-  - Object
-  - null
+    type: Object
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>hint str [getModelInfo cursorObject, typeOf cursorObject];</sqf>
+see_also:
+- getCursorObjectParams
+- cursorTarget
+- lineIntersects
+- lineIntersectsWith
+- lineIntersectsObjs
+- lineIntersectsSurfaces
+- intersect
+- checkVisibility

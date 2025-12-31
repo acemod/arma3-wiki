@@ -1,5 +1,5 @@
 name: vectorCrossProduct
-description: "Cross product of two 3D vectors. \n<br>In layman's terms, if you have a polygon (surface) defined by 3 points, you can find a normal to it (just like terrain [[surfaceNormal]]). To invert direction of the normal, swap arguments around."
+desc: "Cross product of two 3D vectors. \n<br>In layman's terms, if you have a polygon (surface) defined by 3 points, you can find a normal to it (just like terrain [[surfaceNormal]]). To invert direction of the normal, swap arguments around."
 groups:
 - Math - Vectors
 syntax:
@@ -7,25 +7,42 @@ syntax:
   - vector1
   - vector2
   ret:
-  - ArrayUnknown
-  - |-
-    vector [x, y, z]
-    <br><br>
-    [[File:crossProduct.jpg|300px]]
+    type: ArrayUnknown
+    desc: |-
+      vector [x, y, z]
+      <br><br>
+      [[File:crossProduct.jpg|300px]]
   params:
   - name: vector1
-    description: in form [x, y, z] or 2D (since Arma 3 v2.00, z coordinate is defaulted to 0)
+    desc: in form [x, y, z] or 2D (since Arma 3 v2.00, z coordinate is defaulted to 0)
     type: ArrayUnknown
   - name: vector2
-    description: in form [x, y, z] or 2D (since Arma 3 v2.00, z coordinate is defaulted to 0)
+    desc: in form [x, y, z] or 2D (since Arma 3 v2.00, z coordinate is defaulted to 0)
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 22
+  arma3: '1.22'
 examples:
 - <sqf>_vector = [1,1,1] vectorCrossProduct [2,2,2];</sqf>
 - <sqf>_vectorUp = [0,1,0] vectorCrossProduct [-1,0,0]; //[0,-0,1]</sqf>
 - <sqf>_vectorSide = (vectorDir player) vectorCrossProduct (vectorUp player);</sqf>
+see_also:
+- vectorAdd
+- vectorDiff
+- vectorDotProduct
+- vectorCos
+- vectorMagnitude
+- vectorMagnitudeSqr
+- vectorMultiply
+- vectorDistance
+- vectorDistanceSqr
+- vectorDir
+- vectorUp
+- setVectorDir
+- setVectorUp
+- setVectorDirAndUp
+- vectorNormalized
+- vectorFromTo
+- matrixMultiply
+- matrixTranspose

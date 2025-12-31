@@ -1,34 +1,27 @@
 name: finite
-description: "Returns [[true]] if the provided number is finite (not infinite and a valid number). \n{{ Feature | Informative | \n* Maximum finite [[Number]] : 3.40282e+38\n* Minimum finite [[Number]] : -3.40282e+38 }}"
+desc: "Returns [[true]] if the provided number is finite (not infinite and a valid number). \n{{ Feature | Informative | \n* Maximum finite [[Number]] : 3.40282e+38\n* Minimum finite [[Number]] : -3.40282e+38 }}"
 groups:
 - Math
 syntax:
 - call: !Unary number
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: number
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>finite 123; // returns true</sqf>
 - <sqf>finite log -1; // returns false</sqf>
 - <sqf>if (not finite log -1) then { hint "Infinite" };</sqf>
+see_also:
+- a
+- /
+- b

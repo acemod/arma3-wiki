@@ -1,5 +1,5 @@
 name: camPrepareFocus
-description: |-
+desc: |-
   focusRange is . Prepares the camera focus blur.
 
   '''[-1,1]''' will reset default values (auto focusing), '''[-1,-1]''' will disable postprocessing (all is focused). Needs the call of [[camCommitPrepared]] to be conducted.
@@ -11,34 +11,27 @@ syntax:
   - - distance
     - blur
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: camera
     type: Object
   - name: distance
-    description: blur distance
+    desc: blur distance
     type: Number
   - name: blur
-    description: blur intensity
+    desc: blur intensity
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_camera camPrepareFocus [50, 1];</sqf>
+see_also:
+- camPreload
+- camCommitPrepared
+- camSetFocus

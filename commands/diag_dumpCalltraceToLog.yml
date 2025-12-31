@@ -1,19 +1,16 @@
 name: diag_dumpCalltraceToLog
-description: Dumps current callstack/calltrace to RPT.
+desc: Dumps current callstack/calltrace to RPT.
 groups:
 - Diagnostic
 syntax:
 - call: Nular
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - |-
   <sqf>
@@ -31,3 +28,7 @@ examples:
   14:17:06 "CALLSTACK END;;;
   */
   </sqf>
+see_also:
+- arma.RPT
+- diag_stacktrace
+- diag_log

@@ -1,18 +1,24 @@
 name: diag_activeMissionFSMs
-description: Returns array with active Mission FSMs. To see number of all scripts currently in the scheduler use [[diag_activeScripts]].
+desc: Returns array with active Mission FSMs. To see number of all scripts currently in the scheduler use [[diag_activeScripts]].
 groups:
 - Diagnostic
 syntax:
 - call: Nular
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 44
+  arma3: '1.44'
 examples:
 - <sqf>{ systemChat str _x } forEach diag_activeMissionFSMs;</sqf>
+see_also:
+- diag_activeSQSScripts
+- diag_activeSQFScripts
+- diag_log
+- diag_fps
+- diag_fpsmin
+- diag_frameno
+- diag_tickTime
+- diag_activeScripts

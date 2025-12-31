@@ -1,33 +1,22 @@
 name: typeName
-description: "Returns the [[:Category:Data Types|Data Type]] of an expression. \n\nThe type is returned as on of the following all-uppercase strings:\n{{Columns|5|\n* \"[[Array|ARRAY]]\"\n* \"[[Boolean|BOOL]]\"\n* \"[[Code|CODE]]\"\n* \"[[Config|CONFIG]]\"\n* \"[[Control|CONTROL]]\"\n* \"[[Display|DISPLAY]]\"\n* \"[[Group|GROUP]]\"\n* \"[[Object|OBJECT]]\"\n* \"[[Number|SCALAR]]\" (and \"[[Number|NaN]]\")\n* \"[[Script Handle|SCRIPT]]\"\n* \"[[Side|SIDE]]\"\n* \"[[String|STRING]]\"\n* \"[[Structured Text|TEXT]]\"\n* {{GVI|arma1|1.08|size= 0.75}} \"[[Location|LOCATION]]\"\n* {{GVI|arma2|1.00|size= 0.75}} \"[[Team Member|TEAM_MEMBER]]\"\n* {{GVI|arma2|1.00|size= 0.75}} \"[[Namespace|NAMESPACE]]\"\n* {{GVI|arma2|1.00|size= 0.75}} \"[[Diary Record|DIARY_RECORD]]\"\n* {{GVI|arma2|1.00|size= 0.75}} \"[[Task|TASK]]\"\n* {{GVI|arma3|2.02|size= 0.75}} \"[[HashMap|HASHMAP]]\"\n}}\nThey represent the available [[:Category:Data Types|Data Types]] in {{arma}}.\n{{Feature|arma3|For type comparison, use [[isEqualType]] command instead.}}"
+desc: "Returns the [[:Category:Data Types|Data Type]] of an expression. \n\nThe type is returned as on of the following all-uppercase strings:\n{{Columns|5|\n* \"[[Array|ARRAY]]\"\n* \"[[Boolean|BOOL]]\"\n* \"[[Code|CODE]]\"\n* \"[[Config|CONFIG]]\"\n* \"[[Control|CONTROL]]\"\n* \"[[Display|DISPLAY]]\"\n* \"[[Group|GROUP]]\"\n* \"[[Object|OBJECT]]\"\n* \"[[Number|SCALAR]]\" (and \"[[Number|NaN]]\")\n* \"[[Script Handle|SCRIPT]]\"\n* \"[[Side|SIDE]]\"\n* \"[[String|STRING]]\"\n* \"[[Structured Text|TEXT]]\"\n* {{GVI|arma1|1.08|size= 0.75}} \"[[Location|LOCATION]]\"\n* {{GVI|arma2|1.00|size= 0.75}} \"[[Team Member|TEAM_MEMBER]]\"\n* {{GVI|arma2|1.00|size= 0.75}} \"[[Namespace|NAMESPACE]]\"\n* {{GVI|arma2|1.00|size= 0.75}} \"[[Diary Record|DIARY_RECORD]]\"\n* {{GVI|arma2|1.00|size= 0.75}} \"[[Task|TASK]]\"\n* {{GVI|arma3|2.02|size= 0.75}} \"[[HashMap|HASHMAP]]\"\n}}\nThey represent the available [[:Category:Data Types|Data Types]] in {{arma}}.\n{{Feature|arma3|For type comparison, use [[isEqualType]] command instead.}}"
 groups:
 - Variables
 syntax:
 - call: !Unary anything
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: anything
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_msg = "hello"; _result = typeName _msg;  //_result will be "STRING"</sqf>
 - <sqf>_unit = player; _result = typeName _unit; //_result becomes "OBJECT"</sqf>
@@ -40,3 +29,17 @@ examples:
   // same result but faster in {{arma3}}
   if !(_this isEqualType []) exitWith { hint "_this is not an array!" };
   </sqf>
+see_also:
+- isEqualTypeAll
+- isEqualType
+- isEqualTypeParams
+- isEqualTypeArray
+- isEqualTypeAny
+- typeOf
+- isKindOf
+- isClass
+- isArray
+- isNumber
+- isText
+- isNil
+- isNull

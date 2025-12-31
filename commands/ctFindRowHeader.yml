@@ -1,5 +1,5 @@
 name: ctFindRowHeader
-description: Gets index of the closest header above this row.
+desc: Gets index of the closest header above this row.
 groups:
 - GUI Control - Controls Table
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - ctrl
   - rowIndex
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: ctrl
     type: Control
@@ -17,8 +16,25 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>private _index = _control ctFindRowHeader 0;</sqf>
+see_also:
+- ctAddRow
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctSetCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetValue
+- ctValue
+- ctSetData
+- ctData
+- ctFindHeaderRows
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

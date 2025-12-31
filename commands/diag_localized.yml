@@ -1,23 +1,21 @@
 name: diag_localized
-description: 'Returns array with all [[localize]]d keys from the given [[Stringtable.xml | stringtable]] or the array of all stringtables names if empty string {{hl|""}} is given. Common stringtables are: {{hl|"Global"}}, {{hl|"Mission"}}, {{hl|"Campaign"}}.'
+desc: 'Returns array with all [[localize]]d keys from the given [[Stringtable.xml | stringtable]] or the array of all stringtables names if empty string {{hl|""}} is given. Common stringtables are: {{hl|"Global"}}, {{hl|"Mission"}}, {{hl|"Campaign"}}.'
 groups:
 - Strings
 - Localization
 syntax:
 - call: !Unary stringtable
   ret:
-  - ArrayUnknown
-  - array of [[String]]s, see description
+    type: ArrayUnknown
+    desc: array of [[String]]s, see description
   params:
   - name: stringtable
-    description: stringtable name or ""
+    desc: stringtable name or ""
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 4
+  arma3: '2.4'
 examples:
 - |-
   <sqf>
@@ -26,3 +24,10 @@ examples:
   </sqf>
 - <sqf>private _allTables = diag_localized "";</sqf>
 - <sqf>diag_localized "Global" select 0; // "$STR_A3_SHOWCASE_SLINGLOADING_15_AMMODROPPED_PIL_0"</sqf>
+see_also:
+- localize
+- isLocalized
+- getTextRaw
+- Stringtable.csv
+- Stringtable.xml
+- BIS_fnc_localize

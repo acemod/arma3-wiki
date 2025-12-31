@@ -1,5 +1,5 @@
 name: camPreload
-description: Preloads the scene for the prepared camera with given timeout after which preloading is aborted. Max timeout is 30 seconds. Timeout of 0 means max timeout of 30 seconds as well. {{Feature|informative|This command will read prepared params set with [[camPrepareFOV]], [[camPreparePos]] and [[camPrepareTarget]], so no [[camCommitPrepared]] is necessary. If [[camPrepareFOV]] is not set, the default value is 1. If [[camPrepareTarget]] (for direction) and [[camPreparePos]] (for position) are not set, current [[direction]] and [[position]] of the camera are used. The prepared camera preload will preload main camera as well. [[cameraEffect]] is not necessary}}
+desc: Preloads the scene for the prepared camera with given timeout after which preloading is aborted. Max timeout is 30 seconds. Timeout of 0 means max timeout of 30 seconds as well. {{Feature|informative|This command will read prepared params set with [[camPrepareFOV]], [[camPreparePos]] and [[camPrepareTarget]], so no [[camCommitPrepared]] is necessary. If [[camPrepareFOV]] is not set, the default value is 1. If [[camPrepareTarget]] (for direction) and [[camPreparePos]] (for position) are not set, current [[direction]] and [[position]] of the camera are used. The prepared camera preload will preload main camera as well. [[cameraEffect]] is not necessary}}
 groups:
 - Camera Control
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - camera
   - timeout
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: camera
     type: Object
@@ -17,21 +16,14 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_camera camPreload 5;</sqf>
 - "Preload camera around player to avoid stuttering on optics zooming:\n<sqf>\n0 spawn \n{\n\t_cam = \"camera\" camCreate (player selectionPosition \"camera\");\n\tfor \"_i\" from 0 to 359 do\n\t{\n\t\t_cam setDir _i;\n\t\t_cam camPrepareFov 0.25;\n\t\t_cam camPreload 0;\n\t\twaitUntil { camPreloaded _cam };\n\t};\n\tcamDestroy _cam;\n};\n</sqf>"
+see_also:
+- camPreloaded
+- preloadCamera

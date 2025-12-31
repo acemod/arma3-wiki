@@ -1,5 +1,5 @@
 name: enableAudioFeature
-description: |-
+desc: |-
   Get the state of '''or''' enable/disable an audio feature. Available features are {{hl|"lowpass"}} and {{hl|"building_interior"}}.
   * {{GVI|arma3|2.14|size= 0.75}} it is possible to enable {{hl|"building_interior"}} on an object placed in a building.
   * {{GVI|arma3|2.14|size= 0.75}} if 'enable' argument is omitted, the command returns the current state of the feature.
@@ -13,14 +13,14 @@ syntax:
   - feature
   - enable
   ret:
-  - Boolean
-  - previous state
+    type: Boolean
+    desc: previous state
   params:
   - name: feature
-    description: '{{hl|"lowpass"}} or {{hl|"building_interior"}}'
+    desc: '{{hl|"lowpass"}} or {{hl|"building_interior"}}'
     type: String
   - name: enable
-    description: (Optional, getter if not provided) [[true]] enable, [[false]], disable
+    desc: (Optional, getter if not provided) [[true]] enable, [[false]], disable
     type: Boolean
     optional: true
 - call: !Binary
@@ -28,28 +28,24 @@ syntax:
   - - feature
     - enable
   ret:
-  - Boolean
-  - previous state
+    type: Boolean
+    desc: previous state
   params:
   - name: object
     type: Object
   - name: feature
-    description: '{{hl|"building_interior"}} or {{hl|"building_exterior"}} only (mutually exclusive)'
+    desc: '{{hl|"building_interior"}} or {{hl|"building_exterior"}} only (mutually exclusive)'
     type: String
   - name: enable
-    description: (Optional, getter if not provided) [[true]] enable, [[false]], disable
+    desc: (Optional, getter if not provided) [[true]] enable, [[false]], disable
     type: Boolean
     optional: true
   since:
-    arma_3:
-      major: 2
-      minor: 14
+    arma3: '2.14'
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 64
+  arma3: '1.64'
 examples:
 - <sqf>private _prevState = enableAudioFeature ["lowpass", true];</sqf>
 - <sqf>private _prevState = pallet enableAudioFeature ["building_interior", true];</sqf>
@@ -62,3 +58,5 @@ examples:
   private _currState = pallet enableAudioFeature ["building_interior"];
   hint str (_currState == _prevState); // false
   </sqf>
+see_also:
+- insideBuilding

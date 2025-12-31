@@ -1,5 +1,5 @@
 name: setCollisionLight
-description: Switches collision lights of a vehicle on/off.
+desc: Switches collision lights of a vehicle on/off.
 groups:
 - Lights
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - vehicle
   - set
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
@@ -17,8 +16,13 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>heli setCollisionLight true;</sqf>
+see_also:
+- isLightOn
+- isCollisionLightOn
+- setPilotLight
+- isIRLaserOn
+- engineOn
+- isEngineOn

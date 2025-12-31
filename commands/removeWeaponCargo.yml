@@ -1,5 +1,5 @@
 name: removeWeaponCargo
-description: |-
+desc: |-
   Remove weapon from the vehicle cargo space.
   {{Feature|warning|This is unofficial documentation. All Information here is as it exists in the Engine. It might not reflect the reality.}}
 groups:
@@ -10,11 +10,10 @@ syntax:
   - - weaponID
     - creatorID
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
-    description: vehicle or ammo box
+    desc: vehicle or ammo box
     type: Object
   - name: weaponID
     type: Number
@@ -23,8 +22,9 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 22
+  arma3: '1.22'
 examples:
 - <sqf>rearmTruckOne removeWeaponCargo [19, 1];</sqf>
+see_also:
+- removeWeaponAttachmentCargo
+- weaponAccessoriesCargo

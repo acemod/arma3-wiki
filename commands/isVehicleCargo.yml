@@ -1,22 +1,20 @@
 name: isVehicleCargo
-description: Despite a misleading name, returns the vehicle that is transporting given vehicle in cargo. If the given vehicle is not in vehicle cargo, [[objNull]] is returned.
+desc: Despite a misleading name, returns the vehicle that is transporting given vehicle in cargo. If the given vehicle is not in vehicle cargo, [[objNull]] is returned.
 groups:
 - Vehicle in Vehicle Transport
 syntax:
 - call: !Unary cargo
   ret:
-  - Object
-  - transporting vehicle
+    type: Object
+    desc: transporting vehicle
   params:
   - name: cargo
-    description: vehicle in cargo
+    desc: vehicle in cargo
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 62
+  arma3: '1.62'
 examples:
 - |-
   Blackfish with given variable name blackfish, with a vehicle inside called quad
@@ -24,3 +22,19 @@ examples:
 - |-
   Vehicle called quad that is not being transported as cargo
   <sqf>_transportingVehicle = isVehicleCargo quad; //returns objNull</sqf>
+see_also:
+- Arma
+- '3:'
+- Vehicle
+- in
+- Vehicle
+- Transport|
+- Vehicle
+- in
+- Vehicle
+- Transport
+- canVehicleCargo
+- setVehicleCargo
+- enableVehicleCargo
+- getVehicleCargo
+- vehicleCargoEnabled

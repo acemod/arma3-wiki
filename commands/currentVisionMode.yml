@@ -1,5 +1,5 @@
 name: currentVisionMode
-description: |-
+desc: |-
   Returns current vision mode of unit's weapon. Vision mode could be one of:
   * 0 - normal vision
   * 1 - night vision
@@ -10,71 +10,56 @@ groups:
 syntax:
 - call: !Unary entity
   ret:
-  - Number
-  - vision mode
+    type: Number
+    desc: vision mode
   params:
   - name: entity
-    description: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode
+    desc: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode
     type: Object
 - call: !Unary
   - entity
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: entity
-    description: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode
+    desc: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode
     type: Object
   since:
-    arma_3:
-      major: 2
-      minor: 8
+    arma3: '2.8'
 - call: !Binary
   - vehicle
   - turretPath
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: vehicle
-    description: vehicle with vision modes
+    desc: vehicle with vision modes
     type: Object
   - name: turretPath
-    description: path to vehicle's turret. Use [-1] for driver turret, [] for default primary gunner turret
-    type: ArrayUnknown
+    desc: path to vehicle's turret. Use [-1] for driver turret, [] for default primary gunner turret
+    type: TurretPath
   since:
-    arma_3:
-      major: 2
-      minor: 8
+    arma3: '2.8'
 - call: !Binary
   - unit
   - weapon
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unit
-    description: soldier
+    desc: soldier
     type: Object
   - name: weapon
-    description: unit's weapon. Use "" for current weapon
+    desc: unit's weapon. Use "" for current weapon
     type: String
   since:
-    arma_3:
-      major: 2
-      minor: 8
+    arma3: '2.8'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_visionMode = currentVisionMode gunner _tank;</sqf>
 - "<sqf>\nif (currentVisionMode player == 1) then\n{\n\thint \"nightvision active\";\n};\n</sqf>"
@@ -85,3 +70,15 @@ examples:
   </sqf>
 - <sqf>private _detailedGunnerVisionMode = _tank currentVisionMode [0];</sqf>
 - <sqf>private _detailedWeaponVisionMode = player currentVisionMode "";</sqf>
+see_also:
+- disableNVGEquipment
+- disableTIEquipment
+- camUseNVG
+- setCamUseTI
+- currentMagazine
+- currentWeapon
+- currentMuzzle
+- currentWeaponMode
+- currentZeroing
+- magazinesTurret
+- weaponsTurret

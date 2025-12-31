@@ -1,23 +1,20 @@
 name: diag_testScriptSimpleVM
-description: Outputs the provided SQF code's end code.
+desc: Outputs the provided SQF code's end code.
 groups:
 - Diagnostic
 - Performance Profiling
 syntax:
 - call: !Unary code
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: code
-    description: the code to process
+    desc: the code to process
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 16
+  arma3: '2.16'
 examples:
 - |-
   <sqf>
@@ -40,3 +37,10 @@ examples:
   "]
   */
   </sqf>
+see_also:
+- Arma
+- '3:'
+- Diagnostics
+- Exe
+- Performance
+- Profiling

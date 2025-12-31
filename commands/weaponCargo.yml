@@ -1,5 +1,5 @@
 name: weaponCargo
-description: Get array with weapons from ammo box (or any general weapon holder container).
+desc: Get array with weapons from ammo box (or any general weapon holder container).
 groups:
 - Vehicle Inventory
 - Unit Inventory
@@ -7,16 +7,24 @@ groups:
 syntax:
 - call: !Unary box
   ret:
-  - ArrayUnknown
-  - list of present classes
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+    desc: list of present classes
   params:
   - name: box
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>hint str weaponCargo backpackContainer player;</sqf>
+see_also:
+- getWeaponCargo
+- addWeaponCargo
+- addWeaponCargoGlobal
+- clearWeaponCargo
+- clearWeaponCargoGlobal
+- magazineCargo
+- itemCargo

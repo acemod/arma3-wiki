@@ -1,35 +1,38 @@
 name: getRespawnVehicleInfo
-description: Returns various properties for the respawning vehicle (see [[Vehicle Respawn]]). All properties are synched over the network and should be the same on every client including [[JIP]].
+desc: Returns various properties for the respawning vehicle (see [[Vehicle Respawn]]). All properties are synched over the network and should be the same on every client including [[JIP]].
 groups:
 - Multiplayer
 syntax:
 - call: !Unary vehicle
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: vehicle
-    description: transport
+    desc: transport
     type: Object
 - call: !Binary
   - vehicle
   - index
   ret:
-  - Anything
-  - depends on the requested property, or [[Nothing]]
+    type: Anything
+    desc: depends on the requested property, or [[Nothing]]
   params:
   - name: vehicle
-    description: transport
+    desc: transport
     type: Object
   - name: index
-    description: property index (see main syntax, for example 10 for isRespawning)
+    desc: property index (see main syntax, for example 10 for isRespawning)
     type: Number
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>private _vehInfo = getRespawnVehicleInfo veh1;</sqf>
 - <sqf>private _isRespawning = veh1 getRespawnVehicleInfo 10;</sqf>
+see_also:
+- Vehicle
+- Respawn
+- respawnVehicle]],
+- playerRespawnTime]],
+- getEntityInfo

@@ -1,20 +1,39 @@
 name: backpackItems
-description: Get array with all items (of any kind, even weapons) in backpack of the given unit.
+desc: Get array with all items (of any kind, even weapons) in backpack of the given unit.
 groups:
 - Containers
 syntax:
 - call: !Unary unit
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>backpackItems player; // returns e.g ["hgun_P07_F", "Titan_AT"]</sqf>
+see_also:
+- uniformItems
+- vestItems
+- backpackContainer
+- firstBackpack
+- unitBackpack
+- backpack
+- backpackCargo
+- getBackpackCargo
+- addBackpack
+- addBackpackCargo
+- addBackpackCargoGlobal
+- removeBackpack
+- clearBackpackCargo
+- clearBackpackCargoGlobal
+- clearAllItemsFromBackpack
+- loadBackpack
+- backpackSpaceFor
+- canAddItemToBackpack
+- addItemToBackpack
+- removeItemFromBackpack
+- everyBackpack

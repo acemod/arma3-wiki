@@ -1,5 +1,5 @@
 name: addWeaponItem
-description: Adds a weapon item to the specified weapon. The item can be weapon magazine, in which case the amount of ammo and target muzzle could also be specified. Since Arma 3 2.22 it is possible to add a magazine directly into a 'Throw' muzzle provided it is configured with <syntaxhighlight lang="cpp" inline>keepInInventory = 0;</syntaxhighlight>. To remove such magazine see [[removeWeaponItem]].
+desc: Adds a weapon item to the specified weapon. The item can be weapon magazine, in which case the amount of ammo and target muzzle could also be specified. Since Arma 3 2.22 it is possible to add a magazine directly into a 'Throw' muzzle provided it is configured with <syntaxhighlight lang="cpp" inline>keepInInventory = 0;</syntaxhighlight>. To remove such magazine see [[removeWeaponItem]].
 groups:
 - Unit Inventory
 syntax:
@@ -9,26 +9,23 @@ syntax:
     - itemName
     - instant
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
   - name: weaponName
-    description: name of the weapon to add magazine to
+    desc: name of the weapon to add magazine to
     type: String
   - name: itemName
-    description: class name of the item to add (if magazine, muzzle will be autodetected)
+    desc: class name of the item to add (if magazine, muzzle will be autodetected)
     type: String
   - name: instant
-    description: '[[true]] to skip animation'
+    desc: '[[true]] to skip animation'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 1
-        minor: 96
+      arma3: '1.96'
 - call: !Binary
   - unit
   - - weaponName
@@ -37,41 +34,51 @@ syntax:
       - muzzleName
     - instant
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
   - name: weaponName
-    description: name of the weapon to add magazine to
+    desc: name of the weapon to add magazine to
     type: String
   - name: itemName
-    description: class name of the item to add (if magazine, muzzle will be autodetected unless specified)
+    desc: class name of the item to add (if magazine, muzzle will be autodetected unless specified)
     type: String
   - name: ammoCount
-    description: optional amount of ammo in magazine
+    desc: optional amount of ammo in magazine
     type: Number
     optional: true
   - name: muzzleName
-    description: optional target muzzle to add magazine to
+    desc: optional target muzzle to add magazine to
     type: String
     optional: true
   - name: instant
-    description: '[[true]] to skip animation'
+    desc: '[[true]] to skip animation'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 1
-        minor: 96
+      arma3: '1.96'
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 38
+  arma3: '1.38'
 examples:
 - <sqf>player addWeaponItem ["arifle_MX_GL_ACO_F", "1Rnd_HE_Grenade_shell"];</sqf>
 - <sqf>player addWeaponItem ["arifle_MX_GL_ACO_F", ["1Rnd_HE_Grenade_shell", 1, "GL_3GL_F"]];</sqf>
 - <sqf>player addWeaponItem ["LaserDesignator", "LaserBatteries"];</sqf>
+see_also:
+- removeWeaponItem
+- addPrimaryWeaponItem
+- addSecondaryWeaponItem
+- addHandgunItem
+- addBinocularItem
+- weaponsItems
+- handgunItems
+- primaryWeaponItems
+- secondaryWeaponItems
+- binocularItems
+- removePrimaryWeaponItem
+- removeSecondaryWeaponItem
+- removeHandgunItem
+- removeBinocularItem

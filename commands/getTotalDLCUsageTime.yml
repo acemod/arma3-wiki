@@ -1,18 +1,21 @@
 name: getTotalDLCUsageTime
-description: Returns total DLC usage time in this game session
+desc: Returns total DLC usage time in this game session
 groups:
 - DLC
 syntax:
 - call: Nular
   ret:
-  - Number
-  - time (in seconds?)
+    type: Number
+    desc: time (in seconds?)
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>_dlcTime = getTotalDLCUsageTime;</sqf>
+see_also:
+- getDLCs
+- getObjectDLC
+- getPersonUsedDLCs
+- getMissionDLCs

@@ -1,5 +1,5 @@
 name: setPosWorld
-description: Sets position of an object based on the model's centre position (see [[getPosWorld]]).
+desc: Sets position of an object based on the model's centre position (see [[getPosWorld]]).
 groups:
 - Positions
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - object
   - position
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
     type: Object
@@ -17,8 +16,14 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>_obj setPosWorld getPosWorld _obj;</sqf>
+see_also:
+- getPosWorld
+- setPos
+- setPosATL
+- setPosASL
+- setPosASLW
+- setMarkerPos
+- setVehiclePosition

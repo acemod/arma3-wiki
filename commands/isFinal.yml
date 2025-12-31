@@ -1,23 +1,42 @@
 name: isFinal
-description: Checks if [[Code]] or a variable was compiled final with [[compileFinal]].
+desc: Checks if [[Code]] or a variable was compiled final with [[compileFinal]].
 groups:
 - Variables
 syntax:
 - call: !Unary variable
   ret:
-  - Boolean
-  - '[[true]] if final, [[false]] if not'
+    type: Boolean
+    desc: '[[true]] if final, [[false]] if not'
   params:
   - name: variable
-    type: Unknown
+    type: !OneOf
+    - - Code
+      - null
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
+    - - HashMapUnknown
+      - null
+    - - Code
+      - null
+    - - String
+      - null
+    - - Code
+      - null
+    - - ArrayUnknown
+      - null
+    - - HashMapUnknown
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - "<sqf>\nprivate _myCode = compileFinal \"a = a + 1\";\nsystemChat format [\"isFinal \"\"_myCode\"\": %1\", isFinal \"_myCode\"];\t\t\t\t// true\nsystemChat format [\"isFinal _myCode: %1\", isFinal _myCode];\t\t\t\t\t\t// true\nsystemChat format [\"isFinal some code: %1\", isFinal { hint \"Hello there\" }];\t// false\n\nprivate _myArray1 = list _myTrigger;\nsystemChat format [\"isFinal _myArray1: %1\", isFinal _myArray1];\t\t\t\t\t// true\n\nprivate _myArray2 = [1, 2, 3];\nsystemChat format [\"isFinal _myArray2: %1\", isFinal _myArray2];\t\t\t\t\t// false\n\nprivate _myHashMap = compileFinal createHashMap;\nsystemChat format [\"isFinal _myHashMap: %1\", isFinal _myHashMap];\t\t\t\t// true\n</sqf>"
 - |-
   Avoid .rpt's overwrite warnings:
   <sqf>if (!isFinal fnc_myCode) then { fnc_myCode = compileFinal str_myCode };</sqf>
+see_also:
+- compile
+- compileFinal

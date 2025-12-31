@@ -1,5 +1,5 @@
 name: '-'
-description: |-
+desc: |-
   Subtracts numbers or arrays from each another, negates a number. For arrays also see [[deleteAt]] and [[deleteRange]].
   {{Feature|arma3|In Arma 3 it is possible to subtract nested arrays.}}
 groups:
@@ -10,8 +10,7 @@ syntax:
   - numberA
   - numberB
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: numberA
     type: Number
@@ -19,8 +18,8 @@ syntax:
     type: Number
 - call: !Unary numberA
   ret:
-  - Number
-  - the negative of ''numberA''
+    type: Number
+    desc: the negative of ''numberA''
   params:
   - name: numberA
     type: Number
@@ -28,8 +27,7 @@ syntax:
   - arrayA
   - arrayB
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: arrayA
     type: ArrayUnknown
@@ -38,27 +36,13 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_result = 10 - 7; // result is 3</sqf>
 - |-
@@ -70,3 +54,8 @@ examples:
 - <sqf>_result = [1, 2, 2, player, "String"] - [2, player, player, "String"]; // _result is [1]</sqf>
 - <sqf>_result = [0, [0], [[0]]] - [0]; // [[0], [[0]]]</sqf>
 - "<sqf>\n_result = [0, [0], [[0]]] - [[0]];\t\t// [0, [[0]]]\t- Since {{arma3}}\n_result = [0, [0], [[0]]] - [[[0]]];\t// [0, [0]]\t\t- Since {{arma3}}\n</sqf>"
+see_also:
+- Array
+- Operators
+- deleteAt
+- deleteRange

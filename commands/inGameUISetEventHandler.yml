@@ -1,5 +1,5 @@
 name: inGameUISetEventHandler
-description: |-
+desc: |-
   Sets given event handler of in-game UI. If EH function returns [[true]], performed action is overridden. Event handlers available are:
   * "PrevAction" - mouse scroll up
   * "Action" - action key press
@@ -31,8 +31,7 @@ syntax:
   - handlerName
   - code
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: handlerName
     type: String
@@ -41,21 +40,11 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -71,3 +60,18 @@ examples:
   </sqf>
 - "Deny any weapon disassembly:\n<sqf>\ninGameUISetEventHandler [\"Action\", \"\n\tif (_this select 3 == 'DisAssemble') then {\n\t\thint 'You are not allowed to do this';\n\t\ttrue\n\t}\n\"];\n</sqf>"
 - "Detect explosive/mine placement:\n<sqf>\nprivate _onMagazineUse = '\n\tparams [\"_target\", \"\", \"\", \"_action\", \"\", \"\", \"\", \"\", \"\", \"\", \"_event\"];\n\tif (_action == \"UseMagazine\") then {\n\t\tif (_event == \"Action\") then {\n\t\t\t_target spawn {\n\t\t\t\twaitUntil {!(all_magazines isEqualTo magazines _this)};\n\t\t\t\t{\n\t\t\t\t\t0 = all_magazines deleteAt (all_magazines find _x);\n\t\t\t\t} count magazines _this;\n\t\t\t\thint format [\"Magazine Used: %1\", all_magazines select 0];\n\t\t\t};\n\t\t} else {\n\t\t\tall_magazines = magazines _target;\n\t\t};\n\t};\n\tfalse\n';\ninGameUISetEventHandler [\"PrevAction\", _onMagazineUse];\ninGameUISetEventHandler [\"NextAction\", _onMagazineUse];\ninGameUISetEventHandler [\"Action\", _onMagazineUse];\n</sqf>"
+see_also:
+- isActionMenuVisible
+- addEventHandler
+- ctrlAddEventHandler
+- displayAddEventHandler
+- actionIDs
+- actionParams
+- addAction
+- setUserActionText
+- showHUD
+- inputAction
+- removeAction
+- removeAllActions
+- action
+- enableWeaponDisassembly

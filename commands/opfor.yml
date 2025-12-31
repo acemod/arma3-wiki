@@ -1,5 +1,5 @@
 name: opfor
-description: Pre-defined variable for the opfor [[Side|side]].
+desc: Pre-defined variable for the opfor [[Side|side]].
 alias:
 - '[[east]]'
 groups:
@@ -7,14 +7,19 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Side
-  - null
+    type: Side
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - "<sqf>\nif (side player == opfor) then\n{\n\thint \"OPFOR\";\n};\n</sqf>"
+see_also:
+- side
+- civilian
+- blufor
+- east
+- independent
+- resistance
+- west

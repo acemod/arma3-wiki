@@ -1,22 +1,19 @@
 name: soundParams
-description: Returns various params for the given sound
+desc: Returns various params for the given sound
 groups:
 - Sounds
 syntax:
 - call: !Unary id
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: id
-    description: id returned by [[playSoundUI]] and [[playSound3D]] commands, -1 to return all currently playing ids
+    desc: id returned by [[playSoundUI]] and [[playSound3D]] commands, -1 to return all currently playing ids
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 12
+  arma3: '2.12'
 examples:
 - <sqf>private _params = soundParams 10;</sqf>
 - |-
@@ -25,3 +22,7 @@ examples:
   private _sound = playSound3D ["A3\Sounds_F\sfx\blip1.wss", player];
   waitUntil { soundParams _sound isEqualTo [] };
   </sqf>
+see_also:
+- playSoundUI
+- playSound3D
+- stopSound

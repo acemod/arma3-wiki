@@ -1,5 +1,5 @@
 name: isKindOf
-description: |-
+desc: |-
   Checks whether the given object or type is (a subtype) of the given type.<br>
   While {{Link|#Syntax 1}} and {{Link|#Syntax 2}} only support '''CfgVehicles''', {{GVI|arma2|1.00|size= 0.75}}'''CfgAmmo''' and '''CfgNonAIVehicles''', {{Link|#Syntax 3}} can be used with any config, including the [[missionConfigFile|mission config]].
 groups:
@@ -9,8 +9,7 @@ syntax:
   - object
   - typeName
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: object
     type: Object
@@ -20,8 +19,7 @@ syntax:
   - class1
   - class2
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: class1
     type: String
@@ -32,8 +30,7 @@ syntax:
   - - class2
     - targetConfig
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: class1
     type: String
@@ -42,32 +39,23 @@ syntax:
   - name: targetConfig
     type: Config
   since:
-    arma_3:
-      major: 1
-      minor: 48
+    arma3: '1.48'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>vehicle player isKindOf "Tank";</sqf>
 - <sqf>"BMP2" isKindOf "Tank";</sqf>
 - <sqf>currentWeapon player isKindOf ["Rifle", configFile >> "CfgWeapons"];</sqf>
 - <sqf>private _isSoldier = player isKindOf "CAManBase";</sqf>
+see_also:
+- typeOf
+- countType
+- inheritsFrom
+- configHierarchy

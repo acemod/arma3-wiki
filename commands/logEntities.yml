@@ -1,5 +1,5 @@
 name: logEntities
-description: |-
+desc: |-
   Creates a log file containing the list of all game entities in scene.
   The file is created in the same directory as [[Crash_Files|.rpt file]].
   {{Feature|informative|[[BattlEye]]'s RCON variant of this command is {{hl|#logEntities}} (see also [[Multiplayer Server Commands]]).}}
@@ -72,14 +72,21 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 18
+  arma3: '1.18'
 examples:
 - <sqf>logEntities;</sqf>
+see_also:
+- entities
+- nearEntities
+- diag_log
+- diag_fps
+- diag_fpsmin
+- diag_frameno
+- diag_tickTime
+- diag_captureFrame
+- exportJIPMessages

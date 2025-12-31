@@ -1,33 +1,24 @@
 name: echo
-description: Sends any text into the debugger console or the logfile. This command is only '''present in internal version ''' not in the retail version. Use [[diag_log]] instead!
+desc: Sends any text into the debugger console or the logfile. This command is only '''present in internal version ''' not in the retail version. Use [[diag_log]] instead!
 groups:
 - Diagnostic
 - Broken Commands
 syntax:
 - call: !Unary text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>echo "Text in logfile";</sqf>
+see_also:
+- diag_log

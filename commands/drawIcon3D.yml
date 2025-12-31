@@ -1,5 +1,5 @@
 name: drawIcon3D
-description: |-
+desc: |-
   Draws an icon at the given position in the game world. This command has to be executed every frame. Use the [[Arma 3: Mission Event Handlers#Draw3D|Draw3D]] Mission Event Handler (which is executed every frame if the user can see the icon).<br>
   In order for the results of this command to be visible through a [[camCreate|custom camera]], enable HUD with [[cameraEffectEnableHUD]].<br>
   <sqf inline>showHUD false</sqf> will hide the icon drawn by this command.<br>
@@ -31,28 +31,31 @@ syntax:
   - offsetX
   - offsetY
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: texture
-    description: icon texture
+    desc: icon texture
     type: String
   - name: color
-    type: Unknown
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - ArrayUnknown
+      - null
   - name: position
-    description: icon position
+    desc: icon position
     type: Position3dAGL
   - name: width
-    description: icon width
+    desc: icon width
     type: Number
   - name: height
-    description: icon height
+    desc: icon height
     type: Number
   - name: angle
-    description: icon rotation angle
+    desc: icon rotation angle
     type: Number
   - name: text
-    description: text label to display next to the icon
+    desc: text label to display next to the icon
     type: String
     optional: true
     default: '""'
@@ -60,61 +63,143 @@ syntax:
     type: Unknown
     optional: true
   - name: textSize
-    description: text size
+    desc: text size
     type: Number
     optional: true
     default: size of system
   - name: font
-    description: font class name from {{hl|CfgFontFamilies}} (see {{Link|FXY File Format#Available Fonts}})
+    desc: font class name from {{hl|CfgFontFamilies}} (see {{Link|FXY File Format#Available Fonts}})
     type: String
     optional: true
     default: '"RobotoCondensedBold"'
   - name: textAlign
-    type: Unknown
+    type: !StringEnum
+    - - '"left" - aligns the end of text line with the given position (text appears to the left of the position)'
+      - null
+    - - '"right" - aligns the beginning of text line with the given position (text appears to the right of the position)'
+      - null
+    - - '"center" - aligns the middle of text line with the given position (text appears central to the position)'
+      - null
     optional: true
   - name: drawSideArrows
-    description: '[[true]] to draw arrows and the text label at edge of screen when the icon moves off the screen'
+    desc: '[[true]] to draw arrows and the text label at edge of screen when the icon moves off the screen'
     type: Boolean
     optional: true
     default: '[[false]]'
   - name: offsetX
-    description: X offset for the icon text
+    desc: X offset for the icon text
     type: Number
     optional: true
     default: '0'
     since:
-      arma_3:
-        major: 2
-        minor: 4
+      arma3: '2.4'
   - name: offsetY
-    description: Y offset for the icon text
+    desc: Y offset for the icon text
     type: Number
     optional: true
     default: '0'
     since:
-      arma_3:
-        major: 2
-        minor: 4
+      arma3: '2.4'
 - call: !Unary icon
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: icon
-    type: Unknown
+    type: !OneOf
+    - - HashMapUnknown
+      - null
+    - - ArrayUnknown
+      - null
+    - - Object
+      - null
+    - - Number
+      - null
+    - - Object
+      - null
+    - - String
+      - null
+    - - Number
+      - null
+    - - Number
+      - null
+    - - String
+      - null
+    - - Number
+      - null
+    - - String
+      - null
+    - - Boolean
+      - null
+    - - ArrayUnknown
+      - null
+    - - Boolean
+      - null
+    - - Number
+      - null
+    - - Number
+      - null
+    - - Number
+      - null
+    - - Boolean
+      - null
+    - - Boolean
+      - null
+    - - String
+      - null
+    - - Number
+      - null
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - Number
+      - null
+    - - Number
+      - null
+    - - Number
+      - null
+    - - Boolean
+      - null
+    - - ArrayUnknown
+      - null
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - Number
+      - null
+    - - Number
+      - null
+    - - Number
+      - null
+    - - Boolean
+      - null
+    - - ArrayUnknown
+      - null
+    - - Number
+      - null
+    - - Number
+      - null
+    - - Number
+      - null
+    - - Number
+      - null
+    - - Number
+      - null
   since:
-    arma_3:
-      major: 2
-      minor: 22
+    arma3: '2.22'
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - "Icon and text:\n<sqf>\naddMissionEventHandler [\"Draw3D\", {\n\tdrawIcon3D [\"targetIcon.paa\", [1, 1, 1, 1], ASLToAGL getPosASLVisual cursorTarget, 1, 1, 45, \"Target\", 1, 0.05, \"TahomaB\"];\n}];\n</sqf>"
 - "Just text:\n<sqf>\naddMissionEventHandler [\"Draw3D\", {\n\tdrawIcon3D [\"\", [1, 0, 0, 1], ASLToAGL getPosASLVisual cursorTarget, 0, 0, 0, \"Target\", 1, 0.05, \"PuristaMedium\"];\n}];\n</sqf>"
 - "<sqf>\niconPos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler [\"draw3D\",\n{\n\tdrawIcon3D\n\t[\n\t\t\"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa\",\n\t\t[0, 0, 1, 1],\n\t\ticonPos,\n\t\t5,\n\t\t5,\n\t\tgetDirVisual player,\n\t\t\"COMPASS\",\n\t\t0,\n\t\t0.3,\n\t\t\"PuristaMedium\",\n\t\t\"center\",\n\t\ttrue\n\t];\n}];\n</sqf>"
 - "Since {{GVI|arma3|2.04}}\n<sqf>\npos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler [\"draw3D\",\n{\n\t_k = 10 / (player distance pos);\n\tdrawIcon3D\n\t[\n\t\t\"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa\",\n\t\t[1, 0, 0, 1],\n\t\tpos,\n\t\t1 * _k,\n\t\t1 * _k,\n\t\t0,\n\t\tname player,\n\t\t0,\n\t\t0.04 * _k,\n\t\t\"RobotoCondensed\",\n\t\t\"right\",\n\t\ttrue,\n\t\t0.005 * _k,\n\t\t-0.035 * _k\n\t];\n}];\n</sqf>"
 - "Since {{GVI|arma3|2.22}}\n<sqf>\nremoveAllMissionEventHandlers \"Draw3D\"; \ndeleteVehicle flagA; \nflagA = createVehicle [\"Flag_AAF_F\", position player, [], 0, \"NONE\"]; \nicon = createHashMapFromArray \n[ \n\t[\"@position\", [flagA, 5]], \n\t[\"@texture\", \"\\A3\\Data_F\\Flags\\Flag_AAF_CO.paa\"], \n\t[\"@texts\", [[\"Sector Alpha\", 0.025, 0, 0.05, [1,1,0,1]]]], \n\t[\"@size\", 0.05], \n\t[\"@drawArrows\", true], \n\t[\"@arrowText\", [\"A\", 0.04, 0.5, 0.3, [1,1,0,1]]],\n\t[\"@arrowSize\", 0.06], \n\t[\"@fade\", [10, 100]], \n\t[\"@arrowColor\", [0,1,0,1]], \n\t[\"@progress\", [0.005, 0.05, -0.01, 0, [0.8,0.8,0,1], [0,0.6,0,0.6]]], \n\t[\"@progressValue\", 0.67] \n]; \naddMissionEventHandler [\"Draw3D\", {drawIcon3D icon}];\n</sqf>"
+see_also:
+- drawLine3D
+- getMissionPath
+- showHUD
+- cameraEffectEnableHUD

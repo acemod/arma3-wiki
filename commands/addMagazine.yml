@@ -1,5 +1,5 @@
 name: addMagazine
-description: |-
+desc: |-
   Adds a magazine to a person. Infantry units can only carry a specific number of magazines, once the magazine slots are filled (or uniform/vest/bagpack are full in {{arma3}}), any further [[addMagazine]] commands are ignored.
   If class of magazine does not exist, an error message is printed in {{Link|Crash Files|.rpt}}:
   <sqf>player addMagazine "dasdsa"; // .rpt: Given magazine[dasdsa] not found</sqf>
@@ -11,62 +11,55 @@ syntax:
   - unitName
   - magazineName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitName
-    description: person to add the magazines to
+    desc: person to add the magazines to
     type: Object
   - name: magazineName
-    description: magazine name. See the topic [[:Category:Weapons]] for reference about possible values.
+    desc: magazine name. See the topic [[:Category:Weapons]] for reference about possible values.
     type: String
 - call: !Binary
   - unitName
   - - magazineName
     - ammoCount
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitName
-    description: person to add the magazines to
+    desc: person to add the magazines to
     type: Object
   - name: magazineName
-    description: magazine name. See the topic [[:Category:Weapons]] for reference about possible values.
+    desc: magazine name. See the topic [[:Category:Weapons]] for reference about possible values.
     type: String
   - name: ammoCount
-    description: ammo quantity to be added to magazine. If it goes beyond maximum magazine capacity, the magazine will be given full and not overloaded.
+    desc: ammo quantity to be added to magazine. If it goes beyond maximum magazine capacity, the magazine will be given full and not overloaded.
     type: Number
   since:
-    arma_2_arrowhead:
-      major: 1
-      minor: 62
+    arma2oa: '1.62'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player addMagazine "30Rnd_556x45_STANAG";</sqf>
 - "<sqf>player addMagazine [\"30Rnd_556x45_STANAG\", 15];\t\t\t// since {{Name|arma2oa|short}} 1.62</sqf>"
 - "<sqf>nonLocalUnit addMagazine [\"30Rnd_556x45_STANAG\", 15];\t// global argument since {{arma3}}</sqf>"
 - "<sqf>player addMagazine [\"30Rnd_556x45_STANAG\", 9999];\t\t// will give a 30 rounds magazine anyway</sqf>"
+see_also:
+- addMagazineGlobal
+- addMagazines
+- addMagazineCargo
+- addMagazineCargoGlobal
+- addMagazinePool
+- addMagazineTurret
+- removeMagazine
+- removeMagazines
+- addWeapon
+- loadMagazine

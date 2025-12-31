@@ -1,18 +1,23 @@
 name: language
-description: Returns current game language.
+desc: Returns current game language.
 groups:
 - System
 syntax:
 - call: Nular
   ret:
-  - String
-  - see [[Stringtable.xml#Supported_Languages|supported languages]] for possible values
+    type: String
+    desc: see [[Stringtable.xml#Supported_Languages|supported languages]] for possible values
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_myLanguage = language; // will return "English" if game language is set to English</sqf>
+see_also:
+- Stringtable.xml
+- getTextRaw
+- localize
+- isLocalized
+- diag_localized
+- BIS_fnc_localize

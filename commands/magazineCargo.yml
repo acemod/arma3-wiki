@@ -1,22 +1,28 @@
 name: magazineCargo
-description: Get array with magazines from ammo box (or any general weapon holder container).
+desc: Get array with magazines from ammo box (or any general weapon holder container).
 groups:
 - Vehicle Inventory
 - Containers
 syntax:
 - call: !Unary object
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: object
-    description: vehicle or ammo box
+    desc: vehicle or ammo box
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>hint str magazineCargo uniformContainer cursorTarget;</sqf>
+see_also:
+- magazinesAmmoCargo
+- getMagazineCargo
+- addMagazineCargo
+- addMagazineCargoGlobal
+- clearMagazineCargo
+- clearMagazineCargoGlobal
+- weaponCargo
+- itemCargo

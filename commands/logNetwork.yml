@@ -1,5 +1,5 @@
 name: logNetwork
-description: |-
+desc: |-
   Registers new log file recording a network traffic and returns handle of the log. The log file is saved inside the {{arma3}} root folder.
   {{Feature|important|[[logNetwork]] can potentially create a large log file.}}
 groups:
@@ -10,21 +10,23 @@ syntax:
   - logFile
   - filter
   ret:
-  - Number
-  - handle for the logging
+    type: Number
+    desc: handle for the logging
   params:
   - name: logFile
-    description: where to store the log
+    desc: where to store the log
     type: String
   - name: filter
-    description: ????
-    type: ArrayUnknown
+    desc: ????
+    type: !ArrayUnsized
+      type: String
+      desc: ''
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>_handle = logNetwork ["myLog.txt", [""]];</sqf>
+see_also:
+- logNetworkTerminate

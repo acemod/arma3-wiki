@@ -1,5 +1,5 @@
 name: tvSetSelectColor
-description: Sets the select color of given path.
+desc: Sets the select color of given path.
 groups:
 - GUI Control - Tree View
 syntax:
@@ -8,21 +8,22 @@ syntax:
   - - path
     - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ctrl
     type: Control
   - name: path
-    description: path of the item
-    type: ArrayUnknown
+    desc: path of the item
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   - name: color
     type: ArrayColor
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>_control tvSetSelectColor [[0, 0], [1,1,1,0.5]];</sqf>
+see_also:
+- tvSetColor

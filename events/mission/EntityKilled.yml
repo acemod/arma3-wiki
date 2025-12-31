@@ -1,25 +1,23 @@
 id: EntityKilled
-description: |-
+desc: |-
   Triggered when an entity is killed.
   ----
   It's worth noting that ''instigator'' param is [[objNull]] during road kill. To work around this issue try:
 params:
 - name: unit
-  description: entity that was killed
+  desc: entity that was killed
   type: Object
 - name: killer
-  description: the killer (vehicle or person)
+  desc: the killer (vehicle or person)
   type: Object
 - name: instigator
-  description: person who pulled the trigger
+  desc: person who pulled the trigger
   type: Object
 - name: useEffects
-  description: same as ''useEffects'' in [[setDamage]] alt syntax
+  desc: same as ''useEffects'' in [[setDamage]] alt syntax
   type: Boolean
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 argument_loc: Unspecified
 effect_loc: Unspecified
 examples:

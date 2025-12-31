@@ -1,5 +1,5 @@
 name: tvValue
-description: Returns numeric value set for given tree view path.
+desc: Returns numeric value set for given tree view path.
 groups:
 - GUI Control - Tree View
 syntax:
@@ -7,30 +7,49 @@ syntax:
   - idc
   - path
   ret:
-  - Number
-  - set value; if no value was set, 0 is returned
+    type: Number
+    desc: set value; if no value was set, 0 is returned
   params:
   - name: idc
     type: Number
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
 - call: !Binary
   - ctrl
   - path
   ret:
-  - Number
-  - set value; if no value was set, 0 is returned
+    type: Number
+    desc: set value; if no value was set, 0 is returned
   params:
   - name: ctrl
     type: Control
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 74
+  arma3: '0.74'
 examples:
 - <sqf>tvValue [101, [0]];</sqf>
 - <sqf>_ctrl tvValue [0,0,0];</sqf>
+see_also:
+- tvAdd
+- tvClear
+- tvCollapse
+- tvCount
+- tvCurSel
+- tvData
+- tvDelete
+- tvExpand
+- tvPicture
+- tvSetCurSel
+- tvSetData
+- tvSetPicture
+- tvSetValue
+- tvSort
+- tvSortByValue
+- tvText

@@ -1,5 +1,5 @@
 name: onPlayerDisconnected
-description: 'This command will execute attached code whenever a player is leaving an MP session. The code will receive a number of special variables:'
+desc: 'This command will execute attached code whenever a player is leaving an MP session. The code will receive a number of special variables:'
 multiplayer_note: |-
   In multiplayer [[onPlayerDisconnected]] is executed only on the server.
 
@@ -10,30 +10,41 @@ groups:
 syntax:
 - call: !Unary code
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: code
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - Code
+      - null
+    - - Number
+      - null
+    - - String
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>onPlayerDisconnected {diag_log [_id, _uid, _name]};</sqf>
 - "<sqf>\nonPlayerDisconnected {\n\tif (count allPlayers == 0) then {\n\t\tendMission \"END1\";\n\t};\n};\n</sqf>"
+see_also:
+- onPlayerConnected
+- didJIP
+- didJIPOwner
+- Arma
+- '3:'
+- Mission
+- Event
+- Handlers#HandleDisconnect|HandleDisconnect
+- Arma
+- '3:'
+- Mission
+- Event
+- Handlers#playerDisconnected|playerDisconnected

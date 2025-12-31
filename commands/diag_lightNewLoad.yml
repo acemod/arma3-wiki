@@ -1,5 +1,5 @@
 name: diag_lightNewLoad
-description: |-
+desc: |-
   Allows loading of lighting config during the gameplay (effectively changing the current scene lighting).
   Filename path can be either absolute or relative. The file must contain only the class LightingNew, which should contain lighting configuration.
 groups:
@@ -8,17 +8,16 @@ groups:
 syntax:
 - call: !Unary path
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: path
-    description: the path to the config filename
+    desc: the path to the config filename
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 82
+  arma3: '1.82'
 examples:
 - <sqf>diag_lightNewLoad "o:\lighting.txt";</sqf>
+see_also:
+- diag_setLightNew

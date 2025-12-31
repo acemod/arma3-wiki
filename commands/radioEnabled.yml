@@ -1,18 +1,18 @@
 name: radioEnabled
-description: A getter for [[enableRadio]].
+desc: A getter for [[enableRadio]].
 groups:
 - Radio and Chat
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - returns [[true]] if radio is enabled
+    type: Boolean
+    desc: returns [[true]] if radio is enabled
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>if (radioEnabled) then { enableRadio false };</sqf>
+see_also:
+- enableRadio

@@ -1,5 +1,5 @@
 name: lbSetPictureColorSelected
-description: Sets the selected color of item's picture (left) with the given index of the listbox with id idc of the topmost user dialog to the given color. Color is in format [[Color|Color (RGBA)]]. Color which consists from only zeros means disable this override.
+desc: Sets the selected color of item's picture (left) with the given index of the listbox with id idc of the topmost user dialog to the given color. Color is in format [[Color|Color (RGBA)]]. Color which consists from only zeros means disable this override.
 groups:
 - GUI Control - ListBox
 syntax:
@@ -8,11 +8,10 @@ syntax:
   - index
   - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
-    description: control id
+    desc: control id
     type: Number
   - name: index
     type: Number
@@ -23,8 +22,7 @@ syntax:
   - - index
     - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -35,9 +33,31 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 20
+  arma3: '1.20'
 examples:
 - <sqf>lbSetPictureColorSelected [101, 0, [0, 1, 0, 0.5]];</sqf>
 - <sqf>_ctrl lbSetPictureColorSelected [0, [1, 1, 1, 1]];</sqf>
+see_also:
+- lbAdd
+- lbClear
+- lbColor
+- lbCurSel
+- lbData
+- lbDelete
+- lbIsSelected
+- lbPicture
+- lbSelection
+- lbSetColor
+- lbSetCurSel
+- lbSetData
+- lbSetSelected
+- lbSetTooltip
+- lbSetValue
+- lbSize
+- lbSort
+- lbSortByValue
+- lbText
+- lbValue
+- lbSetPicture
+- lbSetPictureColor
+- lbSetPictureColorDisabled

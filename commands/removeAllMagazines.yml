@@ -1,20 +1,27 @@
 name: removeAllMagazines
-description: Removes all magazines from the unit.
+desc: Removes all magazines from the unit.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 2
-    minor: 20
+  arma3: '2.20'
 examples:
 - <sqf>removeAllMagazines player;</sqf>
+see_also:
+- removeMagazines
+- addMagazine
+- magazines
+- removeMagazine
+- removeWeapon
+- removeMagazinesTurret
+- removeAllMagazinesTurret
+- removeMagazineTurret
+- setVehicleAmmo

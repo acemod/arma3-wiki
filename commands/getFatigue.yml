@@ -1,20 +1,21 @@
 name: getFatigue
-description: Returns fatigue of given unit.
+desc: Returns fatigue of given unit.
 groups:
 - Stamina System
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>if (getFatigue player < 0.5) then { player sideChat "I'm good to go!" };</sqf>
+see_also:
+- setFatigue
+- enableFatigue
+- getStamina

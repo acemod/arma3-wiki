@@ -1,5 +1,5 @@
 name: createGroup
-description: |-
+desc: |-
   Creates a new [[Group]] for the given [[Side]]. Using this command if the group limit is reached will return [[grpNull]]. The new [[Group]] exists globally, but it's locality is where this command was executed.
   {{{!}} class="wikitable" style="text-align: center"
   ! Game
@@ -36,8 +36,8 @@ groups:
 syntax:
 - call: !Unary side
   ret:
-  - Group
-  - '[[grpNull]] if the group limit is reached'
+    type: Group
+    desc: '[[grpNull]] if the group limit is reached'
   params:
   - name: side
     type: Side
@@ -45,38 +45,41 @@ syntax:
   - side
   - deleteWhenEmpty
   ret:
-  - Group
-  - '[[grpNull]] if the group limit is reached'
+    type: Group
+    desc: '[[grpNull]] if the group limit is reached'
   params:
   - name: side
     type: Side
   - name: deleteWhenEmpty
     type: Unknown
   since:
-    arma_3:
-      major: 1
-      minor: 68
+    arma3: '1.68'
 argument_loc: Unspecified
 effect_loc: Global
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _group = createGroup east;</sqf>
 - <sqf>private _group = createGroup [east, true];</sqf>
+see_also:
+- deleteGroup
+- deleteGroupWhenEmpty
+- isGroupDeletedWhenEmpty
+- group
+- setGroupId
+- groupID
+- units
+- groupFromNetId
+- netId
+- leader
+- selectLeader
+- join
+- createCenter
+- createUnit
+- createVehicle
+- Side

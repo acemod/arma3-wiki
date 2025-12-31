@@ -1,5 +1,5 @@
 name: playActionNow
-description: |-
+desc: |-
   When used on a person, a smooth transition to the given action will be initiated, but all previous playAction are discarded.
   {{Feature|arma3|For {{arma3}} actions, see [[playAction/actions]].}}
 groups:
@@ -9,8 +9,7 @@ syntax:
   - soldier
   - action
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: soldier
     type: Object
@@ -19,18 +18,16 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>soldierOne playActionNow "SitDown";</sqf>
 - <sqf>rabbitTwo playActionNow "WalkF";</sqf>
+see_also:
+- playAction
+- switchAction
+- playMove
+- playMoveNow
+- switchMove

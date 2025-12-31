@@ -1,33 +1,60 @@
 name: taskCompleted
-description: Return if task is completed. (state Succeeded, Failed or Canceled)
+desc: Return if task is completed. (state Succeeded, Failed or Canceled)
 groups:
 - Briefing
 syntax:
 - call: !Unary task
   ret:
-  - Boolean
-  - '[[true]] if task has been Succeeded, Failed or Canceled'
+    type: Boolean
+    desc: '[[true]] if task has been Succeeded, Failed or Canceled'
   params:
   - name: task
     type: Task
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   _task = player createSimpleTask ["task_1"];
   _done = taskCompleted _task;
   </sqf>
+see_also:
+- BIS_fnc_deleteTask
+- BIS_fnc_setTask
+- BIS_fnc_setTaskLocal
+- BIS_fnc_sharedObjectives
+- BIS_fnc_taskAlwaysVisible
+- BIS_fnc_taskCompleted
+- BIS_fnc_taskCreate
+- BIS_fnc_taskCurrent
+- BIS_fnc_taskDescription
+- BIS_fnc_taskDestination
+- BIS_fnc_taskExists
+- BIS_fnc_taskHint
+- BIS_fnc_taskParent
+- BIS_fnc_taskReal
+- BIS_fnc_taskSetAlwaysVisible
+- BIS_fnc_taskSetCurrent
+- BIS_fnc_taskSetDescription
+- BIS_fnc_taskSetDestination
+- BIS_fnc_taskSetState
+- BIS_fnc_taskSetType
+- BIS_fnc_taskState
+- BIS_fnc_tasksUnit
+- BIS_fnc_taskType
+- BIS_fnc_taskTypeIcon
+- BIS_fnc_taskVar
+- Arma
+- '3:'
+- Task
+- Framework
+- '{{Link|Arma'
+- '3:'
+- Task
+- Framework#Task
+- Overhaul}}

@@ -1,5 +1,5 @@
 name: diag_exportConfig
-description: Exports given [[Config|config]] into file of given path.
+desc: Exports given [[Config|config]] into file of given path.
 groups:
 - Diagnostic
 - Config
@@ -8,22 +8,21 @@ syntax:
   - path
   - config
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: path
-    description: file path on disc
+    desc: file path on disc
     type: String
   - name: config
-    description: the config you would like to export
+    desc: the config you would like to export
     type: Config
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - |-
   export an [[Arma: All-in-one Config|All-in-One config]]:
   <sqf>diag_exportConfig ["O:/config.cpp", configFile];</sqf>
+see_also:
+- configFile

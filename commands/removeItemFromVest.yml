@@ -1,5 +1,5 @@
 name: removeItemFromVest
-description: Removes item from soldier's vest.
+desc: Removes item from soldier's vest.
 groups:
 - Containers
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - item
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,8 +16,11 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 4
+  arma3: '1.4'
 examples:
 - <sqf>player removeItemFromVest "itemWatch";</sqf>
+see_also:
+- addItemToVest
+- removeItemFromUniform
+- removeItemFromBackpack
+- removeItemFromPrimaryWeapon

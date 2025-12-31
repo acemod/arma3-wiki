@@ -1,20 +1,21 @@
 name: cbChecked
-description: Returns the current state of a [[CT_CHECKBOX]] control.
+desc: Returns the current state of a [[CT_CHECKBOX]] control.
 groups:
 - GUI Control
 syntax:
 - call: !Unary control
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 12
+  arma3: '1.12'
 examples:
 - <sqf>_checked = cbChecked _myCheckBox;</sqf>
+see_also:
+- cbSetChecked
+- ctrlChecked
+- ctrlSetChecked

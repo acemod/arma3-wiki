@@ -1,44 +1,40 @@
 name: laserTarget
-description: Returns the laser target object created by given unit (vehicle or soldier) when using a laser targeting device. The main syntax targets the primary gunner turret.
+desc: Returns the laser target object created by given unit (vehicle or soldier) when using a laser targeting device. The main syntax targets the primary gunner turret.
 groups:
 - Weapons
 syntax:
 - call: !Unary entity
   ret:
-  - Object
-  - laser target or [[objNull]] if no laser target exists
+    type: Object
+    desc: laser target or [[objNull]] if no laser target exists
   params:
   - name: entity
-    description: unit or vehicle
+    desc: unit or vehicle
     type: Object
 - call: !Binary
   - vehicle
   - turret
   ret:
-  - Object
-  - laser target or [[objNull]] if no laser target exists
+    type: Object
+    desc: laser target or [[objNull]] if no laser target exists
   params:
   - name: vehicle
-    description: transport
+    desc: transport
     type: Object
   - name: turret
-    type: ArrayUnknown
+    type: TurretPath
   since:
-    arma_3:
-      major: 2
-      minor: 12
+    arma3: '2.12'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _target = laserTarget gunner heli;</sqf>
 - <sqf>private _designatedPos = getPosATL laserTarget player;</sqf>
+see_also:
+- isLaserOn
+- cursorTarget
+- setMissileTarget

@@ -1,13 +1,15 @@
 id: OnConnectingEnd
-description: 'When [[Eden Editor: Connecting|Connecting]] operation is terminated, no matter if it was confirmed or canceled.'
+desc: 'When [[Eden Editor: Connecting|Connecting]] operation is terminated, no matter if it was confirmed or canceled.'
 params:
 - name: class
-  description: connection config class
-  type: Unknown
+  desc: connection config class
+  type: Config
 - name: from
   type: Unknown
 - name: to
-  type: Unknown
+  type: !OneOf
+  - - EdenEntity
+    - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 examples:

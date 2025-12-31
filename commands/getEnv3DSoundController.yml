@@ -1,5 +1,5 @@
 name: getEnv3DSoundController
-description: Returns value of the specified 3D controller, see [[getAllEnv3DSoundControllers]].
+desc: Returns value of the specified 3D controller, see [[getAllEnv3DSoundControllers]].
 groups:
 - Sounds
 syntax:
@@ -7,20 +7,32 @@ syntax:
   - object
   - controller
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: object
-    description: environmental sound source like a tree or a house - see [[allEnv3DSoundSources]]
+    desc: environmental sound source like a tree or a house - see [[allEnv3DSoundSources]]
     type: Object
   - name: controller
-    description: name of environmental variable like "trees" or "houses"
+    desc: name of environmental variable like "trees" or "houses"
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 8
+  arma3: '2.8'
 examples:
 - <sqf>_thatTreeOverThere getEnv3DSoundController "rainDrops"; // returns 1</sqf>
+see_also:
+- getEnvSoundController
+- getAllEnv3DSoundControllers
+- allEnv3DSoundSources
+- selectBestPlaces
+- getSoundController
+- getSoundControllerResult
+- getAllEnvSoundControllers
+- getAllSoundControllers
+- getCustomSoundController
+- setCustomSoundController
+- getCustomSoundControllerCount
+- Arma
+- '3:'
+- Sound

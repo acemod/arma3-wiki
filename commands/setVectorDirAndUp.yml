@@ -1,5 +1,5 @@
 name: setVectorDirAndUp
-description: |-
+desc: |-
   [[File:Vectordirandup.jpg|right|300px]] Sets orientation of an object.
   The command takes 2 vector arrays, one for [[vectorDir]] and one for [[vectorUp]].
   Default object orientation will always have [[vectorDir]] pointing forward (North) along Y axis and [[vectorUp]] pointing up along Z axis - [[0,1,0],[0,0,1]], as shown on the diagram below (see also [[BIS_fnc_transformVectorDirAndUp]]).<br>
@@ -17,35 +17,24 @@ syntax:
   - - vectorDir
     - vectorUp
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
   - name: vectorDir
-    description: '[[vectorDir]]'
+    desc: '[[vectorDir]]'
     type: ArrayUnknown
   - name: vectorUp
-    description: '[[vectorUp]]'
+    desc: '[[vectorUp]]'
     type: ArrayUnknown
 argument_loc: Local
 effect_loc: Global
 since:
-  armed_assault:
-    major: 1
-    minor: 9
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.9'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\n// set exact yaw, pitch, and roll\n_yaw = 45; _pitch = -80; _roll = 0;\n_myObject setVectorDirAndUp [\n\t[sin _yaw * cos _pitch, cos _yaw * cos _pitch, sin _pitch],\n\t[[sin _roll, -sin _pitch, cos _roll * cos _pitch], -_yaw] call BIS_fnc_rotateVector2D\n];\n</sqf>"
 - |-
@@ -67,3 +56,21 @@ examples:
   // tilt forward 30 degrees
   _myObject setVectorDirAndUp [[0,0.66,-0.33], [0,0.33,0.66]];
   </sqf>
+see_also:
+- vectorDir
+- vectorUp
+- setVectorDir
+- setVectorUp
+- vectorDiff
+- vectorAdd
+- vectorMultiply
+- vectorCrossProduct
+- vectorDistance
+- vectorMagnitudeSqr
+- vectorDistanceSqr
+- vectorCos
+- vectorMagnitude
+- vectorDotProduct
+- vectorNormalized
+- vectorFromTo
+- BIS_fnc_transformVectorDirAndUp

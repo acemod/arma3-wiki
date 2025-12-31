@@ -1,5 +1,5 @@
 name: connectToServer
-description: |-
+desc: |-
   Connects the client to the provided server.
   {{Feature|informative|
   * only works on the [[Arma 3: Main Menu|Main Menu]].
@@ -19,23 +19,23 @@ syntax:
   - port
   - password
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ip
-    description: IP in {{Link|https://en.wikipedia.org/wiki/IPv4}} format or {{GVI|arma3|2.20|size= 0.75}} domain name
+    desc: IP in {{Link|https://en.wikipedia.org/wiki/IPv4}} format or {{GVI|arma3|2.20|size= 0.75}} domain name
     type: String
   - name: port
     type: Number
   - name: password
-    description: '"" if no password'
+    desc: '"" if no password'
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - <sqf>connectToServer ["192.168.0.2", 2302, "test"];</sqf>
 - <sqf>connectToServer ["publicserver.mydomain.com", 2302, ""];</sqf>
+see_also:
+- serverCommand
+- getSteamFriendsServers

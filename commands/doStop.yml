@@ -1,40 +1,35 @@
 name: doStop
-description: 'Order the given unit(s) to stop (without radio messages). The units stopped in this way will leave the groups formation. It will prevent them from moving around with their group (or formation leader), while still being able to turn around and even move to a new position if they see fit. <br><br>The units will still respond to orders from their group leader (like engage, rearm, board a vehicle), but all of their actions will be separate from the group formation. To resume group default behaviour, use [[doFollow]] command. For example: <sqf inline>units _group doFollow leader _group;</sqf>'
+desc: 'Order the given unit(s) to stop (without radio messages). The units stopped in this way will leave the groups formation. It will prevent them from moving around with their group (or formation leader), while still being able to turn around and even move to a new position if they see fit. <br><br>The units will still respond to orders from their group leader (like engage, rearm, board a vehicle), but all of their actions will be separate from the group formation. To resume group default behaviour, use [[doFollow]] command. For example: <sqf inline>units _group doFollow leader _group;</sqf>'
 groups:
 - Unit Control
 syntax:
 - call: !Unary unit(s)
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit(s)
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Global
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>doStop _soldier1;</sqf>
 - <sqf>doStop [_soldier1, _soldier2];</sqf>
 - <sqf>doStop (units player);</sqf>
+see_also:
+- commandStop
+- stop
+- stopped
+- doMove
+- doFollow

@@ -1,5 +1,5 @@
 name: lnbAddColumn
-description: Adds a column at given position.
+desc: Adds a column at given position.
 groups:
 - GUI Control - ListNBox
 syntax:
@@ -7,42 +7,45 @@ syntax:
   - control
   - position
   ret:
-  - Unknown
-  - returns the zero based index of the new column
+    type: !OneOf
+    - - Number
+      - null
+    desc: returns the zero based index of the new column
   params:
   - name: control
     type: Control
   - name: position
-    description: position of the new column where 0 means all the way to the left and 1 all the way to the right of the control
+    desc: position of the new column where 0 means all the way to the left and 1 all the way to the right of the control
     type: Number
 - call: !Unary
   - controlOrIdc
   - position
   ret:
-  - Unknown
-  - returns the zero based index of the new column
+    type: !OneOf
+    - - Number
+      - null
+    desc: returns the zero based index of the new column
   params:
   - name: controlOrIdc
-    description: control or the idc of the control
+    desc: control or the idc of the control
     type: Unknown
   - name: position
-    description: position of the new column where 0 means all the way to the left and 1 all the way to the right of the control
+    desc: position of the new column where 0 means all the way to the left and 1 all the way to the right of the control
     type: Number
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_ctrl lnbAddColumn 0.8;</sqf>
 - <sqf>lnbAddColumn [105, 0.8];</sqf>
+see_also:
+- lnbAddArray
+- lnbAddRow
+- lnbDeleteColumn
+- lnbDeleteRow
+- lnbGetColumnsPosition
+- lnbSetColumnsPos

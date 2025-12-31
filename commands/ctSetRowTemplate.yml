@@ -1,5 +1,5 @@
 name: ctSetRowTemplate
-description: Takes config path to the new row template. Clears the whole RscControlsTable and sets the new row template (Deleting all rows and headers is easier to implement than replacing the rows and filling them with new data. IDCs could overflow etc.).
+desc: Takes config path to the new row template. Clears the whole RscControlsTable and sets the new row template (Deleting all rows and headers is easier to implement than replacing the rows and filling them with new data. IDCs could overflow etc.).
 groups:
 - GUI Control - Controls Table
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - control
   - config
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -17,8 +16,24 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>_control ctSetRowTemplate _configPath;</sqf>
+see_also:
+- ctAddRow
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetCurSel
+- ctValue
+- ctSetData
+- ctData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetHeaderTemplate

@@ -1,5 +1,5 @@
 name: addWeaponGlobal
-description: |-
+desc: |-
   Add a weapon to a unit. Infantry units can only carry weapons in their respective slots (primary, secondary and handgun),
   the [[addWeaponGlobal]] command will replace the weapon currently in a slot with the added weapon if it shares the same slot.
   This command can link items to respective slots as well, in which case the functionality is identical to [[linkItem]].
@@ -14,44 +14,43 @@ syntax:
   - object
   - weapon
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
-    description: unit or vehicle to add the weapon to
+    desc: unit or vehicle to add the weapon to
     type: Object
   - name: weapon
-    description: weapon class name
+    desc: weapon class name
     type: String
 - call: !Binary
   - object
   - - weapon
     - autoselect
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
-    description: unit or vehicle to add the weapon to
+    desc: unit or vehicle to add the weapon to
     type: Object
   - name: weapon
-    description: weapon class name. See the topic [[:Category:Weapons]] for reference about possible values.
+    desc: weapon class name. See the topic [[:Category:Weapons]] for reference about possible values.
     type: String
   - name: autoselect
-    description: '[[false]] to abort weapon autoselection if no weapon was selected.'
+    desc: '[[false]] to abort weapon autoselection if no weapon was selected.'
     type: String
     optional: true
     default: '[[true]]'
   since:
-    arma_3:
-      major: 2
-      minor: 20
+    arma3: '2.20'
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 76
+  arma3: '0.76'
 examples:
 - "<sqf>\n{\n\t_x addMagazineGlobal \"Laserbatteries\";\n\t_x addWeaponGlobal \"Laserdesignator\";\n} forEach allUnits;\n</sqf>"
 - "<sqf>\n{\n\tif (typeOf _x == \"O_Heli_Attack_02_black_F\") then\n\t{\n\t\t_x addMagazineGlobal \"38Rnd_80mm_rockets\";\n\t\t_x addWeaponGlobal \"rockets_Skyfire\";\n\t};\n} forEach vehicles;\n</sqf>"
+see_also:
+- removeWeaponGlobal
+- addWeapon
+- addMagazine
+- addMagazineGlobal

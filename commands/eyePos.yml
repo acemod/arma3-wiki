@@ -1,26 +1,26 @@
 name: eyePos
-description: Returns the object's eyes / main turret position.
+desc: Returns the object's eyes / main turret position.
 groups:
 - Positions
 syntax:
 - call: !Unary object
   ret:
-  - Position3dASL
-  - null
+    type: Position3dASL
   params:
   - name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 62
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.62'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_eyesPos = eyePos player;</sqf>
+see_also:
+- eyeDirection
+- getPosASL
+- setPosASL
+- setPosASL2
+- getCameraViewDirection
+- positionCameraToWorld

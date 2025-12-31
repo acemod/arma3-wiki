@@ -1,12 +1,11 @@
 name: namedProperties
-description: Returns a list of named properties on Geometry LOD.
+desc: Returns a list of named properties on Geometry LOD.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary object
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: object
     type: Object
@@ -14,23 +13,38 @@ syntax:
   - object
   - - LOD
   ret:
-  - HashMapUnknown
-  - null
+    type: HashMapUnknown
   params:
   - name: object
     type: Object
   - name: LOD
-    type: Unknown
+    type: !StringEnum
+    - - Memory
+      - null
+    - - Geometry
+      - null
+    - - FireGeometry
+      - null
+    - - LandContact
+      - null
+    - - HitPoints
+      - null
+    - - ViewGeometry
+      - null
   since:
-    arma_3:
-      major: 2
-      minor: 14
+    arma3: '2.14'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - <sqf>private _properties = namedProperties _object; // [["sbsource","shadowvolume"],["prefershadowvolume","1"],["reversed","1"],["buoyancy","1"]]</sqf>
 - <sqf>private _namedProperties = cursorObject namedProperties ["FireGeometry"];</sqf>
+see_also:
+- selectionNames
+- animationNames
+- Arma
+- '3:'
+- Named
+- Properties
+- allLODs

@@ -1,5 +1,5 @@
 name: setPitch
-description: Sets the pitch of a persons voice.
+desc: Sets the pitch of a persons voice.
 groups:
 - Unit Identity
 - Sounds
@@ -8,8 +8,7 @@ syntax:
   - person
   - pitch
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: person
     type: Object
@@ -18,8 +17,9 @@ syntax:
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 2
+  arma3: '1.2'
 examples:
 - <sqf>unit1 setPitch 0.5;</sqf>
+see_also:
+- pitch
+- setIdentity

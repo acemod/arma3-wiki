@@ -1,19 +1,27 @@
 id: OnMissionPreview
-description: |-
+desc: |-
   When scenario preview is started. Executed when the scenario is already loaded, so entities in it can be accessed.
   Each array is in format:
    [entity1, id1, entity2, id2, ..., entityN, idN]
 params:
 - name: objects
-  type: Unknown
+  type: ArrayUnknown
 - name: groups
-  type: Unknown
+  type: ArrayUnknown
 - name: waypoints
-  type: Unknown
+  type: ArrayUnknown
 - name: markers
-  type: Unknown
+  type: ArrayUnknown
 - name: entity
-  type: Unknown
+  type: !OneOf
+  - - Object
+    - null
+  - - Group
+    - null
+  - - ArrayUnknown
+    - null
+  - - String
+    - null
 - name: ID
   type: Number
 argument_loc: Unspecified

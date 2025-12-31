@@ -1,5 +1,5 @@
 name: resize
-description: |-
+desc: |-
   Changes the size of the given array. The command does not return new array, it resizes the source array to the desired number of elements.
   If the new size is bigger than the current size, the new places are filled with [[nil]]. The {{Link|#Syntax 2|alternative syntax}} allows to fill resized positions with a given value. [[Array]] and [[HashMap]] values are copied.
 groups:
@@ -9,58 +9,44 @@ syntax:
   - array
   - count
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: array
-    type: Unknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: count
-    description: the new array size
+    desc: the new array size
     type: Number
 - call: !Binary
   - array
   - - count
     - fill
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: array
-    type: Unknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: count
-    description: the new array size
+    desc: the new array size
     type: Number
   - name: fill
-    description: value to fill added positions
+    desc: value to fill added positions
     type: Anything
   since:
-    arma_3:
-      major: 2
-      minor: 10
+    arma3: '2.10'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -79,3 +65,8 @@ examples:
   private _array = [0, 1, 2];
   _array resize [4, "something"]; // _array is now [0, 1, 2, "something"]
   </sqf>
+see_also:
+- set
+- reverse
+- deleteAt
+- deleteRange

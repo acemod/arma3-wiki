@@ -1,5 +1,5 @@
 name: setTIParameter
-description: |-
+desc: |-
   Sets the provided Thermal Imaging parameter's value.
   {{Feature|important|The settings are '''not''' saved in savegame and must be reapplied after loading.}}
 groups:
@@ -9,24 +9,25 @@ syntax:
   - paramName
   - newValue
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: paramName
-    description: the parameter name. See [[getTIParameters]] for a list of possible values
+    desc: the parameter name. See [[getTIParameters]] for a list of possible values
     type: String
   - name: newValue
-    description: the set number
+    desc: the set number
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - |-
   <sqf>
   setTIParameter ["OutputRangeStart", 0];
   setTIParameter ["OutputRangeWidth", 1];
   </sqf>
+see_also:
+- getTIParameters
+- setCamUseTI
+- disableTIEquipment

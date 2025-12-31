@@ -1,5 +1,5 @@
 name: waypointType
-description: |-
+desc: |-
   Gets the waypoint type.
   {{Feature|informative|See {{Link|Waypoints#Waypoint Types}} for more information.}}
 groups:
@@ -7,26 +7,27 @@ groups:
 syntax:
 - call: !Unary waypoint
   ret:
-  - String
-  - returns {{hl|""}} if the waypoint doesn't exist.
+    type: String
+    desc: returns {{hl|""}} if the waypoint doesn't exist.
   params:
   - name: waypoint
-    description: format [[Waypoint]]
+    desc: format [[Waypoint]]
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _type = waypointType [groupOne, 1];</sqf>
+see_also:
+- Mission
+- 'Editor:'
+- Waypoints#Select
+- Type|waypoints
+- description
+- Waypoints
+- waypoints
+- setWaypointType

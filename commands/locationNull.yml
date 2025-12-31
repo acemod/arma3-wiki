@@ -1,30 +1,32 @@
 name: locationNull
-description: "A non-existing [[Location]]. To compare non-existent locations use [[isNull]] or [[isEqualTo]]:\n<sqf>\nlocationNull == locationNull;\t\t\t// false\nisNull locationNull;\t\t\t\t\t// true\nlocationNull isEqualTo locationNull;\t// true\n</sqf>"
+desc: "A non-existing [[Location]]. To compare non-existent locations use [[isNull]] or [[isEqualTo]]:\n<sqf>\nlocationNull == locationNull;\t\t\t// false\nisNull locationNull;\t\t\t\t\t// true\nlocationNull isEqualTo locationNull;\t// true\n</sqf>"
 groups:
 - Locations
 - Variables
 syntax:
 - call: Nular
   ret:
-  - Location
-  - null
+    type: Location
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>!isNull locationNull; // false</sqf>
 - <sqf>str locationNull; // No location</sqf>
 - <sqf>position locationNull; // [0,0,0]</sqf>
+see_also:
+- controlNull
+- displayNull
+- grpNull
+- objNull
+- taskNull
+- teamMemberNull
+- scriptNull
+- configNull
+- typeName
+- isNull

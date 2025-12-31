@@ -1,5 +1,5 @@
 name: animatePylon
-description: Force animation of pylon to given state, -1 for reset to engine handling, can cause weapon inoperative, because weapon is released  when pylon state == 1.
+desc: Force animation of pylon to given state, -1 for reset to engine handling, can cause weapon inoperative, because weapon is released  when pylon state == 1.
 groups:
 - Animations
 - Vehicle Loadouts
@@ -10,28 +10,40 @@ syntax:
     - animphase
     - instant
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
   - name: pylon
-    description: pylon index (index starts from 1) or pylon name (see {{Link|getCompatiblePylonMagazines#Example 3}})
-    type: Unknown
+    desc: pylon index (index starts from 1) or pylon name (see {{Link|getCompatiblePylonMagazines#Example 3}})
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
   - name: animphase
-    description: animation phase in range 0..1
+    desc: animation phase in range 0..1
     type: Number
   - name: instant
-    description: animate immediately
+    desc: animate immediately
     type: Boolean
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>vehicle player animatePylon [1, 0.5];</sqf>
 - <sqf>vehicle player animatePylon ["pylon1", 0.5];</sqf>
 - <sqf>vehicle player animatePylon ["pylon1", 1, true];</sqf>
+see_also:
+- Arma
+- '3:'
+- Vehicle
+- Loadouts
+- getCompatiblePylonMagazines
+- getPylonMagazines
+- setAmmoOnPylon
+- animateBay
+- setPylonsPriority
+- setPylonLoadout

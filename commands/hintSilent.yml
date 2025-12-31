@@ -1,5 +1,5 @@
 name: hintSilent
-description: Same as [[hint]], but without a sound.
+desc: Same as [[hint]], but without a sound.
 groups:
 - Interaction
 - Structured Text
@@ -7,26 +7,21 @@ groups:
 syntax:
 - call: !Unary text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: text
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - StructuredText
+      - null
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>hintSilent format ["Hello, %1!", name player];</sqf>
 - |-
@@ -35,3 +30,7 @@ examples:
   sleep 5;
   hintSilent ""; // removes message
   </sqf>
+see_also:
+- hint
+- hintC
+- hintCadet

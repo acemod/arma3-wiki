@@ -1,20 +1,19 @@
 name: isCopilotEnabled
-description: Returns true if copilots actions are enabled.
+desc: Returns true if copilots actions are enabled.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary vehicle
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: vehicle
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - "<sqf>\nif (!isCopilotEnabled myHeli) then {\n\tmyHeli enableCopilot true;\n};\n</sqf>"
+see_also:
+- enableCopilot

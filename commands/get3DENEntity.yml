@@ -1,21 +1,27 @@
 name: get3DENEntity
-description: Returns [[Eden Entity]] based on its [[Eden ID]].
+desc: Returns [[Eden Entity]] based on its [[Eden ID]].
 groups:
 - Eden Editor
 syntax:
 - call: !Unary ID
   ret:
-  - Unknown
-  - 1}} is returned
+    type: !OneOf
+    - - EdenEntity
+      - null
+    - - Number
+      - null
+    - - EdenEntity
+      - null
+    desc: 1}} is returned
   params:
   - name: ID
-    description: '[[Eden ID]]'
+    desc: '[[Eden ID]]'
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>myEntity = get3DENEntity 1;</sqf>
+see_also:
+- get3DENEntityID

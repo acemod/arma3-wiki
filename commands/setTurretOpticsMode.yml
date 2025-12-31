@@ -1,5 +1,5 @@
 name: setTurretOpticsMode
-description: Set the current optics mode of the optics in the turret occupied by the specified unit. Alternatively, you can specify a vehicle and turret path instead of a unit. Optic modes refer to the different fields of view (FOV) or zoom levels of an optic.
+desc: Set the current optics mode of the optics in the turret occupied by the specified unit. Alternatively, you can specify a vehicle and turret path instead of a unit. Optic modes refer to the different fields of view (FOV) or zoom levels of an optic.
 groups:
 - Turrets
 syntax:
@@ -7,36 +7,38 @@ syntax:
   - obj
   - mode
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: obj
     type: Object
   - name: mode
-    description: optic mode index
+    desc: optic mode index
     type: Number
 - call: !Binary
   - obj
   - - turretPath
     - opticModeIndex
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: obj
     type: Object
   - name: turretPath
-    type: ArrayUnknown
+    type: TurretPath
   - name: opticModeIndex
-    description: optic mode index
+    desc: optic mode index
     type: Number
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>player setTurretOpticsMode 0;</sqf>
 - <sqf>myTank setTurretOpticsMode [[-1], 1];</sqf>
 - <sqf>myAircraft setTurretOpticsMode [[0, 0], 0];</sqf>
+see_also:
+- getTurretOpticsMode
+- turretLocal
+- selectWeaponTurret
+- getPilotCameraOpticsMode
+- setPilotCameraOpticsMode

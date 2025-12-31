@@ -1,20 +1,24 @@
 name: isUAVConnected
-description: Returns true if UAV is connected to some terminal. Termnal onnection is handled [[local]]ly, therefore the result of this command will be returned only for the client on which this command is executed.
+desc: Returns true if UAV is connected to some terminal. Termnal onnection is handled [[local]]ly, therefore the result of this command will be returned only for the client on which this command is executed.
 groups:
 - Remote Control
 syntax:
 - call: !Unary uav
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: uav
     type: Object
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 76
+  arma3: '0.76'
 examples:
 - <sqf>_isConnected = isUAVConnected cursorTarget;</sqf>
+see_also:
+- showUAVFeed
+- shownUAVFeed
+- allUnitsUAV
+- getConnectedUAV
+- UAVControl
+- connectTerminalToUAV

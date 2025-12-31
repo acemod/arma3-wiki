@@ -1,5 +1,5 @@
 name: waitUntil
-description: "Suspends execution of [[Scheduler|scheduled]] script until the given condition satisfied. \n* This command will loop and call the code inside <sqf inline>{}</sqf> '''mostly every frame''', depends on complexity of the condition and the overall engine load, until the [[Code|code]] returns [[true]]\n* If the very first execution of the code returns [[true]] the command will exit immediately, therefore it will not produce any \"Suspending not allowed in this context\" error when used inside [[Scheduler#Unscheduled_Environment|non-scheduled]] script. For all other uses it must be executed in environment that allows [[Scheduler#Suspension|suspension]] ([[canSuspend]]), such as [[spawn]]ed or [[execVM]]ed code\n* Avoid doing <sqf inline>waitUntil { time > 20 };</sqf> and use <sqf inline>sleep 20;</sqf> instead!\n* If you can, add a [[sleep]] to the condition to save some cpu cycles <sqf inline>waitUntil { sleep 1; !alive player };</sqf>\n\n{{Feature|arma3|Since {{arma3}} v1.94, a ''condition'' returning anything other than [[true]] or [[false]] '''will''' result in an appropriate type error.}}"
+desc: "Suspends execution of [[Scheduler|scheduled]] script until the given condition satisfied. \n* This command will loop and call the code inside <sqf inline>{}</sqf> '''mostly every frame''', depends on complexity of the condition and the overall engine load, until the [[Code|code]] returns [[true]]\n* If the very first execution of the code returns [[true]] the command will exit immediately, therefore it will not produce any \"Suspending not allowed in this context\" error when used inside [[Scheduler#Unscheduled_Environment|non-scheduled]] script. For all other uses it must be executed in environment that allows [[Scheduler#Suspension|suspension]] ([[canSuspend]]), such as [[spawn]]ed or [[execVM]]ed code\n* Avoid doing <sqf inline>waitUntil { time > 20 };</sqf> and use <sqf inline>sleep 20;</sqf> instead!\n* If you can, add a [[sleep]] to the condition to save some cpu cycles <sqf inline>waitUntil { sleep 1; !alive player };</sqf>\n\n{{Feature|arma3|Since {{arma3}} v1.94, a ''condition'' returning anything other than [[true]] or [[false]] '''will''' result in an appropriate type error.}}"
 problem_notes:
 - |-
   For some unknown reason if you have [[waitUntil]] loop active and game is '''saved/loaded''', some variables in the expression may appear undefined for a short time. As a workaround, assign expression to a variable and make sure it is defined before [[waitUntil]] checks it:
@@ -9,59 +9,45 @@ groups:
 syntax:
 - call: !Unary condition
   ret:
-  - Anything
-  - the value the condition evaluates to when the wait is over (normally [[true]])
+    type: Anything
+    desc: the value the condition evaluates to when the wait is over (normally [[true]])
   params:
   - name: condition
-    description: the expression that '''must''' return a [[Boolean]], [[true]] to finish waiting or [[false]] to continue waiting
+    desc: the expression that '''must''' return a [[Boolean]], [[true]] to finish waiting or [[false]] to continue waiting
     type: Code
 - call: !Unary scriptHandle
   ret:
-  - Anything
-  - The result of the script or [[Script_Handle#Promise_Handles|Promise]]
+    type: Anything
+    desc: The result of the script or [[Script_Handle#Promise_Handles|Promise]]
   params:
   - name: scriptHandle
-    description: A script handle or Promise to wait on
+    desc: A script handle or Promise to wait on
     type: ScriptHandle
   since:
-    arma_3:
-      major: 2
-      minor: 22
+    arma3: '2.22'
 - call: !Unary
   - scriptHandle
   - timeout
   ret:
-  - Anything
-  - The result of the script or [[Script_Handle#Promise_Handles|Promise]]. Or [[Nothing]] if timed out.
+    type: Anything
+    desc: The result of the script or [[Script_Handle#Promise_Handles|Promise]]. Or [[Nothing]] if timed out.
   params:
   - name: scriptHandle
-    description: A script handle or Promise to wait on
+    desc: A script handle or Promise to wait on
     type: ScriptHandle
   - name: timeout
-    description: A timeout in seconds of game time ([[sleep]] vs [[uiSleep]])
+    desc: A timeout in seconds of game time ([[sleep]] vs [[uiSleep]])
     type: Number
   since:
-    arma_3:
-      major: 2
-      minor: 22
+    arma3: '2.22'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>waitUntil { not alive player };</sqf>
 - <sqf>_i = 0; waitUntil { _i = _i + 1; _i >= 100 };</sqf>
@@ -74,3 +60,12 @@ examples:
   waitUntil { missionNamespace getVariable ["isready", false] };
   </sqf>
 - "Always return [[Boolean]]:\n<sqf>\nwaitUntil { sleep 1; if (not alive player) exitWith {}; _time = _time + 1 };\t\t\t\t// bad\nwaitUntil { sleep 1; if (not alive player) exitWith { true }; _time = _time + 1; false };\t// good\nwaitUntil { sleep 1; not alive player };\t\t\t\t\t\t\t\t\t\t\t\t\t// perfect\n</sqf>"
+see_also:
+- sleep
+- uiSleep
+- canSuspend
+- spawn
+- execVM
+- while
+- Control
+- Structures

@@ -1,20 +1,21 @@
 name: getBurningValue
-description: Returns how much the unit is exposed to fire damage.
+desc: Returns how much the unit is exposed to fire damage.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>private _fireDamage = getBurningValue player;</sqf>
+see_also:
+- inflame
+- inflamed
+- damage

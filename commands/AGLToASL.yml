@@ -1,22 +1,26 @@
 name: AGLToASL
-description: Converts position from [[Position#PositionAGL|PositionAGL]] to [[Position#PositionASL|PositionASL]].
+desc: Converts position from [[Position#PositionAGL|PositionAGL]] to [[Position#PositionASL|PositionASL]].
 groups:
 - Positions
 syntax:
 - call: !Unary posAGL
   ret:
-  - Position3dASL
-  - null
+    type: Position3dASL
   params:
   - name: posAGL
-    description: position to convert
+    desc: position to convert
     type: Position3dAGL
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 50
+  arma3: '1.50'
 examples:
 - <sqf>_playerPosASL = AGLToASL (player modelToWorld [0,0,0]);</sqf>
 - <sqf>_camPosASL = AGLToASL positionCameraToWorld [0,0,0];</sqf>
+see_also:
+- ASLToAGL
+- ASLToATL
+- ATLToASL
+- getPos
+- getPosATL
+- getPosASL

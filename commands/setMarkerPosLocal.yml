@@ -1,5 +1,5 @@
 name: setMarkerPosLocal
-description: Moves the marker. If position is given in 3D format, {{hl|z}} coordinate is stored with the marker and will be used when marker is passed to commands like [[createVehicle]], [[createUnit]], [[createAgent]], [[createMine]], [[setVehiclePosition]] for example. In case of an object, the object's model [0,0,0] is used.
+desc: Moves the marker. If position is given in 3D format, {{hl|z}} coordinate is stored with the marker and will be used when marker is passed to commands like [[createVehicle]], [[createUnit]], [[createAgent]], [[createMine]], [[setVehiclePosition]] for example. In case of an object, the object's model [0,0,0] is used.
 groups:
 - Markers
 syntax:
@@ -7,30 +7,33 @@ syntax:
   - markerName
   - position
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: markerName
     type: String
   - name: position
-    type: Unknown
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - Object
+      - null
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 4
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.4'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>"MarkerOne" setMarkerPosLocal getMarkerPos "MarkerTwo";</sqf>
+see_also:
+- setMarkerPos
+- setMarkerAlphaLocal
+- setMarkerBrushLocal
+- setMarkerColorLocal
+- setMarkerDirLocal
+- setMarkerShapeLocal
+- setMarkerSizeLocal
+- setMarkerTextLocal
+- setMarkerTypeLocal

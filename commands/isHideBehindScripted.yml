@@ -1,21 +1,20 @@
 name: isHideBehindScripted
-description: Return whether the vehicle has set the [[hideBehindScripted]] to [[true]] or not.
+desc: Return whether the vehicle has set the [[hideBehindScripted]] to [[true]] or not.
 groups:
 - Broken Commands
 - Object Manipulation
 syntax:
 - call: !Unary vehicle
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
+  arma1: '1.0'
 examples:
 - <sqf>_isHidden = isHideBehindScripted _vehicle;</sqf>
+see_also:
+- hideBehindScripted

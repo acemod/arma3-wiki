@@ -1,5 +1,5 @@
 name: doWatch
-description: Order the given unit(s) to watch the given position or target (without radio messages). Use [[objNull]] as the target to order a unit to stop watching a position/target.
+desc: Order the given unit(s) to watch the given position or target (without radio messages). Use [[objNull]] as the target to order a unit to stop watching a position/target.
 groups:
 - Unit Control
 syntax:
@@ -7,48 +7,40 @@ syntax:
   - unit(s)
   - position
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit(s)
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: position
     type: Position
 - call: !Binary
   - unit(s)
   - target
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit(s)
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: target
     type: Object
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>_soldierOne doWatch markerPos "MarkerMoveOne";</sqf>
@@ -58,3 +50,7 @@ examples:
   <sqf>_soldierOne doWatch _eastSoldier;</sqf>
 
   The unit named "soldierOne" will watch the unit named "eastSoldier".
+see_also:
+- commandWatch
+- lookAt
+- glanceAt

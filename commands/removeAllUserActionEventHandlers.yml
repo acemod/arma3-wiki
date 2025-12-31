@@ -1,5 +1,5 @@
 name: removeAllUserActionEventHandlers
-description: |-
+desc: |-
   Removes all UserAction event handlers of the given type which were added by [[addUserActionEventHandler]].
 
   {{Feature|important|This command also resets the Event Handler creation index to 0.}}
@@ -10,19 +10,27 @@ syntax:
   - keyName
   - eventType
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: keyName
-    description: see [[inputAction/actions]]
+    desc: see [[inputAction/actions]]
     type: String
   - name: eventType
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>removeAllUserActionEventHandlers ["Reload", "Activate"];</sqf>
+see_also:
+- addUserActionEventHandler
+- removeUserActionEventHandler
+- Arma
+- '3:'
+- Event
+- Handlers#UserAction
+- Event
+- Handlers|UserAction
+- Event
+- Handlers

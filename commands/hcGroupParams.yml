@@ -1,5 +1,5 @@
 name: hcGroupParams
-description: |-
+desc: |-
   Returns parameters describing group in [[High Command|high command]] bar. Return value is array in format [groupName, teamName] or [] if error. Possible values for team name:
   * {{hl|"teammain"}} (default)
   * {{hl|"teamred"}}
@@ -13,28 +13,32 @@ syntax:
   - unit
   - group
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: unit
-    description: commander
+    desc: commander
     type: Object
   - name: group
     type: Group
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player hcGroupParams someGroup;</sqf>
+see_also:
+- High
+- Command
+- hcAllGroups
+- hcLeader
+- hcRemoveAllGroups
+- hcRemoveGroup
+- hcSelected
+- hcSelectGroup
+- hcSetGroup
+- hcShowBar
+- hcShownBar
+- onHCGroupSelectionChanged

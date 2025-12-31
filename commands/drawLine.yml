@@ -1,5 +1,5 @@
 name: drawLine
-description: Draw a line on the map. Can decrease framerate!
+desc: Draw a line on the map. Can decrease framerate!
 groups:
 - GUI Control - Map
 syntax:
@@ -10,15 +10,30 @@ syntax:
     - color
     - width
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: map
     type: Control
   - name: from
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - !OneOf
+        - - Position2d
+          - null
+        - - Position3d
+          - null
+      - null
   - name: to
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - !OneOf
+        - - Position2d
+          - null
+        - - Position3d
+          - null
+      - null
   - name: color
     type: ArrayColor
   - name: width
@@ -26,26 +41,22 @@ syntax:
     optional: true
     default: '3'
     since:
-      arma_3:
-        major: 2
-        minor: 18
+      arma3: '2.18'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\n(findDisplay 12 displayCtrl 51) ctrlAddEventHandler [\"Draw\",\n\t\"(_this select 0) drawLine [\n\t\tplayer,\n\t\t[0,0,0],\n\t\t[0,0,1,1]\n\t];\"\n];\n</sqf>\n\n{{GVI|arma3|2.02}} [[toString]] version:\n<sqf>\n(findDisplay 12 displayCtrl 51) ctrlAddEventHandler [\"Draw\", toString {\n\t(_this select 0) drawLine [\n\t\tplayer,\n\t\t[0,0,0],\n\t\t[0,0,1,1] // blue\n\t];\n}];\n</sqf>"
+see_also:
+- drawArrow
+- drawEllipse
+- drawIcon
+- drawRectangle
+- drawPolygon
+- drawTriangle
+- drawXPolygon

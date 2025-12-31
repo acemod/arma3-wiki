@@ -1,5 +1,5 @@
 name: setVectorDir
-description: Set object's direction vector. Up vector will remain unchanged.
+desc: Set object's direction vector. Up vector will remain unchanged.
 problem_notes:
 - The effect is {{Icon|localeffect|32}} when using [[setVectorDir]] on a mine. Use a position modification to broadcast [[setVectorDir]]'s change (see {{Link|#Example 2}}).
 groups:
@@ -9,8 +9,7 @@ syntax:
   - object
   - vectorDir
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
     type: Object
@@ -19,24 +18,12 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player setVectorDir [5,6,1];</sqf>
 - |-
@@ -45,3 +32,20 @@ examples:
   _myMine setVectorDir [0.3, 1, 0];
   _myMine setPosWorld getPosWorld _myMine; // synchronises the mine's direction over the network (special case)
   </sqf>
+see_also:
+- vectorDir
+- vectorUp
+- setVectorUp
+- setVectorDirAndUp
+- vectorDiff
+- vectorAdd
+- vectorMultiply
+- vectorCrossProduct
+- vectorDistance
+- vectorMagnitudeSqr
+- vectorDistanceSqr
+- vectorCos
+- vectorMagnitude
+- vectorDotProduct
+- vectorNormalized
+- vectorFromTo

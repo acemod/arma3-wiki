@@ -1,18 +1,18 @@
 name: profileName
-description: Returns currently chosen user profile name. For Steam profile name see [[profileNameSteam]].
+desc: Returns currently chosen user profile name. For Steam profile name see [[profileNameSteam]].
 groups:
 - System
 syntax:
 - call: Nular
   ret:
-  - String
-  - null
+    type: String
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_myInGameProfileName = profileName;</sqf>
+see_also:
+- profileNameSteam
+- name

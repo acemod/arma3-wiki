@@ -1,23 +1,26 @@
 name: setPiPViewDistance
-description: Set the PiP (Picture-in-Picture) view distance. This has no impact if PiP is disabled (see [[isPiPEnabled]]).
+desc: Set the PiP (Picture-in-Picture) view distance. This has no impact if PiP is disabled (see [[isPiPEnabled]]).
 groups:
 - System
 syntax:
 - call: !Unary distance
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: distance
-    description: distance in meters, minimum value is 100, maximum is [[viewDistance|current view distance]]
+    desc: distance in meters, minimum value is 100, maximum is [[viewDistance|current view distance]]
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 8
+  arma3: '2.8'
 examples:
 - <sqf>setPiPViewDistance 100;</sqf>
 - <sqf>setPiPViewDistance viewDistance;</sqf>
 - <sqf>setPiPViewDistance getObjectViewDistance;</sqf>
+see_also:
+- getPiPViewDistance
+- setViewDistance
+- setObjectViewDistance
+- viewDistance
+- getObjectViewDistance

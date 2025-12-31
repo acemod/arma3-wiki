@@ -1,5 +1,5 @@
 name: fireAtTarget
-description: Remotely forces a unit to fire the given weapon. See also [[BIS_fnc_fire]].
+desc: Remotely forces a unit to fire the given weapon. See also [[BIS_fnc_fire]].
 groups:
 - Unit Control
 - Weapons
@@ -9,32 +9,39 @@ syntax:
   - - targetVehicle
     - weaponMuzzleName
   ret:
-  - Boolean
-  - '[[true]] if fired, [[false]] if not'
+    type: Boolean
+    desc: '[[true]] if fired, [[false]] if not'
   params:
   - name: sourceVehicle
-    description: source vehicle to fire from
+    desc: source vehicle to fire from
     type: Object
   - name: targetVehicle
-    description: target vehicle to fire at
+    desc: target vehicle to fire at
     type: Object
   - name: weaponMuzzleName
-    description: weapon muzzle classname, optional parameter
+    desc: weapon muzzle classname, optional parameter
     type: String
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_handle = this fireAtTarget [groundtarget1, "HellfireLauncher"];</sqf>
 - <sqf>_handle = Igla_AA_pod_TK_EP1 fireAtTarget [_helicopter, currentWeapon Igla_AA_pod_TK_EP1];</sqf>
 - <sqf>_handle = Igla_AA_pod_TK_EP1 fireAtTarget [helicopter];</sqf>
+see_also:
+- fire
+- doFire
+- commandFire
+- canFire
+- forceWeaponFire
+- commandArtilleryFire
+- commandSuppressiveFire
+- doArtilleryFire
+- doSuppressiveFire
+- isManualFire
+- aimedAtTarget
+- BIS_fnc_fire

@@ -1,5 +1,5 @@
 name: assignToAirport
-description: Assigns a plane to an airport ID or object.
+desc: Assigns a plane to an airport ID or object.
 problem_notes:
 - '{{Feature|warning|This command is not implemented in ''''''{{arma1}}'''''', use [[landAt]] instead.}}'
 groups:
@@ -9,50 +9,45 @@ syntax:
   - plane
   - id
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: plane
-    description: plane
+    desc: plane
     type: Object
   - name: id
-    description: airport id
+    desc: airport id
     type: Number
 - call: !Binary
   - plane
   - target
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: plane
-    description: plane
+    desc: plane
     type: Object
   - name: target
-    description: 'airport object. For example an aircraft carrier, see [[Arma 3: Dynamic Airport Configuration]]'
+    desc: 'airport object. For example an aircraft carrier, see [[Arma 3: Dynamic Airport Configuration]]'
     type: Object
   since:
-    arma_3:
-      major: 1
-      minor: 68
+    arma3: '1.68'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 8
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.8'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>plane1 assignToAirport 0;</sqf>
 - <sqf>plane1 assignToAirport carrier1;</sqf>
+see_also:
+- airportSide
+- setAirportSide
+- land
+- landAt
+- allAirports
+- 'Arma:'
+- Airport
+- IDs

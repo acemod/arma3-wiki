@@ -1,5 +1,5 @@
 name: getMissionConfigValue
-description: |-
+desc: |-
   Returns value of the given scenario attribute from the 1st tier. Since only config properties have values, the attribute should be config property.
   If it is not found or config class is given, the return is [[nil]]. If the attribute defined in multiple places, the command checks them in the following order:
   # [[Description.ext]] entry
@@ -16,30 +16,47 @@ groups:
 syntax:
 - call: !Unary attribute
   ret:
-  - Unknown
-  - null
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
+    - - Boolean
+      - null
+    - - ArrayUnknown
+      - null
   params:
   - name: attribute
-    description: attribute name
+    desc: attribute name
     type: String
 - call: !Unary
   - attribute
   - defaultValue
   ret:
-  - Unknown
-  - null
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
+    - - Boolean
+      - null
+    - - ArrayUnknown
+      - null
   params:
   - name: attribute
-    description: attribute name
+    desc: attribute name
     type: String
   - name: defaultValue
-    description: value used when the attribute is undefined
+    desc: value used when the attribute is undefined
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - "<sqf>\nprivate _respawnDelay = getMissionConfigValue [\"respawnDelay\", 0];\t\t\t// returns the real, defined respawn delay value\nprivate _respawnDelay = getNumber (missionConfigFile >> \"respawnDelay\");\t// old approach, ignoring the Eden Editor-set value\n</sqf>"
+see_also:
+- getMissionConfig
+- missionConfigFile
+- BIS_fnc_getParamValue
+- Mission_Parameters

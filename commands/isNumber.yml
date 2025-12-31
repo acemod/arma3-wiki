@@ -1,35 +1,39 @@
 name: isNumber
-description: Check if config entry represents number.
+desc: Check if config entry represents number.
 groups:
 - Config
 syntax:
 - call: !Unary config
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: config
     type: Config
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>_ok = isNumber (configFile >> "CfgVehicles");</sqf>
 
   Result is false
+see_also:
+- configFile
+- a
+- /
+- b
+- configName
+- count
+- getArray
+- getText
+- getNumber
+- inheritsFrom
+- isArray
+- isClass
+- isText
+- select

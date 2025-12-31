@@ -1,5 +1,5 @@
 name: setMarkerTextLocal
-description: Sets the text label of an existing marker.
+desc: Sets the text label of an existing marker.
 groups:
 - Markers
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - markerName
   - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: markerName
     type: String
@@ -17,20 +16,18 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 4
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.4'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>"Marker1" setMarkerTextLocal "You are here.";</sqf>
+see_also:
+- setMarkerBrush
+- setMarkerColor
+- setMarkerDir
+- setMarkerPos
+- setMarkerShape
+- setMarkerSize
+- setMarkerType

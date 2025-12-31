@@ -1,33 +1,31 @@
 name: isFormationLeader
-description: Returns true if the specified unit is subgroup leader.
+desc: Returns true if the specified unit is subgroup leader.
 groups:
 - Groups
 syntax:
 - call: !Unary unit
   ret:
-  - Boolean
-  - '[[true]] if unit is subgroup leader.'
+    type: Boolean
+    desc: '[[true]] if unit is subgroup leader.'
   params:
   - name: unit
-    description: unit being checked.
+    desc: unit being checked.
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_isLeader = isFormationLeader player;</sqf>
+see_also:
+- commandFollow
+- doFollow
+- formationLeader
+- formLeader
+- leader
+- selectLeader
+- setLeader

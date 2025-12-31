@@ -1,5 +1,5 @@
 name: worldToScreen
-description: |-
+desc: |-
   Converts position in world space into screen (UI) space. If a specified position is not within the current screen view, an empty array is returned.
   {{Feature | informative | [[SafeZone]]s should be considered:
   * the result can be out of the [0,0]..[1,1] range
@@ -10,44 +10,35 @@ groups:
 syntax:
 - call: !Unary position
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: position
-    description: world position 2D [x,y] or [[Position#PositionAGL|PositionAGL]]
+    desc: world position 2D [x,y] or [[Position#PositionAGL|PositionAGL]]
     type: ArrayUnknown
 - call: !Binary
   - camera
   - position
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: camera
-    description: camera object
+    desc: camera object
     type: Object
   - name: position
-    description: world position 2D [x,y] or [[Position#PositionAGL|PositionAGL]]
+    desc: world position 2D [x,y] or [[Position#PositionAGL|PositionAGL]]
     type: ArrayUnknown
   since:
-    arma_3:
-      major: 2
-      minor: 18
+    arma3: '2.18'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_screenPos = worldToScreen ASLToAGL getPosASL soldier1;</sqf>
 - <sqf>_screenPos = worldToScreen (player modelToWorld [0,10,0]);</sqf>
+see_also:
+- screenToWorld
+- SafeZone

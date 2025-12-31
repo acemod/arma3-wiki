@@ -1,5 +1,5 @@
 name: setWaypointCombatMode
-description: Changes a group's combat mode when the waypoint becomes active.
+desc: Changes a group's combat mode when the waypoint becomes active.
 groups:
 - Waypoints
 syntax:
@@ -7,31 +7,24 @@ syntax:
   - waypoint
   - mode
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: waypoint
-    description: format [[Waypoint]]
+    desc: format [[Waypoint]]
     type: ArrayUnknown
   - name: mode
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>[_grp, 2] setWaypointCombatMode "RED";</sqf>
+see_also:
+- Combat
+- Modes
+- setWaypointBehaviour

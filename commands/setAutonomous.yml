@@ -1,5 +1,5 @@
 name: setAutonomous
-description: Sets UAV autonomous mode.
+desc: Sets UAV autonomous mode.
 groups:
 - Remote Control
 syntax:
@@ -7,8 +7,8 @@ syntax:
   - uav
   - bool
   ret:
-  - Boolean
-  - whether the operation was successful. Returns [[false]] when the object is not a uav.
+    type: Boolean
+    desc: whether the operation was successful. Returns [[false]] when the object is not a uav.
   params:
   - name: uav
     type: Object
@@ -17,8 +17,11 @@ syntax:
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>uav setAutonomous true;</sqf>
+see_also:
+- isAutonomous
+- disableAI
+- enableAI
+- checkAIFeature

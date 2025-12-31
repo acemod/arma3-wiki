@@ -1,5 +1,5 @@
 name: ignoreTarget
-description: Sets a target to be ignored by this Group. It will not appear in [[nearTargets]] and the group will not notice its presence. [[targetKnowledge]] can be used to check if a target is currently ignored. While a unit is ignored, [[reveal]] has no effect.
+desc: Sets a target to be ignored by this Group. It will not appear in [[nearTargets]] and the group will not notice its presence. [[targetKnowledge]] can be used to check if a target is currently ignored. While a unit is ignored, [[reveal]] has no effect.
 groups:
 - Object Detection
 syntax:
@@ -7,37 +7,48 @@ syntax:
   - group
   - target
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: group
-    description: which receives revealing information
-    type: Unknown
+    desc: which receives revealing information
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
   - name: target
-    description: which would be ignored
+    desc: which would be ignored
     type: Object
 - call: !Binary
   - group
   - - target
     - isIgnored
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: group
-    description: which receives revealing information
-    type: Unknown
+    desc: which receives revealing information
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
   - name: target
-    description: which would be ignored
+    desc: which would be ignored
     type: Object
   - name: isIgnored
-    description: whether the target should be ignored
+    desc: whether the target should be ignored
     type: Boolean
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>aiGroup ignoreTarget player</sqf>
+see_also:
+- knowsAbout
+- targetsQuery
+- targetsAggregate
+- nearTargets
+- reveal
+- targetKnowledge

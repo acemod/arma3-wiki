@@ -1,12 +1,11 @@
 name: getEntityInfo
-description: Returns various properties for the given entity. Most properties should be checked where entity is [[local]]
+desc: Returns various properties for the given entity. Most properties should be checked where entity is [[local]]
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary entity
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: entity
     type: Object
@@ -14,20 +13,30 @@ syntax:
   - entity
   - index
   ret:
-  - Anything
-  - depends on the requested property, or [[Nothing]]
+    type: Anything
+    desc: depends on the requested property, or [[Nothing]]
   params:
   - name: entity
     type: Object
   - name: index
-    description: property index (see {{Link|Syntax 1|main syntax}})
+    desc: property index (see {{Link|Syntax 1|main syntax}})
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - "<sqf>\nprivate _entityInfo = getEntityInfo ent1;\n_entityInfo params [\n\t\"_isMan\",\n\t\"_isAnimal\",\n\t\"_isDeadSet\",\n\t\"_deadSetTime\",\n\t\"_lastEntityCausingDamage\",\n\t\"_lastDamageTime\",\n\t\"_isUpsideDown\",\n\t\"_upsideDownTime\",\n\t\"_isStopped\",\n\t\"_canFloat\",\n\t\"_hasTerminalOpened\",\n\t\"_isWeaponholder\",\n\t\"_isWreck\",\n\t\"_isSmoking\",\n\t\"_isSetForDeletion\"\n];\n</sqf>"
 - <sqf>private _isMan = ent1 getEntityInfo 0;</sqf>
+see_also:
+- cursorObject
+- cursorTarget
+- createSimpleObject
+- getObjectType
+- getObjectTextures
+- objectParent
+- setVelocityTransformation
+- getUnitFreefallInfo
+- getModelInfo
+- getShotInfo
+- getRespawnVehicleInfo

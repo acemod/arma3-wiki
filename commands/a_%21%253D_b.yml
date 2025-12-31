@@ -1,5 +1,5 @@
 name: '!='
-description: |-
+desc: |-
   Returns whether one value is '''not''' equal to another. String comparison is case-'''in'''sensitive (e.g <sqf inline>"STRINGtext" != "stringTEXT" // returns false - strings are equivalent</sqf>).
   {{Feature|important|''a'' and ''b'' types '''must''' match: comparing e.g [[String]] with [[Number]] is invalid.}}
 groups:
@@ -10,11 +10,11 @@ syntax:
   - a
   - b
   ret:
-  - Boolean
-  - '[[true]] if ''''a'''' is different from ''''b'''', [[false]] otherwise'
+    type: Boolean
+    desc: '[[true]] if ''''a'''' is different from ''''b'''', [[false]] otherwise'
   params:
   - name: a
-    description: |-
+    desc: |-
       ! Possible Type
       {{!}} [[Number]]
       {{!}} [[Side]]
@@ -36,29 +36,18 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nif (_counter != 4) then\n{\n\thint \"The counter is not equal to the number 4\";\n};\n</sqf>"
 - "<sqf>\nif (vehicle player != player) then\n{\n\thint \"you are in a vehicle\";\n}\nelse\n{\n\thint \"you are on foot\";\n};\n</sqf>"
 - "<sqf>\nif (fuel truck1 != 1) then\n{\n\thint \"Truck1 has less than a full tank of fuel.\";\n};\n</sqf>"
 - <sqf>if (alive _unit1 != alive _unit2) then { hint "One of the units is dead while another is alive" };</sqf>
+see_also:
+- ==
+- Operators

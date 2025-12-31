@@ -1,5 +1,5 @@
 name: removeDiarySubject
-description: Removes a page and all its subjects from the [[Diary]].
+desc: Removes a page and all its subjects from the [[Diary]].
 groups:
 - Briefing
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - player
   - diaryPage
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: player
     type: Object
@@ -17,8 +16,12 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 96
+  arma3: '1.96'
 examples:
 - <sqf>player removeDiarySubject "myPage";</sqf>
+see_also:
+- createDiarySubject
+- diarySubjectExists
+- selectDiarySubject
+- removeDiaryRecord
+- allDiarySubjects

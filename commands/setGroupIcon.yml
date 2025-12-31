@@ -1,5 +1,5 @@
 name: setGroupIcon
-description: Sets group icon properties. Since Arma 3 v2.22 the offset can be set separately for 2d and 3d.
+desc: Sets group icon properties. Since Arma 3 v2.22 the offset can be set separately for 2d and 3d.
 groups:
 - High Command
 syntax:
@@ -9,37 +9,28 @@ syntax:
     - icon
     - offset
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: group
     type: Group
   - name: id
-    description: the icon ID returned by [[addGroupIcon]]
+    desc: the icon ID returned by [[addGroupIcon]]
     type: Number
   - name: icon
-    description: class name of desired icon from CfgGroupIcons
+    desc: class name of desired icon from CfgGroupIcons
     type: String
   - name: offset
-    description: X and Y offsets of the icon in form [offsetX, offsetY, (offsetX3d), (offsetY3d)]
+    desc: X and Y offsets of the icon in form [offsetX, offsetY, (offsetX3d), (offsetY3d)]
     type: ArrayUnknown
     optional: true
     default: '[0,0]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -48,3 +39,16 @@ examples:
 
   _group setGroupIcon [_icon, _iconsClass, _offset];
   </sqf>
+see_also:
+- addGroupIcon
+- clearGroupIcons
+- getGroupIcon
+- getGroupIcons
+- getGroupIconParams
+- groupIconSelectable
+- groupIconsVisible
+- onGroupIconClick
+- removeGroupIcon
+- setGroupIconParams
+- setGroupIconsSelectable
+- setGroupIconsVisible

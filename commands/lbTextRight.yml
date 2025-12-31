@@ -1,5 +1,5 @@
 name: lbTextRight
-description: Returns the shown right text in the item with the given index of the listbox or combobox with id idc of the topmost user [[dialog]].
+desc: Returns the shown right text in the item with the given index of the listbox or combobox with id idc of the topmost user [[dialog]].
 groups:
 - GUI Control - ListBox
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - idc
   - index
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: idc
     type: Number
@@ -18,8 +17,7 @@ syntax:
   - control
   - index
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: control
     type: Control
@@ -28,27 +26,35 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  flashpoint:
-    major: 0
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '0.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_text = lbTextRight [101, 0];</sqf>
 - <sqf>_text = _control lbTextRight 0;</sqf>
+see_also:
+- lbSetTextRight
+- lbAdd
+- lbClear
+- lbColor
+- lbCurSel
+- lbData
+- lbDelete
+- lbIsSelected
+- lbPicture
+- lbSelection
+- lbSetColor
+- lbSetCurSel
+- lbSetData
+- lbSetPicture
+- lbSetSelected
+- lbSetTooltip
+- lbSetValue
+- lbSize
+- lbSort
+- lbSortByValue
+- lbValue

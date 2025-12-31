@@ -1,5 +1,5 @@
 name: getSoundController
-description: Returns value of the given sound controller.
+desc: Returns value of the given sound controller.
 groups:
 - Sounds
 syntax:
@@ -7,20 +7,28 @@ syntax:
   - vehicle
   - controller
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: vehicle
-    description: must be a vehicle (does not work on soldiers)
+    desc: must be a vehicle (does not work on soldiers)
     type: Object
   - name: controller
-    description: name of sound controller, for example "rpm" or "thrust".
+    desc: name of sound controller, for example "rpm" or "thrust".
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 64
+  arma3: '1.64'
 examples:
 - <sqf>vehicle player getSoundController "rpm"; //600</sqf>
+see_also:
+- Arma
+- '3:'
+- Sound
+- getAllSoundControllers
+- getSoundControllerResult
+- getEnvSoundController
+- getAllEnvSoundControllers
+- getCustomSoundController
+- setCustomSoundController
+- getCustomSoundControllerCount

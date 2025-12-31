@@ -1,36 +1,37 @@
 name: enableWeaponDisassembly
-description: Enables or disables disassembly of static weapons. Could be applied to local [[player]], to another unit or to static weapon directly.
+desc: Enables or disables disassembly of static weapons. Could be applied to local [[player]], to another unit or to static weapon directly.
 groups:
 - Weapons
 syntax:
 - call: !Unary enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: enable
-    description: '[[false]] to prevent local [[player]] from being able to disassemble static weapons'
+    desc: '[[false]] to prevent local [[player]] from being able to disassemble static weapons'
     type: Boolean
 - call: !Binary
   - entity
   - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: entity
-    description: unit or static weapon
+    desc: unit or static weapon
     type: Object
   - name: enable
-    description: '[[false]] to prevent a unit from being able to disassemble static weapons, or to prevent a static weapon from being disassembled by anyone'
+    desc: '[[false]] to prevent a unit from being able to disassemble static weapons, or to prevent a static weapon from being disassembled by anyone'
     type: Boolean
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>enableWeaponDisassembly false;</sqf>
 - <sqf>soldier1 enableWeaponDisassembly false;</sqf>
 - <sqf>mortar1 enableWeaponDisassembly false;</sqf>
+see_also:
+- weaponDisassemblyEnabled
+- weapons
+- action
+- inGameUISetEventHandler

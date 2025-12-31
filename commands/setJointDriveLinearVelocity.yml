@@ -1,5 +1,5 @@
 name: setJointDriveLinearVelocity
-description: |-
+desc: |-
   {{Wiki|WIP}} Requires that a linear "drive" has been configured in [[attachChild]].
   Sets the joints target velocity (orientation relative to the joint's own orientation).
   The drive will then behave like a spring (springParameters are configured in the drive), trying to accelerate the child object to the desired velocity.
@@ -11,25 +11,29 @@ syntax:
   - joint
   - velocity
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: joint
-    description: The parent vehicle that has a joint to a child, or the joint itself to be manipulated
-    type: Unknown
+    desc: The parent vehicle that has a joint to a child, or the joint itself to be manipulated
+    type: !OneOf
+    - - Object
+      - null
   - name: velocity
-    description: relative velocity vector
+    desc: relative velocity vector
     type: ArrayUnknown
 argument_loc: Local
 effect_loc: Local
 server_exec: false
 since:
-  arma_3:
-    major: 2
-    minor: 22
+  arma3: '2.22'
 examples:
 - <sqf></sqf>
 - <sqf></sqf>
 - <sqf></sqf>
 - <sqf></sqf>
 - <sqf></sqf>
+see_also:
+- attachChild
+- setJointDrivePosition
+- setJointDriveOrientation
+- setJointDriveAngularVelocity

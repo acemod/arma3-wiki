@@ -1,5 +1,5 @@
 name: removeMagazineGlobal
-description: Removes the magazine from the unit.
+desc: Removes the magazine from the unit.
 groups:
 - Unit Inventory
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - magazineName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,8 +16,9 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 76
+  arma3: '0.76'
 examples:
 - <sqf>player removeMagazineGlobal "30Rnd_65x39_caseless_mag";</sqf>
+see_also:
+- removeMagazine
+- removeMagazines

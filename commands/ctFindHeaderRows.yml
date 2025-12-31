@@ -1,5 +1,5 @@
 name: ctFindHeaderRows
-description: Gets array of indices of rows under this header.
+desc: Gets array of indices of rows under this header.
 groups:
 - GUI Control - Controls Table
 syntax:
@@ -7,19 +7,35 @@ syntax:
   - ctrl
   - index
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: ctrl
     type: Control
   - name: index
-    description: header's index
+    desc: header's index
     type: Number
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>private _indices = _control ctFindHeaderRows 0;</sqf>
+see_also:
+- ctAddRow
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctSetCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetValue
+- ctValue
+- ctSetData
+- ctData
+- ctFindRowHeader
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

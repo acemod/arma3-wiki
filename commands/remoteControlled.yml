@@ -1,5 +1,5 @@
 name: remoteControlled
-description: |-
+desc: |-
   Returns the player controlling the given unit if the argument is the unit, or the unit controlled by the player if the argument is the player.
   {{Feature|important|See also [[Remote Control Tutorial]].}}
 groups:
@@ -7,18 +7,19 @@ groups:
 syntax:
 - call: !Unary unitOrPlayer
   ret:
-  - Object
-  - the person controlling the unit or the unit controlled by the player; [[objNull]] if not applicable
+    type: Object
+    desc: the person controlling the unit or the unit controlled by the player; [[objNull]] if not applicable
   params:
   - name: unitOrPlayer
-    description: unit under remote control or the player controlling a unit
+    desc: unit under remote control or the player controlling a unit
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 14
+  arma3: '2.14'
 examples:
 - <sqf>private _controllingPlayer = remoteControlled _dronePilot;</sqf>
 - <sqf>private _dronePilot = remoteControlled _controllingPlayer;</sqf>
+see_also:
+- remoteControl
+- isRemoteControlling

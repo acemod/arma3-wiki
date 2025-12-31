@@ -1,30 +1,27 @@
 name: waypointBehaviour
-description: Gets the waypoint behavior.
+desc: Gets the waypoint behavior.
 groups:
 - Waypoints
 syntax:
 - call: !Unary waypoint
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: waypoint
-    description: format [[Waypoint]]
+    desc: format [[Waypoint]]
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>waypointBehaviour [groupOne,1];</sqf>
+see_also:
+- Mission_Editor:_Waypoints#Behaviour|Behaviour
+- Description
+- AIBehaviour
+- waypoints
+- setWaypointBehaviour

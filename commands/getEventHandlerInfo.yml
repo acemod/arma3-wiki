@@ -1,5 +1,5 @@
 name: getEventHandlerInfo
-description: Queries given event handler's information.
+desc: Queries given event handler's information.
 groups:
 - Event Handlers
 syntax:
@@ -8,40 +8,51 @@ syntax:
   - - type
     - id
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: oper
-    description: subject to which event handler is assigned
-    type: Unknown
+    desc: subject to which event handler is assigned
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
+    - - Control
+      - null
+    - - Display
+      - null
   - name: type
-    description: event handler name
+    desc: event handler name
     type: String
   - name: id
-    description: event handler id returned by [[addEventHandler]], [[ctrlAddEventHandler]], [[displayAddEventHandler]], or [[addMPEventHandler]] - '''not''' any other EH system (e.g [[add3DENEventHandler]] or [[addUserActionEventHandler]])
+    desc: event handler id returned by [[addEventHandler]], [[ctrlAddEventHandler]], [[displayAddEventHandler]], or [[addMPEventHandler]] - '''not''' any other EH system (e.g [[add3DENEventHandler]] or [[addUserActionEventHandler]])
     type: Number
 - call: !Unary
   - type
   - id
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: type
-    description: event handler name
+    desc: event handler name
     type: String
   - name: id
-    description: event handler id returned by [[addMissionEventHandler]] or [[addMusicEventHandler]] '''only'''
+    desc: event handler id returned by [[addMissionEventHandler]] or [[addMusicEventHandler]] '''only'''
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - "<sqf>private _info = player getEventHandlerInfo [\"MPKilled\", 1];\t\t\t// object EH</sqf>"
 - "<sqf>private _info = getEventHandlerInfo [\"EachFrame\", 0];\t\t\t\t// mission EH</sqf>"
 - "<sqf>private _info = _bullet getEventHandlerInfo [\"Deflected\", 0];\t\t// projectile EH</sqf>"
 - "<sqf>private _info = _group getEventHandlerInfo [\"EnemyDetected\", 1];\t// group EH</sqf>"
 - "<sqf>private _info = _control getEventHandlerInfo [\"ButtonClick\", 1];\t// control (UI) EH</sqf>"
+see_also:
+- addEventHandler
+- ctrlAddEventHandler
+- displayAddEventHandler
+- addMPEventHandler
+- addMissionEventHandler
+- addMusicEventHandler

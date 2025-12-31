@@ -1,5 +1,5 @@
 name: getSelectionBones
-description: |-
+desc: |-
   Returns an array of bone names to which the specified selection is attached.
   {{Feature|important|This command is relatively slow because it searches in all vertices of every bone.}}
 groups:
@@ -10,18 +10,34 @@ syntax:
   - - selectionName
     - LOD
   ret:
-  - ArrayUnknown
-  - array of bone names
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+    desc: array of bone names
   params:
   - name: object
     type: Object
   - name: selectionName
     type: String
   - name: LOD
-    type: Unknown
+    type: !StringEnum
+    - - Memory
+      - null
+    - - Geometry
+      - null
+    - - FireGeometry
+      - null
+    - - LandContact
+      - null
+    - - HitPoints
+      - null
+    - - ViewGeometry
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
+see_also:
+- selectionPosition
+- selectionNames
+- getBoneNames

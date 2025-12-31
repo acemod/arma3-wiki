@@ -1,5 +1,5 @@
 name: setSpeaker
-description: Sets the speaker of a person.
+desc: Sets the speaker of a person.
 multiplayer_note: The command needs to run on every computer with exactly the same arguments, otherwise the speaking unit could appear silent on other PCs.
 groups:
 - Unit Identity
@@ -9,19 +9,25 @@ syntax:
   - person
   - speaker
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: person
     type: Object
   - name: speaker
-    description: 'the used voice type, see [[Arma 3: CfgIdentities#Speakers|{{arma3}} Speakers]]'
+    desc: 'the used voice type, see [[Arma 3: CfgIdentities#Speakers|{{arma3}} Speakers]]'
     type: String
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 2
+  arma3: '1.2'
 examples:
 - <sqf>unit1 setSpeaker "Male02GRE";</sqf>
+see_also:
+- speaker
+- disableConversation
+- enableRadio
+- enableSentences
+- showSubtitles
+- setIdentity
+- setFace
+- hasCustomFace

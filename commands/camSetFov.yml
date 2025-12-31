@@ -1,5 +1,5 @@
 name: camSetFov
-description: |-
+desc: |-
   Set the zoom level ('''F'''ield '''O'''f '''V'''iew) of the given camera.
   <br>
   The zoom level is from ''{{hl|0.01}}'' for the nearest and ''{{hl|8.5}}'' for the furthest zoom value, with a default zoom level of ''{{hl|0.75}}''
@@ -12,38 +12,27 @@ syntax:
   - camera
   - level
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: camera
-    description: object of type "camera"
+    desc: object of type "camera"
     type: Object
   - name: level
-    description: zoom level, range 0.01 to 8.5 (see description above)
+    desc: zoom level, range 0.01 to 8.5 (see description above)
     type: Number
 argument_loc: Local
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_cam camSetFov 0.75;</sqf>
+see_also:
+- camPrepareFov
+- camSetFovRange
+- camSetTarget

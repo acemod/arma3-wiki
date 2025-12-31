@@ -1,5 +1,5 @@
 name: assignedVehicleRole
-description: |-
+desc: |-
   Returns the role a unit is assigned to within its assigned vehicle.
   {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
 multiplayer_note: On a client the command will return empty arrays for every unit that is not local. On the server the command correctly returns the role, regardless of the units locality.
@@ -8,31 +8,34 @@ groups:
 syntax:
 - call: !Unary unitName
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unitName
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 5
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.5'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_RoleArray = assignedVehicleRole player;</sqf>
 - |-
   Get weapons available to player at player occupied turret:
   <sqf>_weaponsTurret = vehicle player weaponsTurret (assignedVehicleRole player select 1);</sqf>
+see_also:
+- addVehicle
+- assignedVehicle
+- unassignVehicle
+- leaveVehicle
+- assignAsCargo
+- assignAsCommander
+- assignAsDriver
+- assignAsGunner
+- assignAsTurret
+- crew
+- assignedVehicles
+- assignedGroup
+- fullCrew

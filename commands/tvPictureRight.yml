@@ -1,5 +1,5 @@
 name: tvPictureRight
-description: Returns the right picture of a [[CT_TREE]] on given path.
+desc: Returns the right picture of a [[CT_TREE]] on given path.
 groups:
 - GUI Control - Tree View
 syntax:
@@ -7,31 +7,33 @@ syntax:
   - idc
   - path
   ret:
-  - String
-  - path to picture
+    type: String
+    desc: path to picture
   params:
   - name: idc
     type: Number
   - name: path
-    description: path
+    desc: path
     type: ArrayUnknown
 - call: !Binary
   - ctrl
   - path
   ret:
-  - String
-  - path to picture
+    type: String
+    desc: path to picture
   params:
   - name: ctrl
     type: Control
   - name: path
-    description: path
+    desc: path
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>private _result = _controlTV tvPictureRight [0, 0];</sqf>
+see_also:
+- tvSetPictureRight
+- tvSetPicture
+- tvPicture

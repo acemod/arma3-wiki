@@ -1,5 +1,5 @@
 name: tvSetPictureColor
-description: Sets the colour of the picture (set via [[tvSetPicture]]) under the specified tree view path.
+desc: Sets the colour of the picture (set via [[tvSetPicture]]) under the specified tree view path.
 groups:
 - GUI Control - Tree View
 syntax:
@@ -8,14 +8,13 @@ syntax:
   - path
   - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
-    description: IDC of the tree view control
+    desc: IDC of the tree view control
     type: Number
   - name: path
-    description: array containing path numbers
+    desc: array containing path numbers
     type: ArrayUnknown
   - name: color
     type: ArrayColor
@@ -24,22 +23,37 @@ syntax:
   - - path
     - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ctrl
     type: Control
   - name: path
-    description: array containing path numbers
+    desc: array containing path numbers
     type: ArrayUnknown
   - name: color
     type: ArrayColor
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 74
+  arma3: '0.74'
 examples:
 - <sqf>tvSetPictureColor [101, [0,2], [1,0,1,1]];</sqf>
 - <sqf>_tree tvSetPictureColor [[0,2], [1,0,1,1]];</sqf>
+see_also:
+- tvAdd
+- tvClear
+- tvCollapse
+- tvCount
+- tvCurSel
+- tvData
+- tvDelete
+- tvExpand
+- tvPicture
+- tvSetCurSel
+- tvSetData
+- tvSetPicture
+- tvSetValue
+- tvSort
+- tvSortByValue
+- tvText
+- tvValue

@@ -1,5 +1,5 @@
 name: getSoundControllerResult
-description: Returns the calculated value of [[simple expression]] defined in config. Config could be any config entry, even [[missionConfigFile | mission config]] entry. It is more important that the vehicle is a transport and not any object. If the expression contains sound controllers, the controller values will be taken from the given vehicle.
+desc: Returns the calculated value of [[simple expression]] defined in config. Config could be any config entry, even [[missionConfigFile | mission config]] entry. It is more important that the vehicle is a transport and not any object. If the expression contains sound controllers, the controller values will be taken from the given vehicle.
 groups:
 - Sounds
 syntax:
@@ -7,21 +7,18 @@ syntax:
   - vehicle
   - config
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: vehicle
-    description: transport vehicle
+    desc: transport vehicle
     type: Object
   - name: config
-    description: path to config entry containing the expression
+    desc: path to config entry containing the expression
     type: Config
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 64
+  arma3: '1.64'
 examples:
 - <sqf>_result = (vehicle player) getSoundControllerResult (configFile >> "cfgVehicles" >> typeOf (vehicle player) >> "sounds" >> "idle_ext" >> "volume");</sqf>
 - |-
@@ -30,3 +27,14 @@ examples:
   // myExpression = "rain factor [1,0]";
   _result = "PaperCar" createVehicleLocal position player getSoundControllerResult (missionConfigFile >> "myExpression");
   </sqf>
+see_also:
+- Arma
+- '3:'
+- Sound
+- getSoundController
+- getEnvSoundController
+- getAllEnvSoundControllers
+- getAllSoundControllers
+- getCustomSoundController
+- setCustomSoundController
+- getCustomSoundControllerCount

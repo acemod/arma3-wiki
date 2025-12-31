@@ -1,5 +1,5 @@
 name: lbSetPictureColorDisabled
-description: Sets the disabled color of item's picture (left) with the given index of the listbox with id idc of the topmost user dialog to the given color. Color is in format [[Color|Color (RGBA)]]. Color which consists from only zeros means disable this override.
+desc: Sets the disabled color of item's picture (left) with the given index of the listbox with id idc of the topmost user dialog to the given color. Color is in format [[Color|Color (RGBA)]]. Color which consists from only zeros means disable this override.
 groups:
 - GUI Control - ListBox
 syntax:
@@ -8,8 +8,7 @@ syntax:
   - index
   - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
@@ -22,8 +21,7 @@ syntax:
   - - index
     - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -34,9 +32,11 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 20
+  arma3: '1.20'
 examples:
 - <sqf>lbSetPictureColorDisabled [101, 0, [1, 1, 1, 0.25]];</sqf>
 - <sqf>_ctrl lbSetPictureColorDisabled [0, [1, 1, 1, 0.25]];</sqf>
+see_also:
+- lbSetPictureColor
+- lbSetPictureRightColor
+- lbSetPictureRightColorDisabled

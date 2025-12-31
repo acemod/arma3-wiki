@@ -1,28 +1,28 @@
 name: tvExpandAll
-description: Expands all tree items for the given Tree View.
+desc: Expands all tree items for the given Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
 - call: !Unary idc
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
 - call: !Unary control
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 74
+  arma3: '0.74'
 examples:
 - <sqf>tvExpandAll 101;</sqf>
 - <sqf>tvExpandAll _ctrl;</sqf>
+see_also:
+- tvExpand
+- tvCollapse
+- tvCollapseAll

@@ -1,5 +1,5 @@
 name: addMagazineAmmoCargo
-description: Adds magazines with specified ammo count to the cargo space of a vehicle or a container.
+desc: Adds magazines with specified ammo count to the cargo space of a vehicle or a container.
 groups:
 - Vehicle Inventory
 syntax:
@@ -9,26 +9,39 @@ syntax:
     - quantity
     - ammocount
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: cargospace
-    description: vehicle or container or weaponholder
+    desc: vehicle or container or weaponholder
     type: Object
   - name: magazine
-    description: magazine class name
+    desc: magazine class name
     type: String
   - name: quantity
-    description: number of magazines to add. {{GVI|arma3|2.14|size= 0.75}} a negative value remove magazines
+    desc: number of magazines to add. {{GVI|arma3|2.14|size= 0.75}} a negative value remove magazines
     type: Number
   - name: ammocount
-    description: ammo count in each magazine
+    desc: ammo count in each magazine
     type: Number
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>_ammobox addMagazineAmmoCargo ["30Rnd_65x39_caseless_mag", 2, 5];</sqf>
+see_also:
+- magazinesAmmoCargo
+- addMagazineCargo
+- addMagazineGlobal
+- addMagazine
+- addMagazines
+- addMagazinePool
+- addMagazineTurret
+- clearMagazineCargo
+- addWeaponCargo
+- clearWeaponCargo
+- clearWeaponCargo
+- addWeaponCargoGlobal
+- addBackpackCargoGlobal
+- addItemCargo
+- addItemCargoGlobal

@@ -1,5 +1,5 @@
 name: friendly
-description: |-
+desc: |-
   Returns ''Friendly'' side which is friendly to all units.
   {{Feature|warning|This command is not functional and appears to have be replaced by [[sideFriendly]].}}
 groups:
@@ -7,14 +7,13 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Side
-  - null
+    type: Side
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 78
+  flashpoint: '1.78'
 examples:
 - '<sqs>?_side == friendly : hint "Hey buddy!"</sqs>'
+see_also:
+- sideFriendly

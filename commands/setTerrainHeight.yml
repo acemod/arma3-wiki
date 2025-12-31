@@ -1,5 +1,5 @@
 name: setTerrainHeight
-description: |-
+desc: |-
   Set the current terrain's altitude on provided location(s).
   {{Feature|important|
   * Heightmap changes:
@@ -20,14 +20,13 @@ syntax:
   - positionAndAltitudeArray
   - adjustObjects
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: positionAndAltitudeArray
-    description: '[[x1, y1, newASLHeight1], [x2, y2, newASLHeight2], ...]'
+    desc: '[[x1, y1, newASLHeight1], [x2, y2, newASLHeight2], ...]'
     type: Unknown
   - name: adjustObjects
-    description: |-
+    desc: |-
       if true then objects on modified points are moved up/down to keep the same ATL height
       {{Feature|important|'''All''' objects above modified terrain will be adjusted, even flying ones.}}
     type: Boolean
@@ -35,11 +34,9 @@ syntax:
     default: '[[true]]'
 argument_loc: Unspecified
 effect_loc: Global
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - "<sqf>\nprivate _fnc_flattenTerrain =\n{\n\tparams [\"_start\", \"_a\", \"_b\", \"_h\"];\n\tprivate _newPositions = [];\n\n\tfor \"_xStep\" from 0 to _a do\n\t{\n\t\tfor \"_yStep\" from 0 to _b do\n\t\t{\n\t\t\tprivate _newHeight = _start vectorAdd [_xStep, _yStep, 0];\n\t\t\t_newHeight set [2, _h];\n\t\t\t_newPositions pushBack _newHeight;\n\t\t};\n\t};\n\n\t_newPositions;\n};\n\nprivate _desiredTerrainHeight = 150;\nprivate _positionsAndHeights = [getPosWorld player, 50, 50, _desiredTerrainHeight] call _fnc_flattenTerrain;\nsetTerrainHeight [_positionsAndHeights, true];\n</sqf>"
 - |-
@@ -60,3 +57,6 @@ examples:
   // second update - this will update the JIP queue properly
   setTerrainHeight [[[1000, 1000, 25], [1005, 1000, 50], [1000, 1005, 25], [1005, 1005, 25]]];
   </sqf>
+see_also:
+- getTerrainInfo
+- getTerrainHeight

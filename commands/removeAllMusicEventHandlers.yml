@@ -1,23 +1,25 @@
 name: removeAllMusicEventHandlers
-description: Removes all music track event handlers of given type.
+desc: Removes all music track event handlers of given type.
 groups:
 - Event Handlers
 - Sounds
 syntax:
 - call: !Unary type
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: type
-    description: '"MusicStart" or "MusicStop"'
+    desc: '"MusicStart" or "MusicStop"'
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>removeAllMusicEventHandlers "MusicStart";</sqf>
 - <sqf>removeAllMusicEventHandlers "MusicStop";</sqf>
+see_also:
+- addMusicEventHandler
+- setMusicEventHandler
+- removeMusicEventHandler
+- playMusic

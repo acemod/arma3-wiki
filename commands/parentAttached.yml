@@ -1,19 +1,19 @@
 name: parentAttached
-description: Get the parent of a [[attachChild]] attached child.
+desc: Get the parent of a [[attachChild]] attached child.
 groups:
 - PhysX
 syntax:
 - call: !Unary child
   ret:
-  - Object
-  - null
+    type: Object
   params:
   - name: child
-    description: Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
+    desc: Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 22
+  arma3: '2.22'
+see_also:
+- attachChild
+- childAttached

@@ -1,5 +1,5 @@
 name: terrainIntersectAtASL
-description: Checks for intersection of terrain between two ASL positions. Same as [[terrainIntersectASL]] but returns the intersection ASL position.
+desc: Checks for intersection of terrain between two ASL positions. Same as [[terrainIntersectASL]] but returns the intersection ASL position.
 groups:
 - Math - Geometry
 syntax:
@@ -7,20 +7,26 @@ syntax:
   - start
   - end
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: start
-    description: start position
+    desc: start position
     type: Position3dASL
   - name: end
-    description: end position
+    desc: end position
     type: Position3dASL
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>_posASL = terrainIntersectAtASL [eyePos player, getPosASL chopper];</sqf>
+see_also:
+- terrainIntersectASL
+- lineIntersectsSurfaces
+- intersect
+- lineIntersects
+- lineIntersectsWith
+- terrainIntersect
+- lineIntersectsObjs
+- checkVisibility

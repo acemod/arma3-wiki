@@ -1,5 +1,5 @@
 name: forceAddUniform
-description: Create a new uniform and hard link it into slot (without any restrictions).
+desc: Create a new uniform and hard link it into slot (without any restrictions).
 groups:
 - Containers
 - Unit Inventory
@@ -8,8 +8,7 @@ syntax:
   - unit
   - type
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -18,8 +17,11 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 22
+  arma3: '1.22'
 examples:
 - <sqf>_unit forceAddUniform "U_B_CombatUniform_mcam";</sqf>
+see_also:
+- addUniform
+- isUniformAllowed
+- removeUniform
+- uniform

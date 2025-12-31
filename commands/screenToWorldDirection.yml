@@ -1,34 +1,36 @@
 name: screenToWorldDirection
-description: Returns the 3D vector in world corresponding to the given point on the screen (in UI coordinates), as if the vector was aiming from the camera to the screen position.
+desc: Returns the 3D vector in world corresponding to the given point on the screen (in UI coordinates), as if the vector was aiming from the camera to the screen position.
 groups:
 - Positions
 syntax:
 - call: !Unary screen
   ret:
-  - ArrayUnknown
-  - '[[Vector3D]] world vector'
+    type: ArrayUnknown
+    desc: '[[Vector3D]] world vector'
   params:
   - name: screen
-    description: screen position [x,y] (see [[SafeZone]] for more info)
+    desc: screen position [x,y] (see [[SafeZone]] for more info)
     type: ArrayUnknown
 - call: !Binary
   - camera
   - position
   ret:
-  - ArrayUnknown
-  - '[[Vector3D]] world vector'
+    type: ArrayUnknown
+    desc: '[[Vector3D]] world vector'
   params:
   - name: camera
-    description: camera object
+    desc: camera object
     type: Object
   - name: position
-    description: screen position [x,y] (see [[SafeZone]] for more info)
+    desc: screen position [x,y] (see [[SafeZone]] for more info)
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>private _vec = screenToWorldDirection [0.5, 0.5]; // a vector pointing to the front of the camera</sqf>
+see_also:
+- SafeZone
+- worldToScreen
+- screenToWorld

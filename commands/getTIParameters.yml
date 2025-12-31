@@ -1,5 +1,5 @@
 name: getTIParameters
-description: |-
+desc: |-
   Returns all Thermal Imaging parameters.
   {{{!}} class="wikitable align-center-col-2"
   ! Parameter
@@ -38,14 +38,15 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>if (getTIParameters get "OutputRangeStart" == 0.1) then { hint "default Start" };</sqf>
+see_also:
+- setTIParameter
+- setCamUseTI
+- disableTIEquipment

@@ -1,5 +1,5 @@
 name: isStressDamageEnabled
-description: |-
+desc: |-
   Returns [[true]] if stress damage is enabled in the game settings. A getter for [[enableStressDamage]].
   {{Feature|afm}}
 groups:
@@ -7,14 +7,13 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params: []
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - <sqf>_settingEnabled = isStressDamageEnabled;</sqf>
+see_also:
+- enableStressDamage

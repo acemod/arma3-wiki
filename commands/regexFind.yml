@@ -1,5 +1,5 @@
 name: regexFind
-description: |-
+desc: |-
   Searches in a string with a regular expression.
   {{Feature|informative|See [[Arma 3: Regular Expressions]].}}
 groups:
@@ -10,25 +10,22 @@ syntax:
   - - pattern
     - startOffset
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: haystack
     type: String
   - name: pattern
-    description: 'format [[Arma 3: Regular Expressions|regex pattern]]'
+    desc: 'format [[Arma 3: Regular Expressions|regex pattern]]'
     type: String
   - name: startOffset
-    description: has to be in range from 0 to <sqf inline>count haystack</sqf> (''haystack'''s length)
+    desc: has to be in range from 0 to <sqf inline>count haystack</sqf> (''haystack'''s length)
     type: Number
     optional: true
     default: '0'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>"wooKie boOkie cookie" regexFind [".ookie/gio"]; // [[["wooKie", 0]], [["boOkie", 7]], [["cookie", 14]]]</sqf>
 - <sqf>"wooKie boOkie cookie" regexFind [".ookie/i"]; // [[["wooKie",0]]]</sqf>
@@ -43,3 +40,6 @@ examples:
   "I'm a cookie clicker" regexFind ["c(.*?)k(.*?)e/i"]; // [[["cookie",6], ["oo", 7], ["i", 10]]]
   </sqf>
 - <sqf>"I'm a cookie clicker" regexFind ["c(.*?)k(.*?)e"]; // [[["cookie", 6], ["oo", 7], ["i", 10]], [["clicke", 13], ["lic", 14], ["", 18]]]</sqf>
+see_also:
+- regexMatch
+- regexReplace

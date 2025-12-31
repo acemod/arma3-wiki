@@ -1,20 +1,28 @@
 name: taskAlwaysVisible
-description: Returns true if the task is flagged to be always visible or false if not.
+desc: Returns true if the task is flagged to be always visible or false if not.
 groups:
 - Briefing
 syntax:
 - call: !Unary task
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: task
     type: Task
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 58
+  arma3: '1.58'
 examples:
 - <sqf>_isAlwaysVisible = taskAlwaysVisible (currentTask player);</sqf>
+see_also:
+- setSimpleTaskAlwaysVisible
+- taskType
+- BIS_fnc_taskSetAlwaysVisible
+- BIS_fnc_taskAlwaysVisible
+- Arma
+- '3:'
+- Task
+- Framework#Task
+- Overhaul|Tasks
+- Overhaul

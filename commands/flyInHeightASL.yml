@@ -1,5 +1,5 @@
 name: flyInHeightASL
-description: Sets the minimal [[Position#PositionASL|ASL]] height. Final height is {{hl|''flyInHeight'' [[max]] ''flyInHeightASL''}} - the higher altitude has priority.
+desc: Sets the minimal [[Position#PositionASL|ASL]] height. Final height is {{hl|''flyInHeight'' [[max]] ''flyInHeightASL''}} - the higher altitude has priority.
 groups:
 - Object Manipulation
 syntax:
@@ -9,26 +9,25 @@ syntax:
     - combatAltitude
     - stealthAltitude
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: aircraft
-    description: helicopter, airplane
+    desc: helicopter, airplane
     type: Object
   - name: standardAltitude
-    description: base altitude used when [[behaviour]] is neither "COMBAT" or "STEALTH"
+    desc: base altitude used when [[behaviour]] is neither "COMBAT" or "STEALTH"
     type: Number
   - name: combatAltitude
-    description: altitude used when [[behaviour]] is "COMBAT"
+    desc: altitude used when [[behaviour]] is "COMBAT"
     type: Number
   - name: stealthAltitude
-    description: altitude used when [[behaviour]] is "STEALTH"
+    desc: altitude used when [[behaviour]] is "STEALTH"
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 62
+  arma3: '1.62'
 examples:
 - <sqf>cobraOne flyInHeightASL [200, 100, 400];</sqf>
+see_also:
+- flyInHeight

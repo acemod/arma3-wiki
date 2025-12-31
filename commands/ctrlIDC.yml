@@ -1,21 +1,33 @@
 name: ctrlIDC
-description: Returns control IDC.
+desc: Returns control IDC.
 groups:
 - GUI Control
 syntax:
 - call: !Unary control
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>ctrlIDC _ctrl;</sqf>
 - <sqf>ctrlIDC controlNull; // returns -1</sqf>
+see_also:
+- allControls
+- allDisplays
+- controlsGroupCtrl
+- ctrlDelete
+- ctrlModel
+- ctrlSetModel
+- ctrlPosition
+- ctrlSetPosition
+- ctrlClassName
+- ctrlModelScale
+- ctrlSetModelScale
+- ctrlModelDirAndUp
+- ctrlSetModelDirAndUp
+- displayParent

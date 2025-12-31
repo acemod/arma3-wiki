@@ -1,29 +1,22 @@
 name: groupSelectedUnits
-description: Returns selected units in source group for normal commanding mode (individual units). For the High Command equivalent, see [[hcSelected]].
+desc: Returns selected units in source group for normal commanding mode (individual units). For the High Command equivalent, see [[hcSelected]].
 groups:
 - Interaction
 syntax:
 - call: !Unary unit
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_selectedUnits = groupSelectedUnits player;</sqf>
+see_also:
+- groupSelectUnit

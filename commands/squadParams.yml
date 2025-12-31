@@ -1,5 +1,5 @@
 name: squadParams
-description: |-
+desc: |-
   Returns data about squad of given unit loaded from [[squad.xml]] as well as the unit itself.
   {{Feature|informative|This command returns an empty array in single player.}}
 groups:
@@ -8,17 +8,16 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 18
+  arma3: '1.18'
 examples:
 - <sqf>_info = squadParams player;</sqf>
 - <sqf>squadParams player params ["_squadInfo", "_memberInfo", "_squadID", "_a3unitsID"];</sqf>
+see_also:
+- squad.xml

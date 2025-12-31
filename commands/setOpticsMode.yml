@@ -1,5 +1,5 @@
 name: setOpticsMode
-description: Sets the optic mode of the current weapon to the given class name or the index.
+desc: Sets the optic mode of the current weapon to the given class name or the index.
 groups:
 - Object Manipulation
 syntax:
@@ -7,20 +7,37 @@ syntax:
   - unit
   - mode
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
   - name: mode
-    type: Unknown
+    type: !StringEnum
+    - - '[[String]] - class name defined in the optic''s {{hl|OpticsModes}} config class'
+      - null
+    - - '[[Number]] - 0-based index of the optic mode with 0 being the default optic mode'
+      - null
+    - - '[[Array]] - in format [slotIndex, opticsModeIndexOrClassName] where:'
+      - null
+    - - 'slotIndex: [[Number]], can be one of:'
+      - null
+    - - '* 0 - Current weapon'
+      - null
+    - - '* 1 - Primary weapon'
+      - null
+    - - '* 2 - Secondary weapon'
+      - null
+    - - '* 3 - Handgun'
+      - null
+    - - 'opticsModeIndexOrClassName: [[String]] or [[Number]] as above'
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>player setOpticsMode "Hamr2Scope"; // Default optic mode for optic_Hamr</sqf>
 - <sqf>player setOpticsMode 0;</sqf>
 - <sqf>player setOpticsMode [1, 0]; // reset the optics mode of the player's primary weapon to the default</sqf>
+see_also:
+- getOpticsMode

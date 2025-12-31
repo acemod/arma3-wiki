@@ -1,5 +1,5 @@
 name: drawArrow
-description: |-
+desc: |-
   Draws a single line arrow on the map.
   As this command needs to be called every frame, it is preferable using the [[User Interface Event Handlers#onDraw|onDraw]] UI Event Handler.
   To draw a color filled arrow of custom shape see [[BIS_fnc_drawArrow]].
@@ -12,37 +12,51 @@ syntax:
     - to
     - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: map
     type: Control
   - name: from
-    description: arrow start position
-    type: Unknown
+    desc: arrow start position
+    type: !OneOf
+    - - Object
+      - null
+    - - !OneOf
+        - - Position2d
+          - null
+        - - Position3d
+          - null
+      - null
   - name: to
-    description: arrow end position
-    type: Unknown
+    desc: arrow end position
+    type: !OneOf
+    - - Object
+      - null
+    - - !OneOf
+        - - Position2d
+          - null
+        - - Position3d
+          - null
+      - null
   - name: color
-    description: arrow color in format [r,g,b,a]
+    desc: arrow color in format [r,g,b,a]
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\", \n{\n\t_this select 0 drawArrow [\n\t\tplayer,\n\t\tplayer getRelPos [100, 0],\n\t\t[1,0,0,1]\n\t];\n}];\n</sqf>"
+see_also:
+- drawEllipse
+- drawIcon
+- drawLine
+- drawRectangle
+- drawPolygon
+- drawTriangle
+- drawXPolygon
+- BIS_fnc_drawArrow

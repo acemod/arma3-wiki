@@ -1,5 +1,5 @@
 name: ctSetData
-description: Associates metadata (string) with the row determined by the index. Returns Nothing.
+desc: Associates metadata (string) with the row determined by the index. Returns Nothing.
 groups:
 - GUI Control - Controls Table
 syntax:
@@ -8,23 +8,39 @@ syntax:
   - - index
     - data
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ctrl
-    description: the respective control
+    desc: the respective control
     type: Control
   - name: index
-    description: the row index
+    desc: the row index
     type: Number
   - name: data
-    description: the data to set
+    desc: the data to set
     type: String
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>_control ctSetData [0, "Test"];</sqf>
+see_also:
+- ctAddRow
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctSetCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetValue
+- ctValue
+- ctData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

@@ -1,5 +1,5 @@
 name: netId
-description: Get the unique ID of an object or a group.
+desc: Get the unique ID of an object or a group.
 multiplayer_note: |-
   * In singleplayer: {{GVI|arma3|2.18|size= 0.75}} returns a net ID (different from [[BIS_fnc_netId]]'s output), before that it returned an empty string in single player (see [[BIS_fnc_netId]] and [[BIS_fnc_objectVar]])
   * In multiplayer: works as described
@@ -8,19 +8,25 @@ groups:
 syntax:
 - call: !Unary objOrGroup
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: objOrGroup
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 63
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.63'
+  arma3: '0.50'
 examples:
 - <sqf>_playerNetId = netId player;</sqf>
+see_also:
+- objectFromNetId
+- groupFromNetId
+- BIS_fnc_objectFromNetId
+- BIS_fnc_netId
+- BIS_fnc_groupFromNetId
+- BIS_fnc_objectVar

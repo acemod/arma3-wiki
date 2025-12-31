@@ -1,18 +1,19 @@
 name: buldozer_isEnabledRoadDiag
-description: Returns if road diagnostics are enabled in buldozer.
+desc: Returns if road diagnostics are enabled in buldozer.
 groups:
 - System
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - '[[true]] if enabled, otherwise [[false]]'
+    type: Boolean
+    desc: '[[true]] if enabled, otherwise [[false]]'
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 26
+  arma3: '1.26'
 examples:
 - <sqf>_isEnabled = buldozer_isEnabledRoadDiag;</sqf>
+see_also:
+- buldozer_loadNewRoads
+- buldozer_enableRoadDiag

@@ -1,5 +1,5 @@
 name: setWaypointLoiterType
-description: Sets the waypoint loiter type.
+desc: Sets the waypoint loiter type.
 groups:
 - Waypoints
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - waypoint
   - type
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: waypoint
     type: Waypoint
@@ -17,9 +16,34 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>[_grp, 2] setWaypointLoiterType "CIRCLE";</sqf>
 - <sqf>[_grp, 2] setWaypointLoiterType "CIRCLE_L";</sqf>
+see_also:
+- waypoints
+- deleteWaypoint
+- copyWaypoints
+- setCurrentWaypoint
+- setWaypointBehaviour
+- setWaypointCombatMode
+- setWaypointCompletionRadius
+- setWaypointDescription
+- setWaypointFormation
+- setWaypointHousePosition
+- setWaypointPosition
+- setWaypointScript
+- setWaypointSpeed
+- setWaypointStatements
+- setWaypointTimeout
+- setWaypointType
+- setWaypointVisible
+- waypointAttachVehicle
+- waypointAttachedVehicle
+- setWaypointLoiterRadius
+- waypointLoiterRadius
+- addWaypoint
+- currentWaypoint
+- waypointSpeed
+- setWPPos
+- waypointName

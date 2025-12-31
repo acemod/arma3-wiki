@@ -1,0 +1,79 @@
+name: ctrlWebBrowserAction
+desc: |-
+  Executes an action on a WebBrowser control. The type of parameters depends on the action type. Possible Actions are:
+  {{{!}} class="wikitable"
+  {{!}}-
+  ! Action
+  ! Parameter
+  ! Result
+  ! Description
+  {{!}}-
+  {{!}} OpenDevConsole
+  {{!}} None
+  {{!}} [[Nothing]]
+  {{!}} Opens a Chrome Developer console for this browser, in a external window. (Only available if -debug start parameter is set)
+  {{!}}-
+  {{!}} ExecJS
+  {{!}} [[String]]
+  {{!}} [[Nothing]]
+  {{!}} Executes Javascript code inside the currently loaded page.
+  {{!}}-
+  {{!}} JSDialogResponse
+  {{!}} [[Boolean]]
+  {{!}} [[Nothing]]
+  {{!}} Respond to a Javascript alert() or confirm(), after triggered by "JSDialog" Eventhandler
+  {{!}}-
+  {{!}} OpenDataAsURL
+  {{!}} [[String]]
+  {{!}} [[Nothing]]
+  {{!}} Displays provided data in browser. This can be used to load HTML from a file and display it in the Browser window.
+  {{!}}-
+  {{!}} LoadFile
+  {{!}} [[String]]
+  {{!}} [[Nothing]]
+  {{!}} Loads file into browser (Equivalent to ["OpenDataAsURL", loadFile "filePathHere"])<br>
+  _ctrl ctrlWebBrowserAction ["LoadFile", "z\mod\file.html"] is equivalent to _ctrl [[ctrlSetURL]] "file://z/mod/file.html"
+  {{!}}-
+  {{!}} ToBase64
+  {{!}} [[String]]
+  {{!}} [[String]]
+  {{!}} Encodes the input string into Base64 (This also works with [[controlNull]])
+  {{!}}-
+  {{!}} FromBase64
+  {{!}} [[String]]
+  {{!}} [[String]]
+  {{!}} Decodes the input Base64 string (This also works with [[controlNull]])
+  {{!}}-
+  {{!}} Deflate
+  {{!}} [[String]]
+  {{!}} [[String]]
+  {{!}} Compresses the input and returns a Base64 Deflate compressed output with ZLib header (This also works with [[controlNull]])
+  {{!}}-
+  {{!}} Inflate
+  {{!}} [[String]]
+  {{!}} [[String]]
+  {{!}} Takes Base64 encoded, Deflate compressed input data and returns the decompressed output (This also works with [[controlNull]]). Output is limited to 1Megabyte. Equivalent Javascript code:
+  is https://gist.github.com/asidko/9c7064027039411a11323eaf7d8ea2a4#file-gzip-js-L12 but replace 'gzip' with 'deflate'
+  {{!}}-
+  {{!}} StopBrowser
+  {{!}}
+  {{!}}
+  {{!}} Freezes the currently displayed image (the same image will keep being displayed). Closes the browser and free's all resources of it. This is useful if the Browser is only used to generate a static element and it doesn't need to keep updating it. It saves CPU and Memory resources.
+  {{!}}-
+  {{!}} ResumeBrowser
+  {{!}}
+  {{!}}
+  {{!}} Unfreezes the browser, and loads the currently set URL (Either that was set before StopBrowser, or which has been set while the browser was paused). Note that when unfreezing, the browser may show one or two black frames while the page is loading. For seemless transition from Paused/Resumed state, you can use a ui2texture and not send any displayUpdate's to it until you consider the resumed browser to be ready.
+  {{!}}}
+groups:
+- GUI Control
+syntax: []
+argument_loc: Local
+effect_loc: Local
+since:
+  arma3: '2.20'
+examples:
+- <sqf>_control ctrlWebBrowserAction ["OpenDataAsURL", loadFile "example.html"];</sqf>
+see_also:
+- ctrlURL
+- menuSetURL

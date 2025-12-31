@@ -1,5 +1,5 @@
 name: side
-description: |-
+desc: |-
   Returns the side of a unit, vehicle, object or location.
   * side of a renegade soldier is [[sideEnemy]]
   * side of an empty vehicle is [[civilian]]
@@ -16,35 +16,26 @@ groups:
 syntax:
 - call: !Unary target
   ret:
-  - Side
-  - null
+    type: Side
   params:
   - name: target
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
+    - - Location
+      - null
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>if (side player == west) then { hint "Player is on the West side" };</sqf>
 - <sqf>_sideAlsoWorkingForDead = side group _deadUnit;</sqf>
@@ -53,3 +44,26 @@ examples:
 - |-
   Check the [[side]] of the vehicle:
   <sqf>_vehicleSide = side group _vehicle; // sideUnknown (CIV for Arma 3) if empty or dead crew, otherwise the appropriate side</sqf>
+see_also:
+- CfgVehicles
+- Config
+- Reference#side|CfgVehicles
+- Config
+- Side
+- Value
+- Side
+- playerSide
+- west
+- east
+- resistance
+- civilian
+- sideLogic
+- sideFriendly
+- sideEnemy
+- sideUnknown
+- sideEmpty
+- sideAmbientLife
+- Side
+- Relations
+- BIS_fnc_sideID
+- BIS_fnc_objectSide

@@ -1,21 +1,22 @@
 name: removeFromRemainsCollector
-description: Removes vehicles/units from the garbage collector, so they do not get deleted automatically; added earlier with [[addToRemainsCollector]].
+desc: Removes vehicles/units from the garbage collector, so they do not get deleted automatically; added earlier with [[addToRemainsCollector]].
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary remains
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: remains
-    description: array of vehicles/units
+    desc: array of vehicles/units
     type: ArrayUnknown
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>removeFromRemainsCollector [unit1, unit2, vehicle1];</sqf>
+see_also:
+- addToRemainsCollector
+- isInRemainsCollector
+- diag_remainsCollector

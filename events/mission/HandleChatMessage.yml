@@ -1,5 +1,5 @@
 id: HandleChatMessage
-description: |-
+desc: |-
   Fires when a message is received, before adding it to the chat feed. Fires clientside.
   {{Feature|informative|
   * On a dedicated server and headless client it fires only for global (channel 0) and system messages (channel 16).
@@ -21,45 +21,45 @@ description: |-
   ** >1: [[getPlayerID]] in MP
 params:
 - name: channel
-  description: see [[Description.ext#disableChannels|radio channel indices]] (16 for system chat message for example)
+  desc: see [[Description.ext#disableChannels|radio channel indices]] (16 for system chat message for example)
   type: Number
 - name: owner
-  description: '[[owner]] id of the sender:'
+  desc: '[[owner]] id of the sender:'
   type: Number
 - name: from
-  description: sender's formatted name as appeared on the chat
+  desc: sender's formatted name as appeared on the chat
   type: String
 - name: text
-  description: the chat message
+  desc: the chat message
   type: String
 - name: person
-  description: sender's object
+  desc: sender's object
   type: Object
 - name: name
-  description: sender's [[name]], could be different from {{hl|from}}
+  desc: sender's [[name]], could be different from {{hl|from}}
   type: String
 - name: strID
-  description: 'sender''s network player ID (marker id):'
+  desc: 'sender''s network player ID (marker id):'
   type: String
 - name: forcedDisplay
-  description: if the message should be displayed when the chat list is disabled (when [[enableRadio]] is set to [[false]] radio protocol messages won't display)
+  desc: if the message should be displayed when the chat list is disabled (when [[enableRadio]] is set to [[false]] radio protocol messages won't display)
   type: Boolean
 - name: isPlayerMessage
-  description: if the message is addressed to [[player]]
+  desc: if the message is addressed to [[player]]
   type: Boolean
 - name: sentenceType
-  description: '0: Normal type, 1: Protocol type'
+  desc: '0: Normal type, 1: Protocol type'
   type: Number
 - name: chatMessageType
-  description: '0: Generic type, 1: SimpleMove type, 2: KillConfirmation type'
+  desc: '0: Generic type, 1: SimpleMove type, 2: KillConfirmation type'
   type: Number
 - name: params
-  description: sentence parameters, if any
-  type: ArrayUnknown
+  desc: sentence parameters, if any
+  type: !ArrayUnsized
+    type: String
+    desc: ''
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 argument_loc: Unspecified
 effect_loc: Unspecified
 examples:

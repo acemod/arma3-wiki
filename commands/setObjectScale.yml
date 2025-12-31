@@ -1,5 +1,5 @@
 name: setObjectScale
-description: 'Scales an [[attachTo|attached object]] or a [[Arma 3: Simple Objects|Simple Object]]''s model - see {{Link|#Example 3}} for various configurations'' examples.'
+desc: 'Scales an [[attachTo|attached object]] or a [[Arma 3: Simple Objects|Simple Object]]''s model - see {{Link|#Example 3}} for various configurations'' examples.'
 problem_notes:
 - |-
   The {{arma3}} [[LOD]] limits still apply, meaning walkable surfaces can only be (~70?)m in size, and collision in general will only work up to (?)m from object center.
@@ -21,21 +21,18 @@ syntax:
   - object
   - scale
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
-    description: 'must be either an [[attachTo|attached object]] or [[Arma 3: Simple Objects|Simple Object]] - see {{Link|#Example 3}}'
+    desc: 'must be either an [[attachTo|attached object]] or [[Arma 3: Simple Objects|Simple Object]] - see {{Link|#Example 3}}'
     type: Object
   - name: scale
-    description: in range 0.0001..65504, relative to the object model's normal scale
+    desc: in range 0.0001..65504, relative to the object model's normal scale
     type: Number
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - |-
   <sqf>
@@ -67,3 +64,10 @@ examples:
   </sqf>
 - "<sqf>\n// a not-so-great EachFrame workaround for a non-attached object\n\n// a normal object that is not attached must be scaled each frame\n// make sure the object is LOCAL in order to not saturate the network!\nprivate _localNormalObject = \"C_Offroad_01_F\" createVehicleLocal getPosATL player;\n// the object is not attached to anything\naddMissionEventHandler [\n\t\"EachFrame\",\n\t{ _thisArgs params [\"_obj\", \"_scale\"]; _obj setObjectScale _scale; },\n\t[_localNormalObject, 0.1]\n];\n</sqf>"
 - "<sqf>\n// only do the following in single player;\n// NEVER do such EachFrame in multiplayer!!\n// the performance will be terrible, the network will be saturated, the scaling may desync and not be perfect\nprivate _globalNormalObject = \"C_Offroad_01_F\" createVehicle getPosATL player;\naddMissionEventHandler [\n\t\"EachFrame\",\n\t{ _thisArgs params [\"_obj\", \"_scale\"]; _obj setObjectScale _scale; },\n\t[_globalNormalObject, 0.1]\n];\n</sqf>"
+see_also:
+- getObjectScale
+- createVehicleLocal]],
+- createSimpleObject
+- BIS_fnc_createSimpleObject
+- Multiplayer
+- Scripting

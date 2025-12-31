@@ -1,59 +1,55 @@
 name: configHierarchy
-description: Returns hierarchy of the given config class. Just like with [[inheritsFrom]], only complete config classes are supported (before {{GVI|arma3|2.14|size= 0.75}}). Since {{GVI|arma3|2.22|size= 0.75}}, an alt syntax is added, which allows to return parents identical to [[BIS_fnc_returnParents]] (see Example 2)
+desc: Returns hierarchy of the given config class. Just like with [[inheritsFrom]], only complete config classes are supported (before {{GVI|arma3|2.14|size= 0.75}}). Since {{GVI|arma3|2.22|size= 0.75}}, an alt syntax is added, which allows to return parents identical to [[BIS_fnc_returnParents]] (see Example 2)
 groups:
 - Config
 syntax:
 - call: !Unary config
   ret:
-  - ArrayUnknown
-  - array of parent [[Config]]s, ordered from parent to child
+    type: ArrayUnknown
+    desc: array of parent [[Config]]s, ordered from parent to child
   params:
   - name: config
-    description: target config
+    desc: target config
     type: Config
-- call: !Unary
-  - configClass
-  - classesOnly
-  - includeBases
-  - reversedOrder
-  - configNames
-  ret:
-  - ArrayUnknown
-  - array of parent [[Config]]s or [[String]]s, representing config names
-  params:
-  - name: configClass
-    description: target config
-    type: Config
-  - name: classesOnly
-    description: when [[true]], only classes are included in output and not properties
-    type: Boolean
-  - name: includeBases
-    description: when [[true]], returned parents will include base classes (see description)
-    type: Boolean
-  - name: reversedOrder
-    description: when [[true]], the return order is from child to parent
-    type: Boolean
-  - name: configNames
-    description: when [[true]], the return is [[Array]] of [[String]]s, when [[false]] - [[Array]] of [[Config]]s
-    type: Boolean
-  since:
-    arma_3:
-      major: 2
-      minor: 22
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 48
+  arma3: '1.48'
 examples:
 - |-
   <sqf>
   _hierarchy = configHierarchy (configFile >> "CfgVehicles" >> "Car");
-  // [bin\config.bin, bin\config.bin/CfgVehicles, bin\config.bin/CfgVehicles/Car]
+  // Returns [bin\config.bin, bin\config.bin/CfgVehicles, bin\config.bin/CfgVehicles/Car]
   </sqf>
 - |-
   <sqf>
   _bis_fnc_returnParents = configHierarchy [configFile >> "CfgVehicles" >> "Land_FirePlace_F", true, true, true, true];
-  //Returns ["Land_FirePlace_F","House_F","House","HouseBase","NonStrategic","Building","Static","All"]
+  // Returns ["Land_FirePlace_F","House_F","House","HouseBase","NonStrategic","Building","Static","All"]
   </sqf>
+see_also:
+- configClasses
+- configProperties
+- missionConfigFile
+- campaignConfigFile
+- a
+- /
+- b
+- config
+- greater
+- greater
+- name|config
+- '>>'
+- name
+- configName
+- count
+- getArray
+- getText
+- getNumber
+- inheritsFrom
+- isArray
+- isClass
+- isNumber
+- isText
+- select
+- isKindOf
+- BIS_fnc_returnParents

@@ -1,5 +1,5 @@
 name: ppEffectAdjust
-description: |-
+desc: |-
   Set [[Post Process Effects|post process effect]] parameters.
 
   {{Feature|informative|The two syntaxes differ in what format of the params they accept. The syntax with PP name expects colors to be packed into arrays within main array, while the syntax with PP handle can handle both flat and packed array. Therefore it is recommended to use the universal packed format, such as shown in the examples.}}
@@ -10,31 +10,38 @@ syntax:
   - effect
   - settings
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: effect
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - Number
+      - null
   - name: settings
-    description: array of effect params
+    desc: array of effect params
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>"colorCorrections" ppEffectAdjust [1, 1, -0.01, [0, 0, 0, 0], [1.5, 1, 1.2, 0.6], [0.199, 0.587, 0.114, 0]];</sqf>
 - |-
   Black&White:
   <sqf>_colorCorrectionsEffHandle ppEffectAdjust [1, 0.4, 0, [0, 0, 0, 0], [1, 1, 1, 0], [1, 1, 1, 0]];</sqf>
+see_also:
+- Post
+- Process
+- Effects
+- ppEffectForceInNVG
+- ppEffectEnable
+- ppEffectEnabled
+- ppEffectDestroy
+- ppEffectCreate
+- ppEffectCommitted
+- ppEffectCommit
+- setPiPEffect

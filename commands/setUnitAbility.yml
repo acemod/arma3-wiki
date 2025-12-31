@@ -1,5 +1,5 @@
 name: setUnitAbility
-description: Sets skill of given unit. Unlike [[setSkill]], [[setUnitAbility]] can set values > 1. Even though the [[skill]] command will correctly return set value, the actual unit ability will be capped to max available.
+desc: Sets skill of given unit. Unlike [[setSkill]], [[setUnitAbility]] can set values > 1. Even though the [[skill]] command will correctly return set value, the actual unit ability will be capped to max available.
 groups:
 - AI Behaviour
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,24 +16,12 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_unit setUnitAbility 1;</sqf>
 - |-
@@ -42,3 +29,9 @@ examples:
   bob setUnitAbility -log 0;
   hint str skill bob; //1.#INF
   </sqf>
+see_also:
+- skill
+- setSkill
+- CfgAISkill
+- Combat
+- Modes

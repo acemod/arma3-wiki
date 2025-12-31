@@ -1,20 +1,17 @@
 name: enableCaustics
-description: Enable/disable caustics drawing.
+desc: Enable/disable caustics drawing.
 groups:
 - System
 syntax:
 - call: !Unary bool
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: bool
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>enableCaustics true;</sqf>

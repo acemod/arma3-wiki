@@ -1,22 +1,23 @@
 name: getPlayerLevel
-description: Return the level of the provided player.
+desc: Return the level of the provided player.
 multiplayer_note: '{{Feature|important|Only works in multiplayer (on both server and clients).}}'
 groups:
 - Argo
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - the provided player's level or -1 on error (unreachable servers, not a player, etc)
+    type: Number
+    desc: the provided player's level or -1 on error (unreachable servers, not a player, etc)
   params:
   - name: unit
-    description: a player-controlled unit
+    desc: a player-controlled unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  argo:
-    major: 1
-    minor: 0
+  argo: '1.0'
 examples:
 - "<sqf>\nplayer addEventHandler [\"Killed\", {\n\t_killer = _this select 1;\n\tif (getPlayerLevel _killer < getCurrentPlayerLevel) then\n\t{\n\t\thint \"oooooooooh!\";\n\t};\n}];\n</sqf>"
+see_also:
+- getCurrentPlayerLevel
+- isPlayerSupporter

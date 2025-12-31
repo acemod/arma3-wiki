@@ -1,20 +1,28 @@
 name: taskCustomData
-description: Returns custom data attached to the local task or an empty array if there are no custom data attached.
+desc: Returns custom data attached to the local task or an empty array if there are no custom data attached.
 groups:
 - Briefing
 syntax:
 - call: !Unary task
   ret:
-  - ArrayUnknown
-  - iconPath, iconText, descriptionText
+    type: ArrayUnknown
+    desc: iconPath, iconText, descriptionText
   params:
   - name: task
     type: Task
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 58
+  arma3: '1.58'
 examples:
 - <sqf>_data = taskCustomData someTask;</sqf>
+see_also:
+- setSimpleTaskCustomData
+- setSimpleTaskType
+- taskType
+- Arma
+- '3:'
+- Task
+- Framework#Task
+- Overhaul|Tasks
+- Overhaul

@@ -1,20 +1,23 @@
 name: removeAllPrimaryWeaponItems
-description: Removes all items from [[primaryWeapon]], except magazine.
+desc: Removes all items from [[primaryWeapon]], except magazine.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 70
+  arma3: '0.70'
 examples:
 - <sqf>removeAllPrimaryWeaponItems player;</sqf>
+see_also:
+- addPrimaryWeaponItem
+- removePrimaryWeaponItem
+- removeAllSecondaryWeaponItems
+- removeAllHandgunItems
+- removeAllBinocularItems

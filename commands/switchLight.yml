@@ -1,5 +1,5 @@
 name: switchLight
-description: |-
+desc: |-
   Controls whether a lamp is lit or not.
   {{Feature|arma3|
   This command was originally designed to only work with {{hl|CfgNonAIVehicles}} class {{hl|"StreetLamp"}} only.
@@ -12,39 +12,27 @@ syntax:
   - lamp
   - mode
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: lamp
     type: Object
   - name: mode
-    description: 'mode can be: "ON", "OFF" or "AUTO" (''''lamp'''' is on only during nighttime, default)'
+    desc: 'mode can be: "ON", "OFF" or "AUTO" (''''lamp'''' is on only during nighttime, default)'
     type: String
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>(object 12345) switchLight "OFF";</sqf>
 - <sqf>nearestObject [player, "Streetlamp"] switchLight "OFF";</sqf>
 - <sqf>cursorObject switchLight "ON";</sqf>
+see_also:
+- lightIsOn
+- BIS_fnc_switchLamp

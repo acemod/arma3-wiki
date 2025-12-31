@@ -1,5 +1,5 @@
 name: nearRoads
-description: Find the road segments within the circle of given radius.
+desc: Find the road segments within the circle of given radius.
 groups:
 - Roads and Airports
 - Object Detection
@@ -8,31 +8,48 @@ syntax:
   - pos
   - radius
   ret:
-  - ArrayUnknown
-  - road segments within radius
+    type: ArrayUnknown
+    desc: road segments within radius
   params:
   - name: pos
-    description: center of search radius
-    type: Unknown
+    desc: center of search radius
+    type: !OneOf
+    - - Object
+      - null
+    - - Position3dAGL
+      - null
+    - - Position2d
+      - null
   - name: radius
-    description: search radius in meters
+    desc: search radius in meters
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_list = player nearRoads 50;</sqf>
 - <sqf>_list = (position _unit) nearRoads 50;</sqf>
 - <sqf>_list = [1800,5700] nearRoads 50;</sqf>
+see_also:
+- isOnRoad
+- roadAt
+- surfaceIsWater
+- roadsConnectedTo
+- findNearestEnemy
+- nearestBuilding
+- nearestObject
+- nearestObjects
+- nearObjects
+- nearestLocation
+- nearEntities
+- nearTargets
+- nearSupplies
+- nearestLocationWithDubbing
+- nearObjectsReady
+- getRoadInfo
+- nearestTerrainObjects
+- nearestMines

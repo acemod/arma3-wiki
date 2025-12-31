@@ -1,32 +1,26 @@
 name: default
-description: Defines a [[Switch Type]] default case - does '''not''' need a colon to define its block. See [[switch]] for more information.
+desc: Defines a [[Switch Type]] default case - does '''not''' need a colon to define its block. See [[switch]] for more information.
 groups:
 - Program Flow
 syntax:
 - call: !Unary a
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: a
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nswitch (_condition) do\n{\n\tcase 1: { hint \"1\" };\n\tcase 2: { hint \"2\" };\n\tdefault { hint \"default\" }; // no colon after default\n};\n</sqf>"
+see_also:
+- Control
+- Structures
+- switch
+- case

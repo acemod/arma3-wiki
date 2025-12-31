@@ -1,51 +1,43 @@
 name: onMapSingleClick
-description: "Defines the action performed when user clicks in map by executing command string. The code is executed on every click, until the '''command''' is \n* removed via <sqf inline>onMapSingleClick \"\"</sqf>, or\n* replaced by <sqf inline>onMapSingleClick \"SomeOtherCommand(s)\"</sqf>\n\nIn {{arma3}} the code should return [[true]] only if you wish to override default engine handling of the mouse click on map (see {{Link|#Example 4}}).<br>\nFor older games, when click is processed, code should ultimately return [[true]] back to the engine. If [[false]] is returned, default processing by the game engine is done.\nReturn value of any other type (including [[Nothing]]) is an error. In such case default processing by the game engine is done, and error message may be displayed.\n\n{{Feature|arma3|Since {{GVI|arma3|1.58}} the stackable [[Arma 3: Mission Event Handlers#MapSingleClick|MapSingleClick]] Mission Event Handler is available and should be used instead.}}"
+desc: "Defines the action performed when user clicks in map by executing command string. The code is executed on every click, until the '''command''' is \n* removed via <sqf inline>onMapSingleClick \"\"</sqf>, or\n* replaced by <sqf inline>onMapSingleClick \"SomeOtherCommand(s)\"</sqf>\n\nIn {{arma3}} the code should return [[true]] only if you wish to override default engine handling of the mouse click on map (see {{Link|#Example 4}}).<br>\nFor older games, when click is processed, code should ultimately return [[true]] back to the engine. If [[false]] is returned, default processing by the game engine is done.\nReturn value of any other type (including [[Nothing]]) is an error. In such case default processing by the game engine is done, and error message may be displayed.\n\n{{Feature|arma3|Since {{GVI|arma3|1.58}} the stackable [[Arma 3: Mission Event Handlers#MapSingleClick|MapSingleClick]] Mission Event Handler is available and should be used instead.}}"
 groups:
 - Map
 - Event Handlers
 syntax:
 - call: !Unary command
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: command
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - Code
+      - null
 - call: !Binary
   - params
   - command
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: params
     type: Anything
   - name: command
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - Code
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 85
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.85'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   '''{{arma1}}:''' Creates a soldier unit at the position clicked:
@@ -71,3 +63,5 @@ examples:
   // Pass params to onMapSingleClick code -and- disable Shift+click waypoint marker creation
    player onMapSingleClick "hint (""Hello "" + name _this); _shift"; // Hello KK
   </sqf>
+see_also:
+- onGroupIconClick

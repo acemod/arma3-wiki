@@ -1,5 +1,5 @@
 name: processInitCommands
-description: |-
+desc: |-
   Process statements stored using [[setVehicleInit]]. The statements will only be executed once even if [[processInitCommands]] is called multiple times.
   {{Feature|arma3|For security reasons, the command was disabled in Arma 3.<br>
   For remote execution, see [[Arma 3: Remote Execution]], [[remoteExec]] and [[remoteExecCall]].}}
@@ -8,26 +8,18 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params: []
 argument_loc: Unspecified
 effect_loc: Global
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
 examples:
 - <sqf>processInitCommands;</sqf>
+see_also:
+- setVehicleInit
+- clearVehicleInit

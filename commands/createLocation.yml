@@ -1,5 +1,5 @@
 name: createLocation
-description: |-
+desc: |-
   Creates a location of the specified class and dimensions at the specified position.
   Classes are defined in {{hl|CfgLocationTypes}}; for possible location types see [[Location#Location Types|Location Types]].<br>
   The alternative syntax allows to convert a non-editable (built-in) terrain location into an editable one, with the following restrictions:
@@ -14,50 +14,39 @@ syntax:
   - sizeX
   - sizeY
   ret:
-  - Location
-  - null
+    type: Location
   params:
   - name: className
     type: String
   - name: position
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
   - name: sizeX
-    description: in meters
+    desc: in meters
     type: Number
   - name: sizeY
-    description: in meters
+    desc: in meters
     type: Number
 - call: !Unary
   - location
   ret:
-  - Location
-  - a script-editable location
+    type: Location
+    desc: a script-editable location
   params:
   - name: location
-    description: a terrain's location. If a scripted location is provided, it is simply returned
+    desc: a terrain's location. If a scripted location is provided, it is simply returned
     type: Location
   since:
-    arma_3:
-      major: 2
-      minor: 10
+    arma3: '2.10'
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 8
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.8'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_location = createLocation ["NameVillage", [4035,2151,10], 100, 100];</sqf>
 - |-
@@ -66,3 +55,12 @@ examples:
   _location setText "Player town";
   </sqf>
 - "<sqf>\nprivate _terrainLocation = nearestLocation [player, \"nameCity\"];\t// assuming it returns a built-in location\n_terrainLocation setType \"Invisible\";\t\t\t\t\t\t\t\t// does not do anything\nprivate _editableLocation = createLocation [_terrainLocation];\t\t// does the conversion\n_editableLocation setType \"Invisible\";\t\t\t\t\t\t\t\t// hides the location\n</sqf>"
+see_also:
+- setText
+- nearestLocation
+- nearestLocations
+- locationPosition
+- nearestLocationWithDubbing
+- setRectangular
+- rectangular
+- size

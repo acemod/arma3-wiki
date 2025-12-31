@@ -1,5 +1,5 @@
 name: serverNamespace
-description: |-
+desc: |-
   Returns server's [[Namespace|namespace]].
   This namespace is only available on the server for the server's uptime duration (same as [[uiNamespace]]).<br>
   All [[Arma 3: Server Side Scripting|server event handlers]], which are available in [[Arma 3: Server Config File|server config]], use this namespace.
@@ -10,15 +10,22 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Unknown
-  - player.
+    type: !OneOf
+    - - Namespace
+      - null
+    - - Nothing
+      - null
+    desc: player.
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - "<sqf>\nif (isServer) then\n{\n\thint str allVariables serverNamespace;\n}\nelse\n{\n\thint \"you do not have permission!\";\n};\n</sqf>"
+see_also:
+- missionNamespace
+- setVariable
+- getVariable
+- allVariables

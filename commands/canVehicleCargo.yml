@@ -1,5 +1,5 @@
 name: canVehicleCargo
-description: Returns bool array if it is possible to load cargo inside vehicle and if possible to load cargo into empty vehicle
+desc: Returns bool array if it is possible to load cargo inside vehicle and if possible to load cargo into empty vehicle
 groups:
 - Vehicle in Vehicle Transport
 syntax:
@@ -7,21 +7,19 @@ syntax:
   - vehicle
   - cargo
   ret:
-  - ArrayUnknown
-  - '[willFitIntoCurrentVehicle, willFitIntoEmptyVehicle]'
+    type: ArrayUnknown
+    desc: '[willFitIntoCurrentVehicle, willFitIntoEmptyVehicle]'
   params:
   - name: vehicle
-    description: vehicle carrying cargo
+    desc: vehicle carrying cargo
     type: Object
   - name: cargo
-    description: cargo to put in vehicle
+    desc: cargo to put in vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 62
+  arma3: '1.62'
 examples:
 - |-
   Blackfish with no vehicle cargo loaded
@@ -34,3 +32,19 @@ examples:
   Blackfish with one vehicle cargo called offroad already loaded
   <sqf>private _result = blackfish canVehicleCargo offroad2; // [false, true]</sqf>
   offroad2 can't be loaded because there isn't enough space in the Blackfish, but if there were space offroad2 could be loaded into the Blackfish
+see_also:
+- setVehicleCargo
+- enableVehicleCargo
+- getVehicleCargo
+- isVehicleCargo
+- vehicleCargoEnabled
+- canSlingLoad
+- Arma
+- '3:'
+- Vehicle
+- in
+- Vehicle
+- Transport|Vehicle
+- in
+- Vehicle
+- Transport

@@ -1,5 +1,5 @@
 name: setAngularVelocity
-description: |-
+desc: |-
   Sets the angular velocity of the object in world space as a 3D vector. The units are in Rad/s and rotations are clockwise.
   {{Feature|important|Angular velocity is limited to a range of +-1000 Rad/s.}}
 groups:
@@ -9,19 +9,20 @@ syntax:
   - obj
   - vector
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: obj
     type: Object
   - name: vector
-    description: angular velocity of the object in world space.
-    type: Unknown
+    desc: angular velocity of the object in world space.
+    type: ArrayUnknown
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>myHeli setAngularVelocity [0,0,1]; // will cause the helicopter to spin around a vertical line passing through its center</sqf>
+see_also:
+- setVelocity
+- setAngularVelocityModelSpace
+- angularVelocity

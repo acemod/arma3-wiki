@@ -1,19 +1,22 @@
 name: getLighting
-description: Gets general environment's light settings.
+desc: Gets general environment's light settings.
 groups:
 - Lights
 syntax:
 - call: Nular
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - <sqf>getLighting; // returns [[0.646753,0.781818,1],28526.2,[-0.0167152,0.211598,-0.977214],0]</sqf>
 - <sqf>getLighting params ["_ambientLightColour", "_ambientLightBrightness", "_lightDirection", "_starsVisibility"];</sqf>
+see_also:
+- getLightingAt
+- moonPhase
+- Light
+- Source
+- Tutorial

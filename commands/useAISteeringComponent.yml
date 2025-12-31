@@ -1,5 +1,5 @@
 name: useAISteeringComponent
-description: |-
+desc: |-
   Enable the new {{Link|link= https://forums.bistudio.com/topic/191515-ai-driving-feedback-topic/|text= AI driving}}, used to test the old and new AI driving.
   {{Feature|important|[[setDriveOnPath]] does not work if the vehicle doesn't have an AI steering component or if it's disabled.}}
 groups:
@@ -7,8 +7,7 @@ groups:
 syntax:
 - call: !Unary enabled
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: enabled
     type: Boolean
@@ -16,24 +15,27 @@ syntax:
   - vehicle
   - enabled
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: vehicle
-    description: the vehicle to enable/disable the feature for
+    desc: the vehicle to enable/disable the feature for
     type: Object
   - name: enabled
     type: Boolean
   since:
-    arma_3:
-      major: 2
-      minor: 18
+    arma3: '2.18'
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 60
+  arma3: '1.60'
 examples:
 - <sqf>useAISteeringComponent true;</sqf>
 - <sqf>myTank useAISteeringComponent false;</sqf>
+see_also:
+- isUsingAISteeringComponent
+- isAISteeringComponentEnabled
+- sendSimpleCommand
+- enableAI
+- disableAI
+- enableAIFeature
+- vehicleMoveInfo

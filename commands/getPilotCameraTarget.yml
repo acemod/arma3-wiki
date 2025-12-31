@@ -1,20 +1,25 @@
 name: getPilotCameraTarget
-description: 'Returns the target of the object airplane or helicopter [[Arma 3: Targeting config reference#class pilotCamera|pilotCamera]] tracking.'
+desc: 'Returns the target of the object airplane or helicopter [[Arma 3: Targeting config reference#class pilotCamera|pilotCamera]] tracking.'
 groups:
 - Pilot Camera
 syntax:
 - call: !Unary object
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: object
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 64
+  arma3: '1.64'
 examples:
 - <sqf>getPilotCameraTarget vehicle player params ["_pilotCamTracking", "_pilotCamTargetPos", "_pilotCamTarget"];</sqf>
+see_also:
+- hasPilotCamera
+- getPilotCameraPosition
+- getPilotCameraDirection
+- getPilotCameraRotation
+- setPilotCameraDirection
+- setPilotCameraRotation
+- setPilotCameraTarget

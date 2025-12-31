@@ -1,19 +1,17 @@
 id: MarkerDeleted
-description: Executes immediately before a marker is deleted either by a user or via script command.
+desc: Executes immediately before a marker is deleted either by a user or via script command.
 params:
 - name: marker
-  description: the name of the deleted marker
+  desc: the name of the deleted marker
   type: String
 - name: local
-  description: '[[true]] if the event originated locally, [[false]] if it came over the network'
+  desc: '[[true]] if the event originated locally, [[false]] if it came over the network'
   type: Boolean
 - name: deleter
-  description: the player/curator unit that deleted the marker
+  desc: the player/curator unit that deleted the marker
   type: Object
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 argument_loc: Unspecified
 effect_loc: Unspecified
 examples:

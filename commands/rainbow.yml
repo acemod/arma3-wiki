@@ -1,18 +1,17 @@
 name: rainbow
-description: Returns the current rainbow intensity.
+desc: Returns the current rainbow intensity.
 groups:
 - Environment
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>private _intensity = rainbow;</sqf>
+see_also:
+- setRainbow

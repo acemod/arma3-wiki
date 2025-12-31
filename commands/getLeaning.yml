@@ -1,20 +1,23 @@
 name: getLeaning
-description: Returns the leaning factor of the given unit.
+desc: Returns the leaning factor of the given unit.
 groups:
 - Unit Control
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - leaning factor from -1 to 1
+    type: Number
+    desc: leaning factor from -1 to 1
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>if (getLeaning player < 0) then { systemChat "player is leaning left" };</sqf>
+see_also:
+- animationState
+- unitPos
+- stance
+- pose

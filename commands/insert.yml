@@ -1,5 +1,5 @@
 name: insert
-description: |-
+desc: |-
   Inserts multiple values into [[Array]]/[[String]]/[[HashMap]].<br>
   The [[String]] variant also supports [[forceUnicode]]. In the event of a [[HashMap]], values, if they already exist, are replaced.
 groups:
@@ -13,19 +13,20 @@ syntax:
     - valuesToInsert
     - onlyIfUnique
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: array
     type: ArrayUnknown
   - name: index
-    description: index at which the values will be inserted, -1 for append, {{GVI|arma3|2.14|size= 0.75}} -2 for inserting at the second-to-last position, -3 before that, etc.
+    desc: index at which the values will be inserted, -1 for append, {{GVI|arma3|2.14|size= 0.75}} -2 for inserting at the second-to-last position, -3 before that, etc.
     type: Number
   - name: valuesToInsert
-    description: values to insert at the specified index
-    type: Unknown
+    desc: values to insert at the specified index
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: onlyIfUnique
-    description: only insert if the value is unique in the array, like [[pushBackUnique]]
+    desc: only insert if the value is unique in the array, like [[pushBackUnique]]
     type: Boolean
     optional: true
     default: '[[false]]'
@@ -34,16 +35,16 @@ syntax:
   - - index
     - substring
   ret:
-  - String
-  - the new string
+    type: String
+    desc: the new string
   params:
   - name: string
     type: String
   - name: index
-    description: index at which the values will be inserted, -1 for append
+    desc: index at which the values will be inserted, -1 for append
     type: Number
   - name: substring
-    description: string to insert
+    desc: string to insert
     type: String
 - call: !Binary
   - hashMap
@@ -53,8 +54,7 @@ syntax:
       - value2
     - '...'
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: hashMap
     type: HashMapUnknown
@@ -63,34 +63,27 @@ syntax:
   - name: valueN
     type: Anything
   since:
-    arma_3:
-      major: 2
-      minor: 4
+    arma3: '2.4'
 - call: !Binary
   - hashMap
   - - splitArray
     - - keysAndValues
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: hashMap
     type: HashMapUnknown
   - name: splitArray
-    description: determines ''keysAndValues'' format (see ''keysAndValues'''s description)
+    desc: determines ''keysAndValues'' format (see ''keysAndValues'''s description)
     type: Boolean
   - name: keysAndValues
     type: Unknown
   since:
-    arma_3:
-      major: 2
-      minor: 4
+    arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - "<sqf>\n\"Test\" insert [0, \"Radio\"];\t\t// returns \"RadioTest\"\n\"Test\" insert [2, \"Radio\"];\t\t// returns \"TeRadiost\"\n\"Test\" insert [-1, \"Radio\"];\t// returns \"TestRadio\"\n</sqf>"
 - |-
@@ -113,3 +106,10 @@ examples:
   private _map = createHashMap;
   _map insert [true, ["one"], [1]];
   </sqf>
+see_also:
+- HashMap
+- pushBack
+- pushBackUnique
+- append
+- +
+- merge

@@ -1,5 +1,5 @@
 name: find
-description: |-
+desc: |-
   Searches for an array element within an array or an ANSI string within an ANSI string.
   {{Feature|arma3|If Unicode support is desired, see [[forceUnicode]].}}
   {{Feature|important|Search is cASe-seNsItiVE!}}
@@ -11,77 +11,59 @@ syntax:
   - array
   - element
   ret:
-  - Number
-  - zero-based position of the first array element that matches x, -1 if not found
+    type: Number
+    desc: zero-based position of the first array element that matches x, -1 if not found
   params:
   - name: array
-    description: array to search in
+    desc: array to search in
     type: ArrayUnknown
   - name: element
-    description: array element to find
+    desc: array element to find
     type: Anything
 - call: !Binary
   - string
   - substring
   ret:
-  - Number
-  - zero-based position of the first sequence of characters that matches substring, -1 if not found
+    type: Number
+    desc: zero-based position of the first sequence of characters that matches substring, -1 if not found
   params:
   - name: string
-    description: string to search in
+    desc: string to search in
     type: String
   - name: substring
-    description: substring to find
+    desc: substring to find
     type: String
   since:
-    arma_3:
-      major: 1
-      minor: 28
+    arma3: '1.28'
 - call: !Binary
   - string
   - - substring
     - indexStart
   ret:
-  - Number
-  - zero-based position of the first sequence of characters that matches substring, -1 if not found
+    type: Number
+    desc: zero-based position of the first sequence of characters that matches substring, -1 if not found
   params:
   - name: string
-    description: string to search in
+    desc: string to search in
     type: String
   - name: substring
-    description: substring to find
+    desc: substring to find
     type: String
   - name: indexStart
-    description: zero-based index which defines where find starts from
+    desc: zero-based index which defines where find starts from
     type: Number
   since:
-    arma_3:
-      major: 2
-      minor: 2
+    arma3: '2.2'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 99
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.99'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>["Apples", "Oranges", "Pears"] find "Oranges"; // returns 1</sqf>
 - <sqf>[1, [2], [[3]]] find [[3]]; // returns 2 - does not work in OFP, returns -1</sqf>
@@ -102,3 +84,7 @@ examples:
   forceUnicode 0; // since {{arma3}} v2.02
   "abcßdef" find "d"; // 4
   </sqf>
+see_also:
+- in
+- findIf
+- forceUnicode

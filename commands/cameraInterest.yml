@@ -1,32 +1,23 @@
 name: cameraInterest
-description: Return camera interest for given entity, as set by [[setCameraInterest]], or as autodetected.
+desc: Return camera interest for given entity, as set by [[setCameraInterest]], or as autodetected.
 groups:
 - Camera Control
 syntax:
 - call: !Unary entity
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: entity
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>camInterest = cameraInterest myUnit;</sqf>
+see_also:
+- setCameraInterest

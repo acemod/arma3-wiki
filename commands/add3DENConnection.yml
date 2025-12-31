@@ -1,5 +1,5 @@
 name: add3DENConnection
-description: '[[Eden Editor: Connecting|Connect]] entities together.'
+desc: '[[Eden Editor: Connecting|Connect]] entities together.'
 groups:
 - Eden Editor
 syntax:
@@ -8,22 +8,25 @@ syntax:
   - from
   - to
   ret:
-  - Boolean
-  - '[[true]] If the connection was made'
+    type: Boolean
+    desc: '[[true]] If the connection was made'
   params:
   - name: type
     type: Unknown
   - name: from
-    description: entities which are being connected
-    type: Unknown
+    desc: entities which are being connected
+    type: !ArrayUnsized
+      type: EdenEntity
+      desc: ''
   - name: to
-    description: entity to which entities will be connected to
+    desc: entity to which entities will be connected to
     type: EdenEntity
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>add3DENConnection ["RandomStart", get3DENSelected "Object", "marker_0"];// Set random start on marker "marker_0" for all selected objects.</sqf>
+see_also:
+- remove3DENConnection
+- get3DENConnections

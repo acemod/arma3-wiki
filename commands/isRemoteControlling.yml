@@ -1,5 +1,5 @@
 name: isRemoteControlling
-description: |-
+desc: |-
   Returns [[true]] if the given player is remote-controlling a unit.
   {{Feature|important|See also [[Remote Control Tutorial]].}}
 groups:
@@ -7,17 +7,18 @@ groups:
 syntax:
 - call: !Unary person
   ret:
-  - Boolean
-  - '[[true]] if the given player is remote controlling a unit'
+    type: Boolean
+    desc: '[[true]] if the given player is remote controlling a unit'
   params:
   - name: person
-    description: a player
+    desc: a player
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 14
+  arma3: '2.14'
 examples:
 - "<sqf>\nif (isRemoteControlling player) then\n{\n\thint format [\"You are controlling %1\", remoteControlled player];\n}\nelse\n{\n\thint \"Why not remote-control something?\";\n};\n</sqf>"
+see_also:
+- remoteControl
+- remoteControlled

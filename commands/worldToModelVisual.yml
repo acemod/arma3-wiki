@@ -1,5 +1,5 @@
 name: worldToModelVisual
-description: |-
+desc: |-
   Converts position from world space to object model space in [[Simulation vs Render Time Scope|render time scope]].
   {{Feature|important|For [[setObjectScale|scaled objects]], the relative position will be [[vectorMultiply|divided]] by the object scale.}}
 groups:
@@ -10,21 +10,28 @@ syntax:
   - object
   - worldPosition
   ret:
-  - ArrayUnknown
-  - '[[Position#PositionRelative|PositionRelative]]'
+    type: ArrayUnknown
+    desc: '[[Position#PositionRelative|PositionRelative]]'
   params:
   - name: object
     type: Object
   - name: worldPosition
-    type: Unknown
+    type: !OneOf
+    - - Position3dAGL
+      - null
+    - - Position2d
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>_relPos = myObject worldToModelVisual [0,0,0];</sqf>
 - <sqf>_relPos = player worldToModelVisual position car;</sqf>
 - <sqf>_relPos = car worldToModelVisual [12000, 5000];</sqf>
 - <sqf>_relPos = unit worldToModelVisual position tank;</sqf>
+see_also:
+- worldToModel
+- vectorWorldToModelVisual
+- modelToWorldVisual
+- modelToWorld

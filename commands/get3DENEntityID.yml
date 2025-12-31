@@ -1,20 +1,24 @@
 name: get3DENEntityID
-description: Returns unique index of an [[Eden Entity]]. This number remains the same even after saving and loading the scenario. {{Feature|informative|This ID is only available in [[:Category:Eden Editor|Eden Editor]].}}
+desc: Returns unique index of an [[Eden Entity]]. This number remains the same even after saving and loading the scenario. {{Feature|informative|This ID is only available in [[:Category:Eden Editor|Eden Editor]].}}
 groups:
 - Eden Editor
 syntax:
 - call: !Unary entity
   ret:
-  - Number
-  - '[[Eden ID]] If ID is not available, -1 is returned'
+    type: Number
+    desc: '[[Eden ID]] If ID is not available, -1 is returned'
   params:
   - name: entity
-    type: Unknown
+    type: !OneOf
+    - - EdenEntity
+      - null
+    - - EdenID
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>myID = get3DENEntityID player;</sqf>
+see_also:
+- get3DENEntity

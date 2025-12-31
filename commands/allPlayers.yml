@@ -1,5 +1,5 @@
 name: allPlayers
-description: |-
+desc: |-
   Returns a list of all units controlled by connected clients. This includes:
   * Normal human players (including dead players)
   * [[Eden Editor: System#Virtual Entities|Virtual Entities]] (see ''Systems'' → ''Logic Entities'' → ''Virtual Entities'' in the [[:Category:Eden Editor|Eden Editor]])
@@ -17,15 +17,12 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 48
+  arma3: '1.48'
 examples:
 - |-
   Get human players (i.e. all players excluding Headless Clients):
@@ -39,3 +36,17 @@ examples:
   </sqf>
 - "<sqf>\n{\n\tsystemChat format [\n\t\t\"Player %1 is %2\", \n\t\tname _x, \n\t\t[\"dead\", \"alive\"] select alive _x\n\t];\n} forEach allPlayers;\n</sqf>"
 - <sqf>private _bluforPlayers = blufor countSide allPlayers;</sqf>
+see_also:
+- allCurators
+- allGroups
+- allDead
+- allUnits
+- switchableUnits
+- playableUnits
+- vehicles
+- allUnitsUAV
+- allDeadMen
+- isPlayer
+- playersNumber
+- allUsers
+- getUserInfo

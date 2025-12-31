@@ -1,5 +1,5 @@
 name: animationSourcePhase
-description: Returns current animation phase of given source. Similar to [[animationPhase]] or [[doorPhase]] but designed to complement [[animateSource]]. This command could be used to obtain relative turret direction and gun elevation on a vehicle (see {{Link|#Example 2}}).
+desc: Returns current animation phase of given source. Similar to [[animationPhase]] or [[doorPhase]] but designed to complement [[animateSource]]. This command could be used to obtain relative turret direction and gun elevation on a vehicle (see {{Link|#Example 2}}).
 groups:
 - Animations
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - object
   - source
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: object
     type: Object
@@ -17,9 +16,14 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 58
+  arma3: '1.58'
 examples:
 - <sqf>private _phase = house animationSourcePhase "Door_1_source";</sqf>
 - "<sqf>\nprivate _mainturretDirection =\tdeg (_marshall animationSourcePhase \"mainturret\"); // relative to Marshall direction\nprivate _maingunElevation =\t\tdeg (_marshall animationSourcePhase \"maingun\");\nprivate _obsturretDirection =\tdeg (_marshall animationSourcePhase \"obsturret\"); // relative to main turret direction\nprivate _obsgunElevation =\t\tdeg (_marshall animationSourcePhase \"obsgun\");\n</sqf>"
+see_also:
+- animateSource
+- animationNames
+- animate
+- animationPhase
+- animateDoor
+- doorPhase

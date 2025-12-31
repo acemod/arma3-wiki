@@ -1,5 +1,5 @@
 name: parseSimpleArray
-description: |-
+desc: |-
   Converts given, formatted as simple array, [[String]] into a valid [[Array]]. Simple array is array consisting of [[Number]]s, [[String]]s, [[Boolean]]s and [[Array]]s of all of the above.
   This command is almost '''4&times; faster''' than similar uncached [[call]] [[compile]] method. And because [[call]] [[compile]] is not required, it is also '''more secure''' and primarily intended for use with [[callExtension]] to parse the [[String]] output into [[Array]].
 
@@ -20,18 +20,16 @@ groups:
 syntax:
 - call: !Unary stringArray
   ret:
-  - ArrayUnknown
-  - valid array
+    type: ArrayUnknown
+    desc: valid array
   params:
   - name: stringArray
-    description: string formatted as simple array
+    desc: string formatted as simple array
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>private _arr = parseSimpleArray "[1,2,3]";</sqf>
 - |-
@@ -50,3 +48,21 @@ examples:
   // note how _bool and _num do not need str, however if used anyway, the result in this case would be identical
   hint str _res;  // returns [true,123.45,"ok",[1,false,"cool"]]
   </sqf>
+see_also:
+- set
+- resize
+- pushBack
+- pushBackUnique
+- select
+- apply
+- reverse
+- count
+- find
+- in
+- forEach
+- deleteAt
+- deleteRange
+- append
+- sort
+- arrayIntersect
+- callExtension

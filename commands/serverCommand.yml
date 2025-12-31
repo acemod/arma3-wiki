@@ -1,5 +1,5 @@
 name: serverCommand
-description: |-
+desc: |-
   Executes the given [[Multiplayer_Server_Commands|server command]]. Requires you to be '''logged-in''' [[admin]] as client to execute on a client, or provide the '''serverCommandPassword''' with the serverCommand execution as client/server to basically also get logged in [[admin]] permissions.
 
   {{Feature|informative|
@@ -13,8 +13,8 @@ groups:
 syntax:
 - call: !Unary command
   ret:
-  - Boolean
-  - '[[false]] if a non valid command is used ("#blah"), false otherwise (was always [[true]] before {{GVI|arma3|1.40|size= 0.75}})'
+    type: Boolean
+    desc: '[[false]] if a non valid command is used ("#blah"), false otherwise (was always [[true]] before {{GVI|arma3|1.40|size= 0.75}})'
   params:
   - name: command
     type: String
@@ -22,36 +22,31 @@ syntax:
   - password
   - command
   ret:
-  - Boolean
-  - '[[false]] if command failed at some stage. [[true]] doesn''t mean that command succeeded.'
+    type: Boolean
+    desc: '[[false]] if command failed at some stage. [[true]] doesn''t mean that command succeeded.'
   params:
   - name: password
-    description: 'case-sensitive password defined in [[Arma 3: Server Config File|server config]] with {{hl|serverCommandPassword}} param'
+    desc: 'case-sensitive password defined in [[Arma 3: Server Config File|server config]] with {{hl|serverCommandPassword}} param'
     type: String
   - name: command
-    description: server command
+    desc: server command
     type: String
   since:
-    arma_3:
-      major: 1
-      minor: 40
+    arma3: '1.40'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 5
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.5'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>serverCommand "#logout";</sqf>
 - "Create button on the main map which will show userlist to anyone who clicks on it:\n<sqf>\nwith uiNamespace do \n{\n\tprivate _ctrl = findDisplay 12 ctrlCreate [\"RscButton\", -1];\n\t_ctrl ctrlSetPosition [0,0,0.5,0.1];\n\t_ctrl ctrlSetText \"USERLIST\";\n\t_ctrl ctrlCommit 0;\n\t_ctrl ctrlAddEventHandler [\"ButtonDown\", \n\t{\n\t\tserverCommand \"#userlist\";\n\t}];\n};\n</sqf>"
 - <sqf>serverCommand format ["#kick %1",_name];</sqf>
 - <sqf>private _passwordWasOK = "MyServerCommandPassword" serverCommand "#lock";</sqf>
+see_also:
+- serverCommandAvailable
+- serverCommandExecutable
+- admin
+- isUIContext

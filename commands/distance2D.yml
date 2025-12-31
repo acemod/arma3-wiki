@@ -1,5 +1,5 @@
 name: distance2D
-description: |-
+desc: |-
   Returns a 2D distance ([[distance]] projected to X,Y plane) in meters between [[Object]]s and/or [[Position]]s.
   [[File:distance2D.jpg|250px|right]]
 groups:
@@ -9,18 +9,24 @@ syntax:
   - from
   - to
   ret:
-  - Number
-  - distance in meters or 1e10 if distance cannot be calculated
+    type: Number
+    desc: distance in meters or 1e10 if distance cannot be calculated
   params:
   - name: from
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
   - name: to
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 50
+  arma3: '1.50'
 examples:
 - <sqf>_meters = player distance2D heli;</sqf>
+see_also:
+- distance
+- distanceSqr
+- vectorDistance

@@ -1,5 +1,5 @@
 name: enableUAVConnectability
-description: Enables unit's AV terminal(s) connecting to UAV.
+desc: Enables unit's AV terminal(s) connecting to UAV.
 groups:
 - Remote Control
 syntax:
@@ -8,21 +8,21 @@ syntax:
   - - uav
     - checkAllItems
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
     type: Object
   - name: uav
     type: Object
   - name: checkAllItems
-    description: true for enabling of all terminals in unit's inventory, false for enabling of terminal assigned to proper slot only.
+    desc: true for enabling of all terminals in unit's inventory, false for enabling of terminal assigned to proper slot only.
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 24
+  arma3: '1.24'
 examples:
 - <sqf>unit enableUAVConnectability [uav, true];</sqf>
+see_also:
+- disableUAVConnectability
+- isUAVConnectable

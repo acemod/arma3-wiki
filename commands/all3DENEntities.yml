@@ -1,5 +1,5 @@
 name: all3DENEntities
-description: |-
+desc: |-
   Returns an array of all currently placed [[Eden Entity|Eden Editor entities]].
   {{Feature|Eden Editor|This information is only available in [[:Category:Eden Editor|Eden Editor]]. If used during mission, it will return {{hl|[[],[],[],[],[],[],[],[-999]]}}.}}
 groups:
@@ -7,15 +7,12 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Unknown
-  - null
+    type: ArrayEdenEntities
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>systemChat str all3DENEntities;</sqf>
 - <sqf>all3DENEntities params ["_objects", "_groups", "_triggers", "_systems", "_waypoints", "_markers", "_layers", "_comments"];</sqf>
@@ -24,3 +21,8 @@ examples:
   // select all Eden entities
   set3DENSelected all3DENEntities;
   </sqf>
+see_also:
+- get3DENMouseOver
+- delete3DENEntities
+- get3DENEntityID
+- get3DENSelected

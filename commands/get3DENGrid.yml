@@ -1,20 +1,19 @@
 name: get3DENGrid
-description: Returns the grid increment for the given transformation type.
+desc: Returns the grid increment for the given transformation type.
 groups:
 - Eden Editor
 syntax:
 - call: !Unary type
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: type
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>_currentIncrement = get3DENGrid "t";</sqf>
+see_also:
+- set3DENGrid

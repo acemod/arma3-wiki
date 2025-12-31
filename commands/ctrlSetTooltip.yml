@@ -1,5 +1,5 @@
 name: ctrlSetTooltip
-description: |-
+desc: |-
   Sets tooltip text of given control.
   {{Feature|informative|If control supports URL property, like {{hl|RscActiveText}} for example, and the URL is set, tooltip text displayed on mouse over will be appended with URL text.}}
 groups:
@@ -9,33 +9,26 @@ syntax:
   - control
   - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
-    description: any [[Dialogs|control type]], (except for CT_STATIC & CT_STRUCTURED_TEXT, although Arma 3 now supports these too)
+    desc: any [[Dialogs|control type]], (except for CT_STATIC & CT_STRUCTURED_TEXT, although Arma 3 now supports these too)
     type: Control
   - name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_control ctrlSetTooltip "tooltip";</sqf>
 - <sqf>findDisplay 10000 displayCtrl 10001 ctrlSetTooltip "ThisIsAGoodTip";</sqf>
 - "<sqf>\nwith uiNamespace do \n{\n\tbar = findDisplay 46 createDisplay \"RscDisplayEmpty\" ctrlCreate [\"RscProgress\", -1];\n\tbar ctrlSetPosition [0,0,1,0.01];\n\tbar ctrlCommit 0;\n\tbar progressSetPosition 0.75;\n\tbar ctrlSetTooltip \"lalalalalalalala\";\n};\n</sqf>"
+see_also:
+- ctrlSetTooltipColorBox
+- ctrlSetTooltipColorShade
+- ctrlSetTooltipColorText

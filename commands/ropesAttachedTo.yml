@@ -1,22 +1,19 @@
 name: ropesAttachedTo
-description: Returns the owners of all ropes attached to the cargo - the transports to which other entities are attached with [[ropes]].
+desc: Returns the owners of all ropes attached to the cargo - the transports to which other entities are attached with [[ropes]].
 groups:
 - Ropes and Sling Loading
 syntax:
 - call: !Unary cargo
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: cargo
-    description: entity attached to the ends of the ropes
+    desc: entity attached to the ends of the ropes
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - |-
   <sqf>
@@ -24,3 +21,22 @@ examples:
   r2 = ropeCreate [car2, [0,0,0], car3, [0,0,0], 10];
   ropesAttachedTo car3; // [car1,car2]
   </sqf>
+see_also:
+- ropeAttachedTo
+- ropes
+- canSlingLoad
+- enableRopeAttach
+- getSlingLoad
+- ropeAttachedObjects
+- ropeAttachTo
+- ropeDestroy
+- ropeLength
+- ropeUnwound
+- ropeCreate
+- ropeDetach
+- ropeAttachEnabled
+- ropeCut
+- ropeEndPosition
+- ropeUnwind
+- setSlingLoad
+- slingLoadAssistantShown

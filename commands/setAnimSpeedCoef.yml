@@ -1,5 +1,5 @@
 name: setAnimSpeedCoef
-description: |-
+desc: |-
   Sets a coefficient for animation speed (0.5 will play animations half the speed, 2 twice the speed).<br>
   Doesn't affect upper body animations (reloading, etc.)
 groups:
@@ -10,8 +10,7 @@ syntax:
   - unit
   - coef
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -20,8 +19,12 @@ syntax:
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 54
+  arma3: '1.54'
 examples:
 - <sqf>player setAnimSpeedCoef 0.75;</sqf>
+see_also:
+- Arma
+- '3:'
+- Stamina
+- getAnimSpeedCoef
+- setAccTime

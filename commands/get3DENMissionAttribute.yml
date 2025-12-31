@@ -1,5 +1,5 @@
 name: get3DENMissionAttribute
-description: |-
+desc: |-
   Return value of [[Eden_Editor:_Scenario_Atttributes|scenario attribute]]. For a list of all available mission attributes see [[Eden_Editor:_Setting_Attributes#Scenario|Mission Attributes]].
   {{Feature|important|Attributes are available only within the Eden Editor workspace. You cannot access them in scenario preview or exported scenario!}}
 groups:
@@ -9,20 +9,19 @@ syntax:
   - section
   - class
   ret:
-  - Anything
-  - null
+    type: Anything
   params:
   - name: section
-    description: attribute section. See [[Eden_Editor:_Setting_Attributes#Sections_.26_Properties|Sections & Properties]]
+    desc: attribute section. See [[Eden_Editor:_Setting_Attributes#Sections_.26_Properties|Sections & Properties]]
     type: String
   - name: class
-    description: attribute name
+    desc: attribute name
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>systemChat str ("Multiplayer" get3DENMissionAttribute "respawn");</sqf>
+see_also:
+- set3DENMissionAttributes

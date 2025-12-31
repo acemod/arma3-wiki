@@ -1,32 +1,42 @@
 name: lbSelection
-description: Returns [[Array]] of selected rows indices in the given listbox. If listbox is of style LB_MULTI (multi-selection) the array will contain multiple elements, otherwise only a single element. For single selection listbox one can also use [[lbCurSel]]. See also [[lbIsSelected]], [[lbSetSelected]]
+desc: Returns [[Array]] of selected rows indices in the given listbox. If listbox is of style LB_MULTI (multi-selection) the array will contain multiple elements, otherwise only a single element. For single selection listbox one can also use [[lbCurSel]]. See also [[lbIsSelected]], [[lbSetSelected]]
 groups:
 - GUI Control - ListBox
 syntax:
 - call: !Unary control
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_indices = lbSelection _control;</sqf>
+see_also:
+- lbAdd
+- lbClear
+- lbColor
+- lbCurSel
+- lbData
+- lbDelete
+- lbIsSelected
+- lbPicture
+- lbSetColor
+- lbSetCurSel
+- lbSetData
+- lbSetPicture
+- lbSetSelected
+- lbSetTooltip
+- lbSetValue
+- lbSize
+- lbSort
+- lbSortByValue
+- lbText
+- lbValue

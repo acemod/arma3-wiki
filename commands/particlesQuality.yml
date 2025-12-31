@@ -1,18 +1,22 @@
 name: particlesQuality
-description: Returns current user settings for particles quality (configure->video->general->particles). 0-low, 1-normal, 2-high
+desc: Returns current user settings for particles quality (configure->video->general->particles). 0-low, 1-normal, 2-high
 groups:
 - Particles
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_currentQuality = particlesQuality;</sqf>
+see_also:
+- setParticleCircle
+- setParticleParams
+- setParticleRandom
+- ParticleTemplates
+- setParticleClass
+- setParticleFire

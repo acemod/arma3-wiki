@@ -1,5 +1,5 @@
 name: getPosASLVisual
-description: Returns an object's rendered [[Position#PositionASL|ASL position]] (z value above sea level) in render time scope.
+desc: Returns an object's rendered [[Position#PositionASL|ASL position]] (z value above sea level) in render time scope.
 alias:
 - '[[visiblePositionASL]]'
 groups:
@@ -8,17 +8,25 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - Position3dASL
-  - null
+    type: Position3dASL
   params:
   - name: object
-    description: name of the object
+    desc: name of the object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>private _playerRenderedPosASL = getPosASLVisual player;</sqf>
+see_also:
+- getPosVisual
+- getPosATLVisual
+- getPosWorldVisual
+- visiblePositionASL
+- visiblePosition
+- position
+- getPos
+- getPosATL
+- getPosASL
+- getPosASLW

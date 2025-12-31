@@ -1,5 +1,5 @@
 name: land
-description: Forces a helicopter landing. If there is a helipad nearby, the helicopter will attempt to land on it. VTOL he other hand will just land somewhere. To make helicopter or VTOL land on a specific helipad use [[landAt]].
+desc: Forces a helicopter landing. If there is a helipad nearby, the helicopter will attempt to land on it. VTOL he other hand will just land somewhere. To make helicopter or VTOL land on a specific helipad use [[landAt]].
 groups:
 - Unit Control
 syntax:
@@ -7,36 +7,34 @@ syntax:
   - helicopter
   - mode
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: helicopter
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
   - name: mode
-    type: Unknown
+    type: !StringEnum
+    - - '"LAND" - Complete stop'
+      - null
+    - - '"GET IN" - Hovering very low, for another unit to get in'
+      - null
+    - - '"GET OUT" - Hovering low, for another unit to get out'
+      - null
+    - - '{{GVI|arma2|1.00|size= 0.75}} "NONE" - Cancel a landing'
+      - null
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_cobraOne land "LAND";</sqf>
+see_also:
+- landAt
+- allAirports

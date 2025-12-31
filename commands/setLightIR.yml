@@ -1,5 +1,5 @@
 name: setLightIR
-description: Sets lightpoint in infrared range.
+desc: Sets lightpoint in infrared range.
 groups:
 - Lights
 syntax:
@@ -7,20 +7,29 @@ syntax:
   - light
   - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: light
-    description: object of class {{hl|"#lightpoint"}} or similar
+    desc: object of class {{hl|"#lightpoint"}} or similar
     type: Object
   - name: value
-    description: '[[true]] to make it visible ''''only'''' with night vision goggles, [[false]] to make it a normal light'
+    desc: '[[true]] to make it visible ''''only'''' with night vision goggles, [[false]] to make it a normal light'
     type: Boolean
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>myLight setLightIR true; // visible with NVG only!</sqf>
+see_also:
+- setLightColor
+- setLightAmbient
+- setLightBrightness
+- lightAttachObject
+- lightDetachObject
+- setLightIntensity
+- setLightAttenuation
+- setLightUseFlare
+- setLightFlareSize
+- setLightFlareMaxDistance
+- setLightDayLight

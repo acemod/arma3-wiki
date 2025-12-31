@@ -1,5 +1,5 @@
 name: lineIntersectsObjs
-description: Returns a list of objects intersected by the line from ''begPos'' to ''endPos''. Since {{GVI|arma3|2.20|size= 0.75}}, there is an alternative syntax that does multiple checks in parallel, faster than multiple calls.
+desc: Returns a list of objects intersected by the line from ''begPos'' to ''endPos''. Since {{GVI|arma3|2.20|size= 0.75}}, there is an alternative syntax that does multiple checks in parallel, faster than multiple calls.
 groups:
 - Math - Geometry
 syntax:
@@ -11,25 +11,25 @@ syntax:
   - sortByDistance
   - flags
   ret:
-  - ArrayUnknown
-  - intersecting objects
+    type: ArrayUnknown
+    desc: intersecting objects
   params:
   - name: begPos
-    description: virtual line start
+    desc: virtual line start
     type: Position3dASL
   - name: endPos
-    description: virtual line end
+    desc: virtual line end
     type: Position3dASL
   - name: ignoreObj1
-    description: '- object to ignore'
+    desc: '- object to ignore'
     type: Object
     optional: true
   - name: ignoreObj2
-    description: '- object to ignore'
+    desc: '- object to ignore'
     type: Object
     optional: true
   - name: sortByDistance
-    description: '- [[true]]: furthest object first, closest object last; [[false]]: unsorted'
+    desc: '- [[true]]: furthest object first, closest object last; [[false]]: unsorted'
     type: Boolean
     optional: true
   - name: flags
@@ -40,21 +40,16 @@ syntax:
     - element2
     - '...'
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: elementN
     type: Unknown
   since:
-    arma_3:
-      major: 2
-      minor: 20
+    arma3: '2.20'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 10
+  arma3: '1.10'
 examples:
 - "<sqf>\ndata = [];\ndisplayFunction = {\n\t{\n\t\tdata set [_foreachindex, lineIntersectsObjs [eyePos player, ATLToASL screenToWorld [0.5, 0.5], objNull, objNull, false, _x]];\n\t} forEach [1, 2, 4, 8, 16, 32];\n\n\thintSilent format [\"ONLY_WATER: %1\\nNEAREST_CONTACT: %2\\nONLY_STATIC: %3\\nONLY_DYNAMIC: %4\\nFIRST_CONTACT: %5\\nALL_OBJECTS: %6\",\n\tdata select 0, data select 1, data select 2, data select 3, data select 4, data select 5];\n};\n\n[\"sample_id\", \"onEachFrame\", \"displayFunction\"] call BIS_fnc_addStackedEventHandler;\n// example display objects' array in the middle of the screen sorted by 6 flags\n</sqf>"
 - |-
@@ -64,3 +59,14 @@ examples:
   private _enemyDataArray = _enemies apply { [eyePos player, aimPos _x, player, _x, true] };
   private _result = lineIntersectsObjs [_enemyDataArray];
   </sqf>
+see_also:
+- lineIntersectsSurfaces
+- lineIntersectsWith
+- lineIntersects
+- terrainIntersectASL
+- terrainIntersectAtASL
+- terrainIntersect
+- intersect
+- cursorObject
+- cursorTarget
+- checkVisibility

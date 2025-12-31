@@ -1,40 +1,33 @@
 name: commandStop
-description: Order the given unit(s) to stop via radio. A stop command will never finish, the unit(s) will never be ready.
+desc: Order the given unit(s) to stop via radio. A stop command will never finish, the unit(s) will never be ready.
 groups:
 - Groups
 syntax:
 - call: !Unary target
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: target
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Global
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>commandStop _soldier1;</sqf>
 - <sqf>commandStop [_soldier1, _soldier2];</sqf>
 - <sqf>commandStop (units player);</sqf>
+see_also:
+- doStop
+- stopped
+- stop

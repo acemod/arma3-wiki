@@ -1,5 +1,5 @@
 name: waypointAttachObject
-description: |-
+desc: |-
   Attaches a static object via its numeric ID to the given waypoint. Not to be confused with [[synchronizeWaypoint]]!
 
   {{Feature|important|
@@ -13,11 +13,10 @@ syntax:
   - waypoint
   - objectID
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: waypoint
-    description: format [[Waypoint]]
+    desc: format [[Waypoint]]
     type: ArrayUnknown
   - name: objectID
     type: Number
@@ -25,35 +24,22 @@ syntax:
   - waypoint
   - object
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: waypoint
     type: ArrayUnknown
   - name: object
-    description: static object
+    desc: static object
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>[_grp, 2] waypointAttachObject 1234;</sqf>
 - |-
@@ -61,3 +47,6 @@ examples:
   private _wp = group player addWaypoint [[1907.5, 5746.5, 0.00144196], 0];
   _wp waypointAttachObject ((waypointPosition _wp) nearestObject 66220);
   </sqf>
+see_also:
+- waypointAttachedObject
+- synchronizeWaypoint

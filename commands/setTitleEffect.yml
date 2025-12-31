@@ -1,5 +1,5 @@
 name: setTitleEffect
-description: "Defines the title effect to show on activation via [Type, Effect, Text] where\n\n'Type' \n\nThe title effect does not disappear on deactivation, this should be done manually if required."
+desc: "Defines the title effect to show on activation via [Type, Effect, Text] where\n\n'Type' \n\nThe title effect does not disappear on deactivation, this should be done manually if required."
 groups:
 - Triggers
 - Waypoints
@@ -10,13 +10,24 @@ syntax:
     - effect
     - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: triggerOrWaypoint
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: type
-    type: Unknown
+    type: !StringEnum
+    - - '"NONE"'
+      - null
+    - - '"OBJECT" - ''''text'''' defines the shown object , a subclass of {{hl|CfgTitles}} (see [[cutObj]])'
+      - null
+    - - '"RES" - ''''text'''' defines a resource class, a subclass of RscTitles (see [[cutRsc]])'
+      - null
+    - - '"TEXT" - ''''text'''' defines text string to show (see [[cutText]])'
+      - null
   - name: effect
     type: String
   - name: text
@@ -24,23 +35,15 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_trigger setTitleEffect ["TEXT", "PLAIN DOWN", "Hello world."];</sqf>
+see_also:
+- createTrigger
+- setSoundEffect
+- setMusicEffect

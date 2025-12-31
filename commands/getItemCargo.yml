@@ -1,20 +1,23 @@
 name: getItemCargo
-description: Returns all items names and count from ammo box (or any general weapon holder container).
+desc: Returns all items names and count from ammo box (or any general weapon holder container).
 groups:
 - Vehicle Inventory
 syntax:
 - call: !Unary box
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: box
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>hint str getItemCargo cursorTarget;</sqf>
+see_also:
+- itemCargo
+- addItemCargo
+- addItemCargoGlobal
+- clearItemCargo
+- clearItemCargoGlobal

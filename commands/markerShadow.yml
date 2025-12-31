@@ -1,5 +1,5 @@
 name: markerShadow
-description: Returns if the marker is drawn with shadow enabled.
+desc: Returns if the marker is drawn with shadow enabled.
 problem_notes:
 - '[[setMarkerType]] will reset the shadow value to the one defined in marker type.'
 groups:
@@ -7,17 +7,17 @@ groups:
 syntax:
 - call: !Unary marker
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: marker
-    description: the marker
+    desc: the marker
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 4
+  arma3: '2.4'
 examples:
 - <sqf>private _shadowEnabled = markerShadow _myMarker;</sqf>
+see_also:
+- setMarkerShadow
+- setMarkerShadowLocal

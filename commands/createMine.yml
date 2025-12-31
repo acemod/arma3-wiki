@@ -1,5 +1,5 @@
 name: createMine
-description: |-
+desc: |-
   Creates a mine of the given type.<br>
   If the ''markers'' array only contains one marker name, it is ignored and the ''position'' parameter is used instead.
   If ''markers'' contains multiple marker names, one of them is chosen randomly and used as the center of the placement area.<br><br>
@@ -20,41 +20,34 @@ syntax:
   - markers
   - placement
   ret:
-  - Object
-  - null
+    type: Object
   params:
   - name: type
-    description: mine class name from {{hl|CfgVehicles}}
+    desc: mine class name from {{hl|CfgVehicles}}
     type: String
   - name: position
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Position3dAGL
+      - null
   - name: markers
-    description: marker name(s)
-    type: ArrayUnknown
+    desc: marker name(s)
+    type: !ArrayUnsized
+      type: String
+      desc: ''
   - name: placement
-    description: placement radius
+    desc: placement radius
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_mine = createMine ["APERSMine", ASLToAGL getPosASL player, [], 3];</sqf>
 - |-
@@ -63,3 +56,13 @@ examples:
   _charge = createMine ["SatchelCharge_F", player, [], 0];
   player addOwnedMine _charge;
   </sqf>
+see_also:
+- allMines
+- detectedMines
+- mineDetectedBy
+- mineActive
+- revealMine
+- getAllOwnedMines
+- addOwnedMine
+- removeOwnedMine
+- removeAllOwnedMines

@@ -1,5 +1,5 @@
 name: import
-description: |-
+desc: |-
   Imports one or multiple local variables from the parent scope, and defines them as [[private]] variables in the current scope. It can bypass [[privateAll]].
 
   {{Feature|informative|For the config keyword, see [[import (Config)]].}}
@@ -8,18 +8,25 @@ groups:
 syntax:
 - call: !Unary variableName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: variableName
-    description: variable(s) to import
-    type: Unknown
+    desc: variable(s) to import
+    type: !OneOf
+    - - String
+      - null
+    - - !ArrayUnsized
+        type: String
+        desc: ''
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - "<sqf>\nprivate _myVar = 1;\ncall\n{\n\timport \"_myVar\"; // similar to: private _myVar = _myVar;\n};\n</sqf>"
 - "<sqf>\nprivate _a = 1;\nprivate _b = 2;\ncall\n{\n\timport [\"_a\", \"_b\"]; // similar to: [_a, _b] params [\"_a\", \"_b\"];\n};\n</sqf>"
+see_also:
+- privateAll
+- private
+- params

@@ -1,5 +1,5 @@
 name: pushBack
-description: 'Insert an element to the back of the given array. This command modifies the original array. (see also: [[pushBackUnique]])'
+desc: 'Insert an element to the back of the given array. This command modifies the original array. (see also: [[pushBackUnique]])'
 groups:
 - Arrays
 syntax:
@@ -7,8 +7,8 @@ syntax:
   - array
   - element
   ret:
-  - Number
-  - index of inserted element
+    type: Number
+    desc: index of inserted element
   params:
   - name: array
     type: ArrayUnknown
@@ -17,9 +17,7 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 26
+  arma3: '1.26'
 examples:
 - |-
   <sqf>
@@ -33,3 +31,21 @@ examples:
   (_arr select 1) pushBack [5,6];
   hint str _arr //[1,[2,4,[5,6]],3]
   </sqf>
+see_also:
+- pushBackUnique
+- select
+- set
+- resize
+- reverse
+- count
+- find
+- in
+- forEach
+- deleteAt
+- deleteRange
+- append
+- sort
+- arrayIntersect
+- apply
+- BIS_fnc_arrayPushStack
+- BIS_fnc_arrayPush

@@ -1,5 +1,5 @@
 name: sunOrMoon
-description: |-
+desc: |-
   {{{!}} class="wikitable float-right align-center-col-1" style="font-size: 0.85em; min-width: 15em"
   ! Time
   ! [[sunOrMoon]]
@@ -49,20 +49,17 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Number
-  - 0 for night (moon), 1 for day (sun)
+    type: Number
+    desc: 0 for night (moon), 1 for day (sun)
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 62
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.62'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _transitionState = sunOrMoon;</sqf>
+see_also:
+- moonIntensity
+- moonPhase

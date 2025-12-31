@@ -1,5 +1,5 @@
 name: ctrlSetURL
-description: "Sets URL property of the given control subject to {{hl|allowedHTMLLoadURIs[]}} whitelisting in [[CfgCommands]] config. Supported controls are:\n* {{hl|CT_BUTTON}}\n* {{hl|CT_SHORTCUTBUTTON}} \n* {{hl|CT_ACTIVETEXT}}"
+desc: "Sets URL property of the given control subject to {{hl|allowedHTMLLoadURIs[]}} whitelisting in [[CfgCommands]] config. Supported controls are:\n* {{hl|CT_BUTTON}}\n* {{hl|CT_SHORTCUTBUTTON}} \n* {{hl|CT_ACTIVETEXT}}"
 groups:
 - GUI Control
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - control
   - URL
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -17,8 +16,9 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>_control ctrlSetURL "http://arma3.com/";</sqf>
+see_also:
+- ctrlURL
+- menuSetURL

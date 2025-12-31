@@ -1,5 +1,5 @@
 name: setMarkerSizeLocal
-description: Set marker size.
+desc: Set marker size.
 groups:
 - Markers
 syntax:
@@ -8,34 +8,41 @@ syntax:
   - - axisA
     - axisB
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: markerName
     type: String
   - name: axisA
-    description: 1/2 width of marker
+    desc: 1/2 width of marker
     type: Number
   - name: axisB
-    description: 1/2 height of marker
+    desc: 1/2 height of marker
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 4
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.4'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>"MarkerOne" setMarkerSizeLocal [100, 200];</sqf>
+see_also:
+- setMarkerAlpha
+- setMarkerAlphaLocal
+- setMarkerBrush
+- setMarkerBrushLocal
+- setMarkerColor
+- setMarkerColorLocal
+- setMarkerDir
+- setMarkerDirLocal
+- setMarkerPos
+- setMarkerPosLocal
+- setMarkerShape
+- setMarkerShapeLocal
+- setMarkerSize
+- setMarkerText
+- setMarkerTextLocal
+- setMarkerType
+- setMarkerTypeLocal

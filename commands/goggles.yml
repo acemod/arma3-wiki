@@ -1,21 +1,25 @@
 name: goggles
-description: Returns name of currently used goggles (for NVGoggles use [[hmd]]).
+desc: Returns name of currently used goggles (for NVGoggles use [[hmd]]).
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_goggles = goggles assaultDiver; //G_Diving</sqf>
 - <sqf>_goggles = goggles reconTeamLeader; //G_Shades_Black</sqf>
+see_also:
+- removeGoggles
+- addGoggles
+- hmd
+- headgear
+- binocular
+- getDiverState

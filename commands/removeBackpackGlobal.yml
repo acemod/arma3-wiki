@@ -1,21 +1,39 @@
 name: removeBackpackGlobal
-description: Removes backpack from a unit. (even non-local)
+desc: Removes backpack from a unit. (even non-local)
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: soldier
+    desc: soldier
     type: Object
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>removeBackpackGlobal player;</sqf>
+see_also:
+- removeBackpack
+- backpackContainer
+- firstBackpack
+- unitBackpack
+- backpack
+- backpackCargo
+- getBackpackCargo
+- backpackItems
+- addBackpack
+- addBackpackCargo
+- addBackpackCargoGlobal
+- clearBackpackCargo
+- clearBackpackCargoGlobal
+- clearAllItemsFromBackpack
+- loadBackpack
+- backpackSpaceFor
+- canAddItemToBackpack
+- addItemToBackpack
+- removeItemFromBackpack
+- everyBackpack

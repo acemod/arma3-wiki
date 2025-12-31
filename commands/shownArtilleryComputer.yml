@@ -1,18 +1,22 @@
 name: shownArtilleryComputer
-description: Checks whether the player has the artillery computer currently open.
+desc: Checks whether the player has the artillery computer currently open.
 groups:
 - Artillery
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>if (shownArtilleryComputer) then { hint "Artillery Computer shown on screen"; };</sqf>
+see_also:
+- enableEngineArtillery
+- getArtilleryComputerSettings
+- inRangeOfArtillery
+- commandArtilleryFire
+- doArtilleryFire
+- getArtilleryETA

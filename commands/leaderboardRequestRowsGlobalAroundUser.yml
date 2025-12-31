@@ -1,5 +1,5 @@
 name: leaderboardRequestRowsGlobalAroundUser
-description: Requests given leaderboard to download values around the user position in the table.
+desc: Requests given leaderboard to download values around the user position in the table.
 groups:
 - Leaderboards
 syntax:
@@ -8,23 +8,29 @@ syntax:
   - offset
   - rows
   ret:
-  - Boolean
-  - returns [[true]] if request has been started
+    type: Boolean
+    desc: returns [[true]] if request has been started
   params:
   - name: leaderboard
-    description: name of the leaderboard
+    desc: name of the leaderboard
     type: String
   - name: offset
-    description: offset from user position.
+    desc: offset from user position.
     type: Number
   - name: rows
-    description: defines how many rows are requested
+    desc: defines how many rows are requested
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>_isGettingValues = leaderboardRequestRowsGlobalAroundUser ["TT01", -5, 10];</sqf>
+see_also:
+- leaderboardGetRows
+- leaderboardInit
+- leaderboardRequestRowsFriends
+- leaderboardRequestRowsGlobal
+- leaderboardsRequestUploadScore
+- leaderboardsRequestUploadScoreKeepBest
+- leaderboardState

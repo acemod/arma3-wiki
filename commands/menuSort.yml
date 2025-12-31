@@ -1,5 +1,5 @@
 name: menuSort
-description: Sorts subentries of item on given path by their text.
+desc: Sorts subentries of item on given path by their text.
 groups:
 - GUI Control - Menu
 syntax:
@@ -8,36 +8,55 @@ syntax:
   - path
   - sortOrder
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: path
     type: ArrayUnknown
   - name: sortOrder
-    description: '[[true]] to sort from A to Z, [[false]] to sort from Z to A'
+    desc: '[[true]] to sort from A to Z, [[false]] to sort from Z to A'
     type: Boolean
 - call: !Binary
   - control
   - - path
     - sortOrder
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: path
     type: ArrayUnknown
   - name: sortOrder
-    description: '[[true]] to sort from A to Z, [[false]] to sort from Z to A'
+    desc: '[[true]] to sort from A to Z, [[false]] to sort from Z to A'
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>findDisplay 313 displayCtrl 120 menuSort [[], true];</sqf>
+see_also:
+- menuEnable
+- menuExpand
+- menuCollapse
+- menuSetData
+- menuSetValue
+- menuSetCheck
+- menuSetAction
+- menuDelete
+- menuAdd
+- menuHover
+- menuValue
+- menuURL
+- menuText
+- menuEnabled
+- menuChecked
+- menuAction
+- menuShortcutText
+- menuShortcut
+- menuPicture
+- menuData
+- menuClear
+- menuSetPicture

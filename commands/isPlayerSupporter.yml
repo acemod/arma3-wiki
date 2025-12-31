@@ -1,26 +1,27 @@
 name: isPlayerSupporter
-description: Get if the provided player has the supporter (VIP) status.
+desc: Get if the provided player has the supporter (VIP) status.
 multiplayer_note: '{{Feature|important|Only works in multiplayer.}}'
 groups:
 - Argo
 syntax:
 - call: !Unary unit
   ret:
-  - Boolean
-  - '[[true]] if the provided unit is a player and that player is a supporter, [[false]] otherwise'
+    type: Boolean
+    desc: '[[true]] if the provided unit is a player and that player is a supporter, [[false]] otherwise'
   params:
   - name: unit
-    description: the unit of player to check
+    desc: the unit of player to check
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  argo:
-    major: 1
-    minor: 0
+  argo: '1.0'
 examples:
 - |-
   <sqf>
   _amIASupporter = isPlayerSupporter player;
   _isHeASupporter = isPlayerSupporter _otherGuy;
   </sqf>
+see_also:
+- getPlayerLevel
+- getCurrentPlayerLevel

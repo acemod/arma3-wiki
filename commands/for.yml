@@ -1,5 +1,5 @@
 name: for
-description: |-
+desc: |-
   This operator creates a [[For Type]] which is used in the for-constructs.
   {{Feature|warning|
   The alternative syntax <sqf inline>for _array do _code</sqf> is [[Code Optimisation#for|slower]] than the first syntax because the condition is checked in every iteration, and it has a few bugs.<br>
@@ -18,47 +18,35 @@ groups:
 syntax:
 - call: !Unary arguments
   ret:
-  - ForType
-  - null
+    type: ForType
   params:
   - name: arguments
-    description: declares the index variable name like "_myVar". [[from]] and [[to]] are required, [[step]] is optional.
+    desc: declares the index variable name like "_myVar". [[from]] and [[to]] are required, [[step]] is optional.
     type: String
 - call: !Unary
   - init
   - condition
   - codeToExecute
   ret:
-  - ForType
-  - null
+    type: ForType
   params:
   - name: init
-    description: loop variable definition
+    desc: loop variable definition
     type: Code
   - name: condition
-    description: '[[call]]ed code returns [[false]], leave the [[for]]-loop'
+    desc: '[[call]]ed code returns [[false]], leave the [[for]]-loop'
     type: Code
   - name: codeToExecute
-    description: code to be run on each loop
+    desc: code to be run on each loop
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -92,3 +80,8 @@ examples:
   for "_i" from 0 to 4 do { /* code */ };
   hint str _i; // 100
   </sqf>
+see_also:
+- Control
+- Structures
+- while
+- do

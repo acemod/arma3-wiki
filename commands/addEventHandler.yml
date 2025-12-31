@@ -1,5 +1,5 @@
 name: addEventHandler
-description: |-
+desc: |-
   Adds an Event Handler to the given object.
   * As many Event Handlers of any type can be added - existing Event Handlers do not get overwritten
   * Use [[removeEventHandler]] to remove an Event Handler
@@ -13,40 +13,44 @@ syntax:
   - - type
     - code
   ret:
-  - Number
-  - the index of the added Event Handler. Indices start at 0 for each unit and increment with each added Event Handler.
+    type: Number
+    desc: the index of the added Event Handler. Indices start at 0 for each unit and increment with each added Event Handler.
   params:
   - name: target
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
   - name: type
-    description: see [[:Category:Event Handlers|Event Handlers]] for the full list of available options
+    desc: see [[:Category:Event Handlers|Event Handlers]] for the full list of available options
     type: String
   - name: code
-    type: Unknown
+    type: !OneOf
+    - - Code
+      - null
+    - - String
+      - null
 argument_loc: Global
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 85
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.85'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nthis addEventHandler [\"Killed\", {\n\tparams [\"_unit\", \"_killer\"];\n\tsystemChat format [\"%1 has been killed by %2.\", _unit, _killer];\n}];\n</sqf>"
 - <sqs>_index = player addEventHandler ["Killed", { _this exec "playerKilled.sqs" }]</sqs>
+see_also:
+- removeEventHandler
+- removeAllEventHandlers
+- :Category:Event
+- Handlers|Event
+- Handlers
+- addMPEventHandler
+- addMissionEventHandler
+- BIS_fnc_addScriptedEventHandler
+- getEventHandlerInfo

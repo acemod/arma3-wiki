@@ -1,5 +1,5 @@
 name: hasWeapon
-description: Checks if a unit has the given weapon in hands or on back/in holster. Weapons inside unit containers such as vest and backpack are not counted.
+desc: Checks if a unit has the given weapon in hands or on back/in holster. Weapons inside unit containers such as vest and backpack are not counted.
 groups:
 - Weapons
 - Unit Inventory
@@ -8,37 +8,25 @@ syntax:
   - unitName
   - weaponName
   ret:
-  - Boolean
-  - returns true if the unit has the weapon, false if not.
+    type: Boolean
+    desc: returns true if the unit has the weapon, false if not.
   params:
   - name: unitName
     type: Object
   - name: weaponName
-    description: the name of the weapon to check for.
+    desc: the name of the weapon to check for.
     type: String
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>if !(player hasWeapon "arifle_MX_ACO_pointer_F") then { player addWeapon "arifle_MX_ACO_pointer_F" };</sqf>
+see_also:
+- weapons

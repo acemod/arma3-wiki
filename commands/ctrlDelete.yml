@@ -1,5 +1,5 @@
 name: ctrlDelete
-description: |-
+desc: |-
   Deletes given control. The control has to be created either by script with [[ctrlCreate]] or to have {{hl|deletable}} property in config set to 1. Use [[ctrlShow]] [[false]] and [[ctrlEnable]] [[false]] to disable controls that cannot be deleted. Returns [[Boolean]] indicating  whether the deletion was successful.
   {{Feature|warning|Using [[ctrlDelete]] in a [[User_Interface_Event_Handlers|UI eventhandler]] called by the to be deleted control will crash the game! This also happens when a controls group is deleted that contains the "calling" control.}}
 groups:
@@ -7,16 +7,25 @@ groups:
 syntax:
 - call: !Unary control
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 26
+  arma3: '1.26'
 examples:
 - <sqf>ctrlDelete ((findDisplay 20000) displayCtrl 20001);</sqf>
+see_also:
+- ctrlCreate
+- ctrlModel
+- ctrlSetModel
+- ctrlPosition
+- ctrlSetPosition
+- ctrlClassName
+- displayCtrl
+- ctrlModelScale
+- ctrlSetModelScale
+- ctrlModelDirAndUp
+- ctrlSetModelDirAndUp

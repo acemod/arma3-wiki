@@ -1,5 +1,5 @@
 name: enableVehicleSensor
-description: Enable/disable given sensor
+desc: Enable/disable given sensor
 groups:
 - Sensors
 syntax:
@@ -8,22 +8,22 @@ syntax:
   - - componentName
     - enabled
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
   - name: componentName
-    description: the component's name (can either be its "real name" or its className)
+    desc: the component's name (can either be its "real name" or its className)
     type: String
   - name: enabled
-    description: component status
+    desc: component status
     type: Boolean
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 72
+  arma3: '1.72'
 examples:
 - <sqf>vehicle player enableVehicleSensor ["PassiveRadarSensorComponent", false]; // disables passive radar</sqf>
+see_also:
+- listVehicleSensors
+- isVehicleSensorEnabled

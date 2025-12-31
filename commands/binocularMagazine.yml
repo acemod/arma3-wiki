@@ -1,20 +1,25 @@
 name: binocularMagazine
-description: Collects all loaded [[magazines]] from all [[binocular]] muzzles and returns them in [[Array]], otherwise it returns []. This command is used for infantry weapons only.
+desc: Collects all loaded [[magazines]] from all [[binocular]] muzzles and returns them in [[Array]], otherwise it returns []. This command is used for infantry weapons only.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>hint str binocularMagazine player; // ["Laserbatteries"]</sqf>
+see_also:
+- binocularItems
+- addBinocularItem
+- removeBinocularItem
+- removeAllBinocularItems
+- primaryWeaponMagazine
+- secondaryWeaponMagazine
+- handgunMagazine

@@ -1,5 +1,5 @@
 name: ctrlSetFontSecondary
-description: Sets the font size of the secondary text of given control.
+desc: Sets the font size of the secondary text of given control.
 groups:
 - GUI Control
 syntax:
@@ -7,19 +7,19 @@ syntax:
   - ctrl
   - fontClass
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ctrl
     type: Control
   - name: fontClass
-    description: font class
+    desc: font class
     type: String
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 62
+  arma3: '1.62'
 examples:
 - _control [[ctrlSetFontSecondary]] "TahomaB";
+see_also:
+- ctrlSetFontP
+- ctrlSetFontHeightSecondary

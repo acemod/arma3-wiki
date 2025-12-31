@@ -1,5 +1,5 @@
 name: limitSpeed
-description: Limit the speed of an AI-driven vehicle or AI person to given value. It has continuous effect and AI will not break through the speed limitation until one is contacted, engaged or regrouped.
+desc: Limit the speed of an AI-driven vehicle or AI person to given value. It has continuous effect and AI will not break through the speed limitation until one is contacted, engaged or regrouped.
 problem_notes:
 - Since {{GVI|tkoh|1.00|size= 0.75}} and as of {{GVI|arma3|2.14|size= 0.75}}, using any negative value on a helicopter will not reset the speed limit, but will force it to fly in reverse.
 groups:
@@ -10,32 +10,21 @@ syntax:
   - objectName
   - speed
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: objectName
     type: Object
   - name: speed
-    description: in km/h; By default, it's {{hl|2 * maxSpeed}} of the vehicle/unit (which is defined in config). See Example 1.
+    desc: in km/h; By default, it's {{hl|2 * maxSpeed}} of the vehicle/unit (which is defined in config). See Example 1.
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nleader player limitSpeed 5;\t\t// set to walking speed\nsleep 30;\nleader player limitSpeed (2 * getNumber(configOf leader player >> \"maxSpeed\"));\t// remove the limit\n</sqf>"
 - |-
@@ -45,3 +34,6 @@ examples:
   myVehicle limitSpeed 5;
   </sqf>
 - "<sqf>\n// it was necessary to use limitSpeed repeatedly before Arma 3 1.24\n_this setVariable [\"speedLimit\", 50];\n_this spawn {\n\twhile { sleep 0.1; canMove _this } do\n\t{\n\t\t_this limitSpeed (_this getVariable \"speedLimit\");\n\t};\n};\nsleep 10;\n_this setVariable [\"speedLimit\", 100]; // update the speed limit\n</sqf>"
+see_also:
+- speed
+- setCruiseControl

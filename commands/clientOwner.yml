@@ -1,18 +1,24 @@
 name: clientOwner
-description: Returns the [[Multiplayer_Scripting#Machine_network_ID | machine network ID]] of the client executing the command.
+desc: Returns the [[Multiplayer_Scripting#Machine_network_ID | machine network ID]] of the client executing the command.
 groups:
 - Multiplayer
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>private _myNetworkId = clientOwner;</sqf>
+see_also:
+- owner
+- groupOwner
+- onPlayerConnected
+- onPlayerDisconnected
+- getClientState
+- getClientStateNumber
+- admin
+- remoteExecutedOwner

@@ -1,5 +1,5 @@
 name: userInputDisabled
-description: |-
+desc: |-
   Returns whether or not user input is disabled.
   {{Feature|important|The disabled input system internally ''counts'' how many times <sqf inline>disableUserInput true</sqf> has been called - see {{Link|#Example 2}}.}}
 groups:
@@ -7,15 +7,12 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 60
+  arma3: '1.60'
 examples:
 - Toggles user input<sqf>disableUserInput !userInputDisabled;</sqf>
 - |-
@@ -35,3 +32,5 @@ examples:
   disableUserInput false;
   diag_log str userInputDisabled; // false - control is regained only here
   </sqf>
+see_also:
+- disableUserInput

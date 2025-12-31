@@ -1,5 +1,5 @@
 name: selectLeader
-description: |-
+desc: |-
   Select the group's leader. Group locality can be checked with [[local]] command and group ownership with [[groupOwner]] command.
 
   {{Feature | important | An invalid combination can be provided to this command, e.g ''unitName'' '''not''' being part of ''group''. In that case:
@@ -13,8 +13,7 @@ syntax:
   - group
   - unitName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: group
     type: Group
@@ -23,26 +22,22 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>group player selectLeader player;</sqf>
 - |-
   Make unit a leader from server:
   <sqf>[group _unit, _unit] remoteExec ["selectLeader", groupOwner group _unit];</sqf>
+see_also:
+- commandFollow
+- doFollow
+- formationLeader
+- formLeader
+- isFormationLeader
+- leader
+- setLeader

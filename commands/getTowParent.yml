@@ -1,22 +1,22 @@
 name: getTowParent
-description: Get the vehicle towing the provided one.
+desc: Get the vehicle towing the provided one.
 groups:
 - PhysX
 - Ropes and Sling Loading
 syntax:
 - call: !Unary towedVehicle
   ret:
-  - Object
-  - the object towing the provided object - [[objNull]] if not towed
+    type: Object
+    desc: the object towing the provided object - [[objNull]] if not towed
   params:
   - name: towedVehicle
-    description: the towed vehicle
+    desc: the towed vehicle
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 12
+  arma3: '2.12'
 examples:
 - <sqf>private _towParent = getTowParent _towedvehicle;</sqf>
+see_also:
+- setTowParent

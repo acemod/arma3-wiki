@@ -1,5 +1,5 @@
 name: addBackpackCargoGlobal
-description: |-
+desc: |-
   Add backpack(s) to the cargo space of vehicle.
   {{Feature|informative|
   Classname list of available backpacks:
@@ -14,30 +14,51 @@ syntax:
   - - packClassName
     - count
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
-    description: object to add the Backpack to
+    desc: object to add the Backpack to
     type: Object
   - name: packClassName
-    description: see the topic [[:Category:Weapons]] for reference about possible values.
+    desc: see the topic [[:Category:Weapons]] for reference about possible values.
     type: String
   - name: count
-    description: number of backpacks to add; {{GVI|arma3|2.14|size= 0.75}} a negative value will remove backpacks.
+    desc: number of backpacks to add; {{GVI|arma3|2.14|size= 0.75}} a negative value will remove backpacks.
     type: Number
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 55
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.55'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>this addBackpackCargoGlobal ["TK_RPG_Backpack_EP1", 2];</sqf>
 - <sqf>_apc addBackpackCargoGlobal ["US_Patrol_Pack_EP1", 4];</sqf>
+see_also:
+- backpackContainer
+- firstBackpack
+- unitBackpack
+- backpack
+- backpackCargo
+- getBackpackCargo
+- backpackItems
+- addBackpack
+- addBackpackCargo
+- removeBackpack
+- clearBackpackCargo
+- clearBackpackCargoGlobal
+- clearAllItemsFromBackpack
+- loadBackpack
+- backpackSpaceFor
+- canAddItemToBackpack
+- addItemToBackpack
+- removeItemFromBackpack
+- everyBackpack
+- addMagazineCargo
+- clearMagazineCargo
+- clearWeaponCargo
+- addMagazineCargoGlobal
+- addWeaponCargo
+- addWeaponCargoGlobal
+- addItemCargo
+- addItemCargoGlobal

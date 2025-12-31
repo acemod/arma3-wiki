@@ -1,5 +1,5 @@
 name: setInfoPanel
-description: Opens given component or first component of given component type on specified info panel.
+desc: Opens given component or first component of given component type on specified info panel.
 groups:
 - Custom Panels
 syntax:
@@ -7,20 +7,18 @@ syntax:
   - infoPanelId
   - componentClassOrType
   ret:
-  - Boolean
-  - '[[true]] if panel was successfully opened, [[false]] otherwise (e.g. opening GPS on player without GPS item or setting panel to vehicle that doesn''t have such capability configured)'
+    type: Boolean
+    desc: '[[true]] if panel was successfully opened, [[false]] otherwise (e.g. opening GPS on player without GPS item or setting panel to vehicle that doesn''t have such capability configured)'
   params:
   - name: infoPanelId
-    description: info panel classname, or "left" or "right"
+    desc: info panel classname, or "left" or "right"
     type: String
   - name: componentClassOrType
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 72
+  arma3: '1.72'
 examples:
 - |-
   <sqf>
@@ -28,3 +26,13 @@ examples:
   private _result = setInfoPanel ["VehicleSystemsDisplayManagerComponentRight", "SlingLoadDisplayComponent"];
   if (!_result) then { hint "could not open the slingload assistant, sorry" };
   </sqf>
+see_also:
+- Arma
+- '3:'
+- Custom
+- Info
+- infoPanel
+- infoPanels
+- infoPanelComponents
+- enableInfoPanelComponent
+- infoPanelComponentEnabled

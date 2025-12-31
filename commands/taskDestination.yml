@@ -1,29 +1,23 @@
 name: taskDestination
-description: Returns the position of the task (as specified by destination parameter in config).
+desc: Returns the position of the task (as specified by destination parameter in config).
 groups:
 - Briefing
 syntax:
 - call: !Unary task
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: task
     type: Task
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>if (!isNull currentTask player) then { hint str taskDestination currentTask player };</sqf>
+see_also:
+- cancelSimpleTaskDestination
+- setSimpleTaskDestination

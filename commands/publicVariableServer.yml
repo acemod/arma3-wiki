@@ -1,5 +1,5 @@
 name: publicVariableServer
-description: |-
+desc: |-
   Send the variable value to the server - same limitations regarding variable type as [[publicVariable#Description|publicVariable]].
   {{Feature|arma3|In {{arma3}} it is possible to broadcast the [[nil]] value.}}
 groups:
@@ -8,22 +8,19 @@ groups:
 syntax:
 - call: !Unary varName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: varName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 62
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.62'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>publicVariableServer "CTFscoreOne";</sqf>
+see_also:
+- publicVariable
+- publicVariableClient
+- addPublicVariableEventHandler

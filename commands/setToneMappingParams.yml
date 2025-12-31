@@ -1,5 +1,5 @@
 name: setToneMappingParams
-description: |-
+desc: |-
   Edits tone mapping parameters. Settings are stored even if the concerned tone is not the one currently in use.
   {{Feature|arma3|This command is not present in {{arma3}}.}}
 groups:
@@ -9,22 +9,23 @@ syntax:
   - toneName
   - params
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: toneName
-    type: Unknown
+    type: !StringEnum
+    - - '"Arma"'
+      - null
+    - - '"Filmic"'
+      - null
+    - - '"Reinhard"'
+      - null
   - name: params
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 62
-  take_on_helicopters:
-    major: 1
-    minor: 0
+  arma2oa: '1.62'
+  tkoh: '1.0'
 examples:
 - <sqf>"Filmic" setToneMappingParams [0.2, 0.3, 0.2, 0.3, 0.01, 3.750, 6, 4];</sqf>
 - <sqf>"Reinhard" setToneMappingParams [0.9, -0.003];</sqf>
@@ -35,3 +36,13 @@ examples:
   "Filmic" setToneMappingParams [0.153, 0.357, 0.231, 0.1573, 0.011, 3.75, 6, 4]; // {{arma3}} uses [0.22, 0.3, 0.1, 0.2, 0.01, 0.3, 11.2, 2] for terrains
   "Reinhard" setToneMappingParams [0.9, 0];
   </sqf>
+see_also:
+- setToneMapping
+- ppEffectAdjust
+- ppEffectCommit
+- ppEffectCommitted
+- ppEffectCreate
+- ppEffectDestroy
+- Post
+- Process
+- Effects

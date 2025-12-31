@@ -1,5 +1,5 @@
 name: currentTasks
-description: |-
+desc: |-
   Returns array with all [[taskCompleted | uncompleted]] tasks for the given agent.
   [[getVariable]] could be used on [[Task]] to get the following special local variables from the task:
   * {{hl|"_this"}} [[Team Member]] - the [[teamMember]] [[agent]] the task is assigned to
@@ -15,26 +15,25 @@ groups:
 syntax:
 - call: !Unary teamMember
   ret:
-  - ArrayUnknown
-  - array of [[Task]]s
+    type: ArrayUnknown
+    desc: array of [[Task]]s
   params:
   - name: teamMember
-    description: '[[teamMember]] [[agent]]'
+    desc: '[[teamMember]] [[agent]]'
     type: TeamMember
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>currentTasks teamMember _agent;</sqf>
+see_also:
+- taskCompleted
+- registerTask
+- registeredTasks
+- unregisterTask
+- sendTask
+- createTask

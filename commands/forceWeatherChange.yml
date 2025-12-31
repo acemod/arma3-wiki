@@ -1,5 +1,5 @@
 name: forceWeatherChange
-description: |-
+desc: |-
   Forcibly applies previously set weather settings. Skips smooth transitions. This might cause lag.
 
   {{Feature|informative|To prevent the engine from overwriting custom weather settings, enable the ''Manual Control'' settings in [[:Category:Eden Editor|Eden Editor]]'s intel section.}}
@@ -8,16 +8,13 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - |-
   <sqf>
@@ -25,3 +22,15 @@ examples:
   0 setRain 1;
   forceWeatherChange; // Force immediate change overriding smooth transitions
   </sqf>
+see_also:
+- fog
+- fogForecast
+- setFog
+- overcast
+- setOvercast
+- overcastForecast
+- nextWeatherChange
+- rain
+- setRain
+- setWind
+- simulWeatherSync

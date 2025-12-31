@@ -1,20 +1,21 @@
 name: getBleedingRemaining
-description: Returns how many seconds injured unit will continue leaving blood trail. If unit damage is < 0.1, the return value is 0 and unit doesn't leave any blood trail. Use [[setBleedingRemaining]] to set different remaining time.
+desc: Returns how many seconds injured unit will continue leaving blood trail. If unit damage is < 0.1, the return value is 0 and unit doesn't leave any blood trail. Use [[setBleedingRemaining]] to set different remaining time.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_bleedingRemaining = getBleedingRemaining _unit;</sqf>
+see_also:
+- isBurning
+- setBleedingRemaining
+- isBleeding

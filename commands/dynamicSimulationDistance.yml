@@ -1,20 +1,26 @@
 name: dynamicSimulationDistance
-description: A getter for [[setDynamicSimulationDistance]].
+desc: A getter for [[setDynamicSimulationDistance]].
 groups:
 - Dynamic Simulation
 syntax:
 - call: !Unary category
   ret:
-  - Number
-  - activation distance
+    type: Number
+    desc: activation distance
   params:
   - name: category
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>hint str dynamicSimulationDistance "Prop";</sqf>
+see_also:
+- Arma
+- '3:'
+- Dynamic
+- Simulation
+- setDynamicSimulationDistance
+- setDynamicSimulationDistanceCoef
+- dynamicSimulationDistanceCoef

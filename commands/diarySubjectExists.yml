@@ -1,5 +1,5 @@
 name: diarySubjectExists
-description: Checks whether given subject is present in the [[Diary]] of given player.
+desc: Checks whether given subject is present in the [[Diary]] of given player.
 groups:
 - Briefing
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - player
   - name
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: player
     type: Object
@@ -17,17 +16,15 @@ syntax:
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_exists = player diarySubjectExists "subjectName";</sqf>
+see_also:
+- processDiaryLink
+- createDiaryLink
+- createDiaryRecord
+- createDiarySubject
+- allDiarySubjects

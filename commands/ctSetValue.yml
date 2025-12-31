@@ -1,5 +1,5 @@
 name: ctSetValue
-description: Associates metadata (number) with the row determined by the index. Returns Nothing.
+desc: Associates metadata (number) with the row determined by the index. Returns Nothing.
 groups:
 - GUI Control - Controls Table
 syntax:
@@ -8,8 +8,7 @@ syntax:
   - - index
     - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -20,8 +19,25 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>_control ctSetValue [0, 23];</sqf>
+see_also:
+- ctAddRow
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetCurSel
+- ctValue
+- ctSetData
+- ctData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

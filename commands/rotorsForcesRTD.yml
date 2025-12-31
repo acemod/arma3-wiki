@@ -1,5 +1,5 @@
 name: rotorsForcesRTD
-description: |-
+desc: |-
   Returns force produced by rotors.
   {{Feature|afm}}
 groups:
@@ -7,16 +7,18 @@ groups:
 syntax:
 - call: !Unary helicopter
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - <sqf>_rotorForces = rotorsForcesRTD _taru; // Returns [[-465.981,351.941,45960.5],[-469.079,397.451,46933.3]]</sqf>
+see_also:
+- rotorsRpmRTD
+- weightRTD
+- wingsForcesRTD
+- airDensityRTD

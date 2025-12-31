@@ -1,5 +1,5 @@
 name: ctRemoveRows
-description: Takes array of row indices as a parameter and removes rows with those indices. Indices of remaining rows will be recomputed.
+desc: Takes array of row indices as a parameter and removes rows with those indices. Indices of remaining rows will be recomputed.
 groups:
 - GUI Control - Controls Table
 syntax:
@@ -9,8 +9,7 @@ syntax:
     - index2
     - '...'
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ctrl
     type: Control
@@ -19,8 +18,25 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>_control ctRemoveRows [0, 1, 2];</sqf>
+see_also:
+- ctAddRow
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctSetCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetValue
+- ctValue
+- ctSetData
+- ctData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

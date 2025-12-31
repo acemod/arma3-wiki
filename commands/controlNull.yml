@@ -1,32 +1,32 @@
 name: controlNull
-description: A non-existing [[Control]]. To compare non-existent objects use [[isNull]] or [[isEqualTo]] (see examples).
+desc: A non-existing [[Control]]. To compare non-existent objects use [[isNull]] or [[isEqualTo]] (see examples).
 groups:
 - GUI Control
 syntax:
 - call: Nular
   ret:
-  - Control
-  - null
+    type: Control
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>if (_myCtrl isEqualTo controlNull) then { hint "_myCtrl is null!"; };</sqf>
 - "<sqf>\ncontrolNull == controlNull;\t\t\t// returns false\nisNull controlNull;\t\t\t\t\t\t// returns true\ncontrolNull isEqualTo controlNull;\t\t// returns true\n</sqf>"
 - <sqf>str controlNull; // No control</sqf>
+see_also:
+- displayNull
+- grpNull
+- locationNull
+- objNull
+- taskNull
+- teamMemberNull
+- scriptNull
+- configNull
+- typeName
+- isNull

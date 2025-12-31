@@ -1,5 +1,5 @@
 name: commandTarget
-description: Order the given unit(s) to target the given target (via the radio). Command given to the player, puts a red square with words Target and Distance on player's HUD at target location. If player in vehicle and has radar facilities, it also adds target marker to the radar.
+desc: Order the given unit(s) to target the given target (via the radio). Command given to the player, puts a red square with words Target and Distance on player's HUD at target location. If player in vehicle and has radar facilities, it also adds target marker to the radar.
 multiplayer_note: This command is only effective when used on local units. When used on a remote unit, this command will create radio dialogue on the machine the unit is local to, but the unit will not target the target.
 groups:
 - Groups
@@ -8,37 +8,29 @@ syntax:
   - unit
   - target
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
   - name: target
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_ESoldier1 commandTarget _WSoldier1;</sqf>
 - <sqf>player commandTarget [ted, bill];</sqf>
+see_also:
+- assignedTarget
+- doTarget

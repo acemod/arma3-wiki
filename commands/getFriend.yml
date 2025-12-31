@@ -1,5 +1,5 @@
 name: getFriend
-description: Returns if sides are friendly or hostile. For a value smaller than 0.6 it results in being enemy, otherwise it is friendly. See also [[Side Relations]].
+desc: Returns if sides are friendly or hostile. For a value smaller than 0.6 it results in being enemy, otherwise it is friendly. See also [[Side Relations]].
 groups:
 - Sides
 syntax:
@@ -7,8 +7,8 @@ syntax:
   - side1
   - side2
   ret:
-  - Number
-  - decimal value between 0.0 to 1.0
+    type: Number
+    desc: decimal value between 0.0 to 1.0
   params:
   - name: side1
     type: Side
@@ -17,18 +17,16 @@ syntax:
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>value = west getFriend east;</sqf>
 - <sqf>_isEnemy = side _killer getFriend side _victim < 0.6;</sqf>
+see_also:
+- setFriend
+- BIS_fnc_sideIsFriendly
+- BIS_fnc_sideIsEnemy
+- Side
+- Relations

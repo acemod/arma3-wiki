@@ -1,21 +1,20 @@
 name: setCustomMissionData
-description: 'Defines custom mission text that is sent to [[Arma 3: Analytics]].'
+desc: 'Defines custom mission text that is sent to [[Arma 3: Analytics]].'
 groups:
 - Diagnostic
 syntax:
 - call: !Unary data
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: data
-    description: array of strings. A maximum of five strings is allowed, each string with a maximum length of 16 characters
+    desc: array of strings. A maximum of five strings is allowed, each string with a maximum length of 16 characters
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>setCustomMissionData ["someData", "someMoreData"];</sqf>
+see_also:
+- '-'

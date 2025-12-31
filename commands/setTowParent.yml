@@ -1,5 +1,5 @@
 name: setTowParent
-description: |-
+desc: |-
   {{{!}} class="wikitable float-right align-center-col-2 align-center-col-3"
   ! Simulation
   ! Towable
@@ -36,20 +36,20 @@ syntax:
   - towedVehicle
   - towingVehicle
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: towedVehicle
-    description: vehicle of type CarX (no tanks, no aircrafts, no boats)
+    desc: vehicle of type CarX (no tanks, no aircrafts, no boats)
     type: Object
   - name: towingVehicle
-    description: vehicle of type CarX or TankX (no aircrafts, no boats)
+    desc: vehicle of type CarX or TankX (no aircrafts, no boats)
     type: Object
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - "<sqf>\n{ moveOut _x } forEach crew _towedVehicle;\t// make sure nobody is in the towed vehicle\n_towedVehicle lock true;\t\t\t\t\t// make sure everybody stays out of it\nropeCreate [_bobcat, [0,-5,0], _towedVehicle, [0,2,0]];\n_towedVehicle setTowParent _bobcat;\n</sqf>"
+see_also:
+- getTowParent
+- ropeCreate

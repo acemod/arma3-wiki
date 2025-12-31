@@ -1,20 +1,20 @@
 name: missionDifficulty
-description: Return difficulty that has been forced for this mission, returns -1 if difficulty is not forced and it is used one from player's options.
+desc: Return difficulty that has been forced for this mission, returns -1 if difficulty is not forced and it is used one from player's options.
 groups:
 - Difficulty
 - Mission Information
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 62
+  arma3: '1.62'
 examples:
 - <sqf>private _number = missionDifficulty;</sqf>
 - "<sqf>\nprivate _playedDifficulty = missionDifficulty;\nif (_playedDifficulty == -1) then\n{\n\t_playedDifficulty = difficulty;\n};\n</sqf>"
+see_also:
+- difficultyOption
+- difficulty

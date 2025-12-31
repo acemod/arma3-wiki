@@ -1,5 +1,5 @@
 name: menuEnable
-description: Enables or disables menu entry on given path.
+desc: Enables or disables menu entry on given path.
 groups:
 - GUI Control - Menu
 syntax:
@@ -8,49 +8,43 @@ syntax:
   - path
   - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: path
     type: ArrayUnknown
   - name: enable
-    description: disabled if [[false]]
+    desc: disabled if [[false]]
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
-      arma_3:
-        major: 2
-        minor: 6
+      arma3: '2.6'
 - call: !Binary
   - control
   - - path
     - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: path
     type: ArrayUnknown
   - name: enable
-    description: disabled if [[false]]
+    desc: disabled if [[false]]
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
-      arma_3:
-        major: 2
-        minor: 6
+      arma3: '2.6'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>findDisplay 313 displayCtrl 120 menuEnable [0]; // old syntax, do not use</sqf>
 - <sqf>findDisplay 313 displayCtrl 120 menuEnable [[0, 0, 1], false]; // since {{arma3}} v2.06</sqf>
+see_also:
+- menuEnabled

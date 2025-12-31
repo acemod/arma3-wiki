@@ -1,5 +1,5 @@
 name: setVehicleReportOwnPosition
-description: Sets that the vehicle will share its own position via datalink to the [[Side]] center.
+desc: Sets that the vehicle will share its own position via datalink to the [[Side]] center.
 groups:
 - Sensors
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - vehicle
   - report
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
@@ -17,8 +16,15 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>vehicle player setVehicleReportOwnPosition true;</sqf>
+see_also:
+- setVehicleRadar
+- vehicleReportRemoteTargets
+- setVehicleReportRemoteTargets
+- vehicleReceiveRemoteTargets
+- setVehicleReceiveRemoteTargets
+- vehicleReportOwnPosition
+- reportRemoteTarget
+- confirmSensorTarget

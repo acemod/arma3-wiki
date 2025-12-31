@@ -1,5 +1,5 @@
 name: selectionNames
-description: |-
+desc: |-
   Returns the list of model selections. When using default syntax, the named selections are returned from the first [[LOD]] only (LOD index 0).<br>
   Alternative syntax allows to select LOD by name or by [[LOD_resolutions|LOD resolution]].
 
@@ -12,8 +12,10 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - ArrayUnknown
-  - selection names
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+    desc: selection names
   params:
   - name: object
     type: Object
@@ -21,23 +23,37 @@ syntax:
   - object
   - LOD
   ret:
-  - ArrayUnknown
-  - selection names
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+    desc: selection names
   params:
   - name: object
     type: Object
   - name: LOD
-    type: Unknown
+    type: !StringEnum
+    - - '[[String]] - LOD name; can be one of:'
+      - null
+    - - '"Memory"'
+      - null
+    - - '"Geometry"'
+      - null
+    - - '"FireGeometry"'
+      - null
+    - - '"LandContact"'
+      - null
+    - - '"HitPoints"'
+      - null
+    - - '{{GVI|arma3|2.06|size= 0.75}} "ViewGeometry"'
+      - arma3: '2.6'
+    - - '[[Number]] - LOD resolution; command searches for a LOD with the similar [[LOD resolutions|resolution]]'
+      - null
   since:
-    arma_3:
-      major: 2
-      minor: 0
+    arma3: '2.0'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 58
+  arma3: '1.58'
 examples:
 - "<sqf>\nprivate _result = \"Land_i_House_Small_02_V3_F\" createVehicle _pos;\nselectionNames _house;\n/*\n[\n\t\"door_1\",\"door_2\",\"damt_1\",\"door_handle_1\",\"door_handle_2\",\"glass_1_hide\",\"glass_2_hide\",\"glass_3_hide\",\n\t\"glass_1_unhide\",\"glass_2_unhide\",\"glass_3_unhide\",\"glass_4_hide\",\"glass_4_unhide\"\n]\n*/\n</sqf>"
 - "<sqf>\nselectionNames player;\n/*\n[\n\t\"spine\",\"spine1\",\"spine2\",\"spine3\",\"head\",\n\t\"leftshoulder\",\"leftarm\",\"leftarmroll\",\"leftforearm\",\"leftforearmroll\",\"lefthand\",\"rightshoulder\",\"rightarm\",\"rightarmroll\",\"rightforearm\",\"rightforearmroll\",\"righthand\",\n\t\"pelvis\",\"leftupleg\",\"leftuplegroll\",\"leftleg\",\"leftlegroll\",\"leftfoot\",\"lefttoebase\",\"rightupleg\",\"rightuplegroll\",\"rightleg\",\"rightlegroll\",\"rightfoot\",\"righttoebase\",\"weapon\",\n\t\"proxy:\\a3\\characters_f\\proxies\\weapon.001\",\"proxy:\\a3\\characters_f\\proxies\\pistol.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\binoculars.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\launcher.001\",\n\t\"launcher\",\"nvg\",\"proxy:\\a3\\characters_f\\proxies\\nvg.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\flag.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\equipment.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\backpack.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\pistol_holstered.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\head_male.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\glasses.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\headgear.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\hair.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\backpack2.001\",\n\t\"proxy:\\a3\\characters_f\\proxies\\radio.001\",\n\t\"body_proxy\",\"head_proxy\",\n\t\"lefthandindex1\",\"lefthandindex2\",\"lefthandindex3\",\"lefthandmiddle1\",\"lefthandmiddle2\",\"lefthandmiddle3\",\"lefthandring\",\"lefthandpinky1\",\"lefthandpinky2\",\"lefthandpinky3\",\n\t\"lefthandring1\",\"lefthandring2\",\"lefthandring3\",\"lefthandthumb1\",\"lefthandthumb2\",\"lefthandthumb3\",\n\t\"righthandindex1\",\"righthandindex2\",\"righthandindex3\",\"righthandmiddle1\",\"righthandmiddle2\",\"righthandmiddle3\",\"righthandring\",\"righthandpinky1\",\"righthandpinky2\",\"righthandpinky3\",\n\t\"righthandring1\",\"righthandring2\",\"righthandring3\",\"righthandthumb1\",\"righthandthumb2\",\"righthandthumb3\",\n\t\"injury_hands\",\n\t\"camo\",\n\t\"proxy:\\a3\\characters_f\\heads\\bysta.001\",\n\t\"injury_legs\",\n\t\"proxy:\\a3\\characters_f\\proxies\\hmd.001\",\n\t\"hl\",\"insignia\",\"injury_body\",\"clan\"\n]\n*/\n</sqf>"
@@ -46,3 +62,13 @@ examples:
 - |-
   Select "Memory" LOD by its [[LOD resolutions|resolution]]:
   <sqf>private _memoryLODNamedSelections = player selectionNames 1e15;</sqf>
+see_also:
+- getBoneNames
+- createSimpleObject
+- hideSelection
+- selectionPosition
+- namedProperties
+- animationNames
+- allLODs
+- LOD
+- resolutions

@@ -1,5 +1,5 @@
 name: cursorTarget
-description: |-
+desc: |-
   Returns the target pointed at by the player (usually with cross-hairs). The target has to be known to the player to some degree ([[knowsAbout]] > 0). If target is completely unknown, command returns [[objNull]].<br><br>
   A valid target could belong to an enemy or a friendly side. Buildings are normally known to player and so are valid targets. Try [[nearTargets]] to see what else is considered a target.
   While friendly targets are usually known to the player, enemy targets can be totally unknown, especially if "auto-spotting" (or sometimes called "auto-reporting") is switched off. To check if auto-spotting is enabled: <sqf inline>difficultyEnabled "autospot"</sqf>.<br><br>
@@ -13,23 +13,27 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Object
-  - null
+    type: Object
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>alive cursorTarget;</sqf>
+see_also:
+- cursorObject
+- getCursorObjectParams
+- laserTarget
+- nearTargets
+- knowsAbout
+- reveal
+- lineIntersects
+- lineIntersectsWith
+- lineIntersectsObjs
+- lineIntersectsSurfaces
+- intersect
+- checkVisibility

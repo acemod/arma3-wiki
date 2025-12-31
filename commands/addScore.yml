@@ -1,5 +1,5 @@
 name: addScore
-description: Adds a number to the score of a unit. Negative values will remove from the score.
+desc: Adds a number to the score of a unit. Negative values will remove from the score.
 multiplayer_note: Server execution only
 groups:
 - Multiplayer
@@ -8,8 +8,7 @@ syntax:
   - unit
   - score
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,29 +16,26 @@ syntax:
     type: Number
 argument_loc: Global
 effect_loc: Global
-server_exec: false
+server_exec: true
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>unit addScore 10;</sqf>
 - <sqf>unit addScore -1337; // reduce the unit's score by 1337 points</sqf>
+see_also:
+- score
+- scoreSide
+- addScoreSide
+- getPlayerScores
+- Arma
+- '3:'
+- Event
+- Handlers#HandleScore|HandleScore
+- Event
+- Handler

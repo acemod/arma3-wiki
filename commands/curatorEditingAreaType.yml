@@ -1,20 +1,22 @@
 name: curatorEditingAreaType
-description: Returns type of edit areas assigned to curator (blacklist/whitelist).
+desc: Returns type of edit areas assigned to curator (blacklist/whitelist).
 groups:
 - Curator
 syntax:
 - call: !Unary curator
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: curator
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>_isBlacklist = curatorEditingAreaType _curator;</sqf>
+see_also:
+- BIS_fnc_addCuratorAreaFromTrigger
+- removeCuratorEditingArea
+- removeAllCuratorEditingAreas
+- curatorEditingArea

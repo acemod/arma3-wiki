@@ -1,5 +1,5 @@
 name: sendUDPMessage
-description: "Send message to given address using UDP protocol. Returns false if the message has not been delivered \n\n{{Feature|warning|Disabled in retail version (see the [[Talk:sendUDPMessage|talk page]] for more info).}}"
+desc: "Send message to given address using UDP protocol. Returns false if the message has not been delivered \n\n{{Feature|warning|Disabled in retail version (see the [[Talk:sendUDPMessage|talk page]] for more info).}}"
 groups:
 - Multiplayer
 syntax:
@@ -8,8 +8,7 @@ syntax:
   - port
   - message
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: ip
     type: String
@@ -20,14 +19,10 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_bool = sendUDPMessage ["192.168.0.1", 2302, "Here goes you message..."];</sqf>
+see_also:
+- sendAUMessage

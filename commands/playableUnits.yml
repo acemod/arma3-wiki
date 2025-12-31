@@ -1,5 +1,5 @@
 name: playableUnits
-description: |-
+desc: |-
   Returns a list of playable units in a multiplayer game (occupied by both AI or players), created on the following sides [[east]]/[[opfor]], [[west]]/[[blufor]], [[resistance]]/[[independent]] and [[civilian]] only.
   Does not contain units of [[sideLogic]].
   {{Feature|informative|This command returns an empty array in Singleplayer; use [[switchableUnits]] instead.}}
@@ -10,25 +10,28 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>{ _x groupChat "I'm a playable unit."; } forEach playableUnits;</sqf>
 - <sqf>_playableInGroup = units group player arrayIntersect playableUnits;</sqf>
 - <sqf>_nonPlayableInGroup = units group player - playableUnits;</sqf>
+see_also:
+- playableSlotsNumber
+- allPlayers
+- allCurators
+- allGroups
+- allDead
+- switchableUnits
+- vehicles
+- allUnitsUAV
+- allDeadMen
+- isPlayer
+- playersNumber

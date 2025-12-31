@@ -1,5 +1,5 @@
 name: distance
-description: |-
+desc: |-
   [[File:distance2D.jpg|400px|right]]
   Returns a distance in meters between [[Object]]s, [[Position]]s or [[Location]]s.
   {{Feature | important | If positions are supplied as arguments, the coordinates are treated as [[Position#PositionAGL|PositionAGL]]. If [[Position#Introduction|Position2D]] is supplied, z is assumed 0. If you need distance between two [[Position#Position3D|Position3D]] coordinates, use [[vectorDistance]].}}
@@ -10,65 +10,77 @@ syntax:
   - param1
   - param2
   ret:
-  - Number
-  - distance in meters or 1e10 if distance cannot be calculated
+    type: Number
+    desc: distance in meters or 1e10 if distance cannot be calculated
   params:
   - name: param1
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Position3dAGL
+      - null
+    - - Position2d
+      - null
   - name: param2
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Position3dAGL
+      - null
+    - - Position2d
+      - null
 - call: !Binary
   - location1
   - location2
   ret:
-  - Number
-  - distance in meters or 1e10 if distance cannot be calculated
+    type: Number
+    desc: distance in meters or 1e10 if distance cannot be calculated
   params:
   - name: location1
-    type: Unknown
+    type: !OneOf
+    - - Location
+      - null
+    - - Position
+      - null
+    - - Position2d
+      - null
   - name: location2
-    type: Unknown
+    type: !OneOf
+    - - Location
+      - null
+    - - Position
+      - null
+    - - Position2d
+      - null
 - call: !Binary
   - a
   - b
   ret:
-  - Number
-  - distance c calculated as c = sqrt(a * a + b * b);
+    type: Number
+    desc: distance c calculated as c = sqrt(a * a + b * b);
   params:
   - name: a
     type: Number
   - name: b
     type: Number
   since:
-    arma_3:
-      major: 2
-      minor: 18
+    arma3: '2.18'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_meters = player distance _object;</sqf>
 - <sqf>_meters = player distance [1,2,3];</sqf>
 - <sqf>_meters = [1,2,3] distance [4,5,6];</sqf>
 - <sqf>_meters = position player distance nearestLocation [position player, "hill"];</sqf>
+see_also:
+- distanceSqr
+- vectorDistance
+- distance2D

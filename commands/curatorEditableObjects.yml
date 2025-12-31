@@ -1,21 +1,25 @@
 name: curatorEditableObjects
-description: Returns all editable objects which belong to a curator.
+desc: Returns all editable objects which belong to a curator.
 groups:
 - Curator
 syntax:
 - call: !Unary curatorObj
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: curatorObj
-    description: curator module.
+    desc: curator module.
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>_objects = curatorEditableObjects myCurator;</sqf>
+see_also:
+- Arma
+- '3:'
+- Curator
+- curatorMouseOver
+- addCuratorEditableObjects
+- removeCuratorEditableObjects

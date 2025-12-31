@@ -1,21 +1,23 @@
 name: curatorPoints
-description: Returns number of points that curator have. Points can be only in range from 0 to 1.
+desc: Returns number of points that curator have. Points can be only in range from 0 to 1.
 groups:
 - Curator
 syntax:
 - call: !Unary curatorObj
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: curatorObj
-    description: curator module.
+    desc: curator module.
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>_points = curatorPoints myCurator;</sqf>
+see_also:
+- Arma
+- '3:'
+- Curator
+- addCuratorPoints

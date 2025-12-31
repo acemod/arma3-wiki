@@ -1,5 +1,5 @@
 name: switchMove
-description: |-
+desc: |-
   Immediately applies given animation to the unit. For a smooth transition from the current animation (by connecting animations successively, e.g {{hl|CurrentAnim -> Intermediate1 -> Intermediate2 -> TargetAnim}}), use [[playMove]] or [[playMoveNow]].
   {{Feature|informative|see [[:Category:Moves]] for respective games animations.}}
 
@@ -25,14 +25,13 @@ syntax:
   - person
   - moveName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: person
-    description: unit
+    desc: unit
     type: Object
   - name: moveName
-    description: animation state (see [[animationState]])
+    desc: animation state (see [[animationState]])
     type: String
 - call: !Binary
   - person
@@ -41,58 +40,41 @@ syntax:
     - blendFactor
     - resetAim
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: person
-    description: unit
+    desc: unit
     type: Object
   - name: moveName
-    description: entry from {{hl|"CfgMovesMaleSdr" >> "states"}} or {{hl|"CfgGesturesMale" >> "states"}}
+    desc: entry from {{hl|"CfgMovesMaleSdr" >> "states"}} or {{hl|"CfgGesturesMale" >> "states"}}
     type: String
   - name: time
-    description: normalized time, in range 0..1, where 0 = beginning of the animation, and 1 = end of the animation
+    desc: normalized time, in range 0..1, where 0 = beginning of the animation, and 1 = end of the animation
     type: Number
     optional: true
     default: '0'
   - name: blendFactor
-    description: how much to blend the current animation with the new animation, in range 0..1, where 0 = current animation, and 1 = new animation. When 1 is used, the switching is instant (not smooth), similar to the first syntax.
+    desc: how much to blend the current animation with the new animation, in range 0..1, where 0 = current animation, and 1 = new animation. When 1 is used, the switching is instant (not smooth), similar to the first syntax.
     type: Number
     optional: true
     default: '1'
   - name: resetAim
-    description: whether the aim/head direction should be reset after switching
+    desc: whether the aim/head direction should be reset after switching
     type: Boolean
     optional: true
     default: 'true'
   since:
-    arma_3:
-      major: 2
-      minor: 18
+    arma3: '2.18'
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   Prone:
@@ -104,3 +86,11 @@ examples:
   Resets unit's animation:
   <sqf>_unit switchMove "";</sqf>
 - "<sqf>\n// Create a dummy agent that copies your moves\nai1 = createAgent [typeOf player, getPosATL player, [], 0, \"NONE\"];\nai1 disableAI \"ALL\";\nonEachFrame\n{\n\tai1 setAnimSpeedCoef getAnimSpeedCoef player;\n\tai1 setVectorDir vectorDir player;\n\tprivate _m = animationState player;\n\tprivate _g = gestureState player;\n\tprivate _i = getUnitMovesInfo player;\n\tprivate _a = getUnitMovesInfo ai1;\n\t\n\tif (animationState ai1 != _m || abs(_i#1 - _a#1) > 0.1) then\n\t{\n\t\tai1 switchMove [_m, _i#0, _i#3, false];\n\t};\n\n\tif ((gestureState ai1 != _g || abs(_i#6 - _a#6) > 0.1) && (_g != \"<none>\" && _g find \"_player\" < 0)) then\n\t{\n\t\tai1 switchGesture [_g, _i#5, _i#8, false];\n\t};\n}\n</sqf>"
+see_also:
+- switchGesture
+- playMove
+- playMoveNow
+- switchAction
+- playAction
+- playActionNow
+- getUnitMovesInfo

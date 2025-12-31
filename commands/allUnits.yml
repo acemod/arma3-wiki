@@ -1,5 +1,5 @@
 name: allUnits
-description: |-
+desc: |-
   Returns a list of all units, '''except agents, dead units or units waiting for respawn''', outside and inside vehicles that were created on the following sides [[east]], [[west]], [[independent]] and [[civilian]].
   {{Feature|arma3|To get all units of given side, use {{hl|[[units]] [[Side]]}}.}}
 groups:
@@ -7,24 +7,34 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - array of [[Object|object]]s
+    type: ArrayUnknown
+    desc: array of [[Object|object]]s
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>{ _x setDamage 0.5; _x groupChat "Braaains"; } forEach allUnits;</sqf>
 - <sqf>allUnits apply { diag_log _x; };</sqf>
+see_also:
+- allGroups
+- groups
+- units
+- vehicles
+- entities
+- agents
+- playableUnits
+- switchableUnits
+- allPlayers
+- allDead
+- allDeadMen
+- allUnitsUAV
+- allCurators
+- allObjects
+- allMissionObjects
+- allSimpleObjects
+- allMines

@@ -1,21 +1,29 @@
 name: attachedTo
-description: Returns object the given object is attached to or [[objNull]] if the given object is not attached to anything.
+desc: Returns object the given object is attached to or [[objNull]] if the given object is not attached to anything.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary obj
   ret:
-  - Object
-  - object the given object is attached to
+    type: Object
+    desc: object the given object is attached to
   params:
   - name: obj
-    description: given object
+    desc: given object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 14
+  arma3: '1.14'
 examples:
 - "<sqf>\nif (isNull attachedTo _obj1) then\n{\n\thint \"_obj1 is not attached to anything.\";\n};\n</sqf>"
+see_also:
+- attachObject
+- attachTo
+- attachedObjects
+- waypointAttachVehicle
+- waypointAttachedVehicle
+- lightAttachObject
+- triggerAttachVehicle
+- attachedObject
+- detach

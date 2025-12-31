@@ -1,5 +1,5 @@
 name: ctAddRow
-description: |-
+desc: |-
   Adds one row of controls according to the RowTemplate class. It returns an array containing row index and array of created controls in a format [<rowIndex>, [<control0>, <control1>...<control n>]].
   <br>
   Note that rows and headers are indexed separately.
@@ -8,16 +8,32 @@ groups:
 syntax:
 - call: !Unary control
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: control
     type: Control
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>_array = ctAddRow _control;</sqf>
+see_also:
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctSetCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetValue
+- ctValue
+- ctSetData
+- ctData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

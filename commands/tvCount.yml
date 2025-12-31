@@ -1,5 +1,5 @@
 name: tvCount
-description: Returns children count on given path. IDC means id of parent Tree View.
+desc: Returns children count on given path. IDC means id of parent Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
@@ -7,30 +7,47 @@ syntax:
   - idc
   - path
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: idc
     type: Number
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
 - call: !Binary
   - ctrl
   - path
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: ctrl
     type: Control
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 74
+  arma3: '0.74'
 examples:
 - <sqf>tvCount [101, [0]];</sqf>
 - <sqf>_ctrl tvCount [1,0];</sqf>
+see_also:
+- tvAdd
+- tvClear
+- tvCollapse
+- tvCurSel
+- tvData
+- tvDelete
+- tvExpand
+- tvPicture
+- tvSetCurSel
+- tvSetData
+- tvSetPicture
+- tvSetValue
+- tvSort
+- tvSortByValue
+- tvText
+- tvValue

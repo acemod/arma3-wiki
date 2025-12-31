@@ -1,5 +1,5 @@
 name: hideSelection
-description: Hides or shows the [[createSimpleObject | simple object]]'s provided selection.
+desc: Hides or shows the [[createSimpleObject | simple object]]'s provided selection.
 groups:
 - Object Manipulation
 syntax:
@@ -8,23 +8,24 @@ syntax:
   - - selection
     - hidden
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
-    description: simple object
+    desc: simple object
     type: Object
   - name: selection
-    description: selection name
+    desc: selection name
     type: String
   - name: hidden
-    description: '[[true]] to hide, [[false]] to show'
+    desc: '[[true]] to hide, [[false]] to show'
     type: Boolean
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 58
+  arma3: '1.58'
 examples:
 - <sqf>_simpleObject hideSelection ["some_selection", true];</sqf>
+see_also:
+- createSimpleObject
+- selectionNames
+- allLODs

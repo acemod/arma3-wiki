@@ -1,21 +1,40 @@
 name: everyBackpack
-description: Returns array of backpacks stored in given crate or vehicle. Used for accessing backpack content of a backpack on ground.
+desc: Returns array of backpacks stored in given crate or vehicle. Used for accessing backpack content of a backpack on ground.
 groups:
 - Containers
 syntax:
 - call: !Unary box
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: box
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 4
+  arma3: '1.4'
 examples:
 - <sqf>everyBackpack cursorTarget;</sqf>
 - <sqf>_vehicleBackpacks = everyBackpack vehicle player;</sqf>
+see_also:
+- firstBackpack
+- unitBackpack
+- backpack
+- backpackCargo
+- getBackpackCargo
+- backpackItems
+- addBackpack
+- addBackpackCargo
+- addBackpackCargoGlobal
+- removeBackpack
+- clearBackpackCargo
+- clearBackpackCargoGlobal
+- clearAllItemsFromBackpack
+- loadBackpack
+- backpackSpaceFor
+- canAddItemToBackpack
+- addItemToBackpack
+- removeItemFromBackpack
+- backpackContainer
+- everyContainer
+- backpacks

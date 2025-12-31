@@ -1,5 +1,5 @@
 name: getDir
-description: |-
+desc: |-
   Returns the object heading in the range 0..360.
   {{Feature|arma3|The alternative syntax gets heading from one object or position to another object or position, and should be used instead of [[BIS_fnc_dirTo]].}}
 groups:
@@ -7,8 +7,7 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: object
     type: Object
@@ -16,43 +15,34 @@ syntax:
   - pos1
   - pos2
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: pos1
-    description: from where
-    type: Unknown
+    desc: from where
+    type: !OneOf
+    - - Object
+      - null
   - name: pos2
-    description: to where
-    type: Unknown
+    desc: to where
+    type: !OneOf
+    - - Object
+      - null
   since:
-    arma_3:
-      major: 1
-      minor: 56
+    arma3: '1.56'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_azimuth = getDir player;</sqf>
 - <sqf>_azimuth = player getDir tank;</sqf>
+see_also:
+- getDirVisual
+- direction
+- getRelDir

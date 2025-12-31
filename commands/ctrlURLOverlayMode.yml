@@ -1,20 +1,21 @@
 name: ctrlURLOverlayMode
-description: Returns the URL overlay mode 0, 1, 2 (see [[ctrlSetURLOverlayMode]]) or -1 if something went wrong.
+desc: Returns the URL overlay mode 0, 1, 2 (see [[ctrlSetURLOverlayMode]]) or -1 if something went wrong.
 groups:
 - GUI Control
 syntax:
 - call: !Unary control
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>_mode = ctrlURLOverlayMode _control; // e.g. 0</sqf>
+see_also:
+- ctrlSetURLOverlayMode
+- ctrlURL
+- isSteamOverlayEnabled

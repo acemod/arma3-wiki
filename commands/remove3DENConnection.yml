@@ -1,5 +1,5 @@
 name: remove3DENConnection
-description: 'Removes [[Eden Editor: Connecting|connection]] between entities.'
+desc: 'Removes [[Eden Editor: Connecting|connection]] between entities.'
 groups:
 - Eden Editor
 syntax:
@@ -8,23 +8,26 @@ syntax:
   - from
   - to
   ret:
-  - Boolean
-  - '[[true]] If the connection was removed'
+    type: Boolean
+    desc: '[[true]] If the connection was removed'
   params:
   - name: type
-    description: connection class from ''Cfg3DEN >> Connections''
+    desc: connection class from ''Cfg3DEN >> Connections''
     type: String
   - name: from
-    description: entities which has a connection
-    type: Unknown
+    desc: entities which has a connection
+    type: !ArrayUnsized
+      type: EdenEntity
+      desc: ''
   - name: to
-    description: connection target
+    desc: connection target
     type: EdenEntity
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>remove3DENConnection ["RandomStart", get3DENSelected "Object", "marker_0"];// Remove random start on marker "marker_0" from all selected objects.</sqf>
+see_also:
+- add3DENConnection
+- get3DENConnections

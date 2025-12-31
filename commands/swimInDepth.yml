@@ -1,5 +1,5 @@
 name: swimInDepth
-description: Sets the target depth level for swimming soldier. Depth should be a negative number.
+desc: Sets the target depth level for swimming soldier. Depth should be a negative number.
 groups:
 - Unit Control
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,9 +16,7 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>soldier swimInDepth -20;</sqf>
 - |-
@@ -27,3 +24,5 @@ examples:
   bob swimInDepth -10;
   bob doMove ASLToAGL getPosASL player;
   </sqf>
+see_also:
+- underwater

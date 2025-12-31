@@ -1,22 +1,20 @@
 name: load3DENScenario
-description: Load the provided scenario or an empty scenario in the provided world.
+desc: Load the provided scenario or an empty scenario in the provided world.
 groups:
 - Eden Editor
 syntax:
 - call: !Unary scenarioOrWorld
   ret:
-  - Boolean
-  - '[[true]] on success, [[false]] otherwise'
+    type: Boolean
+    desc: '[[true]] on success, [[false]] otherwise'
   params:
   - name: scenarioOrWorld
-    description: scenario name or world name
+    desc: scenario name or world name
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>load3DENScenario "MyMission.VR";</sqf>
 - <sqf>load3DENScenario "Stratis";</sqf>
@@ -26,3 +24,5 @@ examples:
   //full path needs to be provided without leading \
   load3DENScenario "missions\subfolder\myMission.VR";
   </sqf>
+see_also:
+- is3DENPreview

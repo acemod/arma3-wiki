@@ -1,5 +1,5 @@
 name: addBackpackGlobal
-description: |-
+desc: |-
   Adds a backpack to a unit - global variant of [[addBackpack]].
   {{Feature|warning|
   The backpack added with this command will be created on the PC [[Multiplayer Scripting#Locality|local]] to the unit you are adding it to, even if executed on the server.
@@ -13,21 +13,39 @@ syntax:
   - unit
   - backpack
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: soldier
+    desc: soldier
     type: Object
   - name: backpack
-    description: backpack class name
+    desc: backpack class name
     type: String
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>player addBackpackGlobal "B_AssaultPack_khk";</sqf>
 - "<sqf>\n_unit spawn \n{\n\tif (not isNull backpackContainer _this) then\n\t{\n\t\tremoveBackpackGlobal _this;\n\t\twaitUntil { sleep 0.01; isNull backpackContainer _this };\n\t};\n\n\t_this addBackpackGlobal \"B_AssaultPack_khk\";\n\twaitUntil { sleep 0.01; not isNull backpackContainer _this };\n\tbackpackContainer _this addMagazineCargoGlobal [\"30Rnd_556x45_Stanag\", 5];\n};\n</sqf>"
+see_also:
+- addBackpack
+- backpackContainer
+- firstBackpack
+- unitBackpack
+- backpack
+- backpackCargo
+- getBackpackCargo
+- backpackItems
+- addBackpackCargo
+- addBackpackCargoGlobal
+- removeBackpack
+- clearBackpackCargo
+- clearBackpackCargoGlobal
+- clearAllItemsFromBackpack
+- loadBackpack
+- backpackSpaceFor
+- canAddItemToBackpack
+- addItemToBackpack
+- removeItemFromBackpack
+- everyBackpack

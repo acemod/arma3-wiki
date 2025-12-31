@@ -1,26 +1,32 @@
 name: detachChild
-description: Detaches previously attached with [[attachChild]] object.
+desc: Detaches previously attached with [[attachChild]] object.
 groups:
 - PhysX
 syntax:
 - call: !Unary parent
   ret:
-  - Unknown
-  - null
+    type: !OneOf
+    - - Nothing
+      - null
+    - - Object
+      - null
   params:
   - name: parent
-    description: The parent object that another object is attached to. Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
+    desc: The parent object that another object is attached to. Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
     type: Object
 argument_loc: Local
 effect_loc: Global
 server_exec: false
 since:
-  arma_3:
-    major: 2
-    minor: 22
+  arma3: '2.22'
 examples:
 - <sqf></sqf>
 - <sqf></sqf>
 - <sqf></sqf>
 - <sqf></sqf>
 - <sqf></sqf>
+see_also:
+- attachChild
+- childAttached
+- parentAttached
+- chainedObjects

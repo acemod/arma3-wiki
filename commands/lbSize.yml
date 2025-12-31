@@ -1,47 +1,52 @@
 name: lbSize
-description: Returns the number of items in a [[CT_LISTBOX]] or [[CT_COMBO]] control. For [[CT_TOOLBOX]] size see [[lnbSize]].
+desc: Returns the number of items in a [[CT_LISTBOX]] or [[CT_COMBO]] control. For [[CT_TOOLBOX]] size see [[lnbSize]].
 groups:
 - GUI Control - ListBox
 syntax:
 - call: !Unary idc
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: idc
-    description: control's id
+    desc: control's id
     type: Number
 - call: !Unary control
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: control
     type: Control
 argument_loc: Local
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_size = lbSize 101;</sqf>
 - <sqf>_size = lbSize _control;</sqf>
+see_also:
+- lbAdd
+- lbClear
+- lbColor
+- lbCurSel
+- lbData
+- lbDelete
+- lbIsSelected
+- lbPicture
+- lbSelection
+- lbSetColor
+- lbSetCurSel
+- lbSetData
+- lbSetPicture
+- lbSetSelected
+- lbSetTooltip
+- lbSetValue
+- lbSort
+- lbSortByValue
+- lbText
+- lbValue

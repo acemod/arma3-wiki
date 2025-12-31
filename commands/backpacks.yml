@@ -1,20 +1,24 @@
 name: backpacks
-description: Returns an array of all backpack names a unit has in its inventory, excluding the one it carries on the back.
+desc: Returns an array of all backpack names a unit has in its inventory, excluding the one it carries on the back.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 14
+  arma3: '2.14'
 examples:
 - <sqf>private _allCarriedBackpackTypes = backpacks player + [backpack player];</sqf>
+see_also:
+- backpack
+- itemsWithMagazines
+- assignedItems
+- items
+- magazines
+- everyBackpack

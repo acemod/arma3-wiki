@@ -1,5 +1,5 @@
 name: ctrlTextWidth
-description: |-
+desc: |-
   Returns the width of the control text including left and right margins (0.008 each). Supported control [[ctrlType|types]] are:
   {{Columns|2|
   * [[CT_STATIC]] 0
@@ -17,16 +17,21 @@ groups:
 syntax:
 - call: !Unary control
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 78
+  arma3: '1.78'
 examples:
 - <sqf>private _w = ctrlTextWidth _ctrl;</sqf>
+see_also:
+- getTextWidth
+- ctrlTextHeight
+- ctrlSetText
+- ctrlType
+- 'Arma:'
+- GUI
+- Configuration

@@ -1,5 +1,5 @@
 name: lbSetPictureRight
-description: |-
+desc: |-
   Sets the second (right aligned) picture in the item with the given index of the listbox or combobox with id idc of the topmost user [[dialog]]. Name is the picture name.
   The picture is searched for in the mission directory, the dtaExt subdirectory of the campaign directory and the dtaExt directory and the data bank (or directory).<br>
   In {{arma3}} it might be necessary to set the color of the picture as well with [[lbSetPictureRightColor]] as default [0,0,0,0] color makes the picture invisible.
@@ -13,8 +13,7 @@ syntax:
   - index
   - path
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
@@ -27,8 +26,7 @@ syntax:
   - - index
     - path
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -39,27 +37,17 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  flashpoint:
-    major: 0
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '0.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>lbSetPictureRight [101, 0, "a3\3den\data\cfg3den\history\createcomment_ca.paa"];</sqf>
 - <sqf>_control lbSetPictureRight [0, "a3\3den\data\cfg3den\history\createcomment_ca.paa"];</sqf>
+see_also:
+- lbPicture
+- lbSetPicture
+- lbSetPictureColor

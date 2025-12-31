@@ -1,5 +1,5 @@
 name: inAreaArray
-description: |-
+desc: |-
   Returns given list of [[Object]]s and/or [[Position]]s that are in the given area, area defined by a trigger, marker, location or array.
 
   {{Feature|important| By default all positions given as [[Array]] or as objects are treated as [[PositionAGL]]. Since {{GVI|arma3|2.20|size= 0.75}} there is an option to force them to [[PositionWorld]] format.}}
@@ -13,13 +13,18 @@ syntax:
   - positions
   - area
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: positions
     type: Unknown
   - name: area
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Location
+      - null
+    - - String
+      - null
 - call: !Binary
   - positions
   - - centre
@@ -30,44 +35,47 @@ syntax:
     - c
     - usePosWorld
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: positions
-    description: '[[Object]]s and/or [[Position]]s to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D (see note in description)'
+    desc: '[[Object]]s and/or [[Position]]s to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D (see note in description)'
     type: ArrayUnknown
   - name: centre
-    type: Unknown
+    type: !OneOf
+    - - Position2d
+      - null
+    - - Object
+      - null
+    - - Group
+      - null
   - name: a
-    description: x axis (x / 2)
+    desc: x axis (x / 2)
     type: Number
   - name: b
-    description: y axis (y / 2)
+    desc: y axis (y / 2)
     type: Number
   - name: angle
-    description: rotation angle
+    desc: rotation angle
     type: Number
     optional: true
     default: '0'
   - name: isRectangle
-    description: '[[true]] if rectangle, [[false]] if ellipse'
+    desc: '[[true]] if rectangle, [[false]] if ellipse'
     type: Boolean
     optional: true
     default: '[[false]]'
   - name: c
-    description: z axis (z / 2)
+    desc: z axis (z / 2)
     type: Number
     optional: true
     default: '-1: unlimited'
   - name: usePosWorld
-    description: set to [[true]] to treat all positions as [[PositionWorld]]
+    desc: set to [[true]] to treat all positions as [[PositionWorld]]
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 2
-        minor: 20
+      arma3: '2.20'
 - call: !Binary
   - positions
   - - pos1
@@ -75,27 +83,26 @@ syntax:
     - pos3
     - '...'
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: positions
-    description: '[[Object]]s and/or [[Position]]s to check.'
+    desc: '[[Object]]s and/or [[Position]]s to check.'
     type: ArrayUnknown
   - name: posN
-    description: polygon vertices in 2d or 3d format (see [[inPolygon]])
+    desc: polygon vertices in 2d or 3d format (see [[inPolygon]])
     type: Position
   since:
-    arma_3:
-      major: 2
-      minor: 20
+    arma3: '2.20'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 66
+  arma3: '1.66'
 examples:
 - <sqf>vehicles inAreaArray myTrigger;</sqf>
 - <sqf>allUnits inAreaArray "myMarker";</sqf>
 - <sqf>allPlayers inAreaArray myLocation;</sqf>
 - <sqf>allDead inAreaArray [[100, 100, 0], 20, 30, 45, false, 10];</sqf>
+see_also:
+- inAreaArrayIndexes
+- inArea
+- triggerArea

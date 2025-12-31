@@ -1,5 +1,5 @@
 name: effectiveCommander
-description: |-
+desc: |-
   Returns the effective commander of the vehicle. Effective commander is the player whom driver AI will listen to.
   So if in a tank there is a gunner and a commander and AI driver, if the [[effectiveCommander]] is gunner, then gunner pressing {{Controls|W}} {{Controls|A}} {{Controls|S}} {{Controls|D}} will give AI orders to move.
   If gunner jumps out and then enters a tank again, the [[effectiveCommander]] role most likely has changed to commander that remained in tank. Also the assignment seems to work on first come first served basis.
@@ -8,28 +8,25 @@ groups:
 syntax:
 - call: !Unary vehicle
   ret:
-  - Object
-  - commander unit
+    type: Object
+    desc: commander unit
   params:
   - name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\n_unit = driver tank;\n_effectiveCommander = effectiveCommander _unit;\t\t\t\t// returns the tank driver itself\n_effectiveCommander = effectiveCommander tank;\t\t\t\t// returns the effective commander (commander or gunner or driver)\n_effectiveCommander = effectiveCommander vehicle _unit;\t\t// identical to the one above - use [[vehicle]] if only the unit is known\n</sqf>"
+see_also:
+- setEffectiveCommander
+- commander
+- driver
+- gunner
+- currentPilot
+- vehicleMoveInfo

@@ -1,20 +1,24 @@
 name: getDLCAssetsUsageByName
-description: Returns an array with the session and global time the asset has been used.
+desc: Returns an array with the session and global time the asset has been used.
 groups:
 - DLC
 syntax:
 - call: !Unary assetName
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: assetName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>_dlcAssetUsage = getDLCAssetsUsageByName "C_IDAP_Heli_Transport_02_F";</sqf>
+see_also:
+- getDLCs
+- getObjectDLC
+- getPersonUsedDLCs
+- getMissionDLCs
+- getDLCAssetsUsage
+- getAssetDLCInfo

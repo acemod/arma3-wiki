@@ -1,5 +1,5 @@
 name: setVariable
-description: |-
+desc: |-
   Set variable to given value in the variable space of given element. Can be used to broadcast variables over the network.<br>
   To remove a variable, set it to [[nil]] (see {{Link|#Example 5}}) - note that this does not work on [[Object]] and [[createLocation|scripted]] [[Location]] namespaces (the variable will be set to [[nil]] but will remain listed by [[allVariables]]).
 
@@ -18,44 +18,37 @@ syntax:
     - value
     - public
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: varspace
     type: Unknown
   - name: name
-    description: variable name ([[Identifier]])
+    desc: variable name ([[Identifier]])
     type: String
   - name: value
-    description: variable value
+    desc: variable value
     type: Anything
   - name: public
-    description: can be one of
-    type: Unknown
+    desc: can be one of
+    type: !OneOf
+    - - Boolean
+      - null
+    - - Number
+      - null
+    - - ArrayUnknown
+      - null
     optional: true
     default: '[[false]]'
     since:
-      arma_2:
-        major: 1
-        minor: 0
+      arma2: '1.0'
 argument_loc: Global
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_myTruck setVariable ["TAG_myPublicVariable", 123, true];</sqf>
 - <sqf>_myTruck setVariable ["TAG_myLocalVariable", ["321", _var], owner driver _myTruck];</sqf>
@@ -68,3 +61,7 @@ examples:
 - |-
   Remove {{hl|TAG_myPublicVariable}} from [[missionNamespace]] (globally):
   <sqf>missionNamespace setVariable ["TAG_myPublicVariable", nil, true];</sqf>
+see_also:
+- getVariable
+- allVariables
+- setFSMVariable

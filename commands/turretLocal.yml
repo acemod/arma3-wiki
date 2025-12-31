@@ -1,5 +1,5 @@
 name: turretLocal
-description: Checks if a turret is [[Multiplayer Scripting#Locality|local]].
+desc: Checks if a turret is [[Multiplayer Scripting#Locality|local]].
 multiplayer_note: |-
   A vehicle turret will change locality when player gunner gets in it, just like vehicle changes locality when player driver gets in it.
   Many commands for turrets work only where turret is [[Multiplayer Scripting#Locality|local]].
@@ -11,21 +11,35 @@ syntax:
   - vehicle
   - turretPath
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: vehicle
     type: Object
   - name: turretPath
-    description: 1] for driver turret
+    desc: 1] for driver turret
     type: Unknown
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 32
+  arma3: '1.32'
 examples:
 - <sqf>_isLocal = vehicle player turretLocal [0];</sqf>
 - <sqf>if (heli turretLocal [1]) then { heli setVehicleAmmo 1 };</sqf>
 - <sqf>if (isNil { heli turretLocal [5] }) then { hint "Turret 5 is non-existent" };</sqf>
+see_also:
+- turretOwner
+- setVehicleAmmo
+- setVehicleAmmoDef
+- removeWeaponTurret
+- addWeaponTurret
+- addMagazineTurret
+- magazinesTurret
+- removeMagazinesTurret
+- removeMagazineTurret
+- weaponsTurret
+- currentMagazineDetailTurret
+- currentMagazineTurret
+- currentWeaponTurret
+- selectWeaponTurret
+- turretUnit
+- allTurrets

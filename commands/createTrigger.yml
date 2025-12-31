@@ -1,5 +1,5 @@
 name: createTrigger
-description: |-
+desc: |-
   Creates a [[Trigger|trigger]] of the given type and at the given position. The type must be a class name in ''CfgNonAIVehicles'' or ''CfgVehicles'' with <syntaxhighlight lang="cpp" inline>simulation = detector</syntaxhighlight>. An array containing all units that have activated the trigger is available via <sqf inline>list triggerobj</sqf>. Since triggers are '''[[Object]]s''', commands such as [[getPosASL]], [[setPosASL]], [[deleteVehicle]] etc. work on them.
   {{Feature|important|Triggers are always created on the road surface (AGL) at provided x, y coordinates. The z param is ignored. In order to place the trigger with a custom z, use a 'setPosXXX' command after trigger creation.}}
   {{Feature|informative|Since {{arma3}} v1.54 triggers can be disabled/enabled using [[enableSimulation]] command.}}
@@ -34,42 +34,30 @@ syntax:
   - position
   - makeGlobal
   ret:
-  - Object
-  - created trigger
+    type: Object
+    desc: created trigger
   params:
   - name: type
-    description: usually "EmptyDetector"
+    desc: usually "EmptyDetector"
     type: String
   - name: position
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
   - name: makeGlobal
     type: Unknown
     optional: true
     since:
-      arma_3:
-        major: 1
-        minor: 44
+      arma3: '1.44'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -79,3 +67,22 @@ examples:
   _trg setTriggerStatements ["this", "hint 'Civilian near player'", "hint 'no civilian near'"];
   </sqf>
 - "Open/close Bar Gate automatically:\n<sqf>\n//--- init of the Bar Gate\nif (isServer) then\n{\t\n\t_gateTrigger = createTrigger [\"EmptyDetector\", getPosWorld this, false];\n\t_gateTrigger setVariable [\"BarGateObj\", this];\n\t_gateTrigger setTriggerActivation [\"ANYPLAYER\", \"PRESENT\", true];\n\t_gateTrigger setTriggerArea [5, 25, getDir this, true];\n\t_gateTrigger setTriggerStatements \n\t[\n\t\t\"this\", \n\t\t\"thisTrigger getVariable \"\"BarGateObj\"\" animateSource [\"\"Door_1_sound_source\"\", 1]\", \n\t\t\"thisTrigger getVariable \"\"BarGateObj\"\" animateSource [\"\"Door_1_sound_source\"\", 0]\"\n\t];\n};\n</sqf>"
+see_also:
+- setTriggerActivation
+- setTriggerArea
+- setTriggerStatements
+- setTriggerText
+- setTriggerTimeout
+- setTriggerType
+- setEffectCondition
+- setSoundEffect
+- setMusicEffect
+- setTitleEffect
+- deleteVehicle
+- synchronizeWaypoint
+- synchronizeTrigger
+- createGuardedPoint
+- triggerInterval
+- setTriggerInterval
+- enableSimulation
+- simulationEnabled

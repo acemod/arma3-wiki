@@ -1,5 +1,5 @@
 name: drawIcon
-description: |-
+desc: |-
   Draws an icon on the map.
   As this command needs to be called every frame, it is preferable using the [[User Interface Event Handlers#onDraw|onDraw]] UI Event Handler.
   {{Feature|informative|Some useful icons can be found in <sqf inline>configFile >> "CfgVehicleIcons"</sqf>.}}
@@ -20,78 +20,77 @@ syntax:
     - font
     - align
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: map
     type: Control
   - name: texture
-    description: icon texture
+    desc: icon texture
     type: String
   - name: color
-    description: text and icon color in format [[Color|Color(RGBA)]]
+    desc: text and icon color in format [[Color|Color(RGBA)]]
     type: ArrayUnknown
   - name: position
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: width
-    description: width of the icon (but not the text)
+    desc: width of the icon (but not the text)
     type: Number
   - name: height
-    description: height of the icon (but not the text)
+    desc: height of the icon (but not the text)
     type: Number
   - name: angle
-    description: rotation angle of the icon not the text (add to it [[ctrlMapDir]] to show correctly on rotating minimap)
+    desc: rotation angle of the icon not the text (add to it [[ctrlMapDir]] to show correctly on rotating minimap)
     type: Number
   - name: text
     type: String
     optional: true
     default: '""'
   - name: shadow
-    type: Unknown
+    type: !OneOf
+    - - Number
+      - null
+    - - Boolean
+      - null
     optional: true
   - name: textSize
-    description: size of the text in UI units
+    desc: size of the text in UI units
     type: Number
     optional: true
     default: '-1'
     since:
-      arma_3:
-        major: 0
-        minor: 72
+      arma3: '0.72'
   - name: font
-    description: text's font
+    desc: text's font
     type: String
     optional: true
     default: '""'
     since:
-      arma_3:
-        major: 0
-        minor: 72
+      arma3: '0.72'
   - name: align
     type: Unknown
     optional: true
     since:
-      arma_3:
-        major: 0
-        minor: 72
+      arma3: '0.72'
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "Red icon with text:\n<sqf>\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\", {\n\t_this select 0 drawIcon [\n\t\t\"iconStaticMG\", // custom images can also be used: getMissionPath \"\\myFolder\\myIcon.paa\"\n\t\t[1,0,0,1],\n\t\tgetPosASLVisual player,\n\t\t24,\n\t\t24,\n\t\tgetDirVisual player,\n\t\t\"Player Vehicle\",\n\t\t1,\n\t\t0.03,\n\t\t\"TahomaB\",\n\t\t\"right\"\n\t]\n}];\n</sqf>"
 - "Green text only:\n<sqf>\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\", {\n\t_this select 0 drawIcon [\n\t\t\"#(rgb,1,1,1)color(1,1,1,1)\",\n\t\t[0,1,0,1],\n\t\tplayer,\n\t\t0,\n\t\t0,\n\t\t0,\n\t\tname player\n\t]\n}];\n</sqf>"
+see_also:
+- drawArrow
+- drawEllipse
+- drawLine
+- drawRectangle
+- drawPolygon
+- drawTriangle
+- drawXPolygon

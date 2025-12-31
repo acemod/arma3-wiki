@@ -1,5 +1,5 @@
 name: ctValue
-description: Returns metadata (number) associated with a particular row of RscControlsTable.
+desc: Returns metadata (number) associated with a particular row of RscControlsTable.
 groups:
 - GUI Control - Controls Table
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - control
   - index
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: control
     type: Control
@@ -17,8 +16,25 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>_number = _control ctValue 0;</sqf>
+see_also:
+- ctAddRow
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctSetCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetValue
+- ctSetData
+- ctData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

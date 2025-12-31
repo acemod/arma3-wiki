@@ -1,5 +1,5 @@
 name: playerSide
-description: |-
+desc: |-
   Returns the player's [[Side|side]]. This is valid even when the player controlled person is dead (a difference from [[side]] [[player]]).
   {{Feature|informative|[[playerSide]] will not change automatically if [[player]] [[join]]s a [[group]] on different [[side]]. However, [[selectPlayer]] command can and does change [[playerSide]] - see {{Link|#Example 3}} for information.}}
 groups:
@@ -7,27 +7,16 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Side
-  - null
+    type: Side
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nif (side man1 == playerSide) then\n{\n\thint \"man1 is on your side!\";\n};\n</sqf>"
 - "<sqf>\nswitch (playerSide) do\n{\n\tcase west: { hint \"You are BLUFOR\"; };\n\tcase east: { hint \"You are OPFOR\"; };\n};\n</sqf>"
@@ -40,3 +29,18 @@ examples:
   selectPlayer _player;
   hint str playerSide; // EAST
   </sqf>
+see_also:
+- Side
+- side
+- west
+- east
+- resistance
+- civilian
+- sideLogic
+- sideFriendly
+- sideEnemy
+- sideUnknown
+- sideEmpty
+- sideAmbientLife
+- Side
+- Relations

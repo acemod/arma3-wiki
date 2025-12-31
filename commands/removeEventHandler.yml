@@ -1,5 +1,5 @@
 name: removeEventHandler
-description: Removes a given Event Handler that was added with [[addEventHandler]].
+desc: Removes a given Event Handler that was added with [[addEventHandler]].
 groups:
 - Event Handlers
 syntax:
@@ -8,41 +8,38 @@ syntax:
   - - type
     - index
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: target
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
   - name: type
-    description: see [[:Category:Event Handlers|Event Handlers]] for the full list of available options
+    desc: see [[:Category:Event Handlers|Event Handlers]] for the full list of available options
     type: String
   - name: index
-    description: the value originally returned by [[addEventHandler]]
+    desc: the value originally returned by [[addEventHandler]]
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 85
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.85'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player removeEventHandler ["Killed", 0];</sqf>
 - "The [[Magic Variables]] <var>_thisEvent</var> and <var>_thisEventHandler</var> can be used to easily remove an Event Handler:\n<sqf>\nplayer addEventHandler [\"FiredNear\", {\n\tsystemChat \"This Event Handler is now removing itself!\";\n\tplayer removeEventHandler [_thisEvent, _thisEventHandler];\n}];\n</sqf>"
+see_also:
+- addEventHandler
+- removeAllEventHandlers
+- removeMPEventHandler
+- removeMissionEventHandler
+- :Category:Event
+- Handlers|Event
+- Handlers

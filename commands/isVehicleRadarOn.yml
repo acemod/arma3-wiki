@@ -1,21 +1,20 @@
 name: isVehicleRadarOn
-description: Returns true if vehicle has active sensors on.
+desc: Returns true if vehicle has active sensors on.
 groups:
 - Sensors
 syntax:
 - call: !Unary vehicle
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: vehicle
-    description: vehicle on which check is performed
+    desc: vehicle on which check is performed
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 72
+  arma3: '1.72'
 examples:
 - <sqf>isVehicleRadarOn vehicle player; // returns true if radar is turned on</sqf>
+see_also:
+- setVehicleRadar

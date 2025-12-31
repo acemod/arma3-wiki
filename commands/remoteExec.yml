@@ -1,5 +1,5 @@
 name: remoteExec
-description: |-
+desc: |-
   Asks the server to execute the given function or script command on the given target machine(s).
   * Functions are executed in the [[Scheduler#Scheduled Environment|scheduled environment]]; suspension is allowed.
   * Script commands are executed in the [[Scheduler#Unscheduled Environment|unscheduled environment]]; suspension is not allowed (see {{Link|#Example 7}}).
@@ -21,26 +21,46 @@ syntax:
     - targets
     - JIP
   ret:
-  - Unknown
-  - |-
-    In case of error.
-    * [[String]] - In case of success (see [[remoteExecutedJIPID]]).
-    ** If the '''JIP''' parameter was [[false]] or an empty string, the return value is "".
-    ** If the '''JIP''' parameter was [[true]] or a custom JIP ID, the JIP ID is returned.
-    ** If the '''JIP''' parameter was an [[Object]], a [[Group]] or a [[netId]], the (corresponding) [[netId]] is returned.
+    type: !OneOf
+    - - !OneOf
+        - - Object
+          - null
+        - - Group
+          - null
+      - null
   params:
   - name: params
-    description: '''''order''''''s parameter {{Feature|important|[[Structured Text]] is ''''''not'''''' meant to be sent over network.}}'
+    desc: '''''order''''''s parameter {{Feature|important|[[Structured Text]] is ''''''not'''''' meant to be sent over network.}}'
     type: Unknown
   - name: order
-    description: 'function or command name; while any function or command can be used here, only those allowed by [[Arma 3: CfgRemoteExec|CfgRemoteExec]] will actually be executed'
+    desc: 'function or command name; while any function or command can be used here, only those allowed by [[Arma 3: CfgRemoteExec|CfgRemoteExec]] will actually be executed'
     type: String
   - name: targets
-    type: Unknown
+    type: !OneOf
+    - - Number
+      - null
+    - - Object
+      - null
+    - - String
+      - null
+    - - Side
+      - null
+    - - Group
+      - null
+    - - ArrayUnknown
+      - null
     optional: true
     default: '0'
   - name: JIP
-    type: Unknown
+    type: !OneOf
+    - - Boolean
+      - null
+    - - String
+      - null
+    - - Number
+      - null
+    - - Object
+      - null
     optional: true
     default: '[[false]]'
 - call: !Unary
@@ -48,28 +68,48 @@ syntax:
   - targets
   - JIP
   ret:
-  - Unknown
-  - see the main syntax above for more details.
+    type: !OneOf
+    - - String
+      - null
+    desc: see the main syntax above for more details.
   params:
   - name: functionName
-    description: see the main syntax above for more details.
+    desc: see the main syntax above for more details.
     type: String
   - name: targets
-    description: see the main syntax above for more details.
-    type: Unknown
+    desc: see the main syntax above for more details.
+    type: !OneOf
+    - - Number
+      - null
+    - - Object
+      - null
+    - - String
+      - null
+    - - Side
+      - null
+    - - Group
+      - null
+    - - ArrayUnknown
+      - null
     optional: true
     default: '0'
   - name: JIP
-    description: see the main syntax above for more details.
-    type: Unknown
+    desc: see the main syntax above for more details.
+    type: !OneOf
+    - - Boolean
+      - null
+    - - String
+      - null
+    - - Object
+      - null
+    - - Group
+      - null
     optional: true
     default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 50
+  arma3: '1.50'
 examples:
 - |-
   How to write [[remoteExec]]/[[remoteExecCall]] with arguments - note the colours:
@@ -134,3 +174,17 @@ examples:
   // in this exact order on clients
   </sqf>
 - "It is possible to create a \"to all players\" remote exec target variable:\n<sqf>\nif (isServer) then\n{\n\tTO_ALL_PLAYERS = [0, -2] select isDedicated;\n\tpublicVariable \"TO_ALL_PLAYERS\";\n};\n</sqf>\n<spoiler text=\"Show HC-compatible version\">\nIf {{Link|Arma 3: Headless Client|Headless Clients}} are involved:\n<sqf>\nif (isServer) then\n{\n\tTO_ALL_PLAYERS = [0, -2] select isDedicated;\n\n\tprivate _allNegativeHCs = allPlayers apply { getPlayerID _x } select { _x != \"-1\" }\t// all valid playerIDs\n\t\tapply { getUserInfo _x } select { _x select 7 }\t\t\t\t\t\t\t\t\t// filter by HC\n\t\tapply { -(_x select 1) };\t\t\t\t\t\t\t\t\t\t\t\t\t\t// get negative network ID\n\n\tif (_allNegativeHCs isNotEqualTo []) then\n\t{\n\t\tTO_ALL_PLAYERS = [TO_ALL_PLAYERS] + _allNegativeHCs;\n\t};\n\n\tpublicVariable \"TO_ALL_PLAYERS\";\n\n\taddMissionEventHandler [\"OnUserConnected\", {\n\t\tparams [\"_networkId\"];\n\t\tprivate _userInfo = getUserInfo _networkId;\n\t\tif !(_userInfo select 7) exitWith {};\t// not a HC\n\n\t\tif (TO_ALL_PLAYERS isEqualType 0) then\t// number to array conversion\n\t\t{\n\t\t\tif (TO_ALL_PLAYERS == 0) then\t\t// player-hosted\n\t\t\t{\n\t\t\t\tTO_ALL_PLAYERS = [-(_userInfo select 1)];\n\t\t\t}\n\t\t\telse\t\t\t\t\t\t\t\t// -2, dedicated server\n\t\t\t{\n\t\t\t\tTO_ALL_PLAYERS = [TO_ALL_PLAYERS, -(_userInfo select 1)];\n\t\t\t};\n\t\t}\n\t\telse\t\t\t\t\t\t\t\t\t// already an array\n\t\t{\n\t\t\tTO_ALL_PLAYERS pushBackUnique -(_userInfo select 1);\n\t\t};\n\n\t\tpublicVariable \"TO_ALL_PLAYERS\";\n\t}];\n};\n</sqf>\n</spoiler>\n<sqf>\n// client or server will always target the good machines\n[\"Yay!\"] remoteExec [\"hint\", TO_ALL_PLAYERS];\n</sqf>"
+see_also:
+- Multiplayer
+- Scripting
+- remoteExecCall
+- remoteExecutedOwner
+- isRemoteExecuted
+- isRemoteExecutedJIP
+- Arma
+- '3:'
+- Remote
+- Execution
+- canSuspend
+- BIS_fnc_MP
+- remoteExecutedJIPID

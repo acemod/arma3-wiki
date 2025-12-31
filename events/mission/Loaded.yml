@@ -1,5 +1,5 @@
 id: Loaded
-description: |-
+desc: |-
   Triggered when mission is loaded from save. <br>
   {{Feature|warning|"Loaded" event handler should be added <u>BEFORE</u> the mission is loaded from save. Placing it in a [[Arma 3: Functions Library|function]] with preInit {{=}} 1; usually does the trick.}}
   ** "save" - custom save, achieved by pressing SAVE button in the pause menu
@@ -7,12 +7,10 @@ description: |-
   ** "continue" - saved when leaving a mission to the main menu
 params:
 - name: savingType
-  description: one of "autosaveold", "autosave", "save", "save2", "save3", "save4", "save5", "save6", "continue" or "".
+  desc: one of "autosaveold", "autosave", "save", "save2", "save3", "save4", "save5", "save6", "continue" or "".
   type: String
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 argument_loc: Unspecified
 effect_loc: Unspecified
 examples:

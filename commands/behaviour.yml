@@ -1,49 +1,49 @@
 name: behaviour
-description: Returns the behaviour of the individual unit, this is why it only accepts [[Object]] as the argument. For Arma 3 behaviour explanation see [[Arma_3_AI_Behavior]]
+desc: Returns the behaviour of the individual unit, this is why it only accepts [[Object]] as the argument. For Arma 3 behaviour explanation see [[Arma_3_AI_Behavior]]
 groups:
 - AI Behaviour
 syntax:
 - call: !Unary unit
   ret:
-  - String
-  - |-
-    one of:
-    * "CARELESS"
-    * "SAFE"
-    * "AWARE"
-    * "COMBAT"
-    * "STEALTH"
-    * "ERROR" (Since {{GVI|Arma3|1.78}} when used on empty vehicles and such)
+    type: String
+    desc: |-
+      one of:
+      * "CARELESS"
+      * "SAFE"
+      * "AWARE"
+      * "COMBAT"
+      * "STEALTH"
+      * "ERROR" (Since {{GVI|Arma3|1.78}} when used on empty vehicles and such)
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   _soldier setBehaviour "CARELESS";
   _b = behaviour _soldier; // returns "CARELESS"
   </sqf>
+see_also:
+- AIBehaviour
+- setBehaviour
+- setWaypointBehaviour
+- combatMode
+- setCombatMode
+- skill
+- setSkill
+- Arma
+- '3:'
+- AI
+- Skill
+- setCombatBehaviour
+- combatBehaviour

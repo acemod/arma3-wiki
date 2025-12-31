@@ -1,5 +1,5 @@
 name: isEqualTypeAll
-description: |-
+desc: |-
   Compares types of all elements of an array to the type of a single value. Since Arma 3 v2.09.149634 no additional check is needed to make sure the first argument is an [[Array]].
   {{Feature|important|An empty array will return {{hl|[[false]]}} (see {{Link|#Example 2}}).}}
 groups:
@@ -10,8 +10,7 @@ syntax:
   - arr
   - val
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: arr
     type: Unknown
@@ -20,10 +19,17 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 54
+  arma3: '1.54'
 examples:
 - "<sqf>\n_arr = [1,2,3,4,5,6,7,8,9,0];\n_arr isEqualTypeAll \"\"; // false\n_arr isEqualTypeAll 0;\t// true\n</sqf>"
 - "<sqf>\n[] isEqualTypeAll \"\";\t// false\n[\"\"] isEqualTypeAll \"\";\t// true\n</sqf>"
 - "<sqf>\n0 isEqualTypeAll \"\";\t// false\n0 isEqualTypeAll 0;\t\t// false\n[0] isEqualTypeAll 0;\t// true\n</sqf>"
+see_also:
+- isEqualTypeArray
+- isEqualTypeAny
+- isEqualType
+- isEqualTypeParams
+- param
+- params
+- isEqualTo
+- typeName

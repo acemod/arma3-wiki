@@ -1,5 +1,5 @@
 name: ctSetCurSel
-description: Selects the line with the given index. Will take only rows, but not headers into account. -1 deselects all. Returns Nothing.
+desc: Selects the line with the given index. Will take only rows, but not headers into account. -1 deselects all. Returns Nothing.
 groups:
 - GUI Control - Controls Table
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - control
   - index
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -17,8 +16,25 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>_control ctSetCurSel 0;</sqf>
+see_also:
+- ctAddRow
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetValue
+- ctValue
+- ctSetData
+- ctData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

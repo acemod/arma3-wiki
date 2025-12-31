@@ -1,5 +1,5 @@
 name: allCutLayers
-description: |-
+desc: |-
   Returns all named layers used by [[cutRsc]], [[cutText]], [[cutObj]] or [[cutFadeOut]].
   The layer normally would be added on the first use of any of the aforementioned commands, however if a layer needs to be reserved it could be done like so:
   <sqf>private _layerNum = "TAG_myLayerName" cutFadeOut 0;</sqf>
@@ -8,14 +8,19 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - 'array of [[String]]s: The index of the layer name in the array corresponds to the layer number the cut effect will be displayed on. If no layers were defined, the return is <sqf inline>[""]</sqf>, because layer 0 is reserved for usage in cut commands without layer param or when the provided layer name is empty {{hl|""}}.'
+    type: ArrayUnknown
+    desc: 'array of [[String]]s: The index of the layer name in the array corresponds to the layer number the cut effect will be displayed on. If no layers were defined, the return is <sqf inline>[""]</sqf>, because layer 0 is reserved for usage in cut commands without layer param or when the provided layer name is empty {{hl|""}}.'
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 58
+  arma3: '1.58'
 examples:
 - <sqf>private _allLayers = allCutLayers;</sqf>
+see_also:
+- cutRsc
+- cutText
+- cutObj
+- cutFadeOut
+- allActiveTitleEffects
+- activeTitleEffectParams

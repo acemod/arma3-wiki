@@ -1,20 +1,20 @@
 name: cancelSimpleTaskDestination
-description: Cancels a simple task destination.
+desc: Cancels a simple task destination.
 groups:
 - Briefing
 syntax:
 - call: !Unary task
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: task
     type: Task
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>cancelSimpleTaskDestination myTask;</sqf>
+see_also:
+- taskDestination
+- setSimpleTaskDestination

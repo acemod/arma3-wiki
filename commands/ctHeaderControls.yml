@@ -1,5 +1,5 @@
 name: ctHeaderControls
-description: Returns array of controls on the header with the given index.
+desc: Returns array of controls on the header with the given index.
 groups:
 - GUI Control - Controls Table
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - ctrl
   - index
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: ctrl
     type: Control
@@ -17,8 +16,25 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>_array = _control ctHeaderControls 0;</sqf>
+see_also:
+- ctAddRow
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctSetCurSel
+- ctRowControls
+- ctRowCount
+- ctHeaderCount
+- ctSetValue
+- ctValue
+- ctSetData
+- ctData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

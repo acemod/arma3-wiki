@@ -1,5 +1,5 @@
 name: setFriend
-description: |-
+desc: |-
   Sets how friendly a side is with another. The friendliness is set for one side, not for the other.  See also [[Side Relations]].
 
   {{Feature|arma3|Since {{arma3}} this command can be used mid-mission. Before that it was intended to be used on mission start only, as changing value during mission could cause unexpected errors in AI behaviour (especially for groups already knowing about "switched to enemy" groups).
@@ -12,38 +12,25 @@ syntax:
   - - side2
     - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: side1
     type: Side
   - name: side2
     type: Side
   - name: value
-    description: a value smaller than 0.6 results in being enemy, otherwise ''side1'' is friendly to ''side2''
+    desc: a value smaller than 0.6 results in being enemy, otherwise ''side1'' is friendly to ''side2''
     type: Number
 argument_loc: Unspecified
 effect_loc: Global
-server_exec: false
+server_exec: true
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>west setFriend [resistance, 0]; // west will not like resistance from now on</sqf>
 - |-
@@ -55,3 +42,9 @@ examples:
   east setFriend [resistance, 0]; // resistance likes east, but east does not like resistance
   </sqf>
 - <sqf>west setFriend [west, 0]; // free for all deathmatch! works with west/blufor, east/opfor, independent/resistance and civilian</sqf>
+see_also:
+- getFriend
+- BIS_fnc_sideIsFriendly
+- BIS_fnc_sideIsEnemy
+- Side
+- Relations

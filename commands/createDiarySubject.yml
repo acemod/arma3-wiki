@@ -1,5 +1,5 @@
 name: createDiarySubject
-description: Creates a new subject in the [[Diary]].
+desc: Creates a new subject in the [[Diary]].
 groups:
 - Briefing
 syntax:
@@ -9,35 +9,35 @@ syntax:
     - displayName
     - picture
   ret:
-  - Number
-  - index of the entry that was added
+    type: Number
+    desc: index of the entry that was added
   params:
   - name: player
     type: Object
   - name: subject
     type: String
   - name: displayName
-    description: the visible name
+    desc: the visible name
     type: String
   - name: picture
-    description: icon to display next to the subject. Can be set later with [[setDiarySubjectPicture]]. Similar to [[lbSetPictureRight]].
+    desc: icon to display next to the subject. Can be set later with [[setDiarySubjectPicture]]. Similar to [[lbSetPictureRight]].
     type: String
     optional: true
     default: '{{hl|""}}'
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_index = player createDiarySubject ["myPage","My page"];</sqf>
+see_also:
+- removeDiarySubject
+- processDiaryLink
+- createDiaryLink
+- createDiaryRecord
+- diarySubjectExists
+- setDiarySubjectPicture
+- allDiarySubjects

@@ -1,5 +1,5 @@
 name: kbReact
-description: Pass a non-verbal communication to the receiver. This command does '''as if''' the sentence was said and triggers the reaction scripts (AI FSM or player's conversation EH). See [[Conversations]] for more details.
+desc: Pass a non-verbal communication to the receiver. This command does '''as if''' the sentence was said and triggers the reaction scripts (AI FSM or player's conversation EH). See [[Conversations]] for more details.
 groups:
 - Conversations
 syntax:
@@ -12,8 +12,7 @@ syntax:
     - argumentArray2
     - '...'
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: person
     type: Object
@@ -29,18 +28,10 @@ syntax:
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -48,3 +39,15 @@ examples:
   // unit2's FSM will react accordingly.
   unit1 kbReact [unit2, "topicName", "speech1"];
   </sqf>
+see_also:
+- Conversations
+- kbAddTopic
+- kbHasTopic
+- kbTell
+- kbWasSaid
+- kbRemoveTopic
+- kbAddDatabase
+- kbAddDatabaseTargets
+- FSM
+- FSM
+- Editor

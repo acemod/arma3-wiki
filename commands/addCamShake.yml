@@ -1,5 +1,5 @@
 name: addCamShake
-description: Creates the camera shaking effect, like when you are near an explosion
+desc: Creates the camera shaking effect, like when you are near an explosion
 groups:
 - Camera Control
 syntax:
@@ -8,30 +8,23 @@ syntax:
   - duration
   - frequency
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: power
-    description: strength of shake (camera movement), practical range is 0 to 20
+    desc: strength of shake (camera movement), practical range is 0 to 20
     type: Number
   - name: duration
-    description: duration in seconds divided by 2
+    desc: duration in seconds divided by 2
     type: Number
   - name: frequency
-    description: frequency of shake, practical range is 0 to 100
+    desc: frequency of shake, practical range is 0 to 100
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>addCamShake [10, 2, 25]; // Shakes the camera for 1 second</sqf>
 - |-
@@ -39,3 +32,8 @@ examples:
   enableCamShake true;
   addCamShake [5, 5, 25];
   </sqf>
+see_also:
+- enableCamShake
+- setCamShakeDefParams
+- setCamShakeParams
+- resetCamShake

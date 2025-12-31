@@ -1,5 +1,5 @@
 name: setVehiclePosition
-description: |-
+desc: |-
   Moves the object to a given position (same as [[createVehicle]] placement algorithm). Uses either the position that's defined by the ''position'' param, or one of the marker positions from the markers array. The object is placed inside a circle with ''position'' as its center and ''placement'' as its radius. The type of placement could also be controlled with ''special''.<br><br>
   If position is in water and the vehicle can float, it is placed on water surface, otherwise it is placed on the ground, even if the ground is under water. If roof surfaces support walking, units will be placed on roofs if such position is given.
 groups:
@@ -13,48 +13,44 @@ syntax:
     - placement
     - special
   ret:
-  - Boolean
-  - '[[true]] on success, [[false]] on failure'
+    type: Boolean
+    desc: '[[true]] on success, [[false]] on failure'
   params:
   - name: object
     type: Object
   - name: position
-    description: |-
+    desc: |-
       desired placement position.
       If object is given, object position is used for ''position''. Normally only ''x'' and ''y'' are considered, unless "CAN_COLLIDE" is used for special placement
-    type: Unknown
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - Object
+      - null
   - name: markers
-    description: |-
+    desc: |-
       if the markers array contains one or more marker names, the position is chosen randomly and could be one of the marker positions or just the supplied main position.
       If marker had z coordinate set with [[setMarkerPos]], the vehicle will be placed on the nearest surface below this z coordinate
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: String
+      desc: ''
   - name: placement
-    description: the vehicle is randomly placed inside a circle with given position as center and placement as its radius
+    desc: the vehicle is randomly placed inside a circle with given position as center and placement as its radius
     type: Number
   - name: special
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
     optional: true
 argument_loc: Global
 effect_loc: Global
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -79,3 +75,11 @@ examples:
   _laptop setVehiclePosition [_tablePos vectorAdd [0.5, 0.2, 10], [], 0, "CAN_COLLIDE"];
   _laptop attachTo [_table];
   </sqf>
+see_also:
+- setPos
+- createUnit
+- setPosASL
+- setPosWorld
+- setPosWorld
+- createVehicle
+- Position#setPosAGLS|setPosAGLS

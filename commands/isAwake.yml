@@ -1,5 +1,5 @@
 name: isAwake
-description: |-
+desc: |-
   Returns resting state of a PhysX (EPE) object. Some EPE objects are deliberately put to sleep by the engine to save resources.
   This command returns [[true]] when object is simulating and [[false]] when it is put to sleep. With units of type {{hl|Man}} the behaviour is slightly different.
   As units never get put to sleep, the command outputs ragdoll state of a unit instead. There are 6 states for the output of the command:
@@ -14,20 +14,25 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - Boolean
-  - see description
+    type: Boolean
+    desc: see description
   params:
   - name: object
-    description: PhysX object or unit
+    desc: PhysX object or unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 8
+  arma3: '2.8'
 examples:
 - <sqf>private _isAwake = isAwake _object;</sqf>
 - |-
   {{GVI|arma3|2.10|size= 0.75}} Here is a simple formula to return ragdoll state of a unit:
   <sqf>private _unitIsInRagdoll = alive _unit != isAwake _unit;</sqf>
+see_also:
+- awake
+- addTorque
+- addForce
+- vectorModelToWorld
+- vectorModelToWorldVisual
+- selectionPosition

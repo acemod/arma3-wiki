@@ -1,5 +1,5 @@
 name: addMPEventHandler
-description: |-
+desc: |-
   Adds a multiplayer event handler (EH) to the given object and returns EH handle. See {{Link|Category:Event Handlers|Event Handlers}}.
   {{Feature|important|A Multiplayer Event Handler is '''not''' saved in a save file and therefore will not be restored on load - use it accordingly.}}
 multiplayer_note: |-
@@ -14,28 +14,33 @@ syntax:
   - - type
     - expression
   ret:
-  - Number
-  - event handler index
+    type: Number
+    desc: event handler index
   params:
   - name: object
-    description: object to monitor
+    desc: object to monitor
     type: Object
   - name: type
-    description: event handler name
+    desc: event handler name
     type: String
   - name: expression
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - Code
+      - null
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 55
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.55'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_index = player addMPEventHandler ["MPKilled", { _this execVM "playerKilled.sqf"; }];</sqf>
+see_also:
+- :Category:Event
+- Handlers|EventHandlers
+- List
+- removeMPEventHandler
+- removeAllMPEventHandlers
+- getEventHandlerInfo

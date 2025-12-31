@@ -1,5 +1,5 @@
 name: set3DENObjectType
-description: 'Sets the classname of one or more given Eden Editor [[Eden Editor: Object|objects]]. For Logic objects use [[set3DENLogicType]].'
+desc: 'Sets the classname of one or more given Eden Editor [[Eden Editor: Object|objects]]. For Logic objects use [[set3DENLogicType]].'
 groups:
 - Eden Editor
 syntax:
@@ -7,19 +7,47 @@ syntax:
   - objects
   - classname
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: objects
     type: ArrayUnknown
   - name: classname
-    description: name of the cfgVehicles class
+    desc: name of the cfgVehicles class
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>[get3DENMouseOver select 1] set3DENObjectType "B_crew_F"; // turns object under cursor into a blufor crewman</sqf>
+see_also:
+- set3DENLogicType
+- get3DENMouseOver
+- add3DENConnection
+- add3DENEventHandler
+- all3DENEntities
+- collect3DENHistory
+- create3DENComposition
+- create3DENEntity
+- current3DENOperation
+- delete3DENEntities
+- do3DENAction
+- get3DENActionState
+- get3DENAttribute
+- get3DENCamera
+- get3DENConnections
+- get3DENEntityID
+- get3DENGrid
+- get3DENIconsVisible
+- get3DENLinesVisible
+- get3DENSelected
+- is3DEN
+- is3DENMultiplayer
+- move3DENCamera
+- remove3DENConnection
+- remove3DENEventHandler
+- removeAll3DENEventHandlers
+- set3DENAttributes
+- set3DENGrid
+- set3DENIconsVisible
+- set3DENLinesVisible

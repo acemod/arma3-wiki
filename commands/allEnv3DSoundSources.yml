@@ -1,18 +1,31 @@
 name: allEnv3DSoundSources
-description: Returns all environmental 3D sound sources ([[Object]]s) like trees and houses in camera vicinity.
+desc: Returns all environmental 3D sound sources ([[Object]]s) like trees and houses in camera vicinity.
 groups:
 - Sounds
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 8
+  arma3: '2.8'
 examples:
 - <sqf>private _sources = allEnv3DSoundSources;</sqf>
+see_also:
+- getAllEnv3DSoundControllers
+- getAllEnvSoundControllers
+- getEnv3DSoundController
+- getEnvSoundController
+- selectBestPlaces
+- getSoundController
+- getSoundControllerResult
+- getEnvSoundController
+- getAllSoundControllers
+- getCustomSoundController
+- setCustomSoundController
+- getCustomSoundControllerCount
+- Arma
+- '3:'
+- Sound

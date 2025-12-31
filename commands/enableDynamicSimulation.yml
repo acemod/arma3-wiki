@@ -1,5 +1,5 @@
 name: enableDynamicSimulation
-description: |-
+desc: |-
   Enables or disables [[Arma 3: Dynamic Simulation]] for given non AI object.
 
   {{Feature|informative|This command has no effect on ''mines''!}}
@@ -10,18 +10,36 @@ syntax:
   - object
   - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
   - name: enable
     type: Boolean
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>_myObject enableDynamicSimulation true;</sqf>
+see_also:
+- enableDynamicSimulationSystem
+- dynamicSimulationSystemEnabled
+- dynamicSimulationEnabled
+- setDynamicSimulationDistance
+- dynamicSimulationDistance
+- setDynamicSimulationDistanceCoef
+- dynamicSimulationDistanceCoef
+- triggerDynamicSimulation
+- canTriggerDynamicSimulation
+- enableSimulation
+- simulationEnabled
+- enableSimulationGlobal
+- Arma
+- '3:'
+- Dynamic
+- Simulation

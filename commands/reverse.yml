@@ -1,33 +1,28 @@
 name: reverse
-description: Reverses given array by reference (modifies the original array, just like [[resize]]). The alternative syntax can be used to reverse a ANSI [[String|string]]. If Unicode support is desired, see [[forceUnicode]].
+desc: Reverses given array by reference (modifies the original array, just like [[resize]]). The alternative syntax can be used to reverse a ANSI [[String|string]]. If Unicode support is desired, see [[forceUnicode]].
 groups:
 - Arrays
 syntax:
 - call: !Unary array
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: array
     type: ArrayUnknown
 - call: !Unary string
   ret:
-  - String
-  - reversed string
+    type: String
+    desc: reversed string
   params:
   - name: string
-    description: string to be reversed
+    desc: string to be reversed
     type: String
   since:
-    arma_3:
-      major: 2
-      minor: 2
+    arma3: '2.2'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 24
+  arma3: '1.24'
 examples:
 - |-
   <sqf>
@@ -42,3 +37,24 @@ examples:
   hint toString _wordArr; // nametag
   </sqf>
 - <sqf>reverse "treboR"; // Returns "Robert"</sqf>
+see_also:
+- set
+- resize
+- select
+- in
+- find
+- toArray
+- toString
+- forEach
+- count
+- pushBack
+- pushBackUnique
+- apply
+- append
+- sort
+- param
+- params
+- arrayIntersect
+- splitString
+- joinString
+- forceUnicode

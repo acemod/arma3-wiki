@@ -1,5 +1,5 @@
 name: ppEffectForceInNVG
-description: Forces use of [[Post Process Effects]] in NVG.
+desc: Forces use of [[Post Process Effects]] in NVG.
 groups:
 - Camera Control
 syntax:
@@ -7,19 +7,27 @@ syntax:
   - ppHandle
   - force
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ppHandle
-    description: handle of the post processing returned by [[ppEffectCreate]]
+    desc: handle of the post processing returned by [[ppEffectCreate]]
     type: Number
   - name: force
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_ppGrain ppEffectForceInNVG true;</sqf>
+see_also:
+- Post
+- Process
+- Effects
+- ppEffectEnable
+- ppEffectEnabled
+- ppEffectDestroy
+- ppEffectCreate
+- ppEffectCommit
+- ppEffectCommitted
+- ppEffectAdjust

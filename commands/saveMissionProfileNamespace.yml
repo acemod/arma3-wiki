@@ -1,5 +1,5 @@
 name: saveMissionProfileNamespace
-description: |-
+desc: |-
   [[missionProfileNamespace]] provides long-term storage solution for mission variables.
   When this namespace has variables set with [[setVariable]] and is saved, the variables are saved into {{hl|''[[missionName]]''.vars}} file into the current player's [[profileName]] folder.
   Next time when the same mission is loaded by the client with the same player profile, the saved variables can be read normally with [[getVariable]] command.
@@ -13,14 +13,17 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - '[[true]] in case of success, [[false]] otherwise (e.g trying to save in [[:Category:Eden Editor|Eden Editor]] or trying to save into existing save file but the file wasn''t loaded yet)'
+    type: Boolean
+    desc: '[[true]] in case of success, [[false]] otherwise (e.g trying to save in [[:Category:Eden Editor|Eden Editor]] or trying to save into existing save file but the file wasn''t loaded yet)'
   params: []
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>saveMissionProfileNamespace;</sqf>
+see_also:
+- missionProfileNamespace
+- isMissionProfileNamespaceLoaded
+- saveProfileNamespace
+- save3DENPreferences

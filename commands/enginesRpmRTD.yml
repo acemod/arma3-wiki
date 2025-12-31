@@ -1,20 +1,26 @@
 name: enginesRpmRTD
-description: Returns all engines RPM.{{Feature|afm}}
+desc: Returns all engines RPM.{{Feature|afm}}
 groups:
 - RTD
 syntax:
 - call: !Unary RTD_helicopter
   ret:
-  - ArrayUnknown
-  - null
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   params:
   - name: RTD_helicopter
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - <sqf>enginesRpmRTD RTD_helicopter params ["_RPMEngine1","_RPMEngine2"];</sqf>
+see_also:
+- isObjectRTD
+- enginesTorqueRTD
+- enginesIsOnRTD
+- airDensityRTD
+- weightRTD
+- wingsForcesRTD

@@ -1,27 +1,25 @@
 name: currentMuzzle
-description: Returns a unit's current weapon muzzle. Does not work on vehicles.
+desc: Returns a unit's current weapon muzzle. Does not work on vehicles.
 groups:
 - Weapons
 syntax:
 - call: !Unary unit
   ret:
-  - String
-  - current muzzle
+    type: String
+    desc: current muzzle
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_muzzle = currentMuzzle player;</sqf>
 - <sqf>_muzzle = currentMuzzle (gunner (vehicle player));</sqf>
+see_also:
+- currentWeapon
+- currentMagazine
+- currentThrowable

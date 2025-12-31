@@ -1,21 +1,20 @@
 name: throttleRTD
-description: Return the current throttle level for all engines of a helicopter.
+desc: Return the current throttle level for all engines of a helicopter.
 groups:
 - RTD
 syntax:
 - call: !Unary helicopterRTD
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: helicopterRTD
-    description: helicopter
+    desc: helicopter
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
+  tkoh: '1.0'
 examples:
 - <sqf>_throttleValues = throttleRTD vehicle player;</sqf>
+see_also:
+- setThrottleRTD

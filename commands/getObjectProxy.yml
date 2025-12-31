@@ -1,5 +1,5 @@
 name: getObjectProxy
-description: |-
+desc: |-
   Return the proxy object associated with the given editor object.
   {{Feature|informative|Some Old Editor Command}}
 groups:
@@ -9,8 +9,7 @@ syntax:
   - map
   - object
   ret:
-  - Object
-  - null
+    type: Object
   params:
   - name: map
     type: Control
@@ -19,21 +18,15 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   (findDisplay 128 displayCtrl 51) getObjectProxy "_unit_1"
   // returns the object 'B 1-1-A:1 (Sean Johnson)'
   </sqf>
+see_also:
+- setObjectProxy

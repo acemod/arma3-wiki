@@ -1,20 +1,34 @@
 name: allUnitsUAV
-description: Return a list of all UAV vehicles.
+desc: Return a list of all UAV vehicles.
 groups:
 - Remote Control
 - Object Detection
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - array of UAV vehicles
+    type: ArrayUnknown
+    desc: array of UAV vehicles
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 76
+  arma3: '0.76'
 examples:
 - '<sqf>hint format ["Number of UAV(s) on the map: %1", count allUnitsUAV];</sqf>'
 - <sqf>{ _x setDamage 1 } forEach allUnitsUAV;</sqf>
+see_also:
+- unitIsUAV
+- allCurators
+- allGroups
+- allDead
+- playableUnits
+- switchableUnits
+- vehicles
+- allDeadMen
+- agents
+- showUAVFeed
+- shownUAVFeed
+- getConnectedUAV
+- UAVControl
+- connectTerminalToUAV
+- isUAVConnected

@@ -1,5 +1,5 @@
 name: triggerDynamicSimulation
-description: 'Controls the ability of given unit to activate entities with disabled [[Arma 3: Dynamic Simulation]]. If [[false]] dynamically disabled entities will not be activated by this unit''s presence. This command has the same effect as the [[:Category:Eden Editor|Eden Editor]] attribute ''''Wake-Up Dynamic Simulation''''.'
+desc: 'Controls the ability of given unit to activate entities with disabled [[Arma 3: Dynamic Simulation]]. If [[false]] dynamically disabled entities will not be activated by this unit''s presence. This command has the same effect as the [[:Category:Eden Editor|Eden Editor]] attribute ''''Wake-Up Dynamic Simulation''''.'
 groups:
 - Dynamic Simulation
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - trigger
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,8 +16,23 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>player triggerDynamicSimulation false;</sqf>
+see_also:
+- enableDynamicSimulationSystem
+- dynamicSimulationSystemEnabled
+- enableDynamicSimulation
+- dynamicSimulationEnabled
+- setDynamicSimulationDistance
+- dynamicSimulationDistance
+- setDynamicSimulationDistanceCoef
+- dynamicSimulationDistanceCoef
+- canTriggerDynamicSimulation
+- enableSimulation
+- simulationEnabled
+- enableSimulationGlobal
+- Arma
+- '3:'
+- Dynamic
+- Simulation

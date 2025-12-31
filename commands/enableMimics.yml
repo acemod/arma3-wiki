@@ -1,5 +1,5 @@
 name: enableMimics
-description: Enables/disables mimics on a given unit.
+desc: Enables/disables mimics on a given unit.
 groups:
 - Object Manipulation
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - enabled
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,8 +16,8 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 22
+  arma3: '1.22'
 examples:
 - <sqf>cursorTarget enableMimics false;</sqf>
+see_also:
+- setMimic

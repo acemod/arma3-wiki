@@ -1,5 +1,5 @@
 name: displaySetEventHandler
-description: "Sets given event handler of given display.\nThe return code of the provided function should indicate whether this event was handled correctly. This implies telling the engine whether it is default code should be executed. \nSee [[User Interface Event Handlers]] for the full list of handler names.<br>\nIf applicable, see [[DIK KeyCodes]] for a list of key code constants, which are relevant to key related user interface events like {{Link|User Interface Event Handlers#onKeyDown|onKeyDown}} and {{Link|User Interface Event Handlers#onKeyUp|onKeyUp}}.\n{{Feature|important|When using the event names listed [[User Interface Event Handlers|here]] with the [[ctrlAddEventHandler]], [[ctrlSetEventHandler]], [[displayAddEventHandler]] or [[displaySetEventHandler]] commands, the prefix \"on\" in the event name must be removed (e.g. ''''ButtonDown'''' instead of ''''onButtonDown'''').}}"
+desc: "Sets given event handler of given display.\nThe return code of the provided function should indicate whether this event was handled correctly. This implies telling the engine whether it is default code should be executed. \nSee [[User Interface Event Handlers]] for the full list of handler names.<br>\nIf applicable, see [[DIK KeyCodes]] for a list of key code constants, which are relevant to key related user interface events like {{Link|User Interface Event Handlers#onKeyDown|onKeyDown}} and {{Link|User Interface Event Handlers#onKeyUp|onKeyUp}}.\n{{Feature|important|When using the event names listed [[User Interface Event Handlers|here]] with the [[ctrlAddEventHandler]], [[ctrlSetEventHandler]], [[displayAddEventHandler]] or [[displaySetEventHandler]] commands, the prefix \"on\" in the event name must be removed (e.g. ''''ButtonDown'''' instead of ''''onButtonDown'''').}}"
 groups:
 - GUI Control - Event Handlers
 - Event Handlers
@@ -9,34 +9,35 @@ syntax:
   - - handlerName
     - function
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: display
     type: Display
   - name: handlerName
     type: String
   - name: function
-    description: code
+    desc: code
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_control displaySetEventHandler ["KeyDown", ""];</sqf>
 - "{{hl|init.sqf}}:\n<sqf>\nKeysPressed = compile preprocessFile \"keysPressed.sqf\";\nprivate _display = findDisplay 46;\n_display displaySetEventHandler [\"KeyDown\", \"_this call KeysPressed\"];\n</sqf>\n\n{{hl|keysPressed.sqf}}:\n<sqf>\nprivate _handled = false;\nswitch (_this select 1) do {\n\t// F key\n\tcase 33: {\n\t\t// code here\n\t\t_handled = true;\n\t};\n};\n_handled;\n</sqf>"
+see_also:
+- ListOfKeyCodes
+- displayAddEventHandler
+- displayRemoveEventHandler
+- displayRemoveAllEventHandlers
+- ctrlSetEventHandler
+- User_Interface_Event_Handlers|UI
+- Event
+- Handlers
+- DIK_KeyCodes|DIK
+- KeyCodes
+- keyName

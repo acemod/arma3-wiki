@@ -1,23 +1,26 @@
 name: forcedMap
-description: Returns if map was forced by using [[forceMap]] command or [[openMap]] command with force option
+desc: Returns if map was forced by using [[forceMap]] command or [[openMap]] command with force option
 groups:
 - Map
 - Interaction
 syntax:
 - call: Nular
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 62
+  arma3: '1.62'
 examples:
 - |-
   <sqf>
   _forceMapForced = forcedMap select 0;
   _openMapForced = forcedMap select 1;
   </sqf>
+see_also:
+- openMap
+- forceMap
+- showMap
+- visibleMap
+- shownMap

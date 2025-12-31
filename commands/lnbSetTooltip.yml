@@ -1,5 +1,5 @@
 name: lnbSetTooltip
-description: |-
+desc: |-
   Sets tooltip on the item with the given row and column of [[CT_LISTNBOX]].
   {{Feature|important|
   By default, tooltips are added for all columns no matter what column index is provided.
@@ -15,20 +15,19 @@ syntax:
     - column
   - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
-    description: control's IDC
+    desc: control's IDC
     type: Number
   - name: row
-    description: row where the tooltip should be shown
+    desc: row where the tooltip should be shown
     type: Number
   - name: column
-    description: column where tooltip should be shown. By default it is set for every column, see description
+    desc: column where tooltip should be shown. By default it is set for every column, see description
     type: Number
   - name: text
-    description: tooltip text
+    desc: tooltip text
     type: String
 - call: !Binary
   - ctrl
@@ -36,27 +35,47 @@ syntax:
       - column
     - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ctrl
-    description: control
+    desc: control
     type: Control
   - name: row
-    description: row where the tooltip should be shown
+    desc: row where the tooltip should be shown
     type: Number
   - name: column
-    description: column where tooltip should be shown. By default it is set for every column, see description
+    desc: column where tooltip should be shown. By default it is set for every column, see description
     type: Number
   - name: text
-    description: tooltip text
+    desc: tooltip text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 94
+  arma3: '1.94'
 examples:
 - <sqf>lnbSetTooltip [1234, [1,0], "tip"];</sqf>
 - <sqf>_ctrl lnbSetTooltip [[3,0], "top"];</sqf>
+see_also:
+- lbSetTooltip
+- lnbSetData
+- lnbAddArray
+- lnbAddColumn
+- lnbAddRow
+- lnbClear
+- lnbColor
+- lnbCurSelRow
+- lnbData
+- lnbDeleteColumn
+- lnbDeleteRow
+- lnbGetColumnsPosition
+- lnbPicture
+- lnbSetColor
+- lnbSetColumnsPos
+- lnbSetCurSelRow
+- lnbSetPicture
+- lnbSetText
+- lnbSetValue
+- lnbSize
+- lnbText
+- lnbValue

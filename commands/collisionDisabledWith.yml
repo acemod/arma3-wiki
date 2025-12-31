@@ -1,21 +1,21 @@
 name: collisionDisabledWith
-description: Returns the object, given object has collision disabled with and whether or not returned object has also collision disabled with given object.
+desc: Returns the object, given object has collision disabled with and whether or not returned object has also collision disabled with given object.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary obj
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: obj
-    description: given object
+    desc: given object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 8
+  arma3: '2.8'
 examples:
 - <sqf>private _collisionInfo = collisionDisabledWith _tank;</sqf>
+see_also:
+- disableCollisionWith
+- enableCollisionWith

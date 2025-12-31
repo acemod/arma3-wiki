@@ -1,5 +1,5 @@
 name: menuSetText
-description: Sets text of given menu strip entry.
+desc: Sets text of given menu strip entry.
 groups:
 - GUI Control - Menu
 syntax:
@@ -8,8 +8,7 @@ syntax:
   - path
   - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
@@ -22,8 +21,7 @@ syntax:
   - - path
     - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -34,8 +32,8 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>_ctrlMenuStrip menuSetText [[0,0,1], "Hello World!"];</sqf>
+see_also:
+- menuText

@@ -1,21 +1,22 @@
 name: getUnitFreefallInfo
-description: Returns a unit's freefall information.
+desc: Returns a unit's freefall information.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary unit
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unit
-    description: unit
+    desc: unit
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>getUnitFreefallInfo player;</sqf>
+see_also:
+- setUnitFreefallHeight
+- getUserInfo
+- getModelInfo

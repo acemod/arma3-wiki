@@ -1,5 +1,5 @@
 name: matrixTranspose
-description: |-
+desc: |-
   [[File:matrixTranspose.jpg|thumb|Matrix transposition]]
   Returns {{Link|https://en.wikipedia.org/wiki/Transpose|transposed}} version of the given matrix.
   The matrix is an [[Array]] of rows.
@@ -10,19 +10,31 @@ groups:
 syntax:
 - call: !Unary matrix
   ret:
-  - Unknown
-  - transposed matrix
+    type: Unknown
+    desc: transposed matrix
   params:
   - name: matrix
-    description: given matrix
+    desc: given matrix
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 92
+  arma3: '1.92'
 examples:
 - "<sqf>\nmatrixTranspose \n[\n\t[1,2,3], \n\t[3,1,2], \n\t[2,3,1]\n];\n/* returns \n[\n\t[1,3,2], \n\t[2,1,3], \n\t[3,2,1]\n] */\n</sqf>"
 - "<sqf>\nmatrixTranspose \n[\n\t[1,2,3]\n];\n/* returns \n[\n\t[1],\n\t[2],\n\t[3]\n] */\n</sqf>"
 - "<sqf>\nmatrixTranspose \n[\n\t[1],\n\t[2],\n\t[3]\n];\n/* returns \n[\n\t[1,2,3]\n] */\n</sqf>"
+see_also:
+- matrixMultiply
+- vectorAdd
+- vectorMagnitude
+- vectorNormalized
+- vectorMultiply
+- vectorDotProduct
+- vectorCrossProduct
+- vectorDistance
+- vectorLinearConversion
+- vectorCos
+- vectorFromTo
+- vectorModelToWorld
+- vectorWorldToModel

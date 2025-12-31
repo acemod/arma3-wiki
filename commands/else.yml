@@ -1,5 +1,5 @@
 name: else
-description: Executes [[else]] code when [[if]] condition returns [[false]].
+desc: Executes [[else]] code when [[if]] condition returns [[false]].
 groups:
 - Program Flow
 syntax:
@@ -7,8 +7,17 @@ syntax:
   - thenCode
   - elseCode
   ret:
-  - Unknown
-  - null
+    type: !ArraySized
+      types:
+      - name: thenCode
+        type: Code
+        desc: ''
+        since: null
+      - name: elseCode
+        type: Code
+        desc: ''
+        since: null
+      desc: ''
   params:
   - name: thenCode
     type: Code
@@ -17,27 +26,18 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 85
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.85'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>if (a > b) then { c = 0 } else { c = 1 };</sqf>
 - "<sqf>\nif (a < b) then {\n\thint \"B is greater than A\";\n} else {\n\thint \"A is greater than B\";\n};\n</sqf>"
+see_also:
+- Control
+- Structures
+- if
+- then

@@ -1,5 +1,5 @@
 name: lnbPicture
-description: Returns the picture name or path of the item with the given position of the 2D listbox.
+desc: Returns the picture name or path of the item with the given position of the 2D listbox.
 groups:
 - GUI Control - ListNBox
 syntax:
@@ -8,49 +8,60 @@ syntax:
   - - row
     - column
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: idc
-    description: number of [[Control]]
+    desc: number of [[Control]]
     type: Number
   - name: row
-    description: index of Row
+    desc: index of Row
     type: Number
   - name: column
-    description: index of Column
+    desc: index of Column
     type: Number
 - call: !Binary
   - control
   - - row
     - column
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: control
     type: Control
   - name: row
-    description: index of Row in given Control
+    desc: index of Row in given Control
     type: Number
   - name: column
-    description: index of Column in given Control
+    desc: index of Column in given Control
     type: Number
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>lnbPicture [200, [1, 1]];</sqf>
 - <sqf>_control lnbPicture [1, 1]; // "a3\ui_f\data\gui\cfg\ranks\corporal_gs.paa"</sqf>
+see_also:
+- lnbAddArray
+- lnbAddColumn
+- lnbAddRow
+- lnbClear
+- lnbColor
+- lnbCurSelRow
+- lnbData
+- lnbDeleteColumn
+- lnbDeleteRow
+- lnbGetColumnsPosition
+- lnbSetColor
+- lnbSetColumnsPos
+- lnbSetCurSelRow
+- lnbSetData
+- lnbSetPicture
+- lnbSetText
+- lnbSetValue
+- lnbSize
+- lnbText
+- lnbValue

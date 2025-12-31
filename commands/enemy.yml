@@ -1,5 +1,5 @@
 name: enemy
-description: |-
+desc: |-
   Returns ''Enemy'' side which is hostile to all units.
   {{Feature|warning|This command is not functional and appears to have been replaced by [[sideEnemy]].}}
 groups:
@@ -8,14 +8,14 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Side
-  - null
+    type: Side
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 75
+  flashpoint: '1.75'
 examples:
 - '<sqs>? _side == enemy : hint "ouch"</sqs>'
+see_also:
+- sideEnemy
+- sideFriendly

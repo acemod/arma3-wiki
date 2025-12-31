@@ -1,5 +1,5 @@
 name: createMarker
-description: |-
+desc: |-
   Creates a new map marker at the given position. The marker will be created for every connected player as well as all JIP players. The marker name has to be unique; the command will be ignored if a marker with the given name already exists.
 
   {{Feature|important|
@@ -26,51 +26,46 @@ syntax:
   - channel
   - creator
   ret:
-  - String
-  - the marker's name or empty string if the marker name is not unique.
+    type: String
+    desc: the marker's name or empty string if the marker name is not unique.
   params:
   - name: name
-    description: the marker's name, used to reference the marker in scripts.
+    desc: the marker's name, used to reference the marker in scripts.
     type: String
   - name: position
-    description: '[[Position#Introduction|Position2D]], [[Position#PositionAGL|PositionAGL]] or [[Object]]. In case of an object, the object''s model [0,0,0] is used.'
-    type: Unknown
+    desc: '[[Position#Introduction|Position2D]], [[Position#PositionAGL|PositionAGL]] or [[Object]]. In case of an object, the object''s model [0,0,0] is used.'
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - Object
+      - null
   - name: channel
-    description: the marker channel - see [[Channel IDs]] (for multiplayer)
+    desc: the marker channel - see [[Channel IDs]] (for multiplayer)
     type: Number
     optional: true
     default: '-1'
     since:
-      arma_3:
-        major: 2
-        minor: 2
+      arma3: '2.2'
   - name: creator
-    description: the marker creator (for multiplayer)
+    desc: the marker creator (for multiplayer)
     type: Object
     optional: true
     default: '[[objNull]]'
     since:
-      arma_3:
-        major: 2
-        minor: 2
+      arma3: '2.2'
 argument_loc: Unspecified
 effect_loc: Global
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_marker1 = createMarker ["Marker1", position player];</sqf>
 - <sqf>_marker2 = createMarker ["Marker2", player]; // since {{arma3}} 1.50</sqf>
+see_also:
+- createMarkerLocal
+- deleteMarker
+- BIS_fnc_markerToString
+- BIS_fnc_stringToMarker

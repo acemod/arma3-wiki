@@ -1,5 +1,5 @@
 name: camSetPos
-description: |-
+desc: |-
   Sets the position of the given camera or seagull (see [[camCreate]]).
   It is worth mentioning that camera position can also be set with [[setPos]], in which case it would be instant.
   With [[camSetPos]] it is possible to make smooth position transition in time, defined with [[camCommit]], which is required in this case.
@@ -10,42 +10,30 @@ syntax:
   - camera
   - position
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: camera
-    description: object of type "camera" or "seagull"
+    desc: object of type "camera" or "seagull"
     type: Object
   - name: position
-    description: camera destination
+    desc: camera destination
     type: Unknown
 argument_loc: Local
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   _cam camSetPos [2300, 1000, 130];
   _cam camCommit 10;
   </sqf>
+see_also:
+- camSetRelPos
+- setPos

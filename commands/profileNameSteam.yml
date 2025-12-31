@@ -1,18 +1,19 @@
 name: profileNameSteam
-description: Returns name of the current Steam profile. For currently chosen user profile name see [[profileName]]
+desc: Returns name of the current Steam profile. For currently chosen user profile name see [[profileName]]
 groups:
 - System
 syntax:
 - call: Nular
   ret:
-  - String
-  - null
+    type: String
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 46
+  arma3: '1.46'
 examples:
 - <sqf>_mySteamProfileName = profileNameSteam;</sqf>
+see_also:
+- profileName
+- getPlayerUID
+- name

@@ -1,19 +1,17 @@
 id: OnUserConnected
-description: Executes assigned code on user joining server.
+desc: Executes assigned code on user joining server.
 params:
 - name: networkId
-  description: user network id (see [[getPlayerID]], [[allUsers]])
+  desc: user network id (see [[getPlayerID]], [[allUsers]])
   type: String
 - name: clientStateNumber
-  description: client state number (see [[getClientStateNumber]]) - always 1
+  desc: client state number (see [[getClientStateNumber]]) - always 1
   type: Number
 - name: clientState
-  description: client state (see [[getClientState]]) - always "CREATED"
+  desc: client state (see [[getClientState]]) - always "CREATED"
   type: String
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 argument_loc: Unspecified
 effect_loc: Unspecified
 examples:

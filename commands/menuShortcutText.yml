@@ -1,5 +1,5 @@
 name: menuShortcutText
-description: Returns a string containing shortcut text for menu item on the given path.
+desc: Returns a string containing shortcut text for menu item on the given path.
 problem_notes:
 - '{{Feature|warning|This command is currently broken in {{arma3}} 2.00. It only returns shortcuts which do not use a modifier key ({{Controls|Ctrl}}, {{Controls|Alt}} and {{Controls|Shift}}).}}'
 groups:
@@ -10,8 +10,7 @@ syntax:
   - idc
   - path
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: idc
     type: Number
@@ -21,8 +20,7 @@ syntax:
   - control
   - path
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: control
     type: Control
@@ -31,8 +29,9 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>findDisplay 313 displayCtrl 120 menuShortcutText [1, 8]; // returns "#"</sqf>
+see_also:
+- menuShortcut
+- menuSetShortcut

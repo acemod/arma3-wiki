@@ -1,13 +1,12 @@
 name: throwables
-description: Returns all throwables in unit inventory in [[currentThrowable]] format.
+desc: Returns all throwables in unit inventory in [[currentThrowable]] format.
 groups:
 - Weapons
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unit
     type: Object
@@ -15,23 +14,28 @@ syntax:
   - unit
   - includeEmpty
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unit
     type: Object
   - name: includeEmpty
-    description: when [[true]] returns empty throwables as well.
-    type: Unknown
+    desc: '(Optional, default: [[false]]) when [[true]] returns empty throwables as well.'
+    type: Boolean
+    optional: true
   since:
-    arma_3:
-      major: 2
-      minor: 22
+    arma3: '2.22'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - "<sqf>\nthrowables player;\n/*\n\t[\n\t\t[\"HandGrenade\",\"HandGrenadeMuzzle\",[1e+007,0],1],\n\t\t[\"SmokeShell\",\"SmokeShellMuzzle\",[1e+007,0],1],\n\t\t[\"SmokeShellGreen\",\"SmokeShellGreenMuzzle\",[1e+007,0],1],\n\t\t[\"Chemlight_green\",\"ChemlightGreenMuzzle\",[1e+007,0],1],\n\t\t[\"Chemlight_green\",\"\",[1e+007,0],1],\n\t\t[\"HandGrenade\",\"\",[1e+007,0],1]\n\t]\n*/\n</sqf>"
+see_also:
+- selectThrowable
+- currentThrowable
+- isThrowable
+- selectWeapon
+- currentWeapon
+- currentMagazine
+- currentMuzzle
+- BIS_fnc_isThrowable

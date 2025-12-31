@@ -1,5 +1,5 @@
 name: ropeUnwind
-description: |-
+desc: |-
   Increases or decreases the rope length by the given amount. Use relative parameter for changing rope length +/- from current length.
   {{Feature|informative|Rope length can be in range 0.5..100 metres.}}
 groups:
@@ -11,28 +11,43 @@ syntax:
   - length
   - relative
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: rope
-    description: rope object
+    desc: rope object
     type: Object
   - name: speed
-    description: animation speed in m/s with which to lengthen or shorten the rope, in range 0.01..20
+    desc: animation speed in m/s with which to lengthen or shorten the rope, in range 0.01..20
     type: Number
   - name: length
-    description: 'the amount of length change in meters, in range: 0.1..100'
+    desc: 'the amount of length change in meters, in range: 0.1..100'
     type: Number
   - name: relative
-    description: '[[true]] will add or subtract given length from current rope length, [[false]] will resize the rope to the given length'
+    desc: '[[true]] will add or subtract given length from current rope length, [[false]] will resize the rope to the given length'
     type: Boolean
     optional: true
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - <sqf>ropeUnwind [ropes heli1 select 0, 3, 10]; // set rope length to 10m at 3m/s</sqf>
 - <sqf>ropeUnwind [ropes heli1 select 0, 3, -5, true]; // decrease rope length by 5m at 3m/s</sqf>
+see_also:
+- ropes
+- canSlingLoad
+- enableRopeAttach
+- getSlingLoad
+- ropeAttachedObjects
+- ropeAttachTo
+- ropeDestroy
+- ropeLength
+- ropeUnwound
+- ropeAttachedTo
+- ropeCreate
+- ropeDetach
+- ropeAttachEnabled
+- ropeCut
+- ropeEndPosition
+- setSlingLoad
+- slingLoadAssistantShown

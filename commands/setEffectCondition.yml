@@ -1,5 +1,5 @@
 name: setEffectCondition
-description: |-
+desc: |-
   The statement is executed when the trigger or waypoint is activated and the effects are launched depending on the result.
 
   *If the result is a [[Boolean|boolean]] and [[true]], the effect is launched.
@@ -12,8 +12,7 @@ syntax:
   - trigger
   - statement
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: trigger
     type: Object
@@ -23,34 +22,23 @@ syntax:
   - waypoint
   - statement
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: waypoint
-    description: '[[Array]] format [[Waypoint]]'
+    desc: '[[Array]] format [[Waypoint]]'
     type: Waypoint
   - name: statement
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_triggerObj setEffectCondition "thisList";</sqf>
+see_also:
+- createTrigger

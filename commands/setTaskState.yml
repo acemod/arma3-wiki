@@ -1,5 +1,5 @@
 name: setTaskState
-description: Set the state of a given task.
+desc: Set the state of a given task.
 groups:
 - Briefing
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - task
   - state
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: task
     type: Task
@@ -17,17 +16,17 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_tskKillSpongebob setTaskState "Succeeded";</sqf>
+see_also:
+- Tasks
+- createSimpleTask
+- removeSimpleTask
+- setSimpleTaskDescription
+- setSimpleTaskDestination
+- setTaskResult
+- taskState

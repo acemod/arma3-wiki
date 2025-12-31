@@ -1,20 +1,36 @@
 name: ctAddHeader
-description: Adds a header line of controls according to the HeaderTemplate class. Note that rows and headers are indexed separately.
+desc: Adds a header line of controls according to the HeaderTemplate class. Note that rows and headers are indexed separately.
 groups:
 - GUI Control - Controls Table
 syntax:
 - call: !Unary control
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: control
     type: Control
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>private _array = ctAddHeader _control;</sqf>
+see_also:
+- ctAddRow
+- ctClear
+- ctCurSel
+- ctSetCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetValue
+- ctValue
+- ctSetData
+- ctData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

@@ -1,5 +1,5 @@
 name: removeBinocularItem
-description: Removes given weapon item, including magazine, from the [[binocular]] weapon.
+desc: Removes given weapon item, including magazine, from the [[binocular]] weapon.
 groups:
 - Unit Inventory
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - item
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,8 +16,13 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>player removeBinocularItem "Laserbatteries";</sqf>
+see_also:
+- addBinocularItem
+- binocularItems
+- removeAllBinocularItems
+- removePrimaryWeaponItem
+- removeSecondaryWeaponItem
+- removeHandgunItem

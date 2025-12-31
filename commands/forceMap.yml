@@ -1,5 +1,5 @@
 name: forceMap
-description: |-
+desc: |-
   Opens non-interactive main map in background that overrides user screen. To force open interactive map use [[openMap]] command.
   {{Feature|warning|
   When the map is forced open with this command, the user is still able to fire but cannot see the world, just the map.
@@ -11,35 +11,26 @@ groups:
 syntax:
 - call: !Unary show
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: show
-    description: '[[true]] to force, [[false]] to go back to normal map behaviour'
+    desc: '[[true]] to force, [[false]] to go back to normal map behaviour'
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 27
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.27'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>forceMap true;</sqf>
+see_also:
+- forcedMap
+- showMap
+- shownMap
+- openMap
+- visibleMap

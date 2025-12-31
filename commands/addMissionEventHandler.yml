@@ -1,5 +1,5 @@
 name: addMissionEventHandler
-description: 'Adds event handler attached to the current mission and returns event handler handle. For the list of available mission event handlers see: [[Arma 3: Mission Event Handlers]]'
+desc: 'Adds event handler attached to the current mission and returns event handler handle. For the list of available mission event handlers see: [[Arma 3: Mission Event Handlers]]'
 groups:
 - Event Handlers
 syntax:
@@ -8,29 +8,37 @@ syntax:
   - expression
   - arguments
   ret:
-  - Number
-  - the index of the currently added mission event handler is returned
+    type: Number
+    desc: the index of the currently added mission event handler is returned
   params:
   - name: event
-    description: event name
+    desc: event name
     type: String
   - name: expression
-    type: Unknown
+    type: !OneOf
+    - - Code
+      - null
+    - - String
+      - null
+    - - Object
+      - null
+    - - Group
+      - null
   - name: arguments
-    description: additional arguments to be passed to the EH code. Available during code execution via {{hl|_thisArgs}} variable.
+    desc: additional arguments to be passed to the EH code. Available during code execution via {{hl|_thisArgs}} variable.
     type: ArrayUnknown
     optional: true
     default: <sqf inline>[]</sqf>
     since:
-      arma_3:
-        major: 2
-        minor: 4
+      arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_id = addMissionEventHandler ["PlayerDisconnected", { systemChat str _this }];</sqf>
 - <sqf>_id = addMissionEventHandler ["EachFrame", { systemChat str [_thisArgs, time] }, [time]];</sqf>
+see_also:
+- removeMissionEventHandler
+- removeAllMissionEventHandlers
+- getEventHandlerInfo

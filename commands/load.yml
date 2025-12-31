@@ -1,5 +1,5 @@
 name: load
-description: |-
+desc: |-
   Returns the percentage of fullness of a unit's cargo. Output is usually in range 0..1, but can be higher after using certain scripting commands (like [[addWeaponWithAttachmentsCargoGlobal]]) which ignore load values when adding items.
   {{Feature|informative|See {{Link|#Example 2}} for load calculation.}}
 groups:
@@ -7,20 +7,26 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: unit
-    description: (before {{GVI|arma3|2.08|size= 0.75}} the command did not support containers, ammo boxes, weapon holders, vehicle cargos)
+    desc: (before {{GVI|arma3|2.08|size= 0.75}} the command did not support containers, ammo boxes, weapon holders, vehicle cargos)
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>load player;</sqf>
 - |-
   unit load calculation formula:
   <sqf>private _unitLoad = loadAbs _unit / getNumber (configFile >> "CfgInventoryGlobalVariable" >> "maxSoldierLoad");</sqf>
+see_also:
+- maxLoad
+- loadAbs
+- loadBackpack
+- loadUniform
+- loadVest
+- getMass
+- weightRTD
+- getContainerMaxLoad

@@ -1,20 +1,26 @@
 name: leaderboardGetRows
-description: Returns values for the given leaderboard; this can be called after the one of the row request function has been called and successfully finished!
+desc: Returns values for the given leaderboard; this can be called after the one of the row request function has been called and successfully finished!
 groups:
 - Leaderboards
 syntax:
 - call: !Unary boardName
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: boardName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>leaderboardGetRows "TT01";</sqf>
+see_also:
+- leaderboardDeInit
+- leaderboardInit
+- leaderboardRequestRowsFriends
+- leaderboardRequestRowsGlobal
+- leaderboardRequestRowsGlobalAroundUser
+- leaderboardsRequestUploadScore
+- leaderboardsRequestUploadScoreKeepBest
+- leaderboardState

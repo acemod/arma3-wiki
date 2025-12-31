@@ -1,5 +1,5 @@
 name: animationPhase
-description: Returns the phase of the given animation on the given object. Animation can be scripted ([[animate]], [[animateSource]], [[animateDoor]]) or engine driven. Animation names for an object could be found out with [[animationNames]] command. When animation is rotation, like with "MainTurret" for example, the output is in radians, to convert to degrees use [[deg]] command.
+desc: Returns the phase of the given animation on the given object. Animation can be scripted ([[animate]], [[animateSource]], [[animateDoor]]) or engine driven. Animation names for an object could be found out with [[animationNames]] command. When animation is rotation, like with "MainTurret" for example, the output is in radians, to convert to degrees use [[deg]] command.
 multiplayer_note: In {{ofp}}, on dedicated servers, ''animationPhase'' will always return 0, no matter what the actual phase is.
 groups:
 - Animations
@@ -8,38 +8,24 @@ syntax:
   - object
   - animationName
   ret:
-  - Number
-  - range 0 (start point of the animation) to 1 (end point of the animation)
+    type: Number
+    desc: range 0 (start point of the animation) to 1 (end point of the animation)
   params:
   - name: object
     type: Object
   - name: animationName
-    description: name of the animation. This is the class-name of the animation defined in the addon's config.cpp
+    desc: name of the animation. This is the class-name of the animation defined in the addon's config.cpp
     type: String
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -49,3 +35,12 @@ examples:
   </sqf>
 - <sqf>_flagPole animationPhase "flag";</sqf>
 - <sqf>_tank animationPhase "MainTurret";</sqf>
+see_also:
+- animate
+- moveTime
+- setFaceAnimation
+- animateDoor
+- doorPhase
+- animateSource
+- animationSourcePhase
+- animationNames

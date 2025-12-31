@@ -1,5 +1,5 @@
 name: publicVariable
-description: |-
+desc: |-
   Reliably broadcasts [[missionNamespace]] variable and its '''current''' value to all computers (server/client).<br>
   Variables broadcast with [[publicVariable]] during a mission will be available to [[Multiplayer Scripting#Join In Progress|JIP]] clients with the value they held at the time.<br>
   Such variables are persistent and sent to the JIP client before the first batch of client-side [[Event Scripts]] (such as [[init.sqf]]) is run.
@@ -37,37 +37,41 @@ groups:
 syntax:
 - call: !Unary varName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: varName
-    description: the [[Variables#Global Scope|global variable]]'s [[Identifier]]
+    desc: the [[Variables#Global Scope|global variable]]'s [[Identifier]]
     type: String
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 34
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.34'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nTAG_MyPublicVariable = 0;\nTAG_MyPublicVariable = 1;\npublicVariable \"TAG_MyPublicVariable\";\t// other clients will receive the \"TAG_MyPublicVariable\" variable with a 1 value\n\nTAG_MyPublicVariable = 2;\t\t\t\t// needs to be broadcast again - synchronisation is not automatic\n</sqf>"
 - "JIP example:\n<sqf>\nif (isNil \"TAG_CurrentTarget\") then\t// has the variable already been set and broadcast?\n{\n\tTAG_CurrentTarget = objNull;\t// if not, set it on the local machine\n};\n\nplayer doTarget TAG_CurrentTarget;\n</sqf>"
 - "<sqf>\nTAG_BossName = \"EvilBigBoss\";\n\npublicVariable TAG_BossName;\t// wrong - will try to publicVariable \"EvilBigBoss\" variable, that does not exist\npublicVariable \"TAG_BossName\";\t// correct - important, do not forget the QUOTES\n</sqf>"
+see_also:
+- Multiplayer
+- Scripting
+- Initialisation
+- Order
+- addPublicVariableEventHandler
+- publicVariableClient
+- publicVariableServer
+- Variables#Global
+- Scope|Global
+- Variable
+- Event
+- Scripts
+- Multiplayer
+- Scripting#Join
+- In
+- Progress|Join
+- In
+- Progress

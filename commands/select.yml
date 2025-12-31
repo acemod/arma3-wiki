@@ -1,5 +1,5 @@
 name: select
-description: Selects an element from an array, config entry from [[Config]] or substring from a string or a range from an array.
+desc: Selects an element from an array, config entry from [[Config]] or substring from a string or a range from an array.
 groups:
 - Arrays
 - Strings
@@ -9,13 +9,13 @@ syntax:
   - array
   - index
   ret:
-  - Anything
-  - a <u>reference</u> to the array element given by its index
+    type: Anything
+    desc: a <u>reference</u> to the array element given by its index
   params:
   - name: array
     type: ArrayUnknown
   - name: index
-    description: |-
+    desc: |-
       index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up.<br>
       {{GVI|arma3|2.12|size= 0.75}} negative index can be used to select from the end of the array, i.e. -1 means last array element.
     type: Number
@@ -23,117 +23,93 @@ syntax:
   - array
   - boolean
   ret:
-  - Anything
-  - a <u>reference</u> to the array element
+    type: Anything
+    desc: a <u>reference</u> to the array element
   params:
   - name: array
     type: ArrayUnknown
   - name: boolean
-    description: '[[false]] selects the ''''''first'''''' element of the [[Array]], [[true]] the ''''''second'''''' one'
+    desc: '[[false]] selects the ''''''first'''''' element of the [[Array]], [[true]] the ''''''second'''''' one'
     type: Boolean
 - call: !Binary
   - config
   - index
   ret:
-  - Config
-  - null
+    type: Config
   params:
   - name: config
     type: Config
   - name: index
-    description: index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
+    desc: index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
     type: Number
   since:
-    armed_assault:
-      major: 1
-      minor: 0
+    arma1: '1.0'
 - call: !Binary
   - string
   - - start
     - length
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: string
     type: String
   - name: start
-    description: string position to start selection from. 0 denotes the first character of the string, 1 the second, etc. If passed number has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
+    desc: string position to start selection from. 0 denotes the first character of the string, 1 the second, etc. If passed number has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
     type: Number
   - name: length
-    description: number of characters to select
+    desc: number of characters to select
     type: Number
     optional: true
     default: '''''string''''''s length'
   since:
-    arma_3:
-      major: 1
-      minor: 28
+    arma3: '1.28'
 - call: !Binary
   - array
   - - start
     - count
   ret:
-  - ArrayUnknown
-  - a <u>new array</u> from selection
+    type: ArrayUnknown
+    desc: a <u>new array</u> from selection
   params:
   - name: array
     type: ArrayUnknown
   - name: start
-    description: array index to start selection from
+    desc: array index to start selection from
     type: Number
   - name: count
-    description: |-
+    desc: |-
       (Optional after {{GVI|arma3|2.14|size= 0.75}}) number of array elements to select. If the selected range exceeds source array boundaries, selection will be made up to the last element of the array.
       {{Feature|informative|Since v2.14 'count' is optional, if omitted the selection is made from ''start'' until the end of the array.}}
     type: Number
     optional: true
   since:
-    arma_3:
-      major: 1
-      minor: 32
+    arma3: '1.32'
 - call: !Binary
   - array
   - expression
   ret:
-  - ArrayUnknown
-  - a <u>new array</u> of all elements from the original array that satisfied expression condition
+    type: ArrayUnknown
+    desc: a <u>new array</u> of all elements from the original array that satisfied expression condition
   params:
   - name: array
     type: ArrayUnknown
   - name: expression
-    description: |-
+    desc: |-
       expression that is expected to return [[Boolean]] or [[Nothing]].
       If [[true]] is returned, the original array value of currently tested element [[Magic Variables#x|_x]] will be added to the output array
     type: Code
   since:
-    arma_3:
-      major: 1
-      minor: 56
+    arma3: '1.56'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\n[\"a\", \"b\", \"c\", \"d\"] select 2;\t// result is \"c\"\nposition player select 2;\t\t// result is Z coordinate of player position\n</sqf>"
 - <sqf>["", currentWeapon player] select alive player; // if player is dead, "" is selected</sqf>
@@ -147,3 +123,31 @@ examples:
   {{Feature|arma3|Since {{GVI|arma3|2.12}} {{hl|-1}} can be used to select the last element of an array.}}
   <sqf>private _array = [1, 2, 3, 4, 5];
   hint str (_array select -1); // 5</sqf>
+see_also:
+- a
+- hash
+- b|#
+- selectRandom
+- selectRandomWeighted
+- set
+- resize
+- reverse
+- in
+- find
+- findIf
+- toArray
+- toString
+- forEach
+- count
+- deleteAt
+- deleteRange
+- append
+- sort
+- param
+- params
+- splitString
+- joinString
+- pushBack
+- pushBackUnique
+- apply
+- forceUnicode

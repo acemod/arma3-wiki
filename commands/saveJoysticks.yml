@@ -1,18 +1,17 @@
 name: saveJoysticks
-description: Saves joysticks key mappings into the joysticks.cfg file. Engine add these joysticks to the Joystick Scheme mapping dialog in options controls section.
+desc: Saves joysticks key mappings into the joysticks.cfg file. Engine add these joysticks to the Joystick Scheme mapping dialog in options controls section.
 groups:
 - System
 syntax:
 - call: Nular
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>saveJoysticks;</sqf>
+see_also:
+- saveProfileNamespace

@@ -1,5 +1,5 @@
 name: setDiarySubjectPicture
-description: Sets a picture to be displayed on the right of the [[Diary]] subject. The picture can also be set during custom [[Diary]] subject [[createDiarySubject | creation]], but this command also allows to change icon for the fixed subjects, like "Tasks", "Diary", "Units", "Players" and "Statistics".
+desc: Sets a picture to be displayed on the right of the [[Diary]] subject. The picture can also be set during custom [[Diary]] subject [[createDiarySubject | creation]], but this command also allows to change icon for the fixed subjects, like "Tasks", "Diary", "Units", "Players" and "Statistics".
 groups:
 - Briefing
 syntax:
@@ -8,23 +8,27 @@ syntax:
   - - subject
     - picture
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: unit
+    desc: unit
     type: Object
   - name: subject
-    description: diary subject (see [[Diary]])
+    desc: diary subject (see [[Diary]])
     type: String
   - name: picture
-    description: icon path
+    desc: icon path
     type: String
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 4
+  arma3: '2.4'
 examples:
 - <sqf>player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\map\markers\nato\o_mech_inf.paa"];</sqf>
+see_also:
+- createDiarySubject
+- removeDiarySubject
+- selectDiarySubject
+- diarySubjectExists
+- allDiarySubjects
+- Diary

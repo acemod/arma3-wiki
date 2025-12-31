@@ -1,5 +1,5 @@
 name: camCommitPrepared
-description: |-
+desc: |-
   Smoothly conducts the changes that were assigned to a camera within the given time. If the time is set to zero, the changes are done immediately.
   This command is for use with {{hl|camPrepareXXX}} commands. For the normal cam command use [[camCommit]].
 groups:
@@ -9,33 +9,22 @@ syntax:
   - camera
   - time
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: camera
-    description: object of type "camera"
+    desc: object of type "camera"
     type: Object
   - name: time
-    description: time in seconds in which the changes shall be done
+    desc: time in seconds in which the changes shall be done
     type: Number
 argument_loc: Local
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -52,3 +41,6 @@ examples:
 
   // proceed
   </sqf>
+see_also:
+- camCommitted
+- camCommit

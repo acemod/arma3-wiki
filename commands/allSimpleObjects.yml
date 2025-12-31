@@ -1,5 +1,5 @@
 name: allSimpleObjects
-description: |-
+desc: |-
   Returns array of all simple objects that belong to the listed class names. If the array of types is empty [], all simple objects are returned including those without class name.
   {{Feature|informative|
   * There is no inheritance in simple objects, so only exact class match is allowed.
@@ -10,18 +10,26 @@ groups:
 syntax:
 - call: !Unary classes
   ret:
-  - ArrayUnknown
-  - array of [[createSimpleObject|simple objects]]
+    type: ArrayUnknown
+    desc: array of [[createSimpleObject|simple objects]]
   params:
   - name: classes
-    description: classnames array. Use {{hl|[]}} to return all simple objects
-    type: ArrayUnknown
+    desc: classnames array. Use {{hl|[]}} to return all simple objects
+    type: !ArrayUnsized
+      type: String
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>private _boxesAndChairs = allSimpleObjects ["Box_NATO_Equip_F", "Land_CampingChair_V2_F"];</sqf>
 - <sqf>private _allSimpleObjects = allSimpleObjects [];</sqf>
+see_also:
+- createSimpleObject
+- isSimpleObject
+- nearestObjects
+- nearObjectsReady
+- nearObjects
+- nearestObject
+- createVehicle

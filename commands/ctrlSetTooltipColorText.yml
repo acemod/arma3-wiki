@@ -1,5 +1,5 @@
 name: ctrlSetTooltipColorText
-description: Sets tooltip text color of given control. Color is in format [[Color|Color (RGBA)]].
+desc: Sets tooltip text color of given control. Color is in format [[Color|Color (RGBA)]].
 groups:
 - GUI Control
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - display
   - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: display
     type: Control
@@ -17,20 +16,14 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_control ctrlSetTooltipColorText [1, 0, 0, 1];</sqf>
+see_also:
+- ctrlSetTooltip
+- ctrlSetTooltipColorBox
+- ctrlSetTooltipColorShade

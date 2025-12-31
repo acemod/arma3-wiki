@@ -1,5 +1,5 @@
 name: isNil
-description: |-
+desc: |-
   Tests whether a variable is [[nil]] or undefined from its [[Identifier|identifier]], or whether the given expression evaluates to [[nil]] or [[Nothing]].
   {{Feature|arma0|This command does not exist in {{ofp}}/{{arma0}} but can be emulated (see {{Link|#Example 5}}).}}
 groups:
@@ -7,16 +7,16 @@ groups:
 syntax:
 - call: !Unary variableName
   ret:
-  - Boolean
-  - '[[true]] if variable is [[nil]] or undefined'
+    type: Boolean
+    desc: '[[true]] if variable is [[nil]] or undefined'
   params:
   - name: variableName
-    description: '[[missionNamespace]]''s or local [[Variables|variable]]''s [[Identifier|identifier]] (e.g "globalVariable", "_localVariable")'
+    desc: '[[missionNamespace]]''s or local [[Variables|variable]]''s [[Identifier|identifier]] (e.g "globalVariable", "_localVariable")'
     type: Unknown
 - call: !Unary code
   ret:
-  - Boolean
-  - '[[true]] if ''''code'''' returns [[Nothing]], [[false]] otherwise'
+    type: Boolean
+    desc: '[[true]] if ''''code'''' returns [[Nothing]], [[false]] otherwise'
   params:
   - name: code
     type: Unknown
@@ -24,35 +24,23 @@ syntax:
   - namespace
   - variableName
   ret:
-  - Boolean
-  - '[[true]] if variable is [[nil]] or undefined'
+    type: Boolean
+    desc: '[[true]] if variable is [[nil]] or undefined'
   params:
   - name: namespace
     type: Unknown
   - name: variableName
     type: String
   since:
-    arma_3:
-      major: 2
-      minor: 18
+    arma3: '2.18'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -82,3 +70,7 @@ examples:
   _nil = format ["%1", _undefinedVariable];
   if (format ["%1", variableToTest] == _nil) then { hint "variableToTest is nil" };
   </sqf>
+see_also:
+- nil
+- Variables
+- Scheduler

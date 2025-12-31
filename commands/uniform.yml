@@ -1,21 +1,24 @@
 name: uniform
-description: Returns name of uniform.
+desc: Returns name of uniform.
 groups:
 - Containers
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_uniform = uniform _unit;</sqf>
+see_also:
+- addUniform
+- forceAddUniform
+- isUniformAllowed
+- removeUniform
+- uniformContainer

@@ -1,5 +1,5 @@
 name: removeItem
-description: Removes item from the inventory. The removal order by containers is [[uniform]] &rarr; [[vest]] &rarr; [[backpack]].
+desc: Removes item from the inventory. The removal order by containers is [[uniform]] &rarr; [[vest]] &rarr; [[backpack]].
 groups:
 - Unit Inventory
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - item
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,9 +16,7 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -30,3 +27,12 @@ examples:
   independentUnit unassignItem "NVGoggles_INDEP";
   independentUnit removeItem "NVGoggles_INDEP";
   </sqf>
+see_also:
+- removeItems
+- unassignItem
+- addItem
+- assignItem
+- assignedItems
+- linkItem
+- unlinkItem
+- removeAllAssignedItems

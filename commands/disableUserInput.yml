@@ -1,40 +1,25 @@
 name: disableUserInput
-description: Disables or enables the keyboard and mouse input. Usually used during cutscenes.{{Feature|warning|Be careful and responsible with the usage of this command. Once the user input is disabled, the only option left is to restart the game. Make sure you provide scripted mechanics to resolve this, should you need to disable user input for any reason.}}
+desc: Disables or enables the keyboard and mouse input. Usually used during cutscenes.{{Feature|warning|Be careful and responsible with the usage of this command. Once the user input is disabled, the only option left is to restart the game. Make sure you provide scripted mechanics to resolve this, should you need to disable user input for any reason.}}
 groups:
 - Interaction
 syntax:
 - call: !Unary state
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: state
-    description: '[[true]] to disable, [[false]] to enable'
+    desc: '[[true]] to disable, [[false]] to enable'
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -43,3 +28,7 @@ examples:
   disableUserInput false;
   </sqf>
 - "Reset user input if a key was pressed:\n<sqf>\ndisableUserInput true;\t// here e.g W was pressed\nsleep 2;\t\t\t\t// the user releases keys\ndisableUserInput false;\t// the game considers W is still pressed as it did not listen to a \"KeyUp\" event\n\ndisableUserInput true;\ndisableUserInput false;\t// this resets released keys making the issue invisible\n\n// this workaround does not fix the mouse input that may get stuck on [[disableUserInput]] call\n</sqf>"
+see_also:
+- userInputDisabled
+- enableSimulation
+- enableSimulationGlobal

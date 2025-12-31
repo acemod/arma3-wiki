@@ -1,5 +1,5 @@
 name: commandFollow
-description: |-
+desc: |-
   Order the given unit(s) to follow another from his own group (via radio).
   It can also be used to resume unit formation after e.g [[doStop]].
 groups:
@@ -9,37 +9,34 @@ syntax:
   - unit
   - unitLead
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: unitLead
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_soldier1 commandFollow _soldier2;</sqf>
 - <sqf>(units group _leader - [_leader]) commandFollow _leader; // returns all the units (but the leader) to formation</sqf>
+see_also:
+- doFollow
+- formationLeader
+- formLeader
+- isFormationLeader
+- leader
+- selectLeader
+- setLeader

@@ -1,5 +1,5 @@
 name: buttonSetAction
-description: |-
+desc: |-
   {{Feature|obsolete|Use [[ctrlAddEventHandler]] instead.}}
   Set the action of a control of the currently active user dialog. The script statement is executed on button release and {{hl|_this}} is available, but contains ""; See [[Arma: GUI Configuration]] for more information about user dialogs. Works with:
   * [[CT_BUTTON]]
@@ -13,55 +13,41 @@ syntax:
   - idc
   - action
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
-    description: button IDC
+    desc: button IDC
     type: Number
   - name: action
-    description: '''''''[[SQS Syntax|SQS]]'''''' code body that should be executed when the button/active text is clicked'
+    desc: '''''''[[SQS Syntax|SQS]]'''''' code body that should be executed when the button/active text is clicked'
     type: String
 - call: !Binary
   - control
   - action
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
-    description: button control
+    desc: button control
     type: Control
   - name: action
-    description: '''''''[[SQS Syntax|SQS]]'''''' code body that should be executed when the button/active text is clicked'
+    desc: '''''''[[SQS Syntax|SQS]]'''''' code body that should be executed when the button/active text is clicked'
     type: String
 argument_loc: Local
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>buttonSetAction [100, "player exec ""reply.sqs"""];</sqf>
 - <sqf>_ctrl buttonSetAction "if (alive bob) then {hint 'alive'} else {hint 'dead'}"; // SQF but SQS compatible, see SQS</sqf>
 - |-
   Script is [[SQS Syntax|SQS]]:
   <sqs>_control buttonSetAction "hint format ['Is SQS: %1', !isNil '_time']"</sqs>
+see_also:
+- buttonAction

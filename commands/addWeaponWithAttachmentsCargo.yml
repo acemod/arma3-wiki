@@ -1,5 +1,5 @@
 name: addWeaponWithAttachmentsCargo
-description: Adds a weapon into the cargo space of a vehicle / box with given attachments / magazines. Ignores available cargo space. If the weapon class has any pre-attached items (LinkedItems), they are removed and new items, supplied via command arguments, are added.
+desc: Adds a weapon into the cargo space of a vehicle / box with given attachments / magazines. Ignores available cargo space. If the weapon class has any pre-attached items (LinkedItems), they are removed and new items, supplied via command arguments, are added.
 groups:
 - Vehicle Inventory
 syntax:
@@ -8,23 +8,20 @@ syntax:
   - - weaponConfiguration
     - weaponsCount
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: container
-    description: container to add the weapon to. Might be a backpack, ammobox or vehicle.
+    desc: container to add the weapon to. Might be a backpack, ammobox or vehicle.
     type: Object
   - name: weaponConfiguration
     type: Unknown
   - name: weaponsCount
-    description: number of weapons to add
+    desc: number of weapons to add
     type: Number
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 94
+  arma3: '1.94'
 examples:
 - <sqf>cursorObject addWeaponWithAttachmentsCargo [["arifle_MX_GL_F", "muzzle_snds_H", "", "optic_aco", ["30Rnd_65x39_caseless_mag", 15], ["3Rnd_HE_Grenade_shell", 2], ""], 2];</sqf>
 - |-
@@ -36,3 +33,10 @@ examples:
 - |-
   Add all weapons on player with attachments:
   <sqf>{ cursorObject addWeaponWithAttachmentsCargo [_x, 1] } forEach weaponsItems player;</sqf>
+see_also:
+- addWeaponWithAttachmentsCargoGlobal
+- weaponsItems
+- addWeaponCargo
+- addWeaponCargoGlobal
+- clearWeaponCargo
+- getWeaponCargo

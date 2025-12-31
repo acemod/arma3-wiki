@@ -1,5 +1,5 @@
 name: setTurretLimits
-description: Sets the rotation and elevation limits for the given turret. The limits are relative to model orientation of the turret. For example to allow 360 degree turning it is enough to set turn limits to (-180, 180). The limits can only be set within the limits defined in config and cannot exceed them. To reset to config defaults pass the turret argument only (Example 2).
+desc: Sets the rotation and elevation limits for the given turret. The limits are relative to model orientation of the turret. For example to allow 360 degree turning it is enough to set turn limits to (-180, 180). The limits can only be set within the limits defined in config and cannot exceed them. To reset to config defaults pass the turret argument only (Example 2).
 groups:
 - Turrets
 syntax:
@@ -12,42 +12,43 @@ syntax:
     - maxElev
     - soft
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
-    description: vehicle the turret belongs to
+    desc: vehicle the turret belongs to
     type: Object
   - name: turret
-    description: turret path
+    desc: turret path
     type: ArrayUnknown
   - name: minTurn
-    description: from 0 to -angle in degrees (left)
+    desc: from 0 to -angle in degrees (left)
     type: Number
   - name: maxTurn
-    description: from 0 to +angle in degrees (right)
+    desc: from 0 to +angle in degrees (right)
     type: Number
   - name: minElev
-    description: from 0 to -angle in degrees (down)
+    desc: from 0 to -angle in degrees (down)
     type: Number
   - name: maxElev
-    description: from 0 to +angle in degrees (up)
+    desc: from 0 to +angle in degrees (up)
     type: Number
   - name: soft
-    description: '[[true]] to gradually move turret to the new limits (if turret is currenty oriented out of new limts). [[false]] to snap to the new limits. Default: [[false]]'
+    desc: '[[true]] to gradually move turret to the new limits (if turret is currenty oriented out of new limts). [[false]] to snap to the new limits. Default: [[false]]'
     type: Boolean
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 22
+      arma3: '2.22'
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 2
-    minor: 12
+  arma3: '2.12'
 examples:
 - <sqf>m2 setTurretLimits [[0], -45, 45, -10, 10];</sqf>
 - <sqf>m2 setTurretLimits [[0]]; //reset</sqf>
 - <sqf>m2 setTurretLimits [[0], -45, 45, -10, 10, true];</sqf>
+see_also:
+- getTurretLimits
+- setTurretOpticsMode
+- turretLocal
+- selectWeaponTurret
+- lockCameraTo

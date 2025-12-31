@@ -1,5 +1,5 @@
 name: boundingBoxReal
-description: |-
+desc: |-
   [[File:Boundingbox.jpg|right|200px]] Returns a raw bounding box of given object in model coordinates space. This command is similar to [[boundingBox]] but gives more precise measurements.<br>
   The alternative syntax allows to specify clipping type to be used, which in some cases could make the result even more precise.
 groups:
@@ -7,8 +7,7 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: object
     type: Object
@@ -16,38 +15,42 @@ syntax:
   - clippingType
   - object
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: clippingType
     type: Unknown
   - name: object
     type: Object
   since:
-    arma_3:
-      major: 1
-      minor: 92
+    arma3: '1.92'
 - call: !Unary
   - object
   - LOD
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: object
     type: Object
   - name: LOD
-    type: Unknown
+    type: !StringEnum
+    - - Memory
+      - null
+    - - Geometry
+      - null
+    - - FireGeometry
+      - null
+    - - LandContact
+      - null
+    - - HitPoints
+      - null
+    - - ViewGeometry
+      - null
   since:
-    arma_3:
-      major: 2
-      minor: 14
+    arma3: '2.14'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -59,3 +62,7 @@ examples:
   private _maxHeight = abs ((_p2 select 2) - (_p1 select 2));
   </sqf>
 - <sqf>hint str (0 boundingBoxReal cursorObject);</sqf>
+see_also:
+- boundingBox
+- sizeOf
+- boundingCenter

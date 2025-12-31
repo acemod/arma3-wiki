@@ -1,23 +1,33 @@
 name: binocularItems
-description: Returns array with all items assigned to the [[binocular]] weapon except magazines. Use [[binocularMagazine]] command for the latter. This command is used for infantry weapons only.
+desc: Returns array with all items assigned to the [[binocular]] weapon except magazines. Use [[binocularMagazine]] command for the latter. This command is used for infantry weapons only.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - Unknown
-  - |-
-    laserpointer or flashlight
-    * optic: [[String]]
-    * bipod: [[String]]
+    type: Unknown
+    desc: |-
+      laserpointer or flashlight
+      * optic: [[String]]
+      * bipod: [[String]]
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>binocularItems player;</sqf>
+see_also:
+- addBinocularItem
+- removeBinocularItem
+- removeAllBinocularItems
+- binocularMagazine
+- weaponAccessories
+- weaponAccessoriesCargo
+- primaryWeaponItems
+- secondaryWeaponItems
+- handgunItems
+- weaponsItems
+- weaponsItemsCargo

@@ -1,5 +1,5 @@
 name: commandMove
-description: Order the given unit(s) to move to the given location (via the radio). Exactly the same as [[doMove]], except this command displays a radio message. The command will not put a visible waypoint marker unlike when move command is given via commanding menu.
+desc: Order the given unit(s) to move to the given location (via the radio). Exactly the same as [[doMove]], except this command displays a radio message. The command will not put a visible waypoint marker unlike when move command is given via commanding menu.
 multiplayer_note: When used on a remote unit, this command will still create a radio message on the remote machine but the unit will not move.
 groups:
 - Groups
@@ -8,37 +8,32 @@ syntax:
   - unitName
   - position
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitName
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
   - name: position
     type: Position
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_soldier1 commandMove getMarkerPos "Marker1";</sqf>
 - <sqf>[_soldier1, _soldier2] commandMove getMarkerPos "Marker1";</sqf>
+see_also:
+- doMove
+- setDestination
+- moveTo
+- move
+- addWaypoint

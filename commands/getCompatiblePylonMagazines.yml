@@ -1,5 +1,5 @@
 name: getCompatiblePylonMagazines
-description: Get array of compatible pylon magazines
+desc: Get array of compatible pylon magazines
 groups:
 - Vehicle Loadouts
 syntax:
@@ -7,20 +7,31 @@ syntax:
   - vehicle
   - pylon
   ret:
-  - Unknown
-  - null
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
   params:
   - name: vehicle
-    description: aircraft object or config class
-    type: Unknown
+    desc: aircraft object or config class
+    type: !OneOf
+    - - Object
+      - null
+    - - String
+      - null
   - name: pylon
-    type: Unknown
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 72
+  arma3: '1.72'
 examples:
 - |-
   <sqf>
@@ -38,3 +49,15 @@ examples:
   // configFile >> "CfgVehicles" >> "B_Plane_CAS_01_dynamicLoadout_F" >> "Components" >> "TransportPylonsComponent" >> "Pylons"
   "B_Plane_CAS_01_dynamicLoadout_F" getCompatiblePylonMagazines "pylon1";
   </sqf>
+see_also:
+- Arma
+- '3:'
+- Vehicle
+- Loadouts
+- getPylonMagazines
+- setAmmoOnPylon
+- ammoOnPylon
+- animatePylon
+- animateBay
+- setPylonsPriority
+- setPylonLoadout

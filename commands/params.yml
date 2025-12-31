@@ -1,5 +1,5 @@
 name: params
-description: |-
+desc: |-
   Parses input argument into array of [[private]] variables. When used without argument, as shown in main syntax, internal variable [[Magic Variables#this|_this]], which is usually available inside functions and event handlers, is used as argument.<br><br>
   In addition to simple parsing directly into variables, input can be tested in case it is undefined, of the wrong type or of the wrong size (if array) and substituted if necessary with default values. Since Arma 3 v1.54, onscreen errors are displayed for when the input is of the wrong type or size.
   {{Feature|warning| All variables names must start with underscore and be enclosed in quotes: {{hl|c= [[params]] [<span style{{=}}"color:red;font-weight:bold">"_</span>myVar1<span style{{=}}"color:red;font-weight:bold">"</span>, <span style{{=}}"color:red;font-weight:bold">"_</span>myVar2<span style{{=}}"color:red;font-weight:bold">"</span>];}}
@@ -14,31 +14,65 @@ syntax:
   - element2
   - '...'
   ret:
-  - Boolean
-  - '[[false]] if error occurred or default value has been used, otherwise [[true]]'
+    type: Boolean
+    desc: '[[false]] if error occurred or default value has been used, otherwise [[true]]'
   params:
   - name: elementN
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - Anything
+      - null
+    - - ArrayUnknown
+      - null
+    - - Number
+      - null
+    - - ArrayUnknown
+      - null
 - call: !Binary
   - argument
   - - element1
     - element2
     - '...'
   ret:
-  - Boolean
-  - '[[false]] if error occurred or default value has been used, otherwise [[true]]'
+    type: Boolean
+    desc: '[[false]] if error occurred or default value has been used, otherwise [[true]]'
   params:
   - name: argument
-    description: a usual array of params is expected. If a non-array argument is passed, it will be converted to 1 element array
+    desc: a usual array of params is expected. If a non-array argument is passed, it will be converted to 1 element array
     type: Anything
   - name: elementN
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - Anything
+      - null
+    - - ArrayUnknown
+      - null
+    - - Number
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 48
+  arma3: '1.48'
 examples:
 - "<sqf>\n[1, 2, 3] call {\n\tprivate [\"_one\", \"_two\", \"_three\"];\n\t_one = _this select 0;\n\t_two = _this select 1;\n\t_three = _this select 2;\n\t// ...\n};\n\n// Same as above, only using params\n[1, 2, 3] call {\n\tparams [\"_one\", \"_two\", \"_three\"];\n\t// ...\n};\n</sqf>"
 - "<sqf>\n[123] call {\n\tparams [\"_myvar\"];\n};\n\n// Below would produce the same result as above\n123 call {\n\tparams [\"_myvar\"];\n};\n</sqf>"
@@ -56,3 +90,13 @@ examples:
 - "<sqf>\n[1, 2, 3, [4, 5, 6]] call {\n\tparams [\"_one\", \"_two\", \"_three\"];\n\t_this select 3 params [\"_four\", \"_five\", \"_six\"];\n};\n</sqf>"
 - "<sqf>\n{\n\t_x params [\"_group\", \"_index\"];\n\t// ...\n} forEach waypoints group player;\n\nfn_someFnc = {\n\tparams [\"_position\", [\"_direction\", 0], [\"_name\", \"\"]];\n\t// Extract the x, y, and z from \"_position\" array:\n\t_position params [\"_x\", \"_y\", \"_z\"];\n\t// ...\n};\n\n[position player, direction player, name player] call fn_someFnc;\n</sqf>"
 - "<sqf>\nplayer addEventHandler [\"HitPart\", {\n\t_this select 0 params [\"_target\", \"_shooter\", \"_projectile\"];\n}];\n</sqf>"
+see_also:
+- param
+- select
+- '#'
+- _this
+- isEqualTypeAll
+- isEqualType
+- isEqualTypeParams
+- isEqualTypeArray
+- isEqualTypeAny

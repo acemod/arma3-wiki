@@ -1,18 +1,29 @@
 name: shownChat
-description: Returns [[true]] if chat window is enabled. Chat window can be disabled with [[showChat]] command.
+desc: Returns [[true]] if chat window is enabled. Chat window can be disabled with [[showChat]] command.
 groups:
 - Radio and Chat
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 36
+  arma3: '1.36'
 examples:
 - <sqf>_bool = shownChat;</sqf>
+see_also:
+- showChat
+- showUAVFeed
+- shownMap
+- shownArtilleryComputer
+- shownCuratorCompass
+- slingLoadAssistantShown
+- ctrlShown
+- hcShownBar
+- shownGPS
+- shownCompass
+- shownPad
+- shownRadio
+- shownWatch

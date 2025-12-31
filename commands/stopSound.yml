@@ -1,21 +1,22 @@
 name: stopSound
-description: Terminates the given sound
+desc: Terminates the given sound
 groups:
 - Sounds
 syntax:
 - call: !Unary id
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: id
-    description: id returned by [[playSoundUI]] and [[playSound3D]] commands{{Feature|important|Sound ids are '''local'''.}}
+    desc: id returned by [[playSoundUI]] and [[playSound3D]] commands{{Feature|important|Sound ids are '''local'''.}}
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 12
+  arma3: '2.12'
 examples:
 - <sqf>stopSound 10;</sqf>
+see_also:
+- playSoundUI
+- playSound3D
+- soundParams

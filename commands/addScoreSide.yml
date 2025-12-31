@@ -1,5 +1,5 @@
 name: addScoreSide
-description: Adds side score. This is shown in the MP score tab as the total score. '''MP only'''.
+desc: Adds side score. This is shown in the MP score tab as the total score. '''MP only'''.
 groups:
 - Sides
 - Multiplayer
@@ -8,8 +8,7 @@ syntax:
   - side
   - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: side
     type: Side
@@ -17,10 +16,13 @@ syntax:
     type: Number
 argument_loc: Global
 effect_loc: Global
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 1
-    minor: 12
+  arma3: '1.12'
 examples:
 - <sqf>west addScoreSide 10;</sqf>
+see_also:
+- score
+- addScore
+- scoreSide
+- getPlayerScores

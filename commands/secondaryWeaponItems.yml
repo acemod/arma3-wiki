@@ -1,20 +1,27 @@
 name: secondaryWeaponItems
-description: Returns array with all items assigned to the [[secondaryWeapon]] except magazines. Use [[secondaryWeaponMagazine]] command for the latter. This command is used for infantry weapons only.
+desc: Returns array with all items assigned to the [[secondaryWeapon]] except magazines. Use [[secondaryWeaponMagazine]] command for the latter. This command is used for infantry weapons only.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - ArrayUnknown
-  - '[silencer, laserpointer/flashlight, optics, bipod]'
+    type: ArrayUnknown
+    desc: '[silencer, laserpointer/flashlight, optics, bipod]'
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>secondaryWeaponItems player; //["","","",""]</sqf>
+see_also:
+- addSecondaryWeaponItem
+- weaponAccessories
+- weaponAccessoriesCargo
+- handgunItems
+- primaryWeaponItems
+- binocularItems
+- weaponsItems
+- weaponsItemsCargo

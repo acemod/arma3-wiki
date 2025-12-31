@@ -1,5 +1,5 @@
 name: sleep
-description: |-
+desc: |-
   Suspends code execution for given [[time]] in seconds. The sleep precision is given by a framerate, the delay given is the minimal delay expected. Must be called inside of a context which is interruptible, i.e. a [[Script Handle|script]] executed by [[execVM]] or [[spawn]].
   {{Feature | Informative |
   * this command will suspend the code for '''''at least''''' the given amount of time, and can be way more if the [[Scheduler|script scheduler]] is busy.
@@ -10,30 +10,31 @@ groups:
 syntax:
 - call: !Unary delay
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: delay
-    description: in seconds. Negative values will not be considered.
+    desc: in seconds. Negative values will not be considered.
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\n0 spawn {\n\tsleep 5;\n\thint \"after (at least) 5 seconds...\";\n};\n</sqf>"
 - "<sqf>\nsleep 5 + random 10;\t// incorrect - will only sleep for 5 seconds, as it will be interpreted as (sleep 5) (+(random 10))\nsleep (5 + random 10);\t// correct\n</sqf>"
+see_also:
+- time
+- uiSleep
+- waitUntil
+- canSuspend
+- execVM
+- spawn
+- sleep
+- vs
+- uiSleep
+- Control
+- Structures

@@ -1,5 +1,5 @@
 name: saveProfileNamespace
-description: |-
+desc: |-
   Saves all variables stored in [[profileNamespace]] to the active [[Profile]].
   {{Feature|informative|This command should be used when it is likely that the game will not be closed the usual way (e.g. via {{Controls|Alt|F4}}) or when the data is important and must not be lost due to a game crash.}}
   {{Feature|warning|
@@ -14,24 +14,22 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 62
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.62'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   profileNamespace setVariable ["TAG_lastPlayerLocation", getPosASL player];
   saveProfileNamespace; // Optional since namespace is saved when game is closed
   </sqf>
+see_also:
+- saveMissionProfileNamespace
+- save3DENPreferences
+- profileNamespace
+- Profile

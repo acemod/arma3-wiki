@@ -1,21 +1,18 @@
 name: getDescription
-description: Returns the string representation of unit as an four slots array.
+desc: Returns the string representation of unit as an four slots array.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary unit
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -23,3 +20,6 @@ examples:
   // returns ["B_soldier_UAV_F", "Combat Fatigues (MTP)", "Carrier Special Rig (Green)", "B_UAV_01_backpack_F"]
   </sqf>
 - <sqf>getDescription objNull; // returns ["ERROR", "ERROR", "ERROR", "ERROR"]</sqf>
+see_also:
+- roleDescription
+- vehicleVarName

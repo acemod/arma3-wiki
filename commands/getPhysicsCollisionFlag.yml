@@ -1,18 +1,22 @@
 name: getPhysicsCollisionFlag
-description: Returns the currently set physics collision flags.
+desc: Returns the currently set physics collision flags.
 groups:
 - PhysX
 syntax:
 - call: !Unary object
   ret:
-  - ArrayUnknown
-  - array of collision flags (only one value is returned for now)
+    type: ArrayUnknown
+    desc: array of collision flags (only one value is returned for now)
   params:
   - name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
+see_also:
+- hideObject
+- isObjectHidden
+- setPhysicsCollisionFlag
+- disableCollisionWith
+- enableCollisionWith

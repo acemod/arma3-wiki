@@ -1,5 +1,5 @@
 name: openMap
-description: |-
+desc: |-
   Opens or closes in-game map.
   {{Feature|warning|
   If {{hl|forced}} param is set to [[true]] and map is set to open, when the map is opened it cannot be closed manually and the user can get stuck requiring the game restart.
@@ -12,39 +12,37 @@ groups:
 syntax:
 - call: !Unary show
   ret:
-  - Boolean
-  - equivalent of [[visibleMap]]
+    type: Boolean
+    desc: equivalent of [[visibleMap]]
   params:
   - name: show
-    description: if [[true]] opens map, if [[false]] closes map, provided it is not ''forced''
+    desc: if [[true]] opens map, if [[false]] closes map, provided it is not ''forced''
     type: Boolean
 - call: !Unary
   - show
   - forced
   ret:
-  - Boolean
-  - equivalent of [[visibleMap]]
+    type: Boolean
+    desc: equivalent of [[visibleMap]]
   params:
   - name: show
-    description: if [[true]] opens map, if [[false]] closes map, provided it is not ''forced''.
+    desc: if [[true]] opens map, if [[false]] closes map, provided it is not ''forced''.
     type: Boolean
   - name: forced
-    description: if [[true]] keeps map from closing when map is open. {{GVI|arma3|2.06|size= 0.75}} if [[false]], forces map to stay closed if ''show'' is [[false]] (see {{Link|#Example 1}})
+    desc: if [[true]] keeps map from closing when map is open. {{GVI|arma3|2.06|size= 0.75}} if [[false]], forces map to stay closed if ''show'' is [[false]] (see {{Link|#Example 1}})
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 3
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.3'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nopenMap [true, false];\t// opens map normally\nopenMap [false, false];\t// closes an opened map normally\nopenMap [true, true];\t// force opens map and keeps it open (the user cannot close it on their own)\nopenMap [false, true];\t// since {{arma3}} 2.06: prevents map from opening, closes open map and forces it to stay close (the user cannot open it on their own)\n</sqf>"
+see_also:
+- forceMap
+- forcedMap
+- visibleMap
+- showMap
+- shownMap

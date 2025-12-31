@@ -1,5 +1,5 @@
 name: moveInAny
-description: |-
+desc: |-
   Moves unit to the first available seat in the specified vehicle.
 
   The order of priorities is the same order used in squad command when you order subordinates to get in vehicle to any position and is the same order used in Zeus when you drag units to a vehicle.<br><br>
@@ -14,8 +14,8 @@ syntax:
   - unit
   - vehicle
   ret:
-  - Boolean
-  - '[[true]] on success, [[false]] on failure'
+    type: Boolean
+    desc: '[[true]] on success, [[false]] on failure'
   params:
   - name: unit
     type: Object
@@ -24,8 +24,12 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 18
+  arma3: '1.18'
 examples:
 - <sqf>player moveInAny tank;</sqf>
+see_also:
+- moveInDriver
+- moveInCommander
+- moveInGunner
+- moveInTurret
+- moveInCargo

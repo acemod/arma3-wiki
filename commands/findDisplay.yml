@@ -1,5 +1,5 @@
 name: findDisplay
-description: |-
+desc: |-
   Finds a display by its IDD which can either be defined in [[missionConfigFile]] ([[Description.ext|description.ext]]) or [[configFile]] ([[config.cpp]]) or by its [[Procedural Textures#UI On Texture|UI On Texture]]'s unique name (see [[displayUniqueName]]).<br>
   If the specified display cannot be found, [[displayNull]] is returned.
   {{Feature|important|
@@ -13,41 +13,40 @@ groups:
 syntax:
 - call: !Unary idd
   ret:
-  - Display
-  - null
+    type: Display
   params:
   - name: idd
     type: Number
 - call: !Unary displayName
   ret:
-  - Display
-  - null
+    type: Display
   params:
   - name: displayName
     type: String
   since:
-    arma_3:
-      major: 2
-      minor: 12
+    arma3: '2.12'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\n0 spawn\n{\n\twaitUntil { !isNull findDisplay 46 };\n\thint \"Mission Display is now available!\";\n};\n</sqf>"
 - <sqf>_display = findDisplay 1;</sqf>
 - <sqf>private _display = findDisplay "RscDisplayRenderTest";</sqf>
+see_also:
+- allDisplays
+- displayCtrl
+- createDisplay
+- createDialog
+- dialog
+- displayNull
+- controlNull
+- isNull
+- createDisplay
+- ctrlCreate
+- displayParent
+- displayUniqueName

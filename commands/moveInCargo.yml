@@ -1,5 +1,5 @@
 name: moveInCargo
-description: |-
+desc: |-
   Moves a unit into a vehicle cargo position (immediately and without animation).
   {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
   {{Feature|important|If the unit is already in a vehicle, nothing will happen. You should use [[moveOut]] to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.}}
@@ -11,8 +11,7 @@ syntax:
   - unit
   - vehicle
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -24,8 +23,7 @@ syntax:
     - cargoIndex
     - canReassign
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -34,38 +32,33 @@ syntax:
   - name: cargoIndex
     type: Number
   - name: canReassign
-    description: try to move ''unit'' into the first free ''vehicle'' cargo seat if ''cargoIndex'' is already occupied
+    desc: try to move ''unit'' into the first free ''vehicle'' cargo seat if ''cargoIndex'' is already occupied
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
-      arma_3:
-        major: 2
-        minor: 8
+      arma3: '2.8'
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_soldierOne moveInCargo _jeepOne;</sqf>
 - <sqf>_soldierOne moveInCargo [_jeepOne, 1];</sqf>
+see_also:
+- moveInAny
+- moveInCommander
+- moveInDriver
+- moveInGunner
+- moveInTurret
+- assignAsCargo
+- assignAsCommander
+- assignAsDriver
+- assignAsGunner
+- getCargoIndex

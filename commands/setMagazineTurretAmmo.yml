@@ -1,5 +1,5 @@
 name: setMagazineTurretAmmo
-description: |-
+desc: |-
   Sets ammo count to given amount for given turret magazine.
   {{Feature|informative|
   {{GVI|arma3|2.18|size= 0.75}} The magazine is first checked if it is loaded into the turret weapon, if not, the command falls back to old behaviour of selecting the first magazine from the list of available magazines.
@@ -15,8 +15,7 @@ syntax:
     - ammoCount
     - turretPath
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
@@ -25,14 +24,12 @@ syntax:
   - name: ammoCount
     type: Number
   - name: turretPath
-    description: '[-1] for driver turret is supported'
-    type: ArrayUnknown
+    desc: '[-1] for driver turret is supported'
+    type: TurretPath
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - <sqf>myMRAP setMagazineTurretAmmo ["200Rnd_127x99_mag_Tracer_Red", 30, [0]];</sqf>
 - |-
@@ -44,3 +41,8 @@ examples:
   _ammo = 10;
   [_tank, [_magazine, _ammo, _turret]] remoteExec ["setMagazineTurretAmmo", _tank turretOwner _turret];
   </sqf>
+see_also:
+- magazineTurretAmmo
+- setAmmoOnPylon
+- turretLocal
+- turretOwner

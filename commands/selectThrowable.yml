@@ -1,5 +1,5 @@
 name: selectThrowable
-description: Selects [[currentThrowable | current throwable]], which will be launched if the user presses {{Controls|G}}.
+desc: Selects [[currentThrowable | current throwable]], which will be launched if the user presses {{Controls|G}}.
 groups:
 - Weapons
 - Unit Inventory
@@ -8,20 +8,26 @@ syntax:
   - unit
   - throwable
   ret:
-  - Boolean
-  - '[[true]] on success'
+    type: Boolean
+    desc: '[[true]] on success'
   params:
   - name: unit
     type: Object
   - name: throwable
-    description: either the name of the throwable magazine or the name of the throwable muzzle
+    desc: either the name of the throwable magazine or the name of the throwable muzzle
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>player selectThrowable "SmokeShellGreen";</sqf>
 - <sqf>player selectThrowable "SmokeShellGreenMuzzle";</sqf>
+see_also:
+- throwables
+- isThrowable
+- currentThrowable
+- selectWeapon]][[currentWeapon
+- currentMagazine
+- currentMuzzle
+- BIS_fnc_isThrowable

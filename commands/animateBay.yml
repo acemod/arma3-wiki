@@ -1,5 +1,5 @@
 name: animateBay
-description: |-
+desc: |-
   Forces animation of bay to given state, -1 for reset to engine handling, can cause weapon inoperative, because weapon is released when bay state == 1.
   {{Feature|informative|
   While there is no getter to read the animation phase of the given bay, the [[animationPhase]] command can be used with the individual bay door name from [[animationNames]] as a workaround (See {{Link|#Example 3}}).
@@ -14,28 +14,25 @@ syntax:
     - animphase
     - instant
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
   - name: bay
-    description: bay index (index starts from 1 and different from pylon index)
+    desc: bay index (index starts from 1 and different from pylon index)
     type: Number
   - name: animphase
-    description: animation phase in range 0..1
+    desc: animation phase in range 0..1
     type: Number
   - name: instant
-    description: animate immediately
+    desc: animate immediately
     type: Boolean
     optional: true
     default: '[[false]]'
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>vehicle player animateBay [1, 0.5];</sqf>
 - <sqf>vehicle player animateBay [1, 1, true];</sqf>
@@ -47,3 +44,15 @@ examples:
   // or
   ucav animationPhase "weapons_bay_l_2";
   </sqf>
+see_also:
+- Arma
+- '3:'
+- Vehicle
+- Loadouts
+- getCompatiblePylonMagazines
+- getPylonMagazines
+- setAmmoOnPylon
+- ammoOnPylon
+- animatePylon
+- setPylonsPriority
+- setPylonLoadout

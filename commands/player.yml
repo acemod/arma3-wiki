@@ -1,5 +1,5 @@
 name: player
-description: A person object controlled by user. In Intros and Outros this isn't set by default and must be assigned.
+desc: A person object controlled by user. In Intros and Outros this isn't set by default and must be assigned.
 multiplayer_note: |-
   In MP [[player]] is different on each computer and on dedicated server it is [[objNull]] by default ({{Link|https://www.youtube.com/watch?v{{=}}JzgJe9sXAiU|unless scripted}}).
   When user is joining a dedicated server mission, at the moment of [[onPlayerConnected]] the [[player]] object is remote to the joining client, as the [[player]] unit is created on the server, but once control of the unit is passed to the user moments later, the [[player]] objects becomes and remains [[Multiplayer Scripting#Locality|local]] to the client.
@@ -12,32 +12,23 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Object
-  - null
+    type: Object
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player addRating 500;</sqf>
+see_also:
+- Multiplayer
+- Scripting
+- isPlayer
+- playableUnits
+- selectPlayer

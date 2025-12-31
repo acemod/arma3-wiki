@@ -1,5 +1,5 @@
 name: infoPanelComponents
-description: Returns array of all components available to given object info panel.
+desc: Returns array of all components available to given object info panel.
 groups:
 - Custom Panels
 syntax:
@@ -7,47 +7,55 @@ syntax:
   - unit
   - panelID
   ret:
-  - Unknown
-  - |-
-    component classname as defined in object/vehicle config
-    * componentType: [[String]] - componentType - component type
-    * isAccessible: [[Boolean]] - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
+    type: Unknown
+    desc: |-
+      component classname as defined in object/vehicle config
+      * componentType: [[String]] - componentType - component type
+      * isAccessible: [[Boolean]] - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
   params:
   - name: unit
-    description: the concerned vehicle
+    desc: the concerned vehicle
     type: Object
   - name: panelID
-    description: '"left" or "right" can be used as panel names'
+    desc: '"left" or "right" can be used as panel names'
     type: String
 - call: !Binary
   - - unit
     - turretPath
   - panelID
   ret:
-  - Unknown
-  - |-
-    component classname as defined in object/vehicle config
-    * componentType: [[String]] - componentType - component type
-    * isAccessible: [[Boolean]] - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
+    type: Unknown
+    desc: |-
+      component classname as defined in object/vehicle config
+      * componentType: [[String]] - componentType - component type
+      * isAccessible: [[Boolean]] - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
   params:
   - name: unit
-    description: the concerned vehicle
+    desc: the concerned vehicle
     type: Object
   - name: turretPath
-    description: turret index
+    desc: turret index
     type: ArrayUnknown
   - name: panelID
-    description: '"left" or "right" can be used as panel names'
+    desc: '"left" or "right" can be used as panel names'
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 72
+  arma3: '1.72'
 examples:
 - |-
   <sqf>
   // returns array of all components configured for _helicopter pilot seat
   private _componentsData = [_helicopter, [-1]] infoPanelComponents "left";
   </sqf>
+see_also:
+- Arma
+- '3:'
+- Custom
+- Info
+- infoPanel
+- infoPanels
+- setInfoPanel
+- enableInfoPanelComponent
+- infoPanelComponentEnabled

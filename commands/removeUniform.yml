@@ -1,21 +1,25 @@
 name: removeUniform
-description: Removes uniform from unit.
+desc: Removes uniform from unit.
 groups:
 - Containers
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>removeUniform player;</sqf>
+see_also:
+- addUniform
+- forceAddUniform
+- isUniformAllowed
+- uniform
+- removeVest
+- removeBackpack

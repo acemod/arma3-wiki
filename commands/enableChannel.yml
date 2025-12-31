@@ -1,5 +1,5 @@
 name: enableChannel
-description: |-
+desc: |-
   Enables/disables UI functionality which is responsible for sending text or voice chat to the given chat channel.
   {{Feature|informative|
   This command:
@@ -57,42 +57,42 @@ syntax:
   - channelID
   - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: channelID
-    description: '[[Channel IDs|channel ID]]'
+    desc: '[[Channel IDs|channel ID]]'
     type: Number
   - name: enable
-    description: '[[true]] to enable, [[false]] to disable (both VoN and chat)'
+    desc: '[[true]] to enable, [[false]] to disable (both VoN and chat)'
     type: Boolean
 - call: !Binary
   - channelID
   - - chat
     - VoN
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: channelID
-    description: '[[Channel IDs|channel ID]]'
+    desc: '[[Channel IDs|channel ID]]'
     type: Number
   - name: chat
-    description: '[[true]] to enable text chat'
+    desc: '[[true]] to enable text chat'
     type: Boolean
   - name: VoN
-    description: '[[true]] to enable voice chat'
+    desc: '[[true]] to enable voice chat'
     type: Boolean
   since:
-    arma_3:
-      major: 1
-      minor: 60
+    arma3: '1.60'
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 42
+  arma3: '1.42'
 examples:
 - <sqf>0 enableChannel false; // disable user ability to send voice and text on global channel</sqf>
 - <sqf>0 enableChannel [true, false]; // enable user ability to send text but disable voice on global channel</sqf>
+see_also:
+- currentChannel
+- setCurrentChannel
+- getPlayerChannel
+- channelEnabled
+- radioChannelCreate

@@ -1,5 +1,5 @@
 name: setWaterLeakiness
-description: Set an object's water intake ratio when immersed.
+desc: Set an object's water intake ratio when immersed.
 groups:
 - Object Manipulation
 syntax:
@@ -7,20 +7,21 @@ syntax:
   - obj
   - leakiness
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: obj
-    description: object to manipulate
+    desc: object to manipulate
     type: Object
   - name: leakiness
-    description: in range 0..1 where 0 is waterproof and 1 is full leak
+    desc: in range 0..1 where 0 is waterproof and 1 is full leak
     type: Number
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 2
-    minor: 16
+  arma3: '2.16'
 examples:
 - "<sqf>\nprivate _veh = vehicle player;\nif (surfaceIsWater getPosASL _veh) then\n{\n\t_veh setWaterLeakiness 1;\n};\n</sqf>"
+see_also:
+- getWaterLeakiness
+- setWaterFillPercentage
+- getWaterFillPercentage

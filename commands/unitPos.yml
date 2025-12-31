@@ -1,5 +1,5 @@
 name: unitPos
-description: |-
+desc: |-
   Return the unit position rules.<br>
   The return value is always "Auto" unless the unit has gotten a [[setUnitPos]] command. In that case the value is the last stance the unit was ordered to.<br>
   Available modes are listed at [[setUnitPos]].
@@ -9,28 +9,23 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - String
-  - one of {{hl|"Auto"}}, {{hl|"Up"}}, {{hl|"Middle"}}, {{hl|"Down"}} (as of {{arma3}})
+    type: String
+    desc: one of {{hl|"Auto"}}, {{hl|"Up"}}, {{hl|"Middle"}}, {{hl|"Down"}} (as of {{arma3}})
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>hint str unitPos _unit;</sqf>
+see_also:
+- setUnitPos
+- setUnitPosWeak
+- stance
+- pose

@@ -1,22 +1,24 @@
 name: getCruiseControl
-description: Returns cruise control settings set with [[setCruiseControl]] command.
+desc: Returns cruise control settings set with [[setCruiseControl]] command.
 groups:
 - Unit Control
 - Object Manipulation
 syntax:
 - call: !Unary vehicle
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: vehicle
-    description: the vehicle
+    desc: the vehicle
     type: Object
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>getCruiseControl vehicle player params ["_speedLimit", "_cruiseControlActive"];</sqf>
+see_also:
+- setCruiseControl
+- limitSpeed
+- forceSpeed
+- setAirplaneThrottle

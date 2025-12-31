@@ -1,5 +1,5 @@
 name: setMarkerTypeLocal
-description: Sets marker type locally. Marker type is a class name in [[CfgMarkers]].
+desc: Sets marker type locally. Marker type is a class name in [[CfgMarkers]].
 groups:
 - Markers
 syntax:
@@ -7,31 +7,40 @@ syntax:
   - markerName
   - type
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: markerName
     type: String
   - name: type
-    description: see [[CfgMarkers]].
+    desc: see [[CfgMarkers]].
     type: String
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 4
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.4'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>"MarkerOne" setMarkerTypeLocal "Warning";</sqf>
+see_also:
+- CfgMarkers
+- setMarkerAlpha
+- setMarkerAlphaLocal
+- setMarkerBrush
+- setMarkerBrushLocal
+- setMarkerColor
+- setMarkerColorLocal
+- setMarkerDir
+- setMarkerDirLocal
+- setMarkerPos
+- setMarkerPosLocal
+- setMarkerShape
+- setMarkerShapeLocal
+- setMarkerSize
+- setMarkerSizeLocal
+- setMarkerText
+- setMarkerTextLocal
+- setMarkerType
+- markerType

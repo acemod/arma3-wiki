@@ -1,20 +1,36 @@
 name: ctRowCount
-description: Returns number of rows (headers not included) in the RscControlsTable.
+desc: Returns number of rows (headers not included) in the RscControlsTable.
 groups:
 - GUI Control - Controls Table
 syntax:
 - call: !Unary control
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: control
     type: Control
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>ctRowCount _control;</sqf>
+see_also:
+- ctAddHeader
+- ctAddRow
+- ctClear
+- ctCurSel
+- ctSetCurSel
+- ctRowControls
+- ctHeaderControls
+- ctHeaderCount
+- ctSetValue
+- ctValue
+- ctSetData
+- ctData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveRows
+- ctRemoveHeaders
+- ctSetRowTemplate
+- ctSetHeaderTemplate

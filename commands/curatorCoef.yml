@@ -1,5 +1,5 @@
 name: curatorCoef
-description: Returns current coeficient setting.
+desc: Returns current coeficient setting.
 groups:
 - Curator
 syntax:
@@ -7,19 +7,20 @@ syntax:
   - curatorObj
   - action
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: curatorObj
-    description: curator module.
+    desc: curator module.
     type: Object
   - name: action
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>curatorModule curatorCoef "Place";</sqf>
+see_also:
+- Arma
+- '3:'
+- Curator

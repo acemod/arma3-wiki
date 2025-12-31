@@ -1,59 +1,50 @@
 name: magazines
-description: Returns array of type names of all vehicle's magazines. When applied to a unit, the command behaves differently and will omit magazines already loaded into unit's weapons. Use [[currentMagazine]] to get this information for a currently loaded magazine.
+desc: Returns array of type names of all vehicle's magazines. When applied to a unit, the command behaves differently and will omit magazines already loaded into unit's weapons. Use [[currentMagazine]] to get this information for a currently loaded magazine.
 groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
 - call: !Unary vehicle
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: vehicle
-    description: unit or vehicle
+    desc: unit or vehicle
     type: Object
 - call: !Unary
   - vehicle
   - includeEmpty
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: vehicle
-    description: unit or vehicle
+    desc: unit or vehicle
     type: Object
   - name: includeEmpty
-    description: '[[true]] to include empty magazines'
+    desc: '[[true]] to include empty magazines'
     type: Boolean
     optional: true
     default: '[[false]]'
   since:
-    arma_3:
-      major: 2
-      minor: 0
+    arma3: '2.0'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_mags = magazines player;</sqf>
+see_also:
+- currentMagazine
+- magazinesTurret
+- magazinesDetail
+- magazinesAmmo
+- magazinesAmmoFull
+- ammo
+- weapons
+- backpacks

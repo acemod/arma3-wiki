@@ -1,5 +1,5 @@
 name: isEqualTypeArray
-description: Compares types of all elements of one array to types of all elements of another array. Since Arma 3 v2.09.149634 no additional check is needed to make sure the first argument is an [[Array]].
+desc: Compares types of all elements of one array to types of all elements of another array. Since Arma 3 v2.09.149634 no additional check is needed to make sure the first argument is an [[Array]].
 groups:
 - Variables
 - Arrays
@@ -8,8 +8,7 @@ syntax:
   - arr1
   - arr2
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: arr1
     type: Unknown
@@ -18,9 +17,7 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 54
+  arma3: '1.54'
 examples:
 - |-
   <sqf>
@@ -35,3 +32,11 @@ examples:
   _arr isEqualTypeArray [0,0]; // true
   _arr isEqualTypeArray [0,0,0]; // false
   </sqf>
+see_also:
+- isEqualTypeAll
+- isEqualType
+- isEqualTypeParams
+- param
+- params
+- isEqualTo
+- typeName

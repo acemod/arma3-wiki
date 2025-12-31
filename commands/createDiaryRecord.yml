@@ -1,5 +1,5 @@
 name: createDiaryRecord
-description: |-
+desc: |-
   Creates a [[Diary]] entry. Supported tags and their parameters: <spoiler>
   {| class="wikitable sortable valign-top"
   ! Tag
@@ -16,15 +16,32 @@ syntax:
     - taskState
     - showTitle
   ret:
-  - DiaryRecord
-  - null
+    type: DiaryRecord
   params:
   - name: player
     type: Object
   - name: subject
     type: String
   - name: textInfo
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - String
+      - null
+    - - String
+      - null
+    - - String
+      - null
   - name: task
     type: Task
     optional: true
@@ -33,29 +50,19 @@ syntax:
     type: Unknown
     optional: true
   - name: showTitle
-    description: whether or not to show title in the description section as well
+    desc: whether or not to show title in the description section as well
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
-      arma_3:
-        major: 1
-        minor: 96
+      arma3: '1.96'
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player createDiaryRecord ["Diary", ["Intel", "Enemy base is on grid <marker name='enemyBase'>161170</marker>"]];</sqf>
 - <sqf>player createDiaryRecord ["Diary", "Information gathered.<br /><img image='wellDone_ca.paa' />"];</sqf>
@@ -65,3 +72,11 @@ examples:
 - <sqf>player createDiaryRecord ["Diary", ["Linebreak", "Line1<br />Line2<br /><br />Line4"], taskNull, "", false];</sqf>
 - <sqf>player createDiaryRecord ["Diary", ["Execute","<execute expression='hint ""Some code"";'>Some text</execute>"], taskNull, "", false];</sqf>
 - <sqf>player createDiaryRecord ["Diary", ["ExecuteClose", "<executeClose expression=""hint 'Diary closed';"">Close Diary</executeClose>"], taskNull, "", false];</sqf>
+see_also:
+- allDiaryRecords
+- processDiaryLink
+- createDiaryLink
+- createDiarySubject
+- diarySubjectExists
+- setDiaryRecordText
+- removeDiaryRecord

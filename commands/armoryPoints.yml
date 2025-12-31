@@ -1,27 +1,20 @@
 name: armoryPoints
-description: Returns, stored in [USERNAME].ArmaXProfile, value of ''armoryPoints'' entry. If the entry doesn't exist, it returns 0.
+desc: Returns, stored in [USERNAME].ArmaXProfile, value of ''armoryPoints'' entry. If the entry doesn't exist, it returns 0.
 groups:
 - System
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_points = armoryPoints;</sqf>
+see_also:
+- setArmoryPoints

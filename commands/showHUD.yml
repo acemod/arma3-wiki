@@ -1,5 +1,5 @@
 name: showHUD
-description: |-
+desc: |-
   Enable / disable showing of HUD. Defines visibility of weapon crosshair and any informational tags that appear when pointing the weapon at an object as well as availability of the default action menu. Unfortunately, it also hides icons drawn with [[drawIcon3D]].
   {{Feature|arma3|
   '''Since {{arma3}} v1.50''' there is a Description.ext's [[Description.ext#showHUD|showHUD[]]] array param that is identical in format to the extended [[showHUD]] command.
@@ -13,8 +13,7 @@ groups:
 syntax:
 - call: !Unary enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: enable
     type: Boolean
@@ -31,88 +30,85 @@ syntax:
   - kills
   - showIcon3D
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: scriptedHUD
-    description: show scripted HUD such as weapon crosshair, action menu and overlays created with [[cutRsc]] and [[titleRsc]]. Same as [[showHUD]]'s first syntax
+    desc: show scripted HUD such as weapon crosshair, action menu and overlays created with [[cutRsc]] and [[titleRsc]]. Same as [[showHUD]]'s first syntax
     type: Boolean
   - name: info
-    description: show vehicle, soldier and weapon info
+    desc: show vehicle, soldier and weapon info
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: radar
-    description: show vehicle radar
+    desc: show vehicle radar
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: compass
-    description: show vehicle compass
+    desc: show vehicle compass
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: direction
-    description: show tank direction indicator. Not present in vanilla {{arma3}}
+    desc: show tank direction indicator. Not present in vanilla {{arma3}}
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: menu
-    description: show commanding menu (HC related menus)
+    desc: show commanding menu (HC related menus)
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: group
-    description: show group info bar (Squad leader info bar)
+    desc: show group info bar (Squad leader info bar)
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: cursors
-    description: show HUD weapon cursors (connected with scripted HUD)
+    desc: show HUD weapon cursors (connected with scripted HUD)
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: panels
-    description: 'show [[Arma 3: Custom Info]]'
+    desc: 'show [[Arma 3: Custom Info]]'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
-      arma_3:
-        major: 1
-        minor: 70
+      arma3: '1.70'
   - name: kills
-    description: show "x killed by y" [[systemChat]] messages
+    desc: show "x killed by y" [[systemChat]] messages
     type: Boolean
     optional: true
     default: '[[true]]'
   - name: showIcon3D
-    description: show icons drawn with [[drawIcon3D]] even when the HUD is hidden
+    desc: show icons drawn with [[drawIcon3D]] even when the HUD is hidden
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 2
-        minor: 4
+      arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>showHUD false;</sqf>
 - "Hide vehicle radar and compass:\n<sqf>\nshowHUD [\n\ttrue,  // scriptedHUD\n\ttrue,  // info\n\tfalse, // radar\n\tfalse, // compass\n\ttrue,  // direction\n\ttrue,  // menu\n\ttrue,  // group\n\ttrue,  // cursors\n\ttrue,  // panels\n\ttrue,  // kills\n\ttrue   // showIcon3D\n];\n</sqf>"
 - |-
   Check if HUD visibility is hardcoded in mission config and [[showHUD]] command is overridden:
   <sqf>private _disabledShowHUD = isArray (missionConfigFile >> "showHUD");</sqf>
+see_also:
+- shownHUD
+- showCinemaBorder
+- showSubtitles
+- showWatch
+- showRadio
+- showMap
+- showGPS
+- showCompass
+- showPad

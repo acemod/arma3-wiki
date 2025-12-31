@@ -1,5 +1,5 @@
 name: isEqualType
-description: Compares two values' types. A much faster alternative to <sqf inline>typeName a == typeName b</sqf>.
+desc: Compares two values' types. A much faster alternative to <sqf inline>typeName a == typeName b</sqf>.
 groups:
 - Variables
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - val1
   - val2
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: val1
     type: Anything
@@ -17,9 +16,7 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 54
+  arma3: '1.54'
 examples:
 - |-
   <sqf>
@@ -27,3 +24,12 @@ examples:
   _var isEqualType 0; // false
   _var isEqualType []; // true
   </sqf>
+see_also:
+- isEqualTypeAll
+- isEqualTypeArray
+- isEqualTypeAny
+- isEqualTypeParams
+- param
+- params
+- isEqualTo
+- typeName

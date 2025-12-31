@@ -1,20 +1,28 @@
 name: delete3DENEntities
-description: Delete given [[Eden Entity|entities]] in [[:Category:Eden Editor|Eden Editor]].
+desc: Delete given [[Eden Entity|entities]] in [[:Category:Eden Editor|Eden Editor]].
 groups:
 - Eden Editor
 syntax:
 - call: !Unary entities
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: entities
-    type: Unknown
+    type: !OneOf
+    - - !ArrayUnsized
+        type: EdenEntity
+        desc: ''
+      - null
+    - - EdenID
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>delete3DENEntities (all3DENEntities select 0); // Removes all objects</sqf>
+see_also:
+- collect3DENHistory
+- create3DENComposition
+- create3DENEntity
+- all3DENEntities

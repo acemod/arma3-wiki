@@ -1,5 +1,5 @@
 name: forceSpeed
-description: Force the speed limit on given object (object will never attempt to move faster than given by forceSpeed). Use negative value to return to default behaviour.
+desc: Force the speed limit on given object (object will never attempt to move faster than given by forceSpeed). Use negative value to return to default behaviour.
 groups:
 - Object Manipulation
 syntax:
@@ -7,31 +7,26 @@ syntax:
   - object
   - speed
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
     type: Object
   - name: speed
-    description: in metre per second
+    desc: in metre per second
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_helicopter forceSpeed 150;</sqf>
+see_also:
+- getForcedSpeed
+- forceWalk
+- isWalking
+- isForcedWalk
+- getSpeed

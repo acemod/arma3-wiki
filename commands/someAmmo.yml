@@ -1,39 +1,27 @@
 name: someAmmo
-description: Check if unit has some ammo.
+desc: Check if unit has some ammo.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unitName
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: unitName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - '<sqs>? not (someAmmo _loon1) : hint "Loon1 is out of ammo!"</sqs>'
 - <sqf>if (not someAmmo _loon1) then { hint "Loon1 is out of ammo!" };</sqf>
+see_also:
+- ammo
+- magazines

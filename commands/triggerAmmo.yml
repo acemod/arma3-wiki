@@ -1,22 +1,28 @@
 name: triggerAmmo
-description: |-
+desc: |-
   Triggers a munition such as shells, bullets, missiles, rockets, mines and bombs (''shotSubmunition/shotShell/shotBullet/shotMissile/shotRocket'') as if it did hit.
-  If ammo uses submunition, then creation of submunition will be triggered.
+  If ammo uses submunition, then creation of submunition will be triggered. Since Arma 3 v 2.22 it is possible to manipulate mine timer, cook grenades and alter missile trigger distance.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary munition
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: munition
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 92
+  arma3: '1.92'
 examples:
 - <sqf>triggerAmmo bomb1;</sqf>
+- <sqf>player addEventHandler ["FiredMan", {triggerAmmo [_this select 6, 1]}]; // explodes handgrenade or sets smoke on smokegrenade 1 sec after the throw.</sqf>
+see_also:
+- getShotParents
+- Arma
+- '3:'
+- Event
+- Handlers#Fired|"Fired"
+- Event
+- Handler

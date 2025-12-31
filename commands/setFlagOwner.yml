@@ -1,5 +1,5 @@
 name: setFlagOwner
-description: Sets flag owner. When owner is set to [[objNull]] or any object other than a unit of class [[Models_%26_Classnames:_CfgVehicles_-_Class_Man|man]] or [[Game_Logic|logic]], flag is returned to the flagpole. A flag owned by a logic has no visual representation.
+desc: Sets flag owner. When owner is set to [[objNull]] or any object other than a unit of class [[Models_%26_Classnames:_CfgVehicles_-_Class_Man|man]] or [[Game_Logic|logic]], flag is returned to the flagpole. A flag owned by a logic has no visual representation.
 groups:
 - Flags
 - Object Manipulation
@@ -8,8 +8,7 @@ syntax:
   - flag
   - owner
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: flag
     type: Object
@@ -18,27 +17,13 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_flag1 setFlagOwner _soldier1;</sqf>
 - |-
@@ -49,3 +34,15 @@ examples:
   //Method 2: (set the flag mast as the owner)
   flag _flagCarrier setFlagOwner flag _flagCarrier;
   </sqf>
+see_also:
+- flag
+- flagOwner
+- setFlagSide
+- setFlagTexture
+- flagSide
+- flagTexture
+- forceFlagTexture
+- getForcedFlagTexture
+- :Category:Flag
+- Textures|Flag
+- Textures

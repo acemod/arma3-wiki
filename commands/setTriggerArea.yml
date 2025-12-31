@@ -1,5 +1,5 @@
 name: setTriggerArea
-description: |-
+desc: |-
   [[File:setTriggerArea.jpg|thumb|300px|Trigger axis a, b and c (''half'' of their x, y and z dimensions)]] Defines the area monitored by the given trigger. The area could be either rectangular or elliptical.
   {{Feature|informative|
   Just like with a and b dimensions, c dimension will alter area in opposite directions from the trigger position along z axis. Therefore if the trigger position is on the surface, half of the trigger area will be above the surface and half below. To place the whole area above the surface, adjust trigger position (move it up c meters). If c is not specified or &lt;{{=}} 0, the trigger's height is considered infinite like 2D triggers.}}
@@ -14,54 +14,39 @@ syntax:
     - isRectangle
     - c
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: trigger
-    description: object of the type "EmptyDetector"
+    desc: object of the type "EmptyDetector"
     type: Object
   - name: a
-    description: trigger area X size / 2, in meters
+    desc: trigger area X size / 2, in meters
     type: Number
   - name: b
-    description: trigger area Y size / 2, in meters
+    desc: trigger area Y size / 2, in meters
     type: Number
   - name: angle
-    description: trigger area rotation in degrees
+    desc: trigger area rotation in degrees
     type: Number
   - name: isRectangle
-    description: '[[true]] if rectangle'
+    desc: '[[true]] if rectangle'
     type: Boolean
   - name: c
-    description: trigger area Z size / 2, in meters. -1 for infinite height
+    desc: trigger area Z size / 2, in meters. -1 for infinite height
     type: Number
     optional: true
     default: '-1'
     since:
-      arma_3:
-        major: 1
-        minor: 60
+      arma3: '1.60'
 argument_loc: Global
 effect_loc: Local
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_trigger setTriggerArea [100, 50, 45, false];</sqf>
 - <sqf>_trigger setTriggerArea [100, 50, 45, false, 100];</sqf>
@@ -72,3 +57,17 @@ examples:
   _trg setTriggerActivation ["CIV", "PRESENT", true];
   _trg setTriggerStatements ["this", "hint 'Civilian near player'", "hint 'no civilian near'"];
   </sqf>
+see_also:
+- triggerArea
+- createTrigger
+- setTriggerActivation
+- setTriggerStatements
+- setTriggerText
+- setTriggerTimeout
+- setTriggerType
+- inArea
+- inAreaArray
+- triggerInterval
+- setTriggerInterval
+- enableSimulation
+- simulationEnabled

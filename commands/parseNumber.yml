@@ -1,5 +1,5 @@
 name: parseNumber
-description: |-
+desc: |-
   Parses the string, interpreting its content as a floating point number.
   {{Feature|important|This command does '''not''' work with strings representing hexadecimal numbers (e.g {{hl|"0xCF"}}).
   <sqf>
@@ -12,29 +12,34 @@ groups:
 syntax:
 - call: !Unary value
   ret:
-  - Number
-  - the parsed number, {{hl|0}} if no valid number was found; in the case of a passed [[Boolean]], 0 if [[false]], 1 if [[true]]
+    type: Number
+    desc: the parsed number, {{hl|0}} if no valid number was found; in the case of a passed [[Boolean]], 0 if [[false]], 1 if [[true]]
   params:
   - name: value
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
+    - - Boolean
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\n_number = parseNumber \"0.125\";\t\t\t// 0.125\n_number = parseNumber \"0050\";\t\t\t// 50\n_number = parseNumber \"\t\t42 yes\";\t// 42\n_number = parseNumber \"3 or 4\";\t\t\t// 3\n_number = parseNumber \"either 3 or 4\";\t// 0\n_number = parseNumber \"0xCF\";\t\t\t// 0\n</sqf>"
 - "since {{arma3}} v1.50:\n<sqf>\n_result = parseNumber false;\t\t\t\t// 0\n_result = parseNumber true;\t\t\t\t\t// 1\n_zeroOneStatus = parseNumber alive player;\t// 0 if the player is dead, 1 if alive\n</sqf>"
+see_also:
+- BIS_fnc_parseNumber
+- '{{Link|http://www.cplusplus.com/reference/cstdlib/atof/|atof'
+- (C++)}}
+- Floating
+- Point
+- Number#Floating
+- Point
+- Literals|Floating
+- point
+- literals

@@ -1,5 +1,5 @@
 name: setStarterRTD
-description: "Toggle the starter for the given helicopter engine(s) on or off. \n* engine index 0: engine #1\n* engine index 1: engine #2\n* engine index 2: engine #3\n* engine index -1: all engines"
+desc: "Toggle the starter for the given helicopter engine(s) on or off. \n* engine index 0: engine #1\n* engine index 1: engine #2\n* engine index 2: engine #3\n* engine index -1: all engines"
 groups:
 - RTD
 syntax:
@@ -8,23 +8,20 @@ syntax:
   - - enable
     - engineIndex
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: helicopterRTD
-    description: helicopter
+    desc: helicopter
     type: Unknown
   - name: enable
-    description: on or off
+    desc: on or off
     type: Boolean
   - name: engineIndex
-    description: engine index
+    desc: engine index
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
+  tkoh: '1.0'
 examples:
 - <sqf>vehicle player setStarterRTD [true, -1];</sqf>

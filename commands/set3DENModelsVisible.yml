@@ -1,5 +1,5 @@
 name: set3DENModelsVisible
-description: Enables or disables trigger area visibility.
+desc: Enables or disables trigger area visibility.
 groups:
 - Eden Editor
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - map
   - scene
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: map
     type: Boolean
@@ -17,8 +16,9 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>set3DENModelsVisible [true, true];</sqf>
+see_also:
+- get3DENLinesVisible
+- get3DENIconsVisible

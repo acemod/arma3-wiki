@@ -1,5 +1,5 @@
 name: menuEnabled
-description: Returns if menu entry on given path is enabled or not.
+desc: Returns if menu entry on given path is enabled or not.
 groups:
 - GUI Control - Menu
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - idc
   - path
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: idc
     type: Number
@@ -18,8 +17,7 @@ syntax:
   - control
   - path
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: control
     type: Control
@@ -28,8 +26,8 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>_isEnabled = findDisplay 313 displayCtrl 120 menuEnabled [0];</sqf>
+see_also:
+- menuEnable

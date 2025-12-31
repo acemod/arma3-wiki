@@ -1,5 +1,5 @@
 name: allObjects
-description: |-
+desc: |-
   Returns array of requested objects as fast as the engine allows it. The objects can be requested by object type and simulation kind.
   {{Feature|informative|This command does not return terrain placed objects (except for terrain objects with lights, such as lamp posts, etc. which can be found in the slow entities collection). To get all terrain objects, use [[nearestTerrainObjects]] instead.}}
 groups:
@@ -9,8 +9,8 @@ syntax:
   - objectType
   - objectCollection
   ret:
-  - ArrayUnknown
-  - array of [[Object]]s
+    type: ArrayUnknown
+    desc: array of [[Object]]s
   params:
   - name: objectType
     type: Unknown
@@ -20,25 +20,21 @@ syntax:
   - objectType
   - objectCollection
   ret:
-  - ArrayUnknown
-  - array of [[Object]]s
+    type: ArrayUnknown
+    desc: array of [[Object]]s
   params:
   - name: objectType
-    description: type of the objects (will exact match return of [[typeOf]])
+    desc: type of the objects (will exact match return of [[typeOf]])
     type: String
   - name: objectCollection
-    description: see main syntax above
+    desc: see main syntax above
     type: Number
   since:
-    arma_3:
-      major: 2
-      minor: 12
+    arma3: '2.12'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>private _visitorBuildings = 1 allObjects 0;</sqf>
 - <sqf>private _userPlacedBuildings = 8 allObjects 0;</sqf>
@@ -48,3 +44,24 @@ examples:
   private _allGroundWeaponHolders = "GroundWeaponHolder" allObjects 0;
   private _allSimulatedWeaponHolders = "WeaponHolderSimulated" allObjects 1;
   </sqf>
+see_also:
+- getObjectFOV
+- cursorObject
+- cursorTarget
+- createSimpleObject
+- allMissionObjects
+- setObjectViewDistance
+- getObjectViewDistance
+- objectParent
+- object
+- getObjectType
+- allPlayers
+- allGroups
+- allDead
+- playableUnits
+- switchableUnits
+- units
+- vehicles
+- allUnitsUAV
+- allCurators
+- playersNumber

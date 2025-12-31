@@ -1,5 +1,5 @@
 name: getOpticsMode
-description: Returns the class name of the current optic mode of the current weapon.
+desc: Returns the class name of the current optic mode of the current weapon.
 groups:
 - Object Manipulation
 syntax:
@@ -7,8 +7,8 @@ syntax:
   - unit
   - slot
   ret:
-  - String
-  - class name of the current optic mode of the current weapon
+    type: String
+    desc: class name of the current optic mode of the current weapon
   params:
   - name: unit
     type: Object
@@ -17,9 +17,7 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - |-
   <sqf>
@@ -28,3 +26,5 @@ examples:
   player getOpticsMode 2; // get launcher's optic mode
   player getOpticsMode 3; // get handgun's optic mode
   </sqf>
+see_also:
+- setOpticsMode

@@ -1,5 +1,5 @@
 name: ctrlFade
-description: |-
+desc: |-
   Returns the current fade factor of control.<br>
   {{ Feature | Informative | Despite having <syntaxhighlight lang="cpp" inline>fade = 1;</syntaxhighlight> inside a control's config, <sqf inline>ctrlFade</sqf> will '''still report a fade of 0'''.<br>
   Only the value actually set by [[ctrlSetFade]] will be returned by [[ctrlFade]].}}
@@ -8,28 +8,19 @@ groups:
 syntax:
 - call: !Unary controlName
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: controlName
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_fade = ctrlFade _control;</sqf>
+see_also:
+- ctrlSetFade

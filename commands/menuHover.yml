@@ -1,27 +1,47 @@
 name: menuHover
-description: Returns path to menu entry mouse is currently hovering over.
+desc: Returns path to menu entry mouse is currently hovering over.
 groups:
 - GUI Control - Menu
 syntax:
 - call: !Unary idc
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: idc
     type: Number
 - call: !Unary control
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>private _path = menuHover (findDisplay 313 displayCtrl 120);</sqf>
+see_also:
+- menuEnable
+- menuExpand
+- menuCollapse
+- menuSetData
+- menuSetValue
+- menuSetCheck
+- menuSetAction
+- menuDelete
+- menuAdd
+- menuValue
+- menuURL
+- menuText
+- menuSort
+- menuSize
+- menuEnabled
+- menuChecked
+- menuAction
+- menuShortcutText
+- menuShortcut
+- menuPicture
+- menuData
+- menuClear
+- menuSetPicture

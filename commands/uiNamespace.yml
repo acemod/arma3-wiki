@@ -1,5 +1,5 @@
 name: uiNamespace
-description: Returns the global namespace attached to user interface.
+desc: Returns the global namespace attached to user interface.
 groups:
 - Namespaces
 - Variables
@@ -7,24 +7,26 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Namespace
-  - null
+    type: Namespace
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>uiNamespace setVariable ["LIB_interruptDisplay", _display];</sqf>
 - "<sqf>\nuiNamespace setVariable [\"myVar\", 46];\nwith uiNamespace do\n{\n\thint str myVar; // 46\n};\n</sqf>"
+see_also:
+- missionNamespace
+- currentNamespace
+- parsingNamespace
+- profileNamespace
+- localNamespace
+- allVariables
+- with
+- do
+- ArmA:_Editing#Forward_Compatibility|Forward
+- Compatibility

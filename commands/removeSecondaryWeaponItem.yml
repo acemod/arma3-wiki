@@ -1,5 +1,5 @@
 name: removeSecondaryWeaponItem
-description: Removes given weapon item, including magazine, from the [[secondaryWeapon]].
+desc: Removes given weapon item, including magazine, from the [[secondaryWeapon]].
 groups:
 - Unit Inventory
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - item
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,8 +16,11 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 38
+  arma3: '1.38'
 examples:
 - <sqf>player removeSecondaryWeaponItem (secondaryWeaponItems player select 0);</sqf>
+see_also:
+- addSecondaryWeaponItem
+- removePrimaryWeaponItem
+- removeHandgunItem
+- removeBinocularItem

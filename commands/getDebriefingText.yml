@@ -1,21 +1,25 @@
 name: getDebriefingText
-description: A getter for [[setDebriefingText]].
+desc: A getter for [[setDebriefingText]].
 groups:
 - Briefing
 syntax:
 - call: !Unary end
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: end
-    description: end type
+    desc: end type
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>private _debriefingTextDeath = getDebriefingText "endDeath";</sqf>
+see_also:
+- setDebriefingText
+- disableDebriefingStats
+- enableDebriefingStats
+- endMission
+- failMission
+- missionEnd

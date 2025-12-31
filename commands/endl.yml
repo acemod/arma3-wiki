@@ -1,19 +1,17 @@
 name: endl
-description: "Creates a string containing a line break, similar to [[lineBreak]] for [[text]]. The name is inspired by c++ std::endl ('''end''' '''l'''ine).\nThe command returns {{hl|\"\\r\\n\"}}, which contains control characters rather than printable characters:\n<sqf>\nhint str count \"\\r\\n\";\t// 4\nhint str count endl;\t// 2\n</sqf>\nThe line break works for [[diag_log]] and [[ctrlSetText]].\nIt does not work with the [[hint]] because [[hint]] interprets printable \"\\n\" as line break instead.\nAlternatively one can use [[toString]] command to get other characters."
+desc: "Creates a string containing a line break, similar to [[lineBreak]] for [[text]]. The name is inspired by c++ std::endl ('''end''' '''l'''ine).\nThe command returns {{hl|\"\\r\\n\"}}, which contains control characters rather than printable characters:\n<sqf>\nhint str count \"\\r\\n\";\t// 4\nhint str count endl;\t// 2\n</sqf>\nThe line break works for [[diag_log]] and [[ctrlSetText]].\nIt does not work with the [[hint]] because [[hint]] interprets printable \"\\n\" as line break instead.\nAlternatively one can use [[toString]] command to get other characters."
 groups:
 - Strings
 syntax:
 - call: Nular
   ret:
-  - String
-  - line break
+    type: String
+    desc: line break
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>diag_log ("line1" + endl + "line2");</sqf>
 - |-
@@ -23,3 +21,11 @@ examples:
   _ctrl ctrlCommit 0;
   _ctrl ctrlSetText format ["line1%1line2%1line3", endl];
   </sqf>
+see_also:
+- lineBreak
+- str
+- format
+- toString
+- joinString
+- splitString
+- toArray

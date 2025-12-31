@@ -1,5 +1,5 @@
 name: ctRemoveHeaders
-description: Takes array of header indices as a parameter and removes headers with those indices. Indices of remaining headers will be recomputed.
+desc: Takes array of header indices as a parameter and removes headers with those indices. Indices of remaining headers will be recomputed.
 groups:
 - GUI Control - Controls Table
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - ctrl
   - indices
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ctrl
     type: Control
@@ -17,8 +16,25 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>_control ctRemoveHeaders [0, 1, 2];</sqf>
+see_also:
+- ctAddRow
+- ctAddHeader
+- ctClear
+- ctCurSel
+- ctSetCurSel
+- ctRowControls
+- ctHeaderControls
+- ctRowCount
+- ctHeaderCount
+- ctSetValue
+- ctValue
+- ctSetData
+- ctData
+- ctFindRowHeader
+- ctFindHeaderRows
+- ctRemoveRows
+- ctSetRowTemplate
+- ctSetHeaderTemplate

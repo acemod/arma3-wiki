@@ -1,20 +1,27 @@
 name: handgunWeapon
-description: Returns the name of a unit's handgun (an empty string if there is none).
+desc: Returns the name of a unit's handgun (an empty string if there is none).
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>hint handgunWeapon player; //"hgun_P07_F"</sqf>
+see_also:
+- handgunMagazine
+- handgunItems
+- addHandgunItem
+- removeHandgunItem
+- removeAllHandgunItems
+- primaryWeapon
+- secondaryWeapon
+- currentWeapon
+- weapons

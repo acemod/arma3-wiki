@@ -1,5 +1,5 @@
 name: try
-description: |-
+desc: |-
   Defines a try-catch structure. This sets up an [[Exception handling|exception handling]] block. Any thrown exception in a try block is caught in a [[catch]] block. The structured exception block has the following form:
   <sqf>
   try
@@ -12,8 +12,7 @@ groups:
 syntax:
 - call: !Unary code
   ret:
-  - Unknown
-  - null
+    type: ExceptionHandle
   params:
   - name: code
     type: Code
@@ -21,37 +20,29 @@ syntax:
   - args
   - code
   ret:
-  - Unknown
-  - null
+    type: ExceptionHandle
   params:
   - name: args
-    description: passed arguments, will be put in ''_this'' variable inside the "code"
+    desc: passed arguments, will be put in ''_this'' variable inside the "code"
     type: Anything
   - name: code
     type: Code
   since:
-    arma_3:
-      major: 1
-      minor: 54
+    arma3: '1.54'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>try { throw "invalid argument" } catch { hint str _exception };</sqf>
 - <sqf>123 try { if (_this != 123) throw "invalid argument" } catch { hint str _exception };</sqf>
 - "<sqf>\ntry {\n\tif (a > b) throw \"Error: some error\"; // OK\n\t// the command argument is static\n} catch {\n\thint str _exception;\n};\n\ntry {\n\t_someFunc = {\n\t\t// ...\n\t};\n\tif (a > b) throw (call _someFunc); // NOT OK\n\t// the command argument is dynamic\n\t// _someFunc is called first to get the value regardless of (a > b) outcome\n} catch {\n\thint str _exception;\n};\n\ntry {\n\t_someFunc = {\n\t\t// ...\n\t};\n\tif (a > b) then {throw (call _someFunc)}; // OK\n\t// the command argument is dynamic\n\t// _someFunc is only called when (a > b) is true\n} catch {\n\thint str _exception;\n};\n</sqf>"
+see_also:
+- Exception
+- handling
+- throw
+- catch

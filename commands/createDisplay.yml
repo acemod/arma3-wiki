@@ -1,5 +1,5 @@
 name: createDisplay
-description: |-
+desc: |-
   Creates child display of given display and loads from "resourceName". The notable difference between [[createDisplay]] and [[createDialog]] is that with [[createDisplay]] the player would be able to move around while the display is shown.<br>
   Displays created with [[createDisplay]] or [[createDialog]] will take control of the mouse pointer and will close when user presses {{Controls|Esc}}.
   {{Feature|arma3|Since {{arma3}} v1.50 [[createDisplay]] returns [[Display]] and will first look in [[Description.ext|description.ext]] for resourceName config, if not found, it will then look in main config.}}
@@ -11,32 +11,21 @@ syntax:
   - parent
   - resourceName
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: parent
     type: Display
   - name: resourceName
-    description: custom display class defined in [[Description.ext|description.ext]] or existing display class from main config
+    desc: custom display class defined in [[Description.ext|description.ext]] or existing display class from main config
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>findDisplay 46 createDisplay "RscCredits";</sqf>
 - |-
@@ -44,3 +33,12 @@ examples:
   // creates an empty display
   private _emptyDisplay = findDisplay 46 createDisplay "RscDisplayEmpty";
   </sqf>
+see_also:
+- closeDisplay
+- createDialog
+- displayCtrl
+- dialog
+- displayNull
+- controlNull
+- ctrlCreate
+- displayParent

@@ -1,5 +1,5 @@
 name: setPylonLoadout
-description: |-
+desc: |-
   Adds/overrides loadout to a vehicle pylon. {{hl|TransportPylonsComponent}} in vehicle config and {{hl|pylonWeapon}} in the magazine config are required to run.
   {{Feature|informative|This command also adds the corresponding weapon if the vehicle does not have one, but will not remove one that is no longer used.}}
 multiplayer_note: |-
@@ -17,33 +17,35 @@ syntax:
     - forced
     - turret
   ret:
-  - Boolean
-  - '[[true]] on success'
+    type: Boolean
+    desc: '[[true]] on success'
   params:
   - name: vehicle
     type: Object
   - name: pylon
-    description: pylon index (index starts from 1) or pylon name (see {{Link|#Example 1}})
-    type: Unknown
+    desc: pylon index (index starts from 1) or pylon name (see {{Link|#Example 1}})
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
   - name: magazine
-    description: magazine name
+    desc: magazine name
     type: String
   - name: forced
-    description: '[[true]] to force an incompatible magazine'
+    desc: '[[true]] to force an incompatible magazine'
     type: Boolean
     optional: true
     default: '[[false]]'
   - name: turret
-    description: turret path
+    desc: turret path
     type: ArrayUnknown
     optional: true
     default: <sqf inline>[]</sqf>
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>vehicle player setPylonLoadout ["pylon1", ""];</sqf>
 - "Make all of your pylon weapons Twin Cannon 30 mm:\n<sqf>\nprivate _vehicle = vehicle player;\nprivate _pylonsIndices = getAllPylonsInfo _vehicle select { _x select 0 };\n{\n\t_vehicle setPylonLoadout [_x, \"PylonWeapon_300Rnd_20mm_shells\", true];\n} forEach _pylonsIndices;\n</sqf>"
@@ -51,3 +53,15 @@ examples:
 - |-
   MP compatible usage:
   <sqf>[myPlane, [1, "PylonWeapon_300Rnd_20mm_shells", true]] remoteExec ["setPylonLoadout", myPlane];</sqf>
+see_also:
+- Arma
+- '3:'
+- Vehicle
+- Loadouts
+- getCompatiblePylonMagazines
+- getPylonMagazines
+- setAmmoOnPylon
+- ammoOnPylon
+- animatePylon
+- animateBay
+- setPylonsPriority

@@ -1,5 +1,5 @@
 name: setNameSound
-description: |-
+desc: |-
   Sets the [[nameSound]] of a person. By default, when giving orders, the units are addressed by their number.
   When nameSound is set, it will be used instead to address the unit. For example instead of "Two, hold fire!", one can have "Miller, hold fire!".
 
@@ -14,8 +14,7 @@ syntax:
   - person
   - name
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: person
     type: Object
@@ -24,9 +23,7 @@ syntax:
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 2
+  arma3: '1.2'
 examples:
 - <sqf>unit1 setNameSound "dixon";</sqf>
 - <sqf>unit1 setNameSound ""; // will reset to default behaviour</sqf>
@@ -36,3 +33,8 @@ examples:
   unit1 setNameSound _name;
   unit1 setName _name;
   </sqf>
+see_also:
+- nameSound
+- name
+- setName
+- setIdentity

@@ -1,5 +1,5 @@
 name: setFeatureType
-description: |-
+desc: |-
   Enable/disable object as a feature/landmark. Possible feature types:
   * 0 - Feature disabled
   * 1 - Object is always visible within object view distance
@@ -12,21 +12,21 @@ syntax:
   - object
   - type
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: object
     type: Object
   - name: type
-    description: the desired feature type
+    desc: the desired feature type
     type: Number
 argument_loc: Global
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - |-
   Set a building to be always rendered:
   <sqf>building setFeatureType 2;</sqf>
+see_also:
+- setViewDistance
+- setObjectViewDistance

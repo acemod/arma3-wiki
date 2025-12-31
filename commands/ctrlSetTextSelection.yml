@@ -1,5 +1,5 @@
 name: ctrlSetTextSelection
-description: |-
+desc: |-
   Selects {{hl|length}} characters of edit control from the {{hl|start}} position and places cursor at the end of selection.
   {{Feature|informative|To only move the cursor, set ''length'' to 0. To select text from right to left, use negative ''length'' (See [[ctrlTextSelection]] for more info)}}
 groups:
@@ -10,23 +10,20 @@ syntax:
   - - start
     - length
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: start
-    description: selection start position
+    desc: selection start position
     type: Number
   - name: length
-    description: length of characters to select (0 to only move the cursor). Negative length will select text from right to left (see example 3)
+    desc: length of characters to select (0 to only move the cursor). Negative length will select text from right to left (see example 3)
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - <sqf>_control ctrlSetTextSelection [5, 10];</sqf>
 - |-
@@ -42,3 +39,6 @@ examples:
 - |-
   Select text from right to left:
   <sqf>_control ctrlSetTextSelection [5, -4];</sqf>
+see_also:
+- ctrlTextSelection
+- ctrlSetText

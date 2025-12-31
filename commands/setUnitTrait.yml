@@ -1,5 +1,5 @@
 name: setUnitTrait
-description: |-
+desc: |-
   Enables or disables a trait or alters a trait of the given unit. Unit traits consist of unit abilities, which are [[Boolean]]s and modifiers, which are [[Number]]s. Custom trait can only be a [[Boolean|bool]].<br><br>
 
   {{Feature|Informative|The command can also be used on vehicles (and drones), and it will get applied to the [[effectiveCommander]] of the vehicle. In addition, if the [[effectiveCommander]] has a trait, it will get applied to the entire vehicle (for example, the vehicle can become harder to spot due to low '''camouflageCoef''')}}
@@ -22,27 +22,31 @@ syntax:
     - value
     - isCustom
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: the unit whose trait should be set
+    desc: the unit whose trait should be set
     type: Object
   - name: skillName
-    description: name of the skill
+    desc: name of the skill
     type: String
   - name: value
-    description: value (see above)
-    type: Unknown
+    desc: value (see above)
+    type: !OneOf
+    - - Boolean
+      - null
+    - - Number
+      - null
   - name: isCustom
-    description: Must be set to [[true]] in case of custom
+    desc: Must be set to [[true]] in case of custom
     type: Boolean
     optional: true
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 58
+  arma3: '1.58'
 examples:
 - <sqf>player setUnitTrait ["Medic", true];</sqf>
+see_also:
+- getUnitTrait
+- getAllUnitTraits

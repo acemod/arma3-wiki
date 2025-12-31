@@ -1,5 +1,5 @@
 name: setPos
-description: |-
+desc: |-
   Sets object position to format [[Position#PositionAGLS|PositionAGLS]] (over surface). The Z value is used to calculate the nearest surface below the provided position. If the surface is close, it uses the Z position of the surface. Otherwise, Z value becomes the offset from that surface.
   {{Feature| important | It is recommended to '''avoid''' this command when placing objects above other objects, due to the unpredictable behavior described above.}}
 multiplayer_note: |-
@@ -12,38 +12,23 @@ syntax:
   - object
   - pos
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
     type: Object
   - name: pos
-    description: position in format [[Position#PositionAGL|PositionAGL]] or [[Position#Introduction|Position2D]], in which case Z will be set to 0
+    desc: position in format [[Position#PositionAGL|PositionAGL]] or [[Position#Introduction|Position2D]], in which case Z will be set to 0
     type: ArrayUnknown
 argument_loc: Global
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -62,3 +47,8 @@ examples:
   </sqf>
 - <sqf>_obj setPos [getPos _obj select 0, getPos _obj select 1, -5];</sqf>
 - <sqf>player setPos (getPos _obj);</sqf>
+see_also:
+- setPosASL
+- getPos
+- setVehiclePosition
+- Position#setPosAGLS|setPosAGLS

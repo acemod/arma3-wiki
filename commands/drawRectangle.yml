@@ -1,5 +1,5 @@
 name: drawRectangle
-description: Draws a rectangle on the map.<br> [[File:drawRectangle.jpg|250px]]
+desc: Draws a rectangle on the map.<br> [[File:drawRectangle.jpg|250px]]
 groups:
 - GUI Control - Map
 syntax:
@@ -13,56 +13,59 @@ syntax:
     - fill
     - alignWithMap
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: map
     type: Control
   - name: centre
-    description: rectangle's centre
-    type: Unknown
+    desc: rectangle's centre
+    type: !OneOf
+    - - Object
+      - null
+    - - !OneOf
+        - - Position2d
+          - null
+        - - Position3d
+          - null
+      - null
   - name: halfWidth
-    description: 1/2 width of rectangle in meters
+    desc: 1/2 width of rectangle in meters
     type: Number
   - name: halfHeight
-    description: 1/2 height of rectangle in meters
+    desc: 1/2 height of rectangle in meters
     type: Number
   - name: angle
-    description: angle of rotation in degrees
+    desc: angle of rotation in degrees
     type: Number
   - name: color
-    description: line color
+    desc: line color
     type: ArrayColor
   - name: fill
-    description: fill texture file or [[Procedural Textures]]. Note that the file texture will not rotate with rectangle, use [[drawIcon]] for that. If fill texture is not empty, set line color to white <sqf inline>[1,1,1,1]</sqf>
+    desc: fill texture file or [[Procedural Textures]]. Note that the file texture will not rotate with rectangle, use [[drawIcon]] for that. If fill texture is not empty, set line color to white <sqf inline>[1,1,1,1]</sqf>
     type: String
   - name: alignWithMap
-    description: '- when [[false]] the shape will not follow map rotation.'
+    desc: '- when [[false]] the shape will not follow map rotation.'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
-      arma_3:
-        major: 2
-        minor: 18
+      arma3: '2.18'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\n_ctrl drawRectangle [\n\tgetPos player,\n\t20,\n\t20,\n\tgetDir player,\n\t[0,0,1,1],\n\t\"\"\n];\n</sqf>"
 - "<sqf>\n_ctrl drawRectangle [\n\tplayer,\n\t10,\n\t20,\n\tgetDir player,\n\t[1,1,1,1],\n\t\"#(rgb,8,8,3)color(1,0,0,1)\"\n];\n</sqf>"
+see_also:
+- drawArrow
+- drawEllipse
+- drawIcon
+- drawLine
+- drawPolygon
+- drawTriangle
+- drawXPolygon

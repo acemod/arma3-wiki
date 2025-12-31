@@ -1,19 +1,33 @@
 name: dynamicSimulationSystemEnabled
-description: A getter for [[enableDynamicSimulationSystem]]
+desc: A getter for [[enableDynamicSimulationSystem]]
 groups:
 - Dynamic Simulation
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>hint str dynamicSimulationSystemEnabled;</sqf>
+see_also:
+- enableDynamicSimulationSystem
+- enableDynamicSimulation
+- dynamicSimulationEnabled
+- setDynamicSimulationDistance
+- dynamicSimulationDistance
+- setDynamicSimulationDistanceCoef
+- dynamicSimulationDistanceCoef
+- triggerDynamicSimulation
+- canTriggerDynamicSimulation
+- enableSimulation
+- simulationEnabled
+- enableSimulationGlobal
+- Arma
+- '3:'
+- Dynamic
+- Simulation

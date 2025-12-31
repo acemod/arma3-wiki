@@ -1,5 +1,5 @@
 name: canAdd
-description: |-
+desc: |-
   Checks if given object can be stored in inventory of given object or any inventory container ([[uniform]], [[vest]], [[backpack]]) of given unit.<br>
   Before {{arma3}} v2.10 this comment verified only the biggest container when multiple items were queried; now it checks all containers.
 
@@ -15,14 +15,13 @@ syntax:
   - object
   - item
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: object
-    description: unit or container
+    desc: unit or container
     type: Object
   - name: item
-    description: config class
+    desc: config class
     type: String
 - call: !Binary
   - object
@@ -30,95 +29,79 @@ syntax:
     - count
     - ignoreSoldierMaxLoad
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: object
-    description: unit or container
+    desc: unit or container
     type: Object
   - name: item
-    description: config class
+    desc: config class
     type: String
   - name: count
-    description: desired quantity
+    desc: desired quantity
     type: Number
   - name: ignoreSoldierMaxLoad
-    description: '[[true]] to ignore ''soldierMaxLoad'' param, container''s [[maxLoad]] is still counted'
+    desc: '[[true]] to ignore ''soldierMaxLoad'' param, container''s [[maxLoad]] is still counted'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 2
-        minor: 18
+      arma3: '2.18'
   since:
-    arma_3:
-      major: 1
-      minor: 56
+    arma3: '1.56'
 - call: !Binary
   - weapon
   - item
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: weapon
-    description: weapon class name
+    desc: weapon class name
     type: String
   - name: item
-    description: config class of magazine or attachment
+    desc: config class of magazine or attachment
     type: String
   since:
-    arma_3:
-      major: 2
-      minor: 10
+    arma3: '2.10'
 - call: !Binary
   - weapon
   - - attachment
     - slot
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: weapon
-    description: weapon class name
+    desc: weapon class name
     type: String
   - name: attachment
-    description: attachment class name
+    desc: attachment class name
     type: String
   - name: slot
     type: Unknown
   since:
-    arma_3:
-      major: 2
-      minor: 10
+    arma3: '2.10'
 - call: !Binary
   - weapon
   - - magazine
     - muzzle
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: weapon
-    description: weapon class name
+    desc: weapon class name
     type: String
   - name: magazine
-    description: magazine class name
+    desc: magazine class name
     type: String
   - name: muzzle
-    description: muzzle class name
+    desc: muzzle class name
     type: String
   since:
-    arma_3:
-      major: 2
-      minor: 10
+    arma3: '2.10'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 70
+  arma3: '0.70'
 examples:
 - "<sqf\n>if (player canAdd \"FirstAidKit\") then\n{\n\tplayer addItem \"FirstAidKit\";\n}\nelse\n{\n\thint \"Not enough space\";\n};\n</sqf>"
 - "<sqf>\nif (_box canAdd \"FirstAidKit\") then\n{\n\t_box addWeaponCargo [\"FirstAidKit\", 1];\n}\nelse\n{\n\thint \"Not enough space\";\n};\n</sqf>"
@@ -136,3 +119,10 @@ examples:
   "arifle_Katiba_GL_F" canAdd ["30Rnd_65x39_caseless_green", "this"];
   "arifle_Katiba_GL_F" canAdd ["1Rnd_SmokeRed_Grenade_shell", "EGLM"];
   </sqf>
+see_also:
+- canAddItemToBackpack
+- canAddItemToUniform
+- canAddItemToVest
+- compatibleMagazines
+- compatibleItems
+- compatibleWeapons

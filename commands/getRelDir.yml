@@ -1,5 +1,5 @@
 name: getRelDir
-description: |-
+desc: |-
   Returns direction, which is relative to object's current direction, from given object to another object or position in the range from 0 to 360, the equivalent of [[BIS_fnc_relativeDirTo]].
   Taking the current [[direction]] of the object into account.
 groups:
@@ -9,19 +9,18 @@ syntax:
   - object
   - position
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: object
     type: Object
   - name: position
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>_reldir = player getRelDir tank;</sqf>
 - |-
@@ -29,3 +28,7 @@ examples:
   // Set object's direction towards any given position
   _object setDir (getDir _object + (_object getRelDir [_x, _y, _z]))
   </sqf>
+see_also:
+- getDir
+- direction
+- getDirVisual

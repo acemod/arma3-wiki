@@ -1,20 +1,22 @@
 name: break
-description: Skips all loop iterations ([[for]], [[forEach]], [[while]], [[findIf]] etc).
+desc: Skips all loop iterations ([[for]], [[forEach]], [[while]], [[findIf]] etc).
 groups:
 - Program Flow
 syntax:
 - call: Nular
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - "<sqf>\n// prints 0, 1 and then exits\nfor \"_i\" from 0 to 3 do\n{\n\tif (_i == 2) then { break };\n\tsystemChat str _i;\n};\n</sqf>"
 - "<sqf>\nprivate _moneyHolder = objNull;\n{\n\tif (\"Money_roll\" in items _x) then\n\t{\n\t\t_moneyHolder = _x;\n\t\tbreak;\n\t};\n} forEach units group player;\n\nif (isNull _moneyHolder) then\n{\n\thint \"We have to find this money.\";\n}\nelse\n{\n\thint format [\"%1 has the money!\", name _moneyHolder];\n};\n</sqf>"
 - "<sqf>\n0 spawn\n{\n\tprivate _value = 0;\n\n\twhile { _value < 10 } do\n\t{\n\t\tif (_value == 8) then\n\t\t{\n\t\t\tbreak; // 8 and 9 will never be printed\n\t\t};\n\n\t\tsystemChat str _value ;\n\t\t_value = _value + 1;\n\t};\n};\n</sqf>"
+see_also:
+- continueWith
+- continue
+- breakWith
+- breakOut

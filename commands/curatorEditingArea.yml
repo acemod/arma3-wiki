@@ -1,21 +1,25 @@
 name: curatorEditingArea
-description: Returns all curator editing areas.
+desc: Returns all curator editing areas.
 groups:
 - Curator
 syntax:
 - call: !Unary curator
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: curator
-    description: curator module.
+    desc: curator module.
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>_editingAreas = curatorEditingArea myCurator;</sqf>
+see_also:
+- Arma
+- '3:'
+- Curator
+- addCuratorEditingArea
+- removeCuratorEditingArea
+- removeAllCuratorEditingAreas

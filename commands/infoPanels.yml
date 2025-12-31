@@ -1,34 +1,41 @@
 name: infoPanels
-description: Returns array all info panels configured for given object or object and turret path.
+desc: Returns array all info panels configured for given object or object and turret path.
 groups:
 - Custom Panels
 syntax:
 - call: !Unary unit
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unit
-    description: the concerned vehicle
+    desc: the concerned vehicle
     type: Object
 - call: !Unary
   - unit
   - turretPath
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unit
-    description: the concerned vehicle
+    desc: the concerned vehicle
     type: Object
   - name: turretPath
-    description: turret index
+    desc: turret index
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 72
+  arma3: '1.72'
 examples:
 - <sqf>infoPanels [vehicle player, [0]];</sqf>
+see_also:
+- Arma
+- '3:'
+- Custom
+- Info
+- infoPanel
+- setInfoPanel
+- infoPanelComponents
+- enableInfoPanelComponent
+- infoPanelComponentEnabled
+- openGPS

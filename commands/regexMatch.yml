@@ -1,5 +1,5 @@
 name: regexMatch
-description: Returns whether the ''haystack'' matches the ''pattern''.
+desc: Returns whether the ''haystack'' matches the ''pattern''.
 groups:
 - Strings - Regular Expression
 syntax:
@@ -7,20 +7,18 @@ syntax:
   - haystack
   - pattern
   ret:
-  - Boolean
-  - returns [[true]] if match was found, otherwise [[false]]
+    type: Boolean
+    desc: returns [[true]] if match was found, otherwise [[false]]
   params:
   - name: haystack
     type: String
   - name: pattern
-    description: 'in format [[Arma 3: Regular Expressions|regex pattern]]'
+    desc: 'in format [[Arma 3: Regular Expressions|regex pattern]]'
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>"I'm a coOkIe clicker" regexMatch ".*cookie.*"; // true</sqf>
 - <sqf>"I'm a coOkIe clicker" regexMatch ".*cookie.*/"; // false, empty flags == case sensitive</sqf>
@@ -30,3 +28,6 @@ examples:
   "I'm a coÖkIe clicker" regexMatch ".*coökie.*";
   </sqf>
 - <sqf>"Cookie clicker" regexMatch "cookie/i"; // false, pattern does not fully match the haystack</sqf>
+see_also:
+- regexFind
+- regexReplace

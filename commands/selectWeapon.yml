@@ -1,5 +1,5 @@
 name: selectWeapon
-description: |-
+desc: |-
   Selects the given weapon.
   {{Feature|informative|Passing empty string will not deselect current weapon. Use 'SwitchWeapon' [[action]] instead:
   <sqf>player action ["SwitchWeapon", player, player, -1]</sqf>
@@ -11,63 +11,64 @@ syntax:
   - unitName
   - muzzleName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitName
     type: Object
   - name: muzzleName
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
 - call: !Binary
   - unit
   - - weapon
     - muzzle
     - firemode
   ret:
-  - Unknown
-  - '[[true]] on success, [[false]] on failure, [[Nothing]] when the call to the command is dispatched over network'
+    type: !OneOf
+    - - Boolean
+      - null
+    - - Nothing
+      - null
+    desc: '[[true]] on success, [[false]] on failure, [[Nothing]] when the call to the command is dispatched over network'
   params:
   - name: unit
-    description: person. This argument has to be [[local]], or it can be remote when executed on the [[isServer|server]]
+    desc: person. This argument has to be [[local]], or it can be remote when executed on the [[isServer|server]]
     type: Object
   - name: weapon
-    description: name of the weapon, personal or vehicle's weapon (see [[weaponState]])
+    desc: name of the weapon, personal or vehicle's weapon (see [[weaponState]])
     type: String
   - name: muzzle
-    description: name of the selected muzzle (see [[weaponState]])
+    desc: name of the selected muzzle (see [[weaponState]])
     type: String
   - name: firemode
-    description: name of the firemode (see [[weaponState]])
+    desc: name of the firemode (see [[weaponState]])
     type: String
   since:
-    arma_3:
-      major: 2
-      minor: 8
+    arma3: '2.8'
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 27
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.27'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_soldier1 selectWeapon "LAWLauncher";</sqf>
 - <sqf>player selectWeapon "M203Muzzle";</sqf>
 - <sqf>player selectWeapon ["arifle_MX_GL_ACO_F", "arifle_MX_GL_ACO_F", "FullAuto"];</sqf>
+see_also:
+- fire
+- forceWeaponFire
+- primaryWeapon
+- handgunWeapon
+- secondaryWeapon
+- weapons
+- ArmA:_Actions#SWITCHWEAPON|action
+- SwitchWeapon
+- ArmA:_Actions#SWITCHMAGAZINE|action
+- SwitchMagazine
+- isSwitchingWeapon

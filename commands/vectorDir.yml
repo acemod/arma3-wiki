@@ -1,5 +1,5 @@
 name: vectorDir
-description: |-
+desc: |-
   [[File:arma3_object-vectors.jpg|thumb|right|An object with its [[vectorDir]], [[vectorUp]] and [[vectorSide]] (vectors not to scale)]]
   Returns an object's direction vector in world space.
 
@@ -15,31 +15,40 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_vecDir = vectorDir MyObject;</sqf>
+see_also:
+- vectorModelToWorld
+- vectorDirVisual
+- vectorSide
+- vectorSideVisual
+- vectorUp
+- setVectorDir
+- setVectorUp
+- setVectorDirAndUp
+- vectorDiff
+- vectorAdd
+- vectorMultiply
+- vectorCrossProduct
+- vectorDistance
+- vectorMagnitudeSqr
+- vectorDistanceSqr
+- vectorCos
+- vectorMagnitude
+- vectorDotProduct
+- vectorNormalized
+- vectorFromTo
+- BIS_fnc_transformVectorDirAndUp

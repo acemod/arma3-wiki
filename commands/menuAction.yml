@@ -1,5 +1,5 @@
 name: menuAction
-description: Returns action stored in item on given path in [[CT_MENU_STRIP]] control.
+desc: Returns action stored in item on given path in [[CT_MENU_STRIP]] control.
 groups:
 - GUI Control - Menu
 syntax:
@@ -7,8 +7,8 @@ syntax:
   - idc
   - path
   ret:
-  - String
-  - action
+    type: String
+    desc: action
   params:
   - name: idc
     type: Number
@@ -18,8 +18,8 @@ syntax:
   - control
   - path
   ret:
-  - String
-  - action
+    type: String
+    desc: action
   params:
   - name: control
     type: Control
@@ -28,9 +28,9 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>menuAction [120, [1, 0]];</sqf>
 - <sqf>findDisplay 313 displayCtrl 120 menuAction [1, 0];</sqf>
+see_also:
+- menuSetAction

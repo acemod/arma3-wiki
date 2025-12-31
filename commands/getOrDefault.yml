@@ -1,5 +1,5 @@
 name: getOrDefault
-description: Retrieves a value out of a [[HashMap]] after looking it up by its key. When the HashMap doesn't contain the key, the default value is returned
+desc: Retrieves a value out of a [[HashMap]] after looking it up by its key. When the HashMap doesn't contain the key, the default value is returned
 groups:
 - HashMap
 syntax:
@@ -9,33 +9,28 @@ syntax:
     - defaultValue
     - setDefault
   ret:
-  - Anything
-  - null
+    type: Anything
   params:
   - name: hashMap
     type: HashMapUnknown
   - name: key
-    description: case sensitive key
+    desc: case sensitive key
     type: Unknown
   - name: defaultValue
     type: Anything
     optional: true
     default: '[[nil]]'
   - name: setDefault
-    description: if set to [[true]] and value does not exist in provided hash map, ''defaultValue'' will be added to the hash map
+    desc: if set to [[true]] and value does not exist in provided hash map, ''defaultValue'' will be added to the hash map
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 2
-        minor: 4
+      arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>private _myValue = _myHashMap getOrDefault ["a", "Not Found!"];</sqf>
 - <sqf>private _myValue = _hashMap getOrDefault ["a", "Not Found!", true]; // will add default value to the hash map if it does not exist</sqf>
@@ -44,3 +39,7 @@ examples:
   private _array = _hashmap getOrDefault [_key, [], true]; // a new array will be created if it doesn't exist
   _array pushBack _item; // _item will be added to the array (the one in the hashmap is updated by reference)
   </sqf>
+see_also:
+- getOrDefaultCall
+- HashMap
+- get

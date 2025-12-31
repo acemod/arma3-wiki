@@ -1,5 +1,5 @@
 name: deleteSite
-description: |-
+desc: |-
   Removes the site.
   {{Feature|warning|This command is considered deprecated and is no longer supported}}
 groups:
@@ -7,16 +7,16 @@ groups:
 syntax:
 - call: !Unary site
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: site
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - '-'
+see_also:
+- createSite
+- allSites

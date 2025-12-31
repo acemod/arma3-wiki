@@ -1,5 +1,5 @@
 name: ctrlMapScreenToWorld
-description: Converts map screen coordinates into world coordinates. Unlike [[posScreenToWorld]], this command returns world position is format [x, y], otherwise it is identical to [[posScreenToWorld]].
+desc: Converts map screen coordinates into world coordinates. Unlike [[posScreenToWorld]], this command returns world position is format [x, y], otherwise it is identical to [[posScreenToWorld]].
 groups:
 - GUI Control - Map
 syntax:
@@ -8,37 +8,32 @@ syntax:
   - - x
     - y
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: control
-    description: map control
+    desc: map control
     type: Control
   - name: x
-    description: screen X
+    desc: screen X
     type: Number
   - name: y
-    description: screen Y
+    desc: screen Y
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 5
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.5'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_worldCoord = _control ctrlMapScreenToWorld _ScreenCoord;</sqf>
 - <sqf>_worldCoord = _control ctrlMapScreenToWorld [_x, _y];</sqf>
 - <sqf>_worldCoord = findDisplay 12 displayCtrl 51 ctrlMapScreenToWorld [0.5, 0.5];</sqf>
+see_also:
+- ctrlMapWorldToScreen
+- posScreenToWorld
+- posWorldToScreen
+- findDisplay
+- displayCtrl

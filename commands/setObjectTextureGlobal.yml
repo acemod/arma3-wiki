@@ -1,5 +1,5 @@
 name: setObjectTextureGlobal
-description: |-
+desc: |-
   Set the texture of the given selection on all computers in a network session.
   {{Feature|informative|
   * Not all objects can be textured this way. To find out, run [[getObjectTextures]] command on an object. Empty array <sqf inline>[]</sqf> usually indicates it cannot be textured.
@@ -17,23 +17,29 @@ syntax:
   - - selection
     - texture
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
     type: Object
   - name: selection
-    description: index of the selection. It is defined in the [[CfgVehicles Config Reference#hiddenSelections|hiddenSelections]] array in the vehicle's config (starting with 0). If a string is given, it referes to a hiddenSelection name or clan selection instead of an index.
-    type: Unknown
+    desc: index of the selection. It is defined in the [[CfgVehicles Config Reference#hiddenSelections|hiddenSelections]] array in the vehicle's config (starting with 0). If a string is given, it referes to a hiddenSelection name or clan selection instead of an index.
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
   - name: texture
-    description: path to texture. Since {{GVI|arma3|2.20}} using '''"#reset"''' would reset to default texture.
+    desc: path to texture. Since {{GVI|arma3|2.20}} using '''"#reset"''' would reset to default texture.
     type: String
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 6
+  arma3: '1.6'
 examples:
 - <sqf>player setObjectTextureGlobal [0, "\MyAddon\blue.paa"];</sqf>
 - "<sqf>\n// Set up a persistent texture keeper\nplayer addEventHandler [\"Take\", {\n\t(getObjectTextures player + [uniformContainer player getVariable \"texture\"])\n\tparams [\"_texUniform\", \"_texInsignia\", \"_texCustom\"];\n\tif (isNil \"_texCustom\") exitWith {};\n\tif (_texUniform == _texCustom) exitWith {};\n\tplayer setObjectTextureGlobal [0, _texCustom];\n\tfalse\n}];\n\n// Example: make current uniform persistently blue\n\nprivate _texture = \"#(rgb,8,8,3)color(0,0,1,1)\"; // blue texture\nplayer setObjectTextureGlobal [0, _texture]; // set it on player\nuniformContainer player setVariable [\"texture\", _texture, true]; // store it on uniform\n</sqf>"
+see_also:
+- setObjectTexture
+- getObjectTextures
+- setObjectMaterial
+- forceFlagTexture

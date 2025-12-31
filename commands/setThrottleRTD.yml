@@ -1,5 +1,5 @@
 name: setThrottleRTD
-description: Set the throttle for the given engine(s) of a helicopter.
+desc: Set the throttle for the given engine(s) of a helicopter.
 groups:
 - RTD
 syntax:
@@ -8,21 +8,22 @@ syntax:
   - - value
     - engineIndex
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: helicopterRTD
-    description: helicopter
+    desc: helicopter
     type: Unknown
   - name: value
-    type: Unknown
+    type: !NumberRange
+    - 0
+    - 1
   - name: engineIndex
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
+  tkoh: '1.0'
 examples:
 - <sqf>vehicle player setThrottleRTD [0.5, 1];</sqf>
+see_also:
+- throttleRTD

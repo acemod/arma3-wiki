@@ -1,12 +1,11 @@
 name: magazinesDetailUniform
-description: Returns an array with the type names of all the unit's uniform magazines.
+desc: Returns an array with the type names of all the unit's uniform magazines.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: unit
     type: Object
@@ -15,31 +14,30 @@ syntax:
   - includeEmpty
   - includeLoaded
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: unit
-    description: unit
+    desc: unit
     type: Object
   - name: includeEmpty
-    description: '[[true]] to include empty magazines'
+    desc: '[[true]] to include empty magazines'
     type: Boolean
     optional: true
     default: '[[false]]'
   - name: includeLoaded
-    description: '[[true]] to include magazines loaded in weapons (Since Arma 3 v2.07.148195)'
+    desc: '[[true]] to include magazines loaded in weapons (Since Arma 3 v2.07.148195)'
     type: Boolean
     optional: true
     default: '[[false]]'
   since:
-    arma_3:
-      major: 2
-      minor: 0
+    arma3: '2.0'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 4
+  arma3: '1.4'
 examples:
 - "<sqf>\nmagazinesDetailUniform player;\n/*\n[\n\t\"6.5 mm 30Rnd Sand Mag(30/30)[id/cr:10000003/0]\",\n\t\"Chemlight (Green)(1/1)[id/cr:10000020/0]\"\n]\n*/\n</sqf>"
+see_also:
+- magazinesDetail
+- magazinesDetailVest
+- magazinesDetailBackpack

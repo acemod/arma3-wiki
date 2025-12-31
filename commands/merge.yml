@@ -1,5 +1,5 @@
 name: merge
-description: Merges two [[HashMap]]s.
+desc: Merges two [[HashMap]]s.
 groups:
 - HashMap
 syntax:
@@ -7,40 +7,36 @@ syntax:
   - hashMap1
   - hashMap2
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: hashMap1
-    description: this HashMap will be modified
+    desc: this HashMap will be modified
     type: HashMapUnknown
   - name: hashMap2
-    description: all key-value pairs from this HashMap are added to ''hashMap1''. If a key from ''hashMap2'' already exists in ''hashMap1'', it doesn't overwrite the value in ''hashMap1''.
+    desc: all key-value pairs from this HashMap are added to ''hashMap1''. If a key from ''hashMap2'' already exists in ''hashMap1'', it doesn't overwrite the value in ''hashMap1''.
     type: HashMapUnknown
 - call: !Binary
   - hashMap1
   - - hashMap2
     - overwriteExisting
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: hashMap1
-    description: this HashMap will be modified
+    desc: this HashMap will be modified
     type: HashMapUnknown
   - name: hashMap2
-    description: all key-value pairs from this HashMap are added to ''hashMap1''
+    desc: all key-value pairs from this HashMap are added to ''hashMap1''
     type: HashMapUnknown
   - name: overwriteExisting
-    description: if [[true]], keys from ''hashMap1'' that also exist in ''hashMap2'' are overwritten. When set to [[true]], merging is faster
+    desc: if [[true]], keys from ''hashMap1'' that also exist in ''hashMap2'' are overwritten. When set to [[true]], merging is faster
     type: Boolean
     optional: true
     default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>_hashMap merge _otherHashMap;</sqf>
 - |-
@@ -61,3 +57,6 @@ examples:
   private _hashmap2 = ["cow", "cat", "chicken", "camel"] createHashMapFromArray [150, 300, 400, 800];
   _hashmap1 merge [_hashmap2, false]; // _hashmap is [["cow",100],["cat",200],["chicken",200],["camel",800]] as Syntax 1
   </sqf>
+see_also:
+- insert
+- set

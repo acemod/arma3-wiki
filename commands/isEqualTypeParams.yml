@@ -1,5 +1,5 @@
 name: isEqualTypeParams
-description: |-
+desc: |-
   Compares types of all elements of input array to types of all elements of template array. Similar to [[isEqualTypeArray]] however this command is designed for fast validation of functions params, so there are differences:
   * Input can be anything but will be expected to be an [[Array]], otherwise [[false]] is returned
   * Input array can be longer but not shorter than template array, will return [[false]] if shorter
@@ -11,21 +11,18 @@ syntax:
   - input
   - template
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: input
-    description: could be value of any type, but only type [[Array]] will be validated
+    desc: could be value of any type, but only type [[Array]] will be validated
     type: Anything
   - name: template
-    description: array of expected types
+    desc: array of expected types
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 54
+  arma3: '1.54'
 examples:
 - |-
   <sqf>
@@ -41,3 +38,12 @@ examples:
   [] isEqualTypeParams [0,0,objNull,""];
   [1,2,player] isEqualTypeParams [0,0,objNull,""];
   </sqf>
+see_also:
+- isEqualTypeAll
+- isEqualTypeAny
+- isEqualType
+- isEqualTypeArray
+- param
+- params
+- isEqualTo
+- typeName

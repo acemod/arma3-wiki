@@ -1,5 +1,5 @@
 name: setTriggerActivation
-description: |-
+desc: |-
   Defines the trigger activation type.
 
   See [[ArmA:_Mission_Editor#Triggers_Mode_.28F3.29|ArmA:Mission Editor - Triggers]] for a thorough overview of triggers and its fields for activation, effects, etc.
@@ -13,36 +13,40 @@ syntax:
     - type
     - repeating
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: trigger
-    description: trigger object
+    desc: trigger object
     type: Object
   - name: by
     type: Unknown
   - name: type
     type: Unknown
   - name: repeating
-    description: activation can happen repeatedly
+    desc: activation can happen repeatedly
     type: Boolean
 argument_loc: Global
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_trigger setTriggerActivation ["WEST", "EAST D", true];</sqf>
+see_also:
+- triggerActivation
+- triggerActivated
+- createTrigger
+- setTriggerArea
+- setTriggerStatements
+- setTriggerText
+- setTriggerTimeout
+- setTriggerType
+- triggerAttachVehicle
+- triggerAttachObject
+- triggerInterval
+- setTriggerInterval
+- enableSimulation
+- simulationEnabled

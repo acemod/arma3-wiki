@@ -1,5 +1,5 @@
 name: uniqueUnitItems
-description: |-
+desc: |-
   Returns hashmap of all items in units inventory as [classname, count] pairs.
   {{Feature|informative|
   * ''weaponItems'', ''uniformItems'', ''vestItems'', ''backpackItems'' arguments use the following [[Number]] values:
@@ -13,8 +13,7 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unit
     type: Object
@@ -26,13 +25,12 @@ syntax:
   - backpackItems
   - assignedItems
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unit
     type: Object
   - name: weaponsItems
-    description: weapons (including binoculars) and their accessories (flashlight etc), loaded magazines
+    desc: weapons (including binoculars) and their accessories (flashlight etc), loaded magazines
     type: Number
     optional: true
     default: '2'
@@ -49,16 +47,14 @@ syntax:
     optional: true
     default: '2'
   - name: assignedItems
-    description: returns [[assignedItems]] as well as [[headgear]] and [[hmd|goggles]]
+    desc: returns [[assignedItems]] as well as [[headgear]] and [[hmd|goggles]]
     type: Boolean
     optional: true
     default: '[[true]]'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - |-
   <sqf>
@@ -66,3 +62,5 @@ examples:
   if (_unitUniqueItems getOrDefault ["FirstAidKit", 0] > 5) then { hint "I'm rich of FAK to give!"; };
   </sqf>
 - <sqf>private _unitUniqueItems = uniqueUnitItems [cursorObject];</sqf>
+see_also:
+- getUnitLoadout

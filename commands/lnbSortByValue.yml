@@ -1,5 +1,5 @@
 name: lnbSortByValue
-description: Sorts given multicolumn listbox by [[lnbValue]] in given column in ascending or descending order.
+desc: Sorts given multicolumn listbox by [[lnbValue]] in given column in ascending or descending order.
 groups:
 - GUI Control - ListNBox
 syntax:
@@ -8,15 +8,14 @@ syntax:
   - column
   - reversed
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: column
     type: Number
   - name: reversed
-    description: '[[false]]: descending / [[true]]: ascending'
+    desc: '[[false]]: descending / [[true]]: ascending'
     type: Boolean
     optional: true
     default: '[[false]]'
@@ -25,24 +24,29 @@ syntax:
   - - column
     - reversed
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: column
     type: Number
   - name: reversed
-    description: '[[false]]: descending / [[true]]: ascending'
+    desc: '[[false]]: descending / [[true]]: ascending'
     type: Boolean
     optional: true
     default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 8
+  arma3: '1.8'
 examples:
 - <sqf>lnbSortByValue [1800, 1, false];</sqf>
 - <sqf>_ctl lnbSortByValue [1, true];</sqf>
+see_also:
+- lbSortBy
+- lnbSortBy
+- lbSort
+- lnbSort
+- tvSortByValue
+- lbSortByValue
+- tvSort

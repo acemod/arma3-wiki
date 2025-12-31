@@ -1,5 +1,5 @@
 name: lock
-description: |-
+desc: |-
   Lock vehicle (disable mounting / dismounting) for player.
   This command will remove user get in/get out actions but will not stop player getting into or out of vehicle via script commands (e.g [[moveInCargo]]).
   {{Feature|informative|Alternative syntax is similar to [[setVehicleLock]] but with numbers.}}
@@ -10,25 +10,23 @@ syntax:
   - vehicleName
   - locked
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicleName
     type: Object
   - name: locked
-    description: '[[true]] to lock, [[false]] to unlock'
+    desc: '[[true]] to lock, [[false]] to unlock'
     type: Boolean
 - call: !Binary
   - vehicleName
   - lockstate
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicleName
     type: Object
   - name: lockstate
-    description: |-
+    desc: |-
       can be one of the following:<br>
       0 - Unlocked<br>
       1 - Default (player subordinate cannot enter until his leader says so)<br>
@@ -36,33 +34,17 @@ syntax:
       3 - Locked for player
     type: Number
   since:
-    arma_3:
-      major: 0
-      minor: 50
+    arma3: '0.50'
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_jeepOne lock true;</sqf>
 - |-
@@ -76,3 +58,9 @@ examples:
   heli lock 1;
   locked heli; // 1
   </sqf>
+see_also:
+- locked
+- setVehicleLock
+- lockDriver
+- lockCargo
+- lockTurret

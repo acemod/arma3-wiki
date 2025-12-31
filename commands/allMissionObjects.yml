@@ -1,5 +1,5 @@
 name: allMissionObjects
-description: |-
+desc: |-
   Returns all objects of the given type that are currently present in the mission. In some cases, the [[entities]] and [[allObjects]] commands are much faster alternatives to this command.<br>
   Some of the special types that can be detected with this command (and with [[nearestObject]]):
   * {{hl|""}} - returns everything, e.g. agents, bees, mosquitoes, footprints, armed mines, ...
@@ -22,24 +22,26 @@ groups:
 syntax:
 - call: !Unary type
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: type
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 57
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.57'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_airObjects = allMissionObjects "Air";</sqf>
 - <sqf>{ deleteVehicle _x; } forEach (allMissionObjects "");</sqf>
 - <sqf>_allMObjects = allMissionObjects "All";</sqf>
+see_also:
+- allObjects
+- allDead
+- allGroups
+- allUnits
+- entities
+- vehicles
+- allMines
+- allSimpleObjects

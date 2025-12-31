@@ -1,18 +1,19 @@
 name: getBoneNames
-description: Returns an array of bone names and their parents.
+desc: Returns an array of bone names and their parents.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary object
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: object
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
+see_also:
+- selectionPosition
+- selectionNames
+- getSelectionBones

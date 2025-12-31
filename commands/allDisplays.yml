@@ -1,5 +1,5 @@
 name: allDisplays
-description: |-
+desc: |-
   Returns a list of all opened GUI displays.
 
   {{Feature | informative | Other displays could be accessed via [[uiNamespace]] variable which is updated every time a display is opened or closed.
@@ -25,14 +25,21 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 38
+  arma3: '1.38'
 examples:
 - <sqf>private _allDisps = allDisplays;</sqf>
+see_also:
+- allControls
+- findDisplay
+- controlsGroupCtrl
+- ctrlCreate
+- allVariables
+- allCurators
+- allGroups
+- allDead
+- allDeadMen

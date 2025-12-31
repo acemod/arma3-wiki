@@ -1,5 +1,5 @@
 name: radioChannelCreate
-description: |-
+desc: |-
   Create a custom radio channel with the given color, label, call sign and registered characters.
   The '''[[Channel IDs|custom channel ID]]''' returned can be used to manipulate the created channel later.
   There are '''50''' slots (10 slots before {{GVI|arma3|2.22|size= 0.75}}) for custom radio channels which would correspond to channels 6..15 and 26..65 (see [[getPlayerChannel]]).
@@ -15,34 +15,30 @@ syntax:
   - units
   - sentenceType
   ret:
-  - Number
-  - created '''[[Channel IDs|custom channel ID]]''' (used in [[customChat]] command), 0 if failed. (see [[BIS_fnc_channelNumToRadioChannelID]], [[BIS_fnc_radioChannelIDToChannelNum]])
+    type: Number
+    desc: created '''[[Channel IDs|custom channel ID]]''' (used in [[customChat]] command), 0 if failed. (see [[BIS_fnc_channelNumToRadioChannelID]], [[BIS_fnc_radioChannelIDToChannelNum]])
   params:
   - name: color
-    description: '[[Color|RGBA color]] values'
+    desc: '[[Color|RGBA color]] values'
     type: ArrayUnknown
   - name: label
-    description: label
+    desc: label
     type: String
   - name: callSign
-    description: chat call sign (or since {{GVI|arma3|2.22|size= 0.75}} [[Array]] - [callSign, callSignVoN]) see [[radioChannelSetCallSign]]
+    desc: chat call sign (or since {{GVI|arma3|2.22|size= 0.75}} [[Array]] - [callSign, callSignVoN]) see [[radioChannelSetCallSign]]
     type: String
   - name: units
-    description: list of units in the channel
+    desc: list of units in the channel
     type: ArrayUnknown
   - name: sentenceType
     type: Unknown
     optional: true
 argument_loc: Global
 effect_loc: Global
-server_exec: false
+server_exec: true
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_channelID = radioChannelCreate [[0.96, 0.34, 0.13, 0.8], "Q-dance Radio", "%UNIT_NAME", [player1, player2]];</sqf>
 - |-
@@ -51,3 +47,16 @@ examples:
   // using true also disables automatic quotes for chat in channel (Arma 3)
   </sqf>
 - "Create custom channel and add all players to it, present and JIP:\n<sqf>\nif (isServer) then\n{\n\tprivate _channelName = \"Q-dance Radio\";\n\tprivate _channelID = radioChannelCreate [[0.96, 0.34, 0.13, 0.8], _channelName, \"%UNIT_NAME\", []];\n\tif (_channelID == 0) exitWith {diag_log format [\"Custom channel '%1' creation failed!\", _channelName]};\n\t[_channelID, {_this radioChannelAdd [player]}] remoteExec [\"call\", [0, -2] select isDedicated, _channelName];\n};\n</sqf>"
+see_also:
+- radioChannelAdd
+- radioChannelRemove
+- radioChannelSetCallSign
+- radioChannelSetLabel
+- customChat
+- customRadio
+- setCurrentChannel
+- currentChannel
+- enableChannel
+- channelEnabled
+- getPlayerChannel
+- radioChannelInfo

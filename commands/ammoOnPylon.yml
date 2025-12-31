@@ -1,5 +1,5 @@
 name: ammoOnPylon
-description: Returns ammo count on given pylon (or [[false]] on failure).
+desc: Returns ammo count on given pylon (or [[false]] on failure).
 groups:
 - Vehicle Loadouts
 syntax:
@@ -7,20 +7,38 @@ syntax:
   - vehicle
   - pylon
   ret:
-  - Unknown
-  - '[[false]] on failure'
+    type: !OneOf
+    - - Number
+      - null
+    - - Boolean
+      - null
+    desc: '[[false]] on failure'
   params:
   - name: vehicle
     type: Object
   - name: pylon
-    description: pylon's name or index
-    type: Unknown
+    desc: pylon's name or index
+    type: !OneOf
+    - - String
+      - null
+    - - Number
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>private _ammoCount = (vehicle player) ammoOnPylon "pylon1";</sqf>
 - <sqf>hint str (vehicle player ammoOnPylon "pylonCenter");</sqf>
+see_also:
+- Arma
+- '3:'
+- Vehicle
+- Loadouts
+- setAmmoOnPylon
+- getCompatiblePylonMagazines
+- getPylonMagazines
+- animatePylon
+- animateBay
+- setPylonsPriority
+- setPylonLoadout

@@ -1,5 +1,5 @@
 name: lnbText
-description: Returns the shown text in the item with the given position of the given 2D listbox.
+desc: Returns the shown text in the item with the given position of the given 2D listbox.
 groups:
 - GUI Control - ListNBox
 syntax:
@@ -8,8 +8,7 @@ syntax:
   - - row
     - column
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: control
     type: Control
@@ -20,17 +19,30 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_text = _ctrl lnbText [0,0];</sqf>
+see_also:
+- lnbAddArray
+- lnbAddColumn
+- lnbAddRow
+- lnbClear
+- lnbColor
+- lnbCurSelRow
+- lnbData
+- lnbDeleteColumn
+- lnbDeleteRow
+- lnbGetColumnsPosition
+- lnbPicture
+- lnbSetColor
+- lnbSetColumnsPos
+- lnbSetCurSelRow
+- lnbSetData
+- lnbSetPicture
+- lnbSetText
+- lnbSetValue
+- lnbSize
+- lnbValue

@@ -1,5 +1,5 @@
 name: setWPPos
-description: |-
+desc: |-
   Sets waypoint position.
   {{Feature|informative|This command is identical to <sqf inline>setWaypointPosition [pos, -1]</sqf> (see [[setWaypointPosition]] description for more information).}}
 groups:
@@ -9,8 +9,7 @@ syntax:
   - waypoint
   - pos
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: waypoint
     type: ArrayUnknown
@@ -19,26 +18,37 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 21
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.21'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>[_groupOne, 1] setWPPos markerPos "MarkerOne";</sqf>
+see_also:
+- deleteWaypoint
+- copyWaypoints
+- setCurrentWaypoint
+- setWaypointBehaviour
+- setWaypointCombatMode
+- setWaypointCompletionRadius
+- setWaypointDescription
+- setWaypointFormation
+- setWaypointHousePosition
+- setWaypointPosition
+- setWaypointScript
+- setWaypointSpeed
+- setWaypointStatements
+- setWaypointTimeout
+- setWaypointType
+- setWaypointVisible
+- waypointAttachVehicle
+- waypointAttachedVehicle
+- setWaypointLoiterRadius
+- waypointLoiterRadius
+- addWaypoint
+- setWaypointLoiterType
+- waypoints
+- waypointSpeed

@@ -1,5 +1,5 @@
 name: setLightConePars
-description: Sets the {{hl|#lightreflector}}'s cone params.
+desc: Sets the {{hl|#lightreflector}}'s cone params.
 groups:
 - Lights
 syntax:
@@ -9,11 +9,10 @@ syntax:
     - innerAngle
     - fadeCoef
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: lightReflector
-    description: object of class {{hl|#lightreflector}}
+    desc: object of class {{hl|#lightreflector}}
     type: Object
   - name: outerAngle
     type: Number
@@ -24,8 +23,19 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>_light setLightConePars [90, 45, 1];</sqf>
+see_also:
+- setLightColor
+- setLightAmbient
+- setLightBrightness
+- lightAttachObject
+- lightDetachObject
+- setLightIntensity
+- setLightAttenuation
+- setLightUseFlare
+- setLightFlareSize
+- setLightFlareMaxDistance
+- setLightDayLight
+- setLightIR

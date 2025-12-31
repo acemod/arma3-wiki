@@ -1,5 +1,5 @@
 name: atan
-description: Returns the '''arcus tangens'''.<br><br>[[File:atan.jpg|200px]]
+desc: Returns the '''arcus tangens'''.<br><br>[[File:atan.jpg|200px]]
 alias:
 - '[[atg]]'
 groups:
@@ -7,34 +7,23 @@ groups:
 syntax:
 - call: !Unary x
   ret:
-  - Number
-  - result is in degrees
+    type: Number
+    desc: result is in degrees
   params:
   - name: x
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_degrees = atan 1; // 45</sqf>
+see_also:
+- atg
+- atan2

@@ -1,5 +1,5 @@
 name: lineIntersects
-description: |-
+desc: |-
   Checks for object intersection with a virtual line between two positions. Since {{GVI|arma3|2.20|size= 0.75}}, there is an alternative syntax that does multiple checks in parallel, faster than multiple calls.
   {{Feature|informative|
   * Does not work under water.
@@ -14,20 +14,20 @@ syntax:
   - objIgnore1
   - objIgnore2
   ret:
-  - Boolean
-  - '[[true]] if an intersection happens with an object (not with terrain)'
+    type: Boolean
+    desc: '[[true]] if an intersection happens with an object (not with terrain)'
   params:
   - name: begPos
     type: Position3dASL
   - name: endPos
     type: Position3dASL
   - name: objIgnore1
-    description: object to ignore. When testing intersections from an object/unit/vehicle, pass that object here to prevent intersections inside of the object
+    desc: object to ignore. When testing intersections from an object/unit/vehicle, pass that object here to prevent intersections inside of the object
     type: Object
     optional: true
     default: '[[objNull]]'
   - name: objIgnore2
-    description: another object to ignore. When testing intersections of a line between two objects, pass the second object here to prevent intersections inside of it being reported
+    desc: another object to ignore. When testing intersections of a line between two objects, pass the second object here to prevent intersections inside of it being reported
     type: Object
     optional: true
     default: '[[objNull]]'
@@ -36,27 +36,18 @@ syntax:
     - element2
     - '...'
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: elementN
     type: Unknown
   since:
-    arma_3:
-      major: 2
-      minor: 20
+    arma3: '2.20'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 62
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.62'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _hasStraightLineToChopper = lineIntersects [eyePos player, aimPos chopper, player, chopper];</sqf>
 - |-
@@ -66,3 +57,14 @@ examples:
   private _enemyDataArray = _enemies apply { [eyePos player, aimPos _x, player, _x] };
   private _result = lineIntersects [_enemyDataArray];
   </sqf>
+see_also:
+- lineIntersectsSurfaces
+- lineIntersectsObjs
+- lineIntersectsWith
+- terrainIntersect
+- terrainIntersectASL
+- terrainIntersectAtASL
+- intersect
+- cursorObject
+- cursorTarget
+- checkVisibility

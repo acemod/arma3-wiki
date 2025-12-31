@@ -1,5 +1,5 @@
 name: animationState
-description: |-
+desc: |-
   Returns the name of a unit's current primary animation. Seems to be forced to lower case in {{arma3}}.
   {{Feature|informative|This command is only for a man unit, other units such as animals cannot use this command.}}
 multiplayer_note: When executed on a client, this command only returns accurate results when the target unit is within sight of the client. When executed on a dedicated server, the returned value is accurate.
@@ -8,28 +8,24 @@ groups:
 syntax:
 - call: !Unary unitName
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: unitName
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_state = animationState player;</sqf>
+see_also:
+- gestureState
+- switchMove
+- playMove
+- pose
+- BIS_fnc_ambientAnimGetParams
+- getUnitMovesInfo

@@ -1,5 +1,5 @@
 name: setVehicleRadar
-description: Sets the AI rule of Radar usage (Emission Control). Automatic means Radar switched on only when in Combat. The command doesn't affect player-controlled vehicles.
+desc: Sets the AI rule of Radar usage (Emission Control). Automatic means Radar switched on only when in Combat. The command doesn't affect player-controlled vehicles.
 groups:
 - Sensors
 syntax:
@@ -7,19 +7,26 @@ syntax:
   - vehicle
   - rule
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
-    description: an AI-controlled vehicle
+    desc: an AI-controlled vehicle
     type: Object
   - name: rule
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>_vehicle setVehicleRadar 1;</sqf>
+see_also:
+- isVehicleRadarOn
+- vehicleReportRemoteTargets
+- setVehicleReportRemoteTargets
+- vehicleReceiveRemoteTargets
+- setVehicleReceiveRemoteTargets
+- vehicleReportOwnPosition
+- setVehicleReportOwnPosition
+- reportRemoteTarget
+- confirmSensorTarget

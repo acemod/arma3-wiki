@@ -1,5 +1,5 @@
 name: toFixed
-description: |-
+desc: |-
   Converts a number into a string, keeping the specified number of decimals. If the desired number of decimals is higher than the actual number, nulls are added to create the desired decimal length. This command is almost identical in behaviour to JavaScript {{Link|https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed|toFixed()}}<br><br>
   The alternative syntax acts as keyword and switches engine's [[Number]] to [[String]] global conversion into desired format, from the moment it is applied until the end of script.
   To reset output back to default at any time, use {{hl|toFixed -1}} - see {{Link|#Example 5}}.
@@ -13,33 +13,27 @@ syntax:
   - number
   - decimals
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: number
-    description: number to convert
+    desc: number to convert
     type: Number
   - name: decimals
-    description: number of decimals to display (range 0-20)
+    desc: number of decimals to display (range 0-20)
     type: Number
 - call: !Unary decimals
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: decimals
-    description: number of decimals to display (range 0-20). -1 to reset to default number of decimals
+    desc: number of decimals to display (range 0-20). -1 to reset to default number of decimals
     type: Number
   since:
-    arma_3:
-      major: 1
-      minor: 72
+    arma3: '1.72'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 66
+  arma3: '1.66'
 examples:
 - <sqf>123 toFixed 2; // "123.00"</sqf>
 - |-
@@ -57,3 +51,10 @@ examples:
   </sqf>
 - "<sqf>\nsystemChat str position player;\t\t// [11580.3,11797.7,0.00146675]\ncall\n{\n\ttoFixed 6;\n\tsystemChat str position player;\t// [11580.341797,11797.737305,0.001467]\n};\nsystemChat str position player;\t\t// [11580.341797,11797.737305,0.001467]\ntoFixed -1;\nsystemChat str position player;\t\t// [11580.3,11797.7,0.00146675]\n</sqf>\nIdeal to be used when saving data to a database when more precise positioning is required."
 - "<sqf>\nstr (pi/100000);\t\t// \"3.14159e-005\" - scientific notation\n(pi/100000) toFixed 10;\t// \"0.0000314159\" - no scientific notation\nstr pi;\t\t\t\t\t// \"3.14159\" - 6 significant figures (default)\npi toFixed 6;\t\t\t// \"3.141593\" - forced to 7 significant figures\npi toFixed 7;\t\t\t// \"3.1415927\" - forced to 8 significant figures\n</sqf>"
+see_also:
+- toString
+- toArray
+- toLower
+- toUpper
+- toLowerANSI
+- toUpperANSI

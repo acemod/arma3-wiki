@@ -1,5 +1,5 @@
 name: preloadTitleObj
-description: Preloads data for the given resource object.
+desc: Preloads data for the given resource object.
 groups:
 - GUI Control
 syntax:
@@ -9,14 +9,13 @@ syntax:
   - speed
   - showInMap
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: name
-    description: defined in <sqf inline>configFile >> "CfgTitles" >> name</sqf>
+    desc: defined in <sqf inline>configFile >> "CfgTitles" >> name</sqf>
     type: String
   - name: type
-    description: see [[Title Effect Type]]s
+    desc: see [[Title Effect Type]]s
     type: String
   - name: speed
     type: Number
@@ -29,23 +28,13 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_ok = preloadTitleObj ["BISLogo", "PLAIN"];</sqf>
+see_also:
+- cutObj

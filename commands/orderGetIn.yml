@@ -1,5 +1,5 @@
 name: orderGetIn
-description: |-
+desc: |-
   Force all units in the array to get in or out of their assigned vehicles. Units must be assigned to a vehicle before this command will do anything.
   {{Feature|informative|See [[AI Group Vehicle Management]] for more information.}}
 groups:
@@ -9,8 +9,7 @@ syntax:
   - unitArray
   - order
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitArray
     type: ArrayUnknown
@@ -19,27 +18,20 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>[_unitOne, _unitTwo] orderGetIn true;</sqf>
 - <sqf>[_unitOne, _unitTwo] orderGetIn false;</sqf>
+see_also:
+- allowGetIn
+- addVehicle
+- assignAsCargo
+- assignAsCommander
+- assignAsDriver
+- assignAsGunner

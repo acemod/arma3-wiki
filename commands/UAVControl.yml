@@ -1,5 +1,5 @@
 name: UAVControl
-description: |-
+desc: |-
   Returns array with current operator of UAV and his vehicle role in UAV.
   If nobody is controlling the UAV, the command tries to find any person with connected terminal to this UAV.
   If nobody is connected, [[objNull]] is used as returned operator (see {{Link|#Example 2}}).
@@ -9,17 +9,14 @@ groups:
 syntax:
 - call: !Unary uav
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: uav
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>private _result = UAVControl _myUAV;</sqf>
 - |-
@@ -31,3 +28,14 @@ examples:
   [player3, ""]; // no one is controlling the UAV, player3 is connected to the UAV via terminal, but not controlling it yet
   [objNull, ""]; // nobody is controlling or connected to the UAV
   </sqf>
+see_also:
+- showUAVFeed
+- shownUAVFeed
+- allUnitsUAV
+- getConnectedUAV
+- connectTerminalToUAV
+- isUAVConnected
+- remoteControl
+- currentPilot
+- isRemoteControlling
+- remoteControlled

@@ -1,20 +1,22 @@
 name: enableDiagLegend
-description: Enable or disable the legend for diagnostics. '''Internal dev only!'''
+desc: Enable or disable the legend for diagnostics. '''Internal dev only!'''
 groups:
 - Diagnostic
 syntax:
 - call: !Unary enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: enable
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 12
+  arma3: '1.12'
 examples:
 - <sqf>enableDiagLegend false;</sqf>
+see_also:
+- diag_fpsMin
+- diag_frameNo
+- diag_log
+- diag_tickTime

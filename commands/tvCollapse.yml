@@ -1,5 +1,5 @@
 name: tvCollapse
-description: Collapses tree item pointed to by the path. IDC means id of parent Tree View.
+desc: Collapses tree item pointed to by the path. IDC means id of parent Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
@@ -7,32 +7,46 @@ syntax:
   - idc
   - path
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: path
-    description: item [[Tree View Path]]. [] will collapse the whole tree and it will disappear
+    desc: item [[Tree View Path]]. [] will collapse the whole tree and it will disappear
     type: ArrayUnknown
 - call: !Binary
   - control
   - path
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: path
-    description: item [[Tree View Path]]. [] will collapse the whole tree and it will disappear
+    desc: item [[Tree View Path]]. [] will collapse the whole tree and it will disappear
     type: ArrayUnknown
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 74
+  arma3: '0.74'
 examples:
 - <sqf>tvCollapse [101, [0]];</sqf>
 - <sqf>_ctrl tvCollapse [0];</sqf>
+see_also:
+- tvCollapseAll
+- tvAdd
+- tvClear
+- tvCount
+- tvCurSel
+- tvData
+- tvDelete
+- tvExpand
+- tvPicture
+- tvSetCurSel
+- tvSetData
+- tvSetPicture
+- tvSetValue
+- tvSort
+- tvSortByValue
+- tvText
+- tvValue

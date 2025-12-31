@@ -1,5 +1,5 @@
 name: triggerAttachVehicle
-description: "Specifies the entity which will activate the selected trigger.<br>\n*If '''[]''' is given, the trigger is decoupled from the assigned vehicle (example 2).\n*If the activation source is '''\"VEHICLE\"''', '''\"GROUP\"''', '''\"LEADER\"''' or '''\"MEMBER\"''', it is changed to '''\"NONE\"'''. \n*If '''[vehicle]''' is given, the trigger is coupled to the vehicle or its group. \n*When the source is '''\"GROUP\"''', '''\"LEADER\"''' or '''\"MEMBER\"''', it is coupled to the group, otherwise it is coupled to the vehicle and the source is changed to '''\"VEHICLE\"'''."
+desc: "Specifies the entity which will activate the selected trigger.<br>\n*If '''[]''' is given, the trigger is decoupled from the assigned vehicle (example 2).\n*If the activation source is '''\"VEHICLE\"''', '''\"GROUP\"''', '''\"LEADER\"''' or '''\"MEMBER\"''', it is changed to '''\"NONE\"'''. \n*If '''[vehicle]''' is given, the trigger is coupled to the vehicle or its group. \n*When the source is '''\"GROUP\"''', '''\"LEADER\"''' or '''\"MEMBER\"''', it is coupled to the group, otherwise it is coupled to the vehicle and the source is changed to '''\"VEHICLE\"'''."
 groups:
 - Triggers
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - triggerName
   - objects
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: triggerName
     type: Object
@@ -17,21 +16,24 @@ syntax:
 argument_loc: Global
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>trigger triggerAttachVehicle [player];</sqf>
 - <sqf>trigger triggerAttachVehicle [];</sqf>
+see_also:
+- attachObject
+- attachTo
+- attachedObjects
+- attachedTo
+- waypointAttachVehicle
+- waypointAttachedVehicle
+- lightAttachObject
+- attachedObject
+- triggerAttachedVehicle
+- triggerAttachObject
+- triggerInterval
+- setTriggerInterval

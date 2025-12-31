@@ -1,5 +1,5 @@
 name: addUserActionEventHandler
-description: Adds a user action event handler to the current mission and returns its event handler index.
+desc: Adds a user action event handler to the current mission and returns its event handler index.
 groups:
 - Event Handlers
 syntax:
@@ -8,16 +8,16 @@ syntax:
   - event
   - expression
   ret:
-  - Number
-  - the index of the currently added UserAction event handler is returned
+    type: Number
+    desc: the index of the currently added UserAction event handler is returned
   params:
   - name: keyName
-    description: action key name - see [[inputAction/actions]]
+    desc: action key name - see [[inputAction/actions]]
     type: String
   - name: event
     type: Unknown
   - name: expression
-    description: |-
+    desc: |-
       expression that will be executed in [[missionNamespace]] when event handler fires.<br>
       The Event Handler index is available as {{hl|{{Link|Magic Variables#thisEvent|_thisEventHandler}}}} during Event Handler code execution.<br>
       <spoiler text="Show _thisEvent information">
@@ -26,8 +26,17 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>private _ehId = addUserActionEventHandler ["ReloadMagazine", "Activate", { systemChat "reloading!"; }];</sqf>
+see_also:
+- removeUserActionEventHandler
+- removeAllUserActionEventHandlers
+- Arma
+- '3:'
+- Event
+- Handlers#UserAction
+- Event
+- Handlers|UserAction
+- Event
+- Handlers

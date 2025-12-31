@@ -1,20 +1,23 @@
 name: removeAllHandgunItems
-description: Removes all items from [[handgunWeapon]], except magazine.
+desc: Removes all items from [[handgunWeapon]], except magazine.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 70
+  arma3: '0.70'
 examples:
 - <sqf>removeAllHandgunItems player;</sqf>
+see_also:
+- addHandgunItem
+- removeHandgunItem
+- removeAllPrimaryWeaponItems
+- removeAllSecondaryWeaponItems
+- removeAllBinocularItems

@@ -1,5 +1,5 @@
 name: enableStressDamage
-description: |-
+desc: |-
   Toggles stress damage in [[Description.ext#forceRotorLibSimulation | Advanced Flight Model]], which otherwise could be manually toggles in game setting: {{hl|Options &gt; Game &gt; Helicopter Flight Model &gt; Advanced &gt; Stress Damage}}.
   {{Feature|afm}}
 groups:
@@ -7,17 +7,20 @@ groups:
 syntax:
 - call: !Unary state
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: state
-    description: '[[true]] to enable stress damage, [[false]] to disable it'
+    desc: '[[true]] to enable stress damage, [[false]] to disable it'
     type: Boolean
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - <sqf>if (difficultyEnabledRTD) then { enableStressDamage true };</sqf>
+see_also:
+- Description.ext#forceRotorLibSimulation
+- '|'
+- forceRotorLibSimulation
+- difficultyEnabledRTD
+- isStressDamageEnabled

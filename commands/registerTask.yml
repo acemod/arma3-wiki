@@ -1,5 +1,5 @@
 name: registerTask
-description: Registers a new task type. Parameters are defined in the given config class (subclass of {{hl|CfgTasks}})
+desc: Registers a new task type. Parameters are defined in the given config class (subclass of {{hl|CfgTasks}})
 groups:
 - Briefing
 - Teams
@@ -8,29 +8,28 @@ syntax:
   - teamMember
   - entryName
   ret:
-  - Boolean
-  - '[[true]] on success'
+    type: Boolean
+    desc: '[[true]] on success'
   params:
   - name: teamMember
-    description: '[[teamMember]] [[agent]]'
+    desc: '[[teamMember]] [[agent]]'
     type: TeamMember
   - name: entryName
-    description: '{{hl|CfgTasks}} classname'
+    desc: '{{hl|CfgTasks}} classname'
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>teamMember _agent registerTask "MyTask";</sqf>
+see_also:
+- registeredTasks
+- unregisterTask
+- sendTask
+- createTask
+- currentTasks
+- taskCompleted

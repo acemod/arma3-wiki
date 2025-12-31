@@ -1,38 +1,37 @@
 name: keyName
-description: Returns the name of a button with extra quotation marks (on the keyboard, mouse or joystick) with the given code.
+desc: Returns the name of a button with extra quotation marks (on the keyboard, mouse or joystick) with the given code.
 groups:
 - System
 syntax:
 - call: !Unary dikCode
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: dikCode
-    type: Unknown
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_name = keyName 28; // result is """Enter"""</sqf>
 - |-
   From {{arma3}} v2.08:
   <sqf>private _name = keyName "-1660944350"; // result is """Right Ctrl+G"""</sqf>
+see_also:
+- keyImage
+- actionKeys
+- actionKeysImages
+- actionKeysNames
+- actionKeysNamesArray
+- DIK
+- KeyCodes

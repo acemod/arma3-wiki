@@ -1,5 +1,5 @@
 name: ropeCut
-description: Cuts the given rope to the specified length. If some entity was attached to the end of the rope, it will be detached. The rope remains attached to its parent transport and if the length is set to 0 or even negative does not get destroyed. Use [[ropeDestroy]] to remove it completely.{{Feature|informative|The rope could only be shortened. If the cut length is greater than current rope length, nothing happens}}
+desc: Cuts the given rope to the specified length. If some entity was attached to the end of the rope, it will be detached. The rope remains attached to its parent transport and if the length is set to 0 or even negative does not get destroyed. Use [[ropeDestroy]] to remove it completely.{{Feature|informative|The rope could only be shortened. If the cut length is greater than current rope length, nothing happens}}
 groups:
 - Ropes and Sling Loading
 syntax:
@@ -7,20 +7,35 @@ syntax:
   - rope
   - length
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: rope
-    description: rope object obtained from [[ropeCreate]]
+    desc: rope object obtained from [[ropeCreate]]
     type: Object
   - name: length
-    description: length of the rope in meters after the cut
+    desc: length of the rope in meters after the cut
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - <sqf>ropeCut [ropes heli1 select 0, 5];</sqf>
+see_also:
+- ropes
+- canSlingLoad
+- enableRopeAttach
+- getSlingLoad
+- ropeAttachedObjects
+- ropeAttachTo
+- ropeDestroy
+- ropeLength
+- ropeUnwound
+- ropeAttachedTo
+- ropeCreate
+- ropeDetach
+- ropeAttachEnabled
+- ropeEndPosition
+- ropeUnwind
+- setSlingLoad
+- slingLoadAssistantShown

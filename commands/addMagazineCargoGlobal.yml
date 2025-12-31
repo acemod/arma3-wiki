@@ -1,5 +1,5 @@
 name: addMagazineCargoGlobal
-description: |-
+desc: |-
   Add magazines to the cargo space of vehicles, which can be taken out by infantry units.
 
   MP Synchronized
@@ -11,29 +11,38 @@ syntax:
   - - magazineName
     - count
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicleName
-    description: vehicle to add the magazines to
+    desc: vehicle to add the magazines to
     type: Object
   - name: magazineName
-    description: magazine name. See [[:Category:Weapons]] for reference about possible values.
+    desc: magazine name. See [[:Category:Weapons]] for reference about possible values.
     type: String
   - name: count
-    description: number of magazines to add. {{GVI|arma3|2.14|size= 0.75}} negative count will remove magazines.
+    desc: number of magazines to add. {{GVI|arma3|2.14|size= 0.75}} negative count will remove magazines.
     type: Number
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 55
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.55'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_truck addMagazineCargoGlobal ["M16", 5];</sqf>
+see_also:
+- addMagazineCargo
+- addMagazineGlobal
+- addMagazine
+- addMagazines
+- addMagazinePool
+- addMagazineTurret
+- clearMagazineCargo
+- addWeaponCargo
+- clearWeaponCargo
+- clearWeaponCargo
+- addWeaponCargoGlobal
+- addBackpackCargoGlobal
+- addItemCargo
+- addItemCargoGlobal
+- addMagazineAmmoCargo

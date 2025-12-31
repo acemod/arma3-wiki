@@ -1,5 +1,5 @@
 name: remoteExecutedOwner
-description: |-
+desc: |-
   Returns the [[Multiplayer_Scripting#Machine_network_ID | machine network ID]] of the client that initiated [[Remote Execution]].
   {{Feature|important|
   Running this command
@@ -13,15 +13,26 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Number
-  - returns zero in the specific cases listed in the {{Link|#Description}}
+    type: Number
+    desc: returns zero in the specific cases listed in the {{Link|#Description}}
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 70
+  arma3: '1.70'
 examples:
 - <sqf>private _callerRE = remoteExecutedOwner;</sqf>
 - "Send request to the server and get immediate response:\n<sqf>\n{\n\t// in this scope, the remoteExecutedOwner equals clientOwner of the sender\n\t// so using it as target in remoteExec will send response right back at him\n\t[\n\t\ttime, // mission time value on the server\n\t\t{\n\t\t\thint format\n\t\t\t[\n\t\t\t\t\"Request received!\\nMission time value on the server is: %1\",\n\t\t\t\t_this\n\t\t\t];\n\t\t}\n\t]\n\tremoteExec [\"call\", remoteExecutedOwner]; // server response to the sender\n} \nremoteExec [\"call\", 2]; // send request to server\n</sqf>"
+see_also:
+- isRemoteExecuted
+- isRemoteExecutedJIP
+- remoteExecutedJIPID
+- remoteExec
+- remoteExecCall
+- canSuspend
+- publicVariableClient
+- admin
+- owner
+- clientOwner
+- groupOwner
+- didJIPOwner

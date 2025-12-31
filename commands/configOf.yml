@@ -1,20 +1,19 @@
 name: configOf
-description: Returns config path of the provided object.
+desc: Returns config path of the provided object.
 groups:
 - Config
 syntax:
 - call: !Unary object
   ret:
-  - Config
-  - null
+    type: Config
   params:
   - name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - <sqf>configOf player; // returns bin\config.bin/CfgVehicles/B_W_Soldier_TL_F</sqf>
+see_also:
+- typeOf

@@ -1,5 +1,5 @@
 name: safeZoneH
-description: |-
+desc: |-
   [[File:safezone.jpg|right|600px]]
   Returns the height of the screen in screen measurement units.
   Taken from top left corner of the default viewport (0,0) of the screen and going in the same direction as the Y axis, the value will be positive but resulting Y will end up beyond the bottom border.
@@ -10,24 +10,16 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Number
-  - height of the screen in screen measurement units
+    type: Number
+    desc: height of the screen in screen measurement units
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_screenHeight = safeZoneH;</sqf>
 - |-
@@ -48,3 +40,10 @@ examples:
   _ctrl ctrlSetPositionY ((safeZoneH - _ctrlHeight) / 2 + safeZoneY); // center it vertically
   _ctrl ctrlCommit 0;
   </sqf>
+see_also:
+- SafeZone
+- safeZoneX
+- safeZoneY
+- safeZoneW
+- safeZoneXAbs
+- safeZoneWAbs

@@ -1,28 +1,43 @@
 name: tvCurSel
-description: Returns path to currently selected item. IDC means id of parent Tree View.
+desc: Returns path to currently selected item. IDC means id of parent Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
 - call: !Unary idc
   ret:
-  - ArrayUnknown
-  - '[[Tree View Path]] of selected item'
+    type: ArrayUnknown
+    desc: '[[Tree View Path]] of selected item'
   params:
   - name: idc
     type: Number
 - call: !Unary control
   ret:
-  - ArrayUnknown
-  - '[[Tree View Path]] of selected item'
+    type: ArrayUnknown
+    desc: '[[Tree View Path]] of selected item'
   params:
   - name: control
     type: Control
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 74
+  arma3: '0.74'
 examples:
 - <sqf>tvCurSel 101;</sqf>
 - <sqf>tvCurSel _ctrl;</sqf>
+see_also:
+- tvAdd
+- tvClear
+- tvCollapse
+- tvCount
+- tvData
+- tvDelete
+- tvExpand
+- tvPicture
+- tvSetCurSel
+- tvSetData
+- tvSetPicture
+- tvSetValue
+- tvSort
+- tvSortByValue
+- tvText
+- tvValue

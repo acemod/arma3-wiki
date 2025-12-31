@@ -1,32 +1,29 @@
 name: formationLeader
-description: Return leader of the formation.
+desc: Return leader of the formation.
 groups:
 - Unit Control
 syntax:
 - call: !Unary unitName
   ret:
-  - Object
-  - null
+    type: Object
   params:
   - name: unitName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nif (formationLeader player != leader player) then\n{\n\thint \"Formation leader is not the group leader.\";\n};\n</sqf>"
+see_also:
+- commandFollow
+- doFollow
+- formLeader
+- isFormationLeader
+- leader
+- selectLeader
+- setLeader

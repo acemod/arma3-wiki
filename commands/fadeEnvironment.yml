@@ -1,5 +1,5 @@
 name: fadeEnvironment
-description: |-
+desc: |-
   Changes the master environment volume smoothly within the given time and is different from [[enableEnvironment]] global mute option. The default volume is 1.<br>
   Influenced sounds, among others, are:
   {{Columns|2|
@@ -17,20 +17,29 @@ syntax:
   - time
   - volume
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: time
-    description: fade interval in seconds
+    desc: fade interval in seconds
     type: Number
   - name: volume
-    description: speech volume in range 0..1
+    desc: speech volume in range 0..1
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 4
+  arma3: '2.4'
 examples:
 - <sqf>5 fadeEnvironment 0.1;</sqf>
+see_also:
+- environmentVolume
+- fadeSpeech
+- fadeRadio
+- fadeSound
+- fadeMusic
+- soundVolume
+- musicVolume
+- radioVolume
+- speechVolume
+- enableEnvironment
+- environmentEnabled

@@ -1,5 +1,5 @@
 name: enableDebriefingStats
-description: Enable debriefing score table.
+desc: Enable debriefing score table.
 groups:
 - Briefing
 syntax:
@@ -9,8 +9,7 @@ syntax:
   - width
   - height
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: left
     type: Number
@@ -23,8 +22,8 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>enableDebriefingStats [0.1, 0.1, 0.8, 0.8];</sqf>
+see_also:
+- disableDebriefingStats

@@ -1,18 +1,19 @@
 name: continue
-description: Skips current loop iteration and continues with the next one.
+desc: Skips current loop iteration and continues with the next one.
 groups:
 - Program Flow
 syntax:
 - call: Nular
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - "<sqf>\n// prints 0, 1, 3\nfor \"_i\" from 0 to 3 do \n{\n\tif (_i == 2) then { continue };\n\tsystemChat str _i;\n};\n</sqf>"
+see_also:
+- continueWith
+- break
+- breakWith

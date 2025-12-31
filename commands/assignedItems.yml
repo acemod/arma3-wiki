@@ -1,12 +1,13 @@
 name: assignedItems
-description: Get array with assigned items. The resulting [[Array]] order is not guaranteed. To check availability of a particular slot item use [[getSlotItemName]]. To return stored items see [[items]] and [[itemsWithMagazines]].
+desc: Get array with assigned items. The resulting [[Array]] order is not guaranteed. To check availability of a particular slot item use [[getSlotItemName]]. To return stored items see [[items]] and [[itemsWithMagazines]].
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - ArrayUnknown
-  - null
+    type: !ArrayUnsized
+      type: String
+      desc: ''
   params:
   - name: unit
     type: Object
@@ -15,27 +16,36 @@ syntax:
   - allItems
   - includeBinocs
   ret:
-  - ArrayUnknown
-  - null
+    type: !ArrayUnsized
+      type: String
+      desc: ''
   params:
   - name: unit
-    description: soldier
+    desc: soldier
     type: Object
   - name: allItems
-    description: '[[true]] to include all slot items, [[false]] exclude goggles and headgear'
+    desc: '[[true]] to include all slot items, [[false]] exclude goggles and headgear'
     type: Boolean
   - name: includeBinocs
-    description: '[[true]] to include binoculars (which is a weapon), [[false]] to exclude it'
+    desc: '[[true]] to include binoculars (which is a weapon), [[false]] to exclude it'
     type: Boolean
   since:
-    arma_3:
-      major: 2
-      minor: 14
+    arma3: '2.14'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>hint str assignedItems player;</sqf>
+see_also:
+- getSlotItemName
+- assignItem
+- unassignItem
+- linkItem
+- unlinkItem
+- addItem
+- removeItem
+- removeAllAssignedItems
+- items
+- itemsWithMagazines
+- backpacks

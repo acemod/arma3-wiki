@@ -1,34 +1,36 @@
 name: compatibleItems
-description: Returns all items (attachments) that can be mounted on the given weapon.
+desc: Returns all items (attachments) that can be mounted on the given weapon.
 groups:
 - Weapons
 syntax:
 - call: !Unary weapon
   ret:
-  - ArrayUnknown
-  - compatible attachments
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+    desc: compatible attachments
   params:
   - name: weapon
-    description: weapon class name
+    desc: weapon class name
     type: String
 - call: !Unary
   - weapon
   - slot
   ret:
-  - ArrayUnknown
-  - compatible attachments
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+    desc: compatible attachments
   params:
   - name: weapon
-    description: weapon class name
+    desc: weapon class name
     type: String
   - name: slot
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - |-
   <sqf>
@@ -38,3 +40,8 @@ examples:
   <sqf>
   compatibleItems ["arifle_Katiba_GL_F", "PointerSlot"]; // ["acc_flashlight","acc_flashlight_broken","acc_pointer_IR", ...]
   </sqf>
+see_also:
+- compatibleWeapons
+- compatibleMagazines
+- BIS_fnc_compatibleItems
+- canAdd

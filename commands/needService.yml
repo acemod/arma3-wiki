@@ -1,21 +1,22 @@
 name: needService
-description: Returns array with how much vehicle needs repairing, refueling and rearming.
+desc: Returns array with how much vehicle needs repairing, refueling and rearming.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary vehicle
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 12
+  arma3: '2.12'
 examples:
 - <sqf>needService tank params ["_needRepair", "_needRefuel", "_needRearm"];</sqf>
 - <sqf>onEachFrame { hintSilent str needService vehicle player };</sqf>
+see_also:
+- allowService
+- allowedService
+- needReload

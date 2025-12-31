@@ -1,5 +1,5 @@
 name: ctrlCreate
-description: |-
+desc: |-
   Creates a new control in the given display.<br>
   The control class could be an existing class from the [[configFile | main config]] or a custom class defined in the [[missionConfigFile | mission config]].
   The main config is searched first, if the class does not exist there, the mission config is searched.
@@ -59,31 +59,32 @@ syntax:
     - idc
     - controlsGroup
   ret:
-  - Control
-  - null
+    type: Control
   params:
   - name: display
-    description: display in which control will be created
+    desc: display in which control will be created
     type: Display
   - name: class
-    description: existing classname (see [[ctrlCreate/classnames]]) of the new control;  {{GVI|arma3|1.70|size= 0.75}} it is possible to use classes defined in mission config
-    type: Unknown
+    desc: existing classname (see [[ctrlCreate/classnames]]) of the new control;  {{GVI|arma3|1.70|size= 0.75}} it is possible to use classes defined in mission config
+    type: !OneOf
+    - - String
+      - null
+    - - Config
+      - null
   - name: idc
-    description: |-
+    desc: |-
       IDC of the new control. Use -1 if not needed
       {{Feature|warning|Be careful when setting the IDC to {{hl|-1}} if the GUI also contains a [[CT_LISTNBOX]] since {{hl|idcLeft}} and {{hl|idcRight}} by default have <syntaxhighlight lang="cpp" inline>idc = -1;</syntaxhighlight>.}}
     type: Number
   - name: controlsGroup
-    description: creates controls in existing controls group
+    desc: creates controls in existing controls group
     type: Control
     optional: true
     default: '[[controlNull]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 26
+  arma3: '1.26'
 examples:
 - <sqf>_display ctrlCreate ["RscText", 1234];</sqf>
 - |-
@@ -131,3 +132,19 @@ examples:
       _ctrlButton ctrlSetPosition [_xPos, _yPos, 0.1 * safeZoneW, 0.05 * safeZoneH];
       _ctrlButton ctrlCommit 0;
   };</sqf>
+see_also:
+- ctrlMapSetPosition
+- allControls
+- allDisplays
+- controlsGroupCtrl
+- ctrlDelete
+- ctrlModel
+- ctrlSetModel
+- ctrlPosition
+- ctrlSetPosition
+- ctrlClassName
+- ctrlModelScale
+- ctrlSetModelScale
+- ctrlModelDirAndUp
+- ctrlSetModelDirAndUp
+- displayParent

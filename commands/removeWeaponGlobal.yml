@@ -1,5 +1,5 @@
 name: removeWeaponGlobal
-description: Remove a weapon from a unit. An attempt to remove a weapon, which is not in unit's possession, is simply ignored.
+desc: Remove a weapon from a unit. An attempt to remove a weapon, which is not in unit's possession, is simply ignored.
 groups:
 - Unit Inventory
 - Vehicle Inventory
@@ -8,44 +8,44 @@ syntax:
   - unit
   - weapon
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: unit or vehicle
+    desc: unit or vehicle
     type: Object
   - name: weapon
-    description: weapon class name
+    desc: weapon class name
     type: String
 - call: !Binary
   - object
   - - weapon
     - autoselect
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
-    description: unit or vehicle
+    desc: unit or vehicle
     type: Object
   - name: weapon
-    description: weapon class name
+    desc: weapon class name
     type: String
   - name: autoselect
-    description: '[[false]] to abort weapon autoselection when removing primary weapon.'
+    desc: '[[false]] to abort weapon autoselection when removing primary weapon.'
     type: String
     optional: true
     default: '[[true]]'
   since:
-    arma_3:
-      major: 2
-      minor: 20
+    arma3: '2.20'
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 76
+  arma3: '0.76'
 examples:
 - "<sqf>\n{\n\t_x removeWeaponGlobal \"Laserdesignator\";\n} forEach allUnits;\n</sqf>"
 - "<sqf>\n{\n\tif (typeOf _x == \"O_Heli_Attack_02_black_F\") then {\n\t\t_x removeWeaponGlobal \"rockets_Skyfire\";\n\t};\n} forEach vehicles;\n</sqf>"
+see_also:
+- addWeaponGlobal
+- removeWeapon
+- removeMagazine
+- removeMagazineGlobal
+- removeAllWeapons

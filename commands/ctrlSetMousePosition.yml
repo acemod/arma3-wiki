@@ -1,5 +1,5 @@
 name: ctrlSetMousePosition
-description: Similar to [[setMousePosition]] but relative to the given control.
+desc: Similar to [[setMousePosition]] but relative to the given control.
 groups:
 - GUI Control - Positioning
 syntax:
@@ -8,22 +8,24 @@ syntax:
   - - x
     - y
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: x
-    description: position in x
+    desc: position in x
     type: Number
   - name: y
-    description: position in y
+    desc: position in y
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>_control ctrlSetMousePosition [0.5, 0.5];</sqf>
+see_also:
+- ctrlMousePosition
+- setMousePosition
+- getMousePosition
+- ctrlMapCursor

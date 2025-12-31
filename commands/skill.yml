@@ -1,5 +1,5 @@
 name: skill
-description: |-
+desc: |-
   Returns current skill of a unit, in range between 0 to 1, 1 being the highest level of skill.
 
   {{Feature|informative|
@@ -11,8 +11,7 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: unit
     type: Object
@@ -20,41 +19,34 @@ syntax:
   - unit
   - skillName
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: unit
     type: Object
   - name: skillName
     type: Unknown
   since:
-    armed_assault:
-      major: 1
-      minor: 0
+    arma1: '1.0'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_skill = skill unit1;</sqf>
 - <sqf>_myCourage = player skill "courage";</sqf>
+see_also:
+- skillFinal
+- setSkill
+- setUnitAbility
+- Arma
+- '3:'
+- AI
+- Skill
+- Combat
+- Modes

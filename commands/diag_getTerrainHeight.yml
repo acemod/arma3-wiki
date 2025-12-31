@@ -1,5 +1,5 @@
 name: diag_getTerrainHeight
-description: |-
+desc: |-
   Returns terrain height at the specified location.
   {{Feature|informative|Unlike [[getTerrainHeightASL]] which  returns the exact position's height, this commands returns the apex of the terrain polygon.}}
   {{Feature|obsolete|This command is subject to be removed and replaced with: [[getTerrainHeight]]|arma3|2.10}}
@@ -8,18 +8,20 @@ groups:
 syntax:
 - call: !Unary positionWorld
   ret:
-  - Number
-  - terrain height
+    type: Number
+    desc: terrain height
   params:
   - name: positionWorld
-    description: position in world coordinates either in [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]
-    type: Unknown
+    desc: position in world coordinates either in [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]
+    type: !OneOf
+    - - Position2d
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 4
+  arma3: '2.4'
 branch: diag
 examples:
 - <sqf>private _h = diag_getTerrainHeight position player;</sqf>
+see_also:
+- diag_setTerrainHeight

@@ -1,5 +1,5 @@
 name: call
-description: |-
+desc: |-
   Adds given set of compiled instructions to the current stack and waits for it to finish and return, provides an option to pass arguments to the executed [[Code]].
   See [[Scheduler]] to learn more about how the code is executed and behaves.
 groups:
@@ -7,11 +7,11 @@ groups:
 syntax:
 - call: !Unary code
   ret:
-  - Anything
-  - the last value given in the function is returned - see the topic [[Function#Return_Values|Function]] for more information
+    type: Anything
+    desc: the last value given in the function is returned - see the topic [[Function#Return_Values|Function]] for more information
   params:
   - name: code
-    description: |-
+    desc: |-
       [[compile]]d instructions
       {{Feature|ofp|{{ofp}} takes [[String]].}}
       {{Feature|informative|This way of calling has access to its parent scope's <sqf inline>_this</sqf>, as all it does is creating a scope.}}
@@ -20,14 +20,14 @@ syntax:
   - args
   - code
   ret:
-  - Anything
-  - the last value given in the function is returned. See the topic [[Function#Return_Values|Function]] for more information.
+    type: Anything
+    desc: the last value given in the function is returned. See the topic [[Function#Return_Values|Function]] for more information.
   params:
   - name: args
-    description: arguments that are passed to the function in the <sqf inline>_this</sqf> variable.
+    desc: arguments that are passed to the function in the <sqf inline>_this</sqf> variable.
     type: Anything
   - name: code
-    description: |-
+    desc: |-
       [[compile]]d instructions
       {{Feature|ofp|{{ofp}} takes [[String]].}}
     type: Code
@@ -36,48 +36,32 @@ syntax:
   - - methodName
     - arguments
   ret:
-  - Anything
-  - the value returned by the ''methodName'' method
+    type: Anything
+    desc: the value returned by the ''methodName'' method
   params:
   - name: hashMapObj
-    description: the HashMap (not necessarily created through [[createHashMapObject]]) to call the method on
+    desc: the HashMap (not necessarily created through [[createHashMapObject]]) to call the method on
     type: HashMapUnknown
   - name: methodName
-    description: the name of the method to call (the method must be defined in ''hashMapObj''; see [[createHashMapObject]])
+    desc: the name of the method to call (the method must be defined in ''hashMapObj''; see [[createHashMapObject]])
     type: String
   - name: arguments
-    description: arguments passed to the method in the <sqf inline>_this</sqf> variable
+    desc: arguments passed to the method in the <sqf inline>_this</sqf> variable
     type: Anything
     optional: true
     default: parent scope's {{hl|_this}}
   since:
-    arma_3:
-      major: 2
-      minor: 14
+    arma3: '2.14'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 85
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.85'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>call { hint str 123; };</sqf>
 - <sqf>123 call { hint str _this; };</sqf>
@@ -89,3 +73,12 @@ examples:
 - <sqf>123 call compile "hint str _this;";</sqf>
 - <sqf>_result = 123 call compile preprocessFileLineNumbers "myFile.sqf";</sqf>
 - "<sqf>\nprivate _hashMapObj = createHashMapObject [[\n\t[\"MyMethod\", { systemChat (\"MyMethod arguments: \" + str _this); }]\n]];\n\n_hashMapObj call [\"MyMethod\", [\"Hello there\", player, 123]]; // hints 'MyMethod arguments: [\"Hello there\", player, 123]'\n</sqf>"
+see_also:
+- spawn
+- execVM
+- canSuspend
+- compile
+- compileScript
+- preprocessFile
+- remoteExec
+- remoteExecCall

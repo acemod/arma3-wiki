@@ -1,5 +1,5 @@
 name: lbSetTooltip
-description: Sets tooltip for item with given index of the listbox or combobox with id idc of the topmost user dialog to the given data.
+desc: Sets tooltip for item with given index of the listbox or combobox with id idc of the topmost user dialog to the given data.
 groups:
 - GUI Control - ListBox
 syntax:
@@ -8,8 +8,7 @@ syntax:
   - index
   - tooltip
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
@@ -22,8 +21,7 @@ syntax:
   - - index
     - tooltip
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -34,9 +32,30 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 58
+  arma3: '0.58'
 examples:
 - <sqf>lbSetTooltip [101, 1, "tooltip"];</sqf>
 - <sqf>_control lbSetTooltip [0, "another tooltip"];</sqf>
+see_also:
+- lbTooltip
+- lnbSetTooltip
+- lbAdd
+- lbClear
+- lbColor
+- lbCurSel
+- lbData
+- lbDelete
+- lbIsSelected
+- lbPicture
+- lbSelection
+- lbSetColor
+- lbSetCurSel
+- lbSetData
+- lbSetPicture
+- lbSetSelected
+- lbSetValue
+- lbSize
+- lbSort
+- lbSortByValue
+- lbText
+- lbValue

@@ -1,5 +1,5 @@
 name: setLightFlareSize
-description: Sets relative size of the flare for the light.
+desc: Sets relative size of the flare for the light.
 groups:
 - Lights
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - light
   - size
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: light
     type: Object
@@ -17,8 +16,17 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>myLight setLightFlareSize 5;</sqf>
+see_also:
+- setLightAmbient
+- setLightColor
+- lightAttachObject
+- lightDetachObject
+- setLightIntensity
+- setLightAttenuation
+- setLightUseFlare
+- setLightBrightness
+- setLightFlareMaxDistance
+- setLightDayLight

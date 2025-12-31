@@ -1,5 +1,5 @@
 name: mapCenterOnCamera
-description: |-
+desc: |-
   The main syntax enables/disables continuous centering of the main map type control on the camera position. Needs to be executed once.<br>
   The alternative syntax centers mini map type control on camera. Needs to be executed each frame (preferably inside an {{hl|onDraw}} event handler).
 groups:
@@ -9,8 +9,7 @@ syntax:
   - mainmap
   - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: mainmap
     type: Control
@@ -18,33 +17,26 @@ syntax:
     type: Boolean
 - call: !Unary minimap
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: minimap
     type: Control
   since:
-    arma_3:
-      major: 1
-      minor: 48
+    arma3: '1.48'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 2
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.2'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   // --- Minimap update
   ((uiNamespace getVariable "BIS_UAV_DISPLAY") displayCtrl 112410) mapCenterOnCamera true;
   </sqf>
+see_also:
+- ctrlMapAnimAdd
+- ctrlMapAnimCommit
+- getPosWorld

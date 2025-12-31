@@ -1,5 +1,5 @@
 name: allowSprint
-description: Force player to run/jog if set to false.
+desc: Force player to run/jog if set to false.
 groups:
 - Stamina System
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - state
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,8 +16,11 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 1
-    minor: 54
+  arma3: '1.54'
 examples:
 - <sqf>player allowSprint false;</sqf>
+see_also:
+- Arma
+- '3:'
+- Stamina
+- isSprintAllowed

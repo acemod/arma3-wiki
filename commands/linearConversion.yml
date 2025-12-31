@@ -1,5 +1,5 @@
 name: linearConversion
-description: Converts given value from given "from" range to wanted "to" range. If clipping is set to [[true]], the resulting value is guaranteed to be within "to" range no matter what. {{Feature|arma3|Faster alternative to [[BIS_fnc_linearConversion]].}}
+desc: Converts given value from given "from" range to wanted "to" range. If clipping is set to [[true]], the resulting value is guaranteed to be within "to" range no matter what. {{Feature|arma3|Faster alternative to [[BIS_fnc_linearConversion]].}}
 groups:
 - Math
 syntax:
@@ -11,35 +11,33 @@ syntax:
   - maxTo
   - clip
   ret:
-  - Number
-  - respectful value from "to" range
+    type: Number
+    desc: respectful value from "to" range
   params:
   - name: minFrom
-    description: start "from" range
+    desc: start "from" range
     type: Number
   - name: maxFrom
-    description: end "from" range
+    desc: end "from" range
     type: Number
   - name: value
-    description: given value from "from" range
+    desc: given value from "from" range
     type: Number
   - name: minTo
-    description: start "to" range
+    desc: start "to" range
     type: Number
   - name: maxTo
-    description: end "to" range
+    desc: end "to" range
     type: Number
   - name: clip
-    description: if [[true]], resulting value cannot leave "to" range
+    desc: if [[true]], resulting value cannot leave "to" range
     type: Boolean
     optional: true
     default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -54,3 +52,9 @@ examples:
   </sqf>
 - <sqf>linearConversion [4, 8, 5, 0, 1, false];</sqf>
 - "<sqf>\n// Calculate days from 1/1/1970\nfnc_daysFromEpoc = \n{\n\tprivate _year = param [0];\n\tprivate _days = 0;\n\tfor \"_i\" from 1970 to _year - 1 do \n\t{\n\t\t_days = _days + round linearConversion [0, 1, dateToNumber [_i, 12, 31, 23, 59], 0, 365, false];\n\t};\n\t_days + linearConversion [0, 1, dateToNumber _this, 0, 365, false];\n};\n\nhint str (date call fnc_daysFromEpoc);\n</sqf>"
+see_also:
+- round
+- floor
+- ceil
+- vectorLinearConversion
+- bezierInterpolation

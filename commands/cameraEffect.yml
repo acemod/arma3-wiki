@@ -1,5 +1,5 @@
 name: cameraEffect
-description: |-
+desc: |-
   Sets the given effect on the given camera. If you want to switch the screen directly to the first-person, aiming, third-person or group view of an object, use [[switchCamera]] instead. The effect type "Terminate" is used to exit the current camera view and switch back to the player's view. Does not need [[camCommit]].
   <br><br>
   Since {{GVI|arma3|1.74}}, it is possible to terminate individual r2t source. For example:
@@ -20,45 +20,30 @@ syntax:
     - effectPosition
     - r2tName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: camera
-    description: object of type "camera"
+    desc: object of type "camera"
     type: Object
   - name: effectName
-    description: 'the effect type (defined in main config or [[Description.ext#CfgCameraEffects|CfgCameraEffects]] >> Array). Defaults are: {{hl|"Internal"}}, {{hl|"External"}}, {{hl|"Fixed"}}, {{hl|"FixedWithZoom"}}, {{hl|"Terminate"}}'
+    desc: 'the effect type (defined in main config or [[Description.ext#CfgCameraEffects|CfgCameraEffects]] >> Array). Defaults are: {{hl|"Internal"}}, {{hl|"External"}}, {{hl|"Fixed"}}, {{hl|"FixedWithZoom"}}, {{hl|"Terminate"}}'
     type: String
   - name: effectPosition
     type: Unknown
   - name: r2tName
-    description: '[[Procedural_Textures#Render_To_Texture|Render To Texture]] surface reference'
+    desc: '[[Procedural_Textures#Render_To_Texture|Render To Texture]] surface reference'
     type: String
     optional: true
 argument_loc: Local
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_cam cameraEffect ["internal", "BACK"];</sqf>
 - <sqf>_cam cameraEffect ["internal", "back", "rendersurface"];</sqf>
@@ -82,3 +67,12 @@ examples:
   _cam2 setDir (_cam2 getDir player);
   switchCamera _cam2;
   </sqf>
+see_also:
+- switchCamera
+- cameraView
+- cameraOn
+- setPiPEffect
+- camCreate
+- cameraEffectEnableHUD
+- camUseNVG
+- setCamUseTI

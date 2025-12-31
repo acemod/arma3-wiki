@@ -1,5 +1,5 @@
 name: ropeDetach
-description: Detaches attached object from rope (i.e. detaches rope end from attached to it entity). See [[ropeAttachTo]] for attach operation.
+desc: Detaches attached object from rope (i.e. detaches rope end from attached to it entity). See [[ropeAttachTo]] for attach operation.
 groups:
 - Ropes and Sling Loading
 syntax:
@@ -7,23 +7,35 @@ syntax:
   - attachedObject
   - rope
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: attachedObject
-    description: entity attached to the end of rope
+    desc: entity attached to the end of rope
     type: Object
   - name: rope
-    description: rope object to which entity is attached
+    desc: rope object to which entity is attached
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 1
-    minor: 34
+  tkoh: '1.0'
+  arma3: '1.34'
 examples:
 - <sqf>vehicle player ropeDetach myRope;</sqf>
+see_also:
+- ropeCreate
+- ropeDestroy
+- ropeSetCargoMass
+- ropes
+- canSlingLoad
+- enableRopeAttach
+- getSlingLoad
+- ropeAttachedObjects
+- ropeAttachTo
+- ropeLength
+- ropeUnwound
+- ropeAttachedTo
+- ropeAttachEnabled
+- ropeCut
+- ropeEndPosition
+- ropeUnwind

@@ -1,5 +1,5 @@
 name: enginesIsOnRTD
-description: |-
+desc: |-
   Returns which engines are producing some work.
   {{Feature|afm}}
 groups:
@@ -7,16 +7,20 @@ groups:
 syntax:
 - call: !Unary RTD_helicopter
   ret:
-  - ArrayUnknown
-  - value for each engine
+    type: ArrayUnknown
+    desc: value for each engine
   params:
   - name: RTD_helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - <sqf>_enginesTaru = enginesIsOnRTD _taru; // returns [true, true]</sqf>
+see_also:
+- isObjectRTD
+- enginesRpmRTD
+- enginesTorqueRTD
+- wingsForcesRTD
+- engineOn

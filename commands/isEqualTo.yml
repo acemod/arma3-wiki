@@ -1,5 +1,5 @@
 name: isEqualTo
-description: |-
+desc: |-
   Performs strict comparison between var1 and var2 and returns [[true]] if equal, otherwise [[false]]. Strict means that it would check that both arguments are of the same data type and then compare the values.<br><br>
   Some differences between [[isEqualTo]] and [[==]]:
   * It performs case sensitive comparison on [[String]]s
@@ -31,8 +31,7 @@ syntax:
   - val1
   - val2
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: val1
     type: Anything
@@ -41,9 +40,7 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - |-
   <sqf>
@@ -56,3 +53,15 @@ examples:
   if (a isEqualTo b) then { hint "a is equal to b" };
   if !(a isEqualTo b) then { hint "a is not equal to b" };
   </sqf>
+see_also:
+- isNotEqualTo
+- isEqualRef
+- isEqualTypeAll
+- isEqualTypeAny
+- isEqualType
+- isEqualTypeParams
+- isEqualTypeArray
+- a
+- ==
+- b
+- Operators

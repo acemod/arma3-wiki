@@ -1,21 +1,24 @@
 name: displayUpdate
-description: Set the provided display to update its [[Procedural Textures#UI On Texture|UI On Texture]] render.
+desc: Set the provided display to update its [[Procedural Textures#UI On Texture|UI On Texture]] render.
 groups:
 - GUI Control
 syntax:
 - call: !Unary display
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: display
-    description: the display to update
+    desc: the display to update
     type: Display
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 12
+  arma3: '2.12'
 examples:
 - <sqf>displayUpdate _myDisplay;</sqf>
+see_also:
+- displayUniqueName
+- '{{Link|Procedural'
+- Textures#UI
+- On
+- Texture}}

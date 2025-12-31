@@ -1,5 +1,5 @@
 name: blufor
-description: Pre-defined variable for the blufor [[Side|side]].
+desc: Pre-defined variable for the blufor [[Side|side]].
 alias:
 - '[[west]]'
 groups:
@@ -7,14 +7,19 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Side
-  - null
+    type: Side
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - "<sqf>\nif (side player == blufor) then\n{\n\thint \"BLUFOR\";\n};\n</sqf>"
+see_also:
+- side
+- civilian
+- east
+- independent
+- opfor
+- resistance
+- west

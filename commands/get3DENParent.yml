@@ -1,21 +1,22 @@
 name: get3DENParent
-description: Obtains the provided entity's parent.
+desc: Obtains the provided entity's parent.
 groups:
 - Eden Editor
 syntax:
 - call: !Unary entity
   ret:
-  - Unknown
-  - Returns [[Eden Entity]] or the [[Eden ID]] representing it. -1 for system layers such as ''BLUFOR'', ''OPFOR'' etc.
+    type: Unknown
+    desc: Returns [[Eden Entity]] or the [[Eden ID]] representing it. -1 for system layers such as ''BLUFOR'', ''OPFOR'' etc.
   params:
   - name: entity
-    description: '[[Eden Entity]]'
+    desc: '[[Eden Entity]]'
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>private _parent = get3DENParent _myObject;</sqf>
+see_also:
+- create3DENEntity
+- delete3DENEntities

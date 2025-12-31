@@ -1,21 +1,23 @@
 name: airDensityRTD
-description: Returns air density in given altitude. {{Feature|afm}}
+desc: Returns air density in given altitude. {{Feature|afm}}
 groups:
 - RTD
 syntax:
 - call: !Unary altitude
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: altitude
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 34
+  arma3: '1.34'
 examples:
 - <sqf>_density = airDensityRTD 0; // returns 1.22406</sqf>
 - <sqf>_density = airDensityRTD 1000; // Returns 1.11096</sqf>
+see_also:
+- rotorsForcesRTD
+- rotorsRpmRTD
+- weightRTD
+- wingsForcesRTD

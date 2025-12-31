@@ -1,21 +1,22 @@
 name: getWeaponSway
-description: Returns current size of weapon sway of a given unit, in [[rad|radians]]. This command may still return a value greater 0 even if sway was effectively set to 0 with <sqf inline>player setCustomAimCoef 0;</sqf>.
+desc: Returns current size of weapon sway of a given unit, in [[rad|radians]]. This command may still return a value greater 0 even if sway was effectively set to 0 with <sqf inline>player setCustomAimCoef 0;</sqf>.
 groups:
 - Stamina System
 - Weapons
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - weapon sway
+    type: Number
+    desc: weapon sway
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 62
+  arma3: '1.62'
 examples:
 - <sqf>_sway = getWeaponSway player;</sqf>
+see_also:
+- weaponInertia
+- getCustomAimCoef

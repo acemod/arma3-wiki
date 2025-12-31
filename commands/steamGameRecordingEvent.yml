@@ -1,22 +1,34 @@
 name: steamGameRecordingEvent
-description: 'Triggers a {{Link|https://partner.steamgames.com/doc/features/timeline|Steam Timeline}} event within the {{Link|https://store.steampowered.com/gamerecording|Game Recording}} feature. Read [[Arma 3: Steam Game Recording]] for more information and a list of all available event icons.'
+desc: 'Triggers a {{Link|https://partner.steamgames.com/doc/features/timeline|Steam Timeline}} event within the {{Link|https://store.steampowered.com/gamerecording|Game Recording}} feature. Read [[Arma 3: Steam Game Recording]] for more information and a list of all available event icons.'
 groups:
 - System
 syntax:
 - call: !Unary parameters
   ret:
-  - String
-  - event handle (which can be used to edit an event after it has been triggered)
+    type: String
+    desc: event handle (which can be used to edit an event after it has been triggered)
   params:
   - name: parameters
-    type: Unknown
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - Number
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 20
+  arma3: '2.20'
 examples:
 - <sqf>steamGameRecordingEvent ["UnitKilled", 0, ["Player1", "50"]]; //"UnitKilled" event, happening now, with arguments</sqf>
 - <sqf>steamGameRecordingEvent ["ZeusUI", 5, [], -5]; //Was in the Zeus UI during the last 5 seconds</sqf>
 - '<sqf>steamGameRecordingEvent ["StartGamePhase", "ArmaInvaders"]; //Starting a game phase for [[Arma 3: Invaders]] with a unique ID</sqf>'
+see_also:
+- Arma
+- '3:'
+- Steam
+- Game
+- Recording

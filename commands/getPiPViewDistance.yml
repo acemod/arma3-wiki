@@ -1,19 +1,22 @@
 name: getPiPViewDistance
-description: Get the set PiP (Picture-in-Picture) view distance (that can be set by [[setPiPViewDistance]]).
+desc: Get the set PiP (Picture-in-Picture) view distance (that can be set by [[setPiPViewDistance]]).
 groups:
 - System
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 8
+  arma3: '2.8'
 examples:
 - <sqf>private _pipViewDistance = getPiPViewDistance;</sqf>
 - <sqf>private _pipViewDistanceRatio = getPiPViewDistance / viewDistance;</sqf>
+see_also:
+- setPiPViewDistance
+- setViewDistance
+- setObjectViewDistance
+- viewDistance
+- getObjectViewDistance

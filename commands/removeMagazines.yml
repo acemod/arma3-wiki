@@ -1,5 +1,5 @@
 name: removeMagazines
-description: Removes all magazines of given type from the unit. If magazine class does not exist, nothing happens, not even .rpt message, unlike with [[addMagazine]] command.
+desc: Removes all magazines of given type from the unit. If magazine class does not exist, nothing happens, not even .rpt message, unlike with [[addMagazine]] command.
 groups:
 - Unit Inventory
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unitName
   - magazineName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitName
     type: Object
@@ -17,26 +16,21 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player removeMagazines "30Rnd_556x45_Stanag";</sqf>
+see_also:
+- removeAllMagazines
+- addMagazine
+- magazines
+- removeMagazine
+- removeWeapon
+- removeMagazinesTurret
+- removeMagazineTurret
+- setVehicleAmmo

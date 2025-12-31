@@ -1,5 +1,5 @@
 name: move3DENCamera
-description: Moves the [[get3DENCamera|Eden Editor camera]].
+desc: Moves the [[get3DENCamera|Eden Editor camera]].
 groups:
 - Eden Editor
 syntax:
@@ -7,19 +7,18 @@ syntax:
   - position
   - useOffset
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: position
-    description: new position
+    desc: new position
     type: Position3dASL
   - name: useOffset
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>move3DENCamera [getPosASL player, true];</sqf>
+see_also:
+- get3DENCamera

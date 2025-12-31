@@ -1,43 +1,38 @@
 name: localize
-description: Used to internationalise text messages. The provided translation key is looked up in [[Stringtable.xml]] (or [[Stringtable.csv]]).
+desc: Used to internationalise text messages. The provided translation key is looked up in [[Stringtable.xml]] (or [[Stringtable.csv]]).
 groups:
 - Strings
 - Localization
 syntax:
 - call: !Unary stringName
   ret:
-  - String
-  - text found in corresponding entry in stringtable file. If the key could not be found an empty string {{hl|""}} is returned and an entry is added to .rpt file, for example {{hl|String STR_DN_SNAKE not found}}
+    type: String
+    desc: text found in corresponding entry in stringtable file. If the key could not be found an empty string {{hl|""}} is returned and an entry is added to .rpt file, for example {{hl|String STR_DN_SNAKE not found}}
   params:
   - name: stringName
-    description: string which leads to localisation. Casing does not matter. {{GVI|arma3|2.04|size= 0.75}} A string starting with "$" is supported
+    desc: string which leads to localisation. Casing does not matter. {{GVI|arma3|2.04|size= 0.75}} A string starting with "$" is supported
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - "<sqf>\nhint localize \"STR_West\";\t\t\t\t// returns \"BLUFOR\"\nhint localize \"STR_WEST\";\t\t\t\t// returns \"BLUFOR\"\nhint localize \"STR_weSt\";\t\t\t\t// returns \"BLUFOR\"\nhint localize \"STR_NonExistentString\";\t// returns \"\" and logs \"String STR_NonExistentString not found\"\n</sqf>"
 - <sqf>hint format ["Go %1", localize "STR_Q_NORTH"]; // returns "Go North"</sqf>
 - "<sqf>\nhint format \n[\n\tlocalize \"STR_ACTION_DROP_WEAPON\",\t// \"STR_ACTION_DROP_WEAPON\" contains \"Drop %1\"\n\tlocalize \"STR_SN_RIFLE\"\t\t\t\t// \"STR_SN_RIFLE\" contains \"Rifle\"\n]; // returns \"Drop Rifle\"\n</sqf>"
 - <sqf>localize "$STR_USRACT_ADJUST"; // returns "Adjust" since Arma 3 v2.04</sqf>
+see_also:
+- isLocalized
+- diag_localized
+- getTextRaw
+- BIS_fnc_localize
+- WFSideText
+- parseText
+- Stringtable.csv
+- Stringtable.xml

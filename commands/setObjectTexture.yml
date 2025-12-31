@@ -1,5 +1,5 @@
 name: setObjectTexture
-description: |-
+desc: |-
   Applies given texture to object's selection. See also [[Procedural Textures]] and [[Retexturing with setObjectTexture]].
   {{Feature|informative|
   * Not all objects can be textured this way. To find out, run [[getObjectTextures]] command on an object. Empty array <sqf inline>[]</sqf> usually indicates it cannot be textured.
@@ -15,41 +15,30 @@ syntax:
   - - selection
     - texture
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
     type: Object
   - name: selection
-    description: index of the selection. It is defined in the [[CfgVehicles Config Reference#hiddenSelections|hiddenSelections]] array in the vehicle's config (starting with 0). If a string is given, it referes to a hiddenSelection name or clan selection instead of an index.
-    type: Unknown
+    desc: index of the selection. It is defined in the [[CfgVehicles Config Reference#hiddenSelections|hiddenSelections]] array in the vehicle's config (starting with 0). If a string is given, it referes to a hiddenSelection name or clan selection instead of an index.
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
   - name: texture
-    description: path to texture. Since {{GVI|arma3|2.20}} using '''"#reset"''' would reset to default texture.
+    desc: path to texture. Since {{GVI|arma3|2.20}} using '''"#reset"''' would reset to default texture.
     type: String
 argument_loc: Global
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -67,3 +56,10 @@ examples:
 - |-
   The {{hl|"clan"}} selection can be used to apply a texture to the areas that usually display the [[squad.xml]] logo:
   <sqf>MyVehicle setObjectTexture ["clan", "\a3\missions_f_epa\data\img\orbat\b_111_texture_ca.paa"];</sqf>
+see_also:
+- getObjectTextures
+- setObjectTextureGlobal
+- setObjectMaterial
+- getObjectMaterials
+- setObjectMaterialGlobal
+- forceFlagTexture

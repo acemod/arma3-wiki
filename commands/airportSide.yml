@@ -1,5 +1,5 @@
 name: airportSide
-description: |-
+desc: |-
   Gets the side of an airport, set by [[setAirportSide]]. Default side is [[sideUnknown]].
   {{Feature|informative|See [[Arma: Airport IDs]] for a list of airport ids.}}
 problem_notes:
@@ -12,39 +12,34 @@ groups:
 syntax:
 - call: !Unary id
   ret:
-  - Side
-  - null
+    type: Side
   params:
   - name: id
     type: Number
 - call: !Unary target
   ret:
-  - Side
-  - null
+    type: Side
   params:
   - name: target
     type: Object
   since:
-    arma_3:
-      major: 1
-      minor: 68
+    arma3: '1.68'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 8
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.8'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>private _airportSide = airportSide 0;</sqf>
+see_also:
+- 'Arma:'
+- Airport
+- IDs
+- setAirportSide
+- land
+- landAt
+- assignToAirport
+- allAirports

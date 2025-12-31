@@ -1,20 +1,21 @@
 name: actionName
-description: Returns localized name of action.
+desc: Returns localized name of action.
 groups:
 - Interaction
 syntax:
 - call: !Unary action
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: action
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>actionName "ReloadMagazine"; // returns "Reload"</sqf>
+see_also:
+- inputAction/actions
+- playAction
+- playActionNow

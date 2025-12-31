@@ -1,5 +1,5 @@
 name: setFace
-description: |-
+desc: |-
   Set person's face. For a list of available faces, check {{Link|Category:CfgIdentities}} or {{hl|CfgFaces}} config.
   If the face is non-existent, the face is set to 'Default' and the error is logged in the [[Crash Files|.rpt file]].
 
@@ -17,8 +17,7 @@ syntax:
   - person
   - face
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: person
     type: Object
@@ -27,27 +26,18 @@ syntax:
 argument_loc: Global
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>soldier1 setFace "WhiteHead_02";</sqf>
 - "Set persistent face for a unit in multiplayer:\n<sqf>this setFace \"AsianHead_A3_02\"; // in the init field if the unit already exists in Eden Editor</sqf>\n\n<sqf>\nif (isServer) then { [_unit, \"AsianHead_A3_02\"] remoteExec [\"setFace\", 0, _unit] }; \n// if the unit is created later in the game.\n// This only works with stock faces; when a player joins with a custom face into this unit, \n// all current players need to be force-updated to the desired face as custom face overwrites current face.\n// Use [[BIS_fnc_setIdentity]] for persistent identity.\n</sqf>"
+see_also:
+- face
+- setIdentity
+- setSpeaker
+- hasCustomFace

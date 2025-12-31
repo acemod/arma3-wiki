@@ -1,5 +1,5 @@
 name: createUnit
-description: |-
+desc: |-
   Create a unit of the provided [[:Category:CfgVehicles|CfgVehicles]] class.
 
   {{Feature|warning|
@@ -41,26 +41,34 @@ syntax:
     - placement
     - special
   ret:
-  - Object
-  - the created unit
+    type: Object
+    desc: the created unit
   params:
   - name: group
-    description: existing group new unit will join; if the group is not [[local]], a warning will be logged
+    desc: existing group new unit will join; if the group is not [[local]], a warning will be logged
     type: Group
   - name: type
-    description: classname of unit to be created as per [[CfgVehicles]]
+    desc: classname of unit to be created as per [[CfgVehicles]]
     type: String
   - name: position
-    description: location where to create the unit. In case of [[Group]], the [[group]] [[leader]]'s position is used. The Z component of the position is ignored and the unit is always placed on the surface.
-    type: Unknown
+    desc: location where to create the unit. In case of [[Group]], the [[group]] [[leader]]'s position is used. The Z component of the position is ignored and the unit is always placed on the surface.
+    type: !OneOf
+    - - Object
+      - null
+    - - Position
+      - null
+    - - Position2d
+      - null
   - name: markers
-    description: placement markers
+    desc: placement markers
     type: ArrayUnknown
   - name: placement
-    description: placement radius
+    desc: placement radius
     type: Number
   - name: special
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
 - call: !Binary
   - type
   - - position
@@ -69,55 +77,47 @@ syntax:
     - skill
     - rank
   ret:
-  - Unknown
-  - this syntax does '''not''' return a unit reference! See {{Link|#Example 7}} for a workaround.}}
+    type: Unknown
+    desc: this syntax does '''not''' return a unit reference! See {{Link|#Example 7}} for a workaround.}}
   params:
   - name: type
-    description: classname of unit to be created as per [[CfgVehicles]]
+    desc: classname of unit to be created as per [[CfgVehicles]]
     type: String
   - name: position
-    description: location at which the unit is created. In case of [[Group]] position of the [[group]] [[leader]] is used
-    type: Unknown
+    desc: location at which the unit is created. In case of [[Group]] position of the [[group]] [[leader]] is used
+    type: !OneOf
+    - - Object
+      - null
+    - - Position
+      - null
+    - - Position2d
+      - null
   - name: group
-    description: existing group the new unit will join
+    desc: existing group the new unit will join
     type: Group
   - name: init
     type: Unknown
     optional: true
   - name: skill
-    description: unit [[skill]]
+    desc: unit [[skill]]
     type: Number
     optional: true
     default: '0.5'
   - name: rank
-    description: unit [[rank]]
+    desc: unit [[rank]]
     type: String
     optional: true
     default: '"PRIVATE"'
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 34
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.34'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_unit = group player createUnit ["B_RangeMaster_F", position player, [], 0, "NONE"];</sqf>
 - <sqf>"B_RangeMaster_F" createUnit [position player, group player];</sqf>
@@ -142,3 +142,9 @@ examples:
   hint str side _ap; // EAST
   </sqf>
 - "Reference the created unit through a global variable:\n<sqf>\n_myUnit = \"B_RangeMaster_F\" createUnit [position player, group player];\t\t\t// wrong - this syntax does not return a reference\n\n\"B_RangeMaster_F\" createUnit [position player, group player, \"myUnit = this\"];\t// correct - the unit is myUnit (NOT _myUnit!)\n</sqf>"
+see_also:
+- createCenter
+- createGroup
+- createVehicle
+- setVehiclePosition
+- create3DENEntity

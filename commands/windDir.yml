@@ -1,18 +1,21 @@
 name: windDir
-description: Returns the current wind azimuth.
+desc: Returns the current wind azimuth.
 groups:
 - Environment
 syntax:
 - call: Nular
   ret:
-  - Number
-  - azimuth
+    type: Number
+    desc: azimuth
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - "<sqf>\nif (windDir < 45 || windDir > 315) then {\n\thint \"I feel a southern wind\"; // wind going from South to North\n};\n</sqf>"
+see_also:
+- wind
+- setWindDir
+- setWindStr
+- setWindForce

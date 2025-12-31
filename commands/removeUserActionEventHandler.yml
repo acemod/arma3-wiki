@@ -1,5 +1,5 @@
 name: removeUserActionEventHandler
-description: 'Removes a UserAction event handler. For a list of available UserAction event handlers, see: [[Arma 3: Mission Event Handlers]].'
+desc: 'Removes a UserAction event handler. For a list of available UserAction event handlers, see: [[Arma 3: Mission Event Handlers]].'
 groups:
 - Event Handlers
 syntax:
@@ -8,22 +8,30 @@ syntax:
   - event
   - index
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: keyName
-    description: action key name; see [[inputAction/actions]]
+    desc: action key name; see [[inputAction/actions]]
     type: String
   - name: event
     type: Unknown
   - name: index
-    description: index returned by [[addUserActionEventHandler]]
+    desc: index returned by [[addUserActionEventHandler]]
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - <sqf>removeUserActionEventHandler ["Reload", "Activate", _reloadUAEH];</sqf>
+see_also:
+- addUserActionEventHandler
+- removeAllUserActionEventHandlers
+- Arma
+- '3:'
+- Event
+- Handlers#UserAction
+- Event
+- Handlers|UserAction
+- Event
+- Handlers

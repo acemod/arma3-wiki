@@ -1,5 +1,5 @@
 name: estimatedTimeLeft
-description: |-
+desc: |-
   Sets the estimated time left in the game that is shown in the "Game in progress" screen or in the master browser.
   {{Feature|informative|This command will force the server to broadcast [[serverTime]] to all clients without waiting for the next broadcast window (usually every 5 minutes).}}
 groups:
@@ -9,39 +9,27 @@ groups:
 syntax:
 - call: !Unary seconds
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: seconds
-    description: estimated time in seconds, max 36000 (10 hours), 7200 (2 hours) before {{GVI|arma3|1.70|size= 0.75}}
+    desc: estimated time in seconds, max 36000 (10 hours), 7200 (2 hours) before {{GVI|arma3|1.70|size= 0.75}}
     type: Number
 argument_loc: Unspecified
 effect_loc: Global
-server_exec: false
+server_exec: true
 since:
-  flashpoint:
-    major: 1
-    minor: 35
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.35'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>estimatedTimeLeft 600; // 10 min</sqf>
 - |-
   '''{{ofp}}:''' for missions with a hard set limit adjusted via {{Link|Description.ext#param1/param2|param1}}, the following example can be used in the [[Event Scripts#init.sqs|init.sqs]] file:
   <sqs>estimatedTimeLeft param1</sqs>
+see_also:
+- estimatedEndServerTime
+- serverTime

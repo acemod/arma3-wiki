@@ -1,5 +1,5 @@
 name: joinString
-description: Joins ''array'' into [[String]] with provided ''separator''. Array can be of mixed types, all elements will be converted to [[String]] prior to joining, but the fastest operation is on the array of [[String]]s.
+desc: Joins ''array'' into [[String]] with provided ''separator''. Array can be of mixed types, all elements will be converted to [[String]] prior to joining, but the fastest operation is on the array of [[String]]s.
 groups:
 - Strings
 syntax:
@@ -7,21 +7,18 @@ syntax:
   - array
   - separator
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: array
-    description: array of [[Anything]]
+    desc: array of [[Anything]]
     type: ArrayUnknown
   - name: separator
-    description: separator used to join array elements.
+    desc: separator used to join array elements.
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 50
+  arma3: '1.50'
 examples:
 - |-
   <sqf>
@@ -34,3 +31,26 @@ examples:
 - |-
   Remove all \r\n from file:
   <sqf>loadFile "somefile.txt" splitString toString [13,10] joinString " "</sqf>
+see_also:
+- splitString
+- set
+- resize
+- reverse
+- select
+- in
+- find
+- toArray
+- forEach
+- count
+- deleteAt
+- deleteRange
+- append
+- sort
+- param
+- params
+- arrayIntersect
+- toString
+- endl]],
+- '{{Link|http://www.utf8-chartable.de/|Unicode'
+- Character
+- Table}}

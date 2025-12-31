@@ -1,5 +1,5 @@
 name: mapAnimAdd
-description: Add next frame to map animation.
+desc: Add next frame to map animation.
 groups:
 - Map
 syntax:
@@ -8,41 +8,30 @@ syntax:
   - zoom
   - position
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: time
-    description: animation duration in seconds
+    desc: animation duration in seconds
     type: Number
   - name: zoom
-    description: range from 0.01 (max. zoom) to 1 (zoomed out)
+    desc: range from 0.01 (max. zoom) to 1 (zoomed out)
     type: Number
   - name: position
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 27
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.27'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -54,3 +43,11 @@ examples:
   mapAnimAdd [3, 0.01, player];
   mapAnimCommit;
   </sqf>
+see_also:
+- mapAnimClear
+- mapAnimCommit
+- mapAnimDone
+- ctrlMapAnimAdd
+- ctrlMapAnimClear
+- ctrlMapAnimCommit
+- ctrlMapAnimDone

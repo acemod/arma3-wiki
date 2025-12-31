@@ -1,5 +1,5 @@
 name: canAddItemToVest
-description: |-
+desc: |-
   Checks if given object can be stored into soldier's vest.
 
   {{Feature|important|
@@ -14,8 +14,7 @@ syntax:
   - unit
   - item
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: unit
     type: Object
@@ -27,8 +26,7 @@ syntax:
     - count
     - ignoreSoldierMaxLoad
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: unit
     type: Object
@@ -37,23 +35,21 @@ syntax:
   - name: count
     type: Number
   - name: ignoreSoldierMaxLoad
-    description: '[[true]] to ignore ''soldierMaxLoad'' param, container [[maxLoad]] is still counted.'
+    desc: '[[true]] to ignore ''soldierMaxLoad'' param, container [[maxLoad]] is still counted.'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
-      arma_3:
-        major: 2
-        minor: 18
+      arma3: '2.18'
   since:
-    arma_3:
-      major: 1
-      minor: 56
+    arma3: '1.56'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 4
+  arma3: '1.4'
 examples:
 - "<sqf>\n_item = \"HandGrenade\";\nprivate _fits = player canAddItemToVest _item;\nif (_fits) then {\n\tplayer addItemToVest _item;\n} else {\n\thint \"no room!\";\n};\n</sqf>"
+see_also:
+- canAdd
+- canAddItemToBackpack
+- canAddItemToUniform

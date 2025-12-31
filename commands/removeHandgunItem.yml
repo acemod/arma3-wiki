@@ -1,5 +1,5 @@
 name: removeHandgunItem
-description: Removes given weapon item, including magazine, from the [[handgunWeapon]]
+desc: Removes given weapon item, including magazine, from the [[handgunWeapon]]
 groups:
 - Unit Inventory
 syntax:
@@ -7,19 +7,22 @@ syntax:
   - unit
   - item
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
   - name: item
-    description: config class
+    desc: config class
     type: String
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 70
+  arma3: '0.70'
 examples:
 - <sqf>player removeHandgunItem "muzzle_snds_L";</sqf>
+see_also:
+- addHandgunItem
+- removeAllHandgunItems
+- removePrimaryWeaponItem
+- removeSecondaryWeaponItem
+- removeBinocularItem

@@ -1,5 +1,5 @@
 name: playMission
-description: The mission is launched (from the main menu).
+desc: The mission is launched (from the main menu).
 groups:
 - System
 syntax:
@@ -8,41 +8,37 @@ syntax:
   - mission
   - skipBriefing
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: campaign
-    description: directory of Campaign, if empty a single mission is launched
+    desc: directory of Campaign, if empty a single mission is launched
     type: String
   - name: mission
-    description: directory if a string
-    type: Unknown
+    desc: directory if a string
+    type: !OneOf
+    - - String
+      - null
+    - - Config
+      - null
   - name: skipBriefing
-    description: If true, the intro and briefing are skipped.
+    desc: If true, the intro and briefing are skipped.
     type: Boolean
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>playMission ["XOutrage", "x05Negotiator.Noe"];</sqf>
 - <sqf>playMission ["", configFile >> "CfgMissions" >> "Missions" >> "Armory1"];</sqf>
 - <sqf>playMission ["", "\A3\Missions_F_Bootcamp\Scenarios\Arsenal.VR"];</sqf>
+see_also:
+- hostMission
+- playScriptedMission
+- createMissionDisplay
+- createMPCampaignDisplay

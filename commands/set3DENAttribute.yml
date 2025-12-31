@@ -1,5 +1,5 @@
 name: set3DENAttribute
-description: |-
+desc: |-
   Sets one of entity [[Eden Editor: Entity Attributes|attributes]]. For the list of all attributes with their properties see [[Eden_Editor:_Setting_Attributes#Attributes|Setting Attributes]].
   {{Feature|important|Attributes are available only within the [[:Category:Eden Editor|Eden Editor]] workspace. You cannot access them in scenario preview or exported scenario!}}
 groups:
@@ -10,22 +10,27 @@ syntax:
   - - class
     - value
   ret:
-  - Boolean
-  - '[[true]] If the value was set'
+    type: Boolean
+    desc: '[[true]] If the value was set'
   params:
   - name: entity
-    type: Unknown
+    type: !OneOf
+    - - EdenEntity
+      - null
+    - - EdenID
+      - null
   - name: class
-    description: attribute name
+    desc: attribute name
     type: String
   - name: value
-    description: new attribute value
+    desc: new attribute value
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>player set3DENAttribute ["allowDamage", false]; // Mark player as invincible</sqf>
+see_also:
+- set3DENAttributes
+- get3DENAttribute

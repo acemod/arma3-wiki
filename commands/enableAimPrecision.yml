@@ -1,5 +1,5 @@
 name: enableAimPrecision
-description: Set whether animation's aim precision affects weapon sway.
+desc: Set whether animation's aim precision affects weapon sway.
 groups:
 - Stamina System
 syntax:
@@ -7,19 +7,20 @@ syntax:
   - unit
   - enable
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
   - name: enable
-    description: '[[true]] enable, [[false]], disabled'
+    desc: '[[true]] enable, [[false]], disabled'
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 62
+  arma3: '1.62'
 examples:
 - <sqf>player enableAimPrecision false;</sqf>
+see_also:
+- Arma
+- '3:'
+- Stamina

@@ -1,5 +1,5 @@
 name: tvSortByValueAll
-description: Sorts all children, including trees deriving from given path.  Value of [[CT_TREE|Tree View]] entries is used for sorting.
+desc: Sorts all children, including trees deriving from given path.  Value of [[CT_TREE|Tree View]] entries is used for sorting.
 groups:
 - GUI Control - Tree View
 syntax:
@@ -8,22 +8,23 @@ syntax:
   - - path
     - reversed
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: path
-    description: path to start sorting from
+    desc: path to start sorting from
     type: ArrayUnknown
   - name: reversed
-    description: '[[true]] to reverse sort it.'
+    desc: '[[true]] to reverse sort it.'
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>_ctrl tvSortByValueAll [[], false]; // Sorts the complete Tree View</sqf>
+see_also:
+- tvSort
+- tvSortByValue
+- tvSortAll

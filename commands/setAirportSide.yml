@@ -1,5 +1,5 @@
 name: setAirportSide
-description: 'Set owning side of the airport. [[Arma: Airport IDs|ID]] is the number to identify which airport on the island you want to check.'
+desc: 'Set owning side of the airport. [[Arma: Airport IDs|ID]] is the number to identify which airport on the island you want to check.'
 groups:
 - Roads and Airports
 - Sides
@@ -8,8 +8,7 @@ syntax:
   - id
   - side
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: id
     type: Number
@@ -19,34 +18,30 @@ syntax:
   - target
   - side
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: target
     type: Object
   - name: side
     type: Side
   since:
-    arma_3:
-      major: 1
-      minor: 68
+    arma3: '1.68'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 8
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.8'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>0 setAirportSide east;</sqf>
+see_also:
+- airportSide
+- landAt
+- land
+- assignToAirport
+- allAirports
+- 'Arma:'
+- Airport
+- IDs

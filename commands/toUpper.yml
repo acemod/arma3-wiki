@@ -1,32 +1,28 @@
 name: toUpper
-description: Converts the supplied Unicode string to all uppercase characters. If the string doesn't have characters with [[toArray|codes]] > 255, use [[toUpperANSI]].
+desc: Converts the supplied Unicode string to all uppercase characters. If the string doesn't have characters with [[toArray|codes]] > 255, use [[toUpperANSI]].
 groups:
 - Strings
 syntax:
 - call: !Unary string
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: string
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 9
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.9'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>hint toUpper "AaBb1"; // returns "AABB1"</sqf>
+see_also:
+- toString
+- toArray
+- toLower
+- toFixed
+- toLowerANSI
+- toUpperANSI

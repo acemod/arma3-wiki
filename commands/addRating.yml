@@ -1,5 +1,5 @@
 name: addRating
-description: |-
+desc: |-
   Add a number to the [[rating]] of a unit - negative values can be used to reduce the rating.<br>
   This command is usually used to reward for completed mission objectives.The rating is given at the end of the mission and is automatically adjusted when killing enemies or friendlies.<br>
   When the rating gets below -2000, the unit's side switches to [[sideEnemy]] and the unit is attacked by everyone.
@@ -11,8 +11,7 @@ syntax:
   - unitName
   - rating
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitName
     type: Object
@@ -21,27 +20,13 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player addRating 2000;</sqf>
 - |-
@@ -50,3 +35,14 @@ examples:
   private _wantedRating = 9001;
   player addRating (_wantedRating - rating player);
   </sqf>
+see_also:
+- Side
+- Relations
+- 'ArmA:'
+- Rating
+- Values|Rating
+- Values
+- rating
+- rank
+- setUnitRank
+- sideEnemy

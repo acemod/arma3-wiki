@@ -1,22 +1,20 @@
 name: openGPS
-description: Opens or closes minimap if player has {{hl|"ItemGPS"}} linked in inventory and {{hl|"MinimapDisplayComponent"}} is not disabled with [[enableInfoPanelComponent]]. Returns [[true]] on success. If more than one minimap is open (see [[infoPanels]], [[infoPanel]]) each call to the command will close only 1 minimap. Visibility of minimap can be checked with [[visibleGPS]] command.
+desc: Opens or closes minimap if player has {{hl|"ItemGPS"}} linked in inventory and {{hl|"MinimapDisplayComponent"}} is not disabled with [[enableInfoPanelComponent]]. Returns [[true]] on success. If more than one minimap is open (see [[infoPanels]], [[infoPanel]]) each call to the command will close only 1 minimap. Visibility of minimap can be checked with [[visibleGPS]] command.
 groups:
 - Interaction
 syntax:
 - call: !Unary open
   ret:
-  - Boolean
-  - '[[true]] on success'
+    type: Boolean
+    desc: '[[true]] on success'
   params:
   - name: open
-    description: '[[true]] to open, [[false]] to close'
+    desc: '[[true]] to open, [[false]] to close'
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 4
+  arma3: '2.4'
 examples:
 - |-
   <sqf>
@@ -30,3 +28,7 @@ examples:
   // or
   while { visibleGPS } do { openGPS false };
   </sqf>
+see_also:
+- showGPS
+- shownGPS
+- visibleGPS

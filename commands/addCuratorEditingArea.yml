@@ -1,5 +1,5 @@
 name: addCuratorEditingArea
-description: Adds or changes curator edit area (depends on if ID is already used).
+desc: Adds or changes curator edit area (depends on if ID is already used).
 groups:
 - Curator
 syntax:
@@ -9,11 +9,10 @@ syntax:
     - position
     - radius
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: curatorObj
-    description: curator module.
+    desc: curator module.
     type: Object
   - name: editAreaID
     type: Number
@@ -23,10 +22,15 @@ syntax:
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>myCurator addCuratorEditingArea [4, position player, 1000];</sqf>
+see_also:
+- Arma
+- '3:'
+- Curator
+- removeCuratorEditingArea
+- removeAllCuratorEditingAreas
+- curatorEditingArea

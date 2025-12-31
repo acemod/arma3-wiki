@@ -1,20 +1,19 @@
 name: getOxygenRemaining
-description: Returns amount of remaining oxygen.
+desc: Returns amount of remaining oxygen.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary unit
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_oxygen = getOxygenRemaining player;</sqf>
+see_also:
+- setOxygenRemaining

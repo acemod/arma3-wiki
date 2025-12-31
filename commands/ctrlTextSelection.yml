@@ -1,21 +1,18 @@
 name: ctrlTextSelection
-description: "Returns edit control text selection in format [start, length, selectedText]. \n{{Feature|informative|''length'' can be negative if text selection is made from right to left. Use [[abs]] with ''length'' or [[count]] with {{hl|selectedText}} if string length is required. ''start'' always indicates at what position in text the selection is started. The cursor position will always be at the end of the selection. So if selection is made from right to left the cursor position will be at the left end of the selection. In order to find cursor position add ''start'' and ''length'' together (see {{Link|#Example 3}}).}}"
+desc: "Returns edit control text selection in format [start, length, selectedText]. \n{{Feature|informative|''length'' can be negative if text selection is made from right to left. Use [[abs]] with ''length'' or [[count]] with {{hl|selectedText}} if string length is required. ''start'' always indicates at what position in text the selection is started. The cursor position will always be at the end of the selection. So if selection is made from right to left the cursor position will be at the left end of the selection. In order to find cursor position add ''start'' and ''length'' together (see {{Link|#Example 3}}).}}"
 groups:
 - GUI Control
 syntax:
 - call: !Unary control
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 0
+  arma3: '2.0'
 examples:
 - |-
   Selection is made from left to right:
@@ -29,3 +26,5 @@ examples:
   ctrlTextSelection _control params ["_start", "_length"];
   private _cursorPos = _start + _length;
   </sqf>
+see_also:
+- ctrlSetTextSelection

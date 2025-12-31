@@ -1,20 +1,21 @@
 name: ctrlFontHeight
-description: Returns control's font size, usually {{hl|sizeEx}} value (see [[ctrlSetFontHeight]]).
+desc: Returns control's font size, usually {{hl|sizeEx}} value (see [[ctrlSetFontHeight]]).
 groups:
 - GUI Control
 syntax:
 - call: !Unary control
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>ctrlFontHeight _control;</sqf>
+see_also:
+- ctrlTextHeight
+- ctrlTextWidth
+- ctrlSetFontHeight

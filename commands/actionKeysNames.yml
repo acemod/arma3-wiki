@@ -1,5 +1,5 @@
 name: actionKeysNames
-description: |-
+desc: |-
   Returns a list of button names assigned to the given user action.
   Action names can be found in config class {{hl|ControllerSchemes}} or [[:Category:Key Actions|user action names]].
 groups:
@@ -7,8 +7,7 @@ groups:
 syntax:
 - call: !Unary userAction
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: userAction
     type: String
@@ -17,40 +16,33 @@ syntax:
   - maxKeys
   - inputDevicePriority
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: userAction
     type: String
   - name: maxKeys
-    description: maximum number of keys to return
+    desc: maximum number of keys to return
     type: Number
   - name: inputDevicePriority
-    type: Unknown
+    type: !OneOf
+    - - String
+      - null
     since:
-      arma_3:
-        major: 1
-        minor: 36
+      arma3: '1.36'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_list = actionKeysNames "ReloadMagazine"; // """R"" or ""XBox X"""</sqf>
+see_also:
+- actionKeys
+- actionKeysImages
+- actionKeysNamesArray
+- actionName
+- inputAction

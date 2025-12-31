@@ -1,5 +1,5 @@
 name: setMarkerPos
-description: |-
+desc: |-
   Moves the marker. If position is given in 3D format, {{hl|z}} coordinate is stored with the marker and will be used when marker is passed to commands like [[createVehicle]], [[createUnit]], [[createAgent]], [[createMine]], [[setVehiclePosition]] for example. In case of an object, the object's model [0,0,0] is used.
   {{Feature|informative|
   '''Multiplayer optimisation:''' Global marker commands always broadcast the ''entire'' marker state over the network.
@@ -12,36 +12,38 @@ syntax:
   - markerName
   - position
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: markerName
     type: String
   - name: position
-    type: Unknown
+    type: !OneOf
+    - - Position2d
+      - null
+    - - Position3dAGL
+      - null
+    - - Object
+      - null
 argument_loc: Unspecified
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>"MarkerOne" setMarkerPos getMarkerPos "MarkerTwo";</sqf>
+see_also:
+- setMarkerPosLocal
+- setMarkerBrush
+- setMarkerColor
+- setMarkerDir
+- createMarker
+- setMarkerShape
+- setMarkerSize
+- setMarkerText
+- setMarkerType
+- setMarkerAlpha

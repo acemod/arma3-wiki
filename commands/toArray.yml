@@ -1,5 +1,5 @@
 name: toArray
-description: |-
+desc: |-
   Converts the supplied [[String]] into an [[Array]] of [[Number]]s. The numbers in the created array are the decimal {{Link|https://en.wikipedia.org/wiki/Unicode|Unicode}} representations of characters.
   {{Feature|arma3|Since v2.04 this command can also handle [[HashMap]]s. See alternative syntax.}}
 groups:
@@ -9,57 +9,56 @@ groups:
 syntax:
 - call: !Unary string
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: string
     type: String
 - call: !Unary hashMap
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: hashMap
     type: HashMapUnknown
   since:
-    arma_3:
-      major: 2
-      minor: 4
+    arma3: '2.4'
 - call: !Binary
   - hashMap
   - splitArrays
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: hashMap
     type: HashMapUnknown
   - name: splitArrays
-    description: see return value
+    desc: see return value
     type: Boolean
   since:
-    arma_3:
-      major: 2
-      minor: 4
+    arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 9
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.9'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>hint format ["%1", toArray "AaŒ"];// Returns "[65,97,338]"</sqf>
 - <sqf>toArray _hashMap params ["_keys", "_values"];</sqf>
 - "<sqf>\nprivate _hashmap = [\"cow\", \"cat\", \"chicken\"] createHashMapFromArray [10000, 20000, 20000];\n_hashmap toArray true;\t// returns [[\"cow\", \"cat\", \"chicken\"], [10000, 20000, 20000]] - same as Syntax 2\n_hashmap toArray false;\t// returns [[\"cow\", 10000], [\"cat\", 20000], [\"chicken\", 20000]]\n</sqf>"
+see_also:
+- set
+- resize
+- reverse
+- select
+- in
+- find
+- toString
+- count
+- deleteAt
+- splitString
+- joinString
+- toUpperANSI]],
+- '{{Link|http://www.utf8-chartable.de/|Unicode'
+- Character
+- Table}}

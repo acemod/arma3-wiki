@@ -1,5 +1,5 @@
 name: tvSetText
-description: Sets string text to item on given path. IDC means id of parent Tree View.
+desc: Sets string text to item on given path. IDC means id of parent Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
@@ -8,13 +8,14 @@ syntax:
   - path
   - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   - name: text
     type: String
 - call: !Binary
@@ -22,21 +23,37 @@ syntax:
   - - path
     - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   - name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>tvSetText [101, [0], "Test data"];</sqf>
 - <sqf>_ctrl tvSetText [[0,0,0], "Test data"];</sqf>
+see_also:
+- tvAdd
+- tvClear
+- tvCollapse
+- tvCount
+- tvCurSel
+- tvData
+- tvDelete
+- tvExpand
+- tvPicture
+- tvSetCurSel
+- tvSetPicture
+- tvSetValue
+- tvSort
+- tvSortByValue
+- tvText
+- tvValue

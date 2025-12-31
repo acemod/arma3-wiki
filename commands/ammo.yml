@@ -1,5 +1,5 @@
 name: ammo
-description: |-
+desc: |-
   Check how many rounds are left in the currently loaded magazine in the given muzzle.
   {{Feature|informative|In older titles and before {{arma3}} v1.56, the command did not return ammo for units in vehicles.}}
 groups:
@@ -9,39 +9,28 @@ syntax:
   - unit
   - muzzle
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: unit
     type: Object
   - name: muzzle
-    description: weapon's muzzle - see the [[:Category:Weapons|Weapons]] topic for reference about possible values
+    desc: weapon's muzzle - see the [[:Category:Weapons|Weapons]] topic for reference about possible values
     type: String
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_count = player ammo "M16"; // returns 30 in case of a full magazine</sqf>
 - <sqf>_count = player ammo "M203Muzzle";</sqf>
 - <sqf>_count = player ammo primaryWeapon player;</sqf>
+see_also:
+- setAmmo
+- someAmmo
+- magazines

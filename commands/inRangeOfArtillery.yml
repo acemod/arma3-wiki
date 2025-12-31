@@ -1,5 +1,5 @@
 name: inRangeOfArtillery
-description: Returns true if all given units are able to fire at given position with given magazineType.
+desc: Returns true if all given units are able to fire at given position with given magazineType.
 groups:
 - Artillery
 syntax:
@@ -8,22 +8,27 @@ syntax:
   - - units
     - magazineType
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: pos
     type: Position
   - name: units
-    description: array of units.
+    desc: array of units.
     type: ArrayUnknown
   - name: magazineType
-    description: '''''''case-sensitive'''''''
+    desc: '''''''case-sensitive'''''''
     type: String
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_isInRange = getMarkerPos "myTarget" inRangeOfArtillery [[myArty], "32Rnd_155mm_Mo_shells"];</sqf>
+see_also:
+- getArtilleryAmmo
+- commandArtilleryFire
+- doArtilleryFire
+- enableEngineArtillery
+- getArtilleryComputerSettings
+- shownArtilleryComputer
+- getArtilleryETA

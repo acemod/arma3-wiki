@@ -1,26 +1,31 @@
 name: difficulty
-description: Returns high-level selected difficulty mode.
+desc: Returns high-level selected difficulty mode.
 groups:
 - Difficulty
 syntax:
 - call: Nular
   ret:
-  - Number
-  - |-
-    Can be one of:
-    * 0 (Recruit)
-    * 1 (Regular)
-    * 2 (Veteran)
-    * 3 (Elite)
+    type: Number
+    desc: |-
+      Can be one of:
+      * 0 (Recruit)
+      * 1 (Regular)
+      * 2 (Veteran)
+      * 3 (Elite)
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 56
+  arma3: '0.56'
 examples:
 - "<sqf>\nif (difficulty == 0) then\n{\n\thint \"You will need to follow my lead - read the Field Manual!\";\n};\n</sqf>"
 - |-
   [[File:Difficulty.jpg|400px|thumb|Note: "Insane" is a modded difficulty]] The command returns the index of selected difficulty as they appear in ''CfgDifficulties'':
   <sqf>hint str difficulty; //Result: 4</sqf>
+see_also:
+- difficultyOption
+- Arma
+- '3:'
+- Difficulty
+- Settings
+- missionDifficulty

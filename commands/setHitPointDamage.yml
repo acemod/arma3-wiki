@@ -1,5 +1,5 @@
 name: setHitPointDamage
-description: |-
+desc: |-
   {{{!}} class="wikitable float-right align-center-col-2"
   ! {{Link|Category: Event Handlers|Event Handler}}
   ! Triggered
@@ -31,59 +31,46 @@ syntax:
     - instigator
     - breakRotor
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
-    description: vehicle to be damaged
+    desc: vehicle to be damaged
     type: Object
   - name: hitPointName
-    description: name of the Hit Point class
+    desc: name of the Hit Point class
     type: String
   - name: damage
-    description: level of damage, in range 0..1
+    desc: level of damage, in range 0..1
     type: Number
   - name: useEffects
-    description: '[[false]] to skip destruction effects'
+    desc: '[[false]] to skip destruction effects'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
-      arma_3:
-        major: 1
-        minor: 68
+      arma3: '1.68'
   - name: killer
     type: Unknown
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 8
+      arma3: '2.8'
   - name: instigator
     type: Unknown
     optional: true
     since:
-      arma_3:
-        major: 2
-        minor: 12
+      arma3: '2.12'
   - name: breakRotor
-    description: if the hitpoint is rotor on a helicopter, [[true]] will break the rotor as well as play corresponding sound if 'useEffects' is also [[true]].
+    desc: if the hitpoint is rotor on a helicopter, [[true]] will break the rotor as well as play corresponding sound if 'useEffects' is also [[true]].
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
-      arma_3:
-        major: 2
-        minor: 18
+      arma3: '2.18'
 argument_loc: Local
 effect_loc: Global
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>vehicle player setHitPointDamage ["hitEngine2", 1.0];</sqf>
 - |-
@@ -93,3 +80,18 @@ examples:
   player setHitPointDamage ["hitHands", 0.5];
   player setHitPointDamage ["hitLegs", 0.5];
   </sqf>
+see_also:
+- getHitPointDamage
+- getAllHitPointsDamage
+- setHit
+- getHit
+- setDamage
+- damage
+- getHitIndex
+- setHitIndex
+- forceHitPointsDamageSync
+- BIS_fnc_setHitPointDamage
+- getHitPointDamage#Notes|Common
+- TKOH
+- Hit
+- Points

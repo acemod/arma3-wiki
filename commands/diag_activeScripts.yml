@@ -1,18 +1,24 @@
 name: diag_activeScripts
-description: 'Returns 4 element array with numbers of currently running scripts in format: [[[spawn]]-ed, [[execVM]]-ed, [[exec]]-ed, [[execFSM]]-ed]'
+desc: 'Returns 4 element array with numbers of currently running scripts in format: [[[spawn]]-ed, [[execVM]]-ed, [[exec]]-ed, [[execFSM]]-ed]'
 groups:
 - Diagnostic
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 64
+  arma3: '1.64'
 examples:
 - <sqf>hint str diag_activeScripts; //[0,0,0,1]</sqf>
+see_also:
+- diag_log
+- diag_fps
+- diag_fpsmin
+- diag_frameno
+- diag_tickTime
+- diag_activeSQFScripts
+- diag_activeSQSScripts
+- diag_activeMissionFSMs

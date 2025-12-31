@@ -1,5 +1,5 @@
 name: getMissionDLCs
-description: |-
+desc: |-
   Returns list of DLCs that are used in the mission.
   {{Feature|important|The list is created from units listed in [[Mission.sqm|mission.sqm]] and does '''not''' detect units later created by scripts.}}
 groups:
@@ -8,14 +8,19 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - list of DLCs detected for the mission
+    type: ArrayUnknown
+    desc: list of DLCs detected for the mission
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 62
+  arma3: '1.62'
 examples:
 - <sqf>_usedDLCs = getMissionDLCs; // returns e.g ["Orange","Enoch","Expansion","Heli","Contact","Mark","Argo","Jets"]</sqf>
+see_also:
+- getDLCs
+- getObjectDLC
+- getPersonUsedDLCs
+- getDLCAssetsUsageByName
+- getDLCAssetsUsage
+- getAssetDLCInfo

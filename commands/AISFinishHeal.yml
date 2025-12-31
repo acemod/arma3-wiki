@@ -1,5 +1,5 @@
 name: AISFinishHeal
-description: Alternative Injury Simulation (AIS) end state. Used to tell engine that script side healing is done when using "HandleHeal" event handler.
+desc: Alternative Injury Simulation (AIS) end state. Used to tell engine that script side healing is done when using "HandleHeal" event handler.
 groups:
 - Object Manipulation
 syntax:
@@ -8,31 +8,31 @@ syntax:
   - healer
   - healerCanHeal
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: wounded
+    desc: wounded
     type: Object
   - name: healer
-    description: medic
+    desc: medic
     type: Object
   - name: healerCanHeal
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>AISFinishHeal [_wounded, _medic, true];</sqf>
+see_also:
+- '{{Link|Arma'
+- '2:'
+- Event
+- Handlers#HandleHeal}}
+- '{{Link|Arma'
+- '3:'
+- Event
+- Handlers#HandleHeal}}

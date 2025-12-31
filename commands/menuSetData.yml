@@ -1,5 +1,5 @@
 name: menuSetData
-description: Sets data into menu entry on given path.
+desc: Sets data into menu entry on given path.
 groups:
 - GUI Control - Menu
 syntax:
@@ -8,8 +8,7 @@ syntax:
   - path
   - data
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
@@ -22,8 +21,7 @@ syntax:
   - - path
     - data
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -34,8 +32,8 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>findDisplay 313 displayCtrl 120 menuSetData [[0, 1], "[true, player, 'Hello World!', 1337]"];</sqf>
+see_also:
+- menuData

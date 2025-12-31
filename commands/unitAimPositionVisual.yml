@@ -1,21 +1,24 @@
 name: unitAimPositionVisual
-description: Returns the position on the unit other units can aim at in render scope. See also [[aimPos]], [[unitAimPosition]].
+desc: Returns the position on the unit other units can aim at in render scope. See also [[aimPos]], [[unitAimPosition]].
 groups:
 - Object Manipulation
 - Render Time Scope
 syntax:
 - call: !Unary unit
   ret:
-  - Position3dAGL
-  - null
+    type: Position3dAGL
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 64
+  arma3: '1.64'
 examples:
 - <sqf>unitAimPositionVisual player;</sqf>
+see_also:
+- unitAimPosition
+- aimPos
+- eyePos
+- getPosASL
+- weaponDirection

@@ -1,23 +1,25 @@
 name: combatBehaviour
-description: 'Returns combat behaviour of unit or group. To set unit or group behaviour see [[setCombatBehaviour]]. The behaviour is one of:'
+desc: 'Returns combat behaviour of unit or group. To set unit or group behaviour see [[setCombatBehaviour]]. The behaviour is one of:'
 groups:
 - AI Behaviour
 - Groups
 syntax:
 - call: !Unary unitOrGroup
   ret:
-  - String
-  - 'unit behaviour - one of:'
+    type: String
+    desc: 'unit behaviour - one of:'
   params:
   - name: unitOrGroup
-    description: AI unit or group
-    type: Unknown
+    desc: AI unit or group
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 4
+  arma3: '2.4'
 examples:
 - |-
   <sqf>
@@ -29,3 +31,12 @@ examples:
   group unit1 setCombatBehaviour "SAFE";
   combatBehaviour group unit1; // "SAFE"
   </sqf>
+see_also:
+- setCombatBehaviour
+- setBehaviour
+- setBehaviourStrong
+- setWaypointBehaviour
+- combatMode
+- setCombatMode
+- skill
+- setSkill

@@ -1,20 +1,23 @@
 name: pose
-description: Returns the pose of the given unit.
+desc: Returns the pose of the given unit.
 groups:
 - Unit Control
 syntax:
 - call: !Unary unit
   ret:
-  - String
-  - 'can be one of:'
+    type: String
+    desc: 'can be one of:'
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 8
+  arma3: '2.8'
 examples:
 - <sqf>if (pose player == "SurfaceSwimming") then { hint "How's water?" };</sqf>
+see_also:
+- animationState
+- unitPos
+- stance
+- getLeaning

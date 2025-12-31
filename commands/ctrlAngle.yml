@@ -1,5 +1,5 @@
 name: ctrlAngle
-description: |-
+desc: |-
   Gets rotation info of a control set as {{hl|ST_PICTURE}}. Supported control types:
   * [[CT_STATIC]]
   * {{GVI|arma3|2.10|size= 0.75}} [[CT_ACTIVETEXT]]
@@ -8,17 +8,16 @@ groups:
 syntax:
 - call: !Unary control
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: control
-    description: picture control
+    desc: picture control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 52
+  arma3: '1.52'
 examples:
 - <sqf>ctrlAngle _control;</sqf>
+see_also:
+- ctrlSetAngle

@@ -1,5 +1,5 @@
 name: addTeamMember
-description: |-
+desc: |-
   Add given member to given team. Effect is local, unless both member and team are local to PC on which command is executed, then effect is global.
 
   <br><br> The same [[Team Member]] can be member of several different [[teams]] at the same time.
@@ -10,8 +10,7 @@ syntax:
   - team
   - member
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: team
     type: TeamMember
@@ -20,17 +19,20 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_team addTeamMember _teamMember;</sqf>
+see_also:
+- createTeam
+- deleteTeam
+- forEachMemberTeam
+- removeTeamMember
+- teamMember
+- teamName
+- teams
+- teamType
+- forEachMember
+- forEachMemberAgent

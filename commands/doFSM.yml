@@ -1,5 +1,5 @@
 name: doFSM
-description: "Orders a unit to process command defined by [[FSM]] file (silently). \n\nUnlike with execFSM where ''_this'' is passed to the FSM, the following parameters are passed when using doFSM/commandFSM:\n\n: _leader: leader of subgroup with this command \n: _destination: command destination/position\n: _target: command target \n: _units: list of all persons in subgroup"
+desc: "Orders a unit to process command defined by [[FSM]] file (silently). \n\nUnlike with execFSM where ''_this'' is passed to the FSM, the following parameters are passed when using doFSM/commandFSM:\n\n: _leader: leader of subgroup with this command \n: _destination: command destination/position\n: _target: command target \n: _units: list of all persons in subgroup"
 groups:
 - Unit Control
 syntax:
@@ -9,11 +9,16 @@ syntax:
     - position
     - target
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - !ArrayUnsized
+        type: Object
+        desc: ''
+      - null
   - name: fsmName
     type: String
   - name: position
@@ -23,21 +28,20 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_soldierOne doFSM ["move.fsm", position player, player];</sqf>
 - <sqf>units player doFSM ["move.fsm", position player, player];</sqf>
+see_also:
+- FSM
+- FSM_Editor_Manual
+- commandFSM
+- completedFSM
+- execFSM
+- getFSMVariable
+- setFSMVariable
+- unitReady

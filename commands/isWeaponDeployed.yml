@@ -1,12 +1,11 @@
 name: isWeaponDeployed
-description: Returns true if weapon is currently deployed.
+desc: Returns true if weapon is currently deployed.
 groups:
 - Weapons
 syntax:
 - call: !Unary unit
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: unit
     type: Object
@@ -14,25 +13,23 @@ syntax:
   - unit
   - onGround
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: unit
     type: Object
   - name: onGround
-    description: '[[true]] to check if deployed on ground, [[false]] to check if deployed on object. Omitted - same as main syntax.'
+    desc: '[[true]] to check if deployed on ground, [[false]] to check if deployed on object. Omitted - same as main syntax.'
     type: Boolean
     optional: true
   since:
-    arma_3:
-      major: 2
-      minor: 6
+    arma3: '2.6'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 42
+  arma3: '1.42'
 examples:
 - <sqf>_dep = isWeaponDeployed player;</sqf>
 - <sqf>_depOnObj = isWeaponDeployed [player, false];</sqf>
+see_also:
+- isWeaponRested
+- canDeployWeapon

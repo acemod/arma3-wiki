@@ -1,5 +1,5 @@
 name: sideUnknown
-description: |-
+desc: |-
   The unknown [[Side|side]].
   <br>Used when the side of a unit is unknown, e.g. for spotted targets with insufficient information.
 groups:
@@ -7,24 +7,15 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Side
-  - null
+    type: Side
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -35,3 +26,20 @@ examples:
   soldier1 reveal [soldier2,1.5];
   //returns: [[[1556.52,5050.08,1.32402],"SoldierWB",WEST,0.0211193,soldier2,5]]
   </sqf>
+see_also:
+- nearTargets
+- reveal
+- Side
+- side
+- west
+- east
+- resistance
+- civilian
+- sideLogic
+- sideFriendly
+- sideEnemy
+- playerSide
+- sideEmpty
+- sideAmbientLife
+- Side
+- Relations

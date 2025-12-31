@@ -1,5 +1,5 @@
 name: checkVisibility
-description: |-
+desc: |-
   {{{!}} class="wikitable float-right"
   ! style="width: 50%" {{!}} Affected by
   ! Not affected by
@@ -27,35 +27,43 @@ syntax:
   - - beg
     - end
   ret:
-  - Number
-  - how much end position is visible to start position in range 0..1, where 1 is fully visible.
+    type: Number
+    desc: how much end position is visible to start position in range 0..1, where 1 is fully visible.
   params:
   - name: ignore
-    description: object to exclude from calculations
+    desc: object to exclude from calculations
     type: Object
   - name: LOD
-    description: 'level of details to use. Possible values are: {{hl|"FIRE"}}, {{hl|"VIEW"}}, {{hl|"GEOM"}}, {{hl|"IFIRE"}}, and {{GVI|arma3|2.02|size= 0.75}} {{hl|"PHYSX"}}'
+    desc: 'level of details to use. Possible values are: {{hl|"FIRE"}}, {{hl|"VIEW"}}, {{hl|"GEOM"}}, {{hl|"IFIRE"}}, and {{GVI|arma3|2.02|size= 0.75}} {{hl|"PHYSX"}}'
     type: String
   - name: ignore2
-    description: second object to exclude from calculations
+    desc: second object to exclude from calculations
     type: Object
     optional: true
     default: '[[objNull]]'
     since:
-      arma_3:
-        major: 1
-        minor: 62
+      arma3: '1.62'
   - name: beg
-    description: start position in format [[Position#PositionASL|PositionASL]]
+    desc: start position in format [[Position#PositionASL|PositionASL]]
     type: ArrayUnknown
   - name: end
-    description: end position in format [[Position#PositionASL|PositionASL]]
+    desc: end position in format [[Position#PositionASL|PositionASL]]
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>private _canSee = [objNull, "VIEW"] checkVisibility [eyePos player, eyePos unit1];</sqf>
+see_also:
+- lineIntersectsWith
+- lineIntersectsSurfaces
+- lineIntersectsObjs
+- intersect
+- terrainIntersect
+- terrainIntersectASL
+- terrainIntersectAtASL
+- lineIntersects
+- cursorObject
+- cursorTarget
+- disableRemoteSensors

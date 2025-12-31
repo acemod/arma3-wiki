@@ -1,5 +1,5 @@
 name: connectTerminalToUAV
-description: Connect person with UAV terminal to UAV unit. UAV Terminal item needs to be assigned to GPS slot. In MP the connection is handled [[local]]ly, therefore it is possible for multiple MP clients to connect to the same UAV. However, each UAV can only have one connection to a terminal per MP client, so if UAV is already connected to another terminal on the same MP client, this new connection will fail.
+desc: Connect person with UAV terminal to UAV unit. UAV Terminal item needs to be assigned to GPS slot. In MP the connection is handled [[local]]ly, therefore it is possible for multiple MP clients to connect to the same UAV. However, each UAV can only have one connection to a terminal per MP client, so if UAV is already connected to another terminal on the same MP client, this new connection will fail.
 groups:
 - Remote Control
 syntax:
@@ -7,8 +7,8 @@ syntax:
   - person
   - uav
   ret:
-  - Boolean
-  - '[[true]] on success'
+    type: Boolean
+    desc: '[[true]] on success'
   params:
   - name: person
     type: Object
@@ -17,9 +17,14 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 76
+  arma3: '0.76'
 examples:
 - <sqf>bool = player connectTerminalToUAV uav1;</sqf>
 - <sqf>player connectTerminalToUAV objNull; //disconnect</sqf>
+see_also:
+- allUnitsUAV
+- getConnectedUAV
+- isUAVConnected
+- UAVControl
+- showUAVFeed
+- shownUAVFeed

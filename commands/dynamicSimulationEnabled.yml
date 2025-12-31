@@ -1,20 +1,38 @@
 name: dynamicSimulationEnabled
-description: A getter for [[enableDynamicSimulation]].
+desc: A getter for [[enableDynamicSimulation]].
 groups:
 - Dynamic Simulation
 syntax:
 - call: !Unary object
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: object
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 68
+  arma3: '1.68'
 examples:
 - <sqf>hint str dynamicSimulationEnabled _myObject;</sqf>
+see_also:
+- enableDynamicSimulationSystem
+- dynamicSimulationSystemEnabled
+- enableDynamicSimulation
+- setDynamicSimulationDistance
+- dynamicSimulationDistance
+- setDynamicSimulationDistanceCoef
+- dynamicSimulationDistanceCoef
+- triggerDynamicSimulation
+- canTriggerDynamicSimulation
+- enableSimulation
+- simulationEnabled
+- enableSimulationGlobal
+- Arma
+- '3:'
+- Dynamic
+- Simulation

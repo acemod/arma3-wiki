@@ -1,5 +1,5 @@
 name: lbSetColor
-description: Sets the color of the item (left) with the given index of the listbox or combobox with id idc of the topmost user [[Dialog]] to color.
+desc: Sets the color of the item (left) with the given index of the listbox or combobox with id idc of the topmost user [[Dialog]] to color.
 groups:
 - GUI Control - ListBox
 syntax:
@@ -8,11 +8,10 @@ syntax:
   - index
   - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
-    description: control's IDC
+    desc: control's IDC
     type: Number
   - name: index
     type: Number
@@ -23,8 +22,7 @@ syntax:
   - - index
     - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -35,27 +33,17 @@ syntax:
 argument_loc: Local
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>lbSetColor [101, 0, [0, 1, 0, 0.5]];</sqf>
 - <sqf>_control lbSetColor [0, [0, 1, 0, 0.5]];</sqf>
+see_also:
+- lbColor
+- lbSetColorRight
+- lbColorRight

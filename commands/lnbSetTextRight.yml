@@ -1,5 +1,5 @@
 name: lnbSetTextRight
-description: Sets cell's right-aligned text. Does not replace [[lnbText|cell's text]].
+desc: Sets cell's right-aligned text. Does not replace [[lnbText|cell's text]].
 groups:
 - GUI Control - ListNBox
 syntax:
@@ -9,16 +9,15 @@ syntax:
     - column
   - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: row
-    description: 0-based index (first row is 0, second is 1, etc)
+    desc: 0-based index (first row is 0, second is 1, etc)
     type: Number
   - name: column
-    description: 0-based index (first column is 0, second is 1, etc)
+    desc: 0-based index (first column is 0, second is 1, etc)
     type: Number
   - name: text
     type: String
@@ -28,25 +27,27 @@ syntax:
       - column
     - text
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ctrl
     type: Control
   - name: row
-    description: 0-based index (first row is 0, second is 1, etc)
+    desc: 0-based index (first row is 0, second is 1, etc)
     type: Number
   - name: column
-    description: 0-based index (first column is 0, second is 1, etc)
+    desc: 0-based index (first column is 0, second is 1, etc)
     type: Number
   - name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - <sqf>lnbSetTextRight [1492, [1,0], "right text"];</sqf>
 - <sqf>_ctrl lnbSetTextRight [[0, 3], "right text"];</sqf>
+see_also:
+- lnbTextRight
+- lnbSetColorRight
+- lnbColorRight
+- lnbText

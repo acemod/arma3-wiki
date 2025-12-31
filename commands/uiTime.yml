@@ -1,23 +1,37 @@
 name: uiTime
-description: Returns UI time elapsed since mission started (in seconds). Unlike [[time]] the [[uiTime]] does not stop when game is [[isGamePaused | paused]].
+desc: Returns UI time elapsed since mission started (in seconds). Unlike [[time]] the [[uiTime]] does not stop when game is [[isGamePaused | paused]].
 groups:
 - Time
 - Mission Information
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 20
+  arma3: '2.20'
 examples:
 - |-
   <sqf>
   private _future = uiTime + 30;
   waitUntil { uiTime >= _future };  // continue after 30 seconds
   </sqf>
+see_also:
+- uiSleep
+- time
+- date
+- dayTime
+- serverTime
+- skipTime
+- accTime
+- dateToNumber
+- timeMultiplier
+- setTimeMultiplier
+- missionStart
+- diag_tickTime
+- diag_deltaTime
+- systemTime
+- systemTimeUTC
+- BIS_fnc_timeToString

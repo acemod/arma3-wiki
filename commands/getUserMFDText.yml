@@ -1,20 +1,23 @@
 name: getUserMFDText
-description: Returns array of user text variables used in MFD.
+desc: Returns array of user text variables used in MFD.
 groups:
 - GUI Control
 syntax:
 - call: !Unary vehicle
   ret:
-  - ArrayUnknown
-  - null
+    type: !ArrayUnsized
+      type: String
+      desc: ''
   params:
   - name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 78
+  arma3: '1.78'
 examples:
 - <sqf>getUserMFDText _vehicle;</sqf>
+see_also:
+- setUserMFDText
+- setUserMFDValue
+- getUserMFDValue

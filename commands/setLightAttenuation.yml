@@ -1,5 +1,5 @@
 name: setLightAttenuation
-description: |-
+desc: |-
   Sets attenuation of light. Standard method of attenuation (1 / (constant + linear*dist + quadratic*dist*dist)).
   ''start'' param represents distance where the attenuation starts to take effects (dist = distance - start).
 groups:
@@ -14,36 +14,44 @@ syntax:
     - hardlimitstart
     - hardlimitend
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: light
     type: Object
   - name: start
-    description: distance with 100% intensity, falloff starts here
+    desc: distance with 100% intensity, falloff starts here
     type: Number
   - name: constant
-    description: constant attenuation coef
+    desc: constant attenuation coef
     type: Number
   - name: linear
-    description: linear attenuation coef
+    desc: linear attenuation coef
     type: Number
   - name: quadratic
-    description: quadratic attenuation coef
+    desc: quadratic attenuation coef
     type: Number
   - name: hardlimitstart
-    description: max distance hard limit start (start of fading of intensity to 0) in m
+    desc: max distance hard limit start (start of fading of intensity to 0) in m
     type: Number
     optional: true
   - name: hardlimitend
-    description: max distance hard limit end (end of fading of intensity to 0) in m
+    desc: max distance hard limit end (end of fading of intensity to 0) in m
     type: Number
     optional: true
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>myLight setLightAttenuation [2, 4, 4, 0, 9, 10];</sqf>
+see_also:
+- setLightAmbient
+- setLightColor
+- lightAttachObject
+- lightDetachObject
+- setLightBrightness
+- setLightIntensity
+- setLightUseFlare
+- setLightFlareSize
+- setLightFlareMaxDistance
+- setLightDayLight

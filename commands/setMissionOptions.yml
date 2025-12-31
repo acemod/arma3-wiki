@@ -1,5 +1,5 @@
 name: setMissionOptions
-description: |-
+desc: |-
   Sets various mission options. The options are automatically reset between missions and are saved/restored with the save system.<br>
   Available Options:
 
@@ -15,18 +15,20 @@ groups:
 syntax:
 - call: !Unary options
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: options
-    description: a HashMap containing all the options to be changed
+    desc: a HashMap containing all the options to be changed
     type: HashMapUnknown
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  arma_3:
-    major: 2
-    minor: 18
+  arma3: '2.18'
 examples:
 - <sqf>setMissionOptions createHashMapFromArray [["IgnoreNoDamage", true], ["IgnoreFakeHeadHit", true], ["IgnoreUpsideDownDamage", true]];</sqf>
 - <sqf>setMissionOptions createHashMap; // reset options to default</sqf>
+see_also:
+- getMissionOptions
+- getResolution
+- getAudioOptionVolumes
+- getSubtitleOptions

@@ -1,18 +1,18 @@
 name: sentencesEnabled
-description: A getter for [[enableSentences]].
+desc: A getter for [[enableSentences]].
 groups:
 - Radio and Chat
 syntax:
 - call: Nular
   ret:
-  - Boolean
-  - returns [[true]] if sentences are enabled
+    type: Boolean
+    desc: returns [[true]] if sentences are enabled
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 6
+  arma3: '2.6'
 examples:
 - "<sqf>\nif (sentencesEnabled) then\n{\n\thint \"sentences are enabled; changing that now\";\n\tenableSentences false;\n};\n</sqf>"
+see_also:
+- enableSentences

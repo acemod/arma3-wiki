@@ -1,5 +1,5 @@
 name: nearestObject
-description: |-
+desc: |-
   Returns the nearest object of given type (or inherited classes) to given position within a sphere. Hardcoded radius is 50 meters.
   Unlike with [[nearestObjects]], where distance is measured in 2D space, [[nearestObject]] will be closest object in 3D space.
 
@@ -14,73 +14,77 @@ syntax:
   - position
   - type
   ret:
-  - Object
-  - nearest object, [[objNull]] otherwise
+    type: Object
+    desc: nearest object, [[objNull]] otherwise
   params:
   - name: position
-    description: position to start search at
-    type: Unknown
+    desc: position to start search at
+    type: !OneOf
+    - - Object
+      - null
+    - - !OneOf
+        - - Position2d
+          - null
+        - - Position3d
+          - null
+      - null
   - name: type
-    description: type of object (see [[typeOf]], [[CfgVehicles|class type]])
+    desc: type of object (see [[typeOf]], [[CfgVehicles|class type]])
     type: String
 - call: !Unary position
   ret:
-  - Object
-  - nearest object, [[objNull]] otherwise
+    type: Object
+    desc: nearest object, [[objNull]] otherwise
   params:
   - name: position
-    description: position to start search at
-    type: Unknown
+    desc: position to start search at
+    type: !OneOf
+    - - Position2d
+      - null
+    - - Position3d
+      - null
 - call: !Binary
   - position
   - typeOrId
   ret:
-  - Object
-  - nearest object, [[objNull]] otherwise
+    type: Object
+    desc: nearest object, [[objNull]] otherwise
   params:
   - name: position
-    description: position to start search at
-    type: Unknown
+    desc: position to start search at
+    type: !OneOf
+    - - Position2d
+      - null
   - name: typeOrId
-    description: type of object (see [[typeOf]], [[CfgVehicles|class type]]) or {{GVI|arma3|2.10|size= 0.75}} Visitor id (see [[getObjectID]])
+    desc: type of object (see [[typeOf]], [[CfgVehicles|class type]]) or {{GVI|arma3|2.10|size= 0.75}} Visitor id (see [[getObjectID]])
     type: String
 - call: !Binary
   - position
   - id
   ret:
-  - Object
-  - nearest object, [[objNull]] otherwise
+    type: Object
+    desc: nearest object, [[objNull]] otherwise
   params:
   - name: position
-    description: position to start search at
-    type: Unknown
+    desc: position to start search at
+    type: !OneOf
+    - - Position2d
+      - null
+    - - Position3d
+      - null
   - name: id
-    description: object Visitor id
+    desc: object Visitor id
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -98,3 +102,14 @@ examples:
   Return the nearest object with ([[typeOf]] _nObject != ""). Search range is 50m:
   <sqf>_nObject = nearestObject _position;</sqf>
 - "(See also [[allMissionObjects]]):\n<sqf>\n_blood\t= nearestObject [player, \"#slop\"];\n_step\t= nearestObject [player, \"#mark\"];\n_track\t= nearestObject [player, \"#track\"];\n_crater\t= nearestObject [player, \"#crater\"];\n</sqf>"
+see_also:
+- nearestObjects
+- nearObjectsReady
+- nearObjects
+- objectFromNetId
+- nearEntities
+- entities
+- object
+- nearestBuilding
+- nearestTerrainObjects
+- nearestMines

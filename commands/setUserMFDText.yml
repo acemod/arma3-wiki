@@ -1,5 +1,5 @@
 name: setUserMFDText
-description: Stored user text value in MFD, limit is 50, user0...user49
+desc: Stored user text value in MFD, limit is 50, user0...user49
 groups:
 - GUI Control
 syntax:
@@ -8,11 +8,10 @@ syntax:
   - - index
     - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
-    description: vehicle with MFD
+    desc: vehicle with MFD
     type: Object
   - name: index
     type: Number
@@ -21,8 +20,10 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 78
+  arma3: '1.78'
 examples:
 - <sqf>_vehicle setUserMFDText [0, "some text"];</sqf>
+see_also:
+- getUserMFDText
+- setUserMFDValue
+- getUserMFDValue

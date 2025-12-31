@@ -1,5 +1,5 @@
 name: targetKnowledge
-description: Returns unit's knowledge about target.
+desc: Returns unit's knowledge about target.
 groups:
 - Object Detection
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - target
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: unit
     type: Object
@@ -17,9 +16,7 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 50
+  arma3: '1.50'
 examples:
 - |-
   <sqf>
@@ -27,3 +24,14 @@ examples:
   _allInfo params ["_knownByGroup", "_knownByUnit", "_lastSeen", "_lastThreat", "_side", "_errorMargin", "_position", "_ignoreTarget"];
   </sqf>
 - <sqf>private _posError = (_soldierOne targetKnowledge _jeepOne) select 5;</sqf>
+see_also:
+- knowsAbout
+- targets
+- targetsQuery
+- nearTargets
+- targetsAggregate
+- reveal
+- forgetTarget
+- setTargetAge
+- getHideFrom
+- ignoreTarget

@@ -1,5 +1,5 @@
 name: camSetDir
-description: Sets the orientation of the given camera in the direction of the given vector. Needs [[camCommit]].
+desc: Sets the orientation of the given camera in the direction of the given vector. Needs [[camCommit]].
 groups:
 - Camera Control
 syntax:
@@ -7,38 +7,27 @@ syntax:
   - camera
   - direction
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: camera
-    description: object of type "camera"
+    desc: object of type "camera"
     type: Object
   - name: direction
-    type: Unknown
+    type: !OneOf
+    - - Number
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Local
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   Since {{arma3}}:
@@ -74,3 +63,8 @@ examples:
   _cam camSetPos _pos1;
   _cam camCommit 5;
   </sqf>
+see_also:
+- direction
+- setDir
+- camSetTarget
+- getCameraViewDirection

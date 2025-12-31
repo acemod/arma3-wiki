@@ -1,5 +1,5 @@
 name: mineDetectedBy
-description: Returns [[true]] if mine has been detected by a given side
+desc: Returns [[true]] if mine has been detected by a given side
 groups:
 - Mines
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - mine
   - faction
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: mine
     type: Object
@@ -17,8 +16,12 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 24
+  arma3: '1.24'
 examples:
 - <sqf>(allMines select 0) mineDetectedBy west;</sqf>
+see_also:
+- allMines
+- detectedMines
+- createMine
+- mineActive
+- revealMine

@@ -1,5 +1,5 @@
 name: private
-description: |-
+desc: |-
   Sets a variable to the innermost scope (see {{Link|#Example 3}}). See also [[param]] and [[params]].
   {{Feature|informative|[[private]] variables '''must''' start with an underscore: {{hl|c= [[private]] '''{{Color|red|_}}'''myVar1 = "myVar";}} - see [[Identifier]].}}
   {{Feature|warning|'''Always''' make your local variables '''private''' (through [[private]] or [[params]]) in order to avoid [[Variables#Scopes|overwriting a local variable of the same name]].}}
@@ -9,44 +9,30 @@ groups:
 syntax:
 - call: !Unary variableName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: variableName
-    description: e.g <sqf inline>"_myVar"</sqf>
+    desc: e.g <sqf inline>"_myVar"</sqf>
     type: String
 - call: !Unary variableNameList
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: variableNameList
-    description: e.g <sqf inline>["_target", "_damage"]</sqf>
-    type: ArrayUnknown
+    desc: e.g <sqf inline>["_target", "_damage"]</sqf>
+    type: !ArrayUnsized
+      type: String
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -68,3 +54,8 @@ examples:
   _lol = 123; call { private "_lol"; hint str [_lol] }; // [any]
   </sqf>
 - "<sqf>\n_myvar = 123;\nsystemChat str [_myvar];\t\t// [123]\ncall {\n\tsystemChat str [_myvar];\t// [123]\n\tprivate \"_myvar\";\n\tsystemChat str [_myvar];\t// [any]\n\t_myvar = 345;\n\tsystemChat str [_myvar];\t// [345]\n};\nsystemChat str [_myvar];\t\t// [123]\n</sqf>"
+see_also:
+- param
+- params
+- privateAll
+- '{{Link|Variables#Scopes}}'

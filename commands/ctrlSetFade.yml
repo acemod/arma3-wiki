@@ -1,5 +1,5 @@
 name: ctrlSetFade
-description: |-
+desc: |-
   Sets wanted transparency for control animation. Requires [[ctrlCommit]] to commit changes. To hide or show a control instantly, use [[ctrlShow]].
   {{Feature|informative|
   If there are multiple (interactable) controls on top of each other but the top-most control is faded using <sqf inline>ctrlSetFade 1</sqf>,
@@ -17,8 +17,7 @@ syntax:
   - controlName
   - fade
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: controlName
     type: Control
@@ -27,24 +26,18 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   _control ctrlSetFade 1;
   _control ctrlCommit 5;
   </sqf>
+see_also:
+- ctrlFade
+- cutFadeOut
+- ctrlCommit

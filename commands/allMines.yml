@@ -1,19 +1,23 @@
 name: allMines
-description: Returns an array of all mines in the mission
+desc: Returns an array of all mines in the mission
 groups:
 - Mines
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 24
+  arma3: '1.24'
 examples:
 - <sqf>hint format ["there are %1 mines total", count allMines];</sqf>
 - <sqf>private _isFirstMineDetected = (allMines select 0) mineDetectedBy blufor;</sqf>
+see_also:
+- detectedMines
+- mineDetectedBy
+- createMine
+- mineActive
+- revealMine
+- allMissionObjects

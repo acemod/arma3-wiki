@@ -1,5 +1,5 @@
 name: disableNVGEquipment
-description: Enables or disables transport NV (Night Vision). To disable TI (Thermal Imaging) use [[disableTIEquipment]].
+desc: Enables or disables transport NV (Night Vision). To disable TI (Thermal Imaging) use [[disableTIEquipment]].
 groups:
 - Weapons
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - vehicle
   - state
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
@@ -17,8 +16,9 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 52
+  arma3: '1.52'
 examples:
 - <sqf>myTank disableNVGEquipment true;</sqf>
+see_also:
+- equipmentDisabled
+- disableTIEquipment

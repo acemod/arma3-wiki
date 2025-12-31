@@ -1,20 +1,20 @@
 name: removeGoggles
-description: Removes goggles from unit (diver goggles for example). This command does not remove NVGoggles. Use [[unassignItem]] and [[removeItem]] or just [[unlinkItem]] for latter.
+desc: Removes goggles from unit (diver goggles for example). This command does not remove NVGoggles. Use [[unassignItem]] and [[removeItem]] or just [[unlinkItem]] for latter.
 groups:
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>removeGoggles assaultDiver;</sqf>
+see_also:
+- goggles
+- addGoggles

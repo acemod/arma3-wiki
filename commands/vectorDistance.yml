@@ -1,5 +1,5 @@
 name: vectorDistance
-description: Returns {{Link|https://en.wikipedia.org/wiki/Euclidean_distance|Euclidean distance}} between two points.
+desc: Returns {{Link|https://en.wikipedia.org/wiki/Euclidean_distance|Euclidean distance}} between two points.
 groups:
 - Math - Vectors
 syntax:
@@ -7,21 +7,22 @@ syntax:
   - point1
   - point2
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: point1
-    description: (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
-    type: Unknown
+    desc: (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
+    type: !OneOf
+    - - Position2d
+      - null
   - name: point2
-    description: (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
-    type: Unknown
+    desc: (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
+    type: !OneOf
+    - - Position2d
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 22
+  arma3: '1.22'
 examples:
 - <sqf>_euclideanDist = getPosASL player vectorDistance [0,0,0];</sqf>
 - |-
@@ -30,3 +31,24 @@ examples:
   // same as
   (getPosATL _a) distance (getPosATL _b);
   </sqf>
+see_also:
+- vectorAdd
+- vectorDiff
+- vectorCrossProduct
+- vectorDotProduct
+- vectorCos
+- vectorMagnitude
+- vectorMagnitudeSqr
+- vectorMultiply
+- vectorDistanceSqr
+- vectorDir
+- vectorUp
+- setVectorDir
+- setVectorUp
+- setVectorDirAndUp
+- distance
+- vectorNormalized
+- vectorFromTo
+- distance2D
+- matrixMultiply
+- matrixTranspose

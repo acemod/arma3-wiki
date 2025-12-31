@@ -1,5 +1,5 @@
 name: setGroupIdGlobal
-description: A [[Multiplayer Scripting#Locality|global]] equivalent of  [[setGroupId]].
+desc: A [[Multiplayer Scripting#Locality|global]] equivalent of  [[setGroupId]].
 groups:
 - Groups
 syntax:
@@ -10,26 +10,31 @@ syntax:
     - keyword2
     - '...'
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: group
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Group
+      - null
   - name: format
-    description: format template (e.g "%keyword1 - %keyword2 / %keyword4 (%keyword3)")
+    desc: format template (e.g "%keyword1 - %keyword2 / %keyword4 (%keyword3)")
     type: String
   - name: keywordN
-    description: keyword value
+    desc: keyword value
     type: String
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 1
-    minor: 48
+  arma3: '1.48'
 examples:
 - |-
   <sqf>
   group player setGroupIdGlobal ["PAPA BEAR"];
   hint groupId group player; // "PAPA BEAR"
   </sqf>
+see_also:
+- setGroupId
+- groupId
+- group

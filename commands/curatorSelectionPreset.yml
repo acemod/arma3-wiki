@@ -1,21 +1,28 @@
 name: curatorSelectionPreset
-description: Returns list of all objects stored in the given selection preset.
+desc: Returns list of all objects stored in the given selection preset.
 groups:
 - Curator
 syntax:
 - call: !Unary numkey
   ret:
-  - ArrayUnknown
-  - objects saved in the selection preset
+    type: ArrayUnknown
+    desc: objects saved in the selection preset
   params:
   - name: numkey
-    description: number key under which the selection preset is saved
+    desc: number key under which the selection preset is saved
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 14
+  arma3: '2.14'
 examples:
 - <sqf>private _savedItems = curatorSelectionPreset 1;</sqf>
+see_also:
+- loadCuratorSelectionPreset
+- setCuratorSelectionPreset
+- curatorSelected
+- setCuratorSelected
+- addCuratorSelected
+- Arma
+- '3:'
+- Curator

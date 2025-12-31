@@ -1,5 +1,5 @@
 name: collect3DENHistory
-description: |-
+desc: |-
   Execute a block of code in which all Eden Editor operations will be recorded as one history step. For example creating an entity, setting its attributes and then connections would normally be recorded as three different steps. Calling them all within single '''collect3DENHistory''' block will group them together and the user will need to undo only once to revert the changes. Use [[ignore3DENHistory]] to ignore history entry creation.
 
   {{Feature|informative|In order to only change the 2nd or 3rd parameter of the alternative syntax use [[nil]] as the preceding parameters.}}
@@ -27,11 +27,10 @@ groups:
 syntax:
 - call: !Unary code
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: code
-    description: code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
+    desc: code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
     type: Code
 - call: !Binary
   - - text
@@ -39,36 +38,45 @@ syntax:
     - icon
   - code
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: text
-    description: text of the entry that is added to the history list
-    type: Unknown
+    desc: text of the entry that is added to the history list
+    type: !OneOf
+    - - String
+      - null
+    - - Nothing
+      - null
   - name: tooltip
-    description: ) - tooltip of the entry
+    desc: ) - tooltip of the entry
     type: String
     optional: true
     default: '"Batch Change" ([[isLocalized|localized]]'
   - name: icon
-    description: '- path to the icon that is displayed left of the ''''text''''. ''''''Must not start with a {{hl|\}}!'''''''
+    desc: '- path to the icon that is displayed left of the ''''text''''. ''''''Must not start with a {{hl|\}}!'''''''
     type: String
     optional: true
     default: '"a3\3den\data\cfg3den\history\multipleoperations_ca.paa"'
   - name: code
-    description: code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
+    desc: code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
     type: Code
   since:
-    arma_3:
-      major: 2
-      minor: 6
+    arma3: '2.6'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - "<sqf>\ncollect3DENHistory \n{\n\t_logic = create3DENEntity [\"Logic\", \"Logic\", position player];\n\tadd3DENConnection [\"Sync\", [_logic], player];\n}; // Creates a logic and connects it to player in one history step.\n</sqf>"
 - "<sqf>\n[\"Create Entity\", \"B_Soldier_F\", \"a3\\3den\\data\\cfg3den\\history\\create_ca.paa\"] collect3DENHistory \n{\n\tcreate3DENEntity [\"Object\",\"B_Soldier_F\", screenToWorld [0.5,0.5]];\n};\n</sqf>"
 - "<sqf>\n[nil, nil, \"a3\\3den\\data\\cfg3den\\history\\moveitems_ca.paa\"] collect3DENHistory \n{\n\tcreate3DENEntity [\"Object\",\"B_Soldier_F\", screenToWorld [0.5,0.5]];\n}; // Change only the icon\n</sqf>"
+see_also:
+- ignore3DENHistory
+- add3DENConnection
+- create3DENComposition
+- create3DENEntity
+- delete3DENEntities
+- do3DENAction
+- remove3DENConnection
+- set3DENAttributes
+- set3DENObjectType

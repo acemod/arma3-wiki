@@ -1,5 +1,5 @@
 name: setTrafficDensity
-description: Set the density of ambient cars in a rectangle (in cars per kilometer). {{Feature|arma3|This command does nothing in {{arma3}}.}}
+desc: Set the density of ambient cars in a rectangle (in cars per kilometer). {{Feature|arma3|This command does nothing in {{arma3}}.}}
 groups:
 - Environment
 syntax:
@@ -10,32 +10,32 @@ syntax:
   - zMin
   - zMax
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: density
-    description: density (in cars per kilometer)
+    desc: density (in cars per kilometer)
     type: Number
   - name: xMin
-    description: western border of the affected rectangle
+    desc: western border of the affected rectangle
     type: Number
   - name: xMax
-    description: eastern border of the affected rectangle
+    desc: eastern border of the affected rectangle
     type: Number
   - name: zMin
-    description: southern border of the affected rectangle
+    desc: southern border of the affected rectangle
     type: Number
   - name: zMax
-    description: northern border of the affected rectangle
+    desc: northern border of the affected rectangle
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 1
-  arma_3:
-    major: 0
-    minor: 50
+  tkoh: '1.1'
+  arma3: '0.50'
 examples:
 - <sqf>setTrafficDensity [40, 31000, 32000, 30000, 32000];</sqf>
+see_also:
+- enableTraffic
+- setTrafficDistance
+- setTrafficGap
+- setTrafficSpeed

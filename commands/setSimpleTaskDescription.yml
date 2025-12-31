@@ -1,5 +1,5 @@
 name: setSimpleTaskDescription
-description: Attach descriptions to the simple task.
+desc: Attach descriptions to the simple task.
 groups:
 - Briefing
 syntax:
@@ -9,34 +9,34 @@ syntax:
     - descriptionShort
     - descriptionHUD
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: task
     type: Task
   - name: description
-    description: task description
+    desc: task description
     type: String
   - name: descriptionShort
-    description: task title
+    desc: task title
     type: String
   - name: descriptionHUD
-    description: task waypoint description
+    desc: task waypoint description
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>myTask setSimpleTaskDescription ["Today you have to kill Spongebob", "Kill Spongebob", "There he is!"];</sqf>
+see_also:
+- taskDescription
+- Tasks
+- createSimpleTask
+- removeSimpleTask
+- setSimpleTaskDestination
+- setTaskState
+- setTaskResult
+- taskState

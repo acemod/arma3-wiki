@@ -1,5 +1,5 @@
 name: lbSetPictureRightColor
-description: |-
+desc: |-
   Sets the color of the second (right aligned) picture of the given index of the listbox with id idc of the topmost user dialog to the given color.
   Color which consists from only zeros means disable this override.
 groups:
@@ -10,11 +10,10 @@ syntax:
   - index
   - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
-    description: control id
+    desc: control id
     type: Number
   - name: index
     type: Number
@@ -25,8 +24,7 @@ syntax:
   - - index
     - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
@@ -37,9 +35,31 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 22
+  arma3: '1.22'
 examples:
 - <sqf>lbSetPictureRightColor [101, 0, [0, 1, 0, 0.5]];</sqf>
 - <sqf>_ctrl lbSetPictureRightColor [0, [1, 1, 1, 1]];</sqf>
+see_also:
+- lbAdd
+- lbClear
+- lbColor
+- lbSetPictureColorSelected
+- lbCurSel
+- lbData
+- lbDelete
+- lbIsSelected
+- lbPicture
+- lbSelection
+- lbSetColor
+- lbSetCurSel
+- lbSetData
+- lbSetSelected
+- lbSetTooltip
+- lbSetValue
+- lbSize
+- lbSort
+- lbSortByValue
+- lbText
+- lbValue
+- lbSetPicture
+- lbSetPictureColor

@@ -1,5 +1,5 @@
 name: setCustomWeightRTD
-description: |-
+desc: |-
   Add virtual custom weight to a helicopter's center of gravity. This can be used to simulate added internal payload for specific scenarios, and affects the flight model.
   {{Feature|afm}}
 groups:
@@ -9,23 +9,20 @@ syntax:
   - helicopterRTD
   - weight
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: helicopterRTD
-    description: helicopter
+    desc: helicopter
     type: Unknown
   - name: weight
-    description: weight (kilograms)
+    desc: weight (kilograms)
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 1
-    minor: 34
+  tkoh: '1.0'
+  arma3: '1.34'
 examples:
 - <sqf>myHelicopterRTD setCustomWeightRTD 120;</sqf>
+see_also:
+- weightRTD

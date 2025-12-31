@@ -1,5 +1,5 @@
 name: lightIsOn
-description: |-
+desc: |-
   Check if lampost is on (shining).
   {{Feature|informative|A lamp state is '''local''' to each client (see [[switchLight]]).}}
   {{Feature | arma3 | This command was originally designed to only work with CfgNonAIVehicles class "StreetLamp" only;
@@ -9,41 +9,29 @@ groups:
 syntax:
 - call: !Unary lamppost
   ret:
-  - String
-  - |-
-    can be one of:
-    * '''"ON"''' - light is on
-    * '''"OFF"''' - light is off
-    * '''"AUTO"''' - applicable only to the light of type "StreetLamp" and is only on during the night.
-    * '''"ERROR"''' - if command fails
+    type: String
+    desc: |-
+      can be one of:
+      * '''"ON"''' - light is on
+      * '''"OFF"''' - light is off
+      * '''"AUTO"''' - applicable only to the light of type "StreetLamp" and is only on during the night.
+      * '''"ERROR"''' - if command fails
   params:
   - name: lamppost
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 4
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.4'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>if (lightIsOn nearestObject [player, "StreetLamp"] == "ON") then { hint "nightime"; };</sqf>
 - <sqf>_it = lightIsOn object 159582;</sqf>
 - "<sqf>\nif (count allMissionObjects \"StreetLamp\" == 0) then {\n\thint \"Objects compatible with 'lightIsOn' are not found.\";\n} else {\n\thint \"'lightIsOn' compatible objects are found!\";\n};\n</sqf>"
+see_also:
+- switchLight

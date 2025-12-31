@@ -1,5 +1,5 @@
 name: setWaypointPosition
-description: "Attempts to move given waypoint to a random position inside a circle with the given center and radius. \nThe waypoint will be placed similar to {{hl|\"NONE\"}} attribute in [[setVehiclePosition]], even if the radius is 0, which means it could still be off center. In order to force waypoint to the exact position, similar to {{hl|\"CAN_COLLIDE\"}} attribute, use a negative radius (see {{Link|#Example 2}})."
+desc: "Attempts to move given waypoint to a random position inside a circle with the given center and radius. \nThe waypoint will be placed similar to {{hl|\"NONE\"}} attribute in [[setVehiclePosition]], even if the radius is 0, which means it could still be off center. In order to force waypoint to the exact position, similar to {{hl|\"CAN_COLLIDE\"}} attribute, use a negative radius (see {{Link|#Example 2}})."
 groups:
 - Waypoints
 syntax:
@@ -8,40 +8,59 @@ syntax:
   - - center
     - radius
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: waypoint
-    description: format [[Waypoint]]
+    desc: format [[Waypoint]]
     type: ArrayUnknown
   - name: center
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
+    - - Position3dAGL
+      - null
+    - - ArrayUnknown
+      - null
   - name: radius
-    description: random placement radius in meters. Set it to -1 and convert center to [[Position#PositionASL|PositionASL]] for the exact center placement
+    desc: random placement radius in meters. Set it to -1 and convert center to [[Position#PositionASL|PositionASL]] for the exact center placement
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>[_grp, 2] setWaypointPosition [position player, 0];</sqf>
 - |-
   Exact placement using a negative ''radius'' and [[Position#PositionASL|PositionASL]]:
   <sqf>_wp setWaypointPosition [getPosASL player, -1];</sqf>
+see_also:
+- waypointPosition
+- setWPPos
+- waypoints
+- deleteWaypoint
+- copyWaypoints
+- setCurrentWaypoint
+- setWaypointBehaviour
+- setWaypointCombatMode
+- setWaypointCompletionRadius
+- setWaypointDescription
+- setWaypointFormation
+- setWaypointHousePosition
+- setWaypointScript
+- setWaypointSpeed
+- setWaypointStatements
+- setWaypointTimeout
+- setWaypointType
+- setWaypointVisible
+- waypointAttachVehicle
+- waypointAttachedVehicle
+- setWaypointLoiterRadius
+- waypointLoiterRadius
+- addWaypoint
+- setWaypointLoiterType
+- waypointSpeed

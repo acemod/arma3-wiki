@@ -1,40 +1,32 @@
 name: scriptDone
-description: Check if a script is finished running using the [[Script Handle]] returned by [[execVM]] or [[spawn]].
+desc: Check if a script is finished running using the [[Script Handle]] returned by [[execVM]] or [[spawn]].
 groups:
 - Program Flow
 syntax:
 - call: !Unary handle
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: handle
-    description: handle returned by [[spawn]] or [[execVM]]
+    desc: handle returned by [[spawn]] or [[execVM]]
     type: ScriptHandle
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
   _scriptHandle = ["arguments"] execVM "scriptname.sqf";
   waitUntil { scriptDone _scriptHandle };
   </sqf>
+see_also:
+- execVM
+- spawn
+- terminate
+- scriptNull

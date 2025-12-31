@@ -1,5 +1,5 @@
 name: setShotParents
-description: Sets vehicle and instigator pair for the given projectile.
+desc: Sets vehicle and instigator pair for the given projectile.
 groups:
 - Weapons
 syntax:
@@ -8,25 +8,24 @@ syntax:
   - - vehicle
     - instigator
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: projectile
-    description: the actual projectile shot
+    desc: the actual projectile shot
     type: Object
   - name: vehicle
-    description: vehicle shooting projectile (appears as the 'killer' in "Killed" EH)
+    desc: vehicle shooting projectile (appears as the 'killer' in "Killed" EH)
     type: Object
   - name: instigator
-    description: person pulling the trigger (appears as the 'instigator' in "Killed" EH)
+    desc: person pulling the trigger (appears as the 'instigator' in "Killed" EH)
     type: Object
 argument_loc: Global
 effect_loc: Global
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 1
-    minor: 66
+  arma3: '1.66'
 examples:
 - <sqf>myProjectile setShotParents [vehicle bob, bob];</sqf>
 - <sqf>tank addEventHandler ["Fired", {_this select 6 setShotParents [tank, commander tank]}];</sqf>
+see_also:
+- getShotParents

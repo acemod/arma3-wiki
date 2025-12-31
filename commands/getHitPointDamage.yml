@@ -1,5 +1,5 @@
 name: getHitPointDamage
-description: |-
+desc: |-
   Return current level of damage in range 0..1 for a specific Hit Point (specified by its config class).
   If you need to get damage of a selection instead of hit point, use [[getHit]].
 groups:
@@ -9,23 +9,28 @@ syntax:
   - vehicle
   - hitPointName
   ret:
-  - Number
-  - before {{GVI|arma3|1.94|size= 0.75}}, [[Nothing]] was returned when an invalid ''selection'' was provided (now returns {{hl|0}})
+    type: Number
+    desc: before {{GVI|arma3|1.94|size= 0.75}}, [[Nothing]] was returned when an invalid ''selection'' was provided (now returns {{hl|0}})
   params:
   - name: vehicle
-    description: vehicle to be queried
+    desc: vehicle to be queried
     type: Object
   - name: hitPointName
-    description: name of the Hit Point class
+    desc: name of the Hit Point class
     type: String
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>vehicle player getHitPointDamage "hitEngine";</sqf>
+see_also:
+- setHitPointDamage
+- getAllHitPointsDamage
+- setHit
+- getHit
+- setDamage
+- damage
+- getHitIndex
+- setHitIndex

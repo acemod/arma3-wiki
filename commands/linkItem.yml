@@ -1,5 +1,5 @@
 name: linkItem
-description: Create and assign item to the correct slot. If there is an item in the targeted slot, it gets replaced. See also [[assignItem]].
+desc: Create and assign item to the correct slot. If there is an item in the targeted slot, it gets replaced. See also [[assignItem]].
 groups:
 - Unit Inventory
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - item
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,9 +16,7 @@ syntax:
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -27,3 +24,11 @@ examples:
   opforUnit linkItem "NVGoggles_OPFOR";
   independentUnit linkItem "NVGoggles_INDEP";
   </sqf>
+see_also:
+- unlinkItem
+- addItem
+- assignItem
+- removeItem
+- unassignItem
+- assignedItems
+- removeAllAssignedItems

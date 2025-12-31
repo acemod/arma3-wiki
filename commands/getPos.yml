@@ -1,5 +1,5 @@
 name: getPos
-description: |-
+desc: |-
   Returns object or location position. If the argument is an object, the return value is in format [[Position#PositionAGLS|PositionAGLS]].<br>
   The alternative syntax gets the position given distance and heading away from provided object or position - the command equivalent of [[BIS_fnc_relPos]].
 
@@ -14,15 +14,13 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: object
     type: Object
 - call: !Unary location
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: location
     type: Location
@@ -31,45 +29,30 @@ syntax:
   - - distance
     - heading
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: origin
-    type: Unknown
+    type: !OneOf
+    - - Object
+      - null
   - name: distance
-    description: distance from position
+    desc: distance from position
     type: Number
   - name: heading
-    description: in which compass direction
+    desc: in which compass direction
     type: Number
   since:
-    arma_3:
-      major: 1
-      minor: 56
+    arma3: '1.56'
 argument_loc: Global
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>hintSilent str getPos player;</sqf>
 - "[[getPos]] vs. other methods (over sea). Pay attention to Z values:\n<sqf>\ngetPos ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\ngetPosATL ship;\t\t\t\t// [2412.01, 6036.33, 19.4266]\ngetPosASL ship;\t\t\t\t// [2412.01, 6036.33, -0.920066]\ngetPosASLW ship;\t\t\t// [2412.01, 6036.33, -0.865981]\nvisiblePosition ship;\t\t// [2412.02, 6036.33, -0.837952]\nvisiblePositionASL ship;\t// [2412.02, 6036.33, -0.91798]\nposition ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\n</sqf>"
@@ -81,3 +64,15 @@ examples:
   hint "Deploying a parachute might be a good idea";
   </sqf>
 - "Find position 100 metres and 45 degrees from player position:\n<sqf>\nplayer getPos [100, 45];\t// e.g [1834, 2230, 0] if resulting pos is over land\n\t\t\t\t\t\t\t// or [120, 256, -271] if resulting pos is over water\n</sqf>"
+see_also:
+- getPosVisual
+- getRelPos
+- setPos
+- Position#setPosAGLS|setPosAGLS
+- position
+- getPosATL
+- getPosASL
+- getPosASLW
+- visiblePosition
+- visiblePositionASL
+- getMarkerPos

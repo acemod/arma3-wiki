@@ -1,5 +1,5 @@
 name: fileExists
-description: |-
+desc: |-
   Checks if file on given path exists. Uses same path resolve code as [[loadFile]].
   {{Feature|informative|Absolute paths are not supported, such as those generated using [[getMissionPath]]. Attempting to check an absolute path will result in this error in [[RPT]] logs:
   {{hl|Invalid path (only relative paths supported): 'C:\...'}}
@@ -9,18 +9,16 @@ groups:
 syntax:
 - call: !Unary path
   ret:
-  - Boolean
-  - '[[true]] if it exists, otherwise [[false]]'
+    type: Boolean
+    desc: '[[true]] if it exists, otherwise [[false]]'
   params:
   - name: path
-    description: path to file
+    desc: path to file
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - <sqf>fileExists "\a3\mySuperPath\bestFileEver.paa"; // returns false</sqf>
 - |-
@@ -38,3 +36,7 @@ examples:
   if !(fileExists _picture) then { _picture = getText (configFile >> "CfgVehicles" >> _class >> "picture") };
   if !(fileExists _picture) then { systemChat "No valid picture found!" } else { systemChat _picture };
   </sqf>
+see_also:
+- loadFile
+- preprocessFile
+- preprocessFileLineNumbers

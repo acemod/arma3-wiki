@@ -1,5 +1,5 @@
 name: setPlayable
-description: Create a multiplayer role for the unit. The roles created this way are used for [[Multiplayer Scripting#Join In Progress|Join In Progress]] and [[Team Switch]].
+desc: Create a multiplayer role for the unit. The roles created this way are used for [[Multiplayer Scripting#Join In Progress|Join In Progress]] and [[Team Switch]].
 problem_notes:
 - '{{Feature|warning|This command does not work as intended and currently does nothing in {{arma3}}.}}'
 groups:
@@ -8,31 +8,20 @@ groups:
 syntax:
 - call: !Unary unitName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>setPlayable _aPerson;</sqf>
+see_also:
+- addSwitchableUnit

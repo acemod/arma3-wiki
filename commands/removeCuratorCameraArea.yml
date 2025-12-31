@@ -1,5 +1,5 @@
 name: removeCuratorCameraArea
-description: Removes curator camera area.
+desc: Removes curator camera area.
 groups:
 - Curator
 syntax:
@@ -7,20 +7,24 @@ syntax:
   - curatorObj
   - cameraAreaID
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: curatorObj
-    description: curator module.
+    desc: curator module.
     type: Object
   - name: cameraAreaID
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 1
-    minor: 16
+  arma3: '1.16'
 examples:
 - <sqf>myCurator removeCuratorCameraArea 3;</sqf>
+see_also:
+- Arma
+- '3:'
+- Curator
+- addCuratorCameraArea
+- removeAllCuratorCameraAreas
+- curatorCameraArea

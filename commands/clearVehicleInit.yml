@@ -1,5 +1,5 @@
 name: clearVehicleInit
-description: |-
+desc: |-
   Clears the object's init.
 
   {{Feature|arma3|For security reasons, the command was disabled in {{arma3}}.}}
@@ -8,26 +8,17 @@ groups:
 syntax:
 - call: !Unary objectName
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: objectName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 8
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
+  arma1: '1.8'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
 examples:
 - |-
   <sqf>
@@ -35,3 +26,6 @@ examples:
   processInitCommands;
   clearVehicleInit _tank1;
   </sqf>
+see_also:
+- setVehicleInit
+- processInitCommands

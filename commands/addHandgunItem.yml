@@ -1,5 +1,5 @@
 name: addHandgunItem
-description: Adds weapon item, including magazine, directly to the [[handgunWeapon]]. This is used for infantry weapons.
+desc: Adds weapon item, including magazine, directly to the [[handgunWeapon]]. This is used for infantry weapons.
 groups:
 - Unit Inventory
 syntax:
@@ -7,8 +7,7 @@ syntax:
   - unit
   - item
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
@@ -17,8 +16,18 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>player addHandgunItem "muzzle_snds_L";</sqf>
+see_also:
+- addWeaponItem
+- removeHandgunItem
+- removeAllHandgunItems
+- addPrimaryWeaponItem
+- addSecondaryWeaponItem
+- addBinocularItem
+- weaponsItems
+- handgunItems
+- primaryWeaponItems
+- secondaryWeaponItems
+- binocularItems

@@ -1,5 +1,5 @@
 name: tvSetPicture
-description: |-
+desc: |-
   Sets picture to item selected by path. IDC means id of parent Tree View. Name is picture name. The picture is searched in the mission directory.
   {{Feature|informative|
   * Adding pictures to lists is very slow. In order to prevent the filling of the list to be slowed down, add the pictures in a '''scheduled''' environment - See {{Link|#Example 3}}.
@@ -14,13 +14,14 @@ syntax:
   - path
   - name
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   - name: name
     type: String
 - call: !Binary
@@ -28,22 +29,26 @@ syntax:
   - - path
     - name
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   - name: name
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 74
+  arma3: '0.74'
 examples:
 - <sqf>tvSetPicture [101, [0], "picture"];</sqf>
 - <sqf>_ctrl tvSetPicture [[0,0,0], getText (configFile >> "CfgWeapons" >> "optic_NVS" >> "picture")];</sqf>
 - "Adding images in a scheduled environment:\n<sqf>\nprivate _path = _ctrlTV tvAdd [[], \"Some Entry\"];\n[_ctrlTV, _path] spawn {\n\t(_this select 0) tvSetPictureRight [[_this select 1], \"someImage.paa\"];\n};\n</sqf>"
+see_also:
+- tvPicture
+- tvSetPictureColor
+- tvSetPictureRight
+- tvSetPictureRightColor

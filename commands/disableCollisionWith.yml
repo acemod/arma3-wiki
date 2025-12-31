@@ -1,5 +1,5 @@
 name: disableCollisionWith
-description: |-
+desc: |-
   Disable collision between provided objects. The collision is always disabled for both objects in the arguments.
   {{Feature|important|
   * this command does not disable collision between PhysX objects
@@ -15,8 +15,7 @@ syntax:
   - vehicle1
   - vehicle2
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle1
     type: Object
@@ -25,10 +24,12 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>player disableCollisionWith myWall;</sqf>
 - <sqf>[_veh1, _veh2] remoteExecCall ["disableCollisionWith", 0, _veh1];</sqf>
 - "<sqf>\n// this command stores a reference to the other object on both arguments:\n_obj1 disableCollisionWith _obj2;\t// _obj1 has a reference to _obj2, disabling collision with it\n\t\t\t\t\t\t\t\t\t// _obj2 has a reference to _obj1, disabling collision with it\n\n// only one reference is required to disable collision, allowing more than one disabled collision\n_obj1 disableCollisionWith _obj3;\t// _obj1 has a reference to _obj3, disabling collision with it\n\t\t\t\t\t\t\t\t\t// _obj2 has a reference to _obj1, disabling collision with it\n\t\t\t\t\t\t\t\t\t// _obj3 has a reference to _obj1, disabling collision with it\n\t\t\t\t\t\t\t\t\t// factually, _obj1 has collisions disabled with _obj2 and _obj3\n\n// note that _obj1 collision can be changed without using the command on it directly\n_obj2 disableCollisionWith _obj3;\t// _obj1 has no more reference to _obj3 and can collide with it\n\t\t\t\t\t\t\t\t\t// _obj2 has a reference to _obj3, disabling collision with it\n\t\t\t\t\t\t\t\t\t// _obj3 has a reference to _obj2, disabling collision with it\n</sqf>"
+see_also:
+- collisionDisabledWith
+- enableCollisionWith
+- setPhysicsCollisionFlag

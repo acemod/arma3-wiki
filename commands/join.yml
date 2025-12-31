@@ -1,5 +1,5 @@
 name: join
-description: |-
+desc: |-
   {{{!}} class{{=}}"wikitable" style{{=}}"float: right; font-size: 0.9em; margin: 0 0 0.5em 1.5em"
   ! colspan{{=}}"2" {{!}} Maximum number of<br>units per group
   {{!}}-
@@ -17,38 +17,34 @@ syntax:
   - unitArray
   - group
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitArray
-    description: units to join group
+    desc: units to join group
     type: ArrayUnknown
   - name: group
-    type: Unknown
+    type: !OneOf
+    - - Group
+      - null
+    - - Object
+      - null
 argument_loc: Global
 effect_loc: Global
 since:
-  flashpoint:
-    major: 1
-    minor: 34
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.34'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>[_unitOne, _unitTwo] join player;</sqf>
 - <sqf>[_unitOne, _unitTwo] join (group player);</sqf>
+see_also:
+- joinAs
+- joinAsSilent
+- joinSilent
+- group
+- leader
+- doFollow

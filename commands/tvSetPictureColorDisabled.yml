@@ -1,5 +1,5 @@
 name: tvSetPictureColorDisabled
-description: Sets the color of left picture of a tree item defined by path when that item is disabled.
+desc: Sets the color of left picture of a tree item defined by path when that item is disabled.
 groups:
 - GUI Control - Tree View
 syntax:
@@ -8,21 +8,44 @@ syntax:
   - - path
     - color
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: path
-    description: path to tree view item
+    desc: path to tree view item
     type: ArrayUnknown
   - name: color
     type: ArrayColor
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 62
+  arma3: '1.62'
 examples:
 - <sqf>_control tvSetPictureColorDisabled [[0], [1,0,1,1]];</sqf>
+see_also:
+- tvAdd
+- tvClear
+- tvCollapse
+- tvCount
+- tvCurSel
+- tvData
+- tvDelete
+- tvExpand
+- tvPicture
+- tvSetCurSel
+- tvSetData
+- tvSetValue
+- tvSort
+- tvSortByValue
+- tvValue
+- tvText
+- tvSetText
+- tvSetPicture
+- tvSetPictureColor
+- tvSetPictureRight
+- tvSetPictureColor
+- tvSetPictureColorSelected
+- tvSetPictureRightColor
+- tvSetPictureRightColorSelected
+- tvSetPictureRightColorDisabled

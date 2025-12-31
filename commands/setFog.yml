@@ -1,5 +1,5 @@
 name: setFog
-description: |-
+desc: |-
   Smoothly change the fog over given time (in seconds). See also [[fogParams]].
   {{Feature|arma3|This command is MP synchronised, if executed on server, the changes will propagate globally. If executed on client effect is temporary as it will soon change to the server setting.}}
 multiplayer_note: Before {{arma3}}, server and clients could have each a different (local) fog value.
@@ -10,14 +10,13 @@ syntax:
   - time
   - fog
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: time
-    description: transition time to the new value
+    desc: transition time to the new value
     type: Number
   - name: fog
-    description: fog density in range 0..1
+    desc: fog density in range 0..1
     type: Number
 - call: !Binary
   - time
@@ -25,50 +24,33 @@ syntax:
     - fogDecay
     - fogBase
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: time
-    description: transition time to the new value
+    desc: transition time to the new value
     type: Number
   - name: fogValue
-    description: normal [[fog]] value that represents fog density at ''fogBase'' level, in range 0..1
+    desc: normal [[fog]] value that represents fog density at ''fogBase'' level, in range 0..1
     type: Number
   - name: fogDecay
-    description: decay of fog density with altitude, in range -1..1; a negative value means a "ceiling" fog
+    desc: decay of fog density with altitude, in range -1..1; a negative value means a "ceiling" fog
     type: Number
   - name: fogBase
-    description: base altitude ([[Position#PositionASL|ASL]]) of fog (in meters), in range -5000..5000
+    desc: base altitude ([[Position#PositionASL|ASL]]) of fog (in meters), in range -5000..5000
     type: Number
   since:
-    arma_3:
-      major: 0
-      minor: 50
+    arma3: '0.50'
 argument_loc: Unspecified
 effect_loc: Global
-server_exec: false
+server_exec: true
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>15 setFog 0.5;</sqf>
 - |-
@@ -79,3 +61,14 @@ examples:
   999999 setFog 0;
   </sqf>
 - "<sqf>\n// Arma 3 examples:\n0 setFog [1, 0.01, 0];\n0 setFog [1, -1, 70];\t// mountain fog, starts from 70m ASL and thickens the higher you climb\n0 setFog [1, 1, 60];\t// valley fog, starts from 60m ASL and thickens the lower you descend\n0 setFog [1, 1, 0];\t\t// fooooog on the waaaater\n</sqf>"
+see_also:
+- Arma
+- '3:'
+- Improved
+- Fog
+- fog
+- fogParams
+- fogForecast
+- nextWeatherChange
+- forceWeatherChange
+- setRain

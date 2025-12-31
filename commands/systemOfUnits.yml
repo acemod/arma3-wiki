@@ -1,5 +1,5 @@
 name: systemOfUnits
-description: |-
+desc: |-
   Returns the currently selected system of units.
   * 0: Metric
   * 1: Mixed (ground vehicles use Metric / air vehicles use Imperial)
@@ -9,17 +9,15 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - Number
-  - null
+    type: Number
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_system = systemOfUnits;</sqf>
+see_also:
+- BIS_fnc_convertUnits
+- setSystemOfUnits

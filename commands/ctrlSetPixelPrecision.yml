@@ -1,5 +1,5 @@
 name: ctrlSetPixelPrecision
-description: Switches mode of pixel precision (rounding) in a given control interface.
+desc: Switches mode of pixel precision (rounding) in a given control interface.
 groups:
 - GUI Control - Positioning
 syntax:
@@ -7,18 +7,33 @@ syntax:
   - control
   - mode
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
     type: Control
   - name: mode
-    type: Unknown
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 82
+  arma3: '1.82'
 examples:
 - <sqf>_control ctrlSetPixelPrecision 2; // Enables pixel precision of the given control</sqf>
+see_also:
+- ctrlCommit
+- ctrlCreate
+- ctrlDelete
+- ctrlModel
+- ctrlSetModel
+- ctrlPosition
+- ctrlClassName
+- displayCtrl
+- ctrlModelScale
+- ctrlSetModelScale
+- ctrlModelDirAndUp
+- ctrlSetModelDirAndUp
+- ctrlSetPosition

@@ -1,21 +1,23 @@
 name: removeVest
-description: Removes vest from unit.
+desc: Removes vest from unit.
 groups:
 - Containers
 - Unit Inventory
 syntax:
 - call: !Unary unit
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>removeVest player;</sqf>
+see_also:
+- addVest
+- vest
+- removeUniform
+- removeBackpack

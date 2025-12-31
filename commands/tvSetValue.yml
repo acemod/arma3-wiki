@@ -1,5 +1,5 @@
 name: tvSetValue
-description: Sets scalar data to item on given path. IDC means id of parent Tree View. If the given value is not integer, it will be converted to integer
+desc: Sets scalar data to item on given path. IDC means id of parent Tree View. If the given value is not integer, it will be converted to integer
 groups:
 - GUI Control - Tree View
 syntax:
@@ -8,13 +8,14 @@ syntax:
   - path
   - val
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: idc
     type: Number
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   - name: val
     type: Number
 - call: !Binary
@@ -22,21 +23,37 @@ syntax:
   - - path
     - val
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: ctrl
     type: Control
   - name: path
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   - name: val
     type: Number
 argument_loc: Local
 effect_loc: Local
 since:
-  arma_3:
-    major: 0
-    minor: 74
+  arma3: '0.74'
 examples:
 - <sqf>tvSetValue [101, [0], 555];</sqf>
 - <sqf>_ctrl tvSetValue [[0,0,0], 14];</sqf>
+see_also:
+- tvAdd
+- tvClear
+- tvCollapse
+- tvCount
+- tvCurSel
+- tvData
+- tvDelete
+- tvExpand
+- tvPicture
+- tvSetCurSel
+- tvSetData
+- tvSetPicture
+- tvSort
+- tvSortByValue
+- tvText
+- tvValue

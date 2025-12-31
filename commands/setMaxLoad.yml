@@ -1,5 +1,5 @@
 name: setMaxLoad
-description: |-
+desc: |-
   Sets maximum load limit for a uniform/vest/backpack containers, vehicle cargo, supply boxes and weapon holders. In MP this command should be executed on the server and will persist on given container for JIP.
   {{Feature|informative|Cannot be set on a unit, as unit max load value is static config type}}
 groups:
@@ -9,21 +9,26 @@ syntax:
   - container
   - maxLoadValue
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: container
-    description: uniform/vest/backpack container, vehicle cargo, supply box, weapon holder
+    desc: uniform/vest/backpack container, vehicle cargo, supply box, weapon holder
     type: Object
   - name: maxLoadValue
-    description: max load limit
+    desc: max load limit
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-server_exec: false
+server_exec: true
 since:
-  arma_3:
-    major: 2
-    minor: 8
+  arma3: '2.8'
 examples:
 - <sqf>_yaMum setMaxLoad _maxLoad;</sqf>
+see_also:
+- maxLoad
+- load
+- loadAbs
+- loadBackpack
+- loadUniform
+- loadVest
+- getContainerMaxLoad

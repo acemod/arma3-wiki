@@ -1,5 +1,5 @@
 name: setMarkerBrushLocal
-description: |-
+desc: |-
   Selects the fill texture for the marker ("RECTANGLE" or "ELLIPSE"). Brush is the name of the subclass in CfgMarkerBrushes.
   <br>
   <br>
@@ -22,8 +22,7 @@ syntax:
   - markerName
   - brush
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: markerName
     type: String
@@ -32,20 +31,28 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  armed_assault:
-    major: 1
-    minor: 4
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.4'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>"Marker1" setMarkerBrushLocal "DiagGrid";</sqf>
+see_also:
+- setMarkerAlpha
+- setMarkerAlphaLocal
+- setMarkerBrush
+- setMarkerColor
+- setMarkerColorLocal
+- setMarkerDir
+- setMarkerDirLocal
+- setMarkerPos
+- setMarkerPosLocal
+- setMarkerShape
+- setMarkerShapeLocal
+- setMarkerSize
+- setMarkerSizeLocal
+- setMarkerText
+- setMarkerTextLocal
+- setMarkerType
+- setMarkerTypeLocal

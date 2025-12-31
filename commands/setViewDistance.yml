@@ -1,5 +1,5 @@
 name: setViewDistance
-description: |-
+desc: |-
   Set rendering distance. Setting view distance to <= 0 resets the value to the client's options (set in {{hl|Options → Video → General → Visibility → Overall}}).
   {{Feature|informative|In previous versions, client's max view distance was limited by the server's view distance.}}
   {{Feature|important|
@@ -56,36 +56,27 @@ groups:
 syntax:
 - call: !Unary distance
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: distance
-    description: distance in metres; {{GVI|arma3|1.00|size= 0.75}} a negative value resets the view distance to user video setting
+    desc: distance in metres; {{GVI|arma3|1.00|size= 0.75}} a negative value resets the view distance to user video setting
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>setViewDistance 2250;</sqf>
 - <sqf>setViewDistance -1; // reset view distance in Arma 3</sqf>
+see_also:
+- viewDistance
+- setDetailMapBlendPars
+- setTerrainGrid
+- getObjectViewDistance
+- setObjectViewDistance

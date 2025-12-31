@@ -1,5 +1,5 @@
 name: difficultyOption
-description: |-
+desc: |-
   Checks specific difficulty settings of the current user.
   Difficulty flag names can be found in the {{hl|CfgDifficultyPresets}} config class or in [[server.armaprofile|ArmA profile]] file under class {{hl|DifficultyPresets/xxx/Options}} (xxx being Recruit, Regular or Veteran).
   This command replaces [[difficultyEnabled]] as many options have multiple values and former command only provided [[Boolean]] return.
@@ -8,29 +8,31 @@ groups:
 syntax:
 - call: !Unary optionName
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: optionName
     type: Unknown
 - call: !Unary array
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: array
-    description: any array, could be empty array []
+    desc: any array, could be empty array []
     type: ArrayUnknown
   since:
-    arma_3:
-      major: 2
-      minor: 14
+    arma3: '2.14'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 58
+  arma3: '1.58'
 examples:
 - <sqf>hint str (difficultyOption "friendlyTags");</sqf>
 - "Remember last [[cameraView]] per vehicle:\n<sqf>\nplayer addEventHandler [\"GetOutMan\", {\n\tparams [\"_unit\", \"\", \"_vehicle\"];\n\t_unit setVariable [_vehicle call BIS_fnc_netId, cameraView];\n}];\nplayer addEventHandler [\"GetInMan\", {\n\tif (difficultyOption \"thirdPersonView\" == 2) then {\n\t\tparams [\"_unit\", \"\", \"_vehicle\"];\n\t\t_unit switchCamera (_unit getVariable [_vehicle call BIS_fnc_netId, \"INTERNAL\"]);\n\t};\n}];\n</sqf>"
+see_also:
+- difficulty
+- difficultyEnabledRTD
+- Arma
+- '3:'
+- Difficulty
+- Settings
+- missionDifficulty

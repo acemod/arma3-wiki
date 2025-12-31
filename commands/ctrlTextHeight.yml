@@ -1,5 +1,5 @@
 name: ctrlTextHeight
-description: |-
+desc: |-
   Returns the text control's height. Supported control [[ctrlType|types]]:
   {{Columns|3|
   * [[CT_STATIC]]
@@ -16,16 +16,21 @@ groups:
 syntax:
 - call: !Unary control
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_h = ctrlTextHeight _ctrl;</sqf>
+see_also:
+- ctrlFontHeight
+- ctrlTextWidth
+- ctrlSetText
+- ctrlType
+- 'Arma:'
+- GUI
+- Configuration

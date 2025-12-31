@@ -1,5 +1,5 @@
 name: count
-description: |-
+desc: |-
   Can be used to count:
   * The number of elements in an array (returns the already internally known array size)
   * The number of elements in an array matching the condition
@@ -13,20 +13,26 @@ groups:
 syntax:
 - call: !Unary value
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: value
-    type: Unknown
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - Config
+      - null
+    - - HashMapUnknown
+      - null
 - call: !Binary
   - condition
   - array
   ret:
-  - Number
-  - null
+    type: Number
   params:
   - name: condition
-    description: |-
+    desc: |-
       condition that must return [[true]] for the tested element to be counted. The variable {{hl|[[Magic Variables#x|_x]]}} will contain the currently tested element
       {{Feature|arma3|If the provided array contains different data types, use [[isEqualTo]] for item comparison instead of [[==]].}}
     type: Code
@@ -35,27 +41,13 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - |-
   <sqf>
@@ -70,3 +62,15 @@ examples:
 - <sqf>private _cnt = count (configFile >> "CfgVehicles");</sqf>
 - <sqf>hint str count "japa is the man!"; // 16</sqf>
 - <sqf>hint format ["There are %1 elements in the provided hashmap", count _myHashMap];</sqf>
+see_also:
+- apply
+- select
+- in
+- find
+- countFriendly
+- countEnemy
+- countUnknown
+- countSide
+- countType
+- findIf
+- forceUnicode

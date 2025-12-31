@@ -1,23 +1,20 @@
 name: currentMagazineDetail
-description: Returns description of vehicle's currently loaded magazine, its ammo count (current/default) and its id.
+desc: Returns description of vehicle's currently loaded magazine, its ammo count (current/default) and its id.
 groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
 - call: !Unary object
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: object
-    description: unit or vehicle
+    desc: unit or vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_currentMagazineDetail = currentMagazineDetail player; // "6.5mm 30Rnd STANAG Mag(30/30)[id:0]"</sqf>
 - <sqf>_currentMagazineDetail = currentMagazineDetail Mi_48; // "30mm HE Shells(250/250)[id:21]</sqf>
@@ -26,3 +23,6 @@ examples:
   _cmd = currentMagazineDetail player; // "9mm 16Rnd Mag(13/16)[id/cr:10000011/0]"
   _cmd splitString "([ ]/:)"; // ["9mm","16Rnd","Mag","13","16","id","cr","10000011","0"]
   </sqf>
+see_also:
+- magazinesDetail
+- currentMagazine

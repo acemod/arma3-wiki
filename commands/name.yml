@@ -1,5 +1,5 @@
 name: name
-description: |-
+desc: |-
   When argument is [[Object]], the command returns the name given to a unit using the [[setIdentity]] instruction or selected randomly by the game engine if [[setIdentity]] has not been used on the unit.
   If used on vehicle, name of first crew member (in order commander, driver, gunner). If used on an object, "Error: No unit" is being returned.
 multiplayer_note: '[[name]] returns [[profileName]], eventually suffixed by the server in the event of identical names, e.g {{hl|username}}/{{hl|username (2)}}.'
@@ -11,68 +11,47 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - String
-  - null
+    type: String
   params:
   - name: object
     type: Object
 - call: !Unary location
   ret:
-  - String
-  - the location's ''name''. To get its textual value, use [[text]] (see {{Link|#Example 3}})
+    type: String
+    desc: the location's ''name''. To get its textual value, use [[text]] (see {{Link|#Example 3}})
   params:
   - name: location
     type: Location
   since:
-    armed_assault:
-      major: 1
-      minor: 8
+    arma1: '1.8'
 - call: !Unary namespace
   ret:
-  - String
-  - "namespace's ''name''. Possible values: \n\n* \"mission\" - for [[missionNamespace]]\n* \"profile\" - for [[profileNamespace]]\n* \"ui\" - for [[uiNamespace]]\n* \"parsing\" - for [[parsingNamespace]]\n* \"local\" - for [[localNamespace]]\n* \"missionprofile\" - for [[missionProfileNamespace]]\n* \"server\" - for [[serverNamespace]]\n* \"\" - for some unnamed namespaces like temporary or server config for example.\n* \"null\" - null namespace (this should never happen)"
+    type: String
+    desc: "namespace's ''name''. Possible values: \n\n* \"mission\" - for [[missionNamespace]]\n* \"profile\" - for [[profileNamespace]]\n* \"ui\" - for [[uiNamespace]]\n* \"parsing\" - for [[parsingNamespace]]\n* \"local\" - for [[localNamespace]]\n* \"missionprofile\" - for [[missionProfileNamespace]]\n* \"server\" - for [[serverNamespace]]\n* \"\" - for some unnamed namespaces like temporary or server config for example.\n* \"null\" - null namespace (this should never happen)"
   params:
   - name: namespace
     type: Namespace
   since:
-    arma_3:
-      major: 2
-      minor: 18
+    arma3: '2.18'
 - call: !Unary scriptHandle
   ret:
-  - String
-  - The name given to the script via [[scriptName]] or the name passed to [[spawn]] when creating a [[Script_Handle#Promise_Handles|"Empty Handle"]]
+    type: String
+    desc: The name given to the script via [[scriptName]] or the name passed to [[spawn]] when creating a [[Script_Handle#Promise_Handles|"Empty Handle"]]
   params:
   - name: scriptHandle
     type: ScriptHandle
   since:
-    arma_3:
-      major: 2
-      minor: 22
+    arma3: '2.22'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>_name = name player;</sqf>
 - <sqf>_locationName = name myLocation;</sqf>
@@ -82,3 +61,15 @@ examples:
   text nearestLocation [position player, "Hill"]; // "Lesnoy Khrebet"
   </sqf>
 - <sqf>_currentNamespace = name currentNamespace;</sqf>
+see_also:
+- profileName
+- setName
+- setIdentity
+- nameSound
+- setNameSound
+- createLocation
+- deleteLocation
+- locationPosition
+- nearestLocation
+- nearestLocations
+- nearestLocationWithDubbing

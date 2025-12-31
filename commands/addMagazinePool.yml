@@ -1,5 +1,5 @@
 name: addMagazinePool
-description: Adds magazines to the magazine pool, of which the player may choose in the following mission. Available in campaigns only.
+desc: Adds magazines to the magazine pool, of which the player may choose in the following mission. Available in campaigns only.
 groups:
 - Weapon Pool
 syntax:
@@ -7,38 +7,26 @@ syntax:
   - magazineName
   - count
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: magazineName
-    description: magazine class name. See the topic [[:Category:Weapons]] for reference about possible values.
+    desc: magazine class name. See the topic [[:Category:Weapons]] for reference about possible values.
     type: String
   - name: count
-    description: number of magazines to add
+    desc: number of magazines to add
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  flashpoint:
-    major: 1
-    minor: 75
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.75'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>addMagazinePool ["M16", 20];</sqf>
+see_also:
+- clearMagazinePool
+- queryMagazinePool

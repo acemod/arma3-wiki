@@ -1,5 +1,5 @@
 name: ctrlSetURLOverlayMode
-description: "Sets how to handle opening of URL, default browser or Steam overlay. Possible values:\n* 0 - default browser\n* 1 - Steam overlay if enabled, otherwise default browser \n* 2 - Steam overlay, shows error message box if disabled (the box has a button to continue with default browser)\n\n{{Feature|informative|Toggling Steam overlay in Steam options will require game restart for the changes to take effect.}}"
+desc: "Sets how to handle opening of URL, default browser or Steam overlay. Possible values:\n* 0 - default browser\n* 1 - Steam overlay if enabled, otherwise default browser \n* 2 - Steam overlay, shows error message box if disabled (the box has a button to continue with default browser)\n\n{{Feature|informative|Toggling Steam overlay in Steam options will require game restart for the changes to take effect.}}"
 groups:
 - GUI Control
 syntax:
@@ -7,20 +7,22 @@ syntax:
   - control
   - mode
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
-    description: control that contain url opening action
+    desc: control that contain url opening action
     type: Control
   - name: mode
-    description: overlay mode, see description
+    desc: overlay mode, see description
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 10
+  arma3: '2.10'
 examples:
 - <sqf>_control ctrlSetURLOverlayMode 1;</sqf>
+see_also:
+- isSteamOverlayEnabled
+- ctrlURLOverlayMode
+- ctrlURL
+- menuSetURL

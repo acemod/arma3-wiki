@@ -1,20 +1,22 @@
 name: listRemoteTargets
-description: Return list of datalink targets and time for which they will be/were known.
+desc: Return list of datalink targets and time for which they will be/were known.
 groups:
 - Sensors
 syntax:
 - call: !Unary side
   ret:
-  - Unknown
-  - null
+    type: Unknown
   params:
   - name: side
     type: Side
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 72
+  arma3: '1.72'
 examples:
 - <sqf>listRemoteTargets opfor;</sqf>
+see_also:
+- listVehicleSensors
+- enableVehicleSensor
+- isVehicleRadarOn
+- isVehicleSensorEnabled

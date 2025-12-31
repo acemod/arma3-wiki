@@ -1,5 +1,5 @@
 name: fadeRadio
-description: 'Changes the radio volume smoothly within the given time. {{Feature|informative|The player''s in-game setting is not changed by this command: {{hl|Final Volume {{=}} Client Setting * Scripted Volume}}.}}'
+desc: 'Changes the radio volume smoothly within the given time. {{Feature|informative|The player''s in-game setting is not changed by this command: {{hl|Final Volume {{=}} Client Setting * Scripted Volume}}.}}'
 groups:
 - Sounds
 syntax:
@@ -7,38 +7,32 @@ syntax:
   - time
   - volume
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: time
-    description: fade interval in seconds
+    desc: fade interval in seconds
     type: Number
   - name: volume
-    description: radio volume range 0 to 2
+    desc: radio volume range 0 to 2
     type: Number
 argument_loc: Unspecified
 effect_loc: Local
 since:
-  flashpoint:
-    major: 1
-    minor: 0
-  flashpoint_elite:
-    major: 1
-    minor: 0
-  armed_assault:
-    major: 1
-    minor: 0
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  flashpoint: '1.0'
+  flashpoint_elite: '1.0'
+  arma1: '1.0'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>5 fadeRadio 0.1;</sqf>
+see_also:
+- fadeSound
+- fadeMusic
+- fadeSpeech
+- fadeEnvironment
+- environmentVolume
+- radioVolume
+- soundVolume
+- musicVolume

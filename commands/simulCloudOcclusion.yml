@@ -1,5 +1,5 @@
 name: simulCloudOcclusion
-description: Returns clouds occlusion between two given points.
+desc: Returns clouds occlusion between two given points.
 problem_notes:
 - '{{Feature|Eden Editor|SimulWeather seems to be disabled in [[:Category:Eden Editor|Eden Editor]] and scenario preview.}}'
 groups:
@@ -9,11 +9,7 @@ syntax:
   - pos1
   - pos2
   ret:
-  - Unknown
-  - |-
-    (0 - no clouds, 1 - full clouds)
-    * [[Nothing]] - If arguments are incorrect
-    * [[Boolean]] - Returns [[false]] if simulWeather is disabled
+    type: Unknown
   params:
   - name: pos1
     type: Position
@@ -22,9 +18,7 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 0
+  arma3: '1.0'
 examples:
 - |-
   <sqf>
@@ -32,3 +26,7 @@ examples:
   private _posAbovePlayer = +_posPlayer; _posAbovePlayer set [2,200];
   simulCloudOcclusion [_posPlayer, _posAbovePlayer];
   </sqf>
+see_also:
+- setSimulWeatherLayers
+- simulCloudDensity
+- simulInClouds

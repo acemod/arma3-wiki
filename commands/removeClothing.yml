@@ -1,5 +1,5 @@
 name: removeClothing
-description: Removes specified named clothes selections from unit. {{Feature | important | Result of April Fool's Day 2008. Don't even try ingame ;)}}
+desc: Removes specified named clothes selections from unit. {{Feature | important | Result of April Fool's Day 2008. Don't even try ingame ;)}}
 groups:
 - Unit Inventory
 - Broken Commands
@@ -8,20 +8,20 @@ syntax:
   - unit
   - item
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
-    description: unit
+    desc: unit
     type: Object
   - name: item
-    description: arrays of named selections ([[String]]s)
+    desc: arrays of named selections ([[String]]s)
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 11
+  arma1: '1.11'
 examples:
 - "<sqf>_unit removeClothing [\"shirt\"];</sqf> \n[[File:rc_sample.jpg|200px]]"
+see_also:
+- Model
+- Config

@@ -1,46 +1,34 @@
 name: toString
-description: Converts the supplied [[Array]] of [[Number]]s into a [[String]] through {{Link|https://en.wikipedia.org/wiki/Unicode}} characters representation conversion, or provided [[Code]] to [[compile|compilable]] [[String]].
+desc: Converts the supplied [[Array]] of [[Number]]s into a [[String]] through {{Link|https://en.wikipedia.org/wiki/Unicode}} characters representation conversion, or provided [[Code]] to [[compile|compilable]] [[String]].
 groups:
 - Strings
 - Arrays
 syntax:
 - call: !Unary array
   ret:
-  - String
-  - '{{Link|https://en.wikipedia.org/wiki/Unicode}} numbers converted to [[String]] of characters'
+    type: String
+    desc: '{{Link|https://en.wikipedia.org/wiki/Unicode}} numbers converted to [[String]] of characters'
   params:
   - name: array
-    description: 'number values, the following error might appear in .rpt file: {{hl|Bad conversion: scalar}}. See [[parseSimpleArray]] for multi-type array.}}'
+    desc: 'number values, the following error might appear in .rpt file: {{hl|Bad conversion: scalar}}. See [[parseSimpleArray]] for multi-type array.}}'
     type: Unknown
 - call: !Unary code
   ret:
-  - String
-  - '[[compile|compilable]] [[String]] from provided code'
+    type: String
+    desc: '[[compile|compilable]] [[String]] from provided code'
   params:
   - name: code
     type: Code
   since:
-    arma_3:
-      major: 2
-      minor: 2
+    arma3: '2.2'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  armed_assault:
-    major: 1
-    minor: 9
-  arma_2:
-    major: 1
-    minor: 0
-  arma_2_arrowhead:
-    major: 1
-    minor: 50
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma1: '1.9'
+  arma2: '1.0'
+  arma2oa: '1.50'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>hint toString [65,97,338]; // returns "AaŒ"</sqf>
 - <sqf>["test", "test"] joinString toString [12345] splitString toString [12345]; // ["test", "test"]</sqf>
@@ -51,3 +39,34 @@ examples:
   sleep 2;
   call compile _compilableString; // hints ' it works! '
   </sqf>
+see_also:
+- parseSimpleArray
+- set
+- resize
+- reverse
+- select
+- in
+- find
+- toArray
+- forEach
+- count
+- deleteAt
+- deleteRange
+- append
+- sort
+- param
+- params
+- arrayIntersect
+- splitString
+- joinString
+- toLower
+- toUpper
+- toFixed
+- endl
+- format
+- formatText
+- toLowerANSI
+- toUpperANSI]],
+- '{{Link|http://www.utf8-chartable.de/|Unicode'
+- Character
+- Table}}

@@ -1,5 +1,5 @@
 name: splitString
-description: |-
+desc: |-
   Splits the provided '''ANSI''' string into an array of tokens according to given delimiters.
   {{Feature|informative|For Unicode support, see [[forceUnicode]].}}
 groups:
@@ -9,21 +9,18 @@ syntax:
   - str
   - delimiters
   ret:
-  - ArrayUnknown
-  - null
+    type: ArrayUnknown
   params:
   - name: str
-    description: the string to split
+    desc: the string to split
     type: String
   - name: delimiters
-    description: one or more characters, each used as a separate delimiter; if empty, ''str'' is split by each character
+    desc: one or more characters, each used as a separate delimiter; if empty, ''str'' is split by each character
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 50
+  arma3: '1.50'
 examples:
 - |-
   <sqf>
@@ -44,3 +41,29 @@ examples:
 - |-
   Remove all \r\n from file:
   <sqf>loadFile "somefile.txt" splitString toString [13,10] joinString " ";</sqf>
+see_also:
+- joinString
+- set
+- resize
+- reverse
+- select
+- in
+- find
+- toArray
+- forEach
+- count
+- deleteAt
+- deleteRange
+- append
+- sort
+- param
+- params
+- arrayIntersect
+- toString
+- endl
+- forceUnicode]],
+- '{{Link|http://www.utf8-chartable.de/|Unicode'
+- Character
+- Table}}
+- '{{Link|http://www.cplusplus.com/reference/cstring/strtok/|strtok'
+- (C++)}}

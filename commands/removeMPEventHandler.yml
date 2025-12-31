@@ -1,5 +1,5 @@
 name: removeMPEventHandler
-description: Removes MP event handler added by [[addMPEventHandler]].
+desc: Removes MP event handler added by [[addMPEventHandler]].
 groups:
 - Multiplayer
 - Event Handlers
@@ -9,27 +9,26 @@ syntax:
   - - event
     - index
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unitName
     type: Object
   - name: event
     type: String
   - name: index
-    description: index returned by [[addMPEventHandler]]
+    desc: index returned by [[addMPEventHandler]]
     type: Number
 argument_loc: Global
 effect_loc: Global
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 55
-  take_on_helicopters:
-    major: 1
-    minor: 0
-  arma_3:
-    major: 0
-    minor: 50
+  arma2oa: '1.55'
+  tkoh: '1.0'
+  arma3: '0.50'
 examples:
 - <sqf>player removeMPEventHandler ["MPKilled", 0];</sqf>
+see_also:
+- :Category:Event
+- Handlers|EventHandlers
+- list
+- addMPEventHandler
+- removeAllMPEventHandlers

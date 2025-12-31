@@ -1,5 +1,5 @@
 name: compileScript
-description: |-
+desc: |-
   This command is an alias for {{hl|[[compile]](Final) (prefixHeader + [[preprocessFileLineNumbers]] path)}}. See description of [[preprocessFileLineNumbers]] for more details.<br>
   In addition, this command can also compile [[SQF Bytecode]] files, which can reduce compilation time. If both a .sqf file and .sqfc file are pressing in the the path, this command will automatically compile the .sqfc file.
 groups:
@@ -10,27 +10,31 @@ syntax:
   - final
   - prefixHeader
   ret:
-  - Code
-  - null
+    type: Code
   params:
   - name: path
-    description: path to script file
+    desc: path to script file
     type: String
   - name: final
-    description: compile final, see [[compileFinal]]
+    desc: compile final, see [[compileFinal]]
     type: Boolean
     optional: true
     default: '[[false]]'
   - name: prefixHeader
-    description: value added at the beginning of the file
+    desc: value added at the beginning of the file
     type: String
     optional: true
     default: '""'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 2
+  arma3: '2.2'
 examples:
 - "<sqf>\ncompileScript [\"a3\\props_f_enoch\\military\\equipment\\scripts\\meteo.sqf\"];\n// has the same functionality as \ncompile preprocessFileLineNumbers \"a3\\props_f_enoch\\military\\equipment\\scripts\\meteo.sqf\";\n</sqf>"
+see_also:
+- compile
+- compileFinal
+- preprocessFileLineNumbers
+- preprocessFile
+- call
+- spawn

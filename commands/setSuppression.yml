@@ -1,5 +1,5 @@
 name: setSuppression
-description: Sets the given suppression value for the given unit.
+desc: Sets the given suppression value for the given unit.
 groups:
 - Object Manipulation
 syntax:
@@ -7,19 +7,19 @@ syntax:
   - unit
   - value
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: unit
     type: Object
   - name: value
-    description: suppression value from 0 to 1
+    desc: suppression value from 0 to 1
     type: Number
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 42
+  arma3: '1.42'
 examples:
 - <sqf>unit_1 setSuppression 1;</sqf>
+see_also:
+- getSuppression
+- suppressFor

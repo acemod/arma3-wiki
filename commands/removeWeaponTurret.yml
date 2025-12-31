@@ -1,5 +1,5 @@
 name: removeWeaponTurret
-description: Removes weapon from the turret. Use turret path [-1] for driver's turret.
+desc: Removes weapon from the turret. Use turret path [-1] for driver's turret.
 groups:
 - Turrets
 syntax:
@@ -8,24 +8,31 @@ syntax:
   - - weaponName
     - turretPath
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: vehicle
     type: Object
   - name: weaponName
     type: String
   - name: turretPath
-    type: ArrayUnknown
+    type: TurretPath
 argument_loc: Local
 effect_loc: Global
 since:
-  arma_2_arrowhead:
-    major: 1
-    minor: 64
-  arma_3:
-    major: 1
-    minor: 32
+  arma2oa: '1.64'
+  arma3: '1.32'
 examples:
 - <sqf>_tank removeWeaponTurret ["LMG_M200", [0,0]];</sqf>
 - <sqf>vehicle player removeWeaponTurret ["SportCarHorn", [-1]];</sqf>
+see_also:
+- addWeaponTurret
+- turretLocal
+- addMagazineTurret
+- magazinesTurret
+- removeMagazinesTurret
+- removeMagazineTurret
+- weaponsTurret
+- currentMagazineDetailTurret
+- currentMagazineTurret
+- currentWeaponTurret
+- selectWeaponTurret

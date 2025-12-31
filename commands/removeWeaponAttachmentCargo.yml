@@ -1,5 +1,5 @@
 name: removeWeaponAttachmentCargo
-description: "Remove attachment linked to a weapon from the vehicle cargo space. \n{{Feature|warning|This is unofficial documentation. All Information here is as it exists in the Engine. It might not reflect the reality.}}"
+desc: "Remove attachment linked to a weapon from the vehicle cargo space. \n{{Feature|warning|This is unofficial documentation. All Information here is as it exists in the Engine. It might not reflect the reality.}}"
 groups:
 - Vehicle Inventory
 syntax:
@@ -9,11 +9,10 @@ syntax:
     - creatorID
     - attachment
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: object
-    description: vehicle or ammo box
+    desc: vehicle or ammo box
     type: Object
   - name: weaponID
     type: Number
@@ -24,8 +23,9 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 22
+  arma3: '1.22'
 examples:
 - <sqf>rearmTruckOne removeWeaponAttachmentCargo [weaponID, creatorID, "attachment"];</sqf>
+see_also:
+- removeWeaponCargo
+- weaponAccessoriesCargo

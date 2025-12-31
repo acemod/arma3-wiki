@@ -1,21 +1,22 @@
 name: isTurnedOut
-description: Returns [[true]] if given unit is turned out, otherwise [[false]]. The output changes to [[true]] after unit finished turning out, however will change to [[false]] almost immediately after unit is ordered to turn in.
+desc: Returns [[true]] if given unit is turned out, otherwise [[false]]. The output changes to [[true]] after unit finished turning out, however will change to [[false]] almost immediately after unit is ordered to turn in.
 groups:
 - Object Manipulation
 syntax:
 - call: !Unary unit
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: unit
-    description: unit on turn(in/out) enabled turret
+    desc: unit on turn(in/out) enabled turret
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 42
+  arma3: '1.42'
 examples:
 - <sqf>_commanderOut = isTurnedOut (tank turretUnit [0,0]);</sqf>
+see_also:
+- moveOut
+- moveInDriver
+- turretUnit

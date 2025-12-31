@@ -1,21 +1,25 @@
 name: selectRandom
-description: Returns a random element from the given array. Engine solution to [[BIS_fnc_selectRandom]]
+desc: Returns a random element from the given array. Engine solution to [[BIS_fnc_selectRandom]]
 groups:
 - Arrays
 syntax:
 - call: !Unary array
   ret:
-  - Anything
-  - random selected value or [[Nothing]] if array is empty
+    type: Anything
+    desc: random selected value or [[Nothing]] if array is empty
   params:
   - name: array
-    description: array of anything
+    desc: array of anything
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - <sqf>_randomElement = selectRandom [1,2,3,4,5];</sqf>
+see_also:
+- selectRandomWeighted
+- random
+- select
+- selectMin
+- selectMax

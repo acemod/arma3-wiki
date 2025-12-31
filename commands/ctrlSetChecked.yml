@@ -1,5 +1,5 @@
 name: ctrlSetChecked
-description: Sets checked state of a [[CT_CHECKBOXES]] control.
+desc: Sets checked state of a [[CT_CHECKBOXES]] control.
 groups:
 - GUI Control
 syntax:
@@ -7,42 +7,40 @@ syntax:
   - control
   - checked
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
-    description: '[[CT_CHECKBOXES]] control. If control contain multiple checkboxes, only checkbox with index 0 is queried.'
+    desc: '[[CT_CHECKBOXES]] control. If control contain multiple checkboxes, only checkbox with index 0 is queried.'
     type: Control
   - name: checked
-    description: '[[true]] to check, [[false]] to uncheck the checkbox'
+    desc: '[[true]] to check, [[false]] to uncheck the checkbox'
     type: Boolean
 - call: !Binary
   - control
   - - index
     - checked
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params:
   - name: control
-    description: '[[CT_CHECKBOXES]] control'
+    desc: '[[CT_CHECKBOXES]] control'
     type: Control
   - name: index
-    description: checkbox index
+    desc: checkbox index
     type: Number
   - name: checked
-    description: '[[true]] to check, [[false]] to uncheck the checkbox'
+    desc: '[[true]] to check, [[false]] to uncheck the checkbox'
     type: Boolean
   since:
-    arma_3:
-      major: 1
-      minor: 72
+    arma3: '1.72'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 0
-    minor: 50
+  arma3: '0.50'
 examples:
 - <sqf>_control ctrlSetChecked true;</sqf>
 - <sqf>_control ctrlSetChecked [3, true];</sqf>
+see_also:
+- ctrlChecked
+- cbChecked
+- cbSetChecked

@@ -1,5 +1,5 @@
 name: set3DENAttributes
-description: |-
+desc: |-
   Set entity [[Eden Editor: Entity Attributes|attributes]].
   An attribute is identified by its {{hl|property}} ({{hl|data}} when it is engine-drive attribute) value in config.
   For the list of all attributes with their properties, see [[Eden_Editor:_Setting_Attributes#Attributes|Setting Attributes]].
@@ -17,26 +17,33 @@ syntax:
     - value2
   - '...'
   ret:
-  - Boolean
-  - '[[true]] if the value was set'
+    type: Boolean
+    desc: '[[true]] if the value was set'
   params:
   - name: entitiesN
-    type: Unknown
+    type: !OneOf
+    - - !ArrayUnsized
+        type: EdenEntity
+        desc: ''
+      - null
+    - - EdenID
+      - null
   - name: classN
-    description: attribute name
+    desc: attribute name
     type: String
   - name: valueN
-    description: new attribute value
+    desc: new attribute value
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 56
+  arma3: '1.56'
 examples:
 - |-
   <sqf>
   // Set all selected objects as playable
   set3DENAttributes [[get3DENSelected "Object", "ControlMP", true]];
   </sqf>
+see_also:
+- get3DENAttribute
+- clear3DENAttribute

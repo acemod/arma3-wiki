@@ -1,5 +1,5 @@
 name: setPilotCameraTarget
-description: "Sets an area or target to be tracked by the object airplane or helicopter [[A3_Targeting_config_reference#class_pilotCamera|pilotCamera]]. \nTo track an object the vehicle has to have appropriate sensors ([[A3_Targeting_config_reference#CfgVehicles|scanners]]) that can detect the given target type.\nUsing [[objNull]] will unlock the camera"
+desc: "Sets an area or target to be tracked by the object airplane or helicopter [[A3_Targeting_config_reference#class_pilotCamera|pilotCamera]]. \nTo track an object the vehicle has to have appropriate sensors ([[A3_Targeting_config_reference#CfgVehicles|scanners]]) that can detect the given target type.\nUsing [[objNull]] will unlock the camera"
 groups:
 - Pilot Camera
 syntax:
@@ -7,20 +7,29 @@ syntax:
   - object
   - target
   ret:
-  - Boolean
-  - null
+    type: Boolean
   params:
   - name: object
     type: Object
   - name: target
-    description: format PositionASL
-    type: Unknown
+    desc: format PositionASL
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
 argument_loc: Local
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 1
-    minor: 64
+  arma3: '1.64'
 examples:
 - <sqf>_pilotCamTrack = vehicle player setPilotCameraTarget [2100,4200,4.2];</sqf>
 - <sqf>_pilotCamTrack = vehicle player setPilotCameraTarget BIS_Edita;</sqf>
+see_also:
+- hasPilotCamera
+- getPilotCameraPosition
+- getPilotCameraDirection
+- getPilotCameraRotation
+- getPilotCameraTarget
+- setPilotCameraDirection
+- setPilotCameraRotation

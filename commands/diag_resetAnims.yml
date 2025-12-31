@@ -1,17 +1,16 @@
 name: diag_resetAnims
-description: Resets the animations system cache, so that animation makers can test their animations without restarting the game. A '''mission restart''' is required for the changes to be applied.
+desc: Resets the animations system cache, so that animation makers can test their animations without restarting the game. A '''mission restart''' is required for the changes to be applied.
 groups:
 - Diagnostic
 syntax:
 - call: Nular
   ret:
-  - Nothing
-  - null
+    type: Nothing
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
-  arma_3:
-    major: 2
-    minor: 16
+  arma3: '2.16'
 branch: diag
+see_also:
+- diag_resetShapes
