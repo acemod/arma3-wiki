@@ -195,7 +195,7 @@ pub async fn command(
         (false, true)
     };
 
-    let url = format!("{url}?action=raw");
+    let raw_url = format!("{url}?action=raw");
     let content = if path.exists() && !download_newer {
         fs_err::read_to_string(&path).expect("Failed to read cached command")
     } else {
@@ -203,20 +203,24 @@ pub async fn command(
             pg.println(format!("Skipping {name}, less than {SKIP_IF_LESS_THAN}h"));
             return Ok((false, Vec::new()));
         }
-        let res = match client.bi_get(&url).send().await {
+        let res = match client.bi_get(&raw_url).send().await {
             Ok(res) => res,
             Err(e) => {
                 pg.println(format!("Failed to fetch {name}: {e}"));
                 return Err(e.to_string());
             }
         };
-        assert!(res.status().is_success(), "Failed to fetch {name}");
+        assert!(
+            res.status().is_success(),
+            "Failed to fetch {name}: {}",
+            res.status()
+        );
         let content = res.text().await.expect("Failed to read response text");
         if content.is_empty() {
-            pg.println(format!("Failed to fetch {name} from {url}"));
+            pg.println(format!("Failed to fetch {name} from {raw_url}"));
             return Err("Empty".to_string());
         }
-        pg.println(format!("Fetching {name} from {url}"));
+        pg.println(format!("Fetching {name} from {raw_url}"));
         let mut file = tokio::fs::File::create(&path)
             .await
             .expect("Failed to create temp file");
@@ -252,14 +256,7 @@ pub async fn command(
                     .read_line(&mut input)
                     .expect("Failed to read input");
                 if input.trim().to_lowercase() == "y" {
-                    return Box::pin(command(
-                        pg,
-                        client,
-                        name,
-                        url,
-                        dry_run,
-                        true,
-                    )).await;
+                    return Box::pin(command(pg, client, name, url, dry_run, true)).await;
                 }
             } else {
                 pg.println(format!("Parsed {} successfully", name));
@@ -304,14 +301,7 @@ pub async fn command(
                     .read_line(&mut input)
                     .expect("Failed to read input");
                 if input.trim().to_lowercase() == "y" {
-                    return Box::pin(command(
-                        pg,
-                        client,
-                        name,
-                        url,
-                        dry_run,
-                        false,
-                    )).await;
+                    return Box::pin(command(pg, client, name, url, dry_run, false)).await;
                 }
             }
             pg.println(format!("Failed to parse {name}"));

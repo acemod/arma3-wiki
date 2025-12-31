@@ -189,14 +189,25 @@ impl Command {
         self.see_also.push(see_also);
     }
 
+    #[must_use]
     pub fn has_unknown(&self) -> bool {
         for syntax in &self.syntax {
             for param in syntax.params() {
                 if param.typ().is_unknown() {
+                    println!(
+                        "Unknown param type in command {}: {}",
+                        self.name(),
+                        param.typ()
+                    );
                     return true;
                 }
             }
             if syntax.ret().typ().is_unknown() {
+                println!(
+                    "Unknown return type in command {}: {}",
+                    self.name(),
+                    syntax.ret().typ()
+                );
                 return true;
             }
         }

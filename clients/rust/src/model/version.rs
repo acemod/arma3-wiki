@@ -78,7 +78,8 @@ fn test_version_deserialize() {
     let v: Version = serde_yaml::from_str(r#""1.02""#).expect("Failed to deserialize version");
     assert_eq!(v, Version::new(1, 2));
 
-    let v: Version = serde_yaml::from_str(r#"{"major":1,"minor":2}"#).expect("Failed to deserialize version");
+    let v: Version =
+        serde_yaml::from_str(r#"{"major":1,"minor":2}"#).expect("Failed to deserialize version");
     assert_eq!(v, Version::new(1, 2));
 }
 

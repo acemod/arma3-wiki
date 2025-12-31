@@ -177,7 +177,15 @@ impl Syntax {
                         };
                         ret = ret_trim.trim().to_string();
                     }
-                    if ret.contains(" format") {
+                    if ret.starts_with('*') {
+                        Return {
+                            typ: Value::parse_list(command, &ret).unwrap_or_else(|_| {
+                                errors.push(ParseError::Syntax(ret.clone()));
+                                Value::Unknown
+                            }),
+                            desc: None,
+                        }
+                    } else if ret.contains(" format") {
                         Value::match_explicit(&ret).map_or_else(
                             || {
                                 errors.push(ParseError::Syntax(ret));
@@ -186,11 +194,9 @@ impl Syntax {
                                     desc: None,
                                 }
                             },
-                            |explicit_match| {
-                                Return {
-                                    typ: explicit_match,
-                                    desc: None,
-                                }
+                            |explicit_match| Return {
+                                typ: explicit_match,
+                                desc: None,
                             },
                         )
                     } else {

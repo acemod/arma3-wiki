@@ -25,10 +25,7 @@ async fn main() {
 
     println!("Dry run: {dry_run}");
     println!("Temp dir: {}", tmp.display());
-    println!(
-        "Doing commands: {}",
-        if do_commands { "yes" } else { "no" }
-    );
+    println!("Doing commands: {}", if do_commands { "yes" } else { "no" });
     println!(
         "Doing event handlers: {}",
         if do_event_handlers { "yes" } else { "no" }

@@ -51,6 +51,7 @@ pub enum Value {
     Namespace,
     Nothing,
     Number,
+    NumberRange(i32, i32),
     Object,
     ScriptHandle,
     Side,
@@ -87,6 +88,8 @@ static REGEX_TYPE: OnceLock<Regex> = OnceLock::new();
 static REGEX_ARRAY_OF: OnceLock<Regex> = OnceLock::new();
 #[cfg(feature = "wiki")]
 static REGEX_OR_PATTERN: OnceLock<Regex> = OnceLock::new();
+#[cfg(feature = "wiki")]
+static REGEX_NUMBER_RANGE: OnceLock<Regex> = OnceLock::new();
 
 impl Value {
     #[must_use]
@@ -113,9 +116,20 @@ impl Value {
         let regex_array_of = REGEX_ARRAY_OF.get_or_init(|| {
             Regex::new(r"^\[\[Array\]\] of \[\[([^\[\]]+)\]\]s?$").expect("Failed to compile regex")
         });
-        let regex_or_pattern = REGEX_OR_PATTERN.get_or_init(|| {
-            Regex::new(r"\[\[([^\[\]]+)\]\]").expect("Failed to compile regex")
+        let regex_or_pattern = REGEX_OR_PATTERN
+            .get_or_init(|| Regex::new(r"\[\[([^\[\]]+)\]\]").expect("Failed to compile regex"));
+        let regex_number_range = REGEX_NUMBER_RANGE.get_or_init(|| {
+            Regex::new(r"^\[\[Number\]\].*?(\d+)\.\.(\d+)").expect("Failed to compile regex")
         });
+
+        // Check for "Number in range X..Y" pattern
+        if let Some(caps) = regex_number_range.captures(source) {
+            let min = caps.get(1).expect("Failed to get capture group 1").as_str();
+            let max = caps.get(2).expect("Failed to get capture group 2").as_str();
+            if let (Ok(min_val), Ok(max_val)) = (min.parse::<i32>(), max.parse::<i32>()) {
+                return Ok(Self::NumberRange(min_val, max_val));
+            }
+        }
 
         // Check for "Array of X" pattern
         if let Some(caps) = regex_array_of.captures(source) {
@@ -130,18 +144,82 @@ impl Value {
 
         // Check for "X or Y" or "X, Y, Z or W" patterns
         if source.contains(" or ") {
-            let matches: Vec<_> = regex_or_pattern
-                .captures_iter(source)
-                .filter_map(|cap| {
-                    let value = cap.get(1).expect("Failed to get capture group 1").as_str();
-                    Self::single_match(value).ok()
-                })
-                .collect();
-            
-            if !matches.is_empty() {
-                return Ok(Self::OneOf(
-                    matches.into_iter().map(|v| (v, None)).collect()
-                ));
+            // Try to find and handle nested explicit patterns
+            // Look for patterns like "[[Object]] or [[Array]] format ... or ..."
+            // where the second part is itself an explicit match
+
+            // Try splitting by " or " at the top level
+            let parts: Vec<&str> = source.split(" or ").collect();
+
+            // Special case: if we have 3+ parts, check if the last N parts form an explicit pattern
+            if parts.len() >= 3 {
+                // Try to rejoin later parts and see if they match an explicit pattern
+                for i in 1..parts.len() {
+                    let rejoined = parts[i..].join(" or ");
+                    if Self::match_explicit(&rejoined).is_some() {
+                        // We found a match! Parse the first parts normally, and use the explicit match for the rest
+                        let mut parsed_values = Vec::new();
+
+                        // Parse first i parts
+                        for &part in &parts[..i] {
+                            let part = part.trim().trim_end_matches(',');
+                            if let Ok(val) = Self::from_wiki(command, part) {
+                                parsed_values.push((val, None));
+                            } else if let Some(caps) = regex_or_pattern.captures(part) {
+                                let value =
+                                    caps.get(1).expect("Failed to get capture group 1").as_str();
+                                if let Ok(val) = Self::single_match(value) {
+                                    parsed_values.push((val, None));
+                                }
+                            }
+                        }
+
+                        // Add the explicit match
+                        if let Ok(val) = Self::from_wiki(command, &rejoined) {
+                            parsed_values.push((val, None));
+                        }
+
+                        if !parsed_values.is_empty() {
+                            return Ok(Self::OneOf(parsed_values));
+                        }
+                    }
+                }
+            }
+
+            // Standard handling: parse each part independently, extracting comma-separated items
+            let mut parsed_values = Vec::new();
+
+            for part in parts {
+                let part = part.trim();
+
+                // Check if this part contains comma-separated items
+                if part.contains(',') {
+                    // Extract all [[Type]] patterns from this comma-separated part
+                    for cap in regex_or_pattern.captures_iter(part) {
+                        let value = cap.get(1).expect("Failed to get capture group 1").as_str();
+                        if let Ok(val) = Self::single_match(value) {
+                            parsed_values.push((val, None));
+                        }
+                    }
+                } else {
+                    // Single item, try to parse as complete expression first
+                    if let Ok(val) = Self::from_wiki(command, part) {
+                        parsed_values.push((val, None));
+                    } else {
+                        // If that fails, try extracting just the type in [[brackets]]
+                        if let Some(caps) = regex_or_pattern.captures(part) {
+                            let value =
+                                caps.get(1).expect("Failed to get capture group 1").as_str();
+                            if let Ok(val) = Self::single_match(value) {
+                                parsed_values.push((val, None));
+                            }
+                        }
+                    }
+                }
+            }
+
+            if !parsed_values.is_empty() {
+                return Ok(Self::OneOf(parsed_values));
             }
         }
 
@@ -168,7 +246,11 @@ impl Value {
     /// Try to match common complex expressions to a value type.
     /// These are specific wiki patterns that don't fit the generic parsing rules.
     pub fn match_explicit(source: &str) -> Option<Self> {
+        let source = source.replace(" in format ", " format ");
         match source.trim() {
+            // Date
+            "[[Array]] format [[Date]]" | "[[Array]] of [[Date]]" => Some(Self::ArrayDate),
+
             // Position types
             "[[Array]] format [[Position]]" => Some(Self::Position),
 
@@ -181,9 +263,9 @@ impl Value {
 
             "[[Array]] format [[Position#PositionAGL|PositionAGL]]"
             | "[[Position#PositionAGL|PositionAGL]]"
-            | "[[Array]] - world position in format [[Position#PositionAGL|PositionAGL]]"
+            | "[[Array]] - world position format [[Position#PositionAGL|PositionAGL]]"
             | "[[Array]] format [[Position#PositionAGL|PositionAGL]] - translated world position"
-            | "[[Array]] - position in format [[Position#PositionAGL|PositionAGL]]"
+            | "[[Array]] - position format [[Position#PositionAGL|PositionAGL]]"
             | "[[Array]] - camera world position, format [[Position#PositionAGL|PositionAGL]]" => {
                 Some(Self::Position3dAGL)
             }
@@ -211,7 +293,7 @@ impl Value {
             }
 
             // Number variants
-            "[[Number]] in range 0..1" | "[[Number]] of control" => Some(Self::Number),
+            "[[Number]] of control" => Some(Self::Number),
 
             // Color types
             "[[Color|Color (RGBA)]]"
@@ -219,12 +301,14 @@ impl Value {
             | "[[Array]] format [[Color|Color (RGB)]]"
             | "[[Array]] of [[Color|Color (RGBA)]]"
             | "[[Array]] format [[Color|Color (RGBA)]]"
-            | "[[Array]] in format [[Color|Color (RGBA)]]"
             | "[[Array]] format [[Color|Color (RGBA)]] - text color" => Some(Self::ArrayColor),
 
             // Eden Entities
-            "[[Array]] format [[Array of Eden Entities]]"
-            | "[[Array of Eden Entities]]" => Some(Self::ArrayEdenEntities),
+            "[[Array]] format [[Array of Eden Entities]]" | "[[Array of Eden Entities]]" => {
+                Some(Self::ArrayEdenEntities)
+            }
+
+            "[[Turret Path]]" | "[[Array]] format [[Turret Path]]" => Some(Self::TurretPath),
 
             // Array patterns (catch-all for various array descriptions)
             // Note: Simple "Array of X" patterns are handled by regex, these are special cases
@@ -244,8 +328,7 @@ impl Value {
             | "[[Array]] of [[Number]]s, where each number represents index of currently active effect layer"
             | "[[Array]] of [[Number]]s of any size"
             | "[[Array]] of GUI [[Display]]s"
-            | "[[Array]] of string"
-            | "[[Array]] format [[Turret Path]]" => Some(Self::ArrayUnknown),
+            | "[[Array]] of string" => Some(Self::ArrayUnknown),
 
             _ => None,
         }
@@ -267,7 +350,9 @@ impl Value {
             "display" => Ok(Self::Display),
             "eden entity" | "edenentity" => Ok(Self::EdenEntity),
             "eden id" | "edenid" => Ok(Self::EdenID),
-            "exception handle" | "exceptionhandle" => Ok(Self::ExceptionHandle),
+            "exception handling" | "exception handle" | "exceptionhandle" => {
+                Ok(Self::ExceptionHandle)
+            }
             "for type" | "fortype" => Ok(Self::ForType),
             "group" => Ok(Self::Group),
             "hashmap" => Ok(Self::HashMapUnknown),
@@ -315,6 +400,31 @@ impl Value {
             }
         }
     }
+
+    /// Parses a list value from a string.
+    ///
+    /// ```
+    /// * [[Number]] - (0 - no clouds, 1 - full clouds)
+    /// * [[Nothing]] - If arguments are incorrect
+    /// * [[Boolean]] - Returns [[false]] if simulWeather is disabled
+    /// ```
+    pub fn parse_list(command: &str, source: &str) -> Result<Self, String> {
+        let mut items = Vec::new();
+        for line in source.lines() {
+            let line = line.trim();
+            if line.starts_with('*') {
+                let item = line.trim_start_matches('*').trim();
+                if let Ok(item) = Self::from_wiki(command, item) {
+                    items.push((item, None));
+                }
+            }
+        }
+        if items.is_empty() {
+            Err("No list items found".to_string())
+        } else {
+            Ok(Self::OneOf(items))
+        }
+    }
 }
 
 impl std::fmt::Display for Value {
@@ -354,6 +464,7 @@ impl std::fmt::Display for Value {
             Self::Namespace => write!(f, "Namespace"),
             Self::Nothing => write!(f, "Nothing"),
             Self::Number => write!(f, "Number"),
+            Self::NumberRange(min, max) => write!(f, "Number Range ({min},{max})"),
             Self::Object => write!(f, "Object"),
             Self::ScriptHandle => write!(f, "Script Handle"),
             Self::Side => write!(f, "Side"),
@@ -393,7 +504,7 @@ impl std::fmt::Display for Value {
 #[cfg(test)]
 #[cfg(feature = "wiki")]
 mod tests {
-    use crate::model::Value;
+    use crate::model::{ArraySizedElement, Value};
 
     #[test]
     fn single_values() {
@@ -413,6 +524,33 @@ mod tests {
         assert_eq!(
             Value::from_wiki("test", "[[Array]] with [[Anything]]"),
             Ok(Value::ArrayUnknown)
+        );
+    }
+
+    #[test]
+    fn number_range() {
+        assert_eq!(
+            Value::from_wiki("test", "[[Number]] in range 0..1"),
+            Ok(Value::NumberRange(0, 1))
+        );
+        assert_eq!(
+            Value::from_wiki("test", "[[Number]] in 0..1 range"),
+            Ok(Value::NumberRange(0, 1))
+        );
+    }
+
+    #[test]
+    fn list() {
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                "* [[Number]] - (0 - no clouds, 1 - full clouds)\n* [[Nothing]] - If arguments are incorrect\n* [[Boolean]] - Returns [[false]] if simulWeather is disabled"
+            ),
+            Ok(Value::OneOf(vec![
+                (Value::Number, None),
+                (Value::Nothing, None),
+                (Value::Boolean, None),
+            ]))
         );
     }
 
@@ -490,6 +628,35 @@ mod tests {
     }
 
     #[test]
+    fn array_sized() {
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                "[[Array]] with [thenCode, elseCode]
+* thenCode: [[Code]]
+* elseCode: [[Code]]"
+            ),
+            Ok(Value::ArraySized {
+                types: vec![
+                    ArraySizedElement {
+                        name: "thenCode".to_string(),
+                        typ: Value::Code,
+                        desc: String::new(),
+                        since: None,
+                    },
+                    ArraySizedElement {
+                        name: "elseCode".to_string(),
+                        typ: Value::Code,
+                        desc: String::new(),
+                        since: None,
+                    },
+                ],
+                desc: String::new(),
+            })
+        );
+    }
+
+    #[test]
     fn or() {
         assert_eq!(
             Value::from_wiki("test", "[[Nothing]] or [[Boolean]]"),
@@ -512,13 +679,16 @@ mod tests {
     #[test]
     fn or_array() {
         assert_eq!(
-            Value::from_wiki("test", "[[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]"),
+            Value::from_wiki(
+                "test",
+                "[[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]"
+            ),
             Ok(Value::OneOf(vec![
                 (Value::Object, None),
-                (Value::OneOf(vec![
-                    (Value::Position2d, None),
-                    (Value::Position3d, None),
-                ]), None),
+                (
+                    Value::OneOf(vec![(Value::Position2d, None), (Value::Position3d, None),]),
+                    None
+                ),
             ]))
         );
     }
