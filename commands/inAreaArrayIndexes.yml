@@ -83,6 +83,19 @@ syntax:
     default: '[[false]]'
     since:
       arma3: '2.20'
+- ret:
+    type: Unknown
+    desc: indexes of matched positions in positions array
+  left: !Item
+    name: positions
+    desc: '[[Object]]s and/or [[Position]]s to check.'
+    type: ArrayUnknown
+  right: !Array
+  - !Infinite
+    - !Item
+      name: posN
+      desc: polygon vertices in 2d or 3d format (see [[inPolygon]])
+      type: Position
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

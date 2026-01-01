@@ -134,7 +134,28 @@ desc: |-
 multiplayer_note: For the global variant of this command see [[setGroupIdGlobal]].
 groups:
 - Groups
-syntax: []
+syntax:
+- ret:
+    type: Nothing
+  left: !Item
+    name: group
+    type: !OneOf
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
+  right: !Array
+  - !Item
+    name: nameFormat
+    desc: format template (%keyword1 - %keyword2...etc)
+    type: String
+  - !Infinite
+    - !Item
+      name: nameParamN
+      desc: param keyword
+      type: String
 argument_loc: Global
 effect_loc: Local
 since:

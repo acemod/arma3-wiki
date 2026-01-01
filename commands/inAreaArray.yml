@@ -114,6 +114,36 @@ syntax:
     default: '[[false]]'
     since:
       arma3: '2.20'
+- ret:
+    type: !ArrayUnsized
+      type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
+      desc: ''
+  left: !Item
+    name: positions
+    desc: Places to check.
+    type: !ArrayUnsized
+      type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
+      desc: ''
+  right: !Array
+  - !Infinite
+    - !Item
+      name: posN
+      desc: polygon vertices in 2d or 3d format (see [[inPolygon]])
+      type: Position
+  since:
+    arma3: '2.20'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

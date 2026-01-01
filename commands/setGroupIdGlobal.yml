@@ -2,7 +2,28 @@ name: setGroupIdGlobal
 desc: A [[Multiplayer Scripting#Locality|global]] equivalent of  [[setGroupId]].
 groups:
 - Groups
-syntax: []
+syntax:
+- ret:
+    type: Nothing
+  left: !Item
+    name: group
+    type: !OneOf
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
+  right: !Array
+  - !Item
+    name: format
+    desc: format template (e.g "%keyword1 - %keyword2 / %keyword4 (%keyword3)")
+    type: String
+  - !Infinite
+    - !Item
+      name: keywordN
+      desc: keyword value
+      type: String
 argument_loc: Global
 effect_loc: Global
 since:

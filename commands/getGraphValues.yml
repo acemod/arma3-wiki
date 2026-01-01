@@ -2,7 +2,44 @@ name: getGraphValues
 desc: Generate graph y - coordinates of all input values within specific x and y range.
 groups:
 - Math
-syntax: []
+syntax:
+- ret:
+    type: Unknown
+  right: !Array
+  - !Array
+    - !Item
+      name: graphMinX
+      desc: minimum x-axis value
+      type: Number
+    - !Item
+      name: graphMaxX
+      desc: maximum x-axis value
+      type: Number
+    - !Item
+      name: graphMinY
+      desc: minimum y-axis value
+      type: Number
+    - !Item
+      name: graphMaxY
+      desc: maximum y-axis value
+      type: Number
+    - !Item
+      name: valueCount
+      desc: number of values the returned array should have
+      type: Number
+    - !Item
+      name: randomOffset
+      desc: random range for returned y value
+      type: Number
+  - !Infinite
+    - !Item
+      name: xN
+      desc: n<sup>th</sup> x value
+      type: Number
+    - !Item
+      name: yN
+      desc: n<sup>th</sup> y value
+      type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

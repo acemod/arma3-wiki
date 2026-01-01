@@ -37,7 +37,24 @@ desc: |-
   {{!}}}
 groups:
 - Camera Control
-syntax: []
+syntax:
+- ret:
+    type: Nothing
+  left: !Item
+    name: name
+    desc: render surface reference from [[Procedural Textures#Render To Texture|Render To Texture]]
+    type: String
+  right: !Array
+  - !Item
+    name: effect
+    desc: effect type
+    type: Number
+  - !Infinite
+    - !Item
+      name: optionalParamN
+      desc: parameters based on selected effect
+      type: Number
+      optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

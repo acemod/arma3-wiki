@@ -67,7 +67,16 @@ desc: |-
   {{!}}}
 groups:
 - GUI Control
-syntax: []
+syntax:
+- ret:
+    type: Nothing
+  left: !Item
+    name: control
+    type: Control
+  right: !Array
+  - !Item
+    name: Action
+    type: String
 argument_loc: Local
 effect_loc: Local
 since:

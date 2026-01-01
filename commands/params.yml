@@ -8,7 +8,75 @@ desc: |-
 groups:
 - Variables
 - Arrays
-syntax: []
+syntax:
+- ret:
+    type: Boolean
+    desc: '[[false]] if error occurred or default value has been used, otherwise [[true]]'
+  right: !Array
+  - !Infinite
+    - !Item
+      name: elementN
+      type: !OneOf
+      - type: String
+        desc: null
+        since: null
+      - type: ArrayUnknown
+        desc: null
+        since: null
+      - type: ArrayUnknown
+        desc: null
+        since: null
+      - type: String
+        desc: null
+        since: null
+      - type: Anything
+        desc: null
+        since: null
+      - type: ArrayUnknown
+        desc: null
+        since: null
+      - type: Number
+        desc: null
+        since: null
+      - type: ArrayUnknown
+        desc: null
+        since: null
+- ret:
+    type: Boolean
+    desc: '[[false]] if error occurred or default value has been used, otherwise [[true]]'
+  left: !Item
+    name: argument
+    desc: a usual array of params is expected. If a non-array argument is passed, it will be converted to 1 element array
+    type: Anything
+  right: !Array
+  - !Infinite
+    - !Item
+      name: elementN
+      type: !OneOf
+      - type: String
+        desc: null
+        since: null
+      - type: ArrayUnknown
+        desc: null
+        since: null
+      - type: ArrayUnknown
+        desc: null
+        since: null
+      - type: String
+        desc: null
+        since: null
+      - type: Anything
+        desc: null
+        since: null
+      - type: ArrayUnknown
+        desc: null
+        since: null
+      - type: Number
+        desc: null
+        since: null
+      - type: ArrayUnknown
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
