@@ -11,7 +11,9 @@ syntax:
   - radius
   - sortPosition
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Location
+      desc: ''
   params:
   - name: centre
     type: !OneOf

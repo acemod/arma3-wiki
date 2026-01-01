@@ -7,7 +7,9 @@ groups:
 syntax:
 - call: !Unary RTD_helicopter
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Boolean
+      desc: ''
     desc: value for each engine
   params:
   - name: RTD_helicopter

@@ -7,7 +7,9 @@ groups:
 syntax:
 - call: !Unary rope
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: the rope's segments
   params:
   - name: rope

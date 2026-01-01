@@ -5,7 +5,9 @@ groups:
 syntax:
 - call: !Unary side
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Group
+      desc: ''
   params:
   - name: side
     type: Side

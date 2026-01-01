@@ -10,7 +10,9 @@ syntax:
     type: Nothing
   params:
   - name: objects
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   - name: classname
     desc: name of the cfgVehicles class
     type: String

@@ -15,7 +15,9 @@ syntax:
     type: Object
   - name: waypoints
     desc: waypoints to synchronize with trigger. Array can be empty to unset
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Waypoint
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

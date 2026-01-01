@@ -5,7 +5,9 @@ groups:
 syntax:
 - call: !Unary groupName
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Waypoint
+      desc: ''
   params:
   - name: groupName
     type: !OneOf

@@ -14,7 +14,9 @@ syntax:
     type: Position
   - name: units
     desc: array of units.
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   - name: magazineType
     desc: '''''''case-sensitive'''''''
     type: String

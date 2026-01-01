@@ -13,7 +13,9 @@ syntax:
     type: Nothing
   params:
   - name: unitArray
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   - name: allow
     desc: '[[true]] allows the [[units]] to enter, [[false]] denies them'
     type: Boolean

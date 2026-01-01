@@ -5,7 +5,9 @@ groups:
 syntax:
 - call: !Unary box
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params:
   - name: box
     type: Object

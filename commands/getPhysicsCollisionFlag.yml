@@ -5,7 +5,9 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Boolean
+      desc: ''
     desc: array of collision flags (only one value is returned for now)
   params:
   - name: object

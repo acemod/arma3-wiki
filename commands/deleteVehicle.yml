@@ -18,7 +18,9 @@ syntax:
     type: Nothing
   params:
   - name: objects
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   since:
     arma3: '2.18'
 argument_loc: Global

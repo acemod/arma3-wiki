@@ -14,7 +14,9 @@ syntax:
   - position
   - radius
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: not sorted
   params:
   - name: position
@@ -37,7 +39,9 @@ syntax:
   - - type
     - radius
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: not sorted
   params:
   - name: position
@@ -73,7 +77,9 @@ syntax:
     - aliveOnly
     - includeCrew
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: not sorted
   params:
   - name: area

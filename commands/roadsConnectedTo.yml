@@ -10,7 +10,9 @@ groups:
 syntax:
 - call: !Unary roadSegment
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: connected road segments
   params:
   - name: roadSegment
@@ -20,7 +22,9 @@ syntax:
   - roadSegment
   - extended
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: connected road segments
   params:
   - name: roadSegment

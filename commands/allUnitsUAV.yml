@@ -6,7 +6,9 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: array of UAV vehicles
   params: []
 argument_loc: Unspecified

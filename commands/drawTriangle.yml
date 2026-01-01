@@ -20,7 +20,9 @@ syntax:
     type: Control
   - name: vertices
     desc: triangle(s) vertices in multiple of 3, see {{Link|#Example 1}} - if [[Position#Introduction|Position3D]] is provided for a vertex, its z value is ignored
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Position
+      desc: ''
   - name: color
     type: ArrayColorRgba
   - name: fill

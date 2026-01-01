@@ -11,7 +11,9 @@ syntax:
   - sortByDistance
   - flags
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: intersecting objects
   params:
   - name: begPos

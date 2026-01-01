@@ -19,7 +19,9 @@ syntax:
       desc: '[[Array]] in format of [[Waypoint]]'
       since: null
   - name: waypoints
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Waypoint
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

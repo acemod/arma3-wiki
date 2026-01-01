@@ -7,7 +7,9 @@ syntax:
   - vehicle
   - cargo
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Boolean
+      desc: ''
     desc: '[willFitIntoCurrentVehicle, willFitIntoEmptyVehicle]'
   params:
   - name: vehicle

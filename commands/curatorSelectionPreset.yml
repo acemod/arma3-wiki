@@ -5,7 +5,9 @@ groups:
 syntax:
 - call: !Unary numkey
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: objects saved in the selection preset
   params:
   - name: numkey

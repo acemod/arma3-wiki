@@ -6,7 +6,9 @@ groups:
 syntax:
 - call: !Unary type
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: if ''type'' is a destroyed object, an empty array is returned
   params:
   - name: type

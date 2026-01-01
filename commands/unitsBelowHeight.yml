@@ -10,10 +10,14 @@ syntax:
   - units
   - height
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params:
   - name: units
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   - name: height
     desc: height above terrain level ([[Position#PositionATL|PositionATL]])
     type: Number
@@ -21,7 +25,9 @@ syntax:
   - group
   - height
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params:
   - name: group
     desc: AI group

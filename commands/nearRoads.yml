@@ -8,7 +8,9 @@ syntax:
   - pos
   - radius
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: road segments within radius
   params:
   - name: pos

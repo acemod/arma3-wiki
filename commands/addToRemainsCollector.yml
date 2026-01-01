@@ -9,7 +9,9 @@ syntax:
   params:
   - name: remains
     desc: array of vehicles/units
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
 argument_loc: Global
 effect_loc: Global
 since:
