@@ -12,8 +12,9 @@ syntax:
   - name: unit
     type: Object
   - name: value
-    desc: suppression value from 0 to 1
-    type: Number
+    type: !NumberRange
+    - 0
+    - 1
 argument_loc: Local
 effect_loc: Unspecified
 since:

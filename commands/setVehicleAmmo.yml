@@ -1,8 +1,5 @@
 name: setVehicleAmmo
-desc: |-
-  Sets how much ammunition (compared to a full state defined by the vehicle type) the vehicle has. Note that the ammo will be added only to [[Multiplayer Scripting#Locality|local]] turrets. To check locality of turret use [[turretLocal]].
-
-  The value ranges from 0 to 1.
+desc: Sets how much ammunition (compared to a full state defined by the vehicle type) the vehicle has. Note that the ammo will be added only to [[Multiplayer Scripting#Locality|local]] turrets. To check locality of turret use [[turretLocal]].
 groups:
 - Vehicle Inventory
 syntax:
@@ -16,7 +13,9 @@ syntax:
     type: Object
   - name: value
     desc: '0: empty, 1: full'
-    type: Number
+    type: !NumberRange
+    - 0
+    - 1
 argument_loc: Local
 effect_loc: Global
 since:

@@ -13,8 +13,10 @@ syntax:
     desc: fade interval in seconds
     type: Number
   - name: volume
-    desc: sound volume range 0 to 1
-    type: Number
+    desc: sound volume
+    type: !NumberRange
+    - 0
+    - 1
 argument_loc: Unspecified
 effect_loc: Local
 since:

@@ -5,8 +5,10 @@ groups:
 syntax:
 - call: !Unary vehicle
   ret:
-    type: Number
-    desc: the returned number is in range 0 (empty tank) to 1 (full tank).
+    type: !NumberRange
+    - 0
+    - 1
+    desc: 0 (empty tank) to 1 (full tank).
   params:
   - name: vehicle
     type: Object

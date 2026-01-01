@@ -10,8 +10,9 @@ syntax:
     type: Nothing
   params:
   - name: progress
-    desc: in range 0..1
-    type: Number
+    type: !NumberRange
+    - 0
+    - 1
 argument_loc: Unspecified
 effect_loc: Local
 since:

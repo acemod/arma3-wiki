@@ -12,7 +12,9 @@ syntax:
   - name: location
     type: Location
   - name: direction
-    type: Number
+    type: !NumberRange
+    - 0
+    - 360
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

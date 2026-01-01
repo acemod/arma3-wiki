@@ -8,8 +8,10 @@ syntax:
   - object
   - animationName
   ret:
-    type: Number
-    desc: range 0 (start point of the animation) to 1 (end point of the animation)
+    type: !NumberRange
+    - 0
+    - 1
+    desc: where 0 is the start point of the animation and 0 is the end point
   params:
   - name: object
     type: Object

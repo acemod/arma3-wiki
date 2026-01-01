@@ -6,8 +6,10 @@ groups:
 syntax:
 - call: !Unary flag
   ret:
-    type: Number
-    desc: flag position in range from 0 to 1, where 0 is bottom of the flag pole, 1 is the top of the flag pole
+    type: !NumberRange
+    - 0
+    - 1
+    desc: flag position, where 0 is bottom of the flag pole, 1 is the top of the flag pole
   params:
   - name: flag
     desc: flag pole of the type {{hl|"FlagCarrier"}}

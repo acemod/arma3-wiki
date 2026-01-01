@@ -12,8 +12,10 @@ syntax:
   - name: vehicle
     type: Object
   - name: turretPath
-    desc: 1] for driver's turret or [] for all turrets
-    type: Unknown
+    type: !OneOf
+    - type: ArrayUnknown
+      desc: null
+      since: null
 argument_loc: Local
 effect_loc: Global
 since:

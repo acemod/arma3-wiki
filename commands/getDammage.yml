@@ -1,5 +1,5 @@
 name: getDammage
-desc: Returns the object damage in the range from 0 to 1.
+desc: Returns the object damage.
 alias:
 - '[[damage]]'
 groups:
@@ -7,7 +7,9 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-    type: Number
+    type: !NumberRange
+    - 0
+    - 1
   params:
   - name: object
     type: Object

@@ -12,8 +12,9 @@ syntax:
   - name: vehicle
     type: Object
   - name: amount
-    desc: from 0 (empty) to 1 (full)
-    type: Number
+    type: !NumberRange
+    - 0
+    - 1
 argument_loc: Local
 effect_loc: Global
 since:
