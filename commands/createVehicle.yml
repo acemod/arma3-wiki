@@ -29,9 +29,18 @@ syntax:
     desc: vehicle/object className
     type: String
   - name: position
-    desc: desired placement position
+    desc: desired placement position, ([[PositionAGL]] if watercraft or amphibious)
     type: !OneOf
     - type: Object
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
+    - type: Position3dATL
+      desc: null
+      since: null
+    - type: Position3dAGL
       desc: null
       since: null
   - name: markers
