@@ -260,6 +260,7 @@ impl Value {
     /// # Panics
     /// Panics if the regex fails to compile.
     pub fn from_wiki(command: &str, source: &str) -> Result<Self, String> {
+        println!("parsing command: {command}, source: {source}");
         if let Some(explicit_match) = Self::match_explicit(source) {
             return Ok(explicit_match);
         }
@@ -471,7 +472,83 @@ impl Value {
             let parts: Vec<&str> = source.split(" or ").collect();
 
             // Special case: if we have 3+ parts, check if the last N parts form an explicit pattern
+            // or if any middle part starts with "[[Array]] in format" or "[[Array]] format"
             if parts.len() >= 3 {
+                // First, check if any part contains "[[Array]] in format" or "[[Array]] format"
+                // and try to group consecutive parts that belong together
+                let mut grouped_parts: Vec<String> = Vec::new();
+                let mut i = 0;
+
+                while i < parts.len() {
+                    let part = parts[i].trim();
+
+                    // Check if this part starts with "[[Array]]" and contains "format"
+                    if (part.starts_with("[[Array]] in format")
+                        || part.starts_with("[[Array]] format"))
+                        && i + 1 < parts.len()
+                    {
+                        // Try to find how many following parts should be grouped
+                        // Group all following parts until we hit a part that doesn't look like a type reference
+                        let mut combined = part.to_string();
+                        let mut j = i + 1;
+
+                        // Continue collecting parts that look like they're part of the format clause
+                        while j < parts.len() {
+                            let next_part = parts[j].trim();
+                            // If the next part looks like a simple type (starts with [[)
+                            // it's likely part of "Array format X or Y or Z"
+                            if next_part.starts_with("[[") && !next_part.contains(" or ") {
+                                combined.push_str(" or ");
+                                combined.push_str(next_part);
+                                j += 1;
+                            } else {
+                                break;
+                            }
+                        }
+
+                        // If we grouped multiple parts, try to parse the combined string
+                        if j > i + 1 && Self::from_wiki(command, &combined).is_ok() {
+                            // The combined part parses successfully
+                            grouped_parts.push(combined);
+                            i = j;
+                            continue;
+                        }
+                    }
+
+                    grouped_parts.push(part.to_string());
+                    i += 1;
+                }
+
+                // If we successfully grouped parts, parse them
+                if grouped_parts.len() < parts.len() {
+                    let mut parsed_values = Vec::new();
+
+                    for part in &grouped_parts {
+                        let part = part.trim();
+
+                        // For comma-separated values in this part, split them
+                        for comma_part in part.split(',') {
+                            let comma_part = comma_part.trim();
+
+                            // Skip "if X" or similar trailing conditions
+                            if comma_part.starts_with("if ") {
+                                continue;
+                            }
+
+                            Self::parse_and_add_type(
+                                command,
+                                comma_part,
+                                regex_or_pattern,
+                                &mut parsed_values,
+                            );
+                        }
+                    }
+
+                    if !parsed_values.is_empty() {
+                        return Ok(Self::OneOf(parsed_values));
+                    }
+                }
+
                 // Try combining progressively from the end
                 for i in (1..parts.len()).rev() {
                     let combined = parts[i..].join(" or ");
@@ -548,6 +625,9 @@ impl Value {
                 || rest.to_string(),
                 |pos| format!("{}{}", &rest[..pos + 2], &rest[pos + 3..]),
             );
+
+            // Normalize "and/or" to "or" for parsing
+            let processed_rest = processed_rest.replace(" and/or ", " or ");
 
             // Try to parse the rest recursively, handling both simple and nested cases
             if let Ok(inner_type) = Self::from_wiki(command, &processed_rest) {
@@ -652,11 +732,14 @@ impl Value {
             | "[[Position#Introduction|Position2D]]"
             | "[[Array]] - format [[Position#Introduction|Position2D]]" => Some(Self::Position2d),
 
+            "[[Array]] format [[Position#Introduction|Position3D]]"
+            | "[[Position#Introduction|Position3D]]"
+            | "[[Array]] - format [[Position#Introduction|Position3D]]" => Some(Self::Position3d),
+
             "[[Array]] format [[Position#PositionAGL|PositionAGL]]"
             | "[[PositionAGL]]"
             | "[[Position#PositionAGL|PositionAGL]]"
             | "[[Array]] - world position format [[Position#PositionAGL|PositionAGL]]"
-            | "[[Array]] format [[Position#PositionAGL|PositionAGL]] - translated world position"
             | "[[Array]] - position format [[Position#PositionAGL|PositionAGL]]"
             | "[[Array]] - camera world position, format [[Position#PositionAGL|PositionAGL]]" => {
                 Some(Self::Position3dAGL)
@@ -676,21 +759,6 @@ impl Value {
 
             "[[Array]] format [[Position#PositionASLW|PositionASLW]]"
             | "[[Position#PositionASLW|PositionASLW]]" => Some(Self::Position3DASLW),
-
-            "[[Array]] format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]" => {
-                Some(Self::OneOf(vec![
-                    OneOfValue {
-                        typ: Self::Position2d,
-                        desc: None,
-                        since: None,
-                    },
-                    OneOfValue {
-                        typ: Self::Position3d,
-                        desc: None,
-                        since: None,
-                    },
-                ]))
-            }
 
             // Number variants
             "[[Number]] of control" => Some(Self::Number),
@@ -1470,6 +1538,62 @@ mod tests {
                     since: None,
                 },
             ]))
+        );
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                "{{GVI|arma3|2.14|size= 0.75}} [[Object]], [[Group]] or [[Array]] format [[Position#Introduction|Position2D]] or [[Position#PositionAGL|PositionAGL]]"
+            ),
+            Ok(Value::OneOf(vec![
+                OneOfValue {
+                    typ: Value::Object,
+                    desc: None,
+                    since: None, // TODO Since::arma3("2.14")
+                },
+                OneOfValue {
+                    typ: Value::Group,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::OneOf(vec![
+                        OneOfValue {
+                            typ: Value::Position2d,
+                            desc: None,
+                            since: None,
+                        },
+                        OneOfValue {
+                            typ: Value::Position3dAGL,
+                            desc: None,
+                            since: None,
+                        },
+                    ]),
+                    desc: None,
+                    since: None,
+                },
+            ]))
+        );
+    }
+
+    #[test]
+    fn array_and_or() {
+        assert_eq!(
+            Value::from_wiki("test", "[[Array]] of [[Object]]s and/or [[Position]]s"),
+            Ok(Value::ArrayUnsized {
+                typ: Box::new(Value::OneOf(vec![
+                    OneOfValue {
+                        typ: Value::Object,
+                        desc: None,
+                        since: None,
+                    },
+                    OneOfValue {
+                        typ: Value::Position,
+                        desc: None,
+                        since: None,
+                    },
+                ])),
+                desc: String::new()
+            })
         );
     }
 }
