@@ -2,11 +2,89 @@ use serde::{Deserialize, Serialize};
 
 #[cfg(feature = "wiki")]
 use crate::model::ParseError;
+use crate::model::{ArraySizedElement, Call};
 
 use super::{Since, Value};
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
-pub struct Param {
+pub enum Param {
+    Item(ParamItem),
+    Array(Vec<Param>),
+}
+
+impl Param {
+    pub fn from_pool_and_call(
+        call: &Call,
+        is_left: bool,
+        pool: &[ParamItem],
+    ) -> Result<Self, String> {
+        match call {
+            Call::Nular => Err("Nular calls have no parameters".to_string()),
+            Call::Unary(left) => {
+                if is_left {
+                    return Err("Unary call has no left parameter".to_string());
+                }
+                Self::build_from_arg(left, pool)
+            }
+            Call::Binary(left, right) => {
+                if is_left {
+                    Self::build_from_arg(left, pool)
+                } else {
+                    Self::build_from_arg(right, pool)
+                }
+            }
+        }
+    }
+
+    /// Builds a Param from a list of Args and a pool of `ParamItems`.
+    ///
+    /// # Panics
+    /// Panics if a `ParamItem` is not found in the pool.
+    pub fn build_from_arg(arg: &crate::model::Arg, pool: &[ParamItem]) -> Result<Self, String> {
+        match arg {
+            crate::model::Arg::Item(name) => Ok(Self::Item(
+                pool.iter()
+                    .find(|param| &param.name == name)
+                    .cloned()
+                    .ok_or_else(|| format!("Param `{name}` not found in pool"))?,
+            )),
+            crate::model::Arg::Array(arg_list) => Ok(Self::Array(
+                arg_list
+                    .iter()
+                    .map(|arg| Self::build_from_arg(arg, pool))
+                    .collect::<Result<Vec<Self>, String>>()?,
+            )),
+        }
+    }
+
+    #[must_use]
+    pub fn as_value(&self) -> Value {
+        match self {
+            Self::Item(item) => item.typ().clone(),
+            Self::Array(items) => Value::ArraySized {
+                types: items
+                    .iter()
+                    .map(|item| ArraySizedElement {
+                        name: match item {
+                            Self::Item(param_item) => param_item.name().to_string(),
+                            Self::Array(_) => String::new(),
+                        },
+                        typ: item.as_value(),
+                        desc: String::new(),
+                        since: match item {
+                            Self::Item(param_item) => param_item.since().cloned(),
+                            Self::Array(_) => None,
+                        },
+                    })
+                    .collect(),
+                desc: String::new(),
+            },
+        }
+    }
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct ParamItem {
     pub(crate) name: String,
     #[serde(default, alias = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -24,7 +102,7 @@ pub struct Param {
     pub(crate) since: Option<Since>,
 }
 
-impl Param {
+impl ParamItem {
     #[must_use]
     pub const fn new(
         name: String,
@@ -219,11 +297,11 @@ impl Param {
 mod tests {
     use crate::model::Value;
 
-    use super::Param;
+    use super::ParamItem;
 
     #[test]
     fn simple() {
-        let (alive, _) = Param::from_wiki("alive", "player: [[Object]] - Player unit.")
+        let (alive, _) = ParamItem::from_wiki("alive", "player: [[Object]] - Player unit.")
             .expect("Failed to parse param");
         assert_eq!(alive.name(), "player");
         assert_eq!(alive.description(), Some("Player unit."));
@@ -232,29 +310,29 @@ mod tests {
 
     #[test]
     fn one_of() {
-        let (direction, _) = Param::from_wiki("camSetDir", "direction:\n* [[Number]] (before {{GVI|arma3|0.50}}) - camera azimuth\n* [[Array]] in format [x,y,z] (since {{GVI|arma3|0.50}}) - direction of camera. Must be a valid vector.").expect("Failed to parse param");
+        let (direction, _) = ParamItem::from_wiki("camSetDir", "direction:\n* [[Number]] (before {{GVI|arma3|0.50}}) - camera azimuth\n* [[Array]] in format [x,y,z] (since {{GVI|arma3|0.50}}) - direction of camera. Must be a valid vector.").expect("Failed to parse param");
         assert_eq!(direction.name(), "direction");
         assert!(matches!(direction.typ(), Value::OneOf(_)));
 
-        let (public, _) = Param::from_wiki("setVariable", "public - (Optional, default [[false]]) can be one of:\n* [[Boolean]] - if set to [[true]], the variable is broadcast globally and is persistent ([[Multiplayer Scripting#Join In Progress|JIP]] compatible) {{Icon|globalEffect|32}}\n* [[Number]] - the variable is only set on the client with the given [[Multiplayer Scripting#Machine network ID|Machine network ID]]. If the number is negative, the variable is set on every client except for the one with the given ID.\n* [[Array]] of [[Number]]s - array of [[Multiplayer Scripting#Machine network ID|Machine network IDs]]").expect("Failed to parse param");
+        let (public, _) = ParamItem::from_wiki("setVariable", "public - (Optional, default [[false]]) can be one of:\n* [[Boolean]] - if set to [[true]], the variable is broadcast globally and is persistent ([[Multiplayer Scripting#Join In Progress|JIP]] compatible) {{Icon|globalEffect|32}}\n* [[Number]] - the variable is only set on the client with the given [[Multiplayer Scripting#Machine network ID|Machine network ID]]. If the number is negative, the variable is set on every client except for the one with the given ID.\n* [[Array]] of [[Number]]s - array of [[Multiplayer Scripting#Machine network ID|Machine network IDs]]").expect("Failed to parse param");
         assert_eq!(public.name(), "public");
         assert!(matches!(public.typ(), Value::OneOf(_)));
 
-        let (targets, _) = Param::from_wiki("remoteExec", "'''targets''' - (Optional, default 0):\n* [[Number]] (See also [[Multiplayer Scripting#Machine network ID|Machine network ID]]):\n** '''0:''' the order will be executed globally, i.e. on the server and every connected client, including the machine where [[remoteExec]] originated\n** '''2:''' the order will only be executed on the server - is both dedicated and hosted server. See [[Multiplayer_Scripting#Different_machines_and_how_to_target_them|for more info]]\n** '''Other number:''' the order will be executed on the machine where [[clientOwner]] matches the given number\n** '''Negative number:''' the effect is inverted: '''-2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12\n* [[Object]] - the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]\n* [[String]] - interpreted as an [[Identifier]] (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [[Multiplayer Scripting#Locality|local]]\n* [[Side]] - the order will be executed on machines where the player is on the specified side\n* [[Group]] - the order will be executed on machines '''where the player is in the specified group''' ('''not''' where said group is local!)\n* [[Array]] - array of any combination of the types listed above").expect("Failed to parse param");
+        let (targets, _) = ParamItem::from_wiki("remoteExec", "'''targets''' - (Optional, default 0):\n* [[Number]] (See also [[Multiplayer Scripting#Machine network ID|Machine network ID]]):\n** '''0:''' the order will be executed globally, i.e. on the server and every connected client, including the machine where [[remoteExec]] originated\n** '''2:''' the order will only be executed on the server - is both dedicated and hosted server. See [[Multiplayer_Scripting#Different_machines_and_how_to_target_them|for more info]]\n** '''Other number:''' the order will be executed on the machine where [[clientOwner]] matches the given number\n** '''Negative number:''' the effect is inverted: '''-2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12\n* [[Object]] - the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]\n* [[String]] - interpreted as an [[Identifier]] (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [[Multiplayer Scripting#Locality|local]]\n* [[Side]] - the order will be executed on machines where the player is on the specified side\n* [[Group]] - the order will be executed on machines '''where the player is in the specified group''' ('''not''' where said group is local!)\n* [[Array]] - array of any combination of the types listed above").expect("Failed to parse param");
         assert_eq!(targets.name(), "targets");
         assert!(matches!(targets.typ(), Value::OneOf(_)));
     }
 
     #[test]
     fn or() {
-        let (targets, _) = Param::from_wiki("remoteExec", "'''targets''': [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - (Optional, default 0) see the main syntax above for more details.").expect("Failed to parse param");
+        let (targets, _) = ParamItem::from_wiki("remoteExec", "'''targets''': [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - (Optional, default 0) see the main syntax above for more details.").expect("Failed to parse param");
         assert_eq!(targets.name(), "targets");
         assert!(matches!(targets.typ(), Value::OneOf(_)));
     }
 
     #[test]
     fn complicated_multiline() {
-        let (special, _) = Param::from_wiki("setVehiclePosition", r#"special: [[String]] - (Optional, default "NONE") can be one of the following: 
+        let (special, _) = ParamItem::from_wiki("setVehiclePosition", r#"special: [[String]] - (Optional, default "NONE") can be one of the following: 
 * {{hl|"NONE"}} - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there. 
 * {{hl|"CAN_COLLIDE"}} - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model. 
 * {{hl|"FLY"}} - if vehicle is capable of flying and has crew, it will be made airborne at default height. 
@@ -262,7 +340,7 @@ If ''special'' is "" or not specified, default {{hl|"NONE"}} is used."#).expect(
         assert_eq!(special.name(), "special");
         assert!(special.optional());
 
-        let (sound, _) = Param::from_wiki("say3D", r"sound: [[String]] or [[Array]]
+        let (sound, _) = ParamItem::from_wiki("say3D", r"sound: [[String]] or [[Array]]
 * [[String]] - classname of the sound to be played. Defined in [[CfgSounds]] including [[Description.ext]]
 * [[Array]] format [sound, maxDistance, pitch, isSpeech, offset, simulateSpeedOfSound] where:
 ** sound: [[String]] - classname of the sound to be played. Defined in [[Description.ext#CfgSounds|CfgSounds]] including [[Description.ext]]

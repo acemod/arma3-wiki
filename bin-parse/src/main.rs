@@ -37,7 +37,7 @@ async fn main() {
 
     if do_commands {
         print!("== Commands");
-        commands::commands(&client, &mut report, &args, dry_run).await;
+        report = commands::commands(&client, report, &args, dry_run).await;
 
         for (command, errors) in report.failed_commands() {
             println!("Failed: {command}");
@@ -69,6 +69,7 @@ async fn main() {
 
 trait WafSkip {
     fn bi_get(&self, url: &str) -> RequestBuilder;
+    fn bi_head(&self, url: &str) -> RequestBuilder;
 }
 
 impl WafSkip for Client {
@@ -77,5 +78,14 @@ impl WafSkip for Client {
             "bi-waf-skip",
             std::env::var("BI_WAF_SKIP").expect("BI_WAF_SKIP not set"),
         )
+    }
+
+    fn bi_head(&self, url: &str) -> RequestBuilder {
+        self.head(url)
+            .header("User-Agent", "HEMTT Wiki Bot")
+            .header(
+                "bi-waf-skip",
+                std::env::var("BI_WAF_SKIP").expect("BI_WAF_SKIP not set"),
+            )
     }
 }

@@ -5,7 +5,7 @@ use crate::model::ParseError;
 
 use super::{Locality, Since, Syntax};
 
-#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Command {
     name: String,
     #[serde(alias = "description")]
@@ -192,16 +192,27 @@ impl Command {
     #[must_use]
     pub fn has_unknown(&self) -> bool {
         for syntax in &self.syntax {
-            for param in syntax.params() {
-                if param.typ().is_unknown() {
-                    println!(
-                        "Unknown param type in command {}: {}",
-                        self.name(),
-                        param.typ()
-                    );
-                    return true;
-                }
-            }
+            // if let Some(left) = syntax.left()
+            //     && left.typ().is_unknown()
+            // {
+            //     println!(
+            //         "Unknown left param type in command {}: {}",
+            //         self.name(),
+            //         left.typ()
+            //     );
+            //     return true;
+            // }
+            // if let Some(right) = syntax.right()
+            //     && right.typ().is_unknown()
+            // {
+            //     println!(
+            //         "Unknown right param type in command {}: {}",
+            //         self.name(),
+            //         right.typ()
+            //     );
+            //     return true;
+            // }
+            // TODO recrusively check params
             if syntax.ret().typ().is_unknown() {
                 println!(
                     "Unknown return type in command {}: {}",

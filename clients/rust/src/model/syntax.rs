@@ -6,11 +6,15 @@ use crate::model::Return;
 
 use super::{Call, Locality, Param, Since, Value};
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Syntax {
-    pub(crate) call: Call,
     pub(crate) ret: Return,
-    pub(crate) params: Vec<Param>,
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub(crate) left: Option<Param>,
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub(crate) right: Option<Param>,
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub(crate) since: Option<Since>,
@@ -22,24 +26,34 @@ pub struct Syntax {
 impl Syntax {
     #[must_use]
     pub const fn new(
-        call: Call,
         ret: Return,
-        params: Vec<Param>,
+        left: Option<Param>,
+        right: Option<Param>,
         since: Option<Since>,
         effect: Option<Locality>,
     ) -> Self {
         Self {
-            call,
             ret,
-            params,
+            left,
+            right,
             since,
             effect,
         }
     }
 
     #[must_use]
-    pub const fn call(&self) -> &Call {
-        &self.call
+    pub const fn is_nular(&self) -> bool {
+        self.left.is_none() && self.right.is_none()
+    }
+
+    #[must_use]
+    pub const fn is_unary(&self) -> bool {
+        self.left.is_none() ^ self.right.is_none()
+    }
+
+    #[must_use]
+    pub const fn is_binary(&self) -> bool {
+        self.left.is_some() && self.right.is_some()
     }
 
     #[must_use]
@@ -48,8 +62,13 @@ impl Syntax {
     }
 
     #[must_use]
-    pub fn params(&self) -> &[Param] {
-        &self.params
+    pub const fn right(&self) -> Option<&Param> {
+        self.right.as_ref()
+    }
+
+    #[must_use]
+    pub const fn left(&self) -> Option<&Param> {
+        self.left.as_ref()
     }
 
     #[must_use]
@@ -61,16 +80,16 @@ impl Syntax {
         self.since.get_or_insert_with(Since::default)
     }
 
-    pub fn set_call(&mut self, call: Call) {
-        self.call = call;
-    }
-
     pub fn set_ret(&mut self, ret: Return) {
         self.ret = ret;
     }
 
-    pub fn set_params(&mut self, params: Vec<Param>) {
-        self.params = params;
+    pub fn set_left(&mut self, left: Option<Param>) {
+        self.left = left;
+    }
+
+    pub fn set_right(&mut self, right: Option<Param>) {
+        self.right = right;
     }
 
     pub const fn set_since(&mut self, since: Option<Since>) {
@@ -92,22 +111,26 @@ impl Syntax {
         usage: &str,
         lines: &mut std::iter::Peekable<std::vec::IntoIter<(&str, &str)>>,
     ) -> Result<(Self, Vec<ParseError>), String> {
+        use crate::model::param::ParamItem;
+
         let mut errors = Vec::new();
-        let mut params = Vec::new();
+        let mut params: Vec<ParamItem> = Vec::new();
         let mut ret = None;
         let mut since: Option<Since> = None;
         let mut effect: Option<Locality> = None;
         while let Some((key, value)) = lines.peek() {
             if key.starts_with('p') {
                 if key.ends_with("since") {
-                    let last_param: &mut Param =
+                    let last_param: &mut ParamItem =
                         params.last_mut().expect("No parameters available");
                     let Some((game, version)) = value.split_once(' ') else {
                         return Err(format!("Invalid since: {value}"));
                     };
                     last_param.since_mut().set_from_wiki(game, version)?;
                 } else {
-                    let (param, param_errors) = Param::from_wiki(command, value)?;
+                    use crate::model::param::ParamItem;
+
+                    let (param, param_errors) = ParamItem::from_wiki(command, value)?;
                     errors.extend(param_errors);
                     params.push(param);
                 }
@@ -164,9 +187,21 @@ impl Syntax {
                 list = true;
             }
         }
+        let (right, left) = if call.is_nular() {
+            (None, None)
+        } else if call.is_unary() {
+            (
+                Some(Param::from_pool_and_call(&call, false, &params)?),
+                None,
+            )
+        } else {
+            (
+                Some(Param::from_pool_and_call(&call, false, &params)?),
+                Some(Param::from_pool_and_call(&call, true, &params)?),
+            )
+        };
         Ok((
             Self::new(
-                call,
                 {
                     let Some(mut ret) = ret else {
                         return Err("Missing return".to_string());
@@ -215,7 +250,8 @@ impl Syntax {
                         }
                     }
                 },
-                params,
+                left,
+                right,
                 since,
                 effect,
             ),

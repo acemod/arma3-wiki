@@ -1,10 +1,11 @@
-use std::{collections::HashMap, path::Path};
+use std::{collections::HashMap, path::Path, sync::Arc};
 
 use arma3_wiki::model::{Command, ParseError, Value};
 use arma3_wiki_github::report::Report;
 use indicatif::ProgressBar;
 use regex::Regex;
-use reqwest::{header::LAST_MODIFIED, Client};
+use reqwest::{Client, header::LAST_MODIFIED};
+use tokio::sync::{RwLock, Semaphore};
 
 use crate::WafSkip;
 
@@ -12,8 +13,10 @@ pub async fn list(client: &Client) -> HashMap<String, String> {
     const URL: &str =
         "https://community.bistudio.com/wiki/Category:Scripting_Commands?action=render";
     let tmp = std::env::temp_dir()
-        .join("arma3-wiki-fetch")
-        .join("command_list.html");
+        .join("arma3-wiki-fetch/commands")
+        .join("list.html");
+    fs_err::create_dir_all(tmp.parent().expect("Failed to get parent directory"))
+        .expect("Failed to create temp directory");
 
     let body: String = if tmp.exists() {
         fs_err::read_to_string(&tmp).expect("Failed to read cached command list")
@@ -54,7 +57,7 @@ pub async fn list(client: &Client) -> HashMap<String, String> {
     list
 }
 
-pub async fn commands(client: &Client, report: &mut Report, args: &[String], dry_run: bool) {
+pub async fn commands(client: &Client, report: Report, args: &[String], dry_run: bool) -> Report {
     let commands = if args.is_empty() {
         list(client).await
     } else if args.iter().any(|arg| arg == "--bads") {
@@ -67,10 +70,27 @@ pub async fn commands(client: &Client, report: &mut Report, args: &[String], dry
                     println!("cmd {:?} has unknown ret {:?}", cmd_name_cased, syn.ret());
                     return true;
                 }
-                if syn.params().iter().any(|p| *p.typ() == Value::Unknown) {
-                    println!("cmd {:?} has unknown param {:?}", cmd_name_cased, syn.ret());
-                    return true;
-                }
+                // if let Some(left) = syn.left()
+                //     && left.typ() == &Value::Unknown
+                // {
+                //     println!(
+                //         "cmd {:?} has unknown left param {:?}",
+                //         cmd_name_cased,
+                //         syn.ret()
+                //     );
+                //     return true;
+                // }
+                // if let Some(right) = syn.right()
+                //     && right.typ() == &Value::Unknown
+                // {
+                //     println!(
+                //         "cmd {:?} has unknown right param {:?}",
+                //         cmd_name_cased,
+                //         syn.ret()
+                //     );
+                //     return true;
+                // }
+                // TODO recursive check params for Unknown
                 false
             }) {
                 bads.insert(
@@ -92,7 +112,7 @@ pub async fn commands(client: &Client, report: &mut Report, args: &[String], dry
             })
             .collect()
     };
-    let mut failed = Vec::new();
+    let failed = Arc::new(RwLock::new(Vec::new()));
     println!("Commands: {}", commands.len());
     let ci = std::env::var("CI").is_ok();
     let pg = if ci {
@@ -100,34 +120,64 @@ pub async fn commands(client: &Client, report: &mut Report, args: &[String], dry
     } else {
         ProgressBar::new(commands.len() as u64)
     };
+    let semaphore = Arc::new(Semaphore::new(8));
+    let mut handles = Vec::new();
+    let report = Arc::new(tokio::sync::Mutex::new(report));
     for (name, url) in commands {
-        let result = command(&pg, client, name.clone(), url.clone(), dry_run, false).await;
-        if let Err(e) = result {
-            println!("Failed {name}");
-            failed.push((name, e));
-        } else if let Ok((did_change, errors)) = result {
-            if errors.is_empty() {
-                if did_change {
-                    report.add_passed_command(name);
+        let permit = semaphore
+            .clone()
+            .acquire_owned()
+            .await
+            .expect("Failed to acquire semaphore");
+        let pg = pg.clone();
+        let failed = failed.clone();
+        let client = client.clone();
+        let report = report.clone();
+        let handle = tokio::spawn(async move {
+            let result = command(&pg, &client, name.clone(), url.clone(), dry_run, false).await;
+            drop(permit);
+            if let Err(e) = result {
+                println!("Failed {name}");
+                failed.write().await.push((name, e));
+            } else if let Ok((did_change, errors)) = result {
+                if errors.is_empty() {
+                    if did_change {
+                        report.lock().await.add_passed_command(name);
+                    } else {
+                        report.lock().await.add_outdated_command(name);
+                    }
                 } else {
-                    report.add_outdated_command(name);
-                }
-            } else {
-                for error in errors {
-                    report.add_failed_command(name.clone(), error.to_string());
+                    for error in errors {
+                        report
+                            .lock()
+                            .await
+                            .add_failed_command(name.clone(), error.to_string());
+                    }
                 }
             }
-        }
-        pg.inc(1);
+            pg.inc(1);
+        });
+        handles.push(handle);
     }
+    let _: Vec<_> = futures::future::join_all(handles)
+        .await
+        .into_iter()
+        .map(|res| res.expect("Task panicked"))
+        .collect();
     pg.finish();
-    if !failed.is_empty() {
-        failed.sort();
-        println!("Complete Fails: {failed:?}");
-        for (name, reason) in failed {
-            report.add_failed_command(name, reason);
+    if !failed.read().await.is_empty() {
+        failed.write().await.sort();
+        println!("Complete Fails: {:?}", failed.read().await);
+        for (name, reason) in failed.read().await.iter() {
+            report
+                .lock()
+                .await
+                .add_failed_command(name.clone(), reason.clone());
         }
     }
+    Arc::try_unwrap(report)
+        .expect("Failed to unwrap report Arc")
+        .into_inner()
 }
 
 const SKIP_IF_LESS_THAN: u64 = 8;
@@ -144,7 +194,7 @@ pub async fn command(
     let mut dist_path = Path::new("./dist/commands").join(urlencoding::encode(&name).to_string());
     dist_path.set_extension("yml");
 
-    let temp = std::env::temp_dir().join("arma3-wiki-fetch");
+    let temp = std::env::temp_dir().join("arma3-wiki-fetch/commands");
     let path = temp.join(urlencoding::encode(&name).to_string());
 
     let (skip, download_newer) = if retry {
@@ -164,7 +214,7 @@ pub async fn command(
         {
             (std::env::var("CI").is_err(), false)
         } else {
-            let res = match client.head(&url).send().await {
+            let res = match client.bi_head(&url).send().await {
                 Ok(res) => res,
                 Err(e) => {
                     pg.println(format!("Failed to fetch {name}: {e}"));
@@ -172,6 +222,7 @@ pub async fn command(
                 }
             };
             let headers = res.headers();
+            println!("Fetched headers for {name}: {headers:#?}");
             let last_modified = headers
                 .get(LAST_MODIFIED)
                 .expect("Failed to get Last-Modified header")

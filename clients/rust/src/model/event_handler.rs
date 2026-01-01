@@ -1,6 +1,6 @@
 use std::str::FromStr;
 
-use super::{Locality, Param, Since};
+use super::{Locality, ParamItem, Since};
 
 #[derive(Clone, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum EventHandler {
@@ -24,7 +24,7 @@ pub struct ParsedEventHandler {
     pub(crate) id: String,
     #[serde(alias = "description")]
     pub(crate) desc: String,
-    pub(crate) params: Vec<Param>,
+    pub(crate) params: Vec<ParamItem>,
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub(crate) since: Option<Since>,
@@ -55,7 +55,7 @@ impl ParsedEventHandler {
     }
 
     #[must_use]
-    pub fn params(&self) -> &[Param] {
+    pub fn params(&self) -> &[ParamItem] {
         &self.params
     }
 
@@ -181,7 +181,7 @@ impl ParsedEventHandler {
                     examples.push(code.trim_end().to_string());
                 }
             } else if line.starts_with("* ") && !examples.is_empty() {
-                let (param, errors) = Param::from_wiki(
+                let (param, errors) = ParamItem::from_wiki(
                     id.as_ref().ok_or("Missing event handler ID")?,
                     line.trim_start_matches("* "),
                 )?;

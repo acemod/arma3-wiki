@@ -85,6 +85,7 @@ pub enum Value {
     SwitchType,
     Task,
     TeamMember,
+    Path,
     TurretPath,
     UnitLoadoutArray,
     Position,
@@ -864,6 +865,7 @@ impl Value {
             "switch type" | "switchtype" => Ok(Self::SwitchType),
             "task" => Ok(Self::Task),
             "team member" | "teammember" => Ok(Self::TeamMember),
+            "path" | "tree view path" => Ok(Self::Path),
             "turretpath" => Ok(Self::TurretPath),
             "unitloadoutarray" => Ok(Self::UnitLoadoutArray),
             "position" => Ok(Self::Position),
@@ -996,6 +998,7 @@ impl std::fmt::Display for Value {
             Self::TeamMember => write!(f, "Team Member"),
             Self::TurretPath => write!(f, "Turret Path"),
             Self::UnitLoadoutArray => write!(f, "Unit Loadout Array"),
+            Self::Path => write!(f, "Path"),
             Self::Position => write!(f, "Position"),
             Self::Position2d => write!(f, "Position 2D"),
             Self::Position3d => write!(f, "Position 3D"),
@@ -1574,10 +1577,7 @@ mod tests {
     #[test]
     fn or_array() {
         assert_eq!(
-            Value::from_wiki(
-                "test",
-                "[[Object]] or [[Array]] format [[Waypoint]]"
-            ),
+            Value::from_wiki("test", "[[Object]] or [[Array]] format [[Waypoint]]"),
             Ok(Value::OneOf(vec![
                 OneOfValue {
                     typ: Value::Object,

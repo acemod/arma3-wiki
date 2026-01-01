@@ -1,4 +1,4 @@
-use arma3_wiki::{Wiki, model::Call};
+use arma3_wiki::Wiki;
 
 #[test]
 fn build() {
@@ -9,5 +9,5 @@ fn build() {
         .expect("Failed to get command setRain");
 
     assert_eq!(set_rain.name(), "setRain");
-    assert!(matches!(set_rain.syntax()[0].call(), Call::Binary(_, _)));
+    assert!(set_rain.syntax()[0].is_binary());
 }

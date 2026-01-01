@@ -15,7 +15,7 @@ pub async fn event_handlers(
     const URL: &str = "https://community.bistudio.com/wiki?title=Arma_3:_Event_Handlers&action=raw";
     let tmp = std::env::temp_dir()
         .join("arma3-wiki-fetch")
-        .join("eventhandler_main.html");
+        .join("main.html");
 
     let body: String = if tmp.exists() {
         fs_err::read_to_string(&tmp).expect("Failed to read cached event handlers")
@@ -255,8 +255,10 @@ async fn subsection(
     get_to: Option<String>,
 ) -> Vec<EventHandler> {
     let tmp = std::env::temp_dir()
-        .join("arma3-wiki-fetch")
-        .join(format!("eventhandler_{tag}.html"));
+        .join("arma3-wiki-fetch/eventhandlers")
+        .join(format!("{tag}.html"));
+    fs_err::create_dir_all(tmp.parent().expect("parent"))
+        .expect("Failed to create event handlers temp directory");
 
     let mut body: String = if tmp.exists() {
         fs_err::read_to_string(&tmp).expect("Failed to read cached event handlers")
@@ -275,15 +277,15 @@ async fn subsection(
         content
     };
 
-    if let Some(from) = get_from {
-        if let Some((_, rest)) = body.split_once(&from) {
-            body = rest.to_owned();
-        }
+    if let Some(from) = get_from
+        && let Some((_, rest)) = body.split_once(&from)
+    {
+        body = rest.to_owned();
     }
-    if let Some(to) = get_to {
-        if let Some((rest, _)) = body.split_once(&to) {
-            body = rest.to_owned();
-        }
+    if let Some(to) = get_to
+        && let Some((rest, _)) = body.split_once(&to)
+    {
+        body = rest.to_owned();
     }
 
     let mut event_handlers = Vec::new();

@@ -2,7 +2,7 @@
 name = "arma3-wiki-parse"
 version = "0.1.0"
 authors = ["Brett Mayson"]
-edition = "2021"
+edition = "2024"
 
 [lints]
 workspace = true
@@ -12,6 +12,7 @@ arma3-wiki = { path = "../clients/rust", features = ["wiki"]}
 arma3-wiki-github = { path = "../bin-github" }
 
 fs-err = { workspace = true }
+futures = "0.3.31"
 httpdate = { version = "1.0.3" }
 indicatif = { version = "0.18.3" }
 regex = { version = "1.12.2" }
