@@ -19,7 +19,15 @@ syntax:
     desc: indexes of matched positions in positions array
   params:
   - name: positions
-    type: Unknown
+    type: !ArrayUnsized
+      type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
+      desc: ''
   - name: area
     type: !OneOf
     - type: Object

@@ -13,10 +13,26 @@ syntax:
   - positions
   - area
   ret:
-    type: Unknown
+    type: !ArrayUnsized
+      type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
+      desc: ''
   params:
   - name: positions
-    type: Unknown
+    type: !ArrayUnsized
+      type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
+      desc: ''
   - name: area
     type: !OneOf
     - type: Object
@@ -38,23 +54,39 @@ syntax:
     - c
     - usePosWorld
   ret:
-    type: Unknown
+    type: !ArrayUnsized
+      type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
+      desc: ''
   params:
   - name: positions
-    desc: '[[Object]]s and/or [[Position]]s to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D (see note in description)'
-    type: ArrayUnknown
+    desc: Places to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D (see note in description)
+    type: !ArrayUnsized
+      type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
+      desc: ''
   - name: centre
     type: !OneOf
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3dAGL
-      desc: null
-      since: null
     - type: Object
       desc: null
       since: null
     - type: Group
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
+    - type: Position3dAGL
       desc: null
       since: null
   - name: a
@@ -92,11 +124,27 @@ syntax:
     - pos3
     - '...'
   ret:
-    type: Unknown
+    type: !ArrayUnsized
+      type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
+      desc: ''
   params:
   - name: positions
-    desc: '[[Object]]s and/or [[Position]]s to check.'
-    type: ArrayUnknown
+    desc: Places to check.
+    type: !ArrayUnsized
+      type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
+      desc: ''
   - name: posN
     desc: polygon vertices in 2d or 3d format (see [[inPolygon]])
     type: Position

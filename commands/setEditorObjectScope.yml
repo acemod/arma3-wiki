@@ -30,7 +30,12 @@ syntax:
   - name: '[objects, editorType, condition, scope, subordinatesAlso]'
     type: ArrayUnknown
   - name: objects
-    type: Unknown
+    type: !ArrayUnsized
+      type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      desc: ''
   - name: editorType
     type: String
   - name: condition

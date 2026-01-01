@@ -13,7 +13,15 @@ syntax:
   - name: side
     type: Side
   - name: array
-    type: Unknown
+    type: !ArrayUnsized
+      type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
+      desc: ''
 argument_loc: Global
 effect_loc: Unspecified
 since:

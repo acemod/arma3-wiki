@@ -23,13 +23,10 @@ syntax:
     - type: Object
       desc: null
       since: null
-    - type: !OneOf
-      - type: Position2d
-        desc: null
-        since: null
-      - type: Position3d
-        desc: null
-        since: null
+    - type: Position2d
+      desc: null
+      since: null
+    - type: Position3d
       desc: null
       since: null
   - name: type
@@ -59,6 +56,9 @@ syntax:
   - name: position
     desc: position to start search at
     type: !OneOf
+    - type: Position3d
+      desc: null
+      since: null
     - type: Position2d
       desc: null
       since: null
