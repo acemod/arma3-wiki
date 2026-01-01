@@ -4,15 +4,17 @@ groups:
 - Sides
 syntax:
 - call: !Binary
-  - unitName
-  - arrayName
+  - unit
+  - others
   ret:
     type: Number
   params:
-  - name: unitName
+  - name: unit
     type: Object
-  - name: arrayName
-    type: ArrayUnknown
+  - name: others
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
 argument_loc: Global
 effect_loc: Unspecified
 since:

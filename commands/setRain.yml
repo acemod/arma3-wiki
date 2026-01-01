@@ -36,8 +36,10 @@ syntax:
     type: Nothing
   params:
   - name: rainParams
-    desc: 'array of custom [[Arma 3: CfgWorlds Config Reference#class RainParticles | {{hl|RainParticles}}]] params - see [[rainParams]]. Use empty array [] to reset to default config values'
-    type: ArrayUnknown
+    desc: 'custom [[Arma 3: CfgWorlds Config Reference#class RainParticles | {{hl|RainParticles}}]] params - see [[rainParams]]. Use empty array [] to reset to default config values'
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   since:
     arma3: '2.8'
   effect: Local

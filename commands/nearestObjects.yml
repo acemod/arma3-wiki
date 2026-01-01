@@ -15,8 +15,9 @@ syntax:
   - radius
   - 2Dmode
   ret:
-    type: ArrayUnknown
-    desc: array of objects
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params:
   - name: position
     desc: where to find objects, center position.

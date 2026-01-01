@@ -7,7 +7,9 @@ groups:
 syntax:
 - call: !Unary type
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params:
   - name: type
     desc: if an empty string {{hl|""}} is provided, all entities are returned

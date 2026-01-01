@@ -9,7 +9,9 @@ groups:
 syntax:
 - call: !Unary string
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   params:
   - name: string
     type: String

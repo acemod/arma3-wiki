@@ -5,8 +5,10 @@ groups:
 syntax:
 - call: !Unary config
   ret:
-    type: ArrayUnknown
-    desc: array of parent [[Config]]s, ordered from parent to child
+    type: !ArrayUnsized
+      type: Config
+      desc: ''
+    desc: ordered from parent to child
   params:
   - name: config
     desc: target config
@@ -18,8 +20,16 @@ syntax:
   - reversedOrder
   - configNames
   ret:
-    type: ArrayUnknown
-    desc: array of parent [[Config]]s or [[String]]s, representing config names
+    type: !OneOf
+    - type: !ArrayUnsized
+        type: Config
+        desc: ''
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    desc: Strings represent config names
   params:
   - name: config
     desc: target config

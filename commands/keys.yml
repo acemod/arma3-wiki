@@ -5,7 +5,9 @@ groups:
 syntax:
 - call: !Unary hashMap
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
     desc: array of all keys in the HashMap
   params:
   - name: hashMap

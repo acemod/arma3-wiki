@@ -12,7 +12,9 @@ syntax:
   - name: ctrl
     type: Control
   - name: indices
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
 argument_loc: Local
 effect_loc: Local
 since:

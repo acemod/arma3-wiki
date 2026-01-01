@@ -1,5 +1,5 @@
 name: camSetFocus
-desc: Sets camera focus range in format [distance, blur]. blur param - sets the camera focus blur. It does not automatically commit changes (see [[camCommit]]). Use [-1, -1] to disable focus completely.
+desc: Sets camera focus range. It does not automatically commit changes (see [[camCommit]]). Use [-1, -1] to disable focus completely.
 groups:
 - Camera Control
 syntax:
@@ -12,7 +12,17 @@ syntax:
   - name: camera
     type: Object
   - name: focusRange
-    type: ArrayUnknown
+    type: !ArraySized
+      types:
+      - name: distance
+        type: Number
+        desc: ''
+        since: null
+      - name: blur
+        type: Number
+        desc: sets the camera focus blur
+        since: null
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

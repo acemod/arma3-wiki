@@ -8,7 +8,9 @@ syntax:
     type: Nothing
   params:
   - name: array
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
 - call: !Unary string
   ret:
     type: String

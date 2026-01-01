@@ -11,7 +11,9 @@ syntax:
     desc: index of inserted element
   params:
   - name: array
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: element
     type: Anything
 argument_loc: Unspecified

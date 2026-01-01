@@ -7,8 +7,9 @@ syntax:
   - condition
   - config
   ret:
-    type: ArrayUnknown
-    desc: array of [[Config]]s
+    type: !ArrayUnsized
+      type: Config
+      desc: ''
   params:
   - name: condition
     type: String
@@ -21,8 +22,12 @@ syntax:
   - allSubclasses
   - classNames
   ret:
-    type: ArrayUnknown
-    desc: array of [[Config]]s or [[Strings]], which represent class names.
+    type: !OneOf
+    - type: !ArrayUnsized
+        type: Config
+        desc: ''
+      desc: null
+      since: null
   params:
   - name: config
     desc: target config

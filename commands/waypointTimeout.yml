@@ -5,7 +5,21 @@ groups:
 syntax:
 - call: !Unary waypoint
   ret:
-    type: ArrayUnknown
+    type: !ArraySized
+      types:
+      - name: min
+        type: Number
+        desc: ''
+        since: null
+      - name: mid
+        type: Number
+        desc: ''
+        since: null
+      - name: max
+        type: Number
+        desc: ''
+        since: null
+      desc: ''
   params:
   - name: waypoint
     type: Unknown

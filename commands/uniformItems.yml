@@ -5,7 +5,10 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+    desc: Class names of items
   params:
   - name: unit
     type: Object

@@ -7,8 +7,9 @@ groups:
 syntax:
 - call: !Unary type
   ret:
-    type: ArrayUnknown
-    desc: array of entities
+    type: !ArrayUnsized
+      type: EdenEntity
+      desc: ''
   params:
   - name: type
     type: !StringEnum

@@ -18,12 +18,12 @@ syntax:
     type: Object
   - name: force
     desc: |-
-      in format [x,y,z], force vector in '''world''' space; force is expressed in
+      force vector in '''world''' space; force is expressed in
       {{Link|https://en.wikipedia.org/wiki/Newton-second|newton-seconds}} (used by {{Link|https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/structPxForceMode.html|PxForceMode::eIMPULSE}})
-    type: ArrayUnknown
+    type: Unknown
   - name: position
-    desc: in format [x,y,z], in ''object'''s [[Position#PositionRelative|relative position]]
-    type: ArrayUnknown
+    desc: relative to object
+    type: Position3dRelative
   - name: setUnconscious
     desc: only applies to "CAManBase" ''object''; set to [[false]] to keep the person conscious
     type: Boolean

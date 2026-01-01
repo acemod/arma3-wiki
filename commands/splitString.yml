@@ -9,7 +9,9 @@ syntax:
   - str
   - delimiters
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: String
+      desc: ''
   params:
   - name: str
     desc: the string to split

@@ -12,7 +12,9 @@ syntax:
     type: Anything
   params:
   - name: array
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: index
     type: Number
 argument_loc: Unspecified

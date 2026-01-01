@@ -5,7 +5,9 @@ groups:
 syntax:
 - call: !Unary config
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   params:
   - name: config
     type: Config

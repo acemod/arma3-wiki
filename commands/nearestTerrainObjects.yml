@@ -10,8 +10,10 @@ syntax:
   - sort
   - 2Dmode
   ret:
-    type: ArrayUnknown
-    desc: array of terrain objects. Before {{arma3}} v2.00 this command did not return roads of type {{hl|"ROAD"}}, {{hl|"MAIN ROAD"}}, {{hl|"TRACK"}}, {{hl|"TRAIL"}}
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
+    desc: Before {{arma3}} v2.00 this command did not return roads of type {{hl|"ROAD"}}, {{hl|"MAIN ROAD"}}, {{hl|"TRACK"}}, {{hl|"TRAIL"}}
   params:
   - name: position
     desc: where to find objects, center position

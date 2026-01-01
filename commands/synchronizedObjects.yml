@@ -7,7 +7,9 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params:
   - name: unit
     type: Object

@@ -7,7 +7,9 @@ syntax:
   - control
   - index
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Control
+      desc: ''
   params:
   - name: control
     type: Control

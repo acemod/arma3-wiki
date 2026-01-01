@@ -5,12 +5,13 @@ groups:
 syntax:
 - call: !Unary array
   ret:
-    type: Anything
+    type: Number
     desc: element with [[min]]imum numerical value
   params:
   - name: array
-    desc: array of [[Number]]s
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

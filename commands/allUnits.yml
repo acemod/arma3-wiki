@@ -7,8 +7,9 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: ArrayUnknown
-    desc: array of [[Object|object]]s
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified

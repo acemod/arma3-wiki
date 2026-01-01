@@ -7,7 +7,9 @@ groups:
 syntax:
 - call: !Unary ropesOwner
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
     desc: array of attached entities on ropes
   params:
   - name: ropesOwner

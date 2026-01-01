@@ -8,12 +8,17 @@ groups:
 syntax:
 - call: !Unary vector
   ret:
-    type: ArrayUnknown
+    type: Vector3d
   params:
   - name: vector
-    type: !ArrayUnsized
-      type: Number
-      desc: ''
+    desc: z coordinate defaulted to 0
+    type: !OneOf
+    - type: Vector3d
+      desc: null
+      since: null
+    - type: Vector2d
+      desc: null
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

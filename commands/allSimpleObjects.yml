@@ -10,8 +10,10 @@ groups:
 syntax:
 - call: !Unary classes
   ret:
-    type: ArrayUnknown
-    desc: array of [[createSimpleObject|simple objects]]
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
+    desc: all [[createSimpleObject|simple objects]]
   params:
   - name: classes
     desc: classnames array. Use {{hl|[]}} to return all simple objects

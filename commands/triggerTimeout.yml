@@ -1,6 +1,6 @@
 name: triggerTimeout
 desc: |-
-  Returns trigger timeout in the form [min, mid, max, interruptable].
+  Returns trigger timeout.
 
   {{Feature | important | The trigger could be [[Multiplayer Scripting#Locality|local]] or remote but the result returned by this command will be for the trigger timeout set up locally on the client that executed the command. See [[createTrigger]] for more info.}}
 groups:
@@ -8,7 +8,25 @@ groups:
 syntax:
 - call: !Unary trigger
   ret:
-    type: ArrayUnknown
+    type: !ArraySized
+      types:
+      - name: min
+        type: Number
+        desc: ''
+        since: null
+      - name: mid
+        type: Number
+        desc: ''
+        since: null
+      - name: max
+        type: Number
+        desc: ''
+        since: null
+      - name: interruptible
+        type: Boolean
+        desc: ''
+        since: null
+      desc: ''
   params:
   - name: trigger
     type: Object

@@ -12,8 +12,9 @@ syntax:
     desc: resulting array
   params:
   - name: array
-    desc: array of [[Anything]]
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: code
     desc: code to be executed on each element of the array. The current element value is stored in the magic variable [[Magic Variables#x|_x]].
     type: Code

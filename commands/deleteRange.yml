@@ -11,7 +11,9 @@ syntax:
     type: Nothing
   params:
   - name: array
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: from
     desc: array index to start selection from.
     type: Number

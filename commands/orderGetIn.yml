@@ -12,7 +12,9 @@ syntax:
     type: Nothing
   params:
   - name: unitArray
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   - name: order
     type: Boolean
 argument_loc: Local

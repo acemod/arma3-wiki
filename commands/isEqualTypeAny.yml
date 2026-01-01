@@ -12,7 +12,9 @@ syntax:
   - name: val
     type: Anything
   - name: types
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -9,17 +9,19 @@ groups:
 - Unit Control
 syntax:
 - call: !Binary
-  - unitName
+  - unit
   - target
   ret:
     type: Nothing
   params:
-  - name: unitName
+  - name: unit
     type: !OneOf
     - type: Object
       desc: null
       since: null
-    - type: ArrayUnknown
+    - type: !ArrayUnsized
+        type: Object
+        desc: ''
       desc: null
       since: null
   - name: target

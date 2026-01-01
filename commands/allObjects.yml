@@ -9,8 +9,9 @@ syntax:
   - objectType
   - objectCollection
   ret:
-    type: ArrayUnknown
-    desc: array of [[Object]]s
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params:
   - name: objectType
     type: Unknown
@@ -20,8 +21,9 @@ syntax:
   - objectType
   - objectCollection
   ret:
-    type: ArrayUnknown
-    desc: array of [[Object]]s
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params:
   - name: objectType
     desc: type of the objects (will exact match return of [[typeOf]])

@@ -17,9 +17,6 @@ syntax:
   params:
   - name: value
     type: !OneOf
-    - type: ArrayUnknown
-      desc: null
-      since: null
     - type: String
       desc: null
       since: null
@@ -27,6 +24,11 @@ syntax:
       desc: null
       since: null
     - type: HashMapUnknown
+      desc: null
+      since: null
+    - type: !ArrayUnsized
+        type: Anything
+        desc: ''
       desc: null
       since: null
 - call: !Binary
@@ -41,7 +43,9 @@ syntax:
       {{Feature|arma3|If the provided array contains different data types, use [[isEqualTo]] for item comparison instead of [[==]].}}
     type: Code
   - name: array
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

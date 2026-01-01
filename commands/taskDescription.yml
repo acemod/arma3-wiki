@@ -1,11 +1,11 @@
 name: taskDescription
-desc: Returns the sub-parts of the task description. The returned Array is in format [Task description, Task title, Task waypoint description].
+desc: Returns the sub-parts of the task description.
 groups:
 - Briefing
 syntax:
 - call: !Unary task
   ret:
-    type: ArrayUnknown
+    type: Unknown
   params:
   - name: task
     type: Task

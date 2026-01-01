@@ -5,7 +5,9 @@ groups:
 syntax:
 - call: !Unary curatorObj
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: String
+      desc: ''
   params:
   - name: curatorObj
     desc: curator module

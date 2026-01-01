@@ -5,11 +5,15 @@ groups:
 syntax:
 - call: !Unary array
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
     desc: flattened array
   params:
   - name: array
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

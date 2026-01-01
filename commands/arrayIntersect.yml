@@ -11,12 +11,18 @@ syntax:
   - array1
   - array2
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   params:
   - name: array1
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: array2
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

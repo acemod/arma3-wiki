@@ -5,8 +5,10 @@ groups:
 syntax:
 - call: !Unary filter
   ret:
-    type: ArrayUnknown
-    desc: array of DLC numbers.
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
+    desc: App IDs
   params:
   - name: filter
     type: Unknown

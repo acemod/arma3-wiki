@@ -7,7 +7,9 @@ syntax:
   - position
   - radius
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params:
   - name: position
     type: !OneOf
@@ -27,7 +29,9 @@ syntax:
   - - typeName
     - radius
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params:
   - name: position
     type: !OneOf

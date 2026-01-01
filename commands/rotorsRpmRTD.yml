@@ -5,7 +5,9 @@ groups:
 syntax:
 - call: !Unary RTD_helicopter
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   params:
   - name: RTD_helicopter
     type: Object

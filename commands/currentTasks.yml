@@ -15,8 +15,9 @@ groups:
 syntax:
 - call: !Unary teamMember
   ret:
-    type: ArrayUnknown
-    desc: array of [[Task]]s
+    type: !ArrayUnsized
+      type: Task
+      desc: ''
   params:
   - name: teamMember
     desc: '[[teamMember]] [[agent]]'

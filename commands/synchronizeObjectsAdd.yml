@@ -12,8 +12,9 @@ syntax:
   - name: unit
     type: Object
   - name: objects
-    desc: array of objects
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
 argument_loc: Global
 effect_loc: Global
 since:

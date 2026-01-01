@@ -5,8 +5,14 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: ArrayUnknown
-    desc: array of one element
+    type: !ArraySized
+      types:
+      - name: text
+        type: String
+        desc: ''
+        since: null
+      desc: ''
+    desc: the library disclaimer
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified

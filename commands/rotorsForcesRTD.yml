@@ -7,7 +7,11 @@ groups:
 syntax:
 - call: !Unary helicopter
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: !ArrayUnsized
+        type: Number
+        desc: ''
+      desc: ''
   params:
   - name: helicopter
     type: Object

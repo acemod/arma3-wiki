@@ -5,7 +5,21 @@ groups:
 syntax:
 - call: !Unary curatorObj
   ret:
-    type: Unknown
+    type: !ArraySized
+      types:
+      - name: cameraAreaID
+        type: Number
+        desc: ''
+        since: null
+      - name: position
+        type: Position
+        desc: ''
+        since: null
+      - name: radio
+        type: Number
+        desc: ''
+        since: null
+      desc: ''
   params:
   - name: curatorObj
     desc: curator module.

@@ -11,8 +11,9 @@ syntax:
   - condition
   - inherit
   ret:
-    type: ArrayUnknown
-    desc: array of [[Config]]s
+    type: !ArrayUnsized
+      type: Config
+      desc: ''
   params:
   - name: config
     desc: config entry to search

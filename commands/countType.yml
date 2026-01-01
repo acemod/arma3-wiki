@@ -13,8 +13,9 @@ syntax:
     desc: class type
     type: String
   - name: objects
-    desc: array of [[Object]]s
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
 argument_loc: Global
 effect_loc: Unspecified
 since:

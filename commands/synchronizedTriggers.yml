@@ -5,7 +5,10 @@ groups:
 syntax:
 - call: !Unary waypoint
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
+    desc: Trigger objects
   params:
   - name: waypoint
     type: Waypoint

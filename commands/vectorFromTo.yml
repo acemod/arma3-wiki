@@ -9,14 +9,26 @@ syntax:
   - vector1
   - vector2
   ret:
-    type: ArrayUnknown
+    type: Vector3d
   params:
   - name: vector1
-    desc: vector 3D or 2D (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
-    type: ArrayUnknown
+    desc: z coordinate is defaulted to 0
+    type: !OneOf
+    - type: Vector3d
+      desc: null
+      since: null
+    - type: Vector2d
+      desc: null
+      since: null
   - name: vector2
-    desc: vector 3D or 2D (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
-    type: ArrayUnknown
+    desc: z coordinate is defaulted to 0
+    type: !OneOf
+    - type: Vector3d
+      desc: null
+      since: null
+    - type: Vector2d
+      desc: null
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

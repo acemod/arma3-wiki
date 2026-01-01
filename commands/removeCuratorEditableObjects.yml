@@ -14,8 +14,9 @@ syntax:
     desc: curator module
     type: Object
   - name: objects
-    desc: array of [[Object]]s
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   - name: removeCrew
     type: Boolean
     optional: true

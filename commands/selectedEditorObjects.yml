@@ -5,7 +5,9 @@ groups:
 syntax:
 - call: !Unary map
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   params:
   - name: map
     type: Control

@@ -14,7 +14,9 @@ syntax:
     desc: curator module
     type: Object
   - name: objects
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
   - name: addCrew
     type: Boolean
 argument_loc: Unspecified

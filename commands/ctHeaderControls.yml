@@ -7,7 +7,9 @@ syntax:
   - ctrl
   - index
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Control
+      desc: ''
   params:
   - name: ctrl
     type: Control

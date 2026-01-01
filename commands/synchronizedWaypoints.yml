@@ -6,7 +6,9 @@ groups:
 syntax:
 - call: !Unary obj
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Waypoint
+      desc: ''
   params:
   - name: obj
     type: !OneOf

@@ -10,7 +10,9 @@ syntax:
   - vector1
   - vector2
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Number
+      desc: ''
   params:
   - name: vector1
     type: ArrayUnknown

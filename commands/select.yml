@@ -13,7 +13,9 @@ syntax:
     desc: a <u>reference</u> to the array element given by its index
   params:
   - name: array
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: index
     desc: |-
       index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up.<br>
@@ -27,7 +29,9 @@ syntax:
     desc: a <u>reference</u> to the array element
   params:
   - name: array
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: boolean
     desc: '[[false]] selects the ''''''first'''''' element of the [[Array]], [[true]] the ''''''second'''''' one'
     type: Boolean
@@ -72,7 +76,9 @@ syntax:
     desc: a <u>new array</u> from selection
   params:
   - name: array
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: start
     desc: array index to start selection from
     type: Number
@@ -92,7 +98,9 @@ syntax:
     desc: a <u>new array</u> of all elements from the original array that satisfied expression condition
   params:
   - name: array
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
   - name: expression
     desc: |-
       expression that is expected to return [[Boolean]] or [[Nothing]].

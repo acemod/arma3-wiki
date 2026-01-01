@@ -22,7 +22,9 @@ syntax:
       since: null
   - name: settings
     desc: array of effect params
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Local
 since:

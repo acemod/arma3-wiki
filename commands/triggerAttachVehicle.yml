@@ -12,7 +12,9 @@ syntax:
   - name: triggerName
     type: Object
   - name: objects
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Object
+      desc: ''
 argument_loc: Global
 effect_loc: Local
 since:
