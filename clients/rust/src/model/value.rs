@@ -811,18 +811,9 @@ impl Value {
             "[[Turret Path]]" | "[[Array]] format [[Turret Path]]" => Some(Self::TurretPath),
 
             // Array patterns (catch-all for various array descriptions)
-            // Note: Simple "Array of X" patterns are handled by regex, these are special cases
+            // Note: Simple "Array of X" patterns are handled by the generic parser
+            // Only keep patterns here that are truly special cases
             "[[Array]] with [[Anything]]"
-            | "[[Array]] of [[Team Member]]s"
-            | "[[Array]] of [[Location]]s"
-            | "[[Array]] of [[Boolean]]s"
-            | "[[Array]] of [[Waypoint]]s"
-            | "[[Array]] of [[Group]]s"
-            | "[[Array]] of [[Object]]s"
-            | "[[Array]] - format [[Vector3D]]"
-            | "[[Array]] format [[Vector3D]]"
-            | "[[Array]] of [[Position]]s"
-            | "[[Array]] format [[Waypoint]]"
             | "[[Array]] of [[String]] and/or [[Structured Text]]"
             | "[[Array]] format [[ParticleArray]]"
             | "[[Array]] of [[Number]]s, where each number represents index of currently active effect layer"
@@ -1171,6 +1162,13 @@ mod tests {
             Value::from_wiki("test", "[[Array]] of [[Number]]s"),
             Ok(Value::ArrayUnsized {
                 typ: Box::new(Value::Number),
+                desc: String::new()
+            })
+        );
+        assert_eq!(
+            Value::from_wiki("test", "[[Array]] of [[Team Member]]s"),
+            Ok(Value::ArrayUnsized {
+                typ: Box::new(Value::TeamMember),
                 desc: String::new()
             })
         );
@@ -1528,7 +1526,7 @@ mod tests {
             ),
             Ok(Value::OneOf(vec![
                 OneOfValue {
-                    typ: Value::ArrayColor,
+                    typ: Value::ArrayColorRgb,
                     desc: None,
                     since: None,
                 },
