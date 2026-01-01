@@ -128,6 +128,28 @@ impl Value {
         matches!(self, Self::Unknown | Self::ArrayUnknown)
     }
 
+    /// Flattens a vector of `OneOfValue` by recursively extracting any nested `OneOf` variants.
+    /// If a `OneOfValue` contains a `Value::OneOf`, its inner values are pulled up to the parent level.
+    fn flatten_oneof(values: Vec<OneOfValue>) -> Vec<OneOfValue> {
+        let mut flattened = Vec::new();
+
+        for value in values {
+            match value.typ {
+                Self::OneOf(inner_values) => {
+                    // Recursively flatten the inner OneOf
+                    let inner_flattened = Self::flatten_oneof(inner_values);
+                    flattened.extend(inner_flattened);
+                }
+                _ => {
+                    // Not a nested OneOf, keep as-is
+                    flattened.push(value);
+                }
+            }
+        }
+
+        flattened
+    }
+
     #[cfg(feature = "wiki")]
     /// Helper function to extract version info and clean description text.
     /// Returns (`cleaned_description``since_version`)
@@ -295,7 +317,7 @@ impl Value {
             // Parse the element definitions
             let mut elements = Vec::new();
             for cap in regex_array_sized_element.captures_iter(source) {
-                let name = cap
+                let name_raw = cap
                     .get(1)
                     .expect("Failed to get element name")
                     .as_str()
@@ -305,12 +327,19 @@ impl Value {
                     .get(3)
                     .map_or(String::new(), |m| m.as_str().trim().to_string());
 
+                // Extract version from name and clean it
+                let since = regex_gvi.captures(name_raw).map(|caps| {
+                    let version = caps.get(1).expect("Failed to get version").as_str();
+                    Since::arma3(version)
+                });
+                let name = regex_gvi.replace_all(name_raw, "").trim().to_string();
+
                 if let Ok(typ) = Self::single_match(type_str) {
                     elements.push(ArraySizedElement {
-                        name: name.to_string(),
+                        name,
                         typ,
                         desc,
-                        since: None,
+                        since,
                     });
                 }
             }
@@ -402,7 +431,7 @@ impl Value {
             }
 
             if !types.is_empty() {
-                return Ok(Self::OneOf(types));
+                return Ok(Self::OneOf(Self::flatten_oneof(types)));
             }
         }
 
@@ -459,7 +488,7 @@ impl Value {
                     // If we successfully parsed descriptions and they match expected types, use them
                     if !types_with_desc.is_empty() && types_with_desc.len() == expected_types.len()
                     {
-                        return Ok(Self::OneOf(types_with_desc));
+                        return Ok(Self::OneOf(Self::flatten_oneof(types_with_desc)));
                     }
                 }
             }
@@ -545,7 +574,7 @@ impl Value {
                     }
 
                     if !parsed_values.is_empty() {
-                        return Ok(Self::OneOf(parsed_values));
+                        return Ok(Self::OneOf(Self::flatten_oneof(parsed_values)));
                     }
                 }
 
@@ -582,7 +611,7 @@ impl Value {
                         }
 
                         if !parsed_values.is_empty() {
-                            return Ok(Self::OneOf(parsed_values));
+                            return Ok(Self::OneOf(Self::flatten_oneof(parsed_values)));
                         }
                     }
                 }
@@ -613,7 +642,7 @@ impl Value {
             }
 
             if !parsed_values.is_empty() {
-                return Ok(Self::OneOf(parsed_values));
+                return Ok(Self::OneOf(Self::flatten_oneof(parsed_values)));
             }
         }
 
@@ -660,7 +689,7 @@ impl Value {
                                 other_types.into_iter().cloned().collect();
                             new_oneof.push(OneOfValue {
                                 typ: Self::ArrayUnsized {
-                                    typ: Box::new(Self::OneOf(cloned_types)),
+                                    typ: Box::new(Self::OneOf(Self::flatten_oneof(cloned_types))),
                                     desc: String::new(),
                                 },
                                 desc: None,
@@ -682,7 +711,7 @@ impl Value {
                             since: None,
                         });
 
-                        return Ok(Self::OneOf(new_oneof));
+                        return Ok(Self::OneOf(Self::flatten_oneof(new_oneof)));
                     }
                 }
 
@@ -764,12 +793,13 @@ impl Value {
             "[[Number]] of control" => Some(Self::Number),
 
             // Color types
+            "[[Color]]" => Some(Self::ArrayColor),
+            "[[Array]] of [[Color|Color (RGB)]]" | "[[Array]] format [[Color|Color (RGB)]]" => {
+                Some(Self::ArrayColorRgb)
+            }
             "[[Color|Color (RGBA)]]"
-            | "[[Array]] of [[Color|Color (RGB)]]"
-            | "[[Array]] format [[Color|Color (RGB)]]"
             | "[[Array]] of [[Color|Color (RGBA)]]"
-            | "[[Array]] format [[Color|Color (RGBA)]]"
-            | "[[Array]] format [[Color|Color (RGBA)]] - text color" => Some(Self::ArrayColor),
+            | "[[Array]] format [[Color|Color (RGBA)]]" => Some(Self::ArrayColorRgba),
 
             // Eden Entities
             "[[Array]] format [[Array of Eden Entities]]" | "[[Array of Eden Entities]]" => {
@@ -873,7 +903,7 @@ impl Value {
 
     /// Parses a list value from a string.
     ///
-    /// ```
+    /// ```text
     /// * [[Number]] - (0 - no clouds, 1 - full clouds)
     /// * [[Nothing]] - If arguments are incorrect
     /// * [[Boolean]] - Returns [[false]] if simulWeather is disabled
@@ -899,7 +929,7 @@ impl Value {
         if items.is_empty() {
             Err("No list items found".to_string())
         } else {
-            Ok(Self::OneOf(items))
+            Ok(Self::OneOf(Self::flatten_oneof(items)))
         }
     }
 }
@@ -1120,11 +1150,11 @@ mod tests {
     fn array_color() {
         assert_eq!(
             Value::from_wiki("test", "[[Array]] format [[Color|Color (RGB)]]"),
-            Ok(Value::ArrayColor)
+            Ok(Value::ArrayColorRgb)
         );
         assert_eq!(
             Value::from_wiki("test", "[[Array]] format [[Color|Color (RGBA)]]"),
-            Ok(Value::ArrayColor)
+            Ok(Value::ArrayColorRgba)
         );
     }
 
@@ -1205,6 +1235,61 @@ mod tests {
                         since: None,
                     },
                 ],
+                desc: String::new(),
+            })
+        );
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                r#"[[Array]] of [[Array]]s with [prefix, version, isPatched, modIndex, hash]:
+* prefix: [[String]] - addon prefix
+* version: [[String]] - addon revision version
+* isPatched: [[Boolean]] - [[true]] if patching is enabled and this addon is being patched 
+* {{GVI|arma3|2.14|size= 0.75}} modIndex: [[Number]] - index of mod in [[getLoadedModsInfo]] array. -1 if not found.
+* {{GVI|arma3|2.14|size= 0.75}} hash: [[String]] - hash of the addon PBO file. "" if hashing fails."#
+            ),
+            Ok(Value::ArrayUnsized {
+                typ: Box::new(Value::ArraySized {
+                    types: vec![
+                        ArraySizedElement {
+                            name: "prefix".to_string(),
+                            typ: Value::String,
+                            desc: String::from("addon prefix"),
+                            since: None,
+                        },
+                        ArraySizedElement {
+                            name: "version".to_string(),
+                            typ: Value::String,
+                            desc: String::from("addon revision version"),
+                            since: None,
+                        },
+                        ArraySizedElement {
+                            name: "isPatched".to_string(),
+                            typ: Value::Boolean,
+                            desc: String::from(
+                                "[[true]] if patching is enabled and this addon is being patched"
+                            ),
+                            since: None,
+                        },
+                        ArraySizedElement {
+                            name: "modIndex".to_string(),
+                            typ: Value::Number,
+                            desc: String::from(
+                                "index of mod in [[getLoadedModsInfo]] array. -1 if not found."
+                            ),
+                            since: Some(Since::arma3("2.14")),
+                        },
+                        ArraySizedElement {
+                            name: "hash".to_string(),
+                            typ: Value::String,
+                            desc: String::from(
+                                "hash of the addon PBO file. \"\" if hashing fails."
+                            ),
+                            since: Some(Since::arma3("2.14")),
+                        },
+                    ],
+                    desc: String::new(),
+                }),
                 desc: String::new(),
             })
         );
@@ -1494,18 +1579,12 @@ mod tests {
                     since: None,
                 },
                 OneOfValue {
-                    typ: Value::OneOf(vec![
-                        OneOfValue {
-                            typ: Value::Position2d,
-                            desc: None,
-                            since: None,
-                        },
-                        OneOfValue {
-                            typ: Value::Position3d,
-                            desc: None,
-                            since: None,
-                        },
-                    ]),
+                    typ: Value::Position2d,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Position3d,
                     desc: None,
                     since: None,
                 },
@@ -1556,18 +1635,12 @@ mod tests {
                     since: None,
                 },
                 OneOfValue {
-                    typ: Value::OneOf(vec![
-                        OneOfValue {
-                            typ: Value::Position2d,
-                            desc: None,
-                            since: None,
-                        },
-                        OneOfValue {
-                            typ: Value::Position3dAGL,
-                            desc: None,
-                            since: None,
-                        },
-                    ]),
+                    typ: Value::Position2d,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Position3dAGL,
                     desc: None,
                     since: None,
                 },
