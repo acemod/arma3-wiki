@@ -5,6 +5,8 @@ use serde::{Deserialize, Serialize};
 pub enum Arg {
     Item(String),
     Array(Vec<Arg>),
+    InfiniteItem(Box<Arg>),
+    InfiniteFlat(Vec<Arg>),
 }
 
 impl Arg {
@@ -12,6 +14,8 @@ impl Arg {
         match self {
             Self::Item(name) => vec![name.clone()],
             Self::Array(args) => args.iter().flat_map(Self::names).collect(),
+            Self::InfiniteItem(arg) => arg.names(),
+            Self::InfiniteFlat(args) => args.iter().flat_map(Self::names).collect(),
         }
     }
 }
@@ -193,43 +197,73 @@ fn parse() {
     );
 }
 
-#[test]
 #[cfg(feature = "wiki")]
-fn test_call_from_wiki() {
-    assert_eq!(Call::from_wiki("[[addScore]]"), Ok(Call::Nular));
-    assert_eq!(
-        Call::from_wiki("[[addScore]] foo"),
-        Ok(Call::Unary(Arg::Item("foo".to_string())))
-    );
-    assert_eq!(
-        Call::from_wiki("foo [[addScore]] baz"),
-        Ok(Call::Binary(
-            Arg::Item("foo".to_string()),
-            Arg::Item("baz".to_string())
-        ))
-    );
-    assert_eq!(
-        Call::from_wiki("foo bar baz qux"),
-        Err("Invalid call: foo bar baz qux".to_string())
-    );
-    assert_eq!(
-        Call::from_wiki("[[tvSetPicture]] [idc, path, name]"),
-        Ok(Call::Unary(Arg::Array(vec![
-            Arg::Item("idc".to_string()),
-            Arg::Item("path".to_string()),
-            Arg::Item("name".to_string())
-        ])))
-    );
-    assert_eq!(
-        Call::from_wiki("control [[tvSetPicture]] [idc, path, name]"),
-        Ok(Call::Binary(
-            Arg::Item("control".to_string()),
-            Arg::Array(vec![
+#[cfg(test)]
+mod tests {
+    use crate::model::{Arg, Call};
+
+    #[test]
+    fn call_from_wiki() {
+        assert_eq!(Call::from_wiki("[[addScore]]"), Ok(Call::Nular));
+        assert_eq!(
+            Call::from_wiki("[[addScore]] foo"),
+            Ok(Call::Unary(Arg::Item("foo".to_string())))
+        );
+        assert_eq!(
+            Call::from_wiki("foo [[addScore]] baz"),
+            Ok(Call::Binary(
+                Arg::Item("foo".to_string()),
+                Arg::Item("baz".to_string())
+            ))
+        );
+        assert_eq!(
+            Call::from_wiki("foo bar baz qux"),
+            Err("Invalid call: foo bar baz qux".to_string())
+        );
+        assert_eq!(
+            Call::from_wiki("[[tvSetPicture]] [idc, path, name]"),
+            Ok(Call::Unary(Arg::Array(vec![
                 Arg::Item("idc".to_string()),
                 Arg::Item("path".to_string()),
                 Arg::Item("name".to_string())
-            ])
-        ))
-    );
-    assert_eq!(Call::from_wiki("'''viewDistance'''"), Ok(Call::Nular));
+            ])))
+        );
+        assert_eq!(
+            Call::from_wiki("control [[tvSetPicture]] [idc, path, name]"),
+            Ok(Call::Binary(
+                Arg::Item("control".to_string()),
+                Arg::Array(vec![
+                    Arg::Item("idc".to_string()),
+                    Arg::Item("path".to_string()),
+                    Arg::Item("name".to_string())
+                ])
+            ))
+        );
+        assert_eq!(Call::from_wiki("'''viewDistance'''"), Ok(Call::Nular));
+    }
+
+    #[test]
+    fn infinite() {
+        assert_eq!(
+            Call::from_wiki("[[format]] [formatString, var1, var2, ...]"),
+            Ok(Call::Unary(Arg::Array(vec![
+                Arg::Item("formatString".to_string()),
+                Arg::InfiniteItem(Box::new(Arg::Item("varN".to_string()))),
+            ])))
+        );
+        assert_eq!(
+            Call::from_wiki("map [[addEditorObject]] [type,[name1,value1,...],class]"),
+            Ok(Call::Binary(
+                Arg::Item("map".to_string()),
+                Arg::Array(vec![
+                    Arg::Item("type".to_string()),
+                    Arg::InfiniteFlat(vec![
+                        Arg::Item("nameN".to_string()),
+                        Arg::Item("valueN".to_string()),
+                    ]),
+                    Arg::Item("class".to_string()),
+                ])
+            ))
+        );
+    }
 }
