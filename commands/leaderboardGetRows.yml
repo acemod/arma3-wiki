@@ -3,7 +3,8 @@ desc: Returns values for the given leaderboard; this can be called after the one
 groups:
 - Leaderboards
 syntax:
-- ret:
+- call: !Unary boardName
+  ret:
     type: Unknown
   right: !Item
     name: boardName

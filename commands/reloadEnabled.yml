@@ -3,7 +3,8 @@ desc: A getter for [[enableReload]]. The value returned is wether or not auto-re
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary unitName
+  ret:
     type: Boolean
   right: !Item
     name: unitName

@@ -3,14 +3,16 @@ desc: Reverses given array by reference (modifies the original array, just like 
 groups:
 - Arrays
 syntax:
-- ret:
+- call: !Unary array
+  ret:
     type: Nothing
   right: !Item
     name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-- ret:
+- call: !Unary string
+  ret:
     type: String
     desc: reversed string
   right: !Item

@@ -3,12 +3,14 @@ desc: Returns path to menu entry mouse is currently hovering over.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: ArrayUnknown
   right: !Item
     name: idc
     type: Number
-- ret:
+- call: !Unary control
+  ret:
     type: ArrayUnknown
   right: !Item
     name: control

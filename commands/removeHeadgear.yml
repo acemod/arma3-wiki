@@ -3,7 +3,8 @@ desc: Removes headgear from a unit. If unit has no headgear command quietly fail
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Nothing
   right: !Item
     name: unit

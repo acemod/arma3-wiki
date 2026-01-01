@@ -3,7 +3,10 @@ desc: Returns action stored in item on given path in [[CT_MENU_STRIP]] control.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: String
     desc: action
   right: !Array
@@ -13,7 +16,10 @@ syntax:
   - !Item
     name: path
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - control
+  - path
+  ret:
     type: String
     desc: action
   left: !Item

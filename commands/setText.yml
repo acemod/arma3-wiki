@@ -3,7 +3,10 @@ desc: Sets the text associated with a location. This text will be displayed on t
 groups:
 - Locations
 syntax:
-- ret:
+- call: !Binary
+  - location
+  - text
+  ret:
     type: Nothing
   left: !Item
     name: location

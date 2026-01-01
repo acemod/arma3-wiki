@@ -3,7 +3,8 @@ desc: Returns control's foreground color.
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary control
+  ret:
     type: ArrayColorRgba
   right: !Item
     name: control

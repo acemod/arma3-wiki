@@ -3,14 +3,18 @@ desc: Returns how much vehicle wants to reload its weapons.
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary entity
+  ret:
     type: Number
     desc: 'range: 0-1, 0: full mag, 1: empty mag'
   right: !Item
     name: entity
     desc: unit or vehicle
     type: Object
-- ret:
+- call: !Binary
+  - entity
+  - muzzle
+  ret:
     type: Number
     desc: 'range: 0-1, 0: full mag, 1: empty mag'
   left: !Item

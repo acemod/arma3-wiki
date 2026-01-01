@@ -4,7 +4,10 @@ groups:
 - Object Manipulation
 - Weapons
 syntax:
-- ret:
+- call: !Binary
+  - munition
+  - target
+  ret:
     type: Boolean
     desc: '[[true]] if successful'
   left: !Item
@@ -15,7 +18,11 @@ syntax:
     name: target
     desc: valid missile target or [[objNull]] to cancel targeting
     type: Object
-- ret:
+- call: !Binary
+  - munition
+  - - target
+    - force
+  ret:
     type: Boolean
     desc: '[[true]] if successful'
   left: !Item

@@ -3,7 +3,11 @@ desc: "Create object with given shape defined as path to .p3d model. Supported [
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary
+  - shapeName
+  - positionWorld
+  - local
+  ret:
     type: Object
     desc: created simple object
   right: !Array
@@ -23,7 +27,11 @@ syntax:
     default: '[[false]]'
     since:
       arma3: '1.96'
-- ret:
+- call: !Unary
+  - className
+  - positionASL
+  - local
+  ret:
     type: Object
     desc: created simple object
   right: !Array

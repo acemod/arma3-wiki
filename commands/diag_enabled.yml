@@ -3,7 +3,8 @@ desc: Checks whether specific diagnostic mode is activated.
 groups:
 - Diagnostic
 syntax:
-- ret:
+- call: !Unary mode
+  ret:
     type: Boolean
     desc: '[[true]] when enabled, [[false]] when disabled'
   right: !Item

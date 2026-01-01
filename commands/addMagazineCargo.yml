@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Binary
+  - vehicleName
+  - - magazineName
+    - count
+  ret:
     type: Nothing
   left: !Item
     name: vehicleName

@@ -10,7 +10,15 @@ desc: |-
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Binary
+  - - controlOrIDC
+    - column
+  - - sortByType
+    - reversedOrder
+    - caseSensitive
+    - useTextRight
+    - unicodeOff
+  ret:
     type: Nothing
   left: !Array
   - !Item

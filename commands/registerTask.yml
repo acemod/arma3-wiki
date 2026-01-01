@@ -4,7 +4,10 @@ groups:
 - Briefing
 - Teams
 syntax:
-- ret:
+- call: !Binary
+  - teamMember
+  - entryName
+  ret:
     type: Boolean
     desc: '[[true]] on success'
   left: !Item

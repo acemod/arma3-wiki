@@ -3,7 +3,10 @@ desc: Adds a column at given position.
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - position
+  ret:
     type: !OneOf
     - type: Number
       desc: null
@@ -16,7 +19,10 @@ syntax:
     name: position
     desc: position of the new column where 0 means all the way to the left and 1 all the way to the right of the control
     type: Number
-- ret:
+- call: !Unary
+  - controlOrIdc
+  - position
+  ret:
     type: !OneOf
     - type: Number
       desc: null

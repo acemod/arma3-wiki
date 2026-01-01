@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unitName
+  - toggle
+  ret:
     type: Nothing
   left: !Item
     name: unitName

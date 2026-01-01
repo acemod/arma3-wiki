@@ -3,7 +3,10 @@ desc: Sets cursor to given item on given path. IDC means id of parent Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -14,7 +17,10 @@ syntax:
     type: !ArrayUnsized
       type: Number
       desc: ''
-- ret:
+- call: !Binary
+  - control
+  - path
+  ret:
     type: Nothing
   left: !Item
     name: control

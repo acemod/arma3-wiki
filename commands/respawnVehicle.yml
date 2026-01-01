@@ -5,7 +5,18 @@ desc: |-
 groups:
 - Multiplayer
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - respawnDelay
+    - respawnCount
+    - deleteOldWreck
+    - respawnOnServer
+    - respawnFlying
+    - respawnUnit
+    - respawnMode
+    - respawnSide
+    - useRespawnMarkerDir
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

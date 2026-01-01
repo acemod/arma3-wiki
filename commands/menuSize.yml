@@ -3,7 +3,10 @@ desc: Returns how many sub entries is in item on given path.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: Number
   right: !Array
   - !Item
@@ -12,7 +15,10 @@ syntax:
   - !Item
     name: path
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - control
+  - path
+  ret:
     type: Number
   left: !Item
     name: control

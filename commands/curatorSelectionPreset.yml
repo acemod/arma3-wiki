@@ -3,7 +3,8 @@ desc: Returns list of all objects stored in the given selection preset.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary numkey
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

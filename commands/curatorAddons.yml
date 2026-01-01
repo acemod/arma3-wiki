@@ -3,7 +3,8 @@ desc: Returns list of addons allowed to given curator. The addon names are not g
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary curatorObj
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

@@ -6,7 +6,11 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - muzzle
+    - magazine
+  ret:
     type: Nothing
   left: !Item
     name: unit

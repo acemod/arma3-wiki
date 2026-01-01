@@ -3,7 +3,8 @@ desc: Removes all the lines from the RscControlsTable. Returns Nothing.
 groups:
 - GUI Control - Controls Table
 syntax:
-- ret:
+- call: !Unary ctrl
+  ret:
     type: Nothing
   right: !Item
     name: ctrl

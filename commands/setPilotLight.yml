@@ -3,7 +3,10 @@ desc: 'Switches headlights of a vehicle on/off. Note that the vehicle has to be 
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - set
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

@@ -3,7 +3,8 @@ desc: Returns the crew (both dead and alive) of the given vehicle.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary vehicleName
+  ret:
     type: ArrayUnknown
     desc: an array with all units in the vehicle is returned.
   right: !Item

@@ -4,7 +4,10 @@ groups:
 - Sides
 - Object Detection
 syntax:
-- ret:
+- call: !Binary
+  - side
+  - array
+  ret:
     type: Number
   left: !Item
     name: side

@@ -3,7 +3,12 @@ desc: Shows object defined in global config in CfgTitles
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - class
+  - type
+  - speed
+  - showInMap
+  ret:
     type: Nothing
   right: !Array
   - !Item

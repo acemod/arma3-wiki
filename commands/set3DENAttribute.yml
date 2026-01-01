@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Binary
+  - entity
+  - - class
+    - value
+  ret:
     type: Boolean
     desc: '[[true]] If the value was set'
   left: !Item

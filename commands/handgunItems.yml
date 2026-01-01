@@ -3,7 +3,8 @@ desc: Returns array with all items assigned to the [[handgunWeapon]] except maga
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: ArrayUnknown
     desc: '[silencer, laserpointer/flashlight, optics, bipod]'
   right: !Item

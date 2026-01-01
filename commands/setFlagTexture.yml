@@ -3,7 +3,10 @@ desc: Sets flag texture.
 groups:
 - Flags
 syntax:
-- ret:
+- call: !Binary
+  - flag
+  - texture
+  ret:
     type: Nothing
   left: !Item
     name: flag

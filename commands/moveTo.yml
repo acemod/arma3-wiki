@@ -3,7 +3,10 @@ desc: Low level command to person to move to given position. It is good to check
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: unit

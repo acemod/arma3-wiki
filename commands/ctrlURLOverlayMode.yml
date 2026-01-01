@@ -3,7 +3,8 @@ desc: Returns the URL overlay mode 0, 1, 2 (see [[ctrlSetURLOverlayMode]]) or -1
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary control
+  ret:
     type: Number
   right: !Item
     name: control

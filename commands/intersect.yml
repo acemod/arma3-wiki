@@ -3,7 +3,12 @@ desc: "Finds named selections in object which are in specified LOD, intersected 
 groups:
 - Math - Geometry
 syntax:
-- ret:
+- call: !Binary
+  - - object
+    - lodName
+  - - begPos
+    - endPos
+  ret:
     type: Unknown
     desc: |-
       name of intersected selection

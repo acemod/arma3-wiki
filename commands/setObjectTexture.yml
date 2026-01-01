@@ -10,7 +10,11 @@ multiplayer_note: See [[setObjectTextureGlobal]].
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - selection
+    - texture
+  ret:
     type: Nothing
   left: !Item
     name: object

@@ -3,7 +3,11 @@ desc: Sets shortcut of given menu strip entry.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - shortcut
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -15,7 +19,11 @@ syntax:
   - !Item
     name: shortcut
     type: Number
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - shortcut
+  ret:
     type: Nothing
   left: !Item
     name: control

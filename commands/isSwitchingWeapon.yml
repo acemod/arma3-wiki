@@ -3,7 +3,8 @@ desc: Returns wether or not the unit is in the process of switching weapon.
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Boolean
     desc: '[[true]] if the unit is switching weapon.'
   right: !Item

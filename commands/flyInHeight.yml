@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - aircraft
+  - altitude
+  ret:
     type: Nothing
   left: !Item
     name: aircraft
@@ -14,7 +17,11 @@ syntax:
     name: altitude
     desc: flying altitude in meters
     type: Number
-- ret:
+- call: !Binary
+  - aircraft
+  - - altitude
+    - forced
+  ret:
     type: Nothing
   left: !Item
     name: aircraft

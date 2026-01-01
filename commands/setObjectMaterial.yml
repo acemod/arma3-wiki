@@ -3,7 +3,11 @@ desc: Sets material of object selection. The selection number is defined through
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - obj
+  - - selectionNumber
+    - material
+  ret:
     type: Nothing
   left: !Item
     name: obj

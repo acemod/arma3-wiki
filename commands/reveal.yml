@@ -7,7 +7,10 @@ multiplayer_note: '[[targetKnowledge]] and [[knowsAbout]] information only get u
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - toWhom
+  - target
+  ret:
     type: Nothing
   left: !Item
     name: toWhom
@@ -23,7 +26,11 @@ syntax:
     name: target
     desc: which is revealed
     type: Object
-- ret:
+- call: !Binary
+  - toWhom
+  - - target
+    - accuracy
+  ret:
     type: Nothing
   left: !Item
     name: toWhom

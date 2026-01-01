@@ -3,7 +3,10 @@ desc: Returns metadata associated with a particular row of a [[CT_CONTROLS_TABLE
 groups:
 - GUI Control - Controls Table
 syntax:
-- ret:
+- call: !Binary
+  - ctrl
+  - row
+  ret:
     type: String
   left: !Item
     name: ctrl

@@ -3,7 +3,8 @@ desc: Opens Steam overlay with given YT video. Video URL is the end part of the 
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary youTubeUrl
+  ret:
     type: Boolean
   right: !Item
     name: youTubeUrl

@@ -3,7 +3,10 @@ desc: Checks whether given subject is present in the [[Diary]] of given player.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - player
+  - name
+  ret:
     type: Boolean
   left: !Item
     name: player

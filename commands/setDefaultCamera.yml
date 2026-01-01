@@ -3,7 +3,10 @@ desc: Sets the position and direction for the camera used after camera is set on
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary
+  - position
+  - direction
+  ret:
     type: Nothing
   right: !Array
   - !Item

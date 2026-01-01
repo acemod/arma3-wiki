@@ -3,7 +3,19 @@ desc: "Sets randomization of particle source parameters. Correspondence between 
 groups:
 - Particles
 syntax:
-- ret:
+- call: !Binary
+  - particleSource
+  - - lifeTime
+    - position
+    - moveVelocity
+    - rotationVelocity
+    - size
+    - color
+    - directionPeriod
+    - directionIntensity
+    - angle
+    - bounceOnSurface
+  ret:
     type: Nothing
   left: !Item
     name: particleSource

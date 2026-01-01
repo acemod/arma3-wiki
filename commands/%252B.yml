@@ -13,7 +13,10 @@ groups:
 - HashMap
 - Strings
 syntax:
-- ret:
+- call: !Binary
+  - numberA
+  - numberB
+  ret:
     type: Number
     desc: the sum of ''numberA'' and ''numberB''
   left: !Item
@@ -22,13 +25,17 @@ syntax:
   right: !Item
     name: numberB
     type: Number
-- ret:
+- call: !Unary number
+  ret:
     type: Number
     desc: the value of the parameter ''number''
   right: !Item
     name: number
     type: Number
-- ret:
+- call: !Binary
+  - arrayA
+  - arrayB
+  ret:
     type: !ArrayUnsized
       type: Anything
       desc: ''
@@ -43,7 +50,10 @@ syntax:
     type: !ArrayUnsized
       type: Anything
       desc: ''
-- ret:
+- call: !Binary
+  - stringA
+  - stringB
+  ret:
     type: String
     desc: a string concatenating ''stringA'' and ''stringB''
   left: !Item
@@ -52,7 +62,8 @@ syntax:
   right: !Item
     name: stringB
     type: String
-- ret:
+- call: !Unary array
+  ret:
     type: !ArrayUnsized
       type: Anything
       desc: ''
@@ -62,7 +73,8 @@ syntax:
     type: !ArrayUnsized
       type: Anything
       desc: ''
-- ret:
+- call: !Unary hashMap
+  ret:
     type: HashMapUnknown
     desc: a new instance of the provided [[HashMap]] filled with the same key-value pairs ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}})
   right: !Item

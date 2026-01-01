@@ -3,12 +3,14 @@ desc: Removes all entries from given menu strip.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: Nothing
   right: !Item
     name: idc
     type: Number
-- ret:
+- call: !Unary control
+  ret:
     type: Nothing
   right: !Item
     name: control

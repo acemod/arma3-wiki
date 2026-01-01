@@ -3,7 +3,8 @@ desc: Opens a Steam application, returns false if it was not possible to run the
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary appID
+  ret:
     type: Boolean
   right: !Item
     name: appID

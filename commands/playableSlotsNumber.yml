@@ -3,7 +3,8 @@ desc: Returns the number of available slots in mission per [[Side|side]] (both e
 groups:
 - Multiplayer
 syntax:
-- ret:
+- call: !Unary side
+  ret:
     type: Number
   right: !Item
     name: side

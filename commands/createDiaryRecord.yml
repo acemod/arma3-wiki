@@ -8,7 +8,14 @@ desc: |-
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - player
+  - - subject
+    - textInfo
+    - task
+    - taskState
+    - showTitle
+  ret:
     type: DiaryRecord
   left: !Item
     name: player

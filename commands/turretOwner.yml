@@ -4,7 +4,10 @@ multiplayer_note: A vehicle turret will change locality when player gunner gets 
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
     type: Number
     desc: '[[owner]] id'
   left: !Item

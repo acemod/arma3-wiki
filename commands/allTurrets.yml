@@ -9,12 +9,16 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Unknown
   right: !Item
     name: vehicle
     type: Object
-- ret:
+- call: !Unary
+  - vehicle
+  - includeFFV
+  ret:
     type: Unknown
   right: !Array
   - !Item

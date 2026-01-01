@@ -3,7 +3,10 @@ desc: Sets that the vehicle will share targets that were acquired by its own sen
 groups:
 - Sensors
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - bool
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

@@ -4,7 +4,10 @@ groups:
 - AI Behaviour
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - behaviour
+  ret:
     type: Nothing
   left: !Item
     name: unit
@@ -14,7 +17,10 @@ syntax:
     name: behaviour
     desc: see description
     type: String
-- ret:
+- call: !Binary
+  - group
+  - behaviour
+  ret:
     type: Nothing
   left: !Item
     name: group

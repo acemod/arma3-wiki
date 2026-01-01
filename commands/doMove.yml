@@ -3,7 +3,10 @@ desc: Order the given unit(s) to move to the given position (without radio messa
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unit(s)
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: unit(s)

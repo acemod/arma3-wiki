@@ -3,7 +3,10 @@ desc: Creates new item and tries to add it into inventory. Inventory must have e
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

@@ -5,7 +5,11 @@ desc: |-
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - index
+  - path
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -19,7 +23,11 @@ syntax:
     name: path
     desc: path to the picture
     type: String
-- ret:
+- call: !Binary
+  - control
+  - - index
+    - path
+  ret:
     type: Nothing
   left: !Item
     name: control

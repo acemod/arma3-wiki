@@ -5,7 +5,11 @@ desc: |-
 groups:
 - System
 syntax:
-- ret:
+- call: !Binary
+  - handle
+  - - name
+    - value
+  ret:
     type: Nothing
   left: !Item
     name: handle

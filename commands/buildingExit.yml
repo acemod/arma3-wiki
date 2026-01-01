@@ -3,7 +3,10 @@ desc: Returns the given indexed exit in a building. The returned value is in for
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - building
+  - index
+  ret:
     type: Position
   left: !Item
     name: building

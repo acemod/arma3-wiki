@@ -3,7 +3,10 @@ desc: Count how many units in the array are considered friendly to the given uni
 groups:
 - Sides
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - others
+  ret:
     type: Number
   left: !Item
     name: unit

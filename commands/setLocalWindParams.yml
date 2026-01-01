@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Unary
+  - strength
+  - diameter
+  ret:
     type: Nothing
   right: !Array
   - !Item

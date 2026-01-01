@@ -3,7 +3,10 @@ desc: Dumps the bytecode as {{arma3}} sees it, in a diff friendly way. Useful fo
 groups:
 - Diagnostic
 syntax:
-- ret:
+- call: !Unary
+  - sourcePath
+  - targetPath
+  ret:
     type: Code
     desc: compiled expression (If parsing was successful)
   right: !Array

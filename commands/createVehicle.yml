@@ -3,7 +3,10 @@ desc: "Creates an empty object of given classname type.\nSee [[Arma 3: Assets]] 
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - type
+  - position
+  ret:
     type: Object
   left: !Item
     name: type
@@ -13,7 +16,13 @@ syntax:
     name: position
     desc: desired placement position. If the exact position is occupied, nearest empty position is used.
     type: Position
-- ret:
+- call: !Unary
+  - type
+  - position
+  - markers
+  - placement
+  - special
+  ret:
     type: Object
     desc: created vehicle or [[objNull]] if failed
   right: !Array

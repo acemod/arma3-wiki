@@ -6,7 +6,11 @@ desc: |-
 groups:
 - PhysX
 syntax:
-- ret:
+- call: !Binary
+  - joint
+  - - angle
+    - axis
+  ret:
     type: Nothing
   left: !Item
     name: joint

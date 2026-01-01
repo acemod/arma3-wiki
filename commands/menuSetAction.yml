@@ -3,7 +3,11 @@ desc: Sets new action into menu entry on given path.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - action
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -16,7 +20,11 @@ syntax:
     name: action
     desc: expression that should be executed when entry is clicked
     type: String
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - action
+  ret:
     type: Nothing
   left: !Item
     name: control

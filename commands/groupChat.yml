@@ -6,7 +6,10 @@ desc: |-
 groups:
 - Radio and Chat
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - chatText
+  ret:
     type: Nothing
   left: !Item
     name: unit

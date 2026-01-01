@@ -3,7 +3,8 @@ desc: Get the provided unit's current morale level.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Number
     desc: in range -1..+1
   right: !Item

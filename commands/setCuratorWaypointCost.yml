@@ -3,7 +3,10 @@ desc: Sets cost of waypoints (used for placing, editing and deleting).
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - cost
+  ret:
     type: Nothing
   left: !Item
     name: curatorObj

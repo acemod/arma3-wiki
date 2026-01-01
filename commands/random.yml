@@ -21,12 +21,17 @@ desc: |-
 groups:
 - Math
 syntax:
-- ret:
+- call: !Unary x
+  ret:
     type: Unknown
   right: !Item
     name: x
     type: Number
-- ret:
+- call: !Unary
+  - min
+  - mid
+  - max
+  ret:
     type: Unknown
     desc: '''''''can'''''' be higher than max (maximum value is {{hl|min + max - mid}})'
   right: !Array
@@ -41,7 +46,10 @@ syntax:
     type: Number
   since:
     arma3: '1.56'
-- ret:
+- call: !Binary
+  - seed
+  - x
+  ret:
     type: Unknown
   left: !Item
     name: seed
@@ -52,7 +60,11 @@ syntax:
     type: Number
   since:
     arma3: '1.68'
-- ret:
+- call: !Binary
+  - seed
+  - - x
+    - y
+  ret:
     type: Unknown
   left: !Item
     name: seed

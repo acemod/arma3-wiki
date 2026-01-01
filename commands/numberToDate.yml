@@ -3,7 +3,10 @@ desc: Convert float number to a date.
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Unary
+  - year
+  - time
+  ret:
     type: ArrayDate
   right: !Array
   - !Item

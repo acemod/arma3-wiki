@@ -3,7 +3,11 @@ desc: Adds a weapon into the cargo space of a vehicle / box with given attachmen
 groups:
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Binary
+  - container
+  - - weaponConfiguration
+    - weaponsCount
+  ret:
     type: Nothing
   left: !Item
     name: container

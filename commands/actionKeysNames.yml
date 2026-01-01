@@ -5,12 +5,17 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary userAction
+  ret:
     type: String
   right: !Item
     name: userAction
     type: String
-- ret:
+- call: !Unary
+  - userAction
+  - maxKeys
+  - inputDevicePriority
+  ret:
     type: String
   right: !Array
   - !Item

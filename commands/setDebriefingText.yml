@@ -9,7 +9,11 @@ desc: |-
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - endType
+  - - title
+    - description
+  ret:
     type: Nothing
   left: !Item
     name: endType
@@ -24,7 +28,14 @@ syntax:
     name: description
     desc: description text on the debriefing screen
     type: String
-- ret:
+- call: !Binary
+  - endType
+  - - title
+    - description
+    - subtitle
+    - picture
+    - background
+  ret:
     type: Nothing
   left: !Item
     name: endType

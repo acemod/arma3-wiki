@@ -3,7 +3,10 @@ desc: Check whether cargo position of the vehicle is locked.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - cargoIndex
+  ret:
     type: Boolean
   left: !Item
     name: vehicle

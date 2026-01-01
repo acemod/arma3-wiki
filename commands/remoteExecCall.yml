@@ -6,7 +6,12 @@ desc: |-
 groups:
 - Multiplayer
 syntax:
-- ret:
+- call: !Binary
+  - params
+  - - order
+    - targets
+    - JIP
+  ret:
     type: !OneOf
     - type: Object
       desc: null
@@ -63,7 +68,11 @@ syntax:
       since: null
     optional: true
     default: '[[false]]'
-- ret:
+- call: !Unary
+  - functionName
+  - targets
+  - JIP
+  ret:
     type: !OneOf
     - type: String
       desc: null

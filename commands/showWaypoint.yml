@@ -3,7 +3,10 @@ desc: Defines how waypoints are shown to the player in map view. For 3D HUD visi
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - show
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

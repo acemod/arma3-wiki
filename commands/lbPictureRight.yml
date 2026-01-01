@@ -3,7 +3,10 @@ desc: Returns the right picture name of the item with the given index of the lis
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - index
+  ret:
     type: String
   right: !Array
   - !Item
@@ -13,7 +16,10 @@ syntax:
   - !Item
     name: index
     type: Number
-- ret:
+- call: !Binary
+  - control
+  - index
+  ret:
     type: String
   left: !Item
     name: control

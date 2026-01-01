@@ -3,7 +3,10 @@ desc: The smaller of a and b.
 groups:
 - Math
 syntax:
-- ret:
+- call: !Binary
+  - a
+  - b
+  ret:
     type: Number
   left: !Item
     name: a

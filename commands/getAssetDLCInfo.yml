@@ -3,7 +3,8 @@ desc: Returns DLC information about given object or model.
 groups:
 - DLC
 syntax:
-- ret:
+- call: !Unary asset
+  ret:
     type: Unknown
     desc: "the asset belongs to a DLC\n* isOwned: [[Boolean]] \n* isInstalled: [[Boolean]] \n* isAvailable: [[Boolean]] \n* appID: [[String]] - actual steam item ID or \"0\" for none or \"-1\" for unknown \n* DLCName: [[String]] - actual DLC name or \"\""
   right: !Item
@@ -16,7 +17,10 @@ syntax:
     - type: String
       desc: null
       since: null
-- ret:
+- call: !Unary
+  - class
+  - config
+  ret:
     type: Unknown
     desc: "the asset belongs to a DLC\n* isOwned: [[Boolean]] \n* isInstalled: [[Boolean]] \n* isAvailable: [[Boolean]] \n* appID: [[String]] - actual steam item ID or \"0\" for none or \"-1\" for unknown \n* DLCName: [[String]] - actual DLC name or \"\""
   right: !Array

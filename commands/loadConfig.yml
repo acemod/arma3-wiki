@@ -8,7 +8,8 @@ desc: |-
 groups:
 - Config
 syntax:
-- ret:
+- call: !Unary path
+  ret:
     type: Config
     desc: loaded config. Returns [[configNull]] if the file doesn't exist.
   right: !Item

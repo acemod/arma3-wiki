@@ -3,7 +3,10 @@ desc: Enables/Disables the person's fatigue.
 groups:
 - Stamina System
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: unit

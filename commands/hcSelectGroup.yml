@@ -3,7 +3,10 @@ desc: Select given group in [[High Command|high command]] bar.
 groups:
 - High Command
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - array
+  ret:
     type: Nothing
   left: !Item
     name: unit

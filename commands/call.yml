@@ -5,7 +5,8 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Unary code
+  ret:
     type: Anything
     desc: the last value given in the function is returned - see the topic [[Function#Return_Values|Function]] for more information
   right: !Item
@@ -15,7 +16,10 @@ syntax:
       {{Feature|ofp|{{ofp}} takes [[String]].}}
       {{Feature|informative|This way of calling has access to its parent scope's <sqf inline>_this</sqf>, as all it does is creating a scope.}}
     type: Code
-- ret:
+- call: !Binary
+  - args
+  - code
+  ret:
     type: Anything
     desc: the last value given in the function is returned. See the topic [[Function#Return_Values|Function]] for more information.
   left: !Item
@@ -28,7 +32,11 @@ syntax:
       [[compile]]d instructions
       {{Feature|ofp|{{ofp}} takes [[String]].}}
     type: Code
-- ret:
+- call: !Binary
+  - hashMapObj
+  - - methodName
+    - arguments
+  ret:
     type: Anything
     desc: the value returned by the ''methodName'' method
   left: !Item

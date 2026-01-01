@@ -8,7 +8,17 @@ desc: |-
 groups:
 - Ropes and Sling Loading
 syntax:
-- ret:
+- call: !Unary
+  - fromObject
+  - fromPoint
+  - toObject
+  - toPoint
+  - length
+  - ropeStart
+  - ropeEnd
+  - ropeType
+  - nSegments
+  ret:
     type: Object
     desc: created rope or [[objNull]] on failure
   right: !Array
@@ -100,7 +110,15 @@ syntax:
     default: '-1'
     since:
       arma3: '2.14'
-- ret:
+- call: !Unary
+  - fromObject
+  - fromPoint
+  - length
+  - ropeStart
+  - ropeEnd
+  - ropeType
+  - nSegments
+  ret:
     type: Object
     desc: created rope or [[objNull]] on failure
   right: !Array

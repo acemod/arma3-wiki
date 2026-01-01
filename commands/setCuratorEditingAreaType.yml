@@ -3,7 +3,10 @@ desc: Set whether curator can edit in all editing areas (true) or outside of the
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - bool
+  ret:
     type: Nothing
   left: !Item
     name: curatorObj

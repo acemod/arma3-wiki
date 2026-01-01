@@ -3,7 +3,8 @@ desc: Returns hierarchy of the given config class. Just like with [[inheritsFrom
 groups:
 - Config
 syntax:
-- ret:
+- call: !Unary config
+  ret:
     type: !ArrayUnsized
       type: Config
       desc: ''
@@ -12,7 +13,13 @@ syntax:
     name: config
     desc: target config
     type: Config
-- ret:
+- call: !Unary
+  - config
+  - classesOnly
+  - includeBases
+  - reversedOrder
+  - configNames
+  ret:
     type: !OneOf
     - type: !ArrayUnsized
         type: Config

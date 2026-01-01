@@ -3,7 +3,12 @@ desc: "Set fire parameters to particle effect.\n\nNote: You need to create emitt
 groups:
 - Particles
 syntax:
-- ret:
+- call: !Binary
+  - source
+  - - coreIntensity
+    - coreDistance
+    - damageTime
+  ret:
     type: Nothing
   left: !Item
     name: source

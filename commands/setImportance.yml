@@ -3,7 +3,10 @@ desc: Sets the importance value of location.
 groups:
 - Locations
 syntax:
-- ret:
+- call: !Binary
+  - location
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: location

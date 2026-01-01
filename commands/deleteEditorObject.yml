@@ -3,7 +3,10 @@ desc: "Delete the editor object. Requires all editor object links to be removed 
 groups:
 - Game 2 Editor
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - object
+  ret:
     type: Anything
   left: !Item
     name: map

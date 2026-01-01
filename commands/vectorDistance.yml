@@ -3,7 +3,10 @@ desc: Returns {{Link|https://en.wikipedia.org/wiki/Euclidean_distance|Euclidean 
 groups:
 - Math - Vectors
 syntax:
-- ret:
+- call: !Binary
+  - point1
+  - point2
+  ret:
     type: Number
   left: !Item
     name: point1

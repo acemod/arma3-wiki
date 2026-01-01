@@ -3,7 +3,12 @@ desc: 'Process an animation of 3D [[Arma: GUI Configuration]]. Command uses name
 groups:
 - GUI Control - Object
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - source
+    - phase
+    - speed
+  ret:
     type: Nothing
   left: !Item
     name: control

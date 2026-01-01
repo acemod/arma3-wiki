@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - selectionName
+    - LOD
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

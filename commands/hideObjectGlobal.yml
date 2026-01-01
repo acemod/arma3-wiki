@@ -3,13 +3,17 @@ desc: This command is designed for MP. Hides object on all connected clients as 
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Nothing
   right: !Item
     name: object
     desc: object to hide
     type: Object
-- ret:
+- call: !Binary
+  - object
+  - hidden
+  ret:
     type: Nothing
   left: !Item
     name: object

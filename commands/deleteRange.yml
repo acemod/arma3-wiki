@@ -3,7 +3,11 @@ desc: Removes a range of array elements from the given array. Modifies the origi
 groups:
 - Arrays
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - - from
+    - count
+  ret:
     type: Nothing
   left: !Item
     name: array

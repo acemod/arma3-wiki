@@ -3,7 +3,10 @@ desc: Executes [[else]] code when [[if]] condition returns [[false]].
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Binary
+  - thenCode
+  - elseCode
+  ret:
     type: !ArraySized
       types:
       - name: thenCode

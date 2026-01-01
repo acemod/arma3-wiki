@@ -3,7 +3,10 @@ desc: Returns the data set in given index of the [[CT_LISTBOX]] or [[CT_COMBO]].
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - index
+  ret:
     type: String
   right: !Array
   - !Item
@@ -13,7 +16,10 @@ syntax:
   - !Item
     name: index
     type: Number
-- ret:
+- call: !Binary
+  - control
+  - index
+  ret:
     type: String
   left: !Item
     name: control

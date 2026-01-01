@@ -3,7 +3,11 @@ desc: Attach light to given object at given position on object.
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Binary
+  - light
+  - - object
+    - position
+  ret:
     type: Nothing
   left: !Item
     name: light

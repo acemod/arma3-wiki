@@ -3,7 +3,8 @@ desc: "Sets given channel as current chat channel. Scripted way of selecting des
 groups:
 - Radio and Chat
 syntax:
-- ret:
+- call: !Unary channelID
+  ret:
     type: Boolean
     desc: '[[true]] on success'
   right: !Item

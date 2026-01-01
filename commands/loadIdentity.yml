@@ -4,7 +4,10 @@ multiplayer_note: This command does not work in Multiplayer.
 groups:
 - Unit Identity
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - name
+  ret:
     type: Boolean
     desc: '[[true]] if successfull, otherwise [[false]]'
   left: !Item

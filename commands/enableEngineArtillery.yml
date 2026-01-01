@@ -3,7 +3,8 @@ desc: Enable/disable the artillery engine. This allows the user to use the artil
 groups:
 - Artillery
 syntax:
-- ret:
+- call: !Unary enabled
+  ret:
     type: Nothing
   right: !Item
     name: enabled

@@ -4,7 +4,10 @@ multiplayer_note: Execute this command globally (e.g with [[remoteExec]]) to hav
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

@@ -3,7 +3,8 @@ desc: Returns array with all objects that has curator registered and their setti
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary curator
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

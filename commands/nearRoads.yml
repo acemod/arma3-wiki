@@ -4,7 +4,10 @@ groups:
 - Roads and Airports
 - Object Detection
 syntax:
-- ret:
+- call: !Binary
+  - pos
+  - radius
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

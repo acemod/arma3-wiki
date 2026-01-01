@@ -3,7 +3,11 @@ desc: Sorts all children, including trees deriving from given path.  Value of [[
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - reversed
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -4,7 +4,10 @@ multiplayer_note: Multiple players can own the same mine.
 groups:
 - Mines
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - mine
+  ret:
     type: Nothing
   left: !Item
     name: unit

@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - typeName
+  ret:
     type: Boolean
   left: !Item
     name: object
@@ -13,7 +16,10 @@ syntax:
   right: !Item
     name: typeName
     type: String
-- ret:
+- call: !Binary
+  - class1
+  - class2
+  ret:
     type: Boolean
   left: !Item
     name: class1
@@ -21,7 +27,11 @@ syntax:
   right: !Item
     name: class2
     type: String
-- ret:
+- call: !Binary
+  - class1
+  - - class2
+    - targetConfig
+  ret:
     type: Boolean
   left: !Item
     name: class1

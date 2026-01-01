@@ -4,7 +4,8 @@ multiplayer_note: '{{Feature|important|Only works in multiplayer.}}'
 groups:
 - Argo
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Boolean
     desc: '[[true]] if the provided unit is a player and that player is a supporter, [[false]] otherwise'
   right: !Item

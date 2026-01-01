@@ -3,7 +3,10 @@ desc: Returns value of the given sound controller.
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - controller
+  ret:
     type: Number
   left: !Item
     name: vehicle

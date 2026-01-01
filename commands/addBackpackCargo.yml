@@ -8,7 +8,11 @@ desc: |-
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - backpackClassName
+    - count
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

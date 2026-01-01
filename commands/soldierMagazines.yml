@@ -3,7 +3,8 @@ desc: Get array with all magazines of the given unit.
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

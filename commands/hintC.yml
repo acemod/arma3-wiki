@@ -7,12 +7,16 @@ groups:
 - Structured Text
 - Strings
 syntax:
-- ret:
+- call: !Unary message
+  ret:
     type: Nothing
   right: !Item
     name: message
     type: String
-- ret:
+- call: !Binary
+  - title
+  - message
+  ret:
     type: Nothing
   left: !Item
     name: title

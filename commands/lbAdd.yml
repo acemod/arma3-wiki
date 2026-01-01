@@ -6,7 +6,10 @@ desc: |-
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - text
+  ret:
     type: Number
     desc: index (row) of newly added item
   right: !Array
@@ -18,7 +21,10 @@ syntax:
     name: text
     desc: visible text
     type: String
-- ret:
+- call: !Binary
+  - control
+  - text
+  ret:
     type: Number
     desc: index (row) of newly added item
   left: !Item

@@ -3,7 +3,10 @@ desc: Returns [[Config | config]] entry with given name (alias of [[a / b]], sli
 groups:
 - Config
 syntax:
-- ret:
+- call: !Binary
+  - config
+  - name
+  ret:
     type: Config
     desc: config entry
   left: !Item

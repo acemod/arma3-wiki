@@ -3,7 +3,8 @@ desc: Returns air density in given altitude. {{Feature|afm}}
 groups:
 - RTD
 syntax:
-- ret:
+- call: !Unary altitude
+  ret:
     type: Number
   right: !Item
     name: altitude

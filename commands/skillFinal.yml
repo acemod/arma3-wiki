@@ -4,7 +4,10 @@ multiplayer_note: Since {{GVI|arma3|1.40}} the command works in multiplayer.
 groups:
 - AI Behaviour
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - skillName
+  ret:
     type: Number
   left: !Item
     name: unit

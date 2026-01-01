@@ -6,7 +6,10 @@ groups:
 - GUI Control - Menu
 - Broken Commands
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: String
   right: !Array
   - !Item
@@ -15,7 +18,10 @@ syntax:
   - !Item
     name: path
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - control
+  - path
+  ret:
     type: String
   left: !Item
     name: control

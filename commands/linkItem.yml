@@ -3,7 +3,10 @@ desc: Create and assign item to the correct slot. If there is an item in the tar
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

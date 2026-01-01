@@ -3,7 +3,8 @@ desc: Generates new roads. Working only in [[Oxygen Viewer|buldozer]].
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary path
+  ret:
     type: Boolean
   right: !Item
     name: path

@@ -3,7 +3,8 @@ desc: Returns the group leader for the given '''unit''' or '''group'''. For dead
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Unary unitOrGroup
+  ret:
     type: Object
   right: !Item
     name: unitOrGroup

@@ -3,7 +3,10 @@ desc: Removes the item with the given index from the [[CT_LISTBOX]], [[CT_COMBO]
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - index
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -13,7 +16,10 @@ syntax:
   - !Item
     name: index
     type: Number
-- ret:
+- call: !Binary
+  - control
+  - index
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -3,7 +3,10 @@ desc: Returns array of all components available to given object info panel.
 groups:
 - Custom Panels
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - panelID
+  ret:
     type: Unknown
     desc: |-
       component classname as defined in object/vehicle config
@@ -17,7 +20,11 @@ syntax:
     name: panelID
     desc: '"left" or "right" can be used as panel names'
     type: String
-- ret:
+- call: !Binary
+  - - unit
+    - turretPath
+  - panelID
+  ret:
     type: Unknown
     desc: |-
       component classname as defined in object/vehicle config

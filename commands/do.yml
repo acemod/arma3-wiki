@@ -3,7 +3,10 @@ desc: Executes ''code''. Used as part of a construct, such as [[while]], [[with]
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Binary
+  - construct
+  - code
+  ret:
     type: Anything
   left: !Item
     name: construct

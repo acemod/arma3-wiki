@@ -3,7 +3,10 @@ desc: Enable / disable auto-reload (including AI) when magazine is empty. Defaul
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: object

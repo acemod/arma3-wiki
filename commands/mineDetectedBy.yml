@@ -3,7 +3,10 @@ desc: Returns [[true]] if mine has been detected by a given side
 groups:
 - Mines
 syntax:
-- ret:
+- call: !Binary
+  - mine
+  - faction
+  ret:
     type: Boolean
   left: !Item
     name: mine

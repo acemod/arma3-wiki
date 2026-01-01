@@ -3,7 +3,8 @@ desc: Returns the list of triggers synchronized with a given waypoint.
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Unary waypoint
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

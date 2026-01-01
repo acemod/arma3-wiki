@@ -6,7 +6,10 @@ groups:
 - Camera Control
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
     type: Boolean
     desc: whether direction stabilization is enabled
   left: !Item

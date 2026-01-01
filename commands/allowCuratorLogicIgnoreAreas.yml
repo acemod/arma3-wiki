@@ -3,7 +3,10 @@ desc: Allows curator placing and working with modules outside of edit areas.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - allow
+  ret:
     type: Nothing
   left: !Item
     name: curatorObj

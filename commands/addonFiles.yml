@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Mods and Addons
 syntax:
-- ret:
+- call: !Unary
+  - pboPrefix
+  - fileExtension
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

@@ -3,7 +3,8 @@ desc: Returns base entry of config entry.
 groups:
 - Config
 syntax:
-- ret:
+- call: !Unary config
+  ret:
     type: Config
   right: !Item
     name: config

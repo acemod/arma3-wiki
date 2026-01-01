@@ -3,7 +3,10 @@ desc: Kick the player controlling the provided unit from the server.
 groups:
 - Argo
 syntax:
-- ret:
+- call: !Unary
+  - unit
+  - kickMessage
+  ret:
     type: Boolean
     desc: '[[true]] on success, [[false]] otherwise'
   right: !Array

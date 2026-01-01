@@ -3,7 +3,10 @@ desc: 'Sets activation distance of [[Arma 3: Dynamic Simulation]] for given cate
 groups:
 - Dynamic Simulation
 syntax:
-- ret:
+- call: !Binary
+  - category
+  - distance
+  ret:
     type: Nothing
   left: !Item
     name: category

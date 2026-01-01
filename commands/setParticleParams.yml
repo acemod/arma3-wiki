@@ -3,7 +3,10 @@ desc: "Set parameters to particle source. Array is in format [[ParticleArray]]. 
 groups:
 - Particles
 syntax:
-- ret:
+- call: !Binary
+  - particleSource
+  - array
+  ret:
     type: Nothing
   left: !Item
     name: particleSource

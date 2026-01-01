@@ -6,7 +6,10 @@ desc: |-
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Binary
+  - time
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: time

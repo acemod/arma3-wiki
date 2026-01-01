@@ -3,7 +3,10 @@ desc: Performs strict comparison between var1 and var2 and returns [[false]] if 
 groups:
 - Variables
 syntax:
-- ret:
+- call: !Binary
+  - val1
+  - val2
+  ret:
     type: Boolean
   left: !Item
     name: val1

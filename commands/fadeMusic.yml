@@ -3,7 +3,10 @@ desc: 'Changes the current music volume to the given value smoothly within the g
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Binary
+  - time
+  - volume
+  ret:
     type: Nothing
   left: !Item
     name: time

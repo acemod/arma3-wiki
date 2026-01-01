@@ -12,7 +12,10 @@ groups:
 - Object Manipulation
 - Sides
 syntax:
-- ret:
+- call: !Binary
+  - unitName
+  - status
+  ret:
     type: Nothing
   left: !Item
     name: unitName
@@ -21,7 +24,10 @@ syntax:
     name: status
     desc: '[[true]] means [[captive]]'
     type: Boolean
-- ret:
+- call: !Binary
+  - unitName
+  - statusNumber
+  ret:
     type: Nothing
   left: !Item
     name: unitName

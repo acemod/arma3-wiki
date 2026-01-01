@@ -3,7 +3,10 @@ desc: Removes mission event handler added by [[addMissionEventHandler]].
 groups:
 - Event Handlers
 syntax:
-- ret:
+- call: !Unary
+  - type
+  - index
+  ret:
     type: Nothing
   right: !Array
   - !Item

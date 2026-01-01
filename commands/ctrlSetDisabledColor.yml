@@ -3,7 +3,10 @@ desc: Sets the colorDisabled attribute of a control.
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - color
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -12,7 +15,10 @@ syntax:
   - !Item
     name: color
     type: ArrayColorRgba
-- ret:
+- call: !Binary
+  - ctrl
+  - color
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

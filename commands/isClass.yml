@@ -3,7 +3,8 @@ desc: Check if config entry represents config class.
 groups:
 - Config
 syntax:
-- ret:
+- call: !Unary config
+  ret:
     type: Boolean
   right: !Item
     name: config

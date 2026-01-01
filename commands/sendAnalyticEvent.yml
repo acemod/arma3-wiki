@@ -4,7 +4,10 @@ multiplayer_note: '{{Feature|informative|Analytics are reserved to official serv
 groups:
 - Argo
 syntax:
-- ret:
+- call: !Unary
+  - eventName
+  - keyValuePairs
+  ret:
     type: Boolean
     desc: '[[true]] when done (not if the analytics were sent), [[false]] if the provided array is wrong'
   right: !Array

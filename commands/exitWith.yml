@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Binary
+  - ifType
+  - code
+  ret:
     type: Anything
   left: !Item
     name: ifType

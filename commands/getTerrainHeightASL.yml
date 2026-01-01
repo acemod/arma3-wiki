@@ -3,7 +3,8 @@ desc: Returns the terrain height above the sea for the given position.
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Unary position
+  ret:
     type: Number
   right: !Item
     name: position

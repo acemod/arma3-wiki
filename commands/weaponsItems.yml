@@ -9,13 +9,17 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Unknown
   right: !Item
     name: vehicle
     desc: unit or vehicle
     type: Object
-- ret:
+- call: !Unary
+  - vehicle
+  - extended
+  ret:
     type: Unknown
   right: !Array
   - !Item

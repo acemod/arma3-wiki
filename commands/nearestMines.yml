@@ -5,7 +5,13 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Unary
+  - position
+  - types
+  - radius
+  - sort
+  - 2Dmode
+  ret:
     type: ArrayUnknown
     desc: found mines as array of [[Object]]s
   right: !Array

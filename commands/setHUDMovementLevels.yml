@@ -3,7 +3,15 @@ desc: Set min/max movement borders displayed in HUD gauges. Use -1 to skip some 
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary
+  - minSpeed
+  - maxSpeed
+  - minAlt
+  - maxAlt
+  - minDir
+  - maxDir
+  - targetOrPosition
+  ret:
     type: Nothing
   right: !Array
   - !Item

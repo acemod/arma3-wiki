@@ -3,7 +3,8 @@ desc: Returns the state of the board with the given name.
 groups:
 - Leaderboards
 syntax:
-- ret:
+- call: !Unary boardname
+  ret:
     type: !NumberEnum
     - value: 0
       desc: Busy (async. operation in progress)

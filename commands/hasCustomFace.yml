@@ -5,7 +5,8 @@ desc: |-
 groups:
 - Unit Identity
 syntax:
-- ret:
+- call: !Unary person
+  ret:
     type: Boolean
     desc: '[[true]] if player has a {{hl|face.paa/jpg}} file in their current profile and it is usable'
   right: !Item

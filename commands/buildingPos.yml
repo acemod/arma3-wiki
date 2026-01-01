@@ -3,7 +3,10 @@ desc: Returns position of a given indexed position in a [[Object#Building|buildi
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Binary
+  - building
+  - index
+  ret:
     type: Unknown
   left: !Item
     name: building

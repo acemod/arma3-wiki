@@ -3,14 +3,19 @@ desc: Get array with assigned items. The resulting [[Array]] order is not guaran
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''
   right: !Item
     name: unit
     type: Object
-- ret:
+- call: !Unary
+  - unit
+  - allItems
+  - includeBinocs
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

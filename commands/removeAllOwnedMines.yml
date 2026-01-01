@@ -3,7 +3,8 @@ desc: Removes ownership of all owned mines/explosive devices of the given unit
 groups:
 - Mines
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Nothing
   right: !Item
     name: unit

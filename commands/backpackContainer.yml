@@ -3,7 +3,8 @@ desc: Returns a cargo container of a unit's backpack.
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Object
     desc: cargo container or [[objNull]]
   right: !Item

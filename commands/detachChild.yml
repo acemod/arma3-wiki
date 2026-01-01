@@ -3,7 +3,8 @@ desc: Detaches previously attached with [[attachChild]] object.
 groups:
 - PhysX
 syntax:
-- ret:
+- call: !Unary parent
+  ret:
     type: !OneOf
     - type: Nothing
       desc: null

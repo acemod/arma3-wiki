@@ -9,7 +9,11 @@ groups:
 - Sounds
 - Custom Radio and Chat
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - customChannelID
+    - message
+  ret:
     type: Nothing
   left: !Item
     name: unit

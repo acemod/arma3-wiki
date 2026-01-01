@@ -3,7 +3,8 @@ desc: Returns an array of all backpack names a unit has in its inventory, exclud
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

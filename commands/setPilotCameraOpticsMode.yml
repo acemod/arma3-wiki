@@ -3,7 +3,10 @@ desc: 'Sets the optics mode index (zoom) for the [[Arma 3: Targeting config refe
 groups:
 - Pilot Camera
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - index
+  ret:
     type: Nothing
   left: !Item
     name: object

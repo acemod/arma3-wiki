@@ -8,7 +8,12 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- ret:
+- call: !Unary
+  - begPos
+  - endPos
+  - objIgnore1
+  - objIgnore2
+  ret:
     type: Boolean
     desc: '[[true]] if an intersection happens with an object (not with terrain)'
   right: !Array
@@ -30,7 +35,9 @@ syntax:
     type: Object
     optional: true
     default: '[[objNull]]'
-- ret:
+- call: !Unary
+  - - elementN
+  ret:
     type: Unknown
   right: !Array
   - !Array

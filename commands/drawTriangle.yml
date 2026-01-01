@@ -7,7 +7,12 @@ desc: |-
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - vertices
+    - color
+    - fill
+  ret:
     type: Nothing
   left: !Item
     name: map

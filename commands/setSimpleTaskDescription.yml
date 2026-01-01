@@ -3,7 +3,12 @@ desc: Attach descriptions to the simple task.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - task
+  - - description
+    - descriptionShort
+    - descriptionHUD
+  ret:
     type: Nothing
   left: !Item
     name: task

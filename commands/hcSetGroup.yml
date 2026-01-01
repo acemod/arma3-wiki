@@ -6,7 +6,12 @@ desc: |-
 groups:
 - High Command
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - group
+    - groupName
+    - team
+  ret:
     type: Nothing
   left: !Item
     name: unit

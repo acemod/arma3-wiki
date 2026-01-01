@@ -3,7 +3,12 @@ desc: Updates particle source, creates particles in circle with given radius. Ve
 groups:
 - Particles
 syntax:
-- ret:
+- call: !Binary
+  - particleSource
+  - - circleRadius
+    - circleVelocity
+    - ignoreSurfaces
+  ret:
     type: Nothing
   left: !Item
     name: particleSource

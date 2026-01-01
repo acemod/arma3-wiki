@@ -3,7 +3,10 @@ desc: Returns the name of assigned item in given slot or the empty string.
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - slot
+  ret:
     type: String
     desc: item name
   left: !Item

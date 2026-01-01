@@ -3,7 +3,11 @@ desc: Sets right picture on the tree view item defined by path.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - name
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -17,7 +21,11 @@ syntax:
     name: name
     desc: picture texture
     type: String
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - name
+  ret:
     type: Nothing
   left: !Item
     name: control

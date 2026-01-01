@@ -3,7 +3,8 @@ desc: Gets whether the vehicle shares acquired targets via datalink with the [[S
 groups:
 - Sensors
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Boolean
   right: !Item
     name: vehicle

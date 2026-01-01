@@ -3,7 +3,8 @@ desc: Returns the object's eyes / main turret position.
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Position3dASL
   right: !Item
     name: object

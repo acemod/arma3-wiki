@@ -3,7 +3,11 @@ desc: Returns true if UAV is connectable by AV terminal(s).
 groups:
 - Remote Control
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - uav
+    - checkAllItems
+  ret:
     type: Boolean
   left: !Item
     name: object

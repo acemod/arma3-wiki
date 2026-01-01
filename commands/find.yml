@@ -7,7 +7,10 @@ groups:
 - Strings
 - Arrays
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - element
+  ret:
     type: Number
     desc: zero-based position of the first array element that matches x, -1 if not found
   left: !Item
@@ -18,7 +21,10 @@ syntax:
     name: element
     desc: array element to find
     type: Anything
-- ret:
+- call: !Binary
+  - string
+  - substring
+  ret:
     type: Number
     desc: zero-based position of the first sequence of characters that matches substring, -1 if not found
   left: !Item
@@ -31,7 +37,11 @@ syntax:
     type: String
   since:
     arma3: '1.28'
-- ret:
+- call: !Binary
+  - string
+  - - substring
+    - indexStart
+  ret:
     type: Number
     desc: zero-based position of the first sequence of characters that matches substring, -1 if not found
   left: !Item

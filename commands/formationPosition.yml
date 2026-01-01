@@ -3,7 +3,8 @@ desc: Return position of unit in the formation.
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Position
   right: !Item
     name: unit

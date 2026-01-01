@@ -4,7 +4,10 @@ groups:
 - Unit Identity
 - Locations
 syntax:
-- ret:
+- call: !Binary
+  - thing
+  - name
+  ret:
     type: Nothing
   left: !Item
     name: thing
@@ -18,7 +21,12 @@ syntax:
   right: !Item
     name: name
     type: String
-- ret:
+- call: !Binary
+  - unit
+  - - name
+    - firstName
+    - lastName
+  ret:
     type: Nothing
   left: !Item
     name: unit

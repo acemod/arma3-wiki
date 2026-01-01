@@ -5,12 +5,14 @@ groups:
 - Strings
 - Structured Text
 syntax:
-- ret:
+- call: !Unary string
+  ret:
     type: StructuredText
   right: !Item
     name: string
     type: String
-- ret:
+- call: !Unary location
+  ret:
     type: String
   right: !Item
     name: location

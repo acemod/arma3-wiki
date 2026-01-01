@@ -3,7 +3,10 @@ desc: Sets the text label of an existing marker.
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Binary
+  - markerName
+  - text
+  ret:
     type: Nothing
   left: !Item
     name: markerName

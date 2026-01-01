@@ -3,7 +3,10 @@ desc: Gets index of the closest header above this row.
 groups:
 - GUI Control - Controls Table
 syntax:
-- ret:
+- call: !Binary
+  - ctrl
+  - rowIndex
+  ret:
     type: Number
   left: !Item
     name: ctrl

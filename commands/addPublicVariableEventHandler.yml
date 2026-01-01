@@ -17,7 +17,10 @@ groups:
 - Multiplayer
 - Variables
 syntax:
-- ret:
+- call: !Binary
+  - varName
+  - code
+  ret:
     type: Nothing
   left: !Item
     name: varName
@@ -35,7 +38,11 @@ syntax:
     - type: Group
       desc: null
       since: null
-- ret:
+- call: !Binary
+  - varName
+  - - target
+    - code
+  ret:
     type: Nothing
   left: !Item
     name: varName

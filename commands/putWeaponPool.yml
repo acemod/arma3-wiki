@@ -3,7 +3,8 @@ desc: Transfers weapons and magazines from weapon pool into cargo of given objec
 groups:
 - Weapon Pool
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Nothing
   right: !Item
     name: object

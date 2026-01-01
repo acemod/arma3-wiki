@@ -3,7 +3,10 @@ desc: Sets group formation heading. Accepted heading range is 0 to 360. Formatio
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - group
+  - heading
+  ret:
     type: Nothing
   left: !Item
     name: group

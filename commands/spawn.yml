@@ -11,7 +11,10 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Binary
+  - arguments
+  - code
+  ret:
     type: ScriptHandle
     desc: can be used to determine (via [[scriptDone]] (also via [[isNull]] in {{arma3}})) when the spawned script has finished. In {{arma3}}, the handle is also available inside the spawned script in {{hl|_thisScript}} variable
   left: !Item
@@ -21,14 +24,16 @@ syntax:
   right: !Item
     name: code
     type: Code
-- ret:
+- call: !Unary code
+  ret:
     type: ScriptHandle
   right: !Item
     name: code
     type: Code
   since:
     arma3: '2.22'
-- ret:
+- call: !Unary name
+  ret:
     type: ScriptHandle
     desc: A "Empty Handle" to be used as a [[Script_Handle#Promise_Handles|Promise]]
   right: !Item

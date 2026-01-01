@@ -3,7 +3,10 @@ desc: Sets the visibility of the given waypoint in 3D HUD view (for map visibili
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - visible
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

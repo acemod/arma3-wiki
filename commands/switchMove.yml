@@ -21,7 +21,10 @@ multiplayer_note: |-
 groups:
 - Animations
 syntax:
-- ret:
+- call: !Binary
+  - person
+  - moveName
+  ret:
     type: Nothing
   left: !Item
     name: person
@@ -31,7 +34,13 @@ syntax:
     name: moveName
     desc: animation state (see [[animationState]])
     type: String
-- ret:
+- call: !Binary
+  - person
+  - - moveName
+    - time
+    - blendFactor
+    - resetAim
+  ret:
     type: Nothing
   left: !Item
     name: person

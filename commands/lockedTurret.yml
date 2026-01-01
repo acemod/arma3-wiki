@@ -3,7 +3,10 @@ desc: Check whether gunner position of the vehicle turret is locked.
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
     type: Boolean
   left: !Item
     name: vehicle

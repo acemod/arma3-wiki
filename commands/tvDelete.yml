@@ -5,7 +5,10 @@ desc: |-
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -14,7 +17,10 @@ syntax:
   - !Item
     name: path
     type: Unknown
-- ret:
+- call: !Binary
+  - control
+  - path
+  ret:
     type: Nothing
   left: !Item
     name: control

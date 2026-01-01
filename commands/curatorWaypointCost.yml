@@ -3,7 +3,8 @@ desc: Return current price for placing waypoints (curator specific).
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary curatorObj
+  ret:
     type: Number
   right: !Item
     name: curatorObj

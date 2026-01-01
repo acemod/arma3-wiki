@@ -3,7 +3,18 @@ desc: Plays positional sound with given ''filename'' on every computer on networ
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Unary
+  - filename
+  - soundSource
+  - isInside
+  - soundPosition
+  - volume
+  - soundPitch
+  - distance
+  - offset
+  - local
+  - loop
+  ret:
     type: Number
     desc: id of the sound (0..65535) (was [[Nothing]] before {{GVI|arma3|2.12|size= 0.75}})
   right: !Array

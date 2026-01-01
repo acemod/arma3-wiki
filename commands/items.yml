@@ -3,7 +3,8 @@ desc: Returns an array of names of all unit's stored items, including [[weapons]
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

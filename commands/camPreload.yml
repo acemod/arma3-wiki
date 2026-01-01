@@ -3,7 +3,10 @@ desc: Preloads the scene for the prepared camera with given timeout after which 
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - timeout
+  ret:
     type: Nothing
   left: !Item
     name: camera

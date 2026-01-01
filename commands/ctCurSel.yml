@@ -3,7 +3,8 @@ desc: Returns index of the selected row. Will take only rows, but not headers in
 groups:
 - GUI Control - Controls Table
 syntax:
-- ret:
+- call: !Unary ctrl
+  ret:
     type: Number
   right: !Item
     name: ctrl

@@ -3,7 +3,8 @@ desc: Collects all loaded [[magazines]] from all [[primaryWeapon]] muzzles and r
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

@@ -6,12 +6,16 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary userAction
+  ret:
     type: StructuredText
   right: !Item
     name: userAction
     type: String
-- ret:
+- call: !Unary
+  - userAction
+  - maxKeys
+  ret:
     type: StructuredText
   right: !Array
   - !Item

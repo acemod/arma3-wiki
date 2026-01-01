@@ -3,7 +3,10 @@ desc: Set group formation.
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - group
+  - formation
+  ret:
     type: Nothing
   left: !Item
     name: group

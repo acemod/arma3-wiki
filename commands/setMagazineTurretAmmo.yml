@@ -9,7 +9,12 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - magazineClass
+    - ammoCount
+    - turretPath
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

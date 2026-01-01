@@ -6,14 +6,18 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary dialogName
+  ret:
     type: Boolean
     desc: '[[true]] when the dialog was created successfully'
   right: !Item
     name: dialogName
     desc: class name used in the description.ext, resource.cpp or config.cpp
     type: String
-- ret:
+- call: !Unary
+  - dialogName
+  - forceOnTop
+  ret:
     type: Display
     desc: created dialog
   right: !Array

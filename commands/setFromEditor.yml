@@ -3,7 +3,10 @@ desc: Set if given team member was inserted directly from editor.
 groups:
 - Game 2 Editor
 syntax:
-- ret:
+- call: !Binary
+  - teamMember
+  - fromEditor
+  ret:
     type: Nothing
   left: !Item
     name: teamMember

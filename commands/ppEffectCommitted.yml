@@ -3,13 +3,15 @@ desc: Check whether given [[Post Process Effects|post process effect]] is commit
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary effect
+  ret:
     type: Boolean
   right: !Item
     name: effect
     desc: effect name
     type: String
-- ret:
+- call: !Unary handle
+  ret:
     type: Boolean
   right: !Item
     name: handle

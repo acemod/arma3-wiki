@@ -3,7 +3,8 @@ desc: "List of units that would activate given [[Triggers|Trigger]].\n\nIt retur
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Unary trigger
+  ret:
     type: !OneOf
     - type: ArrayUnknown
       desc: null

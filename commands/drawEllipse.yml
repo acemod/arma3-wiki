@@ -3,7 +3,16 @@ desc: '[[File:drawEllipse.jpg|250px|right]] Draws an ellipse on the map. Just li
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - centre
+    - a
+    - b
+    - angle
+    - color
+    - fill
+    - alignWithMap
+  ret:
     type: Nothing
   left: !Item
     name: map

@@ -3,7 +3,8 @@ desc: Returns array of all containers (uniforms, vests, backpacks) stored in giv
 groups:
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: ArrayUnknown
   right: !Item
     name: object

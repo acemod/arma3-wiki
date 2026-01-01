@@ -3,7 +3,10 @@ desc: Set whether animation's aim precision affects weapon sway.
 groups:
 - Stamina System
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: unit

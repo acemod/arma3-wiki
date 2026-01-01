@@ -3,7 +3,8 @@ desc: Check if a script is finished running using the [[Script Handle]] returned
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Unary handle
+  ret:
     type: Boolean
   right: !Item
     name: handle

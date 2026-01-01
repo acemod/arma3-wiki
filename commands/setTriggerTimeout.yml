@@ -5,7 +5,13 @@ desc: |-
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Binary
+  - trigger
+  - - min
+    - mid
+    - max
+    - interruptable
+  ret:
     type: Nothing
   left: !Item
     name: trigger

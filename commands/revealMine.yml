@@ -3,7 +3,10 @@ desc: Sets given mine as known to the side. (Knowledge about a mine is always sh
 groups:
 - Mines
 syntax:
-- ret:
+- call: !Binary
+  - side
+  - mine
+  ret:
     type: Nothing
   left: !Item
     name: side

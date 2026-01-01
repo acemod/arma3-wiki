@@ -3,7 +3,10 @@ desc: Sets the marker alpha. See [[setMarkerAlpha]].
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Binary
+  - marker
+  - alpha
+  ret:
     type: Nothing
   left: !Item
     name: marker

@@ -3,7 +3,10 @@ desc: Set the current task of the formation member. {{Feature|arma2|This command
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - task
+  ret:
     type: Nothing
   left: !Item
     name: unit

@@ -3,7 +3,8 @@ desc: Toggle secondary obstruction test on road paths.
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary state
+  ret:
     type: Nothing
   right: !Item
     name: state

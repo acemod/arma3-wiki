@@ -4,7 +4,11 @@ groups:
 - Unit Control
 - Weapons
 syntax:
-- ret:
+- call: !Binary
+  - sourceVehicle
+  - - targetVehicle
+    - weaponMuzzleName
+  ret:
     type: Boolean
     desc: '[[true]] if fired, [[false]] if not'
   left: !Item

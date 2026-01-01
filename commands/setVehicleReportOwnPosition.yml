@@ -3,7 +3,10 @@ desc: Sets that the vehicle will share its own position via datalink to the [[Si
 groups:
 - Sensors
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - report
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

@@ -4,7 +4,11 @@ groups:
 - Camera Control
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - enabled
+    - turretPath
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

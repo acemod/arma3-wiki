@@ -15,7 +15,14 @@ desc: |-
 groups:
 - Game 2 Editor
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - objects
+    - editorType
+    - condition
+    - scope
+    - subordinatesAlso
+  ret:
     type: Nothing
   left: !Item
     name: map

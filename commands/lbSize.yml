@@ -3,13 +3,15 @@ desc: Returns the number of items in a [[CT_LISTBOX]] or [[CT_COMBO]] control. F
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: Number
   right: !Item
     name: idc
     desc: control's id
     type: Number
-- ret:
+- call: !Unary control
+  ret:
     type: Number
   right: !Item
     name: control

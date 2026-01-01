@@ -3,7 +3,11 @@ desc: Sets string text to item on given path. IDC means id of parent Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - text
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -17,7 +21,11 @@ syntax:
   - !Item
     name: text
     type: String
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - text
+  ret:
     type: Nothing
   left: !Item
     name: control

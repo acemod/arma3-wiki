@@ -3,7 +3,10 @@ desc: Returns the unit in the vehicle turret. To find turret path of known unit,
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
     type: Object
   left: !Item
     name: vehicle

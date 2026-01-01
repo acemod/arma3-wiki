@@ -3,7 +3,14 @@ desc: Set text of a log record.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - - subject
+      - diaryRecord
+    - - title
+      - text
+      - icon
+  ret:
     type: Nothing
   left: !Item
     name: unit

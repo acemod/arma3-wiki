@@ -3,7 +3,10 @@ desc: Creates a [[Team]] and names it.
 groups:
 - Teams
 syntax:
-- ret:
+- call: !Unary
+  - type
+  - name
+  ret:
     type: TeamMember
   right: !Array
   - !Item

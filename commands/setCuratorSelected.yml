@@ -3,7 +3,8 @@ desc: Clear and set the curator selected items. Leave the items array empty to c
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary items
+  ret:
     type: Nothing
   right: !Item
     name: items

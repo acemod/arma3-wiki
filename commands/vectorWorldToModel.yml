@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Math - Vectors
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - worldDir
+  ret:
     type: Unknown
   left: !Item
     name: object

@@ -3,7 +3,10 @@ desc: Sets if group icons added with [[addGroupIcon]] are visible on map and in 
 groups:
 - High Command
 syntax:
-- ret:
+- call: !Unary
+  - showOnMap
+  - showOnHUD
+  ret:
     type: Unknown
   right: !Array
   - !Item

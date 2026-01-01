@@ -5,7 +5,12 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - - position
+    - radius
+    - maxAboveLand
+  ret:
     type: Nothing
   left: !Item
     name: camera

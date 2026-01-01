@@ -3,7 +3,12 @@ desc: Sets group icon properties. Since Arma 3 v2.22 the offset can be set separ
 groups:
 - High Command
 syntax:
-- ret:
+- call: !Binary
+  - group
+  - - id
+    - icon
+    - offset
+  ret:
     type: Nothing
   left: !Item
     name: group

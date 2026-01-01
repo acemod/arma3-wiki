@@ -3,7 +3,8 @@ desc: Stores passed number into [USERNAME].ArmaXProfile file, where it assigns i
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary points
+  ret:
     type: Nothing
   right: !Item
     name: points

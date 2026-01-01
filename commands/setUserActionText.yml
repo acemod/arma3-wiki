@@ -3,7 +3,13 @@ desc: '[[File:setUserActionText.jpg|right|350px]] Changes user added action (see
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - actionIndex
+    - textMenu
+    - textWindowBackground
+    - textWindowForeground
+  ret:
     type: Nothing
   left: !Item
     name: object

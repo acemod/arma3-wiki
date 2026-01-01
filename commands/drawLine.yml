@@ -3,7 +3,13 @@ desc: Draw a line on the map. Can decrease framerate!
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - from
+    - to
+    - color
+    - width
+  ret:
     type: Nothing
   left: !Item
     name: map

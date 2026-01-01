@@ -4,7 +4,10 @@ groups:
 - Broken Commands
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - direction
+  ret:
     type: Nothing
   left: !Item
     name: camera

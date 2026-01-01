@@ -3,7 +3,8 @@ desc: Returns a list of button names assigned to the given user action. You can 
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary userAction
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''
@@ -11,7 +12,11 @@ syntax:
     name: userAction
     desc: name of the action
     type: String
-- ret:
+- call: !Unary
+  - userAction
+  - maxKeys
+  - inputDevicePriority
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

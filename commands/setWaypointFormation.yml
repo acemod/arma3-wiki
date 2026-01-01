@@ -3,7 +3,10 @@ desc: "Switches the group formation when the waypoint becomes active.\n<br>\n<br
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - formation
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

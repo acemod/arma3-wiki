@@ -53,7 +53,10 @@ desc: |-
 groups:
 - Radio and Chat
 syntax:
-- ret:
+- call: !Binary
+  - channelID
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: channelID
@@ -63,7 +66,11 @@ syntax:
     name: enable
     desc: '[[true]] to enable, [[false]] to disable (both VoN and chat)'
     type: Boolean
-- ret:
+- call: !Binary
+  - channelID
+  - - chat
+    - VoN
+  ret:
     type: Nothing
   left: !Item
     name: channelID

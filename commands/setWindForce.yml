@@ -3,7 +3,10 @@ desc: Set max. wind overall wind changes in time. A time of zero means there wil
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Binary
+  - time
+  - wind
+  ret:
     type: Nothing
   left: !Item
     name: time

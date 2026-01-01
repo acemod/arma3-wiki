@@ -7,7 +7,10 @@ problem_notes:
 groups:
 - Multiplayer
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - clientID
+  ret:
     type: Boolean
     desc: returns [[true]] if ownership was successfully transferred, otherwise [[false]]
   left: !Item

@@ -3,7 +3,15 @@ desc: "{{{!}} class=\"wikitable float-right align-center-col-2\"\n{{!}}+ \n! {{L
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - part
+    - damage
+    - useEffects
+    - killer
+    - instigator
+    - breakRotor
+  ret:
     type: Nothing
   left: !Item
     name: object

@@ -3,7 +3,8 @@ desc: Returns various properties for the given shot.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary shot
+  ret:
     type: Unknown
     desc: |-
       effectiveTimeToLive: [[Number]] - how much more shot has to live.
@@ -20,7 +21,10 @@ syntax:
     name: shot
     desc: shot projectile
     type: Object
-- ret:
+- call: !Binary
+  - shot
+  - index
+  ret:
     type: Anything
     desc: depends on the requested property, or [[Nothing]]
   left: !Item

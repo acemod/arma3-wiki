@@ -3,7 +3,10 @@ desc: "Sets vehicle lock. Possible values:\n<br> \n* \"UNLOCKED\" \n* \"DEFAULT\
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicleName
+  - lockState
+  ret:
     type: Nothing
   left: !Item
     name: vehicleName

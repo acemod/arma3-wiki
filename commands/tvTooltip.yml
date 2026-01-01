@@ -3,7 +3,10 @@ desc: Gets the tooltip text associated with the specified tree view path.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: String
     desc: tooltip text
   right: !Array
@@ -15,7 +18,10 @@ syntax:
     name: path
     desc: array containing path numbers
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - ctrl
+  - path
+  ret:
     type: String
     desc: tooltip text
   left: !Item

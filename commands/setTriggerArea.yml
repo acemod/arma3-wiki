@@ -6,7 +6,14 @@ desc: |-
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Binary
+  - trigger
+  - - a
+    - b
+    - angle
+    - isRectangle
+    - c
+  ret:
     type: Nothing
   left: !Item
     name: trigger

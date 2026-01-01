@@ -3,7 +3,8 @@ desc: Deletes an identity created with [[saveIdentity]] from the campaign's prog
 groups:
 - Unit Identity
 syntax:
-- ret:
+- call: !Unary identityName
+  ret:
     type: Boolean
     desc: '[[true]] if the identity was deleted successfully, [[false]] if not'
   right: !Item

@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Unary
+  - x
+  - y
+  - z or useLayerMask
+  ret:
     type: String
     desc: Surface texture
   right: !Array

@@ -3,7 +3,8 @@ desc: Returns the current humidity value. 0 is no humidity and 1 is 100% humidit
 groups:
 - Environment
 syntax:
-- ret:
+- call: Nular
+  ret:
     type: !NumberRange
     - 0
     - 1

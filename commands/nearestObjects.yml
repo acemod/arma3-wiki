@@ -9,7 +9,12 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Unary
+  - position
+  - types
+  - radius
+  - 2Dmode
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

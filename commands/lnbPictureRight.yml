@@ -3,7 +3,11 @@ desc: Returns the right picture of given row. The ''column'' parameter does not 
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  ret:
     type: String
     desc: path of image
   right: !Array
@@ -19,7 +23,11 @@ syntax:
       name: column
       desc: index of the column
       type: Number
-- ret:
+- call: !Binary
+  - ctrl
+  - - row
+    - column
+  ret:
     type: String
     desc: path of image
   left: !Item

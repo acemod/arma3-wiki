@@ -3,7 +3,10 @@ desc: Sets the orientation of a location. The location's area and map icon (if i
 groups:
 - Locations
 syntax:
-- ret:
+- call: !Binary
+  - location
+  - direction
+  ret:
     type: Nothing
   left: !Item
     name: location

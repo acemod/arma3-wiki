@@ -3,7 +3,8 @@ desc: This operator creates a [[If Type]] which is used in the if-construct as d
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Unary condition
+  ret:
     type: IfType
     desc: predicate which will execute 1st or 2nd option when used. This predicate is used in [[then]] or [[exitWith]] commands
   right: !Item

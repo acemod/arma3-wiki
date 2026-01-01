@@ -3,7 +3,15 @@ desc: Sets the current level of damage for a specific Hit Point. All hit points 
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - hitPartIndex
+    - damage
+    - useEffects
+    - killer
+    - instigator
+    - breakRotor
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

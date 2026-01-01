@@ -7,7 +7,11 @@ groups:
 - Containers
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - container
+  - - weaponId
+    - creatorId
+  ret:
     type: ArrayUnknown
     desc: '[silencer, laserpointer/flashlight, optics, bipod]'
   left: !Item

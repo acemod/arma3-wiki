@@ -3,7 +3,10 @@ desc: "Sets the collective pitch control to a specific position, regardless of i
 groups:
 - RTD
 syntax:
-- ret:
+- call: !Binary
+  - helicopterRTD
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: helicopterRTD

@@ -3,7 +3,8 @@ desc: Extract number from config entry.
 groups:
 - Config
 syntax:
-- ret:
+- call: !Unary config
+  ret:
     type: Number
   right: !Item
     name: config

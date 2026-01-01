@@ -3,7 +3,8 @@ desc: Returns number of headers (rows not included) in the RscControlsTable.
 groups:
 - GUI Control - Controls Table
 syntax:
-- ret:
+- call: !Unary ctrl
+  ret:
     type: Number
   right: !Item
     name: ctrl

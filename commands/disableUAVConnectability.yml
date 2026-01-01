@@ -3,7 +3,11 @@ desc: Disables unit's AV terminal(s) connecting to UAV.
 groups:
 - Remote Control
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - uav
+    - checkAllItems
+  ret:
     type: Nothing
   left: !Item
     name: object

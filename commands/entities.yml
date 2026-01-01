@@ -5,7 +5,8 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Unary type
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
@@ -13,7 +14,12 @@ syntax:
     name: type
     desc: if an empty string {{hl|""}} is provided, all entities are returned
     type: String
-- ret:
+- call: !Unary
+  - typesInclude
+  - typesExclude
+  - includeCrews
+  - excludeDead
+  ret:
     type: ArrayUnknown
   right: !Array
   - !Item

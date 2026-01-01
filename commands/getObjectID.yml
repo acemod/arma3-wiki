@@ -3,7 +3,8 @@ desc: Returns Visitor ID of the given object. Visitor IDs of static map objects 
 groups:
 - Map
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: String
     desc: Visitor ID
   right: !Item

@@ -6,7 +6,11 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - - distance
+    - blur
+  ret:
     type: Nothing
   left: !Item
     name: camera

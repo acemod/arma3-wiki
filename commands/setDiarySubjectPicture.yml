@@ -3,7 +3,11 @@ desc: Sets a picture to be displayed on the right of the [[Diary]] subject. The 
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - subject
+    - picture
+  ret:
     type: Nothing
   left: !Item
     name: unit

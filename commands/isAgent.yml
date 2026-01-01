@@ -3,7 +3,8 @@ desc: Check if team member is an agent.
 groups:
 - Teams
 syntax:
-- ret:
+- call: !Unary teamMember
+  ret:
     type: Boolean
   right: !Item
     name: teamMember

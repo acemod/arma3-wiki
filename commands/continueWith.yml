@@ -3,13 +3,17 @@ desc: Skips the current loop iteration, continues with the next one and returns 
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Unary return
+  ret:
     type: Anything
   right: !Item
     name: return
     desc: value to be returned when iteration is skipped
     type: Anything
-- ret:
+- call: !Binary
+  - scriptHandle
+  - code
+  ret:
     type: Nothing
   left: !Item
     name: scriptHandle

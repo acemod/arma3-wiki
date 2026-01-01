@@ -3,7 +3,10 @@ desc: Create single missions display as a child of given display. The mission di
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - display
+  - missionRootDirectoryString
+  ret:
     type: Display
   left: !Item
     name: display
@@ -11,7 +14,11 @@ syntax:
   right: !Item
     name: missionRootDirectoryString
     type: String
-- ret:
+- call: !Binary
+  - display
+  - - missionRootDirectoryString
+    - cfgMissionsClass
+  ret:
     type: Display
   left: !Item
     name: display

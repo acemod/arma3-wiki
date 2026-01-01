@@ -3,7 +3,10 @@ desc: Sets the position of the given camera relative to its target, set with [[c
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: camera

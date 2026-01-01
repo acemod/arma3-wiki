@@ -3,7 +3,10 @@ desc: Returns a child control with specified idc from a controls group
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - ctrlgrp
+  - idc
+  ret:
     type: Control
   left: !Item
     name: ctrlgrp

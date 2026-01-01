@@ -3,7 +3,11 @@ desc: Searches given ''haystack'' with given ''pattern'' and replaces all matche
 groups:
 - Strings - Regular Expression
 syntax:
-- ret:
+- call: !Binary
+  - haystack
+  - - pattern
+    - replaceString
+  ret:
     type: String
     desc: modified text
   left: !Item

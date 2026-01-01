@@ -8,14 +8,17 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary entity
+  ret:
     type: Number
     desc: vision mode
   right: !Item
     name: entity
     desc: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode
     type: Object
-- ret:
+- call: !Unary
+  - entity
+  ret:
     type: Unknown
   right: !Array
   - !Item
@@ -24,7 +27,10 @@ syntax:
     type: Object
   since:
     arma3: '2.8'
-- ret:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
     type: Unknown
   left: !Item
     name: vehicle
@@ -36,7 +42,10 @@ syntax:
     type: TurretPath
   since:
     arma3: '2.8'
-- ret:
+- call: !Binary
+  - unit
+  - weapon
+  ret:
     type: Unknown
   left: !Item
     name: unit

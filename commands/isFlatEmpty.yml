@@ -15,7 +15,16 @@ problem_notes:
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Binary
+  - position
+  - - minDistance
+    - mode
+    - maxGradient
+    - maxGradientRadius
+    - overLandOrWater
+    - shoreLine
+    - ignoreObject
+  ret:
     type: ArrayUnknown
     desc: empty array [] if check failed or [[Position#PositionASL|PositionASL]] if succeded. Resulting position will be original [[Position#PositionAGL|PositionAGL]] + [[getTerrainHeightASL]]
   left: !Item

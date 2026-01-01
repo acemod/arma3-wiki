@@ -3,7 +3,10 @@ desc: Sets flag [[Side]]. A flag may be taken by any unit that is enemy to the s
 groups:
 - Flags
 syntax:
-- ret:
+- call: !Binary
+  - flag
+  - side
+  ret:
     type: Nothing
   left: !Item
     name: flag

@@ -5,7 +5,12 @@ desc: |-
 groups:
 - Ropes and Sling Loading
 syntax:
-- ret:
+- call: !Unary
+  - rope
+  - speed
+  - length
+  - relative
+  ret:
     type: Nothing
   right: !Array
   - !Item

@@ -3,7 +3,10 @@ desc: Smoothly conduct the changes that were assigned to a camera within the giv
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - time
+  ret:
     type: Nothing
   left: !Item
     name: camera

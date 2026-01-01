@@ -3,7 +3,12 @@ desc: Sets the color of the item with the given position of the 2D listbox. Colo
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - color
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -19,7 +24,12 @@ syntax:
   - !Item
     name: color
     type: ArrayColorRgba
-- ret:
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - color
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

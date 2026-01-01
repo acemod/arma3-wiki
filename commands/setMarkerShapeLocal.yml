@@ -3,7 +3,10 @@ desc: Selects shape (actual type) of the local marker. Non-existing marker shape
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Binary
+  - markerName
+  - shape
+  ret:
     type: Nothing
   left: !Item
     name: markerName

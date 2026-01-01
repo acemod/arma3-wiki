@@ -3,7 +3,11 @@ desc: Searches for selection in the object model's LOD level, and returns the Di
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - selectionName
+    - LOD
+  ret:
     type: Unknown
   left: !Item
     name: object

@@ -3,7 +3,14 @@ desc: Interpolates vector between the given ''vectorFrom'' and ''vectorTo'' valu
 groups:
 - Math - Vectors
 syntax:
-- ret:
+- call: !Unary
+  - rangeFrom
+  - rangeTo
+  - rangeValue
+  - vectorFrom
+  - vectorTo
+  - clip
+  ret:
     type: ArrayUnknown
     desc: interpolated vector
   right: !Array

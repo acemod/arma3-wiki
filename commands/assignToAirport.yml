@@ -5,7 +5,10 @@ problem_notes:
 groups:
 - Roads and Airports
 syntax:
-- ret:
+- call: !Binary
+  - plane
+  - id
+  ret:
     type: Nothing
   left: !Item
     name: plane
@@ -15,7 +18,10 @@ syntax:
     name: id
     desc: airport id
     type: Number
-- ret:
+- call: !Binary
+  - plane
+  - target
+  ret:
     type: Nothing
   left: !Item
     name: plane

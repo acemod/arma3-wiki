@@ -3,7 +3,12 @@ desc: Preloads data for the given resource object.
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - name
+  - type
+  - speed
+  - showInMap
+  ret:
     type: Boolean
   right: !Array
   - !Item

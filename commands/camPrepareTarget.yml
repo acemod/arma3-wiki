@@ -3,7 +3,10 @@ desc: Prepares the camera target to a position or to a target. Needs the call of
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: camera
@@ -13,7 +16,10 @@ syntax:
     name: position
     desc: target location
     type: Position
-- ret:
+- call: !Binary
+  - camera
+  - target
+  ret:
     type: Nothing
   left: !Item
     name: camera

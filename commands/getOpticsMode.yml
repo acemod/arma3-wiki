@@ -3,7 +3,10 @@ desc: Returns the class name of the current optic mode of the current weapon.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - slot
+  ret:
     type: String
     desc: class name of the current optic mode of the current weapon
   left: !Item

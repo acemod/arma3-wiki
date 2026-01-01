@@ -10,7 +10,10 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Boolean
   left: !Item
     name: unit
@@ -18,7 +21,12 @@ syntax:
   right: !Item
     name: item
     type: String
-- ret:
+- call: !Binary
+  - unit
+  - - item
+    - count
+    - ignoreSoldierMaxLoad
+  ret:
     type: Boolean
   left: !Item
     name: unit

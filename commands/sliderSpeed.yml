@@ -3,12 +3,14 @@ desc: Returns slider step value for line and page movement of [[CT_SLIDER]] or [
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: Unknown
   right: !Item
     name: idc
     type: Unknown
-- ret:
+- call: !Unary control
+  ret:
     type: Unknown
   right: !Item
     name: control

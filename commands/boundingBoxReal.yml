@@ -5,12 +5,16 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Unknown
   right: !Item
     name: object
     type: Object
-- ret:
+- call: !Binary
+  - clippingType
+  - object
+  ret:
     type: Unknown
   left: !Item
     name: clippingType
@@ -20,7 +24,10 @@ syntax:
     type: Object
   since:
     arma3: '1.92'
-- ret:
+- call: !Unary
+  - object
+  - LOD
+  ret:
     type: Unknown
   right: !Array
   - !Item

@@ -6,7 +6,10 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - lock
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

@@ -5,7 +5,12 @@ desc: |-
 groups:
 - Game 2 Editor
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - menu item index
+    - text
+    - command
+  ret:
     type: Nothing
   left: !Item
     name: map

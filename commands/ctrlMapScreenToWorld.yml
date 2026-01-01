@@ -3,7 +3,11 @@ desc: Converts map screen coordinates into world coordinates. Unlike [[posScreen
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - x
+    - y
+  ret:
     type: Unknown
   left: !Item
     name: control

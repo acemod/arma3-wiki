@@ -5,7 +5,10 @@ groups:
 - Namespaces
 - Multiplayer
 syntax:
-- ret:
+- call: !Binary
+  - varspace
+  - name
+  ret:
     type: !OneOf
     - type: Anything
       desc: null
@@ -20,7 +23,11 @@ syntax:
     name: name
     desc: variable name in given namespace
     type: String
-- ret:
+- call: !Binary
+  - varspace
+  - - name
+    - defaultValue
+  ret:
     type: Anything
     desc: current value of the variable or ''defaultValue'' if the variable doesn't exist.
   left: !Item

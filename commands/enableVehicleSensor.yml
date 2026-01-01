@@ -3,7 +3,11 @@ desc: Enable/disable given sensor
 groups:
 - Sensors
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - componentName
+    - enabled
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Strings
 syntax:
-- ret:
+- call: !Binary
+  - str
+  - delimiters
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

@@ -3,7 +3,12 @@ desc: Creates a new subject in the [[Diary]].
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - player
+  - - subject
+    - displayName
+    - picture
+  ret:
     type: Number
     desc: index of the entry that was added
   left: !Item

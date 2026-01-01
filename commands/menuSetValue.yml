@@ -3,7 +3,11 @@ desc: Sets new value into menu entry on given path.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - value
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -15,7 +19,11 @@ syntax:
   - !Item
     name: value
     type: Number
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - value
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -3,7 +3,10 @@ desc: Adds resources to a team member.
 groups:
 - Teams
 syntax:
-- ret:
+- call: !Binary
+  - teamMember
+  - - resourceN
+  ret:
     type: Nothing
   left: !Item
     name: teamMember

@@ -4,7 +4,11 @@ groups:
 - Object Manipulation
 - Weapons
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - target
+    - weapon
+  ret:
     type: !NumberRange
     - 0
     - 1

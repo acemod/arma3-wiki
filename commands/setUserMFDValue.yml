@@ -3,7 +3,11 @@ desc: "When MFD is using user controllers, this command can set values on them. 
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - index
+    - value
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

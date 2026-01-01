@@ -6,7 +6,10 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicleName
+  - locked
+  ret:
     type: Nothing
   left: !Item
     name: vehicleName
@@ -15,7 +18,10 @@ syntax:
     name: locked
     desc: '[[true]] to lock, [[false]] to unlock'
     type: Boolean
-- ret:
+- call: !Binary
+  - vehicleName
+  - lockstate
+  ret:
     type: Nothing
   left: !Item
     name: vehicleName

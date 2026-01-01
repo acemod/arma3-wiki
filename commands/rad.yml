@@ -3,7 +3,8 @@ desc: Converts given value in degrees to radians. 1 radian equals 180 degrees di
 groups:
 - Math - Geometry
 syntax:
-- ret:
+- call: !Unary value
+  ret:
     type: Number
     desc: radians
   right: !Item

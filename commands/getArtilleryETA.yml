@@ -3,7 +3,11 @@ desc: Returns ETA to the target in seconds for given artillery unit based on tar
 groups:
 - Artillery
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - targetPosition
+    - magazineType
+  ret:
     type: Number
   left: !Item
     name: unit

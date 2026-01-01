@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Unary
+  - paramName
+  - newValue
+  ret:
     type: Nothing
   right: !Array
   - !Item

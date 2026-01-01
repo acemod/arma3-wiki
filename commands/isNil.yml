@@ -5,20 +5,25 @@ desc: |-
 groups:
 - Variables
 syntax:
-- ret:
+- call: !Unary variableName
+  ret:
     type: Boolean
     desc: '[[true]] if variable is [[nil]] or undefined'
   right: !Item
     name: variableName
     desc: '[[missionNamespace]]''s or local [[Variables|variable]]''s [[Identifier|identifier]] (e.g "globalVariable", "_localVariable")'
     type: Unknown
-- ret:
+- call: !Unary code
+  ret:
     type: Boolean
     desc: '[[true]] if ''''code'''' returns [[Nothing]], [[false]] otherwise'
   right: !Item
     name: code
     type: Unknown
-- ret:
+- call: !Binary
+  - namespace
+  - variableName
+  ret:
     type: Boolean
     desc: '[[true]] if variable is [[nil]] or undefined'
   left: !Item

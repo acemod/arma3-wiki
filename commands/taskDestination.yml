@@ -3,7 +3,8 @@ desc: Returns the position of the task (as specified by destination parameter in
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary task
+  ret:
     type: Unknown
   right: !Item
     name: task

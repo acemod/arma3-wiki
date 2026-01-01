@@ -9,7 +9,12 @@ groups:
 - Camera Control
 - Lights
 syntax:
-- ret:
+- call: !Unary
+  - minimum
+  - standard
+  - maximum
+  - luminance
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -28,7 +33,9 @@ syntax:
     name: luminance
     desc: standard luminance
     type: Number
-- ret:
+- call: !Unary
+  - reset
+  ret:
     type: Nothing
   right: !Array
   - !Item

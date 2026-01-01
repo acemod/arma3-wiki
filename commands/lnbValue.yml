@@ -3,7 +3,11 @@ desc: Returns the additional integer value in the item with the given position o
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  ret:
     type: Number
   right: !Array
   - !Item
@@ -16,7 +20,11 @@ syntax:
     - !Item
       name: column
       type: Number
-- ret:
+- call: !Binary
+  - ctrl
+  - - row
+    - column
+  ret:
     type: Number
   left: !Item
     name: ctrl

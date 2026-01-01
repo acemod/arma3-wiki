@@ -25,13 +25,19 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary code
+  ret:
     type: Nothing
   right: !Item
     name: code
     desc: code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
     type: Code
-- ret:
+- call: !Binary
+  - - text
+    - tooltip
+    - icon
+  - code
+  ret:
     type: Nothing
   left: !Array
   - !Item

@@ -3,7 +3,11 @@ desc: "Return argument in mission editor of a given object. \n{{Feature|informat
 groups:
 - Game 2 Editor
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - object
+    - argument
+  ret:
     type: Anything
   left: !Item
     name: map

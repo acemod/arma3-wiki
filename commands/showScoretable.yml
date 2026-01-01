@@ -3,7 +3,8 @@ desc: Forces the score table to be shown, hidden or reset to default functionali
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary force
+  ret:
     type: Nothing
   right: !Item
     name: force

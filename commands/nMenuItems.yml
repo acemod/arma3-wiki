@@ -3,7 +3,10 @@ desc: Returns the total number of user-added menu items belonging to the given m
 groups:
 - Game 2 Editor
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - menuName
+  ret:
     type: Number
   left: !Item
     name: map
@@ -12,7 +15,10 @@ syntax:
     name: menuName
     desc: '"file" or "view"'
     type: String
-- ret:
+- call: !Binary
+  - map
+  - index
+  ret:
     type: Number
   left: !Item
     name: map

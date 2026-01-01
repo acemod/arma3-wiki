@@ -4,7 +4,14 @@ groups:
 - Briefing
 - Teams
 syntax:
-- ret:
+- call: !Binary
+  - teamMember
+  - - - type
+      - parentTask
+    - priority
+    - - nameN
+      - valueN
+  ret:
     type: Task
   left: !Item
     name: teamMember

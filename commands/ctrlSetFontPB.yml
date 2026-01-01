@@ -3,7 +3,10 @@ desc: Sets P bold font of given HTML control.
 groups:
 - GUI Control - HTML
 syntax:
-- ret:
+- call: !Binary
+  - controlName
+  - fontName
+  ret:
     type: Nothing
   left: !Item
     name: controlName

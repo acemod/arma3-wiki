@@ -3,7 +3,10 @@ desc: Prepares the camera position relative to the current position of the curre
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: camera

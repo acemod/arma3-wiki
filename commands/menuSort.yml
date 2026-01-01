@@ -3,7 +3,11 @@ desc: Sorts subentries of item on given path by their text.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - sortOrder
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -16,7 +20,11 @@ syntax:
     name: sortOrder
     desc: '[[true]] to sort from A to Z, [[false]] to sort from Z to A'
     type: Boolean
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - sortOrder
+  ret:
     type: Nothing
   left: !Item
     name: control

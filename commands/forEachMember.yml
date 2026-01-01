@@ -3,7 +3,10 @@ desc: Executes the given command recursively for both teams and agents that are 
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Binary
+  - command
+  - team
+  ret:
     type: Nothing
   left: !Item
     name: command

@@ -6,7 +6,10 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Binary
+  - ifType
+  - thenCode
+  ret:
     type: Anything
     desc: result of the executed code
   left: !Item

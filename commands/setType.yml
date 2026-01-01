@@ -3,7 +3,10 @@ desc: Changes a location to the specified class. Location classes are defined in
 groups:
 - Locations
 syntax:
-- ret:
+- call: !Binary
+  - location
+  - name
+  ret:
     type: Nothing
   left: !Item
     name: location

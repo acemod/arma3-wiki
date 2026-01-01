@@ -3,7 +3,8 @@ desc: Returns true if the specified unit is subgroup leader.
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Boolean
     desc: '[[true]] if unit is subgroup leader.'
   right: !Item

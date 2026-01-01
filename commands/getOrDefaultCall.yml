@@ -3,7 +3,12 @@ desc: Retrieves a value from the [[HashMap]] for the given 'key', executes given
 groups:
 - HashMap
 syntax:
-- ret:
+- call: !Binary
+  - hashMap
+  - - key
+    - code
+    - set
+  ret:
     type: Anything
   left: !Item
     name: hashMap

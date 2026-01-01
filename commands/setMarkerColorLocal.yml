@@ -3,7 +3,10 @@ desc: 'Set marker''s colour. {{arma3}}''s marker colour names and their correspo
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Binary
+  - markerName
+  - colour
+  ret:
     type: Nothing
   left: !Item
     name: markerName

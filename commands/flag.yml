@@ -3,7 +3,8 @@ desc: Returns the original flag pole of the flag the unit is carrying.
 groups:
 - Flags
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Object
     desc: flag pole object the flag belongs to. If the unit carries no flag, [[objNull]] is returned.
   right: !Item

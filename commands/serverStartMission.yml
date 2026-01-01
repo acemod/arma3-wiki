@@ -4,7 +4,8 @@ multiplayer_note: Only works on a '''dedicated''' server.
 groups:
 - Argo
 syntax:
-- ret:
+- call: !Unary missionName
+  ret:
     type: Boolean
     desc: '[[true]] if the mission could be started on a dedicated server, [[false]] otherwise'
   right: !Item

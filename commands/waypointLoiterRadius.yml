@@ -3,7 +3,8 @@ desc: Gets the waypoint's loiter radius.
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Unary waypoint
+  ret:
     type: Number
   right: !Item
     name: waypoint

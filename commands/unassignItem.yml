@@ -3,7 +3,10 @@ desc: Unassigns existing item and tries to put it into inventory. If there is no
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

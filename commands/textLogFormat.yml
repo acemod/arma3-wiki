@@ -5,7 +5,12 @@ desc: |-
 groups:
 - Broken Commands
 syntax:
-- ret:
+- call: !Unary
+  - format
+  - arg1
+  - arg2
+  - argN
+  ret:
     type: Nothing
   right: !Array
   - !Item

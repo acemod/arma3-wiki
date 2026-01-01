@@ -3,7 +3,10 @@ desc: Set the state of a given task.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - task
+  - state
+  ret:
     type: Nothing
   left: !Item
     name: task

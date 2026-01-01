@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Broken Commands
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - objectWhereHide
+    - hidePosition
+  ret:
     type: Nothing
   left: !Item
     name: object

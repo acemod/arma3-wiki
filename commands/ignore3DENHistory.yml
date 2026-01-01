@@ -3,7 +3,8 @@ desc: Ignores all history steps created by executing the given code.
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary code
+  ret:
     type: Nothing
   right: !Item
     name: code

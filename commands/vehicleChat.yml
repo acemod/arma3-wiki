@@ -8,7 +8,10 @@ desc: |-
 groups:
 - Radio and Chat
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - chatText
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

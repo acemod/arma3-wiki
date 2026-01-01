@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
     type: Unknown
   left: !Item
     name: vehicle

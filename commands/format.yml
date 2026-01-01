@@ -7,7 +7,10 @@ desc: |-
 groups:
 - Strings
 syntax:
-- ret:
+- call: !Unary
+  - formatString
+  - varN
+  ret:
     type: String
     desc: the full string (up to 8kb, see above) is returned.
   right: !Array

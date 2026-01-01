@@ -4,7 +4,10 @@ multiplayer_note: When used on a remote unit, this command will still create a r
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - unitName
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: unitName

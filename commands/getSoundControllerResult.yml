@@ -3,7 +3,10 @@ desc: Returns the calculated value of [[simple expression]] defined in config. C
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - config
+  ret:
     type: Number
   left: !Item
     name: vehicle

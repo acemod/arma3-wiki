@@ -16,13 +16,17 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Unary soldier
+  ret:
     type: Nothing
   right: !Item
     name: soldier
     desc: unit (only a living unit before {{GVI|arma3|2.06}})
     type: Object
-- ret:
+- call: !Binary
+  - soldier
+  - vehicle
+  ret:
     type: Nothing
   left: !Item
     name: soldier

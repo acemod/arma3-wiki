@@ -3,7 +3,8 @@ desc: Returns all vehicles added to the given [[Group]] with [[addVehicle]].
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Unary group
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

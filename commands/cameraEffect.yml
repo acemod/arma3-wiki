@@ -14,7 +14,12 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - - effectName
+    - effectPosition
+    - r2tName
+  ret:
     type: Nothing
   left: !Item
     name: camera

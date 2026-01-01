@@ -3,7 +3,12 @@ desc: Sets the text in the item with the given position of the 2D listbox.
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - data
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -19,7 +24,12 @@ syntax:
   - !Item
     name: data
     type: String
-- ret:
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - data
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

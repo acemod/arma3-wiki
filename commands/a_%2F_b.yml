@@ -6,7 +6,10 @@ groups:
 - Math
 - Config
 syntax:
-- ret:
+- call: !Binary
+  - a
+  - b
+  ret:
     type: Number
     desc: quotient
   left: !Item
@@ -17,7 +20,10 @@ syntax:
     name: b
     desc: divisor
     type: Number
-- ret:
+- call: !Binary
+  - config
+  - name
+  ret:
     type: Config
     desc: config entry
   left: !Item

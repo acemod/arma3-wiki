@@ -5,7 +5,15 @@ desc: |-
 groups:
 - Diagnostic
 syntax:
-- ret:
+- call: !Unary
+  - filePath
+  - drawLocationNames
+  - drawGrid
+  - drawCountlines
+  - drawTreeObjects
+  - drawMountainHeightpoints
+  - simpleRoads
+  ret:
     type: Nothing
   right: !Array
   - !Item

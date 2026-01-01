@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Arrays
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - count
+  ret:
     type: Nothing
   left: !Item
     name: array
@@ -16,7 +19,11 @@ syntax:
     name: count
     desc: the new array size
     type: Number
-- ret:
+- call: !Binary
+  - array
+  - - count
+    - fill
+  ret:
     type: Nothing
   left: !Item
     name: array

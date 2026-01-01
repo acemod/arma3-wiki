@@ -3,7 +3,8 @@ desc: Deletes inventory from mission.sqm of given units. Effect is not immediate
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary entities
+  ret:
     type: Nothing
   right: !Item
     name: entities

@@ -3,7 +3,10 @@ desc: Returns bool array if it is possible to load cargo inside vehicle and if p
 groups:
 - Vehicle in Vehicle Transport
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - cargo
+  ret:
     type: !ArrayUnsized
       type: Boolean
       desc: ''

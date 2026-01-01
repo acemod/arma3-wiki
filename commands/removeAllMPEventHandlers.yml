@@ -3,7 +3,10 @@ desc: Removes all MP event handlers of the given type which were added by [[addM
 groups:
 - Multiplayer
 syntax:
-- ret:
+- call: !Binary
+  - objectName
+  - event
+  ret:
     type: Nothing
   left: !Item
     name: objectName

@@ -3,7 +3,10 @@ desc: Create a new vest and try to link it into vest slot.
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - type
+  ret:
     type: Nothing
   left: !Item
     name: unit

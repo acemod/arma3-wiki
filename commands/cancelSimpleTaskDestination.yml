@@ -3,7 +3,8 @@ desc: Cancels a simple task destination.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary task
+  ret:
     type: Nothing
   right: !Item
     name: task

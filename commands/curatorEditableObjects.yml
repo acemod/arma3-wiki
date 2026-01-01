@@ -3,7 +3,8 @@ desc: Returns all editable objects which belong to a curator.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary curatorObj
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

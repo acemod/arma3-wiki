@@ -3,7 +3,11 @@ desc: "Toggle the starter for the given helicopter engine(s) on or off. \n* engi
 groups:
 - RTD
 syntax:
-- ret:
+- call: !Binary
+  - helicopterRTD
+  - - enable
+    - engineIndex
+  ret:
     type: Nothing
   left: !Item
     name: helicopterRTD

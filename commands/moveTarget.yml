@@ -5,7 +5,12 @@ problem_notes:
 groups:
 - Broken Commands
 syntax:
-- ret:
+- call: !Binary
+  - target
+  - - position
+    - typeAccuracy
+    - posAccuracy
+  ret:
     type: Boolean
   left: !Item
     name: target

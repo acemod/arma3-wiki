@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - container
+  - maxLoadValue
+  ret:
     type: Nothing
   left: !Item
     name: container

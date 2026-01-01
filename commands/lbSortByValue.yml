@@ -3,12 +3,14 @@ desc: Sorts the ListBox entries by [[lbValue]]. The entries are sorted in ascend
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary control
+  ret:
     type: Nothing
   right: !Item
     name: control
     type: Control
-- ret:
+- call: !Unary idc
+  ret:
     type: Nothing
   right: !Item
     name: idc

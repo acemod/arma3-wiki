@@ -3,7 +3,8 @@ desc: Returns name of config entry.
 groups:
 - Config
 syntax:
-- ret:
+- call: !Unary config
+  ret:
     type: String
   right: !Item
     name: config

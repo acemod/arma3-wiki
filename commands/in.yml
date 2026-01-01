@@ -9,7 +9,10 @@ groups:
 - HashMap
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - value
+  - array
+  ret:
     type: Boolean
   left: !Item
     name: value
@@ -19,7 +22,10 @@ syntax:
     name: array
     desc: array of values
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - unit
+  - vehicle
+  ret:
     type: Boolean
   left: !Item
     name: unit
@@ -29,7 +35,10 @@ syntax:
     name: vehicle
     desc: entity vehicle
     type: Object
-- ret:
+- call: !Binary
+  - position
+  - location
+  ret:
     type: Boolean
   left: !Item
     name: position
@@ -40,7 +49,10 @@ syntax:
     type: Location
   since:
     arma3: '0.50'
-- ret:
+- call: !Binary
+  - needle
+  - haystack
+  ret:
     type: Boolean
   left: !Item
     name: needle
@@ -52,7 +64,10 @@ syntax:
     type: String
   since:
     arma3: '1.96'
-- ret:
+- call: !Binary
+  - key
+  - hashMap
+  ret:
     type: Boolean
   left: !Item
     name: key

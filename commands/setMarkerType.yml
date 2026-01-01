@@ -8,7 +8,10 @@ desc: |-
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Binary
+  - markerName
+  - type
+  ret:
     type: Nothing
   left: !Item
     name: markerName

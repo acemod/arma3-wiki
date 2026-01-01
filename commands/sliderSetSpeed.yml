@@ -3,7 +3,12 @@ desc: "Sets slider line step and page step delta amount as well as optional step
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - line
+  - page
+  - step
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -24,7 +29,12 @@ syntax:
     type: Number
     optional: true
     default: '0'
-- ret:
+- call: !Binary
+  - control
+  - - line
+    - page
+    - step
+  ret:
     type: Nothing
   left: !Item
     name: control

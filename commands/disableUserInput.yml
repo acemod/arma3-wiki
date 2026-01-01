@@ -3,7 +3,8 @@ desc: Disables or enables the keyboard and mouse input. Usually used during cuts
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary state
+  ret:
     type: Nothing
   right: !Item
     name: state

@@ -3,7 +3,8 @@ desc: Returns custom data attached to the local task or an empty array if there 
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary task
+  ret:
     type: ArrayUnknown
     desc: iconPath, iconText, descriptionText
   right: !Item

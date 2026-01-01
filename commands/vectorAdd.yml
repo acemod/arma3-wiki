@@ -6,7 +6,10 @@ desc: |-
 groups:
 - Math - Vectors
 syntax:
-- ret:
+- call: !Binary
+  - vector1
+  - vector2
+  ret:
     type: !ArrayUnsized
       type: Number
       desc: ''

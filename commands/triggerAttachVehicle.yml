@@ -3,7 +3,10 @@ desc: "Specifies the entity which will activate the selected trigger.<br>\n*If '
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Binary
+  - triggerName
+  - objects
+  ret:
     type: Nothing
   left: !Item
     name: triggerName

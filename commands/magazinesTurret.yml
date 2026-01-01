@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''
@@ -15,7 +18,11 @@ syntax:
   right: !Item
     name: turretPath
     type: TurretPath
-- ret:
+- call: !Binary
+  - vehicle
+  - - turretPath
+    - includeEmpty
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

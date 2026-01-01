@@ -3,7 +3,8 @@ desc: Removes all items from ammo box (or any general weapon holder container)
 groups:
 - Weapon Pool
 syntax:
-- ret:
+- call: !Unary box
+  ret:
     type: Nothing
   right: !Item
     name: box

@@ -3,7 +3,10 @@ desc: Moves the [[get3DENCamera|Eden Editor camera]].
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary
+  - position
+  - useOffset
+  ret:
     type: Nothing
   right: !Array
   - !Item

@@ -3,7 +3,11 @@ desc: Sets the text on the left side of the item with the given index of the lis
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - index
+  - name
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -15,7 +19,11 @@ syntax:
   - !Item
     name: name
     type: String
-- ret:
+- call: !Binary
+  - control
+  - - index
+    - name
+  ret:
     type: Nothing
   left: !Item
     name: control

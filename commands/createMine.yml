@@ -14,7 +14,12 @@ desc: |-
 groups:
 - Mines
 syntax:
-- ret:
+- call: !Unary
+  - type
+  - position
+  - markers
+  - placement
+  ret:
     type: Object
   right: !Array
   - !Item

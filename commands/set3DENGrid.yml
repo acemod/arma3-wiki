@@ -3,7 +3,10 @@ desc: Sets the grid increment for the given transformation type.
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary
+  - type
+  - value
+  ret:
     type: Nothing
   right: !Array
   - !Item

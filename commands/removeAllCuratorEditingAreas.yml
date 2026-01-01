@@ -3,7 +3,8 @@ desc: Delete all curator edit areas.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary curatorObj
+  ret:
     type: Nothing
   right: !Item
     name: curatorObj

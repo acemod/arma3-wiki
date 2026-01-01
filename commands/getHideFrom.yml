@@ -3,7 +3,10 @@ desc: Returns the [[Position]] where object believes the enemy to be. If there i
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - enemy
+  ret:
     type: ArrayUnknown
     desc: '[[ASLToATL]] representation of the believed [[aimPos]] of the enemy object'
   left: !Item

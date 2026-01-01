@@ -3,7 +3,13 @@ desc: Set ambient traffic speed in a rectangle (in kilometers per hour). {{Featu
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Unary
+  - speed
+  - xMin
+  - xMax
+  - zMin
+  - zMax
+  ret:
     type: Nothing
   right: !Array
   - !Item

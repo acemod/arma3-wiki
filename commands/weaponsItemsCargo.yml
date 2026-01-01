@@ -4,7 +4,8 @@ groups:
 - Containers
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: ArrayUnknown
     desc: see [[weaponsItems]]
   right: !Item
@@ -13,7 +14,10 @@ syntax:
     - type: Object
       desc: null
       since: null
-- ret:
+- call: !Unary
+  - vehicle
+  - extended
+  ret:
     type: ArrayUnknown
     desc: see [[weaponsItems]]
   right: !Array

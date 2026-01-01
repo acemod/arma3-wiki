@@ -3,7 +3,8 @@ desc: Returns the amount (1 is full) of ammo resources in the cargo space of a r
 groups:
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Number
     desc: |-
       ammo cargo value between 0 (empty, [[alive|destroyed]] or [[isNull|null]] [[Object]]) and 1 (full), -1 if ammo cargo is not supported<br>

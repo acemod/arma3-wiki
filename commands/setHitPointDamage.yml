@@ -22,7 +22,15 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - hitPointName
+    - damage
+    - useEffects
+    - killer
+    - instigator
+    - breakRotor
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

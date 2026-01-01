@@ -3,7 +3,8 @@ desc: Enable / disable showing of in-game UI during currently active camera effe
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary enable
+  ret:
     type: Nothing
   right: !Item
     name: enable

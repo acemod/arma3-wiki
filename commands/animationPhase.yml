@@ -4,7 +4,10 @@ multiplayer_note: In {{ofp}}, on dedicated servers, ''animationPhase'' will alwa
 groups:
 - Animations
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - animationName
+  ret:
     type: !NumberRange
     - 0
     - 1

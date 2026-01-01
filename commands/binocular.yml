@@ -3,7 +3,8 @@ desc: Returns class name of currently used binocular weapon.
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: String
   right: !Item
     name: unit

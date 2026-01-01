@@ -6,7 +6,10 @@ groups:
 - Positions
 - Render Time Scope
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - worldPosition
+  ret:
     type: ArrayUnknown
     desc: '[[Position#PositionRelative|PositionRelative]]'
   left: !Item

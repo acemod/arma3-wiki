@@ -5,7 +5,10 @@ groups:
 - Weapon Pool
 - Mission Information
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - entryName
+  ret:
     type: Boolean
     desc: '[[true]] if successfull, otherwise [[false]]'
   left: !Item

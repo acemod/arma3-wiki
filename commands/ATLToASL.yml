@@ -3,7 +3,8 @@ desc: Converts a position from [[Position#PositionATL|PositionATL]] to [[Positio
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Unary pos
+  ret:
     type: Position3dASL
   right: !Item
     name: pos

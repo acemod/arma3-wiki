@@ -3,7 +3,11 @@ desc: Stored user text value in MFD, limit is 50, user0...user49
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - index
+    - value
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

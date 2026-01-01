@@ -6,7 +6,11 @@ desc: |-
 groups:
 - Locations
 syntax:
-- ret:
+- call: !Unary
+  - position
+  - locationType
+  - maxDistance
+  ret:
     type: Location
   right: !Array
   - !Item

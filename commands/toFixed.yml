@@ -9,7 +9,10 @@ groups:
 - Math
 - Strings
 syntax:
-- ret:
+- call: !Binary
+  - number
+  - decimals
+  ret:
     type: String
   left: !Item
     name: number
@@ -19,7 +22,8 @@ syntax:
     name: decimals
     desc: number of decimals to display (range 0-20)
     type: Number
-- ret:
+- call: !Unary decimals
+  ret:
     type: Nothing
   right: !Item
     name: decimals

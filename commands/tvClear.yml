@@ -3,12 +3,14 @@ desc: Removes all items from Tree View with given idc.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: Nothing
   right: !Item
     name: idc
     type: Number
-- ret:
+- call: !Unary control
+  ret:
     type: Nothing
   right: !Item
     name: control

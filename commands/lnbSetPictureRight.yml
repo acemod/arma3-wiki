@@ -5,7 +5,12 @@ desc: |-
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - path
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -24,7 +29,12 @@ syntax:
     name: path
     desc: the picture's file path
     type: String
-- ret:
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - path
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

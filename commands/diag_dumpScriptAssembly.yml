@@ -3,7 +3,8 @@ desc: Dump script assembly.
 groups:
 - Diagnostic
 syntax:
-- ret:
+- call: !Unary code
+  ret:
     type: Nothing
   right: !Item
     name: code

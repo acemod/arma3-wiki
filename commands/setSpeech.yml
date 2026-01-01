@@ -3,7 +3,10 @@ desc: Add speech to location.
 groups:
 - Locations
 syntax:
-- ret:
+- call: !Binary
+  - location
+  - speech
+  ret:
     type: Nothing
   left: !Item
     name: location

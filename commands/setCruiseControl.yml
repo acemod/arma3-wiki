@@ -36,7 +36,11 @@ groups:
 - Unit Control
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - speed
+    - autoThrust
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

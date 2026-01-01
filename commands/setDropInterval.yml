@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Particles
 syntax:
-- ret:
+- call: !Binary
+  - particleSource
+  - interval
+  ret:
     type: Nothing
   left: !Item
     name: particleSource

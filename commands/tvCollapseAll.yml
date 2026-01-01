@@ -3,12 +3,14 @@ desc: Collapses all tree items for the given Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: Nothing
   right: !Item
     name: idc
     type: Number
-- ret:
+- call: !Unary control
+  ret:
     type: Nothing
   right: !Item
     name: control

@@ -5,7 +5,11 @@ desc: |-
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary
+  - path
+  - final
+  - prefixHeader
+  ret:
     type: Code
   right: !Array
   - !Item

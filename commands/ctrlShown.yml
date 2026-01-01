@@ -3,7 +3,8 @@ desc: Returns whether given control is shown.
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary controlName
+  ret:
     type: Boolean
   right: !Item
     name: controlName

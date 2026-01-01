@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Arrays
 syntax:
-- ret:
+- call: !Binary
+  - searchIn
+  - toFind
+  ret:
     type: Number
     desc: the index of the first found item
   left: !Item

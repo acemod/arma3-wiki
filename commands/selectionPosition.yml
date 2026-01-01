@@ -12,7 +12,10 @@ groups:
 - Object Manipulation
 - Render Time Scope
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - selectionName
+  ret:
     type: ArrayUnknown
     desc: '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned.'
   left: !Item
@@ -21,7 +24,12 @@ syntax:
   right: !Item
     name: selectionName
     type: String
-- ret:
+- call: !Binary
+  - object
+  - - selectionName
+    - LOD
+    - returnMode
+  ret:
     type: ArrayUnknown
     desc: '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
   left: !Item
@@ -72,7 +80,13 @@ syntax:
       arma3: '2.8'
   since:
     arma3: '1.50'
-- ret:
+- call: !Unary
+  - object
+  - selectionName
+  - LODIndex
+  - isVisual
+  - returnMode
+  ret:
     type: ArrayUnknown
     desc: '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
   right: !Array

@@ -3,7 +3,8 @@ desc: Set the PiP (Picture-in-Picture) view distance. This has no impact if PiP 
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary distance
+  ret:
     type: Nothing
   right: !Item
     name: distance

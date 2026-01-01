@@ -3,7 +3,10 @@ desc: Changes the rainbow value smoothly during the given time (in seconds). A t
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Binary
+  - time
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: time

@@ -3,7 +3,10 @@ desc: Forces use of [[Post Process Effects]] in NVG.
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - ppHandle
+  - force
+  ret:
     type: Nothing
   left: !Item
     name: ppHandle

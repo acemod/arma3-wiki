@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - magazineName
+    - count
+  ret:
     type: Nothing
   left: !Item
     name: unit

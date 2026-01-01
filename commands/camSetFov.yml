@@ -8,7 +8,10 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - level
+  ret:
     type: Nothing
   left: !Item
     name: camera

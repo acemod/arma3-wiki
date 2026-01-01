@@ -3,7 +3,10 @@ desc: Returns shortcut related to menu entry on given path in form of a bitflag.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: Number
   right: !Array
   - !Item
@@ -12,7 +15,10 @@ syntax:
   - !Item
     name: path
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - control
+  - path
+  ret:
     type: Number
   left: !Item
     name: control

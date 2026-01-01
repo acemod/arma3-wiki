@@ -3,7 +3,8 @@ desc: Enable / disable [[Team Switch]]. The default setting is enabled.
 groups:
 - Team Switch
 syntax:
-- ret:
+- call: !Unary enable
+  ret:
     type: Nothing
   right: !Item
     name: enable

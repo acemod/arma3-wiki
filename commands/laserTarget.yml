@@ -3,14 +3,18 @@ desc: Returns the laser target object created by given unit (vehicle or soldier)
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary entity
+  ret:
     type: Object
     desc: laser target or [[objNull]] if no laser target exists
   right: !Item
     name: entity
     desc: unit or vehicle
     type: Object
-- ret:
+- call: !Binary
+  - vehicle
+  - turret
+  ret:
     type: Object
     desc: laser target or [[objNull]] if no laser target exists
   left: !Item

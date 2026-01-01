@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Radio and Chat
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - chatText
+  ret:
     type: Nothing
   left: !Item
     name: unit
@@ -15,7 +18,11 @@ syntax:
     name: chatText
     desc: message to transmit
     type: String
-- ret:
+- call: !Binary
+  - - side
+    - identity
+  - chatText
+  ret:
     type: Nothing
   left: !Array
   - !Item

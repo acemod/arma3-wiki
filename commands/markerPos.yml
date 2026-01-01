@@ -5,12 +5,16 @@ alias:
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Unary markerName
+  ret:
     type: Unknown
   right: !Item
     name: markerName
     type: String
-- ret:
+- call: !Unary
+  - markerName
+  - preserveElevation
+  ret:
     type: Unknown
   right: !Array
   - !Item

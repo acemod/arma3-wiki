@@ -6,7 +6,11 @@ desc: |-
 groups:
 - Config
 syntax:
-- ret:
+- call: !Unary
+  - config
+  - condition
+  - inherit
+  ret:
     type: !ArrayUnsized
       type: Config
       desc: ''

@@ -3,7 +3,11 @@ desc: Returns true if all given units are able to fire at given position with gi
 groups:
 - Artillery
 syntax:
-- ret:
+- call: !Binary
+  - pos
+  - - units
+    - magazineType
+  ret:
     type: Boolean
   left: !Item
     name: pos

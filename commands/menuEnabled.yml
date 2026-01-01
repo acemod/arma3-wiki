@@ -3,7 +3,10 @@ desc: Returns if menu entry on given path is enabled or not.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: Boolean
   right: !Array
   - !Item
@@ -12,7 +15,10 @@ syntax:
   - !Item
     name: path
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - control
+  - path
+  ret:
     type: Boolean
   left: !Item
     name: control

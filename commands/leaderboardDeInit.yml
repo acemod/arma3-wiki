@@ -3,7 +3,8 @@ desc: Deletes internal class for the leaderboard with given name. Returns true i
 groups:
 - Leaderboards
 syntax:
-- ret:
+- call: !Unary boardName
+  ret:
     type: Boolean
   right: !Item
     name: boardName

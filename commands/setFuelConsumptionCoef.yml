@@ -3,7 +3,10 @@ desc: Sets the fuel consumption coefficient, which is a multiplier of the [[CfgV
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - coef
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

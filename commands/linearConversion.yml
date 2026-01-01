@@ -3,7 +3,14 @@ desc: Converts given value from given "from" range to wanted "to" range. If clip
 groups:
 - Math
 syntax:
-- ret:
+- call: !Unary
+  - minFrom
+  - maxFrom
+  - value
+  - minTo
+  - maxTo
+  - clip
+  ret:
     type: Number
     desc: respectful value from "to" range
   right: !Array

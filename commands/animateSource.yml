@@ -7,7 +7,12 @@ desc: |-
 groups:
 - Animations
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - source
+    - phase
+    - speed
+  ret:
     type: Nothing
   left: !Item
     name: object

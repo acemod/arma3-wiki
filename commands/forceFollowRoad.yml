@@ -3,7 +3,10 @@ desc: Forces the vehicle to stay on road.
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - state
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

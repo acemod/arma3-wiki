@@ -3,7 +3,10 @@ desc: Order the given unit(s) to watch the given position or target (without rad
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unit(s)
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: unit(s)
@@ -19,7 +22,10 @@ syntax:
   right: !Item
     name: position
     type: Position
-- ret:
+- call: !Binary
+  - unit(s)
+  - target
+  ret:
     type: Nothing
   left: !Item
     name: unit(s)

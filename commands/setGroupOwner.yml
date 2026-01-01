@@ -3,7 +3,10 @@ desc: Changes the ownership of a group (and all its units) to a given client. Th
 groups:
 - Multiplayer
 syntax:
-- ret:
+- call: !Binary
+  - group
+  - clientID
+  ret:
     type: Boolean
   left: !Item
     name: group

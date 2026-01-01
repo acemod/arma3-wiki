@@ -3,7 +3,8 @@ desc: Deletes a status created with [[saveStatus]] from the campaign's progress 
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary statusName
+  ret:
     type: Boolean
     desc: '[[true]] if the status was deleted successfully, [[false]] if not'
   right: !Item

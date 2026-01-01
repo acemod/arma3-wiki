@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Strings - Regular Expression
 syntax:
-- ret:
+- call: !Binary
+  - haystack
+  - - pattern
+    - startOffset
+  ret:
     type: Unknown
   left: !Item
     name: haystack

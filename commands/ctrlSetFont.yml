@@ -3,7 +3,10 @@ desc: Sets the font for given control (see [[Fonts#Available_Fonts|available fon
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - fontName
+  ret:
     type: Nothing
   left: !Item
     name: control

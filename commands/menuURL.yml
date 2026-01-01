@@ -3,7 +3,10 @@ desc: Returns current URL set in entry on given path.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: String
   right: !Array
   - !Item
@@ -12,7 +15,10 @@ syntax:
   - !Item
     name: path
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - control
+  - path
+  ret:
     type: String
   left: !Item
     name: control

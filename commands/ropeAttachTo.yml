@@ -3,7 +3,12 @@ desc: Attaches entity to the rope end with optional offset. For detach operation
 groups:
 - Ropes and Sling Loading
 syntax:
-- ret:
+- call: !Binary
+  - - entity
+    - toPoint
+    - ropeEndDownVector
+  - rope
+  ret:
     type: Nothing
   left: !Array
   - !Item
@@ -37,7 +42,10 @@ syntax:
     name: rope
     desc: the rope to which entity will be attached to
     type: Object
-- ret:
+- call: !Binary
+  - entity
+  - rope
+  ret:
     type: Nothing
   left: !Item
     name: entity

@@ -3,7 +3,11 @@ desc: Sets new picture into menu entry on given path. The picture will be replac
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - picture
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -15,7 +19,11 @@ syntax:
   - !Item
     name: picture
     type: String
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - picture
+  ret:
     type: Nothing
   left: !Item
     name: control

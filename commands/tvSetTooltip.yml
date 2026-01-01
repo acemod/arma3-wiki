@@ -3,7 +3,11 @@ desc: Sets the tooltip text associated with the specified tree view path.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - text
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -17,7 +21,11 @@ syntax:
   - !Item
     name: text
     type: String
-- ret:
+- call: !Binary
+  - ctrl
+  - - path
+    - text
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

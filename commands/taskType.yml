@@ -3,7 +3,8 @@ desc: Returns the type of the given task. A new task returns "Default" for the t
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary task
+  ret:
     type: String
   right: !Item
     name: task

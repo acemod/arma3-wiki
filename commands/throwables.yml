@@ -4,7 +4,8 @@ groups:
 - Weapons
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Unknown
     desc: |-
       unique ID of the item in the world
@@ -13,7 +14,10 @@ syntax:
   right: !Item
     name: unit
     type: Object
-- ret:
+- call: !Unary
+  - unit
+  - includeEmpty
+  ret:
     type: Unknown
     desc: |-
       unique ID of the item in the world

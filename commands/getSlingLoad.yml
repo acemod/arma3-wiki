@@ -3,7 +3,8 @@ desc: Return object which is sling loaded by vehicle
 groups:
 - Ropes and Sling Loading
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Object
     desc: the sling loaded vehicle. [[objNull]] if nothing is sling loaded.
   right: !Item

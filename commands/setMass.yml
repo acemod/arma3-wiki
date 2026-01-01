@@ -3,7 +3,10 @@ desc: Changes the mass of a PhysX object. When using the alternative syntax the 
 groups:
 - PhysX
 syntax:
-- ret:
+- call: !Binary
+  - myObject
+  - mass
+  ret:
     type: Nothing
   left: !Item
     name: myObject
@@ -11,7 +14,11 @@ syntax:
   right: !Item
     name: mass
     type: Number
-- ret:
+- call: !Binary
+  - myObject
+  - - mass
+    - time
+  ret:
     type: Nothing
   left: !Item
     name: myObject

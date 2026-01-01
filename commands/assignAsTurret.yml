@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - vehicle
+    - turretPath
+  ret:
     type: Nothing
   left: !Item
     name: unit

@@ -3,7 +3,12 @@ desc: Defines trigger condition, activation and deactivation statements. Trigger
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Binary
+  - trigger
+  - - condition
+    - activation
+    - deactivation
+  ret:
     type: Nothing
   left: !Item
     name: trigger

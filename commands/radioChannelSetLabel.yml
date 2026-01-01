@@ -4,7 +4,10 @@ groups:
 - Radio and Chat
 - Custom Radio and Chat
 syntax:
-- ret:
+- call: !Binary
+  - customChannelID
+  - label
+  ret:
     type: Nothing
   left: !Item
     name: customChannelID

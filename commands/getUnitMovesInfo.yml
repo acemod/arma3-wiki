@@ -3,12 +3,16 @@ desc: Returns various information about the unit moves (primary animation) and g
 groups:
 - Animations
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Unknown
   right: !Item
     name: unit
     type: Object
-- ret:
+- call: !Binary
+  - unit
+  - index
+  ret:
     type: Anything
     desc: Value of the requested property, or [[Nothing]] if index is invalid. See the main syntax.
   left: !Item

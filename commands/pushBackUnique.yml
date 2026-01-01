@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Arrays
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - element
+  ret:
     type: Number
     desc: index of inserted element or -1
   left: !Item

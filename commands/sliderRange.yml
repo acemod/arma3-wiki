@@ -3,13 +3,15 @@ desc: Returns limits of [[CT_SLIDER]] or [[CT_XSLIDER]].
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: Unknown
   right: !Item
     name: idc
     desc: idc of the control
     type: Number
-- ret:
+- call: !Unary control
+  ret:
     type: Unknown
   right: !Item
     name: control

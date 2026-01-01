@@ -3,7 +3,10 @@ desc: Returns list of mod parameters according to given options, values are in s
 groups:
 - Mods and Addons
 syntax:
-- ret:
+- call: !Unary
+  - modClass
+  - options
+  ret:
     type: ArrayUnknown
     desc: retrieved requested data on success or empty array {{hl|[]}}
   right: !Array

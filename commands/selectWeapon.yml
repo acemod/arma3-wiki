@@ -7,7 +7,10 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Binary
+  - unitName
+  - muzzleName
+  ret:
     type: Nothing
   left: !Item
     name: unitName
@@ -18,7 +21,12 @@ syntax:
     - type: String
       desc: null
       since: null
-- ret:
+- call: !Binary
+  - unit
+  - - weapon
+    - muzzle
+    - firemode
+  ret:
     type: !OneOf
     - type: Boolean
       desc: null

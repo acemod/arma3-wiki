@@ -3,7 +3,10 @@ desc: Enable/disable stamina system
 groups:
 - Stamina System
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - enabled
+  ret:
     type: Nothing
   left: !Item
     name: unit

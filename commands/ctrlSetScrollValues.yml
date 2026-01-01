@@ -14,7 +14,11 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - vScrollValue
+    - hScrollValue
+  ret:
     type: Nothing
   left: !Item
     name: control

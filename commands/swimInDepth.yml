@@ -3,7 +3,10 @@ desc: Sets the target depth level for swimming soldier. Depth should be a negati
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: unit

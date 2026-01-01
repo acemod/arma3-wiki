@@ -3,7 +3,8 @@ desc: Returns the person piloting the vehicle. If co-pilot is piloting, co-pilot
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Object
     desc: piloting unit or [[objNull]]
   right: !Item

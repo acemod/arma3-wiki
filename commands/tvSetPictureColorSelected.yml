@@ -3,7 +3,11 @@ desc: Sets the color of the left picture of a tree item defined by path when ite
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - color
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -3,7 +3,10 @@ desc: Sets a target to be ignored by this Group. It will not appear in [[nearTar
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Binary
+  - group
+  - target
+  ret:
     type: Nothing
   left: !Item
     name: group
@@ -19,7 +22,11 @@ syntax:
     name: target
     desc: which would be ignored
     type: Object
-- ret:
+- call: !Binary
+  - group
+  - - target
+    - isIgnored
+  ret:
     type: Nothing
   left: !Item
     name: group

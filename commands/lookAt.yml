@@ -3,7 +3,10 @@ desc: Control what the unit(s) is/are looking at (target or [[Position]]). If ta
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unit(s)
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: unit(s)

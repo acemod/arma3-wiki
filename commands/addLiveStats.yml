@@ -3,7 +3,10 @@ desc: Adds score to the Xbox Live Statistics score for the given unit (or the co
 groups:
 - System
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - score
+  ret:
     type: Nothing
   left: !Item
     name: unit

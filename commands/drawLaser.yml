@@ -7,7 +7,16 @@ groups:
 - Interaction
 - Lights
 syntax:
-- ret:
+- call: !Unary
+  - position
+  - direction
+  - beamColor
+  - dotColor
+  - dotSize
+  - beamThickness
+  - beamMaxLength
+  - isIR
+  ret:
     type: Nothing
   right: !Array
   - !Item

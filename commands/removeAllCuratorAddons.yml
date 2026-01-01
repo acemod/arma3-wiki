@@ -3,7 +3,8 @@ desc: Restrict access to all addons for given curator.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary curatorObj
+  ret:
     type: Nothing
   right: !Item
     name: curatorObj

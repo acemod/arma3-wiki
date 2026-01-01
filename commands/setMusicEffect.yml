@@ -9,7 +9,10 @@ groups:
 - Triggers
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - trigger
+  - track
+  ret:
     type: Nothing
   left: !Item
     name: trigger
@@ -17,7 +20,10 @@ syntax:
   right: !Item
     name: track
     type: String
-- ret:
+- call: !Binary
+  - waypoint
+  - track
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

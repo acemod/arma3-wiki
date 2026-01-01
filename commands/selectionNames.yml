@@ -10,7 +10,8 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''
@@ -18,7 +19,10 @@ syntax:
   right: !Item
     name: object
     type: Object
-- ret:
+- call: !Binary
+  - object
+  - LOD
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

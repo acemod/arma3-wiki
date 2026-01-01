@@ -3,12 +3,16 @@ desc: Launches action attached to given (button based) control. Command ignores 
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary control
+  ret:
     type: Nothing
   right: !Item
     name: control
     type: Control
-- ret:
+- call: !Binary
+  - control
+  - full
+  ret:
     type: Nothing
   left: !Item
     name: control

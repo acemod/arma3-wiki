@@ -3,7 +3,15 @@ desc: Sets camera shake default parameters.
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary
+  - power
+  - duration
+  - frequency
+  - minSpeed
+  - minMass
+  - caliberCoefHit
+  - vehicleCoef
+  ret:
     type: Nothing
   right: !Array
   - !Item

@@ -7,7 +7,11 @@ desc: |-
 groups:
 - GUI Control - Positioning
 syntax:
-- ret:
+- call: !Binary
+  - controlName
+  - - x
+    - y
+  ret:
     type: Nothing
   left: !Item
     name: controlName
@@ -22,7 +26,13 @@ syntax:
     name: y
     desc: position in y
     type: Number
-- ret:
+- call: !Binary
+  - controlName
+  - - x
+    - y
+    - w
+    - h
+  ret:
     type: Nothing
   left: !Item
     name: controlName
@@ -45,7 +55,12 @@ syntax:
     name: h
     desc: height of the control
     type: Number
-- ret:
+- call: !Binary
+  - controlName
+  - - x
+    - z
+    - y
+  ret:
     type: Nothing
   left: !Item
     name: controlName

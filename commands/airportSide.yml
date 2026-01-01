@@ -10,12 +10,14 @@ groups:
 - Sides
 - Roads and Airports
 syntax:
-- ret:
+- call: !Unary id
+  ret:
     type: Side
   right: !Item
     name: id
     type: Number
-- ret:
+- call: !Unary target
+  ret:
     type: Side
   right: !Item
     name: target

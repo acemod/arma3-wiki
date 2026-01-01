@@ -11,12 +11,14 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary idd
+  ret:
     type: Display
   right: !Item
     name: idd
     type: Number
-- ret:
+- call: !Unary displayName
+  ret:
     type: Display
   right: !Item
     name: displayName

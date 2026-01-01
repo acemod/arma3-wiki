@@ -8,7 +8,8 @@ desc: |-
 groups:
 - Roads and Airports
 syntax:
-- ret:
+- call: !Unary roadSegment
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
@@ -17,7 +18,10 @@ syntax:
     name: roadSegment
     desc: road segment
     type: Object
-- ret:
+- call: !Unary
+  - roadSegment
+  - extended
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

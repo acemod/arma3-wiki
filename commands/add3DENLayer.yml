@@ -3,7 +3,10 @@ desc: Adds an editing layer in [[:Category:Eden Editor|Eden Editor]].
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Binary
+  - parentLayerID
+  - name
+  ret:
     type: Number
     desc: layer ID
   left: !Item

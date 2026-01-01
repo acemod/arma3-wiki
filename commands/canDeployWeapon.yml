@@ -3,7 +3,8 @@ desc: Returns [[true]] if a unit's weapon can be deployed.
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Boolean
     desc: '[[true]] if unit''s weapon can be deployed'
   right: !Item

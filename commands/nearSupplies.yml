@@ -3,7 +3,10 @@ desc: Find supplies (weapon holders, ammo crates, fuel feeds, other units) in th
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Binary
+  - origin
+  - radius
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
@@ -22,7 +25,11 @@ syntax:
   right: !Item
     name: radius
     type: Number
-- ret:
+- call: !Binary
+  - origin
+  - - typeName
+    - radius
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

@@ -6,12 +6,16 @@ groups:
 - Object Manipulation
 - Render Time Scope
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Number
   right: !Item
     name: object
     type: Object
-- ret:
+- call: !Binary
+  - pos1
+  - pos2
+  ret:
     type: Number
   left: !Item
     name: pos1

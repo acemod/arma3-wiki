@@ -3,7 +3,8 @@ desc: Get marker direction.
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Unary markerName
+  ret:
     type: Number
   right: !Item
     name: markerName

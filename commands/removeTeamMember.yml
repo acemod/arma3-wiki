@@ -3,7 +3,10 @@ desc: Remove given member from given team. Effect is local, unless both member a
 groups:
 - Teams
 syntax:
-- ret:
+- call: !Binary
+  - team
+  - member
+  ret:
     type: Nothing
   left: !Item
     name: team

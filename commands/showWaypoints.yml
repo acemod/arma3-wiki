@@ -3,7 +3,8 @@ desc: Shows/Hides task HUD markers and waypoints that will fade out in time. Dep
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Unary enabled
+  ret:
     type: Nothing
   right: !Item
     name: enabled

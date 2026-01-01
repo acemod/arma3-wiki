@@ -3,7 +3,11 @@ desc: Hides or shows the [[createSimpleObject | simple object]]'s provided selec
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - selection
+    - hidden
+  ret:
     type: Nothing
   left: !Item
     name: object

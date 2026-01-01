@@ -8,7 +8,13 @@ groups:
 - Radio and Chat
 - Custom Radio and Chat
 syntax:
-- ret:
+- call: !Unary
+  - color
+  - label
+  - callSign
+  - units
+  - sentenceType
+  ret:
     type: Number
     desc: created '''[[Channel IDs|custom channel ID]]''' (used in [[customChat]] command), 0 if failed. (see [[BIS_fnc_channelNumToRadioChannelID]], [[BIS_fnc_radioChannelIDToChannelNum]])
   right: !Array

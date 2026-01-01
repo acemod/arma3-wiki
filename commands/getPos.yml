@@ -12,17 +12,23 @@ desc: |-
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Unknown
   right: !Item
     name: object
     type: Object
-- ret:
+- call: !Unary location
+  ret:
     type: Unknown
   right: !Item
     name: location
     type: Location
-- ret:
+- call: !Binary
+  - origin
+  - - distance
+    - heading
+  ret:
     type: Unknown
   left: !Item
     name: origin

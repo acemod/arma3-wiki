@@ -3,7 +3,10 @@ desc: Removes ownership over a remotely detonatable mine from the unit.
 groups:
 - Mines
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - mine
+  ret:
     type: Nothing
   left: !Item
     name: unit

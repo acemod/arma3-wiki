@@ -3,7 +3,11 @@ desc: Sets text color on given Tree View Item
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - color
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -17,7 +21,11 @@ syntax:
     name: color
     desc: item text color
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - color
+  ret:
     type: Nothing
   left: !Item
     name: control

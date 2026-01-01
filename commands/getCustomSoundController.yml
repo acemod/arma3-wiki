@@ -3,7 +3,10 @@ desc: Returns current value set to the controller (see [[setCustomSoundControlle
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Unary
+  - vehicle
+  - controller
+  ret:
     type: Number
   right: !Array
   - !Item

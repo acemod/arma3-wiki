@@ -10,7 +10,10 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Unary
+  - position
+  - type
+  ret:
     type: Object
     desc: nearest object, [[objNull]] otherwise
   right: !Array
@@ -31,7 +34,8 @@ syntax:
     name: type
     desc: type of object (see [[typeOf]], [[CfgVehicles|class type]])
     type: String
-- ret:
+- call: !Unary position
+  ret:
     type: Object
     desc: nearest object, [[objNull]] otherwise
   right: !Item
@@ -44,7 +48,10 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-- ret:
+- call: !Binary
+  - position
+  - typeOrId
+  ret:
     type: Object
     desc: nearest object, [[objNull]] otherwise
   left: !Item
@@ -61,7 +68,10 @@ syntax:
     name: typeOrId
     desc: type of object (see [[typeOf]], [[CfgVehicles|class type]]) or {{GVI|arma3|2.10|size= 0.75}} Visitor id (see [[getObjectID]])
     type: String
-- ret:
+- call: !Binary
+  - position
+  - id
+  ret:
     type: Object
     desc: nearest object, [[objNull]] otherwise
   left: !Item

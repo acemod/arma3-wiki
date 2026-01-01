@@ -3,7 +3,10 @@ desc: Returns ammo count on given pylon (or [[false]] on failure).
 groups:
 - Vehicle Loadouts
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - pylon
+  ret:
     type: !OneOf
     - type: Number
       desc: null

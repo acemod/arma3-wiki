@@ -3,7 +3,10 @@ desc: Removes item from soldier's uniform. Can be used with magazines and weapon
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

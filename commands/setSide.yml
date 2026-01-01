@@ -6,7 +6,10 @@ groups:
 - Sides
 - Locations
 syntax:
-- ret:
+- call: !Binary
+  - location
+  - side
+  ret:
     type: Nothing
   left: !Item
     name: location

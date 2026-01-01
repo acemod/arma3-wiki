@@ -4,7 +4,10 @@ groups:
 - Unit Inventory
 - Broken Commands
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

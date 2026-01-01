@@ -3,7 +3,10 @@ desc: Types text to the global radio channel. The text will be visible only on t
 groups:
 - Radio and Chat
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - chatText
+  ret:
     type: Nothing
   left: !Item
     name: unit

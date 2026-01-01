@@ -3,7 +3,10 @@ desc: Return the value of variable in the variable space of given FSM. The FSM h
 groups:
 - Variables
 syntax:
-- ret:
+- call: !Binary
+  - FSMhandle
+  - name
+  ret:
     type: Anything
   left: !Item
     name: FSMhandle
@@ -12,7 +15,11 @@ syntax:
     name: name
     desc: name of the variable
     type: String
-- ret:
+- call: !Binary
+  - FSMhandle
+  - - name
+    - defaultValue
+  ret:
     type: Anything
   left: !Item
     name: FSMhandle

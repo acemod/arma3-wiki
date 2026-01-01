@@ -6,7 +6,13 @@ groups:
 - Positions
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - position
+    - markers
+    - placement
+    - special
+  ret:
     type: Boolean
     desc: '[[true]] on success, [[false]] on failure'
   left: !Item

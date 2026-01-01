@@ -24,7 +24,19 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - fromPosASL
+    - toPosASL
+    - fromVelocity
+    - toVelocity
+    - fromVectorDir
+    - toVectorDir
+    - fromVectorUp
+    - toVectorUp
+    - interval
+    - customCenter
+  ret:
     type: Nothing
   left: !Item
     name: object

@@ -3,7 +3,11 @@ desc: Shares the target vehicle via datalink to the [[Side]] center for a given 
 groups:
 - Sensors
 syntax:
-- ret:
+- call: !Binary
+  - side
+  - - target
+    - time
+  ret:
     type: Nothing
   left: !Item
     name: side

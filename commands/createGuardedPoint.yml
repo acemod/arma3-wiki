@@ -9,7 +9,12 @@ desc: |-
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Unary
+  - side
+  - position
+  - objectMapID
+  - vehicle
+  ret:
     type: Nothing
   right: !Array
   - !Item

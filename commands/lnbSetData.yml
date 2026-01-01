@@ -3,7 +3,12 @@ desc: Sets the additional text (invisible) on the item with the given position o
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - data
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -20,7 +25,12 @@ syntax:
     name: data
     desc: the invisible text to add
     type: String
-- ret:
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - data
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

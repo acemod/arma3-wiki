@@ -16,7 +16,10 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary
+  - name
+  - priority
+  ret:
     type: Number
     desc: handle or -1 if failed
   right: !Array

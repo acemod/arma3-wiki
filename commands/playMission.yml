@@ -3,7 +3,11 @@ desc: The mission is launched (from the main menu).
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary
+  - campaign
+  - mission
+  - skipBriefing
+  ret:
     type: Nothing
   right: !Array
   - !Item

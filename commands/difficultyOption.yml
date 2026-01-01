@@ -6,7 +6,8 @@ desc: |-
 groups:
 - Difficulty
 syntax:
-- ret:
+- call: !Unary optionName
+  ret:
     type: Number
   right: !Item
     name: optionName
@@ -71,7 +72,8 @@ syntax:
     - value: multipleSaves
       desc: null
       since: null
-- ret:
+- call: !Unary array
+  ret:
     type: Unknown
   right: !Item
     name: array

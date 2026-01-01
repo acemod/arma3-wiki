@@ -4,7 +4,10 @@ multiplayer_note: This command is only effective when used on local units. When 
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - target
+  ret:
     type: Nothing
   left: !Item
     name: unit

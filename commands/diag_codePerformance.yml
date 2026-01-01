@@ -8,7 +8,11 @@ groups:
 - Diagnostic
 - Performance Profiling
 syntax:
-- ret:
+- call: !Unary
+  - code
+  - arguments
+  - cycles
+  ret:
     type: Unknown
     desc: |-
       average duration of 1 execution in milliseconds

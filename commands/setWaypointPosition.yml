@@ -3,7 +3,11 @@ desc: "Attempts to move given waypoint to a random position inside a circle with
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - - center
+    - radius
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

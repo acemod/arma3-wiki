@@ -5,7 +5,10 @@ desc: |-
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - mainmap
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: mainmap
@@ -13,7 +16,8 @@ syntax:
   right: !Item
     name: enable
     type: Boolean
-- ret:
+- call: !Unary minimap
+  ret:
     type: Unknown
   right: !Item
     name: minimap

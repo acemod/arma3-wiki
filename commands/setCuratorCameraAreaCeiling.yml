@@ -3,7 +3,10 @@ desc: Sets maximal ([[Position#PositionATL|ATL]]) height to which curator camera
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - height
+  ret:
     type: Nothing
   left: !Item
     name: curatorObj

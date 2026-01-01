@@ -6,7 +6,10 @@ desc: |-
 groups:
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Binary
+  - vehicleName
+  - ammoCargo
+  ret:
     type: Nothing
   left: !Item
     name: vehicleName

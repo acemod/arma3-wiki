@@ -3,7 +3,10 @@ desc: Removes all event handlers of given type that were added by [[addEventHand
 groups:
 - Event Handlers
 syntax:
-- ret:
+- call: !Binary
+  - target
+  - handlerType
+  ret:
     type: Nothing
   left: !Item
     name: target

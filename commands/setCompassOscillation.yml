@@ -3,7 +3,11 @@ desc: This command sets random heading on the player's compass (both in map and 
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary
+  - angle
+  - frequencyMin
+  - frequencyMax
+  ret:
     type: Nothing
   right: !Array
   - !Item

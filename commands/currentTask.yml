@@ -3,7 +3,8 @@ desc: Return current task of given person.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary person
+  ret:
     type: Task
   right: !Item
     name: person

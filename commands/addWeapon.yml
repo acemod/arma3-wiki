@@ -4,7 +4,10 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - weapon
+  ret:
     type: Nothing
   left: !Item
     name: object
@@ -14,7 +17,11 @@ syntax:
     name: weapon
     desc: weapon class name. See the topic [[:Category:Weapons]] for reference about possible values.
     type: String
-- ret:
+- call: !Binary
+  - object
+  - - weapon
+    - autoselect
+  ret:
     type: Nothing
   left: !Item
     name: object

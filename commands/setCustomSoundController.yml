@@ -7,7 +7,11 @@ desc: |-
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Unary
+  - vehicle
+  - controller
+  - value
+  ret:
     type: Boolean
     desc: '[[true]] on success'
   right: !Array

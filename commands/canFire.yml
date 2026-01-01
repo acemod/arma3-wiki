@@ -3,7 +3,8 @@ desc: Returns [[true]] if the given vehicle is still able to fire. For the comma
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary unitName
+  ret:
     type: Boolean
     desc: '[[true]] if able to fire'
   right: !Item

@@ -10,14 +10,18 @@ groups:
 - Map
 - Interaction
 syntax:
-- ret:
+- call: !Unary show
+  ret:
     type: Boolean
     desc: equivalent of [[visibleMap]]
   right: !Item
     name: show
     desc: if [[true]] opens map, if [[false]] closes map, provided it is not ''forced''
     type: Boolean
-- ret:
+- call: !Unary
+  - show
+  - forced
+  ret:
     type: Boolean
     desc: equivalent of [[visibleMap]]
   right: !Array

@@ -3,7 +3,10 @@ desc: Sets the object position above sea level. Given position must be in [[Posi
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - pos
+  ret:
     type: Nothing
   left: !Item
     name: object

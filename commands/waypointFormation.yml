@@ -3,7 +3,8 @@ desc: "Gets the waypoint formation.\n\nPossible values are: \n* \"NO CHANGE\"\n*
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Unary waypoint
+  ret:
     type: String
   right: !Item
     name: waypoint

@@ -3,7 +3,10 @@ desc: Allow curator use of given addon.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - addons
+  ret:
     type: Nothing
   left: !Item
     name: curatorObj

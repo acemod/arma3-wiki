@@ -27,7 +27,10 @@ desc: |-
 groups:
 - Variables
 syntax:
-- ret:
+- call: !Binary
+  - val1
+  - val2
+  ret:
     type: Boolean
   left: !Item
     name: val1

@@ -3,7 +3,10 @@ desc: Compares two values by reference, returns [[true]] if equal.
 groups:
 - Variables
 syntax:
-- ret:
+- call: !Binary
+  - val1
+  - val2
+  ret:
     type: Boolean
     desc: '[[true]] if the same ref'
   left: !Item

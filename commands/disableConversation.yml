@@ -3,7 +3,10 @@ desc: "In theory disables the ability to talk to other people. In actuality, if 
 groups:
 - Radio and Chat
 syntax:
-- ret:
+- call: !Binary
+  - unitName
+  - disable
+  ret:
     type: Nothing
   left: !Item
     name: unitName

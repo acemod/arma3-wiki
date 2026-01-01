@@ -3,7 +3,12 @@ desc: Controls availability of component to given object info panel.
 groups:
 - Custom Panels
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - panelID
+    - componentClassOrType
+    - enable
+  ret:
     type: Boolean
     desc: '[[true]] if component was successfully enabled on the panel, [[false]] otherwise (e.g. component is not available for the object)'
   left: !Item
@@ -21,7 +26,13 @@ syntax:
   - !Item
     name: enable
     type: Boolean
-- ret:
+- call: !Binary
+  - - unit
+    - turretPath
+  - - panelID
+    - componentClassOrType
+    - enable
+  ret:
     type: Boolean
     desc: '[[true]] if component was successfully enabled on the panel, [[false]] otherwise (e.g. component is not available for the object)'
   left: !Array

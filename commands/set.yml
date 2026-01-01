@@ -4,7 +4,11 @@ groups:
 - Arrays
 - HashMap
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - - index
+    - value
+  ret:
     type: Nothing
   left: !Item
     name: array
@@ -19,7 +23,12 @@ syntax:
   - !Item
     name: value
     type: Anything
-- ret:
+- call: !Binary
+  - hashMap
+  - - key
+    - value
+    - insertOnly
+  ret:
     type: Boolean
     desc: '[[false]] if the key is new to the hashmap, [[true]] if a value got overwritten'
   left: !Item

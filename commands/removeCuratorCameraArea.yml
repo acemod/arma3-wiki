@@ -3,7 +3,10 @@ desc: Removes curator camera area.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - cameraAreaID
+  ret:
     type: Nothing
   left: !Item
     name: curatorObj

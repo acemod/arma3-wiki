@@ -4,7 +4,10 @@ groups:
 - Waypoints
 - Remote Control
 syntax:
-- ret:
+- call: !Binary
+  - uav
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: uav

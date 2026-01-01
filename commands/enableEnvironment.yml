@@ -17,13 +17,18 @@ groups:
 - Environment
 - Sounds
 syntax:
-- ret:
+- call: !Unary enable
+  ret:
     type: Nothing
   right: !Item
     name: enable
     desc: '[[false]] to disable ambient life and ambient sounds, [[true]] to re-enable it'
     type: Boolean
-- ret:
+- call: !Unary
+  - ambientLife
+  - ambientSound
+  - windyCoef
+  ret:
     type: Nothing
   right: !Array
   - !Item

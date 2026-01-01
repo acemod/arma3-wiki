@@ -6,7 +6,10 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - show
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -17,7 +20,10 @@ syntax:
     name: show
     desc: '[[true]] to show the control, [[false]] to hide it'
     type: Boolean
-- ret:
+- call: !Binary
+  - control
+  - show
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -3,7 +3,10 @@ desc: "Toggle auto-trim for RTD helicopters. \n{{Feature|afm}}"
 groups:
 - RTD
 syntax:
-- ret:
+- call: !Binary
+  - helicopterRTD
+  - enable
+  ret:
     type: Boolean
   left: !Item
     name: helicopterRTD

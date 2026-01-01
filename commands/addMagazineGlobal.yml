@@ -4,7 +4,10 @@ multiplayer_note: Before {{arma3}} v2.00 this command was broken in MP and dupli
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - magazineName
+  ret:
     type: Nothing
   left: !Item
     name: unit

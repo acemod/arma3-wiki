@@ -3,7 +3,8 @@ desc: Returns an array of all mines detected by a given side
 groups:
 - Mines
 syntax:
-- ret:
+- call: !Unary side
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

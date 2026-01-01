@@ -3,7 +3,10 @@ desc: Creates a sling loading from a helicopter to an entity if possible. To unl
 groups:
 - Ropes and Sling Loading
 syntax:
-- ret:
+- call: !Binary
+  - heli
+  - cargo
+  ret:
     type: Boolean
     desc: '[[true]] on success'
   left: !Item

@@ -3,7 +3,8 @@ desc: Returns true if the task is flagged to be always visible or false if not.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary task
+  ret:
     type: Boolean
   right: !Item
     name: task

@@ -3,7 +3,8 @@ desc: Returns all items names and count from ammo box (or any general weapon hol
 groups:
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Unary box
+  ret:
     type: Unknown
   right: !Item
     name: box

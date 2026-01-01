@@ -3,13 +3,15 @@ desc: Destroy [[Post Process Effects]] given by handle or array of handles.
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary effect
+  ret:
     type: Nothing
   right: !Item
     name: effect
     desc: effect handle
     type: Number
-- ret:
+- call: !Unary effects
+  ret:
     type: Nothing
   right: !Item
     name: effects

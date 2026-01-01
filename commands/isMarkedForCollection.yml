@@ -3,7 +3,8 @@ desc: Checks whether the object is marked for weapons collection.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Boolean
   right: !Item
     name: object

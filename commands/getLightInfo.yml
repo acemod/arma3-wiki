@@ -3,7 +3,8 @@ desc: Returns various properties for the given {{hl|#lightpoint}} or {{hl|#light
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary light
+  ret:
     type: Unknown
     desc: |-
       intensity: [[Number]] - getter for [[setLightIntensity]] ([[setLightBrightness]] also sets intensity in a weird way, but it is also obsolete)
@@ -22,7 +23,10 @@ syntax:
     name: light
     desc: '{{hl|#lightpoint}} or {{hl|#lightreflector}}'
     type: Object
-- ret:
+- call: !Binary
+  - light
+  - index
+  ret:
     type: Anything
     desc: depends on the requested property, or [[Nothing]]
   left: !Item

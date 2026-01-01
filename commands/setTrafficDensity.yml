@@ -3,7 +3,13 @@ desc: Set the density of ambient cars in a rectangle (in cars per kilometer). {{
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Unary
+  - density
+  - xMin
+  - xMax
+  - zMin
+  - zMax
+  ret:
     type: Nothing
   right: !Array
   - !Item

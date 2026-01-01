@@ -3,7 +3,11 @@ desc: Adds new submenu entry into item on given path.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - text
+  ret:
     type: Number
   right: !Array
   - !Item
@@ -15,7 +19,11 @@ syntax:
   - !Item
     name: text
     type: String
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - text
+  ret:
     type: Number
     desc: index of the item
   left: !Item

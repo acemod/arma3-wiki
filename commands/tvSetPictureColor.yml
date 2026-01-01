@@ -3,7 +3,11 @@ desc: Sets the colour of the picture (set via [[tvSetPicture]]) under the specif
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - color
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -17,7 +21,11 @@ syntax:
   - !Item
     name: color
     type: ArrayColorRgba
-- ret:
+- call: !Binary
+  - ctrl
+  - - path
+    - color
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

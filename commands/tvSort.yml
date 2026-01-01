@@ -3,7 +3,11 @@ desc: Sorts all children of given path. Text of [[CT_TREE|Tree View]] entries is
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - reversed
+  ret:
     type: Nothing
   left: !Item
     name: control
@@ -19,7 +23,11 @@ syntax:
     type: Boolean
     optional: true
     default: '[[false]]'
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - reversed
+  ret:
     type: Nothing
   right: !Array
   - !Item

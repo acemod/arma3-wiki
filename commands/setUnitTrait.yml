@@ -16,7 +16,12 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - skillName
+    - value
+    - isCustom
+  ret:
     type: Nothing
   left: !Item
     name: unit

@@ -3,7 +3,8 @@ desc: "Gets the suppression value for the given unit. Returns varying [[Number]]
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Number
     desc: from 0 to 1, or -1 if suppression is not available.
   right: !Item

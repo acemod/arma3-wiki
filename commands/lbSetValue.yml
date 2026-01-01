@@ -3,7 +3,11 @@ desc: Sets the additional value in the row with the given index of a [[CT_LISTBO
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - index
+  - value
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -17,7 +21,11 @@ syntax:
     name: value
     desc: only integer values are supported
     type: Number
-- ret:
+- call: !Binary
+  - control
+  - - index
+    - value
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -5,7 +5,12 @@ problem_notes:
 groups:
 - Artillery
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - position
+    - type
+    - rounds
+  ret:
     type: Nothing
   left: !Item
     name: unit

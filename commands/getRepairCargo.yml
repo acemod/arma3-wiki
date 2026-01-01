@@ -3,7 +3,8 @@ desc: Returns the amount (1 is full) of repair resources in the cargo space of a
 groups:
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Number
     desc: repair cargo value, -1 if repair cargo is not supported, 0 if the vehicle is ![[alive]] or [[isNull]]
   right: !Item

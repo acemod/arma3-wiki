@@ -3,7 +3,10 @@ desc: Sets the new type of Logic object(s). For other objects use [[set3DENObjec
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Binary
+  - objects
+  - classname
+  ret:
     type: Nothing
   left: !Item
     name: objects

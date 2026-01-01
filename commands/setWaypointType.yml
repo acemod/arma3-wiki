@@ -3,7 +3,10 @@ desc: "Sets the waypoint type of given waypoint. \n\nMore details at [[Waypoints
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - type
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

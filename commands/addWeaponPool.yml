@@ -3,7 +3,10 @@ desc: Add weapons to the weapon pool, of which the player may choose in the foll
 groups:
 - Weapon Pool
 syntax:
-- ret:
+- call: !Unary
+  - weaponName
+  - count
+  ret:
     type: Nothing
   right: !Array
   - !Item

@@ -3,7 +3,8 @@ desc: Opens a Steam page of the app with given appId. Only works for known appId
 groups:
 - DLC
 syntax:
-- ret:
+- call: !Unary dlcID
+  ret:
     type: Boolean
     desc: result
   right: !Item

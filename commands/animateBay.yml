@@ -8,7 +8,12 @@ groups:
 - Animations
 - Vehicle Loadouts
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - bay
+    - animphase
+    - instant
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

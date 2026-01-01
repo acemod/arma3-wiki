@@ -3,7 +3,8 @@ desc: Load the given selection preset to the current selection of the curator.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary numkey
+  ret:
     type: Nothing
   right: !Item
     name: numkey

@@ -3,7 +3,10 @@ desc: Create new item and store it to soldier's uniform. The item can also be a 
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

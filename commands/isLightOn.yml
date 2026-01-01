@@ -3,13 +3,17 @@ desc: Returns [[true]] if vehicle headlights are on otherwise [[false]].
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Boolean
   right: !Item
     name: vehicle
     desc: vehicle with headlights
     type: Object
-- ret:
+- call: !Unary
+  - vehicle
+  - turret
+  ret:
     type: Boolean
   right: !Array
   - !Item

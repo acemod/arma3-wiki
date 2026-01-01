@@ -3,7 +3,10 @@ desc: Returns the name of the type of the currently using magazine on specified 
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
     type: String
   left: !Item
     name: vehicle

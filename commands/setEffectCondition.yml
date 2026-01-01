@@ -8,7 +8,10 @@ desc: |-
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Binary
+  - trigger
+  - statement
+  ret:
     type: Nothing
   left: !Item
     name: trigger
@@ -16,7 +19,10 @@ syntax:
   right: !Item
     name: statement
     type: String
-- ret:
+- call: !Binary
+  - waypoint
+  - statement
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

@@ -3,7 +3,12 @@ desc: Sets the additional '''integer''' value in the item with the position inde
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - value
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -19,7 +24,12 @@ syntax:
   - !Item
     name: value
     type: Number
-- ret:
+- call: !Binary
+  - control
+  - - - row
+      - column
+    - value
+  ret:
     type: Nothing
   left: !Item
     name: control

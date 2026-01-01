@@ -11,7 +11,10 @@ desc: |-
 groups:
 - HashMap
 syntax:
-- ret:
+- call: !Unary
+  - classDefinition
+  - constructorArguments
+  ret:
     type: HashMapUnknown
   right: !Array
   - !Item

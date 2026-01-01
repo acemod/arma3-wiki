@@ -11,7 +11,8 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Unknown
     desc: |-
       current ammo round reload phase (see [[weaponReloadingTime]])
@@ -19,7 +20,13 @@ syntax:
   right: !Item
     name: unit
     type: Object
-- ret:
+- call: !Unary
+  - vehicle
+  - turretPath
+  - weapon
+  - muzzle
+  - firemode
+  ret:
     type: Unknown
     desc: |-
       current ammo round reload phase (see [[weaponReloadingTime]])
@@ -55,7 +62,10 @@ syntax:
     default: '{{hl|""}}'
     since:
       arma3: '2.8'
-- ret:
+- call: !Binary
+  - unit
+  - weaponOrMuzzle
+  ret:
     type: Unknown
     desc: |-
       current ammo round reload phase (see [[weaponReloadingTime]])

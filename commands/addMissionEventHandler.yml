@@ -3,7 +3,11 @@ desc: 'Adds event handler attached to the current mission and returns event hand
 groups:
 - Event Handlers
 syntax:
-- ret:
+- call: !Unary
+  - event
+  - expression
+  - arguments
+  ret:
     type: Number
     desc: the index of the currently added mission event handler is returned
   right: !Array

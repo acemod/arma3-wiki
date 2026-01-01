@@ -14,7 +14,11 @@ desc: |-
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary
+  - ip
+  - port
+  - password
+  ret:
     type: Nothing
   right: !Array
   - !Item

@@ -3,7 +3,8 @@ desc: Returns a unit's current weapon muzzle. Does not work on vehicles.
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: String
     desc: current muzzle
   right: !Item

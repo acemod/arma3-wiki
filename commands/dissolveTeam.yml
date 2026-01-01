@@ -3,7 +3,8 @@ desc: Dissolves the given team. All members become members of the main team.
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Unary teamColor
+  ret:
     type: Nothing
   right: !Item
     name: teamColor

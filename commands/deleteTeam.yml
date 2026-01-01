@@ -3,7 +3,8 @@ desc: Destroy given team.
 groups:
 - Teams
 syntax:
-- ret:
+- call: !Unary team
+  ret:
     type: Nothing
   right: !Item
     name: team

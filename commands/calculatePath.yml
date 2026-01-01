@@ -29,7 +29,12 @@ problem_notes:
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary
+  - type
+  - behaviour
+  - from
+  - to
+  ret:
     type: Object
     desc: 'the agent to [[addEventHandler|add]] the [[Arma 3: Event Handlers#PathCalculated|{{hl|"PathCalculated"}} Event Handler]] to.'
   right: !Array

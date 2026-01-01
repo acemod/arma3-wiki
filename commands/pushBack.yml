@@ -3,7 +3,10 @@ desc: 'Insert an element to the back of the given array. This command modifies t
 groups:
 - Arrays
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - element
+  ret:
     type: Number
     desc: index of inserted element
   left: !Item

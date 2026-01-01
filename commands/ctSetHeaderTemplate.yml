@@ -3,7 +3,10 @@ desc: Takes config path to the new header template. Clears the whole RscControls
 groups:
 - GUI Control - Controls Table
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - config
+  ret:
     type: Nothing
   left: !Item
     name: control

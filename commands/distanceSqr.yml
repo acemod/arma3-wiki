@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- ret:
+- call: !Binary
+  - var1
+  - var2
+  ret:
     type: Number
     desc: distance in meters or 1e10 if distance cannot be calculated
   left: !Item
@@ -26,7 +29,10 @@ syntax:
     - type: Position
       desc: null
       since: null
-- ret:
+- call: !Binary
+  - a
+  - b
+  ret:
     type: Number
     desc: distance c calculated as <sqf inline>c = a * a + b * b</sqf>
   left: !Item

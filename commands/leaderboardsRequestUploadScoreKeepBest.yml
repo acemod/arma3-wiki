@@ -3,7 +3,11 @@ desc: Starts async. operation to upload score to board with given name, value is
 groups:
 - Leaderboards
 syntax:
-- ret:
+- call: !Unary
+  - boardName
+  - score
+  - details
+  ret:
     type: Boolean
   right: !Array
   - !Item

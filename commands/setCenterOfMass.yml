@@ -3,7 +3,11 @@ desc: Changes the center of mass of an object smoothly during the given time (in
 groups:
 - PhysX
 syntax:
-- ret:
+- call: !Binary
+  - myObject
+  - - centerOfMass
+    - time
+  ret:
     type: Nothing
   left: !Item
     name: myObject
@@ -17,7 +21,10 @@ syntax:
     name: time
     desc: transition time, 0 for instant center of mass transfer
     type: Number
-- ret:
+- call: !Binary
+  - myObject
+  - centerOfMass
+  ret:
     type: Nothing
   left: !Item
     name: myObject

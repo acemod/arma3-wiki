@@ -3,7 +3,8 @@ desc: Removes all backpacks from the vehicle cargo space. MP synchronized.
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Nothing
   right: !Item
     name: unit

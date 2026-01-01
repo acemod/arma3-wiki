@@ -28,7 +28,11 @@ desc: |-
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - defaultCursor
+    - newCursor
+  ret:
     type: Nothing
   left: !Item
     name: control

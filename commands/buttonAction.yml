@@ -3,13 +3,15 @@ desc: 'Returns the action assigned to a control of the currently active user dia
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: String
   right: !Item
     name: idc
     desc: button IDC
     type: Number
-- ret:
+- call: !Unary control
+  ret:
     type: String
   right: !Item
     name: control

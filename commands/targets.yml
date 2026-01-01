@@ -5,7 +5,14 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Binary
+  - unitOrGroup
+  - - enemyOnly
+    - maxDistance
+    - sides
+    - maxAge
+    - alternateCenter
+  ret:
     type: ArrayUnknown
     desc: '''''unitOrGroup''''''s targets matching the criteria'
   left: !Item

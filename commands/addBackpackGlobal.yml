@@ -9,7 +9,10 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - backpack
+  ret:
     type: Nothing
   left: !Item
     name: unit

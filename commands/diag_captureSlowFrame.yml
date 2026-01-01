@@ -4,7 +4,13 @@ groups:
 - Diagnostic
 - Performance Profiling
 syntax:
-- ret:
+- call: !Unary
+  - section
+  - threshold
+  - frameSkip
+  - toFile
+  - continuousCounter
+  ret:
     type: Nothing
   right: !Array
   - !Item

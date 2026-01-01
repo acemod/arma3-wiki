@@ -3,7 +3,10 @@ desc: Forces a helicopter landing. If there is a helipad nearby, the helicopter 
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - helicopter
+  - mode
+  ret:
     type: Nothing
   left: !Item
     name: helicopter

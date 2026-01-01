@@ -12,7 +12,13 @@ multiplayer_note: Use <sqf inline>_attachedObj setPosWorld getPosWorld _attached
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object1
+  - - object2
+    - offset
+    - memPoint
+    - followBoneRotation
+  ret:
     type: Nothing
   left: !Item
     name: object1

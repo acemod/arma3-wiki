@@ -135,7 +135,11 @@ multiplayer_note: For the global variant of this command see [[setGroupIdGlobal]
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - group
+  - - nameFormat
+    - nameParamN
+  ret:
     type: Nothing
   left: !Item
     name: group

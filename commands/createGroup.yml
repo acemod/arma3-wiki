@@ -34,13 +34,17 @@ desc: |-
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Unary side
+  ret:
     type: Group
     desc: '[[grpNull]] if the group limit is reached'
   right: !Item
     name: side
     type: Side
-- ret:
+- call: !Unary
+  - side
+  - deleteWhenEmpty
+  ret:
     type: Group
     desc: '[[grpNull]] if the group limit is reached'
   right: !Array

@@ -3,7 +3,8 @@ desc: Requests given leaderboard to download friends rows from the given leaderb
 groups:
 - Leaderboards
 syntax:
-- ret:
+- call: !Unary boardName
+  ret:
     type: Boolean
   right: !Item
     name: boardName

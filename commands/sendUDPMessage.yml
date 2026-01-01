@@ -3,7 +3,11 @@ desc: "Send message to given address using UDP protocol. Returns false if the me
 groups:
 - Multiplayer
 syntax:
-- ret:
+- call: !Unary
+  - ip
+  - port
+  - message
+  ret:
     type: Boolean
   right: !Array
   - !Item

@@ -3,7 +3,8 @@ desc: Returns all items (attachments) that can be mounted on the given weapon.
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary weapon
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''
@@ -12,7 +13,10 @@ syntax:
     name: weapon
     desc: weapon class name
     type: String
-- ret:
+- call: !Unary
+  - weapon
+  - slot
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

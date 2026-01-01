@@ -15,7 +15,10 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - target
+  - mode
+  ret:
     type: Nothing
   left: !Item
     name: target
@@ -23,7 +26,8 @@ syntax:
   right: !Item
     name: mode
     type: String
-- ret:
+- call: !Unary target
+  ret:
     type: Nothing
   right: !Item
     name: target

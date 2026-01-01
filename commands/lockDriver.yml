@@ -3,7 +3,10 @@ desc: Lock the driver position of the vehicle. This command must be executed whe
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - lock
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

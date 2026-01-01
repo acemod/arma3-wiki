@@ -3,7 +3,8 @@ desc: Retrieves a list of all keys in a [[HashMap]].
 groups:
 - HashMap
 syntax:
-- ret:
+- call: !Unary hashMap
+  ret:
     type: !ArrayUnsized
       type: Anything
       desc: ''

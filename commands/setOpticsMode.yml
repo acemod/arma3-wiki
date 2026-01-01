@@ -3,7 +3,10 @@ desc: Sets the optic mode of the current weapon to the given class name or the i
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - mode
+  ret:
     type: Nothing
   left: !Item
     name: unit

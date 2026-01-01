@@ -3,7 +3,10 @@ desc: Switches collision lights of a vehicle on/off.
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - set
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

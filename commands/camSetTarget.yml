@@ -3,7 +3,10 @@ desc: Set the target object or position where the given camera should point at. 
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - target
+  ret:
     type: Nothing
   left: !Item
     name: camera
@@ -13,7 +16,10 @@ syntax:
     name: target
     desc: target location
     type: Object
-- ret:
+- call: !Binary
+  - camera
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: camera

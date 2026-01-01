@@ -3,7 +3,10 @@ desc: Sets the AI rule of Radar usage (Emission Control). Automatic means Radar 
 groups:
 - Sensors
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - rule
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

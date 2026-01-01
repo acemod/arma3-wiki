@@ -3,7 +3,10 @@ desc: Find objects (Units, Vehicles, Dead, Map Objects) in a sphere with given r
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Binary
+  - position
+  - radius
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
@@ -22,7 +25,11 @@ syntax:
   right: !Item
     name: radius
     type: Number
-- ret:
+- call: !Binary
+  - position
+  - - typeName
+    - radius
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

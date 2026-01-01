@@ -8,7 +8,11 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - target
+    - turretPath
+  ret:
     type: Nothing
   left: !Item
     name: vehicle
@@ -29,7 +33,12 @@ syntax:
     name: turretPath
     desc: path to the turret with required camera
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - vehicle
+  - - target
+    - turretPath
+    - temporary
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

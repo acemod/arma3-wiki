@@ -12,7 +12,10 @@ desc: |-
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - objectivenumber
+  - status
+  ret:
     type: Nothing
   left: !Item
     name: objectivenumber

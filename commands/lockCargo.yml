@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - lock
+  ret:
     type: Nothing
   left: !Item
     name: vehicle
@@ -13,7 +16,11 @@ syntax:
   right: !Item
     name: lock
     type: Boolean
-- ret:
+- call: !Binary
+  - vehicle
+  - - index
+    - lock
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

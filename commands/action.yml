@@ -17,7 +17,10 @@ multiplayer_note: |-
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - actionArray
+  ret:
     type: Nothing
   left: !Item
     name: unit
@@ -25,7 +28,8 @@ syntax:
   right: !Item
     name: actionArray
     type: ArrayUnknown
-- ret:
+- call: !Unary actionArray
+  ret:
     type: Nothing
   right: !Item
     name: actionArray

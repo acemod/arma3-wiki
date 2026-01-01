@@ -3,7 +3,8 @@ desc: "Returns the trigger type. \n\n{{Feature|important|\nThe trigger could be 
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Unary trigger
+  ret:
     type: String
     desc: 'can be one of the following (see [[setTriggerType]] for details):'
   right: !Item

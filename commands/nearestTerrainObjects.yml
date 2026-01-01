@@ -3,7 +3,13 @@ desc: "Returns a list of nearest terrain objects of the given types to the given
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Unary
+  - position
+  - types
+  - radius
+  - sort
+  - 2Dmode
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

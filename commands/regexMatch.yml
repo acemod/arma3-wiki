@@ -3,7 +3,10 @@ desc: Returns whether the ''haystack'' matches the ''pattern''.
 groups:
 - Strings - Regular Expression
 syntax:
-- ret:
+- call: !Binary
+  - haystack
+  - pattern
+  ret:
     type: Boolean
     desc: returns [[true]] if match was found, otherwise [[false]]
   left: !Item

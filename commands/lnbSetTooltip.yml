@@ -9,7 +9,12 @@ desc: |-
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - text
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -29,7 +34,12 @@ syntax:
     name: text
     desc: tooltip text
     type: String
-- ret:
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - text
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

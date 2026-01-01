@@ -9,7 +9,13 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - angle
+    - centerX
+    - centerY
+    - now
+  ret:
     type: Nothing
   left: !Item
     name: control

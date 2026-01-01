@@ -8,13 +8,17 @@ desc: |-
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Unary position
+  ret:
     type: Unknown
   right: !Item
     name: position
     desc: world position 2D [x,y] or [[Position#PositionAGL|PositionAGL]]
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - camera
+  - position
+  ret:
     type: Unknown
   left: !Item
     name: camera

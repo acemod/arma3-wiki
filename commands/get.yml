@@ -3,7 +3,10 @@ desc: Retrieves a value out of a [[HashMap]] after looking it up by its key.
 groups:
 - HashMap
 syntax:
-- ret:
+- call: !Binary
+  - hashMap
+  - key
+  ret:
     type: !OneOf
     - type: Anything
       desc: null

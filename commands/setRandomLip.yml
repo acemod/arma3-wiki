@@ -3,7 +3,10 @@ desc: Enables/Disables random lip. When enabled, the unit continuously moves its
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - bool
+  ret:
     type: Nothing
   left: !Item
     name: unit

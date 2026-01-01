@@ -3,7 +3,10 @@ desc: Selects a subject page in the [[Diary|diary]]. The subject page is selecte
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - player
+  - subject
+  ret:
     type: Boolean
     desc: '[[true]] if subject was successfully selected'
   left: !Item

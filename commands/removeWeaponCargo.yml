@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - weaponID
+    - creatorID
+  ret:
     type: Nothing
   left: !Item
     name: object

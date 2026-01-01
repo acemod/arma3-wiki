@@ -3,7 +3,10 @@ desc: Collapses item on given path and all its children.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -12,7 +15,10 @@ syntax:
   - !Item
     name: path
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - control
+  - path
+  ret:
     type: Nothing
   left: !Item
     name: control

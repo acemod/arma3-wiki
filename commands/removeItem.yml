@@ -3,7 +3,10 @@ desc: Removes item from the inventory. The removal order by containers is [[unif
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

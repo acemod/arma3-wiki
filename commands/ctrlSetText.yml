@@ -20,7 +20,10 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - text
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -31,7 +34,10 @@ syntax:
     name: text
     desc: text or image path, depending on the control type
     type: String
-- ret:
+- call: !Binary
+  - control
+  - text
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - person
+  - task
+  ret:
     type: Nothing
   left: !Item
     name: person

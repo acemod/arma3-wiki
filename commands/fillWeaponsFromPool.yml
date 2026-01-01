@@ -3,7 +3,8 @@ desc: Adds magazines from the campaign pool to the given unit, depending on his 
 groups:
 - Weapon Pool
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Nothing
   right: !Item
     name: unit

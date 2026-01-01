@@ -3,7 +3,8 @@ desc: Return leader of the formation.
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Unary unitName
+  ret:
     type: Object
   right: !Item
     name: unitName

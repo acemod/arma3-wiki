@@ -3,7 +3,8 @@ desc: "Check if version of application is available. If the current version is o
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary version
+  ret:
     type: Boolean
   right: !Item
     name: version

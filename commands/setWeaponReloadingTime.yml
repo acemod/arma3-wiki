@@ -5,7 +5,12 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - gunner
+    - muzzleName
+    - reloadTime
+  ret:
     type: Boolean
     desc: '[[true]] if given weapon is found'
   left: !Item

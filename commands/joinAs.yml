@@ -3,7 +3,11 @@ desc: Joins the unit to the given group, if position id is available, this one i
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - group
+    - id
+  ret:
     type: Nothing
   left: !Item
     name: unit

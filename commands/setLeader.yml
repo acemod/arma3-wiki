@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Teams
 syntax:
-- ret:
+- call: !Binary
+  - team
+  - leader
+  ret:
     type: Nothing
   left: !Item
     name: team

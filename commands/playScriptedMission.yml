@@ -5,7 +5,12 @@ desc: |-
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary
+  - world
+  - expression
+  - config
+  - ignoreChildWindow
+  ret:
     type: Nothing
   right: !Array
   - !Item

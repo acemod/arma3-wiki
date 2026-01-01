@@ -4,7 +4,8 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''
@@ -12,7 +13,11 @@ syntax:
     name: vehicle
     desc: unit or vehicle
     type: Object
-- ret:
+- call: !Unary
+  - vehicle
+  - includeEmpty
+  - includeLoaded
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

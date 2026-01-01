@@ -3,7 +3,13 @@ desc: Find the places with the maximum value of ''expression'' in the given area
 groups:
 - Mission Information
 syntax:
-- ret:
+- call: !Unary
+  - position
+  - radius
+  - expression
+  - precision
+  - sourcesCount
+  ret:
     type: Unknown
   right: !Array
   - !Item

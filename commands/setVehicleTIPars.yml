@@ -6,7 +6,12 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - engine
+    - wheels
+    - weapon
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

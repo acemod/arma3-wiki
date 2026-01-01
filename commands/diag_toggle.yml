@@ -3,7 +3,8 @@ desc: Toggles various diagnostics.
 groups:
 - Diagnostic
 syntax:
-- ret:
+- call: !Unary mode
+  ret:
     type: Nothing
   right: !Item
     name: mode

@@ -3,7 +3,8 @@ desc: Checks if the given AI feature is currently enabled.
 groups:
 - AI Behaviour
 syntax:
-- ret:
+- call: !Unary feature
+  ret:
     type: Boolean
     desc: '[[true]] if is enabled'
   right: !Item
@@ -18,7 +19,10 @@ syntax:
     - value: AI skill - see {{Link|disableAI#Syntax 1}} (since {{arma3}} v1.96)
       desc: null
       since: null
-- ret:
+- call: !Binary
+  - unit
+  - feature
+  ret:
     type: Boolean
     desc: '[[true]] if is enabled'
   left: !Item

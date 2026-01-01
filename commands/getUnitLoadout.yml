@@ -3,12 +3,16 @@ desc: "Returns a '''[[Unit Loadout Array]]''' with all assigned items, weapons, 
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Unknown
   right: !Item
     name: unit
     type: Object
-- ret:
+- call: !Unary
+  - unit
+  - fullMagazines
+  ret:
     type: Unknown
   right: !Array
   - !Item
@@ -18,13 +22,15 @@ syntax:
     name: fullMagazines
     desc: '[[true]] to top up used magazines'
     type: Boolean
-- ret:
+- call: !Unary name
+  ret:
     type: Unknown
   right: !Item
     name: name
     desc: '{{hl|CfgVehicles}} classname from which to extract the loadout'
     type: String
-- ret:
+- call: !Unary config
+  ret:
     type: Unknown
   right: !Item
     name: config

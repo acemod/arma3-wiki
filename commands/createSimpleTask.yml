@@ -7,7 +7,11 @@ multiplayer_note: The task effect is [[Multiplayer Scripting#Locality|local]], i
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - name
+    - parentTask
+  ret:
     type: Task
     desc: the new task
   left: !Item

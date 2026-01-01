@@ -3,7 +3,10 @@ desc: Remove magazine from the unit or static weapon.
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unitName
+  - magazineName
+  ret:
     type: Nothing
   left: !Item
     name: unitName

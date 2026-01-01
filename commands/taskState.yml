@@ -3,7 +3,8 @@ desc: Returns the current state of a task.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary task
+  ret:
     type: String
     desc: |-
       current state of task - can be one of:

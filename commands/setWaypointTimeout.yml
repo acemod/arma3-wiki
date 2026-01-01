@@ -3,7 +3,12 @@ desc: Defines the time between condition satisfaction and waypoint finish (rando
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - - min
+    - mid
+    - max
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

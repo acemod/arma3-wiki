@@ -3,7 +3,10 @@ desc: Join all units in the array to given group silently (without radio message
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - unitArray
+  - group
+  ret:
     type: Nothing
   left: !Item
     name: unitArray

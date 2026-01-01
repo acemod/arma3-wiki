@@ -3,7 +3,11 @@ desc: Enables or disables firing from a vehicle cargo position. To get the turre
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - turretPath
+    - enable
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

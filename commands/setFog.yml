@@ -6,7 +6,10 @@ multiplayer_note: Before {{arma3}}, server and clients could have each a differe
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Binary
+  - time
+  - fog
+  ret:
     type: Nothing
   left: !Item
     name: time
@@ -16,7 +19,12 @@ syntax:
     name: fog
     desc: fog density in range 0..1
     type: Number
-- ret:
+- call: !Binary
+  - time
+  - - fogValue
+    - fogDecay
+    - fogBase
+  ret:
     type: Nothing
   left: !Item
     name: time

@@ -10,7 +10,12 @@ desc: |-
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Binary
+  - center
+  - - areaRadius
+    - maxDistance
+    - vehicleType
+  ret:
     type: Unknown
   left: !Item
     name: center

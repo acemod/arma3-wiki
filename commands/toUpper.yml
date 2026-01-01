@@ -3,7 +3,8 @@ desc: Converts the supplied Unicode string to all uppercase characters. If the s
 groups:
 - Strings
 syntax:
-- ret:
+- call: !Unary string
+  ret:
     type: String
   right: !Item
     name: string

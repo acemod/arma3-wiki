@@ -7,7 +7,12 @@ multiplayer_note: Activation changes are local.
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Binary
+  - trigger
+  - - by
+    - type
+    - repeating
+  ret:
     type: Nothing
   left: !Item
     name: trigger

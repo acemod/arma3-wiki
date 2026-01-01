@@ -3,7 +3,8 @@ desc: Get array with all items (of any kind, even weapons) in backpack of the gi
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

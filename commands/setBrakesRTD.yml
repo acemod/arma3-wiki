@@ -12,7 +12,11 @@ desc: |-
 groups:
 - RTD
 syntax:
-- ret:
+- call: !Binary
+  - helicopterRTD
+  - - value
+    - wheelIndex
+  ret:
     type: Nothing
   left: !Item
     name: helicopterRTD

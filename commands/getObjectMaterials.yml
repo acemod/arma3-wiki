@@ -3,7 +3,8 @@ desc: Gets all custom materials associated with the object.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary obj
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''
@@ -11,7 +12,10 @@ syntax:
   right: !Item
     name: obj
     type: Object
-- ret:
+- call: !Binary
+  - obj
+  - sels
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

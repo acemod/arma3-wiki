@@ -3,7 +3,8 @@ desc: Unassign curator (will destroy both sides of connection).
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary curatorObj
+  ret:
     type: Nothing
   right: !Item
     name: curatorObj

@@ -4,13 +4,15 @@ groups:
 - Radio and Chat
 - Custom Radio and Chat
 syntax:
-- ret:
+- call: !Unary customChannelID
+  ret:
     type: Unknown
   right: !Item
     name: customChannelID
     desc: '[[Channel IDs|custom channel ID]] returned by [[radioChannelCreate]]'
     type: Number
-- ret:
+- call: !Unary option
+  ret:
     type: Unknown
   right: !Item
     name: option

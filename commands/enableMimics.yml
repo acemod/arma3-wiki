@@ -3,7 +3,10 @@ desc: Enables/disables mimics on a given unit.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - enabled
+  ret:
     type: Nothing
   left: !Item
     name: unit

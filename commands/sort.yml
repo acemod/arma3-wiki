@@ -3,7 +3,10 @@ desc: Attempts to sort given array either in ascending ([[true]]) or descending 
 groups:
 - Arrays
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - order
+  ret:
     type: Nothing
   left: !Item
     name: array

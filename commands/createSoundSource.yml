@@ -27,7 +27,12 @@ multiplayer_note: When a [[CfgSFX]] sound definition contains more than 1 sound,
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Unary
+  - type
+  - position
+  - markers
+  - placement
+  ret:
     type: Object
   right: !Array
   - !Item

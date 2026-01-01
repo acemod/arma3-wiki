@@ -10,7 +10,10 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - vehicle
+  ret:
     type: Boolean
     desc: '[[true]] on success, [[false]] on failure'
   left: !Item

@@ -5,7 +5,8 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary layerID
+  ret:
     type: Boolean
     desc: '[[true]] if the layer was removed successfully (i.e., correct layer ID was used)'
   right: !Item

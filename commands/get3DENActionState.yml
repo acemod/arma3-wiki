@@ -3,7 +3,8 @@ desc: 'Returns state of given [[Eden Editor: Actions|Eden Editor action]].'
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary action
+  ret:
     type: Number
   right: !Item
     name: action

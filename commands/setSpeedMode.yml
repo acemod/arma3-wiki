@@ -3,7 +3,10 @@ desc: "Sets group speed mode. If unit is passed as param, unit's group is used. 
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - groupName
+  - mode
+  ret:
     type: Nothing
   left: !Item
     name: groupName

@@ -3,7 +3,12 @@ desc: "Remove attachment linked to a weapon from the vehicle cargo space. \n{{Fe
 groups:
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - weaponID
+    - creatorID
+    - attachment
+  ret:
     type: Nothing
   left: !Item
     name: object

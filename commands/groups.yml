@@ -3,7 +3,8 @@ desc: Returns an array with all groups of given side.
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Unary side
+  ret:
     type: !ArrayUnsized
       type: Group
       desc: ''

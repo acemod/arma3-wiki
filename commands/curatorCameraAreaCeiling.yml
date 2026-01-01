@@ -3,7 +3,8 @@ desc: Returns ceiling height for curator camera.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary curatorObj
+  ret:
     type: Number
   right: !Item
     name: curatorObj

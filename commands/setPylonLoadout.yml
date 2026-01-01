@@ -10,7 +10,13 @@ multiplayer_note: |-
 groups:
 - Vehicle Loadouts
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - pylon
+    - magazine
+    - forced
+    - turret
+  ret:
     type: Boolean
     desc: '[[true]] on success'
   left: !Item

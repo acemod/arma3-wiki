@@ -3,7 +3,10 @@ desc: Set the task as a current task of the person.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - task
+  ret:
     type: Nothing
   left: !Item
     name: object

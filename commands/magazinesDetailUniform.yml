@@ -3,14 +3,19 @@ desc: Returns an array with the type names of all the unit's uniform magazines.
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''
   right: !Item
     name: unit
     type: Object
-- ret:
+- call: !Unary
+  - unit
+  - includeEmpty
+  - includeLoaded
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

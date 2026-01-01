@@ -3,7 +3,11 @@ desc: Let the Auxiliary Power Unit (APU) reach a desired state over the given pe
 groups:
 - RTD
 syntax:
-- ret:
+- call: !Binary
+  - helicopterRTD
+  - - value
+    - time
+  ret:
     type: Nothing
   left: !Item
     name: helicopterRTD

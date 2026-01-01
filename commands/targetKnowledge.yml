@@ -3,7 +3,10 @@ desc: Returns unit's knowledge about target.
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - target
+  ret:
     type: Unknown
   left: !Item
     name: unit

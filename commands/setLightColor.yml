@@ -3,7 +3,12 @@ desc: Set diffuse color of light. Illuminates surfaces that are facing the light
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Binary
+  - light
+  - - r
+    - g
+    - b
+  ret:
     type: Nothing
   left: !Item
     name: light

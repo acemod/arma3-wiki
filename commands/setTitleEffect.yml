@@ -4,7 +4,12 @@ groups:
 - Triggers
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - triggerOrWaypoint
+  - - type
+    - effect
+    - text
+  ret:
     type: Nothing
   left: !Item
     name: triggerOrWaypoint

@@ -3,7 +3,8 @@ desc: Get current aiming coefficient (higher ~ less precise, default is 1)
 groups:
 - Stamina System
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Number
   right: !Item
     name: unit

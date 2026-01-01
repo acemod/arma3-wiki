@@ -3,7 +3,11 @@ desc: Sets limits of [[CT_SLIDER]] or [[CT_XSLIDER]].
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - min
+  - max
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -18,7 +22,11 @@ syntax:
     name: max
     desc: maximum value
     type: Number
-- ret:
+- call: !Binary
+  - control
+  - - min
+    - max
+  ret:
     type: Nothing
   left: !Item
     name: control

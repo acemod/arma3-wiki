@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Ropes and Sling Loading
 syntax:
-- ret:
+- call: !Unary
+  - rope
+  - cargo
+  - mass
+  ret:
     type: Number
     desc: object mass
   right: !Array

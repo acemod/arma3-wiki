@@ -3,7 +3,8 @@ desc: Returns the class name of a given object.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary obj
+  ret:
     type: String
     desc: config class name, or empty string if ''obj'' does not have a class
   right: !Item

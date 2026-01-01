@@ -3,7 +3,10 @@ desc: Checks whether position is inside given polygon. The polygon is only check
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Binary
+  - position
+  - polygon
+  ret:
     type: Boolean
   left: !Item
     name: position

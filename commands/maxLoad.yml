@@ -3,7 +3,8 @@ desc: Returns maximum load limit for a unit, uniform/vest/backpack containers, v
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary container
+  ret:
     type: Number
   right: !Item
     name: container

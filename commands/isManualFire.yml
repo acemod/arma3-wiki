@@ -3,7 +3,8 @@ desc: Returns [[true]] if manual fire is on. Manual fire could either be selecte
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary vehicleName
+  ret:
     type: Boolean
   right: !Item
     name: vehicleName

@@ -3,7 +3,12 @@ desc: Adds a weapon item to the specified weapon. The item can be weapon magazin
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - weaponName
+    - itemName
+    - instant
+  ret:
     type: Nothing
   left: !Item
     name: unit
@@ -25,7 +30,14 @@ syntax:
     default: '[[false]]'
     since:
       arma3: '1.96'
-- ret:
+- call: !Binary
+  - unit
+  - - weaponName
+    - - itemName
+      - ammoCount
+      - muzzleName
+    - instant
+  ret:
     type: Nothing
   left: !Item
     name: unit

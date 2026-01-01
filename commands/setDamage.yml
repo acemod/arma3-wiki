@@ -5,7 +5,10 @@ alias:
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - damage
+  ret:
     type: Nothing
   left: !Item
     name: object
@@ -14,7 +17,14 @@ syntax:
     name: damage
     desc: range 0..1, 0 = pristine/healthy condition, 1 = entirely destroyed/killed
     type: Number
-- ret:
+- call: !Binary
+  - object
+  - - damage
+    - useEffects
+    - killer
+    - instigator
+    - allowResurrection
+  ret:
     type: Nothing
   left: !Item
     name: object

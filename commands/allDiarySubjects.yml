@@ -3,7 +3,8 @@ desc: Returns array with all [[Diary]] subjects available to the given person. S
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary person
+  ret:
     type: Unknown
     desc: |-
       internal subject reference

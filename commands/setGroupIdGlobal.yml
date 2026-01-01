@@ -3,7 +3,11 @@ desc: A [[Multiplayer Scripting#Locality|global]] equivalent of  [[setGroupId]].
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - group
+  - - format
+    - keywordN
+  ret:
     type: Nothing
   left: !Item
     name: group

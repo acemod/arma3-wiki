@@ -3,7 +3,11 @@ desc: Set the material of the given selection on all computers in a network sess
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - obj
+  - - selection
+    - material
+  ret:
     type: Nothing
   left: !Item
     name: obj

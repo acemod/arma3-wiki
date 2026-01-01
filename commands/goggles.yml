@@ -3,7 +3,8 @@ desc: Returns name of currently used goggles (for NVGoggles use [[hmd]]).
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: String
   right: !Item
     name: unit

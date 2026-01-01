@@ -3,7 +3,8 @@ desc: Returns the position of the original (loaded) center of an object in model
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Position3dRelative
   right: !Item
     name: object

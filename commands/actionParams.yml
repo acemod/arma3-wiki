@@ -3,7 +3,10 @@ desc: Returns [[Array]] with params for given user action id (similar to [[addAc
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Binary
+  - entity
+  - id
+  ret:
     type: Unknown
   left: !Item
     name: entity

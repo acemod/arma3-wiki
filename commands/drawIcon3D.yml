@@ -15,7 +15,22 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary
+  - texture
+  - color
+  - position
+  - width
+  - height
+  - angle
+  - text
+  - shadow
+  - textSize
+  - font
+  - textAlign
+  - drawSideArrows
+  - offsetX
+  - offsetY
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -104,7 +119,8 @@ syntax:
     default: '0'
     since:
       arma3: '2.4'
-- ret:
+- call: !Unary icon
+  ret:
     type: Nothing
   right: !Item
     name: icon

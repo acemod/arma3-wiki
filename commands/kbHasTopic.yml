@@ -3,7 +3,10 @@ desc: Check if conversation topic was registered to given person. See [[Conversa
 groups:
 - Conversations
 syntax:
-- ret:
+- call: !Binary
+  - person
+  - topicName
+  ret:
     type: Boolean
   left: !Item
     name: person

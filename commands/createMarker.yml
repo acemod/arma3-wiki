@@ -20,7 +20,12 @@ problem_notes:
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Unary
+  - name
+  - position
+  - channel
+  - creator
+  ret:
     type: String
     desc: the marker's name or empty string if the marker name is not unique.
   right: !Array

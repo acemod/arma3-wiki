@@ -17,7 +17,8 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Boolean
     desc: returns [[true]] if a unit is fleeing, [[false]] if not. '''Dead''' or '''empty''' units return [[false]].
   right: !Item

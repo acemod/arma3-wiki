@@ -3,7 +3,10 @@ desc: Returns current value set in menu entry on given path.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: Number
   right: !Array
   - !Item

@@ -5,7 +5,12 @@ problem_notes:
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - time
+    - zoom
+    - position
+  ret:
     type: Nothing
   left: !Item
     name: map

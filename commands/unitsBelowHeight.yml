@@ -6,7 +6,10 @@ groups:
 - Object Detection
 - Positions
 syntax:
-- ret:
+- call: !Binary
+  - units
+  - height
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
@@ -19,7 +22,10 @@ syntax:
     name: height
     desc: height above terrain level ([[Position#PositionATL|PositionATL]])
     type: Number
-- ret:
+- call: !Binary
+  - group
+  - height
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

@@ -3,7 +3,8 @@ desc: Gets all mine objects this unit has ownership over.
 groups:
 - Mines
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

@@ -3,7 +3,10 @@ desc: Removes the magazine from the unit.
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - magazineName
+  ret:
     type: Nothing
   left: !Item
     name: unit

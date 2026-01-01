@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Binary
+  - objectType
+  - objectCollection
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
@@ -15,7 +18,10 @@ syntax:
   right: !Item
     name: objectCollection
     type: Unknown
-- ret:
+- call: !Binary
+  - objectType
+  - objectCollection
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

@@ -3,7 +3,8 @@ desc: Checks if a location is rectangular (returns true) or elliptical (returns 
 groups:
 - Locations
 syntax:
-- ret:
+- call: !Unary location
+  ret:
     type: Boolean
   right: !Item
     name: location

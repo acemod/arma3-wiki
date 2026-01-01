@@ -3,7 +3,12 @@ desc: Set custom data for the task. Tooltip will be drawn in task list on the ri
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - task
+  - - iconPath
+    - tooltip
+    - description
+  ret:
     type: Nothing
   left: !Item
     name: task

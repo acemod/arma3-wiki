@@ -3,7 +3,10 @@ desc: Sets thermal vision mode for currently used camera. This command only work
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - state
+  - modeIndex
+  ret:
     type: Nothing
   left: !Item
     name: state

@@ -3,13 +3,15 @@ desc: Returns path to currently selected item. IDC means id of parent Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: ArrayUnknown
     desc: '[[Tree View Path]] of selected item'
   right: !Item
     name: idc
     type: Number
-- ret:
+- call: !Unary control
+  ret:
     type: ArrayUnknown
     desc: '[[Tree View Path]] of selected item'
   right: !Item

@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Arrays
 syntax:
-- ret:
+- call: !Binary
+  - array1
+  - array2
+  ret:
     type: Nothing
   left: !Item
     name: array1

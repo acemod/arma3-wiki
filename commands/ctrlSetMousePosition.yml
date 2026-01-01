@@ -3,7 +3,11 @@ desc: Similar to [[setMousePosition]] but relative to the given control.
 groups:
 - GUI Control - Positioning
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - x
+    - y
+  ret:
     type: Nothing
   left: !Item
     name: control

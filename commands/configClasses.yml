@@ -3,7 +3,10 @@ desc: "Returns an array of config entries which meet criteria in condition code.
 groups:
 - Config
 syntax:
-- ret:
+- call: !Binary
+  - condition
+  - config
+  ret:
     type: !ArrayUnsized
       type: Config
       desc: ''
@@ -13,7 +16,13 @@ syntax:
   right: !Item
     name: config
     type: Config
-- ret:
+- call: !Unary
+  - config
+  - depth
+  - includeInherited
+  - allSubclasses
+  - classNames
+  ret:
     type: !OneOf
     - type: !ArrayUnsized
         type: Config

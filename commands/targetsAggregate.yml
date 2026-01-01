@@ -3,7 +3,14 @@ desc: Aggregate candidates.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - - speaker
+    - side
+    - classname
+    - position
+    - timeMax
+  - candidates
+  ret:
     type: Unknown
   left: !Array
   - !Item

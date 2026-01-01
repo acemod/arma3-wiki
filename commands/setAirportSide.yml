@@ -4,7 +4,10 @@ groups:
 - Roads and Airports
 - Sides
 syntax:
-- ret:
+- call: !Binary
+  - id
+  - side
+  ret:
     type: Nothing
   left: !Item
     name: id
@@ -12,7 +15,10 @@ syntax:
   right: !Item
     name: side
     type: Side
-- ret:
+- call: !Binary
+  - target
+  - side
+  ret:
     type: Nothing
   left: !Item
     name: target

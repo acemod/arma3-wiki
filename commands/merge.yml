@@ -3,7 +3,10 @@ desc: Merges two [[HashMap]]s.
 groups:
 - HashMap
 syntax:
-- ret:
+- call: !Binary
+  - hashMap1
+  - hashMap2
+  ret:
     type: Nothing
   left: !Item
     name: hashMap1
@@ -13,7 +16,11 @@ syntax:
     name: hashMap2
     desc: all key-value pairs from this HashMap are added to ''hashMap1''. If a key from ''hashMap2'' already exists in ''hashMap1'', it doesn't overwrite the value in ''hashMap1''.
     type: HashMapUnknown
-- ret:
+- call: !Binary
+  - hashMap1
+  - - hashMap2
+    - overwriteExisting
+  ret:
     type: Nothing
   left: !Item
     name: hashMap1

@@ -51,7 +51,10 @@ desc: |-
 groups:
 - Unit Identity
 syntax:
-- ret:
+- call: !Binary
+  - unitName
+  - rank
+  ret:
     type: Nothing
   left: !Item
     name: unitName

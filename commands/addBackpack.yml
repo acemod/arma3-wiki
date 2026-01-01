@@ -9,7 +9,10 @@ desc: |-
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - backpackClassName
+  ret:
     type: Nothing
   left: !Item
     name: unit

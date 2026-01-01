@@ -3,7 +3,12 @@ desc: "Orders a unit to process command defined by [[FSM]] file (silently). \n\n
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - fsmName
+    - position
+    - target
+  ret:
     type: Nothing
   left: !Item
     name: unit

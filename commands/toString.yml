@@ -4,13 +4,15 @@ groups:
 - Strings
 - Arrays
 syntax:
-- ret:
+- call: !Unary array
+  ret:
     type: String
     desc: '{{Link|https://en.wikipedia.org/wiki/Unicode}} numbers converted to [[String]] of characters'
   right: !Item
     name: array
     type: Unknown
-- ret:
+- call: !Unary code
+  ret:
     type: String
     desc: '[[compile|compilable]] [[String]] from provided code'
   right: !Item

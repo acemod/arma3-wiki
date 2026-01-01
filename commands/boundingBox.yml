@@ -5,12 +5,16 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Unknown
   right: !Item
     name: object
     type: Object
-- ret:
+- call: !Binary
+  - clippingType
+  - object
+  ret:
     type: Unknown
   left: !Item
     name: clippingType

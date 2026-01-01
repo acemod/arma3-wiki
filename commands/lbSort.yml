@@ -3,12 +3,16 @@ desc: Sorts listbox entries alphabetically ascending by their [[lbText]].
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary control
+  ret:
     type: Nothing
   right: !Item
     name: control
     type: Control
-- ret:
+- call: !Unary
+  - control
+  - sortOrder
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -20,14 +24,18 @@ syntax:
     type: String
   since:
     arma3: '1.18'
-- ret:
+- call: !Unary idc
+  ret:
     type: Nothing
   right: !Item
     name: idc
     type: Number
   since:
     arma3: '1.68'
-- ret:
+- call: !Unary
+  - idc
+  - sortOrder
+  ret:
     type: Nothing
   right: !Array
   - !Item

@@ -11,13 +11,17 @@ desc: |-
 groups:
 - Multiplayer
 syntax:
-- ret:
+- call: !Unary command
+  ret:
     type: Boolean
     desc: '[[false]] if a non valid command is used ("#blah"), false otherwise (was always [[true]] before {{GVI|arma3|1.40|size= 0.75}})'
   right: !Item
     name: command
     type: String
-- ret:
+- call: !Binary
+  - password
+  - command
+  ret:
     type: Boolean
     desc: '[[false]] if command failed at some stage. [[true]] doesn''t mean that command succeeded.'
   left: !Item

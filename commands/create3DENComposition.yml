@@ -3,7 +3,10 @@ desc: Create new [[Eden_Editor:_Composition|Composition]]. To create individual 
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary
+  - configPath
+  - position
+  ret:
     type: !ArrayUnsized
       type: EdenEntity
       desc: ''

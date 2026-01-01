@@ -3,7 +3,10 @@ desc: Set units' stamina (seconds until depletion)
 groups:
 - Stamina System
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - stamina
+  ret:
     type: Nothing
   left: !Item
     name: unit

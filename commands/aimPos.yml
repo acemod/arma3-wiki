@@ -3,7 +3,8 @@ desc: Returns the position of the object other units can aim to.
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Position3dASL
   right: !Item
     name: unit

@@ -3,7 +3,11 @@ desc: Sets the RPM of given engines. {{Feature|afm}}
 groups:
 - RTD
 syntax:
-- ret:
+- call: !Binary
+  - helicopter
+  - - rpm
+    - engineIndex
+  ret:
     type: Nothing
   left: !Item
     name: helicopter

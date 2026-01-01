@@ -3,7 +3,8 @@ desc: Initialize the leaderboard structure for board with given name. Returns tr
 groups:
 - Leaderboards
 syntax:
-- ret:
+- call: !Unary boardName
+  ret:
     type: Boolean
   right: !Item
     name: boardName

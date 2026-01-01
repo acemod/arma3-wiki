@@ -3,7 +3,8 @@ desc: Gets the current timeout for [[currentWaypoint]] of a [[group]] or -1 if c
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Unary group
+  ret:
     type: Number
   right: !Item
     name: group

@@ -3,7 +3,10 @@ desc: "Show the edit object dialog for the given object. \n{{Feature|informative
 groups:
 - Game 2 Editor
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - object
+  ret:
     type: Anything
   left: !Item
     name: map

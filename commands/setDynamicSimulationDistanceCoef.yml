@@ -3,7 +3,10 @@ desc: 'Sets activation distance multiplier of [[Arma 3: Dynamic Simulation]] for
 groups:
 - Dynamic Simulation
 syntax:
-- ret:
+- call: !Binary
+  - class
+  - multiplier
+  ret:
     type: Nothing
   left: !Item
     name: class

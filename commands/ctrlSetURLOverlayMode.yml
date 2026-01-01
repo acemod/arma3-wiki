@@ -3,7 +3,10 @@ desc: "Sets how to handle opening of URL, default browser or Steam overlay. Poss
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - mode
+  ret:
     type: Nothing
   left: !Item
     name: control

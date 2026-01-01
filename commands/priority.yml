@@ -3,7 +3,8 @@ desc: Return the priority of the task.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary task
+  ret:
     type: Number
   right: !Item
     name: task

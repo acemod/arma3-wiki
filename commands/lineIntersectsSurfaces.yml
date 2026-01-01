@@ -9,7 +9,17 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- ret:
+- call: !Unary
+  - begPosASL
+  - endPosASL
+  - ignoreObj1
+  - ignoreObj2
+  - sortMode
+  - maxResults
+  - LOD1
+  - LOD2
+  - returnUnique
+  ret:
     type: Unknown
     desc: "the actual position where line intersects surface\n* [[surfaceNormal]]: [[Vector]] - a normal to the intersected surface \n* intersectObject: [[Object]] - the object the surface belongs to (could be proxy object) - [[objNull]] if terrain\n* parentObject: [[Object]] - the object proxy object belongs to (not always the same as intersect object) - [[objNull]] if terrain\n* {{GVI|arma3|2.10|size= 0.75}} [[selectionNames]]: [[Array]] of [[String]]s - Names of the intersected selections (bones). Returns {{hl|[]}} if there is no intersection with a selection.\n* {{GVI|arma3|2.10|size= 0.75}} pathToBisurf: [[String]] - path to intersected surface properties (.bisurf) file. Returns {{hl|\"\"}} if surface has no special properties. Terrain surface properties begin with {{hl|#}}, and the surface properties are defined in {{hl|CfgSurfaces}}. For example, if it returns {{hl|#GdtVRsurface01}}, properties are defined in: <sqf inline>configFile >> \"CfgSurfaces\" >> \"GdtVRsurface01\"</sqf>"
   right: !Array
@@ -90,7 +100,9 @@ syntax:
     default: '[[true]]'
     since:
       arma3: '1.70'
-- ret:
+- call: !Unary
+  - - elementN
+  ret:
     type: Unknown
     desc: "the actual position where line intersects surface\n* [[surfaceNormal]]: [[Vector]] - a normal to the intersected surface \n* intersectObject: [[Object]] - the object the surface belongs to (could be proxy object) - [[objNull]] if terrain\n* parentObject: [[Object]] - the object proxy object belongs to (not always the same as intersect object) - [[objNull]] if terrain\n* [[selectionNames]]: [[Array]] of [[String]]s - Names of the intersected selections (bones). Returns {{hl|[]}} if there is no intersection with a selection.\n* pathToBisurf: [[String]] - path to intersected surface properties (.bisurf) file. Returns {{hl|\"\"}} if surface has no special properties. Terrain surface properties begin with {{hl|#}}, and the surface properties are defined in {{hl|CfgSurfaces}}. For example, if it returns {{hl|#GdtVRsurface01}}, properties are defined in: <sqf inline>configFile >> \"CfgSurfaces\" >> \"GdtVRsurface01\"</sqf>"
   right: !Array

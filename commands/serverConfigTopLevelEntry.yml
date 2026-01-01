@@ -4,7 +4,8 @@ multiplayer_note: Only works on '''dedicated''' servers.
 groups:
 - Argo
 syntax:
-- ret:
+- call: !Unary configEntry
+  ret:
     type: Config
     desc: requested server config entry or [[configNull]] on error
   right: !Item

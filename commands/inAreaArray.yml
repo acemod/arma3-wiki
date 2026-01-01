@@ -9,7 +9,10 @@ groups:
 - Locations
 - Positions
 syntax:
-- ret:
+- call: !Binary
+  - positions
+  - area
+  ret:
     type: !ArrayUnsized
       type: !OneOf
       - type: Object
@@ -42,7 +45,16 @@ syntax:
     - type: String
       desc: marker name
       since: null
-- ret:
+- call: !Binary
+  - positions
+  - - centre
+    - a
+    - b
+    - angle
+    - isRectangle
+    - c
+    - usePosWorld
+  ret:
     type: !ArrayUnsized
       type: !OneOf
       - type: Object
@@ -114,7 +126,10 @@ syntax:
     default: '[[false]]'
     since:
       arma3: '2.20'
-- ret:
+- call: !Binary
+  - positions
+  - - posN
+  ret:
     type: !ArrayUnsized
       type: !OneOf
       - type: Object

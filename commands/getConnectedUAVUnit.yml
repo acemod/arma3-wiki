@@ -3,7 +3,8 @@ desc: Returns UAV/UGV AI unit, which player is controlling. To return UAV vehicl
 groups:
 - Remote Control
 syntax:
-- ret:
+- call: !Unary person
+  ret:
     type: Object
     desc: UAV unit (AI driver or AI gunner) or [[objNull]] otherwise including if the connected person is remote
   right: !Item

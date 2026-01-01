@@ -3,7 +3,11 @@ desc: Requests given leaderboard to download values from global table.
 groups:
 - Leaderboards
 syntax:
-- ret:
+- call: !Unary
+  - leaderboard
+  - offset
+  - rows
+  ret:
     type: Boolean
     desc: returns [[true]] if request has been started
   right: !Array

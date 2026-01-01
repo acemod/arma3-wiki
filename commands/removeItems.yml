@@ -3,7 +3,10 @@ desc: Removes all items with given class name from the inventory.
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

@@ -3,7 +3,8 @@ desc: "Returns speed mode of the group, which can be any of the following: \n* '
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Unary groupName
+  ret:
     type: String
   right: !Item
     name: groupName

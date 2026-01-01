@@ -3,7 +3,10 @@ desc: "Set unit position rules. This command is the lowest level of priority for
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - mode
+  ret:
     type: Nothing
   left: !Item
     name: unit

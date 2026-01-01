@@ -3,7 +3,10 @@ desc: "Creates the new overlay dialog for the specified type of overlay. \n{{Fea
 groups:
 - Game 2 Editor
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - config
+  ret:
     type: Nothing
   left: !Item
     name: map

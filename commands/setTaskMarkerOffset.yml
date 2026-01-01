@@ -3,7 +3,10 @@ desc: Sets the task marker position in model space.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - obj
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: obj

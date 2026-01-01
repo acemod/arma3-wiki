@@ -3,7 +3,10 @@ desc: Load cargo vehicle inside vehicle if possible, returns bool based on wheth
 groups:
 - Vehicle in Vehicle Transport
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - cargo
+  ret:
     type: Boolean
     desc: whether or not operation was a success
   left: !Item

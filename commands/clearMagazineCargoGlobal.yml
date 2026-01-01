@@ -3,7 +3,8 @@ desc: Removes all magazines from the vehicle cargo space. MP synchronized.
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Nothing
   right: !Item
     name: object

@@ -12,14 +12,16 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: String
     desc: the text or image path is returned, dependent on the control type
   right: !Item
     name: idc
     desc: control ID
     type: Number
-- ret:
+- call: !Unary controlName
+  ret:
     type: String
     desc: the text or image path is returned, dependent on the control type
   right: !Item

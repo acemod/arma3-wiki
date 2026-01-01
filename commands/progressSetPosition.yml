@@ -3,7 +3,10 @@ desc: Sets progress position of a [[CT_PROGRESS|progress bar]].
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - progress
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -3,7 +3,8 @@ desc: Returns the owners of all ropes attached to the cargo - the transports to 
 groups:
 - Ropes and Sling Loading
 syntax:
-- ret:
+- call: !Unary cargo
+  ret:
     type: Unknown
   right: !Item
     name: cargo

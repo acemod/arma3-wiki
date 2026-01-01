@@ -3,7 +3,10 @@ desc: Adds or removes curator points.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - points
+  ret:
     type: Nothing
   left: !Item
     name: curatorObj

@@ -3,7 +3,10 @@ desc: Adds list of rows of strings.
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - arrayOfTextAndValues
+  ret:
     type: Number
     desc: index
   right: !Array

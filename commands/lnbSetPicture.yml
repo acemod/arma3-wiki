@@ -3,7 +3,12 @@ desc: Sets the picture in the item with the given position of the 2D listbox.The
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - picturePathOrName
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -19,7 +24,12 @@ syntax:
   - !Item
     name: picturePathOrName
     type: String
-- ret:
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - picturePathOrName
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

@@ -3,7 +3,8 @@ desc: Obtains the provided entity's parent.
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary entity
+  ret:
     type: Unknown
     desc: Returns [[Eden Entity]] or the [[Eden ID]] representing it. -1 for system layers such as ''BLUFOR'', ''OPFOR'' etc.
   right: !Item

@@ -3,7 +3,12 @@ desc: Adds magazines with specified ammo count to the cargo space of a vehicle o
 groups:
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Binary
+  - cargospace
+  - - magazine
+    - quantity
+    - ammocount
+  ret:
     type: Nothing
   left: !Item
     name: cargospace

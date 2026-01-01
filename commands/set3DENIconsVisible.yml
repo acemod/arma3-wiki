@@ -3,7 +3,10 @@ desc: Toggle visibility of [[:Category:Eden Editor|Eden Editor]] icons.
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary
+  - showMap
+  - showScene
+  ret:
     type: Nothing
   right: !Array
   - !Item

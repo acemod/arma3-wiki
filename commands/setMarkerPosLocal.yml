@@ -3,7 +3,10 @@ desc: Moves the marker. If position is given in 3D format, {{hl|z}} coordinate i
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Binary
+  - markerName
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: markerName

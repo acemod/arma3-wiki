@@ -3,7 +3,10 @@ desc: Sets the person's fatigue, from 0 to 1.
 groups:
 - Stamina System
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: unit

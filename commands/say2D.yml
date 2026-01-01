@@ -3,7 +3,10 @@ desc: Plays given sound in 2D.
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Binary
+  - from
+  - sound
+  ret:
     type: Nothing
   left: !Item
     name: from

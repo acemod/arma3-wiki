@@ -3,7 +3,11 @@ desc: Returns ammo count of given magazine from given turret (see [[setMagazineT
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - magazineClass
+    - turretPath
+  ret:
     type: Number
   left: !Item
     name: vehicle

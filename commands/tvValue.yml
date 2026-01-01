@@ -3,7 +3,10 @@ desc: Returns numeric value set for given tree view path.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: Number
     desc: set value; if no value was set, 0 is returned
   right: !Array
@@ -15,7 +18,10 @@ syntax:
     type: !ArrayUnsized
       type: Number
       desc: ''
-- ret:
+- call: !Binary
+  - ctrl
+  - path
+  ret:
     type: Number
     desc: set value; if no value was set, 0 is returned
   left: !Item

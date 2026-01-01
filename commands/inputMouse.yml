@@ -3,7 +3,8 @@ desc: "Returns the state of mouse button action, alone or in combination with ke
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary button
+  ret:
     type: Number
     desc: |-
       the state of the button:
@@ -16,7 +17,8 @@ syntax:
     name: button
     desc: 'button number 0..7: 0-LMB, 1-RMB, 2-MMB'
     type: Number
-- ret:
+- call: !Unary combocode
+  ret:
     type: Boolean
     desc: '[[true]] if given code/combination detected, [[false]] otherwise'
   right: !Item

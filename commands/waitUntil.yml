@@ -7,14 +7,16 @@ problem_notes:
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Unary condition
+  ret:
     type: Anything
     desc: the value the condition evaluates to when the wait is over (normally [[true]])
   right: !Item
     name: condition
     desc: the expression that '''must''' return a [[Boolean]], [[true]] to finish waiting or [[false]] to continue waiting
     type: Code
-- ret:
+- call: !Unary scriptHandle
+  ret:
     type: Anything
     desc: The result of the script or [[Script_Handle#Promise_Handles|Promise]]
   right: !Item
@@ -23,7 +25,10 @@ syntax:
     type: ScriptHandle
   since:
     arma3: '2.22'
-- ret:
+- call: !Unary
+  - scriptHandle
+  - timeout
+  ret:
     type: Anything
     desc: The result of the script or [[Script_Handle#Promise_Handles|Promise]]. Or [[Nothing]] if timed out.
   right: !Array

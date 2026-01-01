@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Broken Commands
 syntax:
-- ret:
+- call: !Binary
+  - FSMhandle
+  - 'true'
+  ret:
     type: Nothing
   left: !Item
     name: FSMhandle

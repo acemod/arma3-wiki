@@ -6,7 +6,10 @@ desc: |-
 groups:
 - Diagnostic
 syntax:
-- ret:
+- call: !Unary
+  - section
+  - threshold
+  ret:
     type: Nothing
   right: !Array
   - !Item

@@ -3,7 +3,11 @@ desc: Add next frame to map animation.
 groups:
 - Map
 syntax:
-- ret:
+- call: !Unary
+  - time
+  - zoom
+  - position
+  ret:
     type: Nothing
   right: !Array
   - !Item

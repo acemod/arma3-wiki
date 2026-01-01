@@ -3,7 +3,10 @@ desc: Check whether given uniform can be dressed by target soldier.
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - type
+  ret:
     type: Boolean
   left: !Item
     name: unit

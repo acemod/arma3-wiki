@@ -3,7 +3,11 @@ desc: 'Removes [[Eden Editor: Connecting|connection]] between entities.'
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary
+  - type
+  - from
+  - to
+  ret:
     type: Boolean
     desc: '[[true]] If the connection was removed'
   right: !Array

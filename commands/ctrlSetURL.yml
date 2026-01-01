@@ -3,7 +3,10 @@ desc: "Sets URL property of the given control subject to {{hl|allowedHTMLLoadURI
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - URL
+  ret:
     type: Nothing
   left: !Item
     name: control

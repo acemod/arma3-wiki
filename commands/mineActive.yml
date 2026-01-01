@@ -3,7 +3,8 @@ desc: Checks if the given mine is active.
 groups:
 - Mines
 syntax:
-- ret:
+- call: !Unary obj
+  ret:
     type: Boolean
   right: !Item
     name: obj

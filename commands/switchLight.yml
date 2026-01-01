@@ -8,7 +8,10 @@ desc: |-
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Binary
+  - lamp
+  - mode
+  ret:
     type: Nothing
   left: !Item
     name: lamp

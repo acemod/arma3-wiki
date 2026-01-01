@@ -3,7 +3,13 @@ desc: Pass a non-verbal communication to the receiver. This command does '''as i
 groups:
 - Conversations
 syntax:
-- ret:
+- call: !Binary
+  - person
+  - - receiver
+    - topicName
+    - sentenceID
+    - argumentArrayN
+  ret:
     type: Nothing
   left: !Item
     name: person

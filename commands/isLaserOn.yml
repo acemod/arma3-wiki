@@ -3,14 +3,18 @@ desc: Returns true if the vehicle has its laser turned on. Not to be confused wi
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary entity
+  ret:
     type: Boolean
     desc: '[[true]] when laser is on, [[false]] otherwise'
   right: !Item
     name: entity
     desc: unit or vehicle
     type: Object
-- ret:
+- call: !Binary
+  - vehicle
+  - turret
+  ret:
     type: Boolean
     desc: '[[true]] when laser is on, [[false]] otherwise'
   left: !Item

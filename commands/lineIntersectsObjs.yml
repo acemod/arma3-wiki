@@ -3,7 +3,14 @@ desc: Returns a list of objects intersected by the line from ''begPos'' to ''end
 groups:
 - Math - Geometry
 syntax:
-- ret:
+- call: !Unary
+  - begPos
+  - endPos
+  - ignoreObj1
+  - ignoreObj2
+  - sortByDistance
+  - flags
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
@@ -36,7 +43,9 @@ syntax:
     name: flags
     type: Unknown
     optional: true
-- ret:
+- call: !Unary
+  - - elementN
+  ret:
     type: Unknown
   right: !Array
   - !Array

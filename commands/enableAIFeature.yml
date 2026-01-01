@@ -3,7 +3,10 @@ desc: Enables/disables given AI feature.
 groups:
 - AI Behaviour
 syntax:
-- ret:
+- call: !Binary
+  - feature
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: feature
@@ -12,7 +15,11 @@ syntax:
     name: enable
     desc: '[[true]] to enable, [[false]] to disable'
     type: Boolean
-- ret:
+- call: !Binary
+  - unit
+  - - feature
+    - enable
+  ret:
     type: Nothing
   left: !Item
     name: unit

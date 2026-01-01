@@ -3,7 +3,8 @@ desc: "Returns true if the mission editor is operating in real time mode. \n{{Fe
 groups:
 - Game 2 Editor
 syntax:
-- ret:
+- call: !Unary map
+  ret:
     type: Boolean
   right: !Item
     name: map

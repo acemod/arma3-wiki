@@ -3,7 +3,10 @@ desc: "Sets map mode to MAP,3D or PREVIEW. \n{{Feature|informative|Some Old Edit
 groups:
 - Game 2 Editor
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - mode
+  ret:
     type: Nothing
   left: !Item
     name: map

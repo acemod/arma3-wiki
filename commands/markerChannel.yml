@@ -3,7 +3,8 @@ desc: Returns the channel to which a marker belongs.
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Unary marker
+  ret:
     type: Number
   right: !Item
     name: marker

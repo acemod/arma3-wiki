@@ -9,12 +9,14 @@ groups:
 - Unit Identity
 - Locations
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: String
   right: !Item
     name: object
     type: Object
-- ret:
+- call: !Unary location
+  ret:
     type: String
     desc: the location's ''name''. To get its textual value, use [[text]] (see {{Link|#Example 3}})
   right: !Item
@@ -22,7 +24,8 @@ syntax:
     type: Location
   since:
     arma1: '1.8'
-- ret:
+- call: !Unary namespace
+  ret:
     type: String
     desc: "namespace's ''name''. Possible values: \n\n* \"mission\" - for [[missionNamespace]]\n* \"profile\" - for [[profileNamespace]]\n* \"ui\" - for [[uiNamespace]]\n* \"parsing\" - for [[parsingNamespace]]\n* \"local\" - for [[localNamespace]]\n* \"missionprofile\" - for [[missionProfileNamespace]]\n* \"server\" - for [[serverNamespace]]\n* \"\" - for some unnamed namespaces like temporary or server config for example.\n* \"null\" - null namespace (this should never happen)"
   right: !Item
@@ -30,7 +33,8 @@ syntax:
     type: Namespace
   since:
     arma3: '2.18'
-- ret:
+- call: !Unary scriptHandle
+  ret:
     type: String
     desc: The name given to the script via [[scriptName]] or the name passed to [[spawn]] when creating a [[Script_Handle#Promise_Handles|"Empty Handle"]]
   right: !Item

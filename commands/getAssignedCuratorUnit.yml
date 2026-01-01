@@ -3,7 +3,8 @@ desc: Returns unit assigned to curator logic.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary curatorObj
+  ret:
     type: Object
   right: !Item
     name: curatorObj

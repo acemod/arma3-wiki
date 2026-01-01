@@ -3,7 +3,8 @@ desc: Whether or not units can be in a vehicle with broken tracks/wheels.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Boolean
     desc: '[[true]] - allowed, [[false]] - not allowed'
   right: !Item

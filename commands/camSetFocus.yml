@@ -3,7 +3,10 @@ desc: Sets camera focus range. It does not automatically commit changes (see [[c
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - focusRange
+  ret:
     type: Nothing
   left: !Item
     name: camera

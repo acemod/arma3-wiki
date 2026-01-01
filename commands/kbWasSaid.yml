@@ -3,7 +3,13 @@ desc: Check if given item was said by person to someone. See [[Conversations]] f
 groups:
 - Conversations
 syntax:
-- ret:
+- call: !Binary
+  - person
+  - - receiver
+    - topic
+    - sentenceID
+    - maxAge
+  ret:
     type: Boolean
   left: !Item
     name: person

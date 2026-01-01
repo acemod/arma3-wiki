@@ -14,7 +14,10 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- ret:
+- call: !Binary
+  - y
+  - x
+  ret:
     type: Number
   left: !Item
     name: y

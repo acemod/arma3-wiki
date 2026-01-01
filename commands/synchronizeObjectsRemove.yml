@@ -3,7 +3,10 @@ desc: Removes given objects from the unit's list of synchronized objects.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - objects
+  ret:
     type: Nothing
   left: !Item
     name: unit

@@ -3,7 +3,8 @@ desc: Returns number of points that curator have.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary curatorObj
+  ret:
     type: !NumberRange
     - 0
     - 1

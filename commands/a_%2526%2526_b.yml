@@ -8,7 +8,10 @@ groups:
 - Variables
 - Math
 syntax:
-- ret:
+- call: !Binary
+  - booleanA
+  - booleanB
+  ret:
     type: Boolean
   left: !Item
     name: booleanA
@@ -18,7 +21,10 @@ syntax:
     name: booleanB
     desc: test condition or variable
     type: Boolean
-- ret:
+- call: !Binary
+  - boolean
+  - code
+  ret:
     type: Boolean
   left: !Item
     name: boolean

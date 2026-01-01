@@ -5,7 +5,10 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - layer
+  - duration
+  ret:
     type: Nothing
   left: !Item
     name: layer
@@ -13,7 +16,10 @@ syntax:
   right: !Item
     name: duration
     type: Number
-- ret:
+- call: !Binary
+  - layerName
+  - duration
+  ret:
     type: Number
     desc: number of the corresponding layer
   left: !Item

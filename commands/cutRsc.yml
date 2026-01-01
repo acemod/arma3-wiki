@@ -10,7 +10,13 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - class
+  - effect
+  - speed
+  - showInMap
+  - drawOverHUD
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -41,7 +47,14 @@ syntax:
     default: '[[true]]'
     since:
       arma3: '2.16'
-- ret:
+- call: !Binary
+  - layer
+  - - class
+    - effect
+    - speed
+    - showInMap
+    - drawOverHUD
+  ret:
     type: Nothing
   left: !Item
     name: layer

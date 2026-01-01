@@ -3,7 +3,8 @@ desc: Remove all magazines from the given vehicle's magazine cargo space.
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Unary vehicleName
+  ret:
     type: Nothing
   right: !Item
     name: vehicleName

@@ -3,12 +3,16 @@ desc: Returns a list of named properties on Geometry LOD.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Unknown
   right: !Item
     name: object
     type: Object
-- ret:
+- call: !Binary
+  - object
+  - - LOD
+  ret:
     type: HashMapUnknown
   left: !Item
     name: object

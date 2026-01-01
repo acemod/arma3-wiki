@@ -3,7 +3,8 @@ desc: Gets provided player's Voice over Network (VoN) volume.
 groups:
 - Radio and Chat
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: !NumberRange
     - 0
     - 1

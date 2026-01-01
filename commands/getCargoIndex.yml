@@ -3,7 +3,10 @@ desc: Returns index of the unit in cargo. -1 if not in cargo.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - unit
+  ret:
     type: Number
   left: !Item
     name: vehicle

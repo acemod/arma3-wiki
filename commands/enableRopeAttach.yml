@@ -3,7 +3,10 @@ desc: Enables or disables the ability to be attached to a rope end for the given
 groups:
 - Ropes and Sling Loading
 syntax:
-- ret:
+- call: !Binary
+  - entity
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: entity

@@ -3,7 +3,8 @@ desc: A getter for [[ctrlMapSetPosition]]. Returns map position in format [x, y,
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Unary map
+  ret:
     type: ArrayUnknown
     desc: '[x, y, w, h]'
   right: !Item

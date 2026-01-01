@@ -3,7 +3,11 @@ desc: Sets tooltip for item with given index of the listbox or combobox with id 
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - index
+  - tooltip
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -15,7 +19,11 @@ syntax:
   - !Item
     name: tooltip
     type: String
-- ret:
+- call: !Binary
+  - control
+  - - index
+    - tooltip
+  ret:
     type: Nothing
   left: !Item
     name: control

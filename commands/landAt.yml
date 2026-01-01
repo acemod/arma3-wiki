@@ -10,7 +10,10 @@ groups:
 - Unit Control
 - Roads and Airports
 syntax:
-- ret:
+- call: !Binary
+  - plane
+  - ID
+  ret:
     type: Nothing
   left: !Item
     name: plane
@@ -20,7 +23,10 @@ syntax:
     name: ID
     desc: '[[Arma: Airport IDs|Airport ID]]'
     type: Number
-- ret:
+- call: !Binary
+  - plane
+  - airportObject
+  ret:
     type: Nothing
   left: !Item
     name: plane
@@ -30,7 +36,13 @@ syntax:
     type: Object
   since:
     arma3: '1.68'
-- ret:
+- call: !Binary
+  - heli
+  - - position
+    - mode
+    - waitTime
+    - putOnSurface
+  ret:
     type: Boolean
     desc: Returns [[true]] if landing command was processed successfully, [[false]] if failed.
   left: !Item
@@ -68,7 +80,8 @@ syntax:
       arma3: '2.20'
   since:
     arma3: '2.18'
-- ret:
+- call: !Unary heli
+  ret:
     type: Unknown
   right: !Item
     name: heli

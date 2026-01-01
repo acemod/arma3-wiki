@@ -3,7 +3,8 @@ desc: Return a list of members in given team.
 groups:
 - Teams
 syntax:
-- ret:
+- call: !Unary team
+  ret:
     type: ArrayUnknown
   right: !Item
     name: team

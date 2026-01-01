@@ -3,7 +3,10 @@ desc: Sets H3 font size of given HTML control.
 groups:
 - GUI Control - HTML
 syntax:
-- ret:
+- call: !Binary
+  - controlName
+  - height
+  ret:
     type: Nothing
   left: !Item
     name: controlName

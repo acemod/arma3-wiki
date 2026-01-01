@@ -4,7 +4,12 @@ multiplayer_note: '{{Feature|informative|Only works on dedicated servers and {{L
 groups:
 - Argo
 syntax:
-- ret:
+- call: !Unary
+  - requestName
+  - callback
+  - data
+  - httpMethod
+  ret:
     type: Boolean
     desc: '[[true]] on success, [[false]] otherwise'
   right: !Array

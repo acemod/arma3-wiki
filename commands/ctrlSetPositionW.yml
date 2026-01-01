@@ -3,7 +3,10 @@ desc: Sets the width of a 2D control. [[ctrlCommit]] is required to complete the
 groups:
 - GUI Control - Positioning
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - w
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -3,7 +3,12 @@ desc: Sets the color of the right picture when it is selected.
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - color
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -22,7 +27,12 @@ syntax:
     name: color
     desc: color RGBA
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - color
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

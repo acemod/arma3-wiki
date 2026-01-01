@@ -3,7 +3,10 @@ desc: "Sets intensity of light directly. [[setLightBrightness]] uses [[setLightI
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Binary
+  - light
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: light

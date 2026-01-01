@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Conversations
 syntax:
-- ret:
+- call: !Binary
+  - person
+  - fileName
+  ret:
     type: Boolean
   left: !Item
     name: person

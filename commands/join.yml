@@ -13,7 +13,10 @@ desc: |-
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - unitArray
+  - group
+  ret:
     type: Nothing
   left: !Item
     name: unitArray

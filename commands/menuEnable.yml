@@ -3,7 +3,11 @@ desc: Enables or disables menu entry on given path.
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - enable
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -20,7 +24,11 @@ syntax:
     default: '[[true]]'
     since:
       arma3: '2.6'
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - enable
+  ret:
     type: Nothing
   left: !Item
     name: control

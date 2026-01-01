@@ -9,12 +9,17 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary unitName
+  ret:
     type: Nothing
   right: !Item
     name: unitName
     type: Object
-- ret:
+- call: !Binary
+  - unit
+  - - muzzle
+    - magazine
+  ret:
     type: Boolean
     desc: '[[true]] on success'
   left: !Item

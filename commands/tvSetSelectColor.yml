@@ -3,7 +3,11 @@ desc: Sets the select color of given path.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Binary
+  - ctrl
+  - - path
+    - color
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

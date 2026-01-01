@@ -3,7 +3,8 @@ desc: "Returns a random element from the given array according to assigned weigh
 groups:
 - Arrays
 syntax:
-- ret:
+- call: !Unary valuesAndWeights
+  ret:
     type: Anything
     desc: random weighted value or [[Nothing]] if array is empty or all weights are 0
   right: !Item
@@ -19,7 +20,10 @@ syntax:
         desc: values relative weight
         since: null
       desc: ''
-- ret:
+- call: !Binary
+  - values
+  - weights
+  ret:
     type: Anything
     desc: random weighted value or [[Nothing]] if any of arrays is empty or all weights are 0
   left: !Item

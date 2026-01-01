@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Unary
+  - x
+  - y
+  - forced
+  ret:
     type: Nothing
   right: !Array
   - !Item

@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- ret:
+- call: !Unary
+  - start
+  - end
+  ret:
     type: Boolean
   right: !Array
   - !Item

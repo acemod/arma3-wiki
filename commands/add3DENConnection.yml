@@ -3,7 +3,11 @@ desc: '[[Eden Editor: Connecting|Connect]] entities together.'
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary
+  - type
+  - from
+  - to
+  ret:
     type: Boolean
     desc: '[[true]] If the connection was made'
   right: !Array

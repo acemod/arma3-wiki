@@ -5,7 +5,10 @@ groups:
 - Strings
 - Config
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - index
+  ret:
     type: Anything
     desc: a <u>reference</u> to the array element given by its index
   left: !Item
@@ -19,7 +22,10 @@ syntax:
       index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up.<br>
       {{GVI|arma3|2.12|size= 0.75}} negative index can be used to select from the end of the array, i.e. -1 means last array element.
     type: Number
-- ret:
+- call: !Binary
+  - array
+  - boolean
+  ret:
     type: Anything
     desc: a <u>reference</u> to the array element
   left: !Item
@@ -31,7 +37,10 @@ syntax:
     name: boolean
     desc: '[[false]] selects the ''''''first'''''' element of the [[Array]], [[true]] the ''''''second'''''' one'
     type: Boolean
-- ret:
+- call: !Binary
+  - config
+  - index
+  ret:
     type: Config
   left: !Item
     name: config
@@ -42,7 +51,11 @@ syntax:
     type: Number
   since:
     arma1: '1.0'
-- ret:
+- call: !Binary
+  - string
+  - - start
+    - length
+  ret:
     type: String
   left: !Item
     name: string
@@ -60,7 +73,11 @@ syntax:
     default: '''''string''''''s length'
   since:
     arma3: '1.28'
-- ret:
+- call: !Binary
+  - array
+  - - start
+    - count
+  ret:
     type: ArrayUnknown
     desc: a <u>new array</u> from selection
   left: !Item
@@ -82,7 +99,10 @@ syntax:
     optional: true
   since:
     arma3: '1.32'
-- ret:
+- call: !Binary
+  - array
+  - expression
+  ret:
     type: ArrayUnknown
     desc: a <u>new array</u> of all elements from the original array that satisfied expression condition
   left: !Item

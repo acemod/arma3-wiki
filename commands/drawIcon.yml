@@ -6,7 +6,20 @@ desc: |-
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - texture
+    - color
+    - position
+    - width
+    - height
+    - angle
+    - text
+    - shadow
+    - textSize
+    - font
+    - align
+  ret:
     type: Nothing
   left: !Item
     name: map

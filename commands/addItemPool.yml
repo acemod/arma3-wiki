@@ -3,7 +3,10 @@ desc: Adds count items of type name into the weapon pool (used in the campaign t
 groups:
 - Weapon Pool
 syntax:
-- ret:
+- call: !Unary
+  - itemName
+  - count
+  ret:
     type: Nothing
   right: !Array
   - !Item

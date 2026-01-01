@@ -5,7 +5,11 @@ desc: |-
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - column
+  - reversed
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -20,7 +24,11 @@ syntax:
     type: Boolean
     optional: true
     default: '[[false]]'
-- ret:
+- call: !Binary
+  - control
+  - - column
+    - reversed
+  ret:
     type: Nothing
   left: !Item
     name: control

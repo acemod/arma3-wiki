@@ -6,7 +6,10 @@ groups:
 - Arrays
 - HashMap
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - index
+  ret:
     type: Anything
     desc: returns the deleted element or [[Nothing]]
   left: !Item
@@ -18,7 +21,10 @@ syntax:
     name: index
     desc: see the note in description
     type: Number
-- ret:
+- call: !Binary
+  - hashMap
+  - key
+  ret:
     type: Anything
   left: !Item
     name: hashMap
@@ -28,7 +34,10 @@ syntax:
     type: Unknown
   since:
     arma3: '2.2'
-- ret:
+- call: !Binary
+  - array
+  - indexes
+  ret:
     type: ArrayUnknown
     desc: deleted elements in order of user supplied indexes
   left: !Item

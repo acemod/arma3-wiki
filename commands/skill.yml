@@ -9,12 +9,16 @@ desc: |-
 groups:
 - AI Behaviour
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Number
   right: !Item
     name: unit
     type: Object
-- ret:
+- call: !Binary
+  - unit
+  - skillName
+  ret:
     type: Number
   left: !Item
     name: unit

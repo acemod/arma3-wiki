@@ -3,7 +3,10 @@ desc: Assign player as curator. Two players cannot act as one curator.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - player
+  - curatorObj
+  ret:
     type: Nothing
   left: !Item
     name: player

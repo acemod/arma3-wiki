@@ -3,7 +3,8 @@ desc: Returns all values stored in the given [[HashMap]]. The order of the retur
 groups:
 - HashMap
 syntax:
-- ret:
+- call: !Unary hashmap
+  ret:
     type: ArrayUnknown
     desc: all values stored in ''hashmap''
   right: !Item

@@ -5,7 +5,10 @@ problem_notes:
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - loadout
+  ret:
     type: Nothing
   left: !Item
     name: unit
@@ -14,7 +17,11 @@ syntax:
     name: loadout
     desc: '[[Unit Loadout Array]]'
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - unit
+  - - loadout
+    - fullMagazines
+  ret:
     type: Nothing
   left: !Item
     name: unit
@@ -28,7 +35,10 @@ syntax:
     name: fullMagazines
     desc: partially emptied magazines will be refilled when the loadout is applied
     type: Boolean
-- ret:
+- call: !Binary
+  - unit
+  - name
+  ret:
     type: Nothing
   left: !Item
     name: unit
@@ -37,7 +47,10 @@ syntax:
     name: name
     desc: class name (see description)
     type: String
-- ret:
+- call: !Binary
+  - unit
+  - config
+  ret:
     type: Nothing
   left: !Item
     name: unit

@@ -3,7 +3,10 @@ desc: Proportionaly increase/decrease unit's recoil. Drives muzzle up with every
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - unitName
+  - coefficient
+  ret:
     type: Nothing
   left: !Item
     name: unitName

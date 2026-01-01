@@ -8,7 +8,10 @@ desc: |-
 groups:
 - Remote Control
 syntax:
-- ret:
+- call: !Binary
+  - who
+  - whom
+  ret:
     type: Nothing
   left: !Item
     name: who

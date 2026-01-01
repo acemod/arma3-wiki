@@ -3,7 +3,8 @@ desc: Returns array of the starting topic and hint the given field manual should
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary display
+  ret:
     type: ArrayUnknown
     desc: '[starting topic, hint]'
   right: !Item

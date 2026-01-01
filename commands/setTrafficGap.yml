@@ -3,7 +3,13 @@ desc: Set the average gap between ambient cars in a rectangle (in meters). {{Fea
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Unary
+  - gap
+  - xMin
+  - xMax
+  - zMin
+  - zMax
+  ret:
     type: Nothing
   right: !Array
   - !Item

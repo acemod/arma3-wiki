@@ -6,7 +6,11 @@ desc: |-
 groups:
 - Locations
 syntax:
-- ret:
+- call: !Binary
+  - location
+  - - x
+    - y
+  ret:
     type: Nothing
   left: !Item
     name: location

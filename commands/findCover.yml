@@ -5,7 +5,15 @@ desc: |-
 groups:
 - Broken Commands
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - position
+    - hidePosition
+    - maxDist
+    - minDist
+    - visibilityPosition
+    - ignoreObject
+  ret:
     type: Object
     desc: always [[objNull]]
   left: !Item

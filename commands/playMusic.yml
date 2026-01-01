@@ -10,13 +10,17 @@ desc: |-
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Unary musicName
+  ret:
     type: Nothing
   right: !Item
     name: musicName
     desc: music classname
     type: String
-- ret:
+- call: !Unary
+  - musicName
+  - start
+  ret:
     type: Nothing
   right: !Array
   - !Item

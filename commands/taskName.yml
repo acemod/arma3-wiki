@@ -3,7 +3,8 @@ desc: Returns the name of the given task.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary task
+  ret:
     type: String
     desc: task name
   right: !Item

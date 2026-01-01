@@ -4,7 +4,10 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: unit

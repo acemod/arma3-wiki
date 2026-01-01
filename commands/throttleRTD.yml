@@ -3,7 +3,8 @@ desc: Return the current throttle level for all engines of a helicopter.
 groups:
 - RTD
 syntax:
-- ret:
+- call: !Unary helicopterRTD
+  ret:
     type: ArrayUnknown
   right: !Item
     name: helicopterRTD

@@ -3,7 +3,8 @@ desc: Return the direction in degrees of the 'unit' watching in formation.
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Unary unitName
+  ret:
     type: Number
   right: !Item
     name: unitName

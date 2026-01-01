@@ -10,7 +10,10 @@ groups:
 - Groups
 - AI Behaviour
 syntax:
-- ret:
+- call: !Binary
+  - groupName
+  - behaviour
+  ret:
     type: Nothing
   left: !Item
     name: groupName

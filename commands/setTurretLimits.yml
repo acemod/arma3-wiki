@@ -3,7 +3,15 @@ desc: Sets the rotation and elevation limits for the given turret. The limits ar
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - turret
+    - minTurn
+    - maxTurn
+    - minElev
+    - maxElev
+    - soft
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

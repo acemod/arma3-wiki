@@ -3,7 +3,8 @@ desc: Finds the nearest building to a given object or position. A "building" is 
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Unary position
+  ret:
     type: Object
   right: !Item
     name: position

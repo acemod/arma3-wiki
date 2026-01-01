@@ -3,7 +3,10 @@ desc: Returns array of controls on the header with the given index.
 groups:
 - GUI Control - Controls Table
 syntax:
-- ret:
+- call: !Binary
+  - ctrl
+  - index
+  ret:
     type: !ArrayUnsized
       type: Control
       desc: ''

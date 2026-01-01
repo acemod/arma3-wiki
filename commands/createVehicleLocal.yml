@@ -6,7 +6,10 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - type
+  - position
+  ret:
     type: Object
   left: !Item
     name: type
@@ -15,7 +18,13 @@ syntax:
   right: !Item
     name: position
     type: Position3dAGL
-- ret:
+- call: !Unary
+  - type
+  - position
+  - markers
+  - placement
+  - special
+  ret:
     type: Object
     desc: created vehicle or [[objNull]] if failed
   right: !Array

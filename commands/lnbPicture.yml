@@ -3,7 +3,11 @@ desc: Returns the picture name or path of the item with the given position of th
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  ret:
     type: String
   right: !Array
   - !Item
@@ -19,7 +23,11 @@ syntax:
       name: column
       desc: index of Column
       type: Number
-- ret:
+- call: !Binary
+  - control
+  - - row
+    - column
+  ret:
     type: String
   left: !Item
     name: control

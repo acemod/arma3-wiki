@@ -3,7 +3,12 @@ desc: "Animates a door on a vehicle. Animation is defined in config file in [[Cf
 groups:
 - Animations
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - doorname
+    - phase
+    - instant
+  ret:
     type: Nothing
   left: !Item
     name: object

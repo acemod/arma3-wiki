@@ -3,7 +3,10 @@ desc: Delete (unregister) resources of the team member. Resources are deleted in
 groups:
 - Teams
 syntax:
-- ret:
+- call: !Binary
+  - teamMember
+  - resources
+  ret:
     type: Nothing
   left: !Item
     name: teamMember

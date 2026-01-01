@@ -3,7 +3,10 @@ desc: Returns array with all [[Diary]] Records for the given subject available t
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - person
+  - subject
+  ret:
     type: Unknown
   left: !Item
     name: person

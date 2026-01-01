@@ -3,7 +3,8 @@ desc: Check if the vehicle has enabled transporting other vehicles or not.
 groups:
 - Vehicle in Vehicle Transport
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Boolean
     desc: returns true if the vehicle has enabled transporting other vehicles, and false if the vehicle has not enabled transporting other vehicles
   right: !Item

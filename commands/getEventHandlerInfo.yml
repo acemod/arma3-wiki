@@ -3,7 +3,11 @@ desc: Queries given event handler's information.
 groups:
 - Event Handlers
 syntax:
-- ret:
+- call: !Binary
+  - oper
+  - - type
+    - id
+  ret:
     type: !OneOf
     - type: Boolean
       desc: null
@@ -37,7 +41,10 @@ syntax:
     name: id
     desc: event handler id returned by [[addEventHandler]], [[ctrlAddEventHandler]], [[displayAddEventHandler]], or [[addMPEventHandler]] - '''not''' any other EH system (e.g [[add3DENEventHandler]] or [[addUserActionEventHandler]])
     type: Number
-- ret:
+- call: !Unary
+  - type
+  - id
+  ret:
     type: !OneOf
     - type: Boolean
       desc: null

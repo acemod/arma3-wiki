@@ -3,7 +3,11 @@ desc: Removes a given Event Handler that was added with [[addEventHandler]].
 groups:
 - Event Handlers
 syntax:
-- ret:
+- call: !Binary
+  - target
+  - - type
+    - index
+  ret:
     type: Nothing
   left: !Item
     name: target

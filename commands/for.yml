@@ -16,13 +16,18 @@ problem_notes:
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Unary arguments
+  ret:
     type: ForType
   right: !Item
     name: arguments
     desc: declares the index variable name like "_myVar". [[from]] and [[to]] are required, [[step]] is optional.
     type: String
-- ret:
+- call: !Unary
+  - init
+  - condition
+  - codeToExecute
+  ret:
     type: ForType
   right: !Array
   - !Item

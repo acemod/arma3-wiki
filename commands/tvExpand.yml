@@ -3,7 +3,10 @@ desc: Expands tree item pointed to by the path. IDC means id of parent Tree View
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -13,7 +16,10 @@ syntax:
     name: path
     desc: item [[Tree View Path]]. [] will expand the whole tree if it was collapsed previously with []
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - control
+  - path
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -3,7 +3,10 @@ desc: Returns value of the specified controller, see [[getAllEnvSoundControllers
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Binary
+  - position
+  - controller
+  ret:
     type: Number
   left: !Item
     name: position

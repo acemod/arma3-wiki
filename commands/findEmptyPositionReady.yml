@@ -6,7 +6,11 @@ desc: |-
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Binary
+  - center
+  - - radius
+    - maxDistance
+  ret:
     type: Boolean
     desc: '[[true]] when ready'
   left: !Item

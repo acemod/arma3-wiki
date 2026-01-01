@@ -3,7 +3,8 @@ desc: Returns short name of location. For config class name, see [[configName]]
 groups:
 - Locations
 syntax:
-- ret:
+- call: !Unary location
+  ret:
     type: String
   right: !Item
     name: location

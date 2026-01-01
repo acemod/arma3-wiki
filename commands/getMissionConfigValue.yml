@@ -14,7 +14,8 @@ groups:
 - Config
 - Mission Information
 syntax:
-- ret:
+- call: !Unary attribute
+  ret:
     type: !OneOf
     - type: Number
       desc: null
@@ -32,7 +33,10 @@ syntax:
     name: attribute
     desc: attribute name
     type: String
-- ret:
+- call: !Unary
+  - attribute
+  - defaultValue
+  ret:
     type: !OneOf
     - type: Number
       desc: null

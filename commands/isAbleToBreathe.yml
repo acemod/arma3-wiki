@@ -3,7 +3,8 @@ desc: If unit is diving and doesn't have a re-breather, it returns [[false]]. Di
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Boolean
   right: !Item
     name: unit

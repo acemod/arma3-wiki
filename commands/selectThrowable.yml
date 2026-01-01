@@ -4,7 +4,10 @@ groups:
 - Weapons
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - throwable
+  ret:
     type: Boolean
     desc: '[[true]] on success'
   left: !Item

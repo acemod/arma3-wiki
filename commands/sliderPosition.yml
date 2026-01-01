@@ -3,12 +3,14 @@ desc: Returns current thumb position of [[CT_SLIDER]] or [[CT_XSLIDER]] with giv
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: Number
   right: !Item
     name: idc
     type: Number
-- ret:
+- call: !Unary control
+  ret:
     type: Number
   right: !Item
     name: control

@@ -3,7 +3,10 @@ desc: Assignes loiter radius to waypoint
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - radius
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

@@ -3,7 +3,10 @@ desc: Toggles various diagnostics.
 groups:
 - Diagnostic
 syntax:
-- ret:
+- call: !Binary
+  - mode
+  - state
+  ret:
     type: Nothing
   left: !Item
     name: mode

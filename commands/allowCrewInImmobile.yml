@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - allow
+  ret:
     type: Nothing
   left: !Item
     name: vehicle
@@ -13,7 +16,11 @@ syntax:
   right: !Item
     name: allow
     type: Boolean
-- ret:
+- call: !Binary
+  - vehicle
+  - - brokenWheels
+    - upsideDown
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

@@ -3,7 +3,12 @@ desc: "Tell the helicopter engine RPMs to reach the given value within a period 
 groups:
 - RTD
 syntax:
-- ret:
+- call: !Binary
+  - helicopterRTD
+  - - value
+    - time
+    - engineIndex
+  ret:
     type: Nothing
   left: !Item
     name: helicopterRTD

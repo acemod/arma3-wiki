@@ -3,7 +3,11 @@ desc: Sets the {{hl|#lightreflector}}'s volume shape. An empty shape will switch
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Binary
+  - lightReflector
+  - - shapePath
+    - scale
+  ret:
     type: Nothing
   left: !Item
     name: lightReflector

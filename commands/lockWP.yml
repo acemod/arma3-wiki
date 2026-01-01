@@ -3,7 +3,10 @@ desc: Disable switching to next waypoint (current waypoint will never complete w
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - groupName
+  - lock
+  ret:
     type: Nothing
   left: !Item
     name: groupName

@@ -3,7 +3,8 @@ desc: Check if given vehicle/person/building is alive (i.e. not dead or destroye
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Boolean
     desc: '[[true]] if alive, [[false]] if dead/destroyed'
   right: !Item

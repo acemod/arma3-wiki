@@ -3,7 +3,11 @@ desc: Returns current ammo round reloading phase. For a magazine reloading phase
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - gunner
+    - muzzleName
+  ret:
     type: Number
     desc: ammo round reload phase in range 0..1; -1 when N/A
   left: !Item

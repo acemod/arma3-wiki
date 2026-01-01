@@ -5,7 +5,10 @@ desc: |-
 groups:
 - System
 syntax:
-- ret:
+- call: !Binary
+  - toneName
+  - params
+  ret:
     type: Nothing
   left: !Item
     name: toneName

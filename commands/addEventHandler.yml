@@ -8,7 +8,11 @@ multiplayer_note: Some event handlers are persistent (i.e they stay attached to 
 groups:
 - Event Handlers
 syntax:
-- ret:
+- call: !Binary
+  - target
+  - - type
+    - code
+  ret:
     type: Number
     desc: the index of the added Event Handler. Indices start at 0 for each unit and increment with each added Event Handler.
   left: !Item

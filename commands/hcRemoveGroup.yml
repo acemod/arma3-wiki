@@ -3,7 +3,10 @@ desc: Removes group from unit's [[High Command|high command]] bar.
 groups:
 - High Command
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - group
+  ret:
     type: Nothing
   left: !Item
     name: unit

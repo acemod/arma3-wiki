@@ -3,7 +3,8 @@ desc: Obtain the current system's video settings.
 groups:
 - System
 syntax:
-- ret:
+- call: Nular
+  ret:
     type: HashMapUnknown
     desc: all video settings, the key is always a [[String]], the value can be a [[String]], [[Number]], [[Boolean]] or [[Array]] (see {{Link|#Example 1}}).
 argument_loc: Unspecified

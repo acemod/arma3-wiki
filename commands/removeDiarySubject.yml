@@ -3,7 +3,10 @@ desc: Removes a page and all its subjects from the [[Diary]].
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - player
+  - diaryPage
+  ret:
     type: Nothing
   left: !Item
     name: player

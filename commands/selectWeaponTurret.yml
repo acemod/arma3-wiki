@@ -3,7 +3,13 @@ desc: Selects the given weapon on the specified turret. Use turret path [-1] for
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - weapon
+    - turretPath
+    - muzzle
+    - firemode
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

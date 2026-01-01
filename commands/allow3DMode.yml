@@ -3,7 +3,10 @@ desc: "Allow/dissallow 3D mode., \n{{Feature|informative|Some Old Editor Command
 groups:
 - Game 2 Editor
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - bool
+  ret:
     type: Nothing
   left: !Item
     name: map

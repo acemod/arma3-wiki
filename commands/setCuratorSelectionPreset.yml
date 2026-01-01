@@ -3,7 +3,10 @@ desc: Set the list of objects in the given selection preset. Only [[Object]] is 
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - numkey
+  - objects
+  ret:
     type: Nothing
   left: !Item
     name: numkey

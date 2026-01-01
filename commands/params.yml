@@ -9,7 +9,9 @@ groups:
 - Variables
 - Arrays
 syntax:
-- ret:
+- call: !Unary
+  - elementN
+  ret:
     type: Boolean
     desc: '[[false]] if error occurred or default value has been used, otherwise [[true]]'
   right: !Array
@@ -41,7 +43,10 @@ syntax:
       - type: ArrayUnknown
         desc: null
         since: null
-- ret:
+- call: !Binary
+  - argument
+  - - elementN
+  ret:
     type: Boolean
     desc: '[[false]] if error occurred or default value has been used, otherwise [[true]]'
   left: !Item

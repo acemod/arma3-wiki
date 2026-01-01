@@ -3,7 +3,10 @@ desc: Send the command to the list of clients.
 groups:
 - Multiplayer
 syntax:
-- ret:
+- call: !Unary
+  - clientList
+  - command
+  ret:
     type: Nothing
   right: !Array
   - !Item

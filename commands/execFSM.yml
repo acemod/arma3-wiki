@@ -12,7 +12,10 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Binary
+  - arguments
+  - fsmFilePath
+  ret:
     type: Number
     desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
   left: !Item
@@ -23,14 +26,19 @@ syntax:
     name: fsmFilePath
     desc: file with FSM code
     type: String
-- ret:
+- call: !Unary fsmFilePath
+  ret:
     type: Number
     desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
   right: !Item
     name: fsmFilePath
     desc: file with FSM code
     type: String
-- ret:
+- call: !Binary
+  - arguments
+  - - fsmFilePath
+    - allowTermination
+  ret:
     type: Number
     desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
   left: !Item
@@ -48,7 +56,10 @@ syntax:
     type: Boolean
   since:
     arma3: '2.18'
-- ret:
+- call: !Unary
+  - fsmFilePath
+  - allowTermination
+  ret:
     type: Number
     desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
   right: !Array

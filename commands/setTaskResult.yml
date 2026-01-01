@@ -3,7 +3,11 @@ desc: Set a result of the task.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - task
+  - - state
+    - result
+  ret:
     type: Nothing
   left: !Item
     name: task

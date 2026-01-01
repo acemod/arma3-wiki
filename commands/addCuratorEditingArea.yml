@@ -3,7 +3,12 @@ desc: Adds or changes curator edit area (depends on if ID is already used).
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - - editAreaID
+    - position
+    - radius
+  ret:
     type: Nothing
   left: !Item
     name: curatorObj

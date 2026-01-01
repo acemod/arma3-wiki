@@ -7,13 +7,15 @@ desc: |-
 groups:
 - Variables
 syntax:
-- ret:
+- call: !Unary variableName
+  ret:
     type: Nothing
   right: !Item
     name: variableName
     desc: e.g <sqf inline>"_myVar"</sqf>
     type: String
-- ret:
+- call: !Unary variableNameList
+  ret:
     type: Nothing
   right: !Item
     name: variableNameList

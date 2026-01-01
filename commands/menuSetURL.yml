@@ -3,7 +3,11 @@ desc: Sets weblink (URL) of given menu strip entry, subject to {{hl|allowedHTMLL
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - link
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -17,7 +21,11 @@ syntax:
   - !Item
     name: link
     type: String
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - link
+  ret:
     type: Nothing
   left: !Item
     name: control

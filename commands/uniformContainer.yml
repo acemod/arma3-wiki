@@ -4,7 +4,8 @@ groups:
 - Containers
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Object
     desc: cargo container, [[objNull]] if ''unit'' does not wear any uniform/clothing
   right: !Item

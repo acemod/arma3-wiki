@@ -4,7 +4,10 @@ groups:
 - Arrays
 - HashMap
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - code
+  ret:
     type: ArrayUnknown
     desc: resulting array
   left: !Item
@@ -16,7 +19,10 @@ syntax:
     name: code
     desc: code to be executed on each element of the array. The current element value is stored in the magic variable [[Magic Variables#x|_x]].
     type: Code
-- ret:
+- call: !Binary
+  - hashmap
+  - code
+  ret:
     type: ArrayUnknown
     desc: resulting array
   left: !Item

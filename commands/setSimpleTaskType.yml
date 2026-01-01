@@ -3,7 +3,10 @@ desc: Attach type to the simple task. See [[Arma_3_Tasks_Overhaul#Default_Task_T
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - task
+  - taskType
+  ret:
     type: Nothing
   left: !Item
     name: task

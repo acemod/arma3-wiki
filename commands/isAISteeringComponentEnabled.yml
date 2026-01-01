@@ -3,7 +3,8 @@ desc: Returns whether the [[useAISteeringComponent|AI steering component]] featu
 groups:
 - AI Behaviour
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Boolean
     desc: '[[true]] if AI steering component is supported by the vehicle (i.e. defined in config) and enabled, [[false]] otherwise'
   right: !Item

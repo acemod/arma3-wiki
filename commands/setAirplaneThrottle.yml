@@ -3,7 +3,10 @@ desc: Sets a wanted throttle position - works only on [[player]]'s vehicle.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - airplane
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: airplane

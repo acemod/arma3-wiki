@@ -30,7 +30,8 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary input
+  ret:
     type: Number
     desc: value of the controller input 0...1. When input is -1, return is 1 if controller is available, 0 - if controller is unavailable
   right: !Item

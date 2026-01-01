@@ -10,12 +10,16 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Unary code
+  ret:
     type: ExceptionHandle
   right: !Item
     name: code
     type: Code
-- ret:
+- call: !Binary
+  - args
+  - code
+  ret:
     type: ExceptionHandle
   left: !Item
     name: args

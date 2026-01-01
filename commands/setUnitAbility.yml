@@ -3,7 +3,10 @@ desc: Sets skill of given unit. Unlike [[setSkill]], [[setUnitAbility]] can set 
 groups:
 - AI Behaviour
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: unit

@@ -3,7 +3,10 @@ desc: Checks for intersection of terrain between two ASL positions. Same as [[te
 groups:
 - Math - Geometry
 syntax:
-- ret:
+- call: !Unary
+  - start
+  - end
+  ret:
     type: Unknown
   right: !Array
   - !Item

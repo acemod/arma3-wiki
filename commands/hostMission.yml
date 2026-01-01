@@ -3,7 +3,10 @@ desc: Host the multiplayer mission defined in the config class and opens the lob
 groups:
 - Multiplayer
 syntax:
-- ret:
+- call: !Unary
+  - configEntry
+  - activeDisplay
+  ret:
     type: Nothing
   right: !Array
   - !Item

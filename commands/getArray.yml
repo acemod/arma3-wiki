@@ -3,7 +3,8 @@ desc: Extract array from config entry.
 groups:
 - Config
 syntax:
-- ret:
+- call: !Unary config
+  ret:
     type: !ArrayUnsized
       type: Anything
       desc: ''

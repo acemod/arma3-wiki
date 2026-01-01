@@ -3,7 +3,10 @@ desc: Changes a group's combat mode when the waypoint becomes active.
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - mode
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

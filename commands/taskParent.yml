@@ -3,7 +3,8 @@ desc: Returns the parent task of the specified task.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary task
+  ret:
     type: Task
   right: !Item
     name: task

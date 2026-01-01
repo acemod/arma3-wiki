@@ -3,7 +3,10 @@ desc: Returns current coeficient setting.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - action
+  ret:
     type: Number
   left: !Item
     name: curatorObj

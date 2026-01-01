@@ -3,7 +3,10 @@ desc: Force player to run/jog if set to false.
 groups:
 - Stamina System
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - state
+  ret:
     type: Nothing
   left: !Item
     name: unit

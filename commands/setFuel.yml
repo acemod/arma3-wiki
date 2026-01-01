@@ -3,7 +3,10 @@ desc: Sets fuel level.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - amount
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

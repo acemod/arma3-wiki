@@ -3,7 +3,8 @@ desc: Returns localized name of action.
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary action
+  ret:
     type: String
   right: !Item
     name: action

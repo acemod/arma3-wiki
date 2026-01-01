@@ -3,7 +3,10 @@ desc: Sets the given suppression value for the given unit.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: unit

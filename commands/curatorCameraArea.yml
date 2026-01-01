@@ -3,7 +3,8 @@ desc: Returns all curator camera areas.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Unary curatorObj
+  ret:
     type: !ArraySized
       types:
       - name: cameraAreaID

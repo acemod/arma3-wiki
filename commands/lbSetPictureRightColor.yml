@@ -5,7 +5,11 @@ desc: |-
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - index
+  - color
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -18,7 +22,11 @@ syntax:
   - !Item
     name: color
     type: ArrayColorRgba
-- ret:
+- call: !Binary
+  - control
+  - - index
+    - color
+  ret:
     type: Nothing
   left: !Item
     name: control

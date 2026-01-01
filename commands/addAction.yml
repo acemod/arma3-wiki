@@ -4,7 +4,21 @@ multiplayer_note: The command will be ignored on dedicated servers, probably bec
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - title
+    - script
+    - arguments
+    - priority
+    - showWindow
+    - hideOnUse
+    - shortcut
+    - condition
+    - radius
+    - unconscious
+    - selection
+    - memoryPoint
+  ret:
     type: Number
     desc: the added action's ID. Action can be removed with [[removeAction]] (see also [[removeAllActions]]). IDs are incrementing, the first given action to each unit has the ID 0, the second the ID 1, etc. IDs are also passed to the called script (see the [[#Syntax 2|''script'' parameter]])
   left: !Item

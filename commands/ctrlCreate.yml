@@ -53,7 +53,12 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - display
+  - - class
+    - idc
+    - controlsGroup
+  ret:
     type: Control
   left: !Item
     name: display

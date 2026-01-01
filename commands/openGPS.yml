@@ -3,7 +3,8 @@ desc: Opens or closes minimap if player has {{hl|"ItemGPS"}} linked in inventory
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary open
+  ret:
     type: Boolean
     desc: '[[true]] on success'
   right: !Item

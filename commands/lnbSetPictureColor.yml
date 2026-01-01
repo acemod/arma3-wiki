@@ -3,7 +3,12 @@ desc: Sets the cell picture's colour.
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - colour
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -21,7 +26,12 @@ syntax:
   - !Item
     name: colour
     type: ArrayColorRgba
-- ret:
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - colour
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

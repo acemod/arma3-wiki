@@ -5,7 +5,12 @@ desc: |-
 groups:
 - Locations
 syntax:
-- ret:
+- call: !Unary
+  - centre
+  - locationTypes
+  - radius
+  - sortPosition
+  ret:
     type: !ArrayUnsized
       type: Location
       desc: ''

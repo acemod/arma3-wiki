@@ -10,7 +10,13 @@ groups:
 - Object Manipulation
 - Animations
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - turret
+    - elevation
+    - speed
+    - blockUserInput
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

@@ -9,12 +9,17 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Unknown
   right: !Item
     name: vehicle
     type: Object
-- ret:
+- call: !Unary
+  - vehicle
+  - type
+  - includeEmpty
+  ret:
     type: Unknown
   right: !Array
   - !Item

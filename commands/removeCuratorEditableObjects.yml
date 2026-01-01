@@ -3,7 +3,11 @@ desc: Unregister objects which can be edited by a curator.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - - objects
+    - removeCrew
+  ret:
     type: Nothing
   left: !Item
     name: curatorObj

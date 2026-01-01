@@ -3,7 +3,15 @@ desc: "{{Wiki|WIP}} \n\nAttaches a child object to a parent, similar to [[attach
 groups:
 - PhysX
 syntax:
-- ret:
+- call: !Binary
+  - - parent
+    - child
+  - - jointType
+    - localFrameParent
+    - localFrameChild
+    - miscFlags
+    - jointDescription
+  ret:
     type: Nothing
     desc: Do NOT depend on this staying nothing, it might change to be something.
   left: !Array

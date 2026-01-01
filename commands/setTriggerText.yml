@@ -3,7 +3,10 @@ desc: Sets the text label attached to the trigger object. This is used for examp
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Binary
+  - trigger
+  - text
+  ret:
     type: Nothing
   left: !Item
     name: trigger

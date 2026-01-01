@@ -4,13 +4,17 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Unknown
   right: !Item
     name: vehicle
     desc: unit or vehicle or container. When transport is supplied, the command returns vehicle's magazines not the cargo. When container is supplied, the command behaves identically to [[magazinesAmmoCargo]]
     type: Object
-- ret:
+- call: !Unary
+  - vehicle
+  - includeEmpty
+  ret:
     type: Unknown
   right: !Array
   - !Item

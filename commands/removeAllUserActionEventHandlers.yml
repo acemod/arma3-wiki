@@ -6,7 +6,10 @@ desc: |-
 groups:
 - Event Handlers
 syntax:
-- ret:
+- call: !Unary
+  - keyName
+  - eventType
+  ret:
     type: Nothing
   right: !Array
   - !Item

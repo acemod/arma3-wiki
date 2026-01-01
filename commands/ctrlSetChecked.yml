@@ -3,7 +3,10 @@ desc: Sets checked state of a [[CT_CHECKBOXES]] control.
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - checked
+  ret:
     type: Nothing
   left: !Item
     name: control
@@ -13,7 +16,11 @@ syntax:
     name: checked
     desc: '[[true]] to check, [[false]] to uncheck the checkbox'
     type: Boolean
-- ret:
+- call: !Binary
+  - control
+  - - index
+    - checked
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -3,7 +3,8 @@ desc: Converts data to {{Link|https://en.wikipedia.org/wiki/JSON|JSON}}.
 groups:
 - Strings
 syntax:
-- ret:
+- call: !Unary data
+  ret:
     type: String
     desc: JSON string
   right: !Item

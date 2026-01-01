@@ -3,7 +3,8 @@ desc: Locks the identity of a person. This will disable default identity.
 groups:
 - Unit Identity
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Boolean
     desc: '[[true]], if it was applied'
   right: !Item

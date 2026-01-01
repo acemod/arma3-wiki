@@ -3,7 +3,12 @@ desc: Sets the {{hl|#lightreflector}}'s cone params.
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Binary
+  - lightReflector
+  - - outerAngle
+    - innerAngle
+    - fadeCoef
+  ret:
     type: Nothing
   left: !Item
     name: lightReflector

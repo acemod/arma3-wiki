@@ -3,7 +3,8 @@ desc: Return all entities and sub-layer in [[Eden Entity]] layer. In order to ge
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary layerID
+  ret:
     type: !ArrayUnsized
       type: EdenEntity
       desc: ''

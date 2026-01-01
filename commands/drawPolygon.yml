@@ -3,7 +3,11 @@ desc: Draws given polygon on the given map control with given color. The polygon
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - polygon
+    - color
+  ret:
     type: Nothing
   left: !Item
     name: map

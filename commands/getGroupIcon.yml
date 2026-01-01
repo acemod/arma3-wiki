@@ -3,7 +3,10 @@ desc: Get group icon properties. Since Arma 3 v2.22 command also returns 3d offs
 groups:
 - High Command
 syntax:
-- ret:
+- call: !Binary
+  - group
+  - id
+  ret:
     type: ArrayUnknown
     desc: '[icon,[offsetx,offsety,offsetX3d,offsetY3d]]'
   left: !Item

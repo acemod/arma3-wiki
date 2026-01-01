@@ -3,7 +3,10 @@ desc: Returns if sides are friendly or hostile. For a value smaller than 0.6 it 
 groups:
 - Sides
 syntax:
-- ret:
+- call: !Binary
+  - side1
+  - side2
+  ret:
     type: Number
     desc: decimal value between 0.0 to 1.0
   left: !Item

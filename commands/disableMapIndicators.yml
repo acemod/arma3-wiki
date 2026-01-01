@@ -3,7 +3,12 @@ desc: Command allows suppressing visualization of FRIENDLY, ENEMY, MINES and/or 
 groups:
 - Difficulty
 syntax:
-- ret:
+- call: !Unary
+  - disableFriendly
+  - disableEnemy
+  - disableMines
+  - disablePing
+  ret:
     type: Nothing
   right: !Array
   - !Item

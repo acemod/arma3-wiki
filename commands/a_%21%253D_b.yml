@@ -6,7 +6,10 @@ groups:
 - Variables
 - Math
 syntax:
-- ret:
+- call: !Binary
+  - a
+  - b
+  ret:
     type: Boolean
     desc: '[[true]] if ''''a'''' is different from ''''b'''', [[false]] otherwise'
   left: !Item

@@ -9,7 +9,10 @@ desc: |-
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - objectID
+  ret:
     type: Nothing
   left: !Item
     name: waypoint
@@ -18,7 +21,10 @@ syntax:
   right: !Item
     name: objectID
     type: Number
-- ret:
+- call: !Binary
+  - waypoint
+  - object
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

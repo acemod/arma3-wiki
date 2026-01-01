@@ -3,7 +3,11 @@ desc: Returns entity's weapons information including weapon index and firemode.
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - weaponOrMuzzle
+    - onlyLoaded
+  ret:
     type: Unknown
     desc: |-
       internal weapon index (changes frequently) used with "SwitchWeapon" and "UseWeapon" [[action]]s

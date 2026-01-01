@@ -7,7 +7,10 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unitName
+  - magazineName
+  ret:
     type: Nothing
   left: !Item
     name: unitName
@@ -17,7 +20,11 @@ syntax:
     name: magazineName
     desc: magazine name. See the topic [[:Category:Weapons]] for reference about possible values.
     type: String
-- ret:
+- call: !Binary
+  - unitName
+  - - magazineName
+    - ammoCount
+  ret:
     type: Nothing
   left: !Item
     name: unitName

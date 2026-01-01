@@ -3,7 +3,10 @@ desc: Sets how much ammunition (compared to a full state defined by the vehicle 
 groups:
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Binary
+  - vehicleName
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: vehicleName

@@ -3,7 +3,10 @@ desc: Return child control with specified idc.
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - display
+  - idc
+  ret:
     type: Control
   left: !Item
     name: display
@@ -11,7 +14,8 @@ syntax:
   right: !Item
     name: idc
     type: Number
-- ret:
+- call: !Unary idc
+  ret:
     type: Control
   right: !Item
     name: idc

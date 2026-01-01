@@ -3,7 +3,8 @@ desc: Get provided object's hit points damage.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary entity
+  ret:
     type: ArrayUnknown
     desc: |-
       [] if entity is null or has no shape, otherwise [hitpointNames, selectionNames, damageValues]:

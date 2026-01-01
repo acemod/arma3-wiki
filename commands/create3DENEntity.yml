@@ -5,7 +5,12 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary
+  - mode
+  - class
+  - position
+  - isEmpty
+  ret:
     type: Unknown
   right: !Array
   - !Item
@@ -24,7 +29,12 @@ syntax:
     type: Boolean
     optional: true
     default: '[[false]]'
-- ret:
+- call: !Binary
+  - group
+  - - mode
+    - class
+    - position
+  ret:
     type: Unknown
   left: !Item
     name: group

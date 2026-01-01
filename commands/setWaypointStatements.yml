@@ -8,7 +8,11 @@ desc: |-
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - - condition
+    - statement
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

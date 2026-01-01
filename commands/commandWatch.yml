@@ -4,7 +4,10 @@ multiplayer_note: This command is only effective when used on local units. When 
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - units
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: units
@@ -20,7 +23,10 @@ syntax:
   right: !Item
     name: position
     type: Position
-- ret:
+- call: !Binary
+  - units
+  - target
+  ret:
     type: Nothing
   left: !Item
     name: units

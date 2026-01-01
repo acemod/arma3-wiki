@@ -3,7 +3,11 @@ desc: Register objects which can be edited by a curator.
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - - objects
+    - addCrew
+  ret:
     type: Nothing
   left: !Item
     name: curatorObj

@@ -3,7 +3,10 @@ desc: Sets task's visibility.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - taskID
+  - state
+  ret:
     type: Nothing
   left: !Item
     name: taskID

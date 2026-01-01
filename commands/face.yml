@@ -3,7 +3,8 @@ desc: Returns the face class of a person as it is written in 'CfgFaces'.
 groups:
 - Unit Identity
 syntax:
-- ret:
+- call: !Unary person
+  ret:
     type: String
   right: !Item
     name: person

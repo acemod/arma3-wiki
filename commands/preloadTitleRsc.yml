@@ -3,7 +3,12 @@ desc: Resource title - preload data. The resource can be defined in the [[Descri
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - name
+  - type
+  - speed
+  - showInMap
+  ret:
     type: Boolean
   right: !Array
   - !Item

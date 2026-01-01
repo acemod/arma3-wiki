@@ -3,7 +3,10 @@ desc: Sets if light has flare.
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Binary
+  - light
+  - bool
+  ret:
     type: Nothing
   left: !Item
     name: light

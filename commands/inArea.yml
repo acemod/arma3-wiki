@@ -10,7 +10,10 @@ groups:
 - Locations
 - Positions
 syntax:
-- ret:
+- call: !Binary
+  - position
+  - area
+  ret:
     type: Boolean
   left: !Item
     name: position
@@ -24,7 +27,16 @@ syntax:
   right: !Item
     name: area
     type: Unknown
-- ret:
+- call: !Binary
+  - position
+  - - center
+    - a
+    - b
+    - angle
+    - isRectangle
+    - c
+    - usePosWorld
+  ret:
     type: Boolean
   left: !Item
     name: position

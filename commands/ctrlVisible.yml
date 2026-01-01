@@ -3,7 +3,8 @@ desc: 'Returns if a control of the currently active user dialog is shown or not.
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: Boolean
     desc: '[[true]] if the control is shown, [[false]] if not'
   right: !Item

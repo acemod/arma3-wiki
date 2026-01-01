@@ -3,7 +3,10 @@ desc: Returns all weapons of a given turret. Use turret path [-1] for driver's t
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

@@ -3,7 +3,10 @@ desc: 'Forces {{hl|showCadetHints}} and {{hl|showCadetWP}} global Cadet [[Arma 3
 groups:
 - Difficulty
 syntax:
-- ret:
+- call: !Unary
+  - showCadetHints
+  - showCadetWP
+  ret:
     type: !ArrayUnsized
       type: Boolean
       desc: ''

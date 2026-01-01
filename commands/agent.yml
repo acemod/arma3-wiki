@@ -3,7 +3,8 @@ desc: Return a person for a given agent.
 groups:
 - Teams
 syntax:
-- ret:
+- call: !Unary teamMember
+  ret:
     type: Object
   right: !Item
     name: teamMember

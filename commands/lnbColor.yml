@@ -3,7 +3,11 @@ desc: Returns the text color of the item with the given position of the 2D listb
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  ret:
     type: ArrayColorRgba
   right: !Array
   - !Item
@@ -16,7 +20,11 @@ syntax:
     - !Item
       name: column
       type: Number
-- ret:
+- call: !Binary
+  - control
+  - - row
+    - column
+  ret:
     type: ArrayColorRgba
   left: !Item
     name: control

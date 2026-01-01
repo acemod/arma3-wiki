@@ -9,7 +9,10 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - action
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -20,7 +23,10 @@ syntax:
     name: action
     desc: '''''''[[SQS Syntax|SQS]]'''''' code body that should be executed when the button/active text is clicked'
     type: String
-- ret:
+- call: !Binary
+  - control
+  - action
+  ret:
     type: Nothing
   left: !Item
     name: control

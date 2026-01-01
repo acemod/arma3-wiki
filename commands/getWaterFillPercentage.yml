@@ -3,7 +3,8 @@ desc: Get an object's water filling.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary obj
+  ret:
     type: Number
     desc: water level in range 0..1 (empty to full)
   right: !Item

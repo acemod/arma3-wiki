@@ -3,7 +3,10 @@ desc: Sets the state of a fireplace.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - fireplace
+  - burn
+  ret:
     type: Nothing
   left: !Item
     name: fireplace

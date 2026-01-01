@@ -3,7 +3,10 @@ desc: Sets rotation (relative to the centered camera position) of the object air
 groups:
 - Pilot Camera
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - rotation
+  ret:
     type: Nothing
   left: !Item
     name: object

@@ -3,7 +3,8 @@ desc: Removes goggles from unit (diver goggles for example). This command does n
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Nothing
   right: !Item
     name: unit

@@ -3,7 +3,10 @@ desc: Sets the position of an object relative to the terrain.
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - pos
+  ret:
     type: Nothing
   left: !Item
     name: object

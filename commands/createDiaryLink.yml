@@ -3,7 +3,11 @@ desc: Creates a link to the given diary entry.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary
+  - subject
+  - record
+  - text
+  ret:
     type: String
     desc: empty string or a string similar to the result of <sqf inline>format ["<log subject=""%1"" record=""%2"">%3</log>", subject, processedRecordId, text]</sqf>
   right: !Array

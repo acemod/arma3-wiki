@@ -3,7 +3,13 @@ desc: Sets camera shake parameters. Will not have any effect until shake is star
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary
+  - posCoef
+  - vertCoef
+  - horzCoef
+  - bankCoef
+  - interpolation
+  ret:
     type: Nothing
   right: !Array
   - !Item

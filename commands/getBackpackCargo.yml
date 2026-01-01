@@ -3,7 +3,8 @@ desc: Returns all backpack types and count from the cargo space.
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Unknown
   right: !Item
     name: object

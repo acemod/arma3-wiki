@@ -3,7 +3,12 @@ desc: Sets cell's right-aligned text. Does not replace [[lnbText|cell's text]].
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  - text
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -21,7 +26,12 @@ syntax:
   - !Item
     name: text
     type: String
-- ret:
+- call: !Binary
+  - ctrl
+  - - - row
+      - column
+    - text
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

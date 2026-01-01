@@ -3,7 +3,14 @@ desc: Returns sorted array of targets, '''known''' to the enquirer (including ow
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Binary
+  - enquirer
+  - - targetIgnore
+    - targetSide
+    - targetType
+    - targetPosition
+    - targetMaxAge
+  ret:
     type: Unknown
     desc: "a coefficient, which reflects how close the returned result to the query filter. (1 - best match)\n* target: [[Object]] - the actual target object\n* targetSide: [[Side]] - side of the target\n* targetType: [[String]] - target [[typeOf]]\n* targetPosition: [[Array]] - [x,y] of the target \n* targetAge: [[Number]] - the actual target age in seconds (can be negative)"
   left: !Item

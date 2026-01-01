@@ -3,7 +3,8 @@ desc: Returns true if UAV is connected to some terminal. Termnal onnection is ha
 groups:
 - Remote Control
 syntax:
-- ret:
+- call: !Unary uav
+  ret:
     type: Boolean
   right: !Item
     name: uav

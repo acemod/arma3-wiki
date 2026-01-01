@@ -3,7 +3,8 @@ desc: Returns a structured text, containing an image or name (if no image is fou
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary dikCode
+  ret:
     type: StructuredText
   right: !Item
     name: dikCode

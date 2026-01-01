@@ -3,7 +3,10 @@ desc: Count how many objects in the array are of given type. This command also w
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Binary
+  - type
+  - objects
+  ret:
     type: Number
   left: !Item
     name: type

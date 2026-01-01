@@ -5,7 +5,15 @@ desc: |-
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Binary
+  - light
+  - - start
+    - constant
+    - linear
+    - quadratic
+    - hardlimitstart
+    - hardlimitend
+  ret:
     type: Nothing
   left: !Item
     name: light

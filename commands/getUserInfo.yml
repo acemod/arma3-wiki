@@ -4,13 +4,17 @@ groups:
 - Multiplayer
 - Object Detection
 syntax:
-- ret:
+- call: !Unary playerID
+  ret:
     type: Unknown
   right: !Item
     name: playerID
     desc: 'user DirectPlay ID (see [[getPlayerID]], [[Arma 3: Mission Event Handlers#PlayerConnected|PlayerConnected]])'
     type: String
-- ret:
+- call: !Binary
+  - playerID
+  - infoIndex
+  ret:
     type: Anything
     desc: depends on the requested index (see main syntax) or [[Nothing]]
   left: !Item

@@ -3,7 +3,10 @@ desc: Adds magazines to the magazine pool, of which the player may choose in the
 groups:
 - Weapon Pool
 syntax:
-- ret:
+- call: !Unary
+  - magazineName
+  - count
+  ret:
     type: Nothing
   right: !Array
   - !Item

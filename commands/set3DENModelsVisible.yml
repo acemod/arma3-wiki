@@ -3,7 +3,10 @@ desc: Enables or disables trigger area visibility.
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Unary
+  - map
+  - scene
+  ret:
     type: Nothing
   right: !Array
   - !Item

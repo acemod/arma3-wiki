@@ -3,7 +3,10 @@ desc: Assigns existing item from inventory (uniform, vest, backpack) to a correc
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

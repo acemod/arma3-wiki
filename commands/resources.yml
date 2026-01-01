@@ -3,7 +3,8 @@ desc: Returns the resources of a team member. Results are local to the PC on whi
 groups:
 - Teams
 syntax:
-- ret:
+- call: !Unary member
+  ret:
     type: ArrayUnknown
   right: !Item
     name: member

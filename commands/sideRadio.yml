@@ -7,7 +7,10 @@ groups:
 - Radio and Chat
 - Sounds
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - radioName
+  ret:
     type: Nothing
   left: !Item
     name: unit
@@ -17,7 +20,11 @@ syntax:
     name: radioName
     desc: class name from {{hl|CfgRadio}}
     type: String
-- ret:
+- call: !Binary
+  - - side
+    - identity
+  - radioName
+  ret:
     type: Nothing
   left: !Array
   - !Item

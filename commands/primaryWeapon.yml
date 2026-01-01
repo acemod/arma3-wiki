@@ -3,7 +3,8 @@ desc: Returns name of unit's primary weapon. This command will also return a wea
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: String
     desc: weapon class name or "" if no primary weapon
   right: !Item

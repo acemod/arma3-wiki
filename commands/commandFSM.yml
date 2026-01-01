@@ -3,7 +3,12 @@ desc: Orders a unit to process command defined by [[FSM]] file (via the radio).
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unitName
+  - - fsmFile
+    - position
+    - target
+  ret:
     type: Nothing
   left: !Item
     name: unitName

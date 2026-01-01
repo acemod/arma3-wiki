@@ -3,7 +3,10 @@ desc: Sets oxygen remaining. It has no effect when soldier is not diving. Oxygen
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: unit

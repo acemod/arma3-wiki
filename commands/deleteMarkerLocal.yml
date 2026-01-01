@@ -3,7 +3,8 @@ desc: Destroys the given marker.
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Unary markerName
+  ret:
     type: Nothing
   right: !Item
     name: markerName

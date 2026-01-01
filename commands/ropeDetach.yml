@@ -3,7 +3,10 @@ desc: Detaches attached object from rope (i.e. detaches rope end from attached t
 groups:
 - Ropes and Sling Loading
 syntax:
-- ret:
+- call: !Binary
+  - attachedObject
+  - rope
+  ret:
     type: Nothing
   left: !Item
     name: attachedObject

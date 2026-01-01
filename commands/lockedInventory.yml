@@ -3,7 +3,8 @@ desc: Get a vehicle's inventory lock state. Can also be used on a unit's backbac
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Boolean
   right: !Item
     name: vehicle

@@ -3,7 +3,10 @@ desc: Creates a headgear item and tries to link it to headgear slot. If slot is 
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

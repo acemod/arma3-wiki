@@ -4,7 +4,10 @@ multiplayer_note: Effect is global only when executed on the server. On clients 
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Binary
+  - time
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: time
@@ -14,7 +17,8 @@ syntax:
     name: value
     desc: azimuth
     type: Number
-- ret:
+- call: !Unary direction
+  ret:
     type: Nothing
   right: !Item
     name: direction

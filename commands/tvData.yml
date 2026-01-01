@@ -3,7 +3,10 @@ desc: Returns string data from item on given path. IDC means id of parent [[CT_T
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: String
   right: !Array
   - !Item
@@ -14,7 +17,10 @@ syntax:
     type: !ArrayUnsized
       type: Number
       desc: ''
-- ret:
+- call: !Binary
+  - control
+  - path
+  ret:
     type: String
   left: !Item
     name: control

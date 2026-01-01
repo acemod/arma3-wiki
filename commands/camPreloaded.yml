@@ -3,7 +3,8 @@ desc: Checks whether the camera has finished preloading.
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary camera
+  ret:
     type: Boolean
   right: !Item
     name: camera

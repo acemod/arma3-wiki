@@ -3,7 +3,8 @@ desc: Returns a type of given team.
 groups:
 - Teams
 syntax:
-- ret:
+- call: !Unary team
+  ret:
     type: String
   right: !Item
     name: team

@@ -3,7 +3,10 @@ desc: Remove icon with given ID from group.
 groups:
 - High Command
 syntax:
-- ret:
+- call: !Binary
+  - group
+  - iconID
+  ret:
     type: Nothing
   left: !Item
     name: group

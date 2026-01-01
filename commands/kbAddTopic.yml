@@ -5,7 +5,13 @@ desc: |-
 groups:
 - Conversations
 syntax:
-- ret:
+- call: !Binary
+  - person
+  - - topicName
+    - conversationFile
+    - fsmFile
+    - eventHandler
+  ret:
     type: Nothing
   left: !Item
     name: person

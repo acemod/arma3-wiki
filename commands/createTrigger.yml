@@ -29,7 +29,11 @@ desc: |-
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Unary
+  - type
+  - position
+  - makeGlobal
+  ret:
     type: Object
     desc: created trigger
   right: !Array

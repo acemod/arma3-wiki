@@ -8,7 +8,10 @@ desc: |-
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Unary
+  - group
+  - index
+  ret:
     type: Nothing
   right: !Array
   - !Item

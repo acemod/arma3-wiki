@@ -6,7 +6,10 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - enable
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -17,7 +20,10 @@ syntax:
     name: enable
     desc: '[[true]] to enable the control, [[false]] to disable it'
     type: Boolean
-- ret:
+- call: !Binary
+  - controlName
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: controlName

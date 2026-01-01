@@ -3,7 +3,8 @@ desc: Checks if given position is inside road segment. Same as [[roadAt]], only 
 groups:
 - Roads and Airports
 syntax:
-- ret:
+- call: !Unary position
+  ret:
     type: Boolean
   right: !Item
     name: position

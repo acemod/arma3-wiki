@@ -5,7 +5,13 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Unary
+  - class
+  - type
+  - speed
+  - showInMap
+  - drawOverHUD
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -36,7 +42,14 @@ syntax:
     default: '[[true]]'
     since:
       arma3: '2.16'
-- ret:
+- call: !Binary
+  - layer
+  - - class
+    - type
+    - speed
+    - showInMap
+    - drawOverHUD
+  ret:
     type: Nothing
   left: !Item
     name: layer
@@ -71,7 +84,14 @@ syntax:
     default: '[[true]]'
     since:
       arma3: '2.16'
-- ret:
+- call: !Binary
+  - layerName
+  - - class
+    - type
+    - speed
+    - showInMap
+    - drawOverHUD
+  ret:
     type: Number
     desc: number of the allocated layer
   left: !Item

@@ -3,7 +3,10 @@ desc: For waypoints attached to a house, this defines the target [[buildingPos]]
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - pos
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

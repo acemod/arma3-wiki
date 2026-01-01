@@ -3,7 +3,12 @@ desc: Adds given number of a magazine to the given turret. Use turret path {{hl|
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - magazineName
+    - turretPath
+    - quantity
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

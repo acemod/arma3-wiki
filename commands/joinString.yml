@@ -3,7 +3,10 @@ desc: Joins ''array'' into [[String]] with provided ''separator''. Array can be 
 groups:
 - Strings
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - separator
+  ret:
     type: String
   left: !Item
     name: array

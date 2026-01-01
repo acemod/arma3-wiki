@@ -3,7 +3,10 @@ desc: Continue sequence of [[for]] construct. It sets the end value of the index
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Binary
+  - forType
+  - b
+  ret:
     type: ForType
   left: !Item
     name: forType

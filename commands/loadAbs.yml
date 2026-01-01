@@ -3,7 +3,8 @@ desc: Returns current sum of mass from items stored in all unit's containers, li
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Number
   right: !Item
     name: unit

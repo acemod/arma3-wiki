@@ -6,7 +6,10 @@ groups:
 - Math
 - Variables
 syntax:
-- ret:
+- call: !Binary
+  - a
+  - b
+  ret:
     type: Boolean
   left: !Item
     name: a
@@ -16,7 +19,10 @@ syntax:
     name: b
     desc: test condition or variable
     type: Boolean
-- ret:
+- call: !Binary
+  - a
+  - b
+  ret:
     type: Boolean
   left: !Item
     name: a

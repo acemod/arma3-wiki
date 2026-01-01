@@ -3,7 +3,10 @@ desc: Returns if given unit is confirmed target for given side.
 groups:
 - Sensors
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - side
+  ret:
     type: Boolean
     desc: '[[true]] if confirmed target, otherwise [[false]]'
   left: !Item

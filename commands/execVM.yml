@@ -19,7 +19,10 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Binary
+  - arguments
+  - filename
+  ret:
     type: ScriptHandle
   left: !Item
     name: arguments
@@ -29,7 +32,8 @@ syntax:
     name: filename
     desc: path to the [[SQF Syntax|SQF]] script file
     type: String
-- ret:
+- call: !Unary filename
+  ret:
     type: ScriptHandle
   right: !Item
     name: filename

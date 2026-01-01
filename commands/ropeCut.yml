@@ -3,7 +3,10 @@ desc: Cuts the given rope to the specified length. If some entity was attached t
 groups:
 - Ropes and Sling Loading
 syntax:
-- ret:
+- call: !Unary
+  - rope
+  - length
+  ret:
     type: Nothing
   right: !Array
   - !Item

@@ -3,7 +3,10 @@ desc: Sets that the vehicle will be able to receive targets acquired by someone 
 groups:
 - Sensors
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - bool
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

@@ -20,7 +20,13 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- ret:
+- call: !Binary
+  - - ignore
+    - LOD
+    - ignore2
+  - - beg
+    - end
+  ret:
     type: Number
     desc: how much end position is visible to start position in range 0..1, where 1 is fully visible.
   left: !Array

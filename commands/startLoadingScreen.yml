@@ -3,7 +3,10 @@ desc: "Shows loading screen with the given text, using the given resource.\nWhil
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary
+  - text
+  - resource
+  ret:
     type: Nothing
   right: !Array
   - !Item

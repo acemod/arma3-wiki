@@ -6,7 +6,10 @@ desc: |-
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Binary
+  - group
+  - delete
+  ret:
     type: Nothing
   left: !Item
     name: group

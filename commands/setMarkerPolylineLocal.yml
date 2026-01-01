@@ -3,7 +3,10 @@ desc: Sets a polyline marker's path. Works only on the computer that executes th
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Binary
+  - marker
+  - path
+  ret:
     type: Nothing
   left: !Item
     name: marker

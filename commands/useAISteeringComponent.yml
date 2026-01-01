@@ -5,12 +5,16 @@ desc: |-
 groups:
 - AI Behaviour
 syntax:
-- ret:
+- call: !Unary enabled
+  ret:
     type: Nothing
   right: !Item
     name: enabled
     type: Boolean
-- ret:
+- call: !Binary
+  - vehicle
+  - enabled
+  ret:
     type: Unknown
   left: !Item
     name: vehicle

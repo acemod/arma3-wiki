@@ -3,7 +3,8 @@ desc: Return camera interest for given entity, as set by [[setCameraInterest]], 
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary entity
+  ret:
     type: Number
   right: !Item
     name: entity

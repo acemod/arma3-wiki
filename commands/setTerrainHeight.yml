@@ -16,7 +16,10 @@ desc: |-
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Unary
+  - positionAndAltitudeArray
+  - adjustObjects
+  ret:
     type: Nothing
   right: !Array
   - !Item

@@ -3,7 +3,10 @@ desc: Returns current animation phase of given source. Similar to [[animationSou
 groups:
 - GUI Control - Object
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - source
+  ret:
     type: Number
   left: !Item
     name: control

@@ -3,7 +3,10 @@ desc: The completion radius allows units to call the waypoint completed once the
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - radius
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

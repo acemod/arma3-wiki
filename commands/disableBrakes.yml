@@ -3,7 +3,10 @@ desc: Disables autobrake, which is engaged when vehicle is stationary and stops 
 groups:
 - PhysX
 syntax:
-- ret:
+- call: !Binary
+  - transport
+  - disable
+  ret:
     type: Nothing
   left: !Item
     name: transport

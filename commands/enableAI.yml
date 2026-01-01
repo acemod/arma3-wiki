@@ -3,7 +3,10 @@ desc: "Enables parts of the AI behavior that was disabled by [[disableAI]]. \n{{
 groups:
 - AI Behaviour
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - skilltype
+  ret:
     type: Nothing
   left: !Item
     name: unit

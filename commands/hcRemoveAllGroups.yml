@@ -3,7 +3,8 @@ desc: Remove all groups from unit's [[High Command|high command]] bar.
 groups:
 - High Command
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Nothing
   right: !Item
     name: unit

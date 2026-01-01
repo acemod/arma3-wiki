@@ -3,14 +3,18 @@ desc: Returns the 3D vector in world corresponding to the given point on the scr
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Unary screen
+  ret:
     type: ArrayUnknown
     desc: '[[Vector3D]] world vector'
   right: !Item
     name: screen
     desc: screen position [x,y] (see [[SafeZone]] for more info)
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - camera
+  - position
+  ret:
     type: ArrayUnknown
     desc: '[[Vector3D]] world vector'
   left: !Item

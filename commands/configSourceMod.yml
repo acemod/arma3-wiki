@@ -3,7 +3,8 @@ desc: Returns modDir of the mod that given config class was loaded from.
 groups:
 - Mods and Addons
 syntax:
-- ret:
+- call: !Unary config
+  ret:
     type: String
   right: !Item
     name: config

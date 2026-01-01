@@ -3,7 +3,11 @@ desc: Remove a log record.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - subject
+    - diaryRecord
+  ret:
     type: Nothing
   left: !Item
     name: unit

@@ -3,7 +3,10 @@ desc: 'Controls the ability of given unit to activate entities with disabled [[A
 groups:
 - Dynamic Simulation
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - trigger
+  ret:
     type: Nothing
   left: !Item
     name: unit

@@ -3,7 +3,10 @@ desc: 'Sets the classname of one or more given Eden Editor [[Eden Editor: Object
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Binary
+  - objects
+  - classname
+  ret:
     type: Nothing
   left: !Item
     name: objects

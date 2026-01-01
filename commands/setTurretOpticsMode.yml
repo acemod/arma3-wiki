@@ -3,7 +3,10 @@ desc: Set the current optics mode of the optics in the turret occupied by the sp
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - obj
+  - mode
+  ret:
     type: Nothing
   left: !Item
     name: obj
@@ -12,7 +15,11 @@ syntax:
     name: mode
     desc: optic mode index
     type: Number
-- ret:
+- call: !Binary
+  - obj
+  - - turretPath
+    - opticModeIndex
+  ret:
     type: Nothing
   left: !Item
     name: obj

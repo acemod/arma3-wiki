@@ -8,7 +8,10 @@ desc: |-
 groups:
 - Arrays
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - code
+  ret:
     type: Number
     desc: zero-based position of the first array element for which the code evaluate to true, -1 if not found
   left: !Item

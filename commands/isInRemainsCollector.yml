@@ -3,7 +3,8 @@ desc: Checks if unit or vehicle is queued for disposal after death.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary remain
+  ret:
     type: Boolean
   right: !Item
     name: remain

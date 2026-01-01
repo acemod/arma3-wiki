@@ -3,7 +3,10 @@ desc: Returns the rotation and elevation limits for the given turret.
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - turret
+  ret:
     type: Unknown
     desc: |-
       from 0 to -angle in degrees (left)

@@ -4,7 +4,10 @@ multiplayer_note: Executed on a remote vehicle this command may turn the engine 
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - state
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

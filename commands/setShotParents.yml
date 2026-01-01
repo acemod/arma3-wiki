@@ -3,7 +3,11 @@ desc: Sets vehicle and instigator pair for the given projectile.
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Binary
+  - projectile
+  - - vehicle
+    - instigator
+  ret:
     type: Nothing
   left: !Item
     name: projectile

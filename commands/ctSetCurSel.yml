@@ -3,7 +3,10 @@ desc: Selects the line with the given index. Will take only rows, but not header
 groups:
 - GUI Control - Controls Table
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - index
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -10,7 +10,11 @@ groups:
 - GUI Control - Event Handlers
 - Event Handlers
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - handler
+    - function
+  ret:
     type: Number
     desc: handler ID or -1 if failed
   left: !Item

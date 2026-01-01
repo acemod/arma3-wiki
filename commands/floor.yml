@@ -3,7 +3,8 @@ desc: Returns the next '''lowest''' integer in relation to the provided number.
 groups:
 - Math
 syntax:
-- ret:
+- call: !Unary num
+  ret:
     type: Number
   right: !Item
     name: num

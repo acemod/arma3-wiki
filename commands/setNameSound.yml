@@ -10,7 +10,10 @@ desc: |-
 groups:
 - Unit Identity
 syntax:
-- ret:
+- call: !Binary
+  - person
+  - name
+  ret:
     type: Nothing
   left: !Item
     name: person

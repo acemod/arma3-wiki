@@ -3,7 +3,10 @@ desc: Unregister conversation topic from given person. See [[Conversations]] for
 groups:
 - Conversations
 syntax:
-- ret:
+- call: !Binary
+  - person
+  - topicName
+  ret:
     type: Nothing
   left: !Item
     name: person

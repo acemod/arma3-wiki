@@ -4,12 +4,16 @@ groups:
 - System
 - Environment
 syntax:
-- ret:
+- call: !Unary objectDistance
+  ret:
     type: Nothing
   right: !Item
     name: objectDistance
     type: Number
-- ret:
+- call: !Unary
+  - objectDistance
+  - shadowDistance
+  ret:
     type: Nothing
   right: !Array
   - !Item

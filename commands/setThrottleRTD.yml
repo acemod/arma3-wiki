@@ -3,7 +3,11 @@ desc: Set the throttle for the given engine(s) of a helicopter.
 groups:
 - RTD
 syntax:
-- ret:
+- call: !Binary
+  - helicopterRTD
+  - - value
+    - engineIndex
+  ret:
     type: Nothing
   left: !Item
     name: helicopterRTD

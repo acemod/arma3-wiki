@@ -8,7 +8,10 @@ desc: |-
 groups:
 - Animations
 syntax:
-- ret:
+- call: !Binary
+  - soldier
+  - moveName
+  ret:
     type: Nothing
   left: !Item
     name: soldier
@@ -16,7 +19,13 @@ syntax:
   right: !Item
     name: moveName
     type: String
-- ret:
+- call: !Binary
+  - soldier
+  - - moveName
+    - time
+    - blendFactor
+    - resetAim
+  ret:
     type: Nothing
   left: !Item
     name: soldier

@@ -3,13 +3,17 @@ desc: Enables or disables disassembly of static weapons. Could be applied to loc
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary enable
+  ret:
     type: Nothing
   right: !Item
     name: enable
     desc: '[[false]] to prevent local [[player]] from being able to disassemble static weapons'
     type: Boolean
-- ret:
+- call: !Binary
+  - entity
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: entity

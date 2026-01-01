@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - state
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

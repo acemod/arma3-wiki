@@ -3,7 +3,10 @@ desc: Returns the shown right text in the item with the given index of the listb
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - index
+  ret:
     type: String
   right: !Array
   - !Item
@@ -12,7 +15,10 @@ syntax:
   - !Item
     name: index
     type: Number
-- ret:
+- call: !Binary
+  - control
+  - index
+  ret:
     type: String
   left: !Item
     name: control

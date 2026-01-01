@@ -3,14 +3,19 @@ desc: Trims a [[String|string]].
 groups:
 - Strings
 syntax:
-- ret:
+- call: !Unary stringValue
+  ret:
     type: String
     desc: trimmed string
   right: !Item
     name: stringValue
     desc: string to be trimmed. spaces, tabs and line returns are removed from both ends of ''stringValue''.
     type: String
-- ret:
+- call: !Binary
+  - string
+  - - chars
+    - where
+  ret:
     type: String
     desc: trimmed string
   left: !Item

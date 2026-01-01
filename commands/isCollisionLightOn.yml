@@ -3,7 +3,8 @@ desc: Returns [[true]] if vehicle collision lights are on otherwise [[false]].
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Boolean
   right: !Item
     name: vehicle

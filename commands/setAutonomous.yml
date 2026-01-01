@@ -3,7 +3,10 @@ desc: Sets UAV autonomous mode.
 groups:
 - Remote Control
 syntax:
-- ret:
+- call: !Binary
+  - uav
+  - bool
+  ret:
     type: Boolean
     desc: whether the operation was successful. Returns [[false]] when the object is not a uav.
   left: !Item

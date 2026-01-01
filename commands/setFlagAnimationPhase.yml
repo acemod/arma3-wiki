@@ -3,7 +3,10 @@ desc: Sets flag position on the flag pole. To animate flag use [[BIS_fnc_animate
 groups:
 - Flags
 syntax:
-- ret:
+- call: !Binary
+  - flag
+  - phase
+  ret:
     type: Nothing
   left: !Item
     name: flag

@@ -28,7 +28,10 @@ groups:
 - Object Manipulation
 - Sides
 syntax:
-- ret:
+- call: !Binary
+  - who
+  - target
+  ret:
     type: Number
     desc: in range of 0..4, where 4 is maximum knowledge.
   left: !Item

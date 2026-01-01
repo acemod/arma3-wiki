@@ -3,7 +3,8 @@ desc: Despite a misleading name, returns the vehicle that is transporting given 
 groups:
 - Vehicle in Vehicle Transport
 syntax:
-- ret:
+- call: !Unary cargo
+  ret:
     type: Object
     desc: transporting vehicle
   right: !Item

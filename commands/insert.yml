@@ -7,7 +7,12 @@ groups:
 - Arrays
 - Strings
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - - index
+    - valuesToInsert
+    - onlyIfUnique
+  ret:
     type: Nothing
   left: !Item
     name: array
@@ -31,7 +36,11 @@ syntax:
     type: Boolean
     optional: true
     default: '[[false]]'
-- ret:
+- call: !Binary
+  - string
+  - - index
+    - substring
+  ret:
     type: String
     desc: the new string
   left: !Item

@@ -3,7 +3,11 @@ desc: 'Removes a UserAction event handler. For a list of available UserAction ev
 groups:
 - Event Handlers
 syntax:
-- ret:
+- call: !Unary
+  - keyName
+  - event
+  - index
+  ret:
     type: Nothing
   right: !Array
   - !Item

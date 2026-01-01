@@ -3,7 +3,11 @@ desc: Associates metadata (number) with the row determined by the index. Returns
 groups:
 - GUI Control - Controls Table
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - index
+    - value
+  ret:
     type: Nothing
   left: !Item
     name: control

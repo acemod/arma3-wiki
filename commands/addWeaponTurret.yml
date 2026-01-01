@@ -3,7 +3,11 @@ desc: Adds a weapon to the turret. Use turret path [-1] for driver's turret.
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - weaponName
+    - turretPath
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

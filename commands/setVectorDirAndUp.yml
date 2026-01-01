@@ -12,7 +12,11 @@ desc: |-
 groups:
 - Math - Vectors
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - - vectorDir
+    - vectorUp
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

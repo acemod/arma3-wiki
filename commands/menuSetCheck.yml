@@ -7,7 +7,11 @@ desc: |-
 groups:
 - GUI Control - Menu
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - checked
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -19,7 +23,11 @@ syntax:
   - !Item
     name: checked
     type: Boolean
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - checked
+  ret:
     type: Nothing
   left: !Item
     name: control

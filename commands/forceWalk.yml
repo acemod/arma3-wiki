@@ -3,7 +3,10 @@ desc: Forces unit to walk even if run or sprint is selected.
 groups:
 - Stamina System
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - value
+  ret:
     type: Nothing
   left: !Item
     name: unit

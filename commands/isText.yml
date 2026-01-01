@@ -3,7 +3,8 @@ desc: Checks if config entry represents a text value.
 groups:
 - Config
 syntax:
-- ret:
+- call: !Unary config
+  ret:
     type: Boolean
   right: !Item
     name: config

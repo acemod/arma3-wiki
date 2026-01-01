@@ -5,7 +5,12 @@ desc: |-
 groups:
 - PhysX
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - - force
+    - position
+    - setUnconscious
+  ret:
     type: Nothing
   left: !Item
     name: object

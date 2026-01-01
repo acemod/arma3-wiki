@@ -33,7 +33,14 @@ multiplayer_note: It is recommended to create the unit where the group is '''[[M
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - group
+  - - type
+    - position
+    - markers
+    - placement
+    - special
+  ret:
     type: Object
     desc: the created unit
   left: !Item
@@ -84,7 +91,14 @@ syntax:
     - value: CARGO
       desc: null
       since: null
-- ret:
+- call: !Binary
+  - type
+  - - position
+    - group
+    - init
+    - skill
+    - rank
+  ret:
     type: Unknown
     desc: this syntax does '''not''' return a unit reference! See {{Link|#Example 7}} for a workaround.}}
   left: !Item

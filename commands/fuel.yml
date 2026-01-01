@@ -3,7 +3,8 @@ desc: Checks how much fuel is left in the gas tank of a vehicle.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: !NumberRange
     - 0
     - 1

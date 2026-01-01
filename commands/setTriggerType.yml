@@ -18,7 +18,10 @@ desc: |-
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Binary
+  - trigger
+  - action
+  ret:
     type: Nothing
   left: !Item
     name: trigger

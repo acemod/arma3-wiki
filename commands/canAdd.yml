@@ -11,7 +11,10 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - item
+  ret:
     type: Boolean
   left: !Item
     name: object
@@ -21,7 +24,12 @@ syntax:
     name: item
     desc: config class
     type: String
-- ret:
+- call: !Binary
+  - object
+  - - item
+    - count
+    - ignoreSoldierMaxLoad
+  ret:
     type: Boolean
   left: !Item
     name: object
@@ -46,7 +54,10 @@ syntax:
       arma3: '2.18'
   since:
     arma3: '1.56'
-- ret:
+- call: !Binary
+  - weapon
+  - item
+  ret:
     type: Boolean
   left: !Item
     name: weapon
@@ -58,7 +69,11 @@ syntax:
     type: String
   since:
     arma3: '2.10'
-- ret:
+- call: !Binary
+  - weapon
+  - - attachment
+    - slot
+  ret:
     type: Boolean
   left: !Item
     name: weapon
@@ -74,7 +89,11 @@ syntax:
     type: Unknown
   since:
     arma3: '2.10'
-- ret:
+- call: !Binary
+  - weapon
+  - - magazine
+    - muzzle
+  ret:
     type: Boolean
   left: !Item
     name: weapon

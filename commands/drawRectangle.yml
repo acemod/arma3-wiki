@@ -3,7 +3,16 @@ desc: Draws a rectangle on the map.<br> [[File:drawRectangle.jpg|250px]]
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - centre
+    - halfWidth
+    - halfHeight
+    - angle
+    - color
+    - fill
+    - alignWithMap
+  ret:
     type: Nothing
   left: !Item
     name: map

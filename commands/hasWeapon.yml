@@ -4,7 +4,10 @@ groups:
 - Weapons
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unitName
+  - weaponName
+  ret:
     type: Boolean
     desc: returns true if the unit has the weapon, false if not.
   left: !Item

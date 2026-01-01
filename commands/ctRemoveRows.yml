@@ -3,7 +3,10 @@ desc: Takes array of row indices as a parameter and removes rows with those indi
 groups:
 - GUI Control - Controls Table
 syntax:
-- ret:
+- call: !Binary
+  - ctrl
+  - - indexN
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

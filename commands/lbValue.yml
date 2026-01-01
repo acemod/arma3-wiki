@@ -3,7 +3,10 @@ desc: Returns the additional integer value of the item with the given index of t
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - index
+  ret:
     type: Number
     desc: only integers
   right: !Array
@@ -14,7 +17,10 @@ syntax:
   - !Item
     name: index
     type: Number
-- ret:
+- call: !Binary
+  - control
+  - index
+  ret:
     type: Number
     desc: only integers
   left: !Item

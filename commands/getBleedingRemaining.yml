@@ -3,7 +3,8 @@ desc: Returns how many seconds injured unit will continue leaving blood trail. I
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Number
   right: !Item
     name: unit

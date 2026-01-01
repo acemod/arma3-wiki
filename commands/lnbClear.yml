@@ -3,12 +3,14 @@ desc: Clears all items in the given listbox or combobox.
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: Nothing
   right: !Item
     name: idc
     type: Number
-- ret:
+- call: !Unary ctrl
+  ret:
     type: Nothing
   right: !Item
     name: ctrl

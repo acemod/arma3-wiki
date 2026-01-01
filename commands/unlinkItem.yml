@@ -3,7 +3,10 @@ desc: Unassign and delete existing item from its assigned slot. If item does not
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

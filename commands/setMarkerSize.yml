@@ -8,7 +8,11 @@ desc: |-
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Binary
+  - markerName
+  - - a-axis
+    - b-axis
+  ret:
     type: Nothing
   left: !Item
     name: markerName

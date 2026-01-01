@@ -5,7 +5,10 @@ alias:
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Unary
+  - groupOrUnit
+  - index
+  ret:
     type: Position3dAGL
   right: !Array
   - !Item

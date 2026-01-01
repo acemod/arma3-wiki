@@ -9,7 +9,11 @@ desc: |-
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - name
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -23,7 +27,11 @@ syntax:
   - !Item
     name: name
     type: String
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - name
+  ret:
     type: Nothing
   left: !Item
     name: control

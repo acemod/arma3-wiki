@@ -3,7 +3,10 @@ desc: Adds weapon item, including magazine, directly to the [[binocular]] weapon
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

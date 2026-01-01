@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - effect
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: effect
@@ -14,7 +17,10 @@ syntax:
   right: !Item
     name: enable
     type: Boolean
-- ret:
+- call: !Binary
+  - effect
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: effect
@@ -23,7 +29,10 @@ syntax:
   right: !Item
     name: enable
     type: Boolean
-- ret:
+- call: !Binary
+  - effectArray
+  - enable
+  ret:
     type: Nothing
   left: !Item
     name: effectArray

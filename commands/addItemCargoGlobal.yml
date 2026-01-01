@@ -3,7 +3,11 @@ desc: Global variant of [[addItemCargo]].
 groups:
 - Vehicle Inventory
 syntax:
-- ret:
+- call: !Binary
+  - box
+  - - item
+    - count
+  ret:
     type: Nothing
   left: !Item
     name: box

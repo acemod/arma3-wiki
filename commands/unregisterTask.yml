@@ -3,7 +3,10 @@ desc: Unregisters a task type from given agent. The task type is the name given 
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - teamMember
+  - name
+  ret:
     type: Boolean
     desc: '[[true]] on success'
   left: !Item

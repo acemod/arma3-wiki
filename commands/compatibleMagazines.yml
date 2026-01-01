@@ -3,7 +3,8 @@ desc: Returns all magazines that can be loaded in the given weapon or all magazi
 groups:
 - Weapons
 syntax:
-- ret:
+- call: !Unary weaponOrAmmo
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''
@@ -12,7 +13,10 @@ syntax:
     name: weaponOrAmmo
     desc: weapon class name or {{GVI|arma3|2.22|size= 0.75}} ammo class name
     type: String
-- ret:
+- call: !Unary
+  - weapon
+  - muzzle
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

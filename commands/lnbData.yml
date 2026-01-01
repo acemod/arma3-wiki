@@ -3,7 +3,11 @@ desc: Returns the additional text (invisible) in an item with the given position
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - - row
+    - column
+  ret:
     type: String
   right: !Array
   - !Item
@@ -22,7 +26,11 @@ syntax:
     - !Item
       name: column
       type: Number
-- ret:
+- call: !Binary
+  - ctrl
+  - - row
+    - column
+  ret:
     type: String
   left: !Item
     name: ctrl

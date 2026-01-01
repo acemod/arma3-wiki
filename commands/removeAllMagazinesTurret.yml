@@ -3,7 +3,10 @@ desc: Removes all magazines from the given turret or from all turrets. Use turre
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - turretPath
+  ret:
     type: Nothing
   left: !Item
     name: vehicle

@@ -3,7 +3,10 @@ desc: Returns the right picture of a [[CT_TREE]] on given path.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: String
     desc: path to picture
   right: !Array
@@ -14,7 +17,10 @@ syntax:
     name: path
     desc: path
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - ctrl
+  - path
+  ret:
     type: String
     desc: path to picture
   left: !Item

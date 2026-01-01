@@ -9,7 +9,10 @@ desc: |-
 groups:
 - High Command
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - group
+  ret:
     type: ArrayUnknown
   left: !Item
     name: unit

@@ -3,7 +3,8 @@ desc: Returns config path of the provided object.
 groups:
 - Config
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Config
   right: !Item
     name: object

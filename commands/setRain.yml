@@ -19,7 +19,10 @@ multiplayer_note: Prior to {{arma3}}, each client and the server could have diff
 groups:
 - Environment
 syntax:
-- ret:
+- call: !Binary
+  - time
+  - rain
+  ret:
     type: Nothing
   left: !Item
     name: time
@@ -29,7 +32,8 @@ syntax:
     name: rain
     desc: new rain value in range 0..1.
     type: Number
-- ret:
+- call: !Unary rainParams
+  ret:
     type: Nothing
   right: !Item
     name: rainParams
@@ -40,7 +44,8 @@ syntax:
   since:
     arma3: '2.8'
   effect: Local
-- ret:
+- call: !Unary config
+  ret:
     type: Nothing
   right: !Item
     name: config

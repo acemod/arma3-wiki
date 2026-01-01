@@ -3,7 +3,10 @@ desc: Force the speed limit on given object (object will never attempt to move f
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - speed
+  ret:
     type: Nothing
   left: !Item
     name: object

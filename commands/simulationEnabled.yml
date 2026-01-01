@@ -3,7 +3,8 @@ desc: "Check if the entity has enabled simulation. \n\n{{Feature | important | T
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary entity
+  ret:
     type: Boolean
   right: !Item
     name: entity

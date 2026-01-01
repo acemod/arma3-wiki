@@ -6,7 +6,12 @@ groups:
 - Weapons
 - Turrets
 syntax:
-- ret:
+- call: !Binary
+  - transport
+  - - turretPath
+    - weaponName
+    - magazineName
+  ret:
     type: Nothing
   left: !Item
     name: transport

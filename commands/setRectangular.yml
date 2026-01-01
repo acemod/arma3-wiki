@@ -3,7 +3,10 @@ desc: Set the shape of a location to be either rectangular or elliptical. Locati
 groups:
 - Locations
 syntax:
-- ret:
+- call: !Binary
+  - location
+  - set
+  ret:
     type: Nothing
   left: !Item
     name: location

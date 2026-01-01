@@ -4,7 +4,10 @@ groups:
 - Strings
 - Structured Text
 syntax:
-- ret:
+- call: !Unary
+  - format
+  - argumentN
+  ret:
     type: StructuredText
   right: !Array
   - !Item

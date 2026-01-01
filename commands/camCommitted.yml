@@ -3,7 +3,8 @@ desc: Checks if the conduction of the last camCommit call already finished.
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary camera
+  ret:
     type: Boolean
     desc: true if the last camCommit already finished, false if not
   right: !Item

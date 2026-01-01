@@ -3,7 +3,10 @@ desc: Sets position of an object based on the model's centre position (see [[get
 groups:
 - Positions
 syntax:
-- ret:
+- call: !Binary
+  - object
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: object

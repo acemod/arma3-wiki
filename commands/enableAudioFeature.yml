@@ -9,7 +9,10 @@ multiplayer_note: |-
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Unary
+  - feature
+  - enable
+  ret:
     type: Boolean
     desc: previous state
   right: !Array
@@ -22,7 +25,11 @@ syntax:
     desc: (Optional, getter if not provided) [[true]] enable, [[false]], disable
     type: Boolean
     optional: true
-- ret:
+- call: !Binary
+  - object
+  - - feature
+    - enable
+  ret:
     type: Boolean
     desc: previous state
   left: !Item

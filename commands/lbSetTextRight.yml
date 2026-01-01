@@ -3,7 +3,11 @@ desc: Sets the text on the right side of the item with the given row index of th
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - row
+    - name
+  ret:
     type: Nothing
   left: !Item
     name: control

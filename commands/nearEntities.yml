@@ -10,7 +10,10 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- ret:
+- call: !Binary
+  - position
+  - radius
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
@@ -32,7 +35,11 @@ syntax:
     name: radius
     desc: radius of the sphere
     type: Number
-- ret:
+- call: !Binary
+  - position
+  - - type
+    - radius
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
@@ -67,7 +74,13 @@ syntax:
     name: radius
     desc: radius of the sphere
     type: Number
-- ret:
+- call: !Binary
+  - area
+  - - types
+    - matchExactType
+    - aliveOnly
+    - includeCrew
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

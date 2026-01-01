@@ -5,7 +5,13 @@ desc: |-
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - x
+    - y
+    - w
+    - h
+  ret:
     type: Nothing
   left: !Item
     name: map

@@ -3,7 +3,8 @@ desc: Returns array of backpacks stored in given crate or vehicle. Used for acce
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Unary box
+  ret:
     type: !ArrayUnsized
       type: Object
       desc: ''

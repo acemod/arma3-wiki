@@ -3,7 +3,10 @@ desc: Sets the orientation of the marker.
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Binary
+  - markerName
+  - angle
+  ret:
     type: Nothing
   left: !Item
     name: markerName

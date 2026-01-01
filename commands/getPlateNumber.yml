@@ -3,7 +3,8 @@ desc: Get the license plates from any vehicle which has plates configured.
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: String
   right: !Item
     name: vehicle

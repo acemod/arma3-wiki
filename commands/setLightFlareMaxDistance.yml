@@ -3,7 +3,10 @@ desc: Sets max distance where the flare is visible.
 groups:
 - Lights
 syntax:
-- ret:
+- call: !Binary
+  - light
+  - distance
+  ret:
     type: Nothing
   left: !Item
     name: light

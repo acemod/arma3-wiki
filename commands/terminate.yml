@@ -5,12 +5,14 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- ret:
+- call: !Unary scriptHandle
+  ret:
     type: Nothing
   right: !Item
     name: scriptHandle
     type: ScriptHandle
-- ret:
+- call: !Unary FSMHandle
+  ret:
     type: Nothing
   right: !Item
     name: FSMHandle
@@ -18,7 +20,10 @@ syntax:
     type: Number
   since:
     arma3: '2.18'
-- ret:
+- call: !Binary
+  - scriptHandle
+  - result
+  ret:
     type: Nothing
   left: !Item
     name: scriptHandle

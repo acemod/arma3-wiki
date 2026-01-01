@@ -11,12 +11,25 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary enable
+  ret:
     type: Nothing
   right: !Item
     name: enable
     type: Boolean
-- ret:
+- call: !Unary
+  - scriptedHUD
+  - info
+  - radar
+  - compass
+  - direction
+  - menu
+  - group
+  - cursors
+  - panels
+  - kills
+  - showIcon3D
+  ret:
     type: Nothing
   right: !Array
   - !Item

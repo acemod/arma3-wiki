@@ -38,7 +38,11 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - name
+  - - effect
+    - optionalParamN
+  ret:
     type: Nothing
   left: !Item
     name: name

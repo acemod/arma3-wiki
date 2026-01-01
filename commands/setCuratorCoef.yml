@@ -3,7 +3,11 @@ desc: Sets coef for some action (coef have to be bigger than -1 000 000, anythin
 groups:
 - Curator
 syntax:
-- ret:
+- call: !Binary
+  - curatorObj
+  - - action
+    - coef
+  ret:
     type: Nothing
   left: !Item
     name: curatorObj

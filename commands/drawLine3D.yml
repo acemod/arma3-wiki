@@ -3,7 +3,12 @@ desc: 'Draws a line of a given colour between two 3D positions in the current fr
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Unary
+  - start
+  - end
+  - color
+  - width
+  ret:
     type: Nothing
   right: !Array
   - !Item

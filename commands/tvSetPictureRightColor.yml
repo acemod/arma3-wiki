@@ -3,7 +3,11 @@ desc: Sets color of the right picture on the tree view item defined by path
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  - color
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -16,7 +20,11 @@ syntax:
   - !Item
     name: color
     type: ArrayColorRgba
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - color
+  ret:
     type: Nothing
   left: !Item
     name: control

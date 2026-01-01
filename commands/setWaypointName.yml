@@ -3,7 +3,10 @@ desc: Changes the waypoint name.
 groups:
 - Waypoints
 syntax:
-- ret:
+- call: !Binary
+  - waypoint
+  - name
+  ret:
     type: Nothing
   left: !Item
     name: waypoint

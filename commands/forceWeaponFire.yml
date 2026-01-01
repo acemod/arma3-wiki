@@ -4,7 +4,11 @@ groups:
 - Unit Control
 - Weapons
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - - muzzle
+    - firemode
+  ret:
     type: Nothing
   left: !Item
     name: unit

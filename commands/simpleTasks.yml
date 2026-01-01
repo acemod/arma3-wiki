@@ -3,7 +3,8 @@ desc: Return all simple tasks assigned to given unit.
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: ArrayUnknown
   right: !Item
     name: unit

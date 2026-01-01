@@ -11,12 +11,20 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: Unknown
   right: !Item
     name: unit
     type: Object
-- ret:
+- call: !Unary
+  - unit
+  - weaponsItems
+  - uniformItems
+  - vestItems
+  - backpackItems
+  - assignedItems
+  ret:
     type: Unknown
   right: !Array
   - !Item

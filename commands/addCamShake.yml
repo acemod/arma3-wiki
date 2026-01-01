@@ -3,7 +3,11 @@ desc: Creates the camera shaking effect, like when you are near an explosion
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary
+  - power
+  - duration
+  - frequency
+  ret:
     type: Nothing
   right: !Array
   - !Item

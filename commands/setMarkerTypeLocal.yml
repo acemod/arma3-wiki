@@ -3,7 +3,10 @@ desc: Sets marker type locally. Marker type is a class name in [[CfgMarkers]].
 groups:
 - Markers
 syntax:
-- ret:
+- call: !Binary
+  - markerName
+  - type
+  ret:
     type: Nothing
   left: !Item
     name: markerName

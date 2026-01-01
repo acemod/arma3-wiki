@@ -3,7 +3,8 @@ desc: Get if the current machine is an official server or is connected to one.
 groups:
 - Argo
 syntax:
-- ret:
+- call: Nular
+  ret:
     type: Boolean
     desc: '[[true]] if the machine is an official server or is connected to one, [[false]] otherwise (e.g disconnected or single player)'
 argument_loc: Unspecified

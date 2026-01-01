@@ -3,7 +3,10 @@ desc: Order the given unit(s) to target the given target (without radio messages
 groups:
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - target
+  ret:
     type: Nothing
   left: !Item
     name: unit

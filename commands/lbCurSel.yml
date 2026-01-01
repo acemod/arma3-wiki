@@ -3,13 +3,15 @@ desc: Returns the index of the selected item of the [[CT_LISTBOX]], [[CT_LISTNBO
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Unary idc
+  ret:
     type: Number
     desc: selected index (row) or -1 if nothing is selected
   right: !Item
     name: idc
     type: Number
-- ret:
+- call: !Unary control
+  ret:
     type: Number
     desc: selected index (row) or -1 if nothing is selected
   right: !Item

@@ -3,7 +3,8 @@ desc: "Returns current timeout of the given trigger or -1 if countdown is not in
 groups:
 - Triggers
 syntax:
-- ret:
+- call: !Unary trigger
+  ret:
     type: Number
     desc: time remaining before trigger activation.
   right: !Item

@@ -3,7 +3,10 @@ desc: Removes user added action with given ID. This only removes actions added w
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - actionID
+  ret:
     type: Nothing
   left: !Item
     name: unit

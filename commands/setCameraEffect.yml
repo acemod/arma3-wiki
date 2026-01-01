@@ -6,7 +6,11 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - triggerOrWaypoint
+  - - type
+    - position
+  ret:
     type: Nothing
   left: !Item
     name: triggerOrWaypoint

@@ -6,7 +6,10 @@ groups:
 - Multiplayer
 - Diagnostic
 syntax:
-- ret:
+- call: !Unary
+  - logFile
+  - filter
+  ret:
     type: Number
     desc: handle for the logging
   right: !Array

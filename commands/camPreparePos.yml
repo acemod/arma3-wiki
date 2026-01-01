@@ -3,7 +3,10 @@ desc: Prepares the camera position. Needs the call of [[camCommitPrepared]] to b
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Binary
+  - camera
+  - position
+  ret:
     type: Nothing
   left: !Item
     name: camera

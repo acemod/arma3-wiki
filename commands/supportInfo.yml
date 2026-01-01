@@ -3,7 +3,8 @@ desc: "Creates a list of supported operators and type. Each field of array has t
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary mask
+  ret:
     type: ArrayUnknown
     desc: array with requested info or empty array {{hl|[]}}
   right: !Item

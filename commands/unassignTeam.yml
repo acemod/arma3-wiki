@@ -3,7 +3,8 @@ desc: Unassigns the unit (in the case of a vehicle its commander unit) from his 
 groups:
 - Groups
 syntax:
-- ret:
+- call: !Unary vehicleName
+  ret:
     type: Nothing
   right: !Item
     name: vehicleName

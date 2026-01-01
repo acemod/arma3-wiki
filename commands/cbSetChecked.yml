@@ -3,7 +3,10 @@ desc: Sets the current state of a [[CT_CHECKBOX]] control. Use {{hl|"CheckedChan
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - state
+  ret:
     type: Nothing
   left: !Item
     name: control

@@ -8,7 +8,11 @@ groups:
 - Strings
 - Structured Text
 syntax:
-- ret:
+- call: !Binary
+  - text
+  - - - nameN
+      - valueN
+  ret:
     type: StructuredText
   left: !Item
     name: text

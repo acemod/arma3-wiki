@@ -3,7 +3,8 @@ desc: "Destroys camera object created with [[camCreate]]. This command doesn't n
 groups:
 - Camera Control
 syntax:
-- ret:
+- call: !Unary object
+  ret:
     type: Nothing
   right: !Item
     name: object

@@ -51,7 +51,10 @@ desc: |-
 groups:
 - System
 syntax:
-- ret:
+- call: !Binary
+  - extension
+  - function
+  ret:
     type: String
     desc: data sent back from extension; If the extensiion was not found an empty String will be returned
   left: !Item
@@ -62,7 +65,11 @@ syntax:
     name: function
     desc: data sent to the extension
     type: String
-- ret:
+- call: !Binary
+  - extension
+  - - function
+    - arguments
+  ret:
     type: Unknown
     desc: |-
       data sent back from extension. It is up to extension maker what it is.

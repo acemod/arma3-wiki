@@ -3,7 +3,17 @@ desc: Draws an N sided polygon on the map.
 groups:
 - GUI Control - Map
 syntax:
-- ret:
+- call: !Binary
+  - map
+  - - n
+    - centre
+    - a
+    - b
+    - angle
+    - color
+    - fill
+    - alignWithMap
+  ret:
     type: Nothing
   left: !Item
     name: map

@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - unit
+  ret:
     type: Nothing
   left: !Item
     name: vehicle
@@ -13,7 +16,8 @@ syntax:
   right: !Item
     name: unit
     type: Object
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Nothing
   right: !Item
     name: vehicle

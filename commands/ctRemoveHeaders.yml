@@ -3,7 +3,10 @@ desc: Takes array of header indices as a parameter and removes headers with thos
 groups:
 - GUI Control - Controls Table
 syntax:
-- ret:
+- call: !Binary
+  - ctrl
+  - indices
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

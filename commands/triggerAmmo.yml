@@ -5,12 +5,17 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary munition
+  ret:
     type: Nothing
   right: !Item
     name: munition
     type: Object
-- ret:
+- call: !Unary
+  - munition
+  - timeLeft
+  - distanceLeft
+  ret:
     type: Nothing
   right: !Array
   - !Item

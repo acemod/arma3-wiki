@@ -3,7 +3,8 @@ desc: Checks whether the given FSM is completed. The FSM handle is the number re
 groups:
 - System
 syntax:
-- ret:
+- call: !Unary fsmHandle
+  ret:
     type: Boolean
   right: !Item
     name: fsmHandle

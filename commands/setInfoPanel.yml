@@ -3,7 +3,10 @@ desc: Opens given component or first component of given component type on specif
 groups:
 - Custom Panels
 syntax:
-- ret:
+- call: !Unary
+  - infoPanelId
+  - componentClassOrType
+  ret:
     type: Boolean
     desc: '[[true]] if panel was successfully opened, [[false]] otherwise (e.g. opening GPS on player without GPS item or setting panel to vehicle that doesn''t have such capability configured)'
   right: !Array

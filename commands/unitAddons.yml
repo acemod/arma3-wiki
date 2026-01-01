@@ -3,7 +3,8 @@ desc: Returns list with addons the unit belongs to.
 groups:
 - Mods and Addons
 syntax:
-- ret:
+- call: !Unary className
+  ret:
     type: ArrayUnknown
     desc: addon names
   right: !Item

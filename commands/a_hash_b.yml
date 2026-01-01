@@ -5,7 +5,10 @@ desc: |-
 groups:
 - Variables
 syntax:
-- ret:
+- call: !Binary
+  - array
+  - index
+  ret:
     type: Anything
   left: !Item
     name: array

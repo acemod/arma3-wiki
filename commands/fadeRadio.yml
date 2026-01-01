@@ -3,7 +3,10 @@ desc: 'Changes the radio volume smoothly within the given time. {{Feature|inform
 groups:
 - Sounds
 syntax:
-- ret:
+- call: !Binary
+  - time
+  - volume
+  ret:
     type: Nothing
   left: !Item
     name: time

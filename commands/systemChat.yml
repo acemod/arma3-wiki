@@ -3,7 +3,8 @@ desc: Types text to the system radio channel. The text will be visible only on t
 groups:
 - Radio and Chat
 syntax:
-- ret:
+- call: !Unary text
+  ret:
     type: Nothing
   right: !Item
     name: text

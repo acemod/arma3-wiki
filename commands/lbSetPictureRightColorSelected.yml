@@ -5,7 +5,11 @@ desc: |-
 groups:
 - GUI Control - ListBox
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - index
+    - color
+  ret:
     type: Nothing
   left: !Item
     name: control

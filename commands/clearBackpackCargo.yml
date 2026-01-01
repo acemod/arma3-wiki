@@ -3,7 +3,8 @@ desc: Removes all backpacks from ammo box (or any general weapon holder containe
 groups:
 - Containers
 syntax:
-- ret:
+- call: !Unary box
+  ret:
     type: Nothing
   right: !Item
     name: box

@@ -4,12 +4,14 @@ groups:
 - Locations
 - Briefing
 syntax:
-- ret:
+- call: !Unary location
+  ret:
     type: String
   right: !Item
     name: location
     type: Location
-- ret:
+- call: !Unary task
+  ret:
     type: String
     desc: the type of the task
   right: !Item

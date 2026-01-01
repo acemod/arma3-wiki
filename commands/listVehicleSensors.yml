@@ -3,7 +3,8 @@ desc: Returns an array of the sensors in the given vehicle's config (configFile 
 groups:
 - Sensors
 syntax:
-- ret:
+- call: !Unary vehicle
+  ret:
     type: Unknown
   right: !Item
     name: vehicle

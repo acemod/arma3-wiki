@@ -3,12 +3,16 @@ desc: Get the current optics mode of the optics in the turret occupied by the sp
 groups:
 - Turrets
 syntax:
-- ret:
+- call: !Unary obj
+  ret:
     type: Number
   right: !Item
     name: obj
     type: Object
-- ret:
+- call: !Binary
+  - obj
+  - turretPath
+  ret:
     type: Number
   left: !Item
     name: obj

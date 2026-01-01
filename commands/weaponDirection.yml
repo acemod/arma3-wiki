@@ -6,7 +6,10 @@ groups:
 - Weapons
 - Unit Control
 syntax:
-- ret:
+- call: !Binary
+  - vehicleName
+  - weaponName
+  ret:
     type: Unknown
   left: !Item
     name: vehicleName

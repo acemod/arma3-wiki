@@ -3,7 +3,11 @@ desc: Adds an item with given text to Tree View control. The position on Tree Vi
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - pathParent
+  - text
+  ret:
     type: Number
     desc: index of the added item relative to the branch it was added to
   right: !Array
@@ -17,7 +21,11 @@ syntax:
   - !Item
     name: text
     type: String
-- ret:
+- call: !Binary
+  - control
+  - - pathParent
+    - text
+  ret:
     type: Number
     desc: index of the added item relative to the branch it was added to
   left: !Item

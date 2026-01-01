@@ -3,7 +3,8 @@ desc: Get array with all items (of any kind, even weapons) from vest.
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Unary unit
+  ret:
     type: !ArrayUnsized
       type: String
       desc: ''

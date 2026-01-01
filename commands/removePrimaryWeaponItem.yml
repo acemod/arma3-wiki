@@ -3,7 +3,10 @@ desc: Removes given weapon item, including magazine, from the [[primaryWeapon]].
 groups:
 - Unit Inventory
 syntax:
-- ret:
+- call: !Binary
+  - unit
+  - item
+  ret:
     type: Nothing
   left: !Item
     name: unit

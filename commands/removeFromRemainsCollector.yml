@@ -3,7 +3,8 @@ desc: Removes vehicles/units from the garbage collector, so they do not get dele
 groups:
 - Object Manipulation
 syntax:
-- ret:
+- call: !Unary remains
+  ret:
     type: Nothing
   right: !Item
     name: remains

@@ -3,7 +3,8 @@ desc: Returns an array with the session and global time the asset has been used.
 groups:
 - DLC
 syntax:
-- ret:
+- call: !Unary assetName
+  ret:
     type: Unknown
   right: !Item
     name: assetName

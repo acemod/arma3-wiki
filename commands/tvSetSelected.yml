@@ -3,7 +3,11 @@ desc: Sets the selection state of given treeview item in multi-select control.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - - path
+    - selected
+  ret:
     type: Nothing
   left: !Item
     name: control

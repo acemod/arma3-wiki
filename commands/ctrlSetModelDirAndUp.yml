@@ -3,7 +3,10 @@ desc: Sets orientation of 3D control model. It is similar to [[setVectorDirAndUp
 groups:
 - GUI Control - Object
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - dirAndUp
+  ret:
     type: Nothing
   left: !Item
     name: control

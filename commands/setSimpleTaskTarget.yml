@@ -3,7 +3,11 @@ desc: Attach a target to the simple task.<br>Overrides [[setSimpleTaskDestinatio
 groups:
 - Briefing
 syntax:
-- ret:
+- call: !Binary
+  - task
+  - - target
+    - precisePosition
+  ret:
     type: Nothing
   left: !Item
     name: task

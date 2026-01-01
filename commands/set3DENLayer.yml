@@ -3,7 +3,10 @@ desc: Set layer for [[Eden Entity]].
 groups:
 - Eden Editor
 syntax:
-- ret:
+- call: !Binary
+  - entity
+  - layerID
+  ret:
     type: Boolean
     desc: '[[true]] if the entity was moved succesfully'
   left: !Item

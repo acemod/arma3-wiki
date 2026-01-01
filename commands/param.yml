@@ -7,7 +7,12 @@ groups:
 - Variables
 - Arrays
 syntax:
-- ret:
+- call: !Unary
+  - index
+  - defaultValue
+  - expectedDataTypes
+  - expectedArrayCount
+  ret:
     type: Anything
     desc: extracted value on success or default value otherwise. [[Nothing]] if syntax error occurred.
   right: !Array
@@ -36,7 +41,13 @@ syntax:
       desc: null
       since: null
     optional: true
-- ret:
+- call: !Binary
+  - argument
+  - - index
+    - defaultValue
+    - expectedDataTypes
+    - expectedArrayCount
+  ret:
     type: Anything
     desc: extracted value on success or default value otherwise. [[Nothing]] if syntax error occurred.
   left: !Item

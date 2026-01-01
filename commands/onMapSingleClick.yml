@@ -4,7 +4,8 @@ groups:
 - Map
 - Event Handlers
 syntax:
-- ret:
+- call: !Unary command
+  ret:
     type: Nothing
   right: !Item
     name: command
@@ -15,7 +16,10 @@ syntax:
     - type: Code
       desc: null
       since: null
-- ret:
+- call: !Binary
+  - params
+  - command
+  ret:
     type: Nothing
   left: !Item
     name: params

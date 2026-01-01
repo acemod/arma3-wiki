@@ -7,21 +7,26 @@ groups:
 - HashMap
 - Strings
 syntax:
-- ret:
+- call: !Unary string
+  ret:
     type: !ArrayUnsized
       type: Number
       desc: ''
   right: !Item
     name: string
     type: String
-- ret:
+- call: !Unary hashMap
+  ret:
     type: Unknown
   right: !Item
     name: hashMap
     type: HashMapUnknown
   since:
     arma3: '2.4'
-- ret:
+- call: !Binary
+  - hashMap
+  - splitArrays
+  ret:
     type: Unknown
   left: !Item
     name: hashMap

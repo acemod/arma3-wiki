@@ -3,7 +3,10 @@ desc: Selects the row with the given index of the 2D listbox.
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - index
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -12,7 +15,10 @@ syntax:
   - !Item
     name: index
     type: Number
-- ret:
+- call: !Binary
+  - ctrl
+  - index
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

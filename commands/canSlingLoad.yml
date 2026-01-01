@@ -3,7 +3,10 @@ desc: Returns [[true]] if [[setSlingLoad]] is possible.
 groups:
 - Ropes and Sling Loading
 syntax:
-- ret:
+- call: !Binary
+  - heli
+  - cargo
+  ret:
     type: Boolean
     desc: '[[true]] if [[setSlingLoad]] is possible'
   left: !Item
@@ -14,7 +17,10 @@ syntax:
     name: cargo
     desc: an entity
     type: Object
-- ret:
+- call: !Binary
+  - typeOfHeli
+  - typeOfCargo
+  ret:
     type: Boolean
     desc: '[[true]] if can be sling loaded ''''in principle'''''
   left: !Item

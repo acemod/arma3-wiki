@@ -3,7 +3,10 @@ desc: Get array of compatible pylon magazines
 groups:
 - Vehicle Loadouts
 syntax:
-- ret:
+- call: !Binary
+  - vehicle
+  - pylon
+  ret:
     type: !OneOf
     - type: !ArrayUnsized
         type: String

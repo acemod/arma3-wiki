@@ -5,7 +5,11 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- ret:
+- call: !Binary
+  - player
+  - - unit
+    - select
+  ret:
     type: Nothing
   left: !Item
     name: player

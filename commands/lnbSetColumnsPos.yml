@@ -3,7 +3,10 @@ desc: Sets relative screen X for ListNBox control columns positions. Setter for 
 groups:
 - GUI Control - ListNBox
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - positions
+  ret:
     type: Nothing
   right: !Array
   - !Item
@@ -14,7 +17,10 @@ syntax:
     name: positions
     desc: positions of the columns
     type: ArrayUnknown
-- ret:
+- call: !Binary
+  - ctrl
+  - positions
+  ret:
     type: Nothing
   left: !Item
     name: ctrl

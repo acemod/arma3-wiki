@@ -3,7 +3,10 @@ desc: Returns children count on given path. IDC means id of parent Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
-- ret:
+- call: !Unary
+  - idc
+  - path
+  ret:
     type: Number
   right: !Array
   - !Item
@@ -14,7 +17,10 @@ syntax:
     type: !ArrayUnsized
       type: Number
       desc: ''
-- ret:
+- call: !Binary
+  - ctrl
+  - path
+  ret:
     type: Number
   left: !Item
     name: ctrl

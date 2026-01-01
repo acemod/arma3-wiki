@@ -3,7 +3,8 @@ desc: Returns a road segment containing given position, [[objNull]] otherwise. S
 groups:
 - Roads and Airports
 syntax:
-- ret:
+- call: !Unary position
+  ret:
     type: Object
     desc: road segment or [[objNull]]
   right: !Item

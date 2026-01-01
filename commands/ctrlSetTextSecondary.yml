@@ -3,7 +3,10 @@ desc: Sets the secondary text of a text control.
 groups:
 - GUI Control
 syntax:
-- ret:
+- call: !Binary
+  - control
+  - text
+  ret:
     type: Nothing
   left: !Item
     name: control
