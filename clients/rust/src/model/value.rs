@@ -750,7 +750,9 @@ impl Value {
         let source = source.replace(" in format ", " format ");
         match source.trim() {
             // Date
-            "[[Array]] format [[Date]]" | "[[Array]] of [[Date]]" => Some(Self::ArrayDate),
+            "[[Array]] format [[Date]]" => Some(Self::ArrayDate),
+
+            "[[Array]] format [[Waypoint]]" => Some(Self::Waypoint),
 
             // Position types
             "[[Array]] format [[Position]]" => Some(Self::Position),
@@ -1571,6 +1573,24 @@ mod tests {
 
     #[test]
     fn or_array() {
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                "[[Object]] or [[Array]] format [[Waypoint]]"
+            ),
+            Ok(Value::OneOf(vec![
+                OneOfValue {
+                    typ: Value::Object,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Waypoint,
+                    desc: None,
+                    since: None,
+                },
+            ]))
+        );
         assert_eq!(
             Value::from_wiki(
                 "test",
