@@ -32,7 +32,13 @@ syntax:
     type: ArrayColor
   - name: dotColor
     desc: impact dot color. Set to <sqf inline>[]</sqf> to use the same value as ''beamColor''.
-    type: ArrayColor
+    type: !OneOf
+    - type: ArrayColor
+      desc: null
+      since: null
+    - type: ArrayEmpty
+      desc: null
+      since: null
   - name: dotSize
     desc: impact dot size; if set to 0 the impact dot will not render
     type: Number

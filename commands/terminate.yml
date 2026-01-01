@@ -20,6 +20,20 @@ syntax:
     type: Number
   since:
     arma3: '2.18'
+- call: !Binary
+  - scriptHandle
+  - result
+  ret:
+    type: Nothing
+  params:
+  - name: scriptHandle
+    desc: Only [[Script_Handle#Promise_Handles|"Empty Handle"]]'s can have their result set.
+    type: ScriptHandle
+  - name: result
+    desc: The result to write into the [[Script_Handle#Promise_Handles|Promise]]
+    type: Anything
+  since:
+    arma3: '2.22'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

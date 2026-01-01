@@ -5,7 +5,10 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-    type: Unknown
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+    desc: '["ItemType1","ItemType2","ItemType3"...]'
   params:
   - name: object
     desc: vehicle or ammo box

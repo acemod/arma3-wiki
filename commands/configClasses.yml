@@ -14,6 +14,34 @@ syntax:
     type: String
   - name: config
     type: Config
+- call: !Unary
+  - config
+  - depth
+  - includeInherited
+  - allSubclasses
+  - classNames
+  ret:
+    type: ArrayUnknown
+    desc: array of [[Config]]s or [[Strings]], which represent class names.
+  params:
+  - name: config
+    desc: target config
+    type: Config
+  - name: depth
+    desc: how many levels of subclasses to go deep
+    type: Number
+  - name: includeInherited
+    desc: '[[true]] to look through inherited classes'
+    type: Boolean
+  - name: allSubclasses
+    desc: '[[true]] to return all subclasses, [[false]] - to return only the last tier.'
+    type: Boolean
+  - name: classNames
+    desc: '(Optional, default: [[false]]) when [[true]] class names [[String]]s are returned, when [[false]] - [[Config]]s are returned.'
+    type: Boolean
+    optional: true
+  since:
+    arma3: '2.22'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

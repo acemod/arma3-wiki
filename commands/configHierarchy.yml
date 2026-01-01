@@ -11,6 +11,33 @@ syntax:
   - name: config
     desc: target config
     type: Config
+- call: !Unary
+  - config
+  - classesOnly
+  - includeBases
+  - reversedOrder
+  - configNames
+  ret:
+    type: ArrayUnknown
+    desc: array of parent [[Config]]s or [[String]]s, representing config names
+  params:
+  - name: config
+    desc: target config
+    type: Config
+  - name: classesOnly
+    desc: when [[true]], only classes are included in output and not properties
+    type: Boolean
+  - name: includeBases
+    desc: when [[true]], returned parents will include base classes (see description)
+    type: Boolean
+  - name: reversedOrder
+    desc: when [[true]], the return order is from child to parent
+    type: Boolean
+  - name: configNames
+    desc: 'when [[true]], the return is [[Array]] of [[String]]s, when [[false]] - [[Array]] of [[Config]]s. Default: [[false]]'
+    type: Unknown
+  since:
+    arma3: '2.22'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
