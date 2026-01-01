@@ -234,22 +234,22 @@ mod tests {
     fn one_of() {
         let (direction, _) = Param::from_wiki("camSetDir", "direction:\n* [[Number]] (before {{GVI|arma3|0.50}}) - camera azimuth\n* [[Array]] in format [x,y,z] (since {{GVI|arma3|0.50}}) - direction of camera. Must be a valid vector.").expect("Failed to parse param");
         assert_eq!(direction.name(), "direction");
-        assert_eq!(direction.typ(), &Value::Unknown);
+        assert!(matches!(direction.typ(), Value::OneOf(_)));
 
         let (public, _) = Param::from_wiki("setVariable", "public - (Optional, default [[false]]) can be one of:\n* [[Boolean]] - if set to [[true]], the variable is broadcast globally and is persistent ([[Multiplayer Scripting#Join In Progress|JIP]] compatible) {{Icon|globalEffect|32}}\n* [[Number]] - the variable is only set on the client with the given [[Multiplayer Scripting#Machine network ID|Machine network ID]]. If the number is negative, the variable is set on every client except for the one with the given ID.\n* [[Array]] of [[Number]]s - array of [[Multiplayer Scripting#Machine network ID|Machine network IDs]]").expect("Failed to parse param");
         assert_eq!(public.name(), "public");
-        assert_eq!(public.typ(), &Value::Unknown);
+        assert!(matches!(public.typ(), Value::OneOf(_)));
 
         let (targets, _) = Param::from_wiki("remoteExec", "'''targets''' - (Optional, default 0):\n* [[Number]] (See also [[Multiplayer Scripting#Machine network ID|Machine network ID]]):\n** '''0:''' the order will be executed globally, i.e. on the server and every connected client, including the machine where [[remoteExec]] originated\n** '''2:''' the order will only be executed on the server - is both dedicated and hosted server. See [[Multiplayer_Scripting#Different_machines_and_how_to_target_them|for more info]]\n** '''Other number:''' the order will be executed on the machine where [[clientOwner]] matches the given number\n** '''Negative number:''' the effect is inverted: '''-2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12\n* [[Object]] - the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]\n* [[String]] - interpreted as an [[Identifier]] (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [[Multiplayer Scripting#Locality|local]]\n* [[Side]] - the order will be executed on machines where the player is on the specified side\n* [[Group]] - the order will be executed on machines '''where the player is in the specified group''' ('''not''' where said group is local!)\n* [[Array]] - array of any combination of the types listed above").expect("Failed to parse param");
         assert_eq!(targets.name(), "targets");
-        assert_eq!(targets.typ(), &Value::Unknown);
+        assert!(matches!(targets.typ(), Value::OneOf(_)));
     }
 
     #[test]
     fn or() {
         let (targets, _) = Param::from_wiki("remoteExec", "'''targets''': [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - (Optional, default 0) see the main syntax above for more details.").expect("Failed to parse param");
         assert_eq!(targets.name(), "targets");
-        assert_eq!(targets.typ(), &Value::Unknown);
+        assert!(matches!(targets.typ(), Value::OneOf(_)));
     }
 
     #[test]

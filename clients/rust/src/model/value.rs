@@ -15,6 +15,28 @@ pub struct ArraySizedElement {
 }
 
 #[derive(Clone, Debug, Hash, PartialEq, Eq, Serialize, Deserialize)]
+pub struct NumberEnumValue {
+    pub value: i32,
+    pub desc: Option<String>,
+    pub since: Option<Since>,
+}
+
+#[derive(Clone, Debug, Hash, PartialEq, Eq, Serialize, Deserialize)]
+pub struct StringEnumValue {
+    pub value: String,
+    pub desc: Option<String>,
+    pub since: Option<Since>,
+}
+
+#[derive(Clone, Debug, Hash, PartialEq, Eq, Serialize, Deserialize)]
+pub struct OneOfValue {
+    #[serde(rename = "type")]
+    pub typ: Value,
+    pub desc: Option<String>,
+    pub since: Option<Since>,
+}
+
+#[derive(Clone, Debug, Hash, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Value {
     Anything,
     ArraySized {
@@ -27,6 +49,7 @@ pub enum Value {
         typ: Box<Self>,
         desc: String,
     },
+    ArrayEmpty,
     ArrayDate,
     ArrayColor,
     ArrayColorRgb,
@@ -51,13 +74,13 @@ pub enum Value {
     Namespace,
     Nothing,
     Number,
-    NumberEnum(Vec<(i32, Option<String>, Option<Since>)>),
+    NumberEnum(Vec<NumberEnumValue>),
     NumberRange(i32, i32),
     Object,
     ScriptHandle,
     Side,
     String,
-    StringEnum(Vec<(String, Option<String>, Option<Since>)>),
+    StringEnum(Vec<StringEnumValue>),
     StructuredText,
     SwitchType,
     Task,
@@ -80,7 +103,7 @@ pub enum Value {
 
     Unknown,
 
-    OneOf(Vec<(Self, Option<Since>)>),
+    OneOf(Vec<OneOfValue>),
 }
 
 // regex once cell
@@ -159,14 +182,22 @@ impl Value {
         command: &str,
         part: &str,
         regex_pattern: &Regex,
-        parsed_values: &mut Vec<(Self, Option<Since>)>,
+        parsed_values: &mut Vec<OneOfValue>,
     ) {
         if let Ok(val) = Self::from_wiki(command, part) {
-            parsed_values.push((val, None));
+            parsed_values.push(OneOfValue {
+                typ: val,
+                desc: None,
+                since: None,
+            });
         } else if let Some(caps) = regex_pattern.captures(part) {
             let value = caps.get(1).expect("Failed to get capture group 1").as_str();
             if let Ok(val) = Self::single_match(value) {
-                parsed_values.push((val, None));
+                parsed_values.push(OneOfValue {
+                    typ: val,
+                    desc: None,
+                    since: None,
+                });
             }
         }
     }
@@ -309,7 +340,7 @@ impl Value {
                 let (desc, since) = Self::parse_desc_with_colon(after_value, regex_gvi);
                 let since = since.or_else(|| Self::extract_version_only(line, regex_gvi));
 
-                enum_values.push((value, desc, since));
+                enum_values.push(StringEnumValue { value, desc, since });
             }
 
             if !enum_values.is_empty() {
@@ -334,7 +365,11 @@ impl Value {
                     let (desc, since) = desc_part.map_or((None, None), |desc_text| {
                         Self::parse_desc_with_colon(desc_text, regex_gvi)
                     });
-                    enum_values.push((number, desc, since));
+                    enum_values.push(NumberEnumValue {
+                        value: number,
+                        desc,
+                        since,
+                    });
                 }
             }
 
@@ -351,7 +386,15 @@ impl Value {
                 if let Some(caps) = regex_type.captures(line) {
                     let type_str = caps.get(1).expect("Failed to get type").as_str();
                     if let Ok(typ) = Self::single_match(type_str) {
-                        types.push((typ, None));
+                        // Extract description after the type (after closing ]])
+                        let desc_start = line.find("]]").map_or(line.len(), |pos| pos + 2);
+                        let desc_text = line[desc_start..].trim().trim_start_matches('-').trim();
+                        let (desc, since) = if desc_text.is_empty() {
+                            (None, None)
+                        } else {
+                            Self::extract_version_and_clean_desc(desc_text, regex_gvi)
+                        };
+                        types.push(OneOfValue { typ, desc, since });
                     }
                 }
             }
@@ -370,67 +413,55 @@ impl Value {
             }
         }
 
-        // Check for "Array of X" pattern
-        if let Some(mut rest) = source.strip_prefix("[[Array]] of ") {
-            // Handle optional trailing 's' (e.g., "[[Number]]s")
-            if rest.ends_with("]]s") {
-                rest = &rest[..rest.len() - 1]; // Remove the trailing 's'
-            }
+        // Check for "X or Y" patterns early if present
+        // This needs to be before "Array of X" to handle cases like
+        // "[[Array]] of [[Color]] or [[Array|Empty Array]]" correctly
+        if source.contains(" or ") {
+            // Special case: check if we have bulleted descriptions following "X or Y" pattern
+            // e.g., "[[Number]] or [[String]]\n* [[Number]] - desc1\n* [[String]] - desc2"
+            if source.contains("\n*") {
+                let first_line = source.lines().next().unwrap_or("");
+                if first_line.contains(" or ") && !first_line.starts_with('*') {
+                    // We have "X or Y" on first line and bulleted descriptions below
+                    // Extract the types from first line for validation
+                    let expected_types: Vec<_> = first_line
+                        .split(" or ")
+                        .flat_map(|part| regex_or_pattern.captures_iter(part))
+                        .filter_map(|caps| {
+                            Self::single_match(
+                                caps.get(1).expect("Failed to get capture group 1").as_str(),
+                            )
+                            .ok()
+                        })
+                        .collect();
 
-            // Try to parse the rest recursively, handling both simple and nested cases
-            if let Ok(inner_type) = Self::from_wiki(command, rest) {
-                // Special handling: if inner_type is OneOf containing Nothing,
-                // restructure to OneOf(Array(non-Nothing types), Nothing)
-                // because Array of Nothing doesn't make sense
-                if let Self::OneOf(ref types) = inner_type {
-                    let (nothing_types, other_types): (Vec<_>, Vec<_>) =
-                        types.iter().partition(|(t, _)| matches!(t, Self::Nothing));
-
-                    if !nothing_types.is_empty() && !other_types.is_empty() {
-                        // We have both Nothing and other types
-                        // Create a OneOf with Array(other_types) and Nothing
-                        let mut new_oneof = vec![];
-
-                        if other_types.len() == 1 {
-                            // Single non-Nothing type: Array(that_type)
-                            new_oneof.push((
-                                Self::ArrayUnsized {
-                                    typ: Box::new(other_types[0].0.clone()),
-                                    desc: String::new(),
-                                },
-                                None,
-                            ));
-                        } else {
-                            // Multiple non-Nothing types: Array(OneOf(those_types))
-                            let cloned_types: Vec<(Self, Option<Since>)> = other_types
-                                .iter()
-                                .map(|(t, s)| (t.clone(), s.clone()))
-                                .collect();
-                            new_oneof.push((
-                                Self::ArrayUnsized {
-                                    typ: Box::new(Self::OneOf(cloned_types)),
-                                    desc: String::new(),
-                                },
-                                None,
-                            ));
+                    // Try to parse bulleted descriptions
+                    let mut types_with_desc = Vec::new();
+                    for line in Self::bulleted_lines(source) {
+                        if let Some(caps) = regex_type.captures(line) {
+                            let type_str = caps.get(1).expect("Failed to get type").as_str();
+                            if let Ok(typ) = Self::single_match(type_str) {
+                                let desc_start = line.find("]]").map_or(line.len(), |pos| pos + 2);
+                                let desc_text =
+                                    line[desc_start..].trim().trim_start_matches('-').trim();
+                                let (desc, since) = if desc_text.is_empty() {
+                                    (None, None)
+                                } else {
+                                    Self::extract_version_and_clean_desc(desc_text, regex_gvi)
+                                };
+                                types_with_desc.push(OneOfValue { typ, desc, since });
+                            }
                         }
+                    }
 
-                        // Add Nothing
-                        new_oneof.push((Self::Nothing, None));
-
-                        return Ok(Self::OneOf(new_oneof));
+                    // If we successfully parsed descriptions and they match expected types, use them
+                    if !types_with_desc.is_empty() && types_with_desc.len() == expected_types.len()
+                    {
+                        return Ok(Self::OneOf(types_with_desc));
                     }
                 }
-
-                return Ok(Self::ArrayUnsized {
-                    typ: Box::new(inner_type),
-                    desc: String::new(),
-                });
             }
-        }
 
-        // Check for "X or Y" or "X, Y, Z or W" patterns
-        if source.contains(" or ") {
             // Try to find and handle nested explicit patterns
             // Look for patterns like "[[Object]] or [[Array]] format ... or ..."
             // where the second part is itself an explicit match
@@ -440,27 +471,36 @@ impl Value {
 
             // Special case: if we have 3+ parts, check if the last N parts form an explicit pattern
             if parts.len() >= 3 {
-                // Try to rejoin later parts and see if they match an explicit pattern
-                for i in 1..parts.len() {
-                    let rejoined = parts[i..].join(" or ");
-                    if Self::match_explicit(&rejoined).is_some() {
-                        // We found a match! Parse the first parts normally, and use the explicit match for the rest
+                // Try combining progressively from the end
+                for i in (1..parts.len()).rev() {
+                    let combined = parts[i..].join(" or ");
+                    if Self::match_explicit(&combined).is_some() {
+                        // The last parts form an explicit match; parse first parts + combined
                         let mut parsed_values = Vec::new();
 
-                        // Parse first i parts
-                        for &part in &parts[..i] {
-                            let part = part.trim().trim_end_matches(',');
-                            Self::parse_and_add_type(
-                                command,
-                                part,
-                                regex_or_pattern,
-                                &mut parsed_values,
-                            );
+                        // Parse the first parts individually
+                        for part in &parts[..i] {
+                            let part = part.trim();
+
+                            // For comma-separated values in this part, split them
+                            for comma_part in part.split(',') {
+                                let comma_part = comma_part.trim();
+                                Self::parse_and_add_type(
+                                    command,
+                                    comma_part,
+                                    regex_or_pattern,
+                                    &mut parsed_values,
+                                );
+                            }
                         }
 
-                        // Add the explicit match
-                        if let Ok(val) = Self::from_wiki(command, &rejoined) {
-                            parsed_values.push((val, None));
+                        // Parse the combined part
+                        if let Ok(val) = Self::from_wiki(command, &combined) {
+                            parsed_values.push(OneOfValue {
+                                typ: val,
+                                desc: None,
+                                since: None,
+                            });
                         }
 
                         if !parsed_values.is_empty() {
@@ -476,23 +516,97 @@ impl Value {
             for part in parts {
                 let part = part.trim();
 
-                // Check if this part contains comma-separated items
-                if part.contains(',') {
-                    // Extract all [[Type]] patterns from this comma-separated part
-                    for cap in regex_or_pattern.captures_iter(part) {
-                        let value = cap.get(1).expect("Failed to get capture group 1").as_str();
-                        if let Ok(val) = Self::single_match(value) {
-                            parsed_values.push((val, None));
-                        }
+                // For comma-separated values in this part, split them
+                for comma_part in part.split(',') {
+                    let comma_part = comma_part.trim();
+
+                    // Skip "if X" or similar trailing conditions
+                    if comma_part.starts_with("if ") {
+                        continue;
                     }
-                } else {
-                    // Single item, try to parse as complete expression first
-                    Self::parse_and_add_type(command, part, regex_or_pattern, &mut parsed_values);
+
+                    Self::parse_and_add_type(
+                        command,
+                        comma_part,
+                        regex_or_pattern,
+                        &mut parsed_values,
+                    );
                 }
             }
 
             if !parsed_values.is_empty() {
                 return Ok(Self::OneOf(parsed_values));
+            }
+        }
+
+        // Check for "Array of X" pattern
+        if let Some(mut rest) = source.strip_prefix("[[Array]] of ") {
+            // Handle optional trailing 's' (e.g., "[[Number]]s")
+            if rest.ends_with("]]s") {
+                rest = &rest[..rest.len() - 1]; // Remove the trailing 's'
+            }
+
+            // Try to parse the rest recursively, handling both simple and nested cases
+            if let Ok(inner_type) = Self::from_wiki(command, rest) {
+                // Special handling: if inner_type is OneOf containing Nothing,
+                // restructure to OneOf(Array(non-Nothing types), Nothing)
+                // because Array of Nothing doesn't make sense
+                if let Self::OneOf(ref types) = inner_type {
+                    let (nothing_types, other_types): (Vec<_>, Vec<_>) = types
+                        .iter()
+                        .partition(|v| matches!(v.typ, Self::Nothing | Self::ArrayEmpty));
+
+                    if !nothing_types.is_empty() && !other_types.is_empty() {
+                        // We have both Nothing and other types
+                        // Create a OneOf with Array(other_types) and Nothing
+                        let mut new_oneof = vec![];
+
+                        if other_types.len() == 1 {
+                            // Single non-Nothing type: Array(that_type)
+                            new_oneof.push(OneOfValue {
+                                typ: Self::ArrayUnsized {
+                                    typ: Box::new(other_types[0].typ.clone()),
+                                    desc: String::new(),
+                                },
+                                desc: None,
+                                since: None,
+                            });
+                        } else {
+                            // Multiple non-Nothing types: Array(OneOf(those_types))
+                            let cloned_types: Vec<OneOfValue> =
+                                other_types.into_iter().cloned().collect();
+                            new_oneof.push(OneOfValue {
+                                typ: Self::ArrayUnsized {
+                                    typ: Box::new(Self::OneOf(cloned_types)),
+                                    desc: String::new(),
+                                },
+                                desc: None,
+                                since: None,
+                            });
+                        }
+
+                        // Add Nothing or ArrayEmpty as separate option
+                        new_oneof.push(OneOfValue {
+                            typ: if nothing_types
+                                .iter()
+                                .any(|v| matches!(v.typ, Self::ArrayEmpty))
+                            {
+                                Self::ArrayEmpty
+                            } else {
+                                Self::Nothing
+                            },
+                            desc: None,
+                            since: None,
+                        });
+
+                        return Ok(Self::OneOf(new_oneof));
+                    }
+                }
+
+                return Ok(Self::ArrayUnsized {
+                    typ: Box::new(inner_type),
+                    desc: String::new(),
+                });
             }
         }
 
@@ -560,8 +674,16 @@ impl Value {
 
             "[[Array]] format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]" => {
                 Some(Self::OneOf(vec![
-                    (Self::Position2d, None),
-                    (Self::Position3d, None),
+                    OneOfValue {
+                        typ: Self::Position2d,
+                        desc: None,
+                        since: None,
+                    },
+                    OneOfValue {
+                        typ: Self::Position3d,
+                        desc: None,
+                        since: None,
+                    },
                 ]))
             }
 
@@ -580,6 +702,8 @@ impl Value {
             "[[Array]] format [[Array of Eden Entities]]" | "[[Array of Eden Entities]]" => {
                 Some(Self::ArrayEdenEntities)
             }
+
+            "[[Array|Empty Array]]" => Some(Self::ArrayEmpty),
 
             "[[Turret Path]]" | "[[Array]] format [[Turret Path]]" => Some(Self::TurretPath),
 
@@ -691,7 +815,11 @@ impl Value {
             if line.starts_with('*') {
                 let item = line.trim_start_matches('*').trim();
                 if let Ok(item) = Self::from_wiki(command, item) {
-                    items.push((item, None));
+                    items.push(OneOfValue {
+                        typ: item,
+                        desc: None,
+                        since: None,
+                    });
                 }
             }
         }
@@ -721,6 +849,7 @@ impl std::fmt::Display for Value {
             Self::ArrayColorRgb => write!(f, "Array Color RGB"),
             Self::ArrayColorRgba => write!(f, "Array Color RGBA"),
             Self::ArrayEdenEntities => write!(f, "Array Eden Entities"),
+            Self::ArrayEmpty => write!(f, "Array Empty"),
             Self::Boolean => write!(f, "Boolean"),
             Self::Code => write!(f, "Code"),
             Self::Config => write!(f, "Config"),
@@ -743,7 +872,7 @@ impl std::fmt::Display for Value {
             Self::NumberEnum(values) => {
                 let formatted = values
                     .iter()
-                    .map(|(value, _, _)| value.to_string())
+                    .map(|v| v.value.to_string())
                     .collect::<Vec<_>>()
                     .join(" | ");
                 write!(f, "Number Enum ({formatted})")
@@ -756,7 +885,7 @@ impl std::fmt::Display for Value {
             Self::StringEnum(values) => {
                 let formatted = values
                     .iter()
-                    .map(|(value, _, _)| value.clone())
+                    .map(|v| v.value.clone())
                     .collect::<Vec<_>>()
                     .join(" | ");
                 write!(f, "String Enum ({formatted})")
@@ -784,7 +913,7 @@ impl std::fmt::Display for Value {
             Self::OneOf(values) => {
                 let formatted = values
                     .iter()
-                    .map(|(value, _)| value.to_string())
+                    .map(|v| v.typ.to_string())
                     .collect::<Vec<_>>()
                     .join(" | ");
                 write!(f, "{formatted}")
@@ -796,7 +925,9 @@ impl std::fmt::Display for Value {
 #[cfg(test)]
 #[cfg(feature = "wiki")]
 mod tests {
-    use crate::model::{ArraySizedElement, Since, Value};
+    use crate::model::{
+        ArraySizedElement, NumberEnumValue, OneOfValue, Since, StringEnumValue, Value,
+    };
 
     #[test]
     fn single_values() {
@@ -839,9 +970,21 @@ mod tests {
                 "* [[Number]] - (0 - no clouds, 1 - full clouds)\n* [[Nothing]] - If arguments are incorrect\n* [[Boolean]] - Returns [[false]] if simulWeather is disabled"
             ),
             Ok(Value::OneOf(vec![
-                (Value::Number, None),
-                (Value::Nothing, None),
-                (Value::Boolean, None),
+                OneOfValue {
+                    typ: Value::Number,
+                    desc: Some("(0 - no clouds, 1 - full clouds)".to_string()),
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Nothing,
+                    desc: Some("If arguments are incorrect".to_string()),
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Boolean,
+                    desc: Some("Returns [[false]] if simulWeather is disabled".to_string()),
+                    since: None,
+                },
             ]))
         );
     }
@@ -1002,17 +1145,61 @@ mod tests {
 * {{GVI|arma3|2.20|size= 0.75}} {{hl|"DECAGON"}}"#
             ),
             Ok(Value::StringEnum(vec![
-                ("ICON".to_string(), None, None),
-                ("RECTANGLE".to_string(), None, None),
-                ("ELLIPSE".to_string(), None, None),
-                ("POLYLINE".to_string(), None, Some(Since::arma3("1.60"))),
-                ("TRIANGLE".to_string(), None, Some(Since::arma3("2.20"))),
-                ("PENTAGON".to_string(), None, Some(Since::arma3("2.20"))),
-                ("HEXAGON".to_string(), None, Some(Since::arma3("2.20"))),
-                ("HEPTAGON".to_string(), None, Some(Since::arma3("2.20"))),
-                ("OCTAGON".to_string(), None, Some(Since::arma3("2.20"))),
-                ("NONAGON".to_string(), None, Some(Since::arma3("2.20"))),
-                ("DECAGON".to_string(), None, Some(Since::arma3("2.20"))),
+                StringEnumValue {
+                    value: "ICON".to_string(),
+                    desc: None,
+                    since: None,
+                },
+                StringEnumValue {
+                    value: "RECTANGLE".to_string(),
+                    desc: None,
+                    since: None,
+                },
+                StringEnumValue {
+                    value: "ELLIPSE".to_string(),
+                    desc: None,
+                    since: None,
+                },
+                StringEnumValue {
+                    value: "POLYLINE".to_string(),
+                    desc: None,
+                    since: Some(Since::arma3("1.60")),
+                },
+                StringEnumValue {
+                    value: "TRIANGLE".to_string(),
+                    desc: None,
+                    since: Some(Since::arma3("2.20")),
+                },
+                StringEnumValue {
+                    value: "PENTAGON".to_string(),
+                    desc: None,
+                    since: Some(Since::arma3("2.20")),
+                },
+                StringEnumValue {
+                    value: "HEXAGON".to_string(),
+                    desc: None,
+                    since: Some(Since::arma3("2.20")),
+                },
+                StringEnumValue {
+                    value: "HEPTAGON".to_string(),
+                    desc: None,
+                    since: Some(Since::arma3("2.20")),
+                },
+                StringEnumValue {
+                    value: "OCTAGON".to_string(),
+                    desc: None,
+                    since: Some(Since::arma3("2.20")),
+                },
+                StringEnumValue {
+                    value: "NONAGON".to_string(),
+                    desc: None,
+                    since: Some(Since::arma3("2.20")),
+                },
+                StringEnumValue {
+                    value: "DECAGON".to_string(),
+                    desc: None,
+                    since: Some(Since::arma3("2.20")),
+                },
             ]))
         );
         assert_eq!(
@@ -1024,17 +1211,21 @@ mod tests {
 * {{hl|"Unknown"}}"#
             ),
             Ok(Value::StringEnum(vec![
-                (
-                    "Allowed".to_string(),
-                    Some("Indicates allowed state".to_string()),
-                    None
-                ),
-                (
-                    "Denied".to_string(),
-                    Some("Indicates denied state".to_string()),
-                    None
-                ),
-                ("Unknown".to_string(), None, None),
+                StringEnumValue {
+                    value: "Allowed".to_string(),
+                    desc: Some("Indicates allowed state".to_string()),
+                    since: None,
+                },
+                StringEnumValue {
+                    value: "Denied".to_string(),
+                    desc: Some("Indicates denied state".to_string()),
+                    since: None,
+                },
+                StringEnumValue {
+                    value: "Unknown".to_string(),
+                    desc: None,
+                    since: None,
+                },
             ]))
         );
     }
@@ -1051,26 +1242,26 @@ mod tests {
 * 3: Invalid board (bad board name, not initialised etc)"
             ),
             Ok(Value::NumberEnum(vec![
-                (
-                    0,
-                    Some("Busy (async. operation in progress)".to_string()),
-                    None
-                ),
-                (
-                    1,
-                    Some("Async. operation ended with success".to_string()),
-                    None
-                ),
-                (
-                    2,
-                    Some("Async. operation ended with error".to_string()),
-                    None
-                ),
-                (
-                    3,
-                    Some("Invalid board (bad board name, not initialised etc)".to_string()),
-                    None
-                ),
+                NumberEnumValue {
+                    value: 0,
+                    desc: Some("Busy (async. operation in progress)".to_string()),
+                    since: None,
+                },
+                NumberEnumValue {
+                    value: 1,
+                    desc: Some("Async. operation ended with success".to_string()),
+                    since: None,
+                },
+                NumberEnumValue {
+                    value: 2,
+                    desc: Some("Async. operation ended with error".to_string()),
+                    since: None,
+                },
+                NumberEnumValue {
+                    value: 3,
+                    desc: Some("Invalid board (bad board name, not initialised etc)".to_string()),
+                    since: None,
+                },
             ]))
         );
         assert_eq!(
@@ -1082,13 +1273,21 @@ mod tests {
 * 8"
             ),
             Ok(Value::NumberEnum(vec![
-                (
-                    0,
-                    Some("log remaining capacity in the [[arma.RPT|RPT]]".to_string()),
-                    Some(Since::arma3("2.20"))
-                ),
-                (4, None, None),
-                (8, None, None),
+                NumberEnumValue {
+                    value: 0,
+                    desc: Some("log remaining capacity in the [[arma.RPT|RPT]]".to_string()),
+                    since: Some(Since::arma3("2.20")),
+                },
+                NumberEnumValue {
+                    value: 4,
+                    desc: None,
+                    since: None,
+                },
+                NumberEnumValue {
+                    value: 8,
+                    desc: None,
+                    since: None,
+                },
             ]))
         );
     }
@@ -1098,30 +1297,101 @@ mod tests {
         assert_eq!(
             Value::from_wiki("test", "[[Nothing]] or [[Boolean]]"),
             Ok(Value::OneOf(vec![
-                (Value::Nothing, None),
-                (Value::Boolean, None),
+                OneOfValue {
+                    typ: Value::Nothing,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Boolean,
+                    desc: None,
+                    since: None,
+                },
             ]))
         );
         assert_eq!(
             Value::from_wiki("test", "[[Object]], [[Group]], [[Array]] or [[String]]"),
             Ok(Value::OneOf(vec![
-                (Value::Object, None),
-                (Value::Group, None),
-                (Value::ArrayUnknown, None),
-                (Value::String, None),
+                OneOfValue {
+                    typ: Value::Object,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Group,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::ArrayUnknown,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::String,
+                    desc: None,
+                    since: None,
+                },
             ]))
         );
         assert_eq!(
             Value::from_wiki("test", "[[Array]] of [[Number]]s or [[Nothing]] if failed"),
             Ok(Value::OneOf(vec![
-                (
-                    Value::ArrayUnsized {
+                OneOfValue {
+                    typ: Value::ArrayUnsized {
                         typ: Box::new(Value::Number),
                         desc: String::new()
                     },
-                    None
-                ),
-                (Value::Nothing, None),
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Nothing,
+                    desc: None,
+                    since: None,
+                },
+            ]))
+        );
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                "[[Array]] of [[Color|Color (RGB)]] or [[Array|Empty Array]]"
+            ),
+            Ok(Value::OneOf(vec![
+                OneOfValue {
+                    typ: Value::ArrayColor,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::ArrayEmpty,
+                    desc: None,
+                    since: None,
+                },
+            ]))
+        );
+    }
+
+    #[test]
+    fn one_of_description() {
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                "[[Number]] or [[String]]
+* [[Number]] - layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100
+* [[String]] - {{GVI|arma3|1.58|size= 0.75}} layer name on which the effect is shown. Layer names are '''CaSe SeNsItIvE'''."
+            ),
+            Ok(Value::OneOf(vec![
+                OneOfValue {
+                    typ: Value::Number,
+                    desc: Some("layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100".to_string()),
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::String,
+                    desc: Some("layer name on which the effect is shown. Layer names are '''CaSe SeNsItIvE'''.".to_string()),
+                    since: Some(Since::arma3("1.58")),
+                },
             ]))
         );
     }
@@ -1134,11 +1404,27 @@ mod tests {
                 "[[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]"
             ),
             Ok(Value::OneOf(vec![
-                (Value::Object, None),
-                (
-                    Value::OneOf(vec![(Value::Position2d, None), (Value::Position3d, None),]),
-                    None
-                ),
+                OneOfValue {
+                    typ: Value::Object,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::OneOf(vec![
+                        OneOfValue {
+                            typ: Value::Position2d,
+                            desc: None,
+                            since: None,
+                        },
+                        OneOfValue {
+                            typ: Value::Position3d,
+                            desc: None,
+                            since: None,
+                        },
+                    ]),
+                    desc: None,
+                    since: None,
+                },
             ]))
         );
     }

@@ -17,7 +17,7 @@ pub use param::Param;
 pub use r#return::Return;
 pub use since::Since;
 pub use syntax::Syntax;
-pub use value::{ArraySizedElement, Value};
+pub use value::{ArraySizedElement, NumberEnumValue, OneOfValue, StringEnumValue, Value};
 pub use version::Version;
 
 #[derive(Debug, PartialEq, Eq)]
