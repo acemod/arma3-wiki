@@ -29,11 +29,11 @@ syntax:
       desc: ''
   - name: beamColor
     desc: laser beam color. The values can go way above the usual 0..1 range as they also act as emissivity brightness
-    type: ArrayColor
+    type: ArrayColorRgb
   - name: dotColor
     desc: impact dot color. Set to <sqf inline>[]</sqf> to use the same value as ''beamColor''.
     type: !OneOf
-    - type: ArrayColor
+    - type: ArrayColorRgb
       desc: null
       since: null
     - type: ArrayEmpty

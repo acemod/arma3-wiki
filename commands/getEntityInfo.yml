@@ -6,6 +6,22 @@ syntax:
 - call: !Unary entity
   ret:
     type: Unknown
+    desc: |-
+      isMan [[Boolean]] - [[true]] if the entity is a man
+      * 1 - isAnimal: [[Boolean]] - [[true]] if the entity is an animal
+      * 2 - isDeadSet: [[Boolean]] - [[true]] if the entity has dead flag set. Often has the same value as ![[alive]], but is not the same, as [[alive]] checks the total damage.
+      * 3 - deadSetTime: [[Number]] - for how long the entity was dead
+      * 4 - lastEntityCausingDamage: [[Object]] - [[objNull]] or the entity that last caused damage to this entity. Is not the same as the killer but could be the same. Killed entity might not have this set either. The entity does not have to be dead in order to have last entity that caused damage assigned.
+      * 5 - lastDamageTime: [[Number]] - how long ago was ''lastEntityCausingDamage'' assigned
+      * 6 - isUpsideDown: [[Boolean]] - [[true]] if the entity is upside down. The engine considers this to be <sqf inline>vectorUp ent select 2 < 0.3</sqf>
+      * 7 - upsideDownTime: [[Number]] - how long the entity was upside down.
+      * 8 - isStopped: [[Boolean]] - [[true]] when the entity does not need to be actively simulated.
+      * 9 - canFloat: [[Boolean]] - [[true]] if the entity is able to float on water.
+      * 10 - hasTerminalOpened: [[Boolean]] - [[true]] if the UAV terminal is opened for the given entity.
+      * 11 - isWeaponholder: [[Boolean]] - [[true]] if the entity is weaponholder.
+      * 12 - isWreck: [[Boolean]] - [[true]] if the entity is wreck.
+      * 13 - isSmoking: [[Boolean]] - [[true]] if the entity has smoke and fire destruction effect active.
+      * 14 - isSetForDeletion: [[Boolean]] - [[true]] if the entity was set for deletion, but is not yet removed from the simulation. Simple Object is supported.
   params:
   - name: entity
     type: Object

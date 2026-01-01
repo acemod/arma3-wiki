@@ -6,6 +6,17 @@ syntax:
 - call: Nular
   ret:
     type: Unknown
+    desc: |-
+      the camera itself (see [[camCreate]])
+      * r2tInfos: [[Array]] of [[Array]]s with [r2tName, r2tEffectName, ppEffectType, TIindex]
+      ** r2tName: [[String]] - the camera's RTT name (see [[cameraEffect]])
+      ** r2tEffectName: [[String]] - see [[cameraEffect]] for possible values
+      ** ppEffectType: [[String]] - one of {{hl|Normal}}, {{hl|NightVision}}, {{hl|Thermal}}, {{hl|Colors}}, {{hl|Mirror}}, {{hl|ChromAber}} or {{hl|FilmGrain}}
+      ** TIIndex: [[Number]] - see [[setCamUseTI]] for possible values
+      * isPrimary: [[Boolean]] - whether or not this camera is the current main one
+      * effectName: [[String]] - (Optional, only available if ''isPrimary'' is [[true]]) see [[cameraEffect]] for possible values
+      * viewMode: [[Number]] - (Optional, only available if ''isPrimary'' is [[true]]) 0 = normal, 1 = NVG, 2 = TI, 3 = NVG + TI
+      * TIIndex: [[Number]] - (Optional, only available if ''isPrimary'' is [[true]]) see [[setCamUseTI]] for possible values
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified

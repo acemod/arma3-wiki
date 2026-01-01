@@ -5,7 +5,19 @@ groups:
 syntax:
 - call: !Unary side
   ret:
-    type: Unknown
+    type: !ArrayUnsized
+      type: !ArraySized
+        types:
+        - name: remoteTarget
+          type: Object
+          desc: ''
+          since: null
+        - name: lastDetected
+          type: Number
+          desc: ''
+          since: null
+        desc: ''
+      desc: ''
   params:
   - name: side
     type: Side

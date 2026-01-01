@@ -8,6 +8,12 @@ syntax:
   - turret
   ret:
     type: Unknown
+    desc: |-
+      from 0 to -angle in degrees (left)
+      * maxTurn: [[Number]] - from 0 to +angle in degrees (right)
+      * minElev: [[Number]] - from 0 to -angle in degrees (down)
+      * maxElev: [[Number]] - from 0 to +angle in degrees (up)
+      * overridden: [[Boolean]] - if custom limits were applied
   params:
   - name: vehicle
     desc: vehicle the turret belongs to

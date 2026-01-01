@@ -8,7 +8,14 @@ syntax:
   - - type
     - id
   ret:
-    type: Unknown
+    type: !OneOf
+    - type: Boolean
+      desc: null
+      since: null
+    desc: |-
+      event handler exists
+      * isLast: [[Boolean]] - will be executed last (relevant if last event handler modifies default engine behaviour)
+      * total: [[Number]] - total number of event handlers added to the same event
   params:
   - name: oper
     desc: subject to which event handler is assigned
@@ -35,7 +42,14 @@ syntax:
   - type
   - id
   ret:
-    type: Unknown
+    type: !OneOf
+    - type: Boolean
+      desc: null
+      since: null
+    desc: |-
+      event handler exists
+      * isLast: [[Boolean]] - will be executed last (relevant if last event handler modifies default engine behaviour)
+      * total: [[Number]] - total number of event handlers added to the same event
   params:
   - name: type
     desc: event handler name

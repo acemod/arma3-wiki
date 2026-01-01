@@ -1,5 +1,5 @@
 name: setGusts
-desc: Changes the gusts value smoothly during the given time (in seconds). A time of zero means there will be an immediate change. Value is 0 to 1.
+desc: Changes the gusts value smoothly during the given time (in seconds). A time of zero means there will be an immediate change.
 groups:
 - Environment
 syntax:
@@ -12,7 +12,9 @@ syntax:
   - name: time
     type: Number
   - name: value
-    type: Number
+    type: !NumberRange
+    - 0
+    - 1
 argument_loc: Unspecified
 effect_loc: Local
 since:

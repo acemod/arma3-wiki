@@ -9,6 +9,22 @@ syntax:
 - call: !Unary unit
   ret:
     type: Unknown
+    desc: |-
+      squad nickname
+      ** name: [[String]] - squad full name
+      ** email: [[String]] - squad contact email
+      ** web: [[String]] - squad website URL
+      ** picture: [[String]] - squad picture URL
+      ** title: [[String]] - squad title
+      * memberInfo: [[Array]] with [uid, name, fullname, email, icq, remark]:
+      ** uid: [[String]] - member unique ID
+      ** name: [[String]] - member name
+      ** fullname: [[String]] - member full name
+      ** email: [[String]] - member email
+      ** icq: [[String]] - member ICQ number
+      ** remark: [[String]] - member remark
+      * {{GVI|arma3|2.06|size= 0.75}} squadId: [[String]] - unique squad ID
+      * {{GVI|arma3|2.06|size= 0.75}} a3unitsId: [[String]] - unique {{arma3}} Units  ID
   params:
   - name: unit
     type: Object

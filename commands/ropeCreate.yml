@@ -147,7 +147,17 @@ syntax:
       since: null
     optional: true
   - name: ropeEnd
-    type: Unknown
+    type: !ArraySized
+      types:
+      - name: ropeEndType
+        type: String
+        desc: type of the rope end (see description)
+        since: null
+      - name: ropeEndDownVector
+        type: ArrayUnknown
+        desc: relative vector
+        since: null
+      desc: ''
     optional: true
   - name: ropeType
     desc: '- rope type, {{hl|CfgVehicles}}'' classname'

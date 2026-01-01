@@ -13,7 +13,29 @@ syntax:
   - name: unit
     type: Object
   - name: values
-    type: Unknown
+    type: !ArraySized
+      types:
+      - name: killsInfantry
+        type: Number
+        desc: number of infantry units killed
+        since: null
+      - name: killsSoft
+        type: Number
+        desc: number of soft vehicles killed
+        since: null
+      - name: killsArmor
+        type: Number
+        desc: number of armored vehicles killed
+        since: null
+      - name: killsAir
+        type: Number
+        desc: number of air vehicles killed
+        since: null
+      - name: score
+        type: Number
+        desc: total score
+        since: null
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 server_exec: true

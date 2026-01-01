@@ -9,7 +9,15 @@ groups:
 syntax:
 - call: !Unary uav
   ret:
-    type: Unknown
+    type: !OneOf
+    - type: Object
+      desc: null
+      since: null
+    desc: |-
+      UAV operator
+      * vehicleRole: [[String]] - vehicle role of the operator in UAV. Can be "DRIVER", "GUNNER" or "" (not in control)
+      * unit2: [[Object]] - see {{Link|#Example 2}}
+      * vehicleRole2: Can be "DRIVER", "GUNNER", or "". (see {{Link|#Example 2}})
   params:
   - name: uav
     type: Object

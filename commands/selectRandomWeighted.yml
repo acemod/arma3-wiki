@@ -9,7 +9,17 @@ syntax:
     desc: random weighted value or [[Nothing]] if array is empty or all weights are 0
   params:
   - name: valuesAndWeights
-    type: Unknown
+    type: !ArraySized
+      types:
+      - name: valueN
+        type: Anything
+        desc: weighted value
+        since: null
+      - name: weightN
+        type: Number
+        desc: values relative weight
+        since: null
+      desc: ''
 - call: !Binary
   - values
   - weights
