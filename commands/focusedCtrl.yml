@@ -3,12 +3,11 @@ desc: Returns display's focused control.
 groups:
 - GUI Control
 syntax:
-- call: !Unary display
-  ret:
+- ret:
     type: Control
     desc: control which has focus
-  params:
-  - name: display
+  right: !Item
+    name: display
     desc: parent display
     type: Display
 argument_loc: Unspecified

@@ -5,43 +5,41 @@ groups:
 - Triggers
 - Waypoints
 syntax:
-- call: !Binary
-  - trigger
-  - - sound
-    - voice
-    - soundEnv
-    - soundDet
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: trigger
+  left: !Item
+    name: trigger
     type: Object
-  - name: sound
+  right: !Array
+  - !Item
+    name: sound
     desc: plays a 2D sound as if [[playSound]] was used from CfgSounds (mission or main config). Use {{hl|"$NONE$"}} for an empty sound
     type: String
-  - name: voice
+  - !Item
+    name: voice
     desc: attaches a 3D sound from CfgSounds (mission or main config) to the object that activated the trigger and plays it as if [[say3D]] was used
     type: String
-  - name: soundEnv
+  - !Item
+    name: soundEnv
     desc: plays an environmental sound from CfgEnvSounds (mission or main config)
     type: String
-  - name: soundDet
+  - !Item
+    name: soundDet
     desc: creates a dynamic sound object attached to a trigger defined in [[CfgSFX]] (mission or main config)
     type: String
-- call: !Binary
-  - waypoint
-  - - sound
-    - voice
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: waypoint
+  left: !Item
+    name: waypoint
     desc: format [[Waypoint]]
     type: ArrayUnknown
-  - name: sound
+  right: !Array
+  - !Item
+    name: sound
     desc: plays a 2D sound as if [[playSound]] was used from CfgSounds (mission or main config)
     type: String
-  - name: voice
+  - !Item
+    name: voice
     desc: attaches a 3D sound from CfgSounds (mission or main config) to the object that activated the trigger and plays it as if [[say3D]] was used
     type: String
 argument_loc: Unspecified

@@ -3,26 +3,23 @@ desc: Sets current thumb position of [[CT_SLIDER]] or [[CT_XSLIDER]].
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - idc
-  - pos
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: idc of the control
     type: Number
-  - name: pos
+  - !Item
+    name: pos
     type: Number
-- call: !Binary
-  - control
-  - pos
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: pos
+  right: !Item
+    name: pos
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,14 +3,13 @@ desc: Returns array of app IDs of DLCs.
 groups:
 - DLC
 syntax:
-- call: !Unary filter
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Number
       desc: ''
     desc: App IDs
-  params:
-  - name: filter
+  right: !Item
+    name: filter
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

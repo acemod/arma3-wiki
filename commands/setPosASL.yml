@@ -3,15 +3,13 @@ desc: Sets the object position above sea level. Given position must be in [[Posi
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - object
-  - pos
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: pos
+  right: !Item
+    name: pos
     type: Position3dASL
 argument_loc: Global
 effect_loc: Global

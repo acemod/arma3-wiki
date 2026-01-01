@@ -3,19 +3,18 @@ desc: Set marker size.
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - markerName
-  - - axisA
-    - axisB
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: markerName
+  left: !Item
+    name: markerName
     type: String
-  - name: axisA
+  right: !Array
+  - !Item
+    name: axisA
     desc: 1/2 width of marker
     type: Number
-  - name: axisB
+  - !Item
+    name: axisB
     desc: 1/2 height of marker
     type: Number
 argument_loc: Unspecified

@@ -3,11 +3,10 @@ desc: Returns the [[Position|position]] of a location. If the location is attach
 groups:
 - Locations
 syntax:
-- call: !Unary location
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: location
+  right: !Item
+    name: location
     type: Location
 argument_loc: Unspecified
 effect_loc: Unspecified

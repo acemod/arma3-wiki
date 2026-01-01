@@ -3,51 +3,39 @@ desc: Returns a list of objects intersected by the line from ''begPos'' to ''end
 groups:
 - Math - Geometry
 syntax:
-- call: !Unary
-  - begPos
-  - endPos
-  - ignoreObj1
-  - ignoreObj2
-  - sortByDistance
-  - flags
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
     desc: intersecting objects
-  params:
-  - name: begPos
+  right: !Array
+  - !Item
+    name: begPos
     desc: virtual line start
     type: Position3dASL
-  - name: endPos
+  - !Item
+    name: endPos
     desc: virtual line end
     type: Position3dASL
-  - name: ignoreObj1
+  - !Item
+    name: ignoreObj1
     desc: '- object to ignore'
     type: Object
     optional: true
-  - name: ignoreObj2
+  - !Item
+    name: ignoreObj2
     desc: '- object to ignore'
     type: Object
     optional: true
-  - name: sortByDistance
+  - !Item
+    name: sortByDistance
     desc: '- [[true]]: furthest object first, closest object last; [[false]]: unsorted'
     type: Boolean
     optional: true
-  - name: flags
+  - !Item
+    name: flags
     type: Unknown
     optional: true
-- call: !Unary
-  - - element1
-    - element2
-    - '...'
-  ret:
-    type: Unknown
-  params:
-  - name: elementN
-    type: Unknown
-  since:
-    arma3: '2.20'
 argument_loc: Global
 effect_loc: Unspecified
 since:

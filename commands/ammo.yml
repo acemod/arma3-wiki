@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - muzzle
-  ret:
+- ret:
     type: Number
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: muzzle
+  right: !Item
+    name: muzzle
     desc: weapon's muzzle - see the [[:Category:Weapons|Weapons]] topic for reference about possible values
     type: String
 argument_loc: Global

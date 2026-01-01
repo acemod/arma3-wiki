@@ -11,11 +11,10 @@ groups:
 - Config
 - HashMap
 syntax:
-- call: !Unary value
-  ret:
+- ret:
     type: Number
-  params:
-  - name: value
+  right: !Item
+    name: value
     type: !OneOf
     - type: String
       desc: null
@@ -31,18 +30,16 @@ syntax:
         desc: ''
       desc: null
       since: null
-- call: !Binary
-  - condition
-  - array
-  ret:
+- ret:
     type: Number
-  params:
-  - name: condition
+  left: !Item
+    name: condition
     desc: |-
       condition that must return [[true]] for the tested element to be counted. The variable {{hl|[[Magic Variables#x|_x]]}} will contain the currently tested element
       {{Feature|arma3|If the provided array contains different data types, use [[isEqualTo]] for item comparison instead of [[==]].}}
     type: Code
-  - name: array
+  right: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''

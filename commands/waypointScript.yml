@@ -3,11 +3,10 @@ desc: Gets the waypoint script.
 groups:
 - Waypoints
 syntax:
-- call: !Unary waypoint
-  ret:
+- ret:
     type: String
-  params:
-  - name: waypoint
+  right: !Item
+    name: waypoint
     desc: format [[Waypoint]]
     type: ArrayUnknown
 argument_loc: Unspecified

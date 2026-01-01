@@ -3,13 +3,12 @@ desc: Returns [[Array]] of [[String]]s where elements are the names of model ani
 groups:
 - Animations
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

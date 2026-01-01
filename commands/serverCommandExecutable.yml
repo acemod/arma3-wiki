@@ -3,11 +3,10 @@ desc: Returns [[true]] if the [[serverCommand]] can be performed on the machine 
 groups:
 - Multiplayer
 syntax:
-- call: !Unary command
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: command
+  right: !Item
+    name: command
     desc: see [[Multiplayer_Server_Commands#Commands|Multiplayer Server Commands]] for all available commands
     type: String
 argument_loc: Unspecified

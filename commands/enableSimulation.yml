@@ -6,15 +6,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - entity
-  - state
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     type: Object
-  - name: state
+  right: !Item
+    name: state
     type: Boolean
 argument_loc: Global
 effect_loc: Local

@@ -5,26 +5,25 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - text
-  - type
-  - speed
-  - showInMap
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: text
+  right: !Array
+  - !Item
+    name: text
     desc: the class name of the resource. ("Default" will remove the current resource)
     type: String
-  - name: type
+  - !Item
+    name: type
     desc: 'can be one of: "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN"; see [[Title Effect Type]]s for more information about these values'
     type: String
-  - name: speed
+  - !Item
+    name: speed
     desc: time in seconds to fade in resource
     type: Number
     optional: true
     default: '-1'
-  - name: showInMap
+  - !Item
+    name: showInMap
     desc: '[[false]] to hide the text when the map is opened'
     type: Boolean
     optional: true

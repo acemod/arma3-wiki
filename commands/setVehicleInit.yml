@@ -9,15 +9,13 @@ multiplayer_note: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - unitName
-  - statement
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  left: !Item
+    name: unitName
     type: Object
-  - name: statement
+  right: !Item
+    name: statement
     type: String
 argument_loc: Unspecified
 effect_loc: Global

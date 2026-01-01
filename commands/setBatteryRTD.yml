@@ -3,16 +3,14 @@ desc: Toggle a helicopter's electrical systems on and off.
 groups:
 - RTD
 syntax:
-- call: !Binary
-  - helicopterRTD
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: helicopterRTD
+  left: !Item
+    name: helicopterRTD
     desc: helicopter
     type: Unknown
-  - name: enable
+  right: !Item
+    name: enable
     desc: on or off
     type: Boolean
 argument_loc: Unspecified

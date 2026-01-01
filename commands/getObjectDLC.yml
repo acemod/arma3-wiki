@@ -3,11 +3,10 @@ desc: Returns appID of the DLC the object belongs to or [[nil]] if object is van
 groups:
 - DLC
 syntax:
-- call: !Unary obj
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: obj
+  right: !Item
+    name: obj
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

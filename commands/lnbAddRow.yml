@@ -3,29 +3,26 @@ desc: Adds a row of strings.
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - data
-  ret:
+- ret:
     type: Number
     desc: row index
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: data
+  - !Item
+    name: data
     type: !ArrayUnsized
       type: String
       desc: ''
-- call: !Binary
-  - ctrl
-  - data
-  ret:
+- ret:
     type: Number
     desc: row index
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: data
+  right: !Item
+    name: data
     type: !ArrayUnsized
       type: String
       desc: ''

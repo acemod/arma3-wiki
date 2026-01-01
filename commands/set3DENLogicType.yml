@@ -3,17 +3,15 @@ desc: Sets the new type of Logic object(s). For other objects use [[set3DENObjec
 groups:
 - Eden Editor
 syntax:
-- call: !Binary
-  - objects
-  - classname
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: objects
+  left: !Item
+    name: objects
     type: !ArrayUnsized
       type: Object
       desc: ''
-  - name: classname
+  right: !Item
+    name: classname
     desc: name of the cfgVehicles class
     type: String
 argument_loc: Unspecified

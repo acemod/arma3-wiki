@@ -3,12 +3,11 @@ desc: Returns unique index of an [[Eden Entity]]. This number remains the same e
 groups:
 - Eden Editor
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: Number
     desc: '[[Eden ID]] If ID is not available, -1 is returned'
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     type: !OneOf
     - type: EdenEntity
       desc: null

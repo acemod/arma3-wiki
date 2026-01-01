@@ -9,11 +9,10 @@ groups:
 - Time
 - Environment
 syntax:
-- call: !Unary duration
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: duration
+  right: !Item
+    name: duration
     desc: hours to skip. A positive value will create a forward time jump, a negative value will jump backwards.
     type: Number
 argument_loc: Unspecified

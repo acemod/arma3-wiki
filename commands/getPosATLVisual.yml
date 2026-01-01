@@ -4,11 +4,10 @@ groups:
 - Object Manipulation
 - Render Time Scope
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Position3dATL
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

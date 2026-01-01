@@ -6,60 +6,51 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - text
-  - type
-  - speed
-  - showInMap
-  - isStructuredText
-  - drawOverHUD
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: text
+  right: !Array
+  - !Item
+    name: text
     desc: text to be displayed
     type: String
-  - name: type
+  - !Item
+    name: type
     desc: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.
     type: String
-  - name: speed
+  - !Item
+    name: speed
     desc: time in seconds to fade in resource. If 0 or less, default value is used
     type: Number
     optional: true
     default: '1'
-  - name: showInMap
+  - !Item
+    name: showInMap
     desc: '[[false]] to hide the text when the map is opened'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
       arma3: '0.50'
-  - name: isStructuredText
+  - !Item
+    name: isStructuredText
     desc: '[[true]] to switch support for [[Structured Text]] formatting - see {{Link|#Example 4}}'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
       arma3: '1.74'
-  - name: drawOverHUD
+  - !Item
+    name: drawOverHUD
     desc: '[[false]] to show the text under in-game HUD'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
       arma3: '2.16'
-- call: !Binary
-  - layer
-  - - text
-    - type
-    - speed
-    - showInMap
-    - isStructuredText
-    - drawOverHUD
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: layer
+  left: !Item
+    name: layer
     type: !OneOf
     - type: Number
       desc: layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100.
@@ -67,30 +58,37 @@ syntax:
     - type: String
       desc: layer name on which the effect is shown. Layer names are CaSe SeNsItIvE.
       since: null
-  - name: text
+  right: !Array
+  - !Item
+    name: text
     desc: text to be displayed
     type: String
-  - name: type
+  - !Item
+    name: type
     desc: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.
     type: String
-  - name: speed
+  - !Item
+    name: speed
     desc: time in seconds to fade in resource. If 0 or less, default value is used
     type: Number
     optional: true
     default: '-1'
-  - name: showInMap
+  - !Item
+    name: showInMap
     desc: '[[false]] to hide the text when the map is opened'
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: isStructuredText
+  - !Item
+    name: isStructuredText
     desc: '[[true]] to switch support for [[Structured Text]] formatting - see {{Link|#Example 4}}'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
       arma3: '1.74'
-  - name: drawOverHUD
+  - !Item
+    name: drawOverHUD
     desc: '[[false]] to show the text under in-game HUD'
     type: Boolean
     optional: true

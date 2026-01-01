@@ -5,20 +5,19 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - text
-  - type
-  - speed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: text
+  right: !Array
+  - !Item
+    name: text
     desc: text to be displayed on screen
     type: String
-  - name: type
+  - !Item
+    name: type
     desc: can be one of [[Title Effect Type]]s
     type: String
-  - name: speed
+  - !Item
+    name: speed
     type: Number
     optional: true
     default: '1'

@@ -3,20 +3,19 @@ desc: Associates metadata (string) with the row determined by the index. Returns
 groups:
 - GUI Control - Controls Table
 syntax:
-- call: !Binary
-  - ctrl
-  - - index
-    - data
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     desc: the respective control
     type: Control
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     desc: the row index
     type: Number
-  - name: data
+  - !Item
+    name: data
     desc: the data to set
     type: String
 argument_loc: Local

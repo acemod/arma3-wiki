@@ -3,15 +3,13 @@ desc: Returns how much space is in backpack for given weapon or magazine
 groups:
 - Containers
 syntax:
-- call: !Binary
-  - backpack
-  - weaponName
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: backpack
+  left: !Item
+    name: backpack
     type: Object
-  - name: weaponName
+  right: !Item
+    name: weaponName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

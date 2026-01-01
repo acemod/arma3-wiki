@@ -3,14 +3,13 @@ desc: Returns list of all objects stored in the given selection preset.
 groups:
 - Curator
 syntax:
-- call: !Unary numkey
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
     desc: objects saved in the selection preset
-  params:
-  - name: numkey
+  right: !Item
+    name: numkey
     desc: number key under which the selection preset is saved
     type: Number
 argument_loc: Unspecified

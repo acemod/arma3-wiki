@@ -3,19 +3,18 @@ desc: Adds a weapon into the cargo space of a vehicle / box with given attachmen
 groups:
 - Vehicle Inventory
 syntax:
-- call: !Binary
-  - container
-  - - weaponConfiguration
-    - weaponsCount
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: container
+  left: !Item
+    name: container
     desc: container to add the weapon to. Might be a backpack, ammobox or vehicle.
     type: Object
-  - name: weaponConfiguration
+  right: !Array
+  - !Item
+    name: weaponConfiguration
     type: Unknown
-  - name: weaponsCount
+  - !Item
+    name: weaponsCount
     desc: number of weapons to add
     type: Number
 argument_loc: Global

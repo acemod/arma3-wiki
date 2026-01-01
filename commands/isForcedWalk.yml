@@ -3,11 +3,10 @@ desc: Returns [[true]] if player is forced to walk with [[forceWalk]].
 groups:
 - Stamina System
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

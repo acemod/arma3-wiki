@@ -3,23 +3,22 @@ desc: 'Removes [[Eden Editor: Connecting|connection]] between entities.'
 groups:
 - Eden Editor
 syntax:
-- call: !Unary
-  - type
-  - from
-  - to
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] If the connection was removed'
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: connection class from ''Cfg3DEN >> Connections''
     type: String
-  - name: from
+  - !Item
+    name: from
     desc: entities which has a connection
     type: !ArrayUnsized
       type: EdenEntity
       desc: ''
-  - name: to
+  - !Item
+    name: to
     desc: connection target
     type: EdenEntity
 argument_loc: Unspecified

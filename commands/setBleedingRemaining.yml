@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - unit
-  - time
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: time
+  right: !Item
+    name: time
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,16 +3,14 @@ desc: Set the material of the given selection on all computers in a network sess
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - obj
-  - - selection
-    - material
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: obj
+  left: !Item
+    name: obj
     type: Object
-  - name: selection
+  right: !Array
+  - !Item
+    name: selection
     type: !OneOf
     - type: Number
       desc: null
@@ -20,7 +18,8 @@ syntax:
     - type: String
       desc: null
       since: null
-  - name: material
+  - !Item
+    name: material
     desc: material path. Since {{GVI|arma3|2.20}} using '''"#reset"''' would reset to default material.
     type: String
 argument_loc: Global

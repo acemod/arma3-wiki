@@ -4,12 +4,11 @@ groups:
 - Weapons
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Unknown
     desc: magazine ammo
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

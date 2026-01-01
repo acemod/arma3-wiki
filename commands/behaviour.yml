@@ -3,8 +3,7 @@ desc: Returns the behaviour of the individual unit, this is why it only accepts 
 groups:
 - AI Behaviour
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: String
     desc: |-
       one of:
@@ -14,8 +13,8 @@ syntax:
       * "COMBAT"
       * "STEALTH"
       * "ERROR" (Since {{GVI|Arma3|1.78}} when used on empty vehicles and such)
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

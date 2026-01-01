@@ -3,12 +3,11 @@ desc: Returns state of auto trim functionality. {{Feature|afm}}
 groups:
 - RTD
 syntax:
-- call: !Unary helicopter
-  ret:
+- ret:
     type: Boolean
     desc: returns [[true]] if auto trim is enabled
-  params:
-  - name: helicopter
+  right: !Item
+    name: helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

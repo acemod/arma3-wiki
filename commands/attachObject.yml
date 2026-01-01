@@ -4,15 +4,13 @@ groups:
 - Object Manipulation
 - Locations
 syntax:
-- call: !Binary
-  - location
-  - object
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: location
+  left: !Item
+    name: location
     type: Location
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,15 +3,13 @@ desc: "Sets the armor (or health for men) state of the vehicle (a value from 0 t
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicleName
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicleName
+  left: !Item
+    name: vehicleName
     type: Object
-  - name: value
+  right: !Item
+    name: value
     desc: in range 0..1
     type: Number
 argument_loc: Local

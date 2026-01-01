@@ -21,40 +21,35 @@ multiplayer_note: This command seems to be {{Icon|localArgument|32}} with UAVs.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Group
     desc: the group of the created crew (since {{GVI|arma3|1.94}}; before that returned [[Nothing]])
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: vehicle to populate with crew
     type: Object
-- call: !Binary
-  - group
-  - vehicle
-  ret:
+- ret:
     type: Group
     desc: the group of the created crew or [[grpNull]]
-  params:
-  - name: group
+  left: !Item
+    name: group
     desc: group to put crew in
     type: Group
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: vehicle to populate with crew
     type: Object
   since:
     arma3: '2.14'
-- call: !Binary
-  - side
-  - vehicle
-  ret:
+- ret:
     type: Group
     desc: the group of the created crew or [[grpNull]]
-  params:
-  - name: side
+  left: !Item
+    name: side
     desc: side to create crew on
     type: Side
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: vehicle to populate with crew
     type: Object
   since:

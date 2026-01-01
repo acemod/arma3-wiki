@@ -3,15 +3,13 @@ desc: Set ambient color of light. This includes surfaces that '''face away''' fr
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - light
-  - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: light
+  left: !Item
+    name: light
     type: Object
-  - name: color
+  right: !Item
+    name: color
     type: ArrayColorRgb
 argument_loc: Local
 effect_loc: Local

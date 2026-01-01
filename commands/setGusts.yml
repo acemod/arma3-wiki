@@ -3,15 +3,13 @@ desc: Changes the gusts value smoothly during the given time (in seconds). A tim
 groups:
 - Environment
 syntax:
-- call: !Binary
-  - time
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: time
+  left: !Item
+    name: time
     type: Number
-  - name: value
+  right: !Item
+    name: value
     type: !NumberRange
     - 0
     - 1

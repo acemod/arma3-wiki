@@ -12,11 +12,10 @@ desc: |-
 groups:
 - Strings
 syntax:
-- call: !Unary text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: text
+  right: !Item
+    name: text
     desc: the comment
     type: String
 argument_loc: Unspecified

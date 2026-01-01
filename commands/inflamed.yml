@@ -3,11 +3,10 @@ desc: Checks if fireplace is inflamed (burning) or not. To check if a unit is re
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary fireplace
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: fireplace
+  right: !Item
+    name: fireplace
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

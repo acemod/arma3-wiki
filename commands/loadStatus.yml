@@ -5,16 +5,14 @@ groups:
 - Weapon Pool
 - Mission Information
 syntax:
-- call: !Binary
-  - object
-  - entryName
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if successfull, otherwise [[false]]'
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: entryName
+  right: !Item
+    name: entryName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,12 +3,11 @@ desc: Load the provided scenario or an empty scenario in the provided world.
 groups:
 - Eden Editor
 syntax:
-- call: !Unary scenarioOrWorld
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] on success, [[false]] otherwise'
-  params:
-  - name: scenarioOrWorld
+  right: !Item
+    name: scenarioOrWorld
     desc: scenario name or world name
     type: String
 argument_loc: Unspecified

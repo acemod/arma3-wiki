@@ -19,23 +19,20 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Binary
-  - arguments
-  - filename
-  ret:
+- ret:
     type: ScriptHandle
-  params:
-  - name: arguments
+  left: !Item
+    name: arguments
     desc: arguments accessible as {{hl|[[Magic Variables#this|_this]]}} in the script
     type: Anything
-  - name: filename
+  right: !Item
+    name: filename
     desc: path to the [[SQF Syntax|SQF]] script file
     type: String
-- call: !Unary filename
-  ret:
+- ret:
     type: ScriptHandle
-  params:
-  - name: filename
+  right: !Item
+    name: filename
     desc: path to the [[SQF Syntax|SQF]] script file
     type: String
 argument_loc: Global

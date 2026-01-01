@@ -9,32 +9,30 @@ groups:
 - Camera Control
 - Lights
 syntax:
-- call: !Unary
-  - minimum
-  - standard
-  - maximum
-  - luminance
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: minimum
+  right: !Array
+  - !Item
+    name: minimum
     desc: minimum aperture
     type: Number
-  - name: standard
+  - !Item
+    name: standard
     desc: standard aperture
     type: Number
-  - name: maximum
+  - !Item
+    name: maximum
     desc: maximum aperture
     type: Number
-  - name: luminance
+  - !Item
+    name: luminance
     desc: standard luminance
     type: Number
-- call: !Unary
-  - reset
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: reset
+  right: !Array
+  - !Item
+    name: reset
     desc: reset to default with -1
     type: Number
 argument_loc: Unspecified

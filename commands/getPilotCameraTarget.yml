@@ -3,11 +3,10 @@ desc: 'Returns the target of the object airplane or helicopter [[Arma 3: Targeti
 groups:
 - Pilot Camera
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Local
 effect_loc: Unspecified

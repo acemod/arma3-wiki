@@ -18,11 +18,10 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- call: !Unary userAction
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: userAction
+  right: !Item
+    name: userAction
     desc: user action name (see [[inputAction/actions]])
     type: String
 argument_loc: Unspecified

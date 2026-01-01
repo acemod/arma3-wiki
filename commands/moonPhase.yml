@@ -6,14 +6,13 @@ desc: |-
 groups:
 - Environment
 syntax:
-- call: !Unary date
-  ret:
+- ret:
     type: !NumberRange
     - 0
     - 1
     desc: 0 = new Moon, 1 = full Moon
-  params:
-  - name: date
+  right: !Item
+    name: date
     type: ArrayDate
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Variables
 syntax:
-- call: !Unary variableName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: variableName
+  right: !Item
+    name: variableName
     desc: variable(s) to import
     type: !OneOf
     - type: String

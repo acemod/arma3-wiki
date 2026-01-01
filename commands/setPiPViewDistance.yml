@@ -3,11 +3,10 @@ desc: Set the PiP (Picture-in-Picture) view distance. This has no impact if PiP 
 groups:
 - System
 syntax:
-- call: !Unary distance
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: distance
+  right: !Item
+    name: distance
     desc: distance in meters, minimum value is 100, maximum is [[viewDistance|current view distance]]
     type: Number
 argument_loc: Unspecified

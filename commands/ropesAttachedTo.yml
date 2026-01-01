@@ -3,11 +3,10 @@ desc: Returns the owners of all ropes attached to the cargo - the transports to 
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Unary cargo
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: cargo
+  right: !Item
+    name: cargo
     desc: entity attached to the ends of the ropes
     type: Object
 argument_loc: Unspecified

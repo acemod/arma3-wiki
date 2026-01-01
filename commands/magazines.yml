@@ -4,23 +4,21 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: unit or vehicle
     type: Object
-- call: !Unary
-  - vehicle
-  - includeEmpty
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     desc: unit or vehicle
     type: Object
-  - name: includeEmpty
+  - !Item
+    name: includeEmpty
     desc: '[[true]] to include empty magazines'
     type: Boolean
     optional: true

@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary label
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: label
+  right: !Item
+    name: label
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

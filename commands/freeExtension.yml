@@ -5,8 +5,7 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Unary extension
-  ret:
+- ret:
     type: !OneOf
     - type: Boolean
       desc: null
@@ -14,8 +13,8 @@ syntax:
     - type: Nothing
       desc: null
       since: null
-  params:
-  - name: extension
+  right: !Item
+    name: extension
     desc: extension name (see [[callExtension]])
     type: String
 argument_loc: Unspecified

@@ -4,11 +4,10 @@ groups:
 - Unit Inventory
 - GUI Control
 syntax:
-- call: !Unary idc
-  ret:
+- ret:
     type: Number
-  params:
-  - name: idc
+  right: !Item
+    name: idc
     desc: idc of control type CT_ITEMSLOT 103
     type: Number
 argument_loc: Unspecified

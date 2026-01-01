@@ -3,15 +3,13 @@ desc: "Closes given display with exit code. It does not instantly close the disp
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - display
-  - exitCode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: display
+  left: !Item
+    name: display
     type: Display
-  - name: exitCode
+  right: !Item
+    name: exitCode
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

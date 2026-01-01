@@ -3,22 +3,21 @@ desc: Sets the {{hl|#lightreflector}}'s cone params.
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - lightReflector
-  - - outerAngle
-    - innerAngle
-    - fadeCoef
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: lightReflector
+  left: !Item
+    name: lightReflector
     desc: object of class {{hl|#lightreflector}}
     type: Object
-  - name: outerAngle
+  right: !Array
+  - !Item
+    name: outerAngle
     type: Number
-  - name: innerAngle
+  - !Item
+    name: innerAngle
     type: Number
-  - name: fadeCoef
+  - !Item
+    name: fadeCoef
     type: Number
 argument_loc: Local
 effect_loc: Local

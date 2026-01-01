@@ -6,14 +6,10 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - triggerOrWaypoint
-  - - type
-    - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: triggerOrWaypoint
+  left: !Item
+    name: triggerOrWaypoint
     type: !OneOf
     - type: Object
       desc: null
@@ -21,9 +17,12 @@ syntax:
     - type: Waypoint
       desc: null
       since: null
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     type: Unknown
-  - name: position
+  - !Item
+    name: position
     desc: relative position
     type: String
 argument_loc: Unspecified

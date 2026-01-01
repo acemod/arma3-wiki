@@ -3,15 +3,13 @@ desc: Add given objects to the unit's list of synchronized objects.
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - unit
-  - objects
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: objects
+  right: !Item
+    name: objects
     type: !ArrayUnsized
       type: Object
       desc: ''

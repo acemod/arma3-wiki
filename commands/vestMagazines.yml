@@ -3,13 +3,12 @@ desc: Get array with all magazines from vest of the given unit.
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

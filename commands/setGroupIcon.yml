@@ -3,23 +3,22 @@ desc: Sets group icon properties. Since Arma 3 v2.22 the offset can be set separ
 groups:
 - High Command
 syntax:
-- call: !Binary
-  - group
-  - - id
-    - icon
-    - offset
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     type: Group
-  - name: id
+  right: !Array
+  - !Item
+    name: id
     desc: the icon ID returned by [[addGroupIcon]]
     type: Number
-  - name: icon
+  - !Item
+    name: icon
     desc: class name of desired icon from CfgGroupIcons
     type: String
-  - name: offset
+  - !Item
+    name: offset
     desc: X and Y offsets of the icon in form [offsetX, offsetY, (offsetX3d), (offsetY3d)]
     type: ArrayUnknown
     optional: true

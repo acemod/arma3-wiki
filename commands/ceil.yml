@@ -3,11 +3,10 @@ desc: The ceil value of x.
 groups:
 - Math
 syntax:
-- call: !Unary x
-  ret:
+- ret:
     type: Number
-  params:
-  - name: x
+  right: !Item
+    name: x
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

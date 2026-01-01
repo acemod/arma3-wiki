@@ -3,17 +3,15 @@ desc: 'Removes a UserAction event handler. For a list of available UserAction ev
 groups:
 - Event Handlers
 syntax:
-- call: !Unary
-  - keyName
-  - event
-  - index
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: keyName
+  right: !Array
+  - !Item
+    name: keyName
     desc: action key name; see [[inputAction/actions]]
     type: String
-  - name: event
+  - !Item
+    name: event
     type: !StringEnum
     - value: Activate
       desc: null
@@ -24,7 +22,8 @@ syntax:
     - value: Analog
       desc: null
       since: null
-  - name: index
+  - !Item
+    name: index
     desc: index returned by [[addUserActionEventHandler]]
     type: Number
 argument_loc: Unspecified

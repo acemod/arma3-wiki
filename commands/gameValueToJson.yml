@@ -3,12 +3,11 @@ desc: Generate a JSON string from the provided array values.
 groups:
 - Argo
 syntax:
-- call: !Unary data
-  ret:
+- ret:
     type: String
     desc: a JSON string or an empty string if ''data'' is not an array
-  params:
-  - name: data
+  right: !Item
+    name: data
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

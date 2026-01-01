@@ -6,15 +6,13 @@ desc: |-
 groups:
 - Vehicle Inventory
 syntax:
-- call: !Binary
-  - vehicleName
-  - ammoCargo
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicleName
+  left: !Item
+    name: vehicleName
     type: Object
-  - name: ammoCargo
+  right: !Item
+    name: ammoCargo
     type: !NumberRange
     - 0
     - 1

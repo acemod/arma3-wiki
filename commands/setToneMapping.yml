@@ -5,11 +5,10 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Unary toneName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: toneName
+  right: !Item
+    name: toneName
     type: !StringEnum
     - value: Arma
       desc: null

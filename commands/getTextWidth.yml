@@ -6,21 +6,20 @@ groups:
 - GUI Control
 - Strings
 syntax:
-- call: !Binary
-  - text
-  - - font
-    - size
-  ret:
+- ret:
     type: Number
-  params:
-  - name: text
+  left: !Item
+    name: text
     desc: text string to measure
     type: String
-  - name: font
+  right: !Array
+  - !Item
+    name: font
     desc: (Optional since {{GVI|arma3|2.22|size= 0.75}}, default "" (system font)) [[FXY_File_Format#Available_Fonts|font type]]
     type: String
     optional: true
-  - name: size
+  - !Item
+    name: size
     desc: (Optional since {{GVI|arma3|2.22|size= 0.75}}, default -1 (system font size)) font size
     type: Number
     optional: true

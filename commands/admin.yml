@@ -5,16 +5,15 @@ desc: |-
 groups:
 - Multiplayer
 syntax:
-- call: !Unary ownerID
-  ret:
+- ret:
     type: Number
     desc: |-
       admin state of given client:
       * 0 - client is not an admin
       * 1 - client is admin that is [[Arma 3: Server Config File#Voted_In_Admin|voted in]]
       * 2 - client is admin that is [[Arma 3: Server Config File#Logged_In_Admin|logged in]]
-  params:
-  - name: ownerID
+  right: !Item
+    name: ownerID
     desc: '[[clientOwner]] id'
     type: Number
 argument_loc: Unspecified

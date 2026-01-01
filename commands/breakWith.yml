@@ -3,11 +3,10 @@ desc: Skips all loop iterations and immediately returns the given value.
 groups:
 - Program Flow
 syntax:
-- call: !Unary return
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: return
+  right: !Item
+    name: return
     desc: value to be returned when iterations are skipped
     type: Anything
 argument_loc: Unspecified

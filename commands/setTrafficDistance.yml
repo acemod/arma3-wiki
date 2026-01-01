@@ -3,11 +3,10 @@ desc: Set maximum ambient traffic draw distance (in 2D). {{Feature|arma3|This co
 groups:
 - Environment
 syntax:
-- call: !Unary distance
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: distance
+  right: !Item
+    name: distance
     desc: draw distance (in meter)
     type: Number
 argument_loc: Unspecified

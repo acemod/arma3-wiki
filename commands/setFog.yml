@@ -6,36 +6,33 @@ multiplayer_note: Before {{arma3}}, server and clients could have each a differe
 groups:
 - Environment
 syntax:
-- call: !Binary
-  - time
-  - fog
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: time
+  left: !Item
+    name: time
     desc: transition time to the new value
     type: Number
-  - name: fog
+  right: !Item
+    name: fog
     desc: fog density in range 0..1
     type: Number
-- call: !Binary
-  - time
-  - - fogValue
-    - fogDecay
-    - fogBase
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: time
+  left: !Item
+    name: time
     desc: transition time to the new value
     type: Number
-  - name: fogValue
+  right: !Array
+  - !Item
+    name: fogValue
     desc: normal [[fog]] value that represents fog density at ''fogBase'' level, in range 0..1
     type: Number
-  - name: fogDecay
+  - !Item
+    name: fogDecay
     desc: decay of fog density with altitude, in range -1..1; a negative value means a "ceiling" fog
     type: Number
-  - name: fogBase
+  - !Item
+    name: fogBase
     desc: base altitude ([[Position#PositionASL|ASL]]) of fog (in meters), in range -5000..5000
     type: Number
   since:

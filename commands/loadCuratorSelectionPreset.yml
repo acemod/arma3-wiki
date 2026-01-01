@@ -3,11 +3,10 @@ desc: Load the given selection preset to the current selection of the curator.
 groups:
 - Curator
 syntax:
-- call: !Unary numkey
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: numkey
+  right: !Item
+    name: numkey
     desc: the number key under which the selection preset is saved
     type: Number
 argument_loc: Unspecified

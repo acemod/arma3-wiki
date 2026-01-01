@@ -4,22 +4,21 @@ groups:
 - Object Manipulation
 - Weapons
 syntax:
-- call: !Binary
-  - vehicle
-  - - target
-    - weapon
-  ret:
+- ret:
     type: !NumberRange
     - 0
     - 1
     desc: 0 if no weapons or if ''weapon'' was provided and not found
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle only, not unit
     type: Object
-  - name: target
+  right: !Array
+  - !Item
+    name: target
     type: Object
-  - name: weapon
+  - !Item
+    name: weapon
     desc: if not provided, checks all weapons; if provided, checks that weapon only
     type: String
     optional: true

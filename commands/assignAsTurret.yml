@@ -5,18 +5,17 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - unit
-  - - vehicle
-    - turretPath
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     type: Object
-  - name: turretPath
+  - !Item
+    name: turretPath
     type: TurretPath
 argument_loc: Unspecified
 effect_loc: Unspecified

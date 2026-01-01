@@ -3,29 +3,26 @@ desc: Gets the tooltip text associated with the specified tree view path.
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary
-  - idc
-  - path
-  ret:
+- ret:
     type: String
     desc: tooltip text
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: IDC of the tree view control
     type: Number
-  - name: path
+  - !Item
+    name: path
     desc: array containing path numbers
     type: ArrayUnknown
-- call: !Binary
-  - ctrl
-  - path
-  ret:
+- ret:
     type: String
     desc: tooltip text
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: path
+  right: !Item
+    name: path
     desc: array containing path numbers
     type: ArrayUnknown
 argument_loc: Local

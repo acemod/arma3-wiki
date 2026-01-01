@@ -7,13 +7,10 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- call: !Binary
-  - entity
-  - attribute
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     type: !OneOf
     - type: EdenEntity
       desc: null
@@ -21,7 +18,8 @@ syntax:
     - type: EdenID
       desc: null
       since: null
-  - name: attribute
+  right: !Item
+    name: attribute
     desc: attribute property
     type: String
 argument_loc: Unspecified

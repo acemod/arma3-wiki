@@ -3,15 +3,13 @@ desc: Sets task's visibility.
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - taskID
-  - state
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: taskID
+  left: !Item
+    name: taskID
     type: Task
-  - name: state
+  right: !Item
+    name: state
     desc: '[[true]] for always visible, [[false]] for fade out'
     type: Boolean
 argument_loc: Unspecified

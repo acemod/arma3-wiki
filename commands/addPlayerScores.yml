@@ -4,15 +4,13 @@ groups:
 - Object Manipulation
 - Multiplayer
 syntax:
-- call: !Binary
-  - unit
-  - values
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: values
+  right: !Item
+    name: values
     type: !ArraySized
       types:
       - name: killsInfantry

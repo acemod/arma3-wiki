@@ -9,32 +9,31 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - - angle
-    - centerX
-    - centerY
-    - now
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: picture control
     type: Control
-  - name: angle
+  right: !Array
+  - !Item
+    name: angle
     desc: rotation angle (clockwise)
     type: Number
-  - name: centerX
+  - !Item
+    name: centerX
     desc: rotation center X. Control center is 0.5
     type: !NumberRange
     - 0
     - 1
-  - name: centerY
+  - !Item
+    name: centerY
     desc: rotation center Y. Control center is 0.5
     type: !NumberRange
     - 0
     - 1
-  - name: now
+  - !Item
+    name: now
     desc: if [[false]], control will wait for [[ctrlCommit]] input for result to apply
     type: Boolean
     optional: true

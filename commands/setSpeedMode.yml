@@ -3,13 +3,10 @@ desc: "Sets group speed mode. If unit is passed as param, unit's group is used. 
 groups:
 - Groups
 syntax:
-- call: !Binary
-  - groupName
-  - mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: groupName
+  left: !Item
+    name: groupName
     type: !OneOf
     - type: Object
       desc: null
@@ -17,7 +14,8 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: mode
+  right: !Item
+    name: mode
     type: String
 argument_loc: Local
 effect_loc: Global

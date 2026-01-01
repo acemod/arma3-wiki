@@ -4,32 +4,29 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- call: !Binary
-  - object
-  - weapon
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: unit or vehicle to add the weapon to
     type: Object
-  - name: weapon
+  right: !Item
+    name: weapon
     desc: weapon class name. See the topic [[:Category:Weapons]] for reference about possible values.
     type: String
-- call: !Binary
-  - object
-  - - weapon
-    - autoselect
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: unit or vehicle to add the weapon to
     type: Object
-  - name: weapon
+  right: !Array
+  - !Item
+    name: weapon
     desc: weapon class name. See the topic [[:Category:Weapons]] for reference about possible values.
     type: String
-  - name: autoselect
+  - !Item
+    name: autoselect
     desc: '[[false]] to abort weapon autoselection if no weapon was selected.'
     type: String
     optional: true

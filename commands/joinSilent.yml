@@ -3,16 +3,14 @@ desc: Join all units in the array to given group silently (without radio message
 groups:
 - Groups
 syntax:
-- call: !Binary
-  - unitArray
-  - group
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitArray
+  left: !Item
+    name: unitArray
     desc: units to join group
     type: ArrayUnknown
-  - name: group
+  right: !Item
+    name: group
     type: !OneOf
     - type: Object
       desc: null

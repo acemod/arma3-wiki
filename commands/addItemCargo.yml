@@ -6,18 +6,17 @@ desc: |-
 groups:
 - Vehicle Inventory
 syntax:
-- call: !Binary
-  - box
-  - - item
-    - count
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: box
+  left: !Item
+    name: box
     type: Object
-  - name: item
+  right: !Array
+  - !Item
+    name: item
     type: String
-  - name: count
+  - !Item
+    name: count
     desc: number of items to add; {{GVI|arma3|2.14|size= 0.75}} a negative value removes items
     type: Number
 argument_loc: Local

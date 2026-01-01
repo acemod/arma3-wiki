@@ -3,17 +3,15 @@ desc: Selects a subject page in the [[Diary|diary]]. The subject page is selecte
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - player
-  - subject
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if subject was successfully selected'
-  params:
-  - name: player
+  left: !Item
+    name: player
     desc: player
     type: Object
-  - name: subject
+  right: !Item
+    name: subject
     desc: "subject name, for example \"Diary\" (see also [[Diary]]). \n{{Feature|informative|\nIn order to open a specific record inside a subject one can append {{hl|:Record#}} to the subject name. \n<sqf>\nplayer selectDiarySubject \"Diary:Record0\"; // selects the first record in the diary subject (from bottom to top)\nplayer selectDiarySubject \"Diary:Record1\"; // selects the second record\n</sqf>\n}}"
     type: String
 argument_loc: Local

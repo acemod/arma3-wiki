@@ -9,23 +9,21 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: unit or vehicle
     type: Object
-- call: !Unary
-  - vehicle
-  - extended
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     desc: unit or vehicle
     type: Object
-  - name: extended
+  - !Item
+    name: extended
     desc: '[[true]] to include muzzle information'
     type: Boolean
   since:

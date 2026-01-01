@@ -7,30 +7,25 @@ groups:
 - Interaction
 - Lights
 syntax:
-- call: !Unary
-  - position
-  - direction
-  - beamColor
-  - dotColor
-  - dotSize
-  - beamThickness
-  - beamMaxLength
-  - isIR
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     desc: the laser's origin position
     type: Position3dASL
-  - name: direction
+  - !Item
+    name: direction
     desc: the laser's direction vector
     type: !ArrayUnsized
       type: Vector3d
       desc: ''
-  - name: beamColor
+  - !Item
+    name: beamColor
     desc: laser beam color. The values can go way above the usual 0..1 range as they also act as emissivity brightness
     type: ArrayColorRgb
-  - name: dotColor
+  - !Item
+    name: dotColor
     desc: impact dot color. Set to <sqf inline>[]</sqf> to use the same value as ''beamColor''.
     type: !OneOf
     - type: ArrayColorRgb
@@ -39,18 +34,22 @@ syntax:
     - type: ArrayEmpty
       desc: null
       since: null
-  - name: dotSize
+  - !Item
+    name: dotSize
     desc: impact dot size; if set to 0 the impact dot will not render
     type: Number
-  - name: beamThickness
+  - !Item
+    name: beamThickness
     desc: laser beam's thickness scale; if set to 0, the beam will not render
     type: Number
-  - name: beamMaxLength
+  - !Item
+    name: beamMaxLength
     desc: laser beam's maximum length. {{hl|-1}} means maximum length (defined in {{hl|CfgIRLaserSettings}}), {{hl|0}} means no length at all and the command is ignored
     type: Number
     optional: true
     default: '-1'
-  - name: isIR
+  - !Item
+    name: isIR
     desc: whether the laser and impact dot are only visible with Night Vision / Thermal Imaging
     type: Boolean
     optional: true

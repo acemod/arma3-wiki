@@ -3,11 +3,10 @@ desc: Check if stamina depletion is enabled.
 groups:
 - Stamina System
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

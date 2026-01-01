@@ -3,25 +3,22 @@ desc: Returns the current state of given [[CT_CHECKBOXES]] control. Since Arma 3
 groups:
 - GUI Control
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] checked, [[false]] unchecked'
-  params:
-  - name: control
+  right: !Item
+    name: control
     desc: '[[CT_CHECKBOXES]] control. If control contain multiple checkboxes, only checkbox with index 0 is queried.'
     type: Control
-- call: !Binary
-  - control
-  - index
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] checked, [[false]] unchecked'
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: '[[CT_CHECKBOXES]] control'
     type: Control
-  - name: index
+  right: !Item
+    name: index
     desc: checkbox index
     type: Number
   since:

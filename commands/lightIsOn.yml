@@ -7,8 +7,7 @@ desc: |-
 groups:
 - Lights
 syntax:
-- call: !Unary lamppost
-  ret:
+- ret:
     type: String
     desc: |-
       can be one of:
@@ -16,8 +15,8 @@ syntax:
       * '''"OFF"''' - light is off
       * '''"AUTO"''' - applicable only to the light of type "StreetLamp" and is only on during the night.
       * '''"ERROR"''' - if command fails
-  params:
-  - name: lamppost
+  right: !Item
+    name: lamppost
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -12,15 +12,13 @@ desc: |-
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - objectivenumber
-  - status
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: objectivenumber
+  left: !Item
+    name: objectivenumber
     type: String
-  - name: status
+  right: !Item
+    name: status
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

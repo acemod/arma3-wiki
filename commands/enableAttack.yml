@@ -4,13 +4,10 @@ groups:
 - Groups
 - Unit Control
 syntax:
-- call: !Binary
-  - group
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     type: !OneOf
     - type: Object
       desc: null
@@ -18,7 +15,8 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
 argument_loc: Local
 effect_loc: Global

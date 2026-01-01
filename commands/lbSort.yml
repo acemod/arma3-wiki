@@ -3,42 +3,38 @@ desc: Sorts listbox entries alphabetically ascending by their [[lbText]].
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  right: !Item
+    name: control
     type: Control
-- call: !Unary
-  - control
-  - sortOrder
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  right: !Array
+  - !Item
+    name: control
     type: Control
-  - name: sortOrder
+  - !Item
+    name: sortOrder
     desc: '"ASC": ascending, "DESC": descending'
     type: String
   since:
     arma3: '1.18'
-- call: !Unary idc
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Item
+    name: idc
     type: Number
   since:
     arma3: '1.68'
-- call: !Unary
-  - idc
-  - sortOrder
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: sortOrder
+  - !Item
+    name: sortOrder
     desc: '"ASC": ascending, "DESC": descending'
     type: String
   since:

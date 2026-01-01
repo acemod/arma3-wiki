@@ -3,12 +3,11 @@ desc: Returns the current formation of a group.
 groups:
 - Groups
 syntax:
-- call: !Unary target
-  ret:
+- ret:
     type: String
     desc: 'can return:'
-  params:
-  - name: target
+  right: !Item
+    name: target
     type: !OneOf
     - type: Object
       desc: null

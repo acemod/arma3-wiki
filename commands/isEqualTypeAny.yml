@@ -3,15 +3,13 @@ desc: Compares type of given value to every type in the given array and if match
 groups:
 - Variables
 syntax:
-- call: !Binary
-  - val
-  - types
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: val
+  left: !Item
+    name: val
     type: Anything
-  - name: types
+  right: !Item
+    name: types
     type: !ArrayUnsized
       type: Anything
       desc: ''

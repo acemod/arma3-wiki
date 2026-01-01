@@ -3,15 +3,13 @@ desc: Sets the fuel consumption coefficient, which is a multiplier of the [[CfgV
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - coef
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: coef
+  right: !Item
+    name: coef
     desc: consumption coefficient (between 0 and 1000). Values larger than 1 increase fuel consumption, and values between 0 and 1 decrease fuel consumption. 0 disables fuel consumption
     type: Number
 argument_loc: Local

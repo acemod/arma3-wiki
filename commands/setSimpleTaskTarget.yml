@@ -3,18 +3,17 @@ desc: Attach a target to the simple task.<br>Overrides [[setSimpleTaskDestinatio
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - task
-  - - target
-    - precisePosition
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: task
+  left: !Item
+    name: task
     type: Task
-  - name: target
+  right: !Array
+  - !Item
+    name: target
     type: Object
-  - name: precisePosition
+  - !Item
+    name: precisePosition
     desc: use exact position of the target for map marker / HUD indicator instead of the position known to the task's owner (depending on the unit's knowledge of the target)
     type: Boolean
 argument_loc: Unspecified

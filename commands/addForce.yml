@@ -5,26 +5,25 @@ desc: |-
 groups:
 - PhysX
 syntax:
-- call: !Binary
-  - object
-  - - force
-    - position
-    - setUnconscious
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: PhysX object or {{GVI|arma3|2.04|size= 0.75}}{{Icon|localargument|24}} unit, in which case the unit must be local and will be [[setUnconscious|set unconscious]]
     type: Object
-  - name: force
+  right: !Array
+  - !Item
+    name: force
     desc: |-
       force vector in '''world''' space; force is expressed in
       {{Link|https://en.wikipedia.org/wiki/Newton-second|newton-seconds}} (used by {{Link|https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/structPxForceMode.html|PxForceMode::eIMPULSE}})
     type: Unknown
-  - name: position
+  - !Item
+    name: position
     desc: relative to object
     type: Position3dRelative
-  - name: setUnconscious
+  - !Item
+    name: setUnconscious
     desc: only applies to "CAManBase" ''object''; set to [[false]] to keep the person conscious
     type: Boolean
     optional: true

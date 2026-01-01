@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Variables
 syntax:
-- call: !Unary varname
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: varname
+  right: !Item
+    name: varname
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

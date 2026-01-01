@@ -9,29 +9,27 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     type: Object
-- call: !Binary
-  - unit
-  - - muzzle
-    - magazine
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] on success'
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: person
     type: Object
-  - name: muzzle
+  right: !Array
+  - !Item
+    name: muzzle
     desc: muzzle name or "" for the current muzzle.
     type: String
     optional: true
     default: '[[currentMuzzle]]'
-  - name: magazine
+  - !Item
+    name: magazine
     desc: magazine name or "" for given muzzle's magazine. If given muzzle is [[currentMuzzle]] then [[currentMagazine]]
     type: String
     optional: true

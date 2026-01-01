@@ -3,12 +3,11 @@ desc: "Creates a list of supported operators and type. Each field of array has t
 groups:
 - System
 syntax:
-- call: !Unary mask
-  ret:
+- ret:
     type: ArrayUnknown
     desc: array with requested info or empty array {{hl|[]}}
-  params:
-  - name: mask
+  right: !Item
+    name: mask
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

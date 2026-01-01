@@ -6,19 +6,18 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - - muzzle
-    - magazine
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: muzzle
+  right: !Array
+  - !Item
+    name: muzzle
     desc: name of the muzzle to add magazine to
     type: String
-  - name: magazine
+  - !Item
+    name: magazine
     desc: class name of the magazine to remove
     type: String
 argument_loc: Local

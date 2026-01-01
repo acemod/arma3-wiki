@@ -3,11 +3,10 @@ desc: Saves the current state of entities' inventory to the [[Mission.sqm]].
 groups:
 - Eden Editor
 syntax:
-- call: !Unary entities
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: entities
+  right: !Item
+    name: entities
     type: !OneOf
     - type: !ArrayUnsized
         type: EdenEntity

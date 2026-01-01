@@ -3,11 +3,10 @@ desc: "Dump argument type and value to debugging output. \n\n{{Feature|warning|T
 groups:
 - Broken Commands
 syntax:
-- call: !Unary anything
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: anything
+  right: !Item
+    name: anything
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,13 +3,10 @@ desc: Returns {{Link|https://en.wikipedia.org/wiki/Euclidean_distance|Euclidean 
 groups:
 - Math - Vectors
 syntax:
-- call: !Binary
-  - point1
-  - point2
-  ret:
+- ret:
     type: Number
-  params:
-  - name: point1
+  left: !Item
+    name: point1
     desc: (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
     type: !OneOf
     - type: Position3d
@@ -18,7 +15,8 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: point2
+  right: !Item
+    name: point2
     desc: (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
     type: !OneOf
     - type: Position3d

@@ -24,11 +24,10 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- call: !Unary vehicleName
-  ret:
+- ret:
     type: String
-  params:
-  - name: vehicleName
+  right: !Item
+    name: vehicleName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,11 +3,10 @@ desc: Defines a [[Switch Type]] default case - does '''not''' need a colon to de
 groups:
 - Program Flow
 syntax:
-- call: !Unary a
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: a
+  right: !Item
+    name: a
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified

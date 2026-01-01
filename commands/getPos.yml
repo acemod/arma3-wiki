@@ -12,26 +12,20 @@ desc: |-
 groups:
 - Positions
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
-- call: !Unary location
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: location
+  right: !Item
+    name: location
     type: Location
-- call: !Binary
-  - origin
-  - - distance
-    - heading
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: origin
+  left: !Item
+    name: origin
     type: !OneOf
     - type: Object
       desc: null
@@ -42,10 +36,13 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: distance
+  right: !Array
+  - !Item
+    name: distance
     desc: distance from position
     type: Number
-  - name: heading
+  - !Item
+    name: heading
     desc: in which compass direction
     type: Number
   since:

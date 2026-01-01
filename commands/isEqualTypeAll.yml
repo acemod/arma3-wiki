@@ -6,15 +6,13 @@ groups:
 - Variables
 - Arrays
 syntax:
-- call: !Binary
-  - arr
-  - val
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: arr
+  left: !Item
+    name: arr
     type: Unknown
-  - name: val
+  right: !Item
+    name: val
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified

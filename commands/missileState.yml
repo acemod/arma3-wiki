@@ -3,15 +3,14 @@ desc: Get the provided ''guided'' missile's engine, target lock and flight profi
 groups:
 - Weapons
 syntax:
-- call: !Unary munition
-  ret:
+- ret:
     type: Unknown
     desc: |-
       one of "INIT", "THRUST", "FLY" or ""
       * lockState: [[String]] - one of "MANUAL", "LOCKED", "LOST", "INITIAL", "SEEKING" or ""
       * flightState: [[String]] - one of "DEFAULT", "DIRECT", "TOPDOWN", "LOALDISTANCE", "LOALALTITUDE", "OVERFLY", "CRUISE" or "" (LOAL stands for "Lock-On After Launch")
-  params:
-  - name: munition
+  right: !Item
+    name: munition
     desc: missile
     type: Object
 argument_loc: Unspecified

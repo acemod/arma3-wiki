@@ -3,11 +3,10 @@ desc: Returns start and end positions for the given [[ropeCreate | rope]]. If co
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Unary rope
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: rope
+  right: !Item
+    name: rope
     desc: rope object
     type: Object
 argument_loc: Unspecified

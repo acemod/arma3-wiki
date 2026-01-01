@@ -3,16 +3,14 @@ desc: 'Sets model for 3D-[[Arma: GUI Configuration|Dialogs]] (see [[Arma 3: crea
 groups:
 - GUI Control - Object
 syntax:
-- call: !Binary
-  - control
-  - model
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: 3D control
     type: Control
-  - name: model
+  right: !Item
+    name: model
     desc: model path
     type: String
 argument_loc: Unspecified

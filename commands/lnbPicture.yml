@@ -3,35 +3,34 @@ desc: Returns the picture name or path of the item with the given position of th
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  ret:
+- ret:
     type: String
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: number of [[Control]]
     type: Number
-  - name: row
-    desc: index of Row
-    type: Number
-  - name: column
-    desc: index of Column
-    type: Number
-- call: !Binary
-  - control
-  - - row
-    - column
-  ret:
+  - !Array
+    - !Item
+      name: row
+      desc: index of Row
+      type: Number
+    - !Item
+      name: column
+      desc: index of Column
+      type: Number
+- ret:
     type: String
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: row
+  right: !Array
+  - !Item
+    name: row
     desc: index of Row in given Control
     type: Number
-  - name: column
+  - !Item
+    name: column
     desc: index of Column in given Control
     type: Number
 argument_loc: Local

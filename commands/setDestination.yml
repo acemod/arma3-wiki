@@ -15,21 +15,20 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - object
-  - - position
-    - planningMode
-    - forceReplan
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     type: Position
-  - name: planningMode
+  - !Item
+    name: planningMode
     type: String
-  - name: forceReplan
+  - !Item
+    name: forceReplan
     desc: specifies if replanning of the path should be forced.
     type: Boolean
 argument_loc: Local

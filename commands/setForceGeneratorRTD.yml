@@ -3,15 +3,13 @@ desc: '{{Wiki|stub}} {{Feature|afm}}'
 groups:
 - RTD
 syntax:
-- call: !Binary
-  - value
-  - arr
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: value
+  left: !Item
+    name: value
     type: Number
-  - name: arr
+  right: !Item
+    name: arr
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified

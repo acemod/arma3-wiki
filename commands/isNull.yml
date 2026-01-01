@@ -43,11 +43,10 @@ desc: |-
 groups:
 - Variables
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     type: !OneOf
     - type: Object
       desc: null

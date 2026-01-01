@@ -27,15 +27,14 @@ groups:
 - Event Handlers
 - Interaction
 syntax:
-- call: !Unary
-  - handlerName
-  - code
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: handlerName
+  right: !Array
+  - !Item
+    name: handlerName
     type: String
-  - name: code
+  - !Item
+    name: code
     type: String
 argument_loc: Unspecified
 effect_loc: Local

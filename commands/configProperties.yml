@@ -6,22 +6,21 @@ desc: |-
 groups:
 - Config
 syntax:
-- call: !Unary
-  - config
-  - condition
-  - inherit
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Config
       desc: ''
-  params:
-  - name: config
+  right: !Array
+  - !Item
+    name: config
     desc: config entry to search
     type: Config
-  - name: condition
+  - !Item
+    name: condition
     type: Unknown
     optional: true
-  - name: inherit
+  - !Item
+    name: inherit
     desc: include inherited properties
     type: Boolean
     optional: true

@@ -3,16 +3,14 @@ desc: Select given group in [[High Command|high command]] bar.
 groups:
 - High Command
 syntax:
-- call: !Binary
-  - unit
-  - array
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: HC Owner
     type: Object
-  - name: array
+  right: !Item
+    name: array
     type: !ArrayUnsized
       type: Group
       desc: ''

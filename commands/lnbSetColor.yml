@@ -3,37 +3,37 @@ desc: Sets the color of the item with the given position of the 2D listbox. Colo
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: row
-    type: Number
-  - name: column
-    type: Number
-  - name: color
+  - !Array
+    - !Item
+      name: row
+      type: Number
+    - !Item
+      name: column
+      type: Number
+  - !Item
+    name: color
     type: ArrayColorRgba
-- call: !Binary
-  - ctrl
-  - - - row
-      - column
-    - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: row
-    type: Number
-  - name: column
-    type: Number
-  - name: color
+  right: !Array
+  - !Array
+    - !Item
+      name: row
+      type: Number
+    - !Item
+      name: column
+      type: Number
+  - !Item
+    name: color
     type: ArrayColorRgba
 argument_loc: Local
 effect_loc: Local

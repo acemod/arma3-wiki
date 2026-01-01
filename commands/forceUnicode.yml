@@ -26,11 +26,10 @@ desc: |-
 groups:
 - Strings
 syntax:
-- call: !Unary mode
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: mode
+  right: !Item
+    name: mode
     type: !OneOf
     - type: Number
       desc: null

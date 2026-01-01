@@ -10,18 +10,11 @@ desc: |-
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Binary
-  - - controlOrIDC
-    - column
-  - - sortByType
-    - reversedOrder
-    - caseSensitive
-    - useTextRight
-    - unicodeOff
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: controlOrIDC
+  left: !Array
+  - !Item
+    name: controlOrIDC
     desc: the ListNBox control or its IDC
     type: !OneOf
     - type: Control
@@ -30,10 +23,13 @@ syntax:
     - type: Number
       desc: null
       since: null
-  - name: column
+  - !Item
+    name: column
     desc: column to sort (starts with 0)
     type: Number
-  - name: sortByType
+  right: !Array
+  - !Item
+    name: sortByType
     type: !StringEnum
     - value: TEXT
       desc: null
@@ -45,22 +41,26 @@ syntax:
       desc: null
       since: null
     optional: true
-  - name: reversedOrder
+  - !Item
+    name: reversedOrder
     desc: '[[true]] for sorting in reversed order'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: caseSensitive
+  - !Item
+    name: caseSensitive
     desc: '[[true]] for using case-sensitive comparison'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: useTextRight
+  - !Item
+    name: useTextRight
     desc: '[[true]] to sort by [[lnbSetTextRight | text right]]'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: unicodeOff
+  - !Item
+    name: unicodeOff
     desc: '[[true]] to switch off UNICODE conversion for faster sorting'
     type: Boolean
     optional: true

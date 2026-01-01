@@ -3,15 +3,13 @@ desc: Takes array of header indices as a parameter and removes headers with thos
 groups:
 - GUI Control - Controls Table
 syntax:
-- call: !Binary
-  - ctrl
-  - indices
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: indices
+  right: !Item
+    name: indices
     type: !ArrayUnsized
       type: Number
       desc: ''

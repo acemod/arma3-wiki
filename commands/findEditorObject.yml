@@ -3,15 +3,13 @@ desc: "Return object that matches the provided reference. \n{{Feature|informativ
 groups:
 - Game 2 Editor
 syntax:
-- call: !Binary
-  - map
-  - value
-  ret:
+- ret:
     type: String
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: value
+  right: !Item
+    name: value
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified

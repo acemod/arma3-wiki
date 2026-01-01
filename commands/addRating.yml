@@ -7,15 +7,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - unitName
-  - rating
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  left: !Item
+    name: unitName
     type: Object
-  - name: rating
+  right: !Item
+    name: rating
     type: Number
 argument_loc: Local
 effect_loc: Global

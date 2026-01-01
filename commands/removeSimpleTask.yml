@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - person
-  - task
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: person
+  left: !Item
+    name: person
     type: Object
-  - name: task
+  right: !Item
+    name: task
     type: Task
 argument_loc: Unspecified
 effect_loc: Unspecified

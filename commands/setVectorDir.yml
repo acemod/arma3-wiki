@@ -5,15 +5,13 @@ problem_notes:
 groups:
 - Math - Vectors
 syntax:
-- call: !Binary
-  - object
-  - vectorDir
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: vectorDir
+  right: !Item
+    name: vectorDir
     type: Unknown
 argument_loc: Local
 effect_loc: Global

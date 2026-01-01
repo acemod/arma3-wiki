@@ -3,23 +3,21 @@ desc: Return texture information - resolution in pixels (mipmap level 0) and ave
 groups:
 - System
 syntax:
-- call: !Unary texture
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: texture
+  right: !Item
+    name: texture
     desc: texture path (.paa, .jpg, .ogv)
     type: String
-- call: !Unary
-  - texture
-  - sizeH
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: texture
+  right: !Array
+  - !Item
+    name: texture
     desc: texture path (.paa, .jpg, .ogv)
     type: String
-  - name: sizeH
+  - !Item
+    name: sizeH
     desc: texture height in screen size
     type: Number
   since:

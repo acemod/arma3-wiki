@@ -3,21 +3,19 @@ desc: Returns true if weapon is currently deployed.
 groups:
 - Weapons
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
-- call: !Unary
-  - unit
-  - onGround
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unit
+  right: !Array
+  - !Item
+    name: unit
     type: Object
-  - name: onGround
+  - !Item
+    name: onGround
     desc: '[[true]] to check if deployed on ground, [[false]] to check if deployed on object. Omitted - same as main syntax.'
     type: Boolean
     optional: true

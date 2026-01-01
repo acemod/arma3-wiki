@@ -6,11 +6,10 @@ problem_notes:
 groups:
 - Time
 syntax:
-- call: !Unary accFactor
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: accFactor
+  right: !Item
+    name: accFactor
     desc: time factor; 2 will make time go twice as fast, 0.5 half of it, etc
     type: Number
 argument_loc: Unspecified

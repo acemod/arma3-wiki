@@ -5,12 +5,11 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: Number
     desc: accuracy in metres
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

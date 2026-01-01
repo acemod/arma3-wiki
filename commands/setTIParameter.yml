@@ -5,16 +5,15 @@ desc: |-
 groups:
 - Environment
 syntax:
-- call: !Unary
-  - paramName
-  - newValue
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: paramName
+  right: !Array
+  - !Item
+    name: paramName
     desc: the parameter name. See [[getTIParameters]] for a list of possible values
     type: String
-  - name: newValue
+  - !Item
+    name: newValue
     desc: the set number
     type: Number
 argument_loc: Unspecified

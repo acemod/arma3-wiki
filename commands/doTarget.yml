@@ -3,13 +3,10 @@ desc: Order the given unit(s) to target the given target (without radio messages
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unit
-  - target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: a single unit or array of units
     type: !OneOf
     - type: Object
@@ -18,7 +15,8 @@ syntax:
     - type: ArrayUnknown
       desc: null
       since: null
-  - name: target
+  right: !Item
+    name: target
     type: Object
 argument_loc: Local
 effect_loc: Global

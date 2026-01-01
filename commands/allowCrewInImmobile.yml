@@ -5,29 +5,26 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - allow
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: allow
+  right: !Item
+    name: allow
     type: Boolean
-- call: !Binary
-  - vehicle
-  - - brokenWheels
-    - upsideDown
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: brokenWheels
+  right: !Array
+  - !Item
+    name: brokenWheels
     desc: do not auto eject when vehicle has broken wheels
     type: Boolean
-  - name: upsideDown
+  - !Item
+    name: upsideDown
     desc: do not auto eject when vehicle is upside down
     type: Boolean
   since:

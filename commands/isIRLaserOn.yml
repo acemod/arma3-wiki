@@ -3,15 +3,13 @@ desc: Returns [[true]] if there is a linked and enabled IR on the given weapon.
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - unit
-  - weapon
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: weapon
+  right: !Item
+    name: weapon
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

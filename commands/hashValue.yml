@@ -5,12 +5,11 @@ desc: |-
 groups:
 - HashMap
 syntax:
-- call: !Unary value
-  ret:
+- ret:
     type: String
     desc: base64-encoded 64 bits hash
-  params:
-  - name: value
+  right: !Item
+    name: value
     type: !OneOf
     - type: ArrayUnknown
       desc: null

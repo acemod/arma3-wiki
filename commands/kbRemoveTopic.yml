@@ -3,15 +3,13 @@ desc: Unregister conversation topic from given person. See [[Conversations]] for
 groups:
 - Conversations
 syntax:
-- call: !Binary
-  - person
-  - topicName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: person
+  left: !Item
+    name: person
     type: Object
-  - name: topicName
+  right: !Item
+    name: topicName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

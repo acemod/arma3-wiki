@@ -3,15 +3,13 @@ desc: Sets the font for given control (see [[Fonts#Available_Fonts|available fon
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - fontName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: fontName
+  right: !Item
+    name: fontName
     desc: one of the fonts defined in CfgFontFamilies
     type: String
 argument_loc: Unspecified

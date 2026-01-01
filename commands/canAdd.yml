@@ -11,36 +11,33 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - object
-  - item
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: unit or container
     type: Object
-  - name: item
+  right: !Item
+    name: item
     desc: config class
     type: String
-- call: !Binary
-  - object
-  - - item
-    - count
-    - ignoreSoldierMaxLoad
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: unit or container
     type: Object
-  - name: item
+  right: !Array
+  - !Item
+    name: item
     desc: config class
     type: String
-  - name: count
+  - !Item
+    name: count
     desc: desired quantity
     type: Number
-  - name: ignoreSoldierMaxLoad
+  - !Item
+    name: ignoreSoldierMaxLoad
     desc: '[[true]] to ignore ''soldierMaxLoad'' param, container''s [[maxLoad]] is still counted'
     type: Boolean
     optional: true
@@ -49,51 +46,47 @@ syntax:
       arma3: '2.18'
   since:
     arma3: '1.56'
-- call: !Binary
-  - weapon
-  - item
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: weapon
+  left: !Item
+    name: weapon
     desc: weapon class name
     type: String
-  - name: item
+  right: !Item
+    name: item
     desc: config class of magazine or attachment
     type: String
   since:
     arma3: '2.10'
-- call: !Binary
-  - weapon
-  - - attachment
-    - slot
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: weapon
+  left: !Item
+    name: weapon
     desc: weapon class name
     type: String
-  - name: attachment
+  right: !Array
+  - !Item
+    name: attachment
     desc: attachment class name
     type: String
-  - name: slot
+  - !Item
+    name: slot
     type: Unknown
   since:
     arma3: '2.10'
-- call: !Binary
-  - weapon
-  - - magazine
-    - muzzle
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: weapon
+  left: !Item
+    name: weapon
     desc: weapon class name
     type: String
-  - name: magazine
+  right: !Array
+  - !Item
+    name: magazine
     desc: magazine class name
     type: String
-  - name: muzzle
+  - !Item
+    name: muzzle
     desc: muzzle class name
     type: String
   since:

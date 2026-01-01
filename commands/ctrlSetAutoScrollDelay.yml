@@ -6,16 +6,14 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - delay
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: '[[DialogControls-ListBoxes|CT_LISTBOX]] or [[CT_CONTROLS_GROUP]]'
     type: Control
-  - name: delay
+  right: !Item
+    name: delay
     desc: seconds to wait before scroll and/or rewind
     type: Number
 argument_loc: Unspecified

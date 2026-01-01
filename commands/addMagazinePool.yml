@@ -3,16 +3,15 @@ desc: Adds magazines to the magazine pool, of which the player may choose in the
 groups:
 - Weapon Pool
 syntax:
-- call: !Unary
-  - magazineName
-  - count
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: magazineName
+  right: !Array
+  - !Item
+    name: magazineName
     desc: magazine class name. See the topic [[:Category:Weapons]] for reference about possible values.
     type: String
-  - name: count
+  - !Item
+    name: count
     desc: number of magazines to add
     type: Number
 argument_loc: Unspecified

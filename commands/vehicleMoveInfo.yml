@@ -4,14 +4,13 @@ groups:
 - Object Manipulation
 - Unit Control
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Unknown
     desc: |-
       state of vehicle forward/backward movement (see description)
       * turnInfo: [[String]] - state of vehicle left/right turning (see description)
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

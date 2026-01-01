@@ -3,8 +3,7 @@ desc: Return the result of helicopter landing position searching (performed afte
 groups:
 - Unit Control
 syntax:
-- call: !Unary helicopter
-  ret:
+- ret:
     type: String
     desc: |-
       result, can be:
@@ -12,8 +11,8 @@ syntax:
       * {{hl|"NotFound"}} - position not found
       * {{hl|"NotReady"}} - position searching is still in progress
       * {{hl|""}} - empty string when the provided ''helicopter'' is invalid
-  params:
-  - name: helicopter
+  right: !Item
+    name: helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

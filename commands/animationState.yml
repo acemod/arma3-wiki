@@ -6,11 +6,10 @@ multiplayer_note: When executed on a client, this command only returns accurate 
 groups:
 - Animations
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: String
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

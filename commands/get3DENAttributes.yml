@@ -3,15 +3,13 @@ desc: Retrieve all attributes and their values of the specified (optional) categ
 groups:
 - Eden Editor
 syntax:
-- call: !Binary
-  - entity
-  - category
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     type: Object
-  - name: category
+  right: !Item
+    name: category
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

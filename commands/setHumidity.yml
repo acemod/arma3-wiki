@@ -3,11 +3,10 @@ desc: Sets surface humidity. Affects how footsteps sound (dry / wet). [[humidity
 groups:
 - Environment
 syntax:
-- call: !Unary humidity
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: humidity
+  right: !Item
+    name: humidity
     desc: surface humidity in the range 0..1
     type: Number
 argument_loc: Unspecified

@@ -6,27 +6,24 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - idc
-  - show
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: control IDC
     type: Number
-  - name: show
+  - !Item
+    name: show
     desc: '[[true]] to show the control, [[false]] to hide it'
     type: Boolean
-- call: !Binary
-  - control
-  - show
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: show
+  right: !Item
+    name: show
     desc: '[[true]] to show the control, [[false]] to hide it'
     type: Boolean
 argument_loc: Local

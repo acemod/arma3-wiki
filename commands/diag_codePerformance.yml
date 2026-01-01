@@ -8,36 +8,28 @@ groups:
 - Diagnostic
 - Performance Profiling
 syntax:
-- call: !Unary
-  - code
-  - arguments
-  - cycles
-  ret:
+- ret:
     type: Unknown
     desc: |-
       average duration of 1 execution in milliseconds
       * cycles: [[Number]] - actual number of cycles executed
-  params:
-  - name: code
+  right: !Array
+  - !Item
+    name: code
     desc: code to compare performance
     type: Code
-  - name: arguments
+  - !Item
+    name: arguments
     desc: 'arguments to pass to the code in _this variable. Default: [[nil]]'
     type: Anything
     optional: true
     default: '[[nil]]'
-  - name: cycles
+  - !Item
+    name: cycles
     desc: wanted number of cycles to run the given code. > 1000 is recommended
     type: Number
     optional: true
     default: '100000'
-  - name: ignoreTimeLimit
-    desc: '- ignore the 1 second timelimit, and always run the provided number of cycles (except in multiplayer)'
-    type: Boolean
-    optional: true
-    default: 'false'
-    since:
-      arma3: '2.14'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

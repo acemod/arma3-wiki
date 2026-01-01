@@ -5,11 +5,10 @@ problem_notes:
 groups:
 - Environment
 syntax:
-- call: !Unary layers
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: layers
+  right: !Item
+    name: layers
     desc: cloud layers. -1 to reset to defaults (since 2.20), 0 to disable simul weather.
     type: Number
 argument_loc: Unspecified

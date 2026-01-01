@@ -4,13 +4,12 @@ groups:
 - Mods and Addons
 - Config
 syntax:
-- call: !Unary config
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
-  params:
-  - name: config
+  right: !Item
+    name: config
     type: Config
 argument_loc: Unspecified
 effect_loc: Unspecified

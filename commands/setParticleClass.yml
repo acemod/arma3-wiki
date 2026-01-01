@@ -5,16 +5,14 @@ desc: |-
 groups:
 - Particles
 syntax:
-- call: !Binary
-  - source
-  - className
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: source
+  left: !Item
+    name: source
     desc: particle source
     type: Object
-  - name: className
+  right: !Item
+    name: className
     desc: CfgCloudlets class
     type: String
 argument_loc: Global

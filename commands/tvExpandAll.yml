@@ -3,17 +3,15 @@ desc: Expands all tree items for the given Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary idc
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Item
+    name: idc
     type: Number
-- call: !Unary control
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  right: !Item
+    name: control
     type: Control
 argument_loc: Local
 effect_loc: Local

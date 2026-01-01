@@ -3,16 +3,15 @@ desc: Moves mouse pointer to specified position on the screen. '''x''' and '''y'
 groups:
 - GUI Control - Positioning
 syntax:
-- call: !Unary
-  - x
-  - y
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: x
+  right: !Array
+  - !Item
+    name: x
     desc: x in screen coordinates
     type: Number
-  - name: y
+  - !Item
+    name: y
     desc: y in screen coordinates
     type: Number
 argument_loc: Unspecified

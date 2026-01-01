@@ -5,18 +5,16 @@ desc: |-
 groups:
 - Strings
 syntax:
-- call: !Binary
-  - str
-  - delimiters
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
-  params:
-  - name: str
+  left: !Item
+    name: str
     desc: the string to split
     type: String
-  - name: delimiters
+  right: !Item
+    name: delimiters
     desc: one or more characters, each used as a separate delimiter; if empty, ''str'' is split by each character
     type: String
 argument_loc: Unspecified

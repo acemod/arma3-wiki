@@ -3,8 +3,7 @@ desc: Returns various properties for the given {{hl|#lightpoint}} or {{hl|#light
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary light
-  ret:
+- ret:
     type: Unknown
     desc: |-
       intensity: [[Number]] - getter for [[setLightIntensity]] ([[setLightBrightness]] also sets intensity in a weird way, but it is also obsolete)
@@ -19,21 +18,19 @@ syntax:
       * 9 - attachedToPars: [[Array]] - getter for [[lightAttachObject]], [[lightDetachObject]]
       * 10 - conePars: [[Array]] - getter for [[setLightConePars]]
       * 11 - volumeShapePars: [[Array]] - getter for [[setLightVolumeShape]]
-  params:
-  - name: light
+  right: !Item
+    name: light
     desc: '{{hl|#lightpoint}} or {{hl|#lightreflector}}'
     type: Object
-- call: !Binary
-  - light
-  - index
-  ret:
+- ret:
     type: Anything
     desc: depends on the requested property, or [[Nothing]]
-  params:
-  - name: light
+  left: !Item
+    name: light
     desc: '{{hl|#lightpoint}} or {{hl|#lightreflector}}'
     type: Object
-  - name: index
+  right: !Item
+    name: index
     desc: property index (see main syntax, for example 0 for light intensity)
     type: Number
 argument_loc: Unspecified

@@ -4,16 +4,15 @@ groups:
 - Diagnostic
 - Config
 syntax:
-- call: !Unary
-  - path
-  - config
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: file path on disc
     type: String
-  - name: config
+  - !Item
+    name: config
     desc: the config you would like to export
     type: Config
 argument_loc: Unspecified

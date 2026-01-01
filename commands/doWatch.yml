@@ -3,13 +3,10 @@ desc: Order the given unit(s) to watch the given position or target (without rad
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unit(s)
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit(s)
+  left: !Item
+    name: unit(s)
     type: !OneOf
     - type: Object
       desc: null
@@ -19,15 +16,13 @@ syntax:
         desc: ''
       desc: null
       since: null
-  - name: position
+  right: !Item
+    name: position
     type: Position
-- call: !Binary
-  - unit(s)
-  - target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit(s)
+  left: !Item
+    name: unit(s)
     type: !OneOf
     - type: Object
       desc: null
@@ -37,7 +32,8 @@ syntax:
         desc: ''
       desc: null
       since: null
-  - name: target
+  right: !Item
+    name: target
     type: Object
 argument_loc: Local
 effect_loc: Global

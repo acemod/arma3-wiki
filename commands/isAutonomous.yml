@@ -3,11 +3,10 @@ desc: Returns whether the UAV is in autonomous mode or not.
 groups:
 - Remote Control
 syntax:
-- call: !Unary uav
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: uav
+  right: !Item
+    name: uav
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

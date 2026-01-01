@@ -6,15 +6,13 @@ groups:
 - Object Manipulation
 - Unit Control
 syntax:
-- call: !Binary
-  - vehicle
-  - position
-  ret:
+- ret:
     type: Number
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: position
+  right: !Item
+    name: position
     type: !StringEnum
     - value: Commander
       desc: null

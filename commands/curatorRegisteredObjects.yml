@@ -3,13 +3,12 @@ desc: Returns array with all objects that has curator registered and their setti
 groups:
 - Curator
 syntax:
-- call: !Unary curator
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
-  params:
-  - name: curator
+  right: !Item
+    name: curator
     desc: curator module
     type: Object
 argument_loc: Unspecified

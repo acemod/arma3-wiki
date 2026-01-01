@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Number
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: (before {{GVI|arma3|2.08|size= 0.75}} the command did not support containers, ammo boxes, weapon holders, vehicle cargos)
     type: Object
 argument_loc: Unspecified

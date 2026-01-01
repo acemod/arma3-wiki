@@ -5,24 +5,23 @@ problem_notes:
 groups:
 - Broken Commands
 syntax:
-- call: !Binary
-  - obj
-  - - type
-    - position
-    - typeAccuracy
-    - posAccuracy
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: obj
+  left: !Item
+    name: obj
     type: Object
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     type: String
-  - name: position
+  - !Item
+    name: position
     type: Unknown
-  - name: typeAccuracy
+  - !Item
+    name: typeAccuracy
     type: Number
-  - name: posAccuracy
+  - !Item
+    name: posAccuracy
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,16 +3,14 @@ desc: Set an object's water filling.
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - obj
-  - level
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: obj
+  left: !Item
+    name: obj
     desc: object to manipulate
     type: Object
-  - name: level
+  right: !Item
+    name: level
     desc: water level in range 0..1 (empty to full)
     type: Number
 argument_loc: Local

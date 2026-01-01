@@ -30,15 +30,13 @@ desc: |-
 groups:
 - Groups
 syntax:
-- call: !Binary
-  - unit
-  - team
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: team
+  right: !Item
+    name: team
     type: String
 argument_loc: Global
 effect_loc: Global

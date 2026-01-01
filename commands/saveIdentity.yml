@@ -3,16 +3,14 @@ desc: Saves units's identity to [[Objects.sav]] file in campaign directory as en
 groups:
 - Unit Identity
 syntax:
-- call: !Binary
-  - unit
-  - name
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if successful, otherwise [[false]]'
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: name
+  right: !Item
+    name: name
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

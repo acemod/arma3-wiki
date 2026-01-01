@@ -11,16 +11,14 @@ desc: |-
 groups:
 - PhysX
 syntax:
-- call: !Binary
-  - object
-  - torque
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: PhysX object
     type: Object
-  - name: torque
+  right: !Item
+    name: torque
     desc: world vector in format [x,y,z]
     type: Unknown
 argument_loc: Global

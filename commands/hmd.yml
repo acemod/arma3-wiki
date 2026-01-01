@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: String
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

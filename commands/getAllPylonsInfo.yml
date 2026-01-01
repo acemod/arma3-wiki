@@ -3,11 +3,10 @@ desc: Return an array with the vehicle's all pylons info.
 groups:
 - Vehicle Loadouts
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

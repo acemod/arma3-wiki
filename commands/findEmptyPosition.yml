@@ -10,15 +10,10 @@ desc: |-
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - center
-  - - areaRadius
-    - maxDistance
-    - vehicleType
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: center
+  left: !Item
+    name: center
     desc: search area center position in format [x,y] or [x,y,z] in which case z is ignored
     type: !OneOf
     - type: Position2d
@@ -27,13 +22,17 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: areaRadius
+  right: !Array
+  - !Item
+    name: areaRadius
     desc: wanted area radius
     type: Number
-  - name: maxDistance
+  - !Item
+    name: maxDistance
     desc: stop searching no further than {{hl|areaRadius + maxDistance}} from the center
     type: Number
-  - name: vehicleType
+  - !Item
+    name: vehicleType
     desc: classname of a vehicle to accommodate
     type: String
     optional: true

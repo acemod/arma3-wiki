@@ -8,29 +8,28 @@ groups:
 - Radio and Chat
 - Custom Radio and Chat
 syntax:
-- call: !Unary
-  - color
-  - label
-  - callSign
-  - units
-  - sentenceType
-  ret:
+- ret:
     type: Number
     desc: created '''[[Channel IDs|custom channel ID]]''' (used in [[customChat]] command), 0 if failed. (see [[BIS_fnc_channelNumToRadioChannelID]], [[BIS_fnc_radioChannelIDToChannelNum]])
-  params:
-  - name: color
+  right: !Array
+  - !Item
+    name: color
     desc: '[[Color|RGBA color]] values'
     type: ArrayUnknown
-  - name: label
+  - !Item
+    name: label
     desc: label
     type: String
-  - name: callSign
+  - !Item
+    name: callSign
     desc: chat call sign (or since {{GVI|arma3|2.22|size= 0.75}} [[Array]] - [callSign, callSignVoN]) see [[radioChannelSetCallSign]]
     type: String
-  - name: units
+  - !Item
+    name: units
     desc: list of units in the channel
     type: ArrayUnknown
-  - name: sentenceType
+  - !Item
+    name: sentenceType
     type: Unknown
     optional: true
 argument_loc: Global

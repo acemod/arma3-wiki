@@ -3,13 +3,12 @@ desc: Returns selected groups in [[High Command|high command]].
 groups:
 - High Command
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Group
       desc: ''
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: commander
     type: Object
 argument_loc: Unspecified

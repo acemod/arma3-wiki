@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Math - Vectors
 syntax:
-- call: !Unary vector
-  ret:
+- ret:
     type: Vector3d
-  params:
-  - name: vector
+  right: !Item
+    name: vector
     desc: z coordinate defaulted to 0
     type: !OneOf
     - type: Vector3d

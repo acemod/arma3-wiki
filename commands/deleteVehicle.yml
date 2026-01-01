@@ -7,17 +7,15 @@ problem_notes:
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
-- call: !Unary objects
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: objects
+  right: !Item
+    name: objects
     type: !ArrayUnsized
       type: Object
       desc: ''

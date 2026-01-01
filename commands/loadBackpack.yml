@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Containers
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Number
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

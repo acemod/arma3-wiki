@@ -3,18 +3,16 @@ desc: Checks whether given post process effect is enabled
 groups:
 - Camera Control
 syntax:
-- call: !Unary effect
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: effect
+  right: !Item
+    name: effect
     desc: effect handle
     type: Number
-- call: !Unary effect
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: effect
+  right: !Item
+    name: effect
     desc: effect name
     type: String
   since:

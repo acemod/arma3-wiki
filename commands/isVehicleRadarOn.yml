@@ -3,11 +3,10 @@ desc: Returns true if vehicle has active sensors on.
 groups:
 - Sensors
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: vehicle on which check is performed
     type: Object
 argument_loc: Unspecified

@@ -6,16 +6,14 @@ groups:
 - Positions
 - Render Time Scope
 syntax:
-- call: !Binary
-  - object
-  - worldPosition
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[[Position#PositionRelative|PositionRelative]]'
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: worldPosition
+  right: !Item
+    name: worldPosition
     type: !OneOf
     - type: Position3dAGL
       desc: null

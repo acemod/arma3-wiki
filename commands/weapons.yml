@@ -4,14 +4,13 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
     desc: weapon class names
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

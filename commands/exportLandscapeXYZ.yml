@@ -5,11 +5,10 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Unary filename
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: filename
+  right: !Item
+    name: filename
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

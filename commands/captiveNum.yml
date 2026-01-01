@@ -6,12 +6,11 @@ groups:
 - Object Manipulation
 - Sides
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Number
     desc: anything from 0 to value set by [[setCaptive]] alt syntax. A non zero value means [[captive]].
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

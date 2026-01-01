@@ -3,15 +3,13 @@ desc: Set group icons parameters.
 groups:
 - High Command
 syntax:
-- call: !Binary
-  - group
-  - properties
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     type: Group
-  - name: properties
+  right: !Item
+    name: properties
     type: Unknown
 argument_loc: Global
 effect_loc: Local

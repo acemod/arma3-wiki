@@ -3,19 +3,18 @@ desc: Stored user text value in MFD, limit is 50, user0...user49
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - vehicle
-  - - index
-    - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle with MFD
     type: Object
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     type: Number
-  - name: value
+  - !Item
+    name: value
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

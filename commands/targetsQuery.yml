@@ -3,30 +3,28 @@ desc: Returns sorted array of targets, '''known''' to the enquirer (including ow
 groups:
 - Object Detection
 syntax:
-- call: !Binary
-  - enquirer
-  - - targetIgnore
-    - targetSide
-    - targetType
-    - targetPosition
-    - targetMaxAge
-  ret:
+- ret:
     type: Unknown
     desc: "a coefficient, which reflects how close the returned result to the query filter. (1 - best match)\n* target: [[Object]] - the actual target object\n* targetSide: [[Side]] - side of the target\n* targetType: [[String]] - target [[typeOf]]\n* targetPosition: [[Array]] - [x,y] of the target \n* targetAge: [[Number]] - the actual target age in seconds (can be negative)"
-  params:
-  - name: enquirer
+  left: !Item
+    name: enquirer
     desc: for whom the query will be made
     type: Object
-  - name: targetIgnore
+  right: !Array
+  - !Item
+    name: targetIgnore
     desc: target object to exclude from results. [[objNull]] - return every target
     type: Object
-  - name: targetSide
+  - !Item
+    name: targetSide
     desc: desired side of the target. [[sideUnknown]] - any side
     type: Side
-  - name: targetType
+  - !Item
+    name: targetType
     desc: desired target [[typeOf]]. "" - any type
     type: String
-  - name: targetPosition
+  - !Item
+    name: targetPosition
     desc: desired target position (only [x,y] is considered). Position tolerance is 200m from the actual position of the target. [] - any position
     type: !OneOf
     - type: Position2d
@@ -35,7 +33,8 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: targetMaxAge
+  - !Item
+    name: targetMaxAge
     desc: desired max age of the target. This will limit returned results to the targets younger than specified age. 0 - any age
     type: Number
 argument_loc: Unspecified

@@ -3,12 +3,11 @@ desc: Returns [[buildingPos]] index assigned to the waypoint.
 groups:
 - Waypoints
 syntax:
-- call: !Unary waypoint
-  ret:
+- ret:
     type: Number
     desc: '[[buildingPos]] index'
-  params:
-  - name: waypoint
+  right: !Item
+    name: waypoint
     desc: format [[Waypoint]]
     type: ArrayUnknown
 argument_loc: Unspecified

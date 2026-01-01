@@ -7,13 +7,10 @@ groups:
 - Lights
 - Weapons
 syntax:
-- call: !Binary
-  - target
-  - mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: target
+  left: !Item
+    name: target
     desc: the group forced to use gun lights. If unit is supplied as argument, unit's group is used
     type: !OneOf
     - type: Group
@@ -22,7 +19,8 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: mode
+  right: !Item
+    name: mode
     type: Unknown
 argument_loc: Local
 effect_loc: Global

@@ -3,36 +3,34 @@ desc: Enables or disables menu entry on given path.
 groups:
 - GUI Control - Menu
 syntax:
-- call: !Unary
-  - idc
-  - path
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     type: ArrayUnknown
-  - name: enable
+  - !Item
+    name: enable
     desc: disabled if [[false]]
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
       arma3: '2.6'
-- call: !Binary
-  - control
-  - - path
-    - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     type: ArrayUnknown
-  - name: enable
+  - !Item
+    name: enable
     desc: disabled if [[false]]
     type: Boolean
     optional: true

@@ -3,11 +3,10 @@ desc: "Returns the current position of a helicopter's collective pitch control.\
 groups:
 - RTD
 syntax:
-- call: !Unary helicopterRTD
-  ret:
+- ret:
     type: Number
-  params:
-  - name: helicopterRTD
+  right: !Item
+    name: helicopterRTD
     desc: helicopter
     type: Unknown
 argument_loc: Unspecified

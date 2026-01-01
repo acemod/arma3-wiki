@@ -3,11 +3,10 @@ desc: Get current stamina (~ seconds until depletion)
 groups:
 - Stamina System
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Number
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

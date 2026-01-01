@@ -3,11 +3,10 @@ desc: Returns the current orientation angle of the map control in degrees.
 groups:
 - GUI Control - Map
 syntax:
-- call: !Unary ctrl
-  ret:
+- ret:
     type: Number
-  params:
-  - name: ctrl
+  right: !Item
+    name: ctrl
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - vehicle
-  - turretPath
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: turretPath
+  right: !Item
+    name: turretPath
     desc: turret path. Use an empty array to select the gunner's turret by default
     type: !ArrayUnsized
       type: Number

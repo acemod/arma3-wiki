@@ -7,15 +7,13 @@ desc: |-
 groups:
 - Diagnostic
 syntax:
-- call: !Binary
-  - position
-  - height
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: position
+  left: !Item
+    name: position
     type: Position
-  - name: height
+  right: !Item
+    name: height
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

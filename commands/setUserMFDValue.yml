@@ -3,20 +3,19 @@ desc: "When MFD is using user controllers, this command can set values on them. 
 groups:
 - Interaction
 syntax:
-- call: !Binary
-  - vehicle
-  - - index
-    - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: an vehicle with MFD
     type: Object
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     desc: index of custom MFD user actions
     type: Number
-  - name: value
+  - !Item
+    name: value
     desc: value which should custom source return in MFD
     type: Number
 argument_loc: Unspecified

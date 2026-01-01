@@ -28,20 +28,19 @@ desc: |-
 groups:
 - GUI Control - Map
 syntax:
-- call: !Binary
-  - control
-  - - defaultCursor
-    - newCursor
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: map control
     type: Control
-  - name: defaultCursor
+  right: !Array
+  - !Item
+    name: defaultCursor
     desc: cursor class name, '''case-sensitive'''
     type: String
-  - name: newCursor
+  - !Item
+    name: newCursor
     desc: cursor class name, '''case-sensitive'''
     type: String
 argument_loc: Unspecified

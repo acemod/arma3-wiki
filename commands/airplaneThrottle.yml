@@ -3,11 +3,10 @@ desc: Returns throttle position. Works only on player's vehicle.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary airplane
-  ret:
+- ret:
     type: Number
-  params:
-  - name: airplane
+  right: !Item
+    name: airplane
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

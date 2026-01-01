@@ -3,11 +3,10 @@ desc: Clears the map animation.
 groups:
 - GUI Control - Map
 syntax:
-- call: !Unary controlName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: controlName
+  right: !Item
+    name: controlName
     type: Control
 argument_loc: Local
 effect_loc: Local

@@ -6,12 +6,11 @@ desc: |-
 groups:
 - Groups
 syntax:
-- call: !Unary group
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] the group is marked for auto-deletion when empty'
-  params:
-  - name: group
+  right: !Item
+    name: group
     type: Group
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -9,12 +9,11 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] when diving [[goggles]] are visible'
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

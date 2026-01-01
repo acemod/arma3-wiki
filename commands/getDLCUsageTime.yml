@@ -3,12 +3,11 @@ desc: Returns total time the assets of the given DLC have been used. See [[:Cate
 groups:
 - DLC
 syntax:
-- call: !Unary appId
-  ret:
+- ret:
     type: Number
     desc: DLC assets usage time in seconds
-  params:
-  - name: appId
+  right: !Item
+    name: appId
     desc: DLC's Steam appId
     type: Number
 argument_loc: Unspecified

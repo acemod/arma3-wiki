@@ -3,16 +3,14 @@ desc: "Sets how to handle opening of URL, default browser or Steam overlay. Poss
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: control that contain url opening action
     type: Control
-  - name: mode
+  right: !Item
+    name: mode
     desc: overlay mode, see description
     type: Number
 argument_loc: Unspecified

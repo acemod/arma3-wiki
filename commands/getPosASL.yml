@@ -3,11 +3,10 @@ desc: Returns the object position height above sea level.
 groups:
 - Positions
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Position3dASL
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

@@ -3,29 +3,26 @@ desc: Create single missions display as a child of given display. The mission di
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - display
-  - missionRootDirectoryString
-  ret:
+- ret:
     type: Display
-  params:
-  - name: display
+  left: !Item
+    name: display
     type: Display
-  - name: missionRootDirectoryString
+  right: !Item
+    name: missionRootDirectoryString
     type: String
-- call: !Binary
-  - display
-  - - missionRootDirectoryString
-    - cfgMissionsClass
-  ret:
+- ret:
     type: Display
-  params:
-  - name: display
+  left: !Item
+    name: display
     type: Display
-  - name: missionRootDirectoryString
+  right: !Array
+  - !Item
+    name: missionRootDirectoryString
     desc: root direction from {{hl|\Arma 3\Missions\ROOT}}
     type: String
-  - name: cfgMissionsClass
+  - !Item
+    name: cfgMissionsClass
     desc: cfgMissions class to use
     type: String
 argument_loc: Unspecified

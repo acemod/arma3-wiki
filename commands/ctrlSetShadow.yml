@@ -7,15 +7,13 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - shadow
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: shadow
+  right: !Item
+    name: shadow
     desc: shadow value, see description
     type: Number
 argument_loc: Unspecified

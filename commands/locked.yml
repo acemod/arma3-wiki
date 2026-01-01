@@ -3,11 +3,10 @@ desc: Check if [[vehicle]] is locked. If it is locked, [[Object#Person|Persons]]
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

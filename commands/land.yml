@@ -3,18 +3,16 @@ desc: Forces a helicopter landing. If there is a helipad nearby, the helicopter 
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - helicopter
-  - mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: helicopter
+  left: !Item
+    name: helicopter
     type: !OneOf
     - type: Object
       desc: null
       since: null
-  - name: mode
+  right: !Item
+    name: mode
     type: !StringEnum
     - value: LAND
       desc: null

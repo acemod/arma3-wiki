@@ -6,26 +6,22 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicleName
-  - locked
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicleName
+  left: !Item
+    name: vehicleName
     type: Object
-  - name: locked
+  right: !Item
+    name: locked
     desc: '[[true]] to lock, [[false]] to unlock'
     type: Boolean
-- call: !Binary
-  - vehicleName
-  - lockstate
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicleName
+  left: !Item
+    name: vehicleName
     type: Object
-  - name: lockstate
+  right: !Item
+    name: lockstate
     desc: |-
       can be one of the following:<br>
       0 - Unlocked<br>

@@ -4,11 +4,10 @@ groups:
 - Diagnostic
 - Performance Profiling
 syntax:
-- call: !Unary frame
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: frame
+  right: !Item
+    name: frame
     desc: next n-th frame to be captured
     type: Number
 argument_loc: Unspecified

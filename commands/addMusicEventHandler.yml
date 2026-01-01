@@ -6,17 +6,16 @@ groups:
 - Event Handlers
 - Sounds
 syntax:
-- call: !Unary
-  - type
-  - function
-  ret:
+- ret:
     type: Number
     desc: event handler id
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: '"MusicStart" or "MusicStop"'
     type: String
-  - name: function
+  - !Item
+    name: function
     type: !OneOf
     - type: String
       desc: null

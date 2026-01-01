@@ -4,13 +4,10 @@ groups:
 - Object Manipulation
 - Groups
 syntax:
-- call: !Binary
-  - unitOrGroup
-  - cowardice
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitOrGroup
+  left: !Item
+    name: unitOrGroup
     type: !OneOf
     - type: Object
       desc: null
@@ -18,7 +15,8 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: cowardice
+  right: !Item
+    name: cowardice
     desc: 1 is maximum cowardice and 0 minimum. A value of 0 will disable fleeing all together
     type: Number
 argument_loc: Local

@@ -3,11 +3,10 @@ desc: Deletes scripted location.
 groups:
 - Locations
 syntax:
-- call: !Unary location
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: location
+  right: !Item
+    name: location
     type: Location
 argument_loc: Unspecified
 effect_loc: Unspecified

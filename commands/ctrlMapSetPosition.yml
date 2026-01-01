@@ -5,31 +5,30 @@ desc: |-
 groups:
 - GUI Control - Map
 syntax:
-- call: !Binary
-  - map
-  - - x
-    - y
-    - w
-    - h
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     desc: '[[CT_MAP|Map control]]'
     type: Control
-  - name: x
+  right: !Array
+  - !Item
+    name: x
     desc: Left top x of map control
     type: Number
     optional: true
-  - name: y
+  - !Item
+    name: y
     desc: Left top y of map control
     type: Number
     optional: true
-  - name: w
+  - !Item
+    name: w
     desc: Width of map control
     type: Number
     optional: true
-  - name: h
+  - !Item
+    name: h
     desc: Height of map control
     type: Number
     optional: true

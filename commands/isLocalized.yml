@@ -4,11 +4,10 @@ groups:
 - Strings
 - Localization
 syntax:
-- call: !Unary stringName
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: stringName
+  right: !Item
+    name: stringName
     desc: string which leads to localisation. Casing does not matter. Since Arma 3 v2.04 a string starting with {{hl|"$"}} is supported as well
     type: String
 argument_loc: Unspecified

@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Math - Vectors
 syntax:
-- call: !Binary
-  - object
-  - worldDir
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: worldDir
+  right: !Item
+    name: worldDir
     desc: vector direction in world space in format [x,y,z]
     type: ArrayUnknown
 argument_loc: Unspecified

@@ -5,13 +5,10 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unit
-  - target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: !OneOf
     - type: Object
       desc: null
@@ -21,7 +18,8 @@ syntax:
         desc: ''
       desc: null
       since: null
-  - name: target
+  right: !Item
+    name: target
     type: Object
 argument_loc: Local
 effect_loc: Local

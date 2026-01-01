@@ -5,15 +5,13 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - display
-  - class
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: display
+  left: !Item
+    name: display
     type: Display
-  - name: class
+  right: !Item
+    name: class
     desc: mission collection classname
     type: String
 argument_loc: Local

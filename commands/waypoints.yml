@@ -3,13 +3,12 @@ desc: Returns an array of waypoints for the specified unit/group.
 groups:
 - Waypoints
 syntax:
-- call: !Unary groupName
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Waypoint
       desc: ''
-  params:
-  - name: groupName
+  right: !Item
+    name: groupName
     type: !OneOf
     - type: Group
       desc: null

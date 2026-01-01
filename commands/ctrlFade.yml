@@ -6,11 +6,10 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary controlName
-  ret:
+- ret:
     type: Number
-  params:
-  - name: controlName
+  right: !Item
+    name: controlName
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified

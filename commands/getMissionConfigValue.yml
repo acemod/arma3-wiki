@@ -14,8 +14,7 @@ groups:
 - Config
 - Mission Information
 syntax:
-- call: !Unary attribute
-  ret:
+- ret:
     type: !OneOf
     - type: Number
       desc: null
@@ -29,14 +28,11 @@ syntax:
     - type: ArrayUnknown
       desc: null
       since: null
-  params:
-  - name: attribute
+  right: !Item
+    name: attribute
     desc: attribute name
     type: String
-- call: !Unary
-  - attribute
-  - defaultValue
-  ret:
+- ret:
     type: !OneOf
     - type: Number
       desc: null
@@ -50,11 +46,13 @@ syntax:
     - type: ArrayUnknown
       desc: null
       since: null
-  params:
-  - name: attribute
+  right: !Array
+  - !Item
+    name: attribute
     desc: attribute name
     type: String
-  - name: defaultValue
+  - !Item
+    name: defaultValue
     desc: value used when the attribute is undefined
     type: Anything
 argument_loc: Unspecified

@@ -7,11 +7,10 @@ groups:
 - High Command
 - Event Handlers
 syntax:
-- call: !Unary command
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: command
+  right: !Item
+    name: command
     desc: script
     type: !OneOf
     - type: String

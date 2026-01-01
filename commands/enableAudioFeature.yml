@@ -9,34 +9,32 @@ multiplayer_note: |-
 groups:
 - Sounds
 syntax:
-- call: !Unary
-  - feature
-  - enable
-  ret:
+- ret:
     type: Boolean
     desc: previous state
-  params:
-  - name: feature
+  right: !Array
+  - !Item
+    name: feature
     desc: '{{hl|"lowpass"}} or {{hl|"building_interior"}}'
     type: String
-  - name: enable
+  - !Item
+    name: enable
     desc: (Optional, getter if not provided) [[true]] enable, [[false]], disable
     type: Boolean
     optional: true
-- call: !Binary
-  - object
-  - - feature
-    - enable
-  ret:
+- ret:
     type: Boolean
     desc: previous state
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: feature
+  right: !Array
+  - !Item
+    name: feature
     desc: '{{hl|"building_interior"}} or {{hl|"building_exterior"}} only (mutually exclusive)'
     type: String
-  - name: enable
+  - !Item
+    name: enable
     desc: (Optional, getter if not provided) [[true]] enable, [[false]], disable
     type: Boolean
     optional: true

@@ -3,15 +3,13 @@ desc: Low level command to person to move to given position. It is good to check
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unit
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: position
+  right: !Item
+    name: position
     type: Position3dATL
 argument_loc: Local
 effect_loc: Global

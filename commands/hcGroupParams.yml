@@ -9,16 +9,14 @@ desc: |-
 groups:
 - High Command
 syntax:
-- call: !Binary
-  - unit
-  - group
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: commander
     type: Object
-  - name: group
+  right: !Item
+    name: group
     type: Group
 argument_loc: Unspecified
 effect_loc: Unspecified

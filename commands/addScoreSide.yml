@@ -4,15 +4,13 @@ groups:
 - Sides
 - Multiplayer
 syntax:
-- call: !Binary
-  - side
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: side
+  left: !Item
+    name: side
     type: Side
-  - name: value
+  right: !Item
+    name: value
     type: Number
 argument_loc: Global
 effect_loc: Global

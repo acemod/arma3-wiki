@@ -18,12 +18,11 @@ groups:
 - Strings
 - Arrays
 syntax:
-- call: !Unary stringArray
-  ret:
+- ret:
     type: ArrayUnknown
     desc: valid array
-  params:
-  - name: stringArray
+  right: !Item
+    name: stringArray
     desc: string formatted as simple array
     type: String
 argument_loc: Unspecified

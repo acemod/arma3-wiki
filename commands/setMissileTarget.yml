@@ -4,34 +4,31 @@ groups:
 - Object Manipulation
 - Weapons
 syntax:
-- call: !Binary
-  - munition
-  - target
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if successful'
-  params:
-  - name: munition
+  left: !Item
+    name: munition
     desc: missile
     type: Object
-  - name: target
+  right: !Item
+    name: target
     desc: valid missile target or [[objNull]] to cancel targeting
     type: Object
-- call: !Binary
-  - munition
-  - - target
-    - force
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if successful'
-  params:
-  - name: munition
+  left: !Item
+    name: munition
     desc: missile
     type: Object
-  - name: target
+  right: !Array
+  - !Item
+    name: target
     desc: valid missile target or [[objNull]] to cancel targeting
     type: Object
-  - name: force
+  - !Item
+    name: force
     desc: '[[true]] to force target (for example to target countermeasure flare object)'
     type: Boolean
   since:

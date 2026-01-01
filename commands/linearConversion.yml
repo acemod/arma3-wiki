@@ -3,33 +3,32 @@ desc: Converts given value from given "from" range to wanted "to" range. If clip
 groups:
 - Math
 syntax:
-- call: !Unary
-  - minFrom
-  - maxFrom
-  - value
-  - minTo
-  - maxTo
-  - clip
-  ret:
+- ret:
     type: Number
     desc: respectful value from "to" range
-  params:
-  - name: minFrom
+  right: !Array
+  - !Item
+    name: minFrom
     desc: start "from" range
     type: Number
-  - name: maxFrom
+  - !Item
+    name: maxFrom
     desc: end "from" range
     type: Number
-  - name: value
+  - !Item
+    name: value
     desc: given value from "from" range
     type: Number
-  - name: minTo
+  - !Item
+    name: minTo
     desc: start "to" range
     type: Number
-  - name: maxTo
+  - !Item
+    name: maxTo
     desc: end "to" range
     type: Number
-  - name: clip
+  - !Item
+    name: clip
     desc: if [[true]], resulting value cannot leave "to" range
     type: Boolean
     optional: true

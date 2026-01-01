@@ -4,15 +4,13 @@ groups:
 - Math
 - Variables
 syntax:
-- call: !Binary
-  - a
-  - b
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: a
+  left: !Item
+    name: a
     type: Number
-  - name: b
+  right: !Item
+    name: b
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

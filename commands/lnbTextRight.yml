@@ -3,34 +3,33 @@ desc: Returns [[CT_LISTNBOX]]'s right aligned cell text.
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  ret:
+- ret:
     type: String
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: row
-    desc: index of the row
-    type: Number
-  - name: column
-    desc: index of the column
-    type: Number
-- call: !Binary
-  - ctrl
-  - - row
-    - column
-  ret:
+  - !Array
+    - !Item
+      name: row
+      desc: index of the row
+      type: Number
+    - !Item
+      name: column
+      desc: index of the column
+      type: Number
+- ret:
     type: String
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: row
+  right: !Array
+  - !Item
+    name: row
     desc: index of the row
     type: Number
-  - name: column
+  - !Item
+    name: column
     desc: index of the column
     type: Number
 argument_loc: Unspecified

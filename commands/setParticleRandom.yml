@@ -3,49 +3,48 @@ desc: "Sets randomization of particle source parameters. Correspondence between 
 groups:
 - Particles
 syntax:
-- call: !Binary
-  - particleSource
-  - - lifeTime
-    - position
-    - moveVelocity
-    - rotationVelocity
-    - size
-    - color
-    - directionPeriod
-    - directionIntensity
-    - angle
-    - bounceOnSurface
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: particleSource
+  left: !Item
+    name: particleSource
     type: Object
-  - name: lifeTime
+  right: !Array
+  - !Item
+    name: lifeTime
     type: Number
-  - name: position
+  - !Item
+    name: position
     desc: in format [randomX, randomY, randomZ]
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: moveVelocity
+  - !Item
+    name: moveVelocity
     desc: in format [randomX, randomY, randomZ]
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: rotationVelocity
+  - !Item
+    name: rotationVelocity
     type: Number
-  - name: size
+  - !Item
+    name: size
     type: Number
-  - name: color
+  - !Item
+    name: color
     type: ArrayColorRgba
-  - name: directionPeriod
+  - !Item
+    name: directionPeriod
     type: Number
-  - name: directionIntensity
+  - !Item
+    name: directionIntensity
     type: Number
-  - name: angle
+  - !Item
+    name: angle
     type: Number
     optional: true
-  - name: bounceOnSurface
+  - !Item
+    name: bounceOnSurface
     type: Number
     optional: true
     since:

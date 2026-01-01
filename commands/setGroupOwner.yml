@@ -3,15 +3,13 @@ desc: Changes the ownership of a group (and all its units) to a given client. Th
 groups:
 - Multiplayer
 syntax:
-- call: !Binary
-  - group
-  - clientID
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: group
+  left: !Item
+    name: group
     type: Group
-  - name: clientID
+  right: !Item
+    name: clientID
     desc: the [[Multiplayer_Scripting#Machine_network_ID | machine network ID]] of the new [[owner]].
     type: Number
 argument_loc: Unspecified

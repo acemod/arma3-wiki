@@ -4,11 +4,10 @@ groups:
 - System
 - Environment
 syntax:
-- call: !Unary value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: value
+  right: !Item
+    name: value
     type: Number
 argument_loc: Unspecified
 effect_loc: Local

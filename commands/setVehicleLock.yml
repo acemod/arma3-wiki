@@ -3,15 +3,13 @@ desc: "Sets vehicle lock. Possible values:\n<br> \n* \"UNLOCKED\" \n* \"DEFAULT\
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicleName
-  - lockState
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicleName
+  left: !Item
+    name: vehicleName
     type: Object
-  - name: lockState
+  right: !Item
+    name: lockState
     type: String
 argument_loc: Local
 effect_loc: Global

@@ -5,21 +5,20 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - - selectionName
-    - LOD
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
     desc: array of bone names
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: selectionName
+  right: !Array
+  - !Item
+    name: selectionName
     type: String
-  - name: LOD
+  - !Item
+    name: LOD
     type: !StringEnum
     - value: Memory
       desc: null

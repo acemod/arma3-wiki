@@ -3,17 +3,15 @@ desc: Creates a link to the given diary entry.
 groups:
 - Briefing
 syntax:
-- call: !Unary
-  - subject
-  - record
-  - text
-  ret:
+- ret:
     type: String
     desc: empty string or a string similar to the result of <sqf inline>format ["<log subject=""%1"" record=""%2"">%3</log>", subject, processedRecordId, text]</sqf>
-  params:
-  - name: subject
+  right: !Array
+  - !Item
+    name: subject
     type: String
-  - name: record
+  - !Item
+    name: record
     type: !OneOf
     - type: Object
       desc: null
@@ -24,7 +22,8 @@ syntax:
     - type: DiaryRecord
       desc: null
       since: null
-  - name: text
+  - !Item
+    name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

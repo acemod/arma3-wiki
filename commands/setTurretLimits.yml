@@ -3,36 +3,35 @@ desc: Sets the rotation and elevation limits for the given turret. The limits ar
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - - turret
-    - minTurn
-    - maxTurn
-    - minElev
-    - maxElev
-    - soft
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle the turret belongs to
     type: Object
-  - name: turret
+  right: !Array
+  - !Item
+    name: turret
     desc: turret path
-    type: ArrayUnknown
-  - name: minTurn
+    type: TurretPath
+  - !Item
+    name: minTurn
     desc: from 0 to -angle in degrees (left)
     type: Number
-  - name: maxTurn
+  - !Item
+    name: maxTurn
     desc: from 0 to +angle in degrees (right)
     type: Number
-  - name: minElev
+  - !Item
+    name: minElev
     desc: from 0 to -angle in degrees (down)
     type: Number
-  - name: maxElev
+  - !Item
+    name: maxElev
     desc: from 0 to +angle in degrees (up)
     type: Number
-  - name: soft
+  - !Item
+    name: soft
     desc: '[[true]] to gradually move turret to the new limits (if turret is currenty oriented out of new limts). [[false]] to snap to the new limits. Default: [[false]]'
     type: Boolean
     optional: true

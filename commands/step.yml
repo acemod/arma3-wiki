@@ -3,15 +3,13 @@ desc: Optional step value. A countdown can be made with a negative value. If not
 groups:
 - Program Flow
 syntax:
-- call: !Binary
-  - for
-  - stepSize
-  ret:
+- ret:
     type: ForType
-  params:
-  - name: for
+  left: !Item
+    name: for
     type: ForType
-  - name: stepSize
+  right: !Item
+    name: stepSize
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

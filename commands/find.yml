@@ -7,49 +7,44 @@ groups:
 - Strings
 - Arrays
 syntax:
-- call: !Binary
-  - array
-  - element
-  ret:
+- ret:
     type: Number
     desc: zero-based position of the first array element that matches x, -1 if not found
-  params:
-  - name: array
+  left: !Item
+    name: array
     desc: array to search in
     type: ArrayUnknown
-  - name: element
+  right: !Item
+    name: element
     desc: array element to find
     type: Anything
-- call: !Binary
-  - string
-  - substring
-  ret:
+- ret:
     type: Number
     desc: zero-based position of the first sequence of characters that matches substring, -1 if not found
-  params:
-  - name: string
+  left: !Item
+    name: string
     desc: string to search in
     type: String
-  - name: substring
+  right: !Item
+    name: substring
     desc: substring to find
     type: String
   since:
     arma3: '1.28'
-- call: !Binary
-  - string
-  - - substring
-    - indexStart
-  ret:
+- ret:
     type: Number
     desc: zero-based position of the first sequence of characters that matches substring, -1 if not found
-  params:
-  - name: string
+  left: !Item
+    name: string
     desc: string to search in
     type: String
-  - name: substring
+  right: !Array
+  - !Item
+    name: substring
     desc: substring to find
     type: String
-  - name: indexStart
+  - !Item
+    name: indexStart
     desc: zero-based index which defines where find starts from
     type: Number
   since:

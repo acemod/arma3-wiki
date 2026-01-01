@@ -3,16 +3,14 @@ desc: Set the list of objects in the given selection preset. Only [[Object]] is 
 groups:
 - Curator
 syntax:
-- call: !Binary
-  - numkey
-  - objects
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: numkey
+  left: !Item
+    name: numkey
     desc: number key under which the selection preset is saved
     type: Number
-  - name: objects
+  right: !Item
+    name: objects
     desc: objects to save to the selection preset
     type: !ArrayUnsized
       type: Object

@@ -5,28 +5,25 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - lock
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: lock
+  right: !Item
+    name: lock
     type: Boolean
-- call: !Binary
-  - vehicle
-  - - index
-    - lock
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     type: Number
-  - name: lock
+  - !Item
+    name: lock
     type: Boolean
 argument_loc: Local
 effect_loc: Global

@@ -6,17 +6,14 @@ desc: |-
 groups:
 - GUI Control - Map
 syntax:
-- call: !Binary
-  - map
-  - - from
-    - to
-    - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: from
+  right: !Array
+  - !Item
+    name: from
     desc: arrow start position
     type: !OneOf
     - type: Object
@@ -28,7 +25,8 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: to
+  - !Item
+    name: to
     desc: arrow end position
     type: !OneOf
     - type: Object
@@ -40,7 +38,8 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: color
+  - !Item
+    name: color
     desc: arrow color in format [r,g,b,a]
     type: ArrayUnknown
 argument_loc: Unspecified

@@ -5,19 +5,18 @@ desc: |-
 groups:
 - Vehicle Inventory
 syntax:
-- call: !Binary
-  - object
-  - - weaponID
-    - creatorID
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: vehicle or ammo box
     type: Object
-  - name: weaponID
+  right: !Array
+  - !Item
+    name: weaponID
     type: Number
-  - name: creatorID
+  - !Item
+    name: creatorID
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

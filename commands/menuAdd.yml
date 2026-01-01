@@ -3,33 +3,31 @@ desc: Adds new submenu entry into item on given path.
 groups:
 - GUI Control - Menu
 syntax:
-- call: !Unary
-  - idc
-  - path
-  - text
-  ret:
+- ret:
     type: Number
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     type: ArrayUnknown
-  - name: text
+  - !Item
+    name: text
     type: String
-- call: !Binary
-  - control
-  - - path
-    - text
-  ret:
+- ret:
     type: Number
     desc: index of the item
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: path where the items should be added
     type: ArrayUnknown
-  - name: text
+  - !Item
+    name: text
     desc: displayed name for the entry
     type: String
 argument_loc: Unspecified

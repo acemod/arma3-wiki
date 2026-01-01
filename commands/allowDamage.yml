@@ -8,15 +8,13 @@ multiplayer_note: '{{Feature | important | This command has to be executed where
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - entity
-  - allow
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     type: Object
-  - name: allow
+  right: !Item
+    name: allow
     type: Boolean
 argument_loc: Local
 effect_loc: Global

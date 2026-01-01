@@ -12,20 +12,19 @@ desc: |-
 groups:
 - RTD
 syntax:
-- call: !Binary
-  - helicopterRTD
-  - - value
-    - wheelIndex
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: helicopterRTD
+  left: !Item
+    name: helicopterRTD
     desc: helicopter
     type: Unknown
-  - name: value
+  right: !Array
+  - !Item
+    name: value
     desc: value of the brakes
     type: Number
-  - name: wheelIndex
+  - !Item
+    name: wheelIndex
     desc: wheel index
     type: Number
 argument_loc: Unspecified

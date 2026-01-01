@@ -5,19 +5,18 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - - magazineName
-    - count
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: a soldier
     type: Object
-  - name: magazineName
+  right: !Array
+  - !Item
+    name: magazineName
     type: String
-  - name: count
+  - !Item
+    name: count
     desc: number of magazines
     type: Number
 argument_loc: Global

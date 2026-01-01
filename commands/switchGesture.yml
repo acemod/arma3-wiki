@@ -8,41 +8,38 @@ desc: |-
 groups:
 - Animations
 syntax:
-- call: !Binary
-  - soldier
-  - moveName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: soldier
+  left: !Item
+    name: soldier
     type: Object
-  - name: moveName
+  right: !Item
+    name: moveName
     type: String
-- call: !Binary
-  - soldier
-  - - moveName
-    - time
-    - blendFactor
-    - resetAim
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: soldier
+  left: !Item
+    name: soldier
     type: Object
-  - name: moveName
+  right: !Array
+  - !Item
+    name: moveName
     desc: entry from <sqf inline>"CfgMovesMaleSdr" >> "states"</sqf> or <sqf inline>"CfgGesturesMale" >> "states"</sqf>
     type: String
-  - name: time
+  - !Item
+    name: time
     desc: normalised time, in range 0..1, where 0 = beginning of the animation, and 1 = end of the animation
     type: Number
     optional: true
     default: '0'
-  - name: blendFactor
+  - !Item
+    name: blendFactor
     desc: how much to blend the current animation with the new animation, in range 0..1, where 0 = current animation, and 1 = new animation. When 1 is used, the switching is instant (not smooth).
     type: Number
     optional: true
     default: '1'
-  - name: resetAim
+  - !Item
+    name: resetAim
     desc: whether the aim/head direction should be reset after switching
     type: Boolean
     optional: true

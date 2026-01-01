@@ -5,19 +5,18 @@ desc: |-
 groups:
 - Strings - Regular Expression
 syntax:
-- call: !Binary
-  - haystack
-  - - pattern
-    - startOffset
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: haystack
+  left: !Item
+    name: haystack
     type: String
-  - name: pattern
+  right: !Array
+  - !Item
+    name: pattern
     desc: 'format [[Arma 3: Regular Expressions|regex pattern]]'
     type: String
-  - name: startOffset
+  - !Item
+    name: startOffset
     desc: has to be in range from 0 to <sqf inline>count haystack</sqf> (''haystack'''s length)
     type: Number
     optional: true

@@ -5,27 +5,23 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - layer
-  - duration
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: layer
+  left: !Item
+    name: layer
     type: Number
-  - name: duration
+  right: !Item
+    name: duration
     type: Number
-- call: !Binary
-  - layerName
-  - duration
-  ret:
+- ret:
     type: Number
     desc: number of the corresponding layer
-  params:
-  - name: layerName
+  left: !Item
+    name: layerName
     desc: effect layer name. Layer names are CaSe SeNsItIvE
     type: String
-  - name: duration
+  right: !Item
+    name: duration
     desc: fade out time
     type: Number
   since:

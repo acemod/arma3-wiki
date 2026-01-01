@@ -3,27 +3,24 @@ desc: Returns name of picture from item pointed to by path. IDC means id of pare
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary
-  - idc
-  - path
-  ret:
+- ret:
     type: String
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     type: !ArrayUnsized
       type: Number
       desc: ''
-- call: !Binary
-  - ctrl
-  - path
-  ret:
+- ret:
     type: String
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: path
+  right: !Item
+    name: path
     type: !ArrayUnsized
       type: Number
       desc: ''

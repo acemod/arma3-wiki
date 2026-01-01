@@ -3,11 +3,10 @@ desc: Returns the parent [[Display]] of the given control. For parent [[Control]
 groups:
 - GUI Control
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: Display
-  params:
-  - name: control
+  right: !Item
+    name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified

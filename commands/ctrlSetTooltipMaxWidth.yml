@@ -3,16 +3,14 @@ desc: Set maximum width of a control's tooltip.
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - ctrl
-  - width
-  ret:
+- ret:
     type: Number
     desc: the previous maximum width of the tooltip
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: width
+  right: !Item
+    name: width
     desc: in screen measurement units
     type: Number
 argument_loc: Unspecified

@@ -4,16 +4,14 @@ groups:
 - Radio and Chat
 - Custom Radio and Chat
 syntax:
-- call: !Binary
-  - customChannelID
-  - callSign
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: customChannelID
+  left: !Item
+    name: customChannelID
     desc: '[[Channel IDs|custom channel ID]] returned by [[radioChannelCreate]] command'
     type: Number
-  - name: callSign
+  right: !Item
+    name: callSign
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

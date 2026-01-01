@@ -3,12 +3,11 @@ desc: Returns debriefing text of provided end.
 groups:
 - Briefing
 syntax:
-- call: !Unary end
-  ret:
+- ret:
     type: String
     desc: '''''end'''' debriefing text. If it does not exist in config, empty string is returned.'
-  params:
-  - name: end
+  right: !Item
+    name: end
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

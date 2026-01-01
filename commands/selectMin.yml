@@ -3,12 +3,11 @@ desc: "Returns the array element with [[min]]imum numerical value. Engine soluti
 groups:
 - Arrays
 syntax:
-- call: !Unary array
-  ret:
+- ret:
     type: Number
     desc: element with [[min]]imum numerical value
-  params:
-  - name: array
+  right: !Item
+    name: array
     type: !ArrayUnsized
       type: Number
       desc: ''

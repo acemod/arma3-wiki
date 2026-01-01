@@ -3,12 +3,11 @@ desc: Returns the global owner of a flag. A getter for [[setFlagOwner]]. Note th
 groups:
 - Flags
 syntax:
-- call: !Unary flag
-  ret:
+- ret:
     type: Object
     desc: the person or vehicle that owns the flag is returned. If used on anything else than a flag, the returned value is [[objNull]]. If the flag is on its pole, the return value is NULL. If the flagowner is dead, the return value is the name of the soldier model
-  params:
-  - name: flag
+  right: !Item
+    name: flag
     type: Object
 argument_loc: Global
 effect_loc: Global

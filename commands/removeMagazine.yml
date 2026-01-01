@@ -3,15 +3,13 @@ desc: Remove magazine from the unit or static weapon.
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unitName
-  - magazineName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  left: !Item
+    name: unitName
     type: Object
-  - name: magazineName
+  right: !Item
+    name: magazineName
     desc: see [[:Category:Weapons|weapons]]
     type: String
 argument_loc: Local

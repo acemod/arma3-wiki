@@ -3,11 +3,10 @@ desc: Returns [[Group]] to which the given vehicle was added last with [[addVehi
 groups:
 - Groups
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Group
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: transport
     type: Object
 argument_loc: Unspecified

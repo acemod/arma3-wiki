@@ -3,18 +3,17 @@ desc: "Return argument in mission editor of a given object. \n{{Feature|informat
 groups:
 - Game 2 Editor
 syntax:
-- call: !Binary
-  - map
-  - - object
-    - argument
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: object
+  right: !Array
+  - !Item
+    name: object
     type: String
-  - name: argument
+  - !Item
+    name: argument
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,15 +3,13 @@ desc: "Sets '''unit's''' combat mode (engagement rules). For AI group combat mod
 groups:
 - AI Behaviour
 syntax:
-- call: !Binary
-  - unit
-  - mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: mode
+  right: !Item
+    name: mode
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

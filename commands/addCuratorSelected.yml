@@ -3,11 +3,10 @@ desc: Add items to the selected curator items.
 groups:
 - Curator
 syntax:
-- call: !Unary items
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: items
+  right: !Item
+    name: items
     desc: items to add; items can be an [[Object]], [[Group]], [[Array]] format [[Waypoint]], or [[String]] (marker)
     type: ArrayUnknown
 argument_loc: Unspecified

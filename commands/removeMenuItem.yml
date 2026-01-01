@@ -3,15 +3,13 @@ desc: "Removes a previously added menu item. \n{{Feature|informative|Some Old Ed
 groups:
 - Game 2 Editor
 syntax:
-- call: !Binary
-  - map
-  - index
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: index
+  right: !Item
+    name: index
     desc: index of menu item to delete
     type: Number
 argument_loc: Unspecified

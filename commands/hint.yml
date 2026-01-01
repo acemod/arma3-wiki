@@ -13,11 +13,10 @@ groups:
 - Structured Text
 - Strings
 syntax:
-- call: !Unary message
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: message
+  right: !Item
+    name: message
     desc: the message to display.
     type: !OneOf
     - type: String

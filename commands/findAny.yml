@@ -5,18 +5,16 @@ desc: |-
 groups:
 - Arrays
 syntax:
-- call: !Binary
-  - searchIn
-  - toFind
-  ret:
+- ret:
     type: Number
     desc: the index of the first found item
-  params:
-  - name: searchIn
+  left: !Item
+    name: searchIn
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: toFind
+  right: !Item
+    name: toFind
     type: !ArrayUnsized
       type: Anything
       desc: ''

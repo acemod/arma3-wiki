@@ -15,12 +15,11 @@ desc: |-
 groups:
 - AI Behaviour
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: String
     desc: unit state (see description)
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Local
 effect_loc: Unspecified

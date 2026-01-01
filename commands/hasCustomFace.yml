@@ -5,12 +5,11 @@ desc: |-
 groups:
 - Unit Identity
 syntax:
-- call: !Unary person
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if player has a {{hl|face.paa/jpg}} file in their current profile and it is usable'
-  params:
-  - name: person
+  right: !Item
+    name: person
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

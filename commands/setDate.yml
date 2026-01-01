@@ -14,11 +14,10 @@ groups:
 - Mission Information
 - Environment
 syntax:
-- call: !Unary date
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: date
+  right: !Item
+    name: date
     type: ArrayDate
 argument_loc: Unspecified
 effect_loc: Local

@@ -3,17 +3,15 @@ desc: Preloads all textures, materials and proxies needed to render given object
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - distance
-  - object
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] when preload is finished'
-  params:
-  - name: distance
+  left: !Item
+    name: distance
     desc: distance at which preload the object
     type: Number
-  - name: object
+  right: !Item
+    name: object
     type: !OneOf
     - type: Object
       desc: existing object

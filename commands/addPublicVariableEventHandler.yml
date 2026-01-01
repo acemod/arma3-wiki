@@ -17,16 +17,14 @@ groups:
 - Multiplayer
 - Variables
 syntax:
-- call: !Binary
-  - varName
-  - code
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: varName
+  left: !Item
+    name: varName
     desc: '[[missionNamespace]] variable name'
     type: String
-  - name: code
+  right: !Item
+    name: code
     type: !OneOf
     - type: Code
       desc: null
@@ -37,17 +35,15 @@ syntax:
     - type: Group
       desc: null
       since: null
-- call: !Binary
-  - varName
-  - - target
-    - code
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: varName
+  left: !Item
+    name: varName
     desc: name of the variable set on target with [[setVariable]]
     type: String
-  - name: target
+  right: !Array
+  - !Item
+    name: target
     type: !OneOf
     - type: Object
       desc: null
@@ -58,7 +54,8 @@ syntax:
     - type: TeamMember
       desc: null
       since: null
-  - name: code
+  - !Item
+    name: code
     type: Code
   since:
     arma3: '1.46'

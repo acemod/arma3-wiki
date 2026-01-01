@@ -5,14 +5,11 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- call: !Binary
-  - from
-  - to
-  ret:
+- ret:
     type: Number
     desc: distance in meters or 1e10 if distance cannot be calculated
-  params:
-  - name: from
+  left: !Item
+    name: from
     type: !OneOf
     - type: Object
       desc: null
@@ -23,7 +20,8 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: to
+  right: !Item
+    name: to
     type: !OneOf
     - type: Object
       desc: null

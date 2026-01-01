@@ -8,15 +8,11 @@ multiplayer_note: Some event handlers are persistent (i.e they stay attached to 
 groups:
 - Event Handlers
 syntax:
-- call: !Binary
-  - target
-  - - type
-    - code
-  ret:
+- ret:
     type: Number
     desc: the index of the added Event Handler. Indices start at 0 for each unit and increment with each added Event Handler.
-  params:
-  - name: target
+  left: !Item
+    name: target
     type: !OneOf
     - type: Object
       desc: null
@@ -24,10 +20,13 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: see [[:Category:Event Handlers|Event Handlers]] for the full list of available options
     type: String
-  - name: code
+  - !Item
+    name: code
     type: !OneOf
     - type: Code
       desc: null

@@ -3,11 +3,10 @@ desc: Returns orientation of horizontal stabilizers.{{Feature|afm}}
 groups:
 - RTD
 syntax:
-- call: !Unary RTD_helicopter
-  ret:
+- ret:
     type: Number
-  params:
-  - name: RTD_helicopter
+  right: !Item
+    name: RTD_helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

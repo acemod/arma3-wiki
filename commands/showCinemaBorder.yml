@@ -3,11 +3,10 @@ desc: Forces drawing of cinema borders when using custom camera [[camCreate]]. T
 groups:
 - Camera Control
 syntax:
-- call: !Unary show
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: show
+  right: !Item
+    name: show
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

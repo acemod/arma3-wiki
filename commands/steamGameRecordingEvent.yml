@@ -3,12 +3,11 @@ desc: 'Triggers a {{Link|https://partner.steamgames.com/doc/features/timeline|St
 groups:
 - System
 syntax:
-- call: !Unary parameters
-  ret:
+- ret:
     type: String
     desc: event handle (which can be used to edit an event after it has been triggered)
-  params:
-  - name: parameters
+  right: !Item
+    name: parameters
     type: !OneOf
     - type: ArrayUnknown
       desc: null

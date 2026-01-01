@@ -3,11 +3,10 @@ desc: Returns a guided missile's target position.
 groups:
 - Weapons
 syntax:
-- call: !Unary munition
-  ret:
+- ret:
     type: Position3dASL
-  params:
-  - name: munition
+  right: !Item
+    name: munition
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

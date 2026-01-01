@@ -5,11 +5,10 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Unary progress
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: progress
+  right: !Item
+    name: progress
     type: !NumberRange
     - 0
     - 1

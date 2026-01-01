@@ -51,15 +51,13 @@ desc: |-
 groups:
 - Unit Identity
 syntax:
-- call: !Binary
-  - unitName
-  - rank
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  left: !Item
+    name: unitName
     type: Object
-  - name: rank
+  right: !Item
+    name: rank
     desc: see above. If a wrong string is provided, the command errors and reverts to using "PRIVATE"
     type: String
 argument_loc: Global

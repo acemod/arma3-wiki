@@ -3,14 +3,13 @@ desc: Returns the currently set physics collision flags.
 groups:
 - PhysX
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Boolean
       desc: ''
     desc: array of collision flags (only one value is returned for now)
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

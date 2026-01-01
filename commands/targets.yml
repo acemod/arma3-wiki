@@ -5,18 +5,11 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- call: !Binary
-  - unitOrGroup
-  - - enemyOnly
-    - maxDistance
-    - sides
-    - maxAge
-    - alternateCenter
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '''''unitOrGroup''''''s targets matching the criteria'
-  params:
-  - name: unitOrGroup
+  left: !Item
+    name: unitOrGroup
     desc: unit or group which target knowledge is retrieved
     type: !OneOf
     - type: Object
@@ -25,27 +18,35 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: enemyOnly
+  right: !Array
+  - !Item
+    name: enemyOnly
     desc: '[[true]] to include only enemy targets, [[false]] to include all targets'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: maxDistance
+  - !Item
+    name: maxDistance
     desc: maximum '''2D''' distance based on target's expected position; use 0 to ignore the filter
     type: Number
     optional: true
     default: '-1'
-  - name: sides
+  - !Item
+    name: sides
     desc: array of accepted sides; use {{hl|[]}} to ignore the side filter
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      type: Side
+      desc: ''
     optional: true
     default: '{{hl|[]}}'
-  - name: maxAge
+  - !Item
+    name: maxAge
     desc: max. target age, targets that are known to unit for longer than maxAge are ignored; use 0 to ignore the maxAge filter
     type: Number
     optional: true
     default: '0'
-  - name: alternateCenter
+  - !Item
+    name: alternateCenter
     desc: alternate (2D or 3D) position used for '''2D''' distance check
     type: ArrayUnknown
     optional: true

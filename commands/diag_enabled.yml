@@ -3,12 +3,11 @@ desc: Checks whether specific diagnostic mode is activated.
 groups:
 - Diagnostic
 syntax:
-- call: !Unary mode
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] when enabled, [[false]] when disabled'
-  params:
-  - name: mode
+  right: !Item
+    name: mode
     desc: 'see [[Arma 3: Diagnostics Exe]]'
     type: String
 argument_loc: Unspecified

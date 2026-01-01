@@ -3,12 +3,11 @@ desc: '{{Feature|afm}}Returns weight of RTD helicopter.'
 groups:
 - RTD
 syntax:
-- call: !Unary helicopter
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[fuselage weight, crew weight, fuel weight, [[setCustomWeightRTD|custom weight]], weapons weight] (kilograms)'
-  params:
-  - name: helicopter
+  right: !Item
+    name: helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

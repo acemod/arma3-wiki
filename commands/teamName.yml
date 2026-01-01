@@ -3,11 +3,10 @@ desc: Return a name of given [[Team|team]].
 groups:
 - Teams
 syntax:
-- call: !Unary team
-  ret:
+- ret:
     type: String
-  params:
-  - name: team
+  right: !Item
+    name: team
     type: TeamMember
 argument_loc: Unspecified
 effect_loc: Unspecified

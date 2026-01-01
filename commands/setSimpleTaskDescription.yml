@@ -3,23 +3,22 @@ desc: Attach descriptions to the simple task.
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - task
-  - - description
-    - descriptionShort
-    - descriptionHUD
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: task
+  left: !Item
+    name: task
     type: Task
-  - name: description
+  right: !Array
+  - !Item
+    name: description
     desc: task description
     type: String
-  - name: descriptionShort
+  - !Item
+    name: descriptionShort
     desc: task title
     type: String
-  - name: descriptionHUD
+  - !Item
+    name: descriptionHUD
     desc: task waypoint description
     type: String
 argument_loc: Unspecified

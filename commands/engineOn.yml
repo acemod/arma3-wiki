@@ -4,15 +4,13 @@ multiplayer_note: Executed on a remote vehicle this command may turn the engine 
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - state
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: state
+  right: !Item
+    name: state
     desc: '[[true]] to turn the engine on, [[false]] to turn it off'
     type: Boolean
 argument_loc: Local

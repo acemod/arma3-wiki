@@ -3,15 +3,13 @@ desc: Sets the font size of the secondary text of given control.
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - ctrl
-  - fontClass
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: fontClass
+  right: !Item
+    name: fontClass
     desc: font class
     type: String
 argument_loc: Unspecified

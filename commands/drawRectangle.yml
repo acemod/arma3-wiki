@@ -3,21 +3,14 @@ desc: Draws a rectangle on the map.<br> [[File:drawRectangle.jpg|250px]]
 groups:
 - GUI Control - Map
 syntax:
-- call: !Binary
-  - map
-  - - centre
-    - halfWidth
-    - halfHeight
-    - angle
-    - color
-    - fill
-    - alignWithMap
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: centre
+  right: !Array
+  - !Item
+    name: centre
     desc: rectangle's centre
     type: !OneOf
     - type: Object
@@ -29,22 +22,28 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: halfWidth
+  - !Item
+    name: halfWidth
     desc: 1/2 width of rectangle in meters
     type: Number
-  - name: halfHeight
+  - !Item
+    name: halfHeight
     desc: 1/2 height of rectangle in meters
     type: Number
-  - name: angle
+  - !Item
+    name: angle
     desc: angle of rotation in degrees
     type: Number
-  - name: color
+  - !Item
+    name: color
     desc: line color
     type: ArrayColorRgba
-  - name: fill
+  - !Item
+    name: fill
     desc: fill texture file or [[Procedural Textures]]. Note that the file texture will not rotate with rectangle, use [[drawIcon]] for that. If fill texture is not empty, set line color to white <sqf inline>[1,1,1,1]</sqf>
     type: String
-  - name: alignWithMap
+  - !Item
+    name: alignWithMap
     desc: '- when [[false]] the shape will not follow map rotation.'
     type: Boolean
     optional: true

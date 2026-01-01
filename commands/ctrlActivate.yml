@@ -3,22 +3,19 @@ desc: Launches action attached to given (button based) control. Command ignores 
 groups:
 - GUI Control
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  right: !Item
+    name: control
     type: Control
-- call: !Binary
-  - control
-  - full
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: button based control ([[CT_BUTTON]], [[CT_XBUTTON]], [[CT_SHORTCUTBUTTON]], [[CT_ACTIVETEXT]])
     type: Control
-  - name: full
+  right: !Item
+    name: full
     desc: '[[true]] to simulate button click in full including UI event handling'
     type: Boolean
   since:

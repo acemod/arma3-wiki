@@ -8,17 +8,15 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - vehicle
-  - - target
-    - turretPath
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: UAV
     type: Object
-  - name: target
+  right: !Array
+  - !Item
+    name: target
     desc: use [[objNull]] to unlock
     type: !OneOf
     - type: Object
@@ -27,21 +25,19 @@ syntax:
     - type: Position3dASL
       desc: null
       since: null
-  - name: turretPath
+  - !Item
+    name: turretPath
     desc: path to the turret with required camera
     type: ArrayUnknown
-- call: !Binary
-  - vehicle
-  - - target
-    - turretPath
-    - temporary
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: UAV
     type: Object
-  - name: target
+  right: !Array
+  - !Item
+    name: target
     desc: use [[objNull]] to unlock
     type: !OneOf
     - type: Object
@@ -50,10 +46,12 @@ syntax:
     - type: Position3dASL
       desc: null
       since: null
-  - name: turretPath
+  - !Item
+    name: turretPath
     desc: path to the turret with required camera
     type: ArrayUnknown
-  - name: temporary
+  - !Item
+    name: temporary
     desc: |-
       if set to [[true]], the engine will automatically remove the lock-on once the turret reaches its target.
       If the target is out of turret's reach, once the turret reaches its [[getTurretLimits | limits]] the lock-on will be released.

@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - groupName
-  - vehicleName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: groupName
+  left: !Item
+    name: groupName
     type: Group
-  - name: vehicleName
+  right: !Item
+    name: vehicleName
     type: Object
 argument_loc: Local
 effect_loc: Unspecified

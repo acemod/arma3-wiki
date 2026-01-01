@@ -35,11 +35,10 @@ groups:
 - Multiplayer
 - Variables
 syntax:
-- call: !Unary varName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: varName
+  right: !Item
+    name: varName
     desc: the [[Variables#Global Scope|global variable]]'s [[Identifier]]
     type: String
 argument_loc: Local

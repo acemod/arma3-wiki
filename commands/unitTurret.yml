@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - gunner
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: gunner
+  right: !Item
+    name: gunner
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,17 +3,15 @@ desc: The mission is launched (from the main menu).
 groups:
 - System
 syntax:
-- call: !Unary
-  - campaign
-  - mission
-  - skipBriefing
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: campaign
+  right: !Array
+  - !Item
+    name: campaign
     desc: directory of Campaign, if empty a single mission is launched
     type: String
-  - name: mission
+  - !Item
+    name: mission
     desc: directory if a string
     type: !OneOf
     - type: String
@@ -22,7 +20,8 @@ syntax:
     - type: Config
       desc: null
       since: null
-  - name: skipBriefing
+  - !Item
+    name: skipBriefing
     desc: If true, the intro and briefing are skipped.
     type: Boolean
     optional: true

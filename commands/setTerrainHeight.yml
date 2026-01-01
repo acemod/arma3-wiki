@@ -16,16 +16,15 @@ desc: |-
 groups:
 - Positions
 syntax:
-- call: !Unary
-  - positionAndAltitudeArray
-  - adjustObjects
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: positionAndAltitudeArray
+  right: !Array
+  - !Item
+    name: positionAndAltitudeArray
     desc: '[[x1, y1, newASLHeight1], [x2, y2, newASLHeight2], ...]'
     type: Unknown
-  - name: adjustObjects
+  - !Item
+    name: adjustObjects
     desc: |-
       if true then objects on modified points are moved up/down to keep the same ATL height
       {{Feature|important|'''All''' objects above modified terrain will be adjusted, even flying ones.}}

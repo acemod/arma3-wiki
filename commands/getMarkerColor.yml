@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Markers
 syntax:
-- call: !Unary markerName
-  ret:
+- ret:
     type: String
-  params:
-  - name: markerName
+  right: !Item
+    name: markerName
     desc: marker name
     type: String
 argument_loc: Unspecified

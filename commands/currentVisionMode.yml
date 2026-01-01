@@ -8,48 +8,42 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: Number
     desc: vision mode
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     desc: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode
     type: Object
-- call: !Unary
-  - entity
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: entity
+  right: !Array
+  - !Item
+    name: entity
     desc: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode
     type: Object
   since:
     arma3: '2.8'
-- call: !Binary
-  - vehicle
-  - turretPath
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle with vision modes
     type: Object
-  - name: turretPath
+  right: !Item
+    name: turretPath
     desc: path to vehicle's turret. Use [-1] for driver turret, [] for default primary gunner turret
     type: TurretPath
   since:
     arma3: '2.8'
-- call: !Binary
-  - unit
-  - weapon
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: soldier
     type: Object
-  - name: weapon
+  right: !Item
+    name: weapon
     desc: unit's weapon. Use "" for current weapon
     type: String
   since:

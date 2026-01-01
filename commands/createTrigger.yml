@@ -29,18 +29,16 @@ desc: |-
 groups:
 - Triggers
 syntax:
-- call: !Unary
-  - type
-  - position
-  - makeGlobal
-  ret:
+- ret:
     type: Object
     desc: created trigger
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: usually "EmptyDetector"
     type: String
-  - name: position
+  - !Item
+    name: position
     type: !OneOf
     - type: Position2d
       desc: null
@@ -51,7 +49,8 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: makeGlobal
+  - !Item
+    name: makeGlobal
     type: Unknown
     optional: true
     since:

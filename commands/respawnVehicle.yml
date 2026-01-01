@@ -5,61 +5,58 @@ desc: |-
 groups:
 - Multiplayer
 syntax:
-- call: !Binary
-  - vehicle
-  - - respawnDelay
-    - respawnCount
-    - deleteOldWreck
-    - respawnOnServer
-    - respawnFlying
-    - respawnUnit
-    - respawnMode
-    - respawnSide
-    - useRespawnMarkerDir
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: transport
     type: Object
-  - name: respawnDelay
+  right: !Array
+  - !Item
+    name: respawnDelay
     desc: (Optional since 2.18, default -1) delay in seconds between respawns. (-1 to use 3DEN vehicle respawn delay or ''respawnVehicleDelay'' from [[Description.ext|description.ext]])
     type: Number
     optional: true
-  - name: respawnCount
+  - !Item
+    name: respawnCount
     desc: how many times to respawn vehicle in total. (since 2.18 -1 unlimited respawns, 0 stop respawning)
     type: Number
     optional: true
     default: unlimited respawns
-  - name: deleteOldWreck
+  - !Item
+    name: deleteOldWreck
     desc: '- deletes old wreck automatically after vehicle respawns'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
       arma3: '2.18'
-  - name: respawnOnServer
+  - !Item
+    name: respawnOnServer
     desc: '- wreck is always transferred to the server and the new vehicle always respawns on server'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
       arma3: '2.18'
-  - name: respawnFlying
+  - !Item
+    name: respawnFlying
     desc: '- by default all vehicles placed on the ground, [[true]] overrides this'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
       arma3: '2.18'
-  - name: respawnUnit
+  - !Item
+    name: respawnUnit
     desc: '- unit that would be put in the driver seat after vehicle respawns'
     type: Object
     optional: true
     default: '[[objNull]]'
     since:
       arma3: '2.18'
-  - name: respawnMode
+  - !Item
+    name: respawnMode
     desc: '- overrides vehicle respawn mode. Available modes are: 2 or "INSTANT" and 3 or "BASE". -1 use [[Description.ext|description.ext]] value.'
     type: !OneOf
     - type: Number
@@ -72,14 +69,16 @@ syntax:
     default: '-1'
     since:
       arma3: '2.18'
-  - name: respawnSide
+  - !Item
+    name: respawnSide
     desc: '- sets respawn side for the purpouse of selecting respawn marker'
     type: Side
     optional: true
     default: typical vehicle [[side]]
     since:
       arma3: '2.18'
-  - name: useRespawnMarkerDir
+  - !Item
+    name: useRespawnMarkerDir
     desc: '- respawn vehicle matches respawn marker direction or the old wreck direction. [[false]] - random direction.'
     type: Boolean
     optional: true

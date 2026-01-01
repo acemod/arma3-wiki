@@ -5,16 +5,14 @@ desc: |-
 groups:
 - Variables
 syntax:
-- call: !Binary
-  - variable
-  - value
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: variable
+  left: !Item
+    name: variable
     desc: see [[Identifier]]
     type: Anything
-  - name: value
+  right: !Item
+    name: value
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified

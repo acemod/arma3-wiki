@@ -3,11 +3,10 @@ desc: 'Order the given unit(s) to stop (without radio messages). The units stopp
 groups:
 - Unit Control
 syntax:
-- call: !Unary unit(s)
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit(s)
+  right: !Item
+    name: unit(s)
     type: !OneOf
     - type: Object
       desc: null

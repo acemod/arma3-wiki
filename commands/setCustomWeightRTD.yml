@@ -5,16 +5,14 @@ desc: |-
 groups:
 - RTD
 syntax:
-- call: !Binary
-  - helicopterRTD
-  - weight
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: helicopterRTD
+  left: !Item
+    name: helicopterRTD
     desc: helicopter
     type: Unknown
-  - name: weight
+  right: !Item
+    name: weight
     desc: weight (kilograms)
     type: Number
 argument_loc: Unspecified

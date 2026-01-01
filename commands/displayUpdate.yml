@@ -3,11 +3,10 @@ desc: Set the provided display to update its [[Procedural Textures#UI On Texture
 groups:
 - GUI Control
 syntax:
-- call: !Unary display
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: display
+  right: !Item
+    name: display
     desc: the display to update
     type: Display
 argument_loc: Unspecified

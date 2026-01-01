@@ -3,15 +3,13 @@ desc: Sets H2 bold font of given HTML control.
 groups:
 - GUI Control - HTML
 syntax:
-- call: !Binary
-  - controlName
-  - fontName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: controlName
+  left: !Item
+    name: controlName
     type: Control
-  - name: fontName
+  right: !Item
+    name: fontName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

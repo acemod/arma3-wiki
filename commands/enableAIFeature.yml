@@ -3,31 +3,28 @@ desc: Enables/disables given AI feature.
 groups:
 - AI Behaviour
 syntax:
-- call: !Binary
-  - feature
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: feature
+  left: !Item
+    name: feature
     type: Unknown
-  - name: enable
+  right: !Item
+    name: enable
     desc: '[[true]] to enable, [[false]] to disable'
     type: Boolean
-- call: !Binary
-  - unit
-  - - feature
-    - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit to test AI feature for
     type: Object
-  - name: feature
+  right: !Array
+  - !Item
+    name: feature
     desc: see [[disableAI]] / [[enableAI]] for possible values
     type: String
-  - name: enable
+  - !Item
+    name: enable
     desc: '[[true]] to enable, [[false]] to disable'
     type: Boolean
   since:

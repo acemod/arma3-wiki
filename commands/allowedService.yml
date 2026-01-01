@@ -5,12 +5,11 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Number
     desc: '0: none, 1: auto, 2: manual, 3: both, -1: unsupported'
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: supply vehicle, i.e. ammo truck
     type: Object
 argument_loc: Global

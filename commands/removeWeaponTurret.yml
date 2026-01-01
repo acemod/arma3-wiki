@@ -3,18 +3,17 @@ desc: Removes weapon from the turret. Use turret path [-1] for driver's turret.
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - - weaponName
-    - turretPath
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: weaponName
+  right: !Array
+  - !Item
+    name: weaponName
     type: String
-  - name: turretPath
+  - !Item
+    name: turretPath
     type: TurretPath
 argument_loc: Local
 effect_loc: Global

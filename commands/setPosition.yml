@@ -3,15 +3,13 @@ desc: Sets the position of a location.
 groups:
 - Locations
 syntax:
-- call: !Binary
-  - location
-  - pos
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: location
+  left: !Item
+    name: location
     type: Location
-  - name: pos
+  right: !Item
+    name: pos
     type: Position
 argument_loc: Unspecified
 effect_loc: Unspecified

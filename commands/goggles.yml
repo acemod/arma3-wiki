@@ -3,11 +3,10 @@ desc: Returns name of currently used goggles (for NVGoggles use [[hmd]]).
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: String
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

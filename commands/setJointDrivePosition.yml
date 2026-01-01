@@ -6,19 +6,17 @@ desc: |-
 groups:
 - PhysX
 syntax:
-- call: !Binary
-  - joint
-  - pos
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: joint
+  left: !Item
+    name: joint
     desc: The parent vehicle that has a joint to a child, or the joint itself to be manipulated
     type: !OneOf
     - type: Object
       desc: null
       since: null
-  - name: pos
+  right: !Item
+    name: pos
     desc: target position in XYZ relative to the joint
     type: ArrayUnknown
 argument_loc: Local

@@ -5,84 +5,76 @@ groups:
 - Strings
 - Config
 syntax:
-- call: !Binary
-  - array
-  - index
-  ret:
+- ret:
     type: Anything
     desc: a <u>reference</u> to the array element given by its index
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: index
+  right: !Item
+    name: index
     desc: |-
       index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up.<br>
       {{GVI|arma3|2.12|size= 0.75}} negative index can be used to select from the end of the array, i.e. -1 means last array element.
     type: Number
-- call: !Binary
-  - array
-  - boolean
-  ret:
+- ret:
     type: Anything
     desc: a <u>reference</u> to the array element
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: boolean
+  right: !Item
+    name: boolean
     desc: '[[false]] selects the ''''''first'''''' element of the [[Array]], [[true]] the ''''''second'''''' one'
     type: Boolean
-- call: !Binary
-  - config
-  - index
-  ret:
+- ret:
     type: Config
-  params:
-  - name: config
+  left: !Item
+    name: config
     type: Config
-  - name: index
+  right: !Item
+    name: index
     desc: index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
     type: Number
   since:
     arma1: '1.0'
-- call: !Binary
-  - string
-  - - start
-    - length
-  ret:
+- ret:
     type: String
-  params:
-  - name: string
+  left: !Item
+    name: string
     type: String
-  - name: start
+  right: !Array
+  - !Item
+    name: start
     desc: string position to start selection from. 0 denotes the first character of the string, 1 the second, etc. If passed number has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
     type: Number
-  - name: length
+  - !Item
+    name: length
     desc: number of characters to select
     type: Number
     optional: true
     default: '''''string''''''s length'
   since:
     arma3: '1.28'
-- call: !Binary
-  - array
-  - - start
-    - count
-  ret:
+- ret:
     type: ArrayUnknown
     desc: a <u>new array</u> from selection
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: start
+  right: !Array
+  - !Item
+    name: start
     desc: array index to start selection from
     type: Number
-  - name: count
+  - !Item
+    name: count
     desc: |-
       (Optional after {{GVI|arma3|2.14|size= 0.75}}) number of array elements to select. If the selected range exceeds source array boundaries, selection will be made up to the last element of the array.
       {{Feature|informative|Since v2.14 'count' is optional, if omitted the selection is made from ''start'' until the end of the array.}}
@@ -90,18 +82,16 @@ syntax:
     optional: true
   since:
     arma3: '1.32'
-- call: !Binary
-  - array
-  - expression
-  ret:
+- ret:
     type: ArrayUnknown
     desc: a <u>new array</u> of all elements from the original array that satisfied expression condition
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: expression
+  right: !Item
+    name: expression
     desc: |-
       expression that is expected to return [[Boolean]] or [[Nothing]].
       If [[true]] is returned, the original array value of currently tested element [[Magic Variables#x|_x]] will be added to the output array

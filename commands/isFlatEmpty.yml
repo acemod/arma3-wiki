@@ -15,42 +15,39 @@ problem_notes:
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - position
-  - - minDistance
-    - mode
-    - maxGradient
-    - maxGradientRadius
-    - overLandOrWater
-    - shoreLine
-    - ignoreObject
-  ret:
+- ret:
     type: ArrayUnknown
     desc: empty array [] if check failed or [[Position#PositionASL|PositionASL]] if succeded. Resulting position will be original [[Position#PositionAGL|PositionAGL]] + [[getTerrainHeightASL]]
-  params:
-  - name: position
+  left: !Item
+    name: position
     type: Position3dAGL
-  - name: minDistance
+  right: !Array
+  - !Item
+    name: minDistance
     desc: minimum (2D) distance from other objects (range 0..50). -1 to ignore proximity check
     type: Number
     optional: true
     default: '-1'
-  - name: mode
+  - !Item
+    name: mode
     desc: position check mode ('''ALWAYS USE DEFAULT VALUE''')
     type: Number
     optional: true
     default: '-1'
-  - name: maxGradient
+  - !Item
+    name: maxGradient
     desc: maximum terrain steepness allowed. -1 to ignore
     type: Number
     optional: true
     default: '-1'
-  - name: maxGradientRadius
+  - !Item
+    name: maxGradientRadius
     desc: how far to extend gradient check
     type: Number
     optional: true
     default: '1'
-  - name: overLandOrWater
+  - !Item
+    name: overLandOrWater
     type: !NumberEnum
     - value: 0
       desc: position cannot be over water
@@ -59,10 +56,12 @@ syntax:
       desc: position cannot be over land
       since: null
     optional: true
-  - name: shoreLine
+  - !Item
+    name: shoreLine
     type: Unknown
     optional: true
-  - name: ignoreObject
+  - !Item
+    name: ignoreObject
     desc: object to ignore in proximity checks. [[objNull]] to ignore
     type: Object
     optional: true

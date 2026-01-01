@@ -4,12 +4,11 @@ groups:
 - Strings
 - Localization
 syntax:
-- call: !Unary stringtable
-  ret:
+- ret:
     type: Unknown
     desc: see description
-  params:
-  - name: stringtable
+  right: !Item
+    name: stringtable
     desc: stringtable name or ""
     type: String
 argument_loc: Unspecified

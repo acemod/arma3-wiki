@@ -4,11 +4,10 @@ groups:
 - Diagnostic
 - Performance Profiling
 syntax:
-- call: !Unary code
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: code
+  right: !Item
+    name: code
     desc: the code to process
     type: Code
 argument_loc: Unspecified

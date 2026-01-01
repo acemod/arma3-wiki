@@ -3,14 +3,12 @@ desc: Returns mission end type and how it was ended or an empty array [] is miss
 groups:
 - Mission Information
 syntax:
-- call: Nular
-  ret:
+- ret:
     type: Unknown
     desc: |-
       the ending that was passed to [[failMission]] or [[endMission]]
       * failMission: [[Boolean]] - [[true]] if the mission ended via [[failMission]], [[false]] if via [[endMission]]
       * isFailed: [[Boolean]] - engine idea of how mission ended. For example if mission ended via [[failMission]] but the type of ending was not "Killed", ''isFailed'' is [[false]]
-  params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

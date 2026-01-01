@@ -3,15 +3,13 @@ desc: "Sets the distance to keep to the vehicle which is '''in front'''.<br>\n*T
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - distance
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: distance
+  right: !Item
+    name: distance
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -20,19 +20,16 @@ problem_notes:
 groups:
 - Markers
 syntax:
-- call: !Unary
-  - name
-  - position
-  - channel
-  - creator
-  ret:
+- ret:
     type: String
     desc: the marker's name or empty string if the marker name is not unique.
-  params:
-  - name: name
+  right: !Array
+  - !Item
+    name: name
     desc: the marker's name, used to reference the marker in scripts.
     type: String
-  - name: position
+  - !Item
+    name: position
     desc: '[[Position#Introduction|Position2D]], [[Position#PositionAGL|PositionAGL]] or [[Object]]. In case of an object, the object''s model [0,0,0] is used.'
     type: !OneOf
     - type: ArrayUnknown
@@ -41,14 +38,16 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: channel
+  - !Item
+    name: channel
     desc: the marker channel - see [[Channel IDs]] (for multiplayer)
     type: Number
     optional: true
     default: '-1'
     since:
       arma3: '2.2'
-  - name: creator
+  - !Item
+    name: creator
     desc: the marker creator (for multiplayer)
     type: Object
     optional: true

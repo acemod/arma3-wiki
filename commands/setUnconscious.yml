@@ -9,15 +9,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - unit
-  - set
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: set
+  right: !Item
+    name: set
     type: Boolean
 argument_loc: Local
 effect_loc: Global

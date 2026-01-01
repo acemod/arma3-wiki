@@ -4,11 +4,10 @@ groups:
 - Map
 - Event Handlers
 syntax:
-- call: !Unary command
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: command
+  right: !Item
+    name: command
     type: !OneOf
     - type: String
       desc: null
@@ -16,15 +15,13 @@ syntax:
     - type: Code
       desc: null
       since: null
-- call: !Binary
-  - params
-  - command
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: params
+  left: !Item
+    name: params
     type: Anything
-  - name: command
+  right: !Item
+    name: command
     type: !OneOf
     - type: String
       desc: null

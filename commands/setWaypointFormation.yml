@@ -3,16 +3,14 @@ desc: "Switches the group formation when the waypoint becomes active.\n<br>\n<br
 groups:
 - Waypoints
 syntax:
-- call: !Binary
-  - waypoint
-  - formation
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: waypoint
+  left: !Item
+    name: waypoint
     desc: format [[Waypoint]]
     type: ArrayUnknown
-  - name: formation
+  right: !Item
+    name: formation
     type: String
 argument_loc: Unspecified
 effect_loc: Global

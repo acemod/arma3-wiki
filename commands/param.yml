@@ -7,27 +7,26 @@ groups:
 - Variables
 - Arrays
 syntax:
-- call: !Unary
-  - index
-  - defaultValue
-  - expectedDataTypes
-  - expectedArrayCount
-  ret:
+- ret:
     type: Anything
     desc: extracted value on success or default value otherwise. [[Nothing]] if syntax error occurred.
-  params:
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     desc: index of required item in the input array.
     type: Number
-  - name: defaultValue
+  - !Item
+    name: defaultValue
     desc: a default value to return if input is undefined, of the wrong type or of the wrong length (if the item is an array).
     type: Anything
     optional: true
-  - name: expectedDataTypes
+  - !Item
+    name: expectedDataTypes
     desc: 'checks if passed value is one of listed [[:Category: Data Types| Data Types]]. If not, default value is used instead. Empty array [] means every data type is accepted.'
     type: Unknown
     optional: true
-  - name: expectedArrayCount
+  - !Item
+    name: expectedArrayCount
     desc: a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted.
     type: !OneOf
     - type: Number
@@ -37,31 +36,30 @@ syntax:
       desc: null
       since: null
     optional: true
-- call: !Binary
-  - argument
-  - - index
-    - defaultValue
-    - expectedDataTypes
-    - expectedArrayCount
-  ret:
+- ret:
     type: Anything
     desc: extracted value on success or default value otherwise. [[Nothing]] if syntax error occurred.
-  params:
-  - name: argument
+  left: !Item
+    name: argument
     desc: a usual array of params is expected. If a non-array value is passed, it will be converted to 1 element array
     type: Anything
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     desc: index of required item in the input array.
     type: Number
-  - name: defaultValue
+  - !Item
+    name: defaultValue
     desc: a default value to return if input is undefined, of the wrong type or of the wrong length (if the item is an array).
     type: Anything
     optional: true
-  - name: expectedDataTypes
+  - !Item
+    name: expectedDataTypes
     desc: 'checks if passed value is one of listed [[:Category: Data Types| Data Types]]. If not, default value is used instead. Empty array [] means every data type is accepted.'
     type: Unknown
     optional: true
-  - name: expectedArrayCount
+  - !Item
+    name: expectedArrayCount
     desc: a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted.
     type: !OneOf
     - type: Number

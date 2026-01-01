@@ -6,15 +6,13 @@ groups:
 - Sides
 - Locations
 syntax:
-- call: !Binary
-  - location
-  - side
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: location
+  left: !Item
+    name: location
     type: Location
-  - name: side
+  right: !Item
+    name: side
     type: Side
 argument_loc: Unspecified
 effect_loc: Unspecified

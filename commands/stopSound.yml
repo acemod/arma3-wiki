@@ -3,11 +3,10 @@ desc: Terminates the given sound
 groups:
 - Sounds
 syntax:
-- call: !Unary id
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: id
+  right: !Item
+    name: id
     desc: id returned by [[playSoundUI]] and [[playSound3D]] commands{{Feature|important|Sound ids are '''local'''.}}
     type: Number
 argument_loc: Unspecified

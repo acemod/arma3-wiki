@@ -10,15 +10,13 @@ problem_notes:
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - allow
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: allow
+  right: !Item
+    name: allow
     type: Boolean
 argument_loc: Local
 effect_loc: Global

@@ -3,15 +3,13 @@ desc: Sets the text associated with a location. This text will be displayed on t
 groups:
 - Locations
 syntax:
-- call: !Binary
-  - location
-  - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: location
+  left: !Item
+    name: location
     type: Location
-  - name: text
+  right: !Item
+    name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

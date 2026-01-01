@@ -9,21 +9,19 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
-- call: !Unary
-  - vehicle
-  - includeFFV
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     type: Object
-  - name: includeFFV
+  - !Item
+    name: includeFFV
     desc: '[[true]] to include FFV (Firing From Vehicle) positions, [[false]] to exclude them'
     type: Boolean
 argument_loc: Unspecified

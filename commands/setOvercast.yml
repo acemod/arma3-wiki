@@ -6,16 +6,14 @@ multiplayer_note: '''''''Pre {{arma3}}:'''''' Each client and the server can hav
 groups:
 - Environment
 syntax:
-- call: !Binary
-  - time
-  - overcast
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: time
+  left: !Item
+    name: time
     desc: in seconds
     type: Number
-  - name: overcast
+  right: !Item
+    name: overcast
     desc: in range 0..1
     type: Number
 argument_loc: Unspecified

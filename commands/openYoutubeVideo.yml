@@ -3,11 +3,10 @@ desc: Opens Steam overlay with given YT video. Video URL is the end part of the 
 groups:
 - System
 syntax:
-- call: !Unary youTubeUrl
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: youTubeUrl
+  right: !Item
+    name: youTubeUrl
     desc: 'for parameters see: https://developers.google.com/youtube/player_parameters'
     type: String
 argument_loc: Unspecified

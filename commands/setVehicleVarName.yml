@@ -8,15 +8,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - name
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: name
+  right: !Item
+    name: name
     type: String
 argument_loc: Global
 effect_loc: Local

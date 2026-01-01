@@ -3,12 +3,11 @@ desc: A getter for [[disableConversation]].
 groups:
 - Radio and Chat
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Boolean
     desc: returns [[true]] if the status of [[kbTell]]'s ''IsSpeaking'' for the given unit is {{hl|> 0}}. See [[disableConversation]] for more info
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

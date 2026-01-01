@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Locations
 syntax:
-- call: !Unary position
-  ret:
+- ret:
     type: Location
-  params:
-  - name: position
+  right: !Item
+    name: position
     type: !OneOf
     - type: Object
       desc: null

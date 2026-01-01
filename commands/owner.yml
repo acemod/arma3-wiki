@@ -3,11 +3,10 @@ desc: On server machine, returns the [[Multiplayer_Scripting#Machine_network_ID 
 groups:
 - Multiplayer
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Number
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

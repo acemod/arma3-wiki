@@ -4,16 +4,14 @@ groups:
 - Triggers
 - Waypoints
 syntax:
-- call: !Binary
-  - trigger
-  - waypoints
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: trigger
+  left: !Item
+    name: trigger
     desc: trigger to synchronize
     type: Object
-  - name: waypoints
+  right: !Item
+    name: waypoints
     desc: waypoints to synchronize with trigger. Array can be empty to unset
     type: !ArrayUnsized
       type: Waypoint

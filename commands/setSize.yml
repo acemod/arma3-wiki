@@ -6,18 +6,17 @@ desc: |-
 groups:
 - Locations
 syntax:
-- call: !Binary
-  - location
-  - - x
-    - y
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: location
+  left: !Item
+    name: location
     type: Location
-  - name: x
+  right: !Array
+  - !Item
+    name: x
     type: Number
-  - name: y
+  - !Item
+    name: y
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

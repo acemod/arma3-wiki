@@ -3,18 +3,17 @@ desc: Returns the shown text in the item with the given position of the given 2D
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Binary
-  - control
-  - - row
-    - column
-  ret:
+- ret:
     type: String
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: row
+  right: !Array
+  - !Item
+    name: row
     type: Number
-  - name: column
+  - !Item
+    name: column
     type: Number
 argument_loc: Local
 effect_loc: Local

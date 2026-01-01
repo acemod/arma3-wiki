@@ -3,20 +3,19 @@ desc: Sets a picture to be displayed on the right of the [[Diary]] subject. The 
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - unit
-  - - subject
-    - picture
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit
     type: Object
-  - name: subject
+  right: !Array
+  - !Item
+    name: subject
     desc: diary subject (see [[Diary]])
     type: String
-  - name: picture
+  - !Item
+    name: picture
     desc: icon path
     type: String
 argument_loc: Global

@@ -8,29 +8,27 @@ desc: |-
 groups:
 - Roads and Airports
 syntax:
-- call: !Unary roadSegment
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
     desc: connected road segments
-  params:
-  - name: roadSegment
+  right: !Item
+    name: roadSegment
     desc: road segment
     type: Object
-- call: !Unary
-  - roadSegment
-  - extended
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
     desc: connected road segments
-  params:
-  - name: roadSegment
+  right: !Array
+  - !Item
+    name: roadSegment
     desc: road segment
     type: Object
-  - name: extended
+  - !Item
+    name: extended
     desc: when [[true]], performs a more thorough search on top of base behaviour, slower but returns pedestrian and other missing road segments
     type: Boolean
     optional: true

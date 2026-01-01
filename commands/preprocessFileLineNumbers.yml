@@ -3,12 +3,11 @@ desc: "Returns the preprocessed content of the given file. The preprocessor is C
 groups:
 - System
 syntax:
-- call: !Unary fileName
-  ret:
+- ret:
     type: String
     desc: file content containing {{hl|#line 1 "aFilename"}}
-  params:
-  - name: fileName
+  right: !Item
+    name: fileName
     desc: path to the file
     type: String
 argument_loc: Unspecified

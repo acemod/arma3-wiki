@@ -3,21 +3,20 @@ desc: Returns true if all given units are able to fire at given position with gi
 groups:
 - Artillery
 syntax:
-- call: !Binary
-  - pos
-  - - units
-    - magazineType
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: pos
+  left: !Item
+    name: pos
     type: Position
-  - name: units
+  right: !Array
+  - !Item
+    name: units
     desc: array of units.
     type: !ArrayUnsized
       type: Object
       desc: ''
-  - name: magazineType
+  - !Item
+    name: magazineType
     desc: '''''''case-sensitive'''''''
     type: String
 argument_loc: Global

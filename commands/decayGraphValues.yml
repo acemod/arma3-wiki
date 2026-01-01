@@ -3,26 +3,25 @@ desc: Multiplies graph values by the given coefficient. The corresponding lower 
 groups:
 - Math
 syntax:
-- call: !Unary
-  - lowerBoundValues
-  - graphValues
-  - coef
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Number
       desc: ''
-  params:
-  - name: lowerBoundValues
+  right: !Array
+  - !Item
+    name: lowerBoundValues
     desc: lower bound for the new graph
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: graphValues
+  - !Item
+    name: graphValues
     desc: graph values
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: coef
+  - !Item
+    name: coef
     desc: the multiplication coefficient
     type: Number
 argument_loc: Unspecified

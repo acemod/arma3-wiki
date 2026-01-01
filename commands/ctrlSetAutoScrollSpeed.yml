@@ -6,16 +6,14 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - speed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: '[[DialogControls-ListBoxes|CT_LISTBOX]] or [[CT_CONTROLS_GROUP]]'
     type: Control
-  - name: speed
+  right: !Item
+    name: speed
     desc: seconds to autoscroll to the next line
     type: Number
 argument_loc: Unspecified

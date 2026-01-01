@@ -6,16 +6,15 @@ desc: |-
 groups:
 - Event Handlers
 syntax:
-- call: !Unary
-  - keyName
-  - eventType
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: keyName
+  right: !Array
+  - !Item
+    name: keyName
     desc: see [[inputAction/actions]]
     type: String
-  - name: eventType
+  - !Item
+    name: eventType
     type: !StringEnum
     - value: Activate
       desc: null

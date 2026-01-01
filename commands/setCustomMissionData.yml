@@ -3,11 +3,10 @@ desc: 'Defines custom mission text that is sent to [[Arma 3: Analytics]].'
 groups:
 - Diagnostic
 syntax:
-- call: !Unary data
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: data
+  right: !Item
+    name: data
     desc: A maximum of five strings is allowed, each string with a maximum length of 16 characters
     type: !ArrayUnsized
       type: String

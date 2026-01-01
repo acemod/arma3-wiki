@@ -3,11 +3,10 @@ desc: Sets the time interval (in seconds) that the player must wait before respa
 groups:
 - Multiplayer
 syntax:
-- call: !Unary interval
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: interval
+  right: !Item
+    name: interval
     desc: respawn time in seconds
     type: Number
 argument_loc: Unspecified

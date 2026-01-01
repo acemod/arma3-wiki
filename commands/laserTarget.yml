@@ -3,25 +3,22 @@ desc: Returns the laser target object created by given unit (vehicle or soldier)
 groups:
 - Weapons
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: Object
     desc: laser target or [[objNull]] if no laser target exists
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     desc: unit or vehicle
     type: Object
-- call: !Binary
-  - vehicle
-  - turret
-  ret:
+- ret:
     type: Object
     desc: laser target or [[objNull]] if no laser target exists
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: transport
     type: Object
-  - name: turret
+  right: !Item
+    name: turret
     type: TurretPath
   since:
     arma3: '2.12'

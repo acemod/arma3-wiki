@@ -6,12 +6,11 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Object
     desc: commander unit
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

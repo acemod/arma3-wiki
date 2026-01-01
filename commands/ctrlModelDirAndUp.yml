@@ -3,11 +3,10 @@ desc: 'Returns [[vectorDir]] and [[vectorUp]] of the model used in 3D-[[Arma: GU
 groups:
 - GUI Control - Object
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: control
+  right: !Item
+    name: control
     desc: 3D control
     type: Control
 argument_loc: Unspecified

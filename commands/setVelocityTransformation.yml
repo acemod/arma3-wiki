@@ -24,54 +24,53 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - - fromPosASL
-    - toPosASL
-    - fromVelocity
-    - toVelocity
-    - fromVectorDir
-    - toVectorDir
-    - fromVectorUp
-    - toVectorUp
-    - interval
-    - customCenter
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: object to be interpolated
     type: Object
-  - name: fromPosASL
+  right: !Array
+  - !Item
+    name: fromPosASL
     desc: starting [[getPosASL]] of the object
     type: Position3dASL
-  - name: toPosASL
+  - !Item
+    name: toPosASL
     desc: ending [[getPosASL]] of the object
     type: Position3dASL
-  - name: fromVelocity
+  - !Item
+    name: fromVelocity
     desc: starting [[velocity]] of the object
-    type: ArrayUnknown
-  - name: toVelocity
+    type: Vector3d
+  - !Item
+    name: toVelocity
     desc: ending [[velocity]] of the object
-    type: ArrayUnknown
-  - name: fromVectorDir
+    type: Vector3d
+  - !Item
+    name: fromVectorDir
     desc: starting [[vectorDir]] of the object
-    type: ArrayUnknown
-  - name: toVectorDir
+    type: Vector3d
+  - !Item
+    name: toVectorDir
     desc: ending [[vectorDir]] of the object
-    type: ArrayUnknown
-  - name: fromVectorUp
+    type: Vector3d
+  - !Item
+    name: fromVectorUp
     desc: starting [[vectorUp]] of the object
-    type: ArrayUnknown
-  - name: toVectorUp
+    type: Vector3d
+  - !Item
+    name: toVectorUp
     desc: ending [[vectorUp]] of the object
-    type: ArrayUnknown
-  - name: interval
+    type: Vector3d
+  - !Item
+    name: interval
     desc: interpolation interval (variable value, normally between 0 and 1)
     type: Number
-  - name: customCenter
+  - !Item
+    name: customCenter
     desc: ) custom center [x, y, z] to which transformation would be applied in model coordinates
-    type: ArrayUnknown
+    type: Position3dRelative
     optional: true
     default: placing point of the model (see [[getModelInfo]]
     since:

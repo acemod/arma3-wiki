@@ -4,13 +4,10 @@ groups:
 - Waypoints
 - Triggers
 syntax:
-- call: !Binary
-  - triggerOrWaypoint
-  - waypoints
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: triggerOrWaypoint
+  left: !Item
+    name: triggerOrWaypoint
     type: !OneOf
     - type: Object
       desc: '[[Trigger|trigger]]'
@@ -18,7 +15,8 @@ syntax:
     - type: Waypoint
       desc: '[[Array]] in format of [[Waypoint]]'
       since: null
-  - name: waypoints
+  right: !Item
+    name: waypoints
     type: !ArrayUnsized
       type: Waypoint
       desc: ''

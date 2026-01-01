@@ -3,15 +3,13 @@ desc: Sets the orientation of the marker.
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - markerName
-  - angle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: markerName
+  left: !Item
+    name: markerName
     type: String
-  - name: angle
+  right: !Item
+    name: angle
     desc: angle of the marker in degree
     type: Number
 argument_loc: Unspecified

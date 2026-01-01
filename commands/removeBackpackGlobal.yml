@@ -3,11 +3,10 @@ desc: Removes backpack from a unit. (even non-local)
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: soldier
     type: Object
 argument_loc: Global

@@ -5,16 +5,14 @@ desc: |-
 groups:
 - Math
 syntax:
-- call: !Binary
-  - progress
-  - positions
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: progress
+  left: !Item
+    name: progress
     desc: interpolation value
     type: Number
-  - name: positions
+  right: !Item
+    name: positions
     type: !ArrayUnsized
       type: Position3d
       desc: ''

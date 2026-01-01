@@ -3,20 +3,18 @@ desc: "Cross product of two 3D vectors. \n<br>In layman's terms, if you have a p
 groups:
 - Math - Vectors
 syntax:
-- call: !Binary
-  - vector1
-  - vector2
-  ret:
+- ret:
     type: ArrayUnknown
     desc: |-
       vector [x, y, z]
       <br><br>
       [[File:crossProduct.jpg|300px]]
-  params:
-  - name: vector1
+  left: !Item
+    name: vector1
     desc: in form [x, y, z] or 2D (since Arma 3 v2.00, z coordinate is defaulted to 0)
     type: ArrayUnknown
-  - name: vector2
+  right: !Item
+    name: vector2
     desc: in form [x, y, z] or 2D (since Arma 3 v2.00, z coordinate is defaulted to 0)
     type: ArrayUnknown
 argument_loc: Unspecified

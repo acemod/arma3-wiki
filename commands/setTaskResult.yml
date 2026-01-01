@@ -3,18 +3,17 @@ desc: Set a result of the task.
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - task
-  - - state
-    - result
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: task
+  left: !Item
+    name: task
     type: Task
-  - name: state
+  right: !Array
+  - !Item
+    name: state
     type: String
-  - name: result
+  - !Item
+    name: result
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

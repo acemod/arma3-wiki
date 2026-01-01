@@ -3,20 +3,18 @@ desc: 'Returns if a control on the currently active user dialog is enabled. Disa
 groups:
 - GUI Control
 syntax:
-- call: !Unary idc
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if the control is enabled, [[false]] if not'
-  params:
-  - name: idc
+  right: !Item
+    name: idc
     desc: control's IDC
     type: Number
-- call: !Unary controlName
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if the control is enabled, [[false]] if not'
-  params:
-  - name: controlName
+  right: !Item
+    name: controlName
     type: Control
 argument_loc: Local
 effect_loc: Unspecified

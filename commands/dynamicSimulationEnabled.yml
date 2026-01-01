@@ -3,11 +3,10 @@ desc: A getter for [[enableDynamicSimulation]].
 groups:
 - Dynamic Simulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: !OneOf
     - type: Object
       desc: null

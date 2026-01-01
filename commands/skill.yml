@@ -9,21 +9,18 @@ desc: |-
 groups:
 - AI Behaviour
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Number
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
-- call: !Binary
-  - unit
-  - skillName
-  ret:
+- ret:
     type: Number
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: skillName
+  right: !Item
+    name: skillName
     type: Unknown
   since:
     arma1: '1.0'

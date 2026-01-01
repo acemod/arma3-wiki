@@ -3,11 +3,10 @@ desc: Plays the map animation.
 groups:
 - GUI Control - Map
 syntax:
-- call: !Unary mapControl
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: mapControl
+  right: !Item
+    name: mapControl
     type: Control
 argument_loc: Local
 effect_loc: Local

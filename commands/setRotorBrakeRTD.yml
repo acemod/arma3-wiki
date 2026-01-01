@@ -3,16 +3,14 @@ desc: Toggles a helicopter's rotor brake. {{Feature|afm}}
 groups:
 - RTD
 syntax:
-- call: !Binary
-  - helicopterRTD
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: helicopterRTD
+  left: !Item
+    name: helicopterRTD
     desc: helicopter
     type: Object
-  - name: enable
+  right: !Item
+    name: enable
     type: !NumberEnum
     - value: 0
       desc: off

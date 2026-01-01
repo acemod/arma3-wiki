@@ -4,12 +4,11 @@ groups:
 - AI Behaviour
 - Groups
 syntax:
-- call: !Unary unitOrGroup
-  ret:
+- ret:
     type: String
     desc: 'unit behaviour - one of:'
-  params:
-  - name: unitOrGroup
+  right: !Item
+    name: unitOrGroup
     desc: AI unit or group
     type: !OneOf
     - type: Object

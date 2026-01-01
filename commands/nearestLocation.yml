@@ -6,14 +6,11 @@ desc: |-
 groups:
 - Locations
 syntax:
-- call: !Unary
-  - position
-  - locationType
-  - maxDistance
-  ret:
+- ret:
     type: Location
-  params:
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     type: !OneOf
     - type: Object
       desc: null
@@ -24,9 +21,11 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: locationType
+  - !Item
+    name: locationType
     type: Unknown
-  - name: maxDistance
+  - !Item
+    name: maxDistance
     desc: max search radius. Default - unlimited range.
     type: Number
     optional: true

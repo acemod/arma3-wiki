@@ -3,41 +3,41 @@ desc: Sets the cell picture's colour on cell selection.
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  - colour
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: row
-    desc: 0-based index (first row is 0, second is 1, etc)
-    type: Number
-  - name: column
-    desc: 0-based index (first column is 0, second is 1, etc)
-    type: Number
-  - name: colour
+  - !Array
+    - !Item
+      name: row
+      desc: 0-based index (first row is 0, second is 1, etc)
+      type: Number
+    - !Item
+      name: column
+      desc: 0-based index (first column is 0, second is 1, etc)
+      type: Number
+  - !Item
+    name: colour
     type: ArrayColorRgba
-- call: !Binary
-  - ctrl
-  - - - row
-      - column
-    - colour
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: row
-    desc: 0-based index (first row is 0, second is 1, etc)
-    type: Number
-  - name: column
-    desc: 0-based index (first column is 0, second is 1, etc)
-    type: Number
-  - name: colour
+  right: !Array
+  - !Array
+    - !Item
+      name: row
+      desc: 0-based index (first row is 0, second is 1, etc)
+      type: Number
+    - !Item
+      name: column
+      desc: 0-based index (first column is 0, second is 1, etc)
+      type: Number
+  - !Item
+    name: colour
     type: ArrayColorRgba
 argument_loc: Unspecified
 effect_loc: Unspecified

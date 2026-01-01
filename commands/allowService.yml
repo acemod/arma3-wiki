@@ -5,16 +5,14 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - type
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: supply vehicle, i.e. ammo truck
     type: Object
-  - name: type
+  right: !Item
+    name: type
     desc: '0: none, 1: auto, 2: manual, 3: both'
     type: Number
 argument_loc: Local

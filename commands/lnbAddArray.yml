@@ -3,14 +3,12 @@ desc: Adds list of rows of strings.
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - arrayOfTextAndValues
-  ret:
+- ret:
     type: Number
     desc: index
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: !OneOf
     - type: Number
       desc: null
@@ -18,7 +16,8 @@ syntax:
     - type: Control
       desc: null
       since: null
-  - name: arrayOfTextAndValues
+  - !Item
+    name: arrayOfTextAndValues
     type: Unknown
 argument_loc: Local
 effect_loc: Local

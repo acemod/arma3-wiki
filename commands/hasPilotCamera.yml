@@ -3,11 +3,10 @@ desc: Returns true if the object airplane or helicopter has a [[A3_Targeting_con
 groups:
 - Pilot Camera
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

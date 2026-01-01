@@ -7,8 +7,7 @@ desc: |-
 groups:
 - Remote Control
 syntax:
-- call: !Unary uav
-  ret:
+- ret:
     type: !OneOf
     - type: Object
       desc: null
@@ -18,8 +17,8 @@ syntax:
       * vehicleRole: [[String]] - vehicle role of the operator in UAV. Can be "DRIVER", "GUNNER" or "" (not in control)
       * unit2: [[Object]] - see {{Link|#Example 2}}
       * vehicleRole2: Can be "DRIVER", "GUNNER", or "". (see {{Link|#Example 2}})
-  params:
-  - name: uav
+  right: !Item
+    name: uav
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

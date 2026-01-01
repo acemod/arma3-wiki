@@ -3,16 +3,14 @@ desc: Sets minimum freefall height AGL per unit, at which the unit assumes HALO 
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - unit
-  - minHeight
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit
     type: Object
-  - name: minHeight
+  right: !Item
+    name: minHeight
     desc: min freefall height, -1 to set default
     type: Number
 argument_loc: Local

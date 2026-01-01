@@ -3,13 +3,12 @@ desc: Gets all mine objects this unit has ownership over.
 groups:
 - Mines
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -5,47 +5,43 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary code
-  ret:
+- ret:
     type: Anything
     desc: the last value given in the function is returned - see the topic [[Function#Return_Values|Function]] for more information
-  params:
-  - name: code
+  right: !Item
+    name: code
     desc: |-
       [[compile]]d instructions
       {{Feature|ofp|{{ofp}} takes [[String]].}}
       {{Feature|informative|This way of calling has access to its parent scope's <sqf inline>_this</sqf>, as all it does is creating a scope.}}
     type: Code
-- call: !Binary
-  - args
-  - code
-  ret:
+- ret:
     type: Anything
     desc: the last value given in the function is returned. See the topic [[Function#Return_Values|Function]] for more information.
-  params:
-  - name: args
+  left: !Item
+    name: args
     desc: arguments that are passed to the function in the <sqf inline>_this</sqf> variable.
     type: Anything
-  - name: code
+  right: !Item
+    name: code
     desc: |-
       [[compile]]d instructions
       {{Feature|ofp|{{ofp}} takes [[String]].}}
     type: Code
-- call: !Binary
-  - hashMapObj
-  - - methodName
-    - arguments
-  ret:
+- ret:
     type: Anything
     desc: the value returned by the ''methodName'' method
-  params:
-  - name: hashMapObj
+  left: !Item
+    name: hashMapObj
     desc: the HashMap (not necessarily created through [[createHashMapObject]]) to call the method on
     type: HashMapUnknown
-  - name: methodName
+  right: !Array
+  - !Item
+    name: methodName
     desc: the name of the method to call (the method must be defined in ''hashMapObj''; see [[createHashMapObject]])
     type: String
-  - name: arguments
+  - !Item
+    name: arguments
     desc: arguments passed to the method in the <sqf inline>_this</sqf> variable
     type: Anything
     optional: true

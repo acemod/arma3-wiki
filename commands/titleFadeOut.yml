@@ -3,11 +3,10 @@ desc: Terminate the title effect and set duration of the fade out phase to the g
 groups:
 - GUI Control
 syntax:
-- call: !Unary duration
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: duration
+  right: !Item
+    name: duration
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -9,15 +9,13 @@ desc: |-
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - model
-  - position
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: model
+  left: !Item
+    name: model
     type: Object
-  - name: position
+  right: !Item
+    name: position
     desc: '[x,y,z] offset relative to the model centre'
     type: Position3dRelative
 argument_loc: Global

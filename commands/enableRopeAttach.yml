@@ -3,16 +3,14 @@ desc: Enables or disables the ability to be attached to a rope end for the given
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Binary
-  - entity
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     desc: given entity
     type: Object
-  - name: enable
+  right: !Item
+    name: enable
     desc: '[[false]] to disable rope attachment'
     type: Boolean
 argument_loc: Local

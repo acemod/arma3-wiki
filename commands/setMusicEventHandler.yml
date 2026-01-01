@@ -6,17 +6,16 @@ groups:
 - Event Handlers
 - Sounds
 syntax:
-- call: !Unary
-  - type
-  - function
-  ret:
+- ret:
     type: Number
     desc: id of the event handler
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: '"MusicStart" or "MusicStop"'
     type: String
-  - name: function
+  - !Item
+    name: function
     desc: 'script to be executed. Passes params array 0: class name of the sound in [[Description.ext#Music|CfgMusic]], 1: event handler id'
     type: String
 argument_loc: Unspecified

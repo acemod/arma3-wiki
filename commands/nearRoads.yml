@@ -4,16 +4,13 @@ groups:
 - Roads and Airports
 - Object Detection
 syntax:
-- call: !Binary
-  - pos
-  - radius
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
     desc: road segments within radius
-  params:
-  - name: pos
+  left: !Item
+    name: pos
     desc: center of search radius
     type: !OneOf
     - type: Object
@@ -25,7 +22,8 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: radius
+  right: !Item
+    name: radius
     desc: search radius in meters
     type: Number
 argument_loc: Unspecified

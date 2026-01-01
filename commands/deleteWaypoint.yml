@@ -8,15 +8,14 @@ desc: |-
 groups:
 - Waypoints
 syntax:
-- call: !Unary
-  - group
-  - index
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  right: !Array
+  - !Item
+    name: group
     type: Group
-  - name: index
+  - !Item
+    name: index
     type: Number
 argument_loc: Global
 effect_loc: Global

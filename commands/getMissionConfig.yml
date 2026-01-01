@@ -8,11 +8,10 @@ groups:
 - Config
 - Mission Information
 syntax:
-- call: !Unary attribute
-  ret:
+- ret:
     type: Config
-  params:
-  - name: attribute
+  right: !Item
+    name: attribute
     desc: attribute name
     type: String
 argument_loc: Unspecified

@@ -3,11 +3,10 @@ desc: Returns current rate of how much the weapon view is distorted because of q
 groups:
 - Weapons
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

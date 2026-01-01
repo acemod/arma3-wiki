@@ -5,17 +5,15 @@ desc: |-
 groups:
 - Arrays
 syntax:
-- call: !Binary
-  - array1
-  - array2
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: array1
+  left: !Item
+    name: array1
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: array2
+  right: !Item
+    name: array2
     type: !ArrayUnsized
       type: Anything
       desc: ''

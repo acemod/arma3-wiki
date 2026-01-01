@@ -3,11 +3,10 @@ desc: Returns the name of a button with extra quotation marks (on the keyboard, 
 groups:
 - System
 syntax:
-- call: !Unary dikCode
-  ret:
+- ret:
     type: String
-  params:
-  - name: dikCode
+  right: !Item
+    name: dikCode
     type: !OneOf
     - type: Number
       desc: null

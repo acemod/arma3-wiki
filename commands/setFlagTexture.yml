@@ -3,16 +3,14 @@ desc: Sets flag texture.
 groups:
 - Flags
 syntax:
-- call: !Binary
-  - flag
-  - texture
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: flag
+  left: !Item
+    name: flag
     desc: a flag pole
     type: Object
-  - name: texture
+  right: !Item
+    name: texture
     type: Unknown
 argument_loc: Local
 effect_loc: Global

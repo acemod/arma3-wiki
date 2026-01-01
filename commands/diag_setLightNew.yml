@@ -6,11 +6,10 @@ groups:
 - Lights
 - Diagnostic
 syntax:
-- call: !Unary config
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: config
+  right: !Item
+    name: config
     desc: config in string form
     type: String
 argument_loc: Unspecified

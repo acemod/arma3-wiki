@@ -3,30 +3,26 @@ desc: Returns [[true]] if [[setSlingLoad]] is possible.
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Binary
-  - heli
-  - cargo
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if [[setSlingLoad]] is possible'
-  params:
-  - name: heli
+  left: !Item
+    name: heli
     desc: a helicopter
     type: Object
-  - name: cargo
+  right: !Item
+    name: cargo
     desc: an entity
     type: Object
-- call: !Binary
-  - typeOfHeli
-  - typeOfCargo
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if can be sling loaded ''''in principle'''''
-  params:
-  - name: typeOfHeli
+  left: !Item
+    name: typeOfHeli
     desc: a config type of helicopter
     type: String
-  - name: typeOfCargo
+  right: !Item
+    name: typeOfCargo
     desc: a config type of cargo (the object of type cargo has to exist in the mission)
     type: String
   since:

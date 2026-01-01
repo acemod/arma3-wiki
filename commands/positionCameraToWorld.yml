@@ -4,11 +4,10 @@ groups:
 - Camera Control
 - Positions
 syntax:
-- call: !Unary cameraPos
-  ret:
+- ret:
     type: Position3dAGL
-  params:
-  - name: cameraPos
+  right: !Item
+    name: cameraPos
     desc: |-
       relative camera position, format '''[x, z, y]''' (X = left-right, Z = below-above, Y = back-front)
       {{Feature|important|This command has Y and Z axes swapped around, which is different from the usual model space coordinates format ({{Link|Position|[x, y, z]}}).}}

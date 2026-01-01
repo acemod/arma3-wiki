@@ -3,8 +3,7 @@ desc: "List of units that would activate given [[Triggers|Trigger]].\n\nIt retur
 groups:
 - Triggers
 syntax:
-- call: !Unary trigger
-  ret:
+- ret:
     type: !OneOf
     - type: ArrayUnknown
       desc: null
@@ -12,8 +11,8 @@ syntax:
     - type: Nothing
       desc: null
       since: null
-  params:
-  - name: trigger
+  right: !Item
+    name: trigger
     type: Object
 argument_loc: Global
 effect_loc: Local

@@ -7,15 +7,13 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - filename
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: filename
+  right: !Item
+    name: filename
     desc: local file name or remote file URL
     type: String
 argument_loc: Unspecified

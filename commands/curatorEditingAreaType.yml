@@ -3,11 +3,10 @@ desc: Returns type of edit areas assigned to curator (blacklist/whitelist).
 groups:
 - Curator
 syntax:
-- call: !Unary curator
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: curator
+  right: !Item
+    name: curator
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

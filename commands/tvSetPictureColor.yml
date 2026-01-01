@@ -3,34 +3,32 @@ desc: Sets the colour of the picture (set via [[tvSetPicture]]) under the specif
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary
-  - idc
-  - path
-  - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: IDC of the tree view control
     type: Number
-  - name: path
+  - !Item
+    name: path
     desc: array containing path numbers
     type: ArrayUnknown
-  - name: color
+  - !Item
+    name: color
     type: ArrayColorRgba
-- call: !Binary
-  - ctrl
-  - - path
-    - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: array containing path numbers
     type: ArrayUnknown
-  - name: color
+  - !Item
+    name: color
     type: ArrayColorRgba
 argument_loc: Local
 effect_loc: Local

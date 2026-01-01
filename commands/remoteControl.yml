@@ -8,16 +8,14 @@ desc: |-
 groups:
 - Remote Control
 syntax:
-- call: !Binary
-  - who
-  - whom
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: who
+  left: !Item
+    name: who
     desc: controlling unit
     type: Object
-  - name: whom
+  right: !Item
+    name: whom
     desc: controlled unit
     type: Object
 argument_loc: Local

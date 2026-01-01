@@ -7,12 +7,11 @@ multiplayer_note: Unit pos set by [[setUnitPosWeak]] is not returned for remote 
 groups:
 - Unit Control
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: String
     desc: one of {{hl|"Auto"}}, {{hl|"Up"}}, {{hl|"Middle"}}, {{hl|"Down"}} (as of {{arma3}})
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

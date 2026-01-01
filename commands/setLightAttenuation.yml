@@ -5,36 +5,35 @@ desc: |-
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - light
-  - - start
-    - constant
-    - linear
-    - quadratic
-    - hardlimitstart
-    - hardlimitend
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: light
+  left: !Item
+    name: light
     type: Object
-  - name: start
+  right: !Array
+  - !Item
+    name: start
     desc: distance with 100% intensity, falloff starts here
     type: Number
-  - name: constant
+  - !Item
+    name: constant
     desc: constant attenuation coef
     type: Number
-  - name: linear
+  - !Item
+    name: linear
     desc: linear attenuation coef
     type: Number
-  - name: quadratic
+  - !Item
+    name: quadratic
     desc: quadratic attenuation coef
     type: Number
-  - name: hardlimitstart
+  - !Item
+    name: hardlimitstart
     desc: max distance hard limit start (start of fading of intensity to 0) in m
     type: Number
     optional: true
-  - name: hardlimitend
+  - !Item
+    name: hardlimitend
     desc: max distance hard limit end (end of fading of intensity to 0) in m
     type: Number
     optional: true

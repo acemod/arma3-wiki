@@ -3,23 +3,20 @@ desc: "Returns the position on landscape ([[Position#PositionAGL|PositionAGL]]) 
 groups:
 - Positions
 syntax:
-- call: !Unary screen
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: screen
+  right: !Item
+    name: screen
     desc: screen position in format [x,y] (see [[SafeZone]] for more info)
     type: ArrayUnknown
-- call: !Binary
-  - camera
-  - position
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     desc: camera object
     type: Object
-  - name: position
+  right: !Item
+    name: position
     desc: screen position [x,y] (see [[SafeZone]] for more info)
     type: ArrayUnknown
   since:

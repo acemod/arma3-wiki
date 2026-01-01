@@ -6,24 +6,21 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary name
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: name
+  right: !Item
+    name: name
     desc: name of the scope which was previously set with [[scopeName]]. <sqf inline>""</sqf> will exit the current scope (see also [[exitWith]])
     type: String
-- call: !Binary
-  - value
-  - name
-  ret:
+- ret:
     type: Anything
     desc: will return '''value'''
-  params:
-  - name: value
+  left: !Item
+    name: value
     desc: a value to return
     type: Anything
-  - name: name
+  right: !Item
+    name: name
     desc: name of the scope which was previously set with [[scopeName]]. <sqf inline>""</sqf> will exit the current scope (see also [[exitWith]])
     type: String
   since:

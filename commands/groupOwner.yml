@@ -3,11 +3,10 @@ desc: Returns the [[Multiplayer_Scripting#Machine_network_ID | machine network I
 groups:
 - Multiplayer
 syntax:
-- call: !Unary group
-  ret:
+- ret:
     type: Number
-  params:
-  - name: group
+  right: !Item
+    name: group
     type: Group
 argument_loc: Global
 effect_loc: Unspecified

@@ -3,20 +3,19 @@ desc: Add next frame to map animation.
 groups:
 - Map
 syntax:
-- call: !Unary
-  - time
-  - zoom
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: time
+  right: !Array
+  - !Item
+    name: time
     desc: animation duration in seconds
     type: Number
-  - name: zoom
+  - !Item
+    name: zoom
     desc: range from 0.01 (max. zoom) to 1 (zoomed out)
     type: Number
-  - name: position
+  - !Item
+    name: position
     type: !OneOf
     - type: Object
       desc: null

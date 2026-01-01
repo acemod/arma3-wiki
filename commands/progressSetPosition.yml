@@ -3,16 +3,14 @@ desc: Sets progress position of a [[CT_PROGRESS|progress bar]].
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - progress
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: progress bar control
     type: Control
-  - name: progress
+  right: !Item
+    name: progress
     desc: '0: no progress; 1: full progress'
     type: Number
 argument_loc: Unspecified

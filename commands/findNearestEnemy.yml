@@ -3,15 +3,13 @@ desc: Finds the nearest enemy to the specified position. Returns a null object i
 groups:
 - Object Detection
 syntax:
-- call: !Binary
-  - object
-  - position
-  ret:
+- ret:
     type: Object
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: position
+  right: !Item
+    name: position
     type: !OneOf
     - type: Object
       desc: null

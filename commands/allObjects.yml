@@ -5,30 +5,26 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- call: !Binary
-  - objectType
-  - objectCollection
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
-  params:
-  - name: objectType
+  left: !Item
+    name: objectType
     type: Unknown
-  - name: objectCollection
+  right: !Item
+    name: objectCollection
     type: Unknown
-- call: !Binary
-  - objectType
-  - objectCollection
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
-  params:
-  - name: objectType
+  left: !Item
+    name: objectType
     desc: type of the objects (will exact match return of [[typeOf]])
     type: String
-  - name: objectCollection
+  right: !Item
+    name: objectCollection
     desc: see main syntax above
     type: Number
   since:

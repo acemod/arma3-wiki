@@ -3,15 +3,13 @@ desc: Checks whether given subject is present in the [[Diary]] of given player.
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - player
-  - name
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: player
+  left: !Item
+    name: player
     type: Object
-  - name: name
+  right: !Item
+    name: name
     type: String
 argument_loc: Local
 effect_loc: Unspecified

@@ -6,31 +6,22 @@ desc: |-
 groups:
 - GUI Control - Map
 syntax:
-- call: !Binary
-  - map
-  - - texture
-    - color
-    - position
-    - width
-    - height
-    - angle
-    - text
-    - shadow
-    - textSize
-    - font
-    - align
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: texture
+  right: !Array
+  - !Item
+    name: texture
     desc: icon texture
     type: String
-  - name: color
+  - !Item
+    name: color
     desc: text and icon color in format [[Color|Color(RGBA)]]
     type: ArrayUnknown
-  - name: position
+  - !Item
+    name: position
     type: !OneOf
     - type: Object
       desc: null
@@ -41,40 +32,48 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: width
+  - !Item
+    name: width
     desc: width of the icon (but not the text)
     type: Number
-  - name: height
+  - !Item
+    name: height
     desc: height of the icon (but not the text)
     type: Number
-  - name: angle
+  - !Item
+    name: angle
     desc: rotation angle of the icon not the text (add to it [[ctrlMapDir]] to show correctly on rotating minimap)
     type: Number
-  - name: text
+  - !Item
+    name: text
     type: String
     optional: true
     default: '""'
-  - name: shadow
+  - !Item
+    name: shadow
     type: !NumberEnum
     - value: 1
       desc: shadow (for text)
       since: null
     optional: true
-  - name: textSize
+  - !Item
+    name: textSize
     desc: size of the text in UI units
     type: Number
     optional: true
     default: '-1'
     since:
       arma3: '0.72'
-  - name: font
+  - !Item
+    name: font
     desc: text's font
     type: String
     optional: true
     default: '""'
     since:
       arma3: '0.72'
-  - name: align
+  - !Item
+    name: align
     type: Unknown
     optional: true
     since:

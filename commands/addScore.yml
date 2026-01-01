@@ -4,15 +4,13 @@ multiplayer_note: Server execution only
 groups:
 - Multiplayer
 syntax:
-- call: !Binary
-  - unit
-  - score
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: score
+  right: !Item
+    name: score
     type: Number
 argument_loc: Global
 effect_loc: Global

@@ -7,15 +7,13 @@ problem_notes:
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - markerName
-  - priority
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: markerName
+  left: !Item
+    name: markerName
     type: String
-  - name: priority
+  right: !Item
+    name: priority
     desc: draw priority
     type: Number
 argument_loc: Unspecified

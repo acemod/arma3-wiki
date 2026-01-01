@@ -4,14 +4,13 @@ groups:
 - Object Manipulation
 - Locations
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: !NumberRange
     - 0
     - 360
     desc: Direction in degrees
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: !OneOf
     - type: Object
       desc: null

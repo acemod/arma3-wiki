@@ -8,11 +8,10 @@ groups:
 - GUI Control - ListBox
 - GUI Control - ListNBox
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: control
+  right: !Item
+    name: control
     desc: '[[DialogControls-ListBoxes|CT_LISTBOX]] or [[CT_CONTROLS_GROUP]]'
     type: Control
 argument_loc: Unspecified

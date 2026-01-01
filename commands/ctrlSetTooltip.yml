@@ -5,16 +5,14 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: any [[Dialogs|control type]], (except for CT_STATIC & CT_STRUCTURED_TEXT, although Arma 3 now supports these too)
     type: Control
-  - name: text
+  right: !Item
+    name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

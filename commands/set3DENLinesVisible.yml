@@ -3,17 +3,16 @@ desc: Toggle visibility of [[:Category:Eden Editor|Eden Editor]] lines.
 groups:
 - Eden Editor
 syntax:
-- call: !Unary
-  - showMap
-  - showScene
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: showScene
-    desc: visibility in the scene
-    type: Boolean
-  - name: showMap
+  right: !Array
+  - !Item
+    name: showMap
     desc: visibility in the map
+    type: Boolean
+  - !Item
+    name: showScene
+    desc: visibility in the scene
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

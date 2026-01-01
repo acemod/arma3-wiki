@@ -3,12 +3,11 @@ desc: Locks the identity of a person. This will disable default identity.
 groups:
 - Unit Identity
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]], if it was applied'
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

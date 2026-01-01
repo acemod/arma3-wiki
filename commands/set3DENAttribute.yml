@@ -5,15 +5,11 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- call: !Binary
-  - entity
-  - - class
-    - value
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] If the value was set'
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     type: !OneOf
     - type: EdenEntity
       desc: null
@@ -21,10 +17,13 @@ syntax:
     - type: EdenID
       desc: null
       since: null
-  - name: class
+  right: !Array
+  - !Item
+    name: class
     desc: attribute name
     type: String
-  - name: value
+  - !Item
+    name: value
     desc: new attribute value
     type: Anything
 argument_loc: Unspecified

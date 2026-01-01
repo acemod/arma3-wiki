@@ -7,12 +7,11 @@ groups:
 - Object Manipulation
 - Sides
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if the unit is captive, [[false]] if not'
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: unit or vehicle
     type: Object
 argument_loc: Global

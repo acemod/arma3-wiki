@@ -5,21 +5,20 @@ problem_notes:
 groups:
 - High Command
 syntax:
-- call: !Binary
-  - group
-  - - iconClass
-    - offset
-  ret:
+- ret:
     type: Number
     desc: icon ID
-  params:
-  - name: group
+  left: !Item
+    name: group
     desc: group to which add the icon
     type: Group
-  - name: iconClass
+  right: !Array
+  - !Item
+    name: iconClass
     desc: class name of an icon from {{hl|CfgGroupIcons}}
     type: String
-  - name: offset
+  - !Item
+    name: offset
     desc: X and Y offsets of the icon in format [offsetX, offsetY, (offsetX3d), (offsetY3d)]
     type: !ArrayUnsized
       type: Number

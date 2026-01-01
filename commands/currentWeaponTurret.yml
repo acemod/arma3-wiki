@@ -3,15 +3,13 @@ desc: Returns the name of the currently selected weapon on specified turret. Use
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - turretPath
-  ret:
+- ret:
     type: String
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: turretPath
+  right: !Item
+    name: turretPath
     type: TurretPath
 argument_loc: Unspecified
 effect_loc: Unspecified

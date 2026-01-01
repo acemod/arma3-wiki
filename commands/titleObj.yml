@@ -3,26 +3,25 @@ desc: Shows object defined in global config in CfgTitles
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - class
-  - type
-  - speed
-  - showInMap
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: class
+  right: !Array
+  - !Item
+    name: class
     desc: defined in <sqf inline>configFile >> "CfgTitles" >> class</sqf>
     type: String
-  - name: type
+  - !Item
+    name: type
     desc: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values
     type: String
-  - name: speed
+  - !Item
+    name: speed
     desc: time in seconds to fade in resource
     type: Number
     optional: true
     default: '-1'
-  - name: showInMap
+  - !Item
+    name: showInMap
     desc: '[[false]] to hide the text when the map is opened'
     type: Boolean
     optional: true

@@ -3,19 +3,18 @@ desc: Sorts all children, including trees deriving from given path. Text of [[CT
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Binary
-  - control
-  - - path
-    - reversed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: path to start sorting from
     type: Unknown
-  - name: reversed
+  - !Item
+    name: reversed
     desc: '[[true]] to reverse sort it.'
     type: Boolean
 argument_loc: Unspecified

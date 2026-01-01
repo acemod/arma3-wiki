@@ -5,17 +5,15 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - hitPointName
-  ret:
+- ret:
     type: Number
     desc: before {{GVI|arma3|1.94|size= 0.75}}, [[Nothing]] was returned when an invalid ''selection'' was provided (now returns {{hl|0}})
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle to be queried
     type: Object
-  - name: hitPointName
+  right: !Item
+    name: hitPointName
     desc: name of the Hit Point class
     type: String
 argument_loc: Global

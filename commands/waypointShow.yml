@@ -3,8 +3,7 @@ desc: A getter for [[showWaypoint]] command.
 groups:
 - Waypoints
 syntax:
-- call: !Unary waypoint
-  ret:
+- ret:
     type: String
     desc: |-
       can return:
@@ -12,8 +11,8 @@ syntax:
       * "EASY" - Show only in cadet mode
       * "ALWAYS" - Always show
       * "ERROR" - When set to any different string
-  params:
-  - name: waypoint
+  right: !Item
+    name: waypoint
     desc: in format [[Waypoint]]
     type: ArrayUnknown
 argument_loc: Unspecified

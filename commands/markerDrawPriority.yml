@@ -3,12 +3,11 @@ desc: Returns marker draw priority.
 groups:
 - Markers
 syntax:
-- call: !Unary markerName
-  ret:
+- ret:
     type: Number
     desc: draw priority
-  params:
-  - name: markerName
+  right: !Item
+    name: markerName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

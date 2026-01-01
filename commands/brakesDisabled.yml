@@ -3,12 +3,11 @@ desc: Returns the status of autobrake (see [[disableBrakes]]).
 groups:
 - PhysX
 syntax:
-- call: !Unary transport
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if autobrake is disabled'
-  params:
-  - name: transport
+  right: !Item
+    name: transport
     desc: PhysX car or tank
     type: Object
 argument_loc: Global

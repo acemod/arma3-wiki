@@ -3,15 +3,13 @@ desc: Forces the behavior of waypoint, disables AUTOCOMBAT.
 groups:
 - Waypoints
 syntax:
-- call: !Binary
-  - waypoint
-  - state
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: waypoint
+  left: !Item
+    name: waypoint
     type: Unknown
-  - name: state
+  right: !Item
+    name: state
     desc: force or not
     type: Boolean
 argument_loc: Unspecified

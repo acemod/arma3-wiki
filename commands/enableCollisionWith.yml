@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle1
-  - vehicle2
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle1
+  left: !Item
+    name: vehicle1
     type: Object
-  - name: vehicle2
+  right: !Item
+    name: vehicle2
     type: Object
 argument_loc: Local
 effect_loc: Global

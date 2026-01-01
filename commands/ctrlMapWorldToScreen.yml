@@ -3,16 +3,14 @@ desc: Converts world coordinates into map screen coordinates. This command is id
 groups:
 - GUI Control - Map
 syntax:
-- call: !Binary
-  - control
-  - position
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: map control
     type: Control
-  - name: position
+  right: !Item
+    name: position
     desc: world position
     type: !OneOf
     - type: Position2d

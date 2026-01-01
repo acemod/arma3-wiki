@@ -3,16 +3,14 @@ desc: Returns whether the ''haystack'' matches the ''pattern''.
 groups:
 - Strings - Regular Expression
 syntax:
-- call: !Binary
-  - haystack
-  - pattern
-  ret:
+- ret:
     type: Boolean
     desc: returns [[true]] if match was found, otherwise [[false]]
-  params:
-  - name: haystack
+  left: !Item
+    name: haystack
     type: String
-  - name: pattern
+  right: !Item
+    name: pattern
     desc: 'in format [[Arma 3: Regular Expressions|regex pattern]]'
     type: String
 argument_loc: Unspecified

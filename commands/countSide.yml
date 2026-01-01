@@ -4,15 +4,13 @@ groups:
 - Sides
 - Object Detection
 syntax:
-- call: !Binary
-  - side
-  - array
-  ret:
+- ret:
     type: Number
-  params:
-  - name: side
+  left: !Item
+    name: side
     type: Side
-  - name: array
+  right: !Item
+    name: array
     type: !ArrayUnsized
       type: !OneOf
       - type: Object

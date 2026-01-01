@@ -4,12 +4,11 @@ groups:
 - Config
 - Localization
 syntax:
-- call: !Unary config
-  ret:
+- ret:
     type: String
     desc: raw text value
-  params:
-  - name: config
+  right: !Item
+    name: config
     type: Config
 argument_loc: Unspecified
 effect_loc: Unspecified

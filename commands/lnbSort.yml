@@ -5,34 +5,32 @@ desc: |-
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - column
-  - reversed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: column
+  - !Item
+    name: column
     type: Number
-  - name: reversed
+  - !Item
+    name: reversed
     desc: '[[false]]: descending / [[true]]: ascending'
     type: Boolean
     optional: true
     default: '[[false]]'
-- call: !Binary
-  - control
-  - - column
-    - reversed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: column
+  right: !Array
+  - !Item
+    name: column
     type: Number
-  - name: reversed
+  - !Item
+    name: reversed
     desc: '[[false]]: descending / [[true]]: ascending'
     type: Boolean
     optional: true

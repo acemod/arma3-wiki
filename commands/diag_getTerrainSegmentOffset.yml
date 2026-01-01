@@ -8,11 +8,10 @@ desc: |-
 groups:
 - Diagnostic
 syntax:
-- call: !Unary worldPos
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: worldPos
+  right: !Item
+    name: worldPos
     desc: world coordinates
     type: !OneOf
     - type: Position2d

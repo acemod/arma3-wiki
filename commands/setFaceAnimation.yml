@@ -6,15 +6,13 @@ groups:
 - Animations
 - Broken Commands
 syntax:
-- call: !Binary
-  - unit
-  - blink
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: blink
+  right: !Item
+    name: blink
     desc: range 0..1
     type: Number
 argument_loc: Unspecified

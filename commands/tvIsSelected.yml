@@ -3,15 +3,13 @@ desc: Returns true if given treeview item is selected.
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Binary
-  - control
-  - path
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Item
+    name: path
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified

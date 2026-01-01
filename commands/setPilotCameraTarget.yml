@@ -3,15 +3,13 @@ desc: "Sets an area or target to be tracked by the object airplane or helicopter
 groups:
 - Pilot Camera
 syntax:
-- call: !Binary
-  - object
-  - target
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: target
+  right: !Item
+    name: target
     desc: format PositionASL
     type: !OneOf
     - type: Object

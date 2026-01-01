@@ -3,15 +3,13 @@ desc: Sets relative size of the flare for the light.
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - light
-  - size
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: light
+  left: !Item
+    name: light
     type: Object
-  - name: size
+  right: !Item
+    name: size
     type: Number
 argument_loc: Local
 effect_loc: Local

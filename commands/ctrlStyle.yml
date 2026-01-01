@@ -3,12 +3,11 @@ desc: 'Returns the provided control''s style. See {{Link|Arma: GUI Configuration
 groups:
 - GUI Control
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: Number
     desc: 'see {{Link|Arma: GUI Configuration#Control Styles}}'
-  params:
-  - name: control
+  right: !Item
+    name: control
     type: Control
 argument_loc: Local
 effect_loc: Unspecified

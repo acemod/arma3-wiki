@@ -3,12 +3,11 @@ desc: Find if the provided appId's game/DLC is owned by the currently logged Ste
 groups:
 - Argo
 syntax:
-- call: !Unary appId
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if the current Steam account has said app, [[false]] otherwise'
-  params:
-  - name: appId
+  right: !Item
+    name: appId
     desc: '{{Link|Steam}}''s appId'
     type: Number
 argument_loc: Unspecified

@@ -3,13 +3,10 @@ desc: Order the given unit(s) to move to the given position (without radio messa
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unit(s)
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit(s)
+  left: !Item
+    name: unit(s)
     type: !OneOf
     - type: Object
       desc: null
@@ -19,7 +16,8 @@ syntax:
         desc: ''
       desc: null
       since: null
-  - name: position
+  right: !Item
+    name: position
     type: Position
 argument_loc: Local
 effect_loc: Global

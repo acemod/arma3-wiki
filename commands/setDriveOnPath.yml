@@ -7,15 +7,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicleName
-  - points
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicleName
+  left: !Item
+    name: vehicleName
     type: Object
-  - name: points
+  right: !Item
+    name: points
     desc: list of [[Position]]s to format [x,y,z] OR to format [x,y,z, speed], speed being '''in m/s'''.
     type: ArrayUnknown
 argument_loc: Unspecified

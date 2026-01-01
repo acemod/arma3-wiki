@@ -6,11 +6,10 @@ groups:
 - Lights
 - Diagnostic
 syntax:
-- call: !Unary path
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: path
+  right: !Item
+    name: path
     desc: the path to the config filename
     type: String
 argument_loc: Unspecified

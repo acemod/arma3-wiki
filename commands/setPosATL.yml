@@ -3,15 +3,13 @@ desc: Sets the position of an object relative to the terrain.
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - object
-  - pos
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: pos
+  right: !Item
+    name: pos
     type: Position3dATL
 argument_loc: Global
 effect_loc: Global

@@ -3,38 +3,38 @@ desc: Sets the additional text (invisible) on the item with the given position o
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  - data
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: row
-    type: Number
-  - name: column
-    type: Number
-  - name: data
+  - !Array
+    - !Item
+      name: row
+      type: Number
+    - !Item
+      name: column
+      type: Number
+  - !Item
+    name: data
     desc: the invisible text to add
     type: String
-- call: !Binary
-  - ctrl
-  - - - row
-      - column
-    - data
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: row
-    type: Number
-  - name: column
-    type: Number
-  - name: data
+  right: !Array
+  - !Array
+    - !Item
+      name: row
+      type: Number
+    - !Item
+      name: column
+      type: Number
+  - !Item
+    name: data
     desc: the invisible text to add
     type: String
 argument_loc: Unspecified

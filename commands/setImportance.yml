@@ -3,15 +3,13 @@ desc: Sets the importance value of location.
 groups:
 - Locations
 syntax:
-- call: !Binary
-  - location
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: location
+  left: !Item
+    name: location
     type: Location
-  - name: value
+  right: !Item
+    name: value
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

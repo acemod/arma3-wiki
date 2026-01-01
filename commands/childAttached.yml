@@ -3,11 +3,10 @@ desc: Get the child that has been attached via [[attachChild]]
 groups:
 - PhysX
 syntax:
-- call: !Unary parent
-  ret:
+- ret:
     type: Object
-  params:
-  - name: parent
+  right: !Item
+    name: parent
     desc: Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
     type: Object
 argument_loc: Local

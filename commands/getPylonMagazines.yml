@@ -3,14 +3,13 @@ desc: Return array of magazines on pylons.
 groups:
 - Vehicle Loadouts
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
     desc: magazine names
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

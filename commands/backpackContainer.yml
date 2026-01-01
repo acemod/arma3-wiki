@@ -3,12 +3,11 @@ desc: Returns a cargo container of a unit's backpack.
 groups:
 - Containers
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Object
     desc: cargo container or [[objNull]]
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: a soldier
     type: Object
 argument_loc: Unspecified

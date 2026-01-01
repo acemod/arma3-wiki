@@ -3,11 +3,10 @@ desc: Returns current state for NVG and TI equipment availability.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

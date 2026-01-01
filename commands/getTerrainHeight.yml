@@ -11,12 +11,11 @@ desc: |-
 groups:
 - Positions
 syntax:
-- call: !Unary positionWorld
-  ret:
+- ret:
     type: Number
     desc: terrain height
-  params:
-  - name: positionWorld
+  right: !Item
+    name: positionWorld
     desc: world coordinates
     type: !OneOf
     - type: Position2d

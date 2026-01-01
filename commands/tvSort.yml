@@ -3,37 +3,35 @@ desc: Sorts all children of given path. Text of [[CT_TREE|Tree View]] entries is
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Binary
-  - control
-  - - path
-    - reversed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: the parent item to sort
     type: Unknown
-  - name: reversed
+  - !Item
+    name: reversed
     desc: '[[true]] to reverse sort it'
     type: Boolean
     optional: true
     default: '[[false]]'
-- call: !Unary
-  - idc
-  - path
-  - reversed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: control idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     desc: the parent item to sort
     type: Unknown
-  - name: reversed
+  - !Item
+    name: reversed
     desc: '[[true]] to reverse sort it'
     type: Boolean
     optional: true

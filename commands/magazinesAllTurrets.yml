@@ -3,23 +3,21 @@ desc: Returns all magazines (including empty) from all vehicle turrets (includin
 groups:
 - Turrets
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: vehicle with turrets
     type: Object
-- call: !Unary
-  - vehicle
-  - excludePersonTurrets
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     desc: vehicle with turrets
     type: Object
-  - name: excludePersonTurrets
+  - !Item
+    name: excludePersonTurrets
     desc: when [[true]] only vehicle's turrets are queried
     type: Boolean
   since:

@@ -3,11 +3,10 @@ desc: Shows or hides the notebook on the map screen, if enabled for the mission.
 groups:
 - Interaction
 syntax:
-- call: !Unary show
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: show
+  right: !Item
+    name: show
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

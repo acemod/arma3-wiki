@@ -11,19 +11,17 @@ multiplayer_note: camCreated objects are only visible locally (meaning they are 
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - type
-  - position
-  ret:
+- ret:
     type: Object
     desc: the created camera
-  params:
-  - name: type
+  left: !Item
+    name: type
     type: !OneOf
     - type: String
       desc: null
       since: null
-  - name: position
+  right: !Item
+    name: position
     desc: position at which to create the object
     type: Position3dAGL
 argument_loc: Unspecified

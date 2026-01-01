@@ -3,11 +3,10 @@ desc: Check if file is signed by any key present in game keys folders. On client
 groups:
 - Mods and Addons
 syntax:
-- call: !Unary filename
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: filename
+  right: !Item
+    name: filename
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

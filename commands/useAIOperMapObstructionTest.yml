@@ -3,11 +3,10 @@ desc: Toggle secondary obstruction test on road paths.
 groups:
 - System
 syntax:
-- call: !Unary state
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: state
+  right: !Item
+    name: state
     desc: '[[true]] to enable, [[false]] to disable'
     type: Boolean
 argument_loc: Unspecified

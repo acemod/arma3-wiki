@@ -5,17 +5,15 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unitArray
-  - order
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitArray
+  left: !Item
+    name: unitArray
     type: !ArrayUnsized
       type: Object
       desc: ''
-  - name: order
+  right: !Item
+    name: order
     type: Boolean
 argument_loc: Local
 effect_loc: Global

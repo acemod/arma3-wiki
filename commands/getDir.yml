@@ -5,19 +5,15 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Number
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
-- call: !Binary
-  - pos1
-  - pos2
-  ret:
+- ret:
     type: Number
-  params:
-  - name: pos1
+  left: !Item
+    name: pos1
     desc: from where
     type: !OneOf
     - type: Object
@@ -29,7 +25,8 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: pos2
+  right: !Item
+    name: pos2
     desc: to where
     type: !OneOf
     - type: Object

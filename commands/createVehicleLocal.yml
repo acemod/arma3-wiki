@@ -6,31 +6,25 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - type
-  - position
-  ret:
+- ret:
     type: Object
-  params:
-  - name: type
+  left: !Item
+    name: type
     desc: vehicle/object className
     type: String
-  - name: position
+  right: !Item
+    name: position
     type: Position3dAGL
-- call: !Unary
-  - type
-  - position
-  - markers
-  - placement
-  - special
-  ret:
+- ret:
     type: Object
     desc: created vehicle or [[objNull]] if failed
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: vehicle/object className
     type: String
-  - name: position
+  - !Item
+    name: position
     desc: desired placement position
     type: !OneOf
     - type: Object
@@ -39,7 +33,8 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: markers
+  - !Item
+    name: markers
     desc: |-
       if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position.
       If any of the markers were given z coordinate with [[setMarkerPos]], the vehicle will also be created at given z coordinate.
@@ -48,12 +43,14 @@ syntax:
       desc: ''
     optional: true
     default: <sqf inline>[]</sqf>
-  - name: placement
+  - !Item
+    name: placement
     desc: the vehicle is placed inside a circle with given position as center and placement as its radius.
     type: Number
     optional: true
     default: '0'
-  - name: special
+  - !Item
+    name: special
     type: !OneOf
     - type: String
       desc: null

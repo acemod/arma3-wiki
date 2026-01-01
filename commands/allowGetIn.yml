@@ -6,17 +6,15 @@ groups:
 - Object Manipulation
 - Unit Control
 syntax:
-- call: !Binary
-  - unitArray
-  - allow
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitArray
+  left: !Item
+    name: unitArray
     type: !ArrayUnsized
       type: Object
       desc: ''
-  - name: allow
+  right: !Item
+    name: allow
     desc: '[[true]] allows the [[units]] to enter, [[false]] denies them'
     type: Boolean
 argument_loc: Global

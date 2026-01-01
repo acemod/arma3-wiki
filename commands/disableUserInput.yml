@@ -3,11 +3,10 @@ desc: Disables or enables the keyboard and mouse input. Usually used during cuts
 groups:
 - Interaction
 syntax:
-- call: !Unary state
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: state
+  right: !Item
+    name: state
     desc: '[[true]] to disable, [[false]] to enable'
     type: Boolean
 argument_loc: Unspecified

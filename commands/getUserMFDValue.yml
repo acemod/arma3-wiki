@@ -3,13 +3,12 @@ desc: Returns array of user text variables used in MFD.
 groups:
 - Interaction
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Number
       desc: ''
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: a vehicle with MFD
     type: Object
 argument_loc: Unspecified

@@ -6,16 +6,14 @@ desc: |-
 groups:
 - PhysX
 syntax:
-- call: !Binary
-  - object
-  - awake
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: PhysX object or dead unit
     type: Object
-  - name: awake
+  right: !Item
+    name: awake
     desc: '[[true]] to awake the object, [[false]] - to put it to sleep'
     type: Boolean
 argument_loc: Global

@@ -3,21 +3,18 @@ desc: Make a unit perform an action immediately (without any animation/pre-proce
 groups:
 - Interaction
 syntax:
-- call: !Binary
-  - unit
-  - actionArray
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: actionArray
+  right: !Item
+    name: actionArray
     type: ArrayUnknown
-- call: !Unary actionArray
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: actionArray
+  right: !Item
+    name: actionArray
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Global

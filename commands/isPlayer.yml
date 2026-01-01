@@ -8,19 +8,17 @@ desc: |-
 groups:
 - Multiplayer
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
-- call: !Unary
-  - person
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if is/was player ''''''and'''''' the identity still exists on the (dead) body'
-  params:
-  - name: person
+  right: !Array
+  - !Item
+    name: person
     desc: dead or alive unit
     type: Object
   since:

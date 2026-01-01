@@ -5,16 +5,14 @@ problem_notes:
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - marker
-  - shadowState
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: marker
+  left: !Item
+    name: marker
     desc: the marker
     type: String
-  - name: shadowState
+  right: !Item
+    name: shadowState
     desc: '[[true]] to enable the shadow, [[false]] to disable it'
     type: Boolean
 argument_loc: Unspecified

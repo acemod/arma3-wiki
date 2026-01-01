@@ -3,12 +3,11 @@ desc: Returns true if procedural aiming precision affects weapon sway.
 groups:
 - Stamina System
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Boolean
     desc: true if affected, false if not
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: unit which should be checked
     type: Object
 argument_loc: Unspecified

@@ -3,14 +3,13 @@ desc: Get array with items from ammo box (or any general weapon holder container
 groups:
 - Vehicle Inventory
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
     desc: '["ItemType1","ItemType2","ItemType3"...]'
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: vehicle or ammo box
     type: Object
 argument_loc: Global

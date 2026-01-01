@@ -6,12 +6,11 @@ desc: |-
 groups:
 - Diagnostic
 syntax:
-- call: !Unary positionWorld
-  ret:
+- ret:
     type: Number
     desc: terrain height
-  params:
-  - name: positionWorld
+  right: !Item
+    name: positionWorld
     desc: position in world coordinates either in [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]
     type: !OneOf
     - type: Position2d

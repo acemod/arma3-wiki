@@ -3,28 +3,30 @@ desc: Returns an array with the type names of all the unit's vest magazines.
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
-    type: ArrayUnknown
-  params:
-  - name: unit
+- ret:
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+  right: !Item
+    name: unit
     type: Object
-- call: !Unary
-  - unit
-  - includeEmpty
-  - includeLoaded
-  ret:
-    type: ArrayUnknown
-  params:
-  - name: unit
+- ret:
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+  right: !Array
+  - !Item
+    name: unit
     desc: unit
     type: Object
-  - name: includeEmpty
+  - !Item
+    name: includeEmpty
     desc: '[[true]] to include empty magazines'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: includeLoaded
+  - !Item
+    name: includeLoaded
     desc: '[[true]] to include magazines loaded in weapons (Since Arma 3 v2.07.148195)'
     type: Boolean
     optional: true

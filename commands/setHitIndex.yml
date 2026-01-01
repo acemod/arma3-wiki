@@ -3,24 +3,19 @@ desc: Sets the current level of damage for a specific Hit Point. All hit points 
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - - hitPartIndex
-    - damage
-    - useEffects
-    - killer
-    - instigator
-    - breakRotor
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle to be damaged
     type: Object
-  - name: hitPartIndex
+  right: !Array
+  - !Item
+    name: hitPartIndex
     desc: hit part index of the Hit Point
     type: Number
-  - name: damage
+  - !Item
+    name: damage
     type: !NumberEnum
     - value: 0
       desc: no damage
@@ -28,24 +23,28 @@ syntax:
     - value: 1
       desc: full damage
       since: null
-  - name: useEffects
+  - !Item
+    name: useEffects
     desc: '[[false]] to skip destruction effects'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
       arma3: '1.68'
-  - name: killer
+  - !Item
+    name: killer
     type: Unknown
     optional: true
     since:
       arma3: '2.8'
-  - name: instigator
+  - !Item
+    name: instigator
     type: Unknown
     optional: true
     since:
       arma3: '2.12'
-  - name: breakRotor
+  - !Item
+    name: breakRotor
     desc: if the hitpoint is rotor on a helicopter, [[true]] will break the rotor as well as play corresponding sound if 'useEffects' is also [[true]].
     type: Boolean
     optional: true

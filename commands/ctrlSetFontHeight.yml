@@ -3,15 +3,13 @@ desc: "Sets the {{hl|sizeEx}} property for most controls as follows: \n* {{hl|CT
 groups:
 - GUI Control - HTML
 syntax:
-- call: !Binary
-  - control
-  - size
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: size
+  right: !Item
+    name: size
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

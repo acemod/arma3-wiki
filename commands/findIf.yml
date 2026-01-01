@@ -8,17 +8,15 @@ desc: |-
 groups:
 - Arrays
 syntax:
-- call: !Binary
-  - array
-  - code
-  ret:
+- ret:
     type: Number
     desc: zero-based position of the first array element for which the code evaluate to true, -1 if not found
-  params:
-  - name: array
+  left: !Item
+    name: array
     desc: array to search in
     type: ArrayUnknown
-  - name: code
+  right: !Item
+    name: code
     desc: code defining an element to find, processed element can be referenced within the code as [[Magic Variables#x|_x]]
     type: Code
 argument_loc: Unspecified

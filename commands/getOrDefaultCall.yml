@@ -3,25 +3,24 @@ desc: Retrieves a value from the [[HashMap]] for the given 'key', executes given
 groups:
 - HashMap
 syntax:
-- call: !Binary
-  - hashMap
-  - - key
-    - code
-    - set
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: hashMap
+  left: !Item
+    name: hashMap
     type: HashMapUnknown
-  - name: key
+  right: !Array
+  - !Item
+    name: key
     desc: case-sensitive key
     type: Unknown
-  - name: code
+  - !Item
+    name: code
     desc: '- [[Code]] to execute if the key does not exist'
     type: Code
     optional: true
     default: '[[nil]]'
-  - name: set
+  - !Item
+    name: set
     desc: if [[true]] and value does not exist in the provided hash map, the result of the ''code'' execution will be added to the hash map
     type: Boolean
     optional: true

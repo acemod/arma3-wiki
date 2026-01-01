@@ -3,18 +3,17 @@ desc: "Removes an icon for an editor object. \n{{Feature|informative|Some Old Ed
 groups:
 - Game 2 Editor
 syntax:
-- call: !Binary
-  - map
-  - - object
-    - string identifier
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: object
+  right: !Array
+  - !Item
+    name: object
     type: Object
-  - name: string identifier
+  - !Item
+    name: string identifier
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

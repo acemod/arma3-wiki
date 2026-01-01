@@ -3,15 +3,13 @@ desc: Removes group from unit's [[High Command|high command]] bar.
 groups:
 - High Command
 syntax:
-- call: !Binary
-  - unit
-  - group
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: group
+  right: !Item
+    name: group
     type: Group
 argument_loc: Unspecified
 effect_loc: Unspecified

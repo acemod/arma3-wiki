@@ -3,15 +3,13 @@ desc: Enable/disable stamina system
 groups:
 - Stamina System
 syntax:
-- call: !Binary
-  - unit
-  - enabled
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: enabled
+  right: !Item
+    name: enabled
     type: Boolean
 argument_loc: Local
 effect_loc: Global

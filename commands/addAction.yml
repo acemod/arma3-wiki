@@ -4,31 +4,20 @@ multiplayer_note: The command will be ignored on dedicated servers, probably bec
 groups:
 - Interaction
 syntax:
-- call: !Binary
-  - object
-  - - title
-    - script
-    - arguments
-    - priority
-    - showWindow
-    - hideOnUse
-    - shortcut
-    - condition
-    - radius
-    - unconscious
-    - selection
-    - memoryPoint
-  ret:
+- ret:
     type: Number
     desc: the added action's ID. Action can be removed with [[removeAction]] (see also [[removeAllActions]]). IDs are incrementing, the first given action to each unit has the ID 0, the second the ID 1, etc. IDs are also passed to the called script (see the [[#Syntax 2|''script'' parameter]])
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: 'unit, vehicle or static object. ''''''No [[createAgent|agents]] and [[Arma 3: Simple Objects|simple objects]]!'''''''
     type: Object
-  - name: title
+  right: !Array
+  - !Item
+    name: title
     desc: the action name displayed in the action menu, may contain [[Structured Text]]. Because of that '''<''' and '''>''' symbols will be interpreted as opening and closing XML tags. To avoid this use {{hl|&amp;lt;}} for '''&lt;''' and {{hl|&amp;gt;}} for '''&gt;'''. The title text appearance can be changed with [[setUserActionText]]
     type: String
-  - name: script
+  - !Item
+    name: script
     type: !OneOf
     - type: String
       desc: null
@@ -39,32 +28,38 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: arguments
+  - !Item
+    name: arguments
     desc: arguments to pass to the script. Accessible with <sqf inline>_this select 3</sqf> inside the script. If [[Array]] is used as an argument for example, its first element reference would be <sqf inline>_this select 3 select 0</sqf>
     type: Anything
     optional: true
     default: '[[nil]]'
-  - name: priority
+  - !Item
+    name: priority
     desc: priority value of the action. Actions will be arranged in descending order according to this value. Every game action has a preset priority value. Value can be negative or decimal fraction. Actions with same values will be arranged in order which they were made, newest at the bottom. The bigger the number the higher the action will be positioned on the menu. Typical range is 0 to 6
     type: Number
     optional: true
     default: '1.5'
-  - name: showWindow
+  - !Item
+    name: showWindow
     desc: if set to [[true]], players see "Titletext" at mid-lower screen, as they approach the object. Only the title text for the action with highest priority and ''showWindow'' set to [[true]] will be shown
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: hideOnUse
+  - !Item
+    name: hideOnUse
     desc: if set to [[true]], it will hide the action menu after selecting it. If set to [[false]], it will leave the action menu open and visible after selecting the action, leaving the same action highlighted, for the purpose of allowing you to re-select that same action quickly, or to select another action
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: shortcut
+  - !Item
+    name: shortcut
     desc: one of the [[:Category:Key Actions|key names]] defined in bin.pbo (e.g. "moveForward"). Adding available shortcut will bind corresponding keyboard key to this action. Shortcut availability can be tested with [[inputAction]] command
     type: String
     optional: true
     default: '""'
-  - name: condition
+  - !Item
+    name: condition
     type: !OneOf
     - type: String
       desc: null
@@ -76,28 +71,32 @@ syntax:
       desc: null
       since: null
     optional: true
-  - name: radius
+  - !Item
+    name: radius
     desc: maximum 3D [[distance]] in meters between the activating unit's [[eyePos]] and ''object'''s ''memoryPoint'', ''selection'' or [[position]]. -1 disables the radius; hardcoded limit is '''50'''
     type: Number
     optional: true
     default: '50'
     since:
       arma3: '1.64'
-  - name: unconscious
+  - !Item
+    name: unconscious
     desc: if [[true]] will be shown to incapacitated player. See also [[setUnconscious]] and [[lifeState]]
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
       arma3: '1.64'
-  - name: selection
+  - !Item
+    name: selection
     desc: '''''object''''''s geometry LOD''s named selection'
     type: String
     optional: true
     default: '""'
     since:
       arma3: '1.70'
-  - name: memoryPoint
+  - !Item
+    name: memoryPoint
     desc: '''''object''''''s memory point. If ''''selection'''' is supplied, ''''memoryPoint'''' is not used'
     type: String
     optional: true

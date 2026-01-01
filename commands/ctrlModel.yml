@@ -3,12 +3,11 @@ desc: 'Returns model used in 3D-[[Arma: GUI Configuration|Dialog]].'
 groups:
 - GUI Control - Object
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: String
     desc: model path
-  params:
-  - name: control
+  right: !Item
+    name: control
     desc: 3D control
     type: Control
 argument_loc: Unspecified

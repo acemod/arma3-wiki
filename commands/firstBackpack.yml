@@ -3,11 +3,10 @@ desc: Returns the first stored backpack.
 groups:
 - Containers
 syntax:
-- call: !Unary box
-  ret:
+- ret:
     type: Object
-  params:
-  - name: box
+  right: !Item
+    name: box
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

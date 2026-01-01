@@ -3,12 +3,11 @@ desc: Returns the leaning factor of the given unit.
 groups:
 - Unit Control
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Number
     desc: leaning factor from -1 to 1
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

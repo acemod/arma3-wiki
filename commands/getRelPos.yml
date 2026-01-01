@@ -3,32 +3,29 @@ desc: Returns position that is given distance and relative direction away from o
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - object
-  - - distance
-    - direction
-  ret:
+- ret:
     type: Position3dAGL
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: object
     type: Object
-  - name: distance
+  right: !Array
+  - !Item
+    name: distance
     desc: distance from object
     type: Number
-  - name: direction
+  - !Item
+    name: direction
     desc: direction relative to object's current direction
     type: Number
-- call: !Binary
-  - obj1
-  - obj2
-  ret:
+- ret:
     type: Position3dRelative
-  params:
-  - name: obj1
+  left: !Item
+    name: obj1
     desc: parent object
     type: Object
-  - name: obj2
+  right: !Item
+    name: obj2
     desc: attached object
     type: Object
   since:

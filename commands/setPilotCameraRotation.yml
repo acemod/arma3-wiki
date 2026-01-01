@@ -3,15 +3,13 @@ desc: Sets rotation (relative to the centered camera position) of the object air
 groups:
 - Pilot Camera
 syntax:
-- call: !Binary
-  - object
-  - rotation
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: rotation
+  right: !Item
+    name: rotation
     desc: '[x,y] - format [yaw (turn), pitch (elevation)]. Values are in radians, positive values are left yaw and down pitch from the center.'
     type: ArrayUnknown
 argument_loc: Local

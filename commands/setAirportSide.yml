@@ -4,25 +4,21 @@ groups:
 - Roads and Airports
 - Sides
 syntax:
-- call: !Binary
-  - id
-  - side
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: id
+  left: !Item
+    name: id
     type: Number
-  - name: side
+  right: !Item
+    name: side
     type: Side
-- call: !Binary
-  - target
-  - side
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: target
+  left: !Item
+    name: target
     type: Object
-  - name: side
+  right: !Item
+    name: side
     type: Side
   since:
     arma3: '1.68'

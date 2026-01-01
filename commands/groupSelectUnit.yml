@@ -5,18 +5,17 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- call: !Binary
-  - player
-  - - unit
-    - select
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: player
+  left: !Item
+    name: player
     type: Object
-  - name: unit
+  right: !Array
+  - !Item
+    name: unit
     type: Object
-  - name: select
+  - !Item
+    name: select
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

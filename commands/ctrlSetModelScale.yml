@@ -4,16 +4,14 @@ groups:
 - GUI Control - Object
 - GUI Control - Positioning
 syntax:
-- call: !Binary
-  - control
-  - scale
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: 3D control
     type: Control
-  - name: scale
+  right: !Item
+    name: scale
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

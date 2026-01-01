@@ -15,28 +15,15 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- call: !Unary
-  - texture
-  - color
-  - position
-  - width
-  - height
-  - angle
-  - text
-  - shadow
-  - textSize
-  - font
-  - textAlign
-  - drawSideArrows
-  - offsetX
-  - offsetY
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: texture
+  right: !Array
+  - !Item
+    name: texture
     desc: icon texture
     type: String
-  - name: color
+  - !Item
+    name: color
     type: !OneOf
     - type: ArrayUnknown
       desc: format [[Color|Color (RGBA)]] - icon color
@@ -44,37 +31,46 @@ syntax:
     - type: ArrayUnknown
       desc: of two [[Array]]s format [[Color|Color (RGBA)]] - Icon and text color
       since: null
-  - name: position
+  - !Item
+    name: position
     desc: icon position
     type: Position3dAGL
-  - name: width
+  - !Item
+    name: width
     desc: icon width
     type: Number
-  - name: height
+  - !Item
+    name: height
     desc: icon height
     type: Number
-  - name: angle
+  - !Item
+    name: angle
     desc: icon rotation angle
     type: Number
-  - name: text
+  - !Item
+    name: text
     desc: text label to display next to the icon
     type: String
     optional: true
     default: '""'
-  - name: shadow
+  - !Item
+    name: shadow
     type: Unknown
     optional: true
-  - name: textSize
+  - !Item
+    name: textSize
     desc: text size
     type: Number
     optional: true
     default: size of system
-  - name: font
+  - !Item
+    name: font
     desc: font class name from {{hl|CfgFontFamilies}} (see {{Link|FXY File Format#Available Fonts}})
     type: String
     optional: true
     default: '"RobotoCondensedBold"'
-  - name: textAlign
+  - !Item
+    name: textAlign
     type: !StringEnum
     - value: left
       desc: null
@@ -86,30 +82,32 @@ syntax:
       desc: null
       since: null
     optional: true
-  - name: drawSideArrows
+  - !Item
+    name: drawSideArrows
     desc: '[[true]] to draw arrows and the text label at edge of screen when the icon moves off the screen'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: offsetX
+  - !Item
+    name: offsetX
     desc: X offset for the icon text
     type: Number
     optional: true
     default: '0'
     since:
       arma3: '2.4'
-  - name: offsetY
+  - !Item
+    name: offsetY
     desc: Y offset for the icon text
     type: Number
     optional: true
     default: '0'
     since:
       arma3: '2.4'
-- call: !Unary icon
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: icon
+  right: !Item
+    name: icon
     type: !OneOf
     - type: HashMapUnknown
       desc: null

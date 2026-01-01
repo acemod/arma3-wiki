@@ -3,16 +3,14 @@ desc: Returns value of the specified 3D controller, see [[getAllEnv3DSoundContro
 groups:
 - Sounds
 syntax:
-- call: !Binary
-  - object
-  - controller
-  ret:
+- ret:
     type: Number
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: environmental sound source like a tree or a house - see [[allEnv3DSoundSources]]
     type: Object
-  - name: controller
+  right: !Item
+    name: controller
     desc: name of environmental variable like "trees" or "houses"
     type: String
 argument_loc: Unspecified

@@ -3,13 +3,10 @@ desc: Sets the currently active waypoint for a group.
 groups:
 - Waypoints
 syntax:
-- call: !Binary
-  - groupName
-  - waypoint
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: groupName
+  left: !Item
+    name: groupName
     type: !OneOf
     - type: Object
       desc: null
@@ -17,7 +14,8 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: waypoint
+  right: !Item
+    name: waypoint
     desc: format [[Waypoint]]
     type: ArrayUnknown
 argument_loc: Local

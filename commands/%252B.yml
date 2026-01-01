@@ -13,59 +13,60 @@ groups:
 - HashMap
 - Strings
 syntax:
-- call: !Binary
-  - numberA
-  - numberB
-  ret:
+- ret:
     type: Number
     desc: the sum of ''numberA'' and ''numberB''
-  params:
-  - name: numberA
+  left: !Item
+    name: numberA
     type: Number
-  - name: numberB
+  right: !Item
+    name: numberB
     type: Number
-- call: !Unary number
-  ret:
+- ret:
     type: Number
     desc: the value of the parameter ''number''
-  params:
-  - name: number
+  right: !Item
+    name: number
     type: Number
-- call: !Binary
-  - arrayA
-  - arrayB
-  ret:
-    type: ArrayUnknown
+- ret:
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
     desc: a new array filled with ''arrayA'' and ''arrayB'' elements, in that order
-  params:
-  - name: arrayA
-    type: ArrayUnknown
-  - name: arrayB
-    type: ArrayUnknown
-- call: !Binary
-  - stringA
-  - stringB
-  ret:
+  left: !Item
+    name: arrayA
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
+  right: !Item
+    name: arrayB
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
+- ret:
     type: String
     desc: a string concatenating ''stringA'' and ''stringB''
-  params:
-  - name: stringA
+  left: !Item
+    name: stringA
     type: String
-  - name: stringB
+  right: !Item
+    name: stringB
     type: String
-- call: !Unary array
-  ret:
-    type: ArrayUnknown
+- ret:
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
     desc: a new instance of the provided array filled with same elements ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}})
-  params:
-  - name: array
-    type: ArrayUnknown
-- call: !Unary hashMap
-  ret:
+  right: !Item
+    name: array
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
+- ret:
     type: HashMapUnknown
     desc: a new instance of the provided [[HashMap]] filled with the same key-value pairs ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}})
-  params:
-  - name: hashMap
+  right: !Item
+    name: hashMap
     type: HashMapUnknown
   since:
     arma3: '2.4'

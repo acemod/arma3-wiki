@@ -3,16 +3,14 @@ desc: Disables autobrake, which is engaged when vehicle is stationary and stops 
 groups:
 - PhysX
 syntax:
-- call: !Binary
-  - transport
-  - disable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: transport
+  left: !Item
+    name: transport
     desc: PhysX car or tank
     type: Object
-  - name: disable
+  right: !Item
+    name: disable
     desc: '[[true]] to disable autobrake. The autobrake is re-enabled if the driver uses brakes'
     type: Boolean
 argument_loc: Local

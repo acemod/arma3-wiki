@@ -3,24 +3,23 @@ desc: 'Process an animation of 3D [[Arma: GUI Configuration]]. Command uses name
 groups:
 - GUI Control - Object
 syntax:
-- call: !Binary
-  - control
-  - - source
-    - phase
-    - speed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: 3D control
     type: Control
-  - name: source
+  right: !Array
+  - !Item
+    name: source
     desc: common source
     type: String
-  - name: phase
+  - !Item
+    name: phase
     desc: wanted animation phase
     type: Number
-  - name: speed
+  - !Item
+    name: speed
     type: !OneOf
     - type: Boolean
       desc: when set to [[true]], animation is instant

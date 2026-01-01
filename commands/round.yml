@@ -3,11 +3,10 @@ desc: Rounds the provided value to the closest integer.
 groups:
 - Math
 syntax:
-- call: !Unary value
-  ret:
+- ret:
     type: Number
-  params:
-  - name: value
+  right: !Item
+    name: value
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

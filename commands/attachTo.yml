@@ -12,19 +12,15 @@ multiplayer_note: Use <sqf inline>_attachedObj setPosWorld getPosWorld _attached
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object1
-  - - object2
-    - offset
-    - memPoint
-    - followBoneRotation
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object1
+  left: !Item
+    name: object1
     desc: object to attach
     type: Object
-  - name: object2
+  right: !Array
+  - !Item
+    name: object2
     desc: object to attach to; if a group is provided, its [[leader]] is used
     type: !OneOf
     - type: Object
@@ -33,15 +29,18 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: offset
+  - !Item
+    name: offset
     desc: the position relative to ''object2'''s position
     type: Position3dRelative
     optional: true
-  - name: memPoint
+  - !Item
+    name: memPoint
     desc: 'see {{Link|ArmA: Armed Assault: Selection Translations|Selection Translations}} for czech selections names'
     type: String
     optional: true
-  - name: followBoneRotation
+  - !Item
+    name: followBoneRotation
     desc: follows the memory point's rotation (if attached to one)
     type: Boolean
     optional: true

@@ -34,23 +34,21 @@ desc: |-
 groups:
 - Groups
 syntax:
-- call: !Unary side
-  ret:
+- ret:
     type: Group
     desc: '[[grpNull]] if the group limit is reached'
-  params:
-  - name: side
+  right: !Item
+    name: side
     type: Side
-- call: !Unary
-  - side
-  - deleteWhenEmpty
-  ret:
+- ret:
     type: Group
     desc: '[[grpNull]] if the group limit is reached'
-  params:
-  - name: side
+  right: !Array
+  - !Item
+    name: side
     type: Side
-  - name: deleteWhenEmpty
+  - !Item
+    name: deleteWhenEmpty
     type: Unknown
   since:
     arma3: '1.68'

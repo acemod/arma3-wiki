@@ -3,24 +3,23 @@ desc: Adds magazines with specified ammo count to the cargo space of a vehicle o
 groups:
 - Vehicle Inventory
 syntax:
-- call: !Binary
-  - cargospace
-  - - magazine
-    - quantity
-    - ammocount
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: cargospace
+  left: !Item
+    name: cargospace
     desc: vehicle or container or weaponholder
     type: Object
-  - name: magazine
+  right: !Array
+  - !Item
+    name: magazine
     desc: magazine class name
     type: String
-  - name: quantity
+  - !Item
+    name: quantity
     desc: number of magazines to add. {{GVI|arma3|2.14|size= 0.75}} a negative value remove magazines
     type: Number
-  - name: ammocount
+  - !Item
+    name: ammocount
     desc: ammo count in each magazine
     type: Number
 argument_loc: Global

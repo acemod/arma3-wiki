@@ -5,24 +5,23 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- call: !Binary
-  - vehicle
-  - - gunner
-    - muzzleName
-    - reloadTime
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if given weapon is found'
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: gunner
+  right: !Array
+  - !Item
+    name: gunner
     desc: alive and able gunner operating the targeted turret
     type: Object
-  - name: muzzleName
+  - !Item
+    name: muzzleName
     desc: turret's muzzle
     type: String
-  - name: reloadTime
+  - !Item
+    name: reloadTime
     desc: 'in range 0..1 where 0: reload complete, 1: reload started'
     type: Number
 argument_loc: Local

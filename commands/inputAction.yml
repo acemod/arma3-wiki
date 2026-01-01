@@ -8,11 +8,10 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- call: !Unary name
-  ret:
+- ret:
     type: Number
-  params:
-  - name: name
+  right: !Item
+    name: name
     desc: name of the action
     type: String
 argument_loc: Unspecified

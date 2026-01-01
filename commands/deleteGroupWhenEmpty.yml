@@ -6,15 +6,13 @@ desc: |-
 groups:
 - Groups
 syntax:
-- call: !Binary
-  - group
-  - delete
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     type: Group
-  - name: delete
+  right: !Item
+    name: delete
     desc: '[[true]] to mark for auto-deletion on empty group, [[false]] to not use this auto-deletion system'
     type: Boolean
 argument_loc: Local

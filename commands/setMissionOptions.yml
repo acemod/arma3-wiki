@@ -13,11 +13,10 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Unary options
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: options
+  right: !Item
+    name: options
     desc: a HashMap containing all the options to be changed
     type: HashMapUnknown
 argument_loc: Unspecified

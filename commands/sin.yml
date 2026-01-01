@@ -3,11 +3,10 @@ desc: Sine of x.
 groups:
 - Math - Geometry
 syntax:
-- call: !Unary x
-  ret:
+- ret:
     type: Number
-  params:
-  - name: x
+  right: !Item
+    name: x
     desc: value in degree
     type: Number
 argument_loc: Unspecified

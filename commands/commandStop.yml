@@ -3,11 +3,10 @@ desc: Order the given unit(s) to stop via radio. A stop command will never finis
 groups:
 - Groups
 syntax:
-- call: !Unary target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: target
+  right: !Item
+    name: target
     type: !OneOf
     - type: Object
       desc: null

@@ -5,15 +5,14 @@ desc: |-
 groups:
 - RTD
 syntax:
-- call: !Unary helicopter
-  ret:
+- ret:
     type: !ArrayUnsized
       type: !ArrayUnsized
         type: Number
         desc: ''
       desc: ''
-  params:
-  - name: helicopter
+  right: !Item
+    name: helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,16 +3,14 @@ desc: Smoothly conduct the changes that were assigned to a camera within the giv
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - time
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     desc: object of type "camera"
     type: Object
-  - name: time
+  right: !Item
+    name: time
     desc: time in seconds during which the changes shall be done
     type: Number
 argument_loc: Local

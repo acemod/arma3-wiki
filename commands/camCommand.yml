@@ -28,16 +28,14 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - command
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     desc: see [[camCreate]]
     type: Object
-  - name: command
+  right: !Item
+    name: command
     desc: see description
     type: String
 argument_loc: Local

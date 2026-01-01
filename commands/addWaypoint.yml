@@ -8,18 +8,14 @@ desc: |-
 groups:
 - Waypoints
 syntax:
-- call: !Binary
-  - groupName
-  - - center
-    - radius
-    - index
-    - name
-  ret:
+- ret:
     type: Waypoint
-  params:
-  - name: groupName
+  left: !Item
+    name: groupName
     type: Group
-  - name: center
+  right: !Array
+  - !Item
+    name: center
     type: !OneOf
     - type: ArrayUnknown
       desc: null
@@ -27,15 +23,18 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: radius
+  - !Item
+    name: radius
     desc: random waypoint placement within ''radius'' from ''center''; {{GVI|arma3|1.90|size= 0.75}} -1 can be used for exact waypoint placement
     type: Number
-  - name: index
+  - !Item
+    name: index
     desc: can be used to insert a waypoint in between existing waypoints; if it is invalid, the waypoint will be added at the end
     type: Number
     optional: true
     default: '-1'
-  - name: name
+  - !Item
+    name: name
     desc: '[[waypointName]]'
     type: String
     optional: true

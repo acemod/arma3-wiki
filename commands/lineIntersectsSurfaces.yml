@@ -9,47 +9,44 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- call: !Unary
-  - begPosASL
-  - endPosASL
-  - ignoreObj1
-  - ignoreObj2
-  - sortMode
-  - maxResults
-  - LOD1
-  - LOD2
-  - returnUnique
-  ret:
+- ret:
     type: Unknown
     desc: "the actual position where line intersects surface\n* [[surfaceNormal]]: [[Vector]] - a normal to the intersected surface \n* intersectObject: [[Object]] - the object the surface belongs to (could be proxy object) - [[objNull]] if terrain\n* parentObject: [[Object]] - the object proxy object belongs to (not always the same as intersect object) - [[objNull]] if terrain\n* {{GVI|arma3|2.10|size= 0.75}} [[selectionNames]]: [[Array]] of [[String]]s - Names of the intersected selections (bones). Returns {{hl|[]}} if there is no intersection with a selection.\n* {{GVI|arma3|2.10|size= 0.75}} pathToBisurf: [[String]] - path to intersected surface properties (.bisurf) file. Returns {{hl|\"\"}} if surface has no special properties. Terrain surface properties begin with {{hl|#}}, and the surface properties are defined in {{hl|CfgSurfaces}}. For example, if it returns {{hl|#GdtVRsurface01}}, properties are defined in: <sqf inline>configFile >> \"CfgSurfaces\" >> \"GdtVRsurface01\"</sqf>"
-  params:
-  - name: begPosASL
+  right: !Array
+  - !Item
+    name: begPosASL
     desc: virtual line start
     type: Position3dASL
-  - name: endPosASL
+  - !Item
+    name: endPosASL
     desc: virtual line end
     type: Position3dASL
-  - name: ignoreObj1
+  - !Item
+    name: ignoreObj1
     desc: first object to ignore
     type: Object
     optional: true
     default: '[[objNull]]'
-  - name: ignoreObj2
+  - !Item
+    name: ignoreObj2
     desc: second object to ignore
     type: Object
     optional: true
     default: '[[objNull]]'
-  - name: sortMode
+  - !Item
+    name: sortMode
     desc: '[[true]]: closest to furthest, [[false]]: furthest to closest'
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: maxResults
+  - !Item
+    name: maxResults
     desc: max results to return. -1 to return every result
     type: Number
     optional: true
     default: '1'
-  - name: LOD1
+  - !Item
+    name: LOD1
     type: !StringEnum
     - value: FIRE
       desc: null
@@ -77,32 +74,22 @@ syntax:
     optional: true
     since:
       arma3: '1.52'
-  - name: LOD2
+  - !Item
+    name: LOD2
     desc: secondary [[LOD]] to look for intersection. See ''LOD1'' for possible values
     type: String
     optional: true
     default: '"FIRE"'
     since:
       arma3: '1.52'
-  - name: returnUnique
+  - !Item
+    name: returnUnique
     desc: when [[false]], all intersections in the same object are included, otherwise only the first one
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
       arma3: '1.70'
-- call: !Unary
-  - - element1
-    - element2
-    - '...'
-  ret:
-    type: Unknown
-    desc: "the actual position where line intersects surface\n* [[surfaceNormal]]: [[Vector]] - a normal to the intersected surface \n* intersectObject: [[Object]] - the object the surface belongs to (could be proxy object) - [[objNull]] if terrain\n* parentObject: [[Object]] - the object proxy object belongs to (not always the same as intersect object) - [[objNull]] if terrain\n* [[selectionNames]]: [[Array]] of [[String]]s - Names of the intersected selections (bones). Returns {{hl|[]}} if there is no intersection with a selection.\n* pathToBisurf: [[String]] - path to intersected surface properties (.bisurf) file. Returns {{hl|\"\"}} if surface has no special properties. Terrain surface properties begin with {{hl|#}}, and the surface properties are defined in {{hl|CfgSurfaces}}. For example, if it returns {{hl|#GdtVRsurface01}}, properties are defined in: <sqf inline>configFile >> \"CfgSurfaces\" >> \"GdtVRsurface01\"</sqf>"
-  params:
-  - name: elementN
-    type: Unknown
-  since:
-    arma3: '2.20'
 argument_loc: Global
 effect_loc: Unspecified
 since:

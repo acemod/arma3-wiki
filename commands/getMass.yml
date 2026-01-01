@@ -3,11 +3,10 @@ desc: Returns mass of a PhysX object.
 groups:
 - PhysX
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Number
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

@@ -7,22 +7,21 @@ multiplayer_note: Activation changes are local.
 groups:
 - Triggers
 syntax:
-- call: !Binary
-  - trigger
-  - - by
-    - type
-    - repeating
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: trigger
+  left: !Item
+    name: trigger
     desc: trigger object
     type: Object
-  - name: by
+  right: !Array
+  - !Item
+    name: by
     type: Unknown
-  - name: type
+  - !Item
+    name: type
     type: Unknown
-  - name: repeating
+  - !Item
+    name: repeating
     desc: activation can happen repeatedly
     type: Boolean
 argument_loc: Global

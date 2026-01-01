@@ -4,8 +4,7 @@ groups:
 - Groups
 - AI Behaviour
 syntax:
-- call: !Unary group
-  ret:
+- ret:
     type: String
     desc: |-
       one of:
@@ -15,8 +14,8 @@ syntax:
       * "YELLOW"
       * "RED"
       * "ERROR"
-  params:
-  - name: group
+  right: !Item
+    name: group
     type: Unknown
 argument_loc: Global
 effect_loc: Unspecified

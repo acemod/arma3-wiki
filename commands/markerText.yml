@@ -3,11 +3,10 @@ desc: Get marker text.
 groups:
 - Markers
 syntax:
-- call: !Unary markerName
-  ret:
+- ret:
     type: String
-  params:
-  - name: markerName
+  right: !Item
+    name: markerName
     type: String
 argument_loc: Global
 effect_loc: Unspecified

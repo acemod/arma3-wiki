@@ -4,18 +4,16 @@ groups:
 - Radio and Chat
 - Custom Radio and Chat
 syntax:
-- call: !Unary customChannelID
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: customChannelID
+  right: !Item
+    name: customChannelID
     desc: '[[Channel IDs|custom channel ID]] returned by [[radioChannelCreate]]'
     type: Number
-- call: !Unary option
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: option
+  right: !Item
+    name: option
     desc: '[[true]] to return only channels in use, [[false]] to return all available channels'
     type: Boolean
   since:

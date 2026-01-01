@@ -5,13 +5,11 @@ alias:
 groups:
 - Waypoints
 syntax:
-- call: !Unary
-  - groupOrUnit
-  - index
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: groupOrUnit
+  right: !Array
+  - !Item
+    name: groupOrUnit
     desc: the group (or unit) of which to select a waypoint
     type: !OneOf
     - type: Group
@@ -20,7 +18,8 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: index
+  - !Item
+    name: index
     desc: |-
       0 equals the starting position of the group.<br>
       The number used in this and other waypoint commands is ''one more'' than the one displayed in the waypoint window in the editor: e.g if the editor labeled a waypoint {{hl|"0:MOVE"}} then it can be accessed using <sqf inline>getWPPos [grp, 1]</sqf>

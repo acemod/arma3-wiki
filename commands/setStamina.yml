@@ -3,15 +3,13 @@ desc: Set units' stamina (seconds until depletion)
 groups:
 - Stamina System
 syntax:
-- call: !Binary
-  - unit
-  - stamina
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: stamina
+  right: !Item
+    name: stamina
     type: Number
 argument_loc: Local
 effect_loc: Local

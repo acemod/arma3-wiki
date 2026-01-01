@@ -3,16 +3,14 @@ desc: Sets the position of the given camera relative to its target, set with [[c
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     desc: object of type "camera"
     type: Object
-  - name: position
+  right: !Item
+    name: position
     type: Position3dRelative
 argument_loc: Local
 effect_loc: Local

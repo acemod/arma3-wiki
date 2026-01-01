@@ -9,15 +9,13 @@ groups:
 - Multiplayer
 - Variables
 syntax:
-- call: !Binary
-  - clientID
-  - varName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: clientID
+  left: !Item
+    name: clientID
     type: Number
-  - name: varName
+  right: !Item
+    name: varName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

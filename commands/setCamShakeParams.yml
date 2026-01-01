@@ -3,28 +3,27 @@ desc: Sets camera shake parameters. Will not have any effect until shake is star
 groups:
 - Camera Control
 syntax:
-- call: !Unary
-  - posCoef
-  - vertCoef
-  - horzCoef
-  - bankCoef
-  - interpolation
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: posCoef
+  right: !Array
+  - !Item
+    name: posCoef
     desc: strength of positional movement (how far the whole position can change in X,Y&Z). Should not be bigger than '''0.1''' to prevent the camera from moving into or behind the player
     type: Number
-  - name: vertCoef
+  - !Item
+    name: vertCoef
     desc: 'strength of vertical camera pan (up/down), practical range: 0..10'
     type: Number
-  - name: horzCoef
+  - !Item
+    name: horzCoef
     desc: 'strength of horizontal camera pan (left/right), practical range: 0..10'
     type: Number
-  - name: bankCoef
+  - !Item
+    name: bankCoef
     desc: 'strength of camera tilt/bank, practical range: 0..20'
     type: Number
-  - name: interpolation
+  - !Item
+    name: interpolation
     desc: if [[true]], then transitions in the different shaking directions will be smoother
     type: Boolean
 argument_loc: Unspecified

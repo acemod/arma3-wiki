@@ -3,8 +3,7 @@ desc: Detaches previously attached with [[attachChild]] object.
 groups:
 - PhysX
 syntax:
-- call: !Unary parent
-  ret:
+- ret:
     type: !OneOf
     - type: Nothing
       desc: null
@@ -12,8 +11,8 @@ syntax:
     - type: Object
       desc: null
       since: null
-  params:
-  - name: parent
+  right: !Item
+    name: parent
     desc: The parent object that another object is attached to. Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
     type: Object
 argument_loc: Local

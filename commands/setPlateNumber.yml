@@ -3,15 +3,13 @@ desc: Change the license plates on any vehicle which has plates configured. Max 
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - string
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: string
+  right: !Item
+    name: string
     type: String
 argument_loc: Local
 effect_loc: Global

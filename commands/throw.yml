@@ -6,26 +6,11 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary expression
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: expression
+  right: !Item
+    name: expression
     type: Anything
-- call: !Binary
-  - if (condition)
-  - exception
-  ret:
-    type: Nothing
-  params:
-  - name: condition
-    desc: condition returns [[true]], "exception" is thrown
-    type: IfType
-  - name: exception
-    desc: value that will be put into ''_exception'' variable inside [[catch]] block
-    type: Anything
-  since:
-    arma3: '1.54'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

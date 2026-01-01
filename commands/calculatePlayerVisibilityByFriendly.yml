@@ -3,11 +3,10 @@ desc: Sets if friendly units will calculate [[player]]'s visibility or not. Defa
 groups:
 - System
 syntax:
-- call: !Unary calculate
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: calculate
+  right: !Item
+    name: calculate
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

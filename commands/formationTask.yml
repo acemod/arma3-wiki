@@ -3,11 +3,10 @@ desc: Return the current task of the unit in the formation.
 groups:
 - Groups
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

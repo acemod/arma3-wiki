@@ -3,15 +3,13 @@ desc: Checks whether or not given row of the given listbox is selected.
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Binary
-  - control
-  - index
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: index
+  right: !Item
+    name: index
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

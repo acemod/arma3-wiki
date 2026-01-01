@@ -3,12 +3,11 @@ desc: Returns [[false]] if rope length changing animation is in progress. Return
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Unary rope
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if unwinding is complete'
-  params:
-  - name: rope
+  right: !Item
+    name: rope
     desc: given rope object
     type: Object
 argument_loc: Unspecified

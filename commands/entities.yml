@@ -5,35 +5,33 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- call: !Unary type
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
-  params:
-  - name: type
+  right: !Item
+    name: type
     desc: if an empty string {{hl|""}} is provided, all entities are returned
     type: String
-- call: !Unary
-  - typesInclude
-  - typesExclude
-  - includeCrews
-  - excludeDead
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: typesInclude
+  right: !Array
+  - !Item
+    name: typesInclude
     desc: in format [type1, type2, ...typeN], where type is a [[String]]. Empty array [] means include every entity. Method used for filtering - [[isKindOf]]
     type: ArrayUnknown
-  - name: typesExclude
+  - !Item
+    name: typesExclude
     desc: in format [type1, type2, ...typeN], where type is a [[String]]. Empty array [] means exclude no entity. Method used for filtering - [[isKindOf]]
     type: ArrayUnknown
-  - name: includeCrews
+  - !Item
+    name: includeCrews
     desc: include crews currently in vehicles
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: excludeDead
+  - !Item
+    name: excludeDead
     desc: exclude dead entities
     type: Boolean
     optional: true

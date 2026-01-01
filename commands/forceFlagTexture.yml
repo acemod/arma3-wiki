@@ -9,16 +9,14 @@ desc: |-
 groups:
 - Flags
 syntax:
-- call: !Binary
-  - object
-  - texture
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: vehicle, unit or flag pole
     type: Object
-  - name: texture
+  right: !Item
+    name: texture
     type: String
 argument_loc: Global
 effect_loc: Global

@@ -5,12 +5,11 @@ alias:
 groups:
 - Markers
 syntax:
-- call: !Unary markerName
-  ret:
+- ret:
     type: String
     desc: marker class name. See [[CfgMarkers]].
-  params:
-  - name: markerName
+  right: !Item
+    name: markerName
     type: String
 argument_loc: Global
 effect_loc: Unspecified

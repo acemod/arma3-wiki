@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary fileName
-  ret:
+- ret:
     type: String
-  params:
-  - name: fileName
+  right: !Item
+    name: fileName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

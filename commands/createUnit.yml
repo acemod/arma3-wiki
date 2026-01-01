@@ -33,24 +33,20 @@ multiplayer_note: It is recommended to create the unit where the group is '''[[M
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - group
-  - - type
-    - position
-    - markers
-    - placement
-    - special
-  ret:
+- ret:
     type: Object
     desc: the created unit
-  params:
-  - name: group
+  left: !Item
+    name: group
     desc: existing group new unit will join; if the group is not [[local]], a warning will be logged
     type: Group
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: classname of unit to be created as per [[CfgVehicles]]
     type: String
-  - name: position
+  - !Item
+    name: position
     desc: location where to create the unit. In case of [[Group]], the [[group]] [[leader]]'s position is used. The Z component of the position is ignored and the unit is always placed on the surface.
     type: !OneOf
     - type: Object
@@ -65,13 +61,16 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: markers
+  - !Item
+    name: markers
     desc: placement markers
     type: ArrayUnknown
-  - name: placement
+  - !Item
+    name: placement
     desc: placement radius
     type: Number
-  - name: special
+  - !Item
+    name: special
     type: !StringEnum
     - value: NONE
       desc: null
@@ -85,21 +84,16 @@ syntax:
     - value: CARGO
       desc: null
       since: null
-- call: !Binary
-  - type
-  - - position
-    - group
-    - init
-    - skill
-    - rank
-  ret:
+- ret:
     type: Unknown
     desc: this syntax does '''not''' return a unit reference! See {{Link|#Example 7}} for a workaround.}}
-  params:
-  - name: type
+  left: !Item
+    name: type
     desc: classname of unit to be created as per [[CfgVehicles]]
     type: String
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     desc: location at which the unit is created. In case of [[Group]] position of the [[group]] [[leader]] is used
     type: !OneOf
     - type: Object
@@ -114,18 +108,22 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: group
+  - !Item
+    name: group
     desc: existing group the new unit will join
     type: Group
-  - name: init
+  - !Item
+    name: init
     type: Unknown
     optional: true
-  - name: skill
+  - !Item
+    name: skill
     desc: unit [[skill]]
     type: Number
     optional: true
     default: '0.5'
-  - name: rank
+  - !Item
+    name: rank
     desc: unit [[rank]]
     type: String
     optional: true

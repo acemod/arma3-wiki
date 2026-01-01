@@ -3,26 +3,23 @@ desc: Removes the item with the given index from the [[CT_LISTBOX]], [[CT_COMBO]
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Unary
-  - idc
-  - index
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: control IDC
     type: Number
-  - name: index
+  - !Item
+    name: index
     type: Number
-- call: !Binary
-  - control
-  - index
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: index
+  right: !Item
+    name: index
     type: Number
 argument_loc: Local
 effect_loc: Local

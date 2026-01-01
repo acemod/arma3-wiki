@@ -3,11 +3,10 @@ desc: Gets whether the vehicle shares its own position via datalink with the [[S
 groups:
 - Sensors
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

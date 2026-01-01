@@ -8,22 +8,21 @@ groups:
 - GUI Control - Event Handlers
 - Event Handlers
 syntax:
-- call: !Binary
-  - display
-  - - eventName
-    - code
-  ret:
+- ret:
     type: Number
     desc: index of the newly added event handler or {{hl|-1}} if creation failed
-  params:
-  - name: display
+  left: !Item
+    name: display
     type: Display
-  - name: eventName
+  right: !Array
+  - !Item
+    name: eventName
     desc: |-
       event name
       {{Feature|important|When using the event names listed [[User Interface Event Handlers|here]] with the [[ctrlAddEventHandler]], [[ctrlSetEventHandler]], [[displayAddEventHandler]] or [[displaySetEventHandler]] commands, the prefix "on" in the event name must be removed (e.g. ''''ButtonDown'''' instead of ''''onButtonDown'''').}}
     type: String
-  - name: code
+  - !Item
+    name: code
     type: !OneOf
     - type: String
       desc: null

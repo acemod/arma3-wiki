@@ -3,11 +3,10 @@ desc: A getter for [[forceFlagTexture]]. Forced texture is different from your n
 groups:
 - Flags
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: String
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: vehicle, unit or flag pole
     type: Object
 argument_loc: Unspecified

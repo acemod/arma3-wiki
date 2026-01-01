@@ -5,38 +5,33 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - typeName
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: typeName
+  right: !Item
+    name: typeName
     type: String
-- call: !Binary
-  - class1
-  - class2
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: class1
+  left: !Item
+    name: class1
     type: String
-  - name: class2
+  right: !Item
+    name: class2
     type: String
-- call: !Binary
-  - class1
-  - - class2
-    - targetConfig
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: class1
+  left: !Item
+    name: class1
     type: String
-  - name: class2
+  right: !Array
+  - !Item
+    name: class2
     type: String
-  - name: targetConfig
+  - !Item
+    name: targetConfig
     type: Config
   since:
     arma3: '1.48'

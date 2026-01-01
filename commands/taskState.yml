@@ -3,8 +3,7 @@ desc: Returns the current state of a task.
 groups:
 - Briefing
 syntax:
-- call: !Unary task
-  ret:
+- ret:
     type: String
     desc: |-
       current state of task - can be one of:
@@ -14,8 +13,8 @@ syntax:
       * "Succeeded"
       * "Failed"
       * "Canceled"
-  params:
-  - name: task
+  right: !Item
+    name: task
     desc: the task you want to query
     type: Task
 argument_loc: Unspecified

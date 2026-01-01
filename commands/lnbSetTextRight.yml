@@ -3,41 +3,41 @@ desc: Sets cell's right-aligned text. Does not replace [[lnbText|cell's text]].
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: row
-    desc: 0-based index (first row is 0, second is 1, etc)
-    type: Number
-  - name: column
-    desc: 0-based index (first column is 0, second is 1, etc)
-    type: Number
-  - name: text
+  - !Array
+    - !Item
+      name: row
+      desc: 0-based index (first row is 0, second is 1, etc)
+      type: Number
+    - !Item
+      name: column
+      desc: 0-based index (first column is 0, second is 1, etc)
+      type: Number
+  - !Item
+    name: text
     type: String
-- call: !Binary
-  - ctrl
-  - - - row
-      - column
-    - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: row
-    desc: 0-based index (first row is 0, second is 1, etc)
-    type: Number
-  - name: column
-    desc: 0-based index (first column is 0, second is 1, etc)
-    type: Number
-  - name: text
+  right: !Array
+  - !Array
+    - !Item
+      name: row
+      desc: 0-based index (first row is 0, second is 1, etc)
+      type: Number
+    - !Item
+      name: column
+      desc: 0-based index (first column is 0, second is 1, etc)
+      type: Number
+  - !Item
+    name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

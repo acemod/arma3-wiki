@@ -5,36 +5,31 @@ alias:
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - damage
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: damage
+  right: !Item
+    name: damage
     desc: range 0..1, 0 = pristine/healthy condition, 1 = entirely destroyed/killed
     type: Number
-- call: !Binary
-  - object
-  - - damage
-    - useEffects
-    - killer
-    - instigator
-    - allowResurrection
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: damage
+  right: !Array
+  - !Item
+    name: damage
     desc: range 0..1, 0 = pristine/healthy condition, 1 = entirely destroyed/killed
     type: Number
-  - name: useEffects
+  - !Item
+    name: useEffects
     desc: '[[false]] to skip destruction effects'
     type: Unknown
-  - name: killer
+  - !Item
+    name: killer
     type: !OneOf
     - type: Object
       desc: null
@@ -42,7 +37,8 @@ syntax:
     optional: true
     since:
       arma3: '2.12'
-  - name: instigator
+  - !Item
+    name: instigator
     type: !OneOf
     - type: Object
       desc: null
@@ -50,7 +46,8 @@ syntax:
     optional: true
     since:
       arma3: '2.12'
-  - name: allowResurrection
+  - !Item
+    name: allowResurrection
     desc: '- Will re-set [[alive]] state of previously dead object.'
     type: Boolean
     optional: true

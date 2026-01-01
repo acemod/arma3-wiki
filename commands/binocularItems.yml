@@ -3,15 +3,14 @@ desc: Returns array with all items assigned to the [[binocular]] weapon except m
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Unknown
     desc: |-
       laserpointer or flashlight
       * optic: [[String]]
       * bipod: [[String]]
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

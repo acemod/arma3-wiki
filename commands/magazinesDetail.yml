@@ -4,29 +4,31 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- call: !Unary vehicle
-  ret:
-    type: ArrayUnknown
-  params:
-  - name: vehicle
+- ret:
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+  right: !Item
+    name: vehicle
     desc: unit or vehicle
     type: Object
-- call: !Unary
-  - vehicle
-  - includeEmpty
-  - includeLoaded
-  ret:
-    type: ArrayUnknown
-  params:
-  - name: vehicle
+- ret:
+    type: !ArrayUnsized
+      type: String
+      desc: ''
+  right: !Array
+  - !Item
+    name: vehicle
     desc: unit or vehicle
     type: Object
-  - name: includeEmpty
+  - !Item
+    name: includeEmpty
     desc: '[[true]] to include empty magazines'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: includeLoaded
+  - !Item
+    name: includeLoaded
     desc: '[[true]] to include magazines loaded in weapons (Since Arma 3 v2.07.148195)'
     type: Boolean
     optional: true

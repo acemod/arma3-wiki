@@ -4,13 +4,10 @@ groups:
 - Unit Identity
 - Locations
 syntax:
-- call: !Binary
-  - thing
-  - name
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: thing
+  left: !Item
+    name: thing
     type: !OneOf
     - type: Location
       desc: null
@@ -18,23 +15,23 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: name
+  right: !Item
+    name: name
     type: String
-- call: !Binary
-  - unit
-  - - name
-    - firstName
-    - lastName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: name
+  right: !Array
+  - !Item
+    name: name
     type: String
-  - name: firstName
+  - !Item
+    name: firstName
     type: String
-  - name: lastName
+  - !Item
+    name: lastName
     type: String
   since:
     arma3: '1.2'

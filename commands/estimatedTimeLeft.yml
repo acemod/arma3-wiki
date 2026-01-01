@@ -7,11 +7,10 @@ groups:
 - Mission Information
 - Multiplayer
 syntax:
-- call: !Unary seconds
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: seconds
+  right: !Item
+    name: seconds
     desc: estimated time in seconds, max 36000 (10 hours), 7200 (2 hours) before {{GVI|arma3|1.70|size= 0.75}}
     type: Number
 argument_loc: Unspecified

@@ -3,25 +3,22 @@ desc: Returns how much vehicle wants to reload its weapons.
 groups:
 - Weapons
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: Number
     desc: 'range: 0-1, 0: full mag, 1: empty mag'
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     desc: unit or vehicle
     type: Object
-- call: !Binary
-  - entity
-  - muzzle
-  ret:
+- ret:
     type: Number
     desc: 'range: 0-1, 0: full mag, 1: empty mag'
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     desc: unit or vehicle
     type: Object
-  - name: muzzle
+  right: !Item
+    name: muzzle
     desc: muzzle to check. "" to check all muzzles
     type: String
   since:

@@ -4,11 +4,10 @@ groups:
 - System
 - Environment
 syntax:
-- call: !Unary grid
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: grid
+  right: !Item
+    name: grid
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Local

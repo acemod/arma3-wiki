@@ -3,15 +3,13 @@ desc: Plays given sound in 2D.
 groups:
 - Sounds
 syntax:
-- call: !Binary
-  - from
-  - sound
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: from
+  left: !Item
+    name: from
     type: Unknown
-  - name: sound
+  right: !Item
+    name: sound
     type: Unknown
 argument_loc: Global
 effect_loc: Local

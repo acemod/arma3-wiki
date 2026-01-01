@@ -3,8 +3,7 @@ desc: Get provided object's hit points damage.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: ArrayUnknown
     desc: |-
       [] if entity is null or has no shape, otherwise [hitpointNames, selectionNames, damageValues]:
@@ -12,8 +11,8 @@ syntax:
       * selectionNames: [[Array]] of [[String]]s
       * damageValues: [[Array]] of [[Number]]s in range 0..1 - where 0 = no damage, 1 = full damage
       All values in all arrays are ordered accordingly to hit part index for convenience and for use in [[setHitIndex]] and [[getHitIndex]].
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     desc: object to be queried
     type: Object
 argument_loc: Global

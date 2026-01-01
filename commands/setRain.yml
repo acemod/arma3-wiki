@@ -19,23 +19,20 @@ multiplayer_note: Prior to {{arma3}}, each client and the server could have diff
 groups:
 - Environment
 syntax:
-- call: !Binary
-  - time
-  - rain
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: time
+  left: !Item
+    name: time
     desc: transition time in seconds to the new value
     type: Number
-  - name: rain
+  right: !Item
+    name: rain
     desc: new rain value in range 0..1.
     type: Number
-- call: !Unary rainParams
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: rainParams
+  right: !Item
+    name: rainParams
     desc: 'custom [[Arma 3: CfgWorlds Config Reference#class RainParticles | {{hl|RainParticles}}]] params - see [[rainParams]]. Use empty array [] to reset to default config values'
     type: !ArrayUnsized
       type: Anything
@@ -43,11 +40,10 @@ syntax:
   since:
     arma3: '2.8'
   effect: Local
-- call: !Unary config
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: config
+  right: !Item
+    name: config
     desc: 'config path to a custom class, which contains [[Arma 3: CfgWorlds Config Reference#class RainParticles | {{hl|RainParticles}}]] class. Use [[configNull]] to reset to default config values'
     type: Config
   since:

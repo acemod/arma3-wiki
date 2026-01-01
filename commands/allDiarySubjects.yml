@@ -3,8 +3,7 @@ desc: Returns array with all [[Diary]] subjects available to the given person. S
 groups:
 - Briefing
 syntax:
-- call: !Unary person
-  ret:
+- ret:
     type: Unknown
     desc: |-
       internal subject reference
@@ -13,8 +12,8 @@ syntax:
       * countRecords: [[Number]] - number of records in this subject
       * isReadOnly: [[Boolean]] - whether or not the records could be added
       * isSelected: [[Boolean]] - [[true]] if subject is currently selected
-  params:
-  - name: person
+  right: !Item
+    name: person
     desc: unit
     type: Object
 argument_loc: Global

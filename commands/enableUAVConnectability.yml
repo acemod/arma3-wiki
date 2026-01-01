@@ -3,18 +3,17 @@ desc: Enables unit's AV terminal(s) connecting to UAV.
 groups:
 - Remote Control
 syntax:
-- call: !Binary
-  - object
-  - - uav
-    - checkAllItems
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: uav
+  right: !Array
+  - !Item
+    name: uav
     type: Object
-  - name: checkAllItems
+  - !Item
+    name: checkAllItems
     desc: true for enabling of all terminals in unit's inventory, false for enabling of terminal assigned to proper slot only.
     type: Boolean
 argument_loc: Unspecified

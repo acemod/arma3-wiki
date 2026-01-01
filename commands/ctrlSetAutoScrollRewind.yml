@@ -6,16 +6,14 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - set
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: '[[DialogControls-ListBoxes|CT_LISTBOX]] or [[CT_CONTROLS_GROUP]]'
     type: Control
-  - name: set
+  right: !Item
+    name: set
     desc: '[[true]] to enable rewind'
     type: Boolean
 argument_loc: Unspecified

@@ -3,23 +3,21 @@ desc: Returns array all info panels configured for given object or object and tu
 groups:
 - Custom Panels
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: the concerned vehicle
     type: Object
-- call: !Unary
-  - unit
-  - turretPath
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: unit
+  right: !Array
+  - !Item
+    name: unit
     desc: the concerned vehicle
     type: Object
-  - name: turretPath
+  - !Item
+    name: turretPath
     desc: turret index
     type: ArrayUnknown
 argument_loc: Unspecified

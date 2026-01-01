@@ -9,11 +9,10 @@ multiplayer_note: |-
 groups:
 - Multiplayer
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: !OneOf
     - type: Object
       desc: null

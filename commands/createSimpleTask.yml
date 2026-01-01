@@ -7,20 +7,19 @@ multiplayer_note: The task effect is [[Multiplayer Scripting#Locality|local]], i
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - unit
-  - - name
-    - parentTask
-  ret:
+- ret:
     type: Task
     desc: the new task
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit to add this new task
     type: Object
-  - name: name
+  right: !Array
+  - !Item
+    name: name
     type: String
-  - name: parentTask
+  - !Item
+    name: parentTask
     desc: (Optional, [[taskNull]]) - The new task will be a sub task of the parent task
     type: Task
     optional: true

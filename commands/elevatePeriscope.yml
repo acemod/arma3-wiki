@@ -10,25 +10,23 @@ groups:
 - Object Manipulation
 - Animations
 syntax:
-- call: !Binary
-  - vehicle
-  - - turret
-    - elevation
-    - speed
-    - blockUserInput
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle with periscope tech
     type: Object
-  - name: turret
+  right: !Array
+  - !Item
+    name: turret
     desc: turret on which periscope is located
     type: ArrayUnknown
-  - name: elevation
+  - !Item
+    name: elevation
     desc: elevation range 0..1
     type: Number
-  - name: speed
+  - !Item
+    name: speed
     desc: config anim speed multiplier, 2 - twice as fast, 0.5 - twice as slow, etc. -1 - default config speed. If [[true]] is used as param, the change in elevation is almost instant
     type: !OneOf
     - type: Number
@@ -39,7 +37,8 @@ syntax:
       since: null
     optional: true
     default: '-1'
-  - name: blockUserInput
+  - !Item
+    name: blockUserInput
     desc: '[[true]] to disable user ability to control periscope with keyboard. The change is persistent unless set to [[false]] again'
     type: Boolean
     optional: true

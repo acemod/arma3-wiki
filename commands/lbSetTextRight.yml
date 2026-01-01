@@ -3,19 +3,18 @@ desc: Sets the text on the right side of the item with the given row index of th
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Binary
-  - control
-  - - row
-    - name
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: row
+  right: !Array
+  - !Item
+    name: row
     desc: 0-based index (first row is 0, second is 1, etc)
     type: Number
-  - name: name
+  - !Item
+    name: name
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

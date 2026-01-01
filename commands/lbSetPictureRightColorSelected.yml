@@ -5,18 +5,17 @@ desc: |-
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Binary
-  - control
-  - - index
-    - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     type: Number
-  - name: color
+  - !Item
+    name: color
     type: ArrayColorRgba
 argument_loc: Unspecified
 effect_loc: Unspecified

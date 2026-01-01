@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Multiplayer
 syntax:
-- call: !Unary state
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: state
+  right: !Item
+    name: state
     desc: '[[true]] to disable'
     type: Boolean
 argument_loc: Unspecified

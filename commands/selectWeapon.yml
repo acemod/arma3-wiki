@@ -7,25 +7,18 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- call: !Binary
-  - unitName
-  - muzzleName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  left: !Item
+    name: unitName
     type: Object
-  - name: muzzleName
+  right: !Item
+    name: muzzleName
     type: !OneOf
     - type: String
       desc: null
       since: null
-- call: !Binary
-  - unit
-  - - weapon
-    - muzzle
-    - firemode
-  ret:
+- ret:
     type: !OneOf
     - type: Boolean
       desc: null
@@ -34,17 +27,21 @@ syntax:
       desc: null
       since: null
     desc: '[[true]] on success, [[false]] on failure, [[Nothing]] when the call to the command is dispatched over network'
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: person. This argument has to be [[local]], or it can be remote when executed on the [[isServer|server]]
     type: Object
-  - name: weapon
+  right: !Array
+  - !Item
+    name: weapon
     desc: name of the weapon, personal or vehicle's weapon (see [[weaponState]])
     type: String
-  - name: muzzle
+  - !Item
+    name: muzzle
     desc: name of the selected muzzle (see [[weaponState]])
     type: String
-  - name: firemode
+  - !Item
+    name: firemode
     desc: name of the firemode (see [[weaponState]])
     type: String
   since:

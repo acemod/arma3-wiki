@@ -3,15 +3,13 @@ desc: Sets the person's fatigue, from 0 to 1.
 groups:
 - Stamina System
 syntax:
-- call: !Binary
-  - unit
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: value
+  right: !Item
+    name: value
     desc: 'in 0..1 ''''available'''' fatigue range: 0 is fully energised, 1 is fully exhausted'
     type: Number
 argument_loc: Global

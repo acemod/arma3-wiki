@@ -3,13 +3,10 @@ desc: Set group formation.
 groups:
 - Groups
 syntax:
-- call: !Binary
-  - group
-  - formation
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     type: !OneOf
     - type: Object
       desc: null
@@ -17,7 +14,8 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: formation
+  right: !Item
+    name: formation
     type: !StringEnum
     - value: COLUMN
       desc: null

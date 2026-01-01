@@ -8,15 +8,13 @@ desc: |-
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - markerName
-  - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: markerName
+  left: !Item
+    name: markerName
     type: String
-  - name: text
+  right: !Item
+    name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Global

@@ -3,22 +3,20 @@ desc: Enable / disable saving of the game with an optional autosave.
 groups:
 - Mission Information
 syntax:
-- call: !Unary enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
-- call: !Unary
-  - enable
-  - save
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: enable
+  right: !Array
+  - !Item
+    name: enable
     desc: allow [[saveGame]] command usage and manual saving
     type: Boolean
-  - name: save
+  - !Item
+    name: save
     desc: create an autosave on command execution
     type: Boolean
 argument_loc: Unspecified

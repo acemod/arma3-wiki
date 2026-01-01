@@ -3,15 +3,14 @@ desc: "Returns trigger activation. \n\n{{Feature | important | The trigger could
 groups:
 - Triggers
 syntax:
-- call: !Unary trigger
-  ret:
+- ret:
     type: Unknown
     desc: |-
       See [[setTriggerActivation]]
       * type: [[String]] - See [[setTriggerActivation]]
       * repeating: [[Boolean]]
-  params:
-  - name: trigger
+  right: !Item
+    name: trigger
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

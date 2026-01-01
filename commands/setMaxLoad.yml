@@ -5,16 +5,14 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - container
-  - maxLoadValue
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: container
+  left: !Item
+    name: container
     desc: uniform/vest/backpack container, vehicle cargo, supply box, weapon holder
     type: Object
-  - name: maxLoadValue
+  right: !Item
+    name: maxLoadValue
     desc: max load limit
     type: Number
 argument_loc: Unspecified

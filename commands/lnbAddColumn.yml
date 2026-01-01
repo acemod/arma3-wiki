@@ -3,35 +3,32 @@ desc: Adds a column at given position.
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Binary
-  - control
-  - position
-  ret:
+- ret:
     type: !OneOf
     - type: Number
       desc: null
       since: null
     desc: returns the zero based index of the new column
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: position
+  right: !Item
+    name: position
     desc: position of the new column where 0 means all the way to the left and 1 all the way to the right of the control
     type: Number
-- call: !Unary
-  - controlOrIdc
-  - position
-  ret:
+- ret:
     type: !OneOf
     - type: Number
       desc: null
       since: null
     desc: returns the zero based index of the new column
-  params:
-  - name: controlOrIdc
+  right: !Array
+  - !Item
+    name: controlOrIdc
     desc: control or the idc of the control
     type: Unknown
-  - name: position
+  - !Item
+    name: position
     desc: position of the new column where 0 means all the way to the left and 1 all the way to the right of the control
     type: Number
 argument_loc: Local

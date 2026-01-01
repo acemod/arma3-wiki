@@ -5,34 +5,31 @@ desc: |-
 groups:
 - Arrays
 syntax:
-- call: !Binary
-  - array
-  - count
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: count
+  right: !Item
+    name: count
     desc: the new array size
     type: Number
-- call: !Binary
-  - array
-  - - count
-    - fill
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: count
+  right: !Array
+  - !Item
+    name: count
     desc: the new array size
     type: Number
-  - name: fill
+  - !Item
+    name: fill
     desc: value to fill added positions
     type: Anything
   since:

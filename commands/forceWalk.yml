@@ -3,16 +3,14 @@ desc: Forces unit to walk even if run or sprint is selected.
 groups:
 - Stamina System
 syntax:
-- call: !Binary
-  - unit
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: the unit forced to walk
     type: Object
-  - name: value
+  right: !Item
+    name: value
     desc: true/false
     type: Boolean
 argument_loc: Local

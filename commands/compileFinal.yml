@@ -5,8 +5,7 @@ desc: |-
 groups:
 - Strings
 syntax:
-- call: !Unary expression
-  ret:
+- ret:
     type: !OneOf
     - type: Code
       desc: null
@@ -14,8 +13,8 @@ syntax:
     - type: HashMapUnknown
       desc: null
       since: null
-  params:
-  - name: expression
+  right: !Item
+    name: expression
     type: !OneOf
     - type: String
       desc: null

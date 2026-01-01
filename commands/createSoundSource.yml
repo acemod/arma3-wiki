@@ -27,18 +27,15 @@ multiplayer_note: When a [[CfgSFX]] sound definition contains more than 1 sound,
 groups:
 - Sounds
 syntax:
-- call: !Unary
-  - type
-  - position
-  - markers
-  - placement
-  ret:
+- ret:
     type: Object
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: '[[CfgVehicles]] class'
     type: String
-  - name: position
+  - !Item
+    name: position
     desc: desired placement position
     type: !OneOf
     - type: Object
@@ -50,12 +47,14 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: markers
+  - !Item
+    name: markers
     desc: |-
       if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position.
       If any of the markers were given a Z coordinate with [[setMarkerPos]], the sound will also be created at the given Z coordinate
     type: ArrayUnknown
-  - name: placement
+  - !Item
+    name: placement
     desc: the sound is placed inside a circle with given position as center and placement as its radius
     type: Number
 argument_loc: Global

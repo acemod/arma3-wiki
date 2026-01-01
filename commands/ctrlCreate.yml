@@ -53,18 +53,15 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - display
-  - - class
-    - idc
-    - controlsGroup
-  ret:
+- ret:
     type: Control
-  params:
-  - name: display
+  left: !Item
+    name: display
     desc: display in which control will be created
     type: Display
-  - name: class
+  right: !Array
+  - !Item
+    name: class
     desc: existing classname (see [[ctrlCreate/classnames]]) of the new control;  {{GVI|arma3|1.70|size= 0.75}} it is possible to use classes defined in mission config
     type: !OneOf
     - type: String
@@ -73,12 +70,14 @@ syntax:
     - type: Config
       desc: null
       since: null
-  - name: idc
+  - !Item
+    name: idc
     desc: |-
       IDC of the new control. Use -1 if not needed
       {{Feature|warning|Be careful when setting the IDC to {{hl|-1}} if the GUI also contains a [[CT_LISTNBOX]] since {{hl|idcLeft}} and {{hl|idcRight}} by default have <syntaxhighlight lang="cpp" inline>idc = -1;</syntaxhighlight>.}}
     type: Number
-  - name: controlsGroup
+  - !Item
+    name: controlsGroup
     desc: creates controls in existing controls group
     type: Control
     optional: true

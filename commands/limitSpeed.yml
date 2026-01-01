@@ -6,15 +6,13 @@ groups:
 - Unit Control
 - Object Manipulation
 syntax:
-- call: !Binary
-  - objectName
-  - speed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: objectName
+  left: !Item
+    name: objectName
     type: Object
-  - name: speed
+  right: !Item
+    name: speed
     desc: in km/h; By default, it's {{hl|2 * maxSpeed}} of the vehicle/unit (which is defined in config). See Example 1.
     type: Number
 argument_loc: Unspecified

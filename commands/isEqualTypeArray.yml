@@ -4,15 +4,13 @@ groups:
 - Variables
 - Arrays
 syntax:
-- call: !Binary
-  - arr1
-  - arr2
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: arr1
+  left: !Item
+    name: arr1
     type: Anything
-  - name: arr2
+  right: !Item
+    name: arr2
     type: !ArrayUnsized
       type: Anything
       desc: ''

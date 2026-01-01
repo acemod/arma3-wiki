@@ -3,16 +3,14 @@ desc: Returns the name of assigned item in given slot or the empty string.
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - slot
-  ret:
+- ret:
     type: String
     desc: item name
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: slot
+  right: !Item
+    name: slot
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

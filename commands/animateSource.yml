@@ -7,23 +7,22 @@ desc: |-
 groups:
 - Animations
 syntax:
-- call: !Binary
-  - object
-  - - source
-    - phase
-    - speed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: source
+  right: !Array
+  - !Item
+    name: source
     desc: common source
     type: String
-  - name: phase
+  - !Item
+    name: phase
     desc: wanted animation phase
     type: Number
-  - name: speed
+  - !Item
+    name: speed
     type: !OneOf
     - type: Boolean
       desc: when set to [[true]], animation is instant

@@ -7,64 +7,61 @@ desc: |-
 groups:
 - GUI Control - Positioning
 syntax:
-- call: !Binary
-  - controlName
-  - - x
-    - y
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: controlName
+  left: !Item
+    name: controlName
     desc: 2D control
     type: Control
-  - name: x
+  right: !Array
+  - !Item
+    name: x
     desc: position in x
     type: Number
-  - name: y
+  - !Item
+    name: y
     desc: position in y
     type: Number
-- call: !Binary
-  - controlName
-  - - x
-    - y
-    - w
-    - h
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: controlName
+  left: !Item
+    name: controlName
     desc: 2D control
     type: Control
-  - name: x
+  right: !Array
+  - !Item
+    name: x
     desc: position in x
     type: Number
-  - name: y
+  - !Item
+    name: y
     desc: position in y
     type: Number
-  - name: w
+  - !Item
+    name: w
     desc: width of the control
     type: Number
-  - name: h
+  - !Item
+    name: h
     desc: height of the control
     type: Number
-- call: !Binary
-  - controlName
-  - - x
-    - z
-    - y
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: controlName
+  left: !Item
+    name: controlName
     desc: 3D control
     type: Control
-  - name: x
+  right: !Array
+  - !Item
+    name: x
     desc: screen x
     type: Number
-  - name: z
+  - !Item
+    name: z
     desc: distance from the screen (depth). If object is too far, it cannot be dragged by the mouse.
     type: Number
-  - name: y
+  - !Item
+    name: y
     desc: screen y
     type: Number
 argument_loc: Unspecified

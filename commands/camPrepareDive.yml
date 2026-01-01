@@ -4,15 +4,13 @@ groups:
 - Broken Commands
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - dive
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     type: Object
-  - name: dive
+  right: !Item
+    name: dive
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

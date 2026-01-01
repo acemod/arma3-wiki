@@ -3,31 +3,30 @@ desc: Returns the additional integer value in the item with the given position o
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  ret:
+- ret:
     type: Number
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: row
+  - !Array
+    - !Item
+      name: row
+      type: Number
+    - !Item
+      name: column
+      type: Number
+- ret:
     type: Number
-  - name: column
-    type: Number
-- call: !Binary
-  - ctrl
-  - - row
-    - column
-  ret:
-    type: Number
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: row
+  right: !Array
+  - !Item
+    name: row
     type: Number
-  - name: column
+  - !Item
+    name: column
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

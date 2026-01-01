@@ -3,25 +3,22 @@ desc: Expands given menu entry on given path and all its parents so entry is vis
 groups:
 - GUI Control - Menu
 syntax:
-- call: !Unary
-  - idc
-  - path
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     type: ArrayUnknown
-- call: !Binary
-  - control
-  - path
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Item
+    name: path
     type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified

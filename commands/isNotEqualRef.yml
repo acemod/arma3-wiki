@@ -3,16 +3,14 @@ desc: Compares two values by reference, returns [[true]] if not equal.
 groups:
 - Variables
 syntax:
-- call: !Binary
-  - val1
-  - val2
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if not the same reference'
-  params:
-  - name: val1
+  left: !Item
+    name: val1
     type: Anything
-  - name: val2
+  right: !Item
+    name: val2
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified

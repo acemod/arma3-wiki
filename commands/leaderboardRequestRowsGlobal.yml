@@ -3,21 +3,20 @@ desc: Requests given leaderboard to download values from global table.
 groups:
 - Leaderboards
 syntax:
-- call: !Unary
-  - leaderboard
-  - offset
-  - rows
-  ret:
+- ret:
     type: Boolean
     desc: returns [[true]] if request has been started
-  params:
-  - name: leaderboard
+  right: !Array
+  - !Item
+    name: leaderboard
     desc: name of the leaderboard
     type: String
-  - name: offset
+  - !Item
+    name: offset
     desc: defines how many rows are skipped
     type: Number
-  - name: rows
+  - !Item
+    name: rows
     desc: defines how many rows are requested
     type: Number
 argument_loc: Unspecified

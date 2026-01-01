@@ -13,15 +13,13 @@ desc: |-
 groups:
 - Unit Identity
 syntax:
-- call: !Binary
-  - person
-  - face
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: person
+  left: !Item
+    name: person
     type: Object
-  - name: face
+  right: !Item
+    name: face
     type: String
 argument_loc: Global
 effect_loc: Local

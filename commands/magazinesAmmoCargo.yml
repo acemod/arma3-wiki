@@ -3,11 +3,13 @@ desc: Returns an array of subarrays with the type names and ammo left of all the
 groups:
 - Vehicle Inventory
 syntax:
-- call: !Unary vehicle
-  ret:
-    type: ArrayUnknown
-  params:
-  - name: vehicle
+- ret:
+    type: Unknown
+    desc: |-
+      Class name of the magazine
+      * ammo: [[Number]] - Number of rounds loaded
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

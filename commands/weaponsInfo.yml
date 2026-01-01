@@ -3,11 +3,7 @@ desc: Returns entity's weapons information including weapon index and firemode.
 groups:
 - Weapons
 syntax:
-- call: !Binary
-  - unit
-  - - weaponOrMuzzle
-    - onlyLoaded
-  ret:
+- ret:
     type: Unknown
     desc: |-
       internal weapon index (changes frequently) used with "SwitchWeapon" and "UseWeapon" [[action]]s
@@ -18,14 +14,17 @@ syntax:
       * magazineName: [[String]] - name of the loaded magazine or ""
       * ammoCount: [[Number]] - magazine ammo count or -1
       * isPrimary: [[Boolean]] - [[true]] if this muzzle is considered primary by the engine (Since Arma 3 2.14)
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: person
     type: Object
-  - name: weaponOrMuzzle
+  right: !Array
+  - !Item
+    name: weaponOrMuzzle
     desc: name of the weapon or muzzle (returns whichever matches first) or "" to return all weapons
     type: String
-  - name: onlyLoaded
+  - !Item
+    name: onlyLoaded
     desc: '[[true]] to return loaded weapons only'
     type: Boolean
     optional: true

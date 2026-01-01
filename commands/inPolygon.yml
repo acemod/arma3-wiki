@@ -3,13 +3,10 @@ desc: Checks whether position is inside given polygon. The polygon is only check
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - position
-  - polygon
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: position
+  left: !Item
+    name: position
     type: !OneOf
     - type: Position3d
       desc: null
@@ -20,7 +17,8 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: polygon
+  right: !Item
+    name: polygon
     desc: 'positions in format: [position1, position2...., positionN]'
     type: !ArrayUnsized
       type: Position3d

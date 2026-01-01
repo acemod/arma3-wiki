@@ -5,24 +5,23 @@ problem_notes:
 groups:
 - GUI Control - Map
 syntax:
-- call: !Binary
-  - map
-  - - time
-    - zoom
-    - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     desc: '[[CT_MAP]] control'
     type: Control
-  - name: time
+  right: !Array
+  - !Item
+    name: time
     desc: duration of the animation in seconds
     type: Number
-  - name: zoom
+  - !Item
+    name: zoom
     desc: zoom in range from 0.001 (max) to 1 (min). Custom map scales can be set in map control's config. See also [[ctrlMapScale]]
     type: Number
-  - name: position
+  - !Item
+    name: position
     desc: 'formats: [[Position#Introduction|Position2D]], [[Position#Introduction|Position3D]], [[Object]]'
     type: !OneOf
     - type: ArrayUnknown

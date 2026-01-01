@@ -3,12 +3,11 @@ desc: Checks if the engine was water damaged. When a vehicle is [[Arma_3:_Missio
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if the engine was water damaged'
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

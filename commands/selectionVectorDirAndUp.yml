@@ -3,19 +3,18 @@ desc: Searches for selection in the object model's LOD level, and returns the Di
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - - selectionName
-    - LOD
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: selectionName
+  right: !Array
+  - !Item
+    name: selectionName
     desc: selection name (see [[selectionNames]])
     type: String
-  - name: LOD
+  - !Item
+    name: LOD
     type: !StringEnum
     - value: '[[String]] - can be one of:'
       desc: null

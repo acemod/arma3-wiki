@@ -3,15 +3,13 @@ desc: Enables or disables transport NV (Night Vision). To disable TI (Thermal Im
 groups:
 - Weapons
 syntax:
-- call: !Binary
-  - vehicle
-  - state
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: state
+  right: !Item
+    name: state
     type: Boolean
 argument_loc: Global
 effect_loc: Global

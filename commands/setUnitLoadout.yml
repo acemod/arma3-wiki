@@ -5,52 +5,45 @@ problem_notes:
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - loadout
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: loadout
+  right: !Item
+    name: loadout
     desc: '[[Unit Loadout Array]]'
     type: ArrayUnknown
-- call: !Binary
-  - unit
-  - - loadout
-    - fullMagazines
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: loadout
+  right: !Array
+  - !Item
+    name: loadout
     desc: '[[Unit Loadout Array]]'
     type: ArrayUnknown
-  - name: fullMagazines
+  - !Item
+    name: fullMagazines
     desc: partially emptied magazines will be refilled when the loadout is applied
     type: Boolean
-- call: !Binary
-  - unit
-  - name
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: name
+  right: !Item
+    name: name
     desc: class name (see description)
     type: String
-- call: !Binary
-  - unit
-  - config
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: config
+  right: !Item
+    name: config
     desc: config class (see description)
     type: Config
 argument_loc: Global

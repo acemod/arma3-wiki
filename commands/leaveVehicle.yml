@@ -13,13 +13,10 @@ groups:
 - Unit Control
 - Groups
 syntax:
-- call: !Binary
-  - group
-  - vehicle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     desc: object's [[Group]] is used
     type: !OneOf
     - type: Group
@@ -28,7 +25,8 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Local
 effect_loc: Local

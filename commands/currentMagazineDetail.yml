@@ -4,11 +4,10 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: String
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: unit or vehicle
     type: Object
 argument_loc: Unspecified

@@ -3,15 +3,13 @@ desc: Sets P font of given HTML control or its size.
 groups:
 - GUI Control - HTML
 syntax:
-- call: !Binary
-  - control
-  - fontOrSize
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: fontOrSize
+  right: !Item
+    name: fontOrSize
     type: !OneOf
     - type: String
       desc: null

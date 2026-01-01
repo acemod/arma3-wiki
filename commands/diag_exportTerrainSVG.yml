@@ -5,36 +5,35 @@ desc: |-
 groups:
 - Diagnostic
 syntax:
-- call: !Unary
-  - filePath
-  - drawLocationNames
-  - drawGrid
-  - drawCountlines
-  - drawTreeObjects
-  - drawMountainHeightpoints
-  - simpleRoads
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: filePath
+  right: !Array
+  - !Item
+    name: filePath
     desc: path on disk. File name and extension have to be included
     type: String
-  - name: drawLocationNames
+  - !Item
+    name: drawLocationNames
     desc: whether or not to draw location names
     type: Boolean
-  - name: drawGrid
+  - !Item
+    name: drawGrid
     desc: whether or not to draw grid
     type: Boolean
-  - name: drawCountlines
+  - !Item
+    name: drawCountlines
     desc: whether or not to count lines
     type: Boolean
-  - name: drawTreeObjects
+  - !Item
+    name: drawTreeObjects
     desc: whether or not to draw trees
     type: Boolean
-  - name: drawMountainHeightpoints
+  - !Item
+    name: drawMountainHeightpoints
     desc: whether or not to draw mountain height spots
     type: Boolean
-  - name: simpleRoads
+  - !Item
+    name: simpleRoads
     desc: simplify roads. Draw roads as one long polyline instead of separate segments. Uses average road width as overall width
     type: Boolean
 argument_loc: Unspecified

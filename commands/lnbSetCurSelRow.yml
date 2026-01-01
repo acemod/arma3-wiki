@@ -3,25 +3,22 @@ desc: Selects the row with the given index of the 2D listbox.
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - index
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: index
+  - !Item
+    name: index
     type: Number
-- call: !Binary
-  - ctrl
-  - index
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: index
+  right: !Item
+    name: index
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

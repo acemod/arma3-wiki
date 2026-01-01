@@ -3,11 +3,10 @@ desc: Returns an array with the session and global time the asset has been used.
 groups:
 - DLC
 syntax:
-- call: !Unary assetName
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: assetName
+  right: !Item
+    name: assetName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -5,18 +5,17 @@ desc: |-
 groups:
 - Briefing
 syntax:
-- call: !Unary
-  - text
-  - colour
-  - icon
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: text
+  right: !Array
+  - !Item
+    name: text
     type: String
-  - name: colour
+  - !Item
+    name: colour
     type: ArrayColorRgba
-  - name: icon
+  - !Item
+    name: icon
     type: !StringEnum
     - value: taskNew
       desc: null

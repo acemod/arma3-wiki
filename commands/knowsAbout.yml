@@ -28,14 +28,11 @@ groups:
 - Object Manipulation
 - Sides
 syntax:
-- call: !Binary
-  - who
-  - target
-  ret:
+- ret:
     type: Number
     desc: in range of 0..4, where 4 is maximum knowledge.
-  params:
-  - name: who
+  left: !Item
+    name: who
     desc: if a unit, unit's [[group]] is considered; if a vehicle, vehicle commander's [[group]] is used.
     type: !OneOf
     - type: Object
@@ -47,7 +44,8 @@ syntax:
     - type: Side
       desc: null
       since: null
-  - name: target
+  right: !Item
+    name: target
     type: Object
 argument_loc: Local
 effect_loc: Unspecified

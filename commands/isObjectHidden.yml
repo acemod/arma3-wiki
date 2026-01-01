@@ -3,12 +3,11 @@ desc: Checks visibility of a given object on the local machine.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if hidden, [[false]] if visible'
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: object to test
     type: Object
 argument_loc: Global

@@ -3,10 +3,7 @@ desc: Adds weapon item, including magazine, directly to the [[primaryWeapon]]. T
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - item
-  ret:
+- ret:
     type: !OneOf
     - type: Nothing
       desc: null
@@ -15,10 +12,11 @@ syntax:
       desc: null
       since: null
     desc: '''''''false'''''' is returned if ''''''item'''''' can not be added'
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: item
+  right: !Item
+    name: item
     type: String
 argument_loc: Local
 effect_loc: Global

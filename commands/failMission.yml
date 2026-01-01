@@ -19,11 +19,10 @@ desc: |-
 groups:
 - Mission Information
 syntax:
-- call: !Unary endtype
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: endtype
+  right: !Item
+    name: endtype
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

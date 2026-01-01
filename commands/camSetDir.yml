@@ -3,16 +3,14 @@ desc: Sets the orientation of the given camera in the direction of the given vec
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - direction
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     desc: object of type "camera"
     type: Object
-  - name: direction
+  right: !Item
+    name: direction
     type: !OneOf
     - type: Number
       desc: (before ) - camera azimuth

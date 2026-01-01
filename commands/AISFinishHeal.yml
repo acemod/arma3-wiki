@@ -3,20 +3,19 @@ desc: Alternative Injury Simulation (AIS) end state. Used to tell engine that sc
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary
-  - unit
-  - healer
-  - healerCanHeal
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  right: !Array
+  - !Item
+    name: unit
     desc: wounded
     type: Object
-  - name: healer
+  - !Item
+    name: healer
     desc: medic
     type: Object
-  - name: healerCanHeal
+  - !Item
+    name: healerCanHeal
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,21 +3,20 @@ desc: 'Draws a line of a given colour between two 3D positions in the current fr
 groups:
 - Interaction
 syntax:
-- call: !Unary
-  - start
-  - end
-  - color
-  - width
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: start
+  right: !Array
+  - !Item
+    name: start
     type: Position3dAGL
-  - name: end
+  - !Item
+    name: end
     type: Position3dAGL
-  - name: color
+  - !Item
+    name: color
     type: ArrayColorRgba
-  - name: width
+  - !Item
+    name: width
     type: Number
     optional: true
     default: '3'

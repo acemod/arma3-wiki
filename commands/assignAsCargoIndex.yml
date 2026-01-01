@@ -5,20 +5,19 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - character
-  - - vehicle
-    - index
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: character
+  left: !Item
+    name: character
     desc: character to assign
     type: Object
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     desc: vehicle to assign to
     type: Object
-  - name: index
+  - !Item
+    name: index
     desc: cargo / passenger index
     type: Number
 argument_loc: Unspecified

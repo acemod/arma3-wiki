@@ -10,16 +10,14 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - speedMode
-  ret:
+- ret:
     type: Number
     desc: m/s
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: speedMode
+  right: !Item
+    name: speedMode
     type: String
 argument_loc: Global
 effect_loc: Unspecified

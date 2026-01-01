@@ -3,11 +3,10 @@ desc: Forces the unit to respawn. The effect is as if the player pressed the RES
 groups:
 - Multiplayer
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Local
 effect_loc: Global

@@ -7,11 +7,10 @@ groups:
 - Environment
 - Broken Commands
 syntax:
-- call: !Unary humidity
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: humidity
+  right: !Item
+    name: humidity
     desc: '0 (min): clear sky, 1 (max): heavy cloud cover'
     type: Number
 argument_loc: Unspecified

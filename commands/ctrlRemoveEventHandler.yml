@@ -4,18 +4,17 @@ groups:
 - GUI Control - Event Handlers
 - Event Handlers
 syntax:
-- call: !Binary
-  - control
-  - - type
-    - id
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     type: String
-  - name: id
+  - !Item
+    name: id
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

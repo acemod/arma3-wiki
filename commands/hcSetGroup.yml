@@ -6,23 +6,22 @@ desc: |-
 groups:
 - High Command
 syntax:
-- call: !Binary
-  - unit
-  - - group
-    - groupName
-    - team
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: the leader
     type: Object
-  - name: group
+  right: !Array
+  - !Item
+    name: group
     type: Group
-  - name: groupName
+  - !Item
+    name: groupName
     type: String
     optional: true
-  - name: team
+  - !Item
+    name: team
     type: !StringEnum
     - value: teamMain
       desc: null

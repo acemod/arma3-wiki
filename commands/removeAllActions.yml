@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- call: !Unary obj
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: obj
+  right: !Item
+    name: obj
     type: Object
 argument_loc: Global
 effect_loc: Local

@@ -5,28 +5,23 @@ desc: |-
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary
-  - idc
-  - path
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
-    desc: '[[Tree View Path]] of the item'
-    type: ArrayUnknown
-- call: !Binary
-  - control
-  - path
-  ret:
+  - !Item
+    name: path
+    type: Unknown
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
-    desc: '[[Tree View Path]] of the item'
-    type: ArrayUnknown
+  right: !Item
+    name: path
+    type: Unknown
 argument_loc: Local
 effect_loc: Local
 since:

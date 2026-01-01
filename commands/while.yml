@@ -8,11 +8,10 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary condition
-  ret:
+- ret:
     type: WhileType
-  params:
-  - name: condition
+  right: !Item
+    name: condition
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified

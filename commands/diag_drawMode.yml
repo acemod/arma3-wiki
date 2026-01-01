@@ -3,11 +3,10 @@ desc: Activates a debug visualisation.
 groups:
 - Diagnostic
 syntax:
-- call: !Unary type
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: type
+  right: !Item
+    name: type
     type: !StringEnum
     - value: Normal
       desc: null

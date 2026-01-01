@@ -6,12 +6,11 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if the vehicle is able to move, [[false]] if not'
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

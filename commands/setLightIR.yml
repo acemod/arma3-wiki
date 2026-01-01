@@ -3,16 +3,14 @@ desc: Sets lightpoint in infrared range.
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - light
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: light
+  left: !Item
+    name: light
     desc: object of class {{hl|"#lightpoint"}} or similar
     type: Object
-  - name: value
+  right: !Item
+    name: value
     desc: '[[true]] to make it visible ''''only'''' with night vision goggles, [[false]] to make it a normal light'
     type: Boolean
 argument_loc: Local

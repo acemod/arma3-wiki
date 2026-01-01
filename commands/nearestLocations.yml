@@ -5,17 +5,13 @@ desc: |-
 groups:
 - Locations
 syntax:
-- call: !Unary
-  - centre
-  - locationTypes
-  - radius
-  - sortPosition
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Location
       desc: ''
-  params:
-  - name: centre
+  right: !Array
+  - !Item
+    name: centre
     type: !OneOf
     - type: Position2d
       desc: null
@@ -26,15 +22,18 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: locationTypes
+  - !Item
+    name: locationTypes
     desc: list of [[Location#Location Types|location type]] names, e.g "NameCity"; {{GVI|arma3|2.14|size= 0.75}} passing empty array [] will return all available locations within the radius
     type: !ArrayUnsized
       type: String
       desc: ''
-  - name: radius
+  - !Item
+    name: radius
     desc: maximum distance from the given position that returned locations may be, in metres
     type: Number
-  - name: sortPosition
+  - !Item
+    name: sortPosition
     desc: results will be sorted from the distance to given ''sortPosition'' (nearest to farthest still)
     type: !OneOf
     - type: Position2d

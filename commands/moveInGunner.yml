@@ -6,15 +6,13 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unitName
-  - vehicle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  left: !Item
+    name: unitName
     type: Object
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Local
 effect_loc: Global

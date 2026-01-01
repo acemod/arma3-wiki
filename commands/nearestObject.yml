@@ -10,14 +10,12 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- call: !Unary
-  - position
-  - type
-  ret:
+- ret:
     type: Object
     desc: nearest object, [[objNull]] otherwise
-  params:
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     desc: position to start search at
     type: !OneOf
     - type: Object
@@ -29,15 +27,15 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: type
+  - !Item
+    name: type
     desc: type of object (see [[typeOf]], [[CfgVehicles|class type]])
     type: String
-- call: !Unary position
-  ret:
+- ret:
     type: Object
     desc: nearest object, [[objNull]] otherwise
-  params:
-  - name: position
+  right: !Item
+    name: position
     desc: position to start search at
     type: !OneOf
     - type: Position2d
@@ -46,14 +44,11 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-- call: !Binary
-  - position
-  - typeOrId
-  ret:
+- ret:
     type: Object
     desc: nearest object, [[objNull]] otherwise
-  params:
-  - name: position
+  left: !Item
+    name: position
     desc: position to start search at
     type: !OneOf
     - type: Position3d
@@ -62,17 +57,15 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: typeOrId
+  right: !Item
+    name: typeOrId
     desc: type of object (see [[typeOf]], [[CfgVehicles|class type]]) or {{GVI|arma3|2.10|size= 0.75}} Visitor id (see [[getObjectID]])
     type: String
-- call: !Binary
-  - position
-  - id
-  ret:
+- ret:
     type: Object
     desc: nearest object, [[objNull]] otherwise
-  params:
-  - name: position
+  left: !Item
+    name: position
     desc: position to start search at
     type: !OneOf
     - type: Position2d
@@ -81,7 +74,8 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: id
+  right: !Item
+    name: id
     desc: object Visitor id
     type: Number
 argument_loc: Unspecified

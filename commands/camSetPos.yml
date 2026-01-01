@@ -6,16 +6,14 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     desc: object of type "camera" or "seagull"
     type: Object
-  - name: position
+  right: !Item
+    name: position
     desc: camera destination
     type: Unknown
 argument_loc: Local

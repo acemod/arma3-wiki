@@ -3,11 +3,10 @@ desc: "Closes the currently active dialog with exit code. It does not instantly 
 groups:
 - GUI Control
 syntax:
-- call: !Unary exitcode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: exitcode
+  right: !Item
+    name: exitcode
     type: Number
 argument_loc: Local
 effect_loc: Local

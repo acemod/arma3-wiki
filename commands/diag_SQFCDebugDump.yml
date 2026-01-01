@@ -3,17 +3,16 @@ desc: Dumps the bytecode as {{arma3}} sees it, in a diff friendly way. Useful fo
 groups:
 - Diagnostic
 syntax:
-- call: !Unary
-  - sourcePath
-  - targetPath
-  ret:
+- ret:
     type: Code
     desc: compiled expression (If parsing was successful)
-  params:
-  - name: sourcePath
+  right: !Array
+  - !Item
+    name: sourcePath
     desc: Path to file on drive that should be read
     type: String
-  - name: targetPath
+  - !Item
+    name: targetPath
     desc: Path to file on drive to output to
     type: String
 argument_loc: Unspecified

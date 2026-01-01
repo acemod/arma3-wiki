@@ -6,24 +6,23 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - - engine
-    - wheels
-    - weapon
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle whose components are manipulated
     type: Object
-  - name: engine
+  right: !Array
+  - !Item
+    name: engine
     desc: engine and body's heat
     type: Number
-  - name: wheels
+  - !Item
+    name: wheels
     desc: tracks/wheels' heat
     type: Number
-  - name: weapon
+  - !Item
+    name: weapon
     desc: main weapon's heat
     type: Number
 argument_loc: Global

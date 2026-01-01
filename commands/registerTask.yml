@@ -4,17 +4,15 @@ groups:
 - Briefing
 - Teams
 syntax:
-- call: !Binary
-  - teamMember
-  - entryName
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] on success'
-  params:
-  - name: teamMember
+  left: !Item
+    name: teamMember
     desc: '[[teamMember]] [[agent]]'
     type: TeamMember
-  - name: entryName
+  right: !Item
+    name: entryName
     desc: '{{hl|CfgTasks}} classname'
     type: String
 argument_loc: Unspecified

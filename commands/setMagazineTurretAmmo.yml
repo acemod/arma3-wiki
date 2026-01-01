@@ -9,21 +9,20 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - - magazineClass
-    - ammoCount
-    - turretPath
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: magazineClass
+  right: !Array
+  - !Item
+    name: magazineClass
     type: String
-  - name: ammoCount
+  - !Item
+    name: ammoCount
     type: Number
-  - name: turretPath
+  - !Item
+    name: turretPath
     desc: '[-1] for driver turret is supported'
     type: TurretPath
 argument_loc: Unspecified

@@ -7,32 +7,7 @@ desc: |-
 groups:
 - Strings
 - Structured Text
-syntax:
-- call: !Binary
-  - text
-  - - name1
-    - value1
-    - name2
-    - value2
-    - '...'
-  ret:
-    type: StructuredText
-  params:
-  - name: text
-    desc: only passing [[Structured Text]] has any effect
-    type: !OneOf
-    - type: String
-      desc: null
-      since: null
-    - type: StructuredText
-      desc: null
-      since: null
-  - name: nameN
-    desc: name of the attribute
-    type: String
-  - name: valueN
-    desc: value of the attribute
-    type: String
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

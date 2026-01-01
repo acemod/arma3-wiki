@@ -3,12 +3,11 @@ desc: Returns the object position height above water surface (waves and pond obj
 groups:
 - Positions
 syntax:
-- call: !Unary obj
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[[Position#PositionASLW|PositionASLW]]'
-  params:
-  - name: obj
+  right: !Item
+    name: obj
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

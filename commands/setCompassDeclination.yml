@@ -3,11 +3,10 @@ desc: Sets the {{Link|https://en.wikipedia.org/wiki/Magnetic_declination|declina
 groups:
 - Interaction
 syntax:
-- call: !Unary angleRad
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: angleRad
+  right: !Item
+    name: angleRad
     desc: Declination angle in radians. Use 0 to reset it to default.
     type: Unknown
 argument_loc: Unspecified

@@ -3,11 +3,10 @@ desc: Returns all curator editing areas.
 groups:
 - Curator
 syntax:
-- call: !Unary curator
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: curator
+  right: !Item
+    name: curator
     desc: curator module.
     type: Object
 argument_loc: Unspecified

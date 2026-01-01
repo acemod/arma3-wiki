@@ -3,44 +3,43 @@ desc: "{{{!}} class=\"wikitable float-right align-center-col-2\"\n{{!}}+ \n! {{L
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - - part
-    - damage
-    - useEffects
-    - killer
-    - instigator
-    - breakRotor
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: '[[local]] object'
     type: Object
-  - name: part
+  right: !Array
+  - !Item
+    name: part
     desc: name of the part ([[Named_Selection|selection]] name)
     type: String
-  - name: damage
+  - !Item
+    name: damage
     desc: damage value ranging 0..1, 0 being fully functional, 1 being destroyed
     type: Number
-  - name: useEffects
+  - !Item
+    name: useEffects
     desc: '[[false]] to skip destruction effects'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
       arma3: '1.68'
-  - name: killer
+  - !Item
+    name: killer
     type: Unknown
     optional: true
     since:
       arma3: '2.8'
-  - name: instigator
+  - !Item
+    name: instigator
     type: Unknown
     optional: true
     since:
       arma3: '2.12'
-  - name: breakRotor
+  - !Item
+    name: breakRotor
     desc: if the hitpoint is rotor on a helicopter, [[true]] will break the rotor as well as play corresponding sound if 'useEffects' is also [[true]].
     type: Boolean
     optional: true

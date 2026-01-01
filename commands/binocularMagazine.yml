@@ -3,13 +3,12 @@ desc: Collects all loaded [[magazines]] from all [[binocular]] muzzles and retur
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

@@ -3,33 +3,32 @@ desc: Interpolates vector between the given ''vectorFrom'' and ''vectorTo'' valu
 groups:
 - Math - Vectors
 syntax:
-- call: !Unary
-  - rangeFrom
-  - rangeTo
-  - rangeValue
-  - vectorFrom
-  - vectorTo
-  - clip
-  ret:
+- ret:
     type: ArrayUnknown
     desc: interpolated vector
-  params:
-  - name: rangeFrom
+  right: !Array
+  - !Item
+    name: rangeFrom
     desc: start "from" range
     type: Number
-  - name: rangeTo
+  - !Item
+    name: rangeTo
     desc: end "to" range
     type: Number
-  - name: rangeValue
+  - !Item
+    name: rangeValue
     desc: variable range value
     type: Number
-  - name: vectorFrom
+  - !Item
+    name: vectorFrom
     desc: start "from" vector
     type: ArrayUnknown
-  - name: vectorTo
+  - !Item
+    name: vectorTo
     desc: end "to" vector
     type: ArrayUnknown
-  - name: clip
+  - !Item
+    name: clip
     desc: if [[true]], range value will be clipped to stay within "from" - "to" range
     type: Boolean
     optional: true

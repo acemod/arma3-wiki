@@ -6,15 +6,14 @@ desc: |-
 groups:
 - Diagnostic
 syntax:
-- call: !Unary
-  - section
-  - threshold
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: section
+  right: !Array
+  - !Item
+    name: section
     type: String
-  - name: threshold
+  - !Item
+    name: threshold
     desc: duration of frame in seconds
     type: Number
 argument_loc: Unspecified

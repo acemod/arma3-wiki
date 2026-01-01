@@ -3,11 +3,10 @@ desc: Returns [[Side]] of the [[Multiplayer Scripting#Locality|local]] instance 
 groups:
 - Flags
 syntax:
-- call: !Unary flag
-  ret:
+- ret:
     type: Side
-  params:
-  - name: flag
+  right: !Item
+    name: flag
     desc: flag
     type: Object
 argument_loc: Global

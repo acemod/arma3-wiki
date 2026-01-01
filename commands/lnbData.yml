@@ -3,14 +3,11 @@ desc: Returns the additional text (invisible) in an item with the given position
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  ret:
+- ret:
     type: String
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: !OneOf
     - type: Number
       desc: null
@@ -18,22 +15,24 @@ syntax:
     - type: Control
       desc: null
       since: null
-  - name: row
-    type: Number
-  - name: column
-    type: Number
-- call: !Binary
-  - ctrl
-  - - row
-    - column
-  ret:
+  - !Array
+    - !Item
+      name: row
+      type: Number
+    - !Item
+      name: column
+      type: Number
+- ret:
     type: String
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: row
+  right: !Array
+  - !Item
+    name: row
     type: Number
-  - name: column
+  - !Item
+    name: column
     type: Number
 argument_loc: Local
 effect_loc: Local

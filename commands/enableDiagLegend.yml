@@ -3,11 +3,10 @@ desc: Enable or disable the legend for diagnostics. '''Internal dev only!'''
 groups:
 - Diagnostic
 syntax:
-- call: !Unary enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

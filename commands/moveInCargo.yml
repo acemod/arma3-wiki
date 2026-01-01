@@ -7,31 +7,28 @@ multiplayer_note: '{{Feature|informative|The command should execute where the ''
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unit
-  - vehicle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
-- call: !Binary
-  - unit
-  - - vehicle
-    - cargoIndex
-    - canReassign
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     type: Object
-  - name: cargoIndex
+  - !Item
+    name: cargoIndex
     type: Number
-  - name: canReassign
+  - !Item
+    name: canReassign
     desc: try to move ''unit'' into the first free ''vehicle'' cargo seat if ''cargoIndex'' is already occupied
     type: Boolean
     optional: true

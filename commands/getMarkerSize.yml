@@ -3,14 +3,13 @@ desc: Returns the size of the given marker. A getter for [[setMarkerSize]] and a
 groups:
 - Markers
 syntax:
-- call: !Unary markerName
-  ret:
+- ret:
     type: Unknown
     desc: |-
       1/2 width of marker
       * b_axis: [[Number]] - 1/2 height of marker
-  params:
-  - name: markerName
+  right: !Item
+    name: markerName
     type: String
 argument_loc: Global
 effect_loc: Unspecified

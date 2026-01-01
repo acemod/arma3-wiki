@@ -9,66 +9,56 @@ groups:
 - HashMap
 - Unit Control
 syntax:
-- call: !Binary
-  - value
-  - array
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: value
+  left: !Item
+    name: value
     desc: any value (cannot  match [[Array]] before {{arma3}})
     type: Anything
-  - name: array
+  right: !Item
+    name: array
     desc: array of values
     type: ArrayUnknown
-- call: !Binary
-  - unit
-  - vehicle
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: '[[alive]] unit'
     type: Object
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: entity vehicle
     type: Object
-- call: !Binary
-  - position
-  - location
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: position
+  left: !Item
+    name: position
     desc: format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]
     type: ArrayUnknown
-  - name: location
+  right: !Item
+    name: location
     type: Location
   since:
     arma3: '0.50'
-- call: !Binary
-  - needle
-  - haystack
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: needle
+  left: !Item
+    name: needle
     desc: string to search '''for'''
     type: String
-  - name: haystack
+  right: !Item
+    name: haystack
     desc: string to search '''in'''
     type: String
   since:
     arma3: '1.96'
-- call: !Binary
-  - key
-  - hashMap
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: key
+  left: !Item
+    name: key
     type: Unknown
-  - name: hashMap
+  right: !Item
+    name: hashMap
     type: HashMapUnknown
   since:
     arma3: '2.2'

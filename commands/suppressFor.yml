@@ -3,15 +3,13 @@ desc: Force [[Suppressive Fire|suppressive fire]] from the unit.
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unit
-  - duration
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: duration
+  right: !Item
+    name: duration
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

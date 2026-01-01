@@ -6,8 +6,7 @@ groups:
 - Object Manipulation
 - System
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Unknown
     desc: |-
       squad nickname
@@ -25,8 +24,8 @@ syntax:
       ** remark: [[String]] - member remark
       * {{GVI|arma3|2.06|size= 0.75}} squadId: [[String]] - unique squad ID
       * {{GVI|arma3|2.06|size= 0.75}} a3unitsId: [[String]] - unique {{arma3}} Units  ID
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

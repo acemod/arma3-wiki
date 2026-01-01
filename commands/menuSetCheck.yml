@@ -7,31 +7,29 @@ desc: |-
 groups:
 - GUI Control - Menu
 syntax:
-- call: !Unary
-  - idc
-  - path
-  - checked
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     type: ArrayUnknown
-  - name: checked
+  - !Item
+    name: checked
     type: Boolean
-- call: !Binary
-  - control
-  - - path
-    - checked
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     type: ArrayUnknown
-  - name: checked
+  - !Item
+    name: checked
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

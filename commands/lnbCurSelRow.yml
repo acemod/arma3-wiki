@@ -3,17 +3,15 @@ desc: Returns the index of the selected row id 2D listbox.
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary idc
-  ret:
+- ret:
     type: Number
-  params:
-  - name: idc
+  right: !Item
+    name: idc
     type: Number
-- call: !Unary ctrl
-  ret:
+- ret:
     type: Number
-  params:
-  - name: ctrl
+  right: !Item
+    name: ctrl
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified

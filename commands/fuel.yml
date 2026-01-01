@@ -3,14 +3,13 @@ desc: Checks how much fuel is left in the gas tank of a vehicle.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: !NumberRange
     - 0
     - 1
     desc: 0 (empty tank) to 1 (full tank).
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

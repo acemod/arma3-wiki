@@ -3,11 +3,10 @@ desc: 'Open a window with [[Eden Editor: Scenario Atttributes|scenario attribute
 groups:
 - Eden Editor
 syntax:
-- call: !Unary section
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: section
+  right: !Item
+    name: section
     desc: attribute section from <sqf inline>configFile >> "Cfg3DEN" >> "Mission"</sqf>
     type: String
 argument_loc: Unspecified

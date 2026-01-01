@@ -3,15 +3,14 @@ desc: Sets the grid increment for the given transformation type.
 groups:
 - Eden Editor
 syntax:
-- call: !Unary
-  - type
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     type: Unknown
-  - name: value
+  - !Item
+    name: value
     desc: transformation increment
     type: Number
 argument_loc: Unspecified

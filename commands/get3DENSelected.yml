@@ -5,13 +5,12 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- call: !Unary type
-  ret:
+- ret:
     type: !ArrayUnsized
       type: EdenEntity
       desc: ''
-  params:
-  - name: type
+  right: !Item
+    name: type
     type: !StringEnum
     - value: object
       desc: null

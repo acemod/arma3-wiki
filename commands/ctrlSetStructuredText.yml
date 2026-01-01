@@ -6,15 +6,13 @@ groups:
 - GUI Control
 - Structured Text
 syntax:
-- call: !Binary
-  - control
-  - structuredText
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: structuredText
+  right: !Item
+    name: structuredText
     type: StructuredText
 argument_loc: Unspecified
 effect_loc: Unspecified

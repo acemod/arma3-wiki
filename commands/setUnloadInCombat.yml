@@ -3,18 +3,17 @@ desc: Sets whether or not cargo or turret units ''should'' get out of vehicle wh
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - vehicle
-  - - allowCargo
-    - allowTurrets
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: allowCargo
+  right: !Array
+  - !Item
+    name: allowCargo
     type: Boolean
-  - name: allowTurrets
+  - !Item
+    name: allowTurrets
     type: Boolean
 argument_loc: Local
 effect_loc: Global

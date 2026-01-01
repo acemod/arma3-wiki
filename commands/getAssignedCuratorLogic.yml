@@ -3,11 +3,10 @@ desc: Returns curator logic to which given player has access.
 groups:
 - Curator
 syntax:
-- call: !Unary player
-  ret:
+- ret:
     type: Object
-  params:
-  - name: player
+  right: !Item
+    name: player
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

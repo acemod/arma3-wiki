@@ -4,15 +4,13 @@ multiplayer_note: '{{Feature|informative|Since {{GVI|arma3|2.06}} the command ca
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - entity
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     type: Object
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
 argument_loc: Global
 effect_loc: Global

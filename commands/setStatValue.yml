@@ -7,15 +7,14 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Unary
-  - name
-  - value
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: name
+  right: !Array
+  - !Item
+    name: name
     type: String
-  - name: value
+  - !Item
+    name: value
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

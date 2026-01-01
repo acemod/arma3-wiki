@@ -6,16 +6,15 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Unary
-  - fullDetail
-  - noDetail
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: fullDetail
+  right: !Array
+  - !Item
+    name: fullDetail
     desc: threshold distance in metres up to which the terrain will have full texture detail
     type: Number
-  - name: noDetail
+  - !Item
+    name: noDetail
     desc: threshold distance in metres after which the texture detail will be switched off
     type: Number
 argument_loc: Unspecified

@@ -3,11 +3,10 @@ desc: Enables road diagnostics in buldozer.
 groups:
 - System
 syntax:
-- call: !Unary enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

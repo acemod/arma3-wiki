@@ -6,12 +6,11 @@ groups:
 - Positions
 - Map
 syntax:
-- call: !Unary param
-  ret:
+- ret:
     type: String
     desc: grid position
-  params:
-  - name: param
+  right: !Item
+    name: param
     desc: determines reference position
     type: !OneOf
     - type: Object

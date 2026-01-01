@@ -16,21 +16,19 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - unit
-  - - skillName
-    - value
-    - isCustom
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: the unit whose trait should be set
     type: Object
-  - name: skillName
+  right: !Array
+  - !Item
+    name: skillName
     desc: name of the skill
     type: String
-  - name: value
+  - !Item
+    name: value
     desc: value (see above)
     type: !OneOf
     - type: Boolean
@@ -39,7 +37,8 @@ syntax:
     - type: Number
       desc: null
       since: null
-  - name: isCustom
+  - !Item
+    name: isCustom
     desc: Must be set to [[true]] in case of custom
     type: Boolean
     optional: true

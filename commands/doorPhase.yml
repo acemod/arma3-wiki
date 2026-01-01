@@ -3,15 +3,13 @@ desc: Return animation phase of door on vehicle.
 groups:
 - Animations
 syntax:
-- call: !Binary
-  - object
-  - door
-  ret:
+- ret:
     type: Number
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: door
+  right: !Item
+    name: door
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

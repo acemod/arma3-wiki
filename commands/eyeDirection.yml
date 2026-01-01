@@ -3,12 +3,11 @@ desc: Returns the direction object is watching (eyes, or a vehicle's primary obs
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: ArrayUnknown
     desc: 3D Vector
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

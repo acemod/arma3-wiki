@@ -3,11 +3,10 @@ desc: Returns control IDC.
 groups:
 - GUI Control
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: Number
-  params:
-  - name: control
+  right: !Item
+    name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified

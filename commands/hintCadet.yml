@@ -7,11 +7,10 @@ groups:
 - Interaction
 - Difficulty
 syntax:
-- call: !Unary text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: text
+  right: !Item
+    name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Local

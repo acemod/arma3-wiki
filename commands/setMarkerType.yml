@@ -8,15 +8,13 @@ desc: |-
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - markerName
-  - type
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: markerName
+  left: !Item
+    name: markerName
     type: String
-  - name: type
+  right: !Item
+    name: type
     desc: see [[CfgMarkers]]
     type: String
 argument_loc: Unspecified

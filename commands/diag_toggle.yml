@@ -3,11 +3,10 @@ desc: Toggles various diagnostics.
 groups:
 - Diagnostic
 syntax:
-- call: !Unary mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: mode
+  right: !Item
+    name: mode
     desc: 'see [[Arma 3: Diagnostics Exe]]'
     type: String
 argument_loc: Unspecified

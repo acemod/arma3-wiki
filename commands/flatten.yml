@@ -3,14 +3,13 @@ desc: Flattens an array.
 groups:
 - Arrays
 syntax:
-- call: !Unary array
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Anything
       desc: ''
     desc: flattened array
-  params:
-  - name: array
+  right: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''

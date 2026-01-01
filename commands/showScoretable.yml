@@ -3,11 +3,10 @@ desc: Forces the score table to be shown, hidden or reset to default functionali
 groups:
 - Interaction
 syntax:
-- call: !Unary force
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: force
+  right: !Item
+    name: force
     desc: 1 to force visible, 0 to force invisible, -1 default
     type: Number
 argument_loc: Unspecified

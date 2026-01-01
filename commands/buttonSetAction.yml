@@ -9,28 +9,25 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - idc
-  - action
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: button IDC
     type: Number
-  - name: action
+  - !Item
+    name: action
     desc: '''''''[[SQS Syntax|SQS]]'''''' code body that should be executed when the button/active text is clicked'
     type: String
-- call: !Binary
-  - control
-  - action
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: button control
     type: Control
-  - name: action
+  right: !Item
+    name: action
     desc: '''''''[[SQS Syntax|SQS]]'''''' code body that should be executed when the button/active text is clicked'
     type: String
 argument_loc: Local

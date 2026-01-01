@@ -3,22 +3,21 @@ desc: Defines the time between condition satisfaction and waypoint finish (rando
 groups:
 - Waypoints
 syntax:
-- call: !Binary
-  - waypoint
-  - - min
-    - mid
-    - max
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: waypoint
+  left: !Item
+    name: waypoint
     desc: format [[Waypoint]]
     type: ArrayUnknown
-  - name: min
+  right: !Array
+  - !Item
+    name: min
     type: Number
-  - name: mid
+  - !Item
+    name: mid
     type: Number
-  - name: max
+  - !Item
+    name: max
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

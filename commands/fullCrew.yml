@@ -9,24 +9,22 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
-- call: !Unary
-  - vehicle
-  - type
-  - includeEmpty
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     type: Object
-  - name: type
+  - !Item
+    name: type
     type: Unknown
-  - name: includeEmpty
+  - !Item
+    name: includeEmpty
     desc: include empty crew seats
     type: Boolean
     optional: true

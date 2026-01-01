@@ -3,22 +3,21 @@ desc: Adds or changes curator camera area (depends on if ID is already used).
 groups:
 - Curator
 syntax:
-- call: !Binary
-  - curatorObj
-  - - cameraAreaID
-    - position
-    - radius
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: curatorObj
+  left: !Item
+    name: curatorObj
     desc: curator module.
     type: Object
-  - name: cameraAreaID
+  right: !Array
+  - !Item
+    name: cameraAreaID
     type: Number
-  - name: position
+  - !Item
+    name: position
     type: Position
-  - name: radius
+  - !Item
+    name: radius
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

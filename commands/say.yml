@@ -11,13 +11,10 @@ desc: |-
 groups:
 - Sounds
 syntax:
-- call: !Binary
-  - from
-  - sound
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: from
+  left: !Item
+    name: from
     type: !OneOf
     - type: Object
       desc: null
@@ -28,7 +25,8 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: sound
+  right: !Item
+    name: sound
     type: !OneOf
     - type: String
       desc: null

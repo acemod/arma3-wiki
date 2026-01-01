@@ -11,42 +11,40 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
-- call: !Unary
-  - unit
-  - weaponsItems
-  - uniformItems
-  - vestItems
-  - backpackItems
-  - assignedItems
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: unit
+  right: !Array
+  - !Item
+    name: unit
     type: Object
-  - name: weaponsItems
+  - !Item
+    name: weaponsItems
     desc: weapons (including binoculars) and their accessories (flashlight etc), loaded magazines
     type: Number
     optional: true
     default: '2'
-  - name: uniformItems
+  - !Item
+    name: uniformItems
     type: Number
     optional: true
     default: '2'
-  - name: vestItems
+  - !Item
+    name: vestItems
     type: Number
     optional: true
     default: '2'
-  - name: backpackItems
+  - !Item
+    name: backpackItems
     type: Number
     optional: true
     default: '2'
-  - name: assignedItems
+  - !Item
+    name: assignedItems
     desc: returns [[assignedItems]] as well as [[headgear]] and [[hmd|goggles]]
     type: Boolean
     optional: true

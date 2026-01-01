@@ -5,14 +5,13 @@ desc: |-
 groups:
 - RTD
 syntax:
-- call: !Unary RTD_helicopter
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Number
       desc: ''
     desc: torque per engine
-  params:
-  - name: RTD_helicopter
+  right: !Item
+    name: RTD_helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

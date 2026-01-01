@@ -6,27 +6,24 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - idc
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: control IDC
     type: Number
-  - name: enable
+  - !Item
+    name: enable
     desc: '[[true]] to enable the control, [[false]] to disable it'
     type: Boolean
-- call: !Binary
-  - controlName
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: controlName
+  left: !Item
+    name: controlName
     type: Control
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
 argument_loc: Local
 effect_loc: Local

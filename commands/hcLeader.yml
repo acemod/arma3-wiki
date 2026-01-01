@@ -3,11 +3,10 @@ desc: Returns group's [[High Command|high command]] commander.
 groups:
 - High Command
 syntax:
-- call: !Unary group
-  ret:
+- ret:
     type: Object
-  params:
-  - name: group
+  right: !Item
+    name: group
     type: Group
 argument_loc: Unspecified
 effect_loc: Unspecified

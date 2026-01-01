@@ -4,11 +4,10 @@ groups:
 - Unit Inventory
 - Object Manipulation
 syntax:
-- call: !Unary corpse
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: corpse
+  right: !Item
+    name: corpse
     desc: dead unit
     type: Object
 argument_loc: Unspecified

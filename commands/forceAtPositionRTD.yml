@@ -5,12 +5,11 @@ desc: |-
 groups:
 - RTD
 syntax:
-- call: !Unary position
-  ret:
+- ret:
     type: Number
     desc: force index
-  params:
-  - name: position
+  right: !Item
+    name: position
     desc: position where to force generator is created.
     type: ArrayUnknown
 argument_loc: Unspecified

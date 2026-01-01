@@ -3,8 +3,7 @@ desc: Return a list of all existing cameras.
 groups:
 - Camera Control
 syntax:
-- call: Nular
-  ret:
+- ret:
     type: Unknown
     desc: |-
       the camera itself (see [[camCreate]])
@@ -17,7 +16,6 @@ syntax:
       * effectName: [[String]] - (Optional, only available if ''isPrimary'' is [[true]]) see [[cameraEffect]] for possible values
       * viewMode: [[Number]] - (Optional, only available if ''isPrimary'' is [[true]]) 0 = normal, 1 = NVG, 2 = TI, 3 = NVG + TI
       * TIIndex: [[Number]] - (Optional, only available if ''isPrimary'' is [[true]]) see [[setCamUseTI]] for possible values
-  params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

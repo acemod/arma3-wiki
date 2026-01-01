@@ -3,15 +3,13 @@ desc: Sets the text label attached to the trigger object. This is used for examp
 groups:
 - Triggers
 syntax:
-- call: !Binary
-  - trigger
-  - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: trigger
+  left: !Item
+    name: trigger
     type: Object
-  - name: text
+  right: !Item
+    name: text
     type: String
 argument_loc: Global
 effect_loc: Local

@@ -3,15 +3,13 @@ desc: See [[switch]]
 groups:
 - Program Flow
 syntax:
-- call: !Binary
-  - a
-  - b
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: a
+  left: !Item
+    name: a
     type: SwitchType
-  - name: b
+  right: !Item
+    name: b
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified

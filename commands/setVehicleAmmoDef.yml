@@ -4,16 +4,14 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- call: !Binary
-  - unit
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit or vehicle.
     type: Object
-  - name: value
+  right: !Item
+    name: value
     desc: from 0 (no ammo) to 1 (fully loaded).
     type: Number
 argument_loc: Local

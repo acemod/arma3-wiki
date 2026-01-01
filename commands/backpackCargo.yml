@@ -3,11 +3,10 @@ desc: Get array with backpacks from ammo box (or any general weapon holder conta
 groups:
 - Containers
 syntax:
-- call: !Unary box
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: box
+  right: !Item
+    name: box
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

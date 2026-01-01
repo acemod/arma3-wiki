@@ -32,16 +32,14 @@ groups:
 - PhysX
 - Ropes and Sling Loading
 syntax:
-- call: !Binary
-  - towedVehicle
-  - towingVehicle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: towedVehicle
+  left: !Item
+    name: towedVehicle
     desc: vehicle of type CarX (no tanks, no aircrafts, no boats)
     type: Object
-  - name: towingVehicle
+  right: !Item
+    name: towingVehicle
     desc: vehicle of type CarX or TankX (no aircrafts, no boats)
     type: Object
 argument_loc: Local

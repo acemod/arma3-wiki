@@ -3,15 +3,13 @@ desc: Set camera interest for given entity. Camera interest is by default 0. Any
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - entity
-  - interest
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     type: Object
-  - name: interest
+  right: !Item
+    name: interest
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

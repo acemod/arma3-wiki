@@ -3,12 +3,11 @@ desc: Returns shot information for the given projectile. If shot was fired by a 
 groups:
 - Weapons
 syntax:
-- call: !Unary projectile
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[vehicle, instigator] - Where vehicle is the vehicle the shot was fired from, and the instigator is the person who pulled the trigger'
-  params:
-  - name: projectile
+  right: !Item
+    name: projectile
     desc: the actual projectile shot
     type: Object
 argument_loc: Unspecified

@@ -3,15 +3,13 @@ desc: Changes the wind strength smoothly during the given time (in seconds). A t
 groups:
 - Environment
 syntax:
-- call: !Binary
-  - time
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: time
+  left: !Item
+    name: time
     type: Number
-  - name: value
+  right: !Item
+    name: value
     desc: new value in range 0..1
     type: Number
 argument_loc: Unspecified

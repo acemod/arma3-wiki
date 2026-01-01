@@ -5,35 +5,34 @@ desc: |-
 groups:
 - Broken Commands
 syntax:
-- call: !Binary
-  - object
-  - - position
-    - hidePosition
-    - maxDist
-    - minDist
-    - visibilityPosition
-    - ignoreObject
-  ret:
+- ret:
     type: Object
     desc: always [[objNull]]
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     type: Position
-  - name: hidePosition
+  - !Item
+    name: hidePosition
     desc: '[[getHideFrom]]-like position from which the unit should hide'
     type: Position3dATL
-  - name: maxDist
+  - !Item
+    name: maxDist
     type: Number
-  - name: minDist
+  - !Item
+    name: minDist
     type: Number
     optional: true
-  - name: visibilityPosition
+  - !Item
+    name: visibilityPosition
     desc: used to select cover that unit can see in that direction from
     type: Position
     optional: true
-  - name: ignoreObject
+  - !Item
+    name: ignoreObject
     desc: ignore this object in visibility check
     type: Object
     optional: true

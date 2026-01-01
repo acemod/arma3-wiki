@@ -3,18 +3,15 @@ desc: Attaches entity to the rope end with optional offset. For detach operation
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Binary
-  - - entity
-    - toPoint
-    - ropeEndDownVector
-  - rope
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: entity
+  left: !Array
+  - !Item
+    name: entity
     desc: entity to be attached to the end of rope
     type: Object
-  - name: toPoint
+  - !Item
+    name: toPoint
     desc: position for the rope end, either a memory point [[String]] or relative offset [[Array]]
     type: !OneOf
     - type: String
@@ -24,7 +21,8 @@ syntax:
       desc: null
       since: null
     optional: true
-  - name: ropeEndDownVector
+  - !Item
+    name: ropeEndDownVector
     desc: either a memory point [[String]] or relative vector [[Array]]. If [[String]] is given, then {{hl|ropeEndDownVector}} is calculated from {{hl|toPoint}} towards {{hl|ropeEndDownVector}} memory point
     type: !OneOf
     - type: String
@@ -35,19 +33,18 @@ syntax:
       since: null
     optional: true
     default: '[0,0,-1]'
-  - name: rope
+  right: !Item
+    name: rope
     desc: the rope to which entity will be attached to
     type: Object
-- call: !Binary
-  - entity
-  - rope
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     desc: entity to be attached to the end of rope
     type: Object
-  - name: rope
+  right: !Item
+    name: rope
     desc: the rope to which entity will be attached to
     type: Object
   since:

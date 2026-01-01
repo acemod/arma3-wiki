@@ -3,11 +3,10 @@ desc: 'Returns all [[Eden Editor: Connecting|connections]] currently present on 
 groups:
 - Eden Editor
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     type: !OneOf
     - type: EdenEntity
       desc: null

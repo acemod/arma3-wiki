@@ -25,22 +25,17 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- call: !Unary code
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: code
+  right: !Item
+    name: code
     desc: code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
     type: Code
-- call: !Binary
-  - - text
-    - tooltip
-    - icon
-  - code
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: text
+  left: !Array
+  - !Item
+    name: text
     desc: text of the entry that is added to the history list
     type: !OneOf
     - type: String
@@ -49,17 +44,20 @@ syntax:
     - type: Nothing
       desc: null
       since: null
-  - name: tooltip
+  - !Item
+    name: tooltip
     desc: ) - tooltip of the entry
     type: String
     optional: true
     default: '"Batch Change" ([[isLocalized|localized]]'
-  - name: icon
+  - !Item
+    name: icon
     desc: '- path to the icon that is displayed left of the ''''text''''. ''''''Must not start with a {{hl|\}}!'''''''
     type: String
     optional: true
     default: '"a3\3den\data\cfg3den\history\multipleoperations_ca.paa"'
-  - name: code
+  right: !Item
+    name: code
     desc: code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
     type: Code
   since:

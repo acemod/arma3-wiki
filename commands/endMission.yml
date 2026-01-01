@@ -7,11 +7,10 @@ multiplayer_note: To end mission properly so that everyone goes to debriefing at
 groups:
 - Mission Information
 syntax:
-- call: !Unary endType
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: endType
+  right: !Item
+    name: endType
     type: !StringEnum
     - value: CONTINUE
       desc: null

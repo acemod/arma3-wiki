@@ -3,15 +3,13 @@ desc: Overrides default pylons priorities.
 groups:
 - Vehicle Loadouts
 syntax:
-- call: !Binary
-  - vehicle
-  - priorities
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: priorities
+  right: !Item
+    name: priorities
     type: !ArrayUnsized
       type: Number
       desc: ''

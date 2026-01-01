@@ -28,12 +28,11 @@ groups:
 - Sides
 - Localization
 syntax:
-- call: !Unary value
-  ret:
+- ret:
     type: String
     desc: unlocalized side text value
-  params:
-  - name: value
+  right: !Item
+    name: value
     type: !OneOf
     - type: Object
       desc: null

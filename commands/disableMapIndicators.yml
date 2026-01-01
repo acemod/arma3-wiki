@@ -3,24 +3,23 @@ desc: Command allows suppressing visualization of FRIENDLY, ENEMY, MINES and/or 
 groups:
 - Difficulty
 syntax:
-- call: !Unary
-  - disableFriendly
-  - disableEnemy
-  - disableMines
-  - disablePing
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: disableFriendly
+  right: !Array
+  - !Item
+    name: disableFriendly
     desc: '[[true]] to disable visualization of friendly units'
     type: Boolean
-  - name: disableEnemy
+  - !Item
+    name: disableEnemy
     desc: '[[true]] to disable visualization of enemy units'
     type: Boolean
-  - name: disableMines
+  - !Item
+    name: disableMines
     desc: '[[true]] to disable visualization of mines'
     type: Boolean
-  - name: disablePing
+  - !Item
+    name: disablePing
     desc: '[[true]] to disable visualization of all tactical pings'
     type: Boolean
 argument_loc: Unspecified

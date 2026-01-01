@@ -4,16 +4,14 @@ multiplayer_note: Execute this command globally (e.g with [[remoteExec]]) to hav
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle on which to toggle copilot actions
     type: Object
-  - name: enable
+  right: !Item
+    name: enable
     desc: enable or disable
     type: Boolean
 argument_loc: Global

@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Event Handlers
 syntax:
-- call: !Unary type
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: type
+  right: !Item
+    name: type
     type: String
 argument_loc: Unspecified
 effect_loc: Local

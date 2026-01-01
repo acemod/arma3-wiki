@@ -3,15 +3,13 @@ desc: Assigns a static object to the trigger. The activation source is changed t
 groups:
 - Triggers
 syntax:
-- call: !Binary
-  - triggerName
-  - objectId
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: triggerName
+  left: !Item
+    name: triggerName
     type: Object
-  - name: objectId
+  right: !Item
+    name: objectId
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

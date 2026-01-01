@@ -3,11 +3,10 @@ desc: Enables / disables showing of subtitles in a chat. Only scripted/engine ch
 groups:
 - Radio and Chat
 syntax:
-- call: !Unary enable
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Local

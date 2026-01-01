@@ -3,19 +3,17 @@ desc: Returns a group's name or a unit's group ID number.
 groups:
 - Groups
 syntax:
-- call: !Unary group
-  ret:
+- ret:
     type: String
     desc: the group's name (e.g "Alpha Red")
-  params:
-  - name: group
+  right: !Item
+    name: group
     type: Group
-- call: !Unary unit
-  ret:
+- ret:
     type: Number
     desc: the unit's group ID (e.g "'''2''', taking command")
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: a group's unit
     type: Object
   since:

@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: Object
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     desc: '[[alive]] unit'
     type: Object
 argument_loc: Global

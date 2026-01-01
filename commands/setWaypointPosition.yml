@@ -3,17 +3,14 @@ desc: "Attempts to move given waypoint to a random position inside a circle with
 groups:
 - Waypoints
 syntax:
-- call: !Binary
-  - waypoint
-  - - center
-    - radius
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: waypoint
-    desc: format [[Waypoint]]
-    type: ArrayUnknown
-  - name: center
+  left: !Item
+    name: waypoint
+    type: Waypoint
+  right: !Array
+  - !Item
+    name: center
     type: !OneOf
     - type: Object
       desc: null
@@ -24,7 +21,8 @@ syntax:
     - type: ArrayUnknown
       desc: null
       since: null
-  - name: radius
+  - !Item
+    name: radius
     desc: random placement radius in meters. Set it to -1 and convert center to [[Position#PositionASL|PositionASL]] for the exact center placement
     type: Number
 argument_loc: Unspecified

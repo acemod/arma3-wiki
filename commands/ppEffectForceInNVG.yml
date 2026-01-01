@@ -3,16 +3,14 @@ desc: Forces use of [[Post Process Effects]] in NVG.
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - ppHandle
-  - force
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ppHandle
+  left: !Item
+    name: ppHandle
     desc: handle of the post processing returned by [[ppEffectCreate]]
     type: Number
-  - name: force
+  right: !Item
+    name: force
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Local

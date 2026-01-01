@@ -3,11 +3,10 @@ desc: Returns the object a location is attached to. If the location is unattache
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary location
-  ret:
+- ret:
     type: Object
-  params:
-  - name: location
+  right: !Item
+    name: location
     type: Location
 argument_loc: Unspecified
 effect_loc: Unspecified

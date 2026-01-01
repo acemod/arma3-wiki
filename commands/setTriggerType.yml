@@ -18,15 +18,13 @@ desc: |-
 groups:
 - Triggers
 syntax:
-- call: !Binary
-  - trigger
-  - action
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: trigger
+  left: !Item
+    name: trigger
     type: Object
-  - name: action
+  right: !Item
+    name: action
     type: String
 argument_loc: Global
 effect_loc: Local

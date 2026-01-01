@@ -4,12 +4,11 @@ multiplayer_note: Only works on '''dedicated''' servers.
 groups:
 - Argo
 syntax:
-- call: !Unary configEntry
-  ret:
+- ret:
     type: Config
     desc: requested server config entry or [[configNull]] on error
-  params:
-  - name: configEntry
+  right: !Item
+    name: configEntry
     desc: 'any [[Arma 3: Server Config File|server config]] entry but {{hl|password}} and {{hl|passwordAdmin}} which are ignored'
     type: String
 argument_loc: Unspecified

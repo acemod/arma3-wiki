@@ -5,22 +5,21 @@ problem_notes:
 groups:
 - Artillery
 syntax:
-- call: !Binary
-  - unit
-  - - position
-    - type
-    - rounds
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     type: Position3dAGL
-  - name: type
+  - !Item
+    name: type
     desc: magazine class name from [[Arma_3:_CfgMagazines|CfgMagazines]] (case sensitive).
     type: String
-  - name: rounds
+  - !Item
+    name: rounds
     type: Number
 argument_loc: Local
 effect_loc: Unspecified

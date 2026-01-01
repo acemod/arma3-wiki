@@ -3,35 +3,33 @@ desc: Adds an item with given text to Tree View control. The position on Tree Vi
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary
-  - idc
-  - pathParent
-  - text
-  ret:
+- ret:
     type: Number
     desc: index of the added item relative to the branch it was added to
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: pathParent
+  - !Item
+    name: pathParent
     desc: '[[Tree View Path]] of parent item or [] if no parent exists'
     type: ArrayUnknown
-  - name: text
+  - !Item
+    name: text
     type: String
-- call: !Binary
-  - control
-  - - pathParent
-    - text
-  ret:
+- ret:
     type: Number
     desc: index of the added item relative to the branch it was added to
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: pathParent
+  right: !Array
+  - !Item
+    name: pathParent
     desc: '[[Tree View Path]] of parent item or [] if no parent exists'
     type: ArrayUnknown
-  - name: text
+  - !Item
+    name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

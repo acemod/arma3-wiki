@@ -3,22 +3,21 @@ desc: Set effectivity of wings. {{Feature|afm}}
 groups:
 - RTD
 syntax:
-- call: !Binary
-  - helicopterRTD
-  - - leftHorizontal
-    - rightHorizontal
-    - vertical
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: helicopterRTD
+  left: !Item
+    name: helicopterRTD
     desc: helicopter
     type: Unknown
-  - name: leftHorizontal
+  right: !Array
+  - !Item
+    name: leftHorizontal
     type: Number
-  - name: rightHorizontal
+  - !Item
+    name: rightHorizontal
     type: Number
-  - name: vertical
+  - !Item
+    name: vertical
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,21 +3,20 @@ desc: Removes a range of array elements from the given array. Modifies the origi
 groups:
 - Arrays
 syntax:
-- call: !Binary
-  - array
-  - - from
-    - count
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: from
+  right: !Array
+  - !Item
+    name: from
     desc: array index to start selection from.
     type: Number
-  - name: count
+  - !Item
+    name: count
     desc: number of array elements to remove. If the selected range exceeds source array boundaries, selection will be made up to the end of the array.
     type: Number
 argument_loc: Unspecified

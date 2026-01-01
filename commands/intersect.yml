@@ -3,25 +3,25 @@ desc: "Finds named selections in object which are in specified LOD, intersected 
 groups:
 - Math - Geometry
 syntax:
-- call: !Binary
-  - - object
-    - lodName
-  - - begPos
-    - endPos
-  ret:
+- ret:
     type: Unknown
     desc: |-
       name of intersected selection
       * distance: [[Number]] - distance from begPos
       The results are also sorted, closest selection first
-  params:
-  - name: object
+  left: !Array
+  - !Item
+    name: object
     type: Object
-  - name: lodName
+  - !Item
+    name: lodName
     type: String
-  - name: begPos
+  right: !Array
+  - !Item
+    name: begPos
     type: Position3dAGL
-  - name: endPos
+  - !Item
+    name: endPos
     type: Position3dAGL
 argument_loc: Global
 effect_loc: Unspecified

@@ -3,16 +3,14 @@ desc: Sets material of object selection. The selection number is defined through
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - obj
-  - - selectionNumber
-    - material
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: obj
+  left: !Item
+    name: obj
     type: Object
-  - name: selectionNumber
+  right: !Array
+  - !Item
+    name: selectionNumber
     type: !OneOf
     - type: Number
       desc: null
@@ -20,7 +18,8 @@ syntax:
     - type: String
       desc: null
       since: null
-  - name: material
+  - !Item
+    name: material
     desc: material path. Since {{GVI|arma3|2.20}} using '''"#reset"''' would reset to default material.
     type: String
 argument_loc: Global

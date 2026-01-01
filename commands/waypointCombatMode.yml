@@ -3,12 +3,11 @@ desc: Gets the waypoint's combat mode setting.
 groups:
 - Waypoints
 syntax:
-- call: !Unary waypoint
-  ret:
+- ret:
     type: String
     desc: one of "BLUE", "GREEN", "WHITE", "YELLOW" and "RED" or "ERROR"
-  params:
-  - name: waypoint
+  right: !Item
+    name: waypoint
     desc: format [[Waypoint]]
     type: ArrayUnknown
 argument_loc: Unspecified

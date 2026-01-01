@@ -3,18 +3,17 @@ desc: Attach light to given object at given position on object.
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - light
-  - - object
-    - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: light
+  left: !Item
+    name: light
     type: Object
-  - name: object
+  right: !Array
+  - !Item
+    name: object
     type: Object
-  - name: position
+  - !Item
+    name: position
     type: Position
 argument_loc: Global
 effect_loc: Local

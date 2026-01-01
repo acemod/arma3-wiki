@@ -3,17 +3,15 @@ desc: Adds an editing layer in [[:Category:Eden Editor|Eden Editor]].
 groups:
 - Eden Editor
 syntax:
-- call: !Binary
-  - parentLayerID
-  - name
-  ret:
+- ret:
     type: Number
     desc: layer ID
-  params:
-  - name: parentLayerID
+  left: !Item
+    name: parentLayerID
     desc: ID of the parent layer. No layer will be created when the ID does not point to a layer. Use {{hl|-1}} to create the layer to root.
     type: Number
-  - name: name
+  right: !Item
+    name: name
     desc: layer display name
     type: String
 argument_loc: Unspecified

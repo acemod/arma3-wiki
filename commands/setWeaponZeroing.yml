@@ -3,25 +3,24 @@ desc: Sets zeroing of given weapon and muzzle for given unit or vehicle.
 groups:
 - Weapons
 syntax:
-- call: !Binary
-  - object
-  - - weaponClass
-    - muzzleClass
-    - zeroingIndex
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if successful, otherwise [[false]] is returned (e.g. weapon, muzzle, or zeroing index is invalid)'
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: unit or vehicle
     type: Object
-  - name: weaponClass
+  right: !Array
+  - !Item
+    name: weaponClass
     desc: class name of weapon
     type: String
-  - name: muzzleClass
+  - !Item
+    name: muzzleClass
     desc: class name of the muzzle
     type: String
-  - name: zeroingIndex
+  - !Item
+    name: zeroingIndex
     desc: zeroing index. See [[currentZeroing]]
     type: Number
 argument_loc: Unspecified

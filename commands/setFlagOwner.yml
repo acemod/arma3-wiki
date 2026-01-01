@@ -4,15 +4,13 @@ groups:
 - Flags
 - Object Manipulation
 syntax:
-- call: !Binary
-  - flag
-  - owner
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: flag
+  left: !Item
+    name: flag
     type: Object
-  - name: owner
+  right: !Item
+    name: owner
     type: Object
 argument_loc: Global
 effect_loc: Global

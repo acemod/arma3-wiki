@@ -3,12 +3,11 @@ desc: Returns an array of all diagnostic modes available in the game.
 groups:
 - Diagnostic
 syntax:
-- call: !Unary mode
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '["Force", "Animation", "Mines", "HitPoints", "AnimSrcUnit", "AnimSrcTarget", "Suspension", "EPEForce", "EPEVehicle", "ParticleNames", "Particles", "SurfaceUnder", "AISkill", "AIDriving", "AIAiming", "AIBrain", "AIDynamicError", "AISuppression"] {{GVI|arma3|1.66}}'
-  params:
-  - name: mode
+  right: !Item
+    name: mode
     desc: can be {{hl|"toggle"}} or {{hl|"drawMode"}}
     type: String
 argument_loc: Unspecified

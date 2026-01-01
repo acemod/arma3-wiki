@@ -6,13 +6,10 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - effect
-  - settings
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: effect
+  left: !Item
+    name: effect
     type: !OneOf
     - type: String
       desc: effect name
@@ -20,7 +17,8 @@ syntax:
     - type: Number
       desc: effect handle
       since: null
-  - name: settings
+  right: !Item
+    name: settings
     desc: array of effect params
     type: !ArrayUnsized
       type: Anything

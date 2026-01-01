@@ -3,26 +3,23 @@ desc: Returns the text color of the item (right) with the given index of the lis
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Unary
-  - idc
-  - index
-  ret:
+- ret:
     type: ArrayColorRgba
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: control's id
     type: Number
-  - name: index
+  - !Item
+    name: index
     type: Number
-- call: !Binary
-  - control
-  - index
-  ret:
+- ret:
     type: ArrayColorRgba
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: index
+  right: !Item
+    name: index
     type: Number
 argument_loc: Local
 effect_loc: Local

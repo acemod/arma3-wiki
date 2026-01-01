@@ -3,24 +3,23 @@ desc: Set custom data for the task. Tooltip will be drawn in task list on the ri
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - task
-  - - iconPath
-    - tooltip
-    - description
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: task
+  left: !Item
+    name: task
     desc: task the custom data are being added to
     type: Task
-  - name: iconPath
+  right: !Array
+  - !Item
+    name: iconPath
     desc: icon path
     type: String
-  - name: tooltip
+  - !Item
+    name: tooltip
     desc: text displayed next to the icon; max. 3 charactersc
     type: String
-  - name: description
+  - !Item
+    name: description
     desc: text displayed on the task description panel; html format
     type: String
 argument_loc: Unspecified

@@ -4,11 +4,10 @@ groups:
 - Team Switch
 - Event Handlers
 syntax:
-- call: !Unary commandset
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: commandset
+  right: !Item
+    name: commandset
     type: !OneOf
     - type: String
       desc: null

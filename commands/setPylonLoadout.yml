@@ -10,19 +10,15 @@ multiplayer_note: |-
 groups:
 - Vehicle Loadouts
 syntax:
-- call: !Binary
-  - vehicle
-  - - pylon
-    - magazine
-    - forced
-    - turret
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] on success'
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: pylon
+  right: !Array
+  - !Item
+    name: pylon
     desc: pylon index (index starts from 1) or pylon name (see {{Link|#Example 1}})
     type: !OneOf
     - type: Number
@@ -31,15 +27,18 @@ syntax:
     - type: String
       desc: null
       since: null
-  - name: magazine
+  - !Item
+    name: magazine
     desc: magazine name
     type: String
-  - name: forced
+  - !Item
+    name: forced
     desc: '[[true]] to force an incompatible magazine'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: turret
+  - !Item
+    name: turret
     desc: turret path
     type: ArrayUnknown
     optional: true

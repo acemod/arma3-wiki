@@ -9,11 +9,10 @@ desc: |-
 groups:
 - Event Handlers
 syntax:
-- call: !Unary statement
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: statement
+  right: !Item
+    name: statement
     type: !OneOf
     - type: String
       desc: null

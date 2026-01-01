@@ -8,12 +8,11 @@ desc: |-
 groups:
 - Config
 syntax:
-- call: !Unary path
-  ret:
+- ret:
     type: Config
     desc: loaded config. Returns [[configNull]] if the file doesn't exist.
-  params:
-  - name: path
+  right: !Item
+    name: path
     desc: path to the file, which should be in a valid config format.
     type: String
 argument_loc: Unspecified

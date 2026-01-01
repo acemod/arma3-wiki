@@ -3,11 +3,10 @@ desc: Checks whether the map animation has finished.
 groups:
 - GUI Control - Map
 syntax:
-- call: !Unary controlName
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: controlName
+  right: !Item
+    name: controlName
     type: Control
 argument_loc: Local
 effect_loc: Local

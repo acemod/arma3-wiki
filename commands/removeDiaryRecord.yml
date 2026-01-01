@@ -3,18 +3,17 @@ desc: Remove a log record.
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - unit
-  - - subject
-    - diaryRecord
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: subject
+  right: !Array
+  - !Item
+    name: subject
     type: String
-  - name: diaryRecord
+  - !Item
+    name: diaryRecord
     type: DiaryRecord
 argument_loc: Unspecified
 effect_loc: Local

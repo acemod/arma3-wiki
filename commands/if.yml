@@ -3,12 +3,11 @@ desc: This operator creates a [[If Type]] which is used in the if-construct as d
 groups:
 - Program Flow
 syntax:
-- call: !Unary condition
-  ret:
+- ret:
     type: IfType
     desc: predicate which will execute 1st or 2nd option when used. This predicate is used in [[then]] or [[exitWith]] commands
-  params:
-  - name: condition
+  right: !Item
+    name: condition
     desc: if it evaluates as [[true]], the [[then]] clause is executed.  Otherwise, the [[else]] clause (if present) is executed
     type: Boolean
 argument_loc: Unspecified

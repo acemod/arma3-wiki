@@ -3,19 +3,18 @@ desc: Enable/disable given sensor
 groups:
 - Sensors
 syntax:
-- call: !Binary
-  - vehicle
-  - - componentName
-    - enabled
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: componentName
+  right: !Array
+  - !Item
+    name: componentName
     desc: the component's name (can either be its "real name" or its className)
     type: String
-  - name: enabled
+  - !Item
+    name: enabled
     desc: component status
     type: Boolean
 argument_loc: Global

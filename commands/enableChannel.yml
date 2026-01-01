@@ -53,32 +53,29 @@ desc: |-
 groups:
 - Radio and Chat
 syntax:
-- call: !Binary
-  - channelID
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: channelID
+  left: !Item
+    name: channelID
     desc: '[[Channel IDs|channel ID]]'
     type: Number
-  - name: enable
+  right: !Item
+    name: enable
     desc: '[[true]] to enable, [[false]] to disable (both VoN and chat)'
     type: Boolean
-- call: !Binary
-  - channelID
-  - - chat
-    - VoN
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: channelID
+  left: !Item
+    name: channelID
     desc: '[[Channel IDs|channel ID]]'
     type: Number
-  - name: chat
+  right: !Array
+  - !Item
+    name: chat
     desc: '[[true]] to enable text chat'
     type: Boolean
-  - name: VoN
+  - !Item
+    name: VoN
     desc: '[[true]] to enable voice chat'
     type: Boolean
   since:

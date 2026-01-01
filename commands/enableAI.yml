@@ -3,15 +3,13 @@ desc: "Enables parts of the AI behavior that was disabled by [[disableAI]]. \n{{
 groups:
 - AI Behaviour
 syntax:
-- call: !Binary
-  - unit
-  - skilltype
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: skilltype
+  right: !Item
+    name: skilltype
     desc: see [[disableAI]] for possible values.
     type: String
 argument_loc: Local

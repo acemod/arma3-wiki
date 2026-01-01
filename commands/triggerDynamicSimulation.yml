@@ -3,15 +3,13 @@ desc: 'Controls the ability of given unit to activate entities with disabled [[A
 groups:
 - Dynamic Simulation
 syntax:
-- call: !Binary
-  - unit
-  - trigger
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: trigger
+  right: !Item
+    name: trigger
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,16 +3,14 @@ desc: Returns metadata associated with a particular row of a [[CT_CONTROLS_TABLE
 groups:
 - GUI Control - Controls Table
 syntax:
-- call: !Binary
-  - ctrl
-  - row
-  ret:
+- ret:
     type: String
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     desc: the respective control
     type: Control
-  - name: row
+  right: !Item
+    name: row
     desc: the row index
     type: Number
 argument_loc: Local

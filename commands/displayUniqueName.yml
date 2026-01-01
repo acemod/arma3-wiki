@@ -5,12 +5,11 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary display
-  ret:
+- ret:
     type: String
     desc: the unique display identifier
-  params:
-  - name: display
+  right: !Item
+    name: display
     type: Display
 argument_loc: Unspecified
 effect_loc: Unspecified

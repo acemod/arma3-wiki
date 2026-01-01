@@ -5,11 +5,10 @@ groups:
 - Structured Text
 - Strings
 syntax:
-- call: !Unary text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: text
+  right: !Item
+    name: text
     type: !OneOf
     - type: String
       desc: null

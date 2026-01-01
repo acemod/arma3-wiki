@@ -3,21 +3,20 @@ desc: "Animates a door on a vehicle. Animation is defined in config file in [[Cf
 groups:
 - Animations
 syntax:
-- call: !Binary
-  - object
-  - - doorname
-    - phase
-    - instant
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: doorname
+  right: !Array
+  - !Item
+    name: doorname
     type: String
-  - name: phase
+  - !Item
+    name: phase
     type: Number
-  - name: instant
+  - !Item
+    name: instant
     desc: when [[true]] and phase is either 0 or 1, door will change phase instantaneously
     type: Boolean
     optional: true

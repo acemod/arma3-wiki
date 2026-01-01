@@ -7,16 +7,14 @@ desc: |-
 groups:
 - Sounds
 syntax:
-- call: !Binary
-  - time
-  - volume
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: time
+  left: !Item
+    name: time
     desc: fade interval in seconds
     type: Number
-  - name: volume
+  right: !Item
+    name: volume
     desc: speech volume
     type: !NumberRange
     - 0

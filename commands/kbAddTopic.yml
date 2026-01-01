@@ -5,27 +5,26 @@ desc: |-
 groups:
 - Conversations
 syntax:
-- call: !Binary
-  - person
-  - - topicName
-    - conversationFile
-    - fsmFile
-    - eventHandler
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: person
+  left: !Item
+    name: person
     type: Object
-  - name: topicName
+  right: !Array
+  - !Item
+    name: topicName
     desc: the topic id for further reference
     type: String
-  - name: conversationFile
+  - !Item
+    name: conversationFile
     desc: .bikb file path
     type: String
-  - name: fsmFile
+  - !Item
+    name: fsmFile
     type: Unknown
     optional: true
-  - name: eventHandler
+  - !Item
+    name: eventHandler
     desc: |-
       code to execute - given String will be [[compile]]d. This is '''not''' an sqf file path.<br>
       Parameters: identical to ''fsmFile'' - see above.

@@ -3,11 +3,10 @@ desc: Ignores all history steps created by executing the given code.
 groups:
 - Eden Editor
 syntax:
-- call: !Unary code
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: code
+  right: !Item
+    name: code
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified

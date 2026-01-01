@@ -3,18 +3,16 @@ desc: Clear all items from a [[CT_LISTBOX]] or [[CT_COMBO]] control.
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Unary idc
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Item
+    name: idc
     desc: control IDC
     type: Number
-- call: !Unary control
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  right: !Item
+    name: control
     type: Control
 argument_loc: Local
 effect_loc: Local

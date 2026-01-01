@@ -9,11 +9,10 @@ desc: |-
 groups:
 - Environment
 syntax:
-- call: !Unary date
-  ret:
+- ret:
     type: Number
-  params:
-  - name: date
+  right: !Item
+    name: date
     desc: array in [[date]] format
     type: ArrayUnknown
 argument_loc: Unspecified

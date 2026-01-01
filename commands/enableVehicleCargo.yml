@@ -3,15 +3,13 @@ desc: Enable/disable option to transport other vehicles (if configured) or be tr
 groups:
 - Vehicle in Vehicle Transport
 syntax:
-- call: !Binary
-  - vehicle
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

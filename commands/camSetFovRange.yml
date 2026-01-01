@@ -4,19 +4,18 @@ groups:
 - Broken Commands
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - - minFovRange
-    - maxFovRange
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     desc: object of type "camera"
     type: Object
-  - name: minFovRange
+  right: !Array
+  - !Item
+    name: minFovRange
     type: Number
-  - name: maxFovRange
+  - !Item
+    name: maxFovRange
     type: Number
 argument_loc: Local
 effect_loc: Local

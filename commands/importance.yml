@@ -3,11 +3,10 @@ desc: Returns a location's importance value.
 groups:
 - Locations
 syntax:
-- call: !Unary location
-  ret:
+- ret:
     type: Number
-  params:
-  - name: location
+  right: !Item
+    name: location
     type: Location
 argument_loc: Unspecified
 effect_loc: Unspecified

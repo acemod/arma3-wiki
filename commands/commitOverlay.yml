@@ -3,11 +3,10 @@ desc: "Commit the current overlay. \n{{Feature|informative|Some Old Editor Comma
 groups:
 - Game 2 Editor
 syntax:
-- call: !Unary map
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  right: !Item
+    name: map
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified

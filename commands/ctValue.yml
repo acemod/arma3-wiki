@@ -3,15 +3,13 @@ desc: Returns metadata (number) associated with a particular row of RscControlsT
 groups:
 - GUI Control - Controls Table
 syntax:
-- call: !Binary
-  - control
-  - index
-  ret:
+- ret:
     type: Number
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: index
+  right: !Item
+    name: index
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

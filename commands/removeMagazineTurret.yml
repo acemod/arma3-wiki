@@ -6,18 +6,17 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - - magazineName
-    - turretPath
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: magazineName
+  right: !Array
+  - !Item
+    name: magazineName
     type: String
-  - name: turretPath
+  - !Item
+    name: turretPath
     type: TurretPath
 argument_loc: Local
 effect_loc: Global

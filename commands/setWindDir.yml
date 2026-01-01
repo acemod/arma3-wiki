@@ -4,25 +4,22 @@ multiplayer_note: Effect is global only when executed on the server. On clients 
 groups:
 - Environment
 syntax:
-- call: !Binary
-  - time
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: time
+  left: !Item
+    name: time
     desc: transition time in seconds. {{hl|0}} will cause the change to be immediate
     type: Number
-  - name: value
+  right: !Item
+    name: value
     desc: azimuth
     type: Number
-- call: !Unary direction
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: direction
-    desc: flat wind direction and strength in format [[Position#Introduction|Position2D]]
-    type: ArrayUnknown
+  right: !Item
+    name: direction
+    desc: flat wind direction and strength
+    type: Position2d
 argument_loc: Unspecified
 effect_loc: Global
 server_exec: true

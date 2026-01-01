@@ -36,20 +36,19 @@ groups:
 - Unit Control
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - - speed
-    - autoThrust
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: the vehicle to limit; [[local]] [[player]]'s vehicle (<sqf inline>vehicle player</sqf>)
     type: Object
-  - name: speed
+  right: !Array
+  - !Item
+    name: speed
     desc: desired/top speed in km/h. 0 to disable any setting. Only positives values are valid, negative values will make the vehicle unable to move forward
     type: Number
-  - name: autoThrust
+  - !Item
+    name: autoThrust
     type: !OneOf
     - type: Boolean
       desc: null

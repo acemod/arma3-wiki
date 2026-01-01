@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary delay
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: delay
+  right: !Item
+    name: delay
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

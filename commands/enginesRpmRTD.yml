@@ -3,13 +3,12 @@ desc: Returns all engines RPM.{{Feature|afm}}
 groups:
 - RTD
 syntax:
-- call: !Unary RTD_helicopter
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Number
       desc: ''
-  params:
-  - name: RTD_helicopter
+  right: !Item
+    name: RTD_helicopter
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

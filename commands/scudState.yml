@@ -3,8 +3,7 @@ desc: Return the current state of given Scud launcher.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary scudName
-  ret:
+- ret:
     type: Number
     desc: |-
       can be one of:
@@ -13,8 +12,8 @@ syntax:
       * 2 - Launch prepared
       * 3 - Ignition
       * 4 - Launched
-  params:
-  - name: scudName
+  right: !Item
+    name: scudName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

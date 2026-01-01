@@ -3,29 +3,26 @@ desc: Sets the skill level of given unit. The value of a [[AI Sub-skills|sub-ski
 groups:
 - AI Behaviour
 syntax:
-- call: !Binary
-  - unit
-  - skill
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: skill
+  right: !Item
+    name: skill
     desc: general skill in range 0..1
     type: Number
-- call: !Binary
-  - unit
-  - - skillName
-    - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: skillName
+  right: !Array
+  - !Item
+    name: skillName
     type: Unknown
-  - name: value
+  - !Item
+    name: value
     desc: value in range 0..1
     type: Number
   since:

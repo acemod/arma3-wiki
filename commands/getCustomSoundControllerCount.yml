@@ -3,12 +3,11 @@ desc: Returns current number of custom sound controllers supported by the engine
 groups:
 - Sounds
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Number
     desc: number of custom controllers
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: a transport type vehicle. Does not work on characters or buildings
     type: Object
 argument_loc: Unspecified

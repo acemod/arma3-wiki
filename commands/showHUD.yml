@@ -11,78 +11,76 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- call: !Unary enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
-- call: !Unary
-  - scriptedHUD
-  - info
-  - radar
-  - compass
-  - direction
-  - menu
-  - group
-  - cursors
-  - panels
-  - kills
-  - showIcon3D
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: scriptedHUD
+  right: !Array
+  - !Item
+    name: scriptedHUD
     desc: show scripted HUD such as weapon crosshair, action menu and overlays created with [[cutRsc]] and [[titleRsc]]. Same as [[showHUD]]'s first syntax
     type: Boolean
-  - name: info
+  - !Item
+    name: info
     desc: show vehicle, soldier and weapon info
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: radar
+  - !Item
+    name: radar
     desc: show vehicle radar
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: compass
+  - !Item
+    name: compass
     desc: show vehicle compass
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: direction
+  - !Item
+    name: direction
     desc: show tank direction indicator. Not present in vanilla {{arma3}}
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: menu
+  - !Item
+    name: menu
     desc: show commanding menu (HC related menus)
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: group
+  - !Item
+    name: group
     desc: show group info bar (Squad leader info bar)
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: cursors
+  - !Item
+    name: cursors
     desc: show HUD weapon cursors (connected with scripted HUD)
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: panels
+  - !Item
+    name: panels
     desc: 'show [[Arma 3: Custom Info]]'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
       arma3: '1.70'
-  - name: kills
+  - !Item
+    name: kills
     desc: show "x killed by y" [[systemChat]] messages
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: showIcon3D
+  - !Item
+    name: showIcon3D
     desc: show icons drawn with [[drawIcon3D]] even when the HUD is hidden
     type: Boolean
     optional: true

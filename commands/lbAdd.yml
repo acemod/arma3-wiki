@@ -6,29 +6,26 @@ desc: |-
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Unary
-  - idc
-  - text
-  ret:
+- ret:
     type: Number
     desc: index (row) of newly added item
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: control IDC
     type: Number
-  - name: text
+  - !Item
+    name: text
     desc: visible text
     type: String
-- call: !Binary
-  - control
-  - text
-  ret:
+- ret:
     type: Number
     desc: index (row) of newly added item
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: text
+  right: !Item
+    name: text
     type: String
 argument_loc: Local
 effect_loc: Local

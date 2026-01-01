@@ -3,13 +3,10 @@ desc: Let group move to given position. Active waypoints will be ignored when co
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - group
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     type: !OneOf
     - type: Object
       desc: null
@@ -17,7 +14,8 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: position
+  right: !Item
+    name: position
     type: !OneOf
     - type: Position2d
       desc: null

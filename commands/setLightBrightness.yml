@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - light
-  - brightness
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: light
+  left: !Item
+    name: light
     type: Object
-  - name: brightness
+  right: !Item
+    name: brightness
     type: Number
 argument_loc: Local
 effect_loc: Local

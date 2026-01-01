@@ -3,16 +3,14 @@ desc: Detaches attached object from rope (i.e. detaches rope end from attached t
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Binary
-  - attachedObject
-  - rope
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: attachedObject
+  left: !Item
+    name: attachedObject
     desc: entity attached to the end of rope
     type: Object
-  - name: rope
+  right: !Item
+    name: rope
     desc: rope object to which entity is attached
     type: Object
 argument_loc: Unspecified

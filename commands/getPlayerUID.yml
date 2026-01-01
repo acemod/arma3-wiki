@@ -10,15 +10,14 @@ desc: |-
 groups:
 - Multiplayer
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: String
     desc: |-
       can be "_SP_AI_" or "_SP_PLAYER_" in SP, "" or UID in MP
       * The unique ID may be up to 100 characters long and may contain numbers, uppercase letters and underscores
       * The value can be used to construct a valid variable name by appending to another valid variable name, e.g <sqf inline>missionNamespace setVariable ["TAG_player" + _uid, _unit];</sqf>
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

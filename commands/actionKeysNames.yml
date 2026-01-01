@@ -5,25 +5,23 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- call: !Unary userAction
-  ret:
+- ret:
     type: String
-  params:
-  - name: userAction
+  right: !Item
+    name: userAction
     type: String
-- call: !Unary
-  - userAction
-  - maxKeys
-  - inputDevicePriority
-  ret:
+- ret:
     type: String
-  params:
-  - name: userAction
+  right: !Array
+  - !Item
+    name: userAction
     type: String
-  - name: maxKeys
+  - !Item
+    name: maxKeys
     desc: maximum number of keys to return
     type: Number
-  - name: inputDevicePriority
+  - !Item
+    name: inputDevicePriority
     type: !OneOf
     - type: String
       desc: null

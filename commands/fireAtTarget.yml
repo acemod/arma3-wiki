@@ -4,21 +4,20 @@ groups:
 - Unit Control
 - Weapons
 syntax:
-- call: !Binary
-  - sourceVehicle
-  - - targetVehicle
-    - weaponMuzzleName
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if fired, [[false]] if not'
-  params:
-  - name: sourceVehicle
+  left: !Item
+    name: sourceVehicle
     desc: source vehicle to fire from
     type: Object
-  - name: targetVehicle
+  right: !Array
+  - !Item
+    name: targetVehicle
     desc: target vehicle to fire at
     type: Object
-  - name: weaponMuzzleName
+  - !Item
+    name: weaponMuzzleName
     desc: weapon muzzle classname, optional parameter
     type: String
     optional: true

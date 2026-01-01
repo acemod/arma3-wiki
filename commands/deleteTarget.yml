@@ -5,11 +5,10 @@ problem_notes:
 groups:
 - Broken Commands
 syntax:
-- call: !Unary target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: target
+  right: !Item
+    name: target
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

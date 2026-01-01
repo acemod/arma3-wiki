@@ -6,11 +6,10 @@ multiplayer_note: |-
 groups:
 - Multiplayer
 syntax:
-- call: !Unary objOrGroup
-  ret:
+- ret:
     type: String
-  params:
-  - name: objOrGroup
+  right: !Item
+    name: objOrGroup
     type: !OneOf
     - type: Object
       desc: null

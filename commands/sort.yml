@@ -3,13 +3,10 @@ desc: Attempts to sort given array either in ascending ([[true]]) or descending 
 groups:
 - Arrays
 syntax:
-- call: !Binary
-  - array
-  - order
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !OneOf
     - type: ArrayUnknown
       desc: null
@@ -29,7 +26,8 @@ syntax:
     - type: Number
       desc: null
       since: null
-  - name: order
+  right: !Item
+    name: order
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

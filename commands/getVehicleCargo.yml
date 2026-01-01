@@ -3,12 +3,11 @@ desc: Get a list of vehicles loaded as cargo inside this vehicle. The returned a
 groups:
 - Vehicle in Vehicle Transport
 syntax:
-- call: !Unary storingVehicle
-  ret:
+- ret:
     type: ArrayUnknown
     desc: vehicles loaded in storingVehicle, in order of their loading
-  params:
-  - name: storingVehicle
+  right: !Item
+    name: storingVehicle
     type: Object
 argument_loc: Global
 effect_loc: Global

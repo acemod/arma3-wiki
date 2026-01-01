@@ -11,16 +11,14 @@ multiplayer_note: |-
 groups:
 - AI Behaviour
 syntax:
-- call: !Binary
-  - unit
-  - feature
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: AI unit
     type: Object
-  - name: feature
+  right: !Item
+    name: feature
     type: !OneOf
     - type: String
       desc: null

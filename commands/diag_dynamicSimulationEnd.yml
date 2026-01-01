@@ -17,11 +17,10 @@ groups:
 - Diagnostic
 - Dynamic Simulation
 syntax:
-- call: !Unary file
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: file
+  right: !Item
+    name: file
     desc: file name without extension
     type: String
 argument_loc: Unspecified

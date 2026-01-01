@@ -3,17 +3,15 @@ desc: Load cargo vehicle inside vehicle if possible, returns bool based on wheth
 groups:
 - Vehicle in Vehicle Transport
 syntax:
-- call: !Binary
-  - vehicle
-  - cargo
-  ret:
+- ret:
     type: Boolean
     desc: whether or not operation was a success
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle for carrying cargo, [[objNull]] to unload specific loaded cargo
     type: Object
-  - name: cargo
+  right: !Item
+    name: cargo
     desc: cargo to put/loaded in vehicle, [[objNull]] to unload all loaded cargo
     type: Object
 argument_loc: Unspecified

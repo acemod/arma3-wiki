@@ -3,14 +3,13 @@ desc: Gets provided player's Voice over Network (VoN) volume.
 groups:
 - Radio and Chat
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: !NumberRange
     - 0
     - 1
     desc: 1 in case of error (e.g provided a non-human)
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: the other player's unit
     type: Object
 argument_loc: Global

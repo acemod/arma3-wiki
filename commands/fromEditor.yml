@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Game 2 Editor
 syntax:
-- call: !Unary teamMember
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: teamMember
+  right: !Item
+    name: teamMember
     type: TeamMember
 argument_loc: Unspecified
 effect_loc: Unspecified

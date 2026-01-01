@@ -7,28 +7,24 @@ groups:
 - Arrays
 - HashMap
 syntax:
-- call: !Binary
-  - code
-  - array
-  ret:
+- ret:
     type: Anything
     desc: will return the value of last executed statement
-  params:
-  - name: code
+  left: !Item
+    name: code
     type: Unknown
-  - name: array
+  right: !Item
+    name: array
     desc: the array to iterate over
     type: ArrayUnknown
-- call: !Binary
-  - code
-  - hashMap
-  ret:
+- ret:
     type: Anything
     desc: will return the value of last executed statement
-  params:
-  - name: code
+  left: !Item
+    name: code
     type: Unknown
-  - name: hashMap
+  right: !Item
+    name: hashMap
     desc: the HashMap to iterate over
     type: HashMapUnknown
   since:

@@ -3,15 +3,13 @@ desc: Retrieve all attributes and their values from the specified section/catego
 groups:
 - Eden Editor
 syntax:
-- call: !Binary
-  - section
-  - category
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: section
+  left: !Item
+    name: section
     type: String
-  - name: category
+  right: !Item
+    name: category
     type: !OneOf
     - type: String
       desc: null

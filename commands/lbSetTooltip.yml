@@ -3,31 +3,29 @@ desc: Sets tooltip for item with given index of the listbox or combobox with id 
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Unary
-  - idc
-  - index
-  - tooltip
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: index
+  - !Item
+    name: index
     type: Number
-  - name: tooltip
+  - !Item
+    name: tooltip
     type: String
-- call: !Binary
-  - control
-  - - index
-    - tooltip
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     type: Number
-  - name: tooltip
+  - !Item
+    name: tooltip
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

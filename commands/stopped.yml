@@ -3,11 +3,10 @@ desc: Check if unit is stopped by [[stop]] command.
 groups:
 - Unit Control
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

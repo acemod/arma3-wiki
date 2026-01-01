@@ -5,21 +5,20 @@ desc: |-
 groups:
 - Broken Commands
 syntax:
-- call: !Unary
-  - format
-  - arg1
-  - arg2
-  - argN
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: format
+  right: !Array
+  - !Item
+    name: format
     type: String
-  - name: arg1
+  - !Item
+    name: arg1
     type: Anything
-  - name: arg2
+  - !Item
+    name: arg2
     type: Anything
-  - name: argN
+  - !Item
+    name: argN
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified

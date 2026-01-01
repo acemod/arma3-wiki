@@ -7,35 +7,7 @@ desc: |-
   {{Feature|important|Attributes are available only within the Eden Editor workspace and cannot be accessed in scenario preview or exported scenario!}}
 groups:
 - Eden Editor
-syntax:
-- call: !Unary
-  - - entities1
-    - class1
-    - value1
-  - - entities2
-    - class2
-    - value2
-  - '...'
-  ret:
-    type: Boolean
-    desc: '[[true]] if the value was set'
-  params:
-  - name: entitiesN
-    type: !OneOf
-    - type: !ArrayUnsized
-        type: EdenEntity
-        desc: ''
-      desc: null
-      since: null
-    - type: EdenID
-      desc: null
-      since: null
-  - name: classN
-    desc: attribute name
-    type: String
-  - name: valueN
-    desc: new attribute value
-    type: Anything
+syntax: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

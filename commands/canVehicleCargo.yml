@@ -3,19 +3,17 @@ desc: Returns bool array if it is possible to load cargo inside vehicle and if p
 groups:
 - Vehicle in Vehicle Transport
 syntax:
-- call: !Binary
-  - vehicle
-  - cargo
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Boolean
       desc: ''
     desc: '[willFitIntoCurrentVehicle, willFitIntoEmptyVehicle]'
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle carrying cargo
     type: Object
-  - name: cargo
+  right: !Item
+    name: cargo
     desc: cargo to put in vehicle
     type: Object
 argument_loc: Unspecified

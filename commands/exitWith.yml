@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Binary
-  - ifType
-  - code
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: ifType
+  left: !Item
+    name: ifType
     type: IfType
-  - name: code
+  right: !Item
+    name: code
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified

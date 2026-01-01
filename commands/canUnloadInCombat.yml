@@ -3,11 +3,10 @@ desc: Returns config value of `unloadInCombat` for a vehicle. Alternatively see 
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,16 +3,14 @@ desc: Sets maximal ([[Position#PositionATL|ATL]]) height to which curator camera
 groups:
 - Curator
 syntax:
-- call: !Binary
-  - curatorObj
-  - height
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: curatorObj
+  left: !Item
+    name: curatorObj
     desc: '[[Arma 3 Curator|Curator]] module'
     type: Object
-  - name: height
+  right: !Item
+    name: height
     desc: '[[Position#PositionATL|ATL]], in metres'
     type: Number
 argument_loc: Unspecified

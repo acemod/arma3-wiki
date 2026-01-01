@@ -4,16 +4,14 @@ multiplayer_note: A vehicle turret will change locality when player gunner gets 
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - turretPath
-  ret:
+- ret:
     type: Number
     desc: '[[owner]] id'
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: turretPath
+  right: !Item
+    name: turretPath
     desc: since {{GVI|arma3|2.08|size= 0.75}} [-1] (driver) is supported
     type: TurretPath
 argument_loc: Global

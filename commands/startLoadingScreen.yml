@@ -3,15 +3,14 @@ desc: "Shows loading screen with the given text, using the given resource.\nWhil
 groups:
 - System
 syntax:
-- call: !Unary
-  - text
-  - resource
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: text
+  right: !Array
+  - !Item
+    name: text
     type: String
-  - name: resource
+  - !Item
+    name: resource
     type: String
     optional: true
 argument_loc: Unspecified

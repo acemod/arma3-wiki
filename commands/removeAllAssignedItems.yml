@@ -6,26 +6,24 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
-- call: !Unary
-  - unit
-  - allItems
-  - includeBinocs
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  right: !Array
+  - !Item
+    name: unit
     desc: soldier
     type: Object
-  - name: allItems
+  - !Item
+    name: allItems
     desc: '[[true]] to include all slot items, [[false]] exclude goggles and headgear'
     type: Boolean
-  - name: includeBinocs
+  - !Item
+    name: includeBinocs
     desc: '[[true]] to include binoculars (which is a weapon), [[false]] to exclude it'
     type: Boolean
   since:

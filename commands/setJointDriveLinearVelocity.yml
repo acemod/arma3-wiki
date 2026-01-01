@@ -7,19 +7,17 @@ desc: |-
 groups:
 - PhysX
 syntax:
-- call: !Binary
-  - joint
-  - velocity
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: joint
+  left: !Item
+    name: joint
     desc: The parent vehicle that has a joint to a child, or the joint itself to be manipulated
     type: !OneOf
     - type: Object
       desc: null
       since: null
-  - name: velocity
+  right: !Item
+    name: velocity
     desc: relative velocity vector
     type: Unknown
 argument_loc: Local

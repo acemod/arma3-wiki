@@ -3,11 +3,10 @@ desc: Returns camera's target.
 groups:
 - Camera Control
 syntax:
-- call: !Unary camera
-  ret:
+- ret:
     type: Object
-  params:
-  - name: camera
+  right: !Item
+    name: camera
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

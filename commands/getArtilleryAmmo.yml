@@ -3,13 +3,12 @@ desc: Get list of all available magazines of artillery units on the list. Comman
 groups:
 - Artillery
 syntax:
-- call: !Unary artilleryList
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
-  params:
-  - name: artilleryList
+  right: !Item
+    name: artilleryList
     type: !ArrayUnsized
       type: Object
       desc: ''

@@ -3,22 +3,19 @@ desc: Skips the current loop iteration, continues with the next one and returns 
 groups:
 - Program Flow
 syntax:
-- call: !Unary return
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: return
+  right: !Item
+    name: return
     desc: value to be returned when iteration is skipped
     type: Anything
-- call: !Binary
-  - scriptHandle
-  - code
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: scriptHandle
+  left: !Item
+    name: scriptHandle
     type: ScriptHandle
-  - name: code
+  right: !Item
+    name: code
     desc: Code to execute once the [[Script_Handle#Promise_Handles|Promise]] has completed. The code will be executed in [[Scheduler#Unscheduled_Environment|Unscheduled Environment]].
     type: Code
   since:

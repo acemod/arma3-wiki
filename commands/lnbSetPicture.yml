@@ -3,37 +3,37 @@ desc: Sets the picture in the item with the given position of the 2D listbox.The
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  - picturePathOrName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: row
-    type: Number
-  - name: column
-    type: Number
-  - name: picturePathOrName
+  - !Array
+    - !Item
+      name: row
+      type: Number
+    - !Item
+      name: column
+      type: Number
+  - !Item
+    name: picturePathOrName
     type: String
-- call: !Binary
-  - ctrl
-  - - - row
-      - column
-    - picturePathOrName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: row
-    type: Number
-  - name: column
-    type: Number
-  - name: picturePathOrName
+  right: !Array
+  - !Array
+    - !Item
+      name: row
+      type: Number
+    - !Item
+      name: column
+      type: Number
+  - !Item
+    name: picturePathOrName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

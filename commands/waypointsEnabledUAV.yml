@@ -4,11 +4,10 @@ groups:
 - Waypoints
 - Remote Control
 syntax:
-- call: !Unary uav
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: uav
+  right: !Item
+    name: uav
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

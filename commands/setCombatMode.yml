@@ -4,13 +4,10 @@ groups:
 - Groups
 - AI Behaviour
 syntax:
-- call: !Binary
-  - group
-  - mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     desc: if the argument is unit [[Object]], unit's current group is used.
     type: !OneOf
     - type: Group
@@ -19,7 +16,8 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: mode
+  right: !Item
+    name: mode
     desc: see description
     type: String
 argument_loc: Local

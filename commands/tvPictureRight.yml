@@ -3,28 +3,25 @@ desc: Returns the right picture of a [[CT_TREE]] on given path.
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary
-  - idc
-  - path
-  ret:
+- ret:
     type: String
     desc: path to picture
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     desc: path
     type: ArrayUnknown
-- call: !Binary
-  - ctrl
-  - path
-  ret:
+- ret:
     type: String
     desc: path to picture
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: path
+  right: !Item
+    name: path
     desc: path
     type: ArrayUnknown
 argument_loc: Unspecified

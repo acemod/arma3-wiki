@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- call: !Unary id
-  ret:
+- ret:
     type: Object
-  params:
-  - name: id
+  right: !Item
+    name: id
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,21 +3,20 @@ desc: Sets the color of the left picture of a tree item defined by path when ite
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Binary
-  - control
-  - - path
-    - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: path to tree view item
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: color
+  - !Item
+    name: color
     type: ArrayColorRgba
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,14 +3,13 @@ desc: Returns all ropes attached to a ropes owner transport vehicle.
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Unary ropesOwner
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
     desc: array of the actual rope objects
-  params:
-  - name: ropesOwner
+  right: !Item
+    name: ropesOwner
     desc: a transport from which the ropes originate
     type: Object
 argument_loc: Unspecified

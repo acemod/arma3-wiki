@@ -8,12 +8,11 @@ desc: |-
 groups:
 - Strings
 syntax:
-- call: !Unary string
-  ret:
+- ret:
     type: String
     desc: all lower case string
-  params:
-  - name: string
+  right: !Item
+    name: string
     desc: string to convert
     type: String
 argument_loc: Unspecified

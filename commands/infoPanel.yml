@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Custom Panels
 syntax:
-- call: !Unary infoPanelId
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: infoPanelId
+  right: !Item
+    name: infoPanelId
     desc: info panel classname, or "left" or "right"
     type: String
 argument_loc: Unspecified

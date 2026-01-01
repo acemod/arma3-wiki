@@ -3,15 +3,13 @@ desc: Returns the unit in the vehicle turret. To find turret path of known unit,
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - turretPath
-  ret:
+- ret:
     type: Object
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: turretPath
+  right: !Item
+    name: turretPath
     desc: since {{GVI|arma3|1.58|size= 0.75}} [-1] (driver) is supported.
     type: TurretPath
 argument_loc: Unspecified

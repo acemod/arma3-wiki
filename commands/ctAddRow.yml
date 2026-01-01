@@ -6,11 +6,10 @@ desc: |-
 groups:
 - GUI Control - Controls Table
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: control
+  right: !Item
+    name: control
     type: Control
 argument_loc: Local
 effect_loc: Local

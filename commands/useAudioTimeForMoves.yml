@@ -3,15 +3,13 @@ desc: Switch between elapsed game time and audio time being used as animation ti
 groups:
 - Animations
 syntax:
-- call: !Binary
-  - soldier
-  - toggle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: soldier
+  left: !Item
+    name: soldier
     type: Object
-  - name: toggle
+  right: !Item
+    name: toggle
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

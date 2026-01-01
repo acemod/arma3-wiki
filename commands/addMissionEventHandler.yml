@@ -3,18 +3,16 @@ desc: 'Adds event handler attached to the current mission and returns event hand
 groups:
 - Event Handlers
 syntax:
-- call: !Unary
-  - event
-  - expression
-  - arguments
-  ret:
+- ret:
     type: Number
     desc: the index of the currently added mission event handler is returned
-  params:
-  - name: event
+  right: !Array
+  - !Item
+    name: event
     desc: event name
     type: String
-  - name: expression
+  - !Item
+    name: expression
     type: !OneOf
     - type: Code
       desc: null
@@ -25,7 +23,8 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: arguments
+  - !Item
+    name: arguments
     desc: additional arguments to be passed to the EH code. Available during code execution via {{hl|_thisArgs}} variable.
     type: ArrayUnknown
     optional: true

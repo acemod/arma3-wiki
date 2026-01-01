@@ -3,42 +3,40 @@ desc: "Create object with given shape defined as path to .p3d model. Supported [
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary
-  - shapeName
-  - positionWorld
-  - local
-  ret:
+- ret:
     type: Object
     desc: created simple object
-  params:
-  - name: shapeName
+  right: !Array
+  - !Item
+    name: shapeName
     desc: path to the 3d model (can be obtained with [[getModelInfo]] command)
     type: String
-  - name: positionWorld
+  - !Item
+    name: positionWorld
     desc: placement position by the '''model centre''''s position (see [[getPosWorld]])
     type: Position3dASL
-  - name: local
+  - !Item
+    name: local
     desc: '[[true]] to create a local instance only'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
       arma3: '1.96'
-- call: !Unary
-  - className
-  - positionASL
-  - local
-  ret:
+- ret:
     type: Object
     desc: created simple object
-  params:
-  - name: className
+  right: !Array
+  - !Item
+    name: className
     desc: '[[CfgVehicles]] class name'
     type: String
-  - name: positionASL
+  - !Item
+    name: positionASL
     desc: placement position
     type: Position3dASL
-  - name: local
+  - !Item
+    name: local
     desc: '[[true]] to create a local instance only'
     type: Boolean
     optional: true

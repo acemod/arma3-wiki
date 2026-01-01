@@ -3,11 +3,10 @@ desc: 'Object speed (in km/h). Returns relative speed of given object along Y ax
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Number
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

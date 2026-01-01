@@ -4,29 +4,28 @@ multiplayer_note: '{{Feature|informative|Only works on dedicated servers and {{L
 groups:
 - Argo
 syntax:
-- call: !Unary
-  - requestName
-  - callback
-  - data
-  - httpMethod
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] on success, [[false]] otherwise'
-  params:
-  - name: requestName
+  right: !Array
+  - !Item
+    name: requestName
     desc: can be anything but "users"
     type: String
-  - name: callback
+  - !Item
+    name: callback
     desc: code to be executed on request completion
     type: String
     optional: true
     default: '""'
-  - name: data
+  - !Item
+    name: data
     desc: JSON data to be sent
     type: Anything
     optional: true
     default: '""'
-  - name: httpMethod
+  - !Item
+    name: httpMethod
     type: !StringEnum
     - value: POST
       desc: null

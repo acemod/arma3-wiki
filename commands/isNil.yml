@@ -5,31 +5,27 @@ desc: |-
 groups:
 - Variables
 syntax:
-- call: !Unary variableName
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if variable is [[nil]] or undefined'
-  params:
-  - name: variableName
+  right: !Item
+    name: variableName
     desc: '[[missionNamespace]]''s or local [[Variables|variable]]''s [[Identifier|identifier]] (e.g "globalVariable", "_localVariable")'
     type: Unknown
-- call: !Unary code
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if ''''code'''' returns [[Nothing]], [[false]] otherwise'
-  params:
-  - name: code
+  right: !Item
+    name: code
     type: Unknown
-- call: !Binary
-  - namespace
-  - variableName
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if variable is [[nil]] or undefined'
-  params:
-  - name: namespace
+  left: !Item
+    name: namespace
     type: Unknown
-  - name: variableName
+  right: !Item
+    name: variableName
     type: String
   since:
     arma3: '2.18'

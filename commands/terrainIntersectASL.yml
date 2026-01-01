@@ -5,16 +5,15 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- call: !Unary
-  - start
-  - end
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: start
+  right: !Array
+  - !Item
+    name: start
     desc: start position
     type: Position3dASL
-  - name: end
+  - !Item
+    name: end
     desc: end position
     type: Position3dASL
 argument_loc: Unspecified

@@ -3,11 +3,10 @@ desc: Returns recoil coefficient of a soldier.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary soldier
-  ret:
+- ret:
     type: Number
-  params:
-  - name: soldier
+  right: !Item
+    name: soldier
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

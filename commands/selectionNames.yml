@@ -10,27 +10,24 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
     desc: selection names
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
-- call: !Binary
-  - object
-  - LOD
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
     desc: selection names
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: LOD
+  right: !Item
+    name: LOD
     type: !StringEnum
     - value: '[[String]] - LOD name; can be one of:'
       desc: null

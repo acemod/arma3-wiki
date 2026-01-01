@@ -4,30 +4,26 @@ groups:
 - Arrays
 - HashMap
 syntax:
-- call: !Binary
-  - array
-  - code
-  ret:
+- ret:
     type: ArrayUnknown
     desc: resulting array
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: code
+  right: !Item
+    name: code
     desc: code to be executed on each element of the array. The current element value is stored in the magic variable [[Magic Variables#x|_x]].
     type: Code
-- call: !Binary
-  - hashmap
-  - code
-  ret:
+- ret:
     type: ArrayUnknown
     desc: resulting array
-  params:
-  - name: hashmap
+  left: !Item
+    name: hashmap
     type: HashMapUnknown
-  - name: code
+  right: !Item
+    name: code
     desc: code to be executed on each key-value pair of the hashmap. The current key is stored in the magic variable [[Magic Variables#x|_x]], the corresponding value is stored in [[Magic Variables#y|_y]].
     type: Code
   since:

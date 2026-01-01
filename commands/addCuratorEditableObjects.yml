@@ -3,21 +3,20 @@ desc: Register objects which can be edited by a curator.
 groups:
 - Curator
 syntax:
-- call: !Binary
-  - curatorObj
-  - - objects
-    - addCrew
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: curatorObj
+  left: !Item
+    name: curatorObj
     desc: curator module
     type: Object
-  - name: objects
+  right: !Array
+  - !Item
+    name: objects
     type: !ArrayUnsized
       type: Object
       desc: ''
-  - name: addCrew
+  - !Item
+    name: addCrew
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

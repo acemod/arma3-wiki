@@ -8,28 +8,24 @@ groups:
 - Variables
 - Math
 syntax:
-- call: !Binary
-  - a
-  - b
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: a
+  left: !Item
+    name: a
     desc: test condition or variable
     type: Boolean
-  - name: b
+  right: !Item
+    name: b
     desc: test condition or variable
     type: Boolean
-- call: !Binary
-  - a
-  - b
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: a
+  left: !Item
+    name: a
     desc: test condition or variable
     type: Boolean
-  - name: b
+  right: !Item
+    name: b
     desc: code that returns [[Boolean]]. It is '''not''' evaluated if ''a'' is [[false]]
     type: Code
   since:

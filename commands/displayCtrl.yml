@@ -3,21 +3,18 @@ desc: Return child control with specified idc.
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - display
-  - idc
-  ret:
+- ret:
     type: Control
-  params:
-  - name: display
+  left: !Item
+    name: display
     type: Display
-  - name: idc
+  right: !Item
+    name: idc
     type: Number
-- call: !Unary idc
-  ret:
+- ret:
     type: Control
-  params:
-  - name: idc
+  right: !Item
+    name: idc
     type: Number
   since:
     arma3: '2.6'

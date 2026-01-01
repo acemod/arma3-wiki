@@ -3,20 +3,19 @@ desc: Hides or shows the [[createSimpleObject | simple object]]'s provided selec
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - - selection
-    - hidden
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: simple object
     type: Object
-  - name: selection
+  right: !Array
+  - !Item
+    name: selection
     desc: selection name
     type: String
-  - name: hidden
+  - !Item
+    name: hidden
     desc: '[[true]] to hide, [[false]] to show'
     type: Boolean
 argument_loc: Local

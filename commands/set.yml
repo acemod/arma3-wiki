@@ -4,38 +4,36 @@ groups:
 - Arrays
 - HashMap
 syntax:
-- call: !Binary
-  - array
-  - - index
-    - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     desc: 0-based array index. {{GVI|arma3|2.12|size= 0.75}} negative index can be used to select from the end of the array, i.e. -1 means last array element.
     type: Number
-  - name: value
+  - !Item
+    name: value
     type: Anything
-- call: !Binary
-  - hashMap
-  - - key
-    - value
-    - insertOnly
-  ret:
+- ret:
     type: Boolean
     desc: '[[false]] if the key is new to the hashmap, [[true]] if a value got overwritten'
-  params:
-  - name: hashMap
+  left: !Item
+    name: hashMap
     type: HashMapUnknown
-  - name: key
+  right: !Array
+  - !Item
+    name: key
     type: Unknown
-  - name: value
+  - !Item
+    name: value
     type: Anything
-  - name: insertOnly
+  - !Item
+    name: insertOnly
     desc: if set to [[true]], set the value only if the key does not exist already
     type: Boolean
     optional: true

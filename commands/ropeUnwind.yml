@@ -5,24 +5,23 @@ desc: |-
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Unary
-  - rope
-  - speed
-  - length
-  - relative
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: rope
+  right: !Array
+  - !Item
+    name: rope
     desc: rope object
     type: Object
-  - name: speed
+  - !Item
+    name: speed
     desc: animation speed in m/s with which to lengthen or shorten the rope, in range 0.01..20
     type: Number
-  - name: length
+  - !Item
+    name: length
     desc: 'the amount of length change in meters, in range: 0.1..100'
     type: Number
-  - name: relative
+  - !Item
+    name: relative
     desc: '[[true]] will add or subtract given length from current rope length, [[false]] will resize the rope to the given length'
     type: Boolean
     optional: true

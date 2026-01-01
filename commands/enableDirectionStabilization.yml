@@ -4,19 +4,18 @@ groups:
 - Camera Control
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - - enabled
-    - turretPath
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: enabled
+  right: !Array
+  - !Item
+    name: enabled
     desc: enable or disable turret stabilization
     type: Boolean
-  - name: turretPath
+  - !Item
+    name: turretPath
     type: TurretPath
     optional: true
 argument_loc: Unspecified

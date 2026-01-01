@@ -4,12 +4,11 @@ groups:
 - PhysX
 - Ropes and Sling Loading
 syntax:
-- call: !Unary towedVehicle
-  ret:
+- ret:
     type: Object
     desc: the object towing the provided object - [[objNull]] if not towed
-  params:
-  - name: towedVehicle
+  right: !Item
+    name: towedVehicle
     desc: the towed vehicle
     type: Object
 argument_loc: Local

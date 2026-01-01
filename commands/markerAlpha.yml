@@ -3,11 +3,10 @@ desc: Gets the marker alpha. See [[setMarkerAlpha]].
 groups:
 - Markers
 syntax:
-- call: !Unary markerName
-  ret:
+- ret:
     type: Number
-  params:
-  - name: markerName
+  right: !Item
+    name: markerName
     type: String
 argument_loc: Global
 effect_loc: Unspecified

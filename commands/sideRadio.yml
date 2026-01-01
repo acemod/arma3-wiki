@@ -7,31 +7,28 @@ groups:
 - Radio and Chat
 - Sounds
 syntax:
-- call: !Binary
-  - unit
-  - radioName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit to transmit
     type: Object
-  - name: radioName
+  right: !Item
+    name: radioName
     desc: class name from {{hl|CfgRadio}}
     type: String
-- call: !Binary
-  - - side
-    - identity
-  - radioName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: side
+  left: !Array
+  - !Item
+    name: side
     desc: side to which the transmission will be played
     type: Side
-  - name: identity
+  - !Item
+    name: identity
     type: Unknown
-  - name: radioName
+  right: !Item
+    name: radioName
     desc: class name from {{hl|CfgRadio}}
     type: String
 argument_loc: Global

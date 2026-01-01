@@ -3,16 +3,14 @@ desc: Removes user added action with given ID. This only removes actions added w
 groups:
 - Interaction
 syntax:
-- call: !Binary
-  - unit
-  - actionID
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit, vehicle or static object
     type: Object
-  - name: actionID
+  right: !Item
+    name: actionID
     desc: action ID returned by [[addAction]]
     type: Number
 argument_loc: Global

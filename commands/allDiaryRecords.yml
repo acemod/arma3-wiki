@@ -3,16 +3,14 @@ desc: Returns array with all [[Diary]] Records for the given subject available t
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - person
-  - subject
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: person
+  left: !Item
+    name: person
     desc: unit
     type: Object
-  - name: subject
+  right: !Item
+    name: subject
     desc: subject
     type: String
 argument_loc: Global

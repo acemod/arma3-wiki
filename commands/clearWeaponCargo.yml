@@ -3,11 +3,10 @@ desc: Remove all weapons from the given vehicle's weapon cargo space.
 groups:
 - Containers
 syntax:
-- call: !Unary vehicleName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicleName
+  right: !Item
+    name: vehicleName
     type: Object
 argument_loc: Global
 effect_loc: Local

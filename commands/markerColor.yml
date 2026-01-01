@@ -3,11 +3,10 @@ desc: Returns colour of the given marker. See also [[setMarkerColor]]/[[setMarke
 groups:
 - Markers
 syntax:
-- call: !Unary markerName
-  ret:
+- ret:
     type: String
-  params:
-  - name: markerName
+  right: !Item
+    name: markerName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

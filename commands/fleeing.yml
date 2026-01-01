@@ -17,12 +17,11 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Boolean
     desc: returns [[true]] if a unit is fleeing, [[false]] if not. '''Dead''' or '''empty''' units return [[false]].
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

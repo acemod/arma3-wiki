@@ -6,11 +6,10 @@ desc: |-
 groups:
 - DLC
 syntax:
-- call: !Unary appId
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: appId
+  right: !Item
+    name: appId
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

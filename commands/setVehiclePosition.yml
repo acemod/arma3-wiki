@@ -6,19 +6,15 @@ groups:
 - Positions
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - - position
-    - markers
-    - placement
-    - special
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] on success, [[false]] on failure'
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     desc: |-
       desired placement position.
       If object is given, object position is used for ''position''. Normally only ''x'' and ''y'' are considered, unless "CAN_COLLIDE" is used for special placement
@@ -32,17 +28,20 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: markers
+  - !Item
+    name: markers
     desc: |-
       if the markers array contains one or more marker names, the position is chosen randomly and could be one of the marker positions or just the supplied main position.
       If marker had z coordinate set with [[setMarkerPos]], the vehicle will be placed on the nearest surface below this z coordinate
     type: !ArrayUnsized
       type: String
       desc: ''
-  - name: placement
+  - !Item
+    name: placement
     desc: the vehicle is randomly placed inside a circle with given position as center and placement as its radius
     type: Number
-  - name: special
+  - !Item
+    name: special
     type: !OneOf
     - type: String
       desc: null

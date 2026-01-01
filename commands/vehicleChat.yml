@@ -8,16 +8,14 @@ desc: |-
 groups:
 - Radio and Chat
 syntax:
-- call: !Binary
-  - vehicle
-  - chatText
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle unit is in
     type: Object
-  - name: chatText
+  right: !Item
+    name: chatText
     desc: message to transmit
     type: String
 argument_loc: Global

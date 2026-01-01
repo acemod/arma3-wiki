@@ -8,15 +8,13 @@ desc: |-
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - obj
-  - modelPos
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: obj
+  left: !Item
+    name: obj
     type: Object
-  - name: modelPos
+  right: !Item
+    name: modelPos
     type: Position3dRelative
 argument_loc: Global
 effect_loc: Unspecified

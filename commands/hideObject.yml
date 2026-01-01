@@ -3,21 +3,18 @@ desc: Hide entity. Can be used on soldiers and vehicles, also on static objects.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
-- call: !Binary
-  - object
-  - hidden
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: hidden
+  right: !Item
+    name: hidden
     desc: '[[true]]->hidden; [[false]]->visible'
     type: Boolean
 argument_loc: Global

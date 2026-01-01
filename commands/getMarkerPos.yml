@@ -5,21 +5,19 @@ alias:
 groups:
 - Markers
 syntax:
-- call: !Unary markerName
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: markerName
+  right: !Item
+    name: markerName
     type: String
-- call: !Unary
-  - markerName
-  - preserveElevation
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: markerName
+  right: !Array
+  - !Item
+    name: markerName
     type: String
-  - name: preserveElevation
+  - !Item
+    name: preserveElevation
     type: Boolean
     optional: true
     default: '[[false]]'

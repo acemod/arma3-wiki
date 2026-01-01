@@ -7,11 +7,10 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary b
-  ret:
+- ret:
     type: SwitchType
-  params:
-  - name: b
+  right: !Item
+    name: b
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified

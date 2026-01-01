@@ -9,15 +9,13 @@ groups:
 - Object Manipulation
 - Render Time Scope
 syntax:
-- call: !Binary
-  - obj
-  - modelPos
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: obj
+  left: !Item
+    name: obj
     type: Object
-  - name: modelPos
+  right: !Item
+    name: modelPos
     desc: '[x,y,z] offset relative to the model centre'
     type: Position3dRelative
 argument_loc: Global

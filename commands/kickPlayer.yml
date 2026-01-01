@@ -3,17 +3,16 @@ desc: Kick the player controlling the provided unit from the server.
 groups:
 - Argo
 syntax:
-- call: !Unary
-  - unit
-  - kickMessage
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] on success, [[false]] otherwise'
-  params:
-  - name: unit
+  right: !Array
+  - !Item
+    name: unit
     desc: the player to kick
     type: Object
-  - name: kickMessage
+  - !Item
+    name: kickMessage
     desc: shown as disconnect message on the kicked client
     type: String
     optional: true

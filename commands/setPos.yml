@@ -8,15 +8,13 @@ multiplayer_note: |-
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - object
-  - pos
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: pos
+  right: !Item
+    name: pos
     desc: position in format [[Position#PositionAGL|PositionAGL]] or [[Position#Introduction|Position2D]], in which case Z will be set to 0
     type: ArrayUnknown
 argument_loc: Global

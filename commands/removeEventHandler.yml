@@ -3,14 +3,10 @@ desc: Removes a given Event Handler that was added with [[addEventHandler]].
 groups:
 - Event Handlers
 syntax:
-- call: !Binary
-  - target
-  - - type
-    - index
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: target
+  left: !Item
+    name: target
     type: !OneOf
     - type: Object
       desc: null
@@ -18,10 +14,13 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: see [[:Category:Event Handlers|Event Handlers]] for the full list of available options
     type: String
-  - name: index
+  - !Item
+    name: index
     desc: the value originally returned by [[addEventHandler]]
     type: Number
 argument_loc: Unspecified

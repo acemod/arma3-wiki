@@ -3,15 +3,13 @@ desc: Sets scale of a control. Top left corner remains same. This command requir
 groups:
 - GUI Control - Positioning
 syntax:
-- call: !Binary
-  - control
-  - scale
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: scale
+  right: !Item
+    name: scale
     desc: scale e.g. 2 = 200% in size
     type: Number
 argument_loc: Unspecified

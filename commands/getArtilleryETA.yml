@@ -3,20 +3,19 @@ desc: Returns ETA to the target in seconds for given artillery unit based on tar
 groups:
 - Artillery
 syntax:
-- call: !Binary
-  - unit
-  - - targetPosition
-    - magazineType
-  ret:
+- ret:
     type: Number
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: artillery unit
     type: Object
-  - name: targetPosition
+  right: !Array
+  - !Item
+    name: targetPosition
     desc: position of the target
     type: Position3dAGLS
-  - name: magazineType
+  - !Item
+    name: magazineType
     desc: type of magazine used
     type: String
 argument_loc: Global

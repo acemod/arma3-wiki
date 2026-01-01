@@ -5,14 +5,13 @@ groups:
 - Unit Inventory
 - Containers
 syntax:
-- call: !Unary box
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
     desc: list of present classes
-  params:
-  - name: box
+  right: !Item
+    name: box
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

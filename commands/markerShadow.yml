@@ -5,11 +5,10 @@ problem_notes:
 groups:
 - Markers
 syntax:
-- call: !Unary marker
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: marker
+  right: !Item
+    name: marker
     desc: the marker
     type: String
 argument_loc: Unspecified

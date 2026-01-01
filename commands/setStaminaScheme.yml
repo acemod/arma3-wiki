@@ -3,11 +3,10 @@ desc: Sets the scheme used for the Stamina system.
 groups:
 - Stamina System
 syntax:
-- call: !Unary scheme
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: scheme
+  right: !Item
+    name: scheme
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

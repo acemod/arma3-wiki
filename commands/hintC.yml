@@ -7,22 +7,19 @@ groups:
 - Structured Text
 - Strings
 syntax:
-- call: !Unary message
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: message
+  right: !Item
+    name: message
     type: String
-- call: !Binary
-  - title
-  - message
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: title
+  left: !Item
+    name: title
     desc: message title
     type: String
-  - name: message
+  right: !Item
+    name: message
     type: !OneOf
     - type: String
       desc: null

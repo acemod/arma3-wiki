@@ -10,11 +10,10 @@ desc: |-
 groups:
 - Sides
 syntax:
-- call: !Unary side
-  ret:
+- ret:
     type: Side
-  params:
-  - name: side
+  right: !Item
+    name: side
     type: Side
 argument_loc: Unspecified
 effect_loc: Global

@@ -3,45 +3,42 @@ desc: "Returns an array of config entries which meet criteria in condition code.
 groups:
 - Config
 syntax:
-- call: !Binary
-  - condition
-  - config
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Config
       desc: ''
-  params:
-  - name: condition
+  left: !Item
+    name: condition
     type: String
-  - name: config
+  right: !Item
+    name: config
     type: Config
-- call: !Unary
-  - config
-  - depth
-  - includeInherited
-  - allSubclasses
-  - classNames
-  ret:
+- ret:
     type: !OneOf
     - type: !ArrayUnsized
         type: Config
         desc: ''
       desc: null
       since: null
-  params:
-  - name: config
+  right: !Array
+  - !Item
+    name: config
     desc: target config
     type: Config
-  - name: depth
+  - !Item
+    name: depth
     desc: how many levels of subclasses to go deep
     type: Number
-  - name: includeInherited
+  - !Item
+    name: includeInherited
     desc: '[[true]] to look through inherited classes'
     type: Boolean
-  - name: allSubclasses
+  - !Item
+    name: allSubclasses
     desc: '[[true]] to return all subclasses, [[false]] - to return only the last tier.'
     type: Boolean
-  - name: classNames
+  - !Item
+    name: classNames
     desc: '(Optional, default: [[false]]) when [[true]] class names [[String]]s are returned, when [[false]] - [[Config]]s are returned.'
     type: Boolean
     optional: true

@@ -3,17 +3,15 @@ desc: Sets coef for some action (coef have to be bigger than -1 000 000, anythin
 groups:
 - Curator
 syntax:
-- call: !Binary
-  - curatorObj
-  - - action
-    - coef
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: curatorObj
+  left: !Item
+    name: curatorObj
     desc: curator module
     type: Object
-  - name: action
+  right: !Array
+  - !Item
+    name: action
     type: !StringEnum
     - value: Place
       desc: null
@@ -33,7 +31,8 @@ syntax:
     - value: Synchronize
       desc: null
       since: null
-  - name: coef
+  - !Item
+    name: coef
     type: !OneOf
     - type: Number
       desc: null

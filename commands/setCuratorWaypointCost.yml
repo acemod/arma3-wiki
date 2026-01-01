@@ -3,16 +3,14 @@ desc: Sets cost of waypoints (used for placing, editing and deleting).
 groups:
 - Curator
 syntax:
-- call: !Binary
-  - curatorObj
-  - cost
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: curatorObj
+  left: !Item
+    name: curatorObj
     desc: curator module
     type: Object
-  - name: cost
+  right: !Item
+    name: cost
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

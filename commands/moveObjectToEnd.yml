@@ -3,15 +3,13 @@ desc: "Shifts an editor object to the end of the objects array. This means,that 
 groups:
 - Game 2 Editor
 syntax:
-- call: !Binary
-  - map
-  - object
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: object
+  right: !Item
+    name: object
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

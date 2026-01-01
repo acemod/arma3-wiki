@@ -9,49 +9,47 @@ desc: |-
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - endType
-  - - title
-    - description
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: endType
+  left: !Item
+    name: endType
     desc: engine type
     type: String
-  - name: title
+  right: !Array
+  - !Item
+    name: title
     desc: title text on the debriefing screen
     type: String
-  - name: description
+  - !Item
+    name: description
     desc: description text on the debriefing screen
     type: String
-- call: !Binary
-  - endType
-  - - title
-    - description
-    - subtitle
-    - picture
-    - background
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: endType
+  left: !Item
+    name: endType
     desc: any name
     type: String
-  - name: title
+  right: !Array
+  - !Item
+    name: title
     desc: title text on the debriefing screen
     type: String
-  - name: description
+  - !Item
+    name: description
     desc: description text on the debriefing screen
     type: String
-  - name: subtitle
+  - !Item
+    name: subtitle
     desc: subtitle text on the debriefing screen ('''must''' be defined in order to trigger this syntax of the command)
     type: String
-  - name: picture
+  - !Item
+    name: picture
     desc: title picture
     type: String
     optional: true
-  - name: background
+  - !Item
+    name: background
     desc: background picture
     type: String
     optional: true

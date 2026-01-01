@@ -3,15 +3,13 @@ desc: Removes the magazine from the unit.
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - magazineName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: magazineName
+  right: !Item
+    name: magazineName
     type: String
 argument_loc: Global
 effect_loc: Global

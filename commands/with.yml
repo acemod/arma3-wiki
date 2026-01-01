@@ -8,11 +8,10 @@ groups:
 - Program Flow
 - Namespaces
 syntax:
-- call: !Unary namespace
-  ret:
+- ret:
     type: WithType
-  params:
-  - name: namespace
+  right: !Item
+    name: namespace
     type: Namespace
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,34 +3,32 @@ desc: Sets text color on given Tree View Item
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary
-  - idc
-  - path
-  - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     desc: '[[Tree View Path]] of the item'
     type: ArrayUnknown
-  - name: color
+  - !Item
+    name: color
     desc: item text color
     type: ArrayUnknown
-- call: !Binary
-  - control
-  - - path
-    - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: '[[Tree View Path]] of the item'
     type: ArrayUnknown
-  - name: color
+  - !Item
+    name: color
     desc: item text color in format [r,g,b,a]
     type: ArrayUnknown
 argument_loc: Unspecified

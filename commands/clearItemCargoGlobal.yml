@@ -3,11 +3,10 @@ desc: Removes all items from ammo box (or any general weapon holder container). 
 groups:
 - Containers
 syntax:
-- call: !Unary box
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: box
+  right: !Item
+    name: box
     type: Object
 argument_loc: Global
 effect_loc: Global

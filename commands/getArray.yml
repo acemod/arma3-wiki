@@ -3,13 +3,12 @@ desc: Extract array from config entry.
 groups:
 - Config
 syntax:
-- call: !Unary config
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  params:
-  - name: config
+  right: !Item
+    name: config
     type: Config
 argument_loc: Unspecified
 effect_loc: Unspecified

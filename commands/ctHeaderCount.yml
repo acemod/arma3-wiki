@@ -3,11 +3,10 @@ desc: Returns number of headers (rows not included) in the RscControlsTable.
 groups:
 - GUI Control - Controls Table
 syntax:
-- call: !Unary ctrl
-  ret:
+- ret:
     type: Number
-  params:
-  - name: ctrl
+  right: !Item
+    name: ctrl
     type: Control
 argument_loc: Local
 effect_loc: Local

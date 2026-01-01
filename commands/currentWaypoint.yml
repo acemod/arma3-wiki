@@ -12,12 +12,11 @@ desc: |-
 groups:
 - Waypoints
 syntax:
-- call: !Unary groupName
-  ret:
+- ret:
     type: Number
     desc: index of the current waypoint
-  params:
-  - name: groupName
+  right: !Item
+    name: groupName
     type: Group
 argument_loc: Unspecified
 effect_loc: Unspecified

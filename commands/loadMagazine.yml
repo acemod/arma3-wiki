@@ -6,21 +6,20 @@ groups:
 - Weapons
 - Turrets
 syntax:
-- call: !Binary
-  - transport
-  - - turretPath
-    - weaponName
-    - magazineName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: transport
+  left: !Item
+    name: transport
     type: Object
-  - name: turretPath
+  right: !Array
+  - !Item
+    name: turretPath
     type: TurretPath
-  - name: weaponName
+  - !Item
+    name: weaponName
     type: String
-  - name: magazineName
+  - !Item
+    name: magazineName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,16 +3,15 @@ desc: Moves the [[get3DENCamera|Eden Editor camera]].
 groups:
 - Eden Editor
 syntax:
-- call: !Unary
-  - position
-  - useOffset
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     desc: new position
     type: Position3dASL
-  - name: useOffset
+  - !Item
+    name: useOffset
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

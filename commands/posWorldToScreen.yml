@@ -4,16 +4,14 @@ groups:
 - GUI Control - Map
 - Positions
 syntax:
-- call: !Binary
-  - map
-  - position
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: map
+  left: !Item
+    name: map
     desc: map control
     type: Control
-  - name: position
+  right: !Item
+    name: position
     desc: world position
     type: !OneOf
     - type: Position2d

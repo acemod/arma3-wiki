@@ -46,11 +46,10 @@ desc: |-
 groups:
 - Radio and Chat
 syntax:
-- call: !Unary channelID
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: channelID
+  right: !Item
+    name: channelID
     desc: '[[Channel IDs|Channel ID]] (see description)'
     type: Number
 argument_loc: Unspecified

@@ -3,20 +3,19 @@ desc: Creates the camera shaking effect, like when you are near an explosion
 groups:
 - Camera Control
 syntax:
-- call: !Unary
-  - power
-  - duration
-  - frequency
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: power
+  right: !Array
+  - !Item
+    name: power
     desc: strength of shake (camera movement), practical range is 0 to 20
     type: Number
-  - name: duration
+  - !Item
+    name: duration
     desc: duration in seconds divided by 2
     type: Number
-  - name: frequency
+  - !Item
+    name: frequency
     desc: frequency of shake, practical range is 0 to 100
     type: Number
 argument_loc: Unspecified

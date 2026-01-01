@@ -12,26 +12,22 @@ groups:
 - Object Manipulation
 - Sides
 syntax:
-- call: !Binary
-  - unitName
-  - status
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  left: !Item
+    name: unitName
     type: Object
-  - name: status
+  right: !Item
+    name: status
     desc: '[[true]] means [[captive]]'
     type: Boolean
-- call: !Binary
-  - unitName
-  - statusNumber
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  left: !Item
+    name: unitName
     type: Object
-  - name: statusNumber
+  right: !Item
+    name: statusNumber
     desc: zero means non-captive, a non-zero value means [[captive]]; see [[captiveNum]]
     type: Number
   since:

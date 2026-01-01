@@ -3,8 +3,7 @@ desc: Returns the shape of given marker.
 groups:
 - Markers
 syntax:
-- call: !Unary name
-  ret:
+- ret:
     type: String
     desc: |-
       shape of given marker. Can be return:
@@ -19,8 +18,8 @@ syntax:
       * {{GVI|arma3|2.20|size= 0.75}} {{hl|"OCTAGON"}}
       * {{GVI|arma3|2.20|size= 0.75}} {{hl|"NONAGON"}}
       * {{GVI|arma3|2.20|size= 0.75}} {{hl|"DECAGON"}}
-  params:
-  - name: name
+  right: !Item
+    name: name
     desc: name of the marker
     type: String
 argument_loc: Global

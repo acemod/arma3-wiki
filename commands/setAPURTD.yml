@@ -3,20 +3,19 @@ desc: Let the Auxiliary Power Unit (APU) reach a desired state over the given pe
 groups:
 - RTD
 syntax:
-- call: !Binary
-  - helicopterRTD
-  - - value
-    - time
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: helicopterRTD
+  left: !Item
+    name: helicopterRTD
     desc: helicopter
     type: Unknown
-  - name: value
+  right: !Array
+  - !Item
+    name: value
     desc: desired APU state. 0 being completely off, 1 being fully powered up
     type: Number
-  - name: time
+  - !Item
+    name: time
     desc: time to reach (seconds)
     type: Number
 argument_loc: Unspecified

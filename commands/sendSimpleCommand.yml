@@ -31,15 +31,13 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - vehicleName
-  - command
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicleName
+  left: !Item
+    name: vehicleName
     type: Object
-  - name: command
+  right: !Item
+    name: command
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

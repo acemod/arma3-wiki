@@ -3,11 +3,10 @@ desc: A getter for [[setDynamicSimulationDistanceCoef]]
 groups:
 - Dynamic Simulation
 syntax:
-- call: !Unary class
-  ret:
+- ret:
     type: Number
-  params:
-  - name: class
+  right: !Item
+    name: class
     desc: see [[setDynamicSimulationDistanceCoef]]
     type: String
 argument_loc: Unspecified

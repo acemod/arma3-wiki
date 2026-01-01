@@ -3,8 +3,7 @@ desc: Return list of datalink targets and time for which they will be/were known
 groups:
 - Sensors
 syntax:
-- call: !Unary side
-  ret:
+- ret:
     type: !ArrayUnsized
       type: !ArraySized
         types:
@@ -18,8 +17,8 @@ syntax:
           since: null
         desc: ''
       desc: ''
-  params:
-  - name: side
+  right: !Item
+    name: side
     type: Side
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,15 +3,13 @@ desc: Copy the chain of waypoints from source to target group. The target group 
 groups:
 - Waypoints
 syntax:
-- call: !Binary
-  - groupTo
-  - groupFrom
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: groupTo
+  left: !Item
+    name: groupTo
     type: Group
-  - name: groupFrom
+  right: !Item
+    name: groupFrom
     type: Group
 argument_loc: Unspecified
 effect_loc: Unspecified

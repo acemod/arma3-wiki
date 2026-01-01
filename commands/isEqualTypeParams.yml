@@ -7,16 +7,14 @@ desc: |-
 groups:
 - Variables
 syntax:
-- call: !Binary
-  - input
-  - template
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: input
+  left: !Item
+    name: input
     desc: could be value of any type, but only type [[Array]] will be validated
     type: Anything
-  - name: template
+  right: !Item
+    name: template
     desc: array of expected types
     type: !ArrayUnsized
       type: Anything

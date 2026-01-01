@@ -3,15 +3,13 @@ desc: Assigns loiter altitude to the provided waypoint.
 groups:
 - Waypoints
 syntax:
-- call: !Binary
-  - waypoint
-  - loiterAltitude
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: waypoint
+  left: !Item
+    name: waypoint
     type: Waypoint
-  - name: loiterAltitude
+  right: !Item
+    name: loiterAltitude
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

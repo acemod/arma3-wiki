@@ -3,34 +3,32 @@ desc: Sets right picture on the tree view item defined by path.
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary
-  - idc
-  - path
-  - name
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     desc: path to tree view item
     type: ArrayUnknown
-  - name: name
+  - !Item
+    name: name
     desc: picture texture
     type: String
-- call: !Binary
-  - control
-  - - path
-    - name
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: path to tree view item
     type: ArrayUnknown
-  - name: name
+  - !Item
+    name: name
     desc: picture texture
     type: String
 argument_loc: Unspecified

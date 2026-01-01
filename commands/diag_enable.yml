@@ -3,16 +3,14 @@ desc: Toggles various diagnostics.
 groups:
 - Diagnostic
 syntax:
-- call: !Binary
-  - mode
-  - state
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: mode
+  left: !Item
+    name: mode
     desc: 'see [[Arma 3: Diagnostics Exe]]'
     type: String
-  - name: state
+  right: !Item
+    name: state
     desc: '[[true]] to enable diag mode, [[false]] to disable it'
     type: Boolean
 argument_loc: Unspecified

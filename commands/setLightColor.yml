@@ -3,23 +3,22 @@ desc: Set diffuse color of light. Illuminates surfaces that are facing the light
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - light
-  - - r
-    - g
-    - b
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: light
+  left: !Item
+    name: light
     type: Object
-  - name: r
+  right: !Array
+  - !Item
+    name: r
     desc: red value in range 0..1
     type: Number
-  - name: g
+  - !Item
+    name: g
     desc: green value in range 0..1
     type: Number
-  - name: b
+  - !Item
+    name: b
     desc: blue value in range 0..1
     type: Number
 argument_loc: Local

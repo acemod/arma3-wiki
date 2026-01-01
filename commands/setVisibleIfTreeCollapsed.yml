@@ -5,20 +5,17 @@ desc: |-
 groups:
 - Game 2 Editor
 syntax:
-- call: !Binary
-  - map
-  - - object
-    - visible
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: '[object, visible]'
-    type: ArrayUnknown
-  - name: object
+  right: !Array
+  - !Item
+    name: object
     type: Unknown
-  - name: visible
+  - !Item
+    name: visible
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

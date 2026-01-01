@@ -5,22 +5,21 @@ desc: |-
 groups:
 - Game 2 Editor
 syntax:
-- call: !Binary
-  - map
-  - - menu item index
-    - text
-    - command
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: menu item index
+  right: !Array
+  - !Item
+    name: menu item index
     desc: See [[addMenuItem]]
     type: Number
-  - name: text
+  - !Item
+    name: text
     type: String
-  - name: command
+  - !Item
+    name: command
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

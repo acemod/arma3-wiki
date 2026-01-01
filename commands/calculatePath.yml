@@ -29,25 +29,24 @@ problem_notes:
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary
-  - type
-  - behaviour
-  - from
-  - to
-  ret:
+- ret:
     type: Object
     desc: 'the agent to [[addEventHandler|add]] the [[Arma 3: Event Handlers#PathCalculated|{{hl|"PathCalculated"}} Event Handler]] to.'
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: vehicle type to simulate (see description)
     type: String
-  - name: behaviour
+  - !Item
+    name: behaviour
     desc: AI [[behaviour]], one of "CARELESS", "SAFE", "AWARE", "COMBAT" or "STEALTH"
     type: String
-  - name: from
+  - !Item
+    name: from
     desc: start position in format [x,y,z]
     type: ArrayUnknown
-  - name: to
+  - !Item
+    name: to
     desc: end position in format [x,y,z]
     type: ArrayUnknown
 argument_loc: Unspecified

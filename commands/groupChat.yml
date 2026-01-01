@@ -6,16 +6,14 @@ desc: |-
 groups:
 - Radio and Chat
 syntax:
-- call: !Binary
-  - unit
-  - chatText
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit transmitting message
     type: Object
-  - name: chatText
+  right: !Item
+    name: chatText
     desc: message to transmit
     type: String
 argument_loc: Global

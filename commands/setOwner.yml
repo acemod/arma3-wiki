@@ -7,17 +7,15 @@ problem_notes:
 groups:
 - Multiplayer
 syntax:
-- call: !Binary
-  - object
-  - clientID
-  ret:
+- ret:
     type: Boolean
     desc: returns [[true]] if ownership was successfully transferred, otherwise [[false]]
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: object to transfer
     type: Object
-  - name: clientID
+  right: !Item
+    name: clientID
     desc: the [[Multiplayer_Scripting#Machine_network_ID | machine network ID]] of the new [[owner]].
     type: Number
 argument_loc: Global

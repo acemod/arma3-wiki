@@ -3,11 +3,10 @@ desc: Returns the provided entity's layer ID.
 groups:
 - Eden Editor
 syntax:
-- call: !Unary edenEntity
-  ret:
+- ret:
     type: Number
-  params:
-  - name: edenEntity
+  right: !Item
+    name: edenEntity
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

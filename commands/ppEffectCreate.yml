@@ -16,38 +16,16 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Unary
-  - name
-  - priority
-  ret:
+- ret:
     type: Number
     desc: handle or -1 if failed
-  params:
-  - name: name
+  right: !Array
+  - !Item
+    name: name
     desc: name of effect type
     type: String
-  - name: priority
-    desc: unique priority, defines order of applying effect to the scene. If there is another effect using the same priority, creation will fail
-    type: Number
-- call: !Unary
-  - - name1
-    - priority1
-  - '...'
-  ret:
-    type: !OneOf
-    - type: !ArrayUnsized
-        type: Number
-        desc: ''
-      desc: null
-      since: null
-    - type: Nothing
-      desc: null
-      since: null
-  params:
-  - name: nameN
-    desc: name of effect type
-    type: String
-  - name: priorityN
+  - !Item
+    name: priority
     desc: unique priority, defines order of applying effect to the scene. If there is another effect using the same priority, creation will fail
     type: Number
 argument_loc: Unspecified

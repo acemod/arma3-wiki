@@ -6,25 +6,23 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary dialogName
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] when the dialog was created successfully'
-  params:
-  - name: dialogName
+  right: !Item
+    name: dialogName
     desc: class name used in the description.ext, resource.cpp or config.cpp
     type: String
-- call: !Unary
-  - dialogName
-  - forceOnTop
-  ret:
+- ret:
     type: Display
     desc: created dialog
-  params:
-  - name: dialogName
+  right: !Array
+  - !Item
+    name: dialogName
     desc: class name used in the description.ext, resource.cpp or config.cpp
     type: String
-  - name: forceOnTop
+  - !Item
+    name: forceOnTop
     desc: if [[true]], dialog will be rendered on top of displays
     type: Boolean
     optional: true

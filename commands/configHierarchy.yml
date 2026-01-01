@@ -3,23 +3,16 @@ desc: Returns hierarchy of the given config class. Just like with [[inheritsFrom
 groups:
 - Config
 syntax:
-- call: !Unary config
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Config
       desc: ''
     desc: ordered from parent to child
-  params:
-  - name: config
+  right: !Item
+    name: config
     desc: target config
     type: Config
-- call: !Unary
-  - config
-  - classesOnly
-  - includeBases
-  - reversedOrder
-  - configNames
-  ret:
+- ret:
     type: !OneOf
     - type: !ArrayUnsized
         type: Config
@@ -30,20 +23,25 @@ syntax:
       desc: null
       since: null
     desc: Strings represent config names
-  params:
-  - name: config
+  right: !Array
+  - !Item
+    name: config
     desc: target config
     type: Config
-  - name: classesOnly
+  - !Item
+    name: classesOnly
     desc: when [[true]], only classes are included in output and not properties
     type: Boolean
-  - name: includeBases
+  - !Item
+    name: includeBases
     desc: when [[true]], returned parents will include base classes (see description)
     type: Boolean
-  - name: reversedOrder
+  - !Item
+    name: reversedOrder
     desc: when [[true]], the return order is from child to parent
     type: Boolean
-  - name: configNames
+  - !Item
+    name: configNames
     desc: 'when [[true]], the return is [[Array]] of [[String]]s, when [[false]] - [[Array]] of [[Config]]s. Default: [[false]]'
     type: Unknown
   since:

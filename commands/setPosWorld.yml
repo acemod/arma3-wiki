@@ -3,15 +3,13 @@ desc: Sets position of an object based on the model's centre position (see [[get
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - object
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: position
+  right: !Item
+    name: position
     type: Position3dASL
 argument_loc: Global
 effect_loc: Global

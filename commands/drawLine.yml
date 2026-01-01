@@ -3,18 +3,14 @@ desc: Draw a line on the map. Can decrease framerate!
 groups:
 - GUI Control - Map
 syntax:
-- call: !Binary
-  - map
-  - - from
-    - to
-    - color
-    - width
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: from
+  right: !Array
+  - !Item
+    name: from
     type: !OneOf
     - type: Object
       desc: null
@@ -25,7 +21,8 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: to
+  - !Item
+    name: to
     type: !OneOf
     - type: Object
       desc: null
@@ -36,9 +33,11 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: color
+  - !Item
+    name: color
     type: ArrayColorRgba
-  - name: width
+  - !Item
+    name: width
     type: Number
     optional: true
     default: '3'

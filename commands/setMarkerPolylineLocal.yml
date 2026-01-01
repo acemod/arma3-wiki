@@ -3,15 +3,13 @@ desc: Sets a polyline marker's path. Works only on the computer that executes th
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - marker
-  - path
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: marker
+  left: !Item
+    name: marker
     type: String
-  - name: path
+  right: !Item
+    name: path
     desc: '{{hl|[x1, y1, x2, y2, ... xn, yn]}}'
     type: ArrayUnknown
 argument_loc: Unspecified

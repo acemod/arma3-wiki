@@ -3,32 +3,29 @@ desc: Merges two [[HashMap]]s.
 groups:
 - HashMap
 syntax:
-- call: !Binary
-  - hashMap1
-  - hashMap2
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: hashMap1
+  left: !Item
+    name: hashMap1
     desc: this HashMap will be modified
     type: HashMapUnknown
-  - name: hashMap2
+  right: !Item
+    name: hashMap2
     desc: all key-value pairs from this HashMap are added to ''hashMap1''. If a key from ''hashMap2'' already exists in ''hashMap1'', it doesn't overwrite the value in ''hashMap1''.
     type: HashMapUnknown
-- call: !Binary
-  - hashMap1
-  - - hashMap2
-    - overwriteExisting
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: hashMap1
+  left: !Item
+    name: hashMap1
     desc: this HashMap will be modified
     type: HashMapUnknown
-  - name: hashMap2
+  right: !Array
+  - !Item
+    name: hashMap2
     desc: all key-value pairs from this HashMap are added to ''hashMap1''
     type: HashMapUnknown
-  - name: overwriteExisting
+  - !Item
+    name: overwriteExisting
     desc: if [[true]], keys from ''hashMap1'' that also exist in ''hashMap2'' are overwritten. When set to [[true]], merging is faster
     type: Boolean
     optional: true

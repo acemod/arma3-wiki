@@ -3,14 +3,13 @@ desc: Returns unit traits (native or set by [[setUnitTrait]]).
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Unknown
     desc: |-
       trait's name
       * value [[String]] or [[Boolean]] - trait's value
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: a unit or a class name
     type: !OneOf
     - type: Object

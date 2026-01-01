@@ -3,11 +3,10 @@ desc: Returns texture of the [[Multiplayer Scripting#Locality|local]] instance o
 groups:
 - Flags
 syntax:
-- call: !Unary flagCarrier
-  ret:
+- ret:
     type: String
-  params:
-  - name: flagCarrier
+  right: !Item
+    name: flagCarrier
     desc: vehicle, unit or flag pole
     type: Object
 argument_loc: Global

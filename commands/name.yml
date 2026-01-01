@@ -9,36 +9,32 @@ groups:
 - Unit Identity
 - Locations
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: String
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
-- call: !Unary location
-  ret:
+- ret:
     type: String
     desc: the location's ''name''. To get its textual value, use [[text]] (see {{Link|#Example 3}})
-  params:
-  - name: location
+  right: !Item
+    name: location
     type: Location
   since:
     arma1: '1.8'
-- call: !Unary namespace
-  ret:
+- ret:
     type: String
     desc: "namespace's ''name''. Possible values: \n\n* \"mission\" - for [[missionNamespace]]\n* \"profile\" - for [[profileNamespace]]\n* \"ui\" - for [[uiNamespace]]\n* \"parsing\" - for [[parsingNamespace]]\n* \"local\" - for [[localNamespace]]\n* \"missionprofile\" - for [[missionProfileNamespace]]\n* \"server\" - for [[serverNamespace]]\n* \"\" - for some unnamed namespaces like temporary or server config for example.\n* \"null\" - null namespace (this should never happen)"
-  params:
-  - name: namespace
+  right: !Item
+    name: namespace
     type: Namespace
   since:
     arma3: '2.18'
-- call: !Unary scriptHandle
-  ret:
+- ret:
     type: String
     desc: The name given to the script via [[scriptName]] or the name passed to [[spawn]] when creating a [[Script_Handle#Promise_Handles|"Empty Handle"]]
-  params:
-  - name: scriptHandle
+  right: !Item
+    name: scriptHandle
     type: ScriptHandle
   since:
     arma3: '2.22'

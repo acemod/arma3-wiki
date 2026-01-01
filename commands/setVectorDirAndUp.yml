@@ -12,19 +12,18 @@ desc: |-
 groups:
 - Math - Vectors
 syntax:
-- call: !Binary
-  - vehicle
-  - - vectorDir
-    - vectorUp
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: vectorDir
+  right: !Array
+  - !Item
+    name: vectorDir
     desc: '[[vectorDir]]'
     type: Unknown
-  - name: vectorUp
+  - !Item
+    name: vectorUp
     desc: '[[vectorUp]]'
     type: Unknown
 argument_loc: Local

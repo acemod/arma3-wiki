@@ -15,12 +15,7 @@ multiplayer_note: Remote executions are queued and are therefore executed in the
 groups:
 - Multiplayer
 syntax:
-- call: !Binary
-  - params
-  - - order
-    - targets
-    - JIP
-  ret:
+- ret:
     type: !OneOf
     - type: Object
       desc: null
@@ -28,14 +23,17 @@ syntax:
     - type: Group
       desc: null
       since: null
-  params:
-  - name: params
+  left: !Item
+    name: params
     desc: '''''order''''''s parameter {{Feature|important|[[Structured Text]] is ''''''not'''''' meant to be sent over network.}}'
     type: Unknown
-  - name: order
+  right: !Array
+  - !Item
+    name: order
     desc: 'function or command name; while any function or command can be used here, only those allowed by [[Arma 3: CfgRemoteExec|CfgRemoteExec]] will actually be executed'
     type: String
-  - name: targets
+  - !Item
+    name: targets
     type: !OneOf
     - type: Number
       desc: '(See also [[Multiplayer Scripting#Machine network ID|Machine network ID]]):'
@@ -57,7 +55,8 @@ syntax:
       since: null
     optional: true
     default: '0'
-  - name: JIP
+  - !Item
+    name: JIP
     type: !OneOf
     - type: Boolean
       desc: if [[true]], a unique JIP ID is generated and the [[remoteExec]] statement is added to the JIP queue from which it will be executed for every JIP
@@ -73,21 +72,19 @@ syntax:
       since: null
     optional: true
     default: '[[false]]'
-- call: !Unary
-  - functionName
-  - targets
-  - JIP
-  ret:
+- ret:
     type: !OneOf
     - type: String
       desc: null
       since: null
     desc: see the main syntax above for more details.
-  params:
-  - name: functionName
+  right: !Array
+  - !Item
+    name: functionName
     desc: see the main syntax above for more details.
     type: String
-  - name: targets
+  - !Item
+    name: targets
     desc: see the main syntax above for more details.
     type: !OneOf
     - type: Number
@@ -110,7 +107,8 @@ syntax:
       since: null
     optional: true
     default: '0'
-  - name: JIP
+  - !Item
+    name: JIP
     desc: see the main syntax above for more details.
     type: !OneOf
     - type: Boolean

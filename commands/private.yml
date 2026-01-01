@@ -7,18 +7,16 @@ desc: |-
 groups:
 - Variables
 syntax:
-- call: !Unary variableName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: variableName
+  right: !Item
+    name: variableName
     desc: e.g <sqf inline>"_myVar"</sqf>
     type: String
-- call: !Unary variableNameList
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: variableNameList
+  right: !Item
+    name: variableNameList
     desc: e.g <sqf inline>["_target", "_damage"]</sqf>
     type: !ArrayUnsized
       type: String

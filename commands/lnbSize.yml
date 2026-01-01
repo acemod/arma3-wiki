@@ -3,11 +3,10 @@ desc: Returns size of [[CT_LISTNBOX]]. This command supports [[CT_TOOLBOX]] cont
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary controlOrIDC
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: controlOrIDC
+  right: !Item
+    name: controlOrIDC
     desc: control or control's IDC
     type: !OneOf
     - type: Control

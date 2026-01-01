@@ -4,12 +4,11 @@ groups:
 - Unit Inventory
 - Object Manipulation
 syntax:
-- call: !Unary weaponholder
-  ret:
+- ret:
     type: Object
     desc: dead unit
-  params:
-  - name: weaponholder
+  right: !Item
+    name: weaponholder
     desc: weaponholder dropped by the dead unit
     type: Object
 argument_loc: Unspecified

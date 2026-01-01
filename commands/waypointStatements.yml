@@ -3,8 +3,7 @@ desc: Gets the waypoint statements.
 groups:
 - Waypoints
 syntax:
-- call: !Unary waypoint
-  ret:
+- ret:
     type: !ArraySized
       types:
       - name: condition
@@ -16,8 +15,8 @@ syntax:
         desc: ''
         since: null
       desc: ''
-  params:
-  - name: waypoint
+  right: !Item
+    name: waypoint
     type: Waypoint
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,27 +3,25 @@ desc: Returns current zeroing.
 groups:
 - Weapons
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Number
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: unit (vehicles are not supported)
     type: Object
-- call: !Binary
-  - object
-  - - weaponClass
-    - muzzleClass
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: unit (vehicles are not supported)
     type: Object
-  - name: weaponClass
+  right: !Array
+  - !Item
+    name: weaponClass
     desc: class name of weapon
     type: String
-  - name: muzzleClass
+  - !Item
+    name: muzzleClass
     desc: muzzle classname
     type: String
     optional: true

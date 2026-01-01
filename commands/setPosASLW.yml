@@ -3,15 +3,13 @@ desc: Sets the object position above sea surface. The pos array uses the [[Posit
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - obj
-  - pos
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: obj
+  left: !Item
+    name: obj
     type: Object
-  - name: pos
+  right: !Item
+    name: pos
     type: Position3DASLW
 argument_loc: Global
 effect_loc: Global

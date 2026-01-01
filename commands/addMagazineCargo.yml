@@ -5,20 +5,19 @@ desc: |-
 groups:
 - Containers
 syntax:
-- call: !Binary
-  - vehicleName
-  - - magazineName
-    - count
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicleName
+  left: !Item
+    name: vehicleName
     desc: vehicle to add the magazines to
     type: Object
-  - name: magazineName
+  right: !Array
+  - !Item
+    name: magazineName
     desc: magazine name. See [[:Category:Weapons]] for reference about possible values.
     type: String
-  - name: count
+  - !Item
+    name: count
     desc: number of magazines to add. {{GVI|arma3|2.14|size= 0.75}} negative count will remove magazines.
     type: Number
 argument_loc: Global

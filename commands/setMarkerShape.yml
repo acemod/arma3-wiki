@@ -8,15 +8,13 @@ multiplayer_note: |-
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - markerName
-  - shape
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: markerName
+  left: !Item
+    name: markerName
     type: String
-  - name: shape
+  right: !Item
+    name: shape
     type: !StringEnum
     - value: ICON
       desc: null

@@ -3,20 +3,19 @@ desc: Searches given ''haystack'' with given ''pattern'' and replaces all matche
 groups:
 - Strings - Regular Expression
 syntax:
-- call: !Binary
-  - haystack
-  - - pattern
-    - replaceString
-  ret:
+- ret:
     type: String
     desc: modified text
-  params:
-  - name: haystack
+  left: !Item
+    name: haystack
     type: String
-  - name: pattern
+  right: !Array
+  - !Item
+    name: pattern
     desc: 'format [[Arma 3: Regular Expressions|regex pattern]]'
     type: String
-  - name: replaceString
+  - !Item
+    name: replaceString
     desc: '{{Link|https://www.boost.org/doc/libs/1_76_0/libs/regex/doc/html/boost_regex/format/perl_format.html|Reference}}'
     type: String
 argument_loc: Unspecified

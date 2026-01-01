@@ -3,24 +3,23 @@ desc: Sets the minimal [[Position#PositionASL|ASL]] height. Final height is {{hl
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - aircraft
-  - - standardAltitude
-    - combatAltitude
-    - stealthAltitude
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: aircraft
+  left: !Item
+    name: aircraft
     desc: helicopter, airplane
     type: Object
-  - name: standardAltitude
+  right: !Array
+  - !Item
+    name: standardAltitude
     desc: base altitude used when [[behaviour]] is neither "COMBAT" or "STEALTH"
     type: Number
-  - name: combatAltitude
+  - !Item
+    name: combatAltitude
     desc: altitude used when [[behaviour]] is "COMBAT"
     type: Number
-  - name: stealthAltitude
+  - !Item
+    name: stealthAltitude
     desc: altitude used when [[behaviour]] is "STEALTH"
     type: Number
 argument_loc: Unspecified

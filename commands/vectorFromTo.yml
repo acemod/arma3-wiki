@@ -5,13 +5,10 @@ desc: |-
 groups:
 - Math - Vectors
 syntax:
-- call: !Binary
-  - vector1
-  - vector2
-  ret:
+- ret:
     type: Vector3d
-  params:
-  - name: vector1
+  left: !Item
+    name: vector1
     desc: z coordinate is defaulted to 0
     type: !OneOf
     - type: Vector3d
@@ -20,7 +17,8 @@ syntax:
     - type: Vector2d
       desc: null
       since: null
-  - name: vector2
+  right: !Item
+    name: vector2
     desc: z coordinate is defaulted to 0
     type: !OneOf
     - type: Vector3d

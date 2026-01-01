@@ -3,15 +3,13 @@ desc: Sets tooltip text color of given control.
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - display
-  - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: display
+  left: !Item
+    name: display
     type: Control
-  - name: color
+  right: !Item
+    name: color
     type: ArrayColorRgba
 argument_loc: Unspecified
 effect_loc: Unspecified

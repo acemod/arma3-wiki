@@ -3,11 +3,10 @@ desc: Clear and set the curator selected items. Leave the items array empty to c
 groups:
 - Curator
 syntax:
-- call: !Unary items
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: items
+  right: !Item
+    name: items
     desc: flat array of items to set; items can be an [[Object]], [[Group]], [[Array]] format [[Waypoint]], or [[String]] (marker)
     type: ArrayUnknown
 argument_loc: Unspecified

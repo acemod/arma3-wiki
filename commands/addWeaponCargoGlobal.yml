@@ -3,20 +3,19 @@ desc: Add weapons to the cargo space of vehicles, which can be taken out by infa
 groups:
 - Containers
 syntax:
-- call: !Binary
-  - vehicleName
-  - - weaponName
-    - count
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicleName
+  left: !Item
+    name: vehicleName
     desc: vehicle to which add the weapons
     type: Object
-  - name: weaponName
+  right: !Array
+  - !Item
+    name: weaponName
     desc: weapon name. See the topic [[:Category:Weapons]] for reference about possible values
     type: String
-  - name: count
+  - !Item
+    name: count
     desc: number of weapons to add. {{GVI|arma3|2.14|size= 0.75}} negative count will remove weapons.
     type: Number
 argument_loc: Global

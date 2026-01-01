@@ -6,29 +6,25 @@ groups:
 - Math
 - Config
 syntax:
-- call: !Binary
-  - a
-  - b
-  ret:
+- ret:
     type: Number
     desc: quotient
-  params:
-  - name: a
+  left: !Item
+    name: a
     desc: dividend
     type: Number
-  - name: b
+  right: !Item
+    name: b
     desc: divisor
     type: Number
-- call: !Binary
-  - config
-  - name
-  ret:
+- ret:
     type: Config
     desc: config entry
-  params:
-  - name: config
+  left: !Item
+    name: config
     type: Config
-  - name: name
+  right: !Item
+    name: name
     type: String
   since:
     arma1: '1.0'

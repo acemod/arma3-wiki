@@ -3,12 +3,11 @@ desc: Returns a random element from the given array. Engine solution to [[BIS_fn
 groups:
 - Arrays
 syntax:
-- call: !Unary array
-  ret:
+- ret:
     type: Anything
     desc: random selected value or [[Nothing]] if array is empty
-  params:
-  - name: array
+  right: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''

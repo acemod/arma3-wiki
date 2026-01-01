@@ -10,12 +10,11 @@ desc: |-
 groups:
 - Strings
 syntax:
-- call: !Unary value
-  ret:
+- ret:
     type: Number
     desc: the parsed number, {{hl|0}} if no valid number was found; in the case of a passed [[Boolean]], 0 if [[false]], 1 if [[true]]
-  params:
-  - name: value
+  right: !Item
+    name: value
     type: !OneOf
     - type: String
       desc: null

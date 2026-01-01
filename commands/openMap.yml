@@ -10,25 +10,23 @@ groups:
 - Map
 - Interaction
 syntax:
-- call: !Unary show
-  ret:
+- ret:
     type: Boolean
     desc: equivalent of [[visibleMap]]
-  params:
-  - name: show
+  right: !Item
+    name: show
     desc: if [[true]] opens map, if [[false]] closes map, provided it is not ''forced''
     type: Boolean
-- call: !Unary
-  - show
-  - forced
-  ret:
+- ret:
     type: Boolean
     desc: equivalent of [[visibleMap]]
-  params:
-  - name: show
+  right: !Array
+  - !Item
+    name: show
     desc: if [[true]] opens map, if [[false]] closes map, provided it is not ''forced''.
     type: Boolean
-  - name: forced
+  - !Item
+    name: forced
     desc: if [[true]] keeps map from closing when map is open. {{GVI|arma3|2.06|size= 0.75}} if [[false]], forces map to stay closed if ''show'' is [[false]] (see {{Link|#Example 1}})
     type: Boolean
 argument_loc: Unspecified

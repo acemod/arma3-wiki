@@ -5,15 +5,13 @@ groups:
 - Unit Identity
 - Sounds
 syntax:
-- call: !Binary
-  - person
-  - speaker
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: person
+  left: !Item
+    name: person
     type: Object
-  - name: speaker
+  right: !Item
+    name: speaker
     desc: 'the used voice type, see [[Arma 3: CfgIdentities#Speakers|{{arma3}} Speakers]]'
     type: String
 argument_loc: Global

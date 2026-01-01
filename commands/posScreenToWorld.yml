@@ -3,20 +3,19 @@ desc: Converts map screen coordinates into world coordinates. Unlike [[ctrlMapSc
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - map
-  - - x
-    - y
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: map
+  left: !Item
+    name: map
     desc: map control
     type: Control
-  - name: x
+  right: !Array
+  - !Item
+    name: x
     desc: screen X
     type: Number
-  - name: y
+  - !Item
+    name: y
     desc: screen Y
     type: Number
 argument_loc: Unspecified

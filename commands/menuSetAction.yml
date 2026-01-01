@@ -3,32 +3,30 @@ desc: Sets new action into menu entry on given path.
 groups:
 - GUI Control - Menu
 syntax:
-- call: !Unary
-  - idc
-  - path
-  - action
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     type: ArrayUnknown
-  - name: action
+  - !Item
+    name: action
     desc: expression that should be executed when entry is clicked
     type: String
-- call: !Binary
-  - control
-  - - path
-    - action
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     type: ArrayUnknown
-  - name: action
+  - !Item
+    name: action
     desc: expression that should be executed when entry is clicked
     type: String
 argument_loc: Unspecified

@@ -3,28 +3,25 @@ desc: Changes the mass of a PhysX object. When using the alternative syntax the 
 groups:
 - PhysX
 syntax:
-- call: !Binary
-  - myObject
-  - mass
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: myObject
+  left: !Item
+    name: myObject
     type: Object
-  - name: mass
+  right: !Item
+    name: mass
     type: Number
-- call: !Binary
-  - myObject
-  - - mass
-    - time
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: myObject
+  left: !Item
+    name: myObject
     type: Object
-  - name: mass
+  right: !Array
+  - !Item
+    name: mass
     type: Number
-  - name: time
+  - !Item
+    name: time
     type: Number
 argument_loc: Local
 effect_loc: Global

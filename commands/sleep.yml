@@ -8,11 +8,10 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary delay
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: delay
+  right: !Item
+    name: delay
     desc: in seconds. Negative values will not be considered.
     type: Number
 argument_loc: Unspecified

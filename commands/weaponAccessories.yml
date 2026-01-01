@@ -5,16 +5,14 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - weapon
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[silencer, laserpointer/flashlight, optics, bipod]'
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: weapon
+  right: !Item
+    name: weapon
     desc: primary, secondary or handgun
     type: String
 argument_loc: Unspecified

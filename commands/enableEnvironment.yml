@@ -17,27 +17,25 @@ groups:
 - Environment
 - Sounds
 syntax:
-- call: !Unary enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: enable
+  right: !Item
+    name: enable
     desc: '[[false]] to disable ambient life and ambient sounds, [[true]] to re-enable it'
     type: Boolean
-- call: !Unary
-  - ambientLife
-  - ambientSound
-  - windyCoef
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ambientLife
+  right: !Array
+  - !Item
+    name: ambientLife
     desc: enable/disable ambient life (bees, rabbits, birds, snakes, fish)
     type: Boolean
-  - name: ambientSound
+  - !Item
+    name: ambientSound
     desc: enable/disable ambient sounds (cicadas, owls, etc)
     type: Boolean
-  - name: windyCoef
+  - !Item
+    name: windyCoef
     desc: howling wind at heights, range 0..1
     type: Number
     optional: true

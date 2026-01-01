@@ -4,11 +4,10 @@ groups:
 - Positions
 - Render Time Scope
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Position3dASL
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: name of the object
     type: Object
 argument_loc: Unspecified

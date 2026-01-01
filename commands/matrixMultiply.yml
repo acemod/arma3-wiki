@@ -6,25 +6,23 @@ groups:
 - Math
 - Math - Vectors
 syntax:
-- call: !Binary
-  - matrix1
-  - matrix2
-  ret:
+- ret:
     type: !ArrayUnsized
       type: !ArrayUnsized
         type: Number
         desc: ''
       desc: ''
     desc: resulting matrix of the size {{hl|n}}''(rows)'' &times; {{hl|m}}''(columns)''
-  params:
-  - name: matrix1
+  left: !Item
+    name: matrix1
     desc: matrix of the size {{hl|n}}''(rows)'' &times; {{hl|k}}''(columns)''
     type: !ArrayUnsized
       type: !ArrayUnsized
         type: Number
         desc: ''
       desc: ''
-  - name: matrix2
+  right: !Item
+    name: matrix2
     desc: matrix of the size {{hl|k}}''(rows)'' &times; {{hl|m}}''(columns)''
     type: !ArrayUnsized
       type: !ArrayUnsized

@@ -3,15 +3,13 @@ desc: Add speech to location.
 groups:
 - Locations
 syntax:
-- call: !Binary
-  - location
-  - speech
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: location
+  left: !Item
+    name: location
     type: Location
-  - name: speech
+  right: !Item
+    name: speech
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

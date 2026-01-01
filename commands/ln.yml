@@ -3,11 +3,10 @@ desc: Returns the natural logarithm of x.  [[File:A3 lnx figure.jpg|thumb|400|ln
 groups:
 - Math
 syntax:
-- call: !Unary x
-  ret:
+- ret:
     type: Number
-  params:
-  - name: x
+  right: !Item
+    name: x
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

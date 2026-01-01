@@ -5,22 +5,21 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Unary
-  - world
-  - expression
-  - config
-  - ignoreChildWindow
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: world
+  right: !Array
+  - !Item
+    name: world
     type: String
-  - name: expression
+  - !Item
+    name: expression
     type: Code
-  - name: config
+  - !Item
+    name: config
     type: Config
     optional: true
-  - name: ignoreChildWindow
+  - !Item
+    name: ignoreChildWindow
     type: Boolean
     optional: true
 argument_loc: Unspecified

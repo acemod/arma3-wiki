@@ -3,12 +3,11 @@ desc: "Gets the suppression value for the given unit. Returns varying [[Number]]
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Number
     desc: from 0 to 1, or -1 if suppression is not available.
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Local
 effect_loc: Unspecified

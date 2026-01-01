@@ -3,21 +3,19 @@ desc: Returns a list of all controls in the provided display or controls group, 
 groups:
 - GUI Control
 syntax:
-- call: !Unary display
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Control
       desc: ''
-  params:
-  - name: display
+  right: !Item
+    name: display
     type: Display
-- call: !Unary controlsGroup
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Control
       desc: ''
-  params:
-  - name: controlsGroup
+  right: !Item
+    name: controlsGroup
     desc: '[[CT_CONTROLS_GROUP]]'
     type: Control
   since:

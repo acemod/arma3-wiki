@@ -3,11 +3,10 @@ desc: Check if unit has some ammo.
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -4,12 +4,11 @@ multiplayer_note: Only works on a '''dedicated''' server.
 groups:
 - Argo
 syntax:
-- call: !Unary missionName
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if the mission could be started on a dedicated server, [[false]] otherwise'
-  params:
-  - name: missionName
+  right: !Item
+    name: missionName
     desc: mission name with terrain extension
     type: String
 argument_loc: Unspecified

@@ -16,11 +16,10 @@ multiplayer_note: This command is only effective when used on local units. When 
 groups:
 - Unit Control
 syntax:
-- call: !Unary units
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: units
+  right: !Item
+    name: units
     type: !OneOf
     - type: Object
       desc: null

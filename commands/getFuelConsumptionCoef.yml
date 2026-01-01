@@ -3,12 +3,11 @@ desc: Returns the fuel consumption coefficient, which is a multiplier of the [[C
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Number
     desc: fuel consumption coefficient
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

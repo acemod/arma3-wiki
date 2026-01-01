@@ -3,10 +3,7 @@ desc: Executes [[else]] code when [[if]] condition returns [[false]].
 groups:
 - Program Flow
 syntax:
-- call: !Binary
-  - thenCode
-  - elseCode
-  ret:
+- ret:
     type: !ArraySized
       types:
       - name: thenCode
@@ -18,10 +15,11 @@ syntax:
         desc: ''
         since: null
       desc: ''
-  params:
-  - name: thenCode
+  left: !Item
+    name: thenCode
     type: Code
-  - name: elseCode
+  right: !Item
+    name: elseCode
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified

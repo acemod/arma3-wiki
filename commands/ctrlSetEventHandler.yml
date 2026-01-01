@@ -13,18 +13,17 @@ groups:
 - GUI Control - Event Handlers
 - Event Handlers
 syntax:
-- call: !Binary
-  - controlName
-  - - handlerName
-    - function
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: controlName
+  left: !Item
+    name: controlName
     type: Control
-  - name: handlerName
+  right: !Array
+  - !Item
+    name: handlerName
     type: String
-  - name: function
+  - !Item
+    name: function
     desc: should return a [[Boolean]] indicating that the event has handled this event fully or not and whether the engine should execute its default code or not afterwards
     type: String
 argument_loc: Unspecified

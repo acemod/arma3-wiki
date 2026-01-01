@@ -3,35 +3,33 @@ desc: Sets limits of [[CT_SLIDER]] or [[CT_XSLIDER]].
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - idc
-  - min
-  - max
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: idc of the control
     type: Number
-  - name: min
+  - !Item
+    name: min
     desc: minimal value
     type: Number
-  - name: max
+  - !Item
+    name: max
     desc: maximum value
     type: Number
-- call: !Binary
-  - control
-  - - min
-    - max
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: min
+  right: !Array
+  - !Item
+    name: min
     desc: minimal value
     type: Number
-  - name: max
+  - !Item
+    name: max
     desc: maximum value
     type: Number
 argument_loc: Unspecified

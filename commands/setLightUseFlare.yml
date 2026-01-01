@@ -3,15 +3,13 @@ desc: Sets if light has flare.
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - light
-  - bool
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: light
+  left: !Item
+    name: light
     type: Object
-  - name: bool
+  right: !Item
+    name: bool
     type: Boolean
 argument_loc: Local
 effect_loc: Local

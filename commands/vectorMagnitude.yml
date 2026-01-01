@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Math - Vectors
 syntax:
-- call: !Unary vector
-  ret:
+- ret:
     type: Number
-  params:
-  - name: vector
+  right: !Item
+    name: vector
     type: !ArrayUnsized
       type: Number
       desc: ''

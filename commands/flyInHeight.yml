@@ -5,30 +5,27 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - aircraft
-  - altitude
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: aircraft
+  left: !Item
+    name: aircraft
     type: Object
-  - name: altitude
+  right: !Item
+    name: altitude
     desc: flying altitude in meters
     type: Number
-- call: !Binary
-  - aircraft
-  - - altitude
-    - forced
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: aircraft
+  left: !Item
+    name: aircraft
     type: Object
-  - name: altitude
+  right: !Array
+  - !Item
+    name: altitude
     desc: flying altitude in meters
     type: Number
-  - name: forced
+  - !Item
+    name: forced
     desc: '[[true]] to force altitude in all cases, [[false]] to behave like main syntax'
     type: Boolean
   since:

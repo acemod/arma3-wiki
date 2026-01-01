@@ -8,18 +8,17 @@ desc: |-
 groups:
 - Waypoints
 syntax:
-- call: !Binary
-  - waypoint
-  - - condition
-    - statement
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: waypoint
+  left: !Item
+    name: waypoint
     type: Waypoint
-  - name: condition
+  right: !Array
+  - !Item
+    name: condition
     type: String
-  - name: statement
+  - !Item
+    name: statement
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

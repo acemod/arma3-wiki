@@ -3,11 +3,10 @@ desc: Return the child tasks of the specified task.
 groups:
 - Briefing
 syntax:
-- call: !Unary task
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: task
+  right: !Item
+    name: task
     type: Task
 argument_loc: Unspecified
 effect_loc: Unspecified

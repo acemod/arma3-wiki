@@ -3,18 +3,17 @@ desc: Joins the unit to the given group, if position id is available, this one i
 groups:
 - Groups
 syntax:
-- call: !Binary
-  - unit
-  - - group
-    - id
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: group
+  right: !Array
+  - !Item
+    name: group
     type: Group
-  - name: id
+  - !Item
+    name: id
     type: Number
 argument_loc: Global
 effect_loc: Global

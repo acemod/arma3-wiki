@@ -5,10 +5,7 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - unit
-  - skillName
-  ret:
+- ret:
     type: !OneOf
     - type: Boolean
       desc: null
@@ -16,10 +13,11 @@ syntax:
     - type: Number
       desc: null
       since: null
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: skillName
+  right: !Item
+    name: skillName
     desc: name of the skill
     type: String
 argument_loc: Global

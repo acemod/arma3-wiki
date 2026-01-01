@@ -3,23 +3,22 @@ desc: Creates a new subject in the [[Diary]].
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - player
-  - - subject
-    - displayName
-    - picture
-  ret:
+- ret:
     type: Number
     desc: index of the entry that was added
-  params:
-  - name: player
+  left: !Item
+    name: player
     type: Object
-  - name: subject
+  right: !Array
+  - !Item
+    name: subject
     type: String
-  - name: displayName
+  - !Item
+    name: displayName
     desc: the visible name
     type: String
-  - name: picture
+  - !Item
+    name: picture
     desc: icon to display next to the subject. Can be set later with [[setDiarySubjectPicture]]. Similar to [[lbSetPictureRight]].
     type: String
     optional: true

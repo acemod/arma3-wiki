@@ -6,15 +6,13 @@ desc: |-
 groups:
 - PhysX
 syntax:
-- call: !Binary
-  - object
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: value
+  right: !Item
+    name: value
     desc: '[[true]] to enable collision, [[false]] to disable it'
     type: Boolean
 argument_loc: Global

@@ -7,18 +7,17 @@ desc: |-
 groups:
 - Sides
 syntax:
-- call: !Binary
-  - side1
-  - - side2
-    - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: side1
+  left: !Item
+    name: side1
     type: Side
-  - name: side2
+  right: !Array
+  - !Item
+    name: side2
     type: Side
-  - name: value
+  - !Item
+    name: value
     desc: a value smaller than 0.6 results in being enemy, otherwise ''side1'' is friendly to ''side2''
     type: Number
 argument_loc: Unspecified

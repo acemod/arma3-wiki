@@ -6,12 +6,11 @@ multiplayer_note: Static buildings synchronisation should be executed on the [[i
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if sync was attempted'
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     desc: entity
     type: Object
 argument_loc: Local

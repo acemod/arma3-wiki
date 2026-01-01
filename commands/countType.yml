@@ -3,16 +3,14 @@ desc: Count how many objects in the array are of given type. This command also w
 groups:
 - Object Detection
 syntax:
-- call: !Binary
-  - type
-  - objects
-  ret:
+- ret:
     type: Number
-  params:
-  - name: type
+  left: !Item
+    name: type
     desc: class type
     type: String
-  - name: objects
+  right: !Item
+    name: objects
     type: !ArrayUnsized
       type: Object
       desc: ''

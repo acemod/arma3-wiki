@@ -3,12 +3,11 @@ desc: Returns DLC information about given object or model.
 groups:
 - DLC
 syntax:
-- call: !Unary asset
-  ret:
+- ret:
     type: Unknown
     desc: "the asset belongs to a DLC\n* isOwned: [[Boolean]] \n* isInstalled: [[Boolean]] \n* isAvailable: [[Boolean]] \n* appID: [[String]] - actual steam item ID or \"0\" for none or \"-1\" for unknown \n* DLCName: [[String]] - actual DLC name or \"\""
-  params:
-  - name: asset
+  right: !Item
+    name: asset
     desc: object reference or path to the model
     type: !OneOf
     - type: Object
@@ -17,17 +16,16 @@ syntax:
     - type: String
       desc: null
       since: null
-- call: !Unary
-  - class
-  - config
-  ret:
+- ret:
     type: Unknown
     desc: "the asset belongs to a DLC\n* isOwned: [[Boolean]] \n* isInstalled: [[Boolean]] \n* isAvailable: [[Boolean]] \n* appID: [[String]] - actual steam item ID or \"0\" for none or \"-1\" for unknown \n* DLCName: [[String]] - actual DLC name or \"\""
-  params:
-  - name: class
+  right: !Array
+  - !Item
+    name: class
     desc: class name of the asset
     type: String
-  - name: config
+  - !Item
+    name: config
     desc: config in which to search
     type: Config
     optional: true

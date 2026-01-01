@@ -3,11 +3,10 @@ desc: Adds a header line of controls according to the HeaderTemplate class. Note
 groups:
 - GUI Control - Controls Table
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: control
+  right: !Item
+    name: control
     type: Control
 argument_loc: Local
 effect_loc: Local

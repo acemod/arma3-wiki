@@ -3,15 +3,13 @@ desc: Check if conversation topic was registered to given person. See [[Conversa
 groups:
 - Conversations
 syntax:
-- call: !Binary
-  - person
-  - topicName
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: person
+  left: !Item
+    name: person
     type: Object
-  - name: topicName
+  right: !Item
+    name: topicName
     type: String
 argument_loc: Local
 effect_loc: Unspecified

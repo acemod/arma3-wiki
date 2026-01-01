@@ -3,11 +3,10 @@ desc: Sets if group icons raise [[onGroupIconClick]], [[onGroupIconOverEnter]] a
 groups:
 - High Command
 syntax:
-- call: !Unary selectable
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: selectable
+  right: !Item
+    name: selectable
     desc: setting to [[true]] makes the icon selectable
     type: Boolean
 argument_loc: Unspecified

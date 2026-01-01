@@ -10,13 +10,10 @@ groups:
 - Locations
 - Positions
 syntax:
-- call: !Binary
-  - position
-  - area
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: position
+  left: !Item
+    name: position
     type: !OneOf
     - type: Object
       desc: null
@@ -24,24 +21,18 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: area
+  right: !Item
+    name: area
     type: Unknown
-- call: !Binary
-  - position
-  - - center
-    - a
-    - b
-    - angle
-    - isRectangle
-    - c
-    - usePosWorld
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: position
+  left: !Item
+    name: position
     desc: '[[Object]] and/or [[Position]] to check. [[Position]] must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D (see note in description)'
     type: Unknown
-  - name: center
+  right: !Array
+  - !Item
+    name: center
     desc: center of the area in format [[Position#Introduction|Position2D]], [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D), [[Object]] or [[Group]]
     type: !OneOf
     - type: ArrayUnknown
@@ -50,28 +41,34 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: a
+  - !Item
+    name: a
     desc: x axis (x / 2)
     type: Number
-  - name: b
+  - !Item
+    name: b
     desc: y axis (y / 2)
     type: Number
-  - name: angle
+  - !Item
+    name: angle
     desc: '(Optional since 2.20, Default: 0) rotation angle'
     type: Number
     optional: true
-  - name: isRectangle
+  - !Item
+    name: isRectangle
     desc: '(Optional since 2.20, Default: false) [[true]] if rectangle, [[false]] if ellipse'
     type: Boolean
     optional: true
-  - name: c
+  - !Item
+    name: c
     desc: ) z axis (z / 2)
     type: Number
     optional: true
     default: -1 (unlimited
     since:
       arma3: '1.60'
-  - name: usePosWorld
+  - !Item
+    name: usePosWorld
     desc: set to [[true]] to treat all positions as [[PositionWorld]]
     type: Boolean
     optional: true

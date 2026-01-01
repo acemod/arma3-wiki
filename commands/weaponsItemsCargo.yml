@@ -4,27 +4,25 @@ groups:
 - Containers
 - Vehicle Inventory
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: ArrayUnknown
     desc: see [[weaponsItems]]
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: !OneOf
     - type: Object
       desc: null
       since: null
-- call: !Unary
-  - vehicle
-  - extended
-  ret:
+- ret:
     type: ArrayUnknown
     desc: see [[weaponsItems]]
-  params:
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     desc: ammobox or vehicle
     type: Object
-  - name: extended
+  - !Item
+    name: extended
     desc: '[[true]] to include muzzle information'
     type: Boolean
   since:

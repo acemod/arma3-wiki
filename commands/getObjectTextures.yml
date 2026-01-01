@@ -3,28 +3,25 @@ desc: 'Gets all custom textures (hiddenSelectionsTextures) associated with the o
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary obj
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
     desc: array of textures
-  params:
-  - name: obj
+  right: !Item
+    name: obj
     type: Object
-- call: !Binary
-  - obj
-  - sels
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
     desc: array of textures in order of 'sels'. Non existing textures filled with [[nil]]s.
-  params:
-  - name: obj
+  left: !Item
+    name: obj
     desc: entity
     type: Object
-  - name: sels
+  right: !Item
+    name: sels
     desc: array of index(es) and/or selection(s). If array is empty [] - default object textures are returned (see example 3)
     type: ArrayUnknown
   since:

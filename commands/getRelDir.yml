@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - position
-  ret:
+- ret:
     type: Number
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: position
+  right: !Item
+    name: position
     type: !OneOf
     - type: Object
       desc: null

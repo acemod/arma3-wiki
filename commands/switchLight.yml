@@ -8,15 +8,13 @@ desc: |-
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - lamp
-  - mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: lamp
+  left: !Item
+    name: lamp
     type: Object
-  - name: mode
+  right: !Item
+    name: mode
     desc: 'mode can be: "ON", "OFF" or "AUTO" (''''lamp'''' is on only during nighttime, default)'
     type: String
 argument_loc: Unspecified

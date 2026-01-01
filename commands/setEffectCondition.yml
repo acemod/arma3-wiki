@@ -8,26 +8,22 @@ desc: |-
 groups:
 - Triggers
 syntax:
-- call: !Binary
-  - trigger
-  - statement
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: trigger
+  left: !Item
+    name: trigger
     type: Object
-  - name: statement
+  right: !Item
+    name: statement
     type: String
-- call: !Binary
-  - waypoint
-  - statement
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: waypoint
+  left: !Item
+    name: waypoint
     desc: '[[Array]] format [[Waypoint]]'
     type: Waypoint
-  - name: statement
+  right: !Item
+    name: statement
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

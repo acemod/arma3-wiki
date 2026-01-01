@@ -14,18 +14,15 @@ desc: |-
 groups:
 - Mines
 syntax:
-- call: !Unary
-  - type
-  - position
-  - markers
-  - placement
-  ret:
+- ret:
     type: Object
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: mine class name from {{hl|CfgVehicles}}
     type: String
-  - name: position
+  - !Item
+    name: position
     type: !OneOf
     - type: Object
       desc: null
@@ -33,12 +30,14 @@ syntax:
     - type: Position3dAGL
       desc: null
       since: null
-  - name: markers
+  - !Item
+    name: markers
     desc: marker name(s)
     type: !ArrayUnsized
       type: String
       desc: ''
-  - name: placement
+  - !Item
+    name: placement
     desc: placement radius
     type: Number
 argument_loc: Unspecified

@@ -3,11 +3,10 @@ desc: Delete given [[Eden Entity|entities]] in [[:Category:Eden Editor|Eden Edit
 groups:
 - Eden Editor
 syntax:
-- call: !Unary entities
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: entities
+  right: !Item
+    name: entities
     type: !OneOf
     - type: !ArrayUnsized
         type: EdenEntity

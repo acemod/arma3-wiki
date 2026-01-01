@@ -3,15 +3,13 @@ desc: Removes given weapon item, including magazine, from the [[handgunWeapon]]
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - item
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: item
+  right: !Item
+    name: item
     desc: config class
     type: String
 argument_loc: Local

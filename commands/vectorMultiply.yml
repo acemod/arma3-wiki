@@ -6,20 +6,18 @@ desc: |-
 groups:
 - Math - Vectors
 syntax:
-- call: !Binary
-  - numArray
-  - multiplier
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Number
       desc: ''
-  params:
-  - name: numArray
+  left: !Item
+    name: numArray
     desc: an array of any size to be multiplied with the multiplier
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: multiplier
+  right: !Item
+    name: multiplier
     type: !OneOf
     - type: Number
       desc: null

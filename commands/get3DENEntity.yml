@@ -3,8 +3,7 @@ desc: Returns [[Eden Entity]] based on its [[Eden ID]].
 groups:
 - Eden Editor
 syntax:
-- call: !Unary ID
-  ret:
+- ret:
     type: !OneOf
     - type: EdenEntity
       desc: null
@@ -13,8 +12,8 @@ syntax:
       desc: null
       since: null
     desc: 1}} is returned
-  params:
-  - name: ID
+  right: !Item
+    name: ID
     desc: '[[Eden ID]]'
     type: Number
 argument_loc: Unspecified

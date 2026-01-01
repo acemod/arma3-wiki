@@ -3,29 +3,27 @@ desc: Returns all items (attachments) that can be mounted on the given weapon.
 groups:
 - Weapons
 syntax:
-- call: !Unary weapon
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
     desc: compatible attachments
-  params:
-  - name: weapon
+  right: !Item
+    name: weapon
     desc: weapon class name
     type: String
-- call: !Unary
-  - weapon
-  - slot
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
     desc: compatible attachments
-  params:
-  - name: weapon
+  right: !Array
+  - !Item
+    name: weapon
     desc: weapon class name
     type: String
-  - name: slot
+  - !Item
+    name: slot
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

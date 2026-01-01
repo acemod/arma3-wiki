@@ -3,11 +3,10 @@ desc: Detach light from object.
 groups:
 - Lights
 syntax:
-- call: !Unary light
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: light
+  right: !Item
+    name: light
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

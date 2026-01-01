@@ -4,19 +4,18 @@ groups:
 - Unit Control
 - Weapons
 syntax:
-- call: !Binary
-  - unit
-  - - muzzle
-    - firemode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit alone or in vehicle
     type: Object
-  - name: muzzle
+  right: !Array
+  - !Item
+    name: muzzle
     type: String
-  - name: firemode
+  - !Item
+    name: firemode
     desc: |-
       common options are "Single", "Burst", "FullAuto". For the full list of a weapon firemodes:
 

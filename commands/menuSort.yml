@@ -3,32 +3,30 @@ desc: Sorts subentries of item on given path by their text.
 groups:
 - GUI Control - Menu
 syntax:
-- call: !Unary
-  - idc
-  - path
-  - sortOrder
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     type: ArrayUnknown
-  - name: sortOrder
+  - !Item
+    name: sortOrder
     desc: '[[true]] to sort from A to Z, [[false]] to sort from Z to A'
     type: Boolean
-- call: !Binary
-  - control
-  - - path
-    - sortOrder
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     type: ArrayUnknown
-  - name: sortOrder
+  - !Item
+    name: sortOrder
     desc: '[[true]] to sort from A to Z, [[false]] to sort from Z to A'
     type: Boolean
 argument_loc: Unspecified

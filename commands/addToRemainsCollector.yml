@@ -3,11 +3,10 @@ desc: Adds an array of vehicles/units to disposal manager for automatic wreck/bo
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary remains
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: remains
+  right: !Item
+    name: remains
     desc: array of vehicles/units
     type: !ArrayUnsized
       type: Object

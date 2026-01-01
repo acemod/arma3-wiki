@@ -3,11 +3,10 @@ desc: Hides dead body of the given unit. After a short delay, the body slowly si
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: person
     type: Object
 argument_loc: Local

@@ -3,11 +3,10 @@ desc: Opens the [[Diary]] screen on the subject/record specified by link. To get
 groups:
 - Briefing
 syntax:
-- call: !Unary link
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: link
+  right: !Item
+    name: link
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

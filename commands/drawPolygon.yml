@@ -3,20 +3,19 @@ desc: Draws given polygon on the given map control with given color. The polygon
 groups:
 - GUI Control - Map
 syntax:
-- call: !Binary
-  - map
-  - - polygon
-    - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: polygon
+  right: !Array
+  - !Item
+    name: polygon
     type: !ArrayUnsized
       type: Position3d
       desc: ''
-  - name: color
+  - !Item
+    name: color
     type: ArrayColorRgba
 argument_loc: Unspecified
 effect_loc: Unspecified

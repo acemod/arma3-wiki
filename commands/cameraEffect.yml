@@ -14,21 +14,19 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - - effectName
-    - effectPosition
-    - r2tName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     desc: object of type "camera"
     type: Object
-  - name: effectName
+  right: !Array
+  - !Item
+    name: effectName
     desc: 'the effect type (defined in main config or [[Description.ext#CfgCameraEffects|CfgCameraEffects]] >> Array). Defaults are: {{hl|"Internal"}}, {{hl|"External"}}, {{hl|"Fixed"}}, {{hl|"FixedWithZoom"}}, {{hl|"Terminate"}}'
     type: String
-  - name: effectPosition
+  - !Item
+    name: effectPosition
     type: !StringEnum
     - value: TOP
       desc: null
@@ -72,7 +70,8 @@ syntax:
     - value: BOTTOM
       desc: null
       since: null
-  - name: r2tName
+  - !Item
+    name: r2tName
     desc: '[[Procedural_Textures#Render_To_Texture|Render To Texture]] surface reference'
     type: String
     optional: true

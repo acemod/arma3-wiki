@@ -5,12 +5,11 @@ desc: |-
 groups:
 - Remote Control
 syntax:
-- call: !Unary unitOrPlayer
-  ret:
+- ret:
     type: Object
     desc: the person controlling the unit or the unit controlled by the player; [[objNull]] if not applicable
-  params:
-  - name: unitOrPlayer
+  right: !Item
+    name: unitOrPlayer
     desc: unit under remote control or the player controlling a unit
     type: Object
 argument_loc: Local

@@ -3,12 +3,11 @@ desc: 'Get the provided control model''s [[vectorSide]] in 3D-[[Arma: GUI Config
 groups:
 - GUI Control - Object
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[[vectorSide]] of the model or empty array if ''''control'''' is null'
-  params:
-  - name: control
+  right: !Item
+    name: control
     desc: 3D control
     type: Control
 argument_loc: Unspecified

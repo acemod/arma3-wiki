@@ -16,27 +16,25 @@ problem_notes:
 groups:
 - Program Flow
 syntax:
-- call: !Unary arguments
-  ret:
+- ret:
     type: ForType
-  params:
-  - name: arguments
+  right: !Item
+    name: arguments
     desc: declares the index variable name like "_myVar". [[from]] and [[to]] are required, [[step]] is optional.
     type: String
-- call: !Unary
-  - init
-  - condition
-  - codeToExecute
-  ret:
+- ret:
     type: ForType
-  params:
-  - name: init
+  right: !Array
+  - !Item
+    name: init
     desc: loop variable definition
     type: Code
-  - name: condition
+  - !Item
+    name: condition
     desc: '[[call]]ed code returns [[false]], leave the [[for]]-loop'
     type: Code
-  - name: codeToExecute
+  - !Item
+    name: codeToExecute
     desc: code to be run on each loop
     type: Code
 argument_loc: Unspecified

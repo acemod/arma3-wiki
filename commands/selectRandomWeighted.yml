@@ -3,12 +3,11 @@ desc: "Returns a random element from the given array according to assigned weigh
 groups:
 - Arrays
 syntax:
-- call: !Unary valuesAndWeights
-  ret:
+- ret:
     type: Anything
     desc: random weighted value or [[Nothing]] if array is empty or all weights are 0
-  params:
-  - name: valuesAndWeights
+  right: !Item
+    name: valuesAndWeights
     type: !ArraySized
       types:
       - name: valueN
@@ -20,18 +19,16 @@ syntax:
         desc: values relative weight
         since: null
       desc: ''
-- call: !Binary
-  - values
-  - weights
-  ret:
+- ret:
     type: Anything
     desc: random weighted value or [[Nothing]] if any of arrays is empty or all weights are 0
-  params:
-  - name: values
+  left: !Item
+    name: values
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: weights
+  right: !Item
+    name: weights
     type: !ArrayUnsized
       type: Number
       desc: ''

@@ -7,20 +7,19 @@ groups:
 - Containers
 - Unit Inventory
 syntax:
-- call: !Binary
-  - container
-  - - weaponId
-    - creatorId
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[silencer, laserpointer/flashlight, optics, bipod]'
-  params:
-  - name: container
+  left: !Item
+    name: container
     desc: cargo container
     type: Object
-  - name: weaponId
+  right: !Array
+  - !Item
+    name: weaponId
     type: Number
-  - name: creatorId
+  - !Item
+    name: creatorId
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

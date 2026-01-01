@@ -3,11 +3,10 @@ desc: Returns the parent control of a given child control. If the control is not
 groups:
 - GUI Control
 syntax:
-- call: !Unary ctrl
-  ret:
+- ret:
     type: Control
-  params:
-  - name: ctrl
+  right: !Item
+    name: ctrl
     desc: child control
     type: Control
 argument_loc: Unspecified

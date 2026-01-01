@@ -3,13 +3,10 @@ desc: Allows the AI to use IR lasers. Units should be in "Combat" [[behaviour]].
 groups:
 - Weapons
 syntax:
-- call: !Binary
-  - unitOrGroup
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitOrGroup
+  left: !Item
+    name: unitOrGroup
     desc: the unit or the group allowed to use IR lasers
     type: !OneOf
     - type: Object
@@ -18,7 +15,8 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: value
+  right: !Item
+    name: value
     type: Boolean
 argument_loc: Local
 effect_loc: Global

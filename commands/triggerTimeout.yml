@@ -6,8 +6,7 @@ desc: |-
 groups:
 - Triggers
 syntax:
-- call: !Unary trigger
-  ret:
+- ret:
     type: !ArraySized
       types:
       - name: min
@@ -27,8 +26,8 @@ syntax:
         desc: ''
         since: null
       desc: ''
-  params:
-  - name: trigger
+  right: !Item
+    name: trigger
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

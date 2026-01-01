@@ -4,16 +4,15 @@ groups:
 - Event Handlers
 - Sounds
 syntax:
-- call: !Unary
-  - type
-  - id
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: '"MusicStart" or "MusicStop"'
     type: String
-  - name: id
+  - !Item
+    name: id
     desc: event handler id
     type: Number
 argument_loc: Unspecified

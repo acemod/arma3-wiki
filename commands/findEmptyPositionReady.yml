@@ -6,15 +6,11 @@ desc: |-
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - center
-  - - radius
-    - maxDistance
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] when ready'
-  params:
-  - name: center
+  left: !Item
+    name: center
     desc: search area center position in format [x,y] or [x,y,z] in which case z is ignored
     type: !OneOf
     - type: Position2d
@@ -23,10 +19,13 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: radius
+  right: !Array
+  - !Item
+    name: radius
     desc: distance from the center
     type: Number
-  - name: maxDistance
+  - !Item
+    name: maxDistance
     desc: distance from the end of radius
     type: Number
 argument_loc: Unspecified

@@ -3,11 +3,10 @@ desc: Returns true if RTD model is loaded.{{Feature|afm}}
 groups:
 - RTD
 syntax:
-- call: !Unary helicopter
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: helicopter
+  right: !Item
+    name: helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

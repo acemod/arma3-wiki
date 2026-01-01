@@ -5,16 +5,14 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - time
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: control to animate
     type: Control
-  - name: time
+  right: !Item
+    name: time
     desc: animation duration
     type: Number
 argument_loc: Unspecified

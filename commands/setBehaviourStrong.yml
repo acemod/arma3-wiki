@@ -10,13 +10,10 @@ groups:
 - Groups
 - AI Behaviour
 syntax:
-- call: !Binary
-  - groupName
-  - behaviour
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: groupName
+  left: !Item
+    name: groupName
     desc: unit from the group
     type: !OneOf
     - type: Group
@@ -25,7 +22,8 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: behaviour
+  right: !Item
+    name: behaviour
     type: !StringEnum
     - value: CARELESS
       desc: null

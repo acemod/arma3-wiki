@@ -5,15 +5,14 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - unit
-  - resource
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  right: !Array
+  - !Item
+    name: unit
     type: Object
-  - name: resource
+  - !Item
+    name: resource
     type: String
     optional: true
 argument_loc: Unspecified

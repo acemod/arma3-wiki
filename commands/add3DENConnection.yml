@@ -3,22 +3,21 @@ desc: '[[Eden Editor: Connecting|Connect]] entities together.'
 groups:
 - Eden Editor
 syntax:
-- call: !Unary
-  - type
-  - from
-  - to
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] If the connection was made'
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     type: Unknown
-  - name: from
+  - !Item
+    name: from
     desc: entities which are being connected
     type: !ArrayUnsized
       type: EdenEntity
       desc: ''
-  - name: to
+  - !Item
+    name: to
     desc: entity to which entities will be connected to
     type: EdenEntity
 argument_loc: Unspecified

@@ -3,15 +3,13 @@ desc: Sets the optic mode of the current weapon to the given class name or the i
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - unit
-  - mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: mode
+  right: !Item
+    name: mode
     type: !StringEnum
     - value: '[[String]] - class name defined in the optic''s {{hl|OpticsModes}} config class'
       desc: null

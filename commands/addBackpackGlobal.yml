@@ -9,16 +9,14 @@ desc: |-
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - backpack
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: soldier
     type: Object
-  - name: backpack
+  right: !Item
+    name: backpack
     desc: backpack class name
     type: String
 argument_loc: Global

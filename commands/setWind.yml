@@ -5,20 +5,19 @@ desc: |-
 groups:
 - Environment
 syntax:
-- call: !Unary
-  - x
-  - y
-  - forced
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: x
+  right: !Array
+  - !Item
+    name: x
     desc: easterly component (in m/s, positive = to the east)
     type: Number
-  - name: y
+  - !Item
+    name: y
     desc: northerly component (in m/s, positive = to the north)
     type: Number
-  - name: forced
+  - !Item
+    name: forced
     desc: set to [[true]] to lock the wind to constantly blows in set direction
     type: Boolean
     optional: true

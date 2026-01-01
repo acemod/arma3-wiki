@@ -3,11 +3,10 @@ desc: Returns an array containing names and values of the sound controllers that
 groups:
 - Sounds
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: a '''vehicle''' - this does not work on humans
     type: Object
 argument_loc: Unspecified

@@ -5,31 +5,27 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary scriptHandle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: scriptHandle
+  right: !Item
+    name: scriptHandle
     type: ScriptHandle
-- call: !Unary FSMHandle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: FSMHandle
+  right: !Item
+    name: FSMHandle
     desc: The FSM script must be launched with 'allowTermination' flag for this command to work (see [[execFSM]]).
     type: Number
   since:
     arma3: '2.18'
-- call: !Binary
-  - scriptHandle
-  - result
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: scriptHandle
+  left: !Item
+    name: scriptHandle
     desc: Only [[Script_Handle#Promise_Handles|"Empty Handle"]]'s can have their result set.
     type: ScriptHandle
-  - name: result
+  right: !Item
+    name: result
     desc: The result to write into the [[Script_Handle#Promise_Handles|Promise]]
     type: Anything
   since:

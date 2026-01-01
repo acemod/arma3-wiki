@@ -6,15 +6,13 @@ desc: |-
 groups:
 - Unit Identity
 syntax:
-- call: !Binary
-  - unitName
-  - rank
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  left: !Item
+    name: unitName
     type: Object
-  - name: rank
+  right: !Item
+    name: rank
     type: !StringEnum
     - value: PRIVATE
       desc: null

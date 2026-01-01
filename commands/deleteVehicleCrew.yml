@@ -5,21 +5,18 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - unit
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
   since:
     arma3: '2.6'

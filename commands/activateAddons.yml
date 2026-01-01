@@ -3,11 +3,10 @@ desc: Activates the listed addons.
 groups:
 - Mods and Addons
 syntax:
-- call: !Unary addonsList
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: addonsList
+  right: !Item
+    name: addonsList
     type: !ArrayUnsized
       type: String
       desc: ''

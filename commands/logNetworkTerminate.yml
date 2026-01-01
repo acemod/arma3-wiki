@@ -4,11 +4,10 @@ groups:
 - Multiplayer
 - Diagnostic
 syntax:
-- call: !Unary handle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: handle
+  right: !Item
+    name: handle
     desc: handle to terminate (created with [[logNetwork]])
     type: Number
 argument_loc: Unspecified

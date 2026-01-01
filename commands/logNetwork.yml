@@ -6,17 +6,16 @@ groups:
 - Multiplayer
 - Diagnostic
 syntax:
-- call: !Unary
-  - logFile
-  - filter
-  ret:
+- ret:
     type: Number
     desc: handle for the logging
-  params:
-  - name: logFile
+  right: !Array
+  - !Item
+    name: logFile
     desc: where to store the log
     type: String
-  - name: filter
+  - !Item
+    name: filter
     desc: ????
     type: !ArrayUnsized
       type: String

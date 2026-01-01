@@ -6,17 +6,14 @@ desc: |-
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Binary
-  - control
-  - - index
-    - selected
-    - forceEH
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     type: !OneOf
     - type: Number
       desc: null
@@ -24,9 +21,11 @@ syntax:
     - type: ArrayUnknown
       desc: null
       since: null
-  - name: selected
+  - !Item
+    name: selected
     type: Boolean
-  - name: forceEH
+  - !Item
+    name: forceEH
     desc: will force [[User_Interface_Event_Handlers#onLBSelChanged | lbSelChanged]] EH to fire
     type: Boolean
     optional: true

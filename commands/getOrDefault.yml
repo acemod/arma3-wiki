@@ -3,24 +3,23 @@ desc: Retrieves a value out of a [[HashMap]] after looking it up by its key. Whe
 groups:
 - HashMap
 syntax:
-- call: !Binary
-  - hashMap
-  - - key
-    - defaultValue
-    - setDefault
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: hashMap
+  left: !Item
+    name: hashMap
     type: HashMapUnknown
-  - name: key
+  right: !Array
+  - !Item
+    name: key
     desc: case sensitive key
     type: Unknown
-  - name: defaultValue
+  - !Item
+    name: defaultValue
     type: Anything
     optional: true
     default: '[[nil]]'
-  - name: setDefault
+  - !Item
+    name: setDefault
     desc: if set to [[true]] and value does not exist in provided hash map, ''defaultValue'' will be added to the hash map
     type: Boolean
     optional: true

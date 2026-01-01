@@ -3,15 +3,13 @@ desc: Set custom aim precision coefficient for weapon sway
 groups:
 - Stamina System
 syntax:
-- call: !Binary
-  - unit
-  - coef
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: coef
+  right: !Item
+    name: coef
     type: Number
 argument_loc: Local
 effect_loc: Local

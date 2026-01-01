@@ -3,12 +3,11 @@ desc: Returns the render scale of an object relative to the original model.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Number
     desc: scale relative to the original model
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: object to return scale of. Can also be a [[nearestTerrainObjects|terrain object]].
     type: Object
 argument_loc: Unspecified

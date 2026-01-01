@@ -5,11 +5,10 @@ groups:
 - GUI Control
 - Structured Text
 syntax:
-- call: !Unary filename
-  ret:
+- ret:
     type: StructuredText
-  params:
-  - name: filename
+  right: !Item
+    name: filename
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

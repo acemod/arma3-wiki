@@ -5,16 +5,14 @@ desc: |-
 groups:
 - RTD
 syntax:
-- call: !Binary
-  - helicopterRTD
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: helicopterRTD
+  left: !Item
+    name: helicopterRTD
     desc: helicopter
     type: Unknown
-  - name: enable
+  right: !Item
+    name: enable
     desc: enable or disable
     type: Boolean
 argument_loc: Unspecified

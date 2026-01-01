@@ -6,33 +6,30 @@ groups:
 - Unit Control
 - Weapons
 syntax:
-- call: !Binary
-  - unit
-  - muzzle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit that is supposed to fire
     type: Object
-  - name: muzzle
+  right: !Item
+    name: muzzle
     desc: name of the muzzle to be fired
     type: String
-- call: !Binary
-  - unit
-  - - muzzle
-    - mode
-    - magazine
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: muzzle
+  right: !Array
+  - !Item
+    name: muzzle
     type: String
-  - name: mode
+  - !Item
+    name: mode
     type: String
-  - name: magazine
+  - !Item
+    name: magazine
     type: String
     optional: true
 argument_loc: Local

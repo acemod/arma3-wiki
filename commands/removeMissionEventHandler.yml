@@ -3,15 +3,14 @@ desc: Removes mission event handler added by [[addMissionEventHandler]].
 groups:
 - Event Handlers
 syntax:
-- call: !Unary
-  - type
-  - index
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     type: String
-  - name: index
+  - !Item
+    name: index
     desc: index is returned by addMissionEventHandler.
     type: Number
 argument_loc: Unspecified

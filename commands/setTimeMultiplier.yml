@@ -5,11 +5,10 @@ groups:
 - Mission Information
 - Environment
 syntax:
-- call: !Unary value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: value
+  right: !Item
+    name: value
     desc: has to be in range from 0.1 to 120
     type: Number
 argument_loc: Unspecified

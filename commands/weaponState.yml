@@ -11,64 +11,60 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Unknown
     desc: |-
       current ammo round reload phase (see [[weaponReloadingTime]])
       * {{GVI|arma3|2.06|size= 0.75}} magazineReloadPhase: [[Number]] in range 0..1 - current magazine reload phase, 0 - reload complete. &gt; 0 - reload in progress
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
-- call: !Unary
-  - vehicle
-  - turretPath
-  - weapon
-  - muzzle
-  - firemode
-  ret:
+- ret:
     type: Unknown
     desc: |-
       current ammo round reload phase (see [[weaponReloadingTime]])
       * {{GVI|arma3|2.06|size= 0.75}} magazineReloadPhase: [[Number]] - current magazine reload phase from 1 to 0, 0 - reload complete. &gt; 0 - reload in progress
-  params:
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     type: Object
-  - name: turretPath
+  - !Item
+    name: turretPath
     type: TurretPath
-  - name: weapon
+  - !Item
+    name: weapon
     desc: weapon or muzzle name
     type: String
     optional: true
     default: '{{hl|""}}'
     since:
       arma3: '1.70'
-  - name: muzzle
+  - !Item
+    name: muzzle
     desc: muzzle name
     type: String
     optional: true
     default: '{{hl|""}}'
     since:
       arma3: '2.8'
-  - name: firemode
+  - !Item
+    name: firemode
     desc: firemode name
     type: String
     optional: true
     default: '{{hl|""}}'
     since:
       arma3: '2.8'
-- call: !Binary
-  - unit
-  - weaponOrMuzzle
-  ret:
+- ret:
     type: Unknown
     desc: |-
       current ammo round reload phase (see [[weaponReloadingTime]])
       * {{GVI|arma3|2.06|size= 0.75}} magazineReloadPhase: [[Number]] - current magazine reload phase from 1 to 0, 0 - reload complete. &gt; 0 - reload in progress
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: weaponOrMuzzle
+  right: !Item
+    name: weaponOrMuzzle
     type: String
   since:
     arma3: '2.6'

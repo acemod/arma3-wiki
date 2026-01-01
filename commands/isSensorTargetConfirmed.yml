@@ -3,16 +3,14 @@ desc: Returns if given unit is confirmed target for given side.
 groups:
 - Sensors
 syntax:
-- call: !Binary
-  - unit
-  - side
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if confirmed target, otherwise [[false]]'
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: side
+  right: !Item
+    name: side
     type: Side
 argument_loc: Unspecified
 effect_loc: Unspecified

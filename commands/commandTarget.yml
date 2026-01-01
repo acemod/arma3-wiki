@@ -4,15 +4,13 @@ multiplayer_note: This command is only effective when used on local units. When 
 groups:
 - Groups
 syntax:
-- call: !Binary
-  - unit
-  - target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: target
+  right: !Item
+    name: target
     type: !OneOf
     - type: Object
       desc: null

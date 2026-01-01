@@ -3,12 +3,11 @@ desc: Returns true if the specified unit is subgroup leader.
 groups:
 - Groups
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if unit is subgroup leader.'
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: unit being checked.
     type: Object
 argument_loc: Unspecified

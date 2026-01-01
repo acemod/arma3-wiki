@@ -3,11 +3,10 @@ desc: Return leader of the formation.
 groups:
 - Unit Control
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: Object
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

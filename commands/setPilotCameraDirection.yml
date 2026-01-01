@@ -3,16 +3,14 @@ desc: 'Sets the direction of airplane''s or helicopter''s {{Link|Arma 3: Targeti
 groups:
 - Pilot Camera
 syntax:
-- call: !Binary
-  - object
-  - vector3D
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: a vehicle equipped with pilot camera
     type: Object
-  - name: vector3D
+  right: !Item
+    name: vector3D
     desc: in model space, relative to the model centre (In a similar fashion to [[Position#PositionRelative|PositionRelative]])
     type: Unknown
 argument_loc: Local

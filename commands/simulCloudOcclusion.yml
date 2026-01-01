@@ -5,15 +5,14 @@ problem_notes:
 groups:
 - Environment
 syntax:
-- call: !Unary
-  - pos1
-  - pos2
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: pos1
+  right: !Array
+  - !Item
+    name: pos1
     type: Position
-  - name: pos2
+  - !Item
+    name: pos2
     type: Position
 argument_loc: Unspecified
 effect_loc: Unspecified

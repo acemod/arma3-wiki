@@ -9,11 +9,10 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary vehicleName
-  ret:
+- ret:
     type: Object
-  params:
-  - name: vehicleName
+  right: !Item
+    name: vehicleName
     type: Object
 argument_loc: Local
 effect_loc: Unspecified

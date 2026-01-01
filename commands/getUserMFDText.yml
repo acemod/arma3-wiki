@@ -3,13 +3,12 @@ desc: Returns array of user text variables used in MFD.
 groups:
 - GUI Control
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

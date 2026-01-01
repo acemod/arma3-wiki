@@ -7,12 +7,11 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Number
     desc: FOV in [[rad]]ians
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: for units it queries unit weapon optics/zoom, for vehicles - vehicle optics/zoom
     type: Object
 argument_loc: Unspecified

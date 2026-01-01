@@ -3,15 +3,13 @@ desc: Adds score to the Xbox Live Statistics score for the given unit (or the co
 groups:
 - System
 syntax:
-- call: !Binary
-  - unit
-  - score
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: score
+  right: !Item
+    name: score
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

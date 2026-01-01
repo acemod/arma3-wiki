@@ -7,13 +7,10 @@ multiplayer_note: '[[targetKnowledge]] and [[knowsAbout]] information only get u
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - toWhom
-  - target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: toWhom
+  left: !Item
+    name: toWhom
     desc: which receives revealing information
     type: !OneOf
     - type: Object
@@ -22,17 +19,14 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: target
+  right: !Item
+    name: target
     desc: which is revealed
     type: Object
-- call: !Binary
-  - toWhom
-  - - target
-    - accuracy
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: toWhom
+  left: !Item
+    name: toWhom
     desc: which receives revealing information
     type: !OneOf
     - type: Object
@@ -41,10 +35,13 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: target
+  right: !Array
+  - !Item
+    name: target
     desc: which is revealed
     type: Object
-  - name: accuracy
+  - !Item
+    name: accuracy
     desc: knowledge value, clamped to 0..4 range
     type: Number
   since:

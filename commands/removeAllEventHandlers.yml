@@ -3,13 +3,10 @@ desc: Removes all event handlers of given type that were added by [[addEventHand
 groups:
 - Event Handlers
 syntax:
-- call: !Binary
-  - target
-  - handlerType
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: target
+  left: !Item
+    name: target
     type: !OneOf
     - type: Object
       desc: null
@@ -17,7 +14,8 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: handlerType
+  right: !Item
+    name: handlerType
     desc: see [[:Category:Event Handlers|Event Handlers]]
     type: String
 argument_loc: Unspecified

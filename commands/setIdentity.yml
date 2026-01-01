@@ -3,16 +3,14 @@ desc: "Sets identity of a person. The identities could be defined in a custom co
 groups:
 - Unit Identity
 syntax:
-- call: !Binary
-  - person
-  - identity
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: person
+  left: !Item
+    name: person
     desc: unit to which the identity will be applied
     type: Object
-  - name: identity
+  right: !Item
+    name: identity
     desc: name of the subclass in [[CfgIdentities]]
     type: String
 argument_loc: Global

@@ -9,12 +9,11 @@ desc: |-
 groups:
 - Weapons
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if enabled'
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     desc: '[[player]] or weapon'
     type: Object
 argument_loc: Global

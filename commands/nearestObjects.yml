@@ -9,17 +9,13 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- call: !Unary
-  - position
-  - types
-  - radius
-  - 2Dmode
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
-  params:
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     desc: where to find objects, center position.
     type: !OneOf
     - type: Object
@@ -31,13 +27,16 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: types
+  - !Item
+    name: types
     desc: list of class name of the objects to search for. Use an empty array <sqf inline>[]</sqf> to search for all classes.
     type: ArrayUnknown
-  - name: radius
+  - !Item
+    name: radius
     desc: range from center position to search for objects.
     type: Number
-  - name: 2Dmode
+  - !Item
+    name: 2Dmode
     desc: '[[true]] for 2D distance, [[false]] for 3D distance'
     type: Boolean
     optional: true

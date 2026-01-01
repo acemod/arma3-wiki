@@ -8,21 +8,17 @@ desc: |-
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - player
-  - - subject
-    - textInfo
-    - task
-    - taskState
-    - showTitle
-  ret:
+- ret:
     type: DiaryRecord
-  params:
-  - name: player
+  left: !Item
+    name: player
     type: Object
-  - name: subject
+  right: !Array
+  - !Item
+    name: subject
     type: String
-  - name: textInfo
+  - !Item
+    name: textInfo
     type: !OneOf
     - type: String
       desc: null
@@ -33,11 +29,13 @@ syntax:
     - type: String
       desc: null
       since: null
-  - name: task
+  - !Item
+    name: task
     type: Task
     optional: true
     default: '[[taskNull]]'
-  - name: taskState
+  - !Item
+    name: taskState
     type: !StringEnum
     - value: NONE
       desc: null
@@ -58,7 +56,8 @@ syntax:
       desc: null
       since: null
     optional: true
-  - name: showTitle
+  - !Item
+    name: showTitle
     desc: whether or not to show title in the description section as well
     type: Boolean
     optional: true

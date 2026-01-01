@@ -10,44 +10,36 @@ groups:
 - Unit Control
 - Roads and Airports
 syntax:
-- call: !Binary
-  - plane
-  - ID
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: plane
+  left: !Item
+    name: plane
     desc: a plane
     type: Object
-  - name: ID
+  right: !Item
+    name: ID
     desc: '[[Arma: Airport IDs|Airport ID]]'
     type: Number
-- call: !Binary
-  - plane
-  - airportObject
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: plane
+  left: !Item
+    name: plane
     type: Object
-  - name: airportObject
+  right: !Item
+    name: airportObject
     type: Object
   since:
     arma3: '1.68'
-- call: !Binary
-  - heli
-  - - position
-    - mode
-    - waitTime
-    - putOnSurface
-  ret:
+- ret:
     type: Boolean
     desc: Returns [[true]] if landing command was processed successfully, [[false]] if failed.
-  params:
-  - name: heli
+  left: !Item
+    name: heli
     desc: Helicopter/VTOL aircraft
     type: Object
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     desc: a helipad object of helipad type (can be an invisible helipad) or since {{GVI|arma3|2.20|size= 0.75}} [[Array]] - [[PositionWorld]] to land at.
     type: !OneOf
     - type: Object
@@ -56,16 +48,19 @@ syntax:
     - type: ArrayUnknown
       desc: null
       since: null
-  - name: mode
+  - !Item
+    name: mode
     desc: one of "None", "Get In", "Get Out", "Land" and since {{GVI|arma3|2.20|size= 0.75}} also "GetIn", "GetOut".
     type: String
-  - name: waitTime
+  - !Item
+    name: waitTime
     desc: '(Helicopter type only) time to wait after touch down in "GetIn"/"GetOut" mode before taking off to the next waypoint. Default: -1.'
     type: Number
     optional: true
     since:
       arma3: '2.20'
-  - name: putOnSurface
+  - !Item
+    name: putOnSurface
     desc: 'when true, the given land position will be adjusted to the nearest surface underneath. Default: [[false]].'
     type: Boolean
     optional: true
@@ -73,11 +68,10 @@ syntax:
       arma3: '2.20'
   since:
     arma3: '2.18'
-- call: !Unary heli
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: heli
+  right: !Item
+    name: heli
     desc: Helicopter/VTOL aircraft
     type: Object
   since:

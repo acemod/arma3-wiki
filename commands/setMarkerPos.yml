@@ -8,15 +8,13 @@ desc: |-
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - markerName
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: markerName
+  left: !Item
+    name: markerName
     type: String
-  - name: position
+  right: !Item
+    name: position
     type: !OneOf
     - type: Position2d
       desc: null

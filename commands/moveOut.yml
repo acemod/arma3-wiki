@@ -16,23 +16,20 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- call: !Unary soldier
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: soldier
+  right: !Item
+    name: soldier
     desc: unit (only a living unit before {{GVI|arma3|2.06}})
     type: Object
-- call: !Binary
-  - soldier
-  - vehicle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: soldier
+  left: !Item
+    name: soldier
     desc: unit
     type: Object
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: vehicle could be [[objNull]], in this case the command is identical to the main syntax.
     type: Object
   since:

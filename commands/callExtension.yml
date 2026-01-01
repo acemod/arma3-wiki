@@ -51,37 +51,34 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Binary
-  - extension
-  - function
-  ret:
+- ret:
     type: String
     desc: data sent back from extension; If the extensiion was not found an empty String will be returned
-  params:
-  - name: extension
+  left: !Item
+    name: extension
     desc: extension name
     type: String
-  - name: function
+  right: !Item
+    name: function
     desc: data sent to the extension
     type: String
-- call: !Binary
-  - extension
-  - - function
-    - arguments
-  ret:
+- ret:
     type: Unknown
     desc: |-
       data sent back from extension. It is up to extension maker what it is.
       * returnCode: [[Number]] - integer return from extension method. It is up to extension maker to define it.
       * errorCode: [[Number]] - error code in case of command error (see description). 0 means no errors.
-  params:
-  - name: extension
+  left: !Item
+    name: extension
     desc: extension name
     type: String
-  - name: function
+  right: !Array
+  - !Item
+    name: function
     desc: extension function identifier
     type: String
-  - name: arguments
+  - !Item
+    name: arguments
     desc: 'function arguments. Could be array of [[Anything]], each element will be converted to [[String]] automatically. Current allowed max length of this array is 2048 (since Arma 3 v1.92; previous limit: 1024)'
     type: ArrayUnknown
   since:

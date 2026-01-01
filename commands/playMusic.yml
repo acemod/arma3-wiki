@@ -10,23 +10,21 @@ desc: |-
 groups:
 - Sounds
 syntax:
-- call: !Unary musicName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: musicName
+  right: !Item
+    name: musicName
     desc: music classname
     type: String
-- call: !Unary
-  - musicName
-  - start
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: musicName
+  right: !Array
+  - !Item
+    name: musicName
     desc: music classname
     type: String
-  - name: start
+  - !Item
+    name: start
     desc: start, in seconds. Can be negative.
     type: Number
 argument_loc: Unspecified

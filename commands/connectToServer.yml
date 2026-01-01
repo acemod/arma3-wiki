@@ -14,19 +14,18 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Unary
-  - ip
-  - port
-  - password
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ip
+  right: !Array
+  - !Item
+    name: ip
     desc: IP in {{Link|https://en.wikipedia.org/wiki/IPv4}} format or {{GVI|arma3|2.20|size= 0.75}} domain name
     type: String
-  - name: port
+  - !Item
+    name: port
     type: Number
-  - name: password
+  - !Item
+    name: password
     desc: '"" if no password'
     type: String
 argument_loc: Unspecified

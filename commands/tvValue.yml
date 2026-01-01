@@ -3,29 +3,26 @@ desc: Returns numeric value set for given tree view path.
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary
-  - idc
-  - path
-  ret:
+- ret:
     type: Number
     desc: set value; if no value was set, 0 is returned
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     type: !ArrayUnsized
       type: Number
       desc: ''
-- call: !Binary
-  - ctrl
-  - path
-  ret:
+- ret:
     type: Number
     desc: set value; if no value was set, 0 is returned
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: path
+  right: !Item
+    name: path
     type: !ArrayUnsized
       type: Number
       desc: ''

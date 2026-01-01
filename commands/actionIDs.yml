@@ -3,12 +3,11 @@ desc: Returns [[Array]] of [[Number]]s, where numbers are IDs of all user action
 groups:
 - Interaction
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: ArrayUnknown
     desc: array with user action IDs
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     desc: entity with added user actions
     type: Object
 argument_loc: Global

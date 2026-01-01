@@ -3,35 +3,33 @@ desc: Sets string data to item on given path. IDC means id of parent Tree View.
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary
-  - idc
-  - path
-  - data
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: data
+  - !Item
+    name: data
     type: String
-- call: !Binary
-  - ctrl
-  - - path
-    - data
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: data
+  - !Item
+    name: data
     type: String
 argument_loc: Local
 effect_loc: Local

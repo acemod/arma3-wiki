@@ -6,21 +6,19 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- call: !Unary userAction
-  ret:
+- ret:
     type: StructuredText
-  params:
-  - name: userAction
+  right: !Item
+    name: userAction
     type: String
-- call: !Unary
-  - userAction
-  - maxKeys
-  ret:
+- ret:
     type: StructuredText
-  params:
-  - name: userAction
+  right: !Array
+  - !Item
+    name: userAction
     type: String
-  - name: maxKeys
+  - !Item
+    name: maxKeys
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -8,19 +8,18 @@ desc: |-
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - markerName
-  - - a-axis
-    - b-axis
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: markerName
+  left: !Item
+    name: markerName
     type: String
-  - name: a-axis
+  right: !Array
+  - !Item
+    name: a-axis
     desc: 1/2 width of marker
     type: Number
-  - name: b-axis
+  - !Item
+    name: b-axis
     desc: 1/2 height of marker
     type: Number
 argument_loc: Unspecified

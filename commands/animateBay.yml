@@ -8,23 +8,22 @@ groups:
 - Animations
 - Vehicle Loadouts
 syntax:
-- call: !Binary
-  - vehicle
-  - - bay
-    - animphase
-    - instant
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: bay
+  right: !Array
+  - !Item
+    name: bay
     desc: bay index (index starts from 1 and different from pylon index)
     type: Number
-  - name: animphase
+  - !Item
+    name: animphase
     desc: animation phase in range 0..1
     type: Number
-  - name: instant
+  - !Item
+    name: instant
     desc: animate immediately
     type: Boolean
     optional: true

@@ -6,15 +6,13 @@ desc: |-
 groups:
 - Environment
 syntax:
-- call: !Binary
-  - time
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: time
+  left: !Item
+    name: time
     type: Number
-  - name: value
+  right: !Item
+    name: value
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

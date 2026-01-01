@@ -3,22 +3,12 @@ desc: Plays positional sound with given ''filename'' on every computer on networ
 groups:
 - Sounds
 syntax:
-- call: !Unary
-  - filename
-  - soundSource
-  - isInside
-  - soundPosition
-  - volume
-  - soundPitch
-  - distance
-  - offset
-  - local
-  - loop
-  ret:
+- ret:
     type: Number
     desc: id of the sound (0..65535) (was [[Nothing]] before {{GVI|arma3|2.12|size= 0.75}})
-  params:
-  - name: filename
+  right: !Array
+  - !Item
+    name: filename
     desc: |-
       see [[Arma 3: Sound Files]] for available file names or {{Link|#Example 3}} to use mission files
 
@@ -27,15 +17,18 @@ syntax:
       However a leading backslash must '''not''' be used for an '''addon''' sound file.
       }}
     type: String
-  - name: soundSource
+  - !Item
+    name: soundSource
     desc: the object emitting the sound. If ''soundPosition'' below is specified this parameter is ignored
     type: Object
-  - name: isInside
+  - !Item
+    name: isInside
     desc: '- [[true]] to simulate a sound played inside a building or similar'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: soundPosition
+  - !Item
+    name: soundPosition
     desc: |-
       position for sound emitter, overrides ''soundSource''. [[Object]] is also supported (see note below).
       {{Feature|informative|If a following parameter has to be used, simply use <sqf inline>getPosASL _soundSource</sqf> for ''soundPosition'' instead of <sqf inline>_soundSource</sqf> for ''soundSource''.}}
@@ -43,34 +36,40 @@ syntax:
     type: Position3dASL
     optional: true
     default: '[0,0,0]'
-  - name: volume
+  - !Item
+    name: volume
     desc: sound volume. A value greater than 5 gets capped
     type: Number
     optional: true
     default: '1'
-  - name: soundPitch
+  - !Item
+    name: soundPitch
     type: Unknown
     optional: true
-  - name: distance
+  - !Item
+    name: distance
     desc: how far the sound is audible, in meters. {{hl|0}} means no maximum distance
     type: Number
     optional: true
     default: '0'
-  - name: offset
+  - !Item
+    name: offset
     desc: offset in seconds. Same as with [[playMusic]] (ignored if sound is set to play repeatedly, see 'loop')
     type: Number
     optional: true
     default: '0'
     since:
       arma3: '2.0'
-  - name: local
+  - !Item
+    name: local
     desc: if [[true]] the sound will not be broadcast over network
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
       arma3: '2.6'
-  - name: loop
+  - !Item
+    name: loop
     desc: if [[true]] the sound will repeat indefinitely. In MP, requires 'local' to be set to [[true]]. Use [[stopSound]] to stop.
     type: Boolean
     optional: true

@@ -3,15 +3,13 @@ desc: Check whether given uniform can be dressed by target soldier.
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - type
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: type
+  right: !Item
+    name: type
     type: String
 argument_loc: Global
 effect_loc: Unspecified

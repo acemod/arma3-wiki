@@ -3,11 +3,10 @@ desc: "Check unit rating. Rating is increased for killing enemies, decreased for
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: Number
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

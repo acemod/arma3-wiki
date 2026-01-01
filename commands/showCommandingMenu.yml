@@ -8,11 +8,10 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- call: !Unary name
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: name
+  right: !Item
+    name: name
     desc: 'class name or user menu name (with "#USER:" prefix and "_#" page number suffix, where # is the page number starting with 0).'
     type: String
 argument_loc: Unspecified

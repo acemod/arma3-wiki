@@ -8,19 +8,15 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary
-  - type
-  - position
-  - markers
-  - placement
-  - special
-  ret:
+- ret:
     type: Object
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: class from [[CfgVehicles]]
     type: String
-  - name: position
+  - !Item
+    name: position
     desc: desired placement position
     type: !OneOf
     - type: Object
@@ -32,13 +28,16 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: markers
+  - !Item
+    name: markers
     desc: if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position. If any of the markers were given z coordinate with setMarkerPos, the vehicle will also be created at given z coordinate.
     type: ArrayUnknown
-  - name: placement
+  - !Item
+    name: placement
     desc: placement radius, the unit is randomly place in a circle with this radius
     type: Number
-  - name: special
+  - !Item
+    name: special
     type: !StringEnum
     - value: NONE
       desc: null

@@ -12,31 +12,27 @@ groups:
 - Object Manipulation
 - Render Time Scope
 syntax:
-- call: !Binary
-  - object
-  - selectionName
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned.'
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: selectionName
+  right: !Item
+    name: selectionName
     type: String
-- call: !Binary
-  - object
-  - - selectionName
-    - LOD
-    - returnMode
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: selectionName
+  right: !Array
+  - !Item
+    name: selectionName
     type: String
-  - name: LOD
+  - !Item
+    name: LOD
     type: !StringEnum
     - value: Memory
       desc: null
@@ -59,7 +55,8 @@ syntax:
         arma3: '2.6'
     since:
       arma3: '2.6'
-  - name: returnMode
+  - !Item
+    name: returnMode
     type: !StringEnum
     - value: FirstPoint
       desc: null
@@ -75,29 +72,28 @@ syntax:
       arma3: '2.8'
   since:
     arma3: '1.50'
-- call: !Unary
-  - object
-  - selectionName
-  - LODIndex
-  - isVisual
-  - returnMode
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
-  params:
-  - name: object
+  right: !Array
+  - !Item
+    name: object
     type: Object
-  - name: selectionName
+  - !Item
+    name: selectionName
     type: String
-  - name: LODIndex
+  - !Item
+    name: LODIndex
     desc: the index of the target LOD (see [[allLODs]])
     type: Number
-  - name: isVisual
+  - !Item
+    name: isVisual
     desc: '[[true]] for Render, [[false]] for Simulation [[Simulation_vs_Render_Time_Scope|time scope]]'
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: returnMode
+  - !Item
+    name: returnMode
     type: !StringEnum
     - value: FirstPoint
       desc: null

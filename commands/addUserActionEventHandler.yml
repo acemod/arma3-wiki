@@ -3,18 +3,16 @@ desc: Adds a user action event handler to the current mission and returns its ev
 groups:
 - Event Handlers
 syntax:
-- call: !Unary
-  - keyName
-  - event
-  - expression
-  ret:
+- ret:
     type: Number
     desc: the index of the currently added UserAction event handler is returned
-  params:
-  - name: keyName
+  right: !Array
+  - !Item
+    name: keyName
     desc: action key name - see [[inputAction/actions]]
     type: String
-  - name: event
+  - !Item
+    name: event
     type: !StringEnum
     - value: Activate
       desc: null
@@ -25,7 +23,8 @@ syntax:
     - value: Analog
       desc: null
       since: null
-  - name: expression
+  - !Item
+    name: expression
     desc: |-
       expression that will be executed in [[missionNamespace]] when event handler fires.<br>
       The Event Handler index is available as {{hl|{{Link|Magic Variables#thisEvent|_thisEventHandler}}}} during Event Handler code execution.<br>

@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Broken Commands
 syntax:
-- call: !Unary site
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: site
+  right: !Item
+    name: site
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -5,19 +5,18 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - - start
-    - length
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: start
+  right: !Array
+  - !Item
+    name: start
     desc: selection start position
     type: Number
-  - name: length
+  - !Item
+    name: length
     desc: length of characters to select (0 to only move the cursor). Negative length will select text from right to left (see example 3)
     type: Number
 argument_loc: Unspecified

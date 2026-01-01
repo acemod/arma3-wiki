@@ -13,13 +13,12 @@ groups:
 - Briefing
 - Teams
 syntax:
-- call: !Unary teamMember
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Task
       desc: ''
-  params:
-  - name: teamMember
+  right: !Item
+    name: teamMember
     desc: '[[teamMember]] [[agent]]'
     type: TeamMember
 argument_loc: Unspecified

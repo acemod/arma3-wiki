@@ -3,28 +3,24 @@ desc: Set the target object or position where the given camera should point at. 
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     desc: object of type "camera"
     type: Object
-  - name: target
+  right: !Item
+    name: target
     desc: target location
     type: Object
-- call: !Binary
-  - camera
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     desc: object of type "camera"
     type: Object
-  - name: position
+  right: !Item
+    name: position
     desc: target location - [[Position]]
     type: ArrayUnknown
 argument_loc: Local

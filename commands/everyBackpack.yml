@@ -3,13 +3,12 @@ desc: Returns array of backpacks stored in given crate or vehicle. Used for acce
 groups:
 - Containers
 syntax:
-- call: !Unary box
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
-  params:
-  - name: box
+  right: !Item
+    name: box
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

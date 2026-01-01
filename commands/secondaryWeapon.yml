@@ -3,12 +3,11 @@ desc: Returns the name of a unit's secondary weapon (launcher). To detect the we
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: String
     desc: class name of the secondary weapon or <sqf inline>""</sqf> if none available
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

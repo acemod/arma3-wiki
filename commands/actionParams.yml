@@ -3,16 +3,14 @@ desc: Returns [[Array]] with params for given user action id (similar to [[addAc
 groups:
 - Interaction
 syntax:
-- call: !Binary
-  - entity
-  - id
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     desc: entity with added user actions
     type: Object
-  - name: id
+  right: !Item
+    name: id
     desc: id of existing user action (returned by [[addAction]] or [[actionIDs]])
     type: Number
 argument_loc: Unspecified

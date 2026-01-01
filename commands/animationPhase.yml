@@ -4,18 +4,16 @@ multiplayer_note: In {{ofp}}, on dedicated servers, ''animationPhase'' will alwa
 groups:
 - Animations
 syntax:
-- call: !Binary
-  - object
-  - animationName
-  ret:
+- ret:
     type: !NumberRange
     - 0
     - 1
     desc: where 0 is the start point of the animation and 0 is the end point
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: animationName
+  right: !Item
+    name: animationName
     desc: name of the animation. This is the class-name of the animation defined in the addon's config.cpp
     type: String
 argument_loc: Global

@@ -3,16 +3,15 @@ desc: Cuts the given rope to the specified length. If some entity was attached t
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Unary
-  - rope
-  - length
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: rope
+  right: !Array
+  - !Item
+    name: rope
     desc: rope object obtained from [[ropeCreate]]
     type: Object
-  - name: length
+  - !Item
+    name: length
     desc: length of the rope in meters after the cut
     type: Number
 argument_loc: Unspecified

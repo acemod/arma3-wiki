@@ -3,15 +3,13 @@ desc: Set whether animation's aim precision affects weapon sway.
 groups:
 - Stamina System
 syntax:
-- call: !Binary
-  - unit
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: enable
+  right: !Item
+    name: enable
     desc: '[[true]] enable, [[false]], disabled'
     type: Boolean
 argument_loc: Unspecified

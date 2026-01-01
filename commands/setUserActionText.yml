@@ -3,22 +3,19 @@ desc: '[[File:setUserActionText.jpg|right|350px]] Changes user added action (see
 groups:
 - Interaction
 syntax:
-- call: !Binary
-  - object
-  - - actionIndex
-    - textMenu
-    - textWindowBackground
-    - textWindowForeground
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: object the action is added to
     type: Object
-  - name: actionIndex
+  right: !Array
+  - !Item
+    name: actionIndex
     desc: action id returned by [[addAction]]
     type: Number
-  - name: textMenu
+  - !Item
+    name: textMenu
     desc: text title shown in scroll action menu
     type: !OneOf
     - type: String
@@ -27,7 +24,8 @@ syntax:
     - type: StructuredText
       desc: null
       since: null
-  - name: textWindowBackground
+  - !Item
+    name: textWindowBackground
     desc: background text
     type: !OneOf
     - type: String
@@ -40,7 +38,8 @@ syntax:
     default: '""'
     since:
       arma3: '1.62'
-  - name: textWindowForeground
+  - !Item
+    name: textWindowForeground
     desc: foreground text
     type: !OneOf
     - type: String

@@ -3,15 +3,13 @@ desc: Sets the marker alpha. See [[setMarkerAlpha]].
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - marker
-  - alpha
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: marker
+  left: !Item
+    name: marker
     type: String
-  - name: alpha
+  right: !Item
+    name: alpha
     desc: alpha value from 0 (invisible) to 1 (fully visible)
     type: Number
 argument_loc: Unspecified

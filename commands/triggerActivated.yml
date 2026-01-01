@@ -8,11 +8,10 @@ multiplayer_note: |-
 groups:
 - Triggers
 syntax:
-- call: !Unary trigger
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: trigger
+  right: !Item
+    name: trigger
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

@@ -11,24 +11,21 @@ desc: |-
 groups:
 - Multiplayer
 syntax:
-- call: !Unary command
-  ret:
+- ret:
     type: Boolean
     desc: '[[false]] if a non valid command is used ("#blah"), false otherwise (was always [[true]] before {{GVI|arma3|1.40|size= 0.75}})'
-  params:
-  - name: command
+  right: !Item
+    name: command
     type: String
-- call: !Binary
-  - password
-  - command
-  ret:
+- ret:
     type: Boolean
     desc: '[[false]] if command failed at some stage. [[true]] doesn''t mean that command succeeded.'
-  params:
-  - name: password
+  left: !Item
+    name: password
     desc: 'case-sensitive password defined in [[Arma 3: Server Config File|server config]] with {{hl|serverCommandPassword}} param'
     type: String
-  - name: command
+  right: !Item
+    name: command
     desc: server command
     type: String
   since:

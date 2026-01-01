@@ -9,21 +9,20 @@ groups:
 - Multiplayer
 - Event Handlers
 syntax:
-- call: !Binary
-  - object
-  - - type
-    - expression
-  ret:
+- ret:
     type: Number
     desc: event handler index
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: object to monitor
     type: Object
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: event handler name
     type: String
-  - name: expression
+  - !Item
+    name: expression
     type: !OneOf
     - type: String
       desc: null

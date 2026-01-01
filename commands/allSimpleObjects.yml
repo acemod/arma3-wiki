@@ -8,14 +8,13 @@ desc: |-
 groups:
 - Object Detection
 syntax:
-- call: !Unary classes
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
     desc: all [[createSimpleObject|simple objects]]
-  params:
-  - name: classes
+  right: !Item
+    name: classes
     desc: classnames array. Use {{hl|[]}} to return all simple objects
     type: !ArrayUnsized
       type: String

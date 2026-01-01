@@ -5,18 +5,17 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - - turretPath
-    - lock
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: turretPath
+  right: !Array
+  - !Item
+    name: turretPath
     type: TurretPath
-  - name: lock
+  - !Item
+    name: lock
     type: Boolean
 argument_loc: Local
 effect_loc: Global

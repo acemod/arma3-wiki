@@ -4,12 +4,11 @@ groups:
 - Multiplayer
 - Markers
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: String
     desc: '"-1" if object is not a [[isPlayer|player]]'
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

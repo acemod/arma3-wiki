@@ -9,23 +9,20 @@ groups:
 - Math
 - Strings
 syntax:
-- call: !Binary
-  - number
-  - decimals
-  ret:
+- ret:
     type: String
-  params:
-  - name: number
+  left: !Item
+    name: number
     desc: number to convert
     type: Number
-  - name: decimals
+  right: !Item
+    name: decimals
     desc: number of decimals to display (range 0-20)
     type: Number
-- call: !Unary decimals
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: decimals
+  right: !Item
+    name: decimals
     desc: number of decimals to display (range 0-20). -1 to reset to default number of decimals
     type: Number
   since:

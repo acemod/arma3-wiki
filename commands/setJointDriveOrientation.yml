@@ -6,23 +6,22 @@ desc: |-
 groups:
 - PhysX
 syntax:
-- call: !Binary
-  - joint
-  - - angle
-    - axis
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: joint
+  left: !Item
+    name: joint
     desc: The parent vehicle that has a joint to a child, or the joint itself to be manipulated
     type: !OneOf
     - type: Object
       desc: null
       since: null
-  - name: angle
+  right: !Array
+  - !Item
+    name: angle
     desc: The angle (in radians to rotate around axis), clockwise
     type: Number
-  - name: axis
+  - !Item
+    name: axis
     desc: The vector around which to rotate
     type: Unknown
 argument_loc: Local

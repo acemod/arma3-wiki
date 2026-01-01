@@ -9,44 +9,44 @@ desc: |-
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: control's IDC
     type: Number
-  - name: row
-    desc: row where the tooltip should be shown
-    type: Number
-  - name: column
-    desc: column where tooltip should be shown. By default it is set for every column, see description
-    type: Number
-  - name: text
+  - !Array
+    - !Item
+      name: row
+      desc: row where the tooltip should be shown
+      type: Number
+    - !Item
+      name: column
+      desc: column where tooltip should be shown. By default it is set for every column, see description
+      type: Number
+  - !Item
+    name: text
     desc: tooltip text
     type: String
-- call: !Binary
-  - ctrl
-  - - - row
-      - column
-    - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     desc: control
     type: Control
-  - name: row
-    desc: row where the tooltip should be shown
-    type: Number
-  - name: column
-    desc: column where tooltip should be shown. By default it is set for every column, see description
-    type: Number
-  - name: text
+  right: !Array
+  - !Array
+    - !Item
+      name: row
+      desc: row where the tooltip should be shown
+      type: Number
+    - !Item
+      name: column
+      desc: column where tooltip should be shown. By default it is set for every column, see description
+      type: Number
+  - !Item
+    name: text
     desc: tooltip text
     type: String
 argument_loc: Unspecified

@@ -3,13 +3,12 @@ desc: Returns number of points that curator have.
 groups:
 - Curator
 syntax:
-- call: !Unary curatorObj
-  ret:
+- ret:
     type: !NumberRange
     - 0
     - 1
-  params:
-  - name: curatorObj
+  right: !Item
+    name: curatorObj
     desc: curator module.
     type: Object
 argument_loc: Unspecified

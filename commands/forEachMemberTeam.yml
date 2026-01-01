@@ -3,15 +3,13 @@ desc: Executes the given command recursively for each team that is a member of t
 groups:
 - Program Flow
 syntax:
-- call: !Binary
-  - command
-  - team
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: command
+  left: !Item
+    name: command
     type: Code
-  - name: team
+  right: !Item
+    name: team
     type: TeamMember
 argument_loc: Unspecified
 effect_loc: Unspecified

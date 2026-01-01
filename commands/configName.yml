@@ -3,11 +3,10 @@ desc: Returns name of config entry.
 groups:
 - Config
 syntax:
-- call: !Unary config
-  ret:
+- ret:
     type: String
-  params:
-  - name: config
+  right: !Item
+    name: config
     type: Config
 argument_loc: Unspecified
 effect_loc: Unspecified

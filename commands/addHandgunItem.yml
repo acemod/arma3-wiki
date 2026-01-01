@@ -3,15 +3,13 @@ desc: Adds weapon item, including magazine, directly to the [[handgunWeapon]]. T
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - item
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: item
+  right: !Item
+    name: item
     type: String
 argument_loc: Local
 effect_loc: Global

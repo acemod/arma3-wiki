@@ -3,15 +3,13 @@ desc: Processes code when an [[Exception handling|exception]] is thrown in a [[t
 groups:
 - Program Flow
 syntax:
-- call: !Binary
-  - tryBlock
-  - code
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: tryBlock
+  left: !Item
+    name: tryBlock
     type: ExceptionHandle
-  - name: code
+  right: !Item
+    name: code
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,15 +3,14 @@ desc: "Returns edit control text selection in format [start, length, selectedTex
 groups:
 - GUI Control
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: Unknown
     desc: |-
       position in text selection started
       * length: [[Number]] - number of the highlighted characters (this number could be negative, see description)
       * selectedText: [[String]] - selected text
-  params:
-  - name: control
+  right: !Item
+    name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified

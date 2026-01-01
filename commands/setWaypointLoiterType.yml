@@ -3,15 +3,13 @@ desc: Sets the waypoint loiter type.
 groups:
 - Waypoints
 syntax:
-- call: !Binary
-  - waypoint
-  - type
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: waypoint
+  left: !Item
+    name: waypoint
     type: Waypoint
-  - name: type
+  right: !Item
+    name: type
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

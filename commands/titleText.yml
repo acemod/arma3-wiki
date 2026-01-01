@@ -5,32 +5,31 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - text
-  - type
-  - speed
-  - showInMap
-  - isStructuredText
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: text
+  right: !Array
+  - !Item
+    name: text
     desc: text to be displayed
     type: String
-  - name: type
+  - !Item
+    name: type
     desc: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.
     type: String
-  - name: speed
+  - !Item
+    name: speed
     desc: time in seconds to fade in resource
     type: Number
     optional: true
     default: '-1'
-  - name: showInMap
+  - !Item
+    name: showInMap
     desc: '[[false]] to hide the text when the map is opened'
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: isStructuredText
+  - !Item
+    name: isStructuredText
     desc: '[[true]] to switch support for [[Structured Text]] formatting - see {{Link|#Example 4}}'
     type: Boolean
     optional: true

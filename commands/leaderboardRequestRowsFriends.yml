@@ -3,11 +3,10 @@ desc: Requests given leaderboard to download friends rows from the given leaderb
 groups:
 - Leaderboards
 syntax:
-- call: !Unary boardName
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: boardName
+  right: !Item
+    name: boardName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

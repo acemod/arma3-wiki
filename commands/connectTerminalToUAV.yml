@@ -3,16 +3,14 @@ desc: Connect person with UAV terminal to UAV unit. UAV Terminal item needs to b
 groups:
 - Remote Control
 syntax:
-- call: !Binary
-  - person
-  - uav
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] on success'
-  params:
-  - name: person
+  left: !Item
+    name: person
     type: Object
-  - name: uav
+  right: !Item
+    name: uav
     type: Object
 argument_loc: Global
 effect_loc: Global

@@ -8,15 +8,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - type
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: type
+  right: !Item
+    name: type
     desc: the desired feature type
     type: Number
 argument_loc: Global

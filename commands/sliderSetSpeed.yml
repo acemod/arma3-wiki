@@ -3,45 +3,43 @@ desc: "Sets slider line step and page step delta amount as well as optional step
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - idc
-  - line
-  - page
-  - step
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: control's idc
     type: Number
-  - name: line
+  - !Item
+    name: line
     desc: value delta to move the slider when clicking on the outer arrows
     type: Number
-  - name: page
+  - !Item
+    name: page
     desc: value delta to move the slider when clicking inside the slider bar
     type: Number
-  - name: step
+  - !Item
+    name: step
     desc: slider step
     type: Number
     optional: true
     default: '0'
-- call: !Binary
-  - control
-  - - line
-    - page
-    - step
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: line
+  right: !Array
+  - !Item
+    name: line
     desc: value delta to move the slider when clicking on the outer arrows
     type: Number
-  - name: page
+  - !Item
+    name: page
     desc: value delta to move the slider when clicking inside the slider bar
     type: Number
-  - name: step
+  - !Item
+    name: step
     desc: slider step
     type: Number
     optional: true

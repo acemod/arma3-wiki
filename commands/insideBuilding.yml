@@ -10,12 +10,11 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary man
-  ret:
+- ret:
     type: Number
     desc: in range 0..1, where 0 is outside, 1 is inside
-  params:
-  - name: man
+  right: !Item
+    name: man
     desc: entity of class Man
     type: Object
 argument_loc: Unspecified

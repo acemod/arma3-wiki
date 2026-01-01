@@ -3,15 +3,13 @@ desc: Prepares the camera position. Needs the call of [[camCommitPrepared]] to b
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     type: Object
-  - name: position
+  right: !Item
+    name: position
     desc: format [[Position]]
     type: ArrayUnknown
 argument_loc: Unspecified

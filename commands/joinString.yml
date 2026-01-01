@@ -3,17 +3,15 @@ desc: Joins ''array'' into [[String]] with provided ''separator''. Array can be 
 groups:
 - Strings
 syntax:
-- call: !Binary
-  - array
-  - separator
-  ret:
+- ret:
     type: String
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: separator
+  right: !Item
+    name: separator
     desc: separator used to join array elements.
     type: String
 argument_loc: Unspecified

@@ -5,21 +5,20 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - - magazineName
-    - turretPath
-    - ammoCount
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: magazineName
+  right: !Array
+  - !Item
+    name: magazineName
     type: String
-  - name: turretPath
+  - !Item
+    name: turretPath
     type: TurretPath
-  - name: ammoCount
+  - !Item
+    name: ammoCount
     desc: desired ammo count
     type: Number
     optional: true

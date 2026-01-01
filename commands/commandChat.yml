@@ -7,31 +7,28 @@ groups:
 - Radio and Chat
 - Sounds
 syntax:
-- call: !Binary
-  - unit
-  - chatText
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit transmitting message
     type: Object
-  - name: chatText
+  right: !Item
+    name: chatText
     desc: message to transmit
     type: String
-- call: !Binary
-  - - side
-    - identity
-  - chatText
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: side
+  left: !Array
+  - !Item
+    name: side
     desc: side to which the message will be seen
     type: Side
-  - name: identity
+  - !Item
+    name: identity
     type: Unknown
-  - name: chatText
+  right: !Item
+    name: chatText
     desc: message to transmit
     type: String
 argument_loc: Global

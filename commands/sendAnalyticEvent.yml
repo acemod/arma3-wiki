@@ -4,17 +4,16 @@ multiplayer_note: '{{Feature|informative|Analytics are reserved to official serv
 groups:
 - Argo
 syntax:
-- call: !Unary
-  - eventName
-  - keyValuePairs
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] when done (not if the analytics were sent), [[false]] if the provided array is wrong'
-  params:
-  - name: eventName
+  right: !Array
+  - !Item
+    name: eventName
     desc: '''''unknown possible values'''''
     type: String
-  - name: keyValuePairs
+  - !Item
+    name: keyValuePairs
     type: !OneOf
     - type: ArrayUnknown
       desc: null

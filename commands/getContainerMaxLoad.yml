@@ -3,12 +3,11 @@ desc: Returns max load value of given uniform, vest or backpack container. For o
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary containerClass
-  ret:
+- ret:
     type: Number
     desc: load value, -1 if not available.
-  params:
-  - name: containerClass
+  right: !Item
+    name: containerClass
     desc: uniform, vest or backpack class
     type: String
 argument_loc: Unspecified

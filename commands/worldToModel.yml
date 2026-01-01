@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Positions
 syntax:
-- call: !Binary
-  - model
-  - position
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: model
+  left: !Item
+    name: model
     type: Object
-  - name: position
+  right: !Item
+    name: position
     desc: world position
     type: !OneOf
     - type: Position3dAGL

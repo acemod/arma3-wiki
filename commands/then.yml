@@ -6,16 +6,14 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Binary
-  - ifType
-  - thenCode
-  ret:
+- ret:
     type: Anything
     desc: result of the executed code
-  params:
-  - name: ifType
+  left: !Item
+    name: ifType
     type: IfType
-  - name: thenCode
+  right: !Item
+    name: thenCode
     type: !OneOf
     - type: Code
       desc: null

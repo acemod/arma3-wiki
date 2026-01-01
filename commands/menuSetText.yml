@@ -3,31 +3,29 @@ desc: Sets text of given menu strip entry.
 groups:
 - GUI Control - Menu
 syntax:
-- call: !Unary
-  - idc
-  - path
-  - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     type: ArrayUnknown
-  - name: text
+  - !Item
+    name: text
     type: String
-- call: !Binary
-  - control
-  - - path
-    - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     type: ArrayUnknown
-  - name: text
+  - !Item
+    name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

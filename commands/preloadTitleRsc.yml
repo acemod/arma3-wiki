@@ -3,25 +3,24 @@ desc: Resource title - preload data. The resource can be defined in the [[Descri
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - name
-  - type
-  - speed
-  - showInMap
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: name
+  right: !Array
+  - !Item
+    name: name
     desc: defined in [[Description.ext]] for the mission
     type: String
-  - name: type
+  - !Item
+    name: type
     desc: e.g "PLAIN"
     type: String
-  - name: speed
+  - !Item
+    name: speed
     desc: ignored
     type: Number
     optional: true
-  - name: showInMap
+  - !Item
+    name: showInMap
     type: Boolean
     optional: true
 argument_loc: Unspecified

@@ -3,15 +3,13 @@ desc: Returns current animation phase of given source. Similar to [[animationPha
 groups:
 - Animations
 syntax:
-- call: !Binary
-  - object
-  - source
-  ret:
+- ret:
     type: Number
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: source
+  right: !Item
+    name: source
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

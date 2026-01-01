@@ -3,11 +3,10 @@ desc: Returns vehicle sensors' potential targets.
 groups:
 - Sensors
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: the sensors-equipped vehicle
     type: Object
 argument_loc: Local

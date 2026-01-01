@@ -3,11 +3,10 @@ desc: Enables/Disables satellite normal map or detail maps.
 groups:
 - System
 syntax:
-- call: !Unary state
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: state
+  right: !Item
+    name: state
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

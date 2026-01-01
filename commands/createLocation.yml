@@ -8,17 +8,14 @@ desc: |-
 groups:
 - Locations
 syntax:
-- call: !Unary
-  - className
-  - position
-  - sizeX
-  - sizeY
-  ret:
+- ret:
     type: Location
-  params:
-  - name: className
+  right: !Array
+  - !Item
+    name: className
     type: String
-  - name: position
+  - !Item
+    name: position
     type: !OneOf
     - type: Position2d
       desc: null
@@ -29,19 +26,20 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: sizeX
+  - !Item
+    name: sizeX
     desc: in meters
     type: Number
-  - name: sizeY
+  - !Item
+    name: sizeY
     desc: in meters
     type: Number
-- call: !Unary
-  - location
-  ret:
+- ret:
     type: Location
     desc: a script-editable location
-  params:
-  - name: location
+  right: !Array
+  - !Item
+    name: location
     desc: a terrain's location. If a scripted location is provided, it is simply returned
     type: Location
   since:

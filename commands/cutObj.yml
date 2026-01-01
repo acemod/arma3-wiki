@@ -5,105 +5,102 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary
-  - class
-  - type
-  - speed
-  - showInMap
-  - drawOverHUD
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: class
+  right: !Array
+  - !Item
+    name: class
     desc: the className of the object defined in {{hl|[[configFile]] >> "CfgTitles" >> class}}
     type: String
-  - name: type
+  - !Item
+    name: type
     desc: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values
     type: String
-  - name: speed
+  - !Item
+    name: speed
     desc: time in seconds to fade in resource
     type: Number
     optional: true
     default: '-1'
-  - name: showInMap
+  - !Item
+    name: showInMap
     desc: '[[false]] to hide the text when the map is opened'
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: drawOverHUD
+  - !Item
+    name: drawOverHUD
     desc: '[[false]] to show the object under in-game HUD'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
       arma3: '2.16'
-- call: !Binary
-  - layer
-  - - class
-    - type
-    - speed
-    - showInMap
-    - drawOverHUD
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: layer
+  left: !Item
+    name: layer
     desc: layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100
     type: Number
-  - name: class
+  right: !Array
+  - !Item
+    name: class
     desc: the className of the object defined in {{hl|[[configFile]] >> "CfgTitles" >> class}}
     type: String
-  - name: type
+  - !Item
+    name: type
     desc: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values.
     type: String
-  - name: speed
+  - !Item
+    name: speed
     desc: time in seconds to fade in resource
     type: Number
     optional: true
     default: '-1'
-  - name: showInMap
+  - !Item
+    name: showInMap
     desc: '[[false]] to hide the text when the map is opened'
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: drawOverHUD
+  - !Item
+    name: drawOverHUD
     desc: '[[false]] to show the object under in-game HUD'
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
       arma3: '2.16'
-- call: !Binary
-  - layerName
-  - - class
-    - type
-    - speed
-    - showInMap
-    - drawOverHUD
-  ret:
+- ret:
     type: Number
     desc: number of the allocated layer
-  params:
-  - name: layerName
+  left: !Item
+    name: layerName
     desc: layer name on which the effect is shown. Layer names are CaSe SeNsItIvE
     type: String
-  - name: class
+  right: !Array
+  - !Item
+    name: class
     desc: the className of the object defined in {{hl|[[configFile]] >> "CfgTitles" >> class}}
     type: String
-  - name: type
+  - !Item
+    name: type
     desc: one of "PLAIN", "PLAIN DOWN", "BLACK", "BLACK FADED", "BLACK OUT", "BLACK IN", "WHITE OUT" and "WHITE IN". See [[Title Effect Type]]s for more information about these values
     type: String
-  - name: speed
+  - !Item
+    name: speed
     desc: time in seconds to fade in resource
     type: Number
     optional: true
     default: '-1'
-  - name: showInMap
+  - !Item
+    name: showInMap
     desc: '[[false]] to hide the text when the map is opened'
     type: Boolean
     optional: true
     default: '[[true]]'
-  - name: drawOverHUD
+  - !Item
+    name: drawOverHUD
     desc: '[[false]] to show the object under in-game HUD'
     type: Boolean
     optional: true

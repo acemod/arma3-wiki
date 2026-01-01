@@ -3,40 +3,37 @@ desc: Returns array of all components available to given object info panel.
 groups:
 - Custom Panels
 syntax:
-- call: !Binary
-  - unit
-  - panelID
-  ret:
+- ret:
     type: Unknown
     desc: |-
       component classname as defined in object/vehicle config
       * componentType: [[String]] - componentType - component type
       * isAccessible: [[Boolean]] - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: the concerned vehicle
     type: Object
-  - name: panelID
+  right: !Item
+    name: panelID
     desc: '"left" or "right" can be used as panel names'
     type: String
-- call: !Binary
-  - - unit
-    - turretPath
-  - panelID
-  ret:
+- ret:
     type: Unknown
     desc: |-
       component classname as defined in object/vehicle config
       * componentType: [[String]] - componentType - component type
       * isAccessible: [[Boolean]] - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)
-  params:
-  - name: unit
+  left: !Array
+  - !Item
+    name: unit
     desc: the concerned vehicle
     type: Object
-  - name: turretPath
+  - !Item
+    name: turretPath
     desc: turret index
     type: ArrayUnknown
-  - name: panelID
+  right: !Item
+    name: panelID
     desc: '"left" or "right" can be used as panel names'
     type: String
 argument_loc: Unspecified

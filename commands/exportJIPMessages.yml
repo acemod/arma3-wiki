@@ -4,11 +4,10 @@ groups:
 - Diagnostic
 - Multiplayer
 syntax:
-- call: !Unary fileName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: fileName
+  right: !Item
+    name: fileName
     desc: file where to store the list
     type: String
 argument_loc: Unspecified

@@ -6,11 +6,10 @@ multiplayer_note: On a client the command will return empty arrays for every uni
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

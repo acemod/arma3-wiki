@@ -8,23 +8,22 @@ desc: |-
 groups:
 - Animations
 syntax:
-- call: !Binary
-  - object
-  - - animationName
-    - phase
-    - speed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: animationName
+  right: !Array
+  - !Item
+    name: animationName
     desc: name of the animation. This is the class-name of the animation defined in the config
     type: String
-  - name: phase
+  - !Item
+    name: phase
     desc: range 0 (start point of the animation) to 1 (end point of the animation). The speed, in which the animation is processed, is defined in the addon's config.cpp and cannot be changed during running missions
     type: Number
-  - name: speed
+  - !Item
+    name: speed
     desc: when [[true]] animation is instant; [[Number]] > 0 is treated as config speed value multiplier
     type: !OneOf
     - type: Boolean

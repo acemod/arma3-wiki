@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Groups
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: any member of the [[Group]]
     type: Object
 argument_loc: Unspecified

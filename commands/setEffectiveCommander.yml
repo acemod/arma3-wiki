@@ -7,15 +7,13 @@ multiplayer_note: In multiplayer, execute globally.
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - vehicle
-  - person
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: person
+  right: !Item
+    name: person
     type: Object
 argument_loc: Global
 effect_loc: Local

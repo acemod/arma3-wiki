@@ -4,12 +4,11 @@ multiplayer_note: '{{Feature|important|Only works in multiplayer (on both server
 groups:
 - Argo
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Number
     desc: the provided player's level or -1 on error (unreachable servers, not a player, etc)
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: a player-controlled unit
     type: Object
 argument_loc: Global

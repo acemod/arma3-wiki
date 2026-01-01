@@ -3,56 +3,55 @@ desc: Adds a weapon item to the specified weapon. The item can be weapon magazin
 groups:
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - - weaponName
-    - itemName
-    - instant
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: weaponName
+  right: !Array
+  - !Item
+    name: weaponName
     desc: name of the weapon to add magazine to
     type: String
-  - name: itemName
+  - !Item
+    name: itemName
     desc: class name of the item to add (if magazine, muzzle will be autodetected)
     type: String
-  - name: instant
+  - !Item
+    name: instant
     desc: '[[true]] to skip animation'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
       arma3: '1.96'
-- call: !Binary
-  - unit
-  - - weaponName
-    - - itemName
-      - ammoCount
-      - muzzleName
-    - instant
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: weaponName
+  right: !Array
+  - !Item
+    name: weaponName
     desc: name of the weapon to add magazine to
     type: String
-  - name: itemName
-    desc: class name of the item to add (if magazine, muzzle will be autodetected unless specified)
-    type: String
-  - name: ammoCount
-    desc: optional amount of ammo in magazine
-    type: Number
-    optional: true
-  - name: muzzleName
-    desc: optional target muzzle to add magazine to
-    type: String
-    optional: true
-  - name: instant
+  - !Array
+    - !Item
+      name: itemName
+      desc: class name of the item to add (if magazine, muzzle will be autodetected unless specified)
+      type: String
+    - !Item
+      name: ammoCount
+      desc: optional amount of ammo in magazine
+      type: Number
+      optional: true
+    - !Item
+      name: muzzleName
+      desc: optional target muzzle to add magazine to
+      type: String
+      optional: true
+  - !Item
+    name: instant
     desc: '[[true]] to skip animation'
     type: Boolean
     optional: true

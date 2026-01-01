@@ -3,20 +3,19 @@ desc: Sets the {{hl|#lightreflector}}'s volume shape. An empty shape will switch
 groups:
 - Lights
 syntax:
-- call: !Binary
-  - lightReflector
-  - - shapePath
-    - scale
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: lightReflector
+  left: !Item
+    name: lightReflector
     desc: object of class {{hl|#lightreflector}})
     type: Object
-  - name: shapePath
+  right: !Array
+  - !Item
+    name: shapePath
     desc: '"" to turn the light off'
     type: String
-  - name: scale
+  - !Item
+    name: scale
     desc: '[sizeX, sizeY, sizeZ]'
     type: ArrayUnknown
 argument_loc: Local

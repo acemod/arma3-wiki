@@ -3,12 +3,11 @@ desc: A getter for [[setDynamicSimulationDistance]].
 groups:
 - Dynamic Simulation
 syntax:
-- call: !Unary category
-  ret:
+- ret:
     type: Number
     desc: activation distance
-  params:
-  - name: category
+  right: !Item
+    name: category
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

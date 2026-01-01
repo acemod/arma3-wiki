@@ -3,21 +3,20 @@ desc: Unregister objects which can be edited by a curator.
 groups:
 - Curator
 syntax:
-- call: !Binary
-  - curatorObj
-  - - objects
-    - removeCrew
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: curatorObj
+  left: !Item
+    name: curatorObj
     desc: curator module
     type: Object
-  - name: objects
+  right: !Array
+  - !Item
+    name: objects
     type: !ArrayUnsized
       type: Object
       desc: ''
-  - name: removeCrew
+  - !Item
+    name: removeCrew
     type: Boolean
     optional: true
     default: '[[true]]'

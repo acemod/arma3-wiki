@@ -3,11 +3,10 @@ desc: Dumps the argument's value to the [[arma.RPT|report file]]. Each call crea
 groups:
 - Diagnostic
 syntax:
-- call: !Unary output
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: output
+  right: !Item
+    name: output
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified

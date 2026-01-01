@@ -12,16 +12,14 @@ problem_notes:
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - - selection
-    - texture
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: selection
+  right: !Array
+  - !Item
+    name: selection
     desc: index of the selection. It is defined in the [[CfgVehicles Config Reference#hiddenSelections|hiddenSelections]] array in the vehicle's config (starting with 0). If a string is given, it referes to a hiddenSelection name or clan selection instead of an index.
     type: !OneOf
     - type: Number
@@ -30,7 +28,8 @@ syntax:
     - type: String
       desc: null
       since: null
-  - name: texture
+  - !Item
+    name: texture
     desc: path to texture. Since {{GVI|arma3|2.20}} using '''"#reset"''' would reset to default texture.
     type: String
 argument_loc: Global

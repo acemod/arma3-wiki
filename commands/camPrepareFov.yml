@@ -3,15 +3,13 @@ desc: Prepares the camera field of view (zoom). The default zoom level is 0.75, 
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - fieldOfView
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     type: Object
-  - name: fieldOfView
+  right: !Item
+    name: fieldOfView
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

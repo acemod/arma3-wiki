@@ -10,22 +10,20 @@ desc: |-
 groups:
 - Interaction
 syntax:
-- call: !Unary userAction
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Number
       desc: ''
-  params:
-  - name: userAction
+  right: !Item
+    name: userAction
     type: String
-- call: !Unary
-  - userAction
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
-  params:
-  - name: userAction
+  right: !Array
+  - !Item
+    name: userAction
     type: String
   since:
     arma3: '2.8'

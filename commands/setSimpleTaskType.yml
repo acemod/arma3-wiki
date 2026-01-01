@@ -3,15 +3,13 @@ desc: Attach type to the simple task. See [[Arma_3_Tasks_Overhaul#Default_Task_T
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - task
-  - taskType
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: task
+  left: !Item
+    name: task
     type: Task
-  - name: taskType
+  right: !Item
+    name: taskType
     desc: type of task
     type: String
 argument_loc: Unspecified

@@ -5,21 +5,20 @@ problem_notes:
 groups:
 - Broken Commands
 syntax:
-- call: !Binary
-  - target
-  - - position
-    - typeAccuracy
-    - posAccuracy
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: target
+  left: !Item
+    name: target
     type: Unknown
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     type: Position
-  - name: typeAccuracy
+  - !Item
+    name: typeAccuracy
     type: Number
-  - name: posAccuracy
+  - !Item
+    name: posAccuracy
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

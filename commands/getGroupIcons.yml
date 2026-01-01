@@ -3,12 +3,11 @@ desc: Returns all group icons. Since Arma 3 v2.22 command also returns 3d offset
 groups:
 - High Command
 syntax:
-- call: !Unary group
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[[id,icon,[offsetx,offsety,offsetX3d,offsetY3d]],..]'
-  params:
-  - name: group
+  right: !Item
+    name: group
     type: Group
 argument_loc: Global
 effect_loc: Unspecified

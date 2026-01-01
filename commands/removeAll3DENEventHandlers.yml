@@ -4,11 +4,10 @@ groups:
 - Eden Editor
 - Event Handlers
 syntax:
-- call: !Unary type
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: type
+  right: !Item
+    name: type
     desc: name of event handler
     type: String
 argument_loc: Unspecified

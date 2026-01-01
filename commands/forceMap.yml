@@ -9,11 +9,10 @@ groups:
 - Map
 - Interaction
 syntax:
-- call: !Unary show
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: show
+  right: !Item
+    name: show
     desc: '[[true]] to force, [[false]] to go back to normal map behaviour'
     type: Boolean
 argument_loc: Unspecified

@@ -3,11 +3,10 @@ desc: Returns a location's size.
 groups:
 - Locations
 syntax:
-- call: !Unary location
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: location
+  right: !Item
+    name: location
     type: Location
 argument_loc: Unspecified
 effect_loc: Unspecified

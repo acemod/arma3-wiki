@@ -10,17 +10,15 @@ groups:
 - Sides
 - Roads and Airports
 syntax:
-- call: !Unary id
-  ret:
+- ret:
     type: Side
-  params:
-  - name: id
+  right: !Item
+    name: id
     type: Number
-- call: !Unary target
-  ret:
+- ret:
     type: Side
-  params:
-  - name: target
+  right: !Item
+    name: target
     type: Object
   since:
     arma3: '1.68'

@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Mission Information
 syntax:
-- call: !Unary keyname
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: keyname
+  right: !Item
+    name: keyname
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

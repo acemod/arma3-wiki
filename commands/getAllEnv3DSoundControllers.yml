@@ -10,11 +10,10 @@ desc: |-
 groups:
 - Sounds
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: environmental sound source like a tree or a house, see [[allEnv3DSoundSources]]
     type: Object
 argument_loc: Unspecified

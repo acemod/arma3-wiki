@@ -5,16 +5,15 @@ desc: |-
 groups:
 - Environment
 syntax:
-- call: !Unary
-  - strength
-  - diameter
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: strength
+  right: !Array
+  - !Item
+    name: strength
     desc: down-force wind strength
     type: Number
-  - name: diameter
+  - !Item
+    name: diameter
     desc: area affected
     type: Number
 argument_loc: Unspecified

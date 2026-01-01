@@ -3,25 +3,18 @@ desc: Draws an N sided polygon on the map.
 groups:
 - GUI Control - Map
 syntax:
-- call: !Binary
-  - map
-  - - n
-    - centre
-    - a
-    - b
-    - angle
-    - color
-    - fill
-    - alignWithMap
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: n
+  right: !Array
+  - !Item
+    name: n
     desc: number of sides 3..720
     type: Number
-  - name: centre
+  - !Item
+    name: centre
     desc: ellipse's centre
     type: !OneOf
     - type: Object
@@ -33,22 +26,28 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: a
+  - !Item
+    name: a
     desc: horizontal (x) radius
     type: Number
-  - name: b
+  - !Item
+    name: b
     desc: vertical (y) radius
     type: Number
-  - name: angle
+  - !Item
+    name: angle
     desc: angle of rotation in degrees
     type: Number
-  - name: color
+  - !Item
+    name: color
     desc: line color
     type: ArrayColorRgba
-  - name: fill
+  - !Item
+    name: fill
     desc: fill texture file or [[Procedural Textures]]. Note that the file texture will not rotate with polygon, use [[drawIcon]] for that. If fill texture is not empty, set line color to white [1,1,1,1]
     type: String
-  - name: alignWithMap
+  - !Item
+    name: alignWithMap
     desc: '- when [[false]] the shape will not follow map rotation.'
     type: Boolean
     optional: true

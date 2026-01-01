@@ -5,16 +5,14 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- call: !Binary
-  - section
-  - class
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: section
+  left: !Item
+    name: section
     desc: attribute section. See [[Eden_Editor:_Setting_Attributes#Sections_.26_Properties|Sections & Properties]]
     type: String
-  - name: class
+  right: !Item
+    name: class
     desc: attribute name
     type: String
 argument_loc: Unspecified

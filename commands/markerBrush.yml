@@ -3,11 +3,10 @@ desc: Gets the marker brush. See [[setMarkerBrush]].
 groups:
 - Markers
 syntax:
-- call: !Unary name
-  ret:
+- ret:
     type: String
-  params:
-  - name: name
+  right: !Item
+    name: name
     desc: marker name
     type: String
 argument_loc: Unspecified

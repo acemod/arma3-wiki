@@ -6,33 +6,34 @@ groups:
 - Math
 - Arrays
 syntax:
-- call: !Binary
-  - numberA
-  - numberB
-  ret:
+- ret:
     type: Number
-  params:
-  - name: numberA
+  left: !Item
+    name: numberA
     type: Number
-  - name: numberB
+  right: !Item
+    name: numberB
     type: Number
-- call: !Unary numberA
-  ret:
+- ret:
     type: Number
     desc: the negative of ''numberA''
-  params:
-  - name: numberA
+  right: !Item
+    name: numberA
     type: Number
-- call: !Binary
-  - arrayA
-  - arrayB
-  ret:
-    type: ArrayUnknown
-  params:
-  - name: arrayA
-    type: ArrayUnknown
-  - name: arrayB
-    type: ArrayUnknown
+- ret:
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
+  left: !Item
+    name: arrayA
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
+  right: !Item
+    name: arrayB
+    type: !ArrayUnsized
+      type: Anything
+      desc: ''
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

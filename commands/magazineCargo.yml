@@ -4,11 +4,10 @@ groups:
 - Vehicle Inventory
 - Containers
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: vehicle or ammo box
     type: Object
 argument_loc: Unspecified

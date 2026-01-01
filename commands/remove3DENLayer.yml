@@ -5,12 +5,11 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- call: !Unary layerID
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if the layer was removed successfully (i.e., correct layer ID was used)'
-  params:
-  - name: layerID
+  right: !Item
+    name: layerID
     desc: layer ID as returned by [[add3DENLayer]] command
     type: Number
 argument_loc: Unspecified

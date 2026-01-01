@@ -3,11 +3,10 @@ desc: Types text to the system radio channel. The text will be visible only on t
 groups:
 - Radio and Chat
 syntax:
-- call: !Unary text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: text
+  right: !Item
+    name: text
     desc: message to transmit
     type: String
 argument_loc: Unspecified

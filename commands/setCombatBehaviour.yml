@@ -4,28 +4,24 @@ groups:
 - AI Behaviour
 - Groups
 syntax:
-- call: !Binary
-  - unit
-  - behaviour
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: AI unit
     type: Object
-  - name: behaviour
+  right: !Item
+    name: behaviour
     desc: see description
     type: String
-- call: !Binary
-  - group
-  - behaviour
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     desc: AI group
     type: Group
-  - name: behaviour
+  right: !Item
+    name: behaviour
     desc: see description
     type: String
 argument_loc: Local

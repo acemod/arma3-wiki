@@ -3,15 +3,13 @@ desc: Changes a location to the specified class. Location classes are defined in
 groups:
 - Locations
 syntax:
-- call: !Binary
-  - location
-  - name
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: location
+  left: !Item
+    name: location
     type: Location
-  - name: name
+  right: !Item
+    name: name
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

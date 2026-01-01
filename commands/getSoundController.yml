@@ -3,16 +3,14 @@ desc: Returns value of the given sound controller.
 groups:
 - Sounds
 syntax:
-- call: !Binary
-  - vehicle
-  - controller
-  ret:
+- ret:
     type: Number
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: must be a vehicle (does not work on soldiers)
     type: Object
-  - name: controller
+  right: !Item
+    name: controller
     desc: name of sound controller, for example "rpm" or "thrust".
     type: String
 argument_loc: Unspecified

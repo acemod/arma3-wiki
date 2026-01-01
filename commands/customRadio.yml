@@ -9,20 +9,19 @@ groups:
 - Sounds
 - Custom Radio and Chat
 syntax:
-- call: !Binary
-  - unit
-  - - customChannelID
-    - message
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: sender
     type: Object
-  - name: customChannelID
+  right: !Array
+  - !Item
+    name: customChannelID
     desc: '[[Channel IDs|custom channel ID]] returned by [[radioChannelCreate]] command'
     type: Number
-  - name: message
+  - !Item
+    name: message
     type: String
 argument_loc: Global
 effect_loc: Local

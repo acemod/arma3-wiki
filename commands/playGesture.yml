@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Animations
 syntax:
-- call: !Binary
-  - soldier
-  - moveName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: soldier
+  left: !Item
+    name: soldier
     type: Object
-  - name: moveName
+  right: !Item
+    name: moveName
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

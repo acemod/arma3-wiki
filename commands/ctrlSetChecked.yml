@@ -3,32 +3,29 @@ desc: Sets checked state of a [[CT_CHECKBOXES]] control.
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - checked
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: '[[CT_CHECKBOXES]] control. If control contain multiple checkboxes, only checkbox with index 0 is queried.'
     type: Control
-  - name: checked
+  right: !Item
+    name: checked
     desc: '[[true]] to check, [[false]] to uncheck the checkbox'
     type: Boolean
-- call: !Binary
-  - control
-  - - index
-    - checked
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: '[[CT_CHECKBOXES]] control'
     type: Control
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     desc: checkbox index
     type: Number
-  - name: checked
+  - !Item
+    name: checked
     desc: '[[true]] to check, [[false]] to uncheck the checkbox'
     type: Boolean
   since:

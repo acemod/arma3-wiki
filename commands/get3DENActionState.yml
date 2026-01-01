@@ -3,11 +3,10 @@ desc: 'Returns state of given [[Eden Editor: Actions|Eden Editor action]].'
 groups:
 - Eden Editor
 syntax:
-- call: !Unary action
-  ret:
+- ret:
     type: Number
-  params:
-  - name: action
+  right: !Item
+    name: action
     desc: 'see [[Eden Editor: Actions]]'
     type: String
 argument_loc: Unspecified

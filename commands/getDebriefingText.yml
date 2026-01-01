@@ -3,11 +3,10 @@ desc: A getter for [[setDebriefingText]].
 groups:
 - Briefing
 syntax:
-- call: !Unary end
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: end
+  right: !Item
+    name: end
     desc: end type
     type: String
 argument_loc: Unspecified

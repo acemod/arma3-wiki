@@ -3,11 +3,10 @@ desc: Return [[true]] if vehicle has enabled auto hover. (always returns false i
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

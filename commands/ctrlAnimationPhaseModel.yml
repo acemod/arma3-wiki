@@ -3,16 +3,14 @@ desc: Returns current animation phase of given source. Similar to [[animationSou
 groups:
 - GUI Control - Object
 syntax:
-- call: !Binary
-  - control
-  - source
-  ret:
+- ret:
     type: Number
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: 3D control
     type: Control
-  - name: source
+  right: !Item
+    name: source
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

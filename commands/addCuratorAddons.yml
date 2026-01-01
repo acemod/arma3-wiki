@@ -3,16 +3,14 @@ desc: Allow curator use of given addon.
 groups:
 - Curator
 syntax:
-- call: !Binary
-  - curatorObj
-  - addons
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: curatorObj
+  left: !Item
+    name: curatorObj
     desc: curator module.
     type: Object
-  - name: addons
+  right: !Item
+    name: addons
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

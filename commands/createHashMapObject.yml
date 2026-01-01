@@ -11,13 +11,11 @@ desc: |-
 groups:
 - HashMap
 syntax:
-- call: !Unary
-  - classDefinition
-  - constructorArguments
-  ret:
+- ret:
     type: HashMapUnknown
-  params:
-  - name: classDefinition
+  right: !Array
+  - !Item
+    name: classDefinition
     type: !OneOf
     - type: HashMapUnknown
       desc: null
@@ -45,7 +43,8 @@ syntax:
     - type: ArrayUnknown
       desc: null
       since: null
-  - name: constructorArguments
+  - !Item
+    name: constructorArguments
     desc: passed as <sqf inline>_this</sqf> argument to the "#create" method.
     type: Anything
     optional: true

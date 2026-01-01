@@ -3,16 +3,14 @@ desc: Sets vertical position (y) of a 2D control. [[ctrlCommit]] is required to 
 groups:
 - GUI Control - Positioning
 syntax:
-- call: !Binary
-  - control
-  - y
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: 2D control
     type: Control
-  - name: y
+  right: !Item
+    name: y
     desc: vertical position of the control
     type: Number
 argument_loc: Unspecified

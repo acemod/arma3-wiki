@@ -3,13 +3,10 @@ desc: Check whether all data are loaded to nearObjects will return in reasonable
 groups:
 - Object Detection
 syntax:
-- call: !Binary
-  - position
-  - radius
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: position
+  left: !Item
+    name: position
     type: !OneOf
     - type: Object
       desc: null
@@ -20,7 +17,8 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: radius
+  right: !Item
+    name: radius
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

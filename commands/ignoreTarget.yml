@@ -3,13 +3,10 @@ desc: Sets a target to be ignored by this Group. It will not appear in [[nearTar
 groups:
 - Object Detection
 syntax:
-- call: !Binary
-  - group
-  - target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     desc: which receives revealing information
     type: !OneOf
     - type: Object
@@ -18,17 +15,14 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: target
+  right: !Item
+    name: target
     desc: which would be ignored
     type: Object
-- call: !Binary
-  - group
-  - - target
-    - isIgnored
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     desc: which receives revealing information
     type: !OneOf
     - type: Object
@@ -37,10 +31,13 @@ syntax:
     - type: Group
       desc: null
       since: null
-  - name: target
+  right: !Array
+  - !Item
+    name: target
     desc: which would be ignored
     type: Object
-  - name: isIgnored
+  - !Item
+    name: isIgnored
     desc: whether the target should be ignored
     type: Boolean
 argument_loc: Global

@@ -3,15 +3,13 @@ desc: Sets tooltip border color of given control.
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: color
+  right: !Item
+    name: color
     desc: color in format in format [[Color|Color (RGBA)]]
     type: ArrayUnknown
 argument_loc: Unspecified

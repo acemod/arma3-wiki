@@ -6,12 +6,11 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- call: !Unary value
-  ret:
+- ret:
     type: Number
     desc: degrees
-  params:
-  - name: value
+  right: !Item
+    name: value
     desc: radians
     type: Number
 argument_loc: Unspecified

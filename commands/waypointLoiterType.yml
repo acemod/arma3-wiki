@@ -3,11 +3,10 @@ desc: Gets the waypoint loiter type. Waypoint uses format [[Waypoint]].
 groups:
 - Waypoints
 syntax:
-- call: !Unary waypoint
-  ret:
+- ret:
     type: String
-  params:
-  - name: waypoint
+  right: !Item
+    name: waypoint
     type: Waypoint
 argument_loc: Unspecified
 effect_loc: Unspecified

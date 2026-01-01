@@ -3,11 +3,10 @@ desc: Returns selected units in source group for normal commanding mode (individ
 groups:
 - Interaction
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

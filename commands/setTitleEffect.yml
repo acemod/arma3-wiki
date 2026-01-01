@@ -4,15 +4,10 @@ groups:
 - Triggers
 - Waypoints
 syntax:
-- call: !Binary
-  - triggerOrWaypoint
-  - - type
-    - effect
-    - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: triggerOrWaypoint
+  left: !Item
+    name: triggerOrWaypoint
     type: !OneOf
     - type: Object
       desc: null
@@ -20,7 +15,9 @@ syntax:
     - type: Waypoint
       desc: null
       since: null
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     type: !StringEnum
     - value: NONE
       desc: null
@@ -34,9 +31,11 @@ syntax:
     - value: TEXT
       desc: null
       since: null
-  - name: effect
+  - !Item
+    name: effect
     type: String
-  - name: text
+  - !Item
+    name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,11 +3,10 @@ desc: Gets the radius around the waypoint where the waypoint is completed.
 groups:
 - Waypoints
 syntax:
-- call: !Unary waypoint
-  ret:
+- ret:
     type: Number
-  params:
-  - name: waypoint
+  right: !Item
+    name: waypoint
     desc: format [[Waypoint]]
     type: ArrayUnknown
 argument_loc: Unspecified

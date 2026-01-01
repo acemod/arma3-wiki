@@ -3,12 +3,11 @@ desc: Converts data to {{Link|https://en.wikipedia.org/wiki/JSON|JSON}}.
 groups:
 - Strings
 syntax:
-- call: !Unary data
-  ret:
+- ret:
     type: String
     desc: JSON string
-  params:
-  - name: data
+  right: !Item
+    name: data
     desc: Only certain [[Data Types]] are supported
     type: !OneOf
     - type: Boolean

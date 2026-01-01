@@ -10,15 +10,13 @@ problem_notes:
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - heading
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: heading
+  right: !Item
+    name: heading
     type: Number
 argument_loc: Local
 effect_loc: Global

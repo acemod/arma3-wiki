@@ -3,15 +3,13 @@ desc: "Show the edit object dialog for the given object. \n{{Feature|informative
 groups:
 - Game 2 Editor
 syntax:
-- call: !Binary
-  - map
-  - object
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: object
+  right: !Item
+    name: object
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,8 +3,7 @@ desc: Returns various properties for the given entity. Most properties should be
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: Unknown
     desc: |-
       isMan [[Boolean]] - [[true]] if the entity is a man
@@ -22,19 +21,17 @@ syntax:
       * 12 - isWreck: [[Boolean]] - [[true]] if the entity is wreck.
       * 13 - isSmoking: [[Boolean]] - [[true]] if the entity has smoke and fire destruction effect active.
       * 14 - isSetForDeletion: [[Boolean]] - [[true]] if the entity was set for deletion, but is not yet removed from the simulation. Simple Object is supported.
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     type: Object
-- call: !Binary
-  - entity
-  - index
-  ret:
+- ret:
     type: Anything
     desc: depends on the requested property, or [[Nothing]]
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     type: Object
-  - name: index
+  right: !Item
+    name: index
     desc: property index (see {{Link|Syntax 1|main syntax}})
     type: Number
 argument_loc: Unspecified

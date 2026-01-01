@@ -3,11 +3,10 @@ desc: Removes all icons from group.
 groups:
 - High Command
 syntax:
-- call: !Unary group
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  right: !Item
+    name: group
     type: Group
 argument_loc: Unspecified
 effect_loc: Unspecified

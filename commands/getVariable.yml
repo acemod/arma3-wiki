@@ -5,10 +5,7 @@ groups:
 - Namespaces
 - Multiplayer
 syntax:
-- call: !Binary
-  - varspace
-  - name
-  ret:
+- ret:
     type: !OneOf
     - type: Anything
       desc: null
@@ -16,26 +13,26 @@ syntax:
     - type: Nothing
       desc: null
       since: null
-  params:
-  - name: varspace
+  left: !Item
+    name: varspace
     type: Unknown
-  - name: name
+  right: !Item
+    name: name
     desc: variable name in given namespace
     type: String
-- call: !Binary
-  - varspace
-  - - name
-    - defaultValue
-  ret:
+- ret:
     type: Anything
     desc: current value of the variable or ''defaultValue'' if the variable doesn't exist.
-  params:
-  - name: varspace
+  left: !Item
+    name: varspace
     type: Unknown
-  - name: name
+  right: !Array
+  - !Item
+    name: name
     desc: variable name in given namespace
     type: String
-  - name: defaultValue
+  - !Item
+    name: defaultValue
     desc: value to return if variable doesn't exist {{Feature|warning|A dynamic ''defaultValue'' e.g <sqf inline>random 500</sqf> will always be executed, even if the variable is defined.}}
     type: Anything
 argument_loc: Global

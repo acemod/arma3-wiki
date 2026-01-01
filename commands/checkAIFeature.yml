@@ -3,12 +3,11 @@ desc: Checks if the given AI feature is currently enabled.
 groups:
 - AI Behaviour
 syntax:
-- call: !Unary feature
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if is enabled'
-  params:
-  - name: feature
+  right: !Item
+    name: feature
     type: !StringEnum
     - value: AwareFormationSoft
       desc: null
@@ -19,17 +18,15 @@ syntax:
     - value: AI skill - see {{Link|disableAI#Syntax 1}} (since {{arma3}} v1.96)
       desc: null
       since: null
-- call: !Binary
-  - unit
-  - feature
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if is enabled'
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit to test AI feature for
     type: Object
-  - name: feature
+  right: !Item
+    name: feature
     desc: '[[disableAI]] / [[enableAI]] feature'
     type: String
   since:

@@ -20,13 +20,12 @@ multiplayer_note: '{{Feature|arma3|This command is ~5 times faster on a dedicate
 groups:
 - Object Detection
 syntax:
-- call: !Unary type
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
-  params:
-  - name: type
+  right: !Item
+    name: type
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

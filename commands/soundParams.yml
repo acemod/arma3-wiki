@@ -3,11 +3,10 @@ desc: Returns various params for the given sound
 groups:
 - Sounds
 syntax:
-- call: !Unary id
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: id
+  right: !Item
+    name: id
     desc: id returned by [[playSoundUI]] and [[playSound3D]] commands, -1 to return all currently playing ids
     type: Number
 argument_loc: Unspecified

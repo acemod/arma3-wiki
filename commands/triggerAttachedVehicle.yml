@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Triggers
 syntax:
-- call: !Unary trigger
-  ret:
+- ret:
     type: Object
-  params:
-  - name: trigger
+  right: !Item
+    name: trigger
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

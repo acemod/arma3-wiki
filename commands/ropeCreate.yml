@@ -8,24 +8,16 @@ desc: |-
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Unary
-  - fromObject
-  - fromPoint
-  - toObject
-  - toPoint
-  - length
-  - ropeStart
-  - ropeEnd
-  - ropeType
-  - nSegments
-  ret:
+- ret:
     type: Object
     desc: created rope or [[objNull]] on failure
-  params:
-  - name: fromObject
+  right: !Array
+  - !Item
+    name: fromObject
     desc: '[[ropeCreate/transport | transport]] where the rope originates and which fly behavior will be affected'
     type: Object
-  - name: fromPoint
+  - !Item
+    name: fromPoint
     desc: position for the rope start, either a memory point [[String]] or relative offset [[Array]]
     type: !OneOf
     - type: String
@@ -34,10 +26,12 @@ syntax:
     - type: ArrayUnknown
       desc: null
       since: null
-  - name: toObject
+  - !Item
+    name: toObject
     desc: entity which is automatically [[ropeAttachTo | attached to]] the end of the rope
     type: Object
-  - name: toPoint
+  - !Item
+    name: toPoint
     desc: position for the rope end, either a memory point [[String]] or relative offset [[Array]]
     type: !OneOf
     - type: String
@@ -46,12 +40,14 @@ syntax:
     - type: ArrayUnknown
       desc: null
       since: null
-  - name: length
+  - !Item
+    name: length
     desc: rope length in meters
     type: Number
     optional: true
     default: '-1'
-  - name: ropeStart
+  - !Item
+    name: ropeStart
     type: !OneOf
     - type: ArrayUnknown
       desc: null
@@ -69,7 +65,8 @@ syntax:
       desc: null
       since: null
     optional: true
-  - name: ropeEnd
+  - !Item
+    name: ropeEnd
     type: !OneOf
     - type: ArrayUnknown
       desc: null
@@ -87,36 +84,32 @@ syntax:
       desc: null
       since: null
     optional: true
-  - name: ropeType
+  - !Item
+    name: ropeType
     desc: '- rope type, {{hl|CfgVehicles}}'' classname'
     type: String
     optional: true
     default: '"Rope"'
     since:
       arma3: '2.6'
-  - name: nSegments
+  - !Item
+    name: nSegments
     desc: '- number of rope segments (max 63)'
     type: Number
     optional: true
     default: '-1'
     since:
       arma3: '2.14'
-- call: !Unary
-  - fromObject
-  - fromPoint
-  - length
-  - ropeStart
-  - ropeEnd
-  - ropeType
-  - nSegments
-  ret:
+- ret:
     type: Object
     desc: created rope or [[objNull]] on failure
-  params:
-  - name: fromObject
+  right: !Array
+  - !Item
+    name: fromObject
     desc: '[[ropeCreate/transport | transport]] where the rope originates and which fly behavior will be affected'
     type: Object
-  - name: fromPoint
+  - !Item
+    name: fromPoint
     desc: position for the rope start, either a memory point [[String]] or relative offset [[Array]]
     type: !OneOf
     - type: String
@@ -125,10 +118,12 @@ syntax:
     - type: ArrayUnknown
       desc: null
       since: null
-  - name: length
+  - !Item
+    name: length
     desc: rope length in meters
     type: Number
-  - name: ropeStart
+  - !Item
+    name: ropeStart
     type: !OneOf
     - type: ArrayUnknown
       desc: null
@@ -146,7 +141,8 @@ syntax:
       desc: null
       since: null
     optional: true
-  - name: ropeEnd
+  - !Item
+    name: ropeEnd
     type: !ArraySized
       types:
       - name: ropeEndType
@@ -159,14 +155,16 @@ syntax:
         since: null
       desc: ''
     optional: true
-  - name: ropeType
+  - !Item
+    name: ropeType
     desc: '- rope type, {{hl|CfgVehicles}}'' classname'
     type: String
     optional: true
     default: '"Rope"'
     since:
       arma3: '2.6'
-  - name: nSegments
+  - !Item
+    name: nSegments
     desc: '- number of rope segments (max 63)'
     type: Number
     optional: true

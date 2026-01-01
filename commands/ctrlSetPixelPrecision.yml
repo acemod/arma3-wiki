@@ -3,15 +3,13 @@ desc: Switches mode of pixel precision (rounding) in a given control interface.
 groups:
 - GUI Control - Positioning
 syntax:
-- call: !Binary
-  - control
-  - mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: mode
+  right: !Item
+    name: mode
     type: !OneOf
     - type: Number
       desc: null

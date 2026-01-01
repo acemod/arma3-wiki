@@ -6,15 +6,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - vector
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: vector
+  right: !Item
+    name: vector
     type: Unknown
 argument_loc: Local
 effect_loc: Global

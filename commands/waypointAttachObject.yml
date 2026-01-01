@@ -9,26 +9,22 @@ desc: |-
 groups:
 - Waypoints
 syntax:
-- call: !Binary
-  - waypoint
-  - objectID
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: waypoint
+  left: !Item
+    name: waypoint
     desc: format [[Waypoint]]
     type: ArrayUnknown
-  - name: objectID
+  right: !Item
+    name: objectID
     type: Number
-- call: !Binary
-  - waypoint
-  - object
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: waypoint
+  left: !Item
+    name: waypoint
     type: Waypoint
-  - name: object
+  right: !Item
+    name: object
     desc: static object
     type: Object
 argument_loc: Unspecified

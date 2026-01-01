@@ -4,11 +4,10 @@ groups:
 - Event Handlers
 - High Command
 syntax:
-- call: !Unary code
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: code
+  right: !Item
+    name: code
     type: !OneOf
     - type: Code
       desc: null

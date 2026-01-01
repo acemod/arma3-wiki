@@ -4,13 +4,10 @@ groups:
 - Unit Control
 - Groups
 syntax:
-- call: !Binary
-  - group
-  - target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: group
+  left: !Item
+    name: group
     desc: group itself or unit in a group
     type: !OneOf
     - type: Group
@@ -19,7 +16,8 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: target
+  right: !Item
+    name: target
     desc: group target
     type: Object
 argument_loc: Local

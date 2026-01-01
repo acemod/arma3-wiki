@@ -14,19 +14,18 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - control
-  - - vScrollValue
-    - hScrollValue
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: vScrollValue
+  right: !Array
+  - !Item
+    name: vScrollValue
     desc: vertical scroll value in 0..1 range. -1 to skip
     type: Number
-  - name: hScrollValue
+  - !Item
+    name: hScrollValue
     desc: horizontal scroll value in 0..1 range. -1 to skip
     type: Number
 argument_loc: Unspecified

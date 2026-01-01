@@ -3,16 +3,14 @@ desc: Sets the height of a 2D control. [[ctrlCommit]] is required to complete th
 groups:
 - GUI Control - Positioning
 syntax:
-- call: !Binary
-  - control
-  - h
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     desc: 2D control
     type: Control
-  - name: h
+  right: !Item
+    name: h
     desc: height of the control
     type: Number
 argument_loc: Unspecified

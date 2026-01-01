@@ -4,11 +4,10 @@ groups:
 - Unit Control
 - Object Manipulation
 syntax:
-- call: !Unary vehicle
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  right: !Item
+    name: vehicle
     desc: the vehicle
     type: Object
 argument_loc: Local

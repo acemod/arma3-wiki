@@ -6,12 +6,11 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary condition
-  ret:
+- ret:
     type: Boolean
     desc: mirrors condition
-  params:
-  - name: condition
+  right: !Item
+    name: condition
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

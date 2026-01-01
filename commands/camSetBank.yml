@@ -6,15 +6,13 @@ groups:
 - Broken Commands
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - bank
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     type: Object
-  - name: bank
+  right: !Item
+    name: bank
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

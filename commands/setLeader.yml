@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Teams
 syntax:
-- call: !Binary
-  - team
-  - leader
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: team
+  left: !Item
+    name: team
     type: TeamMember
-  - name: leader
+  right: !Item
+    name: leader
     type: TeamMember
 argument_loc: Local
 effect_loc: Local

@@ -15,34 +15,31 @@ desc: |-
 groups:
 - Game 2 Editor
 syntax:
-- call: !Binary
-  - map
-  - - objects
-    - editorType
-    - condition
-    - scope
-    - subordinatesAlso
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: '[objects, editorType, condition, scope, subordinatesAlso]'
-    type: ArrayUnknown
-  - name: objects
+  right: !Array
+  - !Item
+    name: objects
     type: !ArrayUnsized
       type: !OneOf
       - type: Object
         desc: null
         since: null
       desc: ''
-  - name: editorType
+  - !Item
+    name: editorType
     type: String
-  - name: condition
+  - !Item
+    name: condition
     type: String
-  - name: scope
+  - !Item
+    name: scope
     type: String
-  - name: subordinatesAlso
+  - !Item
+    name: subordinatesAlso
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

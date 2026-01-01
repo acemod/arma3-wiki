@@ -5,12 +5,11 @@ desc: |-
 groups:
 - Remote Control
 syntax:
-- call: !Unary person
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if the given player is remote controlling a unit'
-  params:
-  - name: person
+  right: !Item
+    name: person
     desc: a player
     type: Object
 argument_loc: Local

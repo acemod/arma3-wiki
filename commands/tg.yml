@@ -3,11 +3,10 @@ desc: Identical to [[tan]]
 groups:
 - Math - Geometry
 syntax:
-- call: !Unary x
-  ret:
+- ret:
     type: Number
-  params:
-  - name: x
+  right: !Item
+    name: x
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

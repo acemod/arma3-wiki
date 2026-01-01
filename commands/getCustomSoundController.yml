@@ -3,16 +3,15 @@ desc: Returns current value set to the controller (see [[setCustomSoundControlle
 groups:
 - Sounds
 syntax:
-- call: !Unary
-  - vehicle
-  - controller
-  ret:
+- ret:
     type: Number
-  params:
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     desc: a transport type vehicle. Does not work on characters or buildings
     type: Object
-  - name: controller
+  - !Item
+    name: controller
     desc: name of custom sound controller - needs to be full string e.g "CustomSoundController1". It goes from "CustomSoundController1" to "CustomSoundController32"
     type: String
 argument_loc: Unspecified

@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Game 2 Editor
 syntax:
-- call: !Binary
-  - map
-  - type
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: type
+  right: !Item
+    name: type
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

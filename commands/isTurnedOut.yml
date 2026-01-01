@@ -3,11 +3,10 @@ desc: Returns [[true]] if given unit is turned out, otherwise [[false]]. The out
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: unit on turn(in/out) enabled turret
     type: Object
 argument_loc: Unspecified

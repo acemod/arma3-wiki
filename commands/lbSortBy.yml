@@ -10,17 +10,10 @@ desc: |-
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Binary
-  - controlOrIDC
-  - - sortByType
-    - reversedOrder
-    - caseSensitive
-    - useTextRight
-    - unicodeOff
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: controlOrIDC
+  left: !Item
+    name: controlOrIDC
     desc: the ListBox control or its IDC
     type: !OneOf
     - type: Control
@@ -29,7 +22,9 @@ syntax:
     - type: Number
       desc: null
       since: null
-  - name: sortByType
+  right: !Array
+  - !Item
+    name: sortByType
     type: !StringEnum
     - value: TEXT
       desc: null
@@ -41,22 +36,26 @@ syntax:
       desc: null
       since: null
     optional: true
-  - name: reversedOrder
+  - !Item
+    name: reversedOrder
     desc: '[[true]] for sorting in reversed order'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: caseSensitive
+  - !Item
+    name: caseSensitive
     desc: '[[true]] for using case-sensitive comparison'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: useTextRight
+  - !Item
+    name: useTextRight
     desc: '[[true]] to sort by [[lbSetTextRight | text right]]'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: unicodeOff
+  - !Item
+    name: unicodeOff
     desc: '[[true]] to switch off UNICODE conversion for faster sorting'
     type: Boolean
     optional: true

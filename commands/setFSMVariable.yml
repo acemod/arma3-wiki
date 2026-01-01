@@ -5,20 +5,19 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Binary
-  - handle
-  - - name
-    - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: handle
+  left: !Item
+    name: handle
     desc: FSM handle
     type: Number
-  - name: name
+  right: !Array
+  - !Item
+    name: name
     desc: name of the FSM variable
     type: String
-  - name: value
+  - !Item
+    name: value
     desc: new value of the FSM variable
     type: Anything
 argument_loc: Unspecified

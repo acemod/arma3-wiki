@@ -3,15 +3,13 @@ desc: Sets fuel amount in cargo space of refuel vehicles. Note that the carrying
 groups:
 - Vehicle Inventory
 syntax:
-- call: !Binary
-  - vehicle
-  - amount
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: amount
+  right: !Item
+    name: amount
     type: !NumberRange
     - 0
     - 1

@@ -3,20 +3,19 @@ desc: This command sets random heading on the player's compass (both in map and 
 groups:
 - Interaction
 syntax:
-- call: !Unary
-  - angle
-  - frequencyMin
-  - frequencyMax
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: angle
+  right: !Array
+  - !Item
+    name: angle
     desc: heading deviation angle in [[rad]]ians; the random angle will be picked up from {{hl|[-angle...+angle]}} range
     type: Number
-  - name: frequencyMin
+  - !Item
+    name: frequencyMin
     desc: lower bound of heading change in seconds
     type: Number
-  - name: frequencyMax
+  - !Item
+    name: frequencyMax
     desc: higher bound of heading change in seconds
     type: Number
 argument_loc: Unspecified

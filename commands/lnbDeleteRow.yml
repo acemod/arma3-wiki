@@ -3,15 +3,13 @@ desc: Removes row with the given index from the given listbox or combobox.
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Binary
-  - _ctrl
-  - row
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: _ctrl
+  left: !Item
+    name: _ctrl
     type: Control
-  - name: row
+  right: !Item
+    name: row
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

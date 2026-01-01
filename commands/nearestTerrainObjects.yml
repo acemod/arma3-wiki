@@ -3,19 +3,14 @@ desc: "Returns a list of nearest terrain objects of the given types to the given
 groups:
 - Object Detection
 syntax:
-- call: !Unary
-  - position
-  - types
-  - radius
-  - sort
-  - 2Dmode
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
     desc: Before {{arma3}} v2.00 this command did not return roads of type {{hl|"ROAD"}}, {{hl|"MAIN ROAD"}}, {{hl|"TRACK"}}, {{hl|"TRAIL"}}
-  params:
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     desc: where to find objects, center position
     type: !OneOf
     - type: Object
@@ -27,20 +22,24 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: types
+  - !Item
+    name: types
     desc: list of case-insensitive types of the objects to search for. {{hl|[]}} to search without filters
     type: ArrayUnknown
-  - name: radius
+  - !Item
+    name: radius
     desc: range from center position to search for objects
     type: Number
-  - name: sort
+  - !Item
+    name: sort
     desc: sort objects by distance to the center or not - setting to [[false]] '''greatly''' improves performance
     type: Boolean
     optional: true
     default: '[[true]]'
     since:
       arma3: '1.62'
-  - name: 2Dmode
+  - !Item
+    name: 2Dmode
     desc: 'the object search and sorting mode: [[true]] - 2D, [[false]] - 3D'
     type: Boolean
     optional: true

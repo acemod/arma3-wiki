@@ -3,11 +3,10 @@ desc: Checks whether the given FSM is completed. The FSM handle is the number re
 groups:
 - System
 syntax:
-- call: !Unary fsmHandle
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: fsmHandle
+  right: !Item
+    name: fsmHandle
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

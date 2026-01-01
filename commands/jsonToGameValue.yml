@@ -3,11 +3,10 @@ desc: Try to convert the provided JSON to game value.
 groups:
 - Argo
 syntax:
-- call: !Unary json
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: json
+  right: !Item
+    name: json
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

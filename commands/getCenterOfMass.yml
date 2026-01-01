@@ -3,12 +3,11 @@ desc: Returns center of mass of an object.
 groups:
 - PhysX
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[x,y,z] offset relative to the model centre'
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: PhysX object
     type: Object
 argument_loc: Global

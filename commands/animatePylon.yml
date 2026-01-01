@@ -4,17 +4,14 @@ groups:
 - Animations
 - Vehicle Loadouts
 syntax:
-- call: !Binary
-  - vehicle
-  - - pylon
-    - animphase
-    - instant
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: pylon
+  right: !Array
+  - !Item
+    name: pylon
     desc: pylon index (index starts from 1) or pylon name (see {{Link|getCompatiblePylonMagazines#Example 3}})
     type: !OneOf
     - type: Number
@@ -23,10 +20,12 @@ syntax:
     - type: String
       desc: null
       since: null
-  - name: animphase
+  - !Item
+    name: animphase
     desc: animation phase in range 0..1
     type: Number
-  - name: instant
+  - !Item
+    name: instant
     desc: animate immediately
     type: Boolean
     optional: true

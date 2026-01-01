@@ -4,16 +4,15 @@ groups:
 - Eden Editor
 - Event Handlers
 syntax:
-- call: !Unary
-  - type
-  - code
-  ret:
+- ret:
     type: Number
-  params:
-  - name: type
+  right: !Array
+  - !Item
+    name: type
     desc: 'see [[Arma 3: Event Handlers: Eden Editor|Eden Editor Event Handler]]'
     type: String
-  - name: code
+  - !Item
+    name: code
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -5,12 +5,11 @@ alias:
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Number
     desc: the returned number in range (healthy) 0..1 (dead).
-  params:
-  - name: object
+  right: !Item
+    name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

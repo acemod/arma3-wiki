@@ -3,10 +3,7 @@ desc: Get array of compatible pylon magazines
 groups:
 - Vehicle Loadouts
 syntax:
-- call: !Binary
-  - vehicle
-  - pylon
-  ret:
+- ret:
     type: !OneOf
     - type: !ArrayUnsized
         type: String
@@ -20,8 +17,8 @@ syntax:
         desc: ''
       desc: null
       since: null
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: aircraft object or config class
     type: !OneOf
     - type: Object
@@ -30,7 +27,8 @@ syntax:
     - type: String
       desc: null
       since: null
-  - name: pylon
+  right: !Item
+    name: pylon
     type: !OneOf
     - type: String
       desc: pylon class name from {{hl|TransportPylonsComponent &gt;&gt; pylons}} class

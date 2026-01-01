@@ -3,20 +3,19 @@ desc: Sets vehicle and instigator pair for the given projectile.
 groups:
 - Weapons
 syntax:
-- call: !Binary
-  - projectile
-  - - vehicle
-    - instigator
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: projectile
+  left: !Item
+    name: projectile
     desc: the actual projectile shot
     type: Object
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     desc: vehicle shooting projectile (appears as the 'killer' in "Killed" EH)
     type: Object
-  - name: instigator
+  - !Item
+    name: instigator
     desc: person pulling the trigger (appears as the 'instigator' in "Killed" EH)
     type: Object
 argument_loc: Global

@@ -54,11 +54,10 @@ groups:
 - System
 - Environment
 syntax:
-- call: !Unary distance
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: distance
+  right: !Item
+    name: distance
     desc: distance in metres; {{GVI|arma3|1.00|size= 0.75}} a negative value resets the view distance to user video setting
     type: Number
 argument_loc: Unspecified

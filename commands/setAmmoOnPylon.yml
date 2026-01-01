@@ -3,16 +3,14 @@ desc: Set count of ammo in magazine on pylon (supports pylon name since Arma 3 v
 groups:
 - Vehicle Loadouts
 syntax:
-- call: !Binary
-  - vehicle
-  - - pylon
-    - ammocount
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: pylon
+  right: !Array
+  - !Item
+    name: pylon
     desc: pylon index (index starts from 1) or pylon name (see [[getCompatiblePylonMagazines]] Example 4)
     type: !OneOf
     - type: Number
@@ -21,7 +19,8 @@ syntax:
     - type: String
       desc: null
       since: null
-  - name: ammocount
+  - !Item
+    name: ammocount
     desc: ammo count
     type: Number
 argument_loc: Unspecified

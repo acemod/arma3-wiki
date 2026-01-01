@@ -4,14 +4,13 @@ groups:
 - Groups
 - Object Detection
 syntax:
-- call: !Unary type
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
     desc: if ''type'' is a destroyed object, an empty array is returned
-  params:
-  - name: type
+  right: !Item
+    name: type
     type: !OneOf
     - type: Group
       desc: null

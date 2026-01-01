@@ -6,16 +6,14 @@ desc: |-
 groups:
 - RTD
 syntax:
-- call: !Binary
-  - helicopterRTD
-  - charge
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: helicopterRTD
+  left: !Item
+    name: helicopterRTD
     desc: helicopter
     type: Unknown
-  - name: charge
+  right: !Item
+    name: charge
     desc: battery charge level
     type: Number
 argument_loc: Unspecified

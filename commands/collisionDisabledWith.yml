@@ -3,14 +3,13 @@ desc: Returns the object, given object has collision disabled with and whether o
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary obj
-  ret:
+- ret:
     type: Unknown
     desc: |-
       the object, ''obj'' has collision disabled with, or [[objNull]]
       * mutual: [[Boolean]] - [[true]] if ''other'' has also disabled collision with ''obj'', [[false]] otherwise
-  params:
-  - name: obj
+  right: !Item
+    name: obj
     desc: given object
     type: Object
 argument_loc: Global

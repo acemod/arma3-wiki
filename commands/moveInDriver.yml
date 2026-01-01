@@ -7,15 +7,13 @@ multiplayer_note: '''''unit'''' must be [[Multiplayer Scripting#Locality|local]]
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unit
-  - vehicle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: vehicle
+  right: !Item
+    name: vehicle
     type: Object
 argument_loc: Local
 effect_loc: Global

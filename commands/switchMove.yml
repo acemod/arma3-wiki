@@ -21,44 +21,41 @@ multiplayer_note: |-
 groups:
 - Animations
 syntax:
-- call: !Binary
-  - person
-  - moveName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: person
+  left: !Item
+    name: person
     desc: unit
     type: Object
-  - name: moveName
+  right: !Item
+    name: moveName
     desc: animation state (see [[animationState]])
     type: String
-- call: !Binary
-  - person
-  - - moveName
-    - time
-    - blendFactor
-    - resetAim
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: person
+  left: !Item
+    name: person
     desc: unit
     type: Object
-  - name: moveName
+  right: !Array
+  - !Item
+    name: moveName
     desc: entry from {{hl|"CfgMovesMaleSdr" >> "states"}} or {{hl|"CfgGesturesMale" >> "states"}}
     type: String
-  - name: time
+  - !Item
+    name: time
     desc: normalized time, in range 0..1, where 0 = beginning of the animation, and 1 = end of the animation
     type: Number
     optional: true
     default: '0'
-  - name: blendFactor
+  - !Item
+    name: blendFactor
     desc: how much to blend the current animation with the new animation, in range 0..1, where 0 = current animation, and 1 = new animation. When 1 is used, the switching is instant (not smooth), similar to the first syntax.
     type: Number
     optional: true
     default: '1'
-  - name: resetAim
+  - !Item
+    name: resetAim
     desc: whether the aim/head direction should be reset after switching
     type: Boolean
     optional: true

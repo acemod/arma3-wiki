@@ -6,19 +6,18 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - - distance
-    - blur
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     type: Object
-  - name: distance
+  right: !Array
+  - !Item
+    name: distance
     desc: blur distance
     type: Number
-  - name: blur
+  - !Item
+    name: blur
     desc: blur intensity
     type: Number
 argument_loc: Unspecified

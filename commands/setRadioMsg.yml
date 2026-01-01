@@ -4,15 +4,13 @@ groups:
 - Triggers
 - Interaction
 syntax:
-- call: !Binary
-  - index
-  - text
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: index
+  left: !Item
+    name: index
     type: Unknown
-  - name: text
+  right: !Item
+    name: text
     type: String
 argument_loc: Unspecified
 effect_loc: Local

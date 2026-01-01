@@ -6,15 +6,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - vehicle
-  - velocity
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: velocity
+  right: !Item
+    name: velocity
     desc: relative velocity vector
     type: Unknown
 argument_loc: Local

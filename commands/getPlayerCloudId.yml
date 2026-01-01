@@ -4,12 +4,11 @@ multiplayer_note: '{{Feature|important|Only works in multiplayer and on official
 groups:
 - Argo
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: String
     desc: the Cloud ID or empty string if in single player or if ''unit'' is not a live player unit
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     desc: the player unit from whom to obtain the Cloud ID
     type: Object
 argument_loc: Global

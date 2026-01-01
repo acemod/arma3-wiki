@@ -8,11 +8,10 @@ desc: |-
 groups:
 - Roads and Airports
 syntax:
-- call: !Unary road
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: road
+  right: !Item
+    name: road
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

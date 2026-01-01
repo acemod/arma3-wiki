@@ -3,12 +3,11 @@ desc: Returns array of the starting topic and hint the given field manual should
 groups:
 - System
 syntax:
-- call: !Unary display
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[starting topic, hint]'
-  params:
-  - name: display
+  right: !Item
+    name: display
     type: Display
 argument_loc: Unspecified
 effect_loc: Unspecified

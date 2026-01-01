@@ -3,12 +3,11 @@ desc: Checks if a soldier's hands are hit, which results in inaccurate aiming.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: Number
     desc: if the hands are not damaged, the returned value is 0. If the hands are hit or the unit is dead, the returned value is 1.
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

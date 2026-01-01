@@ -3,12 +3,11 @@ desc: Checks if [[Code]] or a variable was compiled final with [[compileFinal]].
 groups:
 - Variables
 syntax:
-- call: !Unary variable
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if final, [[false]] if not'
-  params:
-  - name: variable
+  right: !Item
+    name: variable
     type: !OneOf
     - type: Code
       desc: null

@@ -3,12 +3,11 @@ desc: Returns true if the waypoint behavior is forced.
 groups:
 - Waypoints
 syntax:
-- call: !Unary waypoint
-  ret:
+- ret:
     type: Boolean
     desc: is forced
-  params:
-  - name: waypoint
+  right: !Item
+    name: waypoint
     type: Waypoint
 argument_loc: Unspecified
 effect_loc: Unspecified

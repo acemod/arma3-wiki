@@ -3,11 +3,10 @@ desc: Return number of magazines of type name in magazine pool (used in campaign
 groups:
 - Weapon Pool
 syntax:
-- call: !Unary name
-  ret:
+- ret:
     type: Number
-  params:
-  - name: name
+  right: !Item
+    name: name
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

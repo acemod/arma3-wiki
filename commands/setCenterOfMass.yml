@@ -3,30 +3,27 @@ desc: Changes the center of mass of an object smoothly during the given time (in
 groups:
 - PhysX
 syntax:
-- call: !Binary
-  - myObject
-  - - centerOfMass
-    - time
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: myObject
+  left: !Item
+    name: myObject
     type: Object
-  - name: centerOfMass
+  right: !Array
+  - !Item
+    name: centerOfMass
     desc: '[x,y,z] offset relative to the model centre'
     type: ArrayUnknown
-  - name: time
+  - !Item
+    name: time
     desc: transition time, 0 for instant center of mass transfer
     type: Number
-- call: !Binary
-  - myObject
-  - centerOfMass
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: myObject
+  left: !Item
+    name: myObject
     type: Object
-  - name: centerOfMass
+  right: !Item
+    name: centerOfMass
     desc: '[x,y,z] offset relative to the model centre'
     type: ArrayUnknown
 argument_loc: Local

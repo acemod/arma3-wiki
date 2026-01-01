@@ -9,18 +9,15 @@ desc: |-
 groups:
 - Waypoints
 syntax:
-- call: !Unary
-  - side
-  - position
-  - objectMapID
-  - vehicle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: side
+  right: !Array
+  - !Item
+    name: side
     desc: the side which will be guarding
     type: Side
-  - name: position
+  - !Item
+    name: position
     type: !OneOf
     - type: Object
       desc: null
@@ -34,10 +31,12 @@ syntax:
     - type: Position3d
       desc: null
       since: null
-  - name: objectMapID
+  - !Item
+    name: objectMapID
     desc: static id of map object. -1 to ignore
     type: Number
-  - name: vehicle
+  - !Item
+    name: vehicle
     desc: vehicle to be used for position. [[objNull]] to ignore
     type: Object
 argument_loc: Unspecified

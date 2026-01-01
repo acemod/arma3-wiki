@@ -3,16 +3,14 @@ desc: Forces the vehicle to stay on road.
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - vehicle
-  - state
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: vehicle
     type: Object
-  - name: state
+  right: !Item
+    name: state
     desc: 'true: Force on road, false: default behaviour'
     type: Boolean
 argument_loc: Unspecified

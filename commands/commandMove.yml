@@ -4,13 +4,10 @@ multiplayer_note: When used on a remote unit, this command will still create a r
 groups:
 - Groups
 syntax:
-- call: !Binary
-  - unitName
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  left: !Item
+    name: unitName
     type: !OneOf
     - type: Object
       desc: null
@@ -20,7 +17,8 @@ syntax:
         desc: ''
       desc: null
       since: null
-  - name: position
+  right: !Item
+    name: position
     type: Position
 argument_loc: Local
 effect_loc: Global

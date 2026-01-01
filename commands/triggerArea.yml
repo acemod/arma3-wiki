@@ -5,8 +5,7 @@ desc: |-
 groups:
 - Triggers
 syntax:
-- call: !Unary trigger
-  ret:
+- ret:
     type: Unknown
     desc: |-
       trigger area X size / 2
@@ -14,8 +13,8 @@ syntax:
       * angle: [[Number]] in range 0..360
       * isRectangle: [[Boolean]]
       * c: [[Number]] - trigger area Z size / 2 (since {{arma3}} v1.60)
-  params:
-  - name: trigger
+  right: !Item
+    name: trigger
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

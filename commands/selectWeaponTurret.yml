@@ -3,29 +3,28 @@ desc: Selects the given weapon on the specified turret. Use turret path [-1] for
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - - weapon
-    - turretPath
-    - muzzle
-    - firemode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: weapon
+  right: !Array
+  - !Item
+    name: weapon
     desc: weapon class name or (since {{GVI|arma3|1.64|size= 0.75}}) muzzle class name
     type: String
-  - name: turretPath
+  - !Item
+    name: turretPath
     type: TurretPath
-  - name: muzzle
+  - !Item
+    name: muzzle
     desc: muzzle name
     type: String
     optional: true
     since:
       arma3: '2.8'
-  - name: firemode
+  - !Item
+    name: firemode
     desc: firemode name
     type: String
     optional: true

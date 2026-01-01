@@ -3,20 +3,19 @@ desc: Returns current ammo round reloading phase. For a magazine reloading phase
 groups:
 - Weapons
 syntax:
-- call: !Binary
-  - vehicle
-  - - gunner
-    - muzzleName
-  ret:
+- ret:
     type: Number
     desc: ammo round reload phase in range 0..1; -1 when N/A
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: gunner
+  right: !Array
+  - !Item
+    name: gunner
     desc: gunner of desired turret
     type: Object
-  - name: muzzleName
+  - !Item
+    name: muzzleName
     desc: muzzle on desired turret
     type: String
 argument_loc: Unspecified

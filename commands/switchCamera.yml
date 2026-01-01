@@ -15,21 +15,18 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - target
-  - mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: target
+  left: !Item
+    name: target
     type: Object
-  - name: mode
+  right: !Item
+    name: mode
     type: String
-- call: !Unary target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: target
+  right: !Item
+    name: target
     type: Object
   since:
     arma3: '1.66'

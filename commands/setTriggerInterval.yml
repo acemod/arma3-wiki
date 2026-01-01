@@ -7,16 +7,14 @@ multiplayer_note: Interval changes are local.
 groups:
 - Triggers
 syntax:
-- call: !Binary
-  - trigger
-  - interval
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: trigger
+  left: !Item
+    name: trigger
     desc: trigger object
     type: Object
-  - name: interval
+  right: !Item
+    name: interval
     desc: interval in seconds with which trigger condition is checked
     type: Number
 argument_loc: Global

@@ -3,42 +3,42 @@ desc: Sets the color of the right picture when it is selected.
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: row
-    desc: index of the row
-    type: Number
-  - name: column
-    desc: index of the column
-    type: Number
-  - name: color
+  - !Array
+    - !Item
+      name: row
+      desc: index of the row
+      type: Number
+    - !Item
+      name: column
+      desc: index of the column
+      type: Number
+  - !Item
+    name: color
     desc: color RGBA
     type: ArrayUnknown
-- call: !Binary
-  - ctrl
-  - - - row
-      - column
-    - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: row
-    desc: index of the row
-    type: Number
-  - name: column
-    desc: index of the column
-    type: Number
-  - name: color
+  right: !Array
+  - !Array
+    - !Item
+      name: row
+      desc: index of the row
+      type: Number
+    - !Item
+      name: column
+      desc: index of the column
+      type: Number
+  - !Item
+    name: color
     desc: color RGBA
     type: ArrayUnknown
 argument_loc: Unspecified

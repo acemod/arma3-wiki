@@ -5,13 +5,11 @@ alias:
 groups:
 - Waypoints
 syntax:
-- call: !Unary
-  - groupOrUnit
-  - index
-  ret:
+- ret:
     type: Position3dAGL
-  params:
-  - name: groupOrUnit
+  right: !Array
+  - !Item
+    name: groupOrUnit
     type: !OneOf
     - type: Group
       desc: null
@@ -19,7 +17,8 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: index
+  - !Item
+    name: index
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,11 +3,10 @@ desc: "Check if version of application is available. If the current version is o
 groups:
 - System
 syntax:
-- call: !Unary version
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: version
+  right: !Item
+    name: version
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

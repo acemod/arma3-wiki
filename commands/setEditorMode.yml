@@ -3,15 +3,13 @@ desc: "Sets map mode to MAP,3D or PREVIEW. \n{{Feature|informative|Some Old Edit
 groups:
 - Game 2 Editor
 syntax:
-- call: !Binary
-  - map
-  - mode
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  left: !Item
+    name: map
     type: Control
-  - name: mode
+  right: !Item
+    name: mode
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -16,11 +16,10 @@ multiplayer_note: |-
 groups:
 - Difficulty
 syntax:
-- call: !Unary flagName
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: flagName
+  right: !Item
+    name: flagName
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

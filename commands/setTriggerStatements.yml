@@ -3,22 +3,21 @@ desc: Defines trigger condition, activation and deactivation statements. Trigger
 groups:
 - Triggers
 syntax:
-- call: !Binary
-  - trigger
-  - - condition
-    - activation
-    - deactivation
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: trigger
+  left: !Item
+    name: trigger
     desc: trigger object
     type: Object
-  - name: condition
+  right: !Array
+  - !Item
+    name: condition
     type: Unknown
-  - name: activation
+  - !Item
+    name: activation
     type: Unknown
-  - name: deactivation
+  - !Item
+    name: deactivation
     type: Unknown
 argument_loc: Global
 effect_loc: Local

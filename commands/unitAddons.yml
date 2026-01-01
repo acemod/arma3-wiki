@@ -3,12 +3,11 @@ desc: Returns list with addons the unit belongs to.
 groups:
 - Mods and Addons
 syntax:
-- call: !Unary className
-  ret:
+- ret:
     type: ArrayUnknown
     desc: addon names
-  params:
-  - name: className
+  right: !Item
+    name: className
     desc: class name of a unit/vehicle or object
     type: String
 argument_loc: Unspecified

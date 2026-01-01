@@ -3,23 +3,22 @@ desc: Updates particle source, creates particles in circle with given radius. Ve
 groups:
 - Particles
 syntax:
-- call: !Binary
-  - particleSource
-  - - circleRadius
-    - circleVelocity
-    - ignoreSurfaces
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: particleSource
+  left: !Item
+    name: particleSource
     type: Object
-  - name: circleRadius
+  right: !Array
+  - !Item
+    name: circleRadius
     desc: the radius (x,y plain) in which particles are generated
     type: Number
-  - name: circleVelocity
+  - !Item
+    name: circleVelocity
     desc: direction and speed of particles movement
     type: Unknown
-  - name: ignoreSurfaces
+  - !Item
+    name: ignoreSurfaces
     desc: '[[true]] to calculate particle position relative to the source position. Default: [[false]]'
     type: Boolean
     optional: true

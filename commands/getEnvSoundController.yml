@@ -3,15 +3,13 @@ desc: Returns value of the specified controller, see [[getAllEnvSoundControllers
 groups:
 - Sounds
 syntax:
-- call: !Binary
-  - position
-  - controller
-  ret:
+- ret:
     type: Number
-  params:
-  - name: position
+  left: !Item
+    name: position
     type: Position
-  - name: controller
+  right: !Item
+    name: controller
     desc: name of environmental variable like "trees" or "houses"
     type: String
 argument_loc: Unspecified

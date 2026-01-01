@@ -3,11 +3,10 @@ desc: Returns RPM of all engines. {{Feature|afm}}
 groups:
 - RTD
 syntax:
-- call: !Unary helicopter
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: helicopter
+  right: !Item
+    name: helicopter
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

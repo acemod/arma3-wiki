@@ -5,8 +5,7 @@ desc: |-
 groups:
 - Multiplayer
 syntax:
-- call: !Unary unitName
-  ret:
+- ret:
     type: Unknown
     desc: |-
       number of infantry units killed
@@ -14,8 +13,8 @@ syntax:
       * killsArmor: [[Number]] - number of armored vehicles killed
       * killsAir: [[Number]] - number of air vehicles killed
       * score: [[Number]] - total score
-  params:
-  - name: unitName
+  right: !Item
+    name: unitName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

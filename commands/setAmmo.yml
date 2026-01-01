@@ -4,20 +4,19 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- call: !Binary
-  - unit
-  - - weaponOrMuzzle
-    - count
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: gunner or vehicle.
     type: Object
-  - name: weaponOrMuzzle
+  right: !Array
+  - !Item
+    name: weaponOrMuzzle
     desc: weapon name. Muzzle name in case the weapon has more than one muzzle, e.g. weapon with grenade launcher. See [[:Category:Weapons|CfgWeapons]] for muzzle names
     type: String
-  - name: count
+  - !Item
+    name: count
     type: Number
 argument_loc: Local
 effect_loc: Global

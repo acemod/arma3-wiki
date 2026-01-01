@@ -6,12 +6,11 @@ desc: |-
 groups:
 - Remote Control
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] when UAV'
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: vehicle or {{GVI|arma3|2.14|size= 0.75}} unit
     type: Object
 argument_loc: Unspecified

@@ -3,15 +3,12 @@ desc: Find objects (Units, Vehicles, Dead, Map Objects) in a sphere with given r
 groups:
 - Object Detection
 syntax:
-- call: !Binary
-  - position
-  - radius
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
-  params:
-  - name: position
+  left: !Item
+    name: position
     type: !OneOf
     - type: Position
       desc: null
@@ -22,18 +19,15 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: radius
+  right: !Item
+    name: radius
     type: Number
-- call: !Binary
-  - position
-  - - typeName
-    - radius
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
-  params:
-  - name: position
+  left: !Item
+    name: position
     type: !OneOf
     - type: Position3dAGL
       desc: null
@@ -44,9 +38,12 @@ syntax:
     - type: Object
       desc: null
       since: null
-  - name: typeName
+  right: !Array
+  - !Item
+    name: typeName
     type: String
-  - name: radius
+  - !Item
+    name: radius
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

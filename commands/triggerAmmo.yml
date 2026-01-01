@@ -5,12 +5,30 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary munition
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: munition
+  right: !Item
+    name: munition
     type: Object
+- ret:
+    type: Nothing
+  right: !Array
+  - !Item
+    name: munition
+    desc: ammo. If 'timeLeft' and 'distanceLeft' are not provided, the action is identical to the main syntax.
+    type: Object
+  - !Item
+    name: timeLeft
+    desc: '''timeToExplosion'' (see [[getShotInfo]]). Can only be set to <= relevant config value. Default: -1 - ignore.'
+    type: Number
+    optional: true
+  - !Item
+    name: distanceLeft
+    desc: '''fuseDistanceLeft'' (see [[getShotInfo]]). Can only be set to <= relevant config value. Default: -1 - ignore.'
+    type: Number
+    optional: true
+  since:
+    arma3: '2.22'
 argument_loc: Local
 effect_loc: Unspecified
 since:

@@ -3,33 +3,31 @@ desc: Sets the additional value in the row with the given index of a [[CT_LISTBO
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Unary
-  - idc
-  - index
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: control IDC
     type: Number
-  - name: index
+  - !Item
+    name: index
     type: Number
-  - name: value
+  - !Item
+    name: value
     desc: only integer values are supported
     type: Number
-- call: !Binary
-  - control
-  - - index
-    - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: index
+  right: !Array
+  - !Item
+    name: index
     type: Number
-  - name: value
+  - !Item
+    name: value
     desc: only integer values are supported
     type: Number
 argument_loc: Unspecified

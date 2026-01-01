@@ -8,11 +8,10 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- call: !Unary action
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: action
+  right: !Item
+    name: action
     desc: 'see [[Eden Editor: Actions]]'
     type: String
 argument_loc: Unspecified

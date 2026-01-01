@@ -3,15 +3,13 @@ desc: Set the current task of the formation member. {{Feature|arma2|This command
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unit
-  - task
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: task
+  right: !Item
+    name: task
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -5,40 +5,34 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - effect
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: effect
+  left: !Item
+    name: effect
     desc: name of the effect
     type: String
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
-- call: !Binary
-  - effect
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: effect
+  left: !Item
+    name: effect
     desc: handle of the effect
     type: Number
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
-- call: !Binary
-  - effectArray
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: effectArray
+  left: !Item
+    name: effectArray
     desc: array of effect handles
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,31 +3,30 @@ desc: Aggregate candidates.
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - - speaker
-    - side
-    - classname
-    - position
-    - timeMax
-  - candidates
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: speaker
+  left: !Array
+  - !Item
+    name: speaker
     type: Object
-  - name: side
+  - !Item
+    name: side
     desc: if provided, a target with a side matching ''side'' will see it replaced by {{hl|"$"}}
     type: Side
-  - name: classname
+  - !Item
+    name: classname
     desc: '{{hl|CfgVehicles}} classname - if provided, a target with a type matching ''''classname'''' will see it replaced by {{hl|"$"}}'
     type: String
-  - name: position
+  - !Item
+    name: position
     desc: centre of a hardcoded 200m radius
     type: Unknown
-  - name: timeMax
+  - !Item
+    name: timeMax
     desc: max age of the target
     type: Number
-  - name: candidates
+  right: !Item
+    name: candidates
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

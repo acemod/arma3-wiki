@@ -9,15 +9,13 @@ desc: |-
 groups:
 - Containers
 syntax:
-- call: !Binary
-  - unit
-  - backpackClassName
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: backpackClassName
+  right: !Item
+    name: backpackClassName
     type: String
 argument_loc: Local
 effect_loc: Global

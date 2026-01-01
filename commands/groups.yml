@@ -3,13 +3,12 @@ desc: Returns an array with all groups of given side.
 groups:
 - Groups
 syntax:
-- call: !Unary side
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Group
       desc: ''
-  params:
-  - name: side
+  right: !Item
+    name: side
     type: Side
 argument_loc: Unspecified
 effect_loc: Unspecified

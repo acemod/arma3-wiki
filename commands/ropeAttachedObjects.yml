@@ -5,14 +5,13 @@ desc: |-
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Unary ropesOwner
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
     desc: array of attached entities on ropes
-  params:
-  - name: ropesOwner
+  right: !Item
+    name: ropesOwner
     desc: transport from which a single or multiple ropes are originating
     type: Object
 argument_loc: Unspecified

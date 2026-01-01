@@ -5,21 +5,18 @@ desc: |-
 groups:
 - GUI Control - Map
 syntax:
-- call: !Binary
-  - mainmap
-  - enable
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: mainmap
+  left: !Item
+    name: mainmap
     type: Control
-  - name: enable
+  right: !Item
+    name: enable
     type: Boolean
-- call: !Unary minimap
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: minimap
+  right: !Item
+    name: minimap
     type: Control
   since:
     arma3: '1.48'

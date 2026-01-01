@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - unitName
-  - toggle
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unitName
+  left: !Item
+    name: unitName
     type: Object
-  - name: toggle
+  right: !Item
+    name: toggle
     type: Boolean
 argument_loc: Local
 effect_loc: Global

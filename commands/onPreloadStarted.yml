@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Event Handlers
 syntax:
-- call: !Unary command
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: command
+  right: !Item
+    name: command
     type: !OneOf
     - type: String
       desc: null

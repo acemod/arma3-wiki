@@ -3,11 +3,10 @@ desc: Set / clear using of night vision during cutscenes. This command only work
 groups:
 - Camera Control
 syntax:
-- call: !Unary set
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: set
+  right: !Item
+    name: set
     desc: enable/disable night vision
     type: Boolean
 argument_loc: Unspecified

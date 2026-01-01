@@ -5,21 +5,20 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - - position
-    - radius
-    - maxAboveLand
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     type: Object
-  - name: position
+  right: !Array
+  - !Item
+    name: position
     type: Position
-  - name: radius
+  - !Item
+    name: radius
     type: Number
-  - name: maxAboveLand
+  - !Item
+    name: maxAboveLand
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

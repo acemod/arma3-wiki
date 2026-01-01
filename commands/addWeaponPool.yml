@@ -3,16 +3,15 @@ desc: Add weapons to the weapon pool, of which the player may choose in the foll
 groups:
 - Weapon Pool
 syntax:
-- call: !Unary
-  - weaponName
-  - count
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: weaponName
+  right: !Array
+  - !Item
+    name: weaponName
     desc: weapon name. See the topic [[:Category:Weapons]] for reference about possible values.
     type: String
-  - name: count
+  - !Item
+    name: count
     desc: number of weapons to add
     type: Number
 argument_loc: Unspecified

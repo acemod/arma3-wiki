@@ -14,15 +14,13 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- call: !Binary
-  - y
-  - x
-  ret:
+- ret:
     type: Number
-  params:
-  - name: y
+  left: !Item
+    name: y
     type: Number
-  - name: x
+  right: !Item
+    name: x
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

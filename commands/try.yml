@@ -10,22 +10,19 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary code
-  ret:
+- ret:
     type: ExceptionHandle
-  params:
-  - name: code
+  right: !Item
+    name: code
     type: Code
-- call: !Binary
-  - args
-  - code
-  ret:
+- ret:
     type: ExceptionHandle
-  params:
-  - name: args
+  left: !Item
+    name: args
     desc: passed arguments, will be put in ''_this'' variable inside the "code"
     type: Anything
-  - name: code
+  right: !Item
+    name: code
     type: Code
   since:
     arma3: '1.54'

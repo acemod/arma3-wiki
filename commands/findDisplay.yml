@@ -11,17 +11,15 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Unary idd
-  ret:
+- ret:
     type: Display
-  params:
-  - name: idd
+  right: !Item
+    name: idd
     type: Number
-- call: !Unary displayName
-  ret:
+- ret:
     type: Display
-  params:
-  - name: displayName
+  right: !Item
+    name: displayName
     type: String
   since:
     arma3: '2.12'

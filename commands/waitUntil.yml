@@ -7,35 +7,32 @@ problem_notes:
 groups:
 - Program Flow
 syntax:
-- call: !Unary condition
-  ret:
+- ret:
     type: Anything
     desc: the value the condition evaluates to when the wait is over (normally [[true]])
-  params:
-  - name: condition
+  right: !Item
+    name: condition
     desc: the expression that '''must''' return a [[Boolean]], [[true]] to finish waiting or [[false]] to continue waiting
     type: Code
-- call: !Unary scriptHandle
-  ret:
+- ret:
     type: Anything
     desc: The result of the script or [[Script_Handle#Promise_Handles|Promise]]
-  params:
-  - name: scriptHandle
+  right: !Item
+    name: scriptHandle
     desc: A script handle or Promise to wait on
     type: ScriptHandle
   since:
     arma3: '2.22'
-- call: !Unary
-  - scriptHandle
-  - timeout
-  ret:
+- ret:
     type: Anything
     desc: The result of the script or [[Script_Handle#Promise_Handles|Promise]]. Or [[Nothing]] if timed out.
-  params:
-  - name: scriptHandle
+  right: !Array
+  - !Item
+    name: scriptHandle
     desc: A script handle or Promise to wait on
     type: ScriptHandle
-  - name: timeout
+  - !Item
+    name: timeout
     desc: A timeout in seconds of game time ([[sleep]] vs [[uiSleep]])
     type: Number
   since:

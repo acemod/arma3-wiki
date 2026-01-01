@@ -3,23 +3,22 @@ desc: "Set fire parameters to particle effect.\n\nNote: You need to create emitt
 groups:
 - Particles
 syntax:
-- call: !Binary
-  - source
-  - - coreIntensity
-    - coreDistance
-    - damageTime
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: source
+  left: !Item
+    name: source
     type: Object
-  - name: coreIntensity
+  right: !Array
+  - !Item
+    name: coreIntensity
     desc: damage in the center of fire
     type: Number
-  - name: coreDistance
+  - !Item
+    name: coreDistance
     desc: how far can unit get damage
     type: Number
-  - name: damageTime
+  - !Item
+    name: damageTime
     desc: how often is unit getting damage
     type: Number
 argument_loc: Global

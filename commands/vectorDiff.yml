@@ -6,19 +6,17 @@ desc: |-
 groups:
 - Math - Vectors
 syntax:
-- call: !Binary
-  - vector1
-  - vector2
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Number
       desc: ''
-  params:
-  - name: vector1
+  left: !Item
+    name: vector1
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: vector2
+  right: !Item
+    name: vector2
     type: !ArrayUnsized
       type: Number
       desc: ''

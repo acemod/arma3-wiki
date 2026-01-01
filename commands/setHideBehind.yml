@@ -5,18 +5,17 @@ desc: |-
 groups:
 - Broken Commands
 syntax:
-- call: !Binary
-  - object
-  - - objectWhereHide
-    - hidePosition
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: objectWhereHide
+  right: !Array
+  - !Item
+    name: objectWhereHide
     type: Object
-  - name: hidePosition
+  - !Item
+    name: hidePosition
     desc: format [[getHideFrom]]
     type: ArrayUnknown
 argument_loc: Unspecified

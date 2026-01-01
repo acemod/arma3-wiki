@@ -4,13 +4,10 @@ multiplayer_note: This command is only effective when used on local units. When 
 groups:
 - Unit Control
 syntax:
-- call: !Binary
-  - units
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: units
+  left: !Item
+    name: units
     type: !OneOf
     - type: Object
       desc: null
@@ -20,15 +17,13 @@ syntax:
         desc: ''
       desc: null
       since: null
-  - name: position
+  right: !Item
+    name: position
     type: Position
-- call: !Binary
-  - units
-  - target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: units
+  left: !Item
+    name: units
     type: !OneOf
     - type: Object
       desc: null
@@ -38,7 +33,8 @@ syntax:
         desc: ''
       desc: null
       since: null
-  - name: target
+  right: !Item
+    name: target
     type: Object
 argument_loc: Local
 effect_loc: Global

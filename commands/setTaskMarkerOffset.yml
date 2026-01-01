@@ -3,15 +3,13 @@ desc: Sets the task marker position in model space.
 groups:
 - Briefing
 syntax:
-- call: !Binary
-  - obj
-  - position
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: obj
+  left: !Item
+    name: obj
     type: Object
-  - name: position
+  right: !Item
+    name: position
     type: Position3dRelative
 argument_loc: Unspecified
 effect_loc: Unspecified

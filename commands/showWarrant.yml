@@ -4,11 +4,10 @@ groups:
 - Interaction
 - Broken Commands
 syntax:
-- call: !Unary show
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: show
+  right: !Item
+    name: show
     desc: (default [[false]])
     type: Boolean
 argument_loc: Unspecified

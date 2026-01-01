@@ -3,16 +3,14 @@ desc: Set an object's water intake ratio when immersed.
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - obj
-  - leakiness
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: obj
+  left: !Item
+    name: obj
     desc: object to manipulate
     type: Object
-  - name: leakiness
+  right: !Item
+    name: leakiness
     desc: in range 0..1 where 0 is waterproof and 1 is full leak
     type: Number
 argument_loc: Local

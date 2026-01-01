@@ -4,11 +4,10 @@ groups:
 - Strings
 - Structured Text
 syntax:
-- call: !Unary arguments
-  ret:
+- ret:
     type: StructuredText
-  params:
-  - name: arguments
+  right: !Item
+    name: arguments
     desc: use [[Structured Text]] where necessary (see {{Link|#Example 2}})
     type: ArrayUnknown
 argument_loc: Unspecified

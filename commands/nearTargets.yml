@@ -3,15 +3,13 @@ desc: Returns a list of targets within the defined range. "Targets" are not rest
 groups:
 - Object Detection
 syntax:
-- call: !Binary
-  - unit
-  - range
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: range
+  right: !Item
+    name: range
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

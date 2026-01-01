@@ -4,16 +4,14 @@ groups:
 - Weapons
 - Unit Inventory
 syntax:
-- call: !Binary
-  - unit
-  - throwable
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] on success'
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     type: Object
-  - name: throwable
+  right: !Item
+    name: throwable
     desc: either the name of the throwable magazine or the name of the throwable muzzle
     type: String
 argument_loc: Unspecified

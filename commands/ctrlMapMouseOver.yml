@@ -3,8 +3,7 @@ desc: Returns description of map sign mouse cursor is over. Works with in-game m
 groups:
 - GUI Control - Map
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: ArrayUnknown
     desc: |-
       possible values:
@@ -17,8 +16,8 @@ syntax:
       * ["marker", [[String]]]
       * ["task", [[Task]]]
       * ["customMark"]
-  params:
-  - name: control
+  right: !Item
+    name: control
     desc: map control
     type: Control
 argument_loc: Unspecified

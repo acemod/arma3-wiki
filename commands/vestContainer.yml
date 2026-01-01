@@ -4,12 +4,11 @@ groups:
 - Containers
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Object
     desc: cargo container or [[objNull]] if ''unit'' does not wear a vest
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

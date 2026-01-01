@@ -5,17 +5,15 @@ desc: |-
 groups:
 - Variables
 syntax:
-- call: !Binary
-  - array
-  - index
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: array
+  left: !Item
+    name: array
     type: !ArrayUnsized
       type: Anything
       desc: ''
-  - name: index
+  right: !Item
+    name: index
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

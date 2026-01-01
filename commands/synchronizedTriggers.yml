@@ -3,14 +3,13 @@ desc: Returns the list of triggers synchronized with a given waypoint.
 groups:
 - Triggers
 syntax:
-- call: !Unary waypoint
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
     desc: Trigger objects
-  params:
-  - name: waypoint
+  right: !Item
+    name: waypoint
     type: Waypoint
 argument_loc: Unspecified
 effect_loc: Unspecified

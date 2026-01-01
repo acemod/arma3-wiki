@@ -5,12 +5,11 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if submerged'
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: mini-submarine
     type: Object
 argument_loc: Unspecified

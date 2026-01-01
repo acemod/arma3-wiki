@@ -3,16 +3,15 @@ desc: Sets if group icons added with [[addGroupIcon]] are visible on map and in 
 groups:
 - High Command
 syntax:
-- call: !Unary
-  - showOnMap
-  - showOnHUD
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: showOnMap
+  right: !Array
+  - !Item
+    name: showOnMap
     desc: '[[true]] to show on map. Default is [[false]]'
     type: Boolean
-  - name: showOnHUD
+  - !Item
+    name: showOnHUD
     desc: '[[true]] to show on HUD. Default is [[false]]'
     type: Boolean
 argument_loc: Unspecified

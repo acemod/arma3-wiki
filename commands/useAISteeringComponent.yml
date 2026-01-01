@@ -5,22 +5,19 @@ desc: |-
 groups:
 - AI Behaviour
 syntax:
-- call: !Unary enabled
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: enabled
+  right: !Item
+    name: enabled
     type: Boolean
-- call: !Binary
-  - vehicle
-  - enabled
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: the vehicle to enable/disable the feature for
     type: Object
-  - name: enabled
+  right: !Item
+    name: enabled
     type: Boolean
   since:
     arma3: '2.18'

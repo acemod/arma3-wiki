@@ -3,11 +3,10 @@ desc: Returns the resources of a team member. Results are local to the PC on whi
 groups:
 - Teams
 syntax:
-- call: !Unary member
-  ret:
+- ret:
     type: ArrayUnknown
-  params:
-  - name: member
+  right: !Item
+    name: member
     type: TeamMember
 argument_loc: Global
 effect_loc: Local

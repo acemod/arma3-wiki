@@ -10,20 +10,19 @@ groups:
 - GUI Control - Event Handlers
 - Event Handlers
 syntax:
-- call: !Binary
-  - control
-  - - handler
-    - function
-  ret:
+- ret:
     type: Number
     desc: handler ID or -1 if failed
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: handler
+  right: !Array
+  - !Item
+    name: handler
     desc: handler name, see [[User Interface Event Handlers]]
     type: String
-  - name: function
+  - !Item
+    name: function
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

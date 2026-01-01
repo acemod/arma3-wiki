@@ -12,23 +12,22 @@ groups:
 - Namespaces
 - Multiplayer
 syntax:
-- call: !Binary
-  - varspace
-  - - name
-    - value
-    - public
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: varspace
+  left: !Item
+    name: varspace
     type: Unknown
-  - name: name
+  right: !Array
+  - !Item
+    name: name
     desc: variable name ([[Identifier]])
     type: String
-  - name: value
+  - !Item
+    name: value
     desc: variable value
     type: Anything
-  - name: public
+  - !Item
+    name: public
     desc: can be one of
     type: !OneOf
     - type: Boolean

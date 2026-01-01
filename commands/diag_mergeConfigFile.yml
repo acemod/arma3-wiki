@@ -6,16 +6,15 @@ groups:
 - Diagnostic
 - Config
 syntax:
-- call: !Unary
-  - path
-  - userdir
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: absolute or relative path
     type: String
-  - name: userdir
+  - !Item
+    name: userdir
     desc: path is relative to the user directory, otherwise it is relative to the mission directory
     type: Boolean
     optional: true

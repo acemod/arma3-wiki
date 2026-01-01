@@ -3,12 +3,11 @@ desc: "Returns channel number for given player, '''provided that player is SPEAK
 groups:
 - Radio and Chat
 syntax:
-- call: !Unary player
-  ret:
+- ret:
     type: Number
     desc: '[[Channel IDs|channel ID]]'
-  params:
-  - name: player
+  right: !Item
+    name: player
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

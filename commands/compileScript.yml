@@ -5,22 +5,21 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Unary
-  - path
-  - final
-  - prefixHeader
-  ret:
+- ret:
     type: Code
-  params:
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: path to script file
     type: String
-  - name: final
+  - !Item
+    name: final
     desc: compile final, see [[compileFinal]]
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: prefixHeader
+  - !Item
+    name: prefixHeader
     desc: value added at the beginning of the file
     type: String
     optional: true

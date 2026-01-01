@@ -4,12 +4,11 @@ groups:
 - Stamina System
 - Weapons
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Number
     desc: weapon sway
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

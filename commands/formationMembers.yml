@@ -3,13 +3,12 @@ desc: Return list of units (drivers) in the formation.
 groups:
 - Groups
 syntax:
-- call: !Unary person
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Object
       desc: ''
-  params:
-  - name: person
+  right: !Item
+    name: person
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified

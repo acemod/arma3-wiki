@@ -6,11 +6,10 @@ desc: |-
 groups:
 - Difficulty
 syntax:
-- call: !Unary optionName
-  ret:
+- ret:
     type: Number
-  params:
-  - name: optionName
+  right: !Item
+    name: optionName
     type: !StringEnum
     - value: reducedDamage
       desc: null
@@ -72,11 +71,10 @@ syntax:
     - value: multipleSaves
       desc: null
       since: null
-- call: !Unary array
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: array
+  right: !Item
+    name: array
     desc: any array, could be empty array []
     type: ArrayUnknown
   since:

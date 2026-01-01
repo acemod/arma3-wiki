@@ -3,12 +3,11 @@ desc: "Returns trigger condition check frequency in seconds. <br><br> \n\n{{Feat
 groups:
 - Triggers
 syntax:
-- call: !Unary trigger
-  ret:
+- ret:
     type: Number
     desc: trigger interval in seconds
-  params:
-  - name: trigger
+  right: !Item
+    name: trigger
     desc: trigger object
     type: Object
 argument_loc: Global

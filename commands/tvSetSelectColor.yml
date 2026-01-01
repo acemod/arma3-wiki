@@ -3,21 +3,20 @@ desc: Sets the select color of given path.
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Binary
-  - ctrl
-  - - path
-    - color
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: path of the item
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: color
+  - !Item
+    name: color
     type: ArrayColorRgba
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,12 +3,11 @@ desc: Returns [[true]] if entity can be attached to a rope end.
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Unary entity
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if allowed'
-  params:
-  - name: entity
+  right: !Item
+    name: entity
     desc: entity to check
     type: Object
 argument_loc: Unspecified

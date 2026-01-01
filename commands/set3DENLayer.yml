@@ -3,16 +3,14 @@ desc: Set layer for [[Eden Entity]].
 groups:
 - Eden Editor
 syntax:
-- call: !Binary
-  - entity
-  - layerID
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if the entity was moved succesfully'
-  params:
-  - name: entity
+  left: !Item
+    name: entity
     type: EdenEntity
-  - name: layerID
+  right: !Item
+    name: layerID
     desc: layer ID as returned by [[add3DENLayer]] command
     type: Number
 argument_loc: Unspecified

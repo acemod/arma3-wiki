@@ -3,30 +3,27 @@ desc: Return the value of variable in the variable space of given FSM. The FSM h
 groups:
 - Variables
 syntax:
-- call: !Binary
-  - FSMhandle
-  - name
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: FSMhandle
+  left: !Item
+    name: FSMhandle
     type: Number
-  - name: name
+  right: !Item
+    name: name
     desc: name of the variable
     type: String
-- call: !Binary
-  - FSMhandle
-  - - name
-    - defaultValue
-  ret:
+- ret:
     type: Anything
-  params:
-  - name: FSMhandle
+  left: !Item
+    name: FSMhandle
     type: Number
-  - name: name
+  right: !Array
+  - !Item
+    name: name
     desc: name of the variable
     type: String
-  - name: defaultValue
+  - !Item
+    name: defaultValue
     desc: value to return if variable is [[nil]]
     type: Anything
   since:

@@ -3,12 +3,11 @@ desc: Returns the current position in the [[CT_PROGRESS|progress bar]].
 groups:
 - GUI Control
 syntax:
-- call: !Unary control
-  ret:
+- ret:
     type: Number
     desc: progress from 0 to 1
-  params:
-  - name: control
+  right: !Item
+    name: control
     desc: progress bar
     type: Control
 argument_loc: Unspecified

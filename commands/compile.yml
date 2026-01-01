@@ -3,12 +3,11 @@ desc: Compiles [[String]] expression into [[Code]].
 groups:
 - Strings
 syntax:
-- call: !Unary expression
-  ret:
+- ret:
     type: Code
     desc: compiled expression
-  params:
-  - name: expression
+  right: !Item
+    name: expression
     desc: expression to be compiled
     type: String
 argument_loc: Unspecified

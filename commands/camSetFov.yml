@@ -8,16 +8,14 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - camera
-  - level
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: camera
+  left: !Item
+    name: camera
     desc: object of type "camera"
     type: Object
-  - name: level
+  right: !Item
+    name: level
     desc: zoom level, range 0.01 to 8.5 (see description above)
     type: Number
 argument_loc: Local

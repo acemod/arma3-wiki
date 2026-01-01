@@ -6,14 +6,11 @@ desc: |-
 groups:
 - Math - Geometry
 syntax:
-- call: !Binary
-  - param1
-  - param2
-  ret:
+- ret:
     type: Number
     desc: distance in meters or 1e10 if distance cannot be calculated
-  params:
-  - name: param1
+  left: !Item
+    name: param1
     type: !OneOf
     - type: Object
       desc: null
@@ -24,7 +21,8 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: param2
+  right: !Item
+    name: param2
     type: !OneOf
     - type: Object
       desc: null
@@ -35,14 +33,11 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-- call: !Binary
-  - location1
-  - location2
-  ret:
+- ret:
     type: Number
     desc: distance in meters or 1e10 if distance cannot be calculated
-  params:
-  - name: location1
+  left: !Item
+    name: location1
     type: !OneOf
     - type: Location
       desc: null
@@ -53,7 +48,8 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-  - name: location2
+  right: !Item
+    name: location2
     type: !OneOf
     - type: Location
       desc: null
@@ -64,16 +60,14 @@ syntax:
     - type: Position2d
       desc: null
       since: null
-- call: !Binary
-  - a
-  - b
-  ret:
+- ret:
     type: Number
     desc: distance c calculated as c = sqrt(a * a + b * b);
-  params:
-  - name: a
+  left: !Item
+    name: a
     type: Number
-  - name: b
+  right: !Item
+    name: b
     type: Number
   since:
     arma3: '2.18'

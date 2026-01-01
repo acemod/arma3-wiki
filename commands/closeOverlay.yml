@@ -3,11 +3,10 @@ desc: "Closes the current overlay without committing. \n{{Feature|informative|So
 groups:
 - Game 2 Editor
 syntax:
-- call: !Unary map
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: map
+  right: !Item
+    name: map
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified

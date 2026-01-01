@@ -5,32 +5,29 @@ desc: |-
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - turretPath
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: turretPath
+  right: !Item
+    name: turretPath
     type: TurretPath
-- call: !Binary
-  - vehicle
-  - - turretPath
-    - includeEmpty
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: turretPath
+  right: !Array
+  - !Item
+    name: turretPath
     type: TurretPath
-  - name: includeEmpty
+  - !Item
+    name: includeEmpty
     desc: '- [[true]] = include empty magazines (behaviour as the primary syntax, but consistent), [[false]] = exclude empty magazines'
     type: Boolean
     optional: true

@@ -11,14 +11,11 @@ groups:
 - Positions
 - Groups
 syntax:
-- call: !Binary
-  - positions
-  - area
-  ret:
+- ret:
     type: Unknown
     desc: indexes of matched positions in positions array
-  params:
-  - name: positions
+  left: !Item
+    name: positions
     type: !ArrayUnsized
       type: !OneOf
       - type: Object
@@ -28,7 +25,8 @@ syntax:
         desc: null
         since: null
       desc: ''
-  - name: area
+  right: !Item
+    name: area
     type: !OneOf
     - type: Object
       desc: trigger
@@ -39,69 +37,52 @@ syntax:
     - type: String
       desc: marker name
       since: null
-- call: !Binary
-  - positions
-  - - centre
-    - a
-    - b
-    - angle
-    - isRectangle
-    - c
-    - usePosWorld
-  ret:
+- ret:
     type: Unknown
     desc: indexes of matched positions in positions array
-  params:
-  - name: positions
+  left: !Item
+    name: positions
     desc: '[[Object]]s and/or [[Position]]s to check (see note in description)'
     type: ArrayUnknown
-  - name: centre
+  right: !Array
+  - !Item
+    name: centre
     desc: '[[Position]] [[Object]] or [[Group]] (see note in description)'
     type: ArrayUnknown
-  - name: a
+  - !Item
+    name: a
     desc: x axis (x / 2)
     type: Number
-  - name: b
+  - !Item
+    name: b
     desc: y axis (y / 2)
     type: Number
-  - name: angle
+  - !Item
+    name: angle
     desc: rotation angle
     type: Number
     optional: true
     default: '0'
-  - name: isRectangle
+  - !Item
+    name: isRectangle
     desc: '[[true]] if rectangle, [[false]] if ellipse'
     type: Boolean
     optional: true
     default: '[[false]]'
-  - name: c
+  - !Item
+    name: c
     desc: z axis (z / 2)
     type: Number
     optional: true
     default: '-1: unlimited'
-  - name: usePosWorld
+  - !Item
+    name: usePosWorld
     desc: set to [[true]] to treat all positions as [[PositionWorld]]
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
       arma3: '2.20'
-- call: !Binary
-  - positions
-  - - pos1
-    - pos2
-    - pos3
-    - '...'
-  ret:
-    type: Unknown
-    desc: indexes of matched positions in positions array
-  params:
-  - name: positions
-    desc: '[[Object]]s and/or [[Position]]s to check.'
-    type: ArrayUnknown
-  - name: posN
-    desc: polygon vertices in 2d or 3d format (see [[inPolygon]])
-    type: Position
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

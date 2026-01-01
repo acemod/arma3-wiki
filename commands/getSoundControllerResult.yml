@@ -3,16 +3,14 @@ desc: Returns the calculated value of [[simple expression]] defined in config. C
 groups:
 - Sounds
 syntax:
-- call: !Binary
-  - vehicle
-  - config
-  ret:
+- ret:
     type: Number
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     desc: transport vehicle
     type: Object
-  - name: config
+  right: !Item
+    name: config
     desc: path to config entry containing the expression
     type: Config
 argument_loc: Unspecified

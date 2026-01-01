@@ -3,12 +3,11 @@ desc: Adds force generator to world. {{Feature|afm}}
 groups:
 - RTD
 syntax:
-- call: !Unary index
-  ret:
+- ret:
     type: Number
     desc: force index
-  params:
-  - name: index
+  right: !Item
+    name: index
     desc: index
     type: Number
 argument_loc: Unspecified

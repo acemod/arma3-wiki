@@ -3,40 +3,39 @@ desc: Controls availability of component to given object info panel.
 groups:
 - Custom Panels
 syntax:
-- call: !Binary
-  - unit
-  - - panelID
-    - componentClassOrType
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if component was successfully enabled on the panel, [[false]] otherwise (e.g. component is not available for the object)'
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: the concerned vehicle
     type: Object
-  - name: panelID
+  right: !Array
+  - !Item
+    name: panelID
     desc: '"left" or "right" can be used as panel names'
     type: String
-  - name: componentClassOrType
+  - !Item
+    name: componentClassOrType
     type: String
-- call: !Binary
-  - - unit
-    - turretPath
-  - - panelID
-    - componentClassOrType
-  ret:
+- ret:
     type: Boolean
-  params:
-  - name: unit
+  left: !Array
+  - !Item
+    name: unit
     desc: the concerned vehicle
     type: Object
-  - name: turretPath
+  - !Item
+    name: turretPath
     desc: turret index
     type: TurretPath
-  - name: panelID
+  right: !Array
+  - !Item
+    name: panelID
     desc: '"left" or "right" can be used as panel names'
     type: String
-  - name: componentClassOrType
+  - !Item
+    name: componentClassOrType
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified

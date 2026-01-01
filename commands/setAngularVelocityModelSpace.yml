@@ -5,15 +5,13 @@ desc: |-
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - obj
-  - vector
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: obj
+  left: !Item
+    name: obj
     type: Object
-  - name: vector
+  right: !Item
+    name: vector
     desc: angular velocity of the object in model space
     type: Unknown
 argument_loc: Local

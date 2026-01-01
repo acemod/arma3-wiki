@@ -12,57 +12,52 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Binary
-  - arguments
-  - fsmFilePath
-  ret:
+- ret:
     type: Number
     desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
-  params:
-  - name: arguments
+  left: !Item
+    name: arguments
     desc: arguments accessible as {{hl|_this}} in the FSM
     type: Anything
-  - name: fsmFilePath
+  right: !Item
+    name: fsmFilePath
     desc: file with FSM code
     type: String
-- call: !Unary fsmFilePath
-  ret:
+- ret:
     type: Number
     desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
-  params:
-  - name: fsmFilePath
+  right: !Item
+    name: fsmFilePath
     desc: file with FSM code
     type: String
-- call: !Binary
-  - arguments
-  - - fsmFilePath
-    - allowTermination
-  ret:
+- ret:
     type: Number
     desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
-  params:
-  - name: arguments
+  left: !Item
+    name: arguments
     desc: arguments accessible as {{hl|_this}} in the FSM
     type: Anything
-  - name: fsmFilePath
+  right: !Array
+  - !Item
+    name: fsmFilePath
     desc: file with FSM code
     type: String
-  - name: allowTermination
+  - !Item
+    name: allowTermination
     desc: '[[true]] to allow FSM termination with [[terminate]] command. Optional, default [[false]]'
     type: Boolean
   since:
     arma3: '2.18'
-- call: !Unary
-  - fsmFilePath
-  - allowTermination
-  ret:
+- ret:
     type: Number
     desc: FSM handle (also available as {{hl|_thisFSM}} in the FSM)
-  params:
-  - name: fsmFilePath
+  right: !Array
+  - !Item
+    name: fsmFilePath
     desc: file with FSM code
     type: String
-  - name: allowTermination
+  - !Item
+    name: allowTermination
     desc: '[[true]] to allow FSM termination with [[terminate]] command. Optional, default [[false]]'
     type: Boolean
   since:

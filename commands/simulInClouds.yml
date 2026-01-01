@@ -5,11 +5,10 @@ problem_notes:
 groups:
 - Environment
 syntax:
-- call: !Unary pos
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: pos
+  right: !Item
+    name: pos
     type: Position
 argument_loc: Unspecified
 effect_loc: Unspecified

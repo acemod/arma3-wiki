@@ -7,12 +7,11 @@ desc: |-
 groups:
 - Program Flow
 syntax:
-- call: !Unary path
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if it exists, otherwise [[false]]'
-  params:
-  - name: path
+  right: !Item
+    name: path
     desc: path to file
     type: String
 argument_loc: Unspecified

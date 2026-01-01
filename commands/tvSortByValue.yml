@@ -3,37 +3,35 @@ desc: Sorts all children of given path. Value of [[CT_TREE|Tree View]] entries i
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Binary
-  - control
-  - - path
-    - ascending
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: path
+  right: !Array
+  - !Item
+    name: path
     desc: '[[Tree View Path]] of the parent item to sort'
     type: ArrayUnknown
-  - name: ascending
+  - !Item
+    name: ascending
     desc: '[[true]] to sort ascending, else descending'
     type: Boolean
     optional: true
     default: '[[false]]'
-- call: !Unary
-  - idc
-  - path
-  - ascending
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     desc: control idc
     type: Number
-  - name: path
+  - !Item
+    name: path
     desc: '[[Tree View Path]] of the parent item to sort'
     type: ArrayUnknown
-  - name: ascending
+  - !Item
+    name: ascending
     desc: '[[true]] to sort ascending, else descending. Default: [[false]]'
     type: Boolean
     optional: true

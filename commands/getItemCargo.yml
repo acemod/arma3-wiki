@@ -3,11 +3,10 @@ desc: Returns all items names and count from ammo box (or any general weapon hol
 groups:
 - Vehicle Inventory
 syntax:
-- call: !Unary box
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: box
+  right: !Item
+    name: box
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

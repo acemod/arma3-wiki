@@ -8,15 +8,13 @@ desc: |-
 groups:
 - Markers
 syntax:
-- call: !Binary
-  - markerName
-  - brush
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: markerName
+  left: !Item
+    name: markerName
     type: String
-  - name: brush
+  right: !Item
+    name: brush
     type: !StringEnum
     - value: Solid
       desc: null

@@ -3,21 +3,20 @@ desc: Enable debriefing score table.
 groups:
 - Briefing
 syntax:
-- call: !Unary
-  - left
-  - top
-  - width
-  - height
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: left
+  right: !Array
+  - !Item
+    name: left
     type: Number
-  - name: top
+  - !Item
+    name: top
     type: Number
-  - name: width
+  - !Item
+    name: width
     type: Number
-  - name: height
+  - !Item
+    name: height
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

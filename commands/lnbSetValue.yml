@@ -3,37 +3,37 @@ desc: Sets the additional '''integer''' value in the item with the position inde
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: row
+  - !Array
+    - !Item
+      name: row
+      type: Number
+    - !Item
+      name: column
+      type: Number
+  - !Item
+    name: value
     type: Number
-  - name: column
-    type: Number
-  - name: value
-    type: Number
-- call: !Binary
-  - control
-  - - - row
-      - column
-    - value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: control
+  left: !Item
+    name: control
     type: Control
-  - name: row
-    type: Number
-  - name: column
-    type: Number
-  - name: value
+  right: !Array
+  - !Array
+    - !Item
+      name: row
+      type: Number
+    - !Item
+      name: column
+      type: Number
+  - !Item
+    name: value
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified

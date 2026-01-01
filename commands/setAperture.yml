@@ -4,11 +4,10 @@ groups:
 - Camera Control
 - Lights
 syntax:
-- call: !Unary aperture
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: aperture
+  right: !Item
+    name: aperture
     desc: aperture value; a value {{hl|c= <= 0}} will set the aperture automatically. Maximum value which has an effect seems to be {{hl|100}}.
     type: Number
 argument_loc: Unspecified

@@ -6,16 +6,14 @@ groups:
 - Variables
 - Math
 syntax:
-- call: !Binary
-  - a
-  - b
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] if ''''a'''' is different from ''''b'''', [[false]] otherwise'
-  params:
-  - name: a
+  left: !Item
+    name: a
     type: Unknown
-  - name: b
+  right: !Item
+    name: b
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

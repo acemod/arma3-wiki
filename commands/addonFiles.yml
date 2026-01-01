@@ -5,18 +5,17 @@ desc: |-
 groups:
 - Mods and Addons
 syntax:
-- call: !Unary
-  - pboPrefix
-  - fileExtension
-  ret:
+- ret:
     type: !ArrayUnsized
       type: String
       desc: ''
-  params:
-  - name: pboPrefix
+  right: !Array
+  - !Item
+    name: pboPrefix
     desc: addon prefix available from [[allAddonsInfo]]
     type: String
-  - name: fileExtension
+  - !Item
+    name: fileExtension
     desc: file extension to filter results, for example {{hl|".paa"}}
     type: String
     optional: true

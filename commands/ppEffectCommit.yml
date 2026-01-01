@@ -3,42 +3,36 @@ desc: Commit [[Post Process Effects|post process effect]] in given time.
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - effect
-  - commit
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: effect
+  left: !Item
+    name: effect
     desc: name of the effect
     type: String
-  - name: commit
+  right: !Item
+    name: commit
     desc: duration
     type: Number
-- call: !Binary
-  - handle
-  - commit
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: handle
+  left: !Item
+    name: handle
     desc: handle of the effect
     type: Number
-  - name: commit
+  right: !Item
+    name: commit
     desc: duration
     type: Number
-- call: !Binary
-  - handles
-  - commit
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: handles
+  left: !Item
+    name: handles
     desc: list of handles
     type: !ArrayUnsized
       type: Number
       desc: ''
-  - name: commit
+  right: !Item
+    name: commit
     desc: duration
     type: Number
 argument_loc: Unspecified

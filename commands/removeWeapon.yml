@@ -11,32 +11,29 @@ groups:
 - Unit Inventory
 - Vehicle Inventory
 syntax:
-- call: !Binary
-  - unit
-  - weapon
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  left: !Item
+    name: unit
     desc: unit or vehicle
     type: Object
-  - name: weapon
+  right: !Item
+    name: weapon
     desc: weapon class name
     type: String
-- call: !Binary
-  - object
-  - - weapon
-    - autoselect
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     desc: unit or vehicle
     type: Object
-  - name: weapon
+  right: !Array
+  - !Item
+    name: weapon
     desc: weapon class name
     type: String
-  - name: autoselect
+  - !Item
+    name: autoselect
     desc: '[[false]] to abort weapon autoselection when removing primary weapon.'
     type: String
     optional: true

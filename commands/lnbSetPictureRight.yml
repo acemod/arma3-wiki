@@ -5,42 +5,42 @@ desc: |-
 groups:
 - GUI Control - ListNBox
 syntax:
-- call: !Unary
-  - idc
-  - - row
-    - column
-  - path
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: idc
+  right: !Array
+  - !Item
+    name: idc
     type: Number
-  - name: row
-    desc: 0-based index (first row is 0, second is 1, etc)
-    type: Number
-  - name: column
-    desc: 0-based index (first column is 0, second is 1, etc)
-    type: Number
-  - name: path
+  - !Array
+    - !Item
+      name: row
+      desc: 0-based index (first row is 0, second is 1, etc)
+      type: Number
+    - !Item
+      name: column
+      desc: 0-based index (first column is 0, second is 1, etc)
+      type: Number
+  - !Item
+    name: path
     desc: the picture's file path
     type: String
-- call: !Binary
-  - ctrl
-  - - - row
-      - column
-    - path
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: ctrl
+  left: !Item
+    name: ctrl
     type: Control
-  - name: row
-    desc: 0-based index (first row is 0, second is 1, etc)
-    type: Number
-  - name: column
-    desc: 0-based index (first column is 0, second is 1, etc)
-    type: Number
-  - name: path
+  right: !Array
+  - !Array
+    - !Item
+      name: row
+      desc: 0-based index (first row is 0, second is 1, etc)
+      type: Number
+    - !Item
+      name: column
+      desc: 0-based index (first column is 0, second is 1, etc)
+      type: Number
+  - !Item
+    name: path
     desc: the picture's file path
     type: String
 argument_loc: Unspecified

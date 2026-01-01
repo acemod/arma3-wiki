@@ -5,21 +5,20 @@ desc: |-
 groups:
 - Ropes and Sling Loading
 syntax:
-- call: !Unary
-  - rope
-  - cargo
-  - mass
-  ret:
+- ret:
     type: Number
     desc: object mass
-  params:
-  - name: rope
+  right: !Array
+  - !Item
+    name: rope
     desc: rope object
     type: Object
-  - name: cargo
+  - !Item
+    name: cargo
     desc: cargo object
     type: Object
-  - name: mass
+  - !Item
+    name: mass
     desc: override cargo mass, if mass < 1 then original mass is used
     type: Number
 argument_loc: Unspecified

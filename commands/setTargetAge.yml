@@ -3,15 +3,13 @@ desc: Sets how the target is known to the other centers. They behave like the ta
 groups:
 - Object Manipulation
 syntax:
-- call: !Binary
-  - object
-  - age
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: age
+  right: !Item
+    name: age
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

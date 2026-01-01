@@ -3,21 +3,20 @@ desc: Returns the control at the specified coordinates.
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - display
-  - - x
-    - y
-  ret:
+- ret:
     type: Control
     desc: the control at the specified coordinates, [[controlNull]] if none
-  params:
-  - name: display
+  left: !Item
+    name: display
     desc: the display to check
     type: Display
-  - name: x
+  right: !Array
+  - !Item
+    name: x
     desc: position (0 = left, 1 = right)
     type: Number
-  - name: y
+  - !Item
+    name: y
     desc: position (0 = top, 1 = bottom)
     type: Number
 argument_loc: Unspecified

@@ -7,15 +7,13 @@ desc: |-
 groups:
 - GUI Control
 syntax:
-- call: !Binary
-  - parent
-  - resourceName
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: parent
+  left: !Item
+    name: parent
     type: Display
-  - name: resourceName
+  right: !Item
+    name: resourceName
     desc: custom display class defined in [[Description.ext|description.ext]] or existing display class from main config
     type: String
 argument_loc: Unspecified

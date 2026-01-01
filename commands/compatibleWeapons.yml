@@ -3,11 +3,10 @@ desc: Returns all compatible weapons for given weapon item, weapon magazine or w
 groups:
 - Weapons
 syntax:
-- call: !Unary name
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: name
+  right: !Item
+    name: name
     type: !OneOf
     - type: String
       desc: null

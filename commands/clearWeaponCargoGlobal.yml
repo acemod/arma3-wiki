@@ -3,11 +3,10 @@ desc: Removes all weapons from the vehicle cargo space. MP synchronized.
 groups:
 - Containers
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Global

@@ -7,21 +7,20 @@ desc: |-
 groups:
 - Sounds
 syntax:
-- call: !Unary
-  - vehicle
-  - controller
-  - value
-  ret:
+- ret:
     type: Boolean
     desc: '[[true]] on success'
-  params:
-  - name: vehicle
+  right: !Array
+  - !Item
+    name: vehicle
     desc: a transport type vehicle. Does not work on characters or buildings
     type: Object
-  - name: controller
+  - !Item
+    name: controller
     desc: name of the custom sound controller - needs to be full string e.g "CustomSoundController1". It goes from "CustomSoundController1" to "CustomSoundController32"
     type: String
-  - name: value
+  - !Item
+    name: value
     desc: desired value
     type: Number
 argument_loc: Unspecified

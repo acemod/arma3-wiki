@@ -12,12 +12,11 @@ desc: |-
 groups:
 - PhysX
 syntax:
-- call: !Unary object
-  ret:
+- ret:
     type: Boolean
     desc: see description
-  params:
-  - name: object
+  right: !Item
+    name: object
     desc: PhysX object or unit
     type: Object
 argument_loc: Global

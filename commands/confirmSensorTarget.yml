@@ -3,18 +3,17 @@ desc: Sets for which [[Side]] the entity becomes a "confirmed hostile" target - 
 groups:
 - Sensors
 syntax:
-- call: !Binary
-  - vehicle
-  - - side
-    - isConfirmed
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: side
+  right: !Array
+  - !Item
+    name: side
     type: Side
-  - name: isConfirmed
+  - !Item
+    name: isConfirmed
     type: Boolean
 argument_loc: Unspecified
 effect_loc: Unspecified

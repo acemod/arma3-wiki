@@ -5,28 +5,24 @@ problem_notes:
 groups:
 - Roads and Airports
 syntax:
-- call: !Binary
-  - plane
-  - id
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: plane
+  left: !Item
+    name: plane
     desc: plane
     type: Object
-  - name: id
+  right: !Item
+    name: id
     desc: airport id
     type: Number
-- call: !Binary
-  - plane
-  - target
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: plane
+  left: !Item
+    name: plane
     desc: plane
     type: Object
-  - name: target
+  right: !Item
+    name: target
     desc: 'airport object. For example an aircraft carrier, see [[Arma 3: Dynamic Airport Configuration]]'
     type: Object
   since:

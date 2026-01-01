@@ -3,16 +3,14 @@ desc: Sets thermal vision mode for currently used camera. This command only work
 groups:
 - Camera Control
 syntax:
-- call: !Binary
-  - state
-  - modeIndex
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: state
+  left: !Item
+    name: state
     desc: '[[true]] to enable, [[false]] to disable the effect'
     type: Boolean
-  - name: modeIndex
+  right: !Item
+    name: modeIndex
     type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,12 +3,11 @@ desc: Returns array with all items assigned to the [[primaryWeapon]] except maga
 groups:
 - Unit Inventory
 syntax:
-- call: !Unary unit
-  ret:
+- ret:
     type: ArrayUnknown
     desc: '[silencer, laserpointer/flashlight, optics, bipod]'
-  params:
-  - name: unit
+  right: !Item
+    name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified

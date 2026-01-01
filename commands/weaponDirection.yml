@@ -6,15 +6,13 @@ groups:
 - Weapons
 - Unit Control
 syntax:
-- call: !Binary
-  - vehicleName
-  - weaponName
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: vehicleName
+  left: !Item
+    name: vehicleName
     type: Object
-  - name: weaponName
+  right: !Item
+    name: weaponName
     type: String
 argument_loc: Global
 effect_loc: Unspecified

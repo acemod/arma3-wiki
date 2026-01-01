@@ -5,46 +5,44 @@ desc: |-
 groups:
 - Eden Editor
 syntax:
-- call: !Unary
-  - mode
-  - class
-  - position
-  - isEmpty
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: mode
+  right: !Array
+  - !Item
+    name: mode
     desc: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
     type: String
-  - name: class
+  - !Item
+    name: class
     type: Unknown
-  - name: position
+  - !Item
+    name: position
     type: Position
-  - name: isEmpty
+  - !Item
+    name: isEmpty
     desc: '[[true]] to create vehicle without crew'
     type: Boolean
     optional: true
     default: '[[false]]'
-- call: !Binary
-  - group
-  - - mode
-    - class
-    - position
-  ret:
+- ret:
     type: Unknown
-  params:
-  - name: group
+  left: !Item
+    name: group
     type: !OneOf
     - type: Group
       desc: null
       since: null
-  - name: mode
+  right: !Array
+  - !Item
+    name: mode
     desc: can be "Object", "Trigger", "Waypoint", "Logic", "Marker" or {{GVI|arma3|2.14|size= 0.75}} "Comment"
     type: String
-  - name: class
+  - !Item
+    name: class
     desc: entity class
     type: String
-  - name: position
+  - !Item
+    name: position
     type: Position
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -3,21 +3,20 @@ desc: Adds given number of a magazine to the given turret. Use turret path {{hl|
 groups:
 - Turrets
 syntax:
-- call: !Binary
-  - vehicle
-  - - magazineName
-    - turretPath
-    - quantity
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: vehicle
+  left: !Item
+    name: vehicle
     type: Object
-  - name: magazineName
+  right: !Array
+  - !Item
+    name: magazineName
     type: String
-  - name: turretPath
+  - !Item
+    name: turretPath
     type: TurretPath
-  - name: quantity
+  - !Item
+    name: quantity
     desc: desired number of the magazines
     type: Number
 argument_loc: Local

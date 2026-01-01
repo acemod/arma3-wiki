@@ -3,15 +3,13 @@ desc: Set object's up vector. Direction of the object remain unchanged. Default 
 groups:
 - Math - Vectors
 syntax:
-- call: !Binary
-  - object
-  - vectorUp
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: object
+  left: !Item
+    name: object
     type: Object
-  - name: vectorUp
+  right: !Item
+    name: vectorUp
     type: Unknown
 argument_loc: Local
 effect_loc: Global

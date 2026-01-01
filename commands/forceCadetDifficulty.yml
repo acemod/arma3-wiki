@@ -3,19 +3,18 @@ desc: 'Forces {{hl|showCadetHints}} and {{hl|showCadetWP}} global Cadet [[Arma 3
 groups:
 - Difficulty
 syntax:
-- call: !Unary
-  - showCadetHints
-  - showCadetWP
-  ret:
+- ret:
     type: !ArrayUnsized
       type: Boolean
       desc: ''
     desc: '[prev_showCadetHints, prev_showCadetWP]'
-  params:
-  - name: showCadetHints
+  right: !Array
+  - !Item
+    name: showCadetHints
     desc: '{{hl|showCadetHints}} difficulty'
     type: Boolean
-  - name: showCadetWP
+  - !Item
+    name: showCadetWP
     desc: '{{hl|showCadetWP}} difficulty'
     type: Boolean
 argument_loc: Unspecified

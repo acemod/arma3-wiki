@@ -4,18 +4,14 @@ groups:
 - Diagnostic
 - Performance Profiling
 syntax:
-- call: !Unary
-  - section
-  - threshold
-  - frameSkip
-  - toFile
-  - continuousCounter
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: section
+  right: !Array
+  - !Item
+    name: section
     type: Unknown
-  - name: threshold
+  - !Item
+    name: threshold
     type: !OneOf
     - type: Number
       desc: ': section duration in seconds. 0 captures always ''''''IF'''''' the section you gave as section filter appears inside the given frame. "total" always appears, while "callExt" might not always appear for example.'
@@ -23,21 +19,24 @@ syntax:
     - type: String
       desc: ': number with unit (s / ms / us / ns / fps, e.g "30fps" - see {{Link|https://en.wikipedia.org/wiki/Second#SI_multiples|SI prefixes}} for more unit information){{Feature|important|'
       since: null
-  - name: frameSkip
+  - !Item
+    name: frameSkip
     desc: number of frames to ignore before measuring
     type: Number
     optional: true
     default: '0'
     since:
       arma3: '1.18'
-  - name: toFile
+  - !Item
+    name: toFile
     desc: 'if true, doesn''t open UI and writes straight to file. If logging to file, it automatically also outputs a .trace file. Note: even if false it might still force to file if it doesn''t have a UI, like a server or HC'
     type: Boolean
     optional: true
     default: '[[false]]'
     since:
       arma3: '2.20'
-  - name: continuousCounter
+  - !Item
+    name: continuousCounter
     desc: captures N slow frames. 0 or 1 will only capture one frame - do '''not''' set it to negative! Can be aborted by running [[diag_captureFrame]] or another [[diag_captureSlowFrame]] usage
     type: Number
     optional: true

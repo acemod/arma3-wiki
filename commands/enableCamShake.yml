@@ -5,11 +5,10 @@ desc: |-
 groups:
 - Camera Control
 syntax:
-- call: !Unary value
-  ret:
+- ret:
     type: Nothing
-  params:
-  - name: value
+  right: !Item
+    name: value
     desc: if [[true]], shake effects are visible
     type: Boolean
 argument_loc: Unspecified

@@ -6,11 +6,10 @@ desc: |-
 groups:
 - System
 syntax:
-- call: !Unary fileName
-  ret:
+- ret:
     type: String
-  params:
-  - name: fileName
+  right: !Item
+    name: fileName
     desc: path to the file and name of the file
     type: String
 argument_loc: Unspecified
