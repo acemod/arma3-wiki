@@ -8,6 +8,7 @@ use super::{Call, Locality, Param, Since, Value};
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Syntax {
+    pub(crate) call: Call,
     pub(crate) ret: Return,
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -26,6 +27,7 @@ pub struct Syntax {
 impl Syntax {
     #[must_use]
     pub const fn new(
+        call: Call,
         ret: Return,
         left: Option<Param>,
         right: Option<Param>,
@@ -33,6 +35,7 @@ impl Syntax {
         effect: Option<Locality>,
     ) -> Self {
         Self {
+            call,
             ret,
             left,
             right,
@@ -54,6 +57,11 @@ impl Syntax {
     #[must_use]
     pub const fn is_binary(&self) -> bool {
         self.left.is_some() && self.right.is_some()
+    }
+
+    #[must_use]
+    pub const fn call(&self) -> &Call {
+        &self.call
     }
 
     #[must_use]
@@ -202,6 +210,7 @@ impl Syntax {
         };
         Ok((
             Self::new(
+                call,
                 {
                     let Some(mut ret) = ret else {
                         return Err("Missing return".to_string());
