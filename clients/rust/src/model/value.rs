@@ -96,6 +96,8 @@ pub enum Value {
     Position3dAGL,
     Position3dAGLS,
     Position3dRelative,
+    Vector,
+    Vector2d,
     Vector3d,
     Waypoint,
     WhileType,
@@ -871,6 +873,8 @@ impl Value {
             "position3dagl" => Ok(Self::Position3dAGL),
             "position3dagls" => Ok(Self::Position3dAGLS),
             "position3drelative" => Ok(Self::Position3dRelative),
+            "vector" => Ok(Self::Vector),
+            "vector2d" => Ok(Self::Vector2d),
             "vector3d" => Ok(Self::Vector3d),
             "waypoint" => Ok(Self::Waypoint),
             "while type" | "whiletype" => Ok(Self::WhileType),
@@ -999,6 +1003,8 @@ impl std::fmt::Display for Value {
             Self::Position3dAGL => write!(f, "Position 3D AGL"),
             Self::Position3dAGLS => write!(f, "Position 3D AGLS"),
             Self::Position3dRelative => write!(f, "Position 3D Relative"),
+            Self::Vector => write!(f, "Vector"),
+            Self::Vector2d => write!(f, "Vector 2D"),
             Self::Vector3d => write!(f, "Vector 3D"),
             Self::Waypoint => write!(f, "Waypoint"),
             Self::WhileType => write!(f, "While Type"),
@@ -1665,6 +1671,25 @@ mod tests {
                 ])),
                 desc: String::new()
             })
+        );
+    }
+
+    #[test]
+    fn vector() {
+        assert_eq!(
+            Value::from_wiki("test", "[[Vector3D]] or {{GVI|arma3|2.00}} [[Vector2D]]"),
+            Ok(Value::OneOf(vec![
+                OneOfValue {
+                    typ: Value::Vector3d,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Vector2d,
+                    desc: None,
+                    since: None, // TODO Some(Since::arma3("2.00")),
+                },
+            ]))
         );
     }
 }
