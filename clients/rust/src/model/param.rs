@@ -93,7 +93,7 @@ impl Param {
                 return Err(format!("Invalid param: {value}"));
             };
             let name = name.trim();
-            let (typ, desc) = typ.split_once('-').unwrap_or((typ, ""));
+            let (typ, desc) = typ.split_once(" - ").unwrap_or((typ, ""));
             (name, desc, typ)
         };
         let typ = typ.trim();

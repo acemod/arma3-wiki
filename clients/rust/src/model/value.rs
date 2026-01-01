@@ -270,7 +270,8 @@ impl Value {
         let regex_or_pattern = REGEX_OR_PATTERN
             .get_or_init(|| Regex::new(r"\[\[([^\[\]]+)\]\]").expect("Failed to compile regex"));
         let regex_number_range = REGEX_NUMBER_RANGE.get_or_init(|| {
-            Regex::new(r"^\[\[Number\]\].*?(\d+)\.\.(\d+)").expect("Failed to compile regex")
+            Regex::new(r"^\[\[Number\]\].*?([+-]?\d+)\.\.([+-]?\d+)")
+                .expect("Failed to compile regex")
         });
         let regex_array_sized = REGEX_ARRAY_SIZED.get_or_init(|| {
             Regex::new(r"^\[\[Array\]\] with \[([^\]]+)\]").expect("Failed to compile regex")
@@ -540,14 +541,16 @@ impl Value {
         }
 
         // Check for "Array of X" pattern
-        if let Some(mut rest) = source.strip_prefix("[[Array]] of ") {
-            // Handle optional trailing 's' (e.g., "[[Number]]s")
-            if rest.ends_with("]]s") {
-                rest = &rest[..rest.len() - 1]; // Remove the trailing 's'
-            }
+        if let Some(rest) = source.trim().strip_prefix("[[Array]] of ") {
+            // Handle optional 's' after ]] (e.g., "[[Number]]s in range 0..1")
+            // Look for "]]s" pattern and remove the 's'
+            let processed_rest = rest.find("]]s").map_or_else(
+                || rest.to_string(),
+                |pos| format!("{}{}", &rest[..pos + 2], &rest[pos + 3..]),
+            );
 
             // Try to parse the rest recursively, handling both simple and nested cases
-            if let Ok(inner_type) = Self::from_wiki(command, rest) {
+            if let Ok(inner_type) = Self::from_wiki(command, &processed_rest) {
                 // Special handling: if inner_type is OneOf containing Nothing,
                 // restructure to OneOf(Array(non-Nothing types), Nothing)
                 // because Array of Nothing doesn't make sense
@@ -642,13 +645,15 @@ impl Value {
             "[[Array]] format [[Position]]" => Some(Self::Position),
 
             "[[Array]] format [[Position#PositionATL]]"
-            | "[[Array]] format [[Position#PositionATL|PositionATL]]" => Some(Self::Position3dATL),
+            | "[[Array]] format [[Position#PositionATL|PositionATL]]"
+            | "[[PositionATL]]" => Some(Self::Position3dATL),
 
             "[[Array]] format [[Position#Introduction|Position2D]]"
             | "[[Position#Introduction|Position2D]]"
             | "[[Array]] - format [[Position#Introduction|Position2D]]" => Some(Self::Position2d),
 
             "[[Array]] format [[Position#PositionAGL|PositionAGL]]"
+            | "[[PositionAGL]]"
             | "[[Position#PositionAGL|PositionAGL]]"
             | "[[Array]] - world position format [[Position#PositionAGL|PositionAGL]]"
             | "[[Array]] format [[Position#PositionAGL|PositionAGL]] - translated world position"
@@ -959,6 +964,17 @@ mod tests {
         assert_eq!(
             Value::from_wiki("test", "[[Number]] in 0..1 range"),
             Ok(Value::NumberRange(0, 1))
+        );
+        assert_eq!(
+            Value::from_wiki("test", "[[Number]] in range -1..+1"),
+            Ok(Value::NumberRange(-1, 1))
+        );
+        assert_eq!(
+            Value::from_wiki("test", " [[Array]] of [[Number]]s in range 0..1"),
+            Ok(Value::ArrayUnsized {
+                typ: Box::new(Value::NumberRange(0, 1)),
+                desc: String::new()
+            })
         );
     }
 
@@ -1422,6 +1438,34 @@ mod tests {
                             since: None,
                         },
                     ]),
+                    desc: None,
+                    since: None,
+                },
+            ]))
+        );
+        assert_eq!(
+            Value::from_wiki(
+                "test",
+                "[[Object]], [[Position#Introduction|Position2D]], [[PositionATL]] or [[PositionAGL]]"
+            ),
+            Ok(Value::OneOf(vec![
+                OneOfValue {
+                    typ: Value::Object,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Position2d,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Position3dATL,
+                    desc: None,
+                    since: None,
+                },
+                OneOfValue {
+                    typ: Value::Position3dAGL,
                     desc: None,
                     since: None,
                 },
