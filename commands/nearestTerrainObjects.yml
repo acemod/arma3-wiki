@@ -16,10 +16,15 @@ syntax:
   - name: position
     desc: where to find objects, center position
     type: !OneOf
-    - - Object
-      - null
-    - - Position2d
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position3dAGL
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: types
     desc: list of case-insensitive types of the objects to search for. {{hl|[]}} to search without filters
     type: ArrayUnknown

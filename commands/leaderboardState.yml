@@ -6,18 +6,18 @@ syntax:
 - call: !Unary boardname
   ret:
     type: !NumberEnum
-    - - 0
-      - Busy (async. operation in progress)
-      - null
-    - - 1
-      - Async. operation ended with success
-      - null
-    - - 2
-      - Async. operation ended with error
-      - null
-    - - 3
-      - Invalid board (bad board name, not initialised etc)
-      - null
+    - value: 0
+      desc: Busy (async. operation in progress)
+      since: null
+    - value: 1
+      desc: Async. operation ended with success
+      since: null
+    - value: 2
+      desc: Async. operation ended with error
+      since: null
+    - value: 3
+      desc: Invalid board (bad board name, not initialised etc)
+      since: null
   params:
   - name: boardname
     type: String

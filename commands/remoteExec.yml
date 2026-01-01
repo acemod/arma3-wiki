@@ -22,12 +22,15 @@ syntax:
     - JIP
   ret:
     type: !OneOf
-    - - !OneOf
-        - - Object
-          - null
-        - - Group
-          - null
-      - null
+    - type: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
+      desc: null
+      since: null
   params:
   - name: params
     desc: '''''order''''''s parameter {{Feature|important|[[Structured Text]] is ''''''not'''''' meant to be sent over network.}}'
@@ -37,30 +40,40 @@ syntax:
     type: String
   - name: targets
     type: !OneOf
-    - - Number
-      - null
-    - - Object
-      - null
-    - - String
-      - null
-    - - Side
-      - null
-    - - Group
-      - null
-    - - ArrayUnknown
-      - null
+    - type: Number
+      desc: '(See also [[Multiplayer Scripting#Machine network ID|Machine network ID]]):'
+      since: null
+    - type: Object
+      desc: the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]
+      since: null
+    - type: String
+      desc: interpreted as an [[Identifier]] (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [[Multiplayer Scripting#Locality|local]]
+      since: null
+    - type: Side
+      desc: the order will be executed on machines where the player is on the specified side
+      since: null
+    - type: Group
+      desc: the order will be executed on machines '''where the player is in the specified group''' ('''not''' where said group is local!)
+      since: null
+    - type: ArrayUnknown
+      desc: array of any combination of the types listed above
+      since: null
     optional: true
     default: '0'
   - name: JIP
     type: !OneOf
-    - - Boolean
-      - null
-    - - String
-      - null
-    - - Number
-      - null
-    - - Object
-      - null
+    - type: Boolean
+      desc: if [[true]], a unique JIP ID is generated and the [[remoteExec]] statement is added to the JIP queue from which it will be executed for every JIP
+      since: null
+    - type: String
+      desc: ':'
+      since: null
+    - type: Number
+      desc: :[[Number]]" (e.g. "0:0"), it is interpreted as a [[netId]] (see below)
+      since: null
+    - type: Object
+      desc: ', [[Group]] or [[netId]] - the persistent execution of the [[remoteExec]] statement is attached to the given object or group, replacing any previous statement that has the same JIP ID.<br>When the object / group is deleted, the [[remoteExec]] statement is automatically removed from the JIP queue'
+      since: null
     optional: true
     default: '[[false]]'
 - call: !Unary
@@ -69,8 +82,9 @@ syntax:
   - JIP
   ret:
     type: !OneOf
-    - - String
-      - null
+    - type: String
+      desc: null
+      since: null
     desc: see the main syntax above for more details.
   params:
   - name: functionName
@@ -79,31 +93,41 @@ syntax:
   - name: targets
     desc: see the main syntax above for more details.
     type: !OneOf
-    - - Number
-      - null
-    - - Object
-      - null
-    - - String
-      - null
-    - - Side
-      - null
-    - - Group
-      - null
-    - - ArrayUnknown
-      - null
+    - type: Number
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: Side
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
     optional: true
     default: '0'
   - name: JIP
     desc: see the main syntax above for more details.
     type: !OneOf
-    - - Boolean
-      - null
-    - - String
-      - null
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Boolean
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
     optional: true
     default: '[[false]]'
 argument_loc: Unspecified

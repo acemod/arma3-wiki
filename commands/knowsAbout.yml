@@ -38,12 +38,15 @@ syntax:
   - name: who
     desc: if a unit, unit's [[group]] is considered; if a vehicle, vehicle commander's [[group]] is used.
     type: !OneOf
-    - - Object
-      - null
-    - - Group
-      - null
-    - - Side
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
+    - type: Side
+      desc: null
+      since: null
   - name: target
     type: Object
 argument_loc: Local

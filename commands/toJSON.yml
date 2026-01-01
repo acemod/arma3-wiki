@@ -11,16 +11,21 @@ syntax:
   - name: data
     desc: Only certain [[Data Types]] are supported
     type: !OneOf
-    - - Boolean
-      - null
-    - - Number
-      - null
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
-    - - HashMapUnknown
-      - null
+    - type: Boolean
+      desc: serialized as JSON boolean
+      since: null
+    - type: Number
+      desc: serialized as JSON number (floating-point)
+      since: null
+    - type: String
+      desc: serialized as JSON string
+      since: null
+    - type: ArrayUnknown
+      desc: Serialized as JSON array. Unsupported elements (e.g. [[Object]]s) are converted to JSON null.
+      since: null
+    - type: HashMapUnknown
+      desc: Serialized as JSON object. Only [[String]] keys are supported, other keys are ignored. Unsupported values (e.g. [[Object]]s) are converted to JSON null.
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

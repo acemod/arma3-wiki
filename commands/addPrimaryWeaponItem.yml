@@ -8,10 +8,12 @@ syntax:
   - item
   ret:
     type: !OneOf
-    - - Nothing
-      - null
-    - - Boolean
-      - null
+    - type: Nothing
+      desc: null
+      since: null
+    - type: Boolean
+      desc: null
+      since: null
     desc: '''''''false'''''' is returned if ''''''item'''''' can not be added'
   params:
   - name: unit

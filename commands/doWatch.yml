@@ -11,10 +11,12 @@ syntax:
   params:
   - name: unit(s)
     type: !OneOf
-    - - Object
-      - null
-    - - ArrayUnknown
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
   - name: position
     type: Position
 - call: !Binary
@@ -25,10 +27,12 @@ syntax:
   params:
   - name: unit(s)
     type: !OneOf
-    - - Object
-      - null
-    - - ArrayUnknown
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
   - name: target
     type: Object
 argument_loc: Local

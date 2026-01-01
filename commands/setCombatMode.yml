@@ -13,10 +13,12 @@ syntax:
   - name: group
     desc: if the argument is unit [[Object]], unit's current group is used.
     type: !OneOf
-    - - Group
-      - null
-    - - Object
-      - null
+    - type: Group
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: mode
     desc: see description
     type: String

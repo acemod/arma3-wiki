@@ -12,10 +12,12 @@ syntax:
   params:
   - name: group
     type: !OneOf
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
   - name: enable
     type: Boolean
 argument_loc: Local

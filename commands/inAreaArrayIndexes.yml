@@ -22,12 +22,15 @@ syntax:
     type: Unknown
   - name: area
     type: !OneOf
-    - - Object
-      - null
-    - - Location
-      - null
-    - - String
-      - null
+    - type: Object
+      desc: trigger
+      since: null
+    - type: Location
+      desc: location
+      since: null
+    - type: String
+      desc: marker name
+      since: null
 - call: !Binary
   - positions
   - - centre

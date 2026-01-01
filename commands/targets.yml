@@ -19,10 +19,12 @@ syntax:
   - name: unitOrGroup
     desc: unit or group which target knowledge is retrieved
     type: !OneOf
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
   - name: enemyOnly
     desc: '[[true]] to include only enemy targets, [[false]] to include all targets'
     type: Boolean

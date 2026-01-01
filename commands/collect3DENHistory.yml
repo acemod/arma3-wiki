@@ -43,10 +43,12 @@ syntax:
   - name: text
     desc: text of the entry that is added to the history list
     type: !OneOf
-    - - String
-      - null
-    - - Nothing
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: Nothing
+      desc: null
+      since: null
   - name: tooltip
     desc: ) - tooltip of the entry
     type: String

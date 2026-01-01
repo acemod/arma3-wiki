@@ -22,10 +22,12 @@ syntax:
   - name: group
     desc: object's [[Group]] is used
     type: !OneOf
-    - - Group
-      - null
-    - - Object
-      - null
+    - type: Group
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: vehicle
     type: Object
 argument_loc: Local

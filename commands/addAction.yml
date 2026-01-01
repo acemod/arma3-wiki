@@ -30,18 +30,15 @@ syntax:
     type: String
   - name: script
     type: !OneOf
-    - - String
-      - null
-    - - Code
-      - null
-    - - Object
-      - null
-    - - Object
-      - null
-    - - Number
-      - null
-    - - Anything
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: Code
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: arguments
     desc: arguments to pass to the script. Accessible with <sqf inline>_this select 3</sqf> inside the script. If [[Array]] is used as an argument for example, its first element reference would be <sqf inline>_this select 3 select 0</sqf>
     type: Anything
@@ -69,16 +66,15 @@ syntax:
     default: '""'
   - name: condition
     type: !OneOf
-    - - String
-      - null
-    - - Object
-      - null
-    - - Object
-      - null
-    - - Object
-      - null
-    - - Number
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
     optional: true
   - name: radius
     desc: maximum 3D [[distance]] in meters between the activating unit's [[eyePos]] and ''object'''s ''memoryPoint'', ''selection'' or [[position]]. -1 disables the radius; hardcoded limit is '''50'''

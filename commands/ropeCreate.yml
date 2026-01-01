@@ -28,20 +28,24 @@ syntax:
   - name: fromPoint
     desc: position for the rope start, either a memory point [[String]] or relative offset [[Array]]
     type: !OneOf
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
   - name: toObject
     desc: entity which is automatically [[ropeAttachTo | attached to]] the end of the rope
     type: Object
   - name: toPoint
     desc: position for the rope end, either a memory point [[String]] or relative offset [[Array]]
     type: !OneOf
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
   - name: length
     desc: rope length in meters
     type: Number
@@ -49,37 +53,39 @@ syntax:
     default: '-1'
   - name: ropeStart
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
     optional: true
   - name: ropeEnd
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
     optional: true
   - name: ropeType
     desc: '- rope type, {{hl|CfgVehicles}}'' classname'
@@ -113,29 +119,32 @@ syntax:
   - name: fromPoint
     desc: position for the rope start, either a memory point [[String]] or relative offset [[Array]]
     type: !OneOf
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
   - name: length
     desc: rope length in meters
     type: Number
   - name: ropeStart
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
     optional: true
   - name: ropeEnd
     type: Unknown

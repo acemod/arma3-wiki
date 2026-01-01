@@ -22,10 +22,15 @@ syntax:
     type: Side
   - name: position
     type: !OneOf
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: objectMapID
     desc: static id of map object. -1 to ignore
     type: Number

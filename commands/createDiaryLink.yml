@@ -15,12 +15,15 @@ syntax:
     type: String
   - name: record
     type: !OneOf
-    - - Object
-      - null
-    - - Task
-      - null
-    - - DiaryRecord
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Task
+      desc: null
+      since: null
+    - type: DiaryRecord
+      desc: null
+      since: null
   - name: text
     type: String
 argument_loc: Unspecified

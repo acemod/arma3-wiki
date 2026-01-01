@@ -8,10 +8,12 @@ syntax:
   - pylon
   ret:
     type: !OneOf
-    - - Number
-      - null
-    - - Boolean
-      - null
+    - type: Number
+      desc: null
+      since: null
+    - type: Boolean
+      desc: null
+      since: null
     desc: '[[false]] on failure'
   params:
   - name: vehicle
@@ -19,10 +21,12 @@ syntax:
   - name: pylon
     desc: pylon's name or index
     type: !OneOf
-    - - String
-      - null
-    - - Number
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

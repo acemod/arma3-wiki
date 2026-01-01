@@ -41,12 +41,15 @@ syntax:
   - name: position
     desc: desired placement position
     type: !OneOf
-    - - Object
-      - null
-    - - Position3dAGL
-      - null
-    - - Position2d
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position3dAGL
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: markers
     desc: |-
       if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position.

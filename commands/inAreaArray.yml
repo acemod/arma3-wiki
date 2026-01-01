@@ -19,12 +19,15 @@ syntax:
     type: Unknown
   - name: area
     type: !OneOf
-    - - Object
-      - null
-    - - Location
-      - null
-    - - String
-      - null
+    - type: Object
+      desc: trigger
+      since: null
+    - type: Location
+      desc: location
+      since: null
+    - type: String
+      desc: marker name
+      since: null
 - call: !Binary
   - positions
   - - centre
@@ -42,12 +45,18 @@ syntax:
     type: ArrayUnknown
   - name: centre
     type: !OneOf
-    - - Position2d
-      - null
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Position2d
+      desc: null
+      since: null
+    - type: Position3dAGL
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
   - name: a
     desc: x axis (x / 2)
     type: Number

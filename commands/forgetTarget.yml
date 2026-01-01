@@ -13,10 +13,12 @@ syntax:
   - name: group
     desc: group itself or unit in a group
     type: !OneOf
-    - - Group
-      - null
-    - - Object
-      - null
+    - type: Group
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: target
     desc: group target
     type: Object

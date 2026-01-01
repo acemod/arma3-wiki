@@ -14,10 +14,14 @@ syntax:
     type: Object
   - name: direction
     type: !OneOf
-    - - Number
-      - null
-    - - ArrayUnknown
-      - null
+    - type: Number
+      desc: (before ) - camera azimuth
+      since:
+        arma3: '0.50'
+    - type: ArrayUnknown
+      desc: in format [x,y,z] (since ) - direction of camera. Must be a valid vector.
+      since:
+        arma3: '0.50'
 argument_loc: Local
 effect_loc: Local
 since:

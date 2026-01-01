@@ -18,12 +18,15 @@ syntax:
   - name: position
     desc: search position centre
     type: !OneOf
-    - - Object
-      - null
-    - - Position3dAGL
-      - null
-    - - Position2d
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position3dAGL
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: types
     desc: list of class name of the objects to search for (uses [[isKindOf]] comparison instead of direct class name == comparison). Use an empty array <sqf inline>[]</sqf> to search for all classes
     type: ArrayUnknown

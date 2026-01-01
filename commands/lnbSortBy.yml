@@ -24,24 +24,26 @@ syntax:
   - name: controlOrIDC
     desc: the ListNBox control or its IDC
     type: !OneOf
-    - - Control
-      - null
-    - - Number
-      - null
+    - type: Control
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
   - name: column
     desc: column to sort (starts with 0)
     type: Number
   - name: sortByType
     type: !StringEnum
-    - - TEXT
-      - null
-      - null
-    - - VALUE
-      - null
-      - null
-    - - DATA
-      - null
-      - null
+    - value: TEXT
+      desc: null
+      since: null
+    - value: VALUE
+      desc: null
+      since: null
+    - value: DATA
+      desc: null
+      since: null
     optional: true
   - name: reversedOrder
     desc: '[[true]] for sorting in reversed order'

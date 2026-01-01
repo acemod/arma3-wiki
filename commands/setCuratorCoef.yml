@@ -15,30 +15,32 @@ syntax:
     type: Object
   - name: action
     type: !StringEnum
-    - - Place
-      - null
-      - null
-    - - Edit
-      - null
-      - null
-    - - Delete
-      - null
-      - null
-    - - Destroy
-      - null
-      - null
-    - - Group
-      - null
-      - null
-    - - Synchronize
-      - null
-      - null
+    - value: Place
+      desc: null
+      since: null
+    - value: Edit
+      desc: null
+      since: null
+    - value: Delete
+      desc: null
+      since: null
+    - value: Destroy
+      desc: null
+      since: null
+    - value: Group
+      desc: null
+      since: null
+    - value: Synchronize
+      desc: null
+      since: null
   - name: coef
     type: !OneOf
-    - - Number
-      - null
-    - - Boolean
-      - null
+    - type: Number
+      desc: null
+      since: null
+    - type: Boolean
+      desc: null
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 server_exec: true

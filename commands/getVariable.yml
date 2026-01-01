@@ -10,10 +10,12 @@ syntax:
   - name
   ret:
     type: !OneOf
-    - - Anything
-      - null
-    - - Nothing
-      - null
+    - type: Anything
+      desc: null
+      since: null
+    - type: Nothing
+      desc: null
+      since: null
   params:
   - name: varspace
     type: Unknown

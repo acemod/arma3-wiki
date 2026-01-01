@@ -7,31 +7,37 @@ syntax:
   - vehicle
   - pylon
   ret:
-    type: !ArrayUnsized
-      type: !OneOf
-      - - String
-        - null
-      - - !ArrayUnsized
-          type: !ArrayUnsized
-            type: String
-            desc: ''
+    type: !OneOf
+    - type: !ArrayUnsized
+        type: String
+        desc: ''
+      desc: null
+      since: null
+    - type: !ArrayUnsized
+        type: !ArrayUnsized
+          type: String
           desc: ''
-        - null
-      desc: ''
+        desc: ''
+      desc: null
+      since: null
   params:
   - name: vehicle
     desc: aircraft object or config class
     type: !OneOf
-    - - Object
-      - null
-    - - String
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
   - name: pylon
     type: !OneOf
-    - - Number
-      - null
-    - - String
-      - null
+    - type: String
+      desc: pylon class name from {{hl|TransportPylonsComponent &gt;&gt; pylons}} class
+      since: null
+    - type: Number
+      desc: pylon ID
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -15,10 +15,12 @@ syntax:
   params:
   - name: entity
     type: !OneOf
-    - - EdenEntity
-      - null
-    - - EdenID
-      - null
+    - type: EdenEntity
+      desc: null
+      since: null
+    - type: EdenID
+      desc: null
+      since: null
   - name: attribute
     desc: attribute property
     type: String

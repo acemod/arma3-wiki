@@ -12,10 +12,12 @@ syntax:
   params:
   - name: unitOrGroup
     type: !OneOf
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
   - name: cowardice
     desc: 1 is maximum cowardice and 0 minimum. A value of 0 will disable fleeing all together
     type: Number

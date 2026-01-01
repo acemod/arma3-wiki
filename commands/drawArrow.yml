@@ -19,25 +19,33 @@ syntax:
   - name: from
     desc: arrow start position
     type: !OneOf
-    - - Object
-      - null
-    - - !OneOf
-        - - Position2d
-          - null
-        - - Position3d
-          - null
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
+      desc: null
+      since: null
   - name: to
     desc: arrow end position
     type: !OneOf
-    - - Object
-      - null
-    - - !OneOf
-        - - Position2d
-          - null
-        - - Position3d
-          - null
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
+      desc: null
+      since: null
   - name: color
     desc: arrow color in format [r,g,b,a]
     type: ArrayUnknown

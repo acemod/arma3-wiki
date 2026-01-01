@@ -14,10 +14,12 @@ syntax:
     type: Object
   - name: selectionNumber
     type: !OneOf
-    - - Number
-      - null
-    - - String
-      - null
+    - type: Number
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
   - name: material
     desc: material path. Since {{GVI|arma3|2.20}} using '''"#reset"''' would reset to default material.
     type: String

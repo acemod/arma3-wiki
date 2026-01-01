@@ -14,10 +14,12 @@ syntax:
   params:
   - name: group
     type: !OneOf
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
   - name: format
     desc: format template (e.g "%keyword1 - %keyword2 / %keyword4 (%keyword3)")
     type: String

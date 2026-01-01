@@ -27,10 +27,12 @@ syntax:
     type: String
   - name: position
     type: !OneOf
-    - - Object
-      - null
-    - - Position3dAGL
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position3dAGL
+      desc: null
+      since: null
   - name: markers
     desc: marker name(s)
     type: !ArrayUnsized

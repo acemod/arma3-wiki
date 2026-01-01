@@ -20,14 +20,18 @@ syntax:
   - name: centre
     desc: rectangle's centre
     type: !OneOf
-    - - Object
-      - null
-    - - !OneOf
-        - - Position2d
-          - null
-        - - Position3d
-          - null
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
+      desc: null
+      since: null
   - name: halfWidth
     desc: 1/2 width of rectangle in meters
     type: Number

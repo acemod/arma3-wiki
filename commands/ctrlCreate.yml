@@ -67,10 +67,12 @@ syntax:
   - name: class
     desc: existing classname (see [[ctrlCreate/classnames]]) of the new control;  {{GVI|arma3|1.70|size= 0.75}} it is possible to use classes defined in mission config
     type: !OneOf
-    - - String
-      - null
-    - - Config
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: Config
+      desc: null
+      since: null
   - name: idc
     desc: |-
       IDC of the new control. Use -1 if not needed

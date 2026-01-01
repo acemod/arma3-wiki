@@ -12,10 +12,12 @@ syntax:
   params:
   - name: triggerOrWaypoint
     type: !OneOf
-    - - Object
-      - null
-    - - Waypoint
-      - null
+    - type: Object
+      desc: '[[Trigger|trigger]]'
+      since: null
+    - type: Waypoint
+      desc: '[[Array]] in format of [[Waypoint]]'
+      since: null
   - name: waypoints
     type: ArrayUnknown
 argument_loc: Unspecified

@@ -33,8 +33,12 @@ syntax:
   params:
   - name: origin
     type: !OneOf
-    - - Object
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: distance
     desc: distance from position
     type: Number

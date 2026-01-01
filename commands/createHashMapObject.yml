@@ -19,36 +19,32 @@ syntax:
   params:
   - name: classDefinition
     type: !OneOf
-    - - HashMapUnknown
-      - null
-    - - ArrayUnknown
-      - null
-    - - ArrayUnknown
-      - null
-    - - HashMapUnknown
-      - null
-    - - String
-      - null
-    - - Code
-      - null
-    - - Code
-      - null
-    - - Code
-      - null
-    - - Code
-      - null
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
-    - - HashMapUnknown
-      - null
-    - - ArrayUnknown
-      - null
+    - type: HashMapUnknown
+      desc: null
+      since: null
+    - type: !ArrayUnsized
+        type: ArrayUnknown
+        desc: ''
+      desc: null
+      since: null
+    - type: HashMapUnknown
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: Code
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: HashMapUnknown
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
   - name: constructorArguments
     desc: passed as <sqf inline>_this</sqf> argument to the "#create" method.
     type: Anything

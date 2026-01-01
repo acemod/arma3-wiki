@@ -9,10 +9,12 @@ syntax:
   params:
   - name: objectOrModel
     type: !OneOf
-    - - Object
-      - null
-    - - String
-      - null
+    - type: Object
+      desc: object
+      since: null
+    - type: String
+      desc: model path (see [[getModelInfo]])
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

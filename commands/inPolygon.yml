@@ -11,12 +11,15 @@ syntax:
   params:
   - name: position
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
   - name: polygon
     desc: 'positions in format: [position1, position2...., positionN]'
     type: Unknown

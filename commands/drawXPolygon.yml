@@ -24,10 +24,12 @@ syntax:
   - name: centre
     desc: ellipse's centre
     type: !OneOf
-    - - Object
-      - null
-    - - ArrayUnknown
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: a
     desc: horizontal (x) radius
     type: Number

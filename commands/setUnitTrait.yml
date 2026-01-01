@@ -33,10 +33,12 @@ syntax:
   - name: value
     desc: value (see above)
     type: !OneOf
-    - - Boolean
-      - null
-    - - Number
-      - null
+    - type: Boolean
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
   - name: isCustom
     desc: Must be set to [[true]] in case of custom
     type: Boolean

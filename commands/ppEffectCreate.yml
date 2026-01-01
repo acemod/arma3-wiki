@@ -35,12 +35,12 @@ syntax:
   - '...'
   ret:
     type: !OneOf
-    - - !ArrayUnsized
-        type: Number
-        desc: ''
-      - null
-    - - Nothing
-      - null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: Nothing
+      desc: null
+      since: null
   params:
   - name: nameN
     desc: name of effect type

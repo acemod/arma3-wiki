@@ -20,10 +20,12 @@ syntax:
   - name: position
     desc: 'format position: [[Position#Introduction|Position2D]], [[Position#PositionAGL|PositionAGL]] or [[Object]] (object''s model centre is used (see [[getPosWorld]]))'
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - Object
-      - null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: channel
     desc: The marker side for multiplayer
     type: Number

@@ -13,12 +13,14 @@ syntax:
   - name: variableName
     desc: variable(s) to import
     type: !OneOf
-    - - String
-      - null
-    - - !ArrayUnsized
+    - type: String
+      desc: null
+      since: null
+    - type: !ArrayUnsized
         type: String
         desc: ''
-      - null
+      desc: null
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

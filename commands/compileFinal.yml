@@ -8,19 +8,24 @@ syntax:
 - call: !Unary expression
   ret:
     type: !OneOf
-    - - Code
-      - null
-    - - HashMapUnknown
-      - null
+    - type: Code
+      desc: null
+      since: null
+    - type: HashMapUnknown
+      desc: null
+      since: null
   params:
   - name: expression
     type: !OneOf
-    - - String
-      - null
-    - - Code
-      - null
-    - - HashMapUnknown
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: Code
+      desc: null
+      since: null
+    - type: HashMapUnknown
+      desc: null
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

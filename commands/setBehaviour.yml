@@ -20,27 +20,29 @@ syntax:
   - name: groupOrUnit
     desc: unit or a [[group]]
     type: !OneOf
-    - - Group
-      - null
-    - - Object
-      - null
+    - type: Group
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: behaviour
     type: !StringEnum
-    - - CARELESS
-      - null
-      - null
-    - - SAFE
-      - null
-      - null
-    - - AWARE
-      - null
-      - null
-    - - COMBAT
-      - null
-      - null
-    - - STEALTH
-      - null
-      - null
+    - value: CARELESS
+      desc: null
+      since: null
+    - value: SAFE
+      desc: null
+      since: null
+    - value: AWARE
+      desc: null
+      since: null
+    - value: COMBAT
+      desc: null
+      since: null
+    - value: STEALTH
+      desc: null
+      since: null
 argument_loc: Local
 effect_loc: Global
 since:

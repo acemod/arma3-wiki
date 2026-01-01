@@ -22,14 +22,12 @@ syntax:
     type: Number
   - name: speed
     type: !OneOf
-    - - Boolean
-      - null
-    - - Number
-      - null
-    - - Boolean
-      - null
-    - - Number
-      - null
+    - type: Boolean
+      desc: when set to [[true]], animation is instant
+      since: null
+    - type: Number
+      desc: '> 0 is treated as config speed value multiplier'
+      since: null
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified

@@ -62,10 +62,12 @@ syntax:
   - name: respawnMode
     desc: '- overrides vehicle respawn mode. Available modes are: 2 or "INSTANT" and 3 or "BASE". -1 use [[Description.ext|description.ext]] value.'
     type: !OneOf
-    - - Number
-      - null
-    - - String
-      - null
+    - type: Number
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
     optional: true
     default: '-1'
     since:

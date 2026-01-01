@@ -20,14 +20,18 @@ syntax:
   - name: position
     desc: position to start search at
     type: !OneOf
-    - - Object
-      - null
-    - - !OneOf
-        - - Position2d
-          - null
-        - - Position3d
-          - null
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
+      desc: null
+      since: null
   - name: type
     desc: type of object (see [[typeOf]], [[CfgVehicles|class type]])
     type: String
@@ -39,10 +43,12 @@ syntax:
   - name: position
     desc: position to start search at
     type: !OneOf
-    - - Position2d
-      - null
-    - - Position3d
-      - null
+    - type: Position2d
+      desc: null
+      since: null
+    - type: Position3d
+      desc: null
+      since: null
 - call: !Binary
   - position
   - typeOrId
@@ -53,8 +59,9 @@ syntax:
   - name: position
     desc: position to start search at
     type: !OneOf
-    - - Position2d
-      - null
+    - type: Position2d
+      desc: null
+      since: null
   - name: typeOrId
     desc: type of object (see [[typeOf]], [[CfgVehicles|class type]]) or {{GVI|arma3|2.10|size= 0.75}} Visitor id (see [[getObjectID]])
     type: String
@@ -68,10 +75,12 @@ syntax:
   - name: position
     desc: position to start search at
     type: !OneOf
-    - - Position2d
-      - null
-    - - Position3d
-      - null
+    - type: Position2d
+      desc: null
+      since: null
+    - type: Position3d
+      desc: null
+      since: null
   - name: id
     desc: object Visitor id
     type: Number

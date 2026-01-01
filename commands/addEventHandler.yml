@@ -18,19 +18,23 @@ syntax:
   params:
   - name: target
     type: !OneOf
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
   - name: type
     desc: see [[:Category:Event Handlers|Event Handlers]] for the full list of available options
     type: String
   - name: code
     type: !OneOf
-    - - Code
-      - null
-    - - String
-      - null
+    - type: Code
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
 argument_loc: Global
 effect_loc: Local
 since:

@@ -17,8 +17,9 @@ syntax:
     type: Object
   - name: muzzleName
     type: !OneOf
-    - - String
-      - null
+    - type: String
+      desc: null
+      since: null
 - call: !Binary
   - unit
   - - weapon
@@ -26,10 +27,12 @@ syntax:
     - firemode
   ret:
     type: !OneOf
-    - - Boolean
-      - null
-    - - Nothing
-      - null
+    - type: Boolean
+      desc: null
+      since: null
+    - type: Nothing
+      desc: null
+      since: null
     desc: '[[true]] on success, [[false]] on failure, [[Nothing]] when the call to the command is dispatched over network'
   params:
   - name: unit

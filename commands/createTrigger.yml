@@ -42,8 +42,12 @@ syntax:
     type: String
   - name: position
     type: !OneOf
-    - - Object
-      - null
+    - type: Position2d
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: makeGlobal
     type: Unknown
     optional: true

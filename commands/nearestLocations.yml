@@ -15,10 +15,12 @@ syntax:
   params:
   - name: centre
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - Object
-      - null
+    - type: Position2d
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: locationTypes
     desc: list of [[Location#Location Types|location type]] names, e.g "NameCity"; {{GVI|arma3|2.14|size= 0.75}} passing empty array [] will return all available locations within the radius
     type: !ArrayUnsized
@@ -30,10 +32,12 @@ syntax:
   - name: sortPosition
     desc: results will be sorted from the distance to given ''sortPosition'' (nearest to farthest still)
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - Object
-      - null
+    - type: Position2d
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified

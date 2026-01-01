@@ -16,14 +16,15 @@ syntax:
     type: String
   - name: expression
     type: !OneOf
-    - - Code
-      - null
-    - - String
-      - null
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Code
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
   - name: arguments
     desc: additional arguments to be passed to the EH code. Available during code execution via {{hl|_thisArgs}} variable.
     type: ArrayUnknown

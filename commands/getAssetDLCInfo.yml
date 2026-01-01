@@ -10,10 +10,12 @@ syntax:
   - name: asset
     desc: object reference or path to the model
     type: !OneOf
-    - - Object
-      - null
-    - - String
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
 - call: !Unary
   - class
   - config

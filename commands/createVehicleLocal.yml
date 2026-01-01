@@ -33,10 +33,12 @@ syntax:
   - name: position
     desc: desired placement position
     type: !OneOf
-    - - Object
-      - null
-    - - ArrayUnknown
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: markers
     desc: |-
       if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position.
@@ -53,8 +55,9 @@ syntax:
     default: '0'
   - name: special
     type: !OneOf
-    - - String
-      - null
+    - type: String
+      desc: null
+      since: null
     optional: true
   since:
     arma3: '2.14'

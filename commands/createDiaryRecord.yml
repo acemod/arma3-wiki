@@ -24,48 +24,39 @@ syntax:
     type: String
   - name: textInfo
     type: !OneOf
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - String
-      - null
-    - - String
-      - null
-    - - String
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
   - name: task
     type: Task
     optional: true
     default: '[[taskNull]]'
   - name: taskState
     type: !StringEnum
-    - - NONE
-      - null
-      - null
-    - - CREATED
-      - null
-      - null
-    - - ASSIGNED
-      - null
-      - null
-    - - SUCCEEDED
-      - null
-      - null
-    - - FAILED
-      - null
-      - null
-    - - CANCELED
-      - null
-      - null
+    - value: NONE
+      desc: null
+      since: null
+    - value: CREATED
+      desc: null
+      since: null
+    - value: ASSIGNED
+      desc: null
+      since: null
+    - value: SUCCEEDED
+      desc: null
+      since: null
+    - value: FAILED
+      desc: null
+      since: null
+    - value: CANCELED
+      desc: null
+      since: null
     optional: true
   - name: showTitle
     desc: whether or not to show title in the description section as well

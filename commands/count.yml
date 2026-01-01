@@ -17,14 +17,18 @@ syntax:
   params:
   - name: value
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - Config
-      - null
-    - - HashMapUnknown
-      - null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: Config
+      desc: null
+      since: null
+    - type: HashMapUnknown
+      desc: null
+      since: null
 - call: !Binary
   - condition
   - array

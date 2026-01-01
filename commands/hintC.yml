@@ -24,18 +24,22 @@ syntax:
     type: String
   - name: message
     type: !OneOf
-    - - String
-      - null
-    - - StructuredText
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - !ArrayUnsized
+    - type: String
+      desc: null
+      since: null
+    - type: StructuredText
+      desc: null
+      since: null
+    - type: !ArrayUnsized
+        type: String
+        desc: ''
+      desc: null
+      since: null
+    - type: !ArrayUnsized
         type: StructuredText
         desc: ''
-      - null
+      desc: null
+      since: null
 argument_loc: Unspecified
 effect_loc: Local
 since:

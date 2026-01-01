@@ -8,13 +8,15 @@ syntax:
     type: Nothing
   params:
   - name: entities
-    type: !ArrayUnsized
-      type: !OneOf
-      - - EdenEntity
-        - null
-      - - EdenID
-        - null
-      desc: ''
+    type: !OneOf
+    - type: !ArrayUnsized
+        type: EdenEntity
+        desc: ''
+      desc: null
+      since: null
+    - type: EdenID
+      desc: null
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

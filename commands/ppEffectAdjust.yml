@@ -14,10 +14,12 @@ syntax:
   params:
   - name: effect
     type: !OneOf
-    - - String
-      - null
-    - - Number
-      - null
+    - type: String
+      desc: effect name
+      since: null
+    - type: Number
+      desc: effect handle
+      since: null
   - name: settings
     desc: array of effect params
     type: ArrayUnknown

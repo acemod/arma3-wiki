@@ -16,8 +16,9 @@ syntax:
   - name: joint
     desc: The parent vehicle that has a joint to a child, or the joint itself to be manipulated
     type: !OneOf
-    - - Object
-      - null
+    - type: Object
+      desc: null
+      since: null
   - name: angle
     desc: The angle (in radians to rotate around axis), clockwise
     type: Number

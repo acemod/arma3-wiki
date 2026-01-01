@@ -17,18 +17,22 @@ syntax:
   - name: toPoint
     desc: position for the rope end, either a memory point [[String]] or relative offset [[Array]]
     type: !OneOf
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
     optional: true
   - name: ropeEndDownVector
     desc: either a memory point [[String]] or relative vector [[Array]]. If [[String]] is given, then {{hl|ropeEndDownVector}} is calculated from {{hl|toPoint}} towards {{hl|ropeEndDownVector}} memory point
     type: !OneOf
-    - - String
-      - null
-    - - ArrayUnknown
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
     optional: true
     default: '[0,0,-1]'
   - name: rope

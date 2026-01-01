@@ -10,12 +10,15 @@ syntax:
   - skillName
   ret:
     type: !OneOf
-    - - !OneOf
-        - - Boolean
-          - null
-        - - Number
-          - null
-      - null
+    - type: !OneOf
+      - type: Boolean
+        desc: null
+        since: null
+      - type: Number
+        desc: null
+        since: null
+      desc: null
+      since: null
   params:
   - name: unit
     type: Object

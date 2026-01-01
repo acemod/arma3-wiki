@@ -20,12 +20,15 @@ syntax:
   - name: position
     desc: search centre
     type: !OneOf
-    - - Object
-      - null
-    - - Position3dAGL
-      - null
-    - - Position2d
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position3dAGL
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: radius
     desc: radius of the sphere
     type: Number
@@ -40,21 +43,26 @@ syntax:
   - name: position
     desc: search centre
     type: !OneOf
-    - - Object
-      - null
-    - - Position3dAGL
-      - null
-    - - Position2d
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position3dAGL
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: type
     desc: type(s) to search for. See [[isKindOf]]
     type: !OneOf
-    - - String
-      - null
-    - - !ArrayUnsized
+    - type: String
+      desc: null
+      since: null
+    - type: !ArrayUnsized
         type: String
         desc: ''
-      - null
+      desc: null
+      since: null
   - name: radius
     desc: radius of the sphere
     type: Number
@@ -70,18 +78,16 @@ syntax:
   params:
   - name: area
     type: !OneOf
-    - - String
-      - null
-    - - Object
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - Object
-      - null
-    - - ArrayUnknown
-      - null
+    - type: String
+      desc: marker name
+      since: null
+    - type: Object
+      desc: trigger
+      since: null
+    - type: ArrayUnknown
+      desc: format [center, a, b, angle, isRectangular, c] or  [center, a, b, angle, isRectangular, c, usePosWorld] (see [[inArea]])
+      since:
+        arma3: '2.22'
   - name: types
     desc: type(s) to search for or [] empty array to return every type
     type: !ArrayUnsized

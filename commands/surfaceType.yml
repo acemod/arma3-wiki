@@ -185,10 +185,12 @@ syntax:
       When a number is provided (Z in 3D positions), it is ignored. When a boolean is provided, it defines whether the layer mask should be used. Using the layer mask is more accurate but slightly slower.
       [[File:Capture.png|thumb|256px|The patches of "dirt" are defined using a layer mask. The "concrete" is the primary surface texture.]]
     type: !OneOf
-    - - Number
-      - null
-    - - Boolean
-      - null
+    - type: Number
+      desc: null
+      since: null
+    - type: Boolean
+      desc: null
+      since: null
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified

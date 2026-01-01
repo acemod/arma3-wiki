@@ -35,10 +35,12 @@ syntax:
   - name: position
     desc: '[[Position#Introduction|Position2D]], [[Position#PositionAGL|PositionAGL]] or [[Object]]. In case of an object, the object''s model [0,0,0] is used.'
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - Object
-      - null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: channel
     desc: the marker channel - see [[Channel IDs]] (for multiplayer)
     type: Number

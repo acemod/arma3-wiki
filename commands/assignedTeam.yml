@@ -14,10 +14,12 @@ syntax:
 - call: !Unary unitName
   ret:
     type: !OneOf
-    - - String
-      - null
-    - - Nothing
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: Nothing
+      desc: null
+      since: null
   params:
   - name: unitName
     type: Object

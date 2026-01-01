@@ -16,10 +16,12 @@ syntax:
   - name: mission
     desc: directory if a string
     type: !OneOf
-    - - String
-      - null
-    - - Config
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: Config
+      desc: null
+      since: null
   - name: skipBriefing
     desc: If true, the intro and briefing are skipped.
     type: Boolean

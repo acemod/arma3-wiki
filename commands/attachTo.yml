@@ -27,10 +27,12 @@ syntax:
   - name: object2
     desc: object to attach to; if a group is provided, its [[leader]] is used
     type: !OneOf
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
   - name: offset
     desc: the position relative to ''object2'''s position
     type: Position3dRelative

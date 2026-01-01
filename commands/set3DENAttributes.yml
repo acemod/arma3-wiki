@@ -21,13 +21,15 @@ syntax:
     desc: '[[true]] if the value was set'
   params:
   - name: entitiesN
-    type: !ArrayUnsized
-      type: !OneOf
-      - - EdenEntity
-        - null
-      - - EdenID
-        - null
-      desc: ''
+    type: !OneOf
+    - type: !ArrayUnsized
+        type: EdenEntity
+        desc: ''
+      desc: null
+      since: null
+    - type: EdenID
+      desc: null
+      since: null
   - name: classN
     desc: attribute name
     type: String

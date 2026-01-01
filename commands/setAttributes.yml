@@ -21,10 +21,12 @@ syntax:
   - name: text
     desc: only passing [[Structured Text]] has any effect
     type: !OneOf
-    - - String
-      - null
-    - - StructuredText
-      - null
+    - type: String
+      desc: null
+      since: null
+    - type: StructuredText
+      desc: null
+      since: null
   - name: nameN
     desc: name of the attribute
     type: String

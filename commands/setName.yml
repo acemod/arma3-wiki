@@ -12,10 +12,12 @@ syntax:
   params:
   - name: thing
     type: !OneOf
-    - - Location
-      - null
-    - - Object
-      - null
+    - type: Location
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: name
     type: String
 - call: !Binary

@@ -13,12 +13,14 @@ syntax:
   params:
   - name: unit
     type: !OneOf
-    - - Object
-      - null
-    - - !ArrayUnsized
+    - type: Object
+      desc: null
+      since: null
+    - type: !ArrayUnsized
         type: Object
         desc: ''
-      - null
+      desc: null
+      since: null
   - name: fsmName
     type: String
   - name: position

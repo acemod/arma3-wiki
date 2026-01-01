@@ -15,12 +15,15 @@ syntax:
     type: ArrayUnknown
   - name: center
     type: !OneOf
-    - - Object
-      - null
-    - - Position3dAGL
-      - null
-    - - ArrayUnknown
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position3dAGL
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
   - name: radius
     desc: random placement radius in meters. Set it to -1 and convert center to [[Position#PositionASL|PositionASL]] for the exact center placement
     type: Number

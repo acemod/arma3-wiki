@@ -15,20 +15,26 @@ syntax:
   params:
   - name: param1
     type: !OneOf
-    - - Object
-      - null
-    - - Position3dAGL
-      - null
-    - - Position2d
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position3dAGL
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: param2
     type: !OneOf
-    - - Object
-      - null
-    - - Position3dAGL
-      - null
-    - - Position2d
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Position3dAGL
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
 - call: !Binary
   - location1
   - location2
@@ -38,20 +44,26 @@ syntax:
   params:
   - name: location1
     type: !OneOf
-    - - Location
-      - null
-    - - Position
-      - null
-    - - Position2d
-      - null
+    - type: Location
+      desc: null
+      since: null
+    - type: Position
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: location2
     type: !OneOf
-    - - Location
-      - null
-    - - Position
-      - null
-    - - Position2d
-      - null
+    - type: Location
+      desc: null
+      since: null
+    - type: Position
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
 - call: !Binary
   - a
   - b

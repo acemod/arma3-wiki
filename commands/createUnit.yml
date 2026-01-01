@@ -53,12 +53,18 @@ syntax:
   - name: position
     desc: location where to create the unit. In case of [[Group]], the [[group]] [[leader]]'s position is used. The Z component of the position is ignored and the unit is always placed on the surface.
     type: !OneOf
-    - - Object
-      - null
-    - - Position
-      - null
-    - - Position2d
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
+    - type: Position
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: markers
     desc: placement markers
     type: ArrayUnknown
@@ -67,18 +73,18 @@ syntax:
     type: Number
   - name: special
     type: !StringEnum
-    - - NONE
-      - null
-      - null
-    - - FORM
-      - null
-      - null
-    - - CAN_COLLIDE
-      - null
-      - null
-    - - CARGO
-      - null
-      - null
+    - value: NONE
+      desc: null
+      since: null
+    - value: FORM
+      desc: null
+      since: null
+    - value: CAN_COLLIDE
+      desc: null
+      since: null
+    - value: CARGO
+      desc: null
+      since: null
 - call: !Binary
   - type
   - - position
@@ -96,12 +102,18 @@ syntax:
   - name: position
     desc: location at which the unit is created. In case of [[Group]] position of the [[group]] [[leader]] is used
     type: !OneOf
-    - - Object
-      - null
-    - - Position
-      - null
-    - - Position2d
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
+    - type: Position
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
   - name: group
     desc: existing group the new unit will join
     type: Group

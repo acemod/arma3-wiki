@@ -13,14 +13,18 @@ syntax:
   - name: oper
     desc: subject to which event handler is assigned
     type: !OneOf
-    - - Object
-      - null
-    - - Group
-      - null
-    - - Control
-      - null
-    - - Display
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
+    - type: Control
+      desc: null
+      since: null
+    - type: Display
+      desc: null
+      since: null
   - name: type
     desc: event handler name
     type: String

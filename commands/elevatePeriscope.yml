@@ -31,10 +31,12 @@ syntax:
   - name: speed
     desc: config anim speed multiplier, 2 - twice as fast, 0.5 - twice as slow, etc. -1 - default config speed. If [[true]] is used as param, the change in elevation is almost instant
     type: !OneOf
-    - - Number
-      - null
-    - - Boolean
-      - null
+    - type: Number
+      desc: null
+      since: null
+    - type: Boolean
+      desc: null
+      since: null
     optional: true
     default: '-1'
   - name: blockUserInput

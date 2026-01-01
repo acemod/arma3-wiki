@@ -27,10 +27,12 @@ syntax:
   - name: speed
     desc: when [[true]] animation is instant; [[Number]] > 0 is treated as config speed value multiplier
     type: !OneOf
-    - - Boolean
-      - null
-    - - Number
-      - null
+    - type: Boolean
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
     optional: true
     default: '[[false]]'
 argument_loc: Global

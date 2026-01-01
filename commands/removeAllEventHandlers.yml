@@ -11,10 +11,12 @@ syntax:
   params:
   - name: target
     type: !OneOf
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
   - name: handlerType
     desc: see [[:Category:Event Handlers|Event Handlers]]
     type: String

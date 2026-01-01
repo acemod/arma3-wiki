@@ -38,10 +38,12 @@ syntax:
     type: String
   - name: color
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - ArrayUnknown
-      - null
+    - type: ArrayUnknown
+      desc: format [[Color|Color (RGBA)]] - icon color
+      since: null
+    - type: ArrayUnknown
+      desc: of two [[Array]]s format [[Color|Color (RGBA)]] - Icon and text color
+      since: null
   - name: position
     desc: icon position
     type: Position3dAGL
@@ -74,15 +76,15 @@ syntax:
     default: '"RobotoCondensedBold"'
   - name: textAlign
     type: !StringEnum
-    - - left
-      - null
-      - null
-    - - right
-      - null
-      - null
-    - - center
-      - null
-      - null
+    - value: left
+      desc: null
+      since: null
+    - value: right
+      desc: null
+      since: null
+    - value: center
+      desc: null
+      since: null
     optional: true
   - name: drawSideArrows
     desc: '[[true]] to draw arrows and the text label at edge of screen when the icon moves off the screen'
@@ -109,86 +111,69 @@ syntax:
   params:
   - name: icon
     type: !OneOf
-    - - HashMapUnknown
-      - null
-    - - ArrayUnknown
-      - null
-    - - Object
-      - null
-    - - Number
-      - null
-    - - Object
-      - null
-    - - String
-      - null
-    - - Number
-      - null
-    - - Number
-      - null
-    - - String
-      - null
-    - - Number
-      - null
-    - - String
-      - null
-    - - Boolean
-      - null
-    - - ArrayUnknown
-      - null
-    - - Boolean
-      - null
-    - - Number
-      - null
-    - - Number
-      - null
-    - - Number
-      - null
-    - - Boolean
-      - null
-    - - Boolean
-      - null
-    - - String
-      - null
-    - - Number
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - Number
-      - null
-    - - Number
-      - null
-    - - Number
-      - null
-    - - Boolean
-      - null
-    - - ArrayUnknown
-      - null
-    - - ArrayUnknown
-      - null
-    - - String
-      - null
-    - - Number
-      - null
-    - - Number
-      - null
-    - - Number
-      - null
-    - - Boolean
-      - null
-    - - ArrayUnknown
-      - null
-    - - Number
-      - null
-    - - Number
-      - null
-    - - Number
-      - null
-    - - Number
-      - null
-    - - Number
-      - null
+    - type: HashMapUnknown
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
+    - type: Boolean
+      desc: null
+      since: null
+    - type: Boolean
+      desc: null
+      since: null
+    - type: Boolean
+      desc: null
+      since: null
+    - type: Boolean
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
+    - type: Boolean
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
+    - type: Boolean
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
+    - type: Number
+      desc: null
+      since: null
   since:
     arma3: '2.22'
 argument_loc: Unspecified

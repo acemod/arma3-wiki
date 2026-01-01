@@ -61,14 +61,12 @@ syntax:
   params:
   - name: layer
     type: !OneOf
-    - - Number
-      - null
-    - - String
-      - null
-    - - Number
-      - null
-    - - String
-      - null
+    - type: Number
+      desc: layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100.
+      since: null
+    - type: String
+      desc: layer name on which the effect is shown. Layer names are CaSe SeNsItIvE.
+      since: null
   - name: text
     desc: text to be displayed
     type: String

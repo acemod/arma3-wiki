@@ -23,10 +23,15 @@ syntax:
       desired placement position.
       If object is given, object position is used for ''position''. Normally only ''x'' and ''y'' are considered, unless "CAN_COLLIDE" is used for special placement
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - Object
-      - null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: Position2d
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: markers
     desc: |-
       if the markers array contains one or more marker names, the position is chosen randomly and could be one of the marker positions or just the supplied main position.
@@ -39,8 +44,9 @@ syntax:
     type: Number
   - name: special
     type: !OneOf
-    - - String
-      - null
+    - type: String
+      desc: null
+      since: null
     optional: true
 argument_loc: Global
 effect_loc: Global

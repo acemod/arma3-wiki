@@ -11,22 +11,23 @@ syntax:
   params:
   - name: helicopter
     type: !OneOf
-    - - Object
-      - null
+    - type: Object
+      desc: null
+      since: null
   - name: mode
     type: !StringEnum
-    - - LAND
-      - null
-      - null
-    - - GET IN
-      - null
-      - null
-    - - GET OUT
-      - null
-      - null
-    - - NONE
-      - null
-      - null
+    - value: LAND
+      desc: null
+      since: null
+    - value: GET IN
+      desc: null
+      since: null
+    - value: GET OUT
+      desc: null
+      since: null
+    - value: NONE
+      desc: null
+      since: null
 argument_loc: Local
 effect_loc: Global
 since:

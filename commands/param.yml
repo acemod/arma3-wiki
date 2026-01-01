@@ -30,10 +30,12 @@ syntax:
   - name: expectedArrayCount
     desc: a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted.
     type: !OneOf
-    - - Number
-      - null
-    - - ArrayUnknown
-      - null
+    - type: Number
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
     optional: true
 - call: !Binary
   - argument
@@ -62,10 +64,12 @@ syntax:
   - name: expectedArrayCount
     desc: a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted.
     type: !OneOf
-    - - Number
-      - null
-    - - ArrayUnknown
-      - null
+    - type: Number
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
     optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified

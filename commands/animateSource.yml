@@ -25,14 +25,13 @@ syntax:
     type: Number
   - name: speed
     type: !OneOf
-    - - Boolean
-      - null
-    - - Number
-      - null
-    - - Boolean
-      - null
-    - - Number
-      - null
+    - type: Boolean
+      desc: when set to [[true]], animation is instant
+      since: null
+    - type: Number
+      desc: '> 0 is treated as config speed value multiplier. Since  values <= 0 will instantly reset animation to initPhase.'
+      since:
+        arma3: '2.10'
     optional: true
 argument_loc: Global
 effect_loc: Global

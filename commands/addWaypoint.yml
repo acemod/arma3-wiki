@@ -21,10 +21,12 @@ syntax:
     type: Group
   - name: center
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - Object
-      - null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: radius
     desc: random waypoint placement within ''radius'' from ''center''; {{GVI|arma3|1.90|size= 0.75}} -1 can be used for exact waypoint placement
     type: Number

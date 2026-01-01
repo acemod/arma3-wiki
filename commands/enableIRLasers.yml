@@ -12,10 +12,12 @@ syntax:
   - name: unitOrGroup
     desc: the unit or the group allowed to use IR lasers
     type: !OneOf
-    - - Object
-      - null
-    - - Group
-      - null
+    - type: Object
+      desc: null
+      since: null
+    - type: Group
+      desc: null
+      since: null
   - name: value
     type: Boolean
 argument_loc: Local

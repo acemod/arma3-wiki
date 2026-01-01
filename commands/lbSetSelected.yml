@@ -18,10 +18,12 @@ syntax:
     type: Control
   - name: index
     type: !OneOf
-    - - Number
-      - null
-    - - ArrayUnknown
-      - null
+    - type: Number
+      desc: null
+      since: null
+    - type: ArrayUnknown
+      desc: null
+      since: null
   - name: selected
     type: Boolean
   - name: forceEH

@@ -30,18 +30,15 @@ syntax:
     optional: true
   - name: forceRadio
     type: !OneOf
-    - - Boolean
-      - null
-    - - Number
-      - null
-    - - String
-      - null
-    - - Boolean
-      - null
-    - - Number
-      - null
-    - - String
-      - null
+    - type: Boolean
+      desc: true/false to force use of radio
+      since: null
+    - type: Number
+      desc: 1-10 to force use of custom radio channel
+      since: null
+    - type: String
+      desc: 'name of radio channel to use, from: ''GLOBAL'', ''SIDE'', ''GROUP'', ''VEHICLE'', ''DIRECT'', ''COMMAND'''
+      since: null
     optional: true
 argument_loc: Local
 effect_loc: Global

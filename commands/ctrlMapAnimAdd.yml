@@ -25,10 +25,12 @@ syntax:
   - name: position
     desc: 'formats: [[Position#Introduction|Position2D]], [[Position#Introduction|Position3D]], [[Object]]'
     type: !OneOf
-    - - ArrayUnknown
-      - null
-    - - Object
-      - null
+    - type: ArrayUnknown
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
 argument_loc: Local
 effect_loc: Local
 since:

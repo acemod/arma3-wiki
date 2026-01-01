@@ -15,10 +15,12 @@ syntax:
   - name: pylon
     desc: pylon index (index starts from 1) or pylon name (see [[getCompatiblePylonMagazines]] Example 4)
     type: !OneOf
-    - - Number
-      - null
-    - - String
-      - null
+    - type: Number
+      desc: null
+      since: null
+    - type: String
+      desc: null
+      since: null
   - name: ammocount
     desc: ammo count
     type: Number

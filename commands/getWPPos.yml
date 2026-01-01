@@ -14,10 +14,12 @@ syntax:
   - name: groupOrUnit
     desc: the group (or unit) of which to select a waypoint
     type: !OneOf
-    - - Group
-      - null
-    - - Object
-      - null
+    - type: Group
+      desc: null
+      since: null
+    - type: Object
+      desc: null
+      since: null
   - name: index
     desc: |-
       0 equals the starting position of the group.<br>

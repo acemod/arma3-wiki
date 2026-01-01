@@ -17,14 +17,12 @@ syntax:
     type: Unknown
   - name: threshold
     type: !OneOf
-    - - Number
-      - null
-    - - String
-      - null
-    - - Number
-      - null
-    - - String
-      - null
+    - type: Number
+      desc: ': section duration in seconds. 0 captures always ''''''IF'''''' the section you gave as section filter appears inside the given frame. "total" always appears, while "callExt" might not always appear for example.'
+      since: null
+    - type: String
+      desc: ': number with unit (s / ms / us / ns / fps, e.g "30fps" - see {{Link|https://en.wikipedia.org/wiki/Second#SI_multiples|SI prefixes}} for more unit information){{Feature|important|'
+      since: null
   - name: frameSkip
     desc: number of frames to ignore before measuring
     type: Number
