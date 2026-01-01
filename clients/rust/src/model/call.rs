@@ -13,9 +13,10 @@ impl Arg {
     pub fn names(&self) -> Vec<String> {
         match self {
             Self::Item(name) => vec![name.clone()],
-            Self::Array(args) => args.iter().flat_map(Self::names).collect(),
+            Self::Array(args) | Self::InfiniteFlat(args) => {
+                args.iter().flat_map(Self::names).collect()
+            }
             Self::InfiniteItem(arg) => arg.names(),
-            Self::InfiniteFlat(args) => args.iter().flat_map(Self::names).collect(),
         }
     }
 }
@@ -114,6 +115,7 @@ impl Call {
             match c {
                 ']' => {
                     chars.next(); // Consume the ']'
+                    Self::process_infinite_pattern(&mut array);
                     return Arg::Array(array);
                 }
                 ',' => {
@@ -129,7 +131,103 @@ impl Call {
                 }
             }
         }
+        Self::process_infinite_pattern(&mut array);
         Arg::Array(array)
+    }
+
+    fn process_infinite_pattern(array: &mut Vec<Arg>) {
+        // Check if the last item is "..."
+        if let Some(Arg::Item(last)) = array.last()
+            && last.trim() == "..."
+        {
+            array.pop(); // Remove the "..."
+
+            // Determine the pattern from previous items
+            let (pattern_items, count_to_remove) = Self::extract_pattern(array);
+
+            if !pattern_items.is_empty() {
+                // Remove the pattern items from the array
+                for _ in 0..count_to_remove {
+                    array.pop();
+                }
+
+                // Add the infinite pattern
+                if pattern_items.len() == 1 {
+                    array.push(Arg::InfiniteItem(Box::new(
+                        pattern_items
+                            .into_iter()
+                            .next()
+                            .expect("Pattern item missing"),
+                    )));
+                } else {
+                    array.push(Arg::InfiniteFlat(pattern_items));
+                }
+            }
+        }
+    }
+
+    fn extract_pattern(array: &[Arg]) -> (Vec<Arg>, usize) {
+        // Try to find numbered items at the end (e.g., var1, var2 or name1, value1)
+        let mut pattern = Vec::new();
+
+        // Look for items ending with numbers
+        let mut numbered_items = Vec::new();
+        for item in array.iter().rev() {
+            if let Arg::Item(s) = item {
+                if let Some(base) = Self::extract_base_name(s) {
+                    numbered_items.push(base);
+                } else {
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
+
+        if numbered_items.is_empty() {
+            return (pattern, 0);
+        }
+
+        let count_to_remove = numbered_items.len();
+
+        // Reverse to get original order
+        numbered_items.reverse();
+
+        // Check if all items have the same base (e.g., var1, var2 -> varN)
+        // or different bases (e.g., name1, value1 -> nameN, valueN)
+        let unique_bases: std::collections::HashSet<_> = numbered_items.iter().collect();
+
+        if unique_bases.len() == 1 {
+            // All the same base, just add one pattern
+            pattern.push(Arg::Item(format!("{}N", numbered_items[0])));
+        } else {
+            // Different bases, add each unique base
+            let mut seen = std::collections::HashSet::new();
+            for base in &numbered_items {
+                if seen.insert(base) {
+                    pattern.push(Arg::Item(format!("{base}N")));
+                }
+            }
+        }
+
+        (pattern, count_to_remove)
+    }
+
+    fn extract_base_name(s: &str) -> Option<String> {
+        let s = s.trim();
+        // Find the last digit(s) in the string
+        let mut last_digit_pos = None;
+        for (i, c) in s.char_indices().rev() {
+            if c.is_ascii_digit() {
+                last_digit_pos = Some(i);
+            } else if last_digit_pos.is_some() {
+                // Found the start of the base name
+                return Some(s[..=i].to_string());
+            }
+        }
+
+        // If we only found digits (no base name), return None
+        None
     }
 
     #[must_use]
@@ -257,10 +355,10 @@ mod tests {
                 Arg::Item("map".to_string()),
                 Arg::Array(vec![
                     Arg::Item("type".to_string()),
-                    Arg::InfiniteFlat(vec![
+                    Arg::Array(vec![Arg::InfiniteFlat(vec![
                         Arg::Item("nameN".to_string()),
                         Arg::Item("valueN".to_string()),
-                    ]),
+                    ]),]),
                     Arg::Item("class".to_string()),
                 ])
             ))

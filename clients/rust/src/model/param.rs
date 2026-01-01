@@ -11,11 +11,10 @@ pub enum Param {
     Item(ParamItem),
     Array(Vec<Self>),
     /// Infinite number of items of the same type.
-    /// [item1, item2, ...] or [[name1, value1], [name2, value2], ...]
-    InfiniteItem(Box<Self>),
-    /// Infinite list of repeating types
-    /// [name1, value1, name2, value2, ...]
-    InfiniteFlat(Vec<Self>),
+    /// - [item1, item2, ...] = Infinite(item)
+    /// - [[name1, value1], [name2, value2], ...] = Infinite([name, value])
+    /// - [name1, value1, name2, value2, ...] = InfiniteFlat(name, value)
+    Infinite(Vec<Self>),
 }
 
 impl Param {
@@ -60,10 +59,10 @@ impl Param {
                     .map(|arg| Self::build_from_arg(arg, pool))
                     .collect::<Result<Vec<Self>, String>>()?,
             )),
-            crate::model::Arg::InfiniteItem(arg_item) => Ok(Self::InfiniteItem(Box::new(
-                Self::build_from_arg(arg_item, pool)?,
-            ))),
-            crate::model::Arg::InfiniteFlat(arg_list) => Ok(Self::InfiniteFlat(
+            crate::model::Arg::InfiniteItem(arg_item) => {
+                Ok(Self::Infinite(vec![Self::build_from_arg(arg_item, pool)?]))
+            }
+            crate::model::Arg::InfiniteFlat(arg_list) => Ok(Self::Infinite(
                 arg_list
                     .iter()
                     .map(|arg| Self::build_from_arg(arg, pool))
@@ -82,40 +81,50 @@ impl Param {
                     .map(|item| ArraySizedElement {
                         name: match item {
                             Self::Item(param_item) => param_item.name().to_string(),
-                            Self::Array(_) | Self::InfiniteItem(_) | Self::InfiniteFlat(_) => String::new(),
+                            Self::Array(_) | Self::Infinite(_) => String::new(),
                         },
                         typ: item.as_value(),
                         desc: String::new(),
                         since: match item {
                             Self::Item(param_item) => param_item.since().cloned(),
-                            Self::Array(_) | Self::InfiniteItem(_) | Self::InfiniteFlat(_) => None,
+                            Self::Array(_) | Self::Infinite(_) => None,
                         },
                     })
                     .collect(),
                 desc: String::new(),
             },
-            Self::InfiniteItem(item) => Value::ArrayUnsized { typ: Box::new(item.as_value()), desc: String::new() },
-            Self::InfiniteFlat(items) => Value::ArrayUnsized {
-                typ: Box::new(Value::ArraySized {
-                    types: items
-                        .iter()
-                        .map(|item| ArraySizedElement {
-                            name: match item {
-                                Self::Item(param_item) => param_item.name().to_string(),
-                                Self::Array(_) | Self::InfiniteItem(_) | Self::InfiniteFlat(_) => String::new(),
-                            },
-                            typ: item.as_value(),
+            Self::Infinite(items) => {
+                if items.len() == 1 {
+                    // Single item repeating: InfiniteItem case
+                    Value::ArrayUnsized {
+                        typ: Box::new(items[0].as_value()),
+                        desc: String::new(),
+                    }
+                } else {
+                    // Multiple items repeating: InfiniteFlat case
+                    Value::ArrayUnsized {
+                        typ: Box::new(Value::ArraySized {
+                            types: items
+                                .iter()
+                                .map(|item| ArraySizedElement {
+                                    name: match item {
+                                        Self::Item(param_item) => param_item.name().to_string(),
+                                        Self::Array(_) | Self::Infinite(_) => String::new(),
+                                    },
+                                    typ: item.as_value(),
+                                    desc: String::new(),
+                                    since: match item {
+                                        Self::Item(param_item) => param_item.since().cloned(),
+                                        Self::Array(_) | Self::Infinite(_) => None,
+                                    },
+                                })
+                                .collect(),
                             desc: String::new(),
-                            since: match item {
-                                Self::Item(param_item) => param_item.since().cloned(),
-                                Self::Array(_) | Self::InfiniteItem(_) | Self::InfiniteFlat(_) => None,
-                            },
-                        })
-                        .collect(),
-                    desc: String::new(),
-                }),
-                desc: String::new(),
-            },
+                        }),
+                        desc: String::new(),
+                    }
+                }
+            }
         }
     }
 }
