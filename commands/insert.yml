@@ -55,6 +55,45 @@ syntax:
     name: substring
     desc: string to insert
     type: String
+- call: !Binary
+  - hashMap
+  - - - keyN
+      - valueN
+  ret:
+    type: Nothing
+  left: !Item
+    name: hashMap
+    type: HashMapUnknown
+  right: !Array
+  - !Infinite
+    - !Item
+      name: keyN
+      type: Unknown
+    - !Item
+      name: valueN
+      type: Anything
+  since:
+    arma3: '2.4'
+- call: !Binary
+  - hashMap
+  - - splitArray
+    - - keysAndValues
+  ret:
+    type: Nothing
+  left: !Item
+    name: hashMap
+    type: HashMapUnknown
+  right: !Array
+  - !Item
+    name: splitArray
+    desc: determines ''keysAndValues'' format (see ''keysAndValues'''s description)
+    type: Boolean
+  - !Array
+    - !Item
+      name: keysAndValues
+      type: Unknown
+  since:
+    arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

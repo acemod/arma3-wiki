@@ -31,6 +31,29 @@ syntax:
     name: priority
     desc: unique priority, defines order of applying effect to the scene. If there is another effect using the same priority, creation will fail
     type: Number
+- call: !Unary
+  - - nameN
+    - priorityN
+  ret:
+    type: !OneOf
+    - type: !ArrayUnsized
+        type: Number
+        desc: ''
+      desc: null
+      since: null
+    - type: Nothing
+      desc: null
+      since: null
+  right: !Array
+  - !Infinite
+    - !Item
+      name: nameN
+      desc: name of effect type
+      type: String
+    - !Item
+      name: priorityN
+      desc: unique priority, defines order of applying effect to the scene. If there is another effect using the same priority, creation will fail
+      type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

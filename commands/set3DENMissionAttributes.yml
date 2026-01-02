@@ -7,7 +7,27 @@ desc: |-
   {{Feature|important|Attributes are available only within the Eden Editor workspace. You cannot access them in scenario preview or exported scenario!}}
 groups:
 - Eden Editor
-syntax: []
+syntax:
+- call: !Unary
+  - - sectionN
+    - classN
+    - valueN
+  ret:
+    type: Nothing
+  right: !Array
+  - !Infinite
+    - !Item
+      name: sectionN
+      desc: attribute section. See [[Eden_Editor:_Setting_Attributes#Sections_.26_Properties|Sections & Properties]]
+      type: String
+    - !Item
+      name: classN
+      desc: attribute name
+      type: String
+    - !Item
+      name: valueN
+      desc: new attribute value
+      type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
