@@ -12,6 +12,21 @@ syntax:
   right: !Item
     name: expression
     type: Anything
+- call: !Binary
+  - if
+  - exception
+  ret:
+    type: Nothing
+  left: !Item
+    name: if
+    desc: if (condition) returns [[true]], "exception" is thrown
+    type: IfType
+  right: !Item
+    name: exception
+    desc: value that will be put into ''_exception'' variable inside [[catch]] block
+    type: Anything
+  since:
+    arma3: '1.54'
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
