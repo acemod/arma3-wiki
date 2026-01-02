@@ -1,6 +1,9 @@
 use std::{collections::HashMap, path::Path, sync::Arc};
 
-use arma3_wiki::model::{Command, ParseError, Value};
+use arma3_wiki::{
+    model::{Command, Value},
+    parser::ParseError,
+};
 use arma3_wiki_github::report::Report;
 use indicatif::ProgressBar;
 use regex::Regex;
@@ -57,7 +60,7 @@ pub async fn list(client: &Client) -> HashMap<String, String> {
     list
 }
 
-pub async fn commands(client: &Client, report: Report, args: &[String], dry_run: bool) -> Report {
+pub async fn commands(client: &Client, report: Report, args: &[String]) -> Report {
     let commands = if args.is_empty() {
         list(client).await
     } else if args.iter().any(|arg| arg == "--bads") {
@@ -120,7 +123,7 @@ pub async fn commands(client: &Client, report: Report, args: &[String], dry_run:
     } else {
         ProgressBar::new(commands.len() as u64)
     };
-    let semaphore = Arc::new(Semaphore::new(8));
+    let semaphore = Arc::new(Semaphore::new(1));
     let mut handles = Vec::new();
     let report = Arc::new(tokio::sync::Mutex::new(report));
     for (name, url) in commands {
@@ -134,7 +137,7 @@ pub async fn commands(client: &Client, report: Report, args: &[String], dry_run:
         let client = client.clone();
         let report = report.clone();
         let handle = tokio::spawn(async move {
-            let result = command(&pg, &client, name.clone(), url.clone(), dry_run, false).await;
+            let result = command(&pg, &client, name.clone(), url.clone(), false).await;
             drop(permit);
             if let Err(e) = result {
                 println!("Failed {name}");
@@ -188,7 +191,6 @@ pub async fn command(
     client: &Client,
     name: String,
     url: String,
-    dry_run: bool,
     retry: bool,
 ) -> Result<(bool, Vec<ParseError>), String> {
     let mut dist_path = Path::new("./dist/commands").join(urlencoding::encode(&name).to_string());
@@ -199,8 +201,6 @@ pub async fn command(
 
     let (skip, download_newer) = if retry {
         (false, true)
-    } else if dry_run {
-        (false, false)
     } else if dist_path.exists() {
         let metadata = fs_err::metadata(&dist_path).expect("Failed to get metadata for dist path");
         let modified: std::time::SystemTime = metadata
@@ -236,7 +236,7 @@ pub async fn command(
                 let modified: std::time::SystemTime = metadata
                     .modified()
                     .expect("Failed to get modified time for temp path");
-                modified < last_modified.into()
+                httpdate::HttpDate::from(modified) < last_modified
             } else {
                 true
             };
@@ -283,7 +283,7 @@ pub async fn command(
     if content.is_empty() {
         return Err("Empty content returned".to_string());
     }
-    match Command::from_wiki(&name, &content) {
+    match Command::parse(&name, &content) {
         Ok((mut parsed, mut errors)) => {
             if name == "remoteExecCall" {
                 pg.println("Copying remoteExec syntax to remoteExecCall");
@@ -306,7 +306,7 @@ pub async fn command(
                     .read_line(&mut input)
                     .expect("Failed to read input");
                 if input.trim().to_lowercase() == "y" {
-                    return Box::pin(command(pg, client, name, url, dry_run, true)).await;
+                    return Box::pin(command(pg, client, name, url, true)).await;
                 }
             }
             if dist_path.exists() {
@@ -319,26 +319,24 @@ pub async fn command(
                     return Ok((false, errors));
                 }
             }
-            if !dry_run {
-                pg.println(format!("Saving to {}", dist_path.display()));
-                fs_err::create_dir_all(
-                    dist_path
-                        .parent()
-                        .expect("Failed to get parent directory of dist path"),
-                )
-                .expect("Failed to create dist directory");
-                let mut file = tokio::fs::File::create(dist_path)
-                    .await
-                    .expect("Failed to create dist file");
-                tokio::io::AsyncWriteExt::write_all(
-                    &mut file,
-                    serde_yaml::to_string(&parsed)
-                        .expect("Failed to serialize parsed command")
-                        .as_bytes(),
-                )
+            pg.println(format!("Saving to {}", dist_path.display()));
+            fs_err::create_dir_all(
+                dist_path
+                    .parent()
+                    .expect("Failed to get parent directory of dist path"),
+            )
+            .expect("Failed to create dist directory");
+            let mut file = tokio::fs::File::create(dist_path)
                 .await
-                .expect("Failed to write to dist file");
-            }
+                .expect("Failed to create dist file");
+            tokio::io::AsyncWriteExt::write_all(
+                &mut file,
+                serde_yaml::to_string(&parsed)
+                    .expect("Failed to serialize parsed command")
+                    .as_bytes(),
+            )
+            .await
+            .expect("Failed to write to dist file");
             Ok((true, errors))
         }
         Err(e) => {
@@ -349,7 +347,7 @@ pub async fn command(
                     .read_line(&mut input)
                     .expect("Failed to read input");
                 if input.trim().to_lowercase() == "y" {
-                    return Box::pin(command(pg, client, name, url, dry_run, false)).await;
+                    return Box::pin(command(pg, client, name, url, false)).await;
                 }
             }
             pg.println(format!("Failed to parse {name}"));

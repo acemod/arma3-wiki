@@ -79,7 +79,6 @@ impl ParsedEventHandler {
         &self.examples
     }
 
-    #[cfg(feature = "wiki")]
     /// Parses a locality from the wiki.
     ///
     /// # Errors
@@ -88,34 +87,34 @@ impl ParsedEventHandler {
     /// # Panics
     /// If the source is empty
     pub fn from_wiki(source: &str) -> Result<Self, (String, String)> {
-        match Self::_from_wiki(source) {
-            Ok(event_handler) => Ok(event_handler),
-            Err(error) => {
-                // determine the event handler ID
-                let id = if source.contains("====") {
-                    source
-                        .lines()
-                        .find(|line| line.starts_with("===="))
-                        .map(|line| {
-                            line.trim_start_matches("==== ")
-                                .trim_end_matches(" ====")
-                                .to_string()
-                        })
-                        .unwrap_or_default()
-                } else {
-                    println!("unable to determine event handler ID: {source}");
-                    let (id, _) =
-                        Self::id_from_arg_title(source.lines().next().expect("not empty lines"))
-                            .unwrap_or_default();
-                    println!("using ID from ArgTitle: {id}");
-                    id
-                };
-                Err((id, error))
-            }
-        }
+        // match Self::_from_wiki(source) {
+        //     Ok(event_handler) => Ok(event_handler),
+        //     Err(error) => {
+        //         // determine the event handler ID
+        //         let id = if source.contains("====") {
+        //             source
+        //                 .lines()
+        //                 .find(|line| line.starts_with("===="))
+        //                 .map(|line| {
+        //                     line.trim_start_matches("==== ")
+        //                         .trim_end_matches(" ====")
+        //                         .to_string()
+        //                 })
+        //                 .unwrap_or_default()
+        //         } else {
+        //             println!("unable to determine event handler ID: {source}");
+        //             let (id, _) =
+        //                 Self::id_from_arg_title(source.lines().next().expect("not empty lines"))
+        //                     .unwrap_or_default();
+        //             println!("using ID from ArgTitle: {id}");
+        //             id
+        //         };
+        //         Err((id, error))
+        //     }
+        // }
+        todo!()
     }
 
-    #[cfg(feature = "wiki")]
     fn id_from_arg_title(source: &str) -> Result<(String, Option<Since>), String> {
         use crate::model::Version;
 
@@ -126,7 +125,7 @@ impl ParsedEventHandler {
         };
         let parts: Vec<&str> = source.split('|').collect();
         let id = (*parts.get(2).ok_or("Missing param name")?).to_string();
-        let version = Version::from_wiki(
+        let version = Version::parse(
             parts
                 .get(5)
                 .ok_or_else(|| format!("Missing param since: {source}"))?
@@ -140,96 +139,96 @@ impl ParsedEventHandler {
         Ok((id, since))
     }
 
-    #[cfg(feature = "wiki")]
     fn _from_wiki(source: &str) -> Result<Self, String> {
-        let mut id = None;
-        let mut description = String::new();
-        let mut params = Vec::new();
-        let mut since = None;
-        let mut argument_loc = Locality::Unspecified;
-        let mut effect_loc = Locality::Unspecified;
-        let mut examples = Vec::new();
+        // let mut id = None;
+        // let mut description = String::new();
+        // let mut params = Vec::new();
+        // let mut since = None;
+        // let mut argument_loc = Locality::Unspecified;
+        // let mut effect_loc = Locality::Unspecified;
+        // let mut examples = Vec::new();
 
-        let mut lines = source.lines();
-        while let Some(line) = lines.next() {
-            if line.starts_with("====") {
-                id = Some(
-                    line.trim_start_matches("==== ")
-                        .trim_end_matches(" ====")
-                        .to_string(),
-                );
-            } else if line.starts_with("{{ArgTitle|") {
-                let (id_, since_) = Self::id_from_arg_title(line)?;
-                id = Some(id_);
-                since = since_;
-            } else if line.starts_with("<sqf>") {
-                if line.ends_with("</sqf>") {
-                    examples.push(
-                        line.trim_start_matches("<sqf>")
-                            .trim_end_matches("</sqf>")
-                            .to_string(),
-                    );
-                } else {
-                    let mut code = String::new();
-                    for line in lines.by_ref() {
-                        if line.starts_with("</sqf>") {
-                            break;
-                        }
-                        code.push_str(line);
-                        code.push('\n');
-                    }
-                    examples.push(code.trim_end().to_string());
-                }
-            } else if line.starts_with("* ") && !examples.is_empty() {
-                let (param, errors) = ParamItem::from_wiki(
-                    id.as_ref().ok_or("Missing event handler ID")?,
-                    line.trim_start_matches("* "),
-                )?;
-                params.push(param);
-                for error in errors {
-                    println!("param error: {error}");
-                }
-            } else {
-                if line.contains("Argument|32") {
-                    let word = line
-                        .split_once("Argument|32")
-                        .expect("Missing Argument|32")
-                        .0
-                        .split_once("{{Icon|")
-                        .expect("Missing {{Icon|")
-                        .1;
-                    argument_loc = Locality::from_wiki(word)?;
-                    continue;
-                }
-                if line.contains("Effect|32") {
-                    let word = line
-                        .split_once("Effect|32")
-                        .expect("Missing Effect|32")
-                        .0
-                        .split_once("{{Icon|")
-                        .expect("Missing {{Icon|")
-                        .1;
-                    effect_loc = Locality::from_wiki(word)?;
-                    continue;
-                }
-                if !line.is_empty() {
-                    description.push_str(line);
-                    description.push('\n');
-                }
-            }
-        }
+        // let mut lines = source.lines();
+        // while let Some(line) = lines.next() {
+        //     if line.starts_with("====") {
+        //         id = Some(
+        //             line.trim_start_matches("==== ")
+        //                 .trim_end_matches(" ====")
+        //                 .to_string(),
+        //         );
+        //     } else if line.starts_with("{{ArgTitle|") {
+        //         let (id_, since_) = Self::id_from_arg_title(line)?;
+        //         id = Some(id_);
+        //         since = since_;
+        //     } else if line.starts_with("<sqf>") {
+        //         if line.ends_with("</sqf>") {
+        //             examples.push(
+        //                 line.trim_start_matches("<sqf>")
+        //                     .trim_end_matches("</sqf>")
+        //                     .to_string(),
+        //             );
+        //         } else {
+        //             let mut code = String::new();
+        //             for line in lines.by_ref() {
+        //                 if line.starts_with("</sqf>") {
+        //                     break;
+        //                 }
+        //                 code.push_str(line);
+        //                 code.push('\n');
+        //             }
+        //             examples.push(code.trim_end().to_string());
+        //         }
+        //     } else if line.starts_with("* ") && !examples.is_empty() {
+        //         let (param, errors) = ParamItem::from_wiki(
+        //             id.as_ref().ok_or("Missing event handler ID")?,
+        //             line.trim_start_matches("* "),
+        //         )?;
+        //         params.push(param);
+        //         for error in errors {
+        //             println!("param error: {error}");
+        //         }
+        //     } else {
+        //         if line.contains("Argument|32") {
+        //             let word = line
+        //                 .split_once("Argument|32")
+        //                 .expect("Missing Argument|32")
+        //                 .0
+        //                 .split_once("{{Icon|")
+        //                 .expect("Missing {{Icon|")
+        //                 .1;
+        //             argument_loc = Locality::from_wiki(word)?;
+        //             continue;
+        //         }
+        //         if line.contains("Effect|32") {
+        //             let word = line
+        //                 .split_once("Effect|32")
+        //                 .expect("Missing Effect|32")
+        //                 .0
+        //                 .split_once("{{Icon|")
+        //                 .expect("Missing {{Icon|")
+        //                 .1;
+        //             effect_loc = Locality::from_wiki(word)?;
+        //             continue;
+        //         }
+        //         if !line.is_empty() {
+        //             description.push_str(line);
+        //             description.push('\n');
+        //         }
+        //     }
+        // }
 
-        let id = id.ok_or("Missing event handler ID")?;
-        let description = description.trim_end().to_string();
-        Ok(Self {
-            id,
-            desc: description,
-            params,
-            since,
-            argument_loc,
-            effect_loc,
-            examples,
-        })
+        // let id = id.ok_or("Missing event handler ID")?;
+        // let description = description.trim_end().to_string();
+        // Ok(Self {
+        //     id,
+        //     desc: description,
+        //     params,
+        //     since,
+        //     argument_loc,
+        //     effect_loc,
+        //     examples,
+        // })
+        todo!()
     }
 }
 

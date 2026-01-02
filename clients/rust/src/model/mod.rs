@@ -19,18 +19,3 @@ pub use since::Since;
 pub use syntax::Syntax;
 pub use value::{ArraySizedElement, NumberEnumValue, OneOfValue, StringEnumValue, Value};
 pub use version::Version;
-
-#[derive(Debug, PartialEq, Eq)]
-pub enum ParseError {
-    Syntax(String),
-    UnknownType(String),
-}
-
-impl std::fmt::Display for ParseError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            Self::Syntax(s) => write!(f, "Syntax Error: {s}"),
-            Self::UnknownType(s) => write!(f, "Unknown Type: `{s}`"),
-        }
-    }
-}

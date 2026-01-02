@@ -42,7 +42,7 @@ impl Since {
     /// Panics if the version string is invalid.
     pub fn arma3(version: &str) -> Self {
         Self {
-            arma_3: Some(Version::from_wiki(version).expect("Invalid version string")),
+            arma_3: Some(Version::parse(version).expect("Invalid version string")),
             ..Self::default()
         }
     }
@@ -119,13 +119,19 @@ impl Since {
         self.argo = argo;
     }
 
-    #[cfg(feature = "wiki")]
+    pub fn set_from_psince(&mut self, source: &str) -> Result<(), String> {
+        let (key, version) = source
+            .split_once(' ')
+            .ok_or_else(|| format!("Invalid pSince format: {source}"))?;
+        self.set_from_wiki(key, version)
+    }
+
     /// Sets the version from the wiki.
     ///
     /// # Errors
     /// Returns an error if the key is unknown.
     pub fn set_from_wiki(&mut self, key: &str, value: &str) -> Result<(), String> {
-        self.set_version(key, Version::from_wiki(value)?)
+        self.set_version(key, Version::parse(value)?)
     }
 
     /// Sets the version from the wiki.

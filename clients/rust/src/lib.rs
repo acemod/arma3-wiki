@@ -10,6 +10,7 @@ pub const BRANCH: &str = "dist-2";
 
 pub mod commands;
 pub mod model;
+pub mod parser;
 
 #[allow(clippy::disallowed_methods)]
 mod assets {
@@ -190,7 +191,7 @@ impl Wiki {
             event_handlers.insert(*ns, handlers);
         }
         Ok(Self {
-            version: Version::from_wiki(
+            version: Version::parse(
                 fs_err::read_to_string(appdata.join("version.txt"))
                     .expect("Failed to read version file")
                     .trim(),
@@ -252,7 +253,7 @@ impl Wiki {
             }
         }
         Self {
-            version: Version::from_wiki(
+            version: Version::parse(
                 std::str::from_utf8(
                     assets::Asset::get("version.txt")
                         .expect("Failed to get version asset")

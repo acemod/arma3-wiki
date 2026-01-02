@@ -10,12 +10,11 @@ pub enum Locality {
 }
 
 impl Locality {
-    #[cfg(feature = "wiki")]
     /// Parses a locality from the wiki.
     ///
     /// # Errors
     /// Returns an error if the locality is unknown.
-    pub fn from_wiki(source: &str) -> Result<Self, String> {
+    pub fn parse(source: &str) -> Result<Self, String> {
         match source.to_lowercase().replace("<br>", "").as_str() {
             "local" | "{{icon|localargument|32}}" => Ok(Self::Local),
             "global" | "{{icon|globalargument|32}}" => Ok(Self::Global),

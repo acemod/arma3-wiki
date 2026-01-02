@@ -33,7 +33,7 @@ impl<'de> Deserialize<'de> for Version {
             where
                 E: serde::de::Error,
             {
-                Version::from_wiki(v).map_err(serde::de::Error::custom)
+                Version::parse(v).map_err(serde::de::Error::custom)
             }
 
             fn visit_map<M>(self, mut map: M) -> Result<Self::Value, M::Error>
@@ -93,7 +93,7 @@ impl Version {
     ///
     /// # Errors
     /// Errors if the version string is invalid.
-    pub fn from_wiki(source: &str) -> Result<Self, String> {
+    pub fn parse(source: &str) -> Result<Self, String> {
         if source.is_empty() {
             return Ok(Self::new(0, 0));
         }
@@ -124,7 +124,7 @@ impl Version {
         let Some((version, _)) = source.split_once('|') else {
             return Err(format!("Invalid version: {source}"));
         };
-        Ok((game.to_string(), Self::from_wiki(version)?))
+        Ok((game.to_string(), Self::parse(version)?))
     }
 
     #[must_use]
@@ -156,15 +156,14 @@ impl std::cmp::PartialOrd for Version {
 }
 
 #[cfg(test)]
-#[cfg(feature = "wiki")]
 mod tests {
     use super::*;
 
     #[test]
-    fn from_wiki() {
-        assert_eq!(Version::from_wiki(""), Ok(Version::new(0, 0)));
-        assert_eq!(Version::from_wiki("1.00"), Ok(Version::new(1, 0)));
-        assert_eq!(Version::from_wiki("1.0"), Ok(Version::new(1, 0)));
+    fn parse() {
+        assert_eq!(Version::parse(""), Ok(Version::new(0, 0)));
+        assert_eq!(Version::parse("1.00"), Ok(Version::new(1, 0)));
+        assert_eq!(Version::parse("1.0"), Ok(Version::new(1, 0)));
     }
 
     #[test]

@@ -21,7 +21,7 @@ pub async fn version(client: &Client) -> Option<Version> {
         .collect::<Vec<_>>();
     assert!(versions.len() == 1, "Expected 1 version, got {versions:?}");
     let version_string = versions.pop().expect("No version found");
-    let version = Version::from_wiki(&version_string).expect("Failed to parse version");
+    let version = Version::parse(&version_string).expect("Failed to parse version");
     let path = PathBuf::from("dist/version.txt");
     if path.exists() {
         let old_version = fs_err::read_to_string(&path).expect("Failed to read old version");

@@ -1,7 +1,5 @@
 use serde::{Deserialize, Serialize};
 
-#[cfg(feature = "wiki")]
-use crate::model::ParseError;
 use crate::model::{ArraySizedElement, Call};
 
 use super::{Since, Value};
@@ -75,8 +73,8 @@ impl Param {
     pub fn as_value(&self) -> Value {
         match self {
             Self::Item(item) => item.typ().clone(),
-            Self::Array(items) => Value::ArraySized {
-                types: items
+            Self::Array(items) => Value::ArraySized(
+                items
                     .iter()
                     .map(|item| ArraySizedElement {
                         name: match item {
@@ -84,45 +82,37 @@ impl Param {
                             Self::Array(_) | Self::Infinite(_) => String::new(),
                         },
                         typ: item.as_value(),
-                        desc: String::new(),
+                        desc: None,
                         since: match item {
                             Self::Item(param_item) => param_item.since().cloned(),
                             Self::Array(_) | Self::Infinite(_) => None,
                         },
                     })
                     .collect(),
-                desc: String::new(),
-            },
+            ),
             Self::Infinite(items) => {
                 if items.len() == 1 {
                     // Single item repeating: InfiniteItem case
-                    Value::ArrayUnsized {
-                        typ: Box::new(items[0].as_value()),
-                        desc: String::new(),
-                    }
+                    Value::ArrayUnsized(Box::new(items[0].as_value()))
                 } else {
                     // Multiple items repeating: InfiniteFlat case
-                    Value::ArrayUnsized {
-                        typ: Box::new(Value::ArraySized {
-                            types: items
-                                .iter()
-                                .map(|item| ArraySizedElement {
-                                    name: match item {
-                                        Self::Item(param_item) => param_item.name().to_string(),
-                                        Self::Array(_) | Self::Infinite(_) => String::new(),
-                                    },
-                                    typ: item.as_value(),
-                                    desc: String::new(),
-                                    since: match item {
-                                        Self::Item(param_item) => param_item.since().cloned(),
-                                        Self::Array(_) | Self::Infinite(_) => None,
-                                    },
-                                })
-                                .collect(),
-                            desc: String::new(),
-                        }),
-                        desc: String::new(),
-                    }
+                    Value::ArrayUnsized(Box::new(Value::ArraySized(
+                        items
+                            .iter()
+                            .map(|item| ArraySizedElement {
+                                name: match item {
+                                    Self::Item(param_item) => param_item.name().to_string(),
+                                    Self::Array(_) | Self::Infinite(_) => String::new(),
+                                },
+                                typ: item.as_value(),
+                                desc: None,
+                                since: match item {
+                                    Self::Item(param_item) => param_item.since().cloned(),
+                                    Self::Array(_) | Self::Infinite(_) => None,
+                                },
+                            })
+                            .collect(),
+                    )))
                 }
             }
         }
@@ -166,121 +156,6 @@ impl ParamItem {
             default,
             since,
         }
-    }
-
-    #[cfg(feature = "wiki")]
-    /// Parses a param from a wiki command.
-    ///
-    /// # Errors
-    /// Returns an error if the param could not be parsed.
-    ///
-    /// # Panics
-    /// Panics if the value contains an dangling `{{`
-    pub fn from_wiki(command: &str, source: &str) -> Result<(Self, Vec<ParseError>), String> {
-        let mut errors = Vec::new();
-        // ==== Special Cases ====
-        let value = if command == "forEach" {
-            source.trim_start_matches("{{{!}} class=\"wikitable align-center float-right\"\n! Game\n{{!}} {{GVI|ofp|1.00}}\n{{!}} {{GVI|arma1|1.00}}\n{{!}} {{GVI|arma2|1.00}}\n{{!}} {{GVI|arma2oa|1.50}}\n{{!}} {{GVI|arma3|1.00}}\n{{!}} {{GVI|tkoh|1.00}}\n{{!}}-\n! [[String]] support\n{{!}} colspan=\"2\" {{!}} {{Icon|checked}}\n{{!}} colspan=\"4\" {{!}} {{Icon|unchecked}}\n{{!}}-\n! [[Code]] support\n{{!}} {{Icon|unchecked}}\n{{!}} colspan=\"5\" {{!}} {{Icon|checked}}\n{{!}}}\n").to_string()
-        } else if command == "throw" && source.starts_with("if (condition)") {
-            source.replace("if (condition)", "condition")
-        } else {
-            (*source).to_string()
-        };
-        // ==== End Of Special Cases ====
-        let mut value = value.trim().to_string();
-        value = if value.starts_with("{{") {
-            value
-                .split_once("}}")
-                .expect("Missing closing '}}'")
-                .1
-                .trim()
-                .to_string()
-        } else {
-            value
-        };
-        let (mut name, desc, typ) = if value.contains("\n*") {
-            // multiple types
-            let Some((mut name, types)) = value.split_once(':') else {
-                return Err(format!("Invalid param: {value}"));
-            };
-            let desc = if name.contains(" - ") {
-                let (name_inner, desc_inner) = name.split_once(" - ").expect("Missing ' - '");
-                name = name_inner;
-                desc_inner
-            } else {
-                ""
-            };
-            (name, desc, types)
-        } else {
-            // Just a single type
-            let Some((name, typ)) = value.split_once(':') else {
-                return Err(format!("Invalid param: {value}"));
-            };
-            let name = name.trim();
-            let (typ, desc) = typ.split_once(" - ").unwrap_or((typ, ""));
-            (name, desc, typ)
-        };
-        let typ = typ.trim();
-        let desc = desc.trim();
-        let optional = desc.contains("(Optional")
-            || (desc.is_empty()
-                && value
-                    .split_once('\n')
-                    .unwrap_or_default()
-                    .0
-                    .contains("(Optional"));
-        let mut desc = desc.to_string();
-        let default = if desc.contains("(Optional, default ") {
-            let (_, default) = desc.split_once("(Optional").expect("Missing '(Optional'");
-            let (default, desc_trim) = default.split_once(')').expect("Missing closing ')'");
-            let default = default.replace(", default ", "").trim().to_string();
-            desc = desc_trim.to_string();
-            Some(default)
-        } else if desc.contains("(Optional)") {
-            desc = desc.replace("(Optional)", "").trim().to_string();
-            None
-        } else {
-            None
-        };
-        let since = if name.contains("{{GVI|") {
-            use crate::model::Version;
-
-            let (since, name_trim) = name.split_once("{{GVI|").expect("Missing '{{GVI|'");
-            name = name_trim;
-            let (game, version) = Version::from_wiki_icon(since)?;
-            let mut since = Since::default();
-            since.set_version(&game, version)?;
-            Some(since)
-        } else {
-            None
-        };
-        Ok((
-            Self::new(
-                {
-                    let mut name = name.to_string();
-                    if name.starts_with("'''") {
-                        name = name.trim_start_matches("'''").to_string();
-                    }
-                    if name.ends_with("'''") {
-                        name = name.trim_end_matches("'''").to_string();
-                    }
-                    name
-                },
-                if desc.trim().is_empty() {
-                    None
-                } else {
-                    Some(desc.trim().to_string())
-                },
-                Value::from_wiki(command, typ).unwrap_or_else(|_| {
-                    errors.push(ParseError::UnknownType(typ.to_string()));
-                    Value::Unknown
-                }),
-                optional,
-                default,
-                since,
-            ),
-            errors,
-        ))
     }
 
     #[must_use]
@@ -335,70 +210,5 @@ impl ParamItem {
 
     pub const fn set_since(&mut self, since: Option<Since>) {
         self.since = since;
-    }
-}
-
-#[cfg(test)]
-#[cfg(feature = "wiki")]
-mod tests {
-    use crate::model::Value;
-
-    use super::ParamItem;
-
-    #[test]
-    fn simple() {
-        let (alive, _) = ParamItem::from_wiki("alive", "player: [[Object]] - Player unit.")
-            .expect("Failed to parse param");
-        assert_eq!(alive.name(), "player");
-        assert_eq!(alive.description(), Some("Player unit."));
-        assert_eq!(alive.typ(), &Value::Object);
-    }
-
-    #[test]
-    fn one_of() {
-        let (direction, _) = ParamItem::from_wiki("camSetDir", "direction:\n* [[Number]] (before {{GVI|arma3|0.50}}) - camera azimuth\n* [[Array]] in format [x,y,z] (since {{GVI|arma3|0.50}}) - direction of camera. Must be a valid vector.").expect("Failed to parse param");
-        assert_eq!(direction.name(), "direction");
-        assert!(matches!(direction.typ(), Value::OneOf(_)));
-
-        let (public, _) = ParamItem::from_wiki("setVariable", "public - (Optional, default [[false]]) can be one of:\n* [[Boolean]] - if set to [[true]], the variable is broadcast globally and is persistent ([[Multiplayer Scripting#Join In Progress|JIP]] compatible) {{Icon|globalEffect|32}}\n* [[Number]] - the variable is only set on the client with the given [[Multiplayer Scripting#Machine network ID|Machine network ID]]. If the number is negative, the variable is set on every client except for the one with the given ID.\n* [[Array]] of [[Number]]s - array of [[Multiplayer Scripting#Machine network ID|Machine network IDs]]").expect("Failed to parse param");
-        assert_eq!(public.name(), "public");
-        assert!(matches!(public.typ(), Value::OneOf(_)));
-
-        let (targets, _) = ParamItem::from_wiki("remoteExec", "'''targets''' - (Optional, default 0):\n* [[Number]] (See also [[Multiplayer Scripting#Machine network ID|Machine network ID]]):\n** '''0:''' the order will be executed globally, i.e. on the server and every connected client, including the machine where [[remoteExec]] originated\n** '''2:''' the order will only be executed on the server - is both dedicated and hosted server. See [[Multiplayer_Scripting#Different_machines_and_how_to_target_them|for more info]]\n** '''Other number:''' the order will be executed on the machine where [[clientOwner]] matches the given number\n** '''Negative number:''' the effect is inverted: '''-2''' means every client but not the server, '''-12''' means the server and every client, except for the client where [[clientOwner]] returns 12\n* [[Object]] - the order will be executed where the given object is [[Multiplayer Scripting#Locality|local]]\n* [[String]] - interpreted as an [[Identifier]] (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [[Multiplayer Scripting#Locality|local]]\n* [[Side]] - the order will be executed on machines where the player is on the specified side\n* [[Group]] - the order will be executed on machines '''where the player is in the specified group''' ('''not''' where said group is local!)\n* [[Array]] - array of any combination of the types listed above").expect("Failed to parse param");
-        assert_eq!(targets.name(), "targets");
-        assert!(matches!(targets.typ(), Value::OneOf(_)));
-    }
-
-    #[test]
-    fn or() {
-        let (targets, _) = ParamItem::from_wiki("remoteExec", "'''targets''': [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - (Optional, default 0) see the main syntax above for more details.").expect("Failed to parse param");
-        assert_eq!(targets.name(), "targets");
-        assert!(matches!(targets.typ(), Value::OneOf(_)));
-    }
-
-    #[test]
-    fn complicated_multiline() {
-        let (special, _) = ParamItem::from_wiki("setVehiclePosition", r#"special: [[String]] - (Optional, default "NONE") can be one of the following: 
-* {{hl|"NONE"}} - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there. 
-* {{hl|"CAN_COLLIDE"}} - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model. 
-* {{hl|"FLY"}} - if vehicle is capable of flying and has crew, it will be made airborne at default height. 
-If ''special'' is "" or not specified, default {{hl|"NONE"}} is used."#).expect("Failed to parse param");
-        assert_eq!(special.name(), "special");
-        assert!(special.optional());
-
-        let (sound, _) = ParamItem::from_wiki("say3D", r"sound: [[String]] or [[Array]]
-* [[String]] - classname of the sound to be played. Defined in [[CfgSounds]] including [[Description.ext]]
-* [[Array]] format [sound, maxDistance, pitch, isSpeech, offset, simulateSpeedOfSound] where:
-** sound: [[String]] - classname of the sound to be played. Defined in [[Description.ext#CfgSounds|CfgSounds]] including [[Description.ext]]
-** maxDistance: [[Number]] - (Optional, default 100) maximum distance in meters at which the sound can be heard
-** pitch: [[Number]] - (Optional, default 1) pitch of the sound
-** {{GVI|arma3|1.92|size= 0.75}} isSpeech: [[Boolean]] or {{GVI|arma3|2.04|size= 0.75}} [[Number]] - (Optional, default [[false]])
-*** 0/[[false]] = play as sound ([[fadeSound]] applies)
-*** 1/[[true]] = play as speech ([[fadeSpeech]] applies), filters are not applied to it (i.e. house or vehicle interior one)
-*** 2 = play as sound ([[fadeSound]] applies) without interior/vehicle muffling
-** {{GVI|arma3|2.00|size= 0.75}} offset: [[Number]] - (Optional, default 0) offset in seconds; ignored when ''simulateSpeedOfSound'' is used
-** {{GVI|arma3|2.18|size= 0.75}} simulateSpeedOfSound: [[Boolean]] - (Optional, default [[false]]) [[true]] to simulate speed of sound (see description note)").expect("Failed to parse param");
-        assert_eq!(sound.name(), "sound");
-        assert!(!sound.optional());
     }
 }

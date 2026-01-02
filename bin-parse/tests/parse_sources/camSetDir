@@ -27,17 +27,24 @@
 
 |eff= local
 
-|descr= Sets the orientation of the given camera in the direction of the given vector. Needs [[camCommit]].
+|descr= Sets the orientation of the given camera in the direction of the given vector. Needs [[camCommit]]. Since {{GVI|arma3|0.50}}, only the second syntax with a [[Vector3D]] is available.
 
-|s1= camera [[camSetDir]] direction
+|s1= camera [[camSetDir]] azimuth
 
 |p1= camera: [[Object]] - object of type "camera"
 
-|p2= direction:
-* [[Number]] (before {{GVI|arma3|0.50}}) - camera azimuth
-* [[Array]] in format [x,y,z] (since {{GVI|arma3|0.50}}) - direction of camera. Must be a valid vector.
+|p2= azimuth: [[Number]] - camera azimuth
 
 |r1= [[Nothing]]
+
+|s2= camera [[camSetDir]] direction
+|s2since= arma3 0.50
+
+|p21= camera: [[Object]] - object of type "camera"
+
+|p22= direction: [[Vector3D]] - direction of camera. Must be a valid vector.
+
+|r2= [[Nothing]]
 
 |x1= Since {{arma3}}:
 <sqf>
