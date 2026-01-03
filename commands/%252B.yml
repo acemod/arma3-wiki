@@ -35,13 +35,13 @@ syntax:
   - arrayA
   - arrayB
   ret:
-  - ArrayUnknown
+  - Unknown
   - a new array filled with ''arrayA'' and ''arrayB'' elements, in that order
   params:
   - name: arrayA
-    type: ArrayUnknown
+    type: Unknown
   - name: arrayB
-    type: ArrayUnknown
+    type: Unknown
 - call: !Binary
   - stringA
   - stringB
@@ -55,11 +55,11 @@ syntax:
     type: String
 - call: !Unary array
   ret:
-  - ArrayUnknown
+  - Unknown
   - a new instance of the provided array filled with same elements ({{Link|https://en.wikipedia.org/wiki/Object_copying#Deep_copy|deep copy}})
   params:
   - name: array
-    type: ArrayUnknown
+    type: Unknown
 - call: !Unary hashMap
   ret:
   - HashMapUnknown
