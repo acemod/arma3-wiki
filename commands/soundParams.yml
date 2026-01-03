@@ -6,7 +6,15 @@ syntax:
 - call: !Unary id
   ret:
   - Unknown
-  - null
+  - |-
+    1: [[Array]] with [path, curPos, length, time, volume]
+    ** path: [[String]] - the path to the played sound file
+    ** curPos: [[Number]] - current play position in 0...1 range
+    ** length: [[Number]] - total sound duration in seconds
+    ** time: [[Number]] - time passed since the start of playback
+    ** volume: [[Number]] - playback volume
+    ** {{GVI|arma3|2.22|size= 0.75}} loop: [[Boolean]] - [[true]] if the sound is looping
+    * {{GVI|arma3|2.22|size= 0.75}} ''id'' == -1: [[Array]] with [sid1, sid2, sid3..., sidn], where sid is sound id returned by [[playSoundUI]] and [[playSound3D]]
   params:
   - name: id
     description: id returned by [[playSoundUI]] and [[playSound3D]] commands, -1 to return all currently playing ids
