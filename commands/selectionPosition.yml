@@ -16,8 +16,8 @@ syntax:
   - object
   - selectionName
   ret:
-  - ArrayUnknown
-  - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned.'
+  - Unknown
+  - If selection does not exist, [0, 0, 0] is returned.
   params:
   - name: object
     type: Object
@@ -29,8 +29,8 @@ syntax:
     - LOD
     - returnMode
   ret:
-  - ArrayUnknown
-  - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
+  - Unknown
+  - If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s
   params:
   - name: object
     type: Object
@@ -60,8 +60,8 @@ syntax:
   - isVisual
   - returnMode
   ret:
-  - ArrayUnknown
-  - '[[Position#PositionRelative|relative position]] in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s'
+  - Unknown
+  - If selection does not exist, [0, 0, 0] is returned. If returnMode is {{hl|"BoundingBox"}}, [[Array]] of [[Array]]s
   params:
   - name: object
     type: Object
