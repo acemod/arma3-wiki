@@ -1,8 +1,21 @@
 name: camSetDir
-description: Sets the orientation of the given camera in the direction of the given vector. Needs [[camCommit]].
+description: Sets the orientation of the given camera in the direction of the given vector. Needs [[camCommit]]. Since {{GVI|arma3|0.50}}, only the second syntax with a [[Vector3D]] is available.
 groups:
 - Camera Control
 syntax:
+- call: !Binary
+  - camera
+  - azimuth
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: camera
+    description: object of type "camera"
+    type: Object
+  - name: azimuth
+    description: camera azimuth
+    type: Number
 - call: !Binary
   - camera
   - direction
@@ -14,7 +27,12 @@ syntax:
     description: object of type "camera"
     type: Object
   - name: direction
-    type: Unknown
+    description: direction of camera. Must be a valid vector.
+    type: Vector3d
+  since:
+    arma_3:
+      major: 0
+      minor: 50
 argument_loc: Local
 effect_loc: Local
 since:
