@@ -6,7 +6,11 @@ syntax:
 - call: !Unary layer
   ret:
   - Unknown
-  - null
+  - |-
+    type of effect, can be {{hl|"OBJ"}}, {{hl|"RSC"}} or {{hl|"TXT"}}
+    * effect: [[String]] - [[Title Effect Type]] ({{hl|"PLAIN"}}, {{hl|"BLACK OUT"}} etc)
+    * speed: [[Number]] - effect speed multiplier
+    * showInMap: [[Boolean]] - [[true]] if effect is available over map
   params:
   - name: layer
     description: layer number or -1 (see [[allActiveTitleEffects]])
