@@ -7,13 +7,43 @@ syntax:
   - condition
   - config
   ret:
-  - ArrayUnknown
-  - array of [[Config]]s
+  - Unknown
+  - null
   params:
   - name: condition
     type: String
   - name: config
     type: Config
+- call: !Unary
+  - config
+  - depth
+  - includeInherited
+  - allSubclasses
+  - classNames
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: config
+    description: target config
+    type: Config
+  - name: depth
+    description: how many levels of subclasses to go deep
+    type: Number
+  - name: includeInherited
+    description: '[[true]] to look through inherited classes'
+    type: Boolean
+  - name: allSubclasses
+    description: '[[true]] to return all subclasses, [[false]] - to return only the last tier.'
+    type: Boolean
+  - name: classNames
+    description: '(Optional, default: [[false]]) when [[true]] class names [[String]]s are returned, when [[false]] - [[Config]]s are returned.'
+    type: Boolean
+    optional: true
+  since:
+    arma_3:
+      major: 2
+      minor: 22
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -30,3 +60,7 @@ examples:
 - |-
   Return all classes that inherit from 'RscText':
   <sqf>hint str ("inheritsFrom _x == (configFile >> 'RscText')" configClasses configFile);</sqf>
+- |-
+  Return children:
+  <sqf>configClasses [configFile >> "CfgGroups", 0, true, true, true]
+  //Returns ["West","East","Indep","Empty"]</sqf>
