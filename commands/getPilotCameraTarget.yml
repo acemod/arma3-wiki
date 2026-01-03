@@ -6,7 +6,11 @@ syntax:
 - call: !Unary object
   ret:
   - Unknown
-  - null
+  - |-
+    returns whether the camera is in a tracking mode
+    * targetPosition: [[Position#PositionASL|PositionASL]] - returns the position of the tracked area or object
+    * targetObject: [[Object]] - returns the tracked object, [[objNull]] if camera is only tracking an area
+    returns <sqf inline>[false, [0,0,0], objNull]</sqf> if camera is not in a tracking mode or if object has no [[Arma 3: Targeting config reference#class pilotCamera|pilotCamera]].
   params:
   - name: object
     type: Object
