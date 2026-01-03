@@ -6,7 +6,7 @@ syntax:
 - call: !Unary asset
   ret:
   - Unknown
-  - null
+  - "the asset belongs to a DLC\n* isOwned: [[Boolean]] \n* isInstalled: [[Boolean]] \n* isAvailable: [[Boolean]] \n* appID: [[String]] - actual steam item ID or \"0\" for none or \"-1\" for unknown \n* DLCName: [[String]] - actual DLC name or \"\""
   params:
   - name: asset
     description: object reference or path to the model
@@ -16,7 +16,7 @@ syntax:
   - config
   ret:
   - Unknown
-  - null
+  - "the asset belongs to a DLC\n* isOwned: [[Boolean]] \n* isInstalled: [[Boolean]] \n* isAvailable: [[Boolean]] \n* appID: [[String]] - actual steam item ID or \"0\" for none or \"-1\" for unknown \n* DLCName: [[String]] - actual DLC name or \"\""
   params:
   - name: class
     description: class name of the asset
