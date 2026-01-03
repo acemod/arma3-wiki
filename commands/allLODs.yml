@@ -6,7 +6,11 @@ syntax:
 - call: !Unary objectOrModel
   ret:
   - Unknown
-  - null
+  - |-
+    direct index of the LOD for fast access
+    * LODname: [[String]] - LOD description name for LOD identification
+    * LODresolution: [[Number]] - the actual [[LOD resolutions|LOD resolution]], could be used to select LOD in [[selectionNames]] and [[selectionPosition]]
+    * countNamedSelections: [[Number]] - number of named selections in this LOD, could be returned with [[selectionNames]] command
   params:
   - name: objectOrModel
     type: Unknown
