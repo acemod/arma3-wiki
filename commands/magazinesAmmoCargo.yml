@@ -5,8 +5,10 @@ groups:
 syntax:
 - call: !Unary vehicle
   ret:
-  - ArrayUnknown
-  - null
+  - Unknown
+  - |-
+    Class name of the magazine
+    * ammo: [[Number]] - Number of rounds loaded
   params:
   - name: vehicle
     type: Object
