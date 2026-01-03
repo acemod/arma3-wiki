@@ -9,7 +9,10 @@ syntax:
     - id
   ret:
   - Unknown
-  - null
+  - |-
+    event handler exists
+    * isLast: [[Boolean]] - will be executed last (relevant if last event handler modifies default engine behaviour)
+    * total: [[Number]] - total number of event handlers added to the same event
   params:
   - name: oper
     description: subject to which event handler is assigned
@@ -25,7 +28,10 @@ syntax:
   - id
   ret:
   - Unknown
-  - null
+  - |-
+    event handler exists
+    * isLast: [[Boolean]] - will be executed last (relevant if last event handler modifies default engine behaviour)
+    * total: [[Number]] - total number of event handlers added to the same event
   params:
   - name: type
     description: event handler name
