@@ -1,6 +1,7 @@
 mod call;
 mod command;
 mod event_handler;
+mod function;
 mod locality;
 mod param;
 mod since;
@@ -11,6 +12,7 @@ mod version;
 pub use call::{Arg, Call};
 pub use command::Command;
 pub use event_handler::{EventHandler, EventHandlerNamespace, ParsedEventHandler};
+pub use function::Function;
 pub use locality::Locality;
 pub use param::Param;
 pub use since::Since;

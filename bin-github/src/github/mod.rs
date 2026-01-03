@@ -54,7 +54,7 @@ impl GitHub {
             return Ok(None);
         }
         let head = format!("command/{command}");
-        command!(["checkout", "dist"]);
+        command!(["checkout", "dist-f"]);
         command!(["checkout", "-b", head.as_str()]);
         command!([
             "add",
@@ -68,7 +68,7 @@ impl GitHub {
         command!(["push", "--set-upstream", "origin", head.as_str()]);
         self.0
             .pulls(REPO_ORG, REPO_NAME)
-            .create(format!("Update Command `{command}`"), head, "dist")
+            .create(format!("Update Command `{command}`"), head, "dist-f")
             .send()
             .await
             .map_err(|e| e.to_string())
@@ -85,7 +85,7 @@ impl GitHub {
             return Ok(None);
         }
         let head = format!("events/{ns}/{handler}");
-        command!(["checkout", "dist"]);
+        command!(["checkout", "dist-f"]);
         command!(["checkout", "-b", head.as_str()]);
         command!(["add", format!("events/{ns}/{handler}.yml").as_str()]);
         command!([
@@ -96,7 +96,7 @@ impl GitHub {
         command!(["push", "--set-upstream", "origin", head.as_str()]);
         self.0
             .pulls(REPO_ORG, REPO_NAME)
-            .create(format!("Update Event `{ns}::{handler}`"), head, "dist")
+            .create(format!("Update Event `{ns}::{handler}`"), head, "dist-f")
             .send()
             .await
             .map_err(|e| e.to_string())
@@ -109,14 +109,14 @@ impl GitHub {
             return;
         }
         let head = "version";
-        command!(["checkout", "dist"]);
+        command!(["checkout", "dist-f"]);
         command!(["checkout", "-b", head]);
         command!(["add", "version.txt"]);
         command!(["commit", "-m", "Update version"]);
         command!(["push", "--set-upstream", "origin", head]);
         self.0
             .pulls(REPO_ORG, REPO_NAME)
-            .create(format!("Update version to {version}"), head, "dist")
+            .create(format!("Update version to {version}"), head, "dist-f")
             .send()
             .await
             .unwrap();

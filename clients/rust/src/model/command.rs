@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+#[allow(unused_imports, reason = "only used in wiki feature")]
 use super::{Locality, ParseError, Since, Syntax};
 
 #[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
@@ -328,6 +329,7 @@ impl Command {
         Ok((command, errors))
     }
 
+    #[allow(dead_code, reason = "only used in wiki feature")]
     fn get_cmd_name(name: &str) -> &str {
         match name {
             "!_a" => "!",
