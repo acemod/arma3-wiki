@@ -6,7 +6,11 @@ syntax:
 - call: !Unary display
   ret:
   - ArrayUnknown
-  - '[starting topic, hint]'
+  - |-
+    [startingTopic, hint]
+
+    * startingTopic: [[String]]
+    * hint: [[String]]
   params:
   - name: display
     type: Display
