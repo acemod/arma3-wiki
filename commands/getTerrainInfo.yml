@@ -6,7 +6,12 @@ syntax:
 - call: Nular
   ret:
   - Unknown
-  - null
+  - |-
+    width of each land grid, in meters
+    * landGridSize: [[Number]] - number of land grid pixels
+    * terrainGridWidth: [[Number]] width of each terrain grid, in meters (also known as "cell size")
+    * terrainGridSize: [[Number]] - number of terrain grid pixels (also known as "heightmap resolution")
+    * seaLevel: [[Number]] - sea level without waves. The value is {{hl|0}} if tides are disabled.
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
