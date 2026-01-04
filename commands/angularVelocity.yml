@@ -5,14 +5,14 @@ groups:
 syntax:
 - call: !Unary obj
   ret:
-    type: Unknown
+    type: Vector3d
+    desc: angular velocity of the object in world space ([0,0,0] if angular velocity is not supported by the object)
   right: !Item
     name: obj
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '2.18'
+since: {}
 examples:
 - <sqf>angularVelocity myHeli; // [0.01, 0.03, 0.95]</sqf>
 see_also:

@@ -6,8 +6,7 @@ syntax:
 - call: !Unary unit
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
   right: !Item
     name: unit
     type: Object
@@ -17,8 +16,7 @@ syntax:
   - includeBinocs
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
   right: !Array
   - !Item
     name: unit
@@ -36,8 +34,7 @@ syntax:
     arma3: '2.14'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>hint str assignedItems player;</sqf>
 see_also:

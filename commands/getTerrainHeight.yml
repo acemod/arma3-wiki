@@ -18,17 +18,17 @@ syntax:
   right: !Item
     name: positionWorld
     desc: world coordinates
-    type: !OneOf
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.10'
+since: {}
 examples:
 - <sqf>private _gridCellHeight = getTerrainHeight getPosWorld player;</sqf>
 see_also:

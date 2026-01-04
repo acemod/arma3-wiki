@@ -14,21 +14,21 @@ syntax:
     desc: '[[true]] on success'
   left: !Item
     name: entity
-    type: !OneOf
-    - type: EdenEntity
-      desc: null
-      since: null
-    - type: EdenID
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: EdenEntity
+        desc: null
+        since: null
+      - type: EdenID
+        desc: null
+        since: null
   right: !Item
     name: attribute
     desc: attribute property
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - <sqf>0 clear3DENAttribute "name";</sqf>
 see_also:

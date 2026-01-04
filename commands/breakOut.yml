@@ -18,7 +18,7 @@ syntax:
   - name
   ret:
     type: Anything
-    desc: will return '''value'''
+    desc: will return value
   left: !Item
     name: value
     desc: a value to return
@@ -31,12 +31,7 @@ syntax:
     arma3: '1.48'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nscopeName \"main\";\nwhile { true } do {\n\tscopeName \"loop1\";\n\twhile {true} do {\n\t\tscopeName \"loop2\";\n\t\tif (condition1) then {breakTo \"main\"}; // Breaks all scopes and return to \"main\"\n\t\tif (condition2) then {breakOut \"loop2\"}; // Breaks scope named \"loop2\"\n\t\tsleep 1;\n\t};\n\tsleep 1;\n};\n</sqf>"
 - "<sqf>\ncall {\n\tscopeName \"main\";\n\tcall {\n\t\t123 breakOut \"main\"\n\t};\n\t345\n}; // call returns 123\n</sqf>"

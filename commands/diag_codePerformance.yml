@@ -13,10 +13,15 @@ syntax:
   - arguments
   - cycles
   ret:
-    type: Unknown
-    desc: |-
-      average duration of 1 execution in milliseconds
-      * cycles: [[Number]] - actual number of cycles executed
+    type: !ArraySized
+    - name: duration
+      type: Number
+      desc: average duration of 1 execution in milliseconds
+      since: null
+    - name: cycles
+      type: Number
+      desc: actual number of cycles executed
+      since: null
   right: !Array
   - !Item
     name: code
@@ -24,20 +29,15 @@ syntax:
     type: Code
   - !Item
     name: arguments
-    desc: 'arguments to pass to the code in _this variable. Default: [[nil]]'
+    desc: '(Optional, default [[nil]]) arguments to pass to the code in _this variable. Default: [[nil]]'
     type: Anything
-    optional: true
-    default: '[[nil]]'
   - !Item
     name: cycles
-    desc: wanted number of cycles to run the given code. > 1000 is recommended
+    desc: (Optional, default 100000) wanted number of cycles to run the given code. > 1000 is recommended
     type: Number
-    optional: true
-    default: '100000'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.58'
+since: {}
 examples:
 - <sqf>private _result = diag_codePerformance [{ private _a = 123; }, 0, 10000];</sqf>
 see_also:

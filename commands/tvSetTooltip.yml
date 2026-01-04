@@ -16,8 +16,7 @@ syntax:
     type: Number
   - !Item
     name: path
-    desc: array containing path numbers
-    type: ArrayUnknown
+    type: Path
   - !Item
     name: text
     type: String
@@ -33,15 +32,13 @@ syntax:
   right: !Array
   - !Item
     name: path
-    desc: array containing path numbers
-    type: ArrayUnknown
+    type: Path
   - !Item
     name: text
     type: String
 argument_loc: Local
 effect_loc: Local
-since:
-  arma3: '0.74'
+since: {}
 examples:
 - <sqf>tvSetTooltip [101, [0,2], "This is a tooltip"];</sqf>
 - <sqf>_tree tvSetTooltip [[0,2], "This is a tooltip"];</sqf>

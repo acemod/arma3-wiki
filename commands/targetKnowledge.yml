@@ -7,7 +7,40 @@ syntax:
   - unit
   - target
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: knownByGroup
+      type: Boolean
+      desc: target known by group
+      since: null
+    - name: knownByUnit
+      type: Boolean
+      desc: target known by the unit
+      since: null
+    - name: lastSeen
+      type: Number
+      desc: last time the target was seen by the unit
+      since: null
+    - name: lastThreat
+      type: Number
+      desc: last time the target endangered the unit
+      since: null
+    - name: side
+      type: Side
+      desc: target side
+      since: null
+    - name: errorMargin
+      type: Number
+      desc: position error
+      since: null
+    - name: position
+      type: Position
+      desc: target position
+      since: null
+    - name: ignoreTarget
+      type: Boolean
+      desc: target is ignored ([[ignoreTarget]])
+      since:
+        arma3: '2.18'
   left: !Item
     name: unit
     type: Object
@@ -16,8 +49,7 @@ syntax:
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.50'
+since: {}
 examples:
 - |-
   <sqf>

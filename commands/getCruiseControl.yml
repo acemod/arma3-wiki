@@ -6,15 +6,22 @@ groups:
 syntax:
 - call: !Unary vehicle
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: speedLimit
+      type: Number
+      desc: defined speed limit
+      since: null
+    - name: cruiseControlActive
+      type: Boolean
+      desc: '[[true]] if cruise control is enabled, [[false]] if only speed was limited'
+      since: null
   right: !Item
     name: vehicle
     desc: the vehicle
     type: Object
 argument_loc: Local
 effect_loc: Local
-since:
-  arma3: '2.6'
+since: {}
 examples:
 - <sqf>getCruiseControl vehicle player params ["_speedLimit", "_cruiseControlActive"];</sqf>
 see_also:

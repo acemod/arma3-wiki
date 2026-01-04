@@ -5,11 +5,29 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: objects
+      type: !ArrayUnsized
+        value: Object
+      desc: null
+      since: null
+    - name: groups
+      type: !ArrayUnsized
+        value: Group
+      desc: null
+      since: null
+    - name: waypoints
+      type: Waypoint
+      desc: null
+      since: null
+    - name: markers
+      type: !ArrayUnsized
+        value: String
+      desc: null
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.16'
+since: {}
 examples:
 - <sqf>_selectedItems = curatorSelected;</sqf>
 - <sqf>curatorSelected params ["_selObjects", "_selGroups", "_selWaypoints", "_selMarkers"];</sqf>

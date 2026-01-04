@@ -15,12 +15,10 @@ syntax:
 - call: Nular
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - '<sqf>_markers = allMapMarkers; // returns e.g ["marker1", "_USER_DEFINED #2/0"]</sqf>'
 - "<sqf>\n{\n\tprivate \"_a\";\n\t_a = toArray _x;\n\t_a resize 15;\n\tif (toString _a == \"_USER_DEFINED #\") then\n\t// or if (_x select [0, 15] == \"_USER_DEFINED #\") since {{arma3}} v1.28\n\t{\n\t\tdeleteMarker _x;\n\t};\n} forEach allMapMarkers;\n</sqf>"

@@ -16,21 +16,21 @@ syntax:
   - !Item
     name: pylon
     desc: pylon index (index starts from 1) or pylon name (see [[getCompatiblePylonMagazines]] Example 4)
-    type: !OneOf
-    - type: Number
-      desc: null
-      since: null
-    - type: String
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Number
+        desc: null
+        since: null
+      - type: String
+        desc: null
+        since: null
   - !Item
     name: ammocount
     desc: ammo count
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.70'
+since: {}
 examples:
 - <sqf>vehicle player setAmmoOnPylon [1, 12];</sqf>
 - <sqf>vehicle player setAmmoOnPylon ["pylon1", 12];</sqf>

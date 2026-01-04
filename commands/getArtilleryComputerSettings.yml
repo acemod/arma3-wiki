@@ -5,11 +5,22 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: fireMode
+      type: String
+      desc: fire mode's display name
+      since: null
+    - name: ammo
+      type: String
+      desc: used ammo display name (not class name)
+      since: null
+    - name: zero
+      type: Number
+      desc: always 0
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>hint str getArtilleryComputerSettings; // ["Semi (medium)", "HE Mortar Shells", 0]</sqf>
 see_also:

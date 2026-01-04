@@ -7,15 +7,16 @@ groups:
 syntax:
 - call: !Unary RTD_helicopter
   ret:
-    type: Unknown
+    type: !ArrayUnsized
+      value: Number
+    desc: watts produced by the engines, to format [engine1, engine2]. Returns an empty array if [[Advanced_Helicopter_Flight_Model_in_Arma3|Advanced Flight Model]] is disabled.
   right: !Item
     name: RTD_helicopter
     desc: helicopter with advanced flight model enabled
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.34'
+since: {}
 examples:
 - <sqf>_array = enginesPowerRTD vehicle player;</sqf>
 see_also:

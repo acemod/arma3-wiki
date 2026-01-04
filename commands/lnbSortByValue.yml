@@ -18,10 +18,8 @@ syntax:
     type: Number
   - !Item
     name: reversed
-    desc: '[[false]]: descending / [[true]]: ascending'
+    desc: '(Optional, default [[false]]) [[false]]: descending / [[true]]: ascending'
     type: Boolean
-    optional: true
-    default: '[[false]]'
 - call: !Binary
   - control
   - - column
@@ -37,14 +35,11 @@ syntax:
     type: Number
   - !Item
     name: reversed
-    desc: '[[false]]: descending / [[true]]: ascending'
+    desc: '(Optional, default [[false]]) [[false]]: descending / [[true]]: ascending'
     type: Boolean
-    optional: true
-    default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.8'
+since: {}
 examples:
 - <sqf>lnbSortByValue [1800, 1, false];</sqf>
 - <sqf>_ctl lnbSortByValue [1, true];</sqf>

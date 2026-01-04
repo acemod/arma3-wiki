@@ -81,18 +81,13 @@ syntax:
     type: Number
   - !Item
     name: customCenter
-    desc: ) custom center [x, y, z] to which transformation would be applied in model coordinates
+    desc: (Optional, default placing point of the model (see [[getModelInfo]])) custom center [x, y, z] to which transformation would be applied in model coordinates
     type: Position3dRelative
-    optional: true
-    default: placing point of the model (see [[getModelInfo]]
     since:
       arma3: '2.8'
 argument_loc: Local
 effect_loc: Global
-since:
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\n_tracker setVelocityTransformation\n[\n\t_currentPos,\n\t_nextPos,\n\t_currentVelocity,\n\t_nextVelocity,\n\t_currentVectorDir,\n\t_nextVectorDir,\n\t_currentVectorUp,\n\t_nextVectorUp,\n\t_interval\n];\n</sqf>"
 - "Bob on imaginary stairway to heaven:\n<sqf>\nbob = createAgent [\"C_man_1\", player getRelPos [5, 0], [], 0, \"CAN_COLLIDE\"];\nbob switchMove \"ladderCivilUpLoop\";\npos1 = getPosASL bob;\npos2 = pos1 vectorAdd [0,0,0.75];\nbob addEventHandler [\"AnimDone\",\n{\n\tpos1 = pos2;\n\tpos2 = pos2 vectorAdd [0,0,0.75]\n}];\n\nonEachFrame\n{\n\tif (!alive bob) then\n\t{\n\t\tonEachFrame {};\n\t\tbob switchMove \"\";\n\t\tbob removeAllEventHandlers \"AnimDone\";\n\t};\n\tbob setVelocityTransformation [\n\t\tpos1,\n\t\tpos2,\n\t\t[0,0,0],\n\t\t[0,0,0],\n\t\t[0,1,0],\n\t\t[0,1,0],\n\t\t[0,0,1],\n\t\t[0,0,1],\n\t\tmoveTime bob\n\t];\n};\n</sqf>"

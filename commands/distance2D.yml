@@ -13,32 +13,33 @@ syntax:
     desc: distance in meters or 1e10 if distance cannot be calculated
   left: !Item
     name: from
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
   right: !Item
     name: to
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '1.50'
+since: {}
 examples:
 - <sqf>_meters = player distance2D heli;</sqf>
 see_also:

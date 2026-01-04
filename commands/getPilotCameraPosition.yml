@@ -5,14 +5,14 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-    type: Unknown
+    type: Position3dRelative
+    desc: offset relative to the model centre. Returns [0,0,0] if object has no [[A3_Targeting_config_reference#class_pilotCamera|pilotCamera]].
   right: !Item
     name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '1.64'
+since: {}
 examples:
 - <sqf>_pilotCamPos = getPilotCameraPosition vehicle player;</sqf>
 see_also:

@@ -16,14 +16,7 @@ syntax:
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint: '1.85'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>while { a < b } do { a = a + 1 };</sqf>
 - "A practical example: Repair all members of a group to such a level that they are able to stand up:\n<sqf>\n{\n\tif (alive _x) then\n\t{\n\t\twhile { not canStand _x } do\n\t\t{\n\t\t\t_x setDamage (damage _x - 0.01);\n\t\t};\n\t};\n} forEach units group unitname;\n</sqf>"

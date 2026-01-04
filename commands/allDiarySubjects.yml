@@ -5,22 +5,38 @@ groups:
 syntax:
 - call: !Unary person
   ret:
-    type: Unknown
-    desc: |-
-      internal subject reference
-      * displayName: [[String]] - visible name
-      * picture: [[String]] - subject icon
-      * countRecords: [[Number]] - number of records in this subject
-      * isReadOnly: [[Boolean]] - whether or not the records could be added
-      * isSelected: [[Boolean]] - [[true]] if subject is currently selected
+    type: !ArraySized
+    - name: name
+      type: String
+      desc: internal subject reference
+      since: null
+    - name: displayName
+      type: String
+      desc: visible name
+      since: null
+    - name: picture
+      type: String
+      desc: subject icon
+      since: null
+    - name: countRecords
+      type: Number
+      desc: number of records in this subject
+      since: null
+    - name: isReadOnly
+      type: Boolean
+      desc: whether or not the records could be added
+      since: null
+    - name: isSelected
+      type: Boolean
+      desc: '[[true]] if subject is currently selected'
+      since: null
   right: !Item
     name: person
     desc: unit
     type: Object
 argument_loc: Global
 effect_loc: Local
-since:
-  arma3: '2.4'
+since: {}
 examples:
 - <sqf>allDiarySubjects player;</sqf>
 see_also:

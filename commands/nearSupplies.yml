@@ -8,20 +8,20 @@ syntax:
   - radius
   ret:
     type: !ArrayUnsized
-      type: Object
-      desc: ''
+      value: Object
   left: !Item
     name: origin
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position3dAGL
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position3dAGL
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
   right: !Item
     name: radius
     type: Number
@@ -31,20 +31,20 @@ syntax:
     - radius
   ret:
     type: !ArrayUnsized
-      type: Object
-      desc: ''
+      value: Object
   left: !Item
     name: origin
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position3dAGL
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position3dAGL
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
   right: !Array
   - !Item
     name: typeName
@@ -54,8 +54,7 @@ syntax:
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_list = player nearSupplies 50;</sqf>
 see_also:

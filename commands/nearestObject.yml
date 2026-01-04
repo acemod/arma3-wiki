@@ -20,16 +20,17 @@ syntax:
   - !Item
     name: position
     desc: position to start search at
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
   - !Item
     name: type
     desc: type of object (see [[typeOf]], [[CfgVehicles|class type]])
@@ -41,13 +42,14 @@ syntax:
   right: !Item
     name: position
     desc: position to start search at
-    type: !OneOf
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
 - call: !Binary
   - position
   - typeOrId
@@ -57,13 +59,14 @@ syntax:
   left: !Item
     name: position
     desc: position to start search at
-    type: !OneOf
-    - type: Position3d
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position3d
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
   right: !Item
     name: typeOrId
     desc: type of object (see [[typeOf]], [[CfgVehicles|class type]]) or {{GVI|arma3|2.10|size= 0.75}} Visitor id (see [[getObjectID]])
@@ -77,27 +80,21 @@ syntax:
   left: !Item
     name: position
     desc: position to start search at
-    type: !OneOf
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
   right: !Item
     name: id
     desc: object Visitor id
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - |-
   <sqf>

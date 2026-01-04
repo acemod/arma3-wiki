@@ -13,12 +13,7 @@ syntax:
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nscopeName \"main\";\nwhile { sleep 0.1; true } do\n{\n\tscopeName \"loop1\";\n\n\twhile { sleep 0.1; true } do\n\t{\n\t\tscopeName \"loop2\";\n\n\t\t// ...\n\t};\n};\n</sqf>"
 - "<sqf>\nif (true) then\n{\n\tscopeName \"mainScope\";\n\tscopeName \"main_scope\"; // error\n};\n</sqf>"

@@ -23,15 +23,11 @@ syntax:
     type: Object
   - !Item
     name: weapon
-    desc: if not provided, checks all weapons; if provided, checks that weapon only
+    desc: (Optional) if not provided, checks all weapons; if provided, checks that weapon only
     type: String
-    optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_aimingQuality = heli aimedAtTarget [target];</sqf>
 - <sqf>_aimingQuality = heli aimedAtTarget [target, "M197"];</sqf>

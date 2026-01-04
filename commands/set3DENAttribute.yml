@@ -14,13 +14,14 @@ syntax:
     desc: '[[true]] If the value was set'
   left: !Item
     name: entity
-    type: !OneOf
-    - type: EdenEntity
-      desc: null
-      since: null
-    - type: EdenID
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: EdenEntity
+        desc: null
+        since: null
+      - type: EdenID
+        desc: null
+        since: null
   right: !Array
   - !Item
     name: class
@@ -32,8 +33,7 @@ syntax:
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - <sqf>player set3DENAttribute ["allowDamage", false]; // Mark player as invincible</sqf>
 see_also:

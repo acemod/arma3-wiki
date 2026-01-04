@@ -18,12 +18,7 @@ syntax:
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nsystemChat \"start\";\nprivate _condition = true;\n\nif (_condition) then\n{\n\tif (true) exitWith\n\t{\n\t\tsystemChat \"exiting if _condition scope\";\n\t};\n\tsystemChat \"never shown\";\n};\n\nsystemChat \"exiting #1 worked\";\n\nif (true) exitWith\n{\n\tsystemChat \"exiting the main scope = leaving the whole script\";\n};\n\nsystemChat \"never shown - the script has already ended\";\n</sqf>"
 - "<sqf>\nfor \"_j\" from 1 to 10 do\n{\n\tsystemChat format [\"%1\", _j];\n\n\t// the for loop will cease and code execution will continue after the end of the loop\n\tif (_j == 5) exitWith\n\t{\n\t\tsystemChat \"5 is enough\";\n\t};\n};\nsystemChat \"Complete\";\n</sqf>"

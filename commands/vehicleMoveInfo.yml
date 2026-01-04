@@ -6,17 +6,21 @@ groups:
 syntax:
 - call: !Unary vehicle
   ret:
-    type: Unknown
-    desc: |-
-      state of vehicle forward/backward movement (see description)
-      * turnInfo: [[String]] - state of vehicle left/right turning (see description)
+    type: !ArraySized
+    - name: moveInfo
+      type: String
+      desc: state of vehicle forward/backward movement (see description)
+      since: null
+    - name: turnInfo
+      type: String
+      desc: state of vehicle left/right turning (see description)
+      since: null
   right: !Item
     name: vehicle
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.98'
+since: {}
 examples:
 - <sqf>onEachFrame { hintSilent str vehicleMoveInfo vehicle player };</sqf>
 see_also:

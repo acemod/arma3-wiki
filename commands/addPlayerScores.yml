@@ -15,33 +15,30 @@ syntax:
   right: !Item
     name: values
     type: !ArraySized
-      types:
-      - name: killsInfantry
-        type: Number
-        desc: number of infantry units killed
-        since: null
-      - name: killsSoft
-        type: Number
-        desc: number of soft vehicles killed
-        since: null
-      - name: killsArmor
-        type: Number
-        desc: number of armored vehicles killed
-        since: null
-      - name: killsAir
-        type: Number
-        desc: number of air vehicles killed
-        since: null
-      - name: score
-        type: Number
-        desc: total score
-        since: null
-      desc: ''
+    - name: killsInfantry
+      type: Number
+      desc: number of infantry units killed
+      since: null
+    - name: killsSoft
+      type: Number
+      desc: number of soft vehicles killed
+      since: null
+    - name: killsArmor
+      type: Number
+      desc: number of armored vehicles killed
+      since: null
+    - name: killsAir
+      type: Number
+      desc: number of air vehicles killed
+      since: null
+    - name: score
+      type: Number
+      desc: total score
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
 server_exec: true
-since:
-  arma3: '1.62'
+since: {}
 examples:
 - <sqf>player addPlayerScores [0, 1, 0, 0, 1];</sqf>
 see_also:

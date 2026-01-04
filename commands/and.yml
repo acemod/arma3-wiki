@@ -32,20 +32,13 @@ syntax:
     type: Boolean
   right: !Item
     name: b
-    desc: code that returns [[Boolean]]. It is '''not''' evaluated if ''a'' is [[false]]
+    desc: code that returns [[Boolean]]. It is not evaluated if ''a'' is [[false]]
     type: Code
   since:
     arma2oa: '1.62'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nif ((not isNull player) and (alive player) and (_enemycount == 0)) then\n{\n\thint \"you win !\";\n};\n</sqf>"
 - "<sqf>\nif ((count _array > 0) and { (_array select 0) == player }) then\t// works as expected\n{\n\thint \"It works!\";\n};\n\nif ((count _array > 0) and (_array select 0) == player) then\t\t// Error: _array select 0 is evaluated\n{\n\thint \"It... works?\";\n};\n</sqf>"

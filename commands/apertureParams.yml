@@ -6,22 +6,50 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: Unknown
-    desc: |-
-      current aperture
-      * isForced: [[Boolean]] - whether aperture was forced by [[setAperture]]
-      * estimatedAperture: [[Number]] - engine-estimated scene aperture
-      * estimatedLuminance: [[Number]] - engine-estimated luminance
-      * minCustom: [[Number]] - minimal custom aperture, see [[setApertureNew]]
-      * stdCustom: [[Number]] - standard custom aperture, see [[setApertureNew]]
-      * maxCustom: [[Number]] - maximal custom aperture, see [[setApertureNew]]
-      * customLuminance: [[Number]] - custom luminance, see [[setApertureNew]]
-      * isCustomForced: [[Boolean]] - whether custom values were forced
-      * blinding: [[Number]] - blinding intensity of the light
+    type: !ArraySized
+    - name: aperture
+      type: Number
+      desc: current aperture
+      since: null
+    - name: isForced
+      type: Boolean
+      desc: whether aperture was forced by [[setAperture]]
+      since: null
+    - name: estimatedAperture
+      type: Number
+      desc: engine-estimated scene aperture
+      since: null
+    - name: estimatedLuminance
+      type: Number
+      desc: engine-estimated luminance
+      since: null
+    - name: minCustom
+      type: Number
+      desc: minimal custom aperture, see [[setApertureNew]]
+      since: null
+    - name: stdCustom
+      type: Number
+      desc: standard custom aperture, see [[setApertureNew]]
+      since: null
+    - name: maxCustom
+      type: Number
+      desc: maximal custom aperture, see [[setApertureNew]]
+      since: null
+    - name: customLuminance
+      type: Number
+      desc: custom luminance, see [[setApertureNew]]
+      since: null
+    - name: isCustomForced
+      type: Boolean
+      desc: whether custom values were forced
+      since: null
+    - name: blinding
+      type: Number
+      desc: blinding intensity of the light
+      since: null
 argument_loc: Local
 effect_loc: Unspecified
-since:
-  arma3: '2.4'
+since: {}
 examples:
 - <sqf>private _apertureParams = apertureParams;</sqf>
 see_also:

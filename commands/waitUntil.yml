@@ -13,7 +13,7 @@ syntax:
     desc: the value the condition evaluates to when the wait is over (normally [[true]])
   right: !Item
     name: condition
-    desc: the expression that '''must''' return a [[Boolean]], [[true]] to finish waiting or [[false]] to continue waiting
+    desc: the expression that must return a [[Boolean]], [[true]] to finish waiting or [[false]] to continue waiting
     type: Code
 - call: !Unary scriptHandle
   ret:
@@ -44,12 +44,7 @@ syntax:
     arma3: '2.22'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>waitUntil { not alive player };</sqf>
 - <sqf>_i = 0; waitUntil { _i = _i + 1; _i >= 100 };</sqf>

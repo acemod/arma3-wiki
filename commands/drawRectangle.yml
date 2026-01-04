@@ -21,16 +21,17 @@ syntax:
   - !Item
     name: centre
     desc: rectangle's centre
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
   - !Item
     name: halfWidth
     desc: 1/2 width of rectangle in meters
@@ -46,27 +47,20 @@ syntax:
   - !Item
     name: color
     desc: line color
-    type: ArrayColorRgba
+    type: ArrayColor
   - !Item
     name: fill
     desc: fill texture file or [[Procedural Textures]]. Note that the file texture will not rotate with rectangle, use [[drawIcon]] for that. If fill texture is not empty, set line color to white <sqf inline>[1,1,1,1]</sqf>
     type: String
   - !Item
     name: alignWithMap
-    desc: '- when [[false]] the shape will not follow map rotation.'
+    desc: (Optional, default [[true]]) - when [[false]] the shape will not follow map rotation.
     type: Boolean
-    optional: true
-    default: '[[true]]'
     since:
       arma3: '2.18'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\n_ctrl drawRectangle [\n\tgetPos player,\n\t20,\n\t20,\n\tgetDir player,\n\t[0,0,1,1],\n\t\"\"\n];\n</sqf>"
 - "<sqf>\n_ctrl drawRectangle [\n\tplayer,\n\t10,\n\t20,\n\tgetDir player,\n\t[1,1,1,1],\n\t\"#(rgb,8,8,3)color(1,0,0,1)\"\n];\n</sqf>"

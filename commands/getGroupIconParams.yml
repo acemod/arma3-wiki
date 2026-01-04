@@ -5,17 +5,37 @@ groups:
 syntax:
 - call: !Unary group
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: color
+      type: ArrayColor
+      desc: icon color
+      since: null
+    - name: text
+      type: String
+      desc: icon text
+      since: null
+    - name: scale
+      type: Number
+      desc: icon scale
+      since: null
+    - name: visibility
+      type: Boolean
+      desc: icon visibility
+      since: null
+    - name: WPvisibility
+      type: Boolean
+      desc: waypoint visibility
+      since: null
+    - name: WPcolor
+      type: ArrayColor
+      desc: waypoint color
+      since: null
   right: !Item
     name: group
     type: Group
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_iconParams = getGroupIconParams group player;</sqf>
 - <sqf>getGroupIconParams group player params ["_color", "_text", "_scale", "_visibility", "_WPVisibility", "_WPColor"];</sqf>

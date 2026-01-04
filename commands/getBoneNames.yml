@@ -5,14 +5,15 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-    type: Unknown
+    type: !ArrayUnsized
+      value: String
+    desc: 'bone names and bone parents in separate arrays, in format: [[bone1, bone2,...], [parent1, parent2, ....]]'
   right: !Item
     name: object
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.18'
+since: {}
 see_also:
 - selectionPosition
 - selectionNames

@@ -7,13 +7,14 @@ syntax:
   - vehicle
   - pylon
   ret:
-    type: !OneOf
-    - type: Number
-      desc: null
-      since: null
-    - type: Boolean
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Number
+        desc: null
+        since: null
+      - type: Boolean
+        desc: null
+        since: null
     desc: '[[false]] on failure'
   left: !Item
     name: vehicle
@@ -21,17 +22,17 @@ syntax:
   right: !Item
     name: pylon
     desc: pylon's name or index
-    type: !OneOf
-    - type: String
-      desc: null
-      since: null
-    - type: Number
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: String
+        desc: null
+        since: null
+      - type: Number
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.70'
+since: {}
 examples:
 - <sqf>private _ammoCount = (vehicle player) ammoOnPylon "pylon1";</sqf>
 - <sqf>hint str (vehicle player ammoOnPylon "pylonCenter");</sqf>

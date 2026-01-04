@@ -26,16 +26,17 @@ syntax:
   - !Item
     name: centre
     desc: ellipse's centre
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
   - !Item
     name: a
     desc: horizontal (x) radius
@@ -51,21 +52,18 @@ syntax:
   - !Item
     name: color
     desc: line color
-    type: ArrayColorRgba
+    type: ArrayColor
   - !Item
     name: fill
     desc: fill texture file or [[Procedural Textures]]. Note that the file texture will not rotate with polygon, use [[drawIcon]] for that. If fill texture is not empty, set line color to white [1,1,1,1]
     type: String
   - !Item
     name: alignWithMap
-    desc: '- when [[false]] the shape will not follow map rotation.'
+    desc: (Optional, default [[true]]) - when [[false]] the shape will not follow map rotation.
     type: Boolean
-    optional: true
-    default: '[[true]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.20'
+since: {}
 examples:
 - "<sqf>\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\", \n{\n\t_this select 0 drawXPolygon [\n\t\t5, player, 50, 10, 0, [1, 0, 0, 1], \"\"\n\t];\n\t_this select 0 drawXPolygon [\n\t\t3, player, 10, 50, 0, [1, 1, 1, 1], \"#(rgb,8,8,3)color(1,0.6,0,1)\"\n\t];\n\t_this select 0 drawXPolygon [\n\t\t12, player, 10, 10, 90, [0, 0, 1, 1], \"\"\n\t];\n}];\n</sqf>"
 see_also:

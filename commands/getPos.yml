@@ -14,13 +14,15 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-    type: Unknown
+    type: Position3dAGLS
+    desc: where Z is the height over the surface underneath
   right: !Item
     name: object
     type: Object
 - call: !Unary location
   ret:
-    type: Unknown
+    type: Position3dAGL
+    desc: see [[locationPosition]]
   right: !Item
     name: location
     type: Location
@@ -29,19 +31,21 @@ syntax:
   - - distance
     - heading
   ret:
-    type: Unknown
+    type: Position3dAGLS
+    desc: the Z value is terrain level [[Position#PositionAGL|Above Ground Level]], either 0 over land or [[getTerrainHeightASL]] (negative value) over water
   left: !Item
     name: origin
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
   right: !Array
   - !Item
     name: distance
@@ -55,14 +59,7 @@ syntax:
     arma3: '1.56'
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>hintSilent str getPos player;</sqf>
 - "[[getPos]] vs. other methods (over sea). Pay attention to Z values:\n<sqf>\ngetPos ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\ngetPosATL ship;\t\t\t\t// [2412.01, 6036.33, 19.4266]\ngetPosASL ship;\t\t\t\t// [2412.01, 6036.33, -0.920066]\ngetPosASLW ship;\t\t\t// [2412.01, 6036.33, -0.865981]\nvisiblePosition ship;\t\t// [2412.02, 6036.33, -0.837952]\nvisiblePositionASL ship;\t// [2412.02, 6036.33, -0.91798]\nposition ship;\t\t\t\t// [2412.01, 6036.33, -0.839965]\n</sqf>"

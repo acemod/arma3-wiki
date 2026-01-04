@@ -7,7 +7,8 @@ syntax:
   - start
   - end
   ret:
-    type: Unknown
+    type: Position3dASL
+    desc: intersect position
   right: !Array
   - !Item
     name: start
@@ -19,8 +20,7 @@ syntax:
     type: Position3dASL
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.68'
+since: {}
 examples:
 - <sqf>_posASL = terrainIntersectAtASL [eyePos player, getPosASL chopper];</sqf>
 see_also:

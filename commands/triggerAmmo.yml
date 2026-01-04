@@ -24,20 +24,17 @@ syntax:
     type: Object
   - !Item
     name: timeLeft
-    desc: '''timeToExplosion'' (see [[getShotInfo]]). Can only be set to <= relevant config value. Default: -1 - ignore.'
+    desc: '(Optional) ''timeToExplosion'' (see [[getShotInfo]]). Can only be set to <= relevant config value. Default: -1 - ignore.'
     type: Number
-    optional: true
   - !Item
     name: distanceLeft
-    desc: '''fuseDistanceLeft'' (see [[getShotInfo]]). Can only be set to <= relevant config value. Default: -1 - ignore.'
+    desc: '(Optional) ''fuseDistanceLeft'' (see [[getShotInfo]]). Can only be set to <= relevant config value. Default: -1 - ignore.'
     type: Number
-    optional: true
   since:
     arma3: '2.22'
 argument_loc: Local
 effect_loc: Unspecified
-since:
-  arma3: '1.92'
+since: {}
 examples:
 - <sqf>triggerAmmo bomb1;</sqf>
 - <sqf>player addEventHandler ["FiredMan", {triggerAmmo [_this select 6, 1]}]; // explodes handgrenade or sets smoke on smokegrenade 1 sec after the throw.</sqf>

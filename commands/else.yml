@@ -8,16 +8,14 @@ syntax:
   - elseCode
   ret:
     type: !ArraySized
-      types:
-      - name: thenCode
-        type: Code
-        desc: ''
-        since: null
-      - name: elseCode
-        type: Code
-        desc: ''
-        since: null
-      desc: ''
+    - name: thenCode
+      type: Code
+      desc: null
+      since: null
+    - name: elseCode
+      type: Code
+      desc: null
+      since: null
   left: !Item
     name: thenCode
     type: Code
@@ -26,14 +24,7 @@ syntax:
     type: Code
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint: '1.85'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>if (a > b) then { c = 0 } else { c = 1 };</sqf>
 - "<sqf>\nif (a < b) then {\n\thint \"B is greater than A\";\n} else {\n\thint \"A is greater than B\";\n};\n</sqf>"

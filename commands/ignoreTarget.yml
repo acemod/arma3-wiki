@@ -11,13 +11,14 @@ syntax:
   left: !Item
     name: group
     desc: which receives revealing information
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Group
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
   right: !Item
     name: target
     desc: which would be ignored
@@ -31,13 +32,14 @@ syntax:
   left: !Item
     name: group
     desc: which receives revealing information
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Group
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
   right: !Array
   - !Item
     name: target
@@ -49,8 +51,7 @@ syntax:
     type: Boolean
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '2.18'
+since: {}
 examples:
 - <sqf>aiGroup ignoreTarget player</sqf>
 see_also:

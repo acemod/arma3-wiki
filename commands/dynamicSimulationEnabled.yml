@@ -8,17 +8,17 @@ syntax:
     type: Boolean
   right: !Item
     name: object
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Group
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.68'
+since: {}
 examples:
 - <sqf>hint str dynamicSimulationEnabled _myObject;</sqf>
 see_also:

@@ -5,16 +5,30 @@ groups:
 syntax:
 - call: !Unary map
   ret:
-    type: ArrayUnknown
-    desc: '[x, y, w, h]'
+    type: !ArraySized
+    - name: x
+      type: Number
+      desc: position in x
+      since: null
+    - name: y
+      type: Number
+      desc: position in y
+      since: null
+    - name: w
+      type: Number
+      desc: width of the map control
+      since: null
+    - name: h
+      type: Number
+      desc: height of the map control
+      since: null
   right: !Item
     name: map
     desc: '[[CT_MAP|Map control]]'
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.8'
+since: {}
 examples:
 - <sqf>ctrlMapPosition _map;</sqf>
 see_also:

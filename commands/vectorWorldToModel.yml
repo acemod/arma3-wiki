@@ -9,18 +9,18 @@ syntax:
   - object
   - worldDir
   ret:
-    type: Unknown
+    type: Vector3d
+    desc: vector direction in model space in format [x,y,z]
   left: !Item
     name: object
     type: Object
   right: !Item
     name: worldDir
     desc: vector direction in world space in format [x,y,z]
-    type: ArrayUnknown
+    type: Vector3d
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.72'
+since: {}
 examples:
 - "Convert world space vector [0,-10,4] to model space of object _airplane: \n<sqf>_airplane vectorWorldToModel [0,-10,4];</sqf>"
 see_also:

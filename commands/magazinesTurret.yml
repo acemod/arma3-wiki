@@ -10,8 +10,7 @@ syntax:
   - turretPath
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
   left: !Item
     name: vehicle
     type: Object
@@ -24,8 +23,7 @@ syntax:
     - includeEmpty
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
   left: !Item
     name: vehicle
     type: Object
@@ -35,18 +33,13 @@ syntax:
     type: TurretPath
   - !Item
     name: includeEmpty
-    desc: '- [[true]] = include empty magazines (behaviour as the primary syntax, but consistent), [[false]] = exclude empty magazines'
+    desc: (Optional, default [[true]]) - [[true]] = include empty magazines (behaviour as the primary syntax, but consistent), [[false]] = exclude empty magazines
     type: Boolean
-    optional: true
-    default: '[[true]]'
   since:
     arma3: '2.2'
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma2oa: '1.52'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_mags = vehicle player magazinesTurret [0, 0];</sqf>
 - <sqf>_mags = _tank magazinesTurret [[0], false];</sqf>

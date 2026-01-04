@@ -38,21 +38,13 @@ syntax:
     type: Boolean
   - !Item
     name: c
-    desc: trigger area Z size / 2, in meters. -1 for infinite height
+    desc: (Optional, default -1) trigger area Z size / 2, in meters. -1 for infinite height
     type: Number
-    optional: true
-    default: '-1'
     since:
       arma3: '1.60'
 argument_loc: Global
 effect_loc: Local
-since:
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_trigger setTriggerArea [100, 50, 45, false];</sqf>
 - <sqf>_trigger setTriggerArea [100, 50, 45, false, 100];</sqf>

@@ -6,17 +6,14 @@ syntax:
 - call: !Unary artilleryList
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
   right: !Item
     name: artilleryList
     type: !ArrayUnsized
-      type: Object
-      desc: ''
+      value: Object
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nif (\"8Rnd_82mm_Mo_Flare_white\" in getArtilleryAmmo [\n\t_mortar1,\n\t_mortar2,\n\t_mortar3, \n\t_mortar4\n]) then\n{\n\thint \"Sir, we have white flares, Sir!\";\n};\n</sqf>"
 see_also:

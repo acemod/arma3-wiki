@@ -8,16 +8,18 @@ syntax:
     type: Number
   right: !Item
     name: position
-    type: !OneOf
-    - type: Position2d
-      desc: null
-      since: null
+    desc: '[[Position#Introduction|Position3D]] the Z value is ignored'
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma2oa: '1.55'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_height = getTerrainHeightASL (getPosATL player);</sqf>
 - <sqf>_height = getTerrainHeightASL [5213,3245];</sqf>

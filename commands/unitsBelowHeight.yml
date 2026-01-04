@@ -11,13 +11,11 @@ syntax:
   - height
   ret:
     type: !ArrayUnsized
-      type: Object
-      desc: ''
+      value: Object
   left: !Item
     name: units
     type: !ArrayUnsized
-      type: Object
-      desc: ''
+      value: Object
   right: !Item
     name: height
     desc: height above terrain level ([[Position#PositionATL|PositionATL]])
@@ -27,8 +25,7 @@ syntax:
   - height
   ret:
     type: !ArrayUnsized
-      type: Object
-      desc: ''
+      value: Object
   left: !Item
     name: group
     desc: AI group
@@ -39,11 +36,7 @@ syntax:
     type: Number
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma2: '1.4'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_allOnGroudUnits = group player unitsBelowHeight 10;</sqf>
 - <sqf>_units = allUnits unitsBelowHeight 30;</sqf>

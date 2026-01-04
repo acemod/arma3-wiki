@@ -5,11 +5,26 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: ambientLightColor
+      type: ArrayColor
+      desc: null
+      since: null
+    - name: ambientLightBrightness
+      type: Number
+      desc: null
+      since: null
+    - name: lightDirection
+      type: Vector3d
+      desc: null
+      since: null
+    - name: starsVisibility
+      type: Number
+      desc: null
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.0'
+since: {}
 examples:
 - <sqf>getLighting; // returns [[0.646753,0.781818,1],28526.2,[-0.0167152,0.211598,-0.977214],0]</sqf>
 - <sqf>getLighting params ["_ambientLightColour", "_ambientLightBrightness", "_lightDirection", "_starsVisibility"];</sqf>

@@ -27,13 +27,11 @@ syntax:
     type: Number
   - !Item
     name: relative
-    desc: '[[true]] will add or subtract given length from current rope length, [[false]] will resize the rope to the given length'
+    desc: (Optional) [[true]] will add or subtract given length from current rope length, [[false]] will resize the rope to the given length
     type: Boolean
-    optional: true
 argument_loc: Local
 effect_loc: Global
-since:
-  arma3: '1.34'
+since: {}
 examples:
 - <sqf>ropeUnwind [ropes heli1 select 0, 3, 10]; // set rope length to 10m at 3m/s</sqf>
 - <sqf>ropeUnwind [ropes heli1 select 0, 3, -5, true]; // decrease rope length by 5m at 3m/s</sqf>

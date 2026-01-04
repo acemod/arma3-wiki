@@ -6,8 +6,7 @@ syntax:
 - call: !Unary numkey
   ret:
     type: !ArrayUnsized
-      type: Object
-      desc: ''
+      value: Object
     desc: objects saved in the selection preset
   right: !Item
     name: numkey
@@ -15,8 +14,7 @@ syntax:
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.14'
+since: {}
 examples:
 - <sqf>private _savedItems = curatorSelectionPreset 1;</sqf>
 see_also:

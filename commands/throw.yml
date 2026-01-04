@@ -13,12 +13,12 @@ syntax:
     name: expression
     type: Anything
 - call: !Binary
-  - if
+  - if (condition)
   - exception
   ret:
     type: Nothing
   left: !Item
-    name: if
+    name: if (condition)
     desc: if (condition) returns [[true]], "exception" is thrown
     type: IfType
   right: !Item
@@ -29,12 +29,7 @@ syntax:
     arma3: '1.54'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>try {throw "invalid argument"} catch {hint str _exception};</sqf>
 - <sqf>123 try { if (_this != 123) throw "invalid argument" } catch { hint str _exception };</sqf>

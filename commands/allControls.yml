@@ -6,16 +6,14 @@ syntax:
 - call: !Unary display
   ret:
     type: !ArrayUnsized
-      type: Control
-      desc: ''
+      value: Control
   right: !Item
     name: display
     type: Display
 - call: !Unary controlsGroup
   ret:
     type: !ArrayUnsized
-      type: Control
-      desc: ''
+      value: Control
   right: !Item
     name: controlsGroup
     desc: '[[CT_CONTROLS_GROUP]]'
@@ -24,8 +22,7 @@ syntax:
     arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.38'
+since: {}
 examples:
 - <sqf>_allCtrls = allControls findDisplay 46;</sqf>
 - <sqf>_allSubCtrls = allControls _myControlsGroup;</sqf>

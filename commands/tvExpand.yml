@@ -14,8 +14,8 @@ syntax:
     type: Number
   - !Item
     name: path
-    desc: item [[Tree View Path]]. [] will expand the whole tree if it was collapsed previously with []
-    type: ArrayUnknown
+    desc: '[] will expand the whole tree if it was collapsed previously with []'
+    type: Path
 - call: !Binary
   - control
   - path
@@ -26,12 +26,11 @@ syntax:
     type: Control
   right: !Item
     name: path
-    desc: item [[Tree View Path]]. [] will expand the whole tree if it was collapsed previously with []
-    type: ArrayUnknown
+    desc: '[] will expand the whole tree if it was collapsed previously with []'
+    type: Path
 argument_loc: Local
 effect_loc: Local
-since:
-  arma3: '0.74'
+since: {}
 examples:
 - <sqf>tvExpand [101, [0]];</sqf>
 - <sqf>_ctrl tvExpand [1];</sqf>

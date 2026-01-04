@@ -6,8 +6,7 @@ syntax:
 - call: !Unary unit
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
   right: !Item
     name: unit
     type: Object
@@ -17,8 +16,7 @@ syntax:
   - includeLoaded
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
   right: !Array
   - !Item
     name: unit
@@ -26,22 +24,17 @@ syntax:
     type: Object
   - !Item
     name: includeEmpty
-    desc: '[[true]] to include empty magazines'
+    desc: (Optional, default [[false]]) [[true]] to include empty magazines
     type: Boolean
-    optional: true
-    default: '[[false]]'
   - !Item
     name: includeLoaded
-    desc: '[[true]] to include magazines loaded in weapons (Since Arma 3 v2.07.148195)'
+    desc: (Optional, default [[false]]) [[true]] to include magazines loaded in weapons (Since Arma 3 v2.07.148195)
     type: Boolean
-    optional: true
-    default: '[[false]]'
   since:
     arma3: '2.0'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.4'
+since: {}
 examples:
 - "<sqf>\nmagazinesDetailVest player;\n/*\n[\n\t[\"6.5 mm 30Rnd Sand Mag(30/30)[id/cr:10000012/0]\",\n\t\"RGO Grenade(1/1)[id/cr:10000016/0]\",\n\t\"RGO Grenade(1/1)[id/cr:10000017/0]\"]\n]\n*/\n</sqf>"
 see_also:

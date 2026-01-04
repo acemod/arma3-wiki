@@ -40,18 +40,15 @@ syntax:
     type: Number
   - !Item
     name: ignoreSoldierMaxLoad
-    desc: '[[true]] to ignore ''soldierMaxLoad'' param, container [[maxLoad]] is still counted.'
+    desc: (Optional, default [[true]]) [[true]] to ignore 'soldierMaxLoad' param, container [[maxLoad]] is still counted.
     type: Boolean
-    optional: true
-    default: '[[true]]'
     since:
       arma3: '2.18'
   since:
     arma3: '1.56'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.4'
+since: {}
 examples:
 - "<sqf>\n_item = \"HandGrenade\";\nprivate _fits = player canAddItemToVest _item;\nif (_fits) then {\n\tplayer addItemToVest _item;\n} else {\n\thint \"no room!\";\n};\n</sqf>"
 see_also:

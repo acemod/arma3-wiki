@@ -13,7 +13,8 @@ syntax:
   - obj
   - modelPos
   ret:
-    type: Unknown
+    type: Position3dASL
+    desc: translated world position (see [[getPosWorld]])
   left: !Item
     name: obj
     type: Object
@@ -23,8 +24,7 @@ syntax:
     type: Position3dRelative
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '1.70'
+since: {}
 examples:
 - <sqf>player modelToWorldVisualWorld [0,1,0];</sqf>
 see_also:

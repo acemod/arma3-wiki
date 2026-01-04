@@ -27,84 +27,62 @@ syntax:
     name: respawnDelay
     desc: (Optional since 2.18, default -1) delay in seconds between respawns. (-1 to use 3DEN vehicle respawn delay or ''respawnVehicleDelay'' from [[Description.ext|description.ext]])
     type: Number
-    optional: true
   - !Item
     name: respawnCount
-    desc: how many times to respawn vehicle in total. (since 2.18 -1 unlimited respawns, 0 stop respawning)
+    desc: (Optional, default unlimited respawns) how many times to respawn vehicle in total. (since 2.18 -1 unlimited respawns, 0 stop respawning)
     type: Number
-    optional: true
-    default: unlimited respawns
   - !Item
     name: deleteOldWreck
-    desc: '- deletes old wreck automatically after vehicle respawns'
+    desc: (Optional, default [[false]]) - deletes old wreck automatically after vehicle respawns
     type: Boolean
-    optional: true
-    default: '[[false]]'
     since:
       arma3: '2.18'
   - !Item
     name: respawnOnServer
-    desc: '- wreck is always transferred to the server and the new vehicle always respawns on server'
+    desc: (Optional, default [[false]]) - wreck is always transferred to the server and the new vehicle always respawns on server
     type: Boolean
-    optional: true
-    default: '[[false]]'
     since:
       arma3: '2.18'
   - !Item
     name: respawnFlying
-    desc: '- by default all vehicles placed on the ground, [[true]] overrides this'
+    desc: (Optional, default [[false]]) - by default all vehicles placed on the ground, [[true]] overrides this
     type: Boolean
-    optional: true
-    default: '[[false]]'
     since:
       arma3: '2.18'
   - !Item
     name: respawnUnit
-    desc: '- unit that would be put in the driver seat after vehicle respawns'
+    desc: (Optional, default [[objNull]]) - unit that would be put in the driver seat after vehicle respawns
     type: Object
-    optional: true
-    default: '[[objNull]]'
     since:
       arma3: '2.18'
   - !Item
     name: respawnMode
-    desc: '- overrides vehicle respawn mode. Available modes are: 2 or "INSTANT" and 3 or "BASE". -1 use [[Description.ext|description.ext]] value.'
-    type: !OneOf
-    - type: Number
-      desc: null
-      since: null
-    - type: String
-      desc: null
-      since: null
-    optional: true
-    default: '-1'
+    desc: '(Optional, default -1) - overrides vehicle respawn mode. Available modes are: 2 or "INSTANT" and 3 or "BASE". -1 use [[Description.ext|description.ext]] value.'
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Number
+        desc: null
+        since: null
+      - type: String
+        desc: null
+        since: null
     since:
       arma3: '2.18'
   - !Item
     name: respawnSide
-    desc: '- sets respawn side for the purpouse of selecting respawn marker'
+    desc: (Optional, default typical vehicle [[side]]) - sets respawn side for the purpouse of selecting respawn marker
     type: Side
-    optional: true
-    default: typical vehicle [[side]]
     since:
       arma3: '2.18'
   - !Item
     name: useRespawnMarkerDir
-    desc: '- respawn vehicle matches respawn marker direction or the old wreck direction. [[false]] - random direction.'
+    desc: (Optional, default [[false]]) - respawn vehicle matches respawn marker direction or the old wreck direction. [[false]] - random direction.
     type: Boolean
-    optional: true
-    default: '[[false]]'
     since:
       arma3: '2.18'
 argument_loc: Local
 effect_loc: Global
-since:
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>car respawnVehicle [5, 3]; // 'car' will respawn at the predefined marker for the side after 5 seconds. The unit will respawn 3 times.</sqf>
 - <sqf>car respawnVehicle [30]; // 'car' will respawn at the predefined marker for the side after 30 seconds. The unit will respawn an unlimited number of times.</sqf>

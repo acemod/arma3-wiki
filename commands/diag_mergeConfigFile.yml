@@ -18,15 +18,12 @@ syntax:
     type: String
   - !Item
     name: userdir
-    desc: path is relative to the user directory, otherwise it is relative to the mission directory
+    desc: (Optional, default [[false]]) path is relative to the user directory, otherwise it is relative to the mission directory
     type: Boolean
-    optional: true
-    default: '[[false]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.0'
-branch: diag
+since: {}
+branch: Diag
 examples:
 - <sqf>diag_mergeConfigFile ["O:\Arma3\A3\Stuff_F\config.cpp"]</sqf>
 see_also:

@@ -15,16 +15,13 @@ syntax:
   right: !Array
   - !Item
     name: path
-    desc: path to tree view item
-    type: ArrayUnknown
+    type: Path
   - !Item
     name: color
-    desc: color in format [r,g,b,a]
-    type: ArrayUnknown
+    type: ArrayColor
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.62'
+since: {}
 examples:
 - <sqf>_control tvSetPictureRightColorDisabled [[0], [1,0,1,1]];</sqf>
 see_also:

@@ -5,11 +5,22 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: target
+      type: Object
+      desc: the locked object
+      since: null
+    - name: lockValue
+      type: Number
+      desc: in range 0..1 where 1 is fully locked
+      since: null
+    - name: config
+      type: Config
+      desc: used weapon's {{hl|CfgWeapons}} config
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.18'
+since: {}
 examples:
 - "<sqf>\nplayerTargetLock params [\"_target\", \"_lock\", \"_cfg\"];\nif (_lock == 1) then\n{\n\thint format [\"%1 locked %2\", getText (_cfg >> \"displayName\"), getText (configOf _target >> \"displayName\")];\n};\n</sqf>"
 - <sqf>playerTargetLock; // returns [objNull, 0, configNull] if no lock is being done</sqf>

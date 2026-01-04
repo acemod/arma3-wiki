@@ -6,16 +6,14 @@ syntax:
 - call: !Unary vehicle
   ret:
     type: !ArrayUnsized
-      type: Number
-      desc: ''
+      value: Number
   right: !Item
     name: vehicle
     desc: a vehicle with MFD
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.70'
+since: {}
 examples:
 - <sqf>getUserMFDValue vehicle player; // user0 in MFD will return 1</sqf>
 see_also:

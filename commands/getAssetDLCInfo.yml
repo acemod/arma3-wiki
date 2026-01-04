@@ -5,24 +5,71 @@ groups:
 syntax:
 - call: !Unary asset
   ret:
-    type: Unknown
-    desc: "the asset belongs to a DLC\n* isOwned: [[Boolean]] \n* isInstalled: [[Boolean]] \n* isAvailable: [[Boolean]] \n* appID: [[String]] - actual steam item ID or \"0\" for none or \"-1\" for unknown \n* DLCName: [[String]] - actual DLC name or \"\""
+    type: !ArraySized
+    - name: isDlc
+      type: Boolean
+      desc: the asset belongs to a DLC
+      since: null
+    - name: isOwned
+      type: Boolean
+      desc: null
+      since: null
+    - name: isInstalled
+      type: Boolean
+      desc: null
+      since: null
+    - name: isAvailable
+      type: Boolean
+      desc: null
+      since: null
+    - name: appID
+      type: String
+      desc: actual steam item ID or "0" for none or "-1" for unknown
+      since: null
+    - name: DLCName
+      type: String
+      desc: actual DLC name or ""
+      since: null
   right: !Item
     name: asset
     desc: object reference or path to the model
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: String
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: String
+        desc: null
+        since: null
 - call: !Unary
   - class
   - config
   ret:
-    type: Unknown
-    desc: "the asset belongs to a DLC\n* isOwned: [[Boolean]] \n* isInstalled: [[Boolean]] \n* isAvailable: [[Boolean]] \n* appID: [[String]] - actual steam item ID or \"0\" for none or \"-1\" for unknown \n* DLCName: [[String]] - actual DLC name or \"\""
+    type: !ArraySized
+    - name: isDlc
+      type: Boolean
+      desc: the asset belongs to a DLC
+      since: null
+    - name: isOwned
+      type: Boolean
+      desc: null
+      since: null
+    - name: isInstalled
+      type: Boolean
+      desc: null
+      since: null
+    - name: isAvailable
+      type: Boolean
+      desc: null
+      since: null
+    - name: appID
+      type: String
+      desc: actual steam item ID or "0" for none or "-1" for unknown
+      since: null
+    - name: DLCName
+      type: String
+      desc: actual DLC name or ""
+      since: null
   right: !Array
   - !Item
     name: class
@@ -30,14 +77,11 @@ syntax:
     type: String
   - !Item
     name: config
-    desc: config in which to search
+    desc: (Optional, default <sqf inline>configFile >> "CfgVehicles"</sqf>) config in which to search
     type: Config
-    optional: true
-    default: <sqf inline>configFile >> "CfgVehicles"</sqf>
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.0'
+since: {}
 examples:
 - <sqf>getAssetDLCInfo player;</sqf>
 - <sqf>getAssetDLCInfo "a3\Weapons_F_Enoch\Rifles\MSBS\MSBS65_F";</sqf>

@@ -40,16 +40,13 @@ syntax:
     type: String
   - !Item
     name: autoselect
-    desc: '[[false]] to abort weapon autoselection if no weapon was selected.'
+    desc: (Optional, default [[true]]) [[false]] to abort weapon autoselection if no weapon was selected.
     type: String
-    optional: true
-    default: '[[true]]'
   since:
     arma3: '2.20'
 argument_loc: Global
 effect_loc: Global
-since:
-  arma3: '0.76'
+since: {}
 examples:
 - "<sqf>\n{\n\t_x addMagazineGlobal \"Laserbatteries\";\n\t_x addWeaponGlobal \"Laserdesignator\";\n} forEach allUnits;\n</sqf>"
 - "<sqf>\n{\n\tif (typeOf _x == \"O_Heli_Attack_02_black_F\") then\n\t{\n\t\t_x addMagazineGlobal \"38Rnd_80mm_rockets\";\n\t\t_x addWeaponGlobal \"rockets_Skyfire\";\n\t};\n} forEach vehicles;\n</sqf>"

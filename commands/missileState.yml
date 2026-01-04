@@ -5,19 +5,26 @@ groups:
 syntax:
 - call: !Unary munition
   ret:
-    type: Unknown
-    desc: |-
-      one of "INIT", "THRUST", "FLY" or ""
-      * lockState: [[String]] - one of "MANUAL", "LOCKED", "LOST", "INITIAL", "SEEKING" or ""
-      * flightState: [[String]] - one of "DEFAULT", "DIRECT", "TOPDOWN", "LOALDISTANCE", "LOALALTITUDE", "OVERFLY", "CRUISE" or "" (LOAL stands for "Lock-On After Launch")
+    type: !ArraySized
+    - name: engineState
+      type: String
+      desc: one of "INIT", "THRUST", "FLY" or ""
+      since: null
+    - name: lockState
+      type: String
+      desc: one of "MANUAL", "LOCKED", "LOST", "INITIAL", "SEEKING" or ""
+      since: null
+    - name: flightState
+      type: String
+      desc: one of "DEFAULT", "DIRECT", "TOPDOWN", "LOALDISTANCE", "LOALALTITUDE", "OVERFLY", "CRUISE" or "" (LOAL stands for "Lock-On After Launch")
+      since: null
   right: !Item
     name: munition
     desc: missile
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.18'
+since: {}
 examples:
 - <sqf>missileState _myMissile params ["_engineState", "_lockState", "_flightState"];</sqf>
 - "<sqf>\n_myHelicopter addEventHandler [\"Fired\", {\n\tprivate _projectile = _this select 6;\n\t// or params [\"\", \"\", \"\", \"\", \"\", \"\", \"_projectile\"];\n\tsystemChat str missileState _projectile;\n}];\n</sqf>"

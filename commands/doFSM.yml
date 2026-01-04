@@ -12,15 +12,15 @@ syntax:
     type: Nothing
   left: !Item
     name: unit
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: !ArrayUnsized
-        type: Object
-        desc: ''
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: !ArrayUnsized
+          value: Object
+        desc: null
+        since: null
   right: !Array
   - !Item
     name: fsmName
@@ -33,12 +33,7 @@ syntax:
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_soldierOne doFSM ["move.fsm", position player, player];</sqf>
 - <sqf>units player doFSM ["move.fsm", position player, player];</sqf>

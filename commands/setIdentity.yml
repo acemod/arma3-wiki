@@ -18,14 +18,7 @@ syntax:
     type: String
 argument_loc: Global
 effect_loc: Local
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_soldier1 setIdentity "MyLittleSoldier";</sqf>
 - "Clone factory in MP:\n<sqf>\nfor \"_i\" from 1 to 10 do\n{\n\t_bob = group player createUnit [typeOf player, position player, [], 0, \"none\"];\n\t[_bob, \"MyLittleSoldier\"] remoteExec [\"setIdentity\", 0, _bob];\n};\n</sqf>"

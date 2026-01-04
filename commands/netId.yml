@@ -11,18 +11,17 @@ syntax:
     type: String
   right: !Item
     name: objOrGroup
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Group
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma2oa: '1.63'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_playerNetId = netId player;</sqf>
 see_also:

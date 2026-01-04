@@ -5,13 +5,14 @@ groups:
 syntax:
 - call: !Unary parent
   ret:
-    type: !OneOf
-    - type: Nothing
-      desc: null
-      since: null
-    - type: Object
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Nothing
+        desc: null
+        since: null
+      - type: Object
+        desc: null
+        since: null
   right: !Item
     name: parent
     desc: The parent object that another object is attached to. Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
@@ -19,8 +20,8 @@ syntax:
 argument_loc: Local
 effect_loc: Global
 server_exec: false
-since:
-  arma3: '2.22'
+since: {}
+branch: Dev
 examples:
 - <sqf></sqf>
 - <sqf></sqf>

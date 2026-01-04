@@ -48,44 +48,38 @@ syntax:
     type: Boolean
   right: !Item
     name: entity
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Control
-      desc: null
-      since: null
-    - type: Display
-      desc: null
-      since: null
-    - type: Group
-      desc: null
-      since: null
-    - type: Location
-      desc: null
-      since: null
-    - type: Task
-      desc: null
-      since: null
-    - type: ScriptHandle
-      desc: null
-      since: null
-    - type: Config
-      desc: null
-      since: null
-    - type: DiaryRecord
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Control
+        desc: null
+        since: null
+      - type: Display
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
+      - type: Location
+        desc: null
+        since: null
+      - type: Task
+        desc: null
+        since: null
+      - type: ScriptHandle
+        desc: null
+        since: null
+      - type: Config
+        desc: null
+        since: null
+      - type: DiaryRecord
+        desc: null
+        since: null
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nif (isNil \"obj\") exitWith { hint \"obj variable is undefined\" };\n\nif (isNull obj) then\n{\n\thint \"obj variable is defined but is null\";\n}\nelse\n{\n\thint \"obj variable is defined and is not null\";\n};\n</sqf>"
 - |-

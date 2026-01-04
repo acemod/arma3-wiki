@@ -20,8 +20,7 @@ syntax:
     type: Boolean
 argument_loc: Local
 effect_loc: Global
-since:
-  arma3: '1.68'
+since: {}
 examples:
 - <sqf>_group deleteGroupWhenEmpty true;</sqf>
 - "Executed on the server:\n<sqf>\nif (local _group) then\n{\n\t_group deleteGroupWhenEmpty true;\n}\nelse // group is local to a client\n{\n\t[_group, true] remoteExec [\"deleteGroupWhenEmpty\", groupOwner _group];\n};\n</sqf>"

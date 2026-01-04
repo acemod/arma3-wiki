@@ -8,30 +8,36 @@ syntax:
   - - type
     - id
   ret:
-    type: !OneOf
-    - type: Boolean
-      desc: null
+    type: !ArraySized
+    - name: exists
+      type: Boolean
+      desc: event handler exists
       since: null
-    desc: |-
-      event handler exists
-      * isLast: [[Boolean]] - will be executed last (relevant if last event handler modifies default engine behaviour)
-      * total: [[Number]] - total number of event handlers added to the same event
+    - name: isLast
+      type: Boolean
+      desc: will be executed last (relevant if last event handler modifies default engine behaviour)
+      since: null
+    - name: total
+      type: Number
+      desc: total number of event handlers added to the same event
+      since: null
   left: !Item
     name: oper
     desc: subject to which event handler is assigned
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Group
-      desc: null
-      since: null
-    - type: Control
-      desc: null
-      since: null
-    - type: Display
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
+      - type: Control
+        desc: null
+        since: null
+      - type: Display
+        desc: null
+        since: null
   right: !Array
   - !Item
     name: type
@@ -39,20 +45,25 @@ syntax:
     type: String
   - !Item
     name: id
-    desc: event handler id returned by [[addEventHandler]], [[ctrlAddEventHandler]], [[displayAddEventHandler]], or [[addMPEventHandler]] - '''not''' any other EH system (e.g [[add3DENEventHandler]] or [[addUserActionEventHandler]])
+    desc: event handler id returned by [[addEventHandler]], [[ctrlAddEventHandler]], [[displayAddEventHandler]], or [[addMPEventHandler]] - not any other EH system (e.g [[add3DENEventHandler]] or [[addUserActionEventHandler]])
     type: Number
 - call: !Unary
   - type
   - id
   ret:
-    type: !OneOf
-    - type: Boolean
-      desc: null
+    type: !ArraySized
+    - name: exists
+      type: Boolean
+      desc: event handler exists
       since: null
-    desc: |-
-      event handler exists
-      * isLast: [[Boolean]] - will be executed last (relevant if last event handler modifies default engine behaviour)
-      * total: [[Number]] - total number of event handlers added to the same event
+    - name: isLast
+      type: Boolean
+      desc: will be executed last (relevant if last event handler modifies default engine behaviour)
+      since: null
+    - name: total
+      type: Number
+      desc: total number of event handlers added to the same event
+      since: null
   right: !Array
   - !Item
     name: type
@@ -60,12 +71,11 @@ syntax:
     type: String
   - !Item
     name: id
-    desc: event handler id returned by [[addMissionEventHandler]] or [[addMusicEventHandler]] '''only'''
+    desc: event handler id returned by [[addMissionEventHandler]] or [[addMusicEventHandler]] only
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.10'
+since: {}
 examples:
 - "<sqf>private _info = player getEventHandlerInfo [\"MPKilled\", 1];\t\t\t// object EH</sqf>"
 - "<sqf>private _info = getEventHandlerInfo [\"EachFrame\", 0];\t\t\t\t// mission EH</sqf>"

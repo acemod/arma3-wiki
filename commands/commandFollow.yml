@@ -12,28 +12,21 @@ syntax:
     type: Nothing
   left: !Item
     name: unit
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: !ArrayUnsized
-        type: Object
-        desc: ''
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: !ArrayUnsized
+          value: Object
+        desc: null
+        since: null
   right: !Item
     name: unitLead
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_soldier1 commandFollow _soldier2;</sqf>
 - <sqf>(units group _leader - [_leader]) commandFollow _leader; // returns all the units (but the leader) to formation</sqf>

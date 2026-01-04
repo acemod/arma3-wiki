@@ -5,15 +5,15 @@ groups:
 syntax:
 - call: !Unary task
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      value: String
     desc: iconPath, iconText, descriptionText
   right: !Item
     name: task
     type: Task
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.58'
+since: {}
 examples:
 - <sqf>_data = taskCustomData someTask;</sqf>
 see_also:

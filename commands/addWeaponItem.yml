@@ -24,10 +24,8 @@ syntax:
     type: String
   - !Item
     name: instant
-    desc: '[[true]] to skip animation'
+    desc: (Optional, default [[false]]) [[true]] to skip animation
     type: Boolean
-    optional: true
-    default: '[[false]]'
     since:
       arma3: '1.96'
 - call: !Binary
@@ -54,26 +52,21 @@ syntax:
       type: String
     - !Item
       name: ammoCount
-      desc: optional amount of ammo in magazine
+      desc: (Optional) optional amount of ammo in magazine
       type: Number
-      optional: true
     - !Item
       name: muzzleName
-      desc: optional target muzzle to add magazine to
+      desc: (Optional) optional target muzzle to add magazine to
       type: String
-      optional: true
   - !Item
     name: instant
-    desc: '[[true]] to skip animation'
+    desc: (Optional, default [[false]]) [[true]] to skip animation
     type: Boolean
-    optional: true
-    default: '[[false]]'
     since:
       arma3: '1.96'
 argument_loc: Local
 effect_loc: Global
-since:
-  arma3: '1.38'
+since: {}
 examples:
 - <sqf>player addWeaponItem ["arifle_MX_GL_ACO_F", "1Rnd_HE_Grenade_shell"];</sqf>
 - <sqf>player addWeaponItem ["arifle_MX_GL_ACO_F", ["1Rnd_HE_Grenade_shell", 1, "GL_3GL_F"]];</sqf>

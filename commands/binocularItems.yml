@@ -5,18 +5,29 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-    type: Unknown
-    desc: |-
-      laserpointer or flashlight
-      * optic: [[String]]
-      * bipod: [[String]]
+    type: !ArraySized
+    - name: silencer
+      type: String
+      desc: null
+      since: null
+    - name: pointer
+      type: String
+      desc: laserpointer or flashlight
+      since: null
+    - name: optic
+      type: String
+      desc: null
+      since: null
+    - name: bipod
+      type: String
+      desc: null
+      since: null
   right: !Item
     name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '2.2'
+since: {}
 examples:
 - <sqf>binocularItems player;</sqf>
 see_also:

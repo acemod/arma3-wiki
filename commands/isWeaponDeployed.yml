@@ -20,15 +20,13 @@ syntax:
     type: Object
   - !Item
     name: onGround
-    desc: '[[true]] to check if deployed on ground, [[false]] to check if deployed on object. Omitted - same as main syntax.'
+    desc: (Optional) [[true]] to check if deployed on ground, [[false]] to check if deployed on object. Omitted - same as main syntax.
     type: Boolean
-    optional: true
   since:
     arma3: '2.6'
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '1.42'
+since: {}
 examples:
 - <sqf>_dep = isWeaponDeployed player;</sqf>
 - <sqf>_depOnObj = isWeaponDeployed [player, false];</sqf>

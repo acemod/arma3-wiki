@@ -13,7 +13,7 @@ syntax:
 - call: !Unary unit
   ret:
     type: Number
-    desc: the unit's group ID (e.g "'''2''', taking command")
+    desc: the unit's group ID (e.g "2, taking command")
   right: !Item
     name: unit
     desc: a group's unit
@@ -22,8 +22,7 @@ syntax:
     arma3: '2.12'
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>_name = groupId group player;\t\t\t// e.g \"B Alpha 1-1\"</sqf>"
 - "<sqf>private _unitGroupId = groupId player;\t// e.g 3 (number, not a string)</sqf>"

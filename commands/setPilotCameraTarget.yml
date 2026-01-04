@@ -13,18 +13,17 @@ syntax:
     type: Object
   right: !Item
     name: target
-    desc: format PositionASL
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: ArrayUnknown
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position3dASL
+        desc: null
+        since: null
 argument_loc: Local
 effect_loc: Unspecified
-since:
-  arma3: '1.64'
+since: {}
 examples:
 - <sqf>_pilotCamTrack = vehicle player setPilotCameraTarget [2100,4200,4.2];</sqf>
 - <sqf>_pilotCamTrack = vehicle player setPilotCameraTarget BIS_Edita;</sqf>

@@ -15,8 +15,8 @@ syntax:
   right: !Array
   - !Item
     name: centerOfMass
-    desc: '[x,y,z] offset relative to the model centre'
-    type: ArrayUnknown
+    desc: relative to the model centre
+    type: Position3dRelative
   - !Item
     name: time
     desc: transition time, 0 for instant center of mass transfer
@@ -31,12 +31,11 @@ syntax:
     type: Object
   right: !Item
     name: centerOfMass
-    desc: '[x,y,z] offset relative to the model centre'
-    type: ArrayUnknown
+    desc: relative to the model centre
+    type: Position3dRelative
 argument_loc: Local
 effect_loc: Global
-since:
-  arma3: '1.2'
+since: {}
 examples:
 - <sqf>myObject setCenterOfMass [[0,-1,0], 0.5];</sqf>
 - <sqf>myObject setCenterOfMass [0,-1,0];</sqf>

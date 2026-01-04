@@ -12,14 +12,7 @@ syntax:
     desc: day time using a 24 hour clock, using fractions of hours - range [0..24]
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>dayTime; // returns 16.5 given it is 16:30 (4.30pm) in game</sqf>
 - "Get hour, minute, seconds:\n<sqf>\nprivate _daytime = dayTime; // assuming dayTime returns 1.66046\nprivate _hours = floor _daytime;\t\t\t\t\t\t\t\t\t\t\t//  1\nprivate _minutes = floor ((_daytime - _hours) * 60);\t\t\t\t\t\t// 39\nprivate _seconds = floor ((((_daytime - _hours) * 60) - _minutes) * 60);\t// 37\n</sqf>"

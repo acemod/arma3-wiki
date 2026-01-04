@@ -37,29 +37,23 @@ syntax:
   left: !Item
     name: who
     desc: if a unit, unit's [[group]] is considered; if a vehicle, vehicle commander's [[group]] is used.
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Group
-      desc: null
-      since: null
-    - type: Side
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
+      - type: Side
+        desc: null
+        since: null
   right: !Item
     name: target
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_knowledge = player knowsAbout _target;</sqf>
 - <sqf>_knowledge = (group player) knowsAbout _target;</sqf>

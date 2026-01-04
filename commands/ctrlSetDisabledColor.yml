@@ -14,7 +14,7 @@ syntax:
     type: Number
   - !Item
     name: color
-    type: ArrayColorRgba
+    type: ArrayColor
 - call: !Binary
   - ctrl
   - color
@@ -25,11 +25,10 @@ syntax:
     type: Control
   right: !Item
     name: color
-    type: ArrayColorRgba
+    type: ArrayColor
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.0'
+since: {}
 examples:
 - <sqf>_control ctrlSetDisabledColor [0.5, 0.5, 0.5, 0.5];</sqf>
 see_also:

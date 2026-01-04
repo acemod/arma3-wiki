@@ -7,7 +7,43 @@ syntax:
   - person
   - subject
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: id
+      type: Number
+      desc: record id
+      since: null
+    - name: title
+      type: String
+      desc: record title
+      since: null
+    - name: text
+      type: String
+      desc: record text
+      since: null
+    - name: icon
+      type: String
+      desc: record icon
+      since: null
+    - name: task
+      type: Task
+      desc: record task
+      since: null
+    - name: taskState
+      type: String
+      desc: record task state
+      since: null
+    - name: showTitle
+      type: Boolean
+      desc: '[[true]] if tile is shown'
+      since: null
+    - name: date
+      type: ArrayDate
+      desc: null
+      since: null
+    - name: record
+      type: DiaryRecord
+      desc: record reference
+      since: null
   left: !Item
     name: person
     desc: unit
@@ -18,8 +54,7 @@ syntax:
     type: String
 argument_loc: Global
 effect_loc: Local
-since:
-  arma3: '2.10'
+since: {}
 examples:
 - <sqf>player allDiaryRecords "Diary";</sqf>
 see_also:

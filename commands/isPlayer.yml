@@ -18,7 +18,7 @@ syntax:
   - person
   ret:
     type: Boolean
-    desc: '[[true]] if is/was player ''''''and'''''' the identity still exists on the (dead) body'
+    desc: '[[true]] if is/was player and the identity still exists on the (dead) body'
   right: !Array
   - !Item
     name: person
@@ -28,12 +28,7 @@ syntax:
     arma3: '2.6'
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nif (isPlayer _Soldier1) then\n{\n\t_soldier1 setDamage 1;\n};\n</sqf>"
 - <sqf>_playerCount = { isPlayer _x } count playableUnits;</sqf>

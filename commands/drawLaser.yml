@@ -27,22 +27,22 @@ syntax:
     name: direction
     desc: the laser's direction vector
     type: !ArrayUnsized
-      type: Vector3d
-      desc: ''
+      value: Vector3d
   - !Item
     name: beamColor
     desc: laser beam color. The values can go way above the usual 0..1 range as they also act as emissivity brightness
-    type: ArrayColorRgb
+    type: ArrayColor
   - !Item
     name: dotColor
     desc: impact dot color. Set to <sqf inline>[]</sqf> to use the same value as ''beamColor''.
-    type: !OneOf
-    - type: ArrayColorRgb
-      desc: null
-      since: null
-    - type: ArrayEmpty
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: ArrayColor
+        desc: null
+        since: null
+      - type: ArrayEmpty
+        desc: null
+        since: null
   - !Item
     name: dotSize
     desc: impact dot size; if set to 0 the impact dot will not render
@@ -53,20 +53,15 @@ syntax:
     type: Number
   - !Item
     name: beamMaxLength
-    desc: laser beam's maximum length. {{hl|-1}} means maximum length (defined in {{hl|CfgIRLaserSettings}}), {{hl|0}} means no length at all and the command is ignored
+    desc: (Optional, default -1) laser beam's maximum length. {{hl|-1}} means maximum length (defined in {{hl|CfgIRLaserSettings}}), {{hl|0}} means no length at all and the command is ignored
     type: Number
-    optional: true
-    default: '-1'
   - !Item
     name: isIR
-    desc: whether the laser and impact dot are only visible with Night Vision / Thermal Imaging
+    desc: (Optional, default [[true]]) whether the laser and impact dot are only visible with Night Vision / Thermal Imaging
     type: Boolean
-    optional: true
-    default: '[[true]]'
 argument_loc: Unspecified
 effect_loc: Local
-since:
-  arma3: '2.8'
+since: {}
 examples:
 - "Give the player a laser eye:\n<sqf>\naddMissionEventHandler [\"Draw3D\", {\n\tdrawLaser [\n\t\teyePos player vectorAdd [0, 0, 0.1],\n\t\tgetCameraViewDirection player,\n\t\t[1000, 0, 0], // Bright red\n\t\t[],\n\t\t5,\n\t\t20,\n\t\t-1,\n\t\tfalse\n\t];\n}];\n</sqf>"
 see_also:

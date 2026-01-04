@@ -13,22 +13,24 @@ syntax:
     desc: distance in meters or 1e10 if distance cannot be calculated
   left: !Item
     name: var1
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
   right: !Item
     name: var2
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
 - call: !Binary
   - a
   - b
@@ -45,8 +47,7 @@ syntax:
     arma3: '2.18'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nprivate _distanceSquared = 5 * 5;\nif (player distanceSqr leader player < _distanceSquared) then // similar to player distance leader player < 5\n{\n\thint \"You are less than 5m from the leader!\";\n};\n</sqf>"
 - |-

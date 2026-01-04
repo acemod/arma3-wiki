@@ -7,14 +7,15 @@ syntax:
   - unit
   - item
   ret:
-    type: !OneOf
-    - type: Nothing
-      desc: null
-      since: null
-    - type: Boolean
-      desc: null
-      since: null
-    desc: '''''''false'''''' is returned if ''''''item'''''' can not be added'
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Nothing
+        desc: null
+        since: null
+      - type: Boolean
+        desc: null
+        since: null
+    desc: false is returned if item can not be added
   left: !Item
     name: unit
     type: Object
@@ -23,8 +24,7 @@ syntax:
     type: String
 argument_loc: Local
 effect_loc: Global
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>player addPrimaryWeaponItem "muzzle_snds_H";</sqf>
 see_also:

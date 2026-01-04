@@ -21,16 +21,13 @@ syntax:
     name: font
     desc: (Optional since {{GVI|arma3|2.22|size= 0.75}}, default "" (system font)) [[FXY_File_Format#Available_Fonts|font type]]
     type: String
-    optional: true
   - !Item
     name: size
     desc: (Optional since {{GVI|arma3|2.22|size= 0.75}}, default -1 (system font size)) font size
     type: Number
-    optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.98'
+since: {}
 examples:
 - <sqf>_textWidth = "Hello World" getTextWidth ["PuristaMedium", 0.03];</sqf>
 - <sqf>_textWidthInclMargins = ("Hello World" getTextWidth ["PuristaMedium", 0.03]) + 0.016;</sqf>

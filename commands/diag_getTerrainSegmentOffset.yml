@@ -10,21 +10,23 @@ groups:
 syntax:
 - call: !Unary worldPos
   ret:
-    type: Unknown
+    type: Position2d
+    desc: '[x,y] of terrain segment (integer, basically pixel coordinates in heightmap)'
   right: !Item
     name: worldPos
     desc: world coordinates
-    type: !OneOf
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.4'
+since: {}
+branch: Diag
 examples:
 - <sqf>private _segmentOffset = diag_getTerrainSegmentOffset getPosWorld player;</sqf>
 see_also:

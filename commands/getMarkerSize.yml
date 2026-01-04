@@ -5,23 +5,21 @@ groups:
 syntax:
 - call: !Unary markerName
   ret:
-    type: Unknown
-    desc: |-
-      1/2 width of marker
-      * b_axis: [[Number]] - 1/2 height of marker
+    type: !ArraySized
+    - name: a_axis
+      type: Number
+      desc: 1/2 width of marker
+      since: null
+    - name: b_axis
+      type: Number
+      desc: 1/2 height of marker
+      since: null
   right: !Item
     name: markerName
     type: String
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  flashpoint: '1.21'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - |-
   <sqf>

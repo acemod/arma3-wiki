@@ -6,14 +6,14 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-    type: Unknown
+    type: Position3dASL
+    desc: the model centre's position (see [[getPosWorld]]) in render scope
   right: !Item
     name: object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '1.96'
+since: {}
 examples:
 - <sqf>_obj setPosWorld getPosWorldVisual _obj;</sqf>
 - <sqf>_groundObj modelToWorldVisualWorld [0,0,0] isEqualTo getPosWorldVisual _groundObj; // true</sqf>

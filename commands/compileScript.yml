@@ -18,20 +18,15 @@ syntax:
     type: String
   - !Item
     name: final
-    desc: compile final, see [[compileFinal]]
+    desc: (Optional, default [[false]]) compile final, see [[compileFinal]]
     type: Boolean
-    optional: true
-    default: '[[false]]'
   - !Item
     name: prefixHeader
-    desc: value added at the beginning of the file
+    desc: (Optional, default "") value added at the beginning of the file
     type: String
-    optional: true
-    default: '""'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.2'
+since: {}
 examples:
 - "<sqf>\ncompileScript [\"a3\\props_f_enoch\\military\\equipment\\scripts\\meteo.sqf\"];\n// has the same functionality as \ncompile preprocessFileLineNumbers \"a3\\props_f_enoch\\military\\equipment\\scripts\\meteo.sqf\";\n</sqf>"
 see_also:

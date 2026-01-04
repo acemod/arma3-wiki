@@ -11,13 +11,14 @@ syntax:
     type: Nothing
   left: !Item
     name: group
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Group
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
   right: !Array
   - !Item
     name: format
@@ -30,8 +31,7 @@ syntax:
       type: String
 argument_loc: Global
 effect_loc: Global
-since:
-  arma3: '1.48'
+since: {}
 examples:
 - |-
   <sqf>

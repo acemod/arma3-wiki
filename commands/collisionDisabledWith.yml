@@ -5,18 +5,22 @@ groups:
 syntax:
 - call: !Unary obj
   ret:
-    type: Unknown
-    desc: |-
-      the object, ''obj'' has collision disabled with, or [[objNull]]
-      * mutual: [[Boolean]] - [[true]] if ''other'' has also disabled collision with ''obj'', [[false]] otherwise
+    type: !ArraySized
+    - name: other
+      type: Object
+      desc: the object, ''obj'' has collision disabled with, or [[objNull]]
+      since: null
+    - name: mutual
+      type: Boolean
+      desc: '[[true]] if ''''other'''' has also disabled collision with ''''obj'''', [[false]] otherwise'
+      since: null
   right: !Item
     name: obj
     desc: given object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '2.8'
+since: {}
 examples:
 - <sqf>private _collisionInfo = collisionDisabledWith _tank;</sqf>
 see_also:

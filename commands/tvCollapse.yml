@@ -14,8 +14,8 @@ syntax:
     type: Number
   - !Item
     name: path
-    desc: item [[Tree View Path]]. [] will collapse the whole tree and it will disappear
-    type: ArrayUnknown
+    desc: '[] will collapse the whole tree and it will disappear'
+    type: Path
 - call: !Binary
   - control
   - path
@@ -26,12 +26,11 @@ syntax:
     type: Control
   right: !Item
     name: path
-    desc: item [[Tree View Path]]. [] will collapse the whole tree and it will disappear
-    type: ArrayUnknown
+    desc: '[] will collapse the whole tree and it will disappear'
+    type: Path
 argument_loc: Local
 effect_loc: Local
-since:
-  arma3: '0.74'
+since: {}
 examples:
 - <sqf>tvCollapse [101, [0]];</sqf>
 - <sqf>_ctrl tvCollapse [0];</sqf>

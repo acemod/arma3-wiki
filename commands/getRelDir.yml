@@ -15,20 +15,20 @@ syntax:
     type: Object
   right: !Item
     name: position
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - <sqf>_reldir = player getRelDir tank;</sqf>
 - |-

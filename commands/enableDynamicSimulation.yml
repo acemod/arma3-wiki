@@ -13,20 +13,20 @@ syntax:
     type: Nothing
   left: !Item
     name: object
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Group
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
   right: !Item
     name: enable
     type: Boolean
 argument_loc: Global
 effect_loc: Local
-since:
-  arma3: '1.68'
+since: {}
 examples:
 - <sqf>_myObject enableDynamicSimulation true;</sqf>
 see_also:

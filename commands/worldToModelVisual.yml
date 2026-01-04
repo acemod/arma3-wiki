@@ -10,24 +10,23 @@ syntax:
   - object
   - worldPosition
   ret:
-    type: ArrayUnknown
-    desc: '[[Position#PositionRelative|PositionRelative]]'
+    type: Position3dRelative
   left: !Item
     name: object
     type: Object
   right: !Item
     name: worldPosition
-    type: !OneOf
-    - type: Position3dAGL
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position3dAGL
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.32'
+since: {}
 examples:
 - <sqf>_relPos = myObject worldToModelVisual [0,0,0];</sqf>
 - <sqf>_relPos = player worldToModelVisual position car;</sqf>

@@ -143,13 +143,14 @@ syntax:
     type: Nothing
   left: !Item
     name: group
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Group
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
   right: !Array
   - !Item
     name: nameFormat
@@ -162,14 +163,7 @@ syntax:
       type: String
 argument_loc: Global
 effect_loc: Local
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - "'''{{arma3}}''':\n<sqf>\ngroup player setGroupId [\"Some name for the group\"];\nhint groupId group player;\t// \"Some name for the group\"\nplayer sideChat \"lalala\";\t// Some name for the group (KK): \"lalala\"\n</sqf>"
 - "'''{{arma3}}''':\n<sqf>\ngroup player setGroupId [\"%GroupNames :=: %GroupColors\", \"Alpha\", \"GroupColor2\"];\nhint groupId group player;\t// \"Alpha :=: Red\"\nplayer sideChat \"lalala\";\t// Alpha :=: Red (KK): \"lalala\"\n</sqf>"

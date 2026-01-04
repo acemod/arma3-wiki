@@ -28,37 +28,31 @@ syntax:
   - !Item
     name: object2
     desc: object to attach to; if a group is provided, its [[leader]] is used
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Group
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Group
+        desc: null
+        since: null
   - !Item
     name: offset
-    desc: the position relative to ''object2'''s position
+    desc: (Optional) the position relative to ''object2s position
     type: Position3dRelative
-    optional: true
   - !Item
     name: memPoint
-    desc: 'see {{Link|ArmA: Armed Assault: Selection Translations|Selection Translations}} for czech selections names'
+    desc: '(Optional) see {{Link|ArmA: Armed Assault: Selection Translations|Selection Translations}} for czech selections names'
     type: String
-    optional: true
   - !Item
     name: followBoneRotation
-    desc: follows the memory point's rotation (if attached to one)
+    desc: (Optional) follows the memory point's rotation (if attached to one)
     type: Boolean
-    optional: true
     since:
       arma3: '2.2'
 argument_loc: Global
 effect_loc: Global
-since:
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>player attachTo [car, [0, 0, 1]];</sqf>
 - <sqf>player attachTo [tank, [0, -1, 0], "Usti hlavne"];</sqf>

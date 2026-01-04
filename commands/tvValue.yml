@@ -16,8 +16,7 @@ syntax:
   - !Item
     name: path
     type: !ArrayUnsized
-      type: Number
-      desc: ''
+      value: Number
 - call: !Binary
   - ctrl
   - path
@@ -30,12 +29,10 @@ syntax:
   right: !Item
     name: path
     type: !ArrayUnsized
-      type: Number
-      desc: ''
+      value: Number
 argument_loc: Local
 effect_loc: Local
-since:
-  arma3: '0.74'
+since: {}
 examples:
 - <sqf>tvValue [101, [0]];</sqf>
 - <sqf>_ctrl tvValue [0,0,0];</sqf>

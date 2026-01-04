@@ -9,17 +9,17 @@ syntax:
     desc: '[[Eden ID]] If ID is not available, -1 is returned'
   right: !Item
     name: entity
-    type: !OneOf
-    - type: EdenEntity
-      desc: null
-      since: null
-    - type: EdenID
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: EdenEntity
+        desc: null
+        since: null
+      - type: EdenID
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - <sqf>myID = get3DENEntityID player;</sqf>
 see_also:

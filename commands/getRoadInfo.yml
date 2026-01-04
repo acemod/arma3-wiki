@@ -10,14 +10,54 @@ groups:
 syntax:
 - call: !Unary road
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: mapType
+      type: String
+      desc: road segment type, could be {{hl|"HIDE"}}, {{hl|"ROAD"}}, {{hl|"MAIN ROAD"}}, {{hl|"TRACK"}}, {{hl|"TRAIL"}} (see [[nearestTerrainObjects]])
+      since: null
+    - name: width
+      type: Number
+      desc: road segment width
+      since: null
+    - name: isPedestrian
+      type: Boolean
+      desc: when [[true]] road is for pedestrian use only
+      since: null
+    - name: texture
+      type: String
+      desc: road segment surface texture
+      since: null
+    - name: textureEnd
+      type: String
+      desc: road segment surface texture
+      since: null
+    - name: material
+      type: String
+      desc: road segment surface material
+      since: null
+    - name: begPos
+      type: Position3dASL
+      desc: start of the road segment
+      since: null
+    - name: endPos
+      type: Position3dASL
+      desc: finish of the road segment
+      since: null
+    - name: isBridge
+      type: Boolean
+      desc: when [[true]] road segment is a bridge
+      since: null
+    - name: AIpathOffset
+      type: Number
+      desc: config value of `AIpathOffset`
+      since:
+        arma3: '2.12'
   right: !Item
     name: road
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.0'
+since: {}
 examples:
 - |-
   <sqf>

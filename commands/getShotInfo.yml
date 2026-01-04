@@ -5,18 +5,49 @@ groups:
 syntax:
 - call: !Unary shot
   ret:
-    type: Unknown
-    desc: |-
-      effectiveTimeToLive: [[Number]] - how much more shot has to live.
-      * 1 - fuseDistanceLeft: [[Number]] - how long shot has to travel more to get fused (undebarrel grenade for example).
-      * 2 - timeToExplosion: [[Number]] - how long before shot fuse explodes (hand grenade for example) {{GVI|arma3|2.20|size= 0.75}} works on mines too.
-      * 3 - triggerIsForced: [[Boolean]] - [[true]] if shot ammo was triggered with [[triggerAmmo]].
-      * 4 - shownTracer: [[Boolean]] - [[true]] if the shot shown as tracer.
-      * 5 - isReal: [[Boolean]] - [[true]] if the shot is considered in damage events.
-      * 6 - isSubmunitionTriggered: [[Boolean]] - [[true]] if the shot contains submunition and it is triggered.
-      * 7 - isSetForDeletion: [[Boolean]] - [[true]] if the shot is already set for deletion but not yet removed from the scene.
-      * 8 - {{GVI|arma3|2.22}} shotParent: [[Object]] - the vehicle that produced shot.
-      * 9 - {{GVI|arma3|2.22}} shotInstigator: [[Object]] - the person who pulled the trigger.
+    type: !ArraySized
+    - name: effectiveTimeToLive
+      type: Number
+      desc: how much more shot has to live.
+      since: null
+    - name: fuseDistanceLeft
+      type: Number
+      desc: how long shot has to travel more to get fused (undebarrel grenade for example).
+      since: null
+    - name: timeToExplosion
+      type: Number
+      desc: how long before shot fuse explodes (hand grenade for example) {{GVI|arma3|2.20|size= 0.75}} works on mines too.
+      since: null
+    - name: triggerIsForced
+      type: Boolean
+      desc: '[[true]] if shot ammo was triggered with [[triggerAmmo]].'
+      since: null
+    - name: shownTracer
+      type: Boolean
+      desc: '[[true]] if the shot shown as tracer.'
+      since: null
+    - name: isReal
+      type: Boolean
+      desc: '[[true]] if the shot is considered in damage events.'
+      since: null
+    - name: isSubmunitionTriggered
+      type: Boolean
+      desc: '[[true]] if the shot contains submunition and it is triggered.'
+      since: null
+    - name: isSetForDeletion
+      type: Boolean
+      desc: '[[true]] if the shot is already set for deletion but not yet removed from the scene.'
+      since: null
+    - name: shotParent
+      type: Object
+      desc: the vehicle that produced shot.
+      since:
+        arma3: '2.22'
+    - name: shotInstigator
+      type: Object
+      desc: the person who pulled the trigger.
+      since:
+        arma3: '2.22'
   right: !Item
     name: shot
     desc: shot projectile
@@ -37,8 +68,7 @@ syntax:
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.18'
+since: {}
 examples:
 - <sqf>private _shotInfo = getShotInfo shot1;</sqf>
 - <sqf>private _fuseDistanceLeft = shot1 getShotInfo 1;</sqf>

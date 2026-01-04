@@ -11,19 +11,16 @@ syntax:
 - call: !Unary classes
   ret:
     type: !ArrayUnsized
-      type: Object
-      desc: ''
+      value: Object
     desc: all [[createSimpleObject|simple objects]]
   right: !Item
     name: classes
     desc: classnames array. Use {{hl|[]}} to return all simple objects
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.68'
+since: {}
 examples:
 - <sqf>private _boxesAndChairs = allSimpleObjects ["Box_NATO_Equip_F", "Land_CampingChair_V2_F"];</sqf>
 - <sqf>private _allSimpleObjects = allSimpleObjects [];</sqf>

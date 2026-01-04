@@ -32,26 +32,19 @@ syntax:
     type: Number
   - !Item
     name: minDist
+    desc: (Optional)
     type: Number
-    optional: true
   - !Item
     name: visibilityPosition
-    desc: used to select cover that unit can see in that direction from
+    desc: (Optional) used to select cover that unit can see in that direction from
     type: Position
-    optional: true
   - !Item
     name: ignoreObject
-    desc: ignore this object in visibility check
+    desc: (Optional) ignore this object in visibility check
     type: Object
-    optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>unit1 findCover [ASLToATL aimPos unit2, 30];</sqf>
 see_also:

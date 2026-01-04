@@ -7,25 +7,37 @@ syntax:
   - vehicle
   - turret
   ret:
-    type: Unknown
-    desc: |-
-      from 0 to -angle in degrees (left)
-      * maxTurn: [[Number]] - from 0 to +angle in degrees (right)
-      * minElev: [[Number]] - from 0 to -angle in degrees (down)
-      * maxElev: [[Number]] - from 0 to +angle in degrees (up)
-      * overridden: [[Boolean]] - if custom limits were applied
+    type: !ArraySized
+    - name: minTurn
+      type: Number
+      desc: from 0 to -angle in degrees (left)
+      since: null
+    - name: maxTurn
+      type: Number
+      desc: from 0 to +angle in degrees (right)
+      since: null
+    - name: minElev
+      type: Number
+      desc: from 0 to -angle in degrees (down)
+      since: null
+    - name: maxElev
+      type: Number
+      desc: from 0 to +angle in degrees (up)
+      since: null
+    - name: overridden
+      type: Boolean
+      desc: if custom limits were applied
+      since: null
   left: !Item
     name: vehicle
     desc: vehicle the turret belongs to
     type: Object
   right: !Item
     name: turret
-    desc: turret path
-    type: ArrayUnknown
+    type: TurretPath
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '2.12'
+since: {}
 examples:
 - |-
   <sqf>

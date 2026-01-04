@@ -8,8 +8,7 @@ syntax:
   - - row
     - column
   ret:
-    type: ArrayUnknown
-    desc: RGBA
+    type: ArrayColor
   right: !Array
   - !Item
     name: idc
@@ -28,8 +27,7 @@ syntax:
   - - row
     - column
   ret:
-    type: ArrayUnknown
-    desc: RGBA
+    type: ArrayColor
   left: !Item
     name: ctrl
     type: Control
@@ -44,8 +42,7 @@ syntax:
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.0'
+since: {}
 examples:
 - <sqf>private _result = _control lnbColorRight [0, 0];</sqf>
 see_also:

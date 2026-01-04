@@ -34,16 +34,13 @@ syntax:
     type: String
   - !Item
     name: autoselect
-    desc: '[[false]] to abort weapon autoselection when removing primary weapon.'
+    desc: (Optional, default [[true]]) [[false]] to abort weapon autoselection when removing primary weapon.
     type: String
-    optional: true
-    default: '[[true]]'
   since:
     arma3: '2.20'
 argument_loc: Global
 effect_loc: Global
-since:
-  arma3: '0.76'
+since: {}
 examples:
 - "<sqf>\n{\n\t_x removeWeaponGlobal \"Laserdesignator\";\n} forEach allUnits;\n</sqf>"
 - "<sqf>\n{\n\tif (typeOf _x == \"O_Heli_Attack_02_black_F\") then {\n\t\t_x removeWeaponGlobal \"rockets_Skyfire\";\n\t};\n} forEach vehicles;\n</sqf>"

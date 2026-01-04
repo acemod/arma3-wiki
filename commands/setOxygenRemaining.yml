@@ -1,5 +1,5 @@
 name: setOxygenRemaining
-desc: Sets oxygen remaining. It has no effect when soldier is not diving. Oxygen remaining is a number between 0 and 1.
+desc: Sets oxygen remaining. It has no effect when soldier is not diving.
 groups:
 - Object Manipulation
 syntax:
@@ -13,11 +13,12 @@ syntax:
     type: Object
   right: !Item
     name: value
-    type: Number
+    type: !NumberRange
+    - 0
+    - 1
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>player setOxygenRemaining 0; // drowns player</sqf>
 see_also:

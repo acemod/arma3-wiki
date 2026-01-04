@@ -12,27 +12,21 @@ syntax:
   left: !Item
     name: group
     desc: if the argument is unit [[Object]], unit's current group is used.
-    type: !OneOf
-    - type: Group
-      desc: null
-      since: null
-    - type: Object
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Group
+        desc: null
+        since: null
+      - type: Object
+        desc: null
+        since: null
   right: !Item
     name: mode
     desc: see description
     type: String
 argument_loc: Local
 effect_loc: Global
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_group1 setCombatMode "BLUE";</sqf>
 see_also:

@@ -20,35 +20,36 @@ syntax:
   left: !Item
     name: pos1
     desc: from where
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
   right: !Item
     name: pos2
     desc: to where
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
   since:
     arma3: '2.12'
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '1.32'
+since: {}
 examples:
 - <sqf>_dir = getDirVisual player;</sqf>
 - <sqf>_azimuth = player getDirVisual tank;</sqf>

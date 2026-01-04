@@ -6,15 +6,13 @@ syntax:
 - call: !Unary unit
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
   right: !Item
     name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '1.4'
+since: {}
 examples:
 - "<sqf>\nprivate _res1 = itemsWithMagazines player;\n// ... is essentially the same as ...\nprivate _res2 = items player + magazines player;\n</sqf>\nExample result:\n<sqf>\n[\n\t\"FirstAidKit\",\t\t\t//item\n\t\"30Rnd_65x39_caseless_mag\",\t//magazine\n\t\"16Rnd_9x21_Mag\",\t\t//magazine\n\t\"Chemlight_green\",\t\t//magazine\n\t\"HandGrenade\",\t\t\t//magazine\n\t\"ToolKit\",\t\t\t\t//item\n\t\"MineDetector\"\t\t\t//item\n]\n</sqf>"
 see_also:

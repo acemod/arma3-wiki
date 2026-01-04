@@ -19,18 +19,16 @@ syntax:
     type: Position3dAGL
   - !Item
     name: color
-    type: ArrayColorRgba
+    type: ArrayColor
   - !Item
     name: width
+    desc: (Optional, default 3)
     type: Number
-    optional: true
-    default: '3'
     since:
       arma3: '2.18'
 argument_loc: Unspecified
 effect_loc: Local
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nonEachFrame {\n\tdrawLine3D [getPos player, getPos cursorTarget, [1,1,1,1]];\n};\n</sqf>"
 see_also:

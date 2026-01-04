@@ -8,14 +8,29 @@ groups:
 syntax:
 - call: !Unary obj
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: ambientLightColor
+      type: ArrayColor
+      desc: null
+      since: null
+    - name: ambientLightBrightness
+      type: Number
+      desc: null
+      since: null
+    - name: dynamicLightColor
+      type: ArrayColor
+      desc: null
+      since: null
+    - name: dynamicLightBrightness
+      type: Number
+      desc: null
+      since: null
   right: !Item
     name: obj
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.0'
+since: {}
 examples:
 - <sqf>getLightingAt player; // returns [[1,1,1], 0.5, [0,0,0], 0]</sqf>
 - <sqf>getLightingAt player params ["_ambientLightColour", "_ambientLightBrightness", "_dynamicLightColour", "_dynamicLightBrightness"];</sqf>

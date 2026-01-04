@@ -30,8 +30,10 @@ syntax:
     type: Number
   right: !Item
     name: rain
-    desc: new rain value in range 0..1.
-    type: Number
+    desc: new rain value
+    type: !NumberRange
+    - 0
+    - 1
 - call: !Unary rainParams
   ret:
     type: Nothing
@@ -39,8 +41,7 @@ syntax:
     name: rainParams
     desc: 'custom [[Arma 3: CfgWorlds Config Reference#class RainParticles | {{hl|RainParticles}}]] params - see [[rainParams]]. Use empty array [] to reset to default config values'
     type: !ArrayUnsized
-      type: Anything
-      desc: ''
+      value: Anything
   since:
     arma3: '2.8'
   effect: Local
@@ -57,14 +58,7 @@ syntax:
 argument_loc: Unspecified
 effect_loc: Global
 server_exec: true
-since:
-  flashpoint: '1.75'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>60 setRain 1;</sqf>
 - |-

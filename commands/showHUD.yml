@@ -38,75 +38,51 @@ syntax:
     type: Boolean
   - !Item
     name: info
-    desc: show vehicle, soldier and weapon info
+    desc: (Optional, default [[true]]) show vehicle, soldier and weapon info
     type: Boolean
-    optional: true
-    default: '[[true]]'
   - !Item
     name: radar
-    desc: show vehicle radar
+    desc: (Optional, default [[true]]) show vehicle radar
     type: Boolean
-    optional: true
-    default: '[[true]]'
   - !Item
     name: compass
-    desc: show vehicle compass
+    desc: (Optional, default [[true]]) show vehicle compass
     type: Boolean
-    optional: true
-    default: '[[true]]'
   - !Item
     name: direction
-    desc: show tank direction indicator. Not present in vanilla {{arma3}}
+    desc: (Optional, default [[true]]) show tank direction indicator. Not present in vanilla {{arma3}}
     type: Boolean
-    optional: true
-    default: '[[true]]'
   - !Item
     name: menu
-    desc: show commanding menu (HC related menus)
+    desc: (Optional, default [[true]]) show commanding menu (HC related menus)
     type: Boolean
-    optional: true
-    default: '[[true]]'
   - !Item
     name: group
-    desc: show group info bar (Squad leader info bar)
+    desc: (Optional, default [[true]]) show group info bar (Squad leader info bar)
     type: Boolean
-    optional: true
-    default: '[[true]]'
   - !Item
     name: cursors
-    desc: show HUD weapon cursors (connected with scripted HUD)
+    desc: (Optional, default [[true]]) show HUD weapon cursors (connected with scripted HUD)
     type: Boolean
-    optional: true
-    default: '[[true]]'
   - !Item
     name: panels
-    desc: 'show [[Arma 3: Custom Info]]'
+    desc: '(Optional, default [[true]]) show [[Arma 3: Custom Info]]'
     type: Boolean
-    optional: true
-    default: '[[true]]'
     since:
       arma3: '1.70'
   - !Item
     name: kills
-    desc: show "x killed by y" [[systemChat]] messages
+    desc: (Optional, default [[true]]) show "x killed by y" [[systemChat]] messages
     type: Boolean
-    optional: true
-    default: '[[true]]'
   - !Item
     name: showIcon3D
-    desc: show icons drawn with [[drawIcon3D]] even when the HUD is hidden
+    desc: (Optional, default [[false]]) show icons drawn with [[drawIcon3D]] even when the HUD is hidden
     type: Boolean
-    optional: true
-    default: '[[false]]'
     since:
       arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Local
-since:
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>showHUD false;</sqf>
 - "Hide vehicle radar and compass:\n<sqf>\nshowHUD [\n\ttrue,  // scriptedHUD\n\ttrue,  // info\n\tfalse, // radar\n\tfalse, // compass\n\ttrue,  // direction\n\ttrue,  // menu\n\ttrue,  // group\n\ttrue,  // cursors\n\ttrue,  // panels\n\ttrue,  // kills\n\ttrue   // showIcon3D\n];\n</sqf>"

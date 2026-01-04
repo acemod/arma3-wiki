@@ -8,13 +8,13 @@ syntax:
   - array
   - code
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      value: Anything
     desc: resulting array
   left: !Item
     name: array
     type: !ArrayUnsized
-      type: Anything
-      desc: ''
+      value: Anything
   right: !Item
     name: code
     desc: code to be executed on each element of the array. The current element value is stored in the magic variable [[Magic Variables#x|_x]].
@@ -23,7 +23,8 @@ syntax:
   - hashmap
   - code
   ret:
-    type: ArrayUnknown
+    type: !ArrayUnsized
+      value: Anything
     desc: resulting array
   left: !Item
     name: hashmap
@@ -36,8 +37,7 @@ syntax:
     arma3: '2.4'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - <sqf>private _arr = [1,2,3,4,5,6,7,8,9,0] apply { [1,0] select (_x % 2 == 0) }; // [1,0,1,0,1,0,1,0,1,0]</sqf>
 - <sqf>private _arr = [1,2,3,4,5,6,7,8,9,0] apply { _x ^ _x }; // [1,4,27,256,3125,46656,823543,16777216,387420480,1]</sqf>

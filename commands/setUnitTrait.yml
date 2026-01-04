@@ -35,22 +35,21 @@ syntax:
   - !Item
     name: value
     desc: value (see above)
-    type: !OneOf
-    - type: Boolean
-      desc: null
-      since: null
-    - type: Number
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Boolean
+        desc: null
+        since: null
+      - type: Number
+        desc: null
+        since: null
   - !Item
     name: isCustom
-    desc: Must be set to [[true]] in case of custom
+    desc: (Optional) Must be set to [[true]] in case of custom
     type: Boolean
-    optional: true
 argument_loc: Local
 effect_loc: Global
-since:
-  arma3: '1.58'
+since: {}
 examples:
 - <sqf>player setUnitTrait ["Medic", true];</sqf>
 see_also:

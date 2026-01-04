@@ -14,17 +14,14 @@ syntax:
   left: !Item
     name: searchIn
     type: !ArrayUnsized
-      type: Anything
-      desc: ''
+      value: Anything
   right: !Item
     name: toFind
     type: !ArrayUnsized
-      type: Anything
-      desc: ''
+      value: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.10'
+since: {}
 examples:
 - <sqf>[0,1,2,3,4] findAny [2,4,6,8]; // returns 2</sqf>
 - <sqf>[0,1,2,3,4] findAny [8,6,4,2]; // returns 2</sqf>

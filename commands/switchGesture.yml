@@ -37,31 +37,21 @@ syntax:
     type: String
   - !Item
     name: time
-    desc: normalised time, in range 0..1, where 0 = beginning of the animation, and 1 = end of the animation
+    desc: (Optional, default 0) normalised time, in range 0..1, where 0 = beginning of the animation, and 1 = end of the animation
     type: Number
-    optional: true
-    default: '0'
   - !Item
     name: blendFactor
-    desc: how much to blend the current animation with the new animation, in range 0..1, where 0 = current animation, and 1 = new animation. When 1 is used, the switching is instant (not smooth).
+    desc: (Optional, default 1) how much to blend the current animation with the new animation, in range 0..1, where 0 = current animation, and 1 = new animation. When 1 is used, the switching is instant (not smooth).
     type: Number
-    optional: true
-    default: '1'
   - !Item
     name: resetAim
-    desc: whether the aim/head direction should be reset after switching
+    desc: (Optional, default true) whether the aim/head direction should be reset after switching
     type: Boolean
-    optional: true
-    default: 'true'
   since:
     arma3: '2.18'
 argument_loc: Local
 effect_loc: Global
-since:
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>soldierOne switchGesture "Wave";</sqf>
 - "<sqf>\n// Create a dummy agent that copies your moves\nai1 = createAgent [typeOf player, getPosATL player, [], 0, \"NONE\"];\nai1 disableAI \"ALL\";\n\nonEachFrame\n{\n\tai1 setAnimSpeedCoef getAnimSpeedCoef player;\n\tai1 setVectorDir vectorDir player;\n\tprivate _m = animationState player;\n\tprivate _g = gestureState player;\n\tprivate _i = getUnitMovesInfo player;\n\tprivate _a = getUnitMovesInfo ai1;\n\n\tif (animationState ai1 != _m || abs(_i # 1 - _a # 1) > 0.1) then\n\t{\n\t\tai1 switchMove [_m, _i # 0, _i # 3, false];\n\t};\n\n\tif ((gestureState ai1 != _g || abs(_i # 6 - _a # 6) > 0.1) && (_g != \"<none>\" && _g find \"_player\" < 0)) then\n\t{\n\t\tai1 switchGesture [_g, _i # 5, _i # 8, false];\n\t};\n}\n</sqf>"

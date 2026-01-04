@@ -5,15 +5,30 @@ groups:
 syntax:
 - call: !Unary layer
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: type
+      type: String
+      desc: type of effect, can be {{hl|"OBJ"}}, {{hl|"RSC"}} or {{hl|"TXT"}}
+      since: null
+    - name: effect
+      type: String
+      desc: '[[Title Effect Type]] ({{hl|"PLAIN"}}, {{hl|"BLACK OUT"}} etc)'
+      since: null
+    - name: speed
+      type: Number
+      desc: effect speed multiplier
+      since: null
+    - name: showInMap
+      type: Boolean
+      desc: '[[true]] if effect is available over map'
+      since: null
   right: !Item
     name: layer
     desc: layer number or -1 (see [[allActiveTitleEffects]])
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.10'
+since: {}
 examples:
 - |-
   <sqf>

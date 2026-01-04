@@ -37,18 +37,15 @@ syntax:
     type: Number
   - !Item
     name: hardlimitstart
-    desc: max distance hard limit start (start of fading of intensity to 0) in m
+    desc: (Optional) max distance hard limit start (start of fading of intensity to 0) in m
     type: Number
-    optional: true
   - !Item
     name: hardlimitend
-    desc: max distance hard limit end (end of fading of intensity to 0) in m
+    desc: (Optional) max distance hard limit end (end of fading of intensity to 0) in m
     type: Number
-    optional: true
 argument_loc: Local
 effect_loc: Local
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>myLight setLightAttenuation [2, 4, 4, 0, 9, 10];</sqf>
 see_also:

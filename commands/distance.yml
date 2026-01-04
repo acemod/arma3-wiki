@@ -14,28 +14,30 @@ syntax:
     desc: distance in meters or 1e10 if distance cannot be calculated
   left: !Item
     name: param1
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position3dAGL
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position3dAGL
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
   right: !Item
     name: param2
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Position3dAGL
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position3dAGL
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
 - call: !Binary
   - location1
   - location2
@@ -44,28 +46,30 @@ syntax:
     desc: distance in meters or 1e10 if distance cannot be calculated
   left: !Item
     name: location1
-    type: !OneOf
-    - type: Location
-      desc: null
-      since: null
-    - type: Position
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Location
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
   right: !Item
     name: location2
-    type: !OneOf
-    - type: Location
-      desc: null
-      since: null
-    - type: Position
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Location
+        desc: null
+        since: null
+      - type: Position
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
 - call: !Binary
   - a
   - b
@@ -82,14 +86,7 @@ syntax:
     arma3: '2.18'
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_meters = player distance _object;</sqf>
 - <sqf>_meters = player distance [1,2,3];</sqf>

@@ -40,15 +40,13 @@ syntax:
     type: Number
   - !Item
     name: soft
-    desc: '[[true]] to gradually move turret to the new limits (if turret is currenty oriented out of new limts). [[false]] to snap to the new limits. Default: [[false]]'
+    desc: '(Optional) [[true]] to gradually move turret to the new limits (if turret is currenty oriented out of new limts). [[false]] to snap to the new limits. Default: [[false]]'
     type: Boolean
-    optional: true
     since:
       arma3: '2.22'
 argument_loc: Local
 effect_loc: Global
-since:
-  arma3: '2.12'
+since: {}
 examples:
 - <sqf>m2 setTurretLimits [[0], -45, 45, -10, 10];</sqf>
 - <sqf>m2 setTurretLimits [[0]]; //reset</sqf>

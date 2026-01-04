@@ -8,8 +8,7 @@ syntax:
   - position
   ret:
     type: !ArrayUnsized
-      type: EdenEntity
-      desc: ''
+      value: EdenEntity
   right: !Array
   - !Item
     name: configPath
@@ -20,8 +19,7 @@ syntax:
     type: Position
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - "<sqf>\nmyComposition = create3DENComposition [\n\tconfigFile >> \"CfgGroups\" >> \"West\" >> \"BLU_F\" >> \"Infantry\" >> \"BUS_InfSquad\",\n\tscreenToWorld [0.5, 0.5]\n];\n</sqf>"
 see_also:

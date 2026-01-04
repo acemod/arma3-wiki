@@ -11,27 +11,28 @@ syntax:
   left: !Item
     name: point1
     desc: (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
-    type: !OneOf
-    - type: Position3d
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position3d
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
   right: !Item
     name: point2
     desc: (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
-    type: !OneOf
-    - type: Position3d
-      desc: null
-      since: null
-    - type: Position2d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position3d
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.22'
+since: {}
 examples:
 - <sqf>_euclideanDist = getPosASL player vectorDistance [0,0,0];</sqf>
 - |-

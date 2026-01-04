@@ -16,17 +16,19 @@ syntax:
     - maxDistance
     - vehicleType
   ret:
-    type: Unknown
+    type: Position3d
+    desc: a suitable empty position or empty array <sqf inline>[]</sqf> if not found
   left: !Item
     name: center
     desc: search area center position in format [x,y] or [x,y,z] in which case z is ignored
-    type: !OneOf
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
   right: !Array
   - !Item
     name: areaRadius
@@ -38,16 +40,11 @@ syntax:
     type: Number
   - !Item
     name: vehicleType
-    desc: classname of a vehicle to accommodate
+    desc: (Optional) classname of a vehicle to accommodate
     type: String
-    optional: true
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_position = getPosASL player findEmptyPosition [0, 100];</sqf>
 - <sqf>_position = _center findEmptyPosition [10,100,"UH60M_EP1"];</sqf>

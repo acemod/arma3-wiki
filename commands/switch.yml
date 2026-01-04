@@ -19,12 +19,7 @@ syntax:
     type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nswitch (floor random 5) do\n{\n\tcase 1: { hint \"one\"; };\n\tcase 2: { hint \"two\"; };\n\tdefault { hint \"zero, three or four\" };\n};\n</sqf>"
 - "<sqf>\nswitch (_condition) do\n{\n\tcase \"string1\";\n\tcase \"string2\": { hint \"string1 or string2\" };\n\tcase \"string3\";\n\tcase \"string4\": { hint \"string3 or string4\" };\n\tcase \"string5\"; // will never enter default's code\n\tdefault { hint \"default\" };\n};\n</sqf>"

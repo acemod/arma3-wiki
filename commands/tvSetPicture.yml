@@ -22,8 +22,7 @@ syntax:
   - !Item
     name: path
     type: !ArrayUnsized
-      type: Number
-      desc: ''
+      value: Number
   - !Item
     name: name
     type: String
@@ -40,15 +39,13 @@ syntax:
   - !Item
     name: path
     type: !ArrayUnsized
-      type: Number
-      desc: ''
+      value: Number
   - !Item
     name: name
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '0.74'
+since: {}
 examples:
 - <sqf>tvSetPicture [101, [0], "picture"];</sqf>
 - <sqf>_ctrl tvSetPicture [[0,0,0], getText (configFile >> "CfgWeapons" >> "optic_NVS" >> "picture")];</sqf>

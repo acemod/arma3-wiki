@@ -19,12 +19,7 @@ syntax:
     type: StructuredText
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_control ctrlSetStructuredText parseText "First line<img image=data\isniper.paa /><br />Second line"</sqf>
 - "To adjust text vertically, add extra line above with blank space (&amp;#160;) and set its size accordingly:\n<sqf>\nwith uiNamespace do {\n\tbutton = findDisplay 46 ctrlCreate [\"RscShortcutButton\", -1];\n\tbutton ctrlSetPosition [0,0,0.3,0.1];\n\tbutton ctrlCommit 0;\n\tbutton ctrlSetStructuredText parseText \n\t\"<t size='0.5'>&#160;</t><br/><t size='1' align='center'>Button Text&#160;&#160;</t>\";\n};\n</sqf>"

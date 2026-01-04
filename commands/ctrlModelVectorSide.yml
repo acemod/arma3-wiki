@@ -5,7 +5,7 @@ groups:
 syntax:
 - call: !Unary control
   ret:
-    type: ArrayUnknown
+    type: Vector3d
     desc: '[[vectorSide]] of the model or empty array if ''''control'''' is null'
   right: !Item
     name: control
@@ -13,8 +13,7 @@ syntax:
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.18'
+since: {}
 examples:
 - <sqf>private _vectorSide = ctrlModelVectorSide _control3D;</sqf>
 see_also:

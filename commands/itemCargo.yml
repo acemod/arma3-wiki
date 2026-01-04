@@ -6,8 +6,7 @@ syntax:
 - call: !Unary object
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
     desc: '["ItemType1","ItemType2","ItemType3"...]'
   right: !Item
     name: object
@@ -15,8 +14,7 @@ syntax:
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>hint str itemCargo vestContainer player;</sqf>
 see_also:

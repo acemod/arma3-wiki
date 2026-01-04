@@ -12,12 +12,10 @@ syntax:
   right: !Item
     name: vector
     type: !ArrayUnsized
-      type: Number
-      desc: ''
+      value: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.22'
+since: {}
 examples:
 - <sqf>_size = vectorMagnitude [0,3,4]; // returns 5</sqf>
 - "<sqf>\n_speed = vectorMagnitude velocity player;\t\t\t\t// return velocity of player in m/s\n_speed = (vectorMagnitude velocity player) * 3.6;\t\t// return velocity of player in km/h\n_speed = (vectorMagnitude velocity player) * 2.23694;\t// return velocity of player in mph\n</sqf>"

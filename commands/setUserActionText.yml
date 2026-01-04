@@ -23,45 +23,43 @@ syntax:
   - !Item
     name: textMenu
     desc: text title shown in scroll action menu
-    type: !OneOf
-    - type: String
-      desc: null
-      since: null
-    - type: StructuredText
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: String
+        desc: null
+        since: null
+      - type: StructuredText
+        desc: null
+        since: null
   - !Item
     name: textWindowBackground
-    desc: background text
-    type: !OneOf
-    - type: String
-      desc: null
-      since: null
-    - type: StructuredText
-      desc: null
-      since: null
-    optional: true
-    default: '""'
+    desc: (Optional, default "") background text
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: String
+        desc: null
+        since: null
+      - type: StructuredText
+        desc: null
+        since: null
     since:
       arma3: '1.62'
   - !Item
     name: textWindowForeground
-    desc: foreground text
-    type: !OneOf
-    - type: String
-      desc: null
-      since: null
-    - type: StructuredText
-      desc: null
-      since: null
-    optional: true
-    default: '""'
+    desc: (Optional, default "") foreground text
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: String
+        desc: null
+        since: null
+      - type: StructuredText
+        desc: null
+        since: null
     since:
       arma3: '1.62'
 argument_loc: Global
 effect_loc: Local
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - |-
   <sqf>

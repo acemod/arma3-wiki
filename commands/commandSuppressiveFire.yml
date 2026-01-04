@@ -11,27 +11,29 @@ syntax:
   left: !Item
     name: unit
     desc: a single unit or array of units
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: ArrayUnknown
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: !ArrayUnsized
+          value: Object
+        desc: null
+        since: null
   right: !Item
     name: target
-    desc: actual target or position of the target in format [[Position#PositionASL|PositionASL]]
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: ArrayUnknown
-      desc: null
-      since: null
+    desc: actual target or position
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Position3dASL
+        desc: null
+        since: null
 argument_loc: Local
 effect_loc: Global
-since:
-  arma3: '1.60'
+since: {}
 examples:
 - <sqf>_soldier commandSuppressiveFire getPosWorld _enemy;</sqf>
 - <sqf>_soldier commandSuppressiveFire cursorTarget;</sqf>

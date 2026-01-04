@@ -5,18 +5,25 @@ groups:
 syntax:
 - call: !Unary control
   ret:
-    type: Unknown
-    desc: |-
-      position in text selection started
-      * length: [[Number]] - number of the highlighted characters (this number could be negative, see description)
-      * selectedText: [[String]] - selected text
+    type: !ArraySized
+    - name: start
+      type: Number
+      desc: position in text selection started
+      since: null
+    - name: length
+      type: Number
+      desc: number of the highlighted characters (this number could be negative, see description)
+      since: null
+    - name: selectedText
+      type: String
+      desc: selected text
+      since: null
   right: !Item
     name: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.0'
+since: {}
 examples:
 - |-
   Selection is made from left to right:

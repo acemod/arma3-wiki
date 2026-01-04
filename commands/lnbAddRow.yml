@@ -16,8 +16,7 @@ syntax:
   - !Item
     name: data
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
 - call: !Binary
   - ctrl
   - data
@@ -30,15 +29,10 @@ syntax:
   right: !Item
     name: data
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
 argument_loc: Local
 effect_loc: Local
-since:
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>lnbAddRow [1, ["COL1", "COL2"]];</sqf>
 - <sqf>_ctrl lnbAddRow ["COL1", "COL2"];</sqf>

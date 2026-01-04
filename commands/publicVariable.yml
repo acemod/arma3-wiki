@@ -44,14 +44,7 @@ syntax:
     type: String
 argument_loc: Local
 effect_loc: Global
-since:
-  flashpoint: '1.34'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nTAG_MyPublicVariable = 0;\nTAG_MyPublicVariable = 1;\npublicVariable \"TAG_MyPublicVariable\";\t// other clients will receive the \"TAG_MyPublicVariable\" variable with a 1 value\n\nTAG_MyPublicVariable = 2;\t\t\t\t// needs to be broadcast again - synchronisation is not automatic\n</sqf>"
 - "JIP example:\n<sqf>\nif (isNil \"TAG_CurrentTarget\") then\t// has the variable already been set and broadcast?\n{\n\tTAG_CurrentTarget = objNull;\t// if not, set it on the local machine\n};\n\nplayer doTarget TAG_CurrentTarget;\n</sqf>"

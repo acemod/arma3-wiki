@@ -7,21 +7,20 @@ syntax:
 - call: !Unary obj
   ret:
     type: !ArrayUnsized
-      type: Waypoint
-      desc: ''
+      value: Waypoint
   right: !Item
     name: obj
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: Waypoint
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: Waypoint
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>synchronizedWaypoints _someTrigger;</sqf>
 see_also:

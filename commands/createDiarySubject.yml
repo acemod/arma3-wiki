@@ -24,17 +24,11 @@ syntax:
     type: String
   - !Item
     name: picture
-    desc: icon to display next to the subject. Can be set later with [[setDiarySubjectPicture]]. Similar to [[lbSetPictureRight]].
+    desc: (Optional, default {{hl|""}}) icon to display next to the subject. Can be set later with [[setDiarySubjectPicture]]. Similar to [[lbSetPictureRight]].
     type: String
-    optional: true
-    default: '{{hl|""}}'
 argument_loc: Local
 effect_loc: Local
-since:
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_index = player createDiarySubject ["myPage","My page"];</sqf>
 see_also:

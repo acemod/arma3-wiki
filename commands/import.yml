@@ -12,19 +12,18 @@ syntax:
   right: !Item
     name: variableName
     desc: variable(s) to import
-    type: !OneOf
-    - type: String
-      desc: null
-      since: null
-    - type: !ArrayUnsized
-        type: String
-        desc: ''
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: String
+        desc: null
+        since: null
+      - type: !ArrayUnsized
+          value: String
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.18'
+since: {}
 examples:
 - "<sqf>\nprivate _myVar = 1;\ncall\n{\n\timport \"_myVar\"; // similar to: private _myVar = _myVar;\n};\n</sqf>"
 - "<sqf>\nprivate _a = 1;\nprivate _b = 2;\ncall\n{\n\timport [\"_a\", \"_b\"]; // similar to: [_a, _b] params [\"_a\", \"_b\"];\n};\n</sqf>"

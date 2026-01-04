@@ -5,11 +5,12 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: Unknown
+    type: !ArrayUnsized
+      value: Boolean
+    desc: options in format [subtitlesEnabled, radioSubtitlesEnabled]
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.94'
+since: {}
 examples:
 - <sqf>private _subtitleSettings = getSubtitleOptions;</sqf>
 see_also:

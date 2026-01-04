@@ -7,20 +7,33 @@ groups:
 syntax:
 - call: !Unary unitName
   ret:
-    type: Unknown
-    desc: |-
-      number of infantry units killed
-      * killsSoft: [[Number]] - number of soft vehicles killed
-      * killsArmor: [[Number]] - number of armored vehicles killed
-      * killsAir: [[Number]] - number of air vehicles killed
-      * score: [[Number]] - total score
+    type: !ArraySized
+    - name: killsInfantry
+      type: Number
+      desc: number of infantry units killed
+      since: null
+    - name: killsSoft
+      type: Number
+      desc: number of soft vehicles killed
+      since: null
+    - name: killsArmor
+      type: Number
+      desc: number of armored vehicles killed
+      since: null
+    - name: killsAir
+      type: Number
+      desc: number of air vehicles killed
+      since: null
+    - name: score
+      type: Number
+      desc: total score
+      since: null
   right: !Item
     name: unitName
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - "<sqf>\ngetPlayerScores BIS_player1;\t// e.g [4, 0, 3, 1, 2, 16]\n\t\t\t\t\t\t\t\t// or in SP: []\n</sqf>"
 see_also:

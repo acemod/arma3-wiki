@@ -5,14 +5,22 @@ groups:
 syntax:
 - call: !Unary control
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: headerIndex
+      type: Number
+      desc: null
+      since: null
+    - name: createdControls
+      type: !ArrayUnsized
+        value: Control
+      desc: null
+      since: null
   right: !Item
     name: control
     type: Control
 argument_loc: Local
 effect_loc: Local
-since:
-  arma3: '1.70'
+since: {}
 examples:
 - <sqf>private _array = ctAddHeader _control;</sqf>
 see_also:

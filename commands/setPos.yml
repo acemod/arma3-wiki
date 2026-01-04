@@ -18,18 +18,18 @@ syntax:
     type: Object
   right: !Item
     name: pos
-    desc: position in format [[Position#PositionAGL|PositionAGL]] or [[Position#Introduction|Position2D]], in which case Z will be set to 0
-    type: ArrayUnknown
+    desc: if [[Position#Introduction|Position2D]], Z will be set to 0
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position3dAGL
+        desc: null
+        since: null
+      - type: Position2d
+        desc: null
+        since: null
 argument_loc: Global
 effect_loc: Global
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - |-
   <sqf>

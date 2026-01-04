@@ -29,26 +29,17 @@ syntax:
   right: !Array
   - !Item
     name: muzzle
-    desc: muzzle name or "" for the current muzzle.
+    desc: (Optional, default [[currentMuzzle]]) muzzle name or "" for the current muzzle.
     type: String
-    optional: true
-    default: '[[currentMuzzle]]'
   - !Item
     name: magazine
-    desc: magazine name or "" for given muzzle's magazine. If given muzzle is [[currentMuzzle]] then [[currentMagazine]]
+    desc: (Optional, default given muzzle magazine) magazine name or "" for given muzzle's magazine. If given muzzle is [[currentMuzzle]] then [[currentMagazine]]
     type: String
-    optional: true
-    default: given muzzle magazine
   since:
     arma3: '2.8'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>if (needReload player == 1) then { reload player };</sqf>
 - <sqf>player reload ["GL_3GL_F", "1Rnd_HE_Grenade_shell"];</sqf>

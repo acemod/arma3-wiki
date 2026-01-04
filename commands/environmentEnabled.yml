@@ -6,12 +6,23 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: Unknown
-    desc: see [[enableEnvironment]]
+    type: !ArraySized
+    - name: ambientLife
+      type: Boolean
+      desc: null
+      since: null
+    - name: ambientSound
+      type: Boolean
+      desc: null
+      since: null
+    - name: windyCoef
+      type: Number
+      desc: see [[enableEnvironment]]
+      since:
+        arma3: '2.12'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.68'
+since: {}
 examples:
 - <sqf>private _enabled = environmentEnabled;</sqf>
 see_also:

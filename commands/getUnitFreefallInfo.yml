@@ -5,15 +5,26 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: isFalling
+      type: Boolean
+      desc: '[[true]] if unit is falling'
+      since: null
+    - name: isInFreefallPose
+      type: Boolean
+      desc: '[[true]] if unit is in freefall pose'
+      since: null
+    - name: minFreefallHeight
+      type: Number
+      desc: current minimum freefall height (see [[setUnitFreefallHeight]])
+      since: null
   right: !Item
     name: unit
     desc: unit
     type: Object
 argument_loc: Local
 effect_loc: Unspecified
-since:
-  arma3: '2.10'
+since: {}
 examples:
 - <sqf>getUnitFreefallInfo player;</sqf>
 see_also:

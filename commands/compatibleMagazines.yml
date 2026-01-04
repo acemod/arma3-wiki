@@ -6,9 +6,8 @@ syntax:
 - call: !Unary weaponOrAmmo
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
-    desc: all magazines that can be loaded in '''any muzzle''' of the given weapon or magazines containing given ammo.
+      value: String
+    desc: all magazines that can be loaded in any muzzle of the given weapon or magazines containing given ammo.
   right: !Item
     name: weaponOrAmmo
     desc: weapon class name or {{GVI|arma3|2.22|size= 0.75}} ammo class name
@@ -18,8 +17,7 @@ syntax:
   - muzzle
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
     desc: all magazines that can be loaded in the given muzzle of the given weapon.
   right: !Array
   - !Item
@@ -32,8 +30,7 @@ syntax:
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.10'
+since: {}
 examples:
 - <sqf>compatibleMagazines "arifle_Katiba_GL_F";</sqf>
 - <sqf>compatibleMagazines ["arifle_Katiba_GL_F", "this"];</sqf>

@@ -13,18 +13,18 @@ syntax:
   right: !Item
     name: positionWorld
     desc: position in world coordinates either in [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]]
-    type: !OneOf
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.4'
-branch: diag
+since: {}
+branch: Diag
 examples:
 - <sqf>private _h = diag_getTerrainHeight position player;</sqf>
 see_also:

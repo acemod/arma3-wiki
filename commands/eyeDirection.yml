@@ -5,15 +5,13 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-    type: ArrayUnknown
-    desc: 3D Vector
+    type: Vector3d
   right: !Item
     name: unit
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - "Keep a can in front of the player's ''face'':\n<sqf>\nCan = \"Land_Can_V3_F\" createVehicle getPosATL player;\nonEachFrame {\n\t_eyePos = eyePos player;\n\t_eyeDir = eyeDirection player;\n\tCan setPosASL [\n\t\t_eyePos select 0 + (_eyeDir select 0),\n\t\t_eyePos select 1 + (_eyeDir select 1),\n\t\t_eyePos select 2 + (_eyeDir select 2)\n\t]\n};\n</sqf>"
 - "Draw AI eye direction (green) and weapon direction (red) in 3D:\n<sqf>\nBob = createGroup east createUnit [\"O_Soldier_F\", [0,0,0], [], 0, \"NONE\"];\nBob setVehiclePosition [player modelToWorld [0,100,0], [], 0, \"NONE\"];\nonEachFrame {\n\t_beg = ASLToAGL eyePos Bob;\n\n\t_endE = _beg vectorAdd (eyeDirection Bob vectorMultiply 100);\n\tdrawLine3D [_beg, _endE, [0,1,0,1]];\n\n\t_endW = _beg vectorAdd (Bob weaponDirection currentWeapon Bob vectorMultiply 100);\n\tdrawLine3D [_beg, _endW, [1,0,0,1]];\n};\n</sqf>"

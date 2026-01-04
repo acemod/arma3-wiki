@@ -17,14 +17,12 @@ syntax:
     type: String
   - !Item
     name: positionWorld
-    desc: placement position by the '''model centre''''s position (see [[getPosWorld]])
+    desc: placement position by the model centre's position (see [[getPosWorld]])
     type: Position3dASL
   - !Item
     name: local
-    desc: '[[true]] to create a local instance only'
+    desc: (Optional, default [[false]]) [[true]] to create a local instance only
     type: Boolean
-    optional: true
-    default: '[[false]]'
     since:
       arma3: '1.96'
 - call: !Unary
@@ -45,16 +43,13 @@ syntax:
     type: Position3dASL
   - !Item
     name: local
-    desc: '[[true]] to create a local instance only'
+    desc: (Optional, default [[false]]) [[true]] to create a local instance only
     type: Boolean
-    optional: true
-    default: '[[false]]'
     since:
       arma3: '1.96'
 argument_loc: Unspecified
 effect_loc: Global
-since:
-  arma3: '1.58'
+since: {}
 examples:
 - "<sqf>\nprivate _pos = player getRelPos [10, 0];\nprivate _tank = createSimpleObject [\"a3\\armor_f_beta\\apc_tracked_01\\apc_tracked_01_rcws_f.p3d\", _pos];\n_tank setPos (_pos vectorAdd (getPosWorld _tank vectorDiff (_tank modelToWorld [0,0,0])));\n\n_tank hideSelection [\"zasleh\", true];\n_tank hideSelection [\"zasleh2\", true];\n_tank hideSelection [\"clan\", true];\n \n_tank animate [\"Wheel_podkoloL3\", 0.5, true];\n_tank animate [\"Wheel_podkoloL6\", 0.5, true];\n</sqf>"
 - "<sqf>\nprivate _pos = player getRelPos [10, 0];\nprivate _tank = createSimpleObject [\"B_APC_Tracked_01_CRV_F\", AGLToASL _pos];\n_tank setObjectTexture [0, \"#(rgb,8,8,3)color(0,1,0,0.01)\"];\n\n_tank hideSelection [\"zasleh\", true];\n_tank hideSelection [\"zasleh2\", true];\n_tank hideSelection [\"clan\", true];\n  \n_tank animate [\"Wheel_podkoloL3\", 0.5, true];\n_tank animate [\"Wheel_podkoloL6\", 0.5, true];\n</sqf>"

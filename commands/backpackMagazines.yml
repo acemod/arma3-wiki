@@ -7,15 +7,13 @@ syntax:
 - call: !Unary unit
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
   right: !Item
     name: unit
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - "<sqf>\nbackpackMagazines player;\n// returns e.g\n/*\n[\n\t\"Titan AT Missile(1/1)[id/cr:16/0](2x)\"\n]\n*/\n</sqf>"
 see_also:

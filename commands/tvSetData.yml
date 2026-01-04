@@ -16,8 +16,7 @@ syntax:
   - !Item
     name: path
     type: !ArrayUnsized
-      type: Number
-      desc: ''
+      value: Number
   - !Item
     name: data
     type: String
@@ -34,15 +33,13 @@ syntax:
   - !Item
     name: path
     type: !ArrayUnsized
-      type: Number
-      desc: ''
+      value: Number
   - !Item
     name: data
     type: String
 argument_loc: Local
 effect_loc: Local
-since:
-  arma3: '0.74'
+since: {}
 examples:
 - <sqf>tvSetData [101, [0], "Test data"];</sqf>
 - <sqf>_ctrl tvSetData [[0,0,0], "Test data"];</sqf>

@@ -19,15 +19,14 @@ syntax:
   - !Infinite
     - !Item
       name: entitiesN
-      type: !OneOf
-      - type: !ArrayUnsized
-          type: EdenEntity
-          desc: ''
-        desc: null
-        since: null
-      - type: EdenID
-        desc: null
-        since: null
+      type: !ArrayUnsized
+        value: !OneOf
+        - type: EdenEntity
+          desc: null
+          since: null
+        - type: EdenID
+          desc: null
+          since: null
     - !Item
       name: classN
       desc: attribute name
@@ -38,8 +37,7 @@ syntax:
       type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - |-
   <sqf>

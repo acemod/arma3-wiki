@@ -5,11 +5,30 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: ''
+      type: !ArraySized
+      - name: name
+        type: String
+        desc: function or file name
+        since: null
+      - name: fileName
+        type: String
+        desc: null
+        since: null
+      - name: isRunning
+        type: Boolean
+        desc: null
+        since: null
+      - name: currentLine
+        type: Number
+        desc: line currently executing
+        since: null
+      desc: null
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.44'
+since: {}
 examples:
 - <sqf>{ systemChat str _x } forEach diag_activeSQSScripts;</sqf>
 see_also:

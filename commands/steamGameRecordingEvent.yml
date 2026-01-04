@@ -9,23 +9,27 @@ syntax:
     desc: event handle (which can be used to edit an event after it has been triggered)
   right: !Item
     name: parameters
-    type: !OneOf
-    - type: ArrayUnknown
-      desc: null
+    type: !ArraySized
+    - name: eventClass
+      type: String
+      desc: class in [[description.ext]] >> "SteamGameRecording" or config "SteamManagerConfig" >> "GameRecording" or a special utility string
       since: null
-    - type: String
-      desc: null
+    - name: eventDuration
+      type: Number
+      desc: 0 for an instant event, or an amount of seconds this event lasted
       since: null
-    - type: Number
-      desc: null
+    - name: eventArguments
+      type: !ArrayUnsized
+        value: String
+      desc: arguments that can be used to add dynamic info to the event (texts)
       since: null
-    - type: ArrayUnknown
-      desc: null
+    - name: startOffset
+      type: Number
+      desc: amount of seconds relative to the even trigger time
       since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.20'
+since: {}
 examples:
 - <sqf>steamGameRecordingEvent ["UnitKilled", 0, ["Player1", "50"]]; //"UnitKilled" event, happening now, with arguments</sqf>
 - <sqf>steamGameRecordingEvent ["ZeusUI", 5, [], -5]; //Was in the Zeus UI during the last 5 seconds</sqf>

@@ -70,11 +70,19 @@ syntax:
   - - function
     - arguments
   ret:
-    type: Unknown
-    desc: |-
-      data sent back from extension. It is up to extension maker what it is.
-      * returnCode: [[Number]] - integer return from extension method. It is up to extension maker to define it.
-      * errorCode: [[Number]] - error code in case of command error (see description). 0 means no errors.
+    type: !ArraySized
+    - name: result
+      type: String
+      desc: data sent back from extension. It is up to extension maker what it is.
+      since: null
+    - name: returnCode
+      type: Number
+      desc: integer return from extension method. It is up to extension maker to define it.
+      since: null
+    - name: errorCode
+      type: Number
+      desc: error code in case of command error (see description). 0 means no errors.
+      since: null
   left: !Item
     name: extension
     desc: extension name
@@ -86,16 +94,14 @@ syntax:
     type: String
   - !Item
     name: arguments
-    desc: 'function arguments. Could be array of [[Anything]], each element will be converted to [[String]] automatically. Current allowed max length of this array is 2048 (since Arma 3 v1.92; previous limit: 1024)'
-    type: ArrayUnknown
+    desc: 'function arguments. Each element will be converted to [[String]] automatically. Current allowed max length of this array is 2048 (since Arma 3 v1.92; previous limit: 1024)'
+    type: !ArrayUnsized
+      value: Anything
   since:
     arma3: '1.68'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma2oa: '1.60'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_return = "myExtension" callExtension "stringToBeParsed";</sqf>
 - |-

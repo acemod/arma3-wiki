@@ -15,11 +15,10 @@ syntax:
     type: Number
   - !Item
     name: path
-    desc: path to tree view item
-    type: ArrayUnknown
+    type: Path
   - !Item
     name: color
-    type: ArrayColorRgba
+    type: ArrayColor
 - call: !Binary
   - control
   - - path
@@ -32,15 +31,13 @@ syntax:
   right: !Array
   - !Item
     name: path
-    desc: path to tree view item
-    type: ArrayUnknown
+    type: Path
   - !Item
     name: color
-    type: ArrayColorRgba
+    type: ArrayColor
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.62'
+since: {}
 examples:
 - <sqf>tvSetPictureRightColor [101, [0], [1,0,1,1]];</sqf>
 - <sqf>_ctrl tvSetPictureRightColor [[0], [1,0,1,1]];</sqf>

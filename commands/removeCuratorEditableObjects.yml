@@ -17,18 +17,15 @@ syntax:
   - !Item
     name: objects
     type: !ArrayUnsized
-      type: Object
-      desc: ''
+      value: Object
   - !Item
     name: removeCrew
+    desc: (Optional, default [[true]])
     type: Boolean
-    optional: true
-    default: '[[true]]'
 argument_loc: Unspecified
 effect_loc: Unspecified
 server_exec: true
-since:
-  arma3: '1.16'
+since: {}
 examples:
 - <sqf>curatorModule removeCuratorEditableObjects [[cursorTarget], true];</sqf>
 see_also:

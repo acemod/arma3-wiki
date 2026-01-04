@@ -8,16 +8,14 @@ syntax:
 - call: !Unary box
   ret:
     type: !ArrayUnsized
-      type: String
-      desc: ''
+      value: String
     desc: list of present classes
   right: !Item
     name: box
     type: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>hint str weaponCargo backpackContainer player;</sqf>
 see_also:

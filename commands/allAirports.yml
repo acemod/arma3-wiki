@@ -5,14 +5,20 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: Unknown
-    desc: |-
-      static airports IDs
-      * dynamicAirports [[Array]] of [[Object]]s - dynamic airports objects (such as "DynamicAirport_01_F" found on aircraft carrier)
+    type: !ArraySized
+    - name: staticAirports
+      type: !ArrayUnsized
+        value: Number
+      desc: static airports IDs
+      since: null
+    - name: dynamicAirports
+      type: !ArrayUnsized
+        value: Object
+      desc: dynamic airports objects (such as "DynamicAirport_01_F" found on aircraft carrier)
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.76'
+since: {}
 examples:
 - <sqf>_airplane landAt selectRandom (allAirports select 0);</sqf>
 see_also:

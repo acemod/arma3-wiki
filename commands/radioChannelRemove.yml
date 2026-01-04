@@ -15,13 +15,12 @@ syntax:
     type: Number
   right: !Item
     name: units
-    desc: list of units
-    type: ArrayUnknown
+    desc: units
+    type: !ArrayUnsized
+      value: Object
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>3 radioChannelRemove [blufor_unit_1, blufor_unit_2];</sqf>
 see_also:

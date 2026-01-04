@@ -5,16 +5,15 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-    type: ArrayUnknown
-    desc: '[x,y,z] offset relative to the model centre'
+    type: Position3dRelative
+    desc: relative to the model centre
   right: !Item
     name: object
     desc: PhysX object
     type: Object
 argument_loc: Global
 effect_loc: Unspecified
-since:
-  arma3: '1.12'
+since: {}
 examples:
 - <sqf>_com = getCenterOfMass _myCar;</sqf>
 see_also:

@@ -8,10 +8,15 @@ syntax:
   - vehicle
   - turretPath
   ret:
-    type: Unknown
-    desc: |-
-      current periscope elevation value. -1 in case of an invalid turret
-      * isLocked: [[Boolean]] - whether or not user override is blocked
+    type: !ArraySized
+    - name: elevation
+      type: Number
+      desc: current periscope elevation value. -1 in case of an invalid turret
+      since: null
+    - name: isLocked
+      type: Boolean
+      desc: whether or not user override is blocked
+      since: null
   left: !Item
     name: vehicle
     desc: vehicle with periscope tech
@@ -21,8 +26,7 @@ syntax:
     type: TurretPath
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '2.0'
+since: {}
 examples:
 - <sqf>_eddie periscopeElevation [0] params ["_elevation", "_isLocked"];</sqf>
 see_also:

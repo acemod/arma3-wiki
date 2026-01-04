@@ -30,7 +30,7 @@ syntax:
     type: Nothing
   right: !Item
     name: code
-    desc: code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
+    desc: code that is executed in [[Scheduler#Unscheduled_Environment|Unscheduled Environment]]
     type: Code
 - call: !Binary
   - - text
@@ -43,35 +43,31 @@ syntax:
   - !Item
     name: text
     desc: text of the entry that is added to the history list
-    type: !OneOf
-    - type: String
-      desc: null
-      since: null
-    - type: Nothing
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: String
+        desc: null
+        since: null
+      - type: Nothing
+        desc: null
+        since: null
   - !Item
     name: tooltip
-    desc: ) - tooltip of the entry
+    desc: (Optional, default "Batch Change" ([[isLocalized|localized]])) - tooltip of the entry
     type: String
-    optional: true
-    default: '"Batch Change" ([[isLocalized|localized]]'
   - !Item
     name: icon
-    desc: '- path to the icon that is displayed left of the ''''text''''. ''''''Must not start with a {{hl|\}}!'''''''
+    desc: (Optional, default "a3\3den\data\cfg3den\history\multipleoperations_ca.paa") - path to the icon that is displayed left of the ''text''. Must not start with a {{hl|\}}!
     type: String
-    optional: true
-    default: '"a3\3den\data\cfg3den\history\multipleoperations_ca.paa"'
   right: !Item
     name: code
-    desc: code that is executed in '''[[Scheduler#Unscheduled_Environment|Unscheduled Environment]]'''
+    desc: code that is executed in [[Scheduler#Unscheduled_Environment|Unscheduled Environment]]
     type: Code
   since:
     arma3: '2.6'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - "<sqf>\ncollect3DENHistory \n{\n\t_logic = create3DENEntity [\"Logic\", \"Logic\", position player];\n\tadd3DENConnection [\"Sync\", [_logic], player];\n}; // Creates a logic and connects it to player in one history step.\n</sqf>"
 - "<sqf>\n[\"Create Entity\", \"B_Soldier_F\", \"a3\\3den\\data\\cfg3den\\history\\create_ca.paa\"] collect3DENHistory \n{\n\tcreate3DENEntity [\"Object\",\"B_Soldier_F\", screenToWorld [0.5,0.5]];\n};\n</sqf>"

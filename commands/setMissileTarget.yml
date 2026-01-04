@@ -42,8 +42,7 @@ syntax:
     arma3: '2.18'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.92'
+since: {}
 examples:
 - <sqf>missile1 setMissileTarget tank1;</sqf>
 - "<sqf>\nprivate _missile = createVehicle [\"Missile_AGM_01_F\", player modelToWorld [0,0,50], [], 0, \"CAN_COLLIDE\"];\n_missile setDir getDir player;\nprivate _target = createVehicle [\"O_APC_Wheeled_02_rcws_v2_F\", player modelToWorld [0,300,0], [], 0, \"CAN_COLLIDE\"];\n_target setVehicleTiPars [1, 1, 1];\n[_missile, _target] spawn {\n\tparams [\"_missile\", \"_target\"];\n\tsleep 0.1;\n\t_missile setMissileTarget _target;\n};\n</sqf>"

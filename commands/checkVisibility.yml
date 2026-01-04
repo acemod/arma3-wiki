@@ -40,25 +40,22 @@ syntax:
     type: String
   - !Item
     name: ignore2
-    desc: second object to exclude from calculations
+    desc: (Optional, default [[objNull]]) second object to exclude from calculations
     type: Object
-    optional: true
-    default: '[[objNull]]'
     since:
       arma3: '1.62'
   right: !Array
   - !Item
     name: beg
-    desc: start position in format [[Position#PositionASL|PositionASL]]
-    type: ArrayUnknown
+    desc: start position
+    type: Position3dASL
   - !Item
     name: end
-    desc: end position in format [[Position#PositionASL|PositionASL]]
-    type: ArrayUnknown
+    desc: end position
+    type: Position3dASL
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - <sqf>private _canSee = [objNull, "VIEW"] checkVisibility [eyePos player, eyePos unit1];</sqf>
 see_also:

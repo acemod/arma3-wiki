@@ -9,29 +9,25 @@ syntax:
   - coef
   ret:
     type: !ArrayUnsized
-      type: Number
-      desc: ''
+      value: Number
   right: !Array
   - !Item
     name: lowerBoundValues
     desc: lower bound for the new graph
     type: !ArrayUnsized
-      type: Number
-      desc: ''
+      value: Number
   - !Item
     name: graphValues
     desc: graph values
     type: !ArrayUnsized
-      type: Number
-      desc: ''
+      value: Number
   - !Item
     name: coef
     desc: the multiplication coefficient
     type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.92'
+since: {}
 examples:
 - <sqf>decayGraphValues [[1,2,3,4,5], [1,4,9,16,25], 0.3]; // returns [1,2,3,4.8,7.5]</sqf>
 see_also:

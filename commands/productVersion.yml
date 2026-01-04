@@ -7,23 +7,51 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: Unknown
-    desc: |-
-      product name
-      * nameShort: [[String]] - product short name
-      * version: [[Number]] - product version number
-      * buildNumber: [[Number]] - product build number
-      * {{GVI|arma3|1.00|size= 0.75}} buildType: [[String]] - build type, can be {{hl|"Stable"}}, {{hl|"Development"}}, {{hl|"Diag"}} or {{hl|"Profile"}}
-      * {{GVI|arma3|1.00|size= 0.75}} isModded: [[Boolean]] - is the product running with mods ([[true]]) or vanilla ([[false]])
-      * {{GVI|arma3|1.00|size= 0.75}} platform: [[String]] - can be {{hl|"Windows"}}, {{hl|"Linux"}} or {{hl|"OSX"}}
-      * {{GVI|arma3|1.68|size= 0.75}} architecture: [[String]] - {{hl|"x64"}} for 64bit or {{hl|"x86"}} for 32bit
-      * {{GVI|arma3|2.20|size= 0.75}} steamBranchName: [[String]] - {{hl|""}} (for default/public branch), {{hl|"profiling"}} or {{hl|"development"}}
+    type: !ArraySized
+    - name: name
+      type: String
+      desc: product name
+      since: null
+    - name: nameShort
+      type: String
+      desc: product short name
+      since: null
+    - name: version
+      type: Number
+      desc: product version number
+      since: null
+    - name: buildNumber
+      type: Number
+      desc: product build number
+      since: null
+    - name: buildType
+      type: String
+      desc: build type, can be {{hl|"Stable"}}, {{hl|"Development"}}, {{hl|"Diag"}} or {{hl|"Profile"}}
+      since:
+        arma3: '1.0'
+    - name: isModded
+      type: Boolean
+      desc: is the product running with mods ([[true]]) or vanilla ([[false]])
+      since:
+        arma3: '1.0'
+    - name: platform
+      type: String
+      desc: can be {{hl|"Windows"}}, {{hl|"Linux"}} or {{hl|"OSX"}}
+      since:
+        arma3: '1.0'
+    - name: architecture
+      type: String
+      desc: '{{hl|"x64"}} for 64bit or {{hl|"x86"}} for 32bit'
+      since:
+        arma3: '1.68'
+    - name: steamBranchName
+      type: String
+      desc: '{{hl|""}} (for default/public branch), {{hl|"profiling"}} or {{hl|"development"}}'
+      since:
+        arma3: '2.20'
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma2oa: '1.62'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>hint str productVersion; // would return ["Arma 2 OA", "arma2oa", 162, 95208] on Arma 2 OA 1.62.95208</sqf>
 - <sqf>hint str productVersion; // ["Arma 3", "Arma3", 137, 128764, "Development", false, "Windows"]</sqf>

@@ -12,21 +12,21 @@ syntax:
   left: !Item
     name: group
     desc: group itself or unit in a group
-    type: !OneOf
-    - type: Group
-      desc: null
-      since: null
-    - type: Object
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Group
+        desc: null
+        since: null
+      - type: Object
+        desc: null
+        since: null
   right: !Item
     name: target
     desc: group target
     type: Object
 argument_loc: Local
 effect_loc: Global
-since:
-  arma3: '1.70'
+since: {}
 examples:
 - <sqf>soldier1 forgetTarget soldier2;</sqf>
 - |-

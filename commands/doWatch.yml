@@ -10,15 +10,15 @@ syntax:
     type: Nothing
   left: !Item
     name: unit(s)
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: !ArrayUnsized
-        type: Object
-        desc: ''
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: !ArrayUnsized
+          value: Object
+        desc: null
+        since: null
   right: !Item
     name: position
     type: Position
@@ -29,28 +29,21 @@ syntax:
     type: Nothing
   left: !Item
     name: unit(s)
-    type: !OneOf
-    - type: Object
-      desc: null
-      since: null
-    - type: !ArrayUnsized
-        type: Object
-        desc: ''
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Object
+        desc: null
+        since: null
+      - type: !ArrayUnsized
+          value: Object
+        desc: null
+        since: null
   right: !Item
     name: target
     type: Object
 argument_loc: Local
 effect_loc: Global
-since:
-  flashpoint: '1.0'
-  flashpoint_elite: '1.0'
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - |-
   <sqf>_soldierOne doWatch markerPos "MarkerMoveOne";</sqf>

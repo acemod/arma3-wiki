@@ -5,11 +5,18 @@ groups:
 syntax:
 - call: Nular
   ret:
-    type: Unknown
+    type: !ArraySized
+    - name: showMap
+      type: Boolean
+      desc: Visibility in the map
+      since: null
+    - name: showScene
+      type: Boolean
+      desc: Visibility in the scene
+      since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - <sqf>if (get3DENIconsVisible select 0) then {hint "Icons are visible in the map.";};</sqf>
 see_also:

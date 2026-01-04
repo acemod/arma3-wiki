@@ -13,12 +13,13 @@ syntax:
     type: Object
   right: !Item
     name: coef
-    desc: consumption coefficient (between 0 and 1000). Values larger than 1 increase fuel consumption, and values between 0 and 1 decrease fuel consumption. 0 disables fuel consumption
-    type: Number
+    desc: Values larger than 1 increase fuel consumption, and values between 0 and 1 decrease fuel consumption. 0 disables fuel consumption
+    type: !NumberRange
+    - 0
+    - 1000
 argument_loc: Local
 effect_loc: Global
-since:
-  arma3: '2.16'
+since: {}
 examples:
 - <sqf>myTank setFuelConsumptionCoef 10; // consume 10x more fuel than default</sqf>
 see_also:

@@ -8,7 +8,8 @@ syntax:
   - map
   - position
   ret:
-    type: Unknown
+    type: Position2d
+    desc: screen coordinates in format [x, y]
   left: !Item
     name: map
     desc: map control
@@ -16,21 +17,17 @@ syntax:
   right: !Item
     name: position
     desc: world position
-    type: !OneOf
-    - type: Position2d
-      desc: null
-      since: null
-    - type: Position3d
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: Position2d
+        desc: null
+        since: null
+      - type: Position3d
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma1: '1.0'
-  arma2: '1.0'
-  arma2oa: '1.50'
-  tkoh: '1.0'
-  arma3: '0.50'
+since: {}
 examples:
 - <sqf>_screenCoord = _control posWorldToScreen _worldCoord;</sqf>
 - <sqf>_screenCoord = _control posWorldToScreen position player;</sqf>

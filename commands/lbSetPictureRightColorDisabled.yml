@@ -20,7 +20,7 @@ syntax:
     type: Number
   - !Item
     name: color
-    type: ArrayColorRgba
+    type: ArrayColor
 - call: !Binary
   - control
   - - index
@@ -36,11 +36,10 @@ syntax:
     type: Number
   - !Item
     name: color
-    type: ArrayColorRgba
+    type: ArrayColor
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.20'
+since: {}
 examples:
 - <sqf>lbSetPictureRightColorDisabled [101, 0, [1, 1, 1, 0.25]];</sqf>
 - <sqf>_ctrl lbSetPictureRightColorDisabled [0, [1, 1, 1, 0.25]];</sqf>

@@ -8,19 +8,17 @@ syntax:
     type: Nothing
   right: !Item
     name: entities
-    type: !OneOf
-    - type: !ArrayUnsized
-        type: EdenEntity
-        desc: ''
-      desc: null
-      since: null
-    - type: EdenID
-      desc: null
-      since: null
+    type: !ArrayUnsized
+      value: !OneOf
+      - type: EdenEntity
+        desc: null
+        since: null
+      - type: EdenID
+        desc: null
+        since: null
 argument_loc: Unspecified
 effect_loc: Unspecified
-since:
-  arma3: '1.56'
+since: {}
 examples:
 - <sqf>set3DENSelected [0,5,3,6,7,12];</sqf>
 see_also:
