@@ -7,7 +7,17 @@ syntax:
 - call: Nular
   ret:
   - Unknown
-  - null
+  - |-
+    current aperture
+    * isForced: [[Boolean]] - whether aperture was forced by [[setAperture]]
+    * estimatedAperture: [[Number]] - engine-estimated scene aperture
+    * estimatedLuminance: [[Number]] - engine-estimated luminance
+    * minCustom: [[Number]] - minimal custom aperture, see [[setApertureNew]]
+    * stdCustom: [[Number]] - standard custom aperture, see [[setApertureNew]]
+    * maxCustom: [[Number]] - maximal custom aperture, see [[setApertureNew]]
+    * customLuminance: [[Number]] - custom luminance, see [[setApertureNew]]
+    * isCustomForced: [[Boolean]] - whether custom values were forced
+    * blinding: [[Number]] - blinding intensity of the light
   params: []
 argument_loc: Local
 effect_loc: Unspecified
