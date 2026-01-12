@@ -9,13 +9,15 @@ syntax:
   - turretPath
   ret:
   - Unknown
-  - null
+  - |-
+    current periscope elevation value. -1 in case of an invalid turret
+    * isLocked: [[Boolean]] - whether or not user override is blocked
   params:
   - name: vehicle
     description: vehicle with periscope tech
     type: Object
   - name: turretPath
-    type: ArrayUnknown
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
