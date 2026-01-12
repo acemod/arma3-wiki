@@ -7,7 +7,10 @@ syntax:
 - call: !Unary unit
   ret:
   - Unknown
-  - null
+  - |-
+    unique ID of the item in the world
+    ** creatorID: [[Number]] - unique ID of the player who created the item
+    * ammoCount: [[Number]] magazine ammo (Since Arma 3 2.22)
   params:
   - name: unit
     type: Object
@@ -16,13 +19,17 @@ syntax:
   - includeEmpty
   ret:
   - Unknown
-  - null
+  - |-
+    unique ID of the item in the world
+    ** creatorID: [[Number]] - unique ID of the player who created the item
+    * ammoCount: [[Number]] magazine ammo (Since Arma 3 2.22)
   params:
   - name: unit
     type: Object
   - name: includeEmpty
-    description: when [[true]] returns empty throwables as well.
-    type: Unknown
+    description: '(Optional, default: [[false]]) when [[true]] returns empty throwables as well.'
+    type: Boolean
+    optional: true
   since:
     arma_3:
       major: 2
