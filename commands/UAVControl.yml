@@ -10,7 +10,14 @@ syntax:
 - call: !Unary uav
   ret:
   - Unknown
-  - null
+  - |-
+    UAV operator
+    ** vehicleRole: [[String]] - vehicle role of the operator in UAV. Can be "DRIVER", "GUNNER" or "" (not in control)
+    * {{GVI|arma3|1.96|size= 0.75}} [[Array]] with [unit, vehicleRole, unit2, vehicleRole2] (see {{Link|#Example 2}})
+    ** unit: [[Object]] - UAV operator
+    ** vehicleRole: [[String]] - vehicle role of the operator in UAV. Can be "DRIVER", "GUNNER" or "" (not in control)
+    ** unit2: [[Object]] - see {{Link|#Example 2}}
+    ** vehicleRole2: Can be "DRIVER", "GUNNER", or "". (see {{Link|#Example 2}})
   params:
   - name: uav
     type: Object
