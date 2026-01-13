@@ -6,7 +6,13 @@ syntax:
 - call: !Unary group
   ret:
   - Unknown
-  - null
+  - |-
+    icon color
+    * text: [[String]] - icon text
+    * scale: [[Number]] - icon scale
+    * visibility: [[Boolean]] - icon visibility
+    * WPvisibility: [[Boolean]] - waypoint visibility
+    * WPcolor: [[Color|Color (RGB)]] - waypoint color
   params:
   - name: group
     type: Group
