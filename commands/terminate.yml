@@ -24,6 +24,23 @@ syntax:
     arma_3:
       major: 2
       minor: 18
+- call: !Binary
+  - scriptHandle
+  - result
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: scriptHandle
+    description: Only [[Script_Handle#Promise_Handles|"Empty Handle"]]'s can have their result set.
+    type: ScriptHandle
+  - name: result
+    description: The result to write into the [[Script_Handle#Promise_Handles|Promise]]
+    type: Anything
+  since:
+    arma_3:
+      major: 2
+      minor: 22
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
