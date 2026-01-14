@@ -1,5 +1,5 @@
 name: didJIP
-description: Checks if the current client Joined In Progress.
+description: Checks if the current client {{Link|Multiplayer Scripting#Join In Progress|Joined In Progress}}.
 groups:
 - Multiplayer
 syntax:
@@ -15,4 +15,4 @@ since:
     major: 1
     minor: 50
 examples:
-- <sqf>clientDidJIP = didJIP;</sqf>
+- "<sqf>\nif (didJIP) then\n{\n\thint \"you're late to the party!\";\n};\n</sqf>"
