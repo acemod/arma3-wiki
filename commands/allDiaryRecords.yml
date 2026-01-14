@@ -8,7 +8,16 @@ syntax:
   - subject
   ret:
   - Unknown
-  - null
+  - |-
+    record id
+    * title: [[String]] - record title
+    * text: [[String]] - record text
+    * icon: [[String]] - record icon
+    * task: [[Task]] - record task
+    * taskState: [[String]] - record task state
+    * showTitle: [[Boolean]] - [[true]] if tile is shown
+    * date: [[Date]]
+    * record: [[Diary Record]] - record reference
   params:
   - name: person
     description: unit
