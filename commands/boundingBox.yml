@@ -8,7 +8,7 @@ syntax:
 - call: !Unary object
   ret:
   - Unknown
-  - null
+  - an array with the extreme points of the model, as well as bounding box sphere diameter.<br>Format [[xmin, ymin, zmin], [xmax, ymax, zmax], boundingSphereDiameter].
   params:
   - name: object
     type: Object
@@ -17,7 +17,7 @@ syntax:
   - object
   ret:
   - Unknown
-  - null
+  - an array with the extreme points of the model bounding box, as well as bounding box sphere diameter.<br>Format [[xmin, ymin, zmin], [xmax, ymax, zmax], boundingSphereDiameter].
   params:
   - name: clippingType
     type: Unknown
