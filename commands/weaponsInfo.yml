@@ -9,7 +9,15 @@ syntax:
     - onlyLoaded
   ret:
   - Unknown
-  - null
+  - |-
+    internal weapon index (changes frequently) used with "SwitchWeapon" and "UseWeapon" [[action]]s
+    * isSelected: [[Boolean]] - [[true]] if this weapon is currently selected
+    * weaponName: [[String]] - weapon name
+    * muzzleName: [[String]] - muzzle name
+    * firemode: [[String]] - firemode that is set for this 'weaponIndex'
+    * magazineName: [[String]] - name of the loaded magazine or ""
+    * ammoCount: [[Number]] - magazine ammo count or -1
+    * isPrimary: [[Boolean]] - [[true]] if this muzzle is considered primary by the engine (Since Arma 3 2.14)
   params:
   - name: unit
     description: person
