@@ -11,24 +11,28 @@ syntax:
 - call: !Unary position
   ret:
   - Unknown
-  - null
+  - |-
+    screen position in [[SafeZone]]. Returns an empty array {{hl|[]}} if not on-screen.
+    * x: [[Number]]
+    * y: [[Number]]
   params:
   - name: position
-    description: world position 2D [x,y] or [[Position#PositionAGL|PositionAGL]]
-    type: ArrayUnknown
+    type: Unknown
 - call: !Binary
   - camera
   - position
   ret:
   - Unknown
-  - null
+  - |-
+    screen position in [[SafeZone]]. Returns an empty array {{hl|[]}} if not on-screen.
+    * x: [[Number]]
+    * y: [[Number]]
   params:
   - name: camera
     description: camera object
     type: Object
   - name: position
-    description: world position 2D [x,y] or [[Position#PositionAGL|PositionAGL]]
-    type: ArrayUnknown
+    type: Unknown
   since:
     arma_3:
       major: 2
