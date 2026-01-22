@@ -1,5 +1,8 @@
 name: setPlayerRespawnTime
-description: Sets the time interval (in seconds) that the player must wait before respawn. It resets to mission default on mission start. In Single Player or when respawn type is GROUP or SIDE in Multiplayer, setting player respawn time has no effect, and [[playerRespawnTime]] will always return -1.
+description: |-
+  Sets the time interval (in seconds) that the player must wait before respawn, for the next respawn only.
+  It resets to mission default on mission start.
+  In Single Player or when respawn type is GROUP or SIDE in Multiplayer, setting player respawn time has no effect, and [[playerRespawnTime]] will always return -1.
 groups:
 - Multiplayer
 syntax:
@@ -24,4 +27,5 @@ since:
     major: 0
     minor: 50
 examples:
-- <sqf>setPlayerRespawnTime 5;</sqf>
+- <sqf>setPlayerRespawnTime 5; // next respawn (and only this one) will happen 5s after death</sqf>
+- "Set the respawn duration through variable:\n<sqf>\nplayer addEventHandler [\"Killed\", {\n\tsetPlayerRespawnTime (player getVariable [\"TAG_RespawnDelay\", 10]);\n}];\n</sqf>\n\nSomewhere else, e.g on objective completion:\n<sqf>\nwaitUntil { not alive _target };\n_thatPlayer setVariable [\"TAG_RespawnDelay\", 5];\n</sqf>"
