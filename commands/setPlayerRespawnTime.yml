@@ -28,4 +28,5 @@ since:
     minor: 50
 examples:
 - <sqf>setPlayerRespawnTime 5; // next respawn (and only this one) will happen 5s after death</sqf>
-- "Set the respawn duration through variable:\n<sqf>\nplayer addEventHandler [\"Killed\", {\n\tsetPlayerRespawnTime (player getVariable [\"TAG_RespawnDelay\", 10]);\n}];\n</sqf>\n\nSomewhere else, e.g on objective completion:\n<sqf>\nwaitUntil { not alive _target };\n_thatPlayer setVariable [\"TAG_RespawnDelay\", 5];\n</sqf>"
+- "Set the respawn duration through variable:\n<sqf>\nplayer addEventHandler [\"Killed\", {\n\tsetPlayerRespawnTime (player getVariable [\"TAG_RespawnDelay\", 10]);\n}];\n</sqf>\n\nSomewhere else, e.g on objective completion:\n<sqf>\nplayer setVariable [\"TAG_RespawnDelay\", 5];\n</sqf>\nor if that player is on another machine:\n<sqf>\nwaitUntil { not alive _target };\n_thatPlayer setVariable [\"TAG_RespawnDelay\", 5, true];\n</sqf>"
+- "Increase respawn duration every death:\n<sqf>\nplayer addEventHandler [\"Killed\", {\n\tprivate _respawnTime = player getVariable [\"TAG_RespawnDelay\", 8];\n\tsetPlayerRespawnTime _respawnTime;\n\tplayer setVariable [\"TAG_RespawnDelay\", _respawnTime + 1]; // don't die too many times\n}];\n</sqf>"
