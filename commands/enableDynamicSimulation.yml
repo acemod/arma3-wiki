@@ -1,19 +1,27 @@
 name: enableDynamicSimulation
 description: |-
-  Enables or disables [[Arma 3: Dynamic Simulation]] for given non AI object.
+  Enables or disables [[Arma 3: Dynamic Simulation]] for an object or group.
+
+  {{Feature|important|Dynamic simulation for AI units operates on [[Group]]s:
+  <sqf>
+  _unit enableDynamicSimulation true; // Does not work
+  group _unit enableDynamicSimulation true; // Works
+  </sqf>
+  It is not possible to enable dynamic simulation for groups that contain a player unit.
+  }}
 
   {{Feature|informative|This command has no effect on ''mines''!}}
 groups:
 - Dynamic Simulation
 syntax:
 - call: !Binary
-  - object
+  - target
   - enable
   ret:
   - Nothing
   - null
   params:
-  - name: object
+  - name: target
     type: Unknown
   - name: enable
     type: Boolean
