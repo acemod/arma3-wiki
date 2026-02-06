@@ -8,15 +8,18 @@ groups:
 syntax:
 - call: !Binary
   - location
-  - size
+  - - x
+    - y
   ret:
   - Nothing
   - null
   params:
   - name: location
     type: Location
-  - name: size
-    type: ArrayUnknown
+  - name: x
+    type: Number
+  - name: y
+    type: Number
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
