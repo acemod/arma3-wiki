@@ -6,7 +6,10 @@ syntax:
 - call: !Unary unit
   ret:
   - Unknown
-  - null
+  - |-
+    [[true]] if unit is falling
+    * isInFreefallPose: [[Boolean]] - [[true]] if unit is in freefall pose
+    * minFreefallHeight: [[Number]] - current minimum freefall height (see [[setUnitFreefallHeight]])
   params:
   - name: unit
     description: unit
