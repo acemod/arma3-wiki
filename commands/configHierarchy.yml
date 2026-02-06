@@ -5,23 +5,23 @@ groups:
 syntax:
 - call: !Unary config
   ret:
-  - ArrayUnknown
-  - array of parent [[Config]]s, ordered from parent to child
+  - Unknown
+  - ordered from parent to child
   params:
   - name: config
     description: target config
     type: Config
 - call: !Unary
-  - configClass
+  - config
   - classesOnly
   - includeBases
   - reversedOrder
   - configNames
   ret:
-  - ArrayUnknown
-  - array of parent [[Config]]s or [[String]]s, representing config names
+  - Unknown
+  - Strings represent config names
   params:
-  - name: configClass
+  - name: config
     description: target config
     type: Config
   - name: classesOnly
@@ -34,8 +34,8 @@ syntax:
     description: when [[true]], the return order is from child to parent
     type: Boolean
   - name: configNames
-    description: when [[true]], the return is [[Array]] of [[String]]s, when [[false]] - [[Array]] of [[Config]]s
-    type: Boolean
+    description: 'when [[true]], the return is [[Array]] of [[String]]s, when [[false]] - [[Array]] of [[Config]]s. Default: [[false]]'
+    type: Unknown
   since:
     arma_3:
       major: 2
@@ -50,10 +50,10 @@ examples:
 - |-
   <sqf>
   _hierarchy = configHierarchy (configFile >> "CfgVehicles" >> "Car");
-  // [bin\config.bin, bin\config.bin/CfgVehicles, bin\config.bin/CfgVehicles/Car]
+  // Returns [bin\config.bin, bin\config.bin/CfgVehicles, bin\config.bin/CfgVehicles/Car]
   </sqf>
 - |-
   <sqf>
   _bis_fnc_returnParents = configHierarchy [configFile >> "CfgVehicles" >> "Land_FirePlace_F", true, true, true, true];
-  //Returns ["Land_FirePlace_F","House_F","House","HouseBase","NonStrategic","Building","Static","All"]
+  // Returns ["Land_FirePlace_F","House_F","House","HouseBase","NonStrategic","Building","Static","All"]
   </sqf>
