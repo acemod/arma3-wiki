@@ -1,11 +1,11 @@
 name: attachChild
 description: |-
-  {{Wiki|WIP}}
-
   Attaches a child object to a parent, similar to [[attachTo]] but instead of a rigid/forced attachment its using a PhysX joint.
   {{Feature|informative|For more information see {{Link|https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/Joints.html|NVIDIA docs}}.}}
-  {{Feature|informative|Does NOT behave well in Multiplayer!}}
   Note that the joint parameters XYZ orientations, are according to the localFrame of the joint. swingZ/swingY/twist being Yaw/Roll/Pitch, can be changed if the joint itself is rotated, because the joint rotation moves the whole axis.
+
+  {{Wiki|WIP}}
+multiplayer_note: '{{Feature|important|This command does NOT behave well in Multiplayer.}}'
 groups:
 - PhysX
 syntax:
@@ -22,14 +22,14 @@ syntax:
   - Do NOT depend on this staying nothing, it might change to be something.
   params:
   - name: parent
-    description: The parent object that another object is attached to. Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
+    description: the parent object that another object is attached to. Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
     type: Object
   - name: child
-    description: The object being attached onto the parent. Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
+    description: the object being attached onto the parent. Must be a Transport vehicle like Car/Tank (Maybe helicopter/airplane works?).
     type: Object
   - name: jointType
     description: |-
-      Currently only "6DOFJoint" and "RevoluteJoint" and "FixedJoint"<br>
+      currently only "6DOFJoint" and "RevoluteJoint" and "FixedJoint"<br>
 
       <div class="_description">
       ; 6DOFJoint
@@ -42,7 +42,7 @@ syntax:
     type: String
   - name: localFrameParent
     description: |-
-      The Position and orientation, in parent's model-space of where the joint will be placed.<br>
+      the Position and orientation, in parent's model-space of where the joint will be placed.<br>
       An Array of 3 elements [position, upPos, dirPos]<br>
       Each element can either be a Vector (3-element array of [[Number]]) or a Memory point name ([[String]]).<br>
       <br>
@@ -51,14 +51,14 @@ syntax:
       Essentially, upPos/dirPos would be the model-space coordinates of where the memory point would be.<br>
       For example:
       <sqf>
-      _jointPos = [0,0,0];
-      _vectorDir = [0,1,0];
-      _vectorUp = [0,0,1];
+      private _jointPos = [0, 0, 0];
+      private _vectorDir = [0, 1, 0];
+      private _vectorUp = [0, 0, 1];
       [_jointPos, _jointPos vectorAdd _vectorDir, _jointPos vectorAdd _vectorUp];
       </sqf>
     type: ArrayUnknown
   - name: localFrameChild
-    description: The Position and orientation, in child's model-space of where the joint will be placed.
+    description: the position and orientation, in child's model-space of where the joint will be placed.
     type: ArrayUnknown
   - name: miscFlags
     description: |-
@@ -76,8 +76,10 @@ syntax:
     optional: true
   - name: jointDescription
     description: |-
-      This specifies the behavior/limits of the joint.<br>
-      [(linearLimit, swingLimit, twistLimit, drives)] <br><br>Note that all are optional. Passing an empty array is equivalent to using a "FixedJoint" type<br><br><div class="_description">
+      this specifies the behavior/limits of the joint.<br>
+      [(linearLimit, swingLimit, twistLimit, drives)] <br><br>Note that all are optional. Passing an empty array is equivalent to using a "FixedJoint" type<br>
+      <br>
+      <div class="_description">
       ; linearLimit
       : [[Array]] - Linear limit specifies the joints permitted translation along the XYZ axis.<br>There are three types of linear limits, fully locked, per-axis limit and distance limit.<br><br><div class="_description">
       :; Fully Locked:
@@ -117,7 +119,7 @@ syntax:
       :; twistLimit:
       :: [[Array]] - [(twistLower, twistUpper, springParameters)]<br>Twist is rotation about the X (right) axis, thus the pitch.<br>Left and right twist limits can be configured independently.<br><div class="_description">
       ::; twist*:
-      ::: [[Number]] (Optional, Default: 0) - Rotation limit in radians, between -2[[pi]] and 2[[pi]]<br> 0 means twist is locked, and 2*pi means its completely unlocked<br>
+      ::: [[Number]] (Optional, Default: 0) - Rotation limit in radians, between -2[[pi]] and 2[[pi]]<br> 0 means twist is locked, and 2*pi means its completely unlocked
       :; drives:
       :: [[Array]] - [(angularSwingDrive, angularTwistDrive, angularSlerpDrive, linearXDrive, linearYDrive, linearZDrive, limitsAreForces)]<br>Drives allow to apply force into the joint on any of the axes.<br>Each drive is a spring, one end being on the joint, and the other end being on the target specified by the commands:<br>[[setJointDrivePosition]] [[setJointDriveOrientation]] [[setJointDriveLinearVelocity]] [[setJointDriveAngularVelocity]]<br>For rotational drives there are two variants, Swing+Twist or SLERP (Spherical Linear Interpolation)<br>See {{Link|https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/Joints.html#drives|NVIDIA docs}}<div class="_description">
       ::; *Drive:
@@ -142,8 +144,5 @@ since:
     major: 2
     minor: 22
 examples:
-- "Attach a Quad (varname towbar) to a HEMTT (varName vParent) and another HEMTT (varName vChild) to the Quad.\nEssentially using the Quad as a \"towbar\"\n<sqf>\n_parentPos = [0,-5,0]; // position on the hemtt\n_childPos = [0,1,-0.2]; // position on the quad\n\n_jointDescription =\n[\n\t// Limits\n\t\t// Linear\n\t\t[], // Default is locked\n\n\t\t// Swing\n\t\t// [swing1 yaw, swing2 roll, springParams]\n\t\t[\n\t\t\trad 45, // yaw\n\t\t\t0 // roll\n\t\t],\n\t\t// Twist pitch\n\t\t// [twistLower, twistUpper, springParams]\n\t\t[rad -20, rad 20], // Default is locked\n\t// Drives\n\t[] // Default are none\n];\n\n_params = [\n\"6DOFJoint\",\n// From [pos,dir,up]\n[_parentPos, _parentPos vectorAdd [0, 1, 0], _parentPos vectorAdd [0, 0, 1]],\n// To [pos,dir,up]\n[_childPos, _childPos vectorAdd [0, 1, 0], _childPos vectorAdd [0, 0, 1]],\n// misc [collisions enabled]\n[false],\n_jointDescription\n];\n\n[vParent, towBar] attachChild _params;\n\n_parentPos = [0,-1,-0.2]; // Position on the quad\n_childPos = [0,5,0]; // Position on the hemtt\n\n_params = [\n\"6DOFJoint\",\n// From [pos,dir,up]\n[_parentPos, _parentPos vectorAdd [0, 1, 0], _parentPos vectorAdd[0, 0, 1]],\n// To [pos,dir,up]\n[_childPos, _childPos vectorAdd [0, 1, 0], _childPos vectorAdd [0, 0, 1]],\n// misc [collisions enabled]\n[false],\n_jointDescription\n];\n\n[towBar, vChild] attachChild _params;\n\n</sqf>"
-- "Attach a Quad (varname towbar) to a HEMTT (varName vParent) and another HEMTT (varName vChild) to the Quad.\nBut we rotate the axis so that Swing's are Pitch/Yaw and Twist is roll\n<sqf>\n_parentPos = [0,-5,0]; // position on the hemtt\n_childPos = [0,1,-0.2]; // position on the quad\n\n_jointDescription =\n[\n\t// Limits\n\t\t// Linear\n\t\t[], // Default is locked\n\n\t\t// Swing\n\t\t// [swing1 pitch, swing2 yaw, springParams]\n\t\t[\n\t\t\trad 20, // pitch\n\t\t\trad 45 // yaw\n\t\t],\n\t\t// Twist roll\n\t\t// [twistLower, twistUpper, springParams]\n\t\t[], // Default is locked\n\t// Drives\n\t[] // Default are none\n];\n\n_params = [\n\"6DOFJoint\",\n// From [pos,dir,up]\n[_parentPos, _parentPos vectorAdd [0, 0, 1], _parentPos vectorAdd [1, 0, 0]], // Note how the up is pointing right and forward is pointing down, we are rotating the whole joint\n// To [pos,dir,up]\n[_childPos, _childPos vectorAdd [0, 0, 1], _childPos vectorAdd [1, 0, 0]],\n// misc [collisions enabled]\n[false],\n_jointDescription\n];\n\n[vParent, towBar] attachChild _params;\n\n_parentPos = [0,-1,-0.2]; // Position on the quad\n_childPos = [0,5,0]; // Position on the hemtt\n\n_params = [\n\"6DOFJoint\",\n// From [pos,dir,up]\n[_parentPos, _parentPos vectorAdd [0, 0, 1], _parentPos vectorAdd [1, 0, 0]],\n// To [pos,dir,up]\n[_childPos, _childPos vectorAdd [0, 0, 1], _childPos vectorAdd [1, 0, 0]],\n// misc [collisions enabled]\n[false],\n_jointDescription\n];\n\n[towBar, vChild] attachChild _params;\n\n</sqf>"
-- <sqf></sqf>
-- <sqf></sqf>
-- <sqf></sqf>
+- "Attach a Quad (varname towbar) to a HEMTT (varName vParent) and another HEMTT (varName vChild) to the Quad.\nEssentially using the Quad as a \"towbar\":\n<sqf>\n_parentPos = [0, -5, 0]; // position on the hemtt\n_childPos = [0, 1, -0.2]; // position on the quad\n\n_jointDescription =\n[\n// Limits\n\t// Linear\n\t[], // Default is locked\n\n\t// Swing\n\t// [swing1 yaw, swing2 roll, springParams]\n\t[\n\t\trad 45, // yaw\n\t\t0 // roll\n\t],\n\t// Twist pitch\n\t// [twistLower, twistUpper, springParams]\n\t[rad -20, rad 20], // Default is locked\n\n// Drives\n\t[] // Default are none\n];\n\n_params = [\n\t\"6DOFJoint\",\n\t// From [pos,dir,up]\n\t[_parentPos, _parentPos vectorAdd [0, 1, 0], _parentPos vectorAdd [0, 0, 1]],\n\t// To [pos,dir,up]\n\t[_childPos, _childPos vectorAdd [0, 1, 0], _childPos vectorAdd [0, 0, 1]],\n\t// misc [collisions enabled]\n\t[false],\n\t_jointDescription\n];\n\n[vParent, towBar] attachChild _params;\n\n_parentPos = [0, -1, -0.2]; // Position on the quad\n_childPos = [0, 5, 0]; // Position on the hemtt\n\n_params = [\n\t\"6DOFJoint\",\n\t// From [pos,dir,up]\n\t[_parentPos, _parentPos vectorAdd [0, 1, 0], _parentPos vectorAdd[0, 0, 1]],\n\t// To [pos,dir,up]\n\t[_childPos, _childPos vectorAdd [0, 1, 0], _childPos vectorAdd [0, 0, 1]],\n\t// misc [collisions enabled]\n\t[false],\n\t_jointDescription\n];\n\n[towBar, vChild] attachChild _params;\n</sqf>"
+- "Attach a Quad (varname towbar) to a HEMTT (varName vParent) and another HEMTT (varName vChild) to the Quad.\nBut we rotate the axis so that Swing's are Pitch/Yaw and Twist is roll\n<sqf>\n_parentPos = [0, -5, 0]; // position on the hemtt\n_childPos = [0, 1, -0.2]; // position on the quad\n\n_jointDescription =\n[\n// Limits\n\t// Linear\n\t[], // Default is locked\n\n\t// Swing\n\t// [swing1 pitch, swing2 yaw, springParams]\n\t[\n\t\trad 20, // pitch\n\t\trad 45 // yaw\n\t],\n\t// Twist roll\n\t// [twistLower, twistUpper, springParams]\n\t[], // Default is locked\n\n// Drives\n\t[] // Default are none\n];\n\n_params = [\n\t\"6DOFJoint\",\n\t// From [pos,dir,up]\n\t[_parentPos, _parentPos vectorAdd [0, 0, 1], _parentPos vectorAdd [1, 0, 0]], // Note how the up is pointing right and forward is pointing down, we are rotating the whole joint\n\t// To [pos,dir,up]\n\t[_childPos, _childPos vectorAdd [0, 0, 1], _childPos vectorAdd [1, 0, 0]],\n\t// misc [collisions enabled]\n\t[false],\n\t_jointDescription\n];\n\n[vParent, towBar] attachChild _params;\n\n_parentPos = [0, -1, -0.2]; // Position on the quad\n_childPos = [0, 5, 0]; // Position on the hemtt\n\n_params = [\n\t\"6DOFJoint\",\n\t// From [pos,dir,up]\n\t[_parentPos, _parentPos vectorAdd [0, 0, 1], _parentPos vectorAdd [1, 0, 0]],\n\t// To [pos,dir,up]\n\t[_childPos, _childPos vectorAdd [0, 0, 1], _childPos vectorAdd [1, 0, 0]],\n\t// misc [collisions enabled]\n\t[false],\n\t_jointDescription\n];\n\n[towBar, vChild] attachChild _params;\n</sqf>"
