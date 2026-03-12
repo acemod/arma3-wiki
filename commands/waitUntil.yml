@@ -15,13 +15,36 @@ syntax:
   - name: condition
     description: the expression that '''must''' return a [[Boolean]], [[true]] to finish waiting or [[false]] to continue waiting
     type: Code
+- call: !Unary
+  - condition
+  - timeout
+  - interval
+  ret:
+  - Anything
+  - the value the condition evaluates to when the wait is over (normally [[true]]), or [[Nothing]] if the timeout ended the wait
+  params:
+  - name: condition
+    description: the expression that '''must''' return a [[Boolean]], [[true]] to finish waiting or [[false]] to continue waiting
+    type: Code
+  - name: timeout
+    description: a timeout in seconds of game time ([[sleep]] vs [[uiSleep]]). The timeout is only checked after the condition was checked.
+    type: Number
+  - name: interval
+    description: the time interval in seconds of game time between condition checks, this is equivalent to using a "sleep" after the condition.
+    type: Number
+    optional: true
+    default: '0'
+  since:
+    arma_3:
+      major: 2
+      minor: 22
 - call: !Unary scriptHandle
   ret:
   - Anything
   - The result of the script or [[Script_Handle#Promise_Handles|Promise]]
   params:
   - name: scriptHandle
-    description: A script handle or Promise to wait on
+    description: a script handle or [[Script Handle|promise]] to wait on
     type: ScriptHandle
   since:
     arma_3:
@@ -32,13 +55,13 @@ syntax:
   - timeout
   ret:
   - Anything
-  - The result of the script or [[Script_Handle#Promise_Handles|Promise]]. Or [[Nothing]] if timed out.
+  - the result of the script or [[Script_Handle#Promise_Handles|Promise]]. Or [[Nothing]] if timed out.
   params:
   - name: scriptHandle
-    description: A script handle or Promise to wait on
+    description: a script handle or [[Script Handle|promise]] to wait on
     type: ScriptHandle
   - name: timeout
-    description: A timeout in seconds of game time ([[sleep]] vs [[uiSleep]])
+    description: a timeout in seconds of game time ([[sleep]] vs [[uiSleep]])
     type: Number
   since:
     arma_3:
