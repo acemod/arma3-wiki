@@ -1,9 +1,17 @@
 name: format
 description: |-
-  Composes a string containing other variables or other variable types. Converts any variable type to a string. If you want to convert a string back to a number, use [[parseNumber]].
-  {{Feature|important|The output of this command is limited to ~8Kb. [[joinString]] on the other hand doesn't have such limit and is a bit faster.}}
+  Composes a string containing other variables or other variable types. Converts any variable type to a string.
 
-  {{Feature|informative|Since {{GVI|arma3|2.20}} the maximum length of the string is {{hl|8388608}} characters. Additionally, two consecutive percent symbols will be formatted to a single percent symbol in the final string {{hl|(%% -> %)}}}}
+  {{Feature|important|
+  * To convert a string back to a number, see [[parseNumber]].
+  * [[joinString]] can be a bit faster, without string length limitation.
+  }}
+
+  {{Feature|informative|
+  Since {{GVI|arma3|2.18}}:
+  * the maximum length of the string is {{hl|8388608}} characters (was 8191 before)
+  * two consecutive percent symbols will be formatted to a single percent symbol in the final string (see {{Link|#Example 3}})
+  }}
 groups:
 - Strings
 syntax:
