@@ -16,6 +16,23 @@ syntax:
   - name: action
     description: 'see [[Eden Editor: Actions]]'
     type: String
+  since:
+    arma_3:
+      major: 2
+      minor: 22
+- call: !Unary
+  - action
+  - argument
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: action
+    description: 'see [[Eden Editor: Actions]]'
+    type: String
+  - name: argument
+    description: 'depends on the used [[Eden Editor: Actions|action]]'
+    type: Anything
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -24,3 +41,13 @@ since:
     minor: 56
 examples:
 - <sqf>do3DENAction "MissionSave";</sqf>
+- |-
+  <sqf>
+  // Since 2.22
+  private _par = createHashMap;
+  _par set ["name", "testfile"];
+  _par set ["folder", "subfolder"];
+  _par set ["content", "R3voing"];
+
+  do3DENAction ["CreateTextFile", _par];
+  </sqf>
