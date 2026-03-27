@@ -35,4 +35,5 @@ since:
     major: 0
     minor: 50
 examples:
-- <sqf>private _it = unitReady _soldierOne;</sqf>
+- <sqf>private _isReady = unitReady _soldierOne;</sqf>
+- "<sqf>\nif (not unitReady _soldierOne) then\n{\n\t_soldierOne groupChat \"Wait one, sarge!\";\n};\n</sqf>"
