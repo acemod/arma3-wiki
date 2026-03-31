@@ -1,5 +1,5 @@
 name: unlinkItem
-description: Unassign and delete existing item from its assigned slot. If item does not exist or is not in the assigned slot, command simply fails. See also [[unassignItem]].
+description: Unassign and delete existing item from its assigned slot. Nothing happens if the item does not exist or is not assigned. See also [[unassignItem]].
 groups:
 - Unit Inventory
 syntax:
@@ -25,5 +25,8 @@ examples:
   <sqf>
   bluforUnit unlinkItem "NVGoggles";
   opforUnit unlinkItem "NVGoggles_OPFOR";
-  independentUnit unlinkItem "NVGoggles_INDEP";
+  indepUnit unlinkItem "NVGoggles_INDEP";
+
+  // or
+  { _x unlinkItem hmd _x } forEach [bluforUnit, opforUnit, indepUnit];
   </sqf>
