@@ -29,7 +29,11 @@ async fn main() {
         }
     }
 
-    println!("Passed:   {}", report.passed_commands().len());
+    println!(
+        "Passed:   {} ({})",
+        report.passed_commands().len(),
+        report.passed_commands().len() - report.outdated_commands().len()
+    );
     println!("Failed:   {}", report.failed_commands().len());
     println!("Outdated: {}", report.outdated_commands().len());
 

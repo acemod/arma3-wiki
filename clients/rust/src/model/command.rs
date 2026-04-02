@@ -1,5 +1,7 @@
 use serde::{Deserialize, Serialize};
 
+use crate::model::Branch;
+
 use super::{Locality, Since, Syntax};
 
 #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
@@ -28,7 +30,7 @@ pub struct Command {
     since: Since,
     #[serde(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
-    branch: Option<String>,
+    branch: Option<Branch>,
     #[serde(default)]
     #[serde(skip_serializing_if = "Vec::is_empty")]
     examples: Vec<String>,
@@ -99,12 +101,12 @@ impl Command {
     }
 
     #[must_use]
-    pub fn branch(&self) -> Option<&str> {
-        self.branch.as_deref()
+    pub const fn branch(&self) -> Option<&Branch> {
+        self.branch.as_ref()
     }
 
     #[must_use]
-    pub const fn branch_mut(&mut self) -> &mut Option<String> {
+    pub const fn branch_mut(&mut self) -> &mut Option<Branch> {
         &mut self.branch
     }
 

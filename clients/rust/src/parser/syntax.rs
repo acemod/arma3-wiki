@@ -1,8 +1,8 @@
 use std::collections::HashMap;
 
 use crate::{
-    model::{Call, Param, ParamItem, Return, Since, Syntax},
-    parser::{ParseError, block_type, debold},
+    model::{Call, Locality, Param, ParamItem, Return, Since, Syntax},
+    parser::{block_type, debold},
 };
 
 impl Syntax {
@@ -10,11 +10,12 @@ impl Syntax {
         command: &str,
         source: &str,
         blocks: &mut std::iter::Peekable<std::vec::IntoIter<(&str, &str)>>,
-    ) -> Result<(Self, Vec<ParseError>), String> {
+    ) -> Result<Self, String> {
         let call = Call::parse(source)?;
         let mut params = HashMap::new();
         let mut ret = None;
         let mut since = None;
+        let mut effect = None;
         loop {
             let Some((key, _)) = blocks.peek() else {
                 break;
@@ -61,7 +62,12 @@ impl Syntax {
                         .map(|s| s.set_from_psince(block))
                         .transpose()?;
                 }
-                _ => break,
+                ("s", _, "effect") => {
+                    effect = Some(Locality::parse(block)?);
+                }
+                _ => {
+                    break;
+                }
             }
         }
         let param_pool = params.values().cloned().collect::<Vec<ParamItem>>();
@@ -78,23 +84,20 @@ impl Syntax {
                 Some(Param::from_pool_and_call(&call, true, &param_pool)?),
             )
         };
-        Ok((
-            Self {
-                call,
-                ret: ret.ok_or_else(|| format!("Missing return type for command {command}"))?,
-                left,
-                right,
-                since: None,
-                effect: None,
-            },
-            Vec::new(),
-        ))
+        Ok(Self {
+            call,
+            ret: ret.ok_or_else(|| format!("Missing return type for command {command}"))?,
+            left,
+            right,
+            since,
+            effect,
+        })
     }
 }
 
 fn should_parse(block_type: (&str, i16, &str)) -> bool {
     matches!(
         block_type,
-        ("p", _, "" | "since") | ("r", _, _) | ("s", _, "since")
+        ("p", _, "" | "since") | ("r", _, _) | ("s", _, "since" | "effect")
     )
 }

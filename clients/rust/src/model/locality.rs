@@ -15,7 +15,7 @@ impl Locality {
     /// # Errors
     /// Returns an error if the locality is unknown.
     pub fn parse(source: &str) -> Result<Self, String> {
-        match source.to_lowercase().replace("<br>", "").as_str() {
+        match source.to_lowercase().replace("<br>", "").as_str().trim() {
             "local" | "{{icon|localargument|32}}" => Ok(Self::Local),
             "global" | "{{icon|globalargument|32}}" => Ok(Self::Global),
             "server" | "{{icon|serverargument|32}}" => Ok(Self::Server),

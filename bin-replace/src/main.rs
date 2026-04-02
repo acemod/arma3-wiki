@@ -177,7 +177,7 @@ async fn get_edit_token(client: &Client, command: &str) -> Result<(String, Strin
     );
     // Look in the page for <input type="hidden" value="e19941ee1a6c7ec2eab083fa55a3f75e69576143+\" name="wpEditToken"/>
     let text = res.text().await.expect("Failed to read response text");
-    std::fs::write("debug_edit_page.html", text.clone()).unwrap();
+    fs_err::write("debug_edit_page.html", text.clone()).unwrap();
     let token = extract("wpEditToken", &text).ok_or("Failed to extract edit token")?;
     let edit_rev_id = extract("editRevId", &text).ok_or("Failed to extract editRevId")?;
     println!("Extracted editToken: {}, editRevId: {}", token, edit_rev_id);
@@ -209,96 +209,6 @@ async fn submit_command(client: &Client, command: &str, content: &str) -> Result
         res.status()
     );
     println!("Submitted changes to {}", command);
-    std::fs::write("debug_submit_response.html", res.text().await.unwrap()).unwrap();
+    fs_err::write("debug_submit_response.html", res.text().await.unwrap()).unwrap();
     Ok(())
-}
-
-fn change_body(token: &str, content: &str) -> String {
-    format!(
-        r##"------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpUnicodeCheck"
-
-ℳ𝒲♥𝓊𝓃𝒾𝒸ℴ𝒹ℯ
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpAntispam"
-
-
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wikieditorUsed"
-
-yes
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpSection"
-
-
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpStarttime"
-
-20260102061257
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpEdittime"
-
-20240616083856
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="editRevId"
-
-364811
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpScrolltop"
-
-314
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpAutoSummary"
-
-d41d8cd98f00b204e9800998ecf8427e
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="oldid"
-
-0
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="parentRevId"
-
-364811
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="format"
-
-text/x-wiki
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="model"
-
-wikitext
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpTextbox1"
-
-{content}
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpSummary"
-
-
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpMinoredit"
-
-
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpWatchthis"
-
-
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpSave"
-
-Save changes
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpEditToken"
-
-{token}
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="mode"
-
-text
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d
-Content-Disposition: form-data; name="wpUltimateParam"
-
-1
-------geckoformboundary8785cc78bdaa2cdba9d2ee81622df07d--"##
-    )
 }

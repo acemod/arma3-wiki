@@ -123,7 +123,7 @@ pub async fn commands(client: &Client, report: Report, args: &[String]) -> Repor
     } else {
         ProgressBar::new(commands.len() as u64)
     };
-    let semaphore = Arc::new(Semaphore::new(1));
+    let semaphore = Arc::new(Semaphore::new(12));
     let mut handles = Vec::new();
     let report = Arc::new(tokio::sync::Mutex::new(report));
     for (name, url) in commands {
@@ -147,6 +147,7 @@ pub async fn commands(client: &Client, report: Report, args: &[String]) -> Repor
                     if did_change {
                         report.lock().await.add_passed_command(name);
                     } else {
+                        report.lock().await.add_passed_command(name.clone());
                         report.lock().await.add_outdated_command(name);
                     }
                 } else {
@@ -165,7 +166,7 @@ pub async fn commands(client: &Client, report: Report, args: &[String]) -> Repor
     let _: Vec<_> = futures::future::join_all(handles)
         .await
         .into_iter()
-        .map(|res| res.expect("Task panicked"))
+        // .map(|res| res.expect("Task panicked"))
         .collect();
     pg.finish();
     if !failed.read().await.is_empty() {
@@ -222,7 +223,6 @@ pub async fn command(
                 }
             };
             let headers = res.headers();
-            println!("Fetched headers for {name}: {headers:#?}");
             let last_modified = headers
                 .get(LAST_MODIFIED)
                 .expect("Failed to get Last-Modified header")

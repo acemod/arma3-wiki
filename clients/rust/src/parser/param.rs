@@ -1,6 +1,6 @@
 use crate::{
-    model::{ArraySizedElement, Call, Param, ParamItem, Value},
-    parser::{ParseError, param},
+    model::{Call, Param, ParamItem, Since, Value},
+    parser::ParseError,
 };
 
 impl ParamItem {
@@ -23,6 +23,11 @@ pub fn try_simple_line(source: &str) -> Result<Option<ParamItem>, String> {
     if source.contains('\n') {
         return Ok(None);
     }
+    let (since, source) = if source.starts_with("{{") {
+        super::extract_since(source)?
+    } else {
+        (None, source)
+    };
     let Some((name_part, type_and_description)) = source.split_once(": ") else {
         return Ok(None);
     };
@@ -32,7 +37,7 @@ pub fn try_simple_line(source: &str) -> Result<Option<ParamItem>, String> {
         } else {
             (type_and_description, None)
         };
-    let typ = Value::parse(type_part.trim())?;
+    let typ = Value::parse(type_part.trim(), 0)?;
     let name = name_part.trim().to_string();
     Ok(Some(ParamItem {
         name,
@@ -40,7 +45,7 @@ pub fn try_simple_line(source: &str) -> Result<Option<ParamItem>, String> {
         desc,
         default: None,
         optional: false,
-        since: None,
+        since,
     }))
 }
 
@@ -53,7 +58,16 @@ pub fn try_array_with(source: &str) -> Result<Option<ParamItem>, String> {
     };
     let mut lines = type_and_description.lines();
     let first_line = lines.next().expect("first line").trim();
-    if !first_line.starts_with("[[Array]] with") {
+    let (first_line, wrap_arrays) = if first_line.starts_with("[[Array]] of ") {
+        let first_line = first_line
+            .trim_start_matches("[[Array]] of ")
+            .trim()
+            .replace("[[Array]]s with ", "[[Array]] with ");
+        (first_line, true)
+    } else {
+        (first_line.to_string(), false)
+    };
+    if !first_line.starts_with("[[Array]] with ") {
         return Ok(None);
     }
     let (args, desc) = if first_line.contains(" - ") {
@@ -73,6 +87,16 @@ pub fn try_array_with(source: &str) -> Result<Option<ParamItem>, String> {
     let mut params = Vec::new();
     for line in lines {
         let line = line.trim().trim_start_matches('*').trim().to_string();
+        // detect index, eg: 0 - {name}: [[Type]] - Description
+        let line = if let Some((index, rest)) = line.split_once(" - ") {
+            if index.trim().chars().all(|c| c.is_ascii_digit()) {
+                rest.trim().to_string()
+            } else {
+                line
+            }
+        } else {
+            line
+        };
         if let Ok(Some(item)) = try_simple_line(&line) {
             params.push(item);
         } else {
@@ -82,7 +106,13 @@ pub fn try_array_with(source: &str) -> Result<Option<ParamItem>, String> {
     let param = Param::build_from_arg(&arg, &params)?;
     Ok(Some(ParamItem {
         name: name_part.trim().to_string(),
-        typ: param.as_value(),
+        typ: if wrap_arrays {
+            Value::ArrayUnsized {
+                value: Box::new(param.as_value()),
+            }
+        } else {
+            param.as_value()
+        },
         desc,
         default: None,
         optional: false,
@@ -114,6 +144,8 @@ pub fn try_optional(source: &str) -> Option<Option<String>> {
 
 #[cfg(test)]
 mod tests {
+    use crate::model::{ArraySizedElement, Since};
+
     use super::*;
 
     #[test]
@@ -137,10 +169,7 @@ mod tests {
             param_item.desc.as_deref(),
             Some("any other value returns [[NaN]]")
         );
-        assert_eq!(
-            param_item.typ,
-            Value::NumberRange(-1, 1)
-        );
+        assert_eq!(param_item.typ, Value::NumberRange(-1, 1));
     }
 
     #[test]
@@ -190,6 +219,114 @@ mod tests {
                     since: None,
                 },
             ],)
+        );
+
+        let line = "return: [[Array]] with [ambientLife, ambientSound, windyCoef]
+* ambientLife: [[Boolean]] 
+* ambientSound: [[Boolean]]
+* {{GVI|arma3|2.12|size= 0.75}} windyCoef: [[Number]] - see [[enableEnvironment]]";
+        let (param_item, errors) =
+            ParamItem::parse("test", line).expect("Failed to parse array with line");
+        assert!(errors.is_empty());
+        assert_eq!(
+            param_item.typ,
+            Value::ArraySized(vec![
+                ArraySizedElement {
+                    name: "ambientLife".to_string(),
+                    typ: Value::Boolean,
+                    desc: None,
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "ambientSound".to_string(),
+                    typ: Value::Boolean,
+                    desc: None,
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "windyCoef".to_string(),
+                    typ: Value::Number,
+                    desc: Some("see [[enableEnvironment]]".to_string()),
+                    since: Some(Since::arma3("2.12")),
+                },
+            ])
+        );
+
+        let line = "return: [[Array]] with [isMan, isAnimal]
+* 0 - isMan: [[Boolean]] - [[true]] if the entity is a man
+* 1 - isAnimal: [[Boolean]] - [[true]] if the entity is an animal";
+        let (param_item, errors) =
+            ParamItem::parse("test", line).expect("Failed to parse array with indexed line");
+        assert!(errors.is_empty());
+        assert_eq!(
+            param_item.typ,
+            Value::ArraySized(vec![
+                ArraySizedElement {
+                    name: "isMan".to_string(),
+                    typ: Value::Boolean,
+                    desc: Some("[[true]] if the entity is a man".to_string()),
+                    since: None,
+                },
+                ArraySizedElement {
+                    name: "isAnimal".to_string(),
+                    typ: Value::Boolean,
+                    desc: Some("[[true]] if the entity is an animal".to_string()),
+                    since: None,
+                },
+            ])
+        );
+
+        let line = "retrun: [[Array]] of [[Array]]s with [prefix, version, isPatched, modIndex, hash]
+* prefix: [[String]] - addon prefix
+* version: [[String]] - addon revision version
+* isPatched: [[Boolean]] - [[true]] if patching is enabled and this addon is being patched 
+* {{GVI|arma3|2.14|size= 0.75}} modIndex: [[Number]] - index of mod in [[getLoadedModsInfo]] array. -1 if not found.
+* {{GVI|arma3|2.14|size= 0.75}} hash: [[String]] - hash of the addon PBO file.";
+        let (param_item, errors) =
+            ParamItem::parse("test", line).expect("Failed to parse nested array with line");
+        assert!(errors.is_empty());
+        assert_eq!(
+            param_item.typ,
+            Value::ArrayUnsized {
+                value: Box::new(Value::ArraySized(vec![
+                    ArraySizedElement {
+                        name: "prefix".to_string(),
+                        typ: Value::String,
+                        desc: Some("addon prefix".to_string()),
+                        since: None,
+                    },
+                    ArraySizedElement {
+                        name: "version".to_string(),
+                        typ: Value::String,
+                        desc: Some("addon revision version".to_string()),
+                        since: None,
+                    },
+                    ArraySizedElement {
+                        name: "isPatched".to_string(),
+                        typ: Value::Boolean,
+                        desc: Some(
+                            "[[true]] if patching is enabled and this addon is being patched"
+                                .to_string()
+                        ),
+                        since: None,
+                    },
+                    ArraySizedElement {
+                        name: "modIndex".to_string(),
+                        typ: Value::Number,
+                        desc: Some(
+                            "index of mod in [[getLoadedModsInfo]] array. -1 if not found."
+                                .to_string()
+                        ),
+                        since: Some(Since::arma3("2.14")),
+                    },
+                    ArraySizedElement {
+                        name: "hash".to_string(),
+                        typ: Value::String,
+                        desc: Some("hash of the addon PBO file.".to_string()),
+                        since: Some(Since::arma3("2.14")),
+                    },
+                ]))
+            }
         );
     }
 }

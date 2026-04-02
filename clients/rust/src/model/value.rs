@@ -37,7 +37,7 @@ pub struct OneOfValue {
 pub enum Value {
     Anything,
     ArraySized(Vec<ArraySizedElement>),
-    ArrayUnsized(Box<Value>),
+    ArrayUnsized { value: Box<Self> },
     ArrayEmpty,
     ArrayDate,
     ArrayColor,
@@ -120,7 +120,7 @@ impl std::fmt::Display for Value {
                 }
                 write!(f, "]")
             }
-            Self::ArrayUnsized(typ) => write!(f, "Array of {typ}"),
+            Self::ArrayUnsized { value: values } => write!(f, "Array of {values}"),
             Self::ArrayDate => write!(f, "Array Date"),
             Self::ArrayColor => write!(f, "Array Color"),
             Self::ArrayColorRgb => write!(f, "Array Color RGB"),

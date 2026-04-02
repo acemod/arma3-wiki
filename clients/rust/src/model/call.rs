@@ -4,9 +4,9 @@ use serde::{Deserialize, Serialize};
 #[serde(untagged)]
 pub enum Arg {
     Item(String),
-    Array(Vec<Arg>),
-    InfiniteItem(Box<Arg>),
-    InfiniteFlat(Vec<Arg>),
+    Array(Vec<Self>),
+    InfiniteItem(Box<Self>),
+    InfiniteFlat(Vec<Self>),
 }
 
 impl Arg {

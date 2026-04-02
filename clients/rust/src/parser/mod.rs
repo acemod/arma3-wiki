@@ -1,3 +1,5 @@
+use crate::model::Since;
+
 pub mod call;
 pub mod command;
 pub mod param;
@@ -39,4 +41,21 @@ fn block_type(key: &str) -> (&str, i16, &str) {
 /// Removes bold markup from a string.
 fn debold(source: &str) -> String {
     source.replace("'''", "")
+}
+
+pub fn extract_since(source: &str) -> Result<(Option<Since>, &str), String> {
+    let start = source.find("{{").ok_or("Missing '{{' in since string")?;
+    let end = source.find("}}").ok_or("Missing '}}' in since string")?;
+    let since_str = &source[start + 2..end].trim();
+    if since_str.starts_with("GVI|arma3|") {
+        let parts: Vec<&str> = since_str.split('|').collect();
+        if parts.len() >= 3 {
+            let version = parts[2];
+            return Ok((Some(Since::arma3(version)), source[end + 2..].trim()));
+        }
+    }
+    if since_str.starts_with("GVI|") {
+        return Err(format!("Unsupported GVI since format: '{since_str}'"));
+    }
+    Ok((None, source.trim()))
 }

@@ -1,4 +1,4 @@
-use crate::model::{Command, Locality, Syntax};
+use crate::model::{Branch, Command, Locality, Syntax};
 use crate::parser::ParseError;
 
 impl Command {
@@ -45,7 +45,6 @@ impl Command {
         let mut command = Self::default();
         command.set_name(get_cmd_name(name).to_string());
         let mut blocks = blocks.into_iter().peekable();
-        let mut syntax_counter = 1;
 
         let mut reading_tab: Option<(&str, String)> = None;
 
@@ -108,65 +107,58 @@ impl Command {
                     });
                     break;
                 }
+                "branch" => {
+                    command.branch_mut().replace(Branch::parse(value)?);
+                }
                 _ => {
                     if key.starts_with("game") {
                         let mut next = blocks.next().expect("Expected next line");
                         if next.0.starts_with("branch") {
-                            *command.branch_mut() = Some(next.1.trim().to_string());
+                            *command.branch_mut() = Some(Branch::parse(next.1)?);
                             next = blocks.next().expect("Expected next line");
                         }
                         if !next.0.starts_with("version") {
                             Err(format!("Unknown key when expecting version: {}", next.0))?;
                         }
-                        command.since_mut().set_from_wiki(value, next.1)?;
                     } else if key.starts_with("gr") {
                         command.add_group(value.to_string());
                         // if value.contains("Broken Commands") {
                         //     break;
                         // }
-                    } else if key == format!("s{syntax_counter}") {
-                        // ==== Special Cases ====
-                        if command.name() == "local" && syntax_counter == 2 {
-                            // syntax 2 is not a regular command, and deprecated
-                            println!("Skipping local syntax 2");
-                            continue;
-                        }
-                        if command.name() == "private" && syntax_counter == 3 {
-                            println!("Skipping private syntax 3");
-                            // syntax 3 is not a regular command
-                            continue;
-                        }
-                        let value = if command.name() == "addMagazine" {
-                            if syntax_counter == 1 {
-                                value.replace(
-                                    "<br>\n{{Icon|localArgument|32}}{{Icon|globalEffect|32}}",
-                                    "",
-                                )
-                            } else if syntax_counter == 2 {
-                                value.replace("<br>\n{{GVI|arma2oa|1.62}} {{Icon|localArgument|32}}{{Icon|globalEffect|32}}<br>\n{{GVI|arma3|1.00}} {{Icon|globalArgument|32}}{{Icon|globalEffect|32}}", "")
-                            } else {
-                                value.to_string()
-                            }
-                        } else {
-                            value.to_string()
-                        };
-                        // ==== End Of Special Cases ====
-                        match Syntax::parse(command.name(), &value, &mut blocks) {
-                            Ok((syntax, syntax_errors)) => {
-                                command.add_syntax(syntax);
-                                if false {
-                                    errors.extend(syntax_errors);
-                                }
-                                syntax_counter += 1;
-                            }
-                            Err(e) => {
-                                errors.push(ParseError::Syntax(e));
-                            }
-                        }
+                    } else if key.starts_with('s') {
+                        // // ==== Special Cases ====
+                        // if command.name() == "local" && syntax_counter == 2 {
+                        //     // syntax 2 is not a regular command, and deprecated
+                        //     println!("Skipping local syntax 2");
+                        //     continue;
+                        // }
+                        // if command.name() == "private" && syntax_counter == 3 {
+                        //     println!("Skipping private syntax 3");
+                        //     // syntax 3 is not a regular command
+                        //     continue;
+                        // }
+                        // let value = if command.name() == "addMagazine" {
+                        //     if syntax_counter == 1 {
+                        //         value.replace(
+                        //             "<br>\n{{Icon|localArgument|32}}{{Icon|globalEffect|32}}",
+                        //             "",
+                        //         )
+                        //     } else if syntax_counter == 2 {
+                        //         value.replace("<br>\n{{GVI|arma2oa|1.62}} {{Icon|localArgument|32}}{{Icon|globalEffect|32}}<br>\n{{GVI|arma3|1.00}} {{Icon|globalArgument|32}}{{Icon|globalEffect|32}}", "")
+                        //     } else {
+                        //         value.to_string()
+                        //     }
+                        // } else {
+                        //     value.to_string()
+                        // };
+                        // // ==== End Of Special Cases ====
+                        let syntax = Syntax::parse(command.name(), value, &mut blocks)?;
+                        command.add_syntax(syntax);
                     } else if key.starts_with('x') {
                         command.add_example(value.trim().trim_start_matches('\n').to_string());
                     } else {
                         println!("Unknown key: {key}");
+                        return Err(format!("Unknown key in command '{name}': {key}"));
                     }
                 }
             }

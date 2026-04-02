@@ -1,3 +1,4 @@
+mod branch;
 mod call;
 mod command;
 mod event_handler;
@@ -9,6 +10,7 @@ mod syntax;
 mod value;
 mod version;
 
+pub use branch::Branch;
 pub use call::{Arg, Call};
 pub use command::Command;
 pub use event_handler::{EventHandler, EventHandlerNamespace, ParsedEventHandler};

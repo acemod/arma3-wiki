@@ -1,7 +1,10 @@
-use crate::model::{OneOfValue, Value};
+use crate::model::{OneOfValue, Since, Value};
 
 impl Value {
-    pub fn parse(source: &str) -> Result<Self, String> {
+    pub fn parse(source: &str, depth: u8) -> Result<Self, String> {
+        if depth > 5 {
+            return Err("Exceeded maximum recursion depth while parsing Value".to_string());
+        }
         if let Some(simple) = try_simple_type(source)? {
             return Ok(simple);
         }
@@ -13,24 +16,26 @@ impl Value {
         }
         try_extract_simple_blocks(source)
             .into_iter()
-            .map(Self::parse)
-            .collect::<Result<Vec<Self>, String>>()
+            .map(|(block, since)| Self::parse(block, depth + 1).map(|typ| (typ, since)))
+            .collect::<Result<Vec<(Self, Option<Since>)>, String>>()
             .map(|types| {
                 if types.len() == 1 {
-                    Self::ArrayUnsized(Box::new(
-                        types.into_iter().next().expect("Just checked length"),
-                    ))
+                    Self::ArrayUnsized {
+                        value: Box::new(types.into_iter().next().expect("Just checked length").0),
+                    }
                 } else {
-                    Self::ArrayUnsized(Box::new(Self::OneOf(
-                        types
-                            .iter()
-                            .map(|t| OneOfValue {
-                                typ: t.clone(),
-                                desc: None,
-                                since: None,
-                            })
-                            .collect(),
-                    )))
+                    Self::ArrayUnsized {
+                        value: Box::new(Self::OneOf(
+                            types
+                                .iter()
+                                .map(|t| OneOfValue {
+                                    typ: t.0.clone(),
+                                    desc: None,
+                                    since: t.1.clone(),
+                                })
+                                .collect(),
+                        )),
+                    }
                 }
             })
     }
@@ -43,6 +48,7 @@ fn try_simple_type(source: &str) -> Result<Option<Value>, String> {
         .trim_end_matches("]]")
         .to_lowercase();
     Ok(match source.as_str() {
+        "array|empty array" => Some(Value::ArrayEmpty),
         "anything" => Some(Value::Anything),
         "boolean" => Some(Value::Boolean),
         "code" => Some(Value::Code),
@@ -73,19 +79,25 @@ fn try_simple_type(source: &str) -> Result<Option<Value>, String> {
         "task" => Some(Value::Task),
         "team member" | "teammember" => Some(Value::TeamMember),
         "path" | "tree view path" => Some(Value::Path),
-        "turretpath" => Some(Value::TurretPath),
+        "date" => Some(Value::ArrayDate),
+        "color" => Some(Value::ArrayColor),
+        "color rgb" | "colorrgb" => Some(Value::ArrayColorRgb),
+        "color rgba" | "colorrgba" => Some(Value::ArrayColorRgba),
+        "turret path" | "turretpath" => Some(Value::TurretPath),
         "unitloadoutarray" => Some(Value::UnitLoadoutArray),
         "position" => Some(Value::Position),
         "position#introduction|position2d" | "position#position2d" | "position2d" => {
             Some(Value::Position2d)
         }
-        "position#position3d" | "position3d" => Some(Value::Position3d),
-        "position#position3dasl" | "position3dasl" => Some(Value::Position3dASL),
-        "position#position3daslw" | "position3daslw" => Some(Value::Position3dASLW),
-        "position#positionatl" | "position3datl" => Some(Value::Position3dATL),
-        "position#positionagl" | "position3dagl" => Some(Value::Position3dAGL),
-        "position#position3dagls" | "position3dagls" => Some(Value::Position3dAGLS),
-        "position#position3drelative" | "position3drelative" => Some(Value::Position3dRelative),
+        "position#introduction|position3d" | "position#position3d" | "position3d" => {
+            Some(Value::Position3d)
+        }
+        "position#positionasl" | "positionasl" => Some(Value::Position3dASL),
+        "position#positionaslw" | "positionaslw" => Some(Value::Position3dASLW),
+        "position#positionatl" | "positionatl" => Some(Value::Position3dATL),
+        "position#positionagl" | "positionagl" => Some(Value::Position3dAGL),
+        "position#positionagls" | "positionagls" => Some(Value::Position3dAGLS),
+        "position#positionrelative" | "positionrelative" => Some(Value::Position3dRelative),
         "vector" => Some(Value::Vector),
         "vector2d" => Some(Value::Vector2d),
         "vector3d" => Some(Value::Vector3d),
@@ -93,7 +105,10 @@ fn try_simple_type(source: &str) -> Result<Option<Value>, String> {
         "while type" | "whiletype" => Some(Value::WhileType),
         "with type" | "withtype" => Some(Value::WithType),
         _ => {
-            if source.contains('|') {
+            // make sure source only has a single instance of [[ and ]]
+            let open_brackets = source.matches("[[").count();
+            let close_brackets = source.matches("]]").count();
+            if open_brackets == 0 && close_brackets == 0 && source.contains('|') {
                 let (value, _) = source.split_once('|').expect("Just split on |");
                 let value = value.trim();
                 try_simple_type(value)?
@@ -150,28 +165,27 @@ fn try_array_of_simple(source: &str) -> Result<Option<Value>, String> {
         return Ok(None);
     };
     let blocks = try_extract_simple_blocks(remainder);
-    let Some(types) = blocks
+    let types = blocks
         .into_iter()
-        .map(try_simple_type)
-        .collect::<Result<Option<Vec<Value>>, String>>()?
-    else {
-        return Ok(None);
-    };
+        .map(|(block, since)| Value::parse(block, 0).map(|typ| (typ, since)))
+        .collect::<Result<Vec<(Value, Option<Since>)>, String>>()?;
     if types.len() == 1 {
-        Ok(Some(Value::ArrayUnsized(Box::new(
-            types.into_iter().next().expect("Just checked length"),
-        ))))
+        Ok(Some(Value::ArrayUnsized {
+            value: Box::new(types.into_iter().next().expect("Just checked length").0),
+        }))
     } else {
-        Ok(Some(Value::ArrayUnsized(Box::new(Value::OneOf(
-            types
-                .iter()
-                .map(|t| OneOfValue {
-                    typ: t.clone(),
-                    desc: None,
-                    since: None,
-                })
-                .collect(),
-        )))))
+        Ok(Some(Value::ArrayUnsized {
+            value: Box::new(Value::OneOf(
+                types
+                    .iter()
+                    .map(|t| OneOfValue {
+                        typ: t.0.clone(),
+                        desc: None,
+                        since: t.1.clone(),
+                    })
+                    .collect(),
+            )),
+        }))
     }
 }
 
@@ -180,7 +194,7 @@ fn try_array_of_simple(source: &str) -> Result<Option<Value>, String> {
 /// [[Numer]] -> vec!["[[Number]]"]
 /// [[Number]] or [[String]] -> vec!["[[Number]]", "[[String]]"]
 /// [[Number]] or [[Array]] of [[Number]]s -> vec!["[[Number]]", "[[Array]] of [[Number]]s"]
-fn try_extract_simple_blocks(source: &str) -> Vec<&str> {
+fn try_extract_simple_blocks(source: &str) -> Vec<(&str, Option<Since>)> {
     let mut blocks = Vec::new();
     let mut current_start = 0;
 
@@ -228,6 +242,15 @@ fn try_extract_simple_blocks(source: &str) -> Vec<&str> {
     }
 
     blocks
+        .into_iter()
+        .map(|b| {
+            if let Ok((since, cleaned)) = super::extract_since(b) {
+                (cleaned, since)
+            } else {
+                (b, None)
+            }
+        })
+        .collect()
 }
 
 #[cfg(test)]
@@ -254,32 +277,33 @@ mod tests {
             try_number_range("  [[Number]] in range 0..10  "),
             Ok(Some(Value::NumberRange(0, 10)))
         );
-        assert_eq!(
-            try_number_range("[[Number]] between 0 and 10"),
-            Ok(None)
-        );
+        assert_eq!(try_number_range("[[Number]] between 0 and 10"), Ok(None));
     }
 
     #[test]
     fn test_try_array_of_simple() {
         assert_eq!(
             try_array_of_simple("[[Array]] of [[Number]]s"),
-            Ok(Some(Value::ArrayUnsized(Box::new(Value::Number))))
+            Ok(Some(Value::ArrayUnsized {
+                value: Box::new(Value::Number)
+            }))
         );
         assert_eq!(
             try_array_of_simple("[[Array]] of [[String]]s or [[Boolean]]"),
-            Ok(Some(Value::ArrayUnsized(Box::new(Value::OneOf(vec![
-                OneOfValue {
-                    typ: Value::String,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::Boolean,
-                    desc: None,
-                    since: None
-                },
-            ])))))
+            Ok(Some(Value::ArrayUnsized {
+                value: Box::new(Value::OneOf(vec![
+                    OneOfValue {
+                        typ: Value::String,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::Boolean,
+                        desc: None,
+                        since: None
+                    },
+                ]))
+            }))
         );
         assert_eq!(try_array_of_simple("Not an array type"), Ok(None));
     }
@@ -288,50 +312,61 @@ mod tests {
     fn test_try_extract_simple_blocks() {
         let source = "[[Number]]";
         let blocks = try_extract_simple_blocks(source);
-        assert_eq!(blocks, vec!["[[Number]]"]);
-        assert_eq!(Value::parse(source).expect("parsed"), Value::Number);
+        assert_eq!(blocks, vec![("[[Number]]", None)]);
+        assert_eq!(Value::parse(source, 0).expect("parsed"), Value::Number);
 
         let source = "[[Number]] or [[String]]";
         let blocks = try_extract_simple_blocks(source);
-        assert_eq!(blocks, vec!["[[Number]]", "[[String]]"]);
+        assert_eq!(blocks, vec![("[[Number]]", None), ("[[String]]", None)]);
         assert_eq!(
-            Value::parse(source).expect("parsed"),
-            Value::ArrayUnsized(Box::new(Value::OneOf(vec![
-                OneOfValue {
-                    typ: Value::Number,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::String,
-                    desc: None,
-                    since: None
-                },
-            ])))
+            Value::parse(source, 0).expect("parsed"),
+            Value::ArrayUnsized {
+                value: Box::new(Value::OneOf(vec![
+                    OneOfValue {
+                        typ: Value::Number,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::String,
+                        desc: None,
+                        since: None
+                    },
+                ]))
+            }
         );
 
         let source = "[[Number]], [[Boolean]] or [[String]]";
         let blocks = try_extract_simple_blocks(source);
-        assert_eq!(blocks, vec!["[[Number]]", "[[Boolean]]", "[[String]]"]);
         assert_eq!(
-            Value::parse(source).expect("parsed"),
-            Value::ArrayUnsized(Box::new(Value::OneOf(vec![
-                OneOfValue {
-                    typ: Value::Number,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::Boolean,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::String,
-                    desc: None,
-                    since: None
-                },
-            ])))
+            blocks,
+            vec![
+                ("[[Number]]", None),
+                ("[[Boolean]]", None),
+                ("[[String]]", None)
+            ]
+        );
+        assert_eq!(
+            Value::parse(source, 0).expect("parsed"),
+            Value::ArrayUnsized {
+                value: Box::new(Value::OneOf(vec![
+                    OneOfValue {
+                        typ: Value::Number,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::Boolean,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::String,
+                        desc: None,
+                        since: None
+                    },
+                ]))
+            }
         );
 
         let source = "[[Object]], [[Position#PositionAGL|PositionAGL]] or [[Position#Introduction|Position2D]]";
@@ -339,106 +374,131 @@ mod tests {
         assert_eq!(
             blocks,
             vec![
-                "[[Object]]",
-                "[[Position#PositionAGL|PositionAGL]]",
-                "[[Position#Introduction|Position2D]]"
+                ("[[Object]]", None),
+                ("[[Position#PositionAGL|PositionAGL]]", None),
+                ("[[Position#Introduction|Position2D]]", None)
             ]
         );
         assert_eq!(
-            Value::parse(source).expect("parsed"),
-            Value::ArrayUnsized(Box::new(Value::OneOf(vec![
-                OneOfValue {
-                    typ: Value::Object,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::Position3dAGL,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::Position2d,
-                    desc: None,
-                    since: None
-                },
-            ])))
+            Value::parse(source, 0).expect("parsed"),
+            Value::ArrayUnsized {
+                value: Box::new(Value::OneOf(vec![
+                    OneOfValue {
+                        typ: Value::Object,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::Position3dAGL,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::Position2d,
+                        desc: None,
+                        since: None
+                    },
+                ]))
+            }
         );
 
         let source = "[[Number]], [[Boolean]], or [[String]]";
         let blocks = try_extract_simple_blocks(source);
-        assert_eq!(blocks, vec!["[[Number]]", "[[Boolean]]", "[[String]]"]);
         assert_eq!(
-            Value::parse(source).expect("parsed"),
-            Value::ArrayUnsized(Box::new(Value::OneOf(vec![
-                OneOfValue {
-                    typ: Value::Number,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::Boolean,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::String,
-                    desc: None,
-                    since: None
-                },
-            ])))
+            blocks,
+            vec![
+                ("[[Number]]", None),
+                ("[[Boolean]]", None),
+                ("[[String]]", None)
+            ]
+        );
+        assert_eq!(
+            Value::parse(source, 0).expect("parsed"),
+            Value::ArrayUnsized {
+                value: Box::new(Value::OneOf(vec![
+                    OneOfValue {
+                        typ: Value::Number,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::Boolean,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::String,
+                        desc: None,
+                        since: None
+                    },
+                ]))
+            }
         );
 
         let source = "[[String]] or [[Array]] of [[Number]]s";
         let blocks = try_extract_simple_blocks(source);
-        assert_eq!(blocks, vec!["[[String]]", "[[Array]] of [[Number]]s"]);
         assert_eq!(
-            Value::parse(source).expect("parsed"),
-            Value::ArrayUnsized(Box::new(Value::OneOf(vec![
-                OneOfValue {
-                    typ: Value::String,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::ArrayUnsized(Box::new(Value::Number)),
-                    desc: None,
-                    since: None
-                },
-            ])))
+            blocks,
+            vec![("[[String]]", None), ("[[Array]] of [[Number]]s", None)]
+        );
+        assert_eq!(
+            Value::parse(source, 0).expect("parsed"),
+            Value::ArrayUnsized {
+                value: Box::new(Value::OneOf(vec![
+                    OneOfValue {
+                        typ: Value::String,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::ArrayUnsized {
+                            value: Box::new(Value::Number)
+                        },
+                        desc: None,
+                        since: None
+                    },
+                ]))
+            }
         );
 
         let source = "[[String]] or [[Array]] of [[Number]]s or [[Boolean]]";
         let blocks = try_extract_simple_blocks(source);
         assert_eq!(
             blocks,
-            vec!["[[String]]", "[[Array]] of [[Number]]s or [[Boolean]]"]
+            vec![
+                ("[[String]]", None),
+                ("[[Array]] of [[Number]]s or [[Boolean]]", None)
+            ]
         );
         assert_eq!(
-            Value::parse(source).expect("parsed"),
-            Value::ArrayUnsized(Box::new(Value::OneOf(vec![
-                OneOfValue {
-                    typ: Value::String,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::ArrayUnsized(Box::new(Value::OneOf(vec![
-                        OneOfValue {
-                            typ: Value::Number,
-                            desc: None,
-                            since: None
+            Value::parse(source, 0).expect("parsed"),
+            Value::ArrayUnsized {
+                value: Box::new(Value::OneOf(vec![
+                    OneOfValue {
+                        typ: Value::String,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::ArrayUnsized {
+                            value: Box::new(Value::OneOf(vec![
+                                OneOfValue {
+                                    typ: Value::Number,
+                                    desc: None,
+                                    since: None
+                                },
+                                OneOfValue {
+                                    typ: Value::Boolean,
+                                    desc: None,
+                                    since: None
+                                },
+                            ]))
                         },
-                        OneOfValue {
-                            typ: Value::Boolean,
-                            desc: None,
-                            since: None
-                        },
-                    ]))),
-                    desc: None,
-                    since: None
-                },
-            ])))
+                        desc: None,
+                        since: None
+                    },
+                ]))
+            }
         );
 
         let source = "[[String]], [[Number]] or [[Array]] of [[Number]]s or [[Boolean]]";
@@ -446,41 +506,58 @@ mod tests {
         assert_eq!(
             blocks,
             vec![
-                "[[String]]",
-                "[[Number]]",
-                "[[Array]] of [[Number]]s or [[Boolean]]"
+                ("[[String]]", None),
+                ("[[Number]]", None),
+                ("[[Array]] of [[Number]]s or [[Boolean]]", None)
             ]
         );
         assert_eq!(
-            Value::parse(source).expect("parsed"),
-            Value::ArrayUnsized(Box::new(Value::OneOf(vec![
-                OneOfValue {
-                    typ: Value::String,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::Number,
-                    desc: None,
-                    since: None
-                },
-                OneOfValue {
-                    typ: Value::ArrayUnsized(Box::new(Value::OneOf(vec![
-                        OneOfValue {
-                            typ: Value::Number,
-                            desc: None,
-                            since: None
+            Value::parse(source, 0).expect("parsed"),
+            Value::ArrayUnsized {
+                value: Box::new(Value::OneOf(vec![
+                    OneOfValue {
+                        typ: Value::String,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::Number,
+                        desc: None,
+                        since: None
+                    },
+                    OneOfValue {
+                        typ: Value::ArrayUnsized {
+                            value: Box::new(Value::OneOf(vec![
+                                OneOfValue {
+                                    typ: Value::Number,
+                                    desc: None,
+                                    since: None
+                                },
+                                OneOfValue {
+                                    typ: Value::Boolean,
+                                    desc: None,
+                                    since: None
+                                },
+                            ]))
                         },
-                        OneOfValue {
-                            typ: Value::Boolean,
-                            desc: None,
-                            since: None
-                        },
-                    ]))),
-                    desc: None,
-                    since: None
-                },
-            ])))
+                        desc: None,
+                        since: None
+                    },
+                ]))
+            }
+        );
+    }
+
+    #[test]
+    fn or_since() {
+        let line = "[[Object]] or {{GVI|arma3|2.12|size= 0.75}} [[Group]]";
+        let blocks = try_extract_simple_blocks(line);
+        assert_eq!(
+            blocks,
+            vec![
+                ("[[Object]]", None),
+                ("[[Group]]", Some(Since::arma3("2.12"))),
+            ]
         );
     }
 }

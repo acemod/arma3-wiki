@@ -82,7 +82,12 @@ impl Param {
                             Self::Array(_) | Self::Infinite(_) => String::new(),
                         },
                         typ: item.as_value(),
-                        desc: None,
+                        desc: match item {
+                            Self::Item(param_item) => param_item
+                                .description()
+                                .map(std::string::ToString::to_string),
+                            Self::Array(_) | Self::Infinite(_) => None,
+                        },
                         since: match item {
                             Self::Item(param_item) => param_item.since().cloned(),
                             Self::Array(_) | Self::Infinite(_) => None,
@@ -93,26 +98,30 @@ impl Param {
             Self::Infinite(items) => {
                 if items.len() == 1 {
                     // Single item repeating: InfiniteItem case
-                    Value::ArrayUnsized(Box::new(items[0].as_value()))
+                    Value::ArrayUnsized {
+                        value: Box::new(items[0].as_value()),
+                    }
                 } else {
                     // Multiple items repeating: InfiniteFlat case
-                    Value::ArrayUnsized(Box::new(Value::ArraySized(
-                        items
-                            .iter()
-                            .map(|item| ArraySizedElement {
-                                name: match item {
-                                    Self::Item(param_item) => param_item.name().to_string(),
-                                    Self::Array(_) | Self::Infinite(_) => String::new(),
-                                },
-                                typ: item.as_value(),
-                                desc: None,
-                                since: match item {
-                                    Self::Item(param_item) => param_item.since().cloned(),
-                                    Self::Array(_) | Self::Infinite(_) => None,
-                                },
-                            })
-                            .collect(),
-                    )))
+                    Value::ArrayUnsized {
+                        value: Box::new(Value::ArraySized(
+                            items
+                                .iter()
+                                .map(|item| ArraySizedElement {
+                                    name: match item {
+                                        Self::Item(param_item) => param_item.name().to_string(),
+                                        Self::Array(_) | Self::Infinite(_) => String::new(),
+                                    },
+                                    typ: item.as_value(),
+                                    desc: None,
+                                    since: match item {
+                                        Self::Item(param_item) => param_item.since().cloned(),
+                                        Self::Array(_) | Self::Infinite(_) => None,
+                                    },
+                                })
+                                .collect(),
+                        )),
+                    }
                 }
             }
         }
