@@ -1,5 +1,5 @@
 name: radioChannelSetCallSign
-description: Set the custom radio chat channel's call sign. Since {{GVI|arma3|2.22|size= 0.75}} it is possible to also set VoN call sign
+description: Set the custom radio chat channel's callsign / VoN callsign.
 groups:
 - Radio and Chat
 - Custom Radio and Chat
@@ -15,9 +15,13 @@ syntax:
     description: '[[Channel IDs|custom channel ID]] returned by [[radioChannelCreate]] command'
     type: Number
   - name: callSign
+    description: |-
+      custom chat callsign or [callSign, callSignVoN]. Available parameters: <spoiler>
+      {| class="wikitable"
+      ! Parameter !! Description !! Example
     type: Unknown
-argument_loc: Unspecified
-effect_loc: Unspecified
+argument_loc: Global
+effect_loc: Global
 since:
   take_on_helicopters:
     major: 1
@@ -26,4 +30,5 @@ since:
     major: 0
     minor: 50
 examples:
-- <sqf>4 radioChannelSetCallSign "%UNIT_NAME";</sqf>
+- <sqf>4 radioChannelSetCallSign "(%UNIT_ID) %UNIT_RANK %UNIT_NAME%UNIT_GRP_LEADER"; // (1) Sgt Ben Kelly, group leader</sqf>
+- <sqf>4 radioChannelSetCallSign ["%UNIT_VEH_POSITION, %UNIT_VEH_NAME", "%UNIT_NAME%UNIT_GRP_LEADER"];</sqf>
