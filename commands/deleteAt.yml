@@ -14,9 +14,10 @@ syntax:
   - returns the deleted element or [[Nothing]]
   params:
   - name: array
-    type: ArrayUnknown
-  - name: index
     type: Unknown
+  - name: index
+    description: see the note in description
+    type: Number
 - call: !Binary
   - hashMap
   - key
@@ -40,7 +41,7 @@ syntax:
   - deleted elements in order of user supplied indexes
   params:
   - name: array
-    type: ArrayUnknown
+    type: Unknown
   - name: indexes
     description: multiple indexes, negative indexes are supported and would remove elements counting from the end of array (see {{Link|#Example 4}}).
     type: ArrayUnknown
