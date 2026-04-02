@@ -6,7 +6,9 @@ syntax:
 - call: !Unary object
   ret:
   - Unknown
-  - null
+  - |-
+    Backpack class names
+    * counts: [[Array]] of [[Number]]s - Backpack counts
   params:
   - name: object
     description: object to check
@@ -24,5 +26,6 @@ since:
     major: 0
     minor: 50
 examples:
+- "<sqf>\ngetBackpackCargo cursorTarget;\n/*\n\treturns e.g\n\t[\n        [\"5BackpackA\", \"10BackpackB\"]\n        [5, 10]\n\t]\n*/\n</sqf>"
 - <sqf>_content = getBackpackCargo carName;</sqf>
 - <sqf>_content = getBackpackCargo ammoBoxName;</sqf>
