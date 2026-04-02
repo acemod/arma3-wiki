@@ -1,0 +1,38 @@
+name: getAimDirectionAndUp
+description: Returns the aim direction and up vectors of a soldier in model space. It returns where the weapon aim is wanted from the [[eyePos]], not the actual weapon direction. For actual weapon direction, see [[weaponDirection]].
+groups:
+- Object Manipulation
+- Render Time Scope
+syntax:
+- call: !Unary
+  - soldier
+  - isRenderScope
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: soldier
+    description: The soldier entity. The soldier must either be on foot or in a turret.
+    type: Object
+  - name: isRenderScope
+    description: Whether to use render scope to get the vector. (render scope is smoother for visualizing the vector in 3D)
+    type: Boolean
+    optional: true
+    default: 'false'
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 22
+examples:
+- |-
+  <sqf>onEachFrame
+  {
+      getAimDirectionAndUp [player] params ["_dir", "_up"];
+      private _dirWS = player vectorModelToWorld _dir;
+      private _upWS = player vectorModelToWorld _up;
+      private _eyePos = eyePos player;
+      drawLine3D [ASLtoAGL _eyePos, ASLtoAGL (_eyePos vectorAdd _dirWS), [1,0,0,1]];
+  }
+  </sqf>
