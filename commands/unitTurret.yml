@@ -10,7 +10,9 @@ syntax:
   - gunner
   ret:
   - Unknown
-  - null
+  - |-
+    {{hl|[-1]}} is returned if the [[gunner]] is also the [[driver]].
+    When no units are in any of vehicle's turret, empty array {{hl|[]}} is returned.
   params:
   - name: vehicle
     type: Object
