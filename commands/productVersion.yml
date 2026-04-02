@@ -8,7 +8,16 @@ syntax:
 - call: Nular
   ret:
   - Unknown
-  - null
+  - |-
+    product name
+    * nameShort: [[String]] - product short name
+    * version: [[Number]] - product version number
+    * buildNumber: [[Number]] - product build number
+    * {{GVI|arma3|1.00|size= 0.75}} buildType: [[String]] - build type, can be {{hl|"Stable"}}, {{hl|"Development"}}, {{hl|"Diag"}} or {{hl|"Profile"}}
+    * {{GVI|arma3|1.00|size= 0.75}} isModded: [[Boolean]] - is the product running with mods ([[true]]) or vanilla ([[false]])
+    * {{GVI|arma3|1.00|size= 0.75}} platform: [[String]] - can be {{hl|"Windows"}}, {{hl|"Linux"}} or {{hl|"OSX"}}
+    * {{GVI|arma3|1.68|size= 0.75}} architecture: [[String]] - {{hl|"x64"}} for 64bit or {{hl|"x86"}} for 32bit
+    * {{GVI|arma3|2.20|size= 0.75}} steamBranchName: [[String]] - {{hl|""}} (for default/public branch), {{hl|"profiling"}} or {{hl|"development"}}
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
