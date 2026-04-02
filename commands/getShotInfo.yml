@@ -6,7 +6,17 @@ syntax:
 - call: !Unary shot
   ret:
   - Unknown
-  - null
+  - |-
+    effectiveTimeToLive: [[Number]] - how much more shot has to live.
+    * 1 - fuseDistanceLeft: [[Number]] - how long shot has to travel more to get fused (undebarrel grenade for example).
+    * 2 - timeToExplosion: [[Number]] - how long before shot fuse explodes (hand grenade for example) {{GVI|arma3|2.20|size= 0.75}} works on mines too.
+    * 3 - triggerIsForced: [[Boolean]] - [[true]] if shot ammo was triggered with [[triggerAmmo]].
+    * 4 - shownTracer: [[Boolean]] - [[true]] if the shot shown as tracer.
+    * 5 - isReal: [[Boolean]] - [[true]] if the shot is considered in damage events.
+    * 6 - isSubmunitionTriggered: [[Boolean]] - [[true]] if the shot contains submunition and it is triggered.
+    * 7 - isSetForDeletion: [[Boolean]] - [[true]] if the shot is already set for deletion but not yet removed from the scene.
+    * 8 - {{GVI|arma3|2.22}} shotParent: [[Object]] - the vehicle that produced shot.
+    * 9 - {{GVI|arma3|2.22}} shotInstigator: [[Object]] - the person who pulled the trigger.
   params:
   - name: shot
     description: shot projectile
