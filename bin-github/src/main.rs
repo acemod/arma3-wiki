@@ -21,7 +21,7 @@ async fn main() {
     let mut failed = false;
 
     if let Some(updated_version) = report.updated_version() {
-        github.version_pr(&updated_version.to_string()).await;
+        github.version_commit(&updated_version.to_string()).await;
     }
 
     for command in report.passed_commands() {
@@ -35,7 +35,7 @@ async fn main() {
             }
             _ => (),
         }
-        if let Err(e) = github.command_pr(command).await {
+        if let Err(e) = github.command_commit(command).await {
             println!("Failed to create PR for {command}: {e}");
             failed = true;
         }
@@ -74,7 +74,7 @@ async fn main() {
                 }
                 _ => (),
             }
-            if let Err(e) = github.event_handler_pr(&ns, handler).await {
+            if let Err(e) = github.event_handler_commit(&ns, handler).await {
                 println!("Failed to create PR for {ns}::{handler}: {e}");
                 failed = true;
             }
