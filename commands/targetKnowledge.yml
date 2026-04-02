@@ -8,7 +8,15 @@ syntax:
   - target
   ret:
   - Unknown
-  - null
+  - |-
+    target known by group
+    * knownByUnit: [[Boolean]] - target known by the unit
+    * lastSeen: [[Number]] - last time the target was seen by the unit
+    * lastThreat: [[Number]] - last time the target endangered the unit
+    * side: [[Side]] - target side
+    * errorMargin: [[Number]] - position error
+    * position: [[Position]] - target position
+    * {{GVI|arma3|2.18}} ignoreTarget: [[Boolean]] - target is ignored ([[ignoreTarget]])
   params:
   - name: unit
     type: Object
