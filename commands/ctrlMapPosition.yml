@@ -5,8 +5,12 @@ groups:
 syntax:
 - call: !Unary map
   ret:
-  - ArrayUnknown
-  - '[x, y, w, h]'
+  - Unknown
+  - |-
+    position in x
+    * y: [[Number]] - position in y
+    * w: [[Number]] - width of the map control
+    * h: [[Number]] - height of the map control
   params:
   - name: map
     description: '[[CT_MAP|Map control]]'
