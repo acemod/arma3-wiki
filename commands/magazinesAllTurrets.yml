@@ -6,7 +6,12 @@ syntax:
 - call: !Unary vehicle
   ret:
   - Unknown
-  - null
+  - |-
+    magazine class name
+    * turretPath: [[Turret Path]]
+    * ammoCount: [[Number]] - how many rounds left in the magazine
+    * id: [[Number]] - id of the magazine object. The number starts at 10,000,000. This gives it about 6,700,000 possible ids before the number starts losing precision and cannot be used in scripts.
+    * creator: [[Number]] - [[owner]] / [[clientOwner]] of the PC that created the object
   params:
   - name: vehicle
     description: vehicle with turrets
@@ -16,7 +21,12 @@ syntax:
   - excludePersonTurrets
   ret:
   - Unknown
-  - null
+  - |-
+    magazine class name
+    * turretPath: [[Turret Path]]
+    * ammoCount: [[Number]] - how many rounds left in the magazine
+    * id: [[Number]] - id of the magazine object. The number starts at 10,000,000. This gives it about 6,700,000 possible ids before the number starts losing precision and cannot be used in scripts.
+    * creator: [[Number]] - [[owner]] / [[clientOwner]] of the PC that created the object
   params:
   - name: vehicle
     description: vehicle with turrets
