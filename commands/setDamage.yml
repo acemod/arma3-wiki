@@ -54,7 +54,16 @@ syntax:
     description: '- Will re-set [[alive]] state of previously dead object.'
     type: Boolean
     optional: true
-    default: 'false'
+    default: '[[false]]'
+    since:
+      arma_3:
+        major: 2
+        minor: 22
+  - name: shot
+    description: '- shot that caused the damage.'
+    type: Object
+    optional: true
+    default: '[[objNull]]'
     since:
       arma_3:
         major: 2
