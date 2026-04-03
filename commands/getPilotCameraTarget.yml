@@ -1,16 +1,12 @@
 name: getPilotCameraTarget
-description: 'Returns the target of the object airplane or helicopter [[Arma 3: Targeting config reference#class pilotCamera|pilotCamera]] tracking.'
+description: 'Returns the target of the object airplane or helicopter [[Arma 3: Targeting config reference#class pilotCamera|pilotCamera]] tracking. Returns <sqf inline>[false, [0,0,0], objNull]</sqf> if camera is not in a tracking mode or if object has no [[Arma 3: Targeting config reference#class pilotCamera|pilotCamera]].'
 groups:
 - Pilot Camera
 syntax:
 - call: !Unary object
   ret:
   - Unknown
-  - |-
-    returns whether the camera is in a tracking mode
-    * targetPosition: [[Position#PositionASL|PositionASL]] - returns the position of the tracked area or object
-    * targetObject: [[Object]] - returns the tracked object, [[objNull]] if camera is only tracking an area
-    returns <sqf inline>[false, [0,0,0], objNull]</sqf> if camera is not in a tracking mode or if object has no [[Arma 3: Targeting config reference#class pilotCamera|pilotCamera]].
+  - "returns whether the camera is in a tracking mode \n* targetPosition: [[Position#PositionASL|PositionASL]] - returns the position of the tracked area or object\n* targetObject: [[Object]] - returns the tracked object, [[objNull]] if camera is only tracking an area"
   params:
   - name: object
     type: Object
