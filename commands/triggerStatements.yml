@@ -7,7 +7,9 @@ syntax:
 - call: !Unary trigger
   ret:
   - Unknown
-  - null
+  - |-
+    code ran when the trigger is activated
+    * deactivation: [[String]] - code ran when the trigger is deactivated
   params:
   - name: trigger
     type: Object
