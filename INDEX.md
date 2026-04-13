@@ -1,0 +1,3873 @@
+# Arma 3 Wiki — Command & Event Index
+_Generated from wiki data version `2.20`. Re-run `build_index.py` to refresh._
+**3150 commands** across 89 groups · **309 event handlers** across 9 categories
+
+---
+## Contents
+- [SQF Commands by Group](#sqf-commands-by-group)
+  - [AI Behaviour (22)](#sqf-ai-behaviour)
+  - [Animations (28)](#sqf-animations)
+  - [Argo (18)](#sqf-argo)
+  - [Arrays (36)](#sqf-arrays)
+  - [Artillery (8)](#sqf-artillery)
+  - [Briefing (63)](#sqf-briefing)
+  - [Broken Commands (37)](#sqf-broken-commands)
+  - [Camera Control (67)](#sqf-camera-control)
+  - [Config (28)](#sqf-config)
+  - [Containers (48)](#sqf-containers)
+  - [Conversations (8)](#sqf-conversations)
+  - [Curator (44)](#sqf-curator)
+  - [Custom Panels (8)](#sqf-custom-panels)
+  - [Custom Radio and Chat (8)](#sqf-custom-radio-and-chat)
+  - [DLC (11)](#sqf-dlc)
+  - [Diagnostic (50)](#sqf-diagnostic)
+  - [Difficulty (11)](#sqf-difficulty)
+  - [Dynamic Simulation (12)](#sqf-dynamic-simulation)
+  - [Eden Editor (56)](#sqf-eden-editor)
+  - [Environment (66)](#sqf-environment)
+  - [Event Handlers (48)](#sqf-event-handlers)
+  - [Flags (11)](#sqf-flags)
+  - [GUI Control (125)](#sqf-gui-control)
+  - [GUI Control - Controls Table (19)](#sqf-gui-control---controls-table)
+  - [GUI Control - Event Handlers (9)](#sqf-gui-control---event-handlers)
+  - [GUI Control - HTML (22)](#sqf-gui-control---html)
+  - [GUI Control - ListBox (40)](#sqf-gui-control---listbox)
+  - [GUI Control - ListNBox (38)](#sqf-gui-control---listnbox)
+  - [GUI Control - Map (23)](#sqf-gui-control---map)
+  - [GUI Control - Menu (27)](#sqf-gui-control---menu)
+  - [GUI Control - Object (9)](#sqf-gui-control---object)
+  - [GUI Control - Positioning (28)](#sqf-gui-control---positioning)
+  - [GUI Control - Tree View (37)](#sqf-gui-control---tree-view)
+  - [Game 2 Editor (57)](#sqf-game-2-editor)
+  - [Groups (50)](#sqf-groups)
+  - [HashMap (19)](#sqf-hashmap)
+  - [High Command (27)](#sqf-high-command)
+  - [Interaction (64)](#sqf-interaction)
+  - [Leaderboards (9)](#sqf-leaderboards)
+  - [Lights (30)](#sqf-lights)
+  - [Localization (5)](#sqf-localization)
+  - [Locations (31)](#sqf-locations)
+  - [Map (14)](#sqf-map)
+  - [Markers (49)](#sqf-markers)
+  - [Math (40)](#sqf-math)
+  - [Math - Geometry (24)](#sqf-math---geometry)
+  - [Math - Vectors (28)](#sqf-math---vectors)
+  - [Mines (10)](#sqf-mines)
+  - [Mission Information (41)](#sqf-mission-information)
+  - [Mods and Addons (11)](#sqf-mods-and-addons)
+  - [Multiplayer (79)](#sqf-multiplayer)
+  - [Namespaces (16)](#sqf-namespaces)
+  - [Object Detection (42)](#sqf-object-detection)
+  - [Object Manipulation (263)](#sqf-object-manipulation)
+  - [Particles (8)](#sqf-particles)
+  - [Performance Profiling (9)](#sqf-performance-profiling)
+  - [PhysX (20)](#sqf-physx)
+  - [Pilot Camera (10)](#sqf-pilot-camera)
+  - [Positions (52)](#sqf-positions)
+  - [Program Flow (49)](#sqf-program-flow)
+  - [RTD (46)](#sqf-rtd)
+  - [Radio and Chat (41)](#sqf-radio-and-chat)
+  - [Remote Control (21)](#sqf-remote-control)
+  - [Render Time Scope (18)](#sqf-render-time-scope)
+  - [Roads and Airports (10)](#sqf-roads-and-airports)
+  - [Ropes and Sling Loading (23)](#sqf-ropes-and-sling-loading)
+  - [Sensors (18)](#sqf-sensors)
+  - [Sides (38)](#sqf-sides)
+  - [Sounds (63)](#sqf-sounds)
+  - [Stamina System (21)](#sqf-stamina-system)
+  - [Strings (43)](#sqf-strings)
+  - [Strings - Regular Expression (3)](#sqf-strings---regular-expression)
+  - [Structured Text (11)](#sqf-structured-text)
+  - [System (88)](#sqf-system)
+  - [Team Switch (8)](#sqf-team-switch)
+  - [Teams (22)](#sqf-teams)
+  - [Time (15)](#sqf-time)
+  - [Triggers (33)](#sqf-triggers)
+  - [Turrets (33)](#sqf-turrets)
+  - [Unit Control (81)](#sqf-unit-control)
+  - [Unit Identity (20)](#sqf-unit-identity)
+  - [Unit Inventory (127)](#sqf-unit-inventory)
+  - [Variables (62)](#sqf-variables)
+  - [Vehicle Inventory (38)](#sqf-vehicle-inventory)
+  - [Vehicle Loadouts (9)](#sqf-vehicle-loadouts)
+  - [Vehicle in Vehicle Transport (6)](#sqf-vehicle-in-vehicle-transport)
+  - [Waypoints (63)](#sqf-waypoints)
+  - [Weapon Pool (14)](#sqf-weapon-pool)
+  - [Weapons (53)](#sqf-weapons)
+- [Event Handlers by Category](#event-handlers-by-category)
+  - [eden (59)](#events-eden)
+  - [group (20)](#events-group)
+  - [mission (51)](#events-mission)
+  - [multiplayer (4)](#events-multiplayer)
+  - [music (2)](#events-music)
+  - [projectile (10)](#events-projectile)
+  - [standard (107)](#events-standard)
+  - [user_action (3)](#events-user_action)
+  - [user_interface (53)](#events-user_interface)
+
+---
+## SQF Commands by Group
+
+> **How to look up a command:** `commands/{CommandName}.yml`  
+> Each file has: description, syntax, param types, return type, locality (`argument_loc`/`effect_loc`), version, examples.
+
+### AI Behaviour <a id="sqf-ai-behaviour"></a>
+
+- **`behaviour`** — Returns the behaviour of the individual unit, this is why it only accepts Object as the argument.
+- **`checkAIFeature`** — Checks if the given AI feature is currently enabled.
+- **`combatBehaviour`** — 'Returns combat behaviour of unit or group.
+- **`combatMode`** — Returns the combat mode of the given AI  group.
+- **`disableAI`** — Disables parts of the AI behaviour to get a better control over the actions of a unit.
+- **`enableAI`** — "Enables parts of the AI behavior that was disabled by disableAI.
+- **`enableAIFeature`** — Enables/disables given AI feature.
+- **`expectedDestination`** — Return expected destination of unit as an array.
+- **`getUnitState`** — Returns current state of the given AI unit, which could be one of the following: * "WAIT" - another plan is needed (current partial plan was done or is not present) * "INIT" - operative planing should start, endpoint is set * "INITFAILED" - init failed because data are not ready * "BUSY" - operative plan ready and valid * "OK" - completed whole strategic plan * "DELAY" - repeat search, usually when failed * "CARGO" - unit is in vehicle cargo, no planning needed * "STOPPING" - unit is stopping (usually because of getin/getout request/landing) * "REPLAN" - we have a plan, but we would like to search a new one * "STOPPED" - unit is stopped, no planning needed (also landed.
+- **`isAISteeringComponentEnabled`** — Returns whether the AI steering component feature is enabled for the specified vehicle.
+- **`isUsingAISteeringComponent`** — Returns whether the AI steering component setting is enabled globally.
+- **`setBehaviour`** — Sets individual unit behaviour '''on every unit in a group'''.
+- **`setBehaviourStrong`** — Sets individual unit behaviour on every unit in a group and additionally tries to force this behaviour to the unit's group.
+- **`setCombatBehaviour`** — "Sets an individual unit entity behaviour (main syntax) or a group entity behaviour (alternative syntax).
+- **`setCombatMode`** — "Sets AI  group combat mode (engagement rules).
+- **`setSkill`** — Sets the skill level of given unit.
+- **`setUnitAbility`** — Sets skill of given unit.
+- **`setUnitCombatMode`** — "Sets '''unit's''' combat mode (engagement rules).
+- **`skill`** — Returns current skill of a unit, in range between 0 to 1, 1 being the highest level of skill.
+- **`skillFinal`** — Returns final, recalculated sub skill value of given unit.
+- **`unitCombatMode`** — Gets individual unit's combat mode.
+- **`useAISteeringComponent`** — Enable the new , used to test the old and new AI driving.
+
+### Animations <a id="sqf-animations"></a>
+
+- **`animate`** — Activates given object animation.
+- **`animateBay`** — Forces animation of bay to given state, -1 for reset to engine handling, can cause weapon inoperative, because weapon is released when bay state == 1.
+- **`animateDoor`** — "Animates a door on a vehicle.
+- **`animatePylon`** — Force animation of pylon to given state, -1 for reset to engine handling, can cause weapon inoperative, because weapon is released  when pylon state == 1.
+- **`animateSource`** — Process an animation of the object.
+- **`animationNames`** — Returns Array of Strings where elements are the names of model animations, which should theoretically be available for use with animate command.
+- **`animationPhase`** — Returns the phase of the given animation on the given object.
+- **`animationSourcePhase`** — Returns current animation phase of given source.
+- **`animationState`** — Returns the name of a unit's current primary animation.
+- **`doorPhase`** — Return animation phase of door on vehicle.
+- **`elevatePeriscope`** — Elevates periscope of a vehicle.
+- **`gestureState`** — Returns the name of a unit's current gesture.
+- **`getAnimAimPrecision`** — Returns aim precision for current animation
+- **`getAnimSpeedCoef`** — Get coefficient for animation speed.
+- **`getUnitMovesInfo`** — Returns various information about the unit moves (primary animation) and gestures (masked animation)  this command only worked for a man unit, and other units such as animals couldn't use this command.
+- **`moveTime`** — Returns the current time of the most important RTM animation currently being played on the soldier.
+- **`periscopeElevation`** — Returns current periscope elevation value, see also elevatePeriscope.
+- **`playAction`** — When used on a person, a smooth transition to the given action will be initiated.
+- **`playActionNow`** — When used on a person, a smooth transition to the given action will be initiated, but all previous playAction are discarded.
+- **`playGesture`** — When used on a person,a smooth transition to the given move will be initiated.
+- **`playMove`** — When used on a person, smooth transition to given move will be done.
+- **`playMoveNow`** — When used on a person,a smooth transition to the given move will be initiated, but all previous playMove are discarded.
+- **`setAnimSpeedCoef`** — Sets a coefficient for animation speed (0.5 will play animations half the speed, 2 twice the speed).
+- **`setFaceAnimation`** — Sets facial animation phase (eye blinking).
+- **`switchAction`** — When used on a person, the given action is started immediately (there is no transition).
+- **`switchGesture`** — When used on a person,the given move is started immediately (without transition).
+- **`switchMove`** — Immediately applies given animation to the unit.
+- **`useAudioTimeForMoves`** — Switch between elapsed game time and audio time being used as animation timer.
+
+### Argo <a id="sqf-argo"></a>
+
+- **`clearKillConfirmations`** — Clears the list of kill confirmations.
+- **`gameValueToJson`** — Generate a JSON string from the provided array values.
+- **`getCurrentPlayerLevel`** — Get the level of the currently logged client.
+- **`getLoginStatus`** — Get the client's current Cloud service login status.
+- **`getNextId`** — Generate a new random-based UUID version 4 string as described in .
+- **`getPlayerCloudId`** — Return the provided player's unique Cloud service account id.
+- **`getPlayerLevel`** — Return the level of the provided player.
+- **`isAppSubscribed`** — Find if the provided appId's game/DLC is owned by the currently logged Steam account.
+- **`isPlayerSupporter`** — Get if the provided player has the supporter (VIP) status.
+- **`jsonToGameValue`** — Try to convert the provided JSON to game value.
+- **`kickPlayer`** — Kick the player controlling the provided unit from the server.
+- **`onOfficialServer`** — Get if the current machine is an official server or is connected to one.
+- **`sendAnalyticEvent`** — Generates new analytics events with given values, acceptable value types are string, scalar and bool.
+- **`sendCloudRequest`** — ''
+- **`sendCloudRequestClient`** — Sends a client request to the  cloud service and executes callback code with server's response.
+- **`sendCloudRequestServer`** — Sends a server request to the  cloud service and executes callback code with server's response.
+- **`serverConfigTopLevelEntry`** — 'Get top-level entry (i.e.
+- **`serverStartMission`** — Start the provided mission (if it exists) on a dedicated server.
+
+### Arrays <a id="sqf-arrays"></a>
+
+- **`'-'`** — Subtracts numbers or arrays from each another, negates a number.
+- **`+`** — Add two Numbers, concatenate two Arrays or two Strings, or create a copy of an Array or HashMap.
+- **`append`** — Appends array2 to the back of array1 modifying array1.
+- **`apply`** — Applies the given code to each element of the given data structure and collects the results in an array.
+- **`arrayIntersect`** — Intersects two arrays returning an array of unique common elements, avoiding nil values.
+- **`count`** — Can be used to count: * The number of elements in an array (returns the already internally known array size) * The number of elements in an array matching the condition * The number of sub-entries in a config entry *  The number of characters in an ANSI string
+- **`createHashMapFromArray`** — Creates a new HashMap and initializes it from a key-value pair array
+- **`deleteAt`** — Removes array element at the given index and returns removed element (modifies the original array, just like resize or set).
+- **`deleteRange`** — Removes a range of array elements from the given array.
+- **`find`** — Searches for an array element within an array or an ANSI string within an ANSI string.
+- **`findAny`** — Returns the zero-based index of the first element in array A that also exists in array B.
+- **`findIf`** — Searches for an element within array for which the code evaluates to true.
+- **`flatten`** — Flattens an array.
+- **`forEach`** — Executes the given command(s) on every item of an Array or a HashMap.
+- **`forEachReversed`** — Executes the given command(s) on every item of an Array in reversed order, compared to forEach.
+- **`in`** — Checks whether value is in array, unit is in vehicle, position is inside location or ANSI string is part of other ANSI string.
+- **`insert`** — Inserts multiple values into Array/String/HashMap.
+- **`isArray`** — Check if config entry represents array.
+- **`isEqualTypeAll`** — Compares types of all elements of an array to the type of a single value.
+- **`isEqualTypeArray`** — Compares types of all elements of one array to types of all elements of another array.
+- **`param`** — Extracts a single value with given index from input argument, similar to BIS_fnc_param.
+- **`params`** — Parses input argument into array of private variables.
+- **`parseSimpleArray`** — Converts given, formatted as simple array, String into a valid Array.
+- **`pushBack`** — 'Insert an element to the back of the given array.
+- **`pushBackUnique`** — Adds element to the back of the given array but only if it is unique to the array.
+- **`resize`** — Changes the size of the given array.
+- **`reverse`** — Reverses given array by reference (modifies the original array, just like resize).
+- **`select`** — Selects an element from an array, config entry from Config or substring from a string or a range from an array.
+- **`selectMax`** — "Returns the array element with maximum numerical value.
+- **`selectMin`** — "Returns the array element with minimum numerical value.
+- **`selectRandom`** — Returns a random element from the given array.
+- **`selectRandomWeighted`** — "Returns a random element from the given array according to assigned weights.
+- **`set`** — "Changes the element at the given zero-based index of the array.
+- **`sort`** — Attempts to sort given array either in ascending (true) or descending (false) order.
+- **`toArray`** — Converts the supplied String into an Array of Numbers.
+- **`toString`** — Converts the supplied Array of Numbers into a String through  characters representation conversion, or provided Code to compilable String.
+
+### Artillery <a id="sqf-artillery"></a>
+
+- **`commandArtilleryFire`** — Orders an artillery unit to fire a burst on the given position (via the radio).
+- **`doArtilleryFire`** — Orders an artillery unit to fire a burst on the given position (silently).
+- **`enableEngineArtillery`** — Enable/disable the artillery engine.
+- **`getArtilleryAmmo`** — Get list of all available magazines of artillery units on the list.
+- **`getArtilleryComputerSettings`** — Returns settings from current vehicle weapon manned by player.
+- **`getArtilleryETA`** — Returns ETA to the target in seconds for given artillery unit based on target position and used magazine, -1 if target can't be hit.
+- **`inRangeOfArtillery`** — Returns true if all given units are able to fire at given position with given magazineType.
+- **`shownArtilleryComputer`** — Checks whether the player has the artillery computer currently open.
+
+### Briefing <a id="sqf-briefing"></a>
+
+- **`allDiaryRecords`** — Returns array with all Diary Records for the given subject available to the given person.
+- **`allDiarySubjects`** — Returns array with all Diary subjects available to the given person.
+- **`briefingName`** — Returns the name of the current briefing/scenario name.
+- **`cancelSimpleTaskDestination`** — Cancels a simple task destination.
+- **`createDiaryLink`** — Creates a link to the given diary entry.
+- **`createDiaryRecord`** — Creates a Diary entry.
+- **`createDiarySubject`** — Creates a new subject in the Diary.
+- **`createSimpleTask`** — Creates a new Task and adds it to the Diary.
+- **`createTask`** — Create a new AI task (subtask of parentTask).
+- **`currentTask`** — Return current task of given person.
+- **`currentTasks`** — Returns array with all  uncompleted tasks for the given agent.
+- **`debriefingText`** — Returns debriefing text of provided end.
+- **`diaryRecordNull`** — "A non-existent Diary Record.
+- **`diarySubjectExists`** — Checks whether given subject is present in the Diary of given player.
+- **`disableDebriefingStats`** — Disable debriefing score table.
+- **`enableDebriefingStats`** — Enable debriefing score table.
+- **`getDebriefingText`** — A getter for setDebriefingText.
+- **`objStatus`** — Sets the status of an objective that was defined in briefing.html.
+- **`onBriefingGear`** — Select a sound declared in the Description.ext of the mission to be played the first time the Gear tab is selected in the briefing.
+- **`onBriefingGroup`** — Select a sound declared in the Description.ext of the mission to be played the first time the Group tab is selected in the briefing.
+- **`onBriefingNotes`** — Select a sound declared in the Description.ext of the mission to be played the first time the Notes tab is selected in the briefing.
+- **`onBriefingPlan`** — Select a sound declared in the Description.ext of the mission to be played the first time the Plan tab is selected in the briefing.
+- **`onBriefingTeamSwitch`** — Select a sound defined in the CfgSounds of the mission to be played the first time the TeamSwitch tab is selected in the briefing.
+- **`priority`** — Return the priority of the task.
+- **`processDiaryLink`** — Opens the Diary screen on the subject/record specified by link.
+- **`registeredTasks`** — Returns array with all registered task types for the given agent.
+- **`registerTask`** — Registers a new task type.
+- **`removeDiaryRecord`** — Remove a log record.
+- **`removeDiarySubject`** — Removes a page and all its subjects from the Diary.
+- **`removeSimpleTask`** — Remove a simple task from the list of simple tasks.
+- **`selectDiarySubject`** — Selects a subject page in the diary.
+- **`sendTask`** — Create a new AI task (subtask of parentTask).
+- **`sendTaskResult`** — Send a result of the task to the task sender.
+- **`setCurrentTask`** — Set the task as a current task of the person.
+- **`setDebriefingText`** — Sets debriefing title, text, subtitle, picture and background for a mission ending.
+- **`setDiaryRecordText`** — Set text of a log record.
+- **`setDiarySubjectPicture`** — Sets a picture to be displayed on the right of the Diary subject.
+- **`setSimpleTaskAlwaysVisible`** — Sets task's visibility.
+- **`setSimpleTaskCustomData`** — Set custom data for the task.
+- **`setSimpleTaskDescription`** — Attach descriptions to the simple task.
+- **`setSimpleTaskDestination`** — Attach a destination to the simple task.Overrides setSimpleTaskTarget
+- **`setSimpleTaskTarget`** — Attach a target to the simple task.Overrides setSimpleTaskDestination.
+- **`setSimpleTaskType`** — Attach type to the simple task.
+- **`setTaskMarkerOffset`** — Sets the task marker position in model space.
+- **`setTaskResult`** — Set a result of the task.
+- **`setTaskState`** — Set the state of a given task.
+- **`simpleTasks`** — Return all simple tasks assigned to given unit.
+- **`taskAlwaysVisible`** — Returns true if the task is flagged to be always visible or false if not.
+- **`taskChildren`** — Return the child tasks of the specified task.
+- **`taskCompleted`** — Return if task is completed.
+- **`taskCustomData`** — Returns custom data attached to the local task or an empty array if there are no custom data attached.
+- **`taskDescription`** — Returns the sub-parts of the task description.
+- **`taskDestination`** — Returns the position of the task (as specified by destination parameter in config).
+- **`taskHint`** — Shows info about new, changed or failed task.
+- **`taskMarkerOffset`** — Returns model space position for the task marker
+- **`taskName`** — Returns the name of the given task.
+- **`taskNull`** — "A non-existing Task.
+- **`taskParent`** — Returns the parent task of the specified task.
+- **`taskResult`** — Send a result of the task to the task sender.
+- **`taskState`** — Returns the current state of a task.
+- **`taskType`** — Returns the type of the given task.
+- **`type`** — Returns a string of a Location's class name or Task's name (same as taskName).
+- **`unregisterTask`** — Unregisters a task type from given agent.
+
+### Broken Commands <a id="sqf-broken-commands"></a>
+
+- **`addPublicVariableEventHandler`** — and the introduction of remoteExec and remoteExecCall.}}  This event handler will detect if a missionNamespace variable (it is attached to) has been broadcast over network with publicVariable, publicVariableClient or publicVariableServer commands and will execute EH code upon detection.
+- **`allSites`** — Return all sites in map.
+- **`camPrepareBank`** — Prepares the camera bank angle.
+- **`camPrepareDir`** — "Prepares the camera heading.
+- **`camPrepareDive`** — "Prepares the camera dive angle.
+- **`camPrepareFovRange`** — Prepares the camera field of view range for auto zooming.
+- **`camSetBank`** — Sets camera bank angle.
+- **`camSetDive`** — "Sets camera dive angle.
+- **`camSetFovRange`** — "Set the zoom level ('''F'''ield '''O'''f '''V'''iew) start and end values for automatical zooming.
+- **`createSite`** — "Create a new site.
+- **`createTarget`** — Create a target.
+- **`debugFSM`** — Dump (something about FSM) to debugging output.
+- **`debugLog`** — "Dump argument type and value to debugging output.
+- **`deleteSite`** — Removes the site.
+- **`deleteTarget`** — Delete a target.
+- **`disableDebriefingStats`** — Disable debriefing score table.
+- **`echo`** — Sends any text into the debugger console or the logfile.
+- **`enemy`** — Returns ''Enemy'' side which is hostile to all units.
+- **`findCover`** — Returns the object around where the unit finds cover.
+- **`getPersonUsedDLCs`** — Returns a list of all DLCs objects the unit is currently using.
+- **`halt`** — 'This command was meant to break the script into debugger, however currently ''''''it does not do anything'''''' except displaying and logging the following error: .'
+- **`isHideBehindScripted`** — Return whether the vehicle has set the hideBehindScripted to true or not.
+- **`menuShortcutText`** — Returns a string containing shortcut text for menu item on the given path.
+- **`moveTarget`** — Change information about a target.
+- **`netObjNull`** — A non-existing network object.
+- **`removeClothing`** — Removes specified named clothes selections from unit.
+- **`setFaceAnimation`** — Sets facial animation phase (eye blinking).
+- **`setHideBehind`** — Sets the data for hiding.
+- **`setPlayable`** — Create a multiplayer role for the unit.
+- **`setPosASL2`** — "Sets the object position.
+- **`setSystemOfUnits`** — Set system of units.
+- **`setVehicleId`** — Sets ID to vehicle.
+- **`showWarrant`** — Enable ID card.
+- **`simulSetHumidity`** — Sets simul cloud cover.
+- **`textLog`** — Dump argument value to debugging output.
+- **`textLogFormat`** — Debugging output.
+- **`unlockAchievement`** — Unlocks the given achievement.
+
+### Camera Control <a id="sqf-camera-control"></a>
+
+- **`addCamShake`** — Creates the camera shaking effect, like when you are near an explosion
+- **`allCameras`** — Return a list of all existing cameras.
+- **`apertureParams`** — Returns current aperture parameters.
+- **`camCommand`** — Executes a command on the given ''camera / actor'' object.
+- **`camCommit`** — Smoothly conduct the changes that were assigned to a camera within the given time.
+- **`camCommitPrepared`** — Smoothly conducts the changes that were assigned to a camera within the given time.
+- **`camCommitted`** — Checks if the conduction of the last camCommit call already finished.
+- **`camConstuctionSetParams`** — Sets construction camera parameters.
+- **`camCreate`** — Create a camera or a seagull object on the given position.
+- **`camDestroy`** — "Destroys camera object created with camCreate.
+- **`cameraEffect`** — Sets the given effect on the given camera.
+- **`cameraEffectEnableHUD`** — Enable / disable showing of in-game UI during currently active camera effect.
+- **`cameraInterest`** — Return camera interest for given entity, as set by setCameraInterest, or as autodetected.
+- **`cameraOn`** — Returns the vehicle to which the camera is attached.
+- **`cameraView`** — "Returns mode of active camera view.
+- **`camPreload`** — Preloads the scene for the prepared camera with given timeout after which preloading is aborted.
+- **`camPreloaded`** — Checks whether the camera has finished preloading.
+- **`camPrepareBank`** — Prepares the camera bank angle.
+- **`camPrepareDir`** — "Prepares the camera heading.
+- **`camPrepareDive`** — "Prepares the camera dive angle.
+- **`camPrepareFocus`** — focusRange is .
+- **`camPrepareFov`** — Prepares the camera field of view (zoom).
+- **`camPrepareFovRange`** — Prepares the camera field of view range for auto zooming.
+- **`camPreparePos`** — Prepares the camera position.
+- **`camPrepareRelPos`** — Prepares the camera position relative to the current position of the currect target (see camPrepareTarget).
+- **`camPrepareTarget`** — Prepares the camera target to a position or to a target.
+- **`camSetBank`** — Sets camera bank angle.
+- **`camSetDir`** — Sets the orientation of the given camera in the direction of the given vector.
+- **`camSetDive`** — "Sets camera dive angle.
+- **`camSetFocus`** — Sets camera focus range.
+- **`camSetFov`** — Set the zoom level ('''F'''ield '''O'''f '''V'''iew) of the given camera.
+- **`camSetFovRange`** — "Set the zoom level ('''F'''ield '''O'''f '''V'''iew) start and end values for automatical zooming.
+- **`camSetPos`** — Sets the position of the given camera or seagull (see camCreate).
+- **`camSetRelPos`** — Sets the position of the given camera relative to its target, set with camSetTarget.
+- **`camSetTarget`** — Set the target object or position where the given camera should point at.
+- **`camTarget`** — Returns camera's target.
+- **`camUseNVG`** — Set / clear using of night vision during cutscenes.
+- **`directionStabilizationEnabled`** — Get state of direction stabilization.
+- **`enableCamShake`** — Allows camera shake effects via addCamShake.
+- **`enableDirectionStabilization`** — Enables / disables direction stabilization of turrets.
+- **`enableEndDialog`** — Enables the execution of a custom camera sequence after the players death, coded in onPlayerKilled.sqs.
+- **`focusOn`** — Returns the person the camera is focused on.
+- **`lockCameraTo`** — Lock/Unlock stabilized camera to target.
+- **`lockedCameraTo`** — Return the turret lock target.
+- **`positionCameraToWorld`** — 'right|200pxGet the world coordinate space () from a camera-relative position.'
+- **`ppEffectAdjust`** — Set post process effect parameters.
+- **`ppEffectCommit`** — Commit post process effect in given time.
+- **`ppEffectCommitted`** — Check whether given post process effect is committed.
+- **`ppEffectCreate`** — Creates Post Process Effects specified by effect name and priority.
+- **`ppEffectDestroy`** — Destroy Post Process Effects given by handle or array of handles.
+- **`ppEffectEnable`** — Enable / disable Post Process Effects
+- **`ppEffectEnabled`** — Checks whether given post process effect is enabled
+- **`ppEffectForceInNVG`** — Forces use of Post Process Effects in NVG.
+- **`preloadCamera`** — Preload all textures and models around given Position to avoid visual artifacts after camera is moved.
+- **`resetCamShake`** — Stops any ongoing camera shake effects.
+- **`setAperture`** — "Sets custom eye accommodation camera aperture.\n\n is used it also forces setApertureNew to the following values: [, , , 1].\nExecute setApertureNew after setAperture to override this default mechanic.\n}}  \n).\n}}"
+- **`setApertureNew`** — Sets custom camera aperture when HDR is enabled.
+- **`setCameraEffect`** — Applies an effect to the current camera of the player.
+- **`setCameraInterest`** — Set camera interest for given entity.
+- **`setCamShakeDefParams`** — Sets camera shake default parameters.
+- **`setCamShakeParams`** — Sets camera shake parameters.
+- **`setCamUseTI`** — Sets thermal vision mode for currently used camera.
+- **`setDefaultCamera`** — Sets the position and direction for the camera used after camera is set on no object (log out view when leaving MP game for example)
+- **`setHorizonParallaxCoef`** — Sets coef used to shift horizon position based on camera height (use 0 to disable shifting).
+- **`setPiPEffect`** — Sets Render Target's visual effect (Picture-in-Picture).
+- **`showCinemaBorder`** — Forces drawing of cinema borders when using custom camera camCreate.
+- **`switchCamera`** — Switch camera to given vehicle / camera.
+
+### Config <a id="sqf-config"></a>
+
+- **`'>>'`** — Returns  config entry with given name (alias of a / b, slightly faster but with lower precedence)
+- **`/`** — Returns the quotient of two numbers.
+- **`campaignConfigFile`** — Returns root of campaign description.ext entries hierarchy.
+- **`configClasses`** — "Returns an array of config entries which meet criteria in condition code.
+- **`configFile`** — Return root of config entries hierarchy.
+- **`configHierarchy`** — Returns hierarchy of the given config class.
+- **`configName`** — Returns name of config entry.
+- **`configNull`** — "A non-existing Config.\n\n"
+- **`configOf`** — Returns config path of the provided object.
+- **`configProperties`** — Returns an array of config entries that meet the criteria in the condition code.
+- **`configSourceAddonList`** — Returns an array of addons (CfgPatches) in which the given config class is defined.
+- **`count`** — Can be used to count: * The number of elements in an array (returns the already internally known array size) * The number of elements in an array matching the condition * The number of sub-entries in a config entry *  The number of characters in an ANSI string
+- **`diag_exportConfig`** — Exports given config into file of given path.
+- **`diag_mergeConfigFile`** — Updates config without restarting.
+- **`getArray`** — Extract array from config entry.
+- **`getMissionConfig`** — Returns Config entry for the given scenario attribute from the 1st tier.
+- **`getMissionConfigValue`** — Returns value of the given scenario attribute from the 1st tier.
+- **`getNumber`** — Extract number from config entry.
+- **`getText`** — Extracts localized text from config entry, if entry is subject to localization, otherwise returns text value.
+- **`getTextRaw`** — Returns raw text from config entry.
+- **`inheritsFrom`** — Returns base entry of config entry.
+- **`isArray`** — Check if config entry represents array.
+- **`isClass`** — Check if config entry represents config class.
+- **`isNumber`** — Check if config entry represents number.
+- **`isText`** — Checks if config entry represents a text value.
+- **`loadConfig`** — Loads the given file as a Config, allowing easy processing of the config file contents using commands such as configClasses, configProperties, >>, etc.
+- **`missionConfigFile`** — Return root of mission Description.ext entries hierarchy.
+- **`select`** — Selects an element from an array, config entry from Config or substring from a string or a range from an array.
+
+### Containers <a id="sqf-containers"></a>
+
+- **`addBackpack`** — Adds a backpack for a unit.
+- **`addBackpackCargo`** — Add backpack(s) to the cargo space of vehicle.
+- **`addBackpackCargoGlobal`** — Add backpack(s) to the cargo space of vehicle.
+- **`addItemToBackpack`** — Create new item and store it to soldier's backpack.
+- **`addMagazineCargo`** — Add magazines to the cargo space of vehicles, which can be taken out by infantry units.
+- **`addMagazineCargoGlobal`** — Add magazines to the cargo space of vehicles, which can be taken out by infantry units.
+- **`addWeaponCargo`** — Add weapons to the cargo space of vehicles, which can be taken out by infantry units.
+- **`addWeaponCargoGlobal`** — Add weapons to the cargo space of vehicles, which can be taken out by infantry units.
+- **`backpack`** — Returns a class of a backpack.
+- **`backpackCargo`** — Get array with backpacks from ammo box (or any general weapon holder container).
+- **`backpackContainer`** — Returns a cargo container of a unit's backpack.
+- **`backpackItems`** — Get array with all items (of any kind, even weapons) in backpack of the given unit.
+- **`backpackMagazines`** — Get array with all magazines from backpack of the given unit.
+- **`backpackSpaceFor`** — Returns how much space is in backpack for given weapon or magazine
+- **`canAddItemToBackpack`** — Checks if given object can be stored into soldier's backpack.
+- **`clearAllItemsFromBackpack`** — Removes all items from backpack of a unit.
+- **`clearBackpackCargo`** — Removes all backpacks from ammo box (or any general weapon holder container).
+- **`clearBackpackCargoGlobal`** — Removes all backpacks from the vehicle cargo space; MP-synchronised.
+- **`clearItemCargo`** — Removes all items from ammo box (or any general weapon holder container).
+- **`clearItemCargoGlobal`** — Removes all items from ammo box (or any general weapon holder container).
+- **`clearMagazineCargo`** — Remove all magazines from the given vehicle's magazine cargo space.
+- **`clearMagazineCargoGlobal`** — Removes all magazines from the vehicle cargo space.
+- **`clearWeaponCargo`** — Remove all weapons from the given vehicle's weapon cargo space.
+- **`clearWeaponCargoGlobal`** — Removes all weapons from the vehicle cargo space.
+- **`everyBackpack`** — Returns array of backpacks stored in given crate or vehicle.
+- **`firstBackpack`** — Returns the first stored backpack.
+- **`forceAddUniform`** — Create a new uniform and hard link it into slot (without any restrictions).
+- **`getBackpackCargo`** — Returns all backpack types and count from the cargo space.
+- **`getMagazineCargo`** — Returns all magazines types and count from the cargo space
+- **`getWeaponCargo`** — Returns all weapons types and count from the cargo space
+- **`loadBackpack`** — Returns current percentage of mass from items stored in a backpack relative to the maximum capacity of the backpack.
+- **`magazineCargo`** — Get array with magazines from ammo box (or any general weapon holder container).
+- **`removeAllItemsWithMagazines`** — Removes all itemsWithMagazines from the uniform, vest and backpack.
+- **`removeBackpack`** — Removes unit's backpack
+- **`removeItemFromBackpack`** — Removes item from soldier's backpack.
+- **`removeItemFromUniform`** — Removes item from soldier's uniform.
+- **`removeItemFromVest`** — Removes item from soldier's vest.
+- **`removeUniform`** — Removes uniform from unit.
+- **`removeVest`** — Removes vest from unit.
+- **`uniform`** — Returns name of uniform.
+- **`uniformContainer`** — Returns a cargo container of a unit's uniform.
+- **`uniformMagazines`** — Get array with all magazines from uniform of the given unit.
+- **`unitBackpack`** — Returns unit's backpack
+- **`vest`** — nameof vest.
+- **`vestContainer`** — Returns a cargo container of a unit's vest.
+- **`weaponAccessoriesCargo`** — Returns array with all items assigned to the given weapon in given cargo container.
+- **`weaponCargo`** — Get array with weapons from ammo box (or any general weapon holder container).
+- **`weaponsItemsCargo`** — Returns an array with subarrays contains class names and also names of connected items of all the vehicle's cargo weapons in weaponsItems format.
+
+### Conversations <a id="sqf-conversations"></a>
+
+- **`kbAddDatabase`** — Register knowledge base database to given person.
+- **`kbAddDatabaseTargets`** — Register target list knowledge base database to given person.
+- **`kbAddTopic`** — Register conversation topic to given person.
+- **`kbHasTopic`** — Check if conversation topic was registered to given person.
+- **`kbReact`** — Pass a non-verbal communication to the receiver.
+- **`kbRemoveTopic`** — Unregister conversation topic from given person.
+- **`kbTell`** — Make the person tell to the receiver the sentence.
+- **`kbWasSaid`** — Check if given item was said by person to someone.
+
+### Curator <a id="sqf-curator"></a>
+
+- **`addCuratorAddons`** — Allow curator use of given addon.
+- **`addCuratorCameraArea`** — Adds or changes curator camera area (depends on if ID is already used).
+- **`addCuratorEditableObjects`** — Register objects which can be edited by a curator.
+- **`addCuratorEditingArea`** — Adds or changes curator edit area (depends on if ID is already used).
+- **`addCuratorPoints`** — Adds or removes curator points.
+- **`addCuratorSelected`** — Add items to the selected curator items.
+- **`allCurators`** — Returns list of all curator logic units, not the units assigned to the logic.
+- **`allowCuratorLogicIgnoreAreas`** — Allows curator placing and working with modules outside of edit areas.
+- **`assignCurator`** — Assign player as curator.
+- **`curatorAddons`** — Returns list of addons allowed to given curator.
+- **`curatorCamera`** — Returns curator camera object.
+- **`curatorCameraArea`** — Returns all curator camera areas.
+- **`curatorCameraAreaCeiling`** — Returns ceiling height for curator camera.
+- **`curatorCoef`** — Returns current coeficient setting.
+- **`curatorEditableObjects`** — Returns all editable objects which belong to a curator.
+- **`curatorEditingArea`** — Returns all curator editing areas.
+- **`curatorEditingAreaType`** — Returns type of edit areas assigned to curator (blacklist/whitelist).
+- **`curatorMouseOver`** — Returns Curator Editable Object under curator mouse pointer.
+- **`curatorPoints`** — Returns number of points that curator have.
+- **`curatorRegisteredObjects`** — Returns array with all objects that has curator registered and their settings.
+- **`curatorSelected`** — Returns list of all curator selected items.
+- **`curatorSelectionPreset`** — Returns list of all objects stored in the given selection preset.
+- **`curatorWaypointCost`** — Return current price for placing waypoints (curator specific).
+- **`getAssignedCuratorLogic`** — Returns curator logic to which given player has access.
+- **`getAssignedCuratorUnit`** — Returns unit assigned to curator logic.
+- **`loadCuratorSelectionPreset`** — Load the given selection preset to the current selection of the curator.
+- **`objectCurators`** — Returns array with all curators which can edit given object.
+- **`openCuratorInterface`** — Force opens curator interface.
+- **`removeAllCuratorAddons`** — Restrict access to all addons for given curator.
+- **`removeAllCuratorCameraAreas`** — Delete all curator camera areas.
+- **`removeAllCuratorEditingAreas`** — Delete all curator edit areas.
+- **`removeCuratorAddons`** — Restrict curator use of given addons.
+- **`removeCuratorCameraArea`** — Removes curator camera area.
+- **`removeCuratorEditableObjects`** — Unregister objects which can be edited by a curator.
+- **`removeCuratorEditingArea`** — Removes editing area for given curator.
+- **`setCuratorCameraAreaCeiling`** — Sets maximal (ATL) height to which curator camera can move.
+- **`setCuratorCoef`** — Sets coef for some action (coef have to be bigger than -1 000 000, anything lower is considered as disabled action).
+- **`setCuratorEditingAreaType`** — Set whether curator can edit in all editing areas (true) or outside of them (false).
+- **`setCuratorSelected`** — Clear and set the curator selected items.
+- **`setCuratorSelectionPreset`** — Set the list of objects in the given selection preset.
+- **`setCuratorWaypointCost`** — Sets cost of waypoints (used for placing, editing and deleting).
+- **`showCuratorCompass`** — Hides or shows compass in curator interface.
+- **`shownCuratorCompass`** — Returns true if compass is shown.
+- **`unassignCurator`** — Unassign curator (will destroy both sides of connection).
+
+### Custom Panels <a id="sqf-custom-panels"></a>
+
+- **`enableInfoPanelComponent`** — Controls availability of component to given object info panel.
+- **`infoPanel`** — Returns information about what is currently displayed on given player's info panel.
+- **`infoPanelComponentEnabled`** — Controls availability of component to given object info panel.
+- **`infoPanelComponents`** — Returns array of all components available to given object info panel.
+- **`infoPanels`** — Returns array all info panels configured for given object or object and turret path.
+- **`setInfoPanel`** — Opens given component or first component of given component type on specified info panel.
+- **`shownUAVFeed`** — Returns true if video feed transmitted from UAV is shown.
+- **`showUAVFeed`** — 'Shows/hides video feed transmitted from UAV in its custom info panel.'
+
+### Custom Radio and Chat <a id="sqf-custom-radio-and-chat"></a>
+
+- **`customChat`** — Sends the chat message to the custom radio channel.
+- **`customRadio`** — Sends the message to the custom radio channel.
+- **`radioChannelAdd`** — Add the units to the custom channel.
+- **`radioChannelCreate`** — Create a custom radio channel with the given color, label, call sign and registered characters.
+- **`radioChannelInfo`** — Obtains custom radio channel's details.
+- **`radioChannelRemove`** — Remove the units from the custom radio channel.
+- **`radioChannelSetCallSign`** — Set the custom radio chat channel's callsign / VoN callsign.
+- **`radioChannelSetLabel`** — Set the custom radio channel's label.
+
+### DLC <a id="sqf-dlc"></a>
+
+- **`getAssetDLCInfo`** — Returns DLC information about given object or model.
+- **`getDLCAssetsUsage`** — Returns an array of the DLC usage times.
+- **`getDLCAssetsUsageByName`** — Returns an array with the session and global time the asset has been used.
+- **`getDLCs`** — Returns array of app IDs of DLCs.
+- **`getDLCUsageTime`** — Returns total time the assets of the given DLC have been used.
+- **`getMissionDLCs`** — Returns list of DLCs that are used in the mission.
+- **`getObjectDLC`** — Returns appID of the DLC the object belongs to or nil if object is vanilla.
+- **`getPersonUsedDLCs`** — Returns a list of all DLCs objects the unit is currently using.
+- **`getTotalDLCUsageTime`** — Returns total DLC usage time in this game session
+- **`isDLCAvailable`** — Returns true if the DLC (CDLC included) is marked as available on Steam.
+- **`openDLCPage`** — Opens a Steam page of the app with given appId.
+
+### Diagnostic <a id="sqf-diagnostic"></a>
+
+- **`diag_activeMissionFSMs`** — Returns array with active Mission FSMs.
+- **`diag_activeScripts`** — 'Returns 4 element array with numbers of currently running scripts in format: [spawn-ed, execVM-ed, exec-ed, execFSM-ed]'
+- **`diag_activeSQFScripts`** — Returns information about active SQF scripts.
+- **`diag_activeSQSScripts`** — Returns array with active SQSs.
+- **`diag_allMissionEventHandlers`** — Returns an array with all mission event handlers.
+- **`diag_captureFrame`** — This command starts counting frames from the moment it is executed and when the count reaches the number passed as param, the current frame is captured and captured data UI dialog appears, similar to diag_captureSlowFrame.
+- **`diag_captureFrameToFile`** — "This command starts counting frames from the moment it is executed and when the count reaches the number passed as param, the current frame is captured and \nwritten to a log file in the same directory as the .rpt file.\nThe full Path to the log file is logged to simultaneously.\nThe data in the log file can be copied and pasted into the diag_captureFrame UI dialog to get a visualisation later on."
+- **`diag_captureSlowFrame`** — "right|200x120px\nOpens \"capture frame\" dialog if current frame exceeds set threshold in seconds.
+- **`diag_codePerformance`** — Attempts to run given code with given arguments given number of cycles in unscheduled environment and returns average time it took to run the code as well as actual number of executions performed.
+- **`diag_deltaTime`** — Returns the duration of the previous frame in seconds
+- **`diag_drawMode`** — Activates a debug visualisation.
+- **`diag_dumpCalltraceToLog`** — Dumps current callstack/calltrace to RPT.
+- **`diag_dumpScriptAssembly`** — Dump script assembly.
+- **`diag_dumpTerrainSynth`** — 'Returns OutsideTerrain''s current world''s values.'
+- **`diag_dynamicSimulationEnd`** — Ends dynamic simulation data gathering and writes collected data into given (txt) file.
+- **`diag_dynamicSimulationStart`** — 'Starts gathering Arma 3: Dynamic Simulation diagnostic data.'
+- **`diag_enable`** — Toggles various diagnostics.
+- **`diag_enabled`** — Checks whether specific diagnostic mode is activated.
+- **`diag_exportConfig`** — Exports given config into file of given path.
+- **`diag_exportTerrainSVG`** — thumb|400px|Highly detailed map of Stratis|right Like the old TOPOGRAPHY cheat code, exports terrain, but in modern SVG format instead of the proprietary EMF format.
+- **`diag_fps`** — Returns average framerate calculated over last 16 frames.
+- **`diag_fpsMin`** — Returns minimal framerate.
+- **`diag_frameNo`** — Returns number of frame currently displayed.
+- **`diag_getTerrainGrid`** — Returns terrain cell size (size of each grid cell in the Heightmap).
+- **`diag_getTerrainHeight`** — Returns terrain height at the specified location.
+- **`diag_getTerrainSegmentOffset`** — Returns the terrain segment.
+- **`diag_lightNewLoad`** — Allows loading of lighting config during the gameplay (effectively changing the current scene lighting).
+- **`diag_list`** — Returns an array of all diagnostic modes available in the game.
+- **`diag_log`** — Dumps the argument's value to the report file.
+- **`diag_logSlowFrame`** — Log all frames, where section takes longer than the threshold (in seconds).
+- **`diag_mergeConfigFile`** — Updates config without restarting.
+- **`diag_recordTurretLimits`** — Start recording tool for creating turret aiming limits.
+- **`diag_resetAnims`** — Resets the animations system cache, so that animation makers can test their animations without restarting the game.
+- **`diag_resetShapes`** — Reload models on-the-fly without the need of restarting the game.
+- **`diag_scope`** — Returns script scope depth.
+- **`diag_setLightNew`** — Overrides currently used scene lighting.
+- **`diag_setTerrainHeight`** — Changes the terrain height of the cell in which given position lies.
+- **`diag_SQFCDebugDump`** — Dumps the bytecode as  sees it, in a diff friendly way.
+- **`diag_stacktrace`** — Returns an array containing the function name, line number, scope name and all local variables in form of a hashmap.
+- **`diag_testScriptSimpleVM`** — Outputs the provided SQF code's end code.
+- **`diag_tickTime`** — Real time in seconds spent from the start of the game.
+- **`diag_toggle`** — Toggles various diagnostics.
+- **`echo`** — Sends any text into the debugger console or the logfile.
+- **`enableDiagLegend`** — Enable or disable the legend for diagnostics.
+- **`exportJIPMessages`** — "Creates a log file containing an overview on all JIP (network) messages currently in the JIP queue.\nThe file is created in the same directory as .rpt file.\n (see also Multiplayer Server Commands).}}\nFile name examples:\n*  (using  chat command)\n*  (using exportJIPMessages sqf command)\nFile content example: \n\ntime = 78814.063\n\n==================================================================================================\nObjects: \n---------------------------------------------------------------------------------------------\n\tType_96 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_107 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_109 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_113 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_118 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tUnknown creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_332 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_334 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_198 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tUnknown creator:4 networkId:0 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_332 creator:4 networkId:1 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_334 creator:4 networkId:2 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_96 creator:2 networkId:ID - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_109 creator:2 networkId:ID - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_113 creator:2 networkId:ID - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_118 creator:2 networkId:ID - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_195 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:3 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:4 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:5 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:6 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:7 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:8 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_96 creator:4 networkId:12 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_96 creator:4 networkId:13 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_96 creator:4 networkId:15 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_96 creator:4 networkId:49 - owner NAME (1c7f3773)\n\n==================================================================================================\n_initMessages - Total: 7601\n\t            Type_330 :     4\n\t             Type_60 :     6\n\t            Type_272 :    31\n\t            Type_273 :    31\n\t            Type_274 :  4481\n\t             Type_64 :   435\n\t            Type_291 :   147\n\t            Type_292 :     1\n\t            Type_187 :    50\n\t            Type_248 :  1846\n\t             Type_53 :    70\n\t             Type_54 :   341\n\t            Type_294 :     3\n\t             Type_10 :    69\n\t            Type_385 :     1\n\t            Type_295 :     1\n\t            Type_296 :    16\n\t            Type_328 :     4\n\t            Type_329 :     4\n\t             Type_59 :    60\n\n==================================================================================================\n_initMessagesRE - Total: 0\n\n==================================================================================================\n_jipMarkerInfos - Total: 0\n\n\n"
+- **`isFilePatchingEnabled`** — Returns true if file patching is enabled otherwise false
+- **`logEntities`** — Creates a log file containing the list of all game entities in scene.
+- **`logNetwork`** — Registers new log file recording a network traffic and returns handle of the log.
+- **`logNetworkTerminate`** — Terminates a network log file started with logNetwork with the given handle
+- **`setCustomMissionData`** — 'Defines custom mission text that is sent to Arma 3: Analytics.'
+
+### Difficulty <a id="sqf-difficulty"></a>
+
+- **`cadetMode`** — '''''''Prior to '''''' it returns if the player is currently playing in cadet or veteran mode.'
+- **`difficulty`** — Returns high-level selected difficulty mode.
+- **`difficultyEnabled`** — Checks specific difficulty settings of the current user.
+- **`difficultyEnabledRTD`** — Returns true if Advanced Flight Model is enabled.
+- **`difficultyOption`** — Checks specific difficulty settings of the current user.
+- **`disableMapIndicators`** — Command allows suppressing visualization of FRIENDLY, ENEMY, MINES and/or PING map indicators from difficulty setting EXTENDED MAP CONTENT.
+- **`forceCadetDifficulty`** — 'Forces  and  global Cadet  difficulty, returns previous settings.'
+- **`hintCadet`** — Shows a text hint only when in cadetMode.
+- **`isInstructorFigureEnabled`** — Returns the status of INSTRUCTOR FIGURE setting in UI (OPTIONS >> GAME >> GENERAL >> INSTRUCTOR FIGURE).
+- **`isTutHintsEnabled`** — Returns the status of TUTORIAL HINTS setting in UI (OPTIONS >> GAME >> GENERAL >> TUTORIAL HINTS).
+- **`missionDifficulty`** — Return difficulty that has been forced for this mission, returns -1 if difficulty is not forced and it is used one from player's options.
+
+### Dynamic Simulation <a id="sqf-dynamic-simulation"></a>
+
+- **`canTriggerDynamicSimulation`** — A getter for triggerDynamicSimulation.
+- **`diag_dynamicSimulationEnd`** — Ends dynamic simulation data gathering and writes collected data into given (txt) file.
+- **`diag_dynamicSimulationStart`** — 'Starts gathering Arma 3: Dynamic Simulation diagnostic data.'
+- **`dynamicSimulationDistance`** — A getter for setDynamicSimulationDistance.
+- **`dynamicSimulationDistanceCoef`** — A getter for setDynamicSimulationDistanceCoef
+- **`dynamicSimulationEnabled`** — A getter for enableDynamicSimulation.
+- **`dynamicSimulationSystemEnabled`** — A getter for enableDynamicSimulationSystem
+- **`enableDynamicSimulation`** — Enables or disables Arma 3: Dynamic Simulation for an object or group.
+- **`enableDynamicSimulationSystem`** — 'Enables or disables the whole Arma 3: Dynamic Simulation system'
+- **`setDynamicSimulationDistance`** — 'Sets activation distance of Arma 3: Dynamic Simulation for given category.'
+- **`setDynamicSimulationDistanceCoef`** — 'Sets activation distance multiplier of Arma 3: Dynamic Simulation for the given class'
+- **`triggerDynamicSimulation`** — 'Controls the ability of given unit to activate entities with disabled Arma 3: Dynamic Simulation.
+
+### Eden Editor <a id="sqf-eden-editor"></a>
+
+- **`add3DENConnection`** — 'Connect entities together.'
+- **`add3DENEventHandler`** — 'Adds an Eden Editor Event Handler.'
+- **`add3DENLayer`** — Adds an editing layer in Eden Editor.
+- **`all3DENEntities`** — Returns an array of all currently placed Eden Editor entities.
+- **`clear3DENAttribute`** — Clears the value of the given entity's attribute in Eden Editor.
+- **`clear3DENInventory`** — Deletes inventory from mission.sqm of given units.
+- **`collect3DENHistory`** — Execute a block of code in which all Eden Editor operations will be recorded as one history step.
+- **`create3DENComposition`** — Create new Composition.
+- **`create3DENEntity`** — Create new Eden Entity.
+- **`current3DENOperation`** — Returns the currently performed editing operation in Eden Editor.
+- **`delete3DENEntities`** — Delete given entities in Eden Editor.
+- **`do3DENAction`** — Performs given Eden Editor action.
+- **`edit3DENMissionAttributes`** — 'Open a window with scenario attribute in given section.'
+- **`get3DENActionState`** — 'Returns state of given Eden Editor action.'
+- **`get3DENAttribute`** — Returns the value of the given entity's attribute in Eden Editor.
+- **`get3DENAttributes`** — Retrieve all attributes and their values of the specified (optional) category.
+- **`get3DENCamera`** — Returns the camera Object used by the Eden Editor.
+- **`get3DENConnections`** — 'Returns all connections currently present on an entity.'
+- **`get3DENEntity`** — Returns Eden Entity based on its Eden ID.
+- **`get3DENEntityID`** — Returns unique index of an Eden Entity.
+- **`get3DENGrid`** — Returns the grid increment for the given transformation type.
+- **`get3DENIconsVisible`** — Gets visibility state of Eden Editor icons.
+- **`get3DENLayer`** — Returns the provided entity's layer ID.
+- **`get3DENLayerEntities`** — Return all entities and sub-layer in Eden Entity layer.
+- **`get3DENLinesVisible`** — Get visibility state of Eden Editor lines.
+- **`get3DENMissionAttribute`** — Return value of scenario attribute.
+- **`get3DENMissionAttributes`** — Retrieve all attributes and their values from the specified section/category (category is optional).
+- **`get3DENMouseOver`** — Returns the Eden Entity the mouse is hovering over in Eden Editor.
+- **`get3DENParent`** — Obtains the provided entity's parent.
+- **`get3DENSelected`** — Returns an array of all selected Eden Editor Entities of the given type.
+- **`getMissionLayerEntities`** — Returns all entities within the specific Eden Editor layer and its sub-layers.
+- **`ignore3DENHistory`** — Ignores all history steps created by executing the given code.
+- **`is3DEN`** — Returns true if the Eden Editor is currently being used.
+- **`is3DENMultiplayer`** — Returns true if the Eden Editor is in multiplayer mode.
+- **`is3DENPreview`** — Returns true if the Eden Editor is currently in mission preview mode, single player or multiplayer.
+- **`load3DENScenario`** — Load the provided scenario or an empty scenario in the provided world.
+- **`move3DENCamera`** — Moves the Eden Editor camera.
+- **`remove3DENConnection`** — 'Removes connection between entities.'
+- **`remove3DENEventHandler`** — Removes Eden Editor event handler of given type and ID.
+- **`remove3DENLayer`** — Remove Eden Editor editing layer.
+- **`removeAll3DENEventHandlers`** — "Removes all Eden Editor event handlers of given type.
+- **`save3DENInventory`** — Saves the current state of entities' inventory to the Mission.sqm.
+- **`save3DENPreferences`** — Saves current 3DEN preferences into .3den.Arma3Profile file.
+- **`set3DENAttachedCursorEntity`** — Attach an entity to the Eden Editor cursor.
+- **`set3DENAttribute`** — Sets one of entity attributes.
+- **`set3DENAttributes`** — Set entity attributes.
+- **`set3DENGrid`** — Sets the grid increment for the given transformation type.
+- **`set3DENIconsVisible`** — Toggle visibility of Eden Editor icons.
+- **`set3DENLayer`** — Set layer for Eden Entity.
+- **`set3DENLinesVisible`** — Toggle visibility of Eden Editor lines.
+- **`set3DENLogicType`** — Sets the new type of Logic object(s).
+- **`set3DENMissionAttribute`** — Set scenario attribute.
+- **`set3DENMissionAttributes`** — Set scenario attributes.
+- **`set3DENModelsVisible`** — Enables or disables trigger area visibility.
+- **`set3DENObjectType`** — 'Sets the classname of one or more given Eden Editor objects.
+- **`set3DENSelected`** — Changes selection in Eden Editor to what is inside entities array.
+
+### Environment <a id="sqf-environment"></a>
+
+- **`ambientTemperature`** — 'Returns ambient temperature on the current terrain in Celsius in format: [airTemperature, blackSurfaceTemperature, whiteSurfaceTemperature]'
+- **`date`** — Return the actual in-mission date and time.
+- **`dateToNumber`** — Convert a date to a float number, based on Jan 1st 00:00:00 = 0 and Dec 31st  23:59:59 = 1.
+- **`dayTime`** — Returns the current in-game time in hours.
+- **`enableEnvironment`** — Enable/disable environmental effects: ambient life and/or ambient sound.
+- **`enableTraffic`** — Enable ambient traffic.
+- **`environmentEnabled`** — Returns status of enableEnvironment command
+- **`fog`** — A getter for setFog.
+- **`fogForecast`** — Returns the forecast fog value.
+- **`fogParams`** — A getter for setFog (Alt Syntax).
+- **`forceWeatherChange`** — Forcibly applies previously set weather settings.
+- **`getObjectViewDistance`** — Gets the values of rendering distances of objects and shadows.
+- **`getShadowDistance`** — Gets the shadows rendering distance.
+- **`getTerrainGrid`** — A getter for setTerrainGrid, returns the current terrain grid.
+- **`getTIParameters`** — Returns all Thermal Imaging parameters.
+- **`gusts`** — Return the current gusts value.
+- **`humidity`** — Returns the current humidity value.
+- **`initAmbientLife`** — Initialises the ambient life on local client from .
+- **`lightnings`** — Return the current lightnings value.
+- **`moonIntensity`** — Returns the intensity of the moon's brightness in range 0..1.
+- **`moonPhase`** — Returns the phase of the in-game Moon on the given date.
+- **`nextWeatherChange`** — Return the remaining time (in seconds) over which the current weather change will occur.
+- **`numberToDate`** — Convert float number to a date.
+- **`overcast`** — Return the current overcast level.
+- **`overcastForecast`** — Return the overcast forecast.
+- **`rain`** — Returns the current value of rain density.
+- **`rainbow`** — Returns the current rainbow intensity.
+- **`rainParams`** — Returns currently set  RainParticles params, custom or default.
+- **`setDate`** — Sets mission date and time.
+- **`setFog`** — Smoothly change the fog over given time (in seconds).
+- **`setGusts`** — Changes the gusts value smoothly during the given time (in seconds).
+- **`setHumidity`** — Sets surface humidity.
+- **`setLightnings`** — Changes the lightnings value smoothly during the given time (in seconds).
+- **`setLocalWindParams`** — Sets parameters for helicopter rotor wash.
+- **`setObjectViewDistance`** — Sets the rendering distance of objects and shadows.
+- **`setOvercast`** — Set overcast to given value smoothly during given time (in seconds).
+- **`setRain`** — Sets rain density smoothly over the given transition time.
+- **`setRainbow`** — Changes the rainbow value smoothly during the given time (in seconds).
+- **`setShadowDistance`** — Sets the shadows rendering distance.
+- **`setSimulWeatherLayers`** — Sets number of simul weather layers, affects quality of simul weather clouds.
+- **`setTerrainGrid`** — Sets the desired  terrain resolution in meters.
+- **`setTimeMultiplier`** — Sets a time multiplier for in-game time.
+- **`setTIParameter`** — Sets the provided Thermal Imaging parameter's value.
+- **`setTrafficDensity`** — Set the density of ambient cars in a rectangle (in cars per kilometer).
+- **`setTrafficDistance`** — Set maximum ambient traffic draw distance (in 2D).
+- **`setTrafficGap`** — Set the average gap between ambient cars in a rectangle (in meters).
+- **`setTrafficSpeed`** — Set ambient traffic speed in a rectangle (in kilometers per hour).
+- **`setViewDistance`** — Set rendering distance.
+- **`setWaves`** — Changes the waves value smoothly during the given time (in seconds).
+- **`setWind`** — Set current or permanent wind vector.
+- **`setWindDir`** — Changes the wind direction smoothly.
+- **`setWindForce`** — Set max.
+- **`setWindStr`** — Changes the wind strength smoothly during the given time (in seconds).
+- **`simulCloudDensity`** — Returns density of clouds at given position.
+- **`simulCloudOcclusion`** — Returns clouds occlusion between two given points.
+- **`simulInClouds`** — Returns if given position is in clouds.
+- **`simulSetHumidity`** — Sets simul cloud cover.
+- **`simulWeatherSync`** — Synchronizes Simul Weather with  weather, generates all keyframes.
+- **`skipTime`** — Jumps the specified number of hours forward or backward.The time of day and tides are adjusted, but no changes are made to any units.
+- **`sunOrMoon`** — class="wikitable float-right align-center-col-1" style="font-size: 0.85em; min-width: 15em" !
+- **`timeMultiplier`** — Returns the value set with setTimeMultiplier.
+- **`viewDistance`** — Returns the rendering distance.
+- **`waves`** — Return waves value.
+- **`wind`** — Returns the current wind vector (in m/s).
+- **`windDir`** — Returns the current wind azimuth.
+- **`windStr`** — Returns the current wind strength.
+
+### Event Handlers <a id="sqf-event-handlers"></a>
+
+- **`add3DENEventHandler`** — 'Adds an Eden Editor Event Handler.'
+- **`addEventHandler`** — Adds an Event Handler to the given object.
+- **`addMissionEventHandler`** — 'Adds event handler attached to the current mission and returns event handler handle.
+- **`addMPEventHandler`** — Adds a multiplayer event handler (EH) to the given object and returns EH handle.
+- **`addMusicEventHandler`** — Adds playMusic event handler.
+- **`addPublicVariableEventHandler`** — and the introduction of remoteExec and remoteExecCall.}}  This event handler will detect if a missionNamespace variable (it is attached to) has been broadcast over network with publicVariable, publicVariableClient or publicVariableServer commands and will execute EH code upon detection.
+- **`addUserActionEventHandler`** — Adds a user action event handler to the current mission and returns its event handler index.
+- **`ctrlAddEventHandler`** — Add an event handler to the given control.
+- **`ctrlRemoveAllEventHandlers`** — Remove all event handlers from the given control.
+- **`ctrlRemoveEventHandler`** — Remove a given event handler from the given control.
+- **`ctrlSetEventHandler`** — Sets given event handler of given control: any previously added event handler is removed.
+- **`diag_allMissionEventHandlers`** — Returns an array with all mission event handlers.
+- **`displayAddEventHandler`** — Adds an event handler to the given display.
+- **`displayRemoveAllEventHandlers`** — Remove all event handlers from the given display.
+- **`displayRemoveEventHandler`** — Remove a given event handler from the given display.
+- **`displaySetEventHandler`** — "Sets given event handler of given display.\nThe return code of the provided function should indicate whether this event was handled correctly.
+- **`editorSetEventHandler`** — Sets given event handler of given editor.
+- **`getEventHandlerInfo`** — Queries given event handler's information.
+- **`inGameUISetEventHandler`** — Sets given event handler of in-game UI.
+- **`onBriefingGear`** — Select a sound declared in the Description.ext of the mission to be played the first time the Gear tab is selected in the briefing.
+- **`onBriefingGroup`** — Select a sound declared in the Description.ext of the mission to be played the first time the Group tab is selected in the briefing.
+- **`onBriefingNotes`** — Select a sound declared in the Description.ext of the mission to be played the first time the Notes tab is selected in the briefing.
+- **`onBriefingPlan`** — Select a sound declared in the Description.ext of the mission to be played the first time the Plan tab is selected in the briefing.
+- **`onBriefingTeamSwitch`** — Select a sound defined in the CfgSounds of the mission to be played the first time the TeamSwitch tab is selected in the briefing.
+- **`onCommandModeChanged`** — "Defines code performed when hc command mode changes either because of (Left Ctrl + Space) shortcut or hcShowBar scripting command.
+- **`onEachFrame`** — Runs given statement every frame in an unscheduled environment.
+- **`onGroupIconClick`** — Defines an action performed when player clicked on group marker (3D or in a map).
+- **`onGroupIconOverEnter`** — Defines an action performed when player moves pointer over group marker (3D or in a map).
+- **`onGroupIconOverLeave`** — Defines an action performed when pointer, previously positioned over icon, is moved away from it (3D or in a map).
+- **`onHCGroupSelectionChanged`** — Defines an action performed when high command group selection has been changed.
+- **`onMapSingleClick`** — "Defines the action performed when user clicks in map by executing command string.
+- **`onPlayerConnected`** — This command will execute the provided code on the server whenever a player connects to a multiplayer session.
+- **`onPlayerDisconnected`** — 'This command will execute attached code whenever a player is leaving an MP session.
+- **`onPreloadFinished`** — Defines an action performed after the preload screen finished.
+- **`onPreloadStarted`** — Defines an action performed just before the preload screen started.
+- **`onTeamSwitch`** — "Defines an action performed when the team switch is finished.\nCommandset receives the following special variables: ''_from'' object previous unit, ''_to'' object current unit.\nConsecutive use of onTeamSwitch command will overwrite previously set commandset.
+- **`remove3DENEventHandler`** — Removes Eden Editor event handler of given type and ID.
+- **`removeAll3DENEventHandlers`** — "Removes all Eden Editor event handlers of given type.
+- **`removeAllEventHandlers`** — Removes all event handlers of given type that were added by addEventHandler '''and''' resets event handler's creation index to 0.
+- **`removeAllMissionEventHandlers`** — Removes all mission event handlers of the given type which were added by addMissionEventHandler.
+- **`removeAllMusicEventHandlers`** — Removes all music track event handlers of given type.
+- **`removeAllUserActionEventHandlers`** — Removes all UserAction event handlers of the given type which were added by addUserActionEventHandler.
+- **`removeEventHandler`** — Removes a given Event Handler that was added with addEventHandler.
+- **`removeMissionEventHandler`** — Removes mission event handler added by addMissionEventHandler.
+- **`removeMPEventHandler`** — Removes MP event handler added by addMPEventHandler.
+- **`removeMusicEventHandler`** — 'Removes specified music track event handler.
+- **`removeUserActionEventHandler`** — 'Removes a UserAction event handler.
+- **`setMusicEventHandler`** — Sets given music track event handler.
+
+### Flags <a id="sqf-flags"></a>
+
+- **`flag`** — Returns the original flag pole of the flag the unit is carrying.
+- **`flagAnimationPhase`** — Returns flag position on the flag pole.
+- **`flagOwner`** — Returns the global owner of a flag.
+- **`flagSide`** — Returns Side of the local instance of the flag.
+- **`flagTexture`** — Returns texture of the local instance of the flag.
+- **`forceFlagTexture`** — Forces a flag texture onto a flag carrier (unit, vehicle or flag pole).
+- **`getForcedFlagTexture`** — A getter for forceFlagTexture.
+- **`setFlagAnimationPhase`** — Sets flag position on the flag pole.
+- **`setFlagOwner`** — Sets flag owner.
+- **`setFlagSide`** — Sets flag Side.
+- **`setFlagTexture`** — Sets flag texture.
+
+### GUI Control <a id="sqf-gui-control"></a>
+
+- **`activeTitleEffectParams`** — Returns type, effect, speed and map visibility of the given active title effect (see allActiveTitleEffects)
+- **`allActiveTitleEffects`** — Returns a list of all layers that have currently active title effect.
+- **`allControls`** — Returns a list of all controls in the provided display or controls group, including "sub"-controls from other CT_CONTROLS_GROUPs.
+- **`allCutLayers`** — Returns all named layers used by cutRsc, cutText, cutObj or cutFadeOut.
+- **`allDisplays`** — Returns a list of all opened GUI displays.
+- **`buttonAction`** — 'Returns the action assigned to a control of the currently active user dialog.
+- **`buttonSetAction`** — Set the action of a control of the currently active user dialog.
+- **`cbChecked`** — Returns the current state of a CT_CHECKBOX control.
+- **`cbSetChecked`** — Sets the current state of a CT_CHECKBOX control.
+- **`closeDialog`** — "Closes the currently active dialog with exit code.
+- **`closeDisplay`** — "Closes given display with exit code.
+- **`controlNull`** — A non-existing Control.
+- **`controlsGroupCtrl`** — Returns a child control with specified idc from a controls group
+- **`createDialog`** — Creates a dialog which is defined either in the mission's description.ext, in the campaign's description.ext or in the global resource.cpp.
+- **`createDisplay`** — Creates child display of given display and loads from "resourceName".
+- **`createGearDialog`** — Opens gear dialog for given unit.
+- **`createMissionDisplay`** — Create single missions display as a child of given display.
+- **`createMPCampaignDisplay`** — Create a MP campaign display.
+- **`ctrlActivate`** — Launches action attached to given (button based) control.
+- **`ctrlAt`** — Returns the control at the specified coordinates.
+- **`ctrlAutoScrollDelay`** — "Returns number of seconds auto-scroll will wait before scroll and/or rewind.
+- **`ctrlAutoScrollRewind`** — Returns true if auto-scroll should move back to start after it reaches the end.
+- **`ctrlAutoScrollSpeed`** — Returns number of seconds to auto-scroll one line.
+- **`ctrlBackgroundColor`** — Returns control's background color.
+- **`ctrlChecked`** — Returns the current state of given CT_CHECKBOXES control.
+- **`ctrlClassName`** — Returns the class name of a Control as it is defined in config.
+- **`ctrlCommit`** — Commits control animation to last specified duration.
+- **`ctrlCommitted`** — Check if the control animation is finished.
+- **`ctrlCreate`** — Creates a new control in the given display.
+- **`ctrlDelete`** — Deletes given control.
+- **`ctrlEnable`** — Enables or disables a control of the currently active user dialog.
+- **`ctrlEnabled`** — 'Returns if a control on the currently active user dialog is enabled.
+- **`ctrlFade`** — Returns the current fade factor of control.
+- **`ctrlFontHeight`** — Returns control's font size, usually  value (see ctrlSetFontHeight).
+- **`ctrlForegroundColor`** — Returns control's foreground color.
+- **`ctrlIDC`** — Returns control IDC.
+- **`ctrlIDD`** — Returns display IDD.
+- **`ctrlParent`** — Returns the parent Display of the given control.
+- **`ctrlParentControlsGroup`** — Returns the parent control of a given child control.
+- **`ctrlScrollValues`** — Returns scroll values for current scrollbars in range 0...1 (-1 if not applicable) for the following controls:
+- **`ctrlSetActiveColor`** — Sets text color of given control when it is selected.
+- **`ctrlSetAngle`** — Sets the rotation of a control set as .
+- **`ctrlSetAutoScrollDelay`** — Sets number of second before auto-scroll starts/rewinds.
+- **`ctrlSetAutoScrollRewind`** — Defines if scroll should rewind when auto-scroll reach end.
+- **`ctrlSetAutoScrollSpeed`** — Sets number of second required to scroll to next line.
+- **`ctrlSetBackgroundColor`** — Sets background color of given control.
+- **`ctrlSetChecked`** — Sets checked state of a CT_CHECKBOXES control.
+- **`ctrlSetDisabledColor`** — Sets the colorDisabled attribute of a control.
+- **`ctrlSetFade`** — Sets wanted transparency for control animation.
+- **`ctrlSetFocus`** — Sets the input focus on given control.
+- **`ctrlSetFont`** — Sets the font for given control (see available fonts)
+- **`ctrlSetFontHeightSecondary`** — Sets the font size of the secondary text of given control.
+- **`ctrlSetFontSecondary`** — Sets the font size of the secondary text of given control.
+- **`ctrlSetForegroundColor`** — Sets foreground color of the given control.
+- **`ctrlSetScrollValues`** — Sets scroll values for current scrollbars in range 0..1 for the following controls:
+- **`ctrlSetShadow`** — Sets 'shadow' property of the control: * 0 - no shadow * 1 - shadow * 2 - outline
+- **`ctrlSetStructuredText`** — Set the Structured Text which will be displayed in structured text control.
+- **`ctrlSetText`** — Sets the text of a control of the currently active user dialog or display.
+- **`ctrlSetTextColor`** — Sets text color of given control.
+- **`ctrlSetTextColorSecondary`** — Sets the secondary text color of a text control.
+- **`ctrlSetTextSecondary`** — Sets the secondary text of a text control.
+- **`ctrlSetTextSelection`** — Selects  characters of edit control from the  position and places cursor at the end of selection.
+- **`ctrlSetTooltip`** — Sets tooltip text of given control.
+- **`ctrlSetTooltipColorBox`** — Sets tooltip border color of given control.
+- **`ctrlSetTooltipColorShade`** — Sets tooltip background color of given control.
+- **`ctrlSetTooltipColorText`** — Sets tooltip text color of given control.
+- **`ctrlSetTooltipMaxWidth`** — Set maximum width of a control's tooltip.
+- **`ctrlSetURL`** — "Sets URL property of the given control subject to  whitelisting in CfgCommands config.
+- **`ctrlSetURLOverlayMode`** — "Sets how to handle opening of URL, default browser or Steam overlay.
+- **`ctrlShadow`** — Returns 'shadow' property of the control (see ctrlSetShadow).
+- **`ctrlShow`** — Shows or hides a control, or group of controls together with all the controls inside that group of controls.
+- **`ctrlShown`** — Returns whether given control is shown.
+- **`ctrlStyle`** — 'Returns the provided control''s style.
+- **`ctrlText`** — Returns the text of a control of the currently active user dialog.
+- **`ctrlTextColor`** — Returns control's text color
+- **`ctrlTextHeight`** — Returns the text control's height.
+- **`ctrlTextSecondary`** — Returns the secondary text of a text control.
+- **`ctrlTextSelection`** — "Returns edit control text selection in format [start, length, selectedText].
+- **`ctrlTextWidth`** — Returns the width of the control text including left and right margins (0.008 each).
+- **`ctrlTooltip`** — Returns the tooltip property of a button control.
+- **`ctrlType`** — 'Returns number representing the type of control, which is also defined by ''''type'''' property in config.
+- **`ctrlURL`** — Returns the URL property of a button control.
+- **`ctrlURLOverlayMode`** — Returns the URL overlay mode 0, 1, 2 (see ctrlSetURLOverlayMode) or -1 if something went wrong.
+- **`ctrlVisible`** — 'Returns if a control of the currently active user dialog is shown or not.
+- **`cutFadeOut`** — Terminates the effect in the given layer by fading it out according to the given duration.
+- **`cutObj`** — Displays an object defined in the global config in .
+- **`cutRsc`** — Display a resource defined in RscTitles of the mission's Description.ext, the campaign's description.ext or the global config.
+- **`cutText`** — Displays a text message in the center of the screen.
+- **`dialog`** — Tests whether any user dialog is open.
+- **`disableSerialization`** — "Disable saving of script containing this command.
+- **`displayChild`** — Returns child display of the given display.
+- **`displayCtrl`** — Return child control with specified idc.
+- **`displayNull`** — "A non-existing Display.
+- **`displayParent`** — Returns parent display of the given display.
+- **`displayUniqueName`** — Get the provided display's UI On Texture unique name.
+- **`displayUpdate`** — Set the provided display to update its UI On Texture render.
+- **`findDisplay`** — Finds a display by its IDD which can either be defined in missionConfigFile (description.ext) or configFile (config.cpp) or by its UI On Texture's unique name (see displayUniqueName).
+- **`focusedCtrl`** — Returns display's focused control.
+- **`gearIDCAmmoCount`** — Returns ammo count of assigned magazine.
+- **`gearSlotAmmoCount`** — Returns ammo count of assigned magazine.
+- **`gearSlotData`** — Returns gear slot item name.
+- **`getTextWidth`** — Returns estimated width of the text based on font type and size.
+- **`getUserMFDText`** — Returns array of user text variables used in MFD.
+- **`htmlLoad`** — Load HTML from file or URI using given control.
+- **`image`** — Creates a structured text containing the given image.
+- **`isSteamOverlayEnabled`** — Returns true if Steam overlay is enabled, otherwise false.
+- **`isUIContext`** — Returns true if the script originated from some UI control event, for example from "onButtonDown" EH.
+- **`lbTooltip`** — Returns tooltip for ListBox, ComboBox and Toolbox
+- **`preloadTitleObj`** — Preloads data for the given resource object.
+- **`preloadTitleRsc`** — Resource title - preload data.
+- **`progressPosition`** — Returns the current position in the progress bar.
+- **`progressSetPosition`** — Sets progress position of a progress bar.
+- **`setUserMFDText`** — Stored user text value in MFD, limit is 50, user0...user49
+- **`sliderPosition`** — Returns current thumb position of CT_SLIDER or CT_XSLIDER with given idc of topmost user dialog.
+- **`sliderRange`** — Returns limits of CT_SLIDER or CT_XSLIDER.
+- **`sliderSetPosition`** — Sets current thumb position of CT_SLIDER or CT_XSLIDER.
+- **`sliderSetRange`** — Sets limits of CT_SLIDER or CT_XSLIDER.
+- **`sliderSetSpeed`** — "Sets slider line step and page step delta amount as well as optional step amount of CT_SLIDER or CT_XSLIDER with given idc of topmost user dialog.
+- **`sliderSpeed`** — Returns slider step value for line and page movement of CT_SLIDER or CT_XSLIDER.
+- **`titleCut`** — Displays text on screen.
+- **`titleFadeOut`** — Terminate the title effect and set duration of the fade out phase to the given time.
+- **`titleObj`** — Shows object defined in global config in CfgTitles
+- **`titleRsc`** — Displays a resource defined in RscTitles.
+- **`titleText`** — Displays text across the screen.
+- **`uiNamespace`** — Returns the global namespace attached to user interface.
+
+### GUI Control - Controls Table <a id="sqf-gui-control---controls-table"></a>
+
+- **`ctAddHeader`** — Adds a header line of controls according to the HeaderTemplate class.
+- **`ctAddRow`** — Adds one row of controls according to the RowTemplate class.
+- **`ctClear`** — Removes all the lines from the RscControlsTable.
+- **`ctCurSel`** — Returns index of the selected row.
+- **`ctData`** — Returns metadata associated with a particular row of a CT_CONTROLS_TABLE control.
+- **`ctFindHeaderRows`** — Gets array of indices of rows under this header.
+- **`ctFindRowHeader`** — Gets index of the closest header above this row.
+- **`ctHeaderControls`** — Returns array of controls on the header with the given index.
+- **`ctHeaderCount`** — Returns number of headers (rows not included) in the RscControlsTable.
+- **`ctRemoveHeaders`** — Takes array of header indices as a parameter and removes headers with those indices.
+- **`ctRemoveRows`** — Takes array of row indices as a parameter and removes rows with those indices.
+- **`ctRowControls`** — Returns array of controls on the row with the given index.
+- **`ctRowCount`** — Returns number of rows (headers not included) in the RscControlsTable.
+- **`ctSetCurSel`** — Selects the line with the given index.
+- **`ctSetData`** — Associates metadata (string) with the row determined by the index.
+- **`ctSetHeaderTemplate`** — Takes config path to the new header template.
+- **`ctSetRowTemplate`** — Takes config path to the new row template.
+- **`ctSetValue`** — Associates metadata (number) with the row determined by the index.
+- **`ctValue`** — Returns metadata (number) associated with a particular row of RscControlsTable.
+
+### GUI Control - Event Handlers <a id="sqf-gui-control---event-handlers"></a>
+
+- **`ctrlAddEventHandler`** — Add an event handler to the given control.
+- **`ctrlRemoveAllEventHandlers`** — Remove all event handlers from the given control.
+- **`ctrlRemoveEventHandler`** — Remove a given event handler from the given control.
+- **`ctrlSetEventHandler`** — Sets given event handler of given control: any previously added event handler is removed.
+- **`displayAddEventHandler`** — Adds an event handler to the given display.
+- **`displayRemoveAllEventHandlers`** — Remove all event handlers from the given display.
+- **`displayRemoveEventHandler`** — Remove a given event handler from the given display.
+- **`displaySetEventHandler`** — "Sets given event handler of given display.\nThe return code of the provided function should indicate whether this event was handled correctly.
+- **`inGameUISetEventHandler`** — Sets given event handler of in-game UI.
+
+### GUI Control - HTML <a id="sqf-gui-control---html"></a>
+
+- **`ctrlHTMLLoaded`** — Returns true when HTML content was successfully loaded.
+- **`ctrlSetFontH1`** — Sets H1 font of given HTML control.
+- **`ctrlSetFontH1B`** — Sets H1 bold font of given HTML control.
+- **`ctrlSetFontH2`** — Sets H2 font of given HTML control
+- **`ctrlSetFontH2B`** — Sets H2 bold font of given HTML control.
+- **`ctrlSetFontH3`** — Sets H3 font of given HTML control.
+- **`ctrlSetFontH3B`** — Sets H3 bold font of given HTML control.
+- **`ctrlSetFontH4`** — Sets H4 font of given HTML control.
+- **`ctrlSetFontH4B`** — Sets H4 bold font of given HTML control.
+- **`ctrlSetFontH5`** — Sets H5 font of given HTML control.
+- **`ctrlSetFontH5B`** — Sets H5 bold font of given HTML control.
+- **`ctrlSetFontH6`** — Sets H6 font of given HTML control.
+- **`ctrlSetFontH6B`** — Sets H6 bold font of given HTML control.
+- **`ctrlSetFontHeight`** — "Sets the  property for most controls as follows: \n*  - \"sizeExNames\"\n*  - \"P\" >> \"sizeEx\"\n* Other - \"sizeEx\"\n*   - \"size\""
+- **`ctrlSetFontHeightH1`** — Sets H1 font size of given HTML control.
+- **`ctrlSetFontHeightH2`** — Sets H2 font size of given HTML control.
+- **`ctrlSetFontHeightH3`** — Sets H3 font size of given HTML control.
+- **`ctrlSetFontHeightH4`** — Sets H4 font size of given HTML control.
+- **`ctrlSetFontHeightH5`** — Sets H5 font size of given HTML control.
+- **`ctrlSetFontHeightH6`** — Sets H6 font size of given HTML control.
+- **`ctrlSetFontP`** — Sets P font of given HTML control or its size.
+- **`ctrlSetFontPB`** — Sets P bold font of given HTML control.
+
+### GUI Control - ListBox <a id="sqf-gui-control---listbox"></a>
+
+- **`ctrlAutoScrollDelay`** — "Returns number of seconds auto-scroll will wait before scroll and/or rewind.
+- **`ctrlAutoScrollRewind`** — Returns true if auto-scroll should move back to start after it reaches the end.
+- **`ctrlAutoScrollSpeed`** — Returns number of seconds to auto-scroll one line.
+- **`lbAdd`** — Adds an item with the given text to the CT_LISTBOX or CT_COMBO or CT_TOOLBOX.
+- **`lbClear`** — Clear all items from a CT_LISTBOX or CT_COMBO control.
+- **`lbColor`** — Returns the text color of the item with the given index of the CT_LISTBOX or CT_COMBO with IDC of the topmost user dialog.
+- **`lbColorRight`** — Returns the text color of the item (right) with the given index of the listbox or combobox with id idc of the topmost user dialog.
+- **`lbCurSel`** — Returns the index of the selected item of the CT_LISTBOX, CT_LISTNBOX, CT_COMBO or CT_TOOLBOX.
+- **`lbData`** — Returns the data set in given index of the CT_LISTBOX or CT_COMBO.
+- **`lbDelete`** — Removes the item with the given index from the CT_LISTBOX, CT_COMBO or CT_TOOLBOX.
+- **`lbIsSelected`** — Checks whether or not given row of the given listbox is selected.
+- **`lbPicture`** — Returns the picture name of the item with the given index of the listbox or combobox with id idc of the topmost user dialog.
+- **`lbPictureRight`** — Returns the right picture name of the item with the given index of the listbox or combobox with id idc of the topmost user dialog.
+- **`lbSelection`** — Returns Array of selected rows indices in the given listbox.
+- **`lbSetColor`** — Sets the color of the item (left) with the given index of the listbox or combobox with id idc of the topmost user Dialog to color.
+- **`lbSetColorRight`** — Sets the color of the item (right) with the given index of the listbox or combobox with id idc of the topmost user dialog to color.
+- **`lbSetCurSel`** — Selects the item with the given index in the listbox, listnbox, combobox, xcombobox, xlistbox  when used with CT_LISTBOX and CT_LISTNBOX.''' To deselect all entries, use -1: _ctrl lbSetCurSel -1; For listbox of style LB_MULTI use lbSetSelected instead.
+- **`lbSetData`** — Sets the additional text (invisible) in the item with the given index of the listbox or combobox with id idc of the topmost user dialog to the given data.
+- **`lbSetPicture`** — Sets the left picture in the row with given index of CT_LISTBOX or CT_COMBO.
+- **`lbSetPictureColor`** — Sets the color of item's picture (left) with the given index of the listbox with id idc of the topmost user dialog to the given color.
+- **`lbSetPictureColorDisabled`** — Sets the disabled color of item's picture (left) with the given index of the listbox with id idc of the topmost user dialog to the given color.
+- **`lbSetPictureColorSelected`** — Sets the selected color of item's picture (left) with the given index of the listbox with id idc of the topmost user dialog to the given color.
+- **`lbSetPictureRight`** — Sets the second (right aligned) picture in the item with the given index of the listbox or combobox with id idc of the topmost user dialog.
+- **`lbSetPictureRightColor`** — Sets the color of the second (right aligned) picture of the given index of the listbox with id idc of the topmost user dialog to the given color.
+- **`lbSetPictureRightColorDisabled`** — Sets the disabled color of second (right aligned) picture of the item with the given index of the listbox with id idc of the topmost user dialog to the given color.
+- **`lbSetPictureRightColorSelected`** — Sets the selected color of the second (right aligned) picture of the item with the given index of the listbox with id idc of the topmost user dialog to the given color.
+- **`lbSetSelectColor`** — Sets the select color of the item with the given index of the listbox or combobox with id idc of the topmost user dialog to color.
+- **`lbSetSelectColorRight`** — Sets the select color of the of the secondary text (right aligned) of the item with the given index of the listbox or combobox with id idc of the topmost user dialog to color.
+- **`lbSetSelected`** — Sets the selection state of the given row of the given listbox of style LB_MULTI.
+- **`lbSetText`** — Sets the text on the left side of the item with the given index of the listbox or combobox with id idc of the topmost user dialog.
+- **`lbSetTextRight`** — Sets the text on the right side of the item with the given row index of the listbox or combobox with id idc of the topmost user dialog.
+- **`lbSetTooltip`** — Sets tooltip for item with given index of the listbox or combobox with id idc of the topmost user dialog to the given data.
+- **`lbSetValue`** — Sets the additional value in the row with the given index of a CT_LISTBOX or CT_COMBO control.
+- **`lbSize`** — Returns the number of items in a CT_LISTBOX or CT_COMBO control.
+- **`lbSort`** — Sorts listbox entries alphabetically ascending by their lbText.
+- **`lbSortBy`** — Sorts given ListBox by either lbText, lbValue or lbData in normal or reversed order, using case-sensitive or case-insensitive comparison.
+- **`lbSortByValue`** — Sorts the ListBox entries by lbValue.
+- **`lbText`** — Returns the shown text of the item with the given index of the CT_LISTBOX or CT_COMBO.
+- **`lbTextRight`** — Returns the shown right text in the item with the given index of the listbox or combobox with id idc of the topmost user dialog.
+- **`lbValue`** — Returns the additional integer value of the item with the given index of the CT_LISTBOX or CT_COMBO.
+
+### GUI Control - ListNBox <a id="sqf-gui-control---listnbox"></a>
+
+- **`ctrlAutoScrollDelay`** — "Returns number of seconds auto-scroll will wait before scroll and/or rewind.
+- **`ctrlAutoScrollRewind`** — Returns true if auto-scroll should move back to start after it reaches the end.
+- **`ctrlAutoScrollSpeed`** — Returns number of seconds to auto-scroll one line.
+- **`lnbAddArray`** — Adds list of rows of strings.
+- **`lnbAddColumn`** — Adds a column at given position.
+- **`lnbAddRow`** — Adds a row of strings.
+- **`lnbClear`** — Clears all items in the given listbox or combobox.
+- **`lnbColor`** — Returns the text color of the item with the given position of the 2D listbox.
+- **`lnbColorRight`** — Returns the right color of given row.
+- **`lnbCurSelRow`** — Returns the index of the selected row id 2D listbox.
+- **`lnbData`** — Returns the additional text (invisible) in an item with the given position of the 2D listbox.
+- **`lnbDeleteColumn`** — Removes column with given index from ListNBox control.
+- **`lnbDeleteRow`** — Removes row with the given index from the given listbox or combobox.
+- **`lnbGetColumnsPosition`** — Returns relative screen X of ListNBox control columns position [0.1,0.3,0.6...].
+- **`lnbPicture`** — Returns the picture name or path of the item with the given position of the 2D listbox.
+- **`lnbPictureRight`** — Returns the right picture of given row.
+- **`lnbSetColor`** — Sets the color of the item with the given position of the 2D listbox.
+- **`lnbSetColorRight`** — Sets the right color.
+- **`lnbSetColumnsPos`** — Sets relative screen X for ListNBox control columns positions.
+- **`lnbSetCurSelRow`** — Selects the row with the given index of the 2D listbox.
+- **`lnbSetData`** — Sets the additional text (invisible) on the item with the given position of the 2D listbox.
+- **`lnbSetPicture`** — Sets the picture in the item with the given position of the 2D listbox.The picture is searched in the mission, directory, the dtaExt subdirectory of the campaign directory, and the dtaExt directory and the data bank (or directory).
+- **`lnbSetPictureColor`** — Sets the cell picture's colour.
+- **`lnbSetPictureColorRight`** — Sets color of the right picture in a CT_LISTNBOX.
+- **`lnbSetPictureColorSelected`** — Sets the cell picture's colour on cell selection.
+- **`lnbSetPictureColorSelectedRight`** — Sets the color of the right picture when it is selected.
+- **`lnbSetPictureRight`** — Sets the cell's right-picture.
+- **`lnbSetText`** — Sets the text in the item with the given position of the 2D listbox.
+- **`lnbSetTextRight`** — Sets cell's right-aligned text.
+- **`lnbSetTooltip`** — Sets tooltip on the item with the given row and column of CT_LISTNBOX.
+- **`lnbSetValue`** — Sets the additional '''integer''' value in the item with the position index of the 2D listbox.
+- **`lnbSize`** — Returns size of CT_LISTNBOX.
+- **`lnbSort`** — Sorts given multicolumn listbox by lnbText in given column in ascending or descending order.
+- **`lnbSortBy`** — Sorts given multi-column ListNBox in the given column by either lnbText, lnbValue or lnbData in normal or reversed order, using case-sensitive or case-insensitive comparison.
+- **`lnbSortByValue`** — Sorts given multicolumn listbox by lnbValue in given column in ascending or descending order.
+- **`lnbText`** — Returns the shown text in the item with the given position of the given 2D listbox.
+- **`lnbTextRight`** — Returns CT_LISTNBOX's right aligned cell text.
+- **`lnbValue`** — Returns the additional integer value in the item with the given position of the 2D listbox.
+
+### GUI Control - Map <a id="sqf-gui-control---map"></a>
+
+- **`ctrlMapAnimAdd`** — Adds the next frame to the map animation.
+- **`ctrlMapAnimClear`** — Clears the map animation.
+- **`ctrlMapAnimCommit`** — Plays the map animation.
+- **`ctrlMapAnimDone`** — Checks whether the map animation has finished.
+- **`ctrlMapCursor`** — Changes the default cursor that appears when interacting with a map control to a custom one.
+- **`ctrlMapDir`** — Returns the current orientation angle of the map control in degrees.
+- **`ctrlMapMouseOver`** — Returns description of map sign mouse cursor is over.
+- **`ctrlMapPosition`** — A getter for ctrlMapSetPosition.
+- **`ctrlMapScale`** — Returns the current scale of given map control.
+- **`ctrlMapScreenToWorld`** — Converts map screen coordinates into world coordinates.
+- **`ctrlMapSetPosition`** — Sets position and size of the given map control and recalculates control center.
+- **`ctrlMapWorldToScreen`** — Converts world coordinates into map screen coordinates.
+- **`drawArrow`** — Draws a single line arrow on the map.
+- **`drawEllipse`** — '250px|right Draws an ellipse on the map.
+- **`drawIcon`** — Draws an icon on the map.
+- **`drawLine`** — Draw a line on the map.
+- **`drawLocation`** — Used to draw locations in 2D Editor.
+- **`drawPolygon`** — Draws given polygon on the given map control with given color.
+- **`drawRectangle`** — Draws a rectangle on the map.
+- **`drawTriangle`** — right|250px Draws one to multiple triangles on the map.
+- **`drawXPolygon`** — Draws an N sided polygon on the map.
+- **`mapCenterOnCamera`** — The main syntax enables/disables continuous centering of the main map type control on the camera position.
+- **`posWorldToScreen`** — Converts world coordinates into map screen coordinates.
+
+### GUI Control - Menu <a id="sqf-gui-control---menu"></a>
+
+- **`menuAction`** — Returns action stored in item on given path in CT_MENU_STRIP control.
+- **`menuAdd`** — Adds new submenu entry into item on given path.
+- **`menuChecked`** — Returns if item on given path is checked or not.
+- **`menuClear`** — Removes all entries from given menu strip.
+- **`menuCollapse`** — Collapses item on given path and all its children.
+- **`menuData`** — Returns data stored in menu entry on given path.
+- **`menuDelete`** — Deletes menu entry on given path.
+- **`menuEnable`** — Enables or disables menu entry on given path.
+- **`menuEnabled`** — Returns if menu entry on given path is enabled or not.
+- **`menuExpand`** — Expands given menu entry on given path and all its parents so entry is visible.
+- **`menuHover`** — Returns path to menu entry mouse is currently hovering over.
+- **`menuPicture`** — Returns picture set into item on given path.
+- **`menuSetAction`** — Sets new action into menu entry on given path.
+- **`menuSetCheck`** — Sets item on given path to be checked or not.
+- **`menuSetData`** — Sets data into menu entry on given path.
+- **`menuSetPicture`** — Sets new picture into menu entry on given path.
+- **`menuSetShortcut`** — Sets shortcut of given menu strip entry.
+- **`menuSetText`** — Sets text of given menu strip entry.
+- **`menuSetURL`** — Sets weblink (URL) of given menu strip entry, subject to  whitelisting in CfgCommands config.
+- **`menuSetValue`** — Sets new value into menu entry on given path.
+- **`menuShortcut`** — Returns shortcut related to menu entry on given path in form of a bitflag.
+- **`menuShortcutText`** — Returns a string containing shortcut text for menu item on the given path.
+- **`menuSize`** — Returns how many sub entries is in item on given path.
+- **`menuSort`** — Sorts subentries of item on given path by their text.
+- **`menuText`** — Returns current text set in menu entry on given path.
+- **`menuURL`** — Returns current URL set in entry on given path.
+- **`menuValue`** — Returns current value set in menu entry on given path.
+
+### GUI Control - Object <a id="sqf-gui-control---object"></a>
+
+- **`ctrlAnimateModel`** — 'Process an animation of 3D Arma: GUI Configuration.
+- **`ctrlAnimationPhaseModel`** — Returns current animation phase of given source.
+- **`ctrlModel`** — 'Returns model used in 3D-Dialog.'
+- **`ctrlModelDirAndUp`** — 'Returns vectorDir and vectorUp of the model used in 3D-Dialogs.
+- **`ctrlModelScale`** — Returns 3D control model scale.
+- **`ctrlModelVectorSide`** — 'Get the provided control model''s vectorSide in 3D-Dialogs.'
+- **`ctrlSetModel`** — 'Sets model for 3D-Dialogs (see Arma 3: createSimpleObject/objects for a p3d models'' list).'
+- **`ctrlSetModelDirAndUp`** — Sets orientation of 3D control model.
+- **`ctrlSetModelScale`** — Sets 3D control model scale
+
+### GUI Control - Positioning <a id="sqf-gui-control---positioning"></a>
+
+- **`ctrlAngle`** — Gets rotation info of a control set as .
+- **`ctrlModelScale`** — Returns 3D control model scale.
+- **`ctrlMousePosition`** — Returns position of the mouse on the screen relative to UI Control in UI coordinates.
+- **`ctrlPosition`** — Returns the current position of 2D control as  array.
+- **`ctrlScale`** — Returns the current scale of the control.
+- **`ctrlSetModelScale`** — Sets 3D control model scale
+- **`ctrlSetMousePosition`** — Similar to setMousePosition but relative to the given control.
+- **`ctrlSetPixelPrecision`** — Switches mode of pixel precision (rounding) in a given control interface.
+- **`ctrlSetPosition`** — Sets wanted position and size for 2D control animation.
+- **`ctrlSetPositionH`** — Sets the height of a 2D control.
+- **`ctrlSetPositionW`** — Sets the width of a 2D control.
+- **`ctrlSetPositionX`** — Sets horizontal position (x) of the 2D control.
+- **`ctrlSetPositionY`** — Sets vertical position (y) of a 2D control.
+- **`ctrlSetScale`** — Sets scale of a control.
+- **`getMousePosition`** — Returns mouse position in UI coordinates.
+- **`getResolution`** — Returns an array containing all information about current client screen resolution.
+- **`pixelGrid`** — 'Returns grid size based on screen resolution, UI size and configs: uiScaleFactor, uiScaleMaxGrids.'
+- **`pixelGridBase`** — Returns grid size based on screen resolution.
+- **`pixelGridNoUIScale`** — Returns grid size based on screen resolution and configs: uiScaleFactor, uiScaleMaxGrids.
+- **`pixelH`** — Returns the height of one pixel for current resolution.
+- **`pixelW`** — Returns width of one pixel for current resolution.
+- **`safeZoneH`** — right|600px Returns the height of the screen in screen measurement units.
+- **`safeZoneW`** — right|600px Returns the width of the screen in screen measurement units.
+- **`safeZoneWAbs`** — Returns absolute safeZoneW including all monitors.
+- **`safeZoneX`** — right|600px Returns the X of the left border of the screen, which is also a distance in screen measurement units from top left corner of the default viewport (0,0) of the screen to the left border of the screen.
+- **`safeZoneXAbs`** — "Returns absolute safeZoneX including all monitors.
+- **`safeZoneY`** — right|600px Returns the Y of the top border of the screen, which is also a distance in screen measurement units from top left corner of the default viewport (0,0) of the screen to the top border of the screen.
+- **`setMousePosition`** — Moves mouse pointer to specified position on the screen.
+
+### GUI Control - Tree View <a id="sqf-gui-control---tree-view"></a>
+
+- **`tvAdd`** — Adds an item with given text to Tree View control.
+- **`tvClear`** — Removes all items from Tree View with given idc.
+- **`tvCollapse`** — Collapses tree item pointed to by the path.
+- **`tvCollapseAll`** — Collapses all tree items for the given Tree View.
+- **`tvCount`** — Returns children count on given path.
+- **`tvCurSel`** — Returns path to currently selected item.
+- **`tvData`** — Returns string data from item on given path.
+- **`tvDelete`** — Removes an item with given Tree View Path from Tree View.
+- **`tvExpand`** — Expands tree item pointed to by the path.
+- **`tvExpandAll`** — Expands all tree items for the given Tree View.
+- **`tvIsSelected`** — Returns true if given treeview item is selected.
+- **`tvPicture`** — Returns name of picture from item pointed to by path.
+- **`tvPictureRight`** — Returns the right picture of a CT_TREE on given path.
+- **`tvSelection`** — Returns array of paths to selected items.
+- **`tvSetColor`** — Sets text color on given Tree View Item
+- **`tvSetCurSel`** — Sets cursor to given item on given path.
+- **`tvSetData`** — Sets string data to item on given path.
+- **`tvSetPicture`** — Sets picture to item selected by path.
+- **`tvSetPictureColor`** — Sets the colour of the picture (set via tvSetPicture) under the specified tree view path.
+- **`tvSetPictureColorDisabled`** — Sets the color of left picture of a tree item defined by path when that item is disabled.
+- **`tvSetPictureColorSelected`** — Sets the color of the left picture of a tree item defined by path when item is selected
+- **`tvSetPictureRight`** — Sets right picture on the tree view item defined by path.
+- **`tvSetPictureRightColor`** — Sets color of the right picture on the tree view item defined by path
+- **`tvSetPictureRightColorDisabled`** — Sets the color of the right picture of a tree item defined by path when item is disabled
+- **`tvSetPictureRightColorSelected`** — Sets the color of the right picture of a tree item defined by path when item is selected
+- **`tvSetSelectColor`** — Sets the select color of given path.
+- **`tvSetSelected`** — Sets the selection state of given treeview item in multi-select control.
+- **`tvSetText`** — Sets string text to item on given path.
+- **`tvSetTooltip`** — Sets the tooltip text associated with the specified tree view path.
+- **`tvSetValue`** — Sets scalar data to item on given path.
+- **`tvSort`** — Sorts all children of given path.
+- **`tvSortAll`** — Sorts all children, including trees deriving from given path.
+- **`tvSortByValue`** — Sorts all children of given path.
+- **`tvSortByValueAll`** — Sorts all children, including trees deriving from given path.
+- **`tvText`** — Returns shown text in the item on given path.
+- **`tvTooltip`** — Gets the tooltip text associated with the specified tree view path.
+- **`tvValue`** — Returns numeric value set for given tree view path.
+
+### Game 2 Editor <a id="sqf-game-2-editor"></a>
+
+- **`addEditorObject`** — "Add an object to the editor and assign arguments.
+- **`addMenu`** — Adds a new menu button.
+- **`addMenuItem`** — "Creates a new menu item.
+- **`allow3DMode`** — "Allow/dissallow 3D mode., \n"
+- **`allowFileOperations`** — Allow/dissallow file ops (load/save etc).
+- **`clearOverlay`** — Clear the current overlay.
+- **`closeOverlay`** — "Closes the current overlay without committing.
+- **`collapseObjectTree`** — Collapse the object tree.
+- **`commitOverlay`** — "Commit the current overlay.
+- **`createMenu`** — Creates a previously added menu.
+- **`deleteEditorObject`** — "Delete the editor object.
+- **`drawLink`** — "The editor will draw a line between the two specified editor objects.
+- **`editObject`** — "Show the edit object dialog for the given object.
+- **`editorSetEventHandler`** — Sets given event handler of given editor.
+- **`evalObjectArgument`** — "Return argument in mission editor of a given object.
+- **`execEditorScript`** — Execute an editor script for the specified object.
+- **`findEditorObject`** — "Return object that matches the provided reference.
+- **`fromEditor`** — Return if given team was inserted directly from mission editor.
+- **`getEditorCamera`** — Fetches a reference to the mission editor camera.
+- **`getEditorMode`** — Returns the current mode of the editor.
+- **`getEditorObjectScope`** — Returns the editor object scope of the specified editor object.
+- **`getObjectArgument`** — Return name of object argument in mission editor.
+- **`getObjectChildren`** — Return a list of all the children of the specified object.
+- **`getObjectProxy`** — Return the proxy object associated with the given editor object.
+- **`importAllGroups`** — "Imports all groups into the RTE.
+- **`insertEditorObject`** — Insert an object to the editor and assign arguments.
+- **`isRealTime`** — "Returns true if the mission editor is operating in real time mode.
+- **`isShowing3DIcons`** — Returns true if the editor is set to draw 3D icons.
+- **`listObjects`** — Return the list of all objects of given type.
+- **`loadOverlay`** — Creates the load overlay dialog for the specified type of overlay.
+- **`lookAtPos`** — Point the camera and center the map on the position.
+- **`moveObjectToEnd`** — "Shifts an editor object to the end of the objects array.
+- **`newOverlay`** — "Creates the new overlay dialog for the specified type of overlay.
+- **`nextMenuItemIndex`** — Returns the next available menu item index.
+- **`nMenuItems`** — Returns the total number of user-added menu items belonging to the given menu.
+- **`onDoubleClick`** — Defines an action performed when the user double clicks on the map.
+- **`onShowNewObject`** — "Defines an action performed when the user right clicks on the map and,selects New Object.
+- **`removeDrawIcon`** — "Removes an icon for an editor object.
+- **`removeDrawLinks`** — "Remove all drawn links for the given editor object for the given editor,object type.
+- **`removeMenuItem`** — "Removes a previously added menu item.
+- **`restartEditorCamera`** — Restarts the mission editor camera (if it was deleted by a script,for example).
+- **`saveOverlay`** — Save the current overlay.
+- **`selectedEditorObjects`** — "Returns a list of currently selected editor objects.
+- **`selectEditorObject`** — "Select an editor object.
+- **`setDrawIcon`** — Set the icon to be shown in 2D editor for the specified editor object.
+- **`setEditorMode`** — "Sets map mode to MAP,3D or PREVIEW.
+- **`setEditorObjectScope`** — This command defines the level of access a user has to editor objects.
+- **`setFromEditor`** — Set if given team member was inserted directly from editor.
+- **`setObjectArguments`** — Set object arguments in mission editor.
+- **`setObjectProxy`** — Set the proxy object associated with the given editor object.
+- **`setVisibleIfTreeCollapsed`** — Sets whether or not the object is visible even if the tree is collapsed.
+- **`show3DIcons`** — Toggle the drawing of 3D icons.
+- **`showLegend`** — "Show/hide map legend.
+- **`showNewEditorObject`** — "Show the add editor object dialog,type is editor object type,class is,class definition to automatically select,side filters by a certain,side,pos is position to create the object.
+- **`updateDrawIcon`** — Updates the icon to be shown in 2D editor for the specified editor,object.
+- **`updateMenuItem`** — Sets the text and command for the menu item.
+- **`updateObjectTree`** — Update the editor object tree.
+
+### Groups <a id="sqf-groups"></a>
+
+- **`allGroups`** — Return a list of all groups created on the following sides east, west, resistance/independent and civilian only.
+- **`allowFleeing`** — "Sets the cowardice level (the lack of courage or bravery) of a group or unit.
+- **`assignedGroup`** — Returns Group to which the given vehicle was added last with addVehicle.
+- **`assignedVehicles`** — Returns all vehicles added to the given Group with addVehicle.
+- **`assignTeam`** — class="wikitable float-right align-center" !
+- **`attackEnabled`** — Return whether a group's leader can issue attack commands to soldiers under his command.
+- **`combatBehaviour`** — 'Returns combat behaviour of unit or group.
+- **`combatMode`** — Returns the combat mode of the given AI  group.
+- **`commandMove`** — Order the given unit(s) to move to the given location (via the radio).
+- **`commandStop`** — Order the given unit(s) to stop via radio.
+- **`commandTarget`** — Order the given unit(s) to target the given target (via the radio).
+- **`createGroup`** — Creates a new Group for the given Side.
+- **`deleteGroup`** — Destroys the given group - the group must be empty and local to the machine executing this command.
+- **`deleteGroupWhenEmpty`** — Marks given group for auto-deletion when group is empty.
+- **`dissolveTeam`** — Dissolves the given team.
+- **`enableAttack`** — Set if leader can issue attack commands to the soldiers in his group.
+- **`forgetTarget`** — Resets the info a group has about a target, forcing knowsAbout value to 0.
+- **`formation`** — Returns the current formation of a group.
+- **`formationDirection`** — Return the direction in degrees of the 'unit' watching in formation.
+- **`formationMembers`** — Return list of units (drivers) in the formation.
+- **`formationTask`** — Return the current task of the unit in the formation.
+- **`group`** — Returns the group a unit is assigned to.
+- **`groupFromNetId`** — Get group from the provided unique ID.
+- **`groupId`** — Returns a group's name or a unit's group ID number.
+- **`groups`** — Returns an array with all groups of given side.
+- **`grpNull`** — "A non-existing Group.
+- **`inAreaArrayIndexes`** — Returns indices of positions that are within the provided area.
+- **`isFormationLeader`** — Returns true if the specified unit is subgroup leader.
+- **`isGroupDeletedWhenEmpty`** — Checks if the given group marked for auto-deletion when empty.
+- **`join`** — class"wikitable" style"float: right; font-size: 0.9em; margin: 0 0 0.5em 1.5em" !
+- **`joinAs`** — Joins the unit to the given group, if position id is available, this one is used.
+- **`joinAsSilent`** — Joins the unit to the given group, if position id is available, this one is used.
+- **`joinSilent`** — Join all units in the array to given group silently (without radio message).
+- **`leader`** — Returns the group leader for the given '''unit''' or '''group'''.
+- **`leaveVehicle`** — Ceases the using of the vehicle by a group and unassigns vehicle from the group.
+- **`onBriefingGroup`** — Select a sound declared in the Description.ext of the mission to be played the first time the Group tab is selected in the briefing.
+- **`resetSubgroupDirection`** — Sets  formation direction of a group relative to current direction of the group leader.
+- **`selectLeader`** — Select the group's leader.
+- **`setBehaviour`** — Sets individual unit behaviour '''on every unit in a group'''.
+- **`setBehaviourStrong`** — Sets individual unit behaviour on every unit in a group and additionally tries to force this behaviour to the unit's group.
+- **`setCombatBehaviour`** — "Sets an individual unit entity behaviour (main syntax) or a group entity behaviour (alternative syntax).
+- **`setCombatMode`** — "Sets AI  group combat mode (engagement rules).
+- **`setFormation`** — Set group formation.
+- **`setFormDir`** — Sets group formation heading.
+- **`setGroupId`** — Sets the group radio callsign, how it will be displayed in radio chat.
+- **`setGroupIdGlobal`** — A global equivalent of  setGroupId.
+- **`setSpeedMode`** — "Sets group speed mode.
+- **`speedMode`** — "Returns speed mode of the group, which can be any of the following: \n* '''\"LIMITED\"'''\n* '''\"NORMAL\"'''\n* '''\"FULL\"'''"
+- **`unassignTeam`** — Unassigns the unit (in the case of a vehicle its commander unit) from his team.
+- **`units`** — Returns an array with all the units in the group or unit's group, or all units belonging to a certain side.
+
+### HashMap <a id="sqf-hashmap"></a>
+
+- **`+`** — Add two Numbers, concatenate two Arrays or two Strings, or create a copy of an Array or HashMap.
+- **`apply`** — Applies the given code to each element of the given data structure and collects the results in an array.
+- **`count`** — Can be used to count: * The number of elements in an array (returns the already internally known array size) * The number of elements in an array matching the condition * The number of sub-entries in a config entry *  The number of characters in an ANSI string
+- **`createHashMap`** — Creates a new empty HashMap.
+- **`createHashMapFromArray`** — Creates a new HashMap and initializes it from a key-value pair array
+- **`createHashMapObject`** — Create a HashMap with an  behaviour.
+- **`deleteAt`** — Removes array element at the given index and returns removed element (modifies the original array, just like resize or set).
+- **`forEach`** — Executes the given command(s) on every item of an Array or a HashMap.
+- **`get`** — Retrieves a value out of a HashMap after looking it up by its key.
+- **`getOrDefault`** — Retrieves a value out of a HashMap after looking it up by its key.
+- **`getOrDefaultCall`** — Retrieves a value from the HashMap for the given 'key', executes given 'code' if key was not found and returns result.
+- **`hashValue`** — Processes provided ''value'''s hash, and encodes it using .
+- **`in`** — Checks whether value is in array, unit is in vehicle, position is inside location or ANSI string is part of other ANSI string.
+- **`insert`** — Inserts multiple values into Array/String/HashMap.
+- **`keys`** — Retrieves a list of all keys in a HashMap.
+- **`merge`** — Merges two HashMaps.
+- **`set`** — "Changes the element at the given zero-based index of the array.
+- **`toArray`** — Converts the supplied String into an Array of Numbers.
+- **`values`** — Returns all values stored in the given HashMap.
+
+### High Command <a id="sqf-high-command"></a>
+
+- **`addGroupIcon`** — Adds icon to a group leader.
+- **`clearGroupIcons`** — Removes all icons from group.
+- **`getGroupIcon`** — Get group icon properties.
+- **`getGroupIconParams`** — Returns group icons params used for command bar drawing such as color, text, scale, visibility, waypoint visibility, waypoint color.
+- **`getGroupIcons`** — Returns all group icons.
+- **`groupIconSelectable`** — Returns whether or not group icons raise onGroupIconClick, onGroupIconOverEnter and onGroupIconOverLeave events.
+- **`groupIconsVisible`** — Returns array with group icons visibility.
+- **`hcAllGroups`** — Returns selected groups in high command.
+- **`hcGroupParams`** — Returns parameters describing group in high command bar.
+- **`hcLeader`** — Returns group's high command commander.
+- **`hcRemoveAllGroups`** — Remove all groups from unit's high command bar.
+- **`hcRemoveGroup`** — Removes group from unit's high command bar.
+- **`hcSelected`** — Returns selected groups in high command.
+- **`hcSelectGroup`** — Select given group in high command bar.
+- **`hcSetGroup`** — Add group to unit's high command bar.
+- **`hcShowBar`** — Shows or hides high command bar.
+- **`hcShownBar`** — Return whether the High Command bar is shown/active.
+- **`onCommandModeChanged`** — "Defines code performed when hc command mode changes either because of (Left Ctrl + Space) shortcut or hcShowBar scripting command.
+- **`onGroupIconClick`** — Defines an action performed when player clicked on group marker (3D or in a map).
+- **`onGroupIconOverEnter`** — Defines an action performed when player moves pointer over group marker (3D or in a map).
+- **`onGroupIconOverLeave`** — Defines an action performed when pointer, previously positioned over icon, is moved away from it (3D or in a map).
+- **`onHCGroupSelectionChanged`** — Defines an action performed when high command group selection has been changed.
+- **`removeGroupIcon`** — Remove icon with given ID from group.
+- **`setGroupIcon`** — Sets group icon properties.
+- **`setGroupIconParams`** — Set group icons parameters.
+- **`setGroupIconsSelectable`** — Sets if group icons raise onGroupIconClick, onGroupIconOverEnter and onGroupIconOverLeave events.
+- **`setGroupIconsVisible`** — Sets if group icons added with addGroupIcon are visible on map and in the HUD.
+
+### Interaction <a id="sqf-interaction"></a>
+
+- **`action`** — Make a unit perform an action.
+- **`actionIDs`** — ''
+- **`actionKeys`** — Returns Array containing dikCodes of keys, buttons and combos assigned to the given user action.
+- **`actionKeysEx`** — Gives a broken down version of actionKeys return.
+- **`actionKeysImages`** — Returns a list of button images or names assigned to the given user action.
+- **`actionKeysNames`** — Returns a list of button names assigned to the given user action.
+- **`actionKeysNamesArray`** — Returns a list of button names assigned to the given user action.
+- **`actionName`** — Returns localized name of action.
+- **`actionNow`** — Make a unit perform an action immediately (without any animation/pre-processing).
+- **`actionParams`** — Returns Array with params for given user action id (similar to addAction param array).
+- **`addAction`** — Adds an entry to the action menu of an object.
+- **`commandingMenu`** — Returns the name of the topmost commanding menu or "" if the menu is closed.
+- **`disableUserInput`** — Disables or enables the keyboard and mouse input.
+- **`drawIcon3D`** — Draws an icon at the given position in the game world.
+- **`drawLaser`** — Draws a laserbeam and a lightpoint at the impact location of the laser.
+- **`drawLine3D`** — 'Draws a line of a given colour between two 3D positions in the current frame.
+- **`forcedMap`** — Returns if map was forced by using forceMap command or openMap command with force option
+- **`forceMap`** — Opens non-interactive main map in background that overrides user screen.
+- **`getUserMFDValue`** — Returns array of user text variables used in MFD.
+- **`groupSelectedUnits`** — Returns selected units in source group for normal commanding mode (individual units).
+- **`groupSelectUnit`** — Selects a unit from player's group.
+- **`hint`** — Outputs a hint message to the right of the screen (left of the screen in ) with a sound (except in ).
+- **`hintC`** — Displays a very basic message dialog in the center of the screen.
+- **`hintCadet`** — Shows a text hint only when in cadetMode.
+- **`hintSilent`** — Same as hint, but without a sound.
+- **`HUDMovementLevels`** — Returns movement borders for HUD
+- **`inGameUISetEventHandler`** — Sets given event handler of in-game UI.
+- **`inputAction`** — Return the state of input devices mapped to given input action.
+- **`inputController`** — Returns the state of controller inputs.
+- **`inputMouse`** — "Returns the state of mouse button action, alone or in combination with key presses.
+- **`isActionMenuVisible`** — Returns true if scroll menu is visible.
+- **`openGPS`** — Opens or closes minimap if player has  linked in inventory and  is not disabled with enableInfoPanelComponent.
+- **`openMap`** — Opens or closes in-game map.
+- **`removeAction`** — Removes user added action with given ID.
+- **`removeAllActions`** — Removes all unit's user added actions.
+- **`setCompassDeclination`** — Sets the  of player's compass, which is the difference between magnetic north and true north.
+- **`setCompassOscillation`** — This command sets random heading on the player's compass (both in map and in 3D view) with given frequency, which is also randomised.
+- **`setHUDMovementLevels`** — Set min/max movement borders displayed in HUD gauges.
+- **`setRadioMsg`** — Sets radio trigger menu title text (0 -> 0 -> map radio).
+- **`setUserActionText`** — 'right|350px Changes user added action (see addAction) menu item text.
+- **`setUserMFDValue`** — "When MFD is using user controllers, this command can set values on them.
+- **`showCommandingMenu`** — Create the commanding menu described by the given config class or menu name.
+- **`showCompass`** — Shows or hides the compass on the map screen, if enabled for the mission and you possess the item.
+- **`showGPS`** — Shows or hides the GPS receiver on the map screen, if enabled for the mission and you possess the item.
+- **`showHUD`** — Enable / disable showing of HUD.
+- **`shownCompass`** — Checks if client has Compass enabled in description.ext (''showCompass'' param) or force enabled with showCompass command.
+- **`shownGPS`** — Checks if client has GPS receiver enabled in description.ext (''showGPS'' param) or force enabled with showGPS command.
+- **`shownHUD`** — Returns array of Booleans corresponding to the visibility of various HUD elements (see extended showHUD).
+- **`shownPad`** — Checks if client has Notepad enabled.
+- **`shownRadio`** — Check if player has Radio enabled.
+- **`shownScoretable`** — Returns the state of the score table set with showScoretable command.
+- **`shownWarrant`** — Check if player has ID card enabled.
+- **`shownWatch`** — Checks if client has Watch enabled in description.ext (''showWatch'' param) or force enabled with showWatch command.
+- **`showPad`** — Shows or hides the notebook on the map screen, if enabled for the mission.
+- **`showRadio`** — Shows or hides the radio on the map screen, if enabled for the mission and you possess the item.
+- **`showScoretable`** — Forces the score table to be shown, hidden or reset to default functionality.
+- **`showWarrant`** — Enable ID card.
+- **`showWatch`** — Shows or hides the watch on the map screen, if enabled for the mission and you possess the item.
+- **`userInputDisabled`** — Returns whether or not user input is disabled.
+- **`visibleCompass`** — Checks if the player has compass opened and visible.
+- **`visibleGPS`** — Checks if the player has GPS receiver (minimap) opened and visible.
+- **`visibleMap`** — Return true if the main map is shown (active).
+- **`visibleScoretable`** — Checks whether the score table is visible.
+- **`visibleWatch`** — Checks if the player has watch opened and visible.
+
+### Leaderboards <a id="sqf-leaderboards"></a>
+
+- **`leaderboardDeInit`** — Deletes internal class for the leaderboard with given name.
+- **`leaderboardGetRows`** — Returns values for the given leaderboard; this can be called after the one of the row request function has been called and successfully finished!
+- **`leaderboardInit`** — Initialize the leaderboard structure for board with given name.
+- **`leaderboardRequestRowsFriends`** — Requests given leaderboard to download friends rows from the given leaderboard
+- **`leaderboardRequestRowsGlobal`** — Requests given leaderboard to download values from global table.
+- **`leaderboardRequestRowsGlobalAroundUser`** — Requests given leaderboard to download values around the user position in the table.
+- **`leaderboardsRequestUploadScore`** — Starts async.
+- **`leaderboardsRequestUploadScoreKeepBest`** — Starts async.
+- **`leaderboardState`** — Returns the state of the board with the given name.
+
+### Lights <a id="sqf-lights"></a>
+
+- **`apertureParams`** — Returns current aperture parameters.
+- **`diag_lightNewLoad`** — Allows loading of lighting config during the gameplay (effectively changing the current scene lighting).
+- **`diag_setLightNew`** — Overrides currently used scene lighting.
+- **`drawLaser`** — Draws a laserbeam and a lightpoint at the impact location of the laser.
+- **`enableGunLights`** — Toggles the target group's gun lights.
+- **`getLighting`** — Gets general environment's light settings.
+- **`getLightingAt`** — Gets provided object's lighting information.
+- **`isCollisionLightOn`** — Returns true if vehicle collision lights are on otherwise false.
+- **`isIRLaserOn`** — Returns true if there is a linked and enabled IR on the given weapon.
+- **`isLightOn`** — Returns true if vehicle headlights are on otherwise false.
+- **`lightAttachObject`** — Attach light to given object at given position on object.
+- **`lightDetachObject`** — Detach light from object.
+- **`lightIsOn`** — Check if lampost is on (shining).
+- **`setAperture`** — "Sets custom eye accommodation camera aperture.\n\n is used it also forces setApertureNew to the following values: [, , , 1].\nExecute setApertureNew after setAperture to override this default mechanic.\n}}  \n).\n}}"
+- **`setApertureNew`** — Sets custom camera aperture when HDR is enabled.
+- **`setCollisionLight`** — Switches collision lights of a vehicle on/off.
+- **`setLightAmbient`** — Set ambient color of light.
+- **`setLightAttenuation`** — Sets attenuation of light.
+- **`setLightBrightness`** — Set brightness of light.
+- **`setLightColor`** — Set diffuse color of light.
+- **`setLightConePars`** — Sets the 's cone params.
+- **`setLightDayLight`** — Sets if light can be used during the day.
+- **`setLightFlareMaxDistance`** — Sets max distance where the flare is visible.
+- **`setLightFlareSize`** — Sets relative size of the flare for the light.
+- **`setLightIntensity`** — "Sets intensity of light directly.
+- **`setLightIR`** — Sets lightpoint in infrared range.
+- **`setLightUseFlare`** — Sets if light has flare.
+- **`setLightVolumeShape`** — Sets the 's volume shape.
+- **`setPilotLight`** — 'Switches headlights of a vehicle on/off.
+- **`switchLight`** — Controls whether a lamp is lit or not.
+
+### Localization <a id="sqf-localization"></a>
+
+- **`diag_localized`** — 'Returns array with all localized keys from the given  stringtable or the array of all stringtables names if empty string  is given.
+- **`getTextRaw`** — Returns raw text from config entry.
+- **`isLocalized`** — Checks whether given ''stringName'' is localized.
+- **`localize`** — Used to internationalise text messages.
+- **`WFSideText`** — Returns the unlocalized text value of a side or an object's/group's side.
+
+### Locations <a id="sqf-locations"></a>
+
+- **`attachObject`** — Attaches a location to the specified object.
+- **`className`** — Returns short name of location.
+- **`createLocation`** — Creates a location of the specified class and dimensions at the specified position.
+- **`deleteLocation`** — Deletes scripted location.
+- **`direction`** — Returns the direction an object or a location is facing (differs from getDir in that this also works with locations).
+- **`drawLocation`** — Used to draw locations in 2D Editor.
+- **`importance`** — Returns a location's importance value.
+- **`in`** — Checks whether value is in array, unit is in vehicle, position is inside location or ANSI string is part of other ANSI string.
+- **`inArea`** — Checks whether given position or object is inside given area.
+- **`inAreaArray`** — Returns given list of Objects and/or Positions that are in the given area, area defined by a trigger, marker, location or array.
+- **`inAreaArrayIndexes`** — Returns indices of positions that are within the provided area.
+- **`locationNull`** — "A non-existing Location.
+- **`locationPosition`** — Returns the position of a location.
+- **`name`** — When argument is Object, the command returns the name given to a unit using the setIdentity instruction or selected randomly by the game engine if setIdentity has not been used on the unit.
+- **`nearestLocation`** — Return the closest location of specified class to a given position.
+- **`nearestLocations`** — Returns an array of locations of chosen type(s) within the given radius of the given position, sorted from nearest to farthest.
+- **`nearestLocationWithDubbing`** — Find the nearest location having a non-empty speech.
+- **`rectangular`** — Checks if a location is rectangular (returns true) or elliptical (returns false).
+- **`setDirection`** — Sets the orientation of a location.
+- **`setImportance`** — Sets the importance value of location.
+- **`setName`** — Sets the name of a location or a person (person only in single player).
+- **`setPosition`** — Sets the position of a location.
+- **`setRectangular`** — Set the shape of a location to be either rectangular or elliptical.
+- **`setSide`** — Sets a location's side.
+- **`setSize`** — Sets the size (radius)  of a location.
+- **`setSpeech`** — Add speech to location.
+- **`setText`** — Sets the text associated with a location.
+- **`setType`** — Changes a location to the specified class.
+- **`size`** — Returns a location's size.
+- **`text`** — Creates a structured text containing the given plain text if argument is String.
+- **`type`** — Returns a string of a Location's class name or Task's name (same as taskName).
+
+### Map <a id="sqf-map"></a>
+
+- **`forcedMap`** — Returns if map was forced by using forceMap command or openMap command with force option
+- **`forceMap`** — Opens non-interactive main map in background that overrides user screen.
+- **`getElevationOffset`** — Returns the map elevation offset from [map]/config.cpp.
+- **`getObjectID`** — Returns Visitor ID of the given object.
+- **`mapAnimAdd`** — Add next frame to map animation.
+- **`mapAnimClear`** — Clear map animation.
+- **`mapAnimCommit`** — Play map animation.
+- **`mapAnimDone`** — Check if map animation is finished.
+- **`mapGridPosition`** — Returns the map grid position of an object or position.
+- **`onMapSingleClick`** — "Defines the action performed when user clicks in map by executing command string.
+- **`openMap`** — Opens or closes in-game map.
+- **`showMap`** — Enable Map (default true).
+- **`shownMap`** — Checks if client has Map enabled in description.ext (''showMap'' param) or force enabled with showMap command.
+- **`visibleMap`** — Return true if the main map is shown (active).
+
+### Markers <a id="sqf-markers"></a>
+
+- **`allMapMarkers`** — Returns all map marker names, including user-placed markers.
+- **`createMarker`** — Creates a new map marker at the given position.
+- **`createMarkerLocal`** — "Creates a local marker at the given position - the marker only exists on the machine that created it.
+- **`deleteMarker`** — Destroys the given marker.
+- **`deleteMarkerLocal`** — Destroys the given marker.
+- **`getMarkerColor`** — Returns marker color for given marker.
+- **`getMarkerPos`** — Returns marker position.
+- **`getMarkerSize`** — Returns the size of the given marker.
+- **`getMarkerType`** — Gets type of marker.
+- **`getPlayerID`** — 'Returns user DirectPlay ID, which can be used with getUserInfo, and is found in allMapMarkers results and in some mission event handlers such as PlayerConnected.'
+- **`inArea`** — Checks whether given position or object is inside given area.
+- **`inAreaArray`** — Returns given list of Objects and/or Positions that are in the given area, area defined by a trigger, marker, location or array.
+- **`inAreaArrayIndexes`** — Returns indices of positions that are within the provided area.
+- **`markerAlpha`** — Gets the marker alpha.
+- **`markerBrush`** — Gets the marker brush.
+- **`markerChannel`** — Returns the channel to which a marker belongs.
+- **`markerColor`** — Returns colour of the given marker.
+- **`markerDir`** — Get marker direction.
+- **`markerDrawPriority`** — Returns marker draw priority.
+- **`markerPolyline`** — Returns a polyline marker's path data.
+- **`markerPos`** — Returns marker position.
+- **`markerShadow`** — Returns if the marker is drawn with shadow enabled.
+- **`markerShape`** — Returns the shape of given marker.
+- **`markerSize`** — Returns marker size.
+- **`markerText`** — Get marker text.
+- **`markerType`** — Gets type of marker.
+- **`setMarkerAlpha`** — Sets the marker alpha.
+- **`setMarkerAlphaLocal`** — Sets the marker alpha.
+- **`setMarkerBrush`** — Selects the fill texture for the marker ("RECTANGLE" or "ELLIPSE").
+- **`setMarkerBrushLocal`** — Selects the fill texture for the marker ("RECTANGLE" or "ELLIPSE").
+- **`setMarkerColor`** — Set marker's colour.
+- **`setMarkerColorLocal`** — 'Set marker''s colour.
+- **`setMarkerDir`** — Sets the orientation of the marker.
+- **`setMarkerDirLocal`** — Sets the orientation of the marker.
+- **`setMarkerDrawPriority`** — Sets marker draw priority.
+- **`setMarkerPolyline`** — Sets a polyline marker's path.
+- **`setMarkerPolylineLocal`** — Sets a polyline marker's path.
+- **`setMarkerPos`** — Moves the marker.
+- **`setMarkerPosLocal`** — Moves the marker.
+- **`setMarkerShadow`** — Sets the shadow property of given marker.
+- **`setMarkerShadowLocal`** — Sets the shadow property of given marker.
+- **`setMarkerShape`** — Selects shape (actual type) of the marker.
+- **`setMarkerShapeLocal`** — Selects shape (actual type) of the local marker.
+- **`setMarkerSize`** — Sets the marker's size.
+- **`setMarkerSizeLocal`** — Set marker size.
+- **`setMarkerText`** — Sets the text label of an existing marker.
+- **`setMarkerTextLocal`** — Sets the text label of an existing marker.
+- **`setMarkerType`** — Sets marker type.
+- **`setMarkerTypeLocal`** — Sets marker type locally.
+
+### Math <a id="sqf-math"></a>
+
+- **`'!'`** — Returns the negation of a Boolean expression.
+- **`'!='`** — Returns whether one value is '''not''' equal to another.
+- **`'%'`** — Remainder of ''a'' divided by ''b''.
+- **`'&&'`** — Returns true only if both conditions are true.
+- **`'*'`** — Returns the value of ''a'' multiplied by ''b''.
+- **`'-'`** — Subtracts numbers or arrays from each another, negates a number.
+- **`'>'`** — Returns true if '''a''' is greater than '''b''', else returns false.
+- **`'>='`** — Returns if ''a'' is greater than or equal to ''b''.
+- **`'false'`** — Always false.
+- **`'true'`** — Always true
+- **`'||'`** — Returns true if one or both conditions are true.
+- **`+`** — Add two Numbers, concatenate two Arrays or two Strings, or create a copy of an Array or HashMap.
+- **`/`** — Returns the quotient of two numbers.
+- **`<`** — Returns if ''a'' is lesser than ''b''.
+- **`<=`** — Returns true if '''a''' is less than or equal to '''b''', else returns false.
+- **`==`** — Check if ''a'' is equal to ''b''.
+- **`^`** — '''''a'''' raised to the power of ''''b'''''
+- **`abs`** — Returns absolute (positive) value of a real number.
+- **`and`** — Returns true only if both conditions are true.
+- **`bezierInterpolation`** — Gets interpolated value based on  with given control points (progress value is 0...1 for a curve that starts at pos0 and finishes at posN)  400px
+- **`ceil`** — The ceil value of x.
+- **`decayGraphValues`** — Multiplies graph values by the given coefficient.
+- **`exp`** — Exponential function with the base .
+- **`finite`** — "Returns true if the provided number is finite (not infinite and a valid number).
+- **`floor`** — Returns the next '''lowest''' integer in relation to the provided number.
+- **`getGraphValues`** — Generate graph y - coordinates of all input values within specific x and y range.
+- **`linearConversion`** — Converts given value from given "from" range to wanted "to" range.
+- **`ln`** — Returns the natural logarithm of x.
+- **`log`** — Base-10 logarithm of x.
+- **`matrixMultiply`** — right|600px Returns resulting matrix from the  of two matrices.
+- **`matrixTranspose`** — thumb|Matrix transposition Returns  version of the given matrix.
+- **`max`** — The greater value of a and b.
+- **`min`** — The smaller of a and b.
+- **`mod`** — Remainder of a divided by b.
+- **`not`** — 'not a is exactly the same as !
+- **`or`** — Returns true if one or both conditions are true.
+- **`random`** — class="float-right valign-top"  thumb|120px|#Syntax 2|Syntax&nbsp;2's distribution   thumb|120px|#Syntax 2|Syntax&nbsp;2's distribution if ''mid'' is off-centre }  class="valign-top" !
+- **`round`** — Rounds the provided value to the closest integer.
+- **`sqrt`** — Returns square root of x.
+- **`toFixed`** — Converts a number into a string, keeping the specified number of decimals.
+
+### Math - Geometry <a id="sqf-math---geometry"></a>
+
+- **`acos`** — ArcCosine of a number, result in Degrees
+- **`asin`** — Arcsine of a number, result in Degrees.
+- **`atan`** — Returns the '''arcus tangens'''.200px
+- **`atan2`** — right|300px ArcTangent of ''y/x''.
+- **`atg`** — Returns the '''arcus tangens'''.200px
+- **`checkVisibility`** — class="wikitable float-right" !
+- **`cos`** — Cosine of a number, argument in degrees.
+- **`deg`** — Converts given value in radians to degrees.
+- **`distance`** — 400px|right Returns a distance in meters between Objects, Positions or Locations.
+- **`distance2D`** — Returns a 2D distance (distance projected to X,Y plane) in meters between Objects and/or Positions.
+- **`distanceSqr`** — Computes the  between two objects or positions.
+- **`intersect`** — "Finds named selections in object which are in specified LOD, intersected by given section of a line.
+- **`lineIntersects`** — Checks for object intersection with a virtual line between two positions.
+- **`lineIntersectsObjs`** — Returns a list of objects intersected by the line from ''begPos'' to ''endPos''.
+- **`lineIntersectsSurfaces`** — Returns a list of intersections with surfaces and ground from ''begPosASL'' to ''endPosASL''.
+- **`lineIntersectsWith`** — Returns objects intersecting with the virtual line from ''begPos'' to ''endPos''.
+- **`pi`** — pi (180 degrees converted to Radians).
+- **`rad`** — Converts given value in degrees to radians.
+- **`sin`** — Sine of x.
+- **`tan`** — Tangent of x, argument in Degrees.
+- **`terrainIntersect`** — Checks for intersection of terrain between two AGL positions.
+- **`terrainIntersectASL`** — Checks for intersection of terrain between two ASL positions.
+- **`terrainIntersectAtASL`** — Checks for intersection of terrain between two ASL positions.
+- **`tg`** — Identical to tan
+
+### Math - Vectors <a id="sqf-math---vectors"></a>
+
+- **`matrixMultiply`** — right|600px Returns resulting matrix from the  of two matrices.
+- **`matrixTranspose`** — thumb|Matrix transposition Returns  version of the given matrix.
+- **`setVectorDir`** — Set object's direction vector.
+- **`setVectorDirAndUp`** — right|300px Sets orientation of an object.
+- **`setVectorUp`** — Set object's up vector.
+- **`vectorAdd`** — Adds two arrays of numbers.
+- **`vectorCos`** — Cosine of angle between two 3D vectors.
+- **`vectorCrossProduct`** — "Cross product of two 3D vectors.
+- **`vectorDiff`** — Subtracts one 3D vector from another.
+- **`vectorDir`** — thumb|right|An object with its vectorDir, [[vectorUp and vectorSide (vectors not to scale)]] Returns an object's direction vector in world space.
+- **`vectorDirVisual`** — thumb|right|An object with its vectorDirVisual, [[vectorUpVisual and vectorSideVisual (vectors not to scale)]] Returns an object's direction vector in world space and render time scope.
+- **`vectorDistance`** — Returns  between two points.
+- **`vectorDistanceSqr`** — Squared distance between two 3D vectors.
+- **`vectorDotProduct`** — Dot product of two 3D vectors.
+- **`vectorFromTo`** — Unit vector, equal to direction from vector1 to vector2.
+- **`vectorLinearConversion`** — Interpolates vector between the given ''vectorFrom'' and ''vectorTo'' value according to the given range value.
+- **`vectorMagnitude`** — Magnitude of a 3D vector.
+- **`vectorMagnitudeSqr`** — Squared magnitude of a 3D vector.
+- **`vectorModelToWorld`** — Converts vector direction from model to world space.
+- **`vectorModelToWorldVisual`** — Converts vector from model to world space in render time scope.
+- **`vectorMultiply`** — Multiplies an array of numbers by a scalar or another array of numbers.
+- **`vectorNormalized`** — Returns normalised vector (unit vector, vectorMagnitude  1) of given vector.
+- **`vectorSide`** — thumb|right|An object with its vectorDir, [[vectorUp and vectorSide (vectors not to scale)]] Returns an object's side vector in world space.
+- **`vectorSideVisual`** — thumb|right|An object with its vectorDirVisual, [[vectorUpVisual and vectorSideVisual (vectors not to scale)]] Returns an object's side vector in world space and render time scope.
+- **`vectorUp`** — thumb|right|An object with its vectorDir, [[vectorUp and vectorSide (vectors not to scale)]] Returns an object's up vector in world space.
+- **`vectorUpVisual`** — thumb|right|An object with its vectorDirVisual, [[vectorUpVisual and vectorSideVisual (vectors not to scale)]] Returns an object's up vector in world space and render time scope.
+- **`vectorWorldToModel`** — Converts vector direction from world to model space.
+- **`vectorWorldToModelVisual`** — Converts vector direction from world to model space in render time scope.
+
+### Mines <a id="sqf-mines"></a>
+
+- **`addOwnedMine`** — Sets ownership of a remotely detonatable mine to a unit.
+- **`allMines`** — Returns an array of all mines in the mission
+- **`createMine`** — Creates a mine of the given type.
+- **`detectedMines`** — Returns an array of all mines detected by a given side
+- **`getAllOwnedMines`** — Gets all mine objects this unit has ownership over.
+- **`mineActive`** — Checks if the given mine is active.
+- **`mineDetectedBy`** — Returns true if mine has been detected by a given side
+- **`removeAllOwnedMines`** — Removes ownership of all owned mines/explosive devices of the given unit
+- **`removeOwnedMine`** — Removes ownership over a remotely detonatable mine from the unit.
+- **`revealMine`** — Sets given mine as known to the side.
+
+### Mission Information <a id="sqf-mission-information"></a>
+
+- **`activateKey`** — Activates the given keyname for the current user profile.
+- **`dayTime`** — Returns the current in-game time in hours.
+- **`deActivateKey`** — Deactivates the given keyname for the current user profile.
+- **`enableEndDialog`** — Enables the execution of a custom camera sequence after the players death, coded in onPlayerKilled.sqs.
+- **`enableSaving`** — Enable / disable saving of the game with an optional autosave.
+- **`endMission`** — Finish the mission.
+- **`estimatedEndServerTime`** — Estimated end of MP game in seconds converted to serverTime.
+- **`estimatedTimeLeft`** — Sets the estimated time left in the game that is shown in the "Game in progress" screen or in the master browser.
+- **`failMission`** — Finish the mission.
+- **`forceEnd`** — Forces mission ending (set with endMission) even if a camera effect or any another condition delays the endMission (mostly in :Category:Operation Flashpoint|).
+- **`getMissionConfig`** — Returns Config entry for the given scenario attribute from the 1st tier.
+- **`getMissionConfigValue`** — Returns value of the given scenario attribute from the 1st tier.
+- **`getMissionDLCs`** — Returns list of DLCs that are used in the mission.
+- **`getMissionLayerEntities`** — Returns all entities within the specific Eden Editor layer and its sub-layers.
+- **`getMissionLayers`** — Returns a list of all layers created in Eden Editor.
+- **`getMissionPath`** — Returns mission root plus the filename in a form of filepath to be used with commands requiring absolute path such as playSound3D, drawIcon3D, createSimpleObject, etc.
+- **`getWorld`** — "Returns the name of the current map.
+- **`isKeyActive`** — Checks whether the given key is active in the current user profile.
+- **`isSaving`** — Returns the status of autosave request, made when saveGame command is executed.
+- **`isSteamMission`** — Returns true if the current mission is a Steam Workshop mission.
+- **`loadGame`** — Loads game from the last autosave made with saveGame.
+- **`loadStatus`** — Loads object's properties from Objects.sav file in campaign directory (from entry name).
+- **`markAsFinishedOnSteam`** — Marks current mission as finished on Steam.
+- **`missionDifficulty`** — Return difficulty that has been forced for this mission, returns -1 if difficulty is not forced and it is used one from player's options.
+- **`missionEnd`** — Returns mission end type and how it was ended or an empty array [] is mission was not ended.
+- **`missionName`** — Return currently loaded mission file (path to mission.pbo, relative to game exe).
+- **`missionNameSource`** — Return workshop-compatible currently loaded mission file (path to mission.pbo, relative to game exe).
+- **`missionStart`** — Returns date and time when mission started.
+- **`missionVersion`** — Returns the version of the current mission.
+- **`saveGame`** — Autosaves the game (used for Retry).
+- **`saveStatus`** — Saves object's properties to Objects.sav file in campaign directory as entry name.
+- **`savingEnabled`** — Check if saving the game is enabled.
+- **`selectBestPlaces`** — Find the places with the maximum value of ''expression'' in the given area.
+- **`serverTime`** — Returns the time since latest server (re)start in seconds.
+- **`setDate`** — Sets mission date and time.
+- **`setTimeMultiplier`** — Sets a time multiplier for in-game time.
+- **`time`** — Returns time elapsed since mission started (in seconds).
+- **`timeMultiplier`** — Returns the value set with setTimeMultiplier.
+- **`uiTime`** — Returns UI time elapsed since mission started (in seconds).
+- **`worldName`** — Return the name of the currently loaded world.
+- **`worldSize`** — Returns the engine calculated size (terrain side length) of the current world in meters.
+
+### Mods and Addons <a id="sqf-mods-and-addons"></a>
+
+- **`activateAddons`** — Activates the listed addons.
+- **`activatedAddons`** — Returns a list of all activated addons.
+- **`addonFiles`** — Returns a list of files present in the addon.
+- **`allAddonsInfo`** — Returns the list of all loaded addons.
+- **`configSourceAddonList`** — Returns an array of addons (CfgPatches) in which the given config class is defined.
+- **`configSourceMod`** — Returns modDir of the mod that given config class was loaded from.
+- **`configSourceModList`** — Returns an array of mods (CfgMods) in which the given config class is defined.
+- **`getLoadedModsInfo`** — Returns information about all loaded modifications.
+- **`modParams`** — Returns list of mod parameters according to given options, values are in same order as the given options.
+- **`unitAddons`** — Returns list with addons the unit belongs to.
+- **`verifySignature`** — Check if file is signed by any key present in game keys folders.
+
+### Multiplayer <a id="sqf-multiplayer"></a>
+
+- **`addMPEventHandler`** — Adds a multiplayer event handler (EH) to the given object and returns EH handle.
+- **`addPlayerScores`** — "MP server only: Adds player score.\n class=\"wikitable align-center\"\n!
+- **`addPublicVariableEventHandler`** — and the introduction of remoteExec and remoteExecCall.}}  This event handler will detect if a missionNamespace variable (it is attached to) has been broadcast over network with publicVariable, publicVariableClient or publicVariableServer commands and will execute EH code upon detection.
+- **`addScore`** — Adds a number to the score of a unit.
+- **`addScoreSide`** — Adds side score.
+- **`admin`** — This is dedicated server command, which queries the admin state of any client on the network by their client (owner) id.
+- **`allPlayers`** — Returns a list of all units controlled by connected clients.
+- **`allUsers`** — Returns a list of player ids of all the users on an MP server.
+- **`clientOwner`** — Returns the  machine network ID of the client executing the command.
+- **`didJIP`** — Checks if the current client .
+- **`didJIPOwner`** — Checks if the current owner of supplied Object Joined In Progress.
+- **`disableRemoteSensors`** — This command will halt raycasting calculations (on the local machine only) for all groups which don't contain ''any'' local entities.
+- **`estimatedEndServerTime`** — Estimated end of MP game in seconds converted to serverTime.
+- **`estimatedTimeLeft`** — Sets the estimated time left in the game that is shown in the "Game in progress" screen or in the master browser.
+- **`exportJIPMessages`** — "Creates a log file containing an overview on all JIP (network) messages currently in the JIP queue.\nThe file is created in the same directory as .rpt file.\n (see also Multiplayer Server Commands).}}\nFile name examples:\n*  (using  chat command)\n*  (using exportJIPMessages sqf command)\nFile content example: \n\ntime = 78814.063\n\n==================================================================================================\nObjects: \n---------------------------------------------------------------------------------------------\n\tType_96 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_107 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_109 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_113 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_118 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tUnknown creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_332 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_334 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_198 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tUnknown creator:4 networkId:0 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_332 creator:4 networkId:1 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_334 creator:4 networkId:2 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_96 creator:2 networkId:ID - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_109 creator:2 networkId:ID - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_113 creator:2 networkId:ID - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_118 creator:2 networkId:ID - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_195 creator:2 networkId:ID - owner __SERVER__ (2)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:3 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:4 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:5 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:6 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:7 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_99 creator:4 networkId:8 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_96 creator:4 networkId:12 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_96 creator:4 networkId:13 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_96 creator:4 networkId:15 - owner NAME (1c7f3773)\n---------------------------------------------------------------------------------------------\n\tType_96 creator:4 networkId:49 - owner NAME (1c7f3773)\n\n==================================================================================================\n_initMessages - Total: 7601\n\t            Type_330 :     4\n\t             Type_60 :     6\n\t            Type_272 :    31\n\t            Type_273 :    31\n\t            Type_274 :  4481\n\t             Type_64 :   435\n\t            Type_291 :   147\n\t            Type_292 :     1\n\t            Type_187 :    50\n\t            Type_248 :  1846\n\t             Type_53 :    70\n\t             Type_54 :   341\n\t            Type_294 :     3\n\t             Type_10 :    69\n\t            Type_385 :     1\n\t            Type_295 :     1\n\t            Type_296 :    16\n\t            Type_328 :     4\n\t            Type_329 :     4\n\t             Type_59 :    60\n\n==================================================================================================\n_initMessagesRE - Total: 0\n\n==================================================================================================\n_jipMarkerInfos - Total: 0\n\n\n"
+- **`forceRespawn`** — Forces the unit to respawn.
+- **`getClientState`** — Returns client state in network game.
+- **`getClientStateNumber`** — Returns client state in network game.
+- **`getPlayerID`** — 'Returns user DirectPlay ID, which can be used with getUserInfo, and is found in allMapMarkers results and in some mission event handlers such as PlayerConnected.'
+- **`getPlayerScores`** — Returns the unit's table of scores (infantry kills, soft vehicle kills, armor kills, air kills, deaths, total score) '''in multiplayer''' or an empty array in singleplayer.
+- **`getPlayerUID`** — Return a UniqueID of the given unit (player).
+- **`getPlayerUIDOld`** — Returns the old UniqueID of Arma 2 OA of the given unit as string if it is player and empty value if it is AI.
+- **`getRespawnVehicleInfo`** — Returns various properties for the respawning vehicle (see Vehicle Respawn).
+- **`getServerInfo`** — Get the current server instance's settings from .
+- **`getUserInfo`** — Returns extended information about given server user.
+- **`getVariable`** — "Returns the value of variable in the variable space assigned to various data types.\nAll available data types combinations:\n class=\"wikitable\"\n!colspan=\"2\"Primary syntax (String) !!
+- **`groupFromNetId`** — Get group from the provided unique ID.
+- **`groupOwner`** — Returns the  machine network ID of the client to which the group is local.
+- **`hasInterface`** — Returns true if the computer has an interface (a real player).
+- **`hostMission`** — Host the multiplayer mission defined in the config class and opens the lobby with the scenario loaded.
+- **`isDedicated`** — Returns true if the machine executing the command is a dedicated multiplayer server.
+- **`isMultiplayer`** — Return true if multiPlayer.
+- **`isMultiplayerSolo`** — Returns true when playing a game in '''solo multiplayer''' (for example Apex coop campaign PLAY SOLO option).
+- **`isPlayer`** — Checks if given person is a player.
+- **`isRemoteExecuted`** — Returns true if the code context is being remote executed by remoteExec or remoteExecCall.
+- **`isRemoteExecutedJIP`** — Returns true if the code context is being remote executed from the JIP queue by remoteExec or remoteExecCall (when JIP param was set).
+- **`isServer`** — Returns true if the machine executing the command is the server in a multiplayer game or is running single player.
+- **`local`** — Check if given unit is local on the computer in multiplayer games - see .
+- **`localNamespace`** — Returns local Namespace attached to the mission.
+- **`logNetwork`** — Registers new log file recording a network traffic and returns handle of the log.
+- **`logNetworkTerminate`** — Terminates a network log file started with logNetwork with the given handle
+- **`netId`** — Get the unique ID of an object or a group.
+- **`objectFromNetId`** — Get object with given unique ID.
+- **`onPlayerConnected`** — This command will execute the provided code on the server whenever a player connects to a multiplayer session.
+- **`onPlayerDisconnected`** — 'This command will execute attached code whenever a player is leaving an MP session.
+- **`owner`** — On server machine, returns the  machine network ID of the client to which the object is local.
+- **`playableSlotsNumber`** — Returns the number of available slots in mission per side (both empty and taken).
+- **`playableUnits`** — Returns a list of playable units in a multiplayer game (occupied by both AI or players), created on the following sides east/opfor, west/blufor, resistance/independent and civilian only.
+- **`playerRespawnTime`** — Return the player's remaining time before respawn, or -1 if it is not available (such as when the player is alive).
+- **`playersNumber`** — Returns count of occupied role selection slots for given side.
+- **`publicVariable`** — Reliably broadcasts missionNamespace variable and its '''current''' value to all computers (server/client).
+- **`publicVariableClient`** — Send the variable value to the client computer - same limitations regarding variable type as publicVariable.
+- **`publicVariableServer`** — Send the variable value to the server - same limitations regarding variable type as publicVariable.
+- **`remoteExec`** — Asks the server to execute the given function or script command on the given target machine(s).
+- **`remoteExecCall`** — Unscheduled version of remoteExec.
+- **`remoteExecutedJIPID`** — Returns JIP ID of the persistent call generated from JIP queue for the joining player (see remoteExec).
+- **`remoteExecutedOwner`** — Returns the  machine network ID of the client that initiated Remote Execution.
+- **`removeAllMPEventHandlers`** — Removes all MP event handlers of the given type which were added by addMPEventHandler.
+- **`removeMPEventHandler`** — Removes MP event handler added by addMPEventHandler.
+- **`removeSwitchableUnit`** — Remove a unit from the list of units available for Team Switch.
+- **`respawnVehicle`** — Sets vehicle as respawnable in MP game (see Vehicle Respawn).
+- **`roleDescription`** — Returns unit description set in the editor and visible on role selection screen in multiplayer.
+- **`score`** — Returns the person's score in MP.
+- **`scoreSide`** — Returns score for the given side.
+- **`selectPlayer`** — Move player into given unit.
+- **`sendAUMessage`** — Send the command to the list of clients.
+- **`sendUDPMessage`** — "Send message to given address using UDP protocol.
+- **`serverCommand`** — Executes the given server command.
+- **`serverCommandAvailable`** — Returns true if given serverCommand is available on current machine, false if not.
+- **`serverCommandExecutable`** — Returns true if the serverCommand can be performed on the machine and in this exact environment, otherwise false.
+- **`serverName`** — Returns name of the hosting server in MP, "" in SP.
+- **`serverNamespace`** — Returns server's namespace.
+- **`serverTime`** — Returns the time since latest server (re)start in seconds.
+- **`setGroupOwner`** — Changes the ownership of a group (and all its units) to a given client.
+- **`setOwner`** — From server machine, change the ownership of an object to a given client.
+- **`setPlayable`** — Create a multiplayer role for the unit.
+- **`setPlayerRespawnTime`** — Sets the time interval (in seconds) that the player must wait before respawn, for the next respawn only.
+- **`setVariable`** — Set variable to given value in the variable space of given element.
+- **`switchableUnits`** — Returns a list of playable units available for switching to * Command is relative to the client on which it is executed and will only show playable units for the same side as player's group + player himself * In singleplayer where playable units from all sides will be accessible via this command * Dead and player-controlled units are automatically removed from the resulting array * In order to get all ''playable'' units regardless of their side, see the playableUnits command
+
+### Namespaces <a id="sqf-namespaces"></a>
+
+- **`allVariables`** — Returns a list of all variables from the desired namespace.
+- **`currentNamespace`** — Returns the current global namespace the script runs in.
+- **`disableSerialization`** — "Disable saving of script containing this command.
+- **`getVariable`** — "Returns the value of variable in the variable space assigned to various data types.\nAll available data types combinations:\n class=\"wikitable\"\n!colspan=\"2\"Primary syntax (String) !!
+- **`isMissionProfileNamespaceLoaded`** — The missionProfileNamespace variables are loaded at the start of a mission, before 'init.sqf' is executed.
+- **`localNamespace`** — Returns local Namespace attached to the mission.
+- **`missionNamespace`** — Returns the global namespace attached to mission.
+- **`missionProfileNamespace`** — This namespace has the same lifetime as profileNamespace but is also connected to the mission it is saved from.
+- **`parsingNamespace`** — Returns the global namespace attached to config parser.
+- **`profileNamespace`** — Returns the global namespace attached to the active user profile.
+- **`saveMissionProfileNamespace`** — missionProfileNamespace provides long-term storage solution for mission variables.
+- **`saveProfileNamespace`** — Saves all variables stored in profileNamespace to the active Profile.
+- **`serverNamespace`** — Returns server's namespace.
+- **`setVariable`** — Set variable to given value in the variable space of given element.
+- **`uiNamespace`** — Returns the global namespace attached to user interface.
+- **`with`** — Creates a With Type that is used inside a do construct in order to execute code inside a given namespace.
+
+### Object Detection <a id="sqf-object-detection"></a>
+
+- **`agents`** — Return a list of agents in the current mission.
+- **`allCurators`** — Returns list of all curator logic units, not the units assigned to the logic.
+- **`allDead`** — Return a list of all dead units including agents and destroyed vehicles.
+- **`allDeadMen`** — Return a list of dead units including agents.
+- **`allGroups`** — Return a list of all groups created on the following sides east, west, resistance/independent and civilian only.
+- **`allMissionObjects`** — Returns all objects of the given type that are currently present in the mission.
+- **`allObjects`** — Returns array of requested objects as fast as the engine allows it.
+- **`allPlayers`** — Returns a list of all units controlled by connected clients.
+- **`allSimpleObjects`** — Returns array of all simple objects that belong to the listed class names.
+- **`allUnits`** — Returns a list of all units, '''except agents, dead units or units waiting for respawn''', outside and inside vehicles that were created on the following sides east, west, independent and civilian.
+- **`allUnitsUAV`** — Return a list of all UAV vehicles.
+- **`allUsers`** — Returns a list of player ids of all the users on an MP server.
+- **`countEnemy`** — Count how many units in the array are considered enemy to the given unit.
+- **`countSide`** — Returns how many units in the given array belong to given side.
+- **`countType`** — Count how many objects in the array are of given type.
+- **`cursorObject`** — Returns the object under cursor.
+- **`cursorTarget`** — Returns the target pointed at by the player (usually with cross-hairs).
+- **`entities`** — Returns a list of all alive and dead entities of the given type or deriving from the given type.
+- **`findNearestEnemy`** — Finds the nearest enemy to the specified position.
+- **`getCursorObjectParams`** — Returns object and named selections under cursor and distance to object's surface (to the point cursor points at).
+- **`getUserInfo`** — Returns extended information about given server user.
+- **`ignoreTarget`** — Sets a target to be ignored by this Group.
+- **`nearEntities`** — right|200px Finds entities inside a sphere with the given radius.
+- **`nearestBuilding`** — Finds the nearest building to a given object or position.
+- **`nearestMines`** — Returns a list of nearest mines of the given types to the given position or object, within the specified distance.
+- **`nearestObject`** — Returns the nearest object of given type (or inherited classes) to given position within a sphere.
+- **`nearestObjects`** — Returns a list of nearest objects of the given types to the given position or object, within the specified distance.
+- **`nearestTerrainObjects`** — "Returns a list of nearest terrain objects of the given types to the given position or object, within the specified distance.
+- **`nearObjects`** — Find objects (Units, Vehicles, Dead, Map Objects) in a sphere with given radius.
+- **`nearObjectsReady`** — Check whether all data are loaded to nearObjects will return in reasonable time.
+- **`nearRoads`** — Find the road segments within the circle of given radius.
+- **`nearSupplies`** — Find supplies (weapon holders, ammo crates, fuel feeds, other units) in the sphere with given radius.
+- **`nearTargets`** — Returns a list of targets within the defined range.
+- **`object`** — Returns Object with given id.
+- **`playableUnits`** — Returns a list of playable units in a multiplayer game (occupied by both AI or players), created on the following sides east/opfor, west/blufor, resistance/independent and civilian only.
+- **`switchableUnits`** — Returns a list of playable units available for switching to * Command is relative to the client on which it is executed and will only show playable units for the same side as player's group + player himself * In singleplayer where playable units from all sides will be accessible via this command * Dead and player-controlled units are automatically removed from the resulting array * In order to get all ''playable'' units regardless of their side, see the playableUnits command
+- **`targetKnowledge`** — Returns unit's knowledge about target.
+- **`targets`** — Retrieves list of given unit targets matching specified filter.
+- **`targetsQuery`** — Returns sorted array of targets, '''known''' to the enquirer (including own troops), where the accuracy coefficient reflects how close the result matches the query.
+- **`units`** — Returns an array with all the units in the group or unit's group, or all units belonging to a certain side.
+- **`unitsBelowHeight`** — Returns units in group/array below given Above Terrain Level (ATL) altitude.
+- **`vehicles`** — Returns an array of all vehicles available to current client.
+
+### Object Manipulation <a id="sqf-object-manipulation"></a>
+
+- **`addPlayerScores`** — "MP server only: Adds player score.\n class=\"wikitable align-center\"\n!
+- **`addRating`** — Add a number to the rating of a unit - negative values can be used to reduce the rating.
+- **`addToRemainsCollector`** — Adds an array of vehicles/units to disposal manager for automatic wreck/body removal.
+- **`addVehicle`** — Adds a specified vehicle for use by a specified AI led group.
+- **`aimedAtTarget`** — Returns how good a vehicle's weapon is aimed at the target.
+- **`airplaneThrottle`** — Returns throttle position.
+- **`AISFinishHeal`** — Alternative Injury Simulation (AIS) end state.
+- **`alive`** — Check if given vehicle/person/building is alive (i.e.
+- **`allLODs`** — Returns the list of object or model LODs.
+- **`allowCrewInImmobile`** — If true, units will remain in a vehicle with broken tracks/wheels; they will still eject if the vehicle is drowning, about to explode or upside down for a while.
+- **`allowDamage`** — Enables / disables an entity's ability to receive damage.
+- **`allowDammage`** — Allow or prevent an object being damaged (or injured, or killed).
+- **`allowedService`** — Returns which types of repair/refuel/rearm service are allowed.
+- **`allowFleeing`** — "Sets the cowardice level (the lack of courage or bravery) of a group or unit.
+- **`allowGetIn`** — Set if the units given in the list are allowed to enter vehicles.
+- **`allowService`** — Sets which type of repair/refuel/rearm service is allowed.
+- **`angularVelocity`** — Gets the angular velocity of the object in world space as a 3D vector.
+- **`angularVelocityModelSpace`** — Gets the angular velocity of the object in model space as a 3D vector.
+- **`assignedCargo`** — Returns the list of soldiers assigned to the given vehicle as a cargo.
+- **`assignedCommander`** — Returns the soldier assigned to the given vehicle as a commander.
+- **`assignedDriver`** — Returns the soldier assigned to the given vehicle as a driver.
+- **`assignedGunner`** — Returns the soldier assigned to the given vehicle as a gunner.
+- **`assignedTarget`** — Returns the target assigned to an unit or the vehicle's effectiveCommander.
+- **`assignedTeam`** — Returns the team the unit belongs to.
+- **`assignedVehicle`** — Returns the vehicle to which a unit is assigned, usually with ''assignAsXXX'' command.
+- **`assignedVehicleRole`** — Returns the role a unit is assigned to within its assigned vehicle.
+- **`attachedObject`** — Returns the object a location is attached to.
+- **`attachedObjects`** — Returns a list of objects attached to the given object.
+- **`attachedTo`** — Returns object the given object is attached to or objNull if the given object is not attached to anything.
+- **`attachObject`** — Attaches a location to the specified object.
+- **`attachTo`** — Attaches an object to another object.
+- **`boundingBox`** — right|200px Returns a bounding box of given object in model coordinate space, adjusted according to destruction/animation of an object.
+- **`boundingBoxReal`** — right|200px Returns a raw bounding box of given object in model coordinates space.
+- **`boundingCenter`** — Returns the position of the original (loaded) center of an object in model coordinates.
+- **`buildingExit`** — Returns the given indexed exit in a building.
+- **`calculatePath`** — Spawns an agent that will execute an AI path calculation and fire the   event handler.
+- **`canMove`** — Returns if the given vehicle is still able to move.
+- **`canStand`** — Returns if the given soldier is able to stand up.
+- **`canUnloadInCombat`** — Returns config value of `unloadInCombat` for a vehicle.
+- **`captive`** — Returns the captive state of the given unit (set with setCaptive).
+- **`captiveNum`** — Checks whether the unit is a captive.
+- **`clearVehicleInit`** — Clears the object's init.
+- **`collisionDisabledWith`** — Returns the object, given object has collision disabled with and whether or not returned object has also collision disabled with given object.
+- **`combatPace`** — Sets or gets the combat pace for the local player.
+- **`commander`** — In  it returns the commander of a vehicle.
+- **`createAgent`** — Creates an agent of the given type.
+- **`createSimpleObject`** — "Create object with given shape defined as path to .p3d model.
+- **`createUnit`** — Create a unit of the provided CfgVehicles class.
+- **`createVehicle`** — "Creates an empty object of given classname type.\nSee Arma 3: Assets / Arma 3: createVehicle/vehicles, or :Category:CfgVehicles for earlier games.\n\n, use createUnit.\n* To create an editable  Eden Editor entity, see create3DENEntity.\n}}\n\n, set the  variable immediately after creating the vehicle:\n\nprivate \"_vehicle\";\nisNil { // run unscheduled\n\t_vehicle = \"C_Offroad_01_F\" createVehicle getPosATL player;\n\t_vehicle setVariable [\"BIS_enableRandomization\", false];\n};\n// the _vehicle variable is available after that\n\nSee the Arma 3: Vehicle Customisation page for more information and settings.\n}}"
+- **`createVehicleCrew`** — Creates vehicle crew corresponding to the provided vehicle's faction.
+- **`createVehicleLocal`** — Creates an object of the given type.
+- **`crew`** — Returns the crew (both dead and alive) of the given vehicle.
+- **`currentPilot`** — Returns the person piloting the vehicle.
+- **`damage`** — Return the damage value of an object.
+- **`deleteCollection`** — Delete a collection.
+- **`deleteStatus`** — Deletes a status created with saveStatus from the campaign's progress file.
+- **`deleteVehicle`** — Deletes an object.
+- **`deleteVehicleCrew`** — Deletes a member of or the whole crew of a vehicle.
+- **`detach`** — Detaches previously attached with attachTo object.
+- **`diag_remainsCollector`** — Returns current settings for the remains collector and the list of monitored units if any.
+- **`direction`** — Returns the direction an object or a location is facing (differs from getDir in that this also works with locations).
+- **`disableCollisionWith`** — Disable collision between provided objects.
+- **`driver`** — Returns the driver of a vehicle.
+- **`elevatePeriscope`** — Elevates periscope of a vehicle.
+- **`emptyPositions`** — Returns the number of given empty positions in the vehicle.
+- **`enableCollisionWith`** — Cancels the effects of disableCollisionWith.
+- **`enableCopilot`** — Enables copilot actions, toggles availability of the actions related to copilots, such as taking over controls, suspending controls, etc.
+- **`enableMimics`** — Enables/disables mimics on a given unit.
+- **`enableSimulation`** — Enables / disables simulation for the given entity, e.g its animation and physics; it will still be able to take damage and report enemies.
+- **`enableSimulationGlobal`** — Enable or disable simulation for given entity, globally.
+- **`engineOn`** — Activates and deactivates the engine of a vehicle.
+- **`equipmentDisabled`** — Returns current state for NVG and TI equipment availability.
+- **`eyeDirection`** — Returns the direction object is watching (eyes, or a vehicle's primary observer).
+- **`faction`** — "Gets unit faction.
+- **`fleeing`** — Checks if a unit is fleeing.
+- **`flyInHeight`** — Sets the flying altitude for aircraft relatively to the ground surface.
+- **`flyInHeightASL`** — Sets the minimal ASL height.
+- **`forceHitPointsDamageSync`** — Synchronises hitpoints values and total damage across current network clients as well as JIP.
+- **`forceSpeed`** — Force the speed limit on given object (object will never attempt to move faster than given by forceSpeed).
+- **`freeLook`** — Returns if freelook is active on the current machine's controlled character.
+- **`fuel`** — Checks how much fuel is left in the gas tank of a vehicle.
+- **`fullCrew`** — Returns an array with all crew inside given vehicle, with or without empty seats.
+- **`getAimDirectionAndUp`** — Returns the aim direction and up vectors of a soldier in model space.
+- **`getAllHitPointsDamage`** — Get provided object's hit points damage.
+- **`getAllUnitTraits`** — Returns unit traits (native or set by setUnitTrait).
+- **`getAnimationsQueue`** — Returns the primary and secondary animations queue of the entity.
+- **`getAttackTarget`** — Returns the target given unit is engaging.
+- **`getBleedingRemaining`** — Returns how many seconds injured unit will continue leaving blood trail.
+- **`getBoneNames`** — Returns an array of bone names and their parents.
+- **`getBurningValue`** — Returns how much the unit is exposed to fire damage.
+- **`getCameraViewDirection`** — Returns the direction unit is looking in render time scope.
+- **`getCargoIndex`** — Returns index of the unit in cargo.
+- **`getCorpse`** — Returns the corpse associated with given weaponholder.
+- **`getCorpseWeaponholders`** — Returns primary and secondary weapon holders of a dead unit.
+- **`getCruiseControl`** — Returns cruise control settings set with setCruiseControl command.
+- **`getDammage`** — Returns the object damage.
+- **`getDescription`** — Returns the string representation of unit as an four slots array.
+- **`getDir`** — Returns the object heading in the range 0..360.
+- **`getDirVisual`** — Returns object's heading in the range from 0 to 360 in render time scope.
+- **`getDiverState`** — Returns true when object is in diver state - e.g when the unit would put diving goggles on.
+- **`getEntityInfo`** — Returns various properties for the given entity.
+- **`getForcedSpeed`** — Returns forced speed set with forceSpeed or -1 if not set.
+- **`getFuelConsumptionCoef`** — Returns the fuel consumption coefficient, which is a multiplier of the fuel consumption rate in config.
+- **`getHideFrom`** — Returns the Position where object believes the enemy to be.
+- **`getHit`** — Returns selection damage.
+- **`getHitIndex`** — Return current level of damage for a specific Hit Point (specified by its hit part index).
+- **`getHitPointDamage`** — Return current level of damage in range 0..1 for a specific Hit Point (specified by its config class).
+- **`getLightInfo`** — Returns various properties for the given  or .
+- **`getModelInfo`** — Returns object's model info.
+- **`getObjectFOV`** — Returns Field of View of the given object in radians.
+- **`getObjectMaterials`** — Gets all custom materials associated with the object.
+- **`getObjectScale`** — Returns the render scale of an object relative to the original model.
+- **`getObjectTextures`** — 'Gets all custom textures (hiddenSelectionsTextures) associated with the object.
+- **`getObjectType`** — Returns object type as a number: * 1 - Primary - Normal object placed in Visitor, part of landscape * 2 - Network - Road placed in Visitor, part of landscape * 4 - Temporary - Temporary object (like tracks) * 8 - TypeVehicle - Some entity added by game * 16 - TypeTempVehicle - Temporary entity * 32 - LandDecal - Land decal
+- **`getOpticsMode`** — Returns the class name of the current optic mode of the current weapon.
+- **`getOxygenRemaining`** — Returns amount of remaining oxygen.
+- **`getPlateNumber`** — Get the license plates from any vehicle which has plates configured.
+- **`getPosASLVisual`** — Returns an object's rendered ASL position (z value above sea level) in render time scope.
+- **`getPosATLVisual`** — Returns an object's rendered ATL position (z value above ground) in render time scope.
+- **`getPosVisual`** — Returns an object's AGLS position in render time scope.
+- **`getPosWorldVisual`** — Returns the provided object's, model centre position in render version in format PositionASL, rather than transformed boundingCenter or LandContact vertices.
+- **`getRelDir`** — Returns direction, which is relative to object's current direction, from given object to another object or position in the range from 0 to 360, the equivalent of BIS_fnc_relativeDirTo.
+- **`getSelectionBones`** — Returns an array of bone names to which the specified selection is attached.
+- **`getShotInfo`** — Returns various properties for the given shot.
+- **`getSpeed`** — Get the speed for the given speed mode.
+- **`getSuppression`** — "Gets the suppression value for the given unit.
+- **`getUnitFreefallInfo`** — Returns a unit's freefall information.
+- **`getUnitTrait`** — Gets the current value of a trait of the given unit.
+- **`getUnloadInCombat`** — A getter for setUnloadInCombat.
+- **`getVehicleTIPars`** — Returns TI parameters of a vehicle.
+- **`getWaterFillPercentage`** — Get an object's water filling.
+- **`getWaterLeakiness`** — Get an object's water intake ratio when immersed.
+- **`gunner`** — Returns the gunner of a vehicle.
+- **`handsHit`** — Checks if a soldier's hands are hit, which results in inaccurate aiming.
+- **`hideBehindScripted`** — When set to true it disables the default engine hiding behavior.
+- **`hideBody`** — Hides dead body of the given unit.
+- **`hideObject`** — Hide entity.
+- **`hideObjectGlobal`** — This command is designed for MP.
+- **`hideSelection`** — Hides or shows the  simple object's provided selection.
+- **`incapacitatedState`** — Returns the incapacitated sub-state of the given unit, when the lifeState of the unit is "INCAPACITATED".
+- **`inflame`** — Sets the state of a fireplace.
+- **`inflamed`** — Checks if fireplace is inflamed (burning) or not.
+- **`insideBuilding`** — Returns how much a man is inside a building.
+- **`isAbleToBreathe`** — If unit is diving and doesn't have a rebreather, it returns false.
+- **`isAllowedCrewInImmobile`** — Whether or not units can be in a vehicle with broken tracks/wheels.
+- **`isAutoHoverOn`** — Return true if vehicle has enabled auto hover.
+- **`isBleeding`** — Returns whether the unit is bleeding.
+- **`isBurning`** — Returns whether the unit is burning.
+- **`isCopilotEnabled`** — Returns true if copilots actions are enabled.
+- **`isDamageAllowed`** — A getter for allowDamage command.
+- **`isEngineOn`** — Returns true if engine is on, false if it is off.
+- **`isFlashlightOn`** — Returns true if there is a linked and enabled flashlight on a given weapon.
+- **`isHidden`** — Returns whether a person is hidden (reached the hiding position).
+- **`isHideBehindScripted`** — Return whether the vehicle has set the hideBehindScripted to true or not.
+- **`isInRemainsCollector`** — Checks if unit or vehicle is queued for disposal after death.
+- **`isKindOf`** — Checks whether the given object or type is (a subtype) of the given type.
+- **`isMarkedForCollection`** — Checks whether the object is marked for weapons collection.
+- **`isObjectHidden`** — Checks visibility of a given object on the local machine.
+- **`isSimpleObject`** — Returns true if given object is simple object
+- **`isTouchingGround`** — Returns true if object is touching the ground.
+- **`isTurnedOut`** — Returns true if given unit is turned out, otherwise false.
+- **`isWalking`** — Returns true if walk is '''toggled''' (default  in ).
+- **`knowsAbout`** — Checks if a group or a side knows about target.
+- **`lifeState`** — Returns the life state of the given unit.
+- **`limitSpeed`** — Limit the speed of an AI-driven vehicle or AI person to given value.
+- **`lock`** — Lock vehicle (disable mounting / dismounting) for player.
+- **`lockCargo`** — Lock all cargo positions of a vehicle or lock by index.
+- **`lockDriver`** — Lock the driver position of the vehicle.
+- **`locked`** — Check if vehicle is locked.
+- **`lockedCargo`** — Check whether cargo position of the vehicle is locked.
+- **`lockedDriver`** — Check whether driver position of the vehicle turret is locked.
+- **`modelToWorldVisual`** — Converts position from object model space to world space in render time scope.
+- **`modelToWorldVisualWorld`** — Converts position from object model space to world space in render time scope.
+- **`morale`** — Get the provided unit's current morale level.
+- **`namedProperties`** — Returns a list of named properties on Geometry LOD.
+- **`nameSound`** — Returns the nameSound of a person.
+- **`needService`** — Returns array with how much vehicle needs repairing, refueling and rearming.
+- **`objectParent`** — right|500px Returns the parent of an object if said object is a proxy.
+- **`periscopeElevation`** — Returns current periscope elevation value, see also elevatePeriscope.
+- **`player`** — A person object controlled by user.
+- **`playerTargetLock`** — Get the local player's current locked target (with weapons that can lock on).
+- **`precision`** — Return the movement precision of the given entity, how is the entity able to be precise when moving to given target.
+- **`preloadObject`** — Preloads all textures, materials and proxies needed to render given object.
+- **`rating`** — "Check unit rating.
+- **`removeFromRemainsCollector`** — Removes vehicles/units from the garbage collector, so they do not get deleted automatically; added earlier with addToRemainsCollector.
+- **`reveal`** — Reveals a target to a group.
+- **`roleDescription`** — Returns unit description set in the editor and visible on role selection screen in multiplayer.
+- **`scudState`** — Return the current state of given Scud launcher.
+- **`selectionNames`** — Returns the list of model selections.
+- **`selectionPosition`** — Returns selection position in model space pertaining to the current animation in render time scope.
+- **`selectionVectorDirAndUp`** — Searches for selection in the object model's LOD level, and returns the Direction and Up vectors in model space.
+- **`selectNoPlayer`** — Switches player to no unit, makes player return objNull.
+- **`selectPlayer`** — Move player into given unit.
+- **`setAirplaneThrottle`** — Sets a wanted throttle position - works only on player's vehicle.
+- **`setAngularVelocity`** — Sets the angular velocity of the object in world space as a 3D vector.
+- **`setAngularVelocityModelSpace`** — Sets the angular velocity of the object in model space as a 3D vector.
+- **`setBleedingRemaining`** — Sets for how many seconds injured unit leaves blood trail.
+- **`setCaptive`** — Mark a unit as captive.
+- **`setConvoySeparation`** — "Sets the distance to keep to the vehicle which is '''in front'''.\n*This command has to be applied to all vehicles in a convoy in order to have a separation of, for example, 50 m.
+- **`setCruiseControl`** — Limits or sets '''local player-controlled''' vehicle's speed through cruise control.
+- **`setDamage`** — " class=\"wikitable float-right align-center-col-2\"\n+ \n!
+- **`setDammage`** — Entirely identical to setDamage that was introduced to fix a typographical error in the command's name.
+- **`setDir`** — Sets object heading.
+- **`setDriveOnPath`** — Sets the path to follow for AI driver.
+- **`setFeatureType`** — Enable/disable object as a feature/landmark.
+- **`setFlagOwner`** — Sets flag owner.
+- **`setFuel`** — Sets fuel level.
+- **`setFuelConsumptionCoef`** — Sets the fuel consumption coefficient, which is a multiplier of the fuel consumption rate in config.
+- **`setHit`** — " class=\"wikitable float-right align-center-col-2\"\n+ \n!
+- **`setHitIndex`** — Sets the current level of damage for a specific Hit Point.
+- **`setHitPointDamage`** — class="wikitable float-right align-center-col-2" !
+- **`setMimic`** — Sets person's facial expression.
+- **`setMissileTarget`** — Sets a guided missile target.
+- **`setMissileTargetPos`** — Sets a guided munition target position.
+- **`setObjectMaterial`** — Sets material of object selection.
+- **`setObjectMaterialGlobal`** — Set the material of the given selection on all computers in a network session.
+- **`setObjectScale`** — 'Scales an attached object or a Simple Object''s model - see  for various configurations'' examples.'
+- **`setObjectTexture`** — Applies given texture to object's selection.
+- **`setObjectTextureGlobal`** — Set the texture of the given selection on all computers in a network session.
+- **`setOpticsMode`** — Sets the optic mode of the current weapon to the given class name or the index.
+- **`setOxygenRemaining`** — Sets oxygen remaining.
+- **`setPlateNumber`** — Change the license plates on any vehicle which has plates configured.
+- **`setRandomLip`** — Enables/Disables random lip.
+- **`setSuppression`** — Sets the given suppression value for the given unit.
+- **`setTargetAge`** — Sets how the target is known to the other centers.
+- **`setUnconscious`** — In  and since  v1.64, this command sets unit into incapacitated state.
+- **`setUnitFreefallHeight`** — Sets minimum freefall height AGL per unit, at which the unit assumes HALO pose.
+- **`setUnitRecoilCoefficient`** — Proportionaly increase/decrease unit's recoil.
+- **`setUnitTrait`** — Enables or disables a trait or alters a trait of the given unit.
+- **`setVehicleArmor`** — "Sets the armor (or health for men) state of the vehicle (a value from 0 to 1).
+- **`setVehicleId`** — Sets ID to vehicle.
+- **`setVehicleInit`** — Attach a statement to a unit.
+- **`setVehicleLock`** — "Sets vehicle lock.
+- **`setVehiclePosition`** — Moves the object to a given position (same as createVehicle placement algorithm).
+- **`setVehicleTIPars`** — Sets the "heat" state of different vehicle parts for Thermal Imaging detection.
+- **`setVehicleVarName`** — Sets string representation of an object to a custom string.
+- **`setVelocity`** — Sets velocity vector of an object in m/s.
+- **`setVelocityModelSpace`** — Sets the velocity (i.e.
+- **`setVelocityTransformation`** — thumb|right Interpolates and applies PositionASL, velocity, vectorDir and vectorUp to the given object based on the interval value.
+- **`setWaterFillPercentage`** — Set an object's water filling.
+- **`setWaterLeakiness`** — Set an object's water intake ratio when immersed.
+- **`simulationEnabled`** — "Check if the entity has enabled simulation.
+- **`sizeOf`** — Returns the diameter of bounding sphere of the object of given classname in meters.
+- **`speed`** — 'Object speed (in km/h).
+- **`squadParams`** — Returns data about squad of given unit loaded from squad.xml as well as the unit itself.
+- **`synchronizedObjects`** — Return the list of objects synchronized with the given unit.
+- **`synchronizeObjectsAdd`** — Add given objects to the unit's list of synchronized objects.
+- **`synchronizeObjectsRemove`** — Removes given objects from the unit's list of synchronized objects.
+- **`targetsAggregate`** — Aggregate candidates.
+- **`triggerAmmo`** — Triggers a munition such as shells, bullets, missiles, rockets, mines and bombs (''shotSubmunition/shotShell/shotBullet/shotMissile/shotRocket'') as if it did hit.
+- **`typeOf`** — Returns the class name of given target.
+- **`unassignVehicle`** — Unassigns individual unit from a vehicle, usually previously assigned with ''assignAsXXX'' command, i.e removes assignedVehicleRole of the unit.
+- **`underwater`** — Returns whether the object is fully underwater.
+- **`unitAimPosition`** — Returns the position on the unit other units can aim at.
+- **`unitAimPositionVisual`** — Returns the position on the unit other units can aim at in render scope.
+- **`unitRecoilCoefficient`** — Returns recoil coefficient of a soldier.
+- **`vehicle`** — Vehicle in which given unit is mounted.
+- **`vehicleMoveInfo`** — "Returns current vehicle move/turn info (a getter for sendSimpleCommand) in format [moveInfo, turnInfo].
+- **`vehicleVarName`** — Returns the variable name that contains a primary editor reference to this object.
+- **`velocity`** — Returns the velocity of the object as vector in m/s.
+- **`velocityModelSpace`** — Returns the velocity (speed vector) of the vehicle as an array with format [x, y, z] in metre per second.
+- **`waterDamaged`** — Checks if the engine was water damaged.
+- **`weaponLowered`** — Returns true if given soldier's weapon is lowered.
+
+### Particles <a id="sqf-particles"></a>
+
+- **`drop`** — Creates a particle effect.
+- **`particlesQuality`** — Returns current user settings for particles quality (configure->video->general->particles).
+- **`setDropInterval`** — Set interval of emitting particles from particle source.
+- **`setParticleCircle`** — Updates particle source, creates particles in circle with given radius.
+- **`setParticleClass`** — Sets particle source parameters using existing particle config from  class.
+- **`setParticleFire`** — "Set fire parameters to particle effect.\n\nNote: You need to create emitter at first.
+- **`setParticleParams`** — "Set parameters to particle source.
+- **`setParticleRandom`** — "Sets randomization of particle source parameters.
+
+### Performance Profiling <a id="sqf-performance-profiling"></a>
+
+- **`diag_captureFrame`** — This command starts counting frames from the moment it is executed and when the count reaches the number passed as param, the current frame is captured and captured data UI dialog appears, similar to diag_captureSlowFrame.
+- **`diag_captureFrameToFile`** — "This command starts counting frames from the moment it is executed and when the count reaches the number passed as param, the current frame is captured and \nwritten to a log file in the same directory as the .rpt file.\nThe full Path to the log file is logged to simultaneously.\nThe data in the log file can be copied and pasted into the diag_captureFrame UI dialog to get a visualisation later on."
+- **`diag_captureSlowFrame`** — "right|200x120px\nOpens \"capture frame\" dialog if current frame exceeds set threshold in seconds.
+- **`diag_codePerformance`** — Attempts to run given code with given arguments given number of cycles in unscheduled environment and returns average time it took to run the code as well as actual number of executions performed.
+- **`diag_fps`** — Returns average framerate calculated over last 16 frames.
+- **`diag_fpsMin`** — Returns minimal framerate.
+- **`diag_frameNo`** — Returns number of frame currently displayed.
+- **`diag_scope`** — Returns script scope depth.
+- **`diag_testScriptSimpleVM`** — Outputs the provided SQF code's end code.
+
+### PhysX <a id="sqf-physx"></a>
+
+- **`addForce`** — Applies given force for one frame (essentially an impulse) to unit or given PhysX object at given position.
+- **`addTorque`** — 400px|right Applies torque (rotation momentum) to the  center of mass of the given object.
+- **`attachChild`** — Attaches a child object to a parent, similar to attachTo but instead of a rigid/forced attachment its using a PhysX joint.
+- **`awake`** — Wakes up sleeping PhysX object or puts a PhysX object to sleep.
+- **`brakesDisabled`** — Returns the status of autobrake (see disableBrakes).
+- **`childAttached`** — Get the child that has been attached via attachChild
+- **`detachChild`** — Detaches previously attached with attachChild object.
+- **`disableBrakes`** — Disables autobrake, which is engaged when vehicle is stationary and stops wheels from rotating freely when vehicle is pushed.
+- **`getCenterOfMass`** — Returns center of mass of an object.
+- **`getMass`** — Returns mass of a PhysX object.
+- **`getPhysicsCollisionFlag`** — Returns the currently set physics collision flags.
+- **`getTowParent`** — Get the vehicle towing the provided one.
+- **`isAwake`** — Returns resting state of a PhysX (EPE) object.
+- **`parentAttached`** — Get the parent of a attachChild attached child.
+- **`setCenterOfMass`** — Changes the center of mass of an object smoothly during the given time (in seconds).
+- **`setJointDriveLinearVelocity`** — Requires that a linear "drive" has been configured in attachChild.
+- **`setJointDrivePosition`** — Requires that a linear "drive" has been configured in attachChild.
+- **`setMass`** — Changes the mass of a PhysX object.
+- **`setPhysicsCollisionFlag`** — Sets physics collision flags for PhysX and geometry LODs.
+- **`setTowParent`** — class="wikitable float-right align-center-col-2 align-center-col-3" !
+
+### Pilot Camera <a id="sqf-pilot-camera"></a>
+
+- **`getPilotCameraDirection`** — Returns model space vector of the object airplane or helicopter pilotCamera .
+- **`getPilotCameraOpticsMode`** — 'Returns the optics mode index (zoom) for the pilotCamera'
+- **`getPilotCameraPosition`** — Returns model space coordinates of the object airplane or helicopter pilotCamera.
+- **`getPilotCameraRotation`** — Returns rotation (relative to the centered camera position) of the object airplane or helicopter pilotCamera .
+- **`getPilotCameraTarget`** — 'Returns the target of the object airplane or helicopter pilotCamera tracking.
+- **`hasPilotCamera`** — Returns true if the object airplane or helicopter has a pilotCamera.
+- **`setPilotCameraDirection`** — 'Sets the direction of airplane''s or helicopter''s .'
+- **`setPilotCameraOpticsMode`** — 'Sets the optics mode index (zoom) for the pilotCamera'
+- **`setPilotCameraRotation`** — Sets rotation (relative to the centered camera position) of the object airplane or helicopter pilotCamera .
+- **`setPilotCameraTarget`** — "Sets an area or target to be tracked by the object airplane or helicopter pilotCamera.
+
+### Positions <a id="sqf-positions"></a>
+
+- **`AGLToASL`** — Converts position from PositionAGL to PositionASL.
+- **`aimPos`** — Returns the position of the object other units can aim to.
+- **`ASLToAGL`** — Converts position from PositionASL to PositionAGL
+- **`ASLToATL`** — Converts a position from PositionASL to PositionATL
+- **`ATLToASL`** — Converts a position from PositionATL to PositionASL
+- **`buildingPos`** — Returns position of a given indexed position in a building.
+- **`eyePos`** — Returns the object's eyes / main turret position.
+- **`findEmptyPosition`** — Searches for an empty area around the specified position, starting from the ''center'' looking for an empty ''areaRadius'' and looks as far away as ''areaRadius'' + ''maxDistance''.
+- **`findEmptyPositionReady`** — Preloads area to be used with findEmptyPosition command and returns true when area is ready.
+- **`formationPosition`** — Return position of unit in the formation.
+- **`getPos`** — Returns object or location position.
+- **`getPosASL`** — Returns the object position height above sea level.
+- **`getPosASLW`** — Returns the object position height above water surface (waves and pond objects included).
+- **`getPosATL`** — Returns the position of an object relative to the terrain.
+- **`getPosWorld`** — Returns the provided object's model centre position ([0,0,0]) in PositionASL, rather than the transformed boundingCenter or LandContact vertices.
+- **`getRelPos`** — Returns position that is given distance and relative direction away from original object.
+- **`getTerrainHeight`** — Returns terrain height at the specified location.
+- **`getTerrainHeightASL`** — Returns the terrain height above the sea for the given position.
+- **`getTerrainInfo`** — Returns the terrain heightmap information, as well as sea level offset (due to tides, if available).
+- **`inArea`** — Checks whether given position or object is inside given area.
+- **`inAreaArray`** — Returns given list of Objects and/or Positions that are in the given area, area defined by a trigger, marker, location or array.
+- **`inAreaArrayIndexes`** — Returns indices of positions that are within the provided area.
+- **`inPolygon`** — Checks whether position is inside given polygon.
+- **`isFlatEmpty`** — Checks given position against given filter params.
+- **`mapGridPosition`** — Returns the map grid position of an object or position.
+- **`modelToWorld`** — Translates relative position from object model space to world space in PositionAGL format.
+- **`modelToWorldWorld`** — Converts position from object model space to world space in PositionASL format from the object's centre position.
+- **`position`** — Returns position of an object (alias of getPos) or location (alias of locationPosition).
+- **`positionCameraToWorld`** — 'right|200pxGet the world coordinate space () from a camera-relative position.'
+- **`posScreenToWorld`** — Converts map screen coordinates into world coordinates.
+- **`posWorldToScreen`** — Converts world coordinates into map screen coordinates.
+- **`screenToWorld`** — "Returns the position on landscape (PositionAGL) corresponding to the given point on screen (in UI coordinates).
+- **`screenToWorldDirection`** — Returns the 3D vector in world corresponding to the given point on the screen (in UI coordinates), as if the vector was aiming from the camera to the screen position.
+- **`setPos`** — Sets object position to format PositionAGLS (over surface).
+- **`setPosASL`** — Sets the object position above sea level.
+- **`setPosASL2`** — "Sets the object position.
+- **`setPosASLW`** — Sets the object position above sea surface.
+- **`setPosATL`** — Sets the position of an object relative to the terrain.
+- **`setPosWorld`** — Sets position of an object based on the model's centre position (see getPosWorld).
+- **`setTerrainHeight`** — Set the current terrain's altitude on provided location(s).
+- **`setVehiclePosition`** — Moves the object to a given position (same as createVehicle placement algorithm).
+- **`surfaceIsWater`** — Returns whether there is water at given position.
+- **`surfaceNormal`** — Returns terrain's  on given position.
+- **`surfaceTexture`** — Same as surfaceType, but returns texture path to ground texture as string.
+- **`surfaceType`** — Returns what surface type is at the given position.
+- **`unitAimPosition`** — Returns the position on the unit other units can aim at.
+- **`unitsBelowHeight`** — Returns units in group/array below given Above Terrain Level (ATL) altitude.
+- **`visiblePosition`** — Returns an object's rendered position (z value above surface underneath) in render time scope.
+- **`visiblePositionASL`** — Returns an object's rendered ASL position (z value above sea level) in render time scope.
+- **`worldToModel`** — Converts position from world space to object model space.
+- **`worldToModelVisual`** — Converts position from world space to object model space in render time scope.
+- **`worldToScreen`** — Converts position in world space into screen (UI) space.
+
+### Program Flow <a id="sqf-program-flow"></a>
+
+- **`':'`** — See switch
+- **`assert`** — Tests a condition and if the condition is false, displays error on screen (if -showscripterrors enabled) and logs error into .rpt file.
+- **`break`** — Skips all loop iterations (for, forEach, while, findIf etc).
+- **`breakOut`** — Breaks out of the scope with given '''name'''.
+- **`breakTo`** — Breaks block to scope named ''name''.
+- **`breakWith`** — Skips all loop iterations and immediately returns the given value.
+- **`call`** — Adds given set of compiled instructions to the current stack and waits for it to finish and return, provides an option to pass arguments to the executed Code.
+- **`canSuspend`** — Returns true if sleep, uiSleep or waitUntil commands can be used in the current scope.
+- **`case`** — This command is used as a keyword inside a switch structure to define a value case.
+- **`catch`** — Processes code when an exception is thrown in a try block.
+- **`continue`** — Skips current loop iteration and continues with the next one.
+- **`continueWith`** — Skips the current loop iteration, continues with the next one and returns the given value.
+- **`default`** — Defines a Switch Type default case - does '''not''' need a colon to define its block.
+- **`do`** — Executes ''code''.
+- **`else`** — Executes else code when if condition returns false.
+- **`exec`** — Execute a script using (the deprecated but still available) SQS Syntax.
+- **`execFSM`** — Execute scripted FSM and return the FSM handle or 0 when failed.
+- **`execVM`** — Compiles and adds an SQF script to the scheduler queue and returns script handle (see also ).
+- **`exit`** — Stops the execution of a SQS script.
+- **`exitWith`** — Exits the '''current''' code scope.
+- **`fileExists`** — Checks if file on given path exists.
+- **`for`** — This operator creates a For Type which is used in the for-constructs.
+- **`forEach`** — Executes the given command(s) on every item of an Array or a HashMap.
+- **`forEachMember`** — Executes the given command recursively for both teams and agents that are members of the given team.
+- **`forEachMemberAgent`** — Executes the given command recursively for each agent that is a member of the given team.
+- **`forEachMemberTeam`** — Executes the given command recursively for each team that is a member of the given team.
+- **`forEachReversed`** — Executes the given command(s) on every item of an Array in reversed order, compared to forEach.
+- **`from`** — Continue sequence of for construct.
+- **`goto`** — Break script flow and go to given label (defined by '''#''' - '''NOT''' to be confused with SQF's hash sign!)
+- **`halt`** — 'This command was meant to break the script into debugger, however currently ''''''it does not do anything'''''' except displaying and logging the following error: .'
+- **`if`** — This operator creates a If Type which is used in the if-construct as described here.
+- **`isUIContext`** — Returns true if the script originated from some UI control event, for example from "onButtonDown" EH.
+- **`loadFile`** — Returns the content of given files.
+- **`scopeName`** — Defines name of current scope.
+- **`scriptDone`** — Check if a script is finished running using the Script Handle returned by execVM or spawn.
+- **`scriptName`** — Assign a user friendly name to the VM script this command is executed from.
+- **`sleep`** — Suspends code execution for given time in seconds.
+- **`spawn`** — Adds given set of compiled instructions to the scheduler.
+- **`step`** — Optional step value.
+- **`switch`** — Checks if the given parameter matches any case.
+- **`terminate`** — Terminates (aborts) spawned or execVMed script.
+- **`then`** — Links an If Type with Code to be executed if said If Type's condition is true; otherwise, "else" code is executed if provided.
+- **`throw`** — Throws an exception.
+- **`to`** — Continue sequence of for construct.
+- **`try`** — Defines a try-catch structure.
+- **`uiSleep`** — Suspend execution of script for given uiTime.
+- **`waitUntil`** — "Suspends execution of scheduled script until the given condition satisfied.
+- **`while`** — Repeats Code while the given condition is true.
+- **`with`** — Creates a With Type that is used inside a do construct in order to execute code inside a given namespace.
+
+### RTD <a id="sqf-rtd"></a>
+
+- **`addForceGeneratorRTD`** — Adds force generator to world.
+- **`airDensityCurveRTD`** — Returns array with air density data.
+- **`airDensityRTD`** — Returns air density in given altitude.
+- **`batteryChargeRTD`** — Returns the current charge of a helicopter's batteries.
+- **`clearForcesRTD`** — Removes all force generators from world.
+- **`collectiveRTD`** — "Returns the current position of a helicopter's collective pitch control.\n* 0: fully lowered\n* 1: fully raised \n"
+- **`difficultyEnabledRTD`** — Returns true if Advanced Flight Model is enabled.
+- **`enableAutoStartUpRTD`** — Toggle availability of the automated helicopter start-up and shutdown sequences.
+- **`enableAutoTrimRTD`** — "Toggle auto-trim for RTD helicopters.
+- **`enableStressDamage`** — Toggles stress damage in  Advanced Flight Model, which otherwise could be manually toggles in game setting: .
+- **`enginesIsOnRTD`** — Returns which engines are producing some work.
+- **`enginesPowerRTD`** — Returns power produced by engines in Watts.
+- **`enginesRpmRTD`** — Returns all engines RPM.
+- **`enginesTorqueRTD`** — Torque produced by engines in '''N·m''' (Newton &times; meter).
+- **`forceAtPositionRTD`** — Adds force generator to world.
+- **`forceGeneratorRTD`** — Adds force generator to world.
+- **`getEngineTargetRPMRTD`** — Returns RPM of all engines.
+- **`getRotorBrakeRTD`** — Returns if rotor break is on.
+- **`getTrimOffsetRTD`** — Returns controls trim offset.
+- **`getWingsOrientationRTD`** — Returns orientation of horizontal stabilizers.
+- **`getWingsPositionRTD`** — Returns position of stabilizers.
+- **`isAutoStartUpEnabledRTD`** — Returns state of automatic start up action.
+- **`isAutoTrimOnRTD`** — Returns state of auto trim functionality.
+- **`isObjectRTD`** — Returns true if RTD model is loaded.
+- **`isStressDamageEnabled`** — Returns true if stress damage is enabled in the game settings.
+- **`numberOfEnginesRTD`** — Returns the number of engines a helicopter has.
+- **`rotorsForcesRTD`** — Returns force produced by rotors.
+- **`rotorsRpmRTD`** — Returns rotors RPM.
+- **`setActualCollectiveRTD`** — "Sets the collective pitch control to a specific position, regardless of input devices (until those are changed).\n* 0: collective fully down\n* ~0.7: approximate stable hover position\n* 1: collective fully up \n"
+- **`setAPURTD`** — Let the Auxiliary Power Unit (APU) reach a desired state over the given period of time.
+- **`setBatteryChargeRTD`** — Set the actual battery charge of a helicopter.
+- **`setBatteryRTD`** — Toggle a helicopter's electrical systems on and off.
+- **`setBrakesRTD`** — Enable landing gear wheel brakes for a helicopter.
+- **`setCustomWeightRTD`** — Add virtual custom weight to a helicopter's center of gravity.
+- **`setEngineRpmRTD`** — Sets the RPM of given engines.
+- **`setForceGeneratorRTD`** — ' '
+- **`setRotorBrakeRTD`** — Toggles a helicopter's rotor brake.
+- **`setStarterRTD`** — "Toggle the starter for the given helicopter engine(s) on or off.
+- **`setThrottleRTD`** — Set the throttle for the given engine(s) of a helicopter.
+- **`setWantedRPMRTD`** — "Tell the helicopter engine RPMs to reach the given value within a period of time.
+- **`setWingForceScaleRTD`** — Set effectivity of wings.
+- **`stopEngineRTD`** — "Instant engines stop.
+- **`throttleRTD`** — Return the current throttle level for all engines of a helicopter.
+- **`weightRTD`** — 'Returns weight of RTD helicopter.'
+- **`windRTD`** — Returns wind strength and direction.
+- **`wingsForcesRTD`** — ' Returns force produced by wings.'
+
+### Radio and Chat <a id="sqf-radio-and-chat"></a>
+
+- **`channelEnabled`** — Returns Array of Booleans in format [enabledChat, enabledVoN] for the given channel.
+- **`clearRadio`** — Clean up the content of radio protocol history.
+- **`commandChat`** — Types text to the command radio channel.
+- **`commandRadio`** — Sends the audio message to the command radio channel.
+- **`conversationDisabled`** — A getter for disableConversation.
+- **`currentChannel`** — Returns currently selected user chat channel on the UI (selected with  and  in multiplayer).
+- **`customChat`** — Sends the chat message to the custom radio channel.
+- **`customRadio`** — Sends the message to the custom radio channel.
+- **`directSay`** — Sends given audio message to the direct channel.
+- **`disableConversation`** — "In theory disables the ability to talk to other people.
+- **`enableChannel`** — Enables/disables UI functionality which is responsible for sending text or voice chat to the given chat channel.
+- **`enableRadio`** — Enable and disable radio messages to be heard and shown in the left lower corner of the screen - the order-giving unit can still be heard direct-talking when in its vicinity.
+- **`enableSentences`** — Enables radio transmissions to be heard and seen on screen.
+- **`getPlayerChannel`** — "Returns channel number for given player, '''provided that player is SPEAKING''', otherwise -1.
+- **`getPlayerVoNVolume`** — Gets provided player's Voice over Network (VoN) volume.
+- **`getSubtitleOptions`** — Returns subtitles settings.
+- **`globalChat`** — Types text to the global radio channel.
+- **`globalRadio`** — Sends the audio message to the global radio channel.
+- **`groupChat`** — Types text to the group radio channel.
+- **`groupRadio`** — "Sends the audio message to the group radio channel.
+- **`radioChannelAdd`** — Add the units to the custom channel.
+- **`radioChannelCreate`** — Create a custom radio channel with the given color, label, call sign and registered characters.
+- **`radioChannelInfo`** — Obtains custom radio channel's details.
+- **`radioChannelRemove`** — Remove the units from the custom radio channel.
+- **`radioChannelSetCallSign`** — Set the custom radio chat channel's callsign / VoN callsign.
+- **`radioChannelSetLabel`** — Set the custom radio channel's label.
+- **`radioEnabled`** — A getter for enableRadio.
+- **`sentencesEnabled`** — A getter for enableSentences.
+- **`setCurrentChannel`** — "Sets given channel as current chat channel.
+- **`setPlayerVoNVolume`** — Sets provided player's Voice over Network (VoN) volume.
+- **`showChat`** — Shows/hides the whole chat window.
+- **`shownChat`** — Returns true if chat window is enabled.
+- **`shownRadio`** — Check if player has Radio enabled.
+- **`shownSubtitles`** — A getter for showSubtitles.
+- **`showRadio`** — Shows or hides the radio on the map screen, if enabled for the mission and you possess the item.
+- **`showSubtitles`** — Enables / disables showing of subtitles in a chat.
+- **`sideChat`** — Types text to the side radio channel by the specified unit.
+- **`sideRadio`** — Sends the audio message to the side radio channel.
+- **`systemChat`** — Types text to the system radio channel.
+- **`vehicleChat`** — Types text to the vehicle radio channel.
+- **`vehicleRadio`** — Sends the audio message to the vehicle radio channel.
+
+### Remote Control <a id="sqf-remote-control"></a>
+
+- **`allUnitsUAV`** — Return a list of all UAV vehicles.
+- **`cameraOn`** — Returns the vehicle to which the camera is attached.
+- **`connectTerminalToUAV`** — Connect person with UAV terminal to UAV unit.
+- **`disableUAVConnectability`** — Disables unit's AV terminal(s) connecting to UAV.
+- **`enableUAVConnectability`** — Enables unit's AV terminal(s) connecting to UAV.
+- **`enableUAVWaypoints`** — Enables/disables the option for player to set waypoints for UAV in AV terminal.
+- **`focusOn`** — Returns the person the camera is focused on.
+- **`getConnectedUAV`** — Returns UAV/UGV vehicle if person has connection to some UAV.
+- **`getConnectedUAVUnit`** — Returns UAV/UGV AI unit, which player is controlling.
+- **`isAutonomous`** — Returns whether the UAV is in autonomous mode or not.
+- **`isRemoteControlling`** — Returns true if the given player is remote-controlling a unit.
+- **`isUAVConnectable`** — Returns true if UAV is connectable by AV terminal(s).
+- **`isUAVConnected`** — Returns true if UAV is connected to some terminal.
+- **`remoteControl`** — Switches on remote control of the unit.
+- **`remoteControlled`** — Returns the player controlling the given unit if the argument is the unit, or the unit controlled by the player if the argument is the player.
+- **`setAutonomous`** — Sets UAV autonomous mode.
+- **`shownUAVFeed`** — Returns true if video feed transmitted from UAV is shown.
+- **`showUAVFeed`** — 'Shows/hides video feed transmitted from UAV in its custom info panel.'
+- **`UAVControl`** — "Returns array with current operator of UAV and his vehicle role in UAV.\nIf nobody is controlling the UAV, the command tries to find if player has terminal connected to this UAV.\nIf nobody is connected, objNull is used as returned operator (see ).
+- **`unitIsUAV`** — Returns whether or not the given transport object is a drone (UAV, UGV), regardless of if it has a crew or if it is empty, corresponding to the isUAV transport parameter.
+- **`waypointsEnabledUAV`** — Checks if the UAV has waypoints enabled.
+
+### Render Time Scope <a id="sqf-render-time-scope"></a>
+
+- **`getAimDirectionAndUp`** — Returns the aim direction and up vectors of a soldier in model space.
+- **`getDirVisual`** — Returns object's heading in the range from 0 to 360 in render time scope.
+- **`getPosASLVisual`** — Returns an object's rendered ASL position (z value above sea level) in render time scope.
+- **`getPosATLVisual`** — Returns an object's rendered ATL position (z value above ground) in render time scope.
+- **`getPosVisual`** — Returns an object's AGLS position in render time scope.
+- **`getPosWorldVisual`** — Returns the provided object's, model centre position in render version in format PositionASL, rather than transformed boundingCenter or LandContact vertices.
+- **`modelToWorldVisual`** — Converts position from object model space to world space in render time scope.
+- **`modelToWorldVisualWorld`** — Converts position from object model space to world space in render time scope.
+- **`selectionPosition`** — Returns selection position in model space pertaining to the current animation in render time scope.
+- **`unitAimPositionVisual`** — Returns the position on the unit other units can aim at in render scope.
+- **`vectorDirVisual`** — thumb|right|An object with its vectorDirVisual, [[vectorUpVisual and vectorSideVisual (vectors not to scale)]] Returns an object's direction vector in world space and render time scope.
+- **`vectorModelToWorldVisual`** — Converts vector from model to world space in render time scope.
+- **`vectorSideVisual`** — thumb|right|An object with its vectorDirVisual, [[vectorUpVisual and vectorSideVisual (vectors not to scale)]] Returns an object's side vector in world space and render time scope.
+- **`vectorUpVisual`** — thumb|right|An object with its vectorDirVisual, [[vectorUpVisual and vectorSideVisual (vectors not to scale)]] Returns an object's up vector in world space and render time scope.
+- **`vectorWorldToModelVisual`** — Converts vector direction from world to model space in render time scope.
+- **`visiblePosition`** — Returns an object's rendered position (z value above surface underneath) in render time scope.
+- **`visiblePositionASL`** — Returns an object's rendered ASL position (z value above sea level) in render time scope.
+- **`worldToModelVisual`** — Converts position from world space to object model space in render time scope.
+
+### Roads and Airports <a id="sqf-roads-and-airports"></a>
+
+- **`airportSide`** — Gets the side of an airport, set by setAirportSide.
+- **`allAirports`** — Returns all map airports, both static and dynamic.
+- **`assignToAirport`** — Assigns a plane to an airport ID or object.
+- **`getRoadInfo`** — Returns road piece information.
+- **`isOnRoad`** — Checks if given position is inside road segment.
+- **`landAt`** — Order an AI airplane to land at a given airport.
+- **`nearRoads`** — Find the road segments within the circle of given radius.
+- **`roadAt`** — Returns a road segment containing given position, objNull otherwise.
+- **`roadsConnectedTo`** — Find the road segments connected to the given road segment.
+- **`setAirportSide`** — 'Set owning side of the airport.
+
+### Ropes and Sling Loading <a id="sqf-ropes-and-sling-loading"></a>
+
+- **`canSlingLoad`** — Returns true if setSlingLoad is possible.
+- **`enableRopeAttach`** — Enables or disables the ability to be attached to a rope end for the given entity.
+- **`getSlingLoad`** — Return object which is sling loaded by vehicle
+- **`getTowParent`** — Get the vehicle towing the provided one.
+- **`ropeAttachedObjects`** — Returns an array of all entities that are attached to the transport with ropes.
+- **`ropeAttachedTo`** — Returns the owner of the first rope - the transport to which other entities are attached with ropes.
+- **`ropeAttachEnabled`** — Returns true if entity can be attached to a rope end.
+- **`ropeAttachTo`** — Attaches entity to the rope end with optional offset.
+- **`ropeCreate`** — Creates a PhysX rope with given params.
+- **`ropeCut`** — Cuts the given rope to the specified length.
+- **`ropeDestroy`** — Destroys the given rope.
+- **`ropeDetach`** — Detaches attached object from rope (i.e.
+- **`ropeEndPosition`** — Returns start and end positions for the given  rope.
+- **`ropeLength`** — Return rope length in meters (set by ropeCreate, ropeCut, ropeUnwind).
+- **`ropes`** — Returns all ropes attached to a ropes owner transport vehicle.
+- **`ropesAttachedTo`** — Returns the owners of all ropes attached to the cargo - the transports to which other entities are attached with ropes.
+- **`ropeSegments`** — Returns provided rope's segments.
+- **`ropeSetCargoMass`** — Set the simulated mass of an object attached to a rope.
+- **`ropeUnwind`** — Increases or decreases the rope length by the given amount.
+- **`ropeUnwound`** — Returns false if rope length changing animation is in progress.
+- **`setSlingLoad`** — Creates a sling loading from a helicopter to an entity if possible.
+- **`setTowParent`** — class="wikitable float-right align-center-col-2 align-center-col-3" !
+- **`slingLoadAssistantShown`** — Returns true if Sling Load Assistant is open.
+
+### Sensors <a id="sqf-sensors"></a>
+
+- **`confirmSensorTarget`** — Sets for which Side the entity becomes a "confirmed hostile" target - a target that becomes highlighted red on the sensors display.
+- **`enableVehicleSensor`** — Enable/disable given sensor
+- **`getRemoteSensorsDisabled`** — Get status of disabled raycasts for remote entities.
+- **`getSensorTargets`** — Returns vehicle sensors' potential targets.
+- **`getSensorThreats`** — Returns vehicle sensors' threats.
+- **`isSensorTargetConfirmed`** — Returns if given unit is confirmed target for given side.
+- **`isVehicleRadarOn`** — Returns true if vehicle has active sensors on.
+- **`isVehicleSensorEnabled`** — Returns class name (to identify list based on component name) and info if given sensor is enabled.
+- **`listRemoteTargets`** — Return list of datalink targets and time for which they will be/were known.
+- **`listVehicleSensors`** — Returns an array of the sensors in the given vehicle's config (configFile >> "CfgVehicles" >> ''vehicle'' >> "Components" >> "SensorsManagerComponent" >> "Components").
+- **`reportRemoteTarget`** — Shares the target vehicle via datalink to the Side center for a given time.
+- **`setVehicleRadar`** — Sets the AI rule of Radar usage (Emission Control).
+- **`setVehicleReceiveRemoteTargets`** — Sets that the vehicle will be able to receive targets acquired by someone else via datalink from the Side center.
+- **`setVehicleReportOwnPosition`** — Sets that the vehicle will share its own position via datalink to the Side center.
+- **`setVehicleReportRemoteTargets`** — Sets that the vehicle will share targets that were acquired by its own sensors via datalink to the Side center.
+- **`vehicleReceiveRemoteTargets`** — Gets whether the vehicle can acquire targets via datalink from the Side center.
+- **`vehicleReportOwnPosition`** — Gets whether the vehicle shares its own position via datalink with the Side center.
+- **`vehicleReportRemoteTargets`** — Gets whether the vehicle shares acquired targets via datalink with the Side center.
+
+### Sides <a id="sqf-sides"></a>
+
+- **`addScoreSide`** — Adds side score.
+- **`airportSide`** — Gets the side of an airport, set by setAirportSide.
+- **`allSites`** — Return all sites in map.
+- **`blufor`** — Pre-defined variable for the blufor side.
+- **`captive`** — Returns the captive state of the given unit (set with setCaptive).
+- **`captiveNum`** — Checks whether the unit is a captive.
+- **`civilian`** — Pre-defined variable for the civilian side.
+- **`countEnemy`** — Count how many units in the array are considered enemy to the given unit.
+- **`countFriendly`** — Count how many units in the array are considered friendly to the given unit.
+- **`countSide`** — Returns how many units in the given array belong to given side.
+- **`countUnknown`** — Count how many units in the array are unknown to the given unit.
+- **`createCenter`** — Instanciate a Side center.
+- **`createSite`** — "Create a new site.
+- **`deleteCenter`** — In a nutshell, this command removes gaming Side (see createCenter).
+- **`east`** — Pre-defined variable for the eastern side.
+- **`enemy`** — Returns ''Enemy'' side which is hostile to all units.
+- **`faction`** — "Gets unit faction.
+- **`friendly`** — Returns ''Friendly'' side which is friendly to all units.
+- **`getFriend`** — Returns if sides are friendly or hostile.
+- **`independent`** — Pre-defined variable for the independent side.
+- **`knowsAbout`** — Checks if a group or a side knows about target.
+- **`opfor`** — Pre-defined variable for the opfor side.
+- **`playerSide`** — Returns the player's side.
+- **`resistance`** — Pre-defined variable for the resistance side.
+- **`scoreSide`** — Returns score for the given side.
+- **`setAirportSide`** — 'Set owning side of the airport.
+- **`setCaptive`** — Mark a unit as captive.
+- **`setFriend`** — Sets how friendly a side is with another.
+- **`setSide`** — Sets a location's side.
+- **`side`** — Returns the side of a unit, vehicle, object or location.
+- **`sideAmbientLife`** — Returns side of ambient life, for example ambient life placed in Eden Editor.
+- **`sideEmpty`** — Returns empty side, for example static buildings in Eden Editor.
+- **`sideEnemy`** — The enemy side which is used for renegades.
+- **`sideFriendly`** — The Friendly side - friendly to all, see Side Relations.
+- **`sideLogic`** — The Logic side.
+- **`sideUnknown`** — The unknown side.
+- **`west`** — West (BLUFOR) side.
+- **`WFSideText`** — Returns the unlocalized text value of a side or an object's/group's side.
+
+### Sounds <a id="sqf-sounds"></a>
+
+- **`addMusicEventHandler`** — Adds playMusic event handler.
+- **`allEnv3DSoundSources`** — Returns all environmental 3D sound sources (Objects) like trees and houses in camera vicinity.
+- **`commandChat`** — Types text to the command radio channel.
+- **`commandRadio`** — Sends the audio message to the command radio channel.
+- **`createSoundSource`** — Creates a sound source of the given type (type is the name of the subclass of CfgVehicles which is pointing to the sound defined in CfgSFX).
+- **`createSoundSourceLocal`** — Same as createSoundSource but with local effect - the created sound is not transferred to other clients.
+- **`customRadio`** — Sends the message to the custom radio channel.
+- **`directSay`** — Sends given audio message to the direct channel.
+- **`enableAudioFeature`** — Get the state of '''or''' enable/disable an audio feature.
+- **`enableEnvironment`** — Enable/disable environmental effects: ambient life and/or ambient sound.
+- **`enableRadio`** — Enable and disable radio messages to be heard and shown in the left lower corner of the screen - the order-giving unit can still be heard direct-talking when in its vicinity.
+- **`enableSentences`** — Enables radio transmissions to be heard and seen on screen.
+- **`environmentEnabled`** — Returns status of enableEnvironment command
+- **`environmentVolume`** — Returns the current environment volume (set by fadeEnvironment)
+- **`fadeEnvironment`** — Changes the master environment volume smoothly within the given time and is different from enableEnvironment global mute option.
+- **`fadeMusic`** — 'Changes the current music volume to the given value smoothly within the given time.
+- **`fadeRadio`** — 'Changes the radio volume smoothly within the given time.
+- **`fadeSound`** — 'Changes the sound volume smoothly within the given time.
+- **`fadeSpeech`** — Changes the master speech volume smoothly within the given time.
+- **`getAllEnv3DSoundControllers`** — Returns an array containing the names and values of environmental 3D sound controllers, variables that can be used in simple expressions when configuring sounds.
+- **`getAllEnvSoundControllers`** — Returns an array containing the names and values of environmental 2D sound controllers, variables that can be used in simple expressions when configuring sounds.
+- **`getAllSoundControllers`** — Returns an array containing names and values of the sound controllers that can be used in simple expressions when configuring sounds.
+- **`getAudioOptionVolumes`** — Returns profile audio volumes.
+- **`getCustomSoundController`** — Returns current value set to the controller (see setCustomSoundController).
+- **`getCustomSoundControllerCount`** — Returns current number of custom sound controllers supported by the engine for the given vehicle (currently 32)
+- **`getEnv3DSoundController`** — Returns value of the specified 3D controller, see getAllEnv3DSoundControllers.
+- **`getEnvSoundController`** — Returns value of the specified controller, see getAllEnvSoundControllers
+- **`getMusicPlayedTime`** — Returns elapsed time in seconds for currently playing music track.
+- **`getSoundController`** — Returns value of the given sound controller.
+- **`getSoundControllerResult`** — Returns the calculated value of simple expression defined in config.
+- **`globalRadio`** — Sends the audio message to the global radio channel.
+- **`groupRadio`** — "Sends the audio message to the group radio channel.
+- **`musicVolume`** — Returns the current music volume (set by fadeMusic)
+- **`onBriefingGear`** — Select a sound declared in the Description.ext of the mission to be played the first time the Gear tab is selected in the briefing.
+- **`onBriefingGroup`** — Select a sound declared in the Description.ext of the mission to be played the first time the Group tab is selected in the briefing.
+- **`onBriefingNotes`** — Select a sound declared in the Description.ext of the mission to be played the first time the Notes tab is selected in the briefing.
+- **`onBriefingPlan`** — Select a sound declared in the Description.ext of the mission to be played the first time the Plan tab is selected in the briefing.
+- **`onBriefingTeamSwitch`** — Select a sound defined in the CfgSounds of the mission to be played the first time the TeamSwitch tab is selected in the briefing.
+- **`pitch`** — Returns the pitch of a persons voice.
+- **`playMusic`** — Plays music defined in Description.ext's CfgMusic or config.cpp.
+- **`playSound`** — Plays a sound from CfgSounds.
+- **`playSound3D`** — Plays positional sound with given ''filename'' on every computer on network.
+- **`playSoundUI`** — 'Plays given CfgSounds sound or a  sound file given by file path through a dedicated UI sound channel unaffected by the global mixer volumes.
+- **`preloadSound`** — Makes sure that a sound can start playing without any delay once it is needed.
+- **`radioVolume`** — Returns the current radio volume (set by fadeRadio).
+- **`removeAllMusicEventHandlers`** — Removes all music track event handlers of given type.
+- **`removeMusicEventHandler`** — 'Removes specified music track event handler.
+- **`say`** — Make unit say given sound.
+- **`say2D`** — Plays given sound in 2D.
+- **`say3D`** — Lets an object say given sound in 3D space.
+- **`setCustomSoundController`** — Sets value of the specified custom sound controller to be used in simple expressions in config.
+- **`setMusicEffect`** — Defines a music track played on activation.
+- **`setMusicEventHandler`** — Sets given music track event handler.
+- **`setPitch`** — Sets the pitch of a persons voice.
+- **`setSoundEffect`** — Defines the different sound effects for a trigger or a waypoint.
+- **`setSpeaker`** — Sets the speaker of a person.
+- **`sideRadio`** — Sends the audio message to the side radio channel.
+- **`soundParams`** — Returns various params for the given sound
+- **`soundVolume`** — Returns the current sound volume (set by fadeSound).
+- **`speaker`** — Returns the speaker class name of a unit.
+- **`speechVolume`** — Returns the current speech volume (set by fadeSpeech)
+- **`stopSound`** — Terminates the given sound
+- **`vehicleRadio`** — Sends the audio message to the vehicle radio channel.
+
+### Stamina System <a id="sqf-stamina-system"></a>
+
+- **`allowSprint`** — Force player to run/jog if set to false.
+- **`enableAimPrecision`** — Set whether animation's aim precision affects weapon sway.
+- **`enableFatigue`** — Enables/Disables the person's fatigue.
+- **`enableStamina`** — Enable/disable stamina system
+- **`forceWalk`** — Forces unit to walk even if run or sprint is selected.
+- **`getAimingCoef`** — Get current aiming coefficient (higher ~ less precise, default is 1)
+- **`getAnimAimPrecision`** — Returns aim precision for current animation
+- **`getAnimSpeedCoef`** — Get coefficient for animation speed.
+- **`getCustomAimCoef`** — Returns aimPrecision from animation state with custom value that will directly affects weapon sway size and speed.
+- **`getFatigue`** — Returns fatigue of given unit.
+- **`getStamina`** — Get current stamina (~ seconds until depletion)
+- **`getWeaponSway`** — Returns current size of weapon sway of a given unit, in radians.
+- **`isAimPrecisionEnabled`** — Returns true if procedural aiming precision affects weapon sway.
+- **`isForcedWalk`** — Returns true if player is forced to walk with forceWalk.
+- **`isSprintAllowed`** — Returns true if player is allowed to sprint
+- **`isStaminaEnabled`** — Check if stamina depletion is enabled.
+- **`setAnimSpeedCoef`** — Sets a coefficient for animation speed (0.5 will play animations half the speed, 2 twice the speed).
+- **`setCustomAimCoef`** — Set custom aim precision coefficient for weapon sway
+- **`setFatigue`** — Sets the person's fatigue, from 0 to 1.
+- **`setStamina`** — Set units' stamina (seconds until depletion)
+- **`setStaminaScheme`** — Sets the scheme used for the Stamina system.
+
+### Strings <a id="sqf-strings"></a>
+
+- **`+`** — Add two Numbers, concatenate two Arrays or two Strings, or create a copy of an Array or HashMap.
+- **`comment`** — Defines a comment.
+- **`compile`** — Compiles String expression into Code.
+- **`compileFinal`** — Compiles an expression / takes an existing HashMap and makes it final, preventing it from being modified or overwritten (by = assignation, publicVariable, set or any other command).
+- **`composeText`** — Creates a Structured Text by joining the given  structured or  plain text arguments.
+- **`copyFromClipboard`** — Return ANSI content of the (text) clipboard.
+- **`copyToClipboard`** — Copies ANSI text string to the clipboard.
+- **`count`** — Can be used to count: * The number of elements in an array (returns the already internally known array size) * The number of elements in an array matching the condition * The number of sub-entries in a config entry *  The number of characters in an ANSI string
+- **`diag_localized`** — 'Returns array with all localized keys from the given  stringtable or the array of all stringtables names if empty string  is given.
+- **`endl`** — "Creates a string containing a line break, similar to lineBreak for text.
+- **`find`** — Searches for an array element within an array or an ANSI string within an ANSI string.
+- **`forceUnicode`** — List of the commands that work with forceUnicode   Sets the Unicode flag which forces some of the string manipulation commands to switch to .
+- **`format`** — Composes a string containing other variables or other variable types.
+- **`formatText`** — Creates a Structured Text similar to format command.
+- **`fromJSON`** — Obtain the game value from the provided -formatted string.
+- **`getTextWidth`** — Returns estimated width of the text based on font type and size.
+- **`hint`** — Outputs a hint message to the right of the screen (left of the screen in ) with a sound (except in ).
+- **`hintC`** — Displays a very basic message dialog in the center of the screen.
+- **`hintSilent`** — Same as hint, but without a sound.
+- **`image`** — Creates a structured text containing the given image.
+- **`in`** — Checks whether value is in array, unit is in vehicle, position is inside location or ANSI string is part of other ANSI string.
+- **`insert`** — Inserts multiple values into Array/String/HashMap.
+- **`isLocalized`** — Checks whether given ''stringName'' is localized.
+- **`joinString`** — Joins ''array'' into String with provided ''separator''.
+- **`lineBreak`** — Creates a structured text containing a line break.
+- **`localize`** — Used to internationalise text messages.
+- **`parseNumber`** — Parses the string, interpreting its content as a floating point number.
+- **`parseSimpleArray`** — Converts given, formatted as simple array, String into a valid Array.
+- **`parseText`** — Creates a structured text by parsing the given XML description.
+- **`select`** — Selects an element from an array, config entry from Config or substring from a string or a range from an array.
+- **`setAttributes`** — Returns a Structured Text created from the given structured text and sets  attributes to the given values.
+- **`splitString`** — Splits the provided '''ANSI''' string into an array of tokens according to given delimiters.
+- **`str`** — Converts any value into a string, depending on its type.
+- **`text`** — Creates a structured text containing the given plain text if argument is String.
+- **`toArray`** — Converts the supplied String into an Array of Numbers.
+- **`toFixed`** — Converts a number into a string, keeping the specified number of decimals.
+- **`toJSON`** — Converts data to .
+- **`toLower`** — Converts the supplied Unicode string to all lowercase characters.
+- **`toLowerANSI`** — thumb|right|ISO-8859-1 Converts the supplied string to all lower case characters fast (could be 3&times; faster than toLower).
+- **`toString`** — Converts the supplied Array of Numbers into a String through  characters representation conversion, or provided Code to compilable String.
+- **`toUpper`** — Converts the supplied Unicode string to all uppercase characters.
+- **`toUpperANSI`** — thumb|right|ISO-8859-1Converts the supplied string to all upper case characters fast (could be 3x faster than toUpper).
+- **`trim`** — Trims a string.
+
+### Strings - Regular Expression <a id="sqf-strings---regular-expression"></a>
+
+- **`regexFind`** — Searches in a string with a regular expression.
+- **`regexMatch`** — Returns whether the ''haystack'' matches the ''pattern''.
+- **`regexReplace`** — Searches given ''haystack'' with given ''pattern'' and replaces all matches with given ''replaceString''.
+
+### Structured Text <a id="sqf-structured-text"></a>
+
+- **`composeText`** — Creates a Structured Text by joining the given  structured or  plain text arguments.
+- **`ctrlSetStructuredText`** — Set the Structured Text which will be displayed in structured text control.
+- **`formatText`** — Creates a Structured Text similar to format command.
+- **`hint`** — Outputs a hint message to the right of the screen (left of the screen in ) with a sound (except in ).
+- **`hintC`** — Displays a very basic message dialog in the center of the screen.
+- **`hintSilent`** — Same as hint, but without a sound.
+- **`image`** — Creates a structured text containing the given image.
+- **`lineBreak`** — Creates a structured text containing a line break.
+- **`parseText`** — Creates a structured text by parsing the given XML description.
+- **`setAttributes`** — Returns a Structured Text created from the given structured text and sets  attributes to the given values.
+- **`text`** — Creates a structured text containing the given plain text if argument is String.
+
+### System <a id="sqf-system"></a>
+
+- **`addLiveStats`** — Adds score to the Xbox Live Statistics score for the given unit (or the commander unit of the given vehicle).
+- **`allExtensions`** — Returns information about all loaded Extensions
+- **`armoryPoints`** — Returns, stored in [USERNAME].ArmaXProfile, value of ''armoryPoints'' entry.
+- **`benchmark`** — Returns the value of "3D Performance" in OFP Preferences (flashpoint.cfg).
+- **`buldozer_enableRoadDiag`** — Enables road diagnostics in buldozer.
+- **`buldozer_isEnabledRoadDiag`** — Returns if road diagnostics are enabled in buldozer.
+- **`buldozer_loadNewRoads`** — Generates new roads.
+- **`buldozer_reloadOperMap`** — Reload oper map visible in costMap diag tool.
+- **`calculatePlayerVisibilityByFriendly`** — Sets if friendly units will calculate player's visibility or not.
+- **`callExtension`** — Calls custom .dll also known as Extension.
+- **`cheatsEnabled`** — Checks whether cheats are enabled (whether the designers' version is running).
+- **`compileScript`** — This command is an alias for .
+- **`completedFSM`** — Checks whether the given FSM is completed.
+- **`connectToServer`** — Connects the client to the provided server.
+- **`copyFromClipboard`** — Return ANSI content of the (text) clipboard.
+- **`copyToClipboard`** — Copies ANSI text string to the clipboard.
+- **`currentNamespace`** — Returns the current global namespace the script runs in.
+- **`distributionRegion`** — Returns the numerical index for the distribution region of this copy of :Category:ArmA: Armed Assault|.
+- **`enableCaustics`** — Enable/disable caustics drawing.
+- **`enableSatNormalOnDetail`** — Enables/Disables satellite normal map or detail maps.
+- **`endLoadingScreen`** — Finishes loading screen started by startLoadingScreen.
+- **`exportLandscapeXYZ`** — Exports landscape as XYZ file.
+- **`finishMissionInit`** — Finish world initialisation before mission is launched.
+- **`freeExtension`** — Unloads given extension loaded previously with callExtension so that extension developer could rapidly tweak developed extension without restarting the game.
+- **`getCalculatePlayerVisibilityByFriendly`** — Returns true if visibility of player by friendly units is calculated.
+- **`getFieldManualStartPage`** — Returns array of the starting topic and hint the given field manual should display.
+- **`getMissionOptions`** — Returns various mission options
+- **`getMissionPath`** — Returns mission root plus the filename in a form of filepath to be used with commands requiring absolute path such as playSound3D, drawIcon3D, createSimpleObject, etc.
+- **`getObjectViewDistance`** — Gets the values of rendering distances of objects and shadows.
+- **`getPiPViewDistance`** — Get the set PiP (Picture-in-Picture) view distance (that can be set by setPiPViewDistance).
+- **`getResolution`** — Returns an array containing all information about current client screen resolution.
+- **`getShadowDistance`** — Gets the shadows rendering distance.
+- **`getStatValue`** — Returns value of the given stat.
+- **`getSteamFriendsServers`** — Returns servers information of Steam friends currently playing the game.
+- **`getTerrainGrid`** — A getter for setTerrainGrid, returns the current terrain grid.
+- **`getTextureInfo`** — Return texture information - resolution in pixels (mipmap level 0) and average colour.
+- **`getVideoOptions`** — Obtain the current system's video settings.
+- **`hierarchyObjectsCount`** — The number of objects in hierarchy.
+- **`isAutotest`** — Returns true if game was started with autotest parameter
+- **`isFilePatchingEnabled`** — Returns true if file patching is enabled otherwise false
+- **`isGameFocused`** — Returns the state of game focus changed by pressing  or similar action.
+- **`isGamePaused`** — Returns the state of game simulation.
+- **`isPiPEnabled`** — Returns whether Picture-In-Picture video option (Render to Texture) is enabled or not.
+- **`isStreamFriendlyUIEnabled`** — Returns the status of STREAM FRIENDLY UI setting in UI (OPTIONS >> GAME >> GENERAL >> STREAM FRIENDLY UI).
+- **`keyImage`** — Returns a structured text, containing an image or name (if no image is found) of the button, on the keyboard, mouse or joystick, with the given code.
+- **`keyName`** — Returns the name of a button with extra quotation marks (on the keyboard, mouse or joystick) with the given code.
+- **`language`** — Returns current game language.
+- **`libraryCredits`** — Returns the credits for the libraries used by the game.
+- **`libraryDisclaimers`** — Returns the library disclaimers.
+- **`openDSInterface`** — Opens MP interface.
+- **`openSteamApp`** — Opens a Steam application, returns false if it was not possible to run the application.
+- **`openYoutubeVideo`** — Opens Steam overlay with given YT video.
+- **`playMission`** — The mission is launched (from the main menu).
+- **`playScriptedMission`** — Load the given world, launch an empty mission, and execute the given expression.
+- **`preprocessFile`** — Reads and processes the content of the specified file.
+- **`preprocessFileLineNumbers`** — "Returns the preprocessed content of the given file.
+- **`processInitCommands`** — Process statements stored using setVehicleInit.
+- **`productVersion`** — Returns the product's friendly name, identifier, version and build number.
+- **`profileName`** — Returns currently chosen user profile name.
+- **`profileNameSteam`** — Returns name of the current Steam profile.
+- **`progressLoadingScreen`** — If loading screen is shown, sets progress bar to the given value (interval is from 0 to 1]).
+- **`requiredVersion`** — "Check if version of application is available.
+- **`reversedMouseY`** — Returns true if mouse vertical axe is inverted.
+- **`runInitScript`** — Fades in mission screen and re-executes init.sqf and init.sqs scripts.
+- **`saveJoysticks`** — Saves joysticks key mappings into the joysticks.cfg file.
+- **`screenshot`** — class="wikitable align-center-col-2 float-right" !
+- **`setArmoryPoints`** — Stores passed number into [USERNAME].ArmaXProfile file, where it assigns it as a value to ''armoryPoints'' entry.
+- **`setDetailMapBlendPars`** — Sets the detail texture map blend pars.
+- **`setFSMVariable`** — Set variable to given value in the variable space of given FSM.
+- **`setHorizonParallaxCoef`** — Sets coef used to shift horizon position based on camera height (use 0 to disable shifting).
+- **`setMissionOptions`** — Sets various mission options.
+- **`setObjectViewDistance`** — Sets the rendering distance of objects and shadows.
+- **`setPiPViewDistance`** — Set the PiP (Picture-in-Picture) view distance.
+- **`setShadowDistance`** — Sets the shadows rendering distance.
+- **`setStatValue`** — Sets a value to a given stat.
+- **`setSystemOfUnits`** — Set system of units.
+- **`setTerrainGrid`** — Sets the desired  terrain resolution in meters.
+- **`setToneMapping`** — Applies a specific tone mapping to the game.
+- **`setToneMappingParams`** — Edits tone mapping parameters.
+- **`setViewDistance`** — Set rendering distance.
+- **`squadParams`** — Returns data about squad of given unit loaded from squad.xml as well as the unit itself.
+- **`startLoadingScreen`** — "Shows loading screen with the given text, using the given resource.\nWhile loading screen is shown, simulation and scene drawing is disabled, user control is disabled, mouse cursor is hidden, scripts run at full speed (50ms per frame instead of 3ms per frame for Scheduled Scripts).\n\n!\n\n\n// basic defines - pre \"import\" keyword in v2.02\nclass RscText\n{\n\ttype = 0;\n\tidc = -1;\n\tx = 0;\n\ty = 0;\n\th = 0.037;\n\tw = 0.3;\n\tstyle = 0x100;\n\tfont = Zeppelin32;\n\tSizeEx = 0.03921;\n\tcolorText[] = { 1, 1, 1, 1 };\n\tcolorBackground[] = { 0, 0, 0, 0 };\n\tlinespacing = 1;\n};\n\nclass RscPicture\n{\n\taccess = 0;\n\ttype = 0;\n\tidc = -1;\n\tstyle = 48;\n\tcolorBackground[] = { 0, 0, 0, 0 };\n\tcolorText[] = { 1, 1, 1, 1 };\n\tfont = \"TahomaB\";\n\tsizeEx = 0;\n\tlineSpacing = 0;\n\ttext = \"\";\n};\n\nclass RscLoadingText : RscText\n{\n\tstyle = 2;\n\tx = 0.323532;\n\ty = 0.666672;\n\tw = 0.352944;\n\th = 0.039216;\n\tsizeEx = 0.03921;\n\tcolorText[] = { 0.543, 0.5742, 0.4102, 1.0 };\n};\n\nclass RscProgress\n{\n\tx = 0.344;\n\ty = 0.619;\n\tw = 0.313726;\n\th = 0.0261438;\n\ttexture = \"\\ca\\ui\\data\\loadscreen_progressbar_ca.paa\";\n\tcolorFrame[] = { 0, 0, 0, 0 };\n\tcolorBar[] = { 1, 1, 1, 1 };\n};\n\nclass RscProgressNotFreeze\n{\n\tidc = -1;\n\ttype = 45;\n\tstyle = 0;\n\tx = 0.022059;\n\ty = 0.911772;\n\tw = 0.029412;\n\th = 0.039216;\n\ttexture = \"#(argb,8,8,3)color(0,0,0,0)\";\n};\n\n// end of basic defines\n\nclass WIKI_loadingScreen\n{ \n\tidd = -1;\n\tduration = 10e10;\n\tfadein = 0;\n\tfadeout = 0;\n\tname = \"loading screen\";\n\tclass controlsBackground\n\t{\n\t\tclass blueBackground : RscText // covers the black screen\n\t\t{\n\t\t\tx = safezoneXAbs;\n\t\t\ty = safezoneY;\n\t\t\tw = safezoneWAbs;\n\t\t\th = safezoneH;\n\t\t\ttext = \"\";\n\t\t\tcolorText[] = { 0, 0, 0, 0 };\n\t\t\tcolorBackground[] = { 0, 0, 1, 1 };\n\t\t};\n\n\t\tclass nicePic : RscPicture\n\t\t{\n\t\t\tstyle = 48 + 0x800; // ST_PICTURE + ST_KEEP_ASPECT_RATIO\n\t\t\tx = safezoneX + safezoneW/2 - 0.25;\n\t\t\ty = safezoneY + safezoneH/2 - 0.2;\n\t\t\tw = 0.5;\n\t\t\th = 0.4;\n\t\t\ttext = \"img\\nicePic.paa\";\n\t\t};\n\t};\n\n\tclass controls\n\t{\n\t\tclass Title1 : RscLoadingText\n\t\t{\n\t\t\ttext = \"$STR_LOADING\"; // \"Loading\" text in the middle of the screen\n\t\t};\n\n\t\tclass CA_Progress : RscProgress // progress bar, has to have idc 104\n\t\t{\n\t\t\tidc = 104;\n\t\t\ttype = 8; // CT_PROGRESS\n\t\t\tstyle = 0; // ST_SINGLE\n\t\t\ttexture = \"\\ca\\ui\\data\\loadscreen_progressbar_ca.paa\";\n\t\t};\n\n\t\tclass CA_Progress2 : RscProgressNotFreeze // progress bar that will go reverse\n\t\t{\n\t\t\tidc = 103;\n\t\t};\n\n\t\tclass Name2 : RscText // the text on the top-left\n\t\t{\n\t\t\tidc = 101;\n\t\t\tx = 0.05;\n\t\t\ty = 0.029412;\n\t\t\tw = 0.9;\n\t\t\th = 0.04902;\n\t\t\ttext = \"\";\n\t\t\tsizeEx = 0.05;\n\t\t\tcolorText[] = { 0.543, 0.5742, 0.4102, 1.0 };\n\t\t};\n\t};\n};\n\n\n}}\n\n\n.\n}}"
+- **`steamGameRecordingEvent`** — 'Triggers a  event within the  feature.
+- **`supportInfo`** — "Creates a list of supported operators and type.
+- **`systemOfUnits`** — Returns the currently selected system of units.
+- **`unlockAchievement`** — Unlocks the given achievement.
+- **`useAIOperMapObstructionTest`** — Toggle secondary obstruction test on road paths.
+- **`viewDistance`** — Returns the rendering distance.
+
+### Team Switch <a id="sqf-team-switch"></a>
+
+- **`addSwitchableUnit`** — Adds a unit to the list of units available for Team Switch.
+- **`enableTeamSwitch`** — Enable / disable Team Switch.
+- **`onBriefingTeamSwitch`** — Select a sound defined in the CfgSounds of the mission to be played the first time the TeamSwitch tab is selected in the briefing.
+- **`onTeamSwitch`** — "Defines an action performed when the team switch is finished.\nCommandset receives the following special variables: ''_from'' object previous unit, ''_to'' object current unit.\nConsecutive use of onTeamSwitch command will overwrite previously set commandset.
+- **`removeSwitchableUnit`** — Remove a unit from the list of units available for Team Switch.
+- **`switchableUnits`** — Returns a list of playable units available for switching to * Command is relative to the client on which it is executed and will only show playable units for the same side as player's group + player himself * In singleplayer where playable units from all sides will be accessible via this command * Dead and player-controlled units are automatically removed from the resulting array * In order to get all ''playable'' units regardless of their side, see the playableUnits command
+- **`teamSwitch`** — Invoke the Team Switch dialog (force it even when conditions are not met).
+- **`teamSwitchEnabled`** — Check if Team Switch is currently enabled.
+
+### Teams <a id="sqf-teams"></a>
+
+- **`addResources`** — Adds resources to a team member.
+- **`addTeamMember`** — Add given member to given team.
+- **`agent`** — Return a person for a given agent.
+- **`agents`** — Return a list of agents in the current mission.
+- **`createTask`** — Create a new AI task (subtask of parentTask).
+- **`createTeam`** — Creates a Team and names it.
+- **`currentTasks`** — Returns array with all  uncompleted tasks for the given agent.
+- **`deleteResources`** — Delete (unregister) resources of the team member.
+- **`deleteTeam`** — Destroy given team.
+- **`isAgent`** — Check if team member is an agent.
+- **`members`** — Return a list of members in given team.
+- **`registeredTasks`** — Returns array with all registered task types for the given agent.
+- **`registerTask`** — Registers a new task type.
+- **`removeTeamMember`** — Remove given member from given team.
+- **`resources`** — Returns the resources of a team member.
+- **`sendTask`** — Create a new AI task (subtask of parentTask).
+- **`setLeader`** — Set the leader of the given Team.
+- **`teamMember`** — Return an agent for given person.
+- **`teamMemberNull`** — "A non-existent Team Member.
+- **`teamName`** — Return a name of given team.
+- **`teams`** — Return a list of teams in the current mission.
+- **`teamType`** — Returns a type of given team.
+
+### Time <a id="sqf-time"></a>
+
+- **`accTime`** — Returns the current simulation acceleration factor.
+- **`dayTime`** — Returns the current in-game time in hours.
+- **`diag_deltaTime`** — Returns the duration of the previous frame in seconds
+- **`diag_tickTime`** — Real time in seconds spent from the start of the game.
+- **`estimatedEndServerTime`** — Estimated end of MP game in seconds converted to serverTime.
+- **`estimatedTimeLeft`** — Sets the estimated time left in the game that is shown in the "Game in progress" screen or in the master browser.
+- **`serverTime`** — Returns the time since latest server (re)start in seconds.
+- **`setAccTime`** — Set simulation acceleration coefficient.
+- **`setTimeMultiplier`** — Sets a time multiplier for in-game time.
+- **`skipTime`** — Jumps the specified number of hours forward or backward.The time of day and tides are adjusted, but no changes are made to any units.
+- **`systemTime`** — Returns system time.
+- **`systemTimeUTC`** — Returns systemTime according to '''U'''niversal '''T'''ime '''C'''oordinated time scale.
+- **`time`** — Returns time elapsed since mission started (in seconds).
+- **`timeMultiplier`** — Returns the value set with setTimeMultiplier.
+- **`uiTime`** — Returns UI time elapsed since mission started (in seconds).
+
+### Triggers <a id="sqf-triggers"></a>
+
+- **`createTrigger`** — Creates a trigger of the given type and at the given position.
+- **`inArea`** — Checks whether given position or object is inside given area.
+- **`inAreaArray`** — Returns given list of Objects and/or Positions that are in the given area, area defined by a trigger, marker, location or array.
+- **`inAreaArrayIndexes`** — Returns indices of positions that are within the provided area.
+- **`list`** — "List of units that would activate given Trigger.\n\nIt returns nothing before the simulation started, i.e.
+- **`setEffectCondition`** — The statement is executed when the trigger or waypoint is activated and the effects are launched depending on the result.
+- **`setMusicEffect`** — Defines a music track played on activation.
+- **`setRadioMsg`** — Sets radio trigger menu title text (0 -> 0 -> map radio).
+- **`setSoundEffect`** — Defines the different sound effects for a trigger or a waypoint.
+- **`setTitleEffect`** — "Defines the title effect to show on activation via [Type, Effect, Text] where\n\n'Type' \n\nThe title effect does not disappear on deactivation, this should be done manually if required."
+- **`setTriggerActivation`** — Defines the trigger activation type.
+- **`setTriggerArea`** — thumb|300px|Trigger axis a, b and c (''half'' of their x, y and z dimensions) Defines the area monitored by the given trigger.
+- **`setTriggerInterval`** — Sets the interval in seconds for trigger condition check.
+- **`setTriggerStatements`** — Defines trigger condition, activation and deactivation statements.
+- **`setTriggerText`** — Sets the text label attached to the trigger object.
+- **`setTriggerTimeout`** — Defines the time between condition satisfaction and trigger activation (randomly from min to max, with an average value mid).
+- **`setTriggerType`** — Sets the type of action processed by the trigger after activation (no action, a waypoints switch or an end of mission):  *  *  - Guarded by OPFOR - (It is better to use createGuardedPoint instead) *  - Guarded by BLUFOR - (It is better to use createGuardedPoint instead) *  - Guarded by Independent - (It is better to use createGuardedPoint instead) *  - Switch waypoints/break loop (see Triggers) *  - End #1 *  - End #2 *  - End #3 *  - End #4 *  - End #5 *  - End #6 *  - (Meant to say LOSE but is misspelt in the game engine).
+- **`synchronizedTriggers`** — Returns the list of triggers synchronized with a given waypoint.
+- **`synchronizedWaypoints`** — Returns the list of waypoints synchronized with a given trigger or waypoint.
+- **`synchronizeTrigger`** — 'Synchronizes the trigger with zero or more waypoints.'
+- **`synchronizeWaypoint`** — Synchronizes the trigger or the waypoint with an array of waypoints.
+- **`triggerActivated`** — Returns true if the trigger has been activated.
+- **`triggerActivation`** — "Returns trigger activation.
+- **`triggerArea`** — Returns currently monitored trigger area.
+- **`triggerAttachedVehicle`** — Returns vehicle attached to the trigger (for example using triggerAttachVehicle).
+- **`triggerAttachObject`** — Assigns a static object to the trigger.
+- **`triggerAttachVehicle`** — "Specifies the entity which will activate the selected trigger.\n*If '''[]''' is given, the trigger is decoupled from the assigned vehicle (example 2).\n*If the activation source is '''\"VEHICLE\"''', '''\"GROUP\"''', '''\"LEADER\"''' or '''\"MEMBER\"''', it is changed to '''\"NONE\"'''.
+- **`triggerInterval`** — "Returns trigger condition check frequency in seconds.
+- **`triggerStatements`** — Returns trigger statements.
+- **`triggerText`** — Returns trigger text.
+- **`triggerTimeout`** — Returns trigger timeout.
+- **`triggerTimeoutCurrent`** — "Returns current timeout of the given trigger or -1 if countdown is not in progress.
+- **`triggerType`** — "Returns the trigger type.
+
+### Turrets <a id="sqf-turrets"></a>
+
+- **`addMagazinesTurret`** — Adds given number of a magazine to the given turret.
+- **`addMagazineTurret`** — Adds a magazine to the turret.
+- **`addWeaponTurret`** — Adds a weapon to the turret.
+- **`allTurrets`** — Returns array of available turret paths from vehicle object.
+- **`assignAsTurret`** — Assigns the soldier to turret.
+- **`currentMagazineDetailTurret`** — Returns the class name of currently used magazine on specified turret.
+- **`currentMagazineTurret`** — Returns the name of the type of the currently using magazine on specified turret.
+- **`currentWeaponTurret`** — Returns the name of the currently selected weapon on specified turret.
+- **`directionStabilizationEnabled`** — Get state of direction stabilization.
+- **`enableDirectionStabilization`** — Enables / disables direction stabilization of turrets.
+- **`enablePersonTurret`** — Enables or disables firing from a vehicle cargo position.
+- **`getTurretLimits`** — Returns the rotation and elevation limits for the given turret.
+- **`getTurretOpticsMode`** — Get the current optics mode of the optics in the turret occupied by the specified unit.
+- **`loadMagazine`** — Initiates the loading action on given weapon of the turret of a transport.
+- **`lockedTurret`** — Check whether gunner position of the vehicle turret is locked.
+- **`lockTurret`** — Lock the gunner position of the vehicle turret.
+- **`magazinesAllTurrets`** — Returns all magazines (including empty) from all vehicle turrets (including driver turret [-1]) and their ammo counts.
+- **`magazinesTurret`** — Returns all magazines of given turret.
+- **`magazineTurretAmmo`** — Returns ammo count of given magazine from given turret (see setMagazineTurretAmmo for more info)
+- **`moveInTurret`** — Moves the soldier into the vehicle's turret.
+- **`removeAllMagazinesTurret`** — Removes all magazines from the given turret or from all turrets.
+- **`removeMagazinesTurret`** — Removes all magazines of the given type from given vehicle.
+- **`removeMagazineTurret`** — Removes the magazine from the turret.
+- **`removeWeaponTurret`** — Removes weapon from the turret.
+- **`selectWeaponTurret`** — Selects the given weapon on the specified turret.
+- **`setMagazineTurretAmmo`** — Sets ammo count to given amount for given turret magazine.
+- **`setTurretLimits`** — Sets the rotation and elevation limits for the given turret.
+- **`setTurretOpticsMode`** — Set the current optics mode of the optics in the turret occupied by the specified unit.
+- **`turretLocal`** — Checks if a turret is local.
+- **`turretOwner`** — Returns id of the turret's owner.
+- **`turretUnit`** — Returns the unit in the vehicle turret.
+- **`unitTurret`** — Returns the turret path the given vehicle's gunner is in.
+- **`weaponsTurret`** — Returns all weapons of a given turret.
+
+### Unit Control <a id="sqf-unit-control"></a>
+
+- **`allowGetIn`** — Set if the units given in the list are allowed to enter vehicles.
+- **`assignAsCargo`** — Assign a unit as cargo of a vehicle.
+- **`assignAsCargoIndex`** — Assigns the character to a specific cargo / passenger index of the given vehicle.
+- **`assignAsCommander`** — Assign a unit as commander of a vehicle.
+- **`assignAsDriver`** — Assign a unit as driver of a vehicle.
+- **`assignAsGunner`** — Assign a unit as gunner of a vehicle.
+- **`assignedCargo`** — Returns the list of soldiers assigned to the given vehicle as a cargo.
+- **`assignedCommander`** — Returns the soldier assigned to the given vehicle as a commander.
+- **`assignedDriver`** — Returns the soldier assigned to the given vehicle as a driver.
+- **`assignedGunner`** — Returns the soldier assigned to the given vehicle as a gunner.
+- **`attackEnabled`** — Return whether a group's leader can issue attack commands to soldiers under his command.
+- **`commandFire`** — Order the given unit to fire on the given target (via the radio).
+- **`commandFollow`** — Order the given unit(s) to follow another from his own group (via radio).
+- **`commandFSM`** — Orders a unit to process command defined by FSM file (via the radio).
+- **`commandGetOut`** — "Orders one or multiple units to get out from the vehicle (via the radio).
+- **`commandSuppressiveFire`** — "Orders the given unit or a group of units to suppress the given position or target (with radio messages, see doSuppressiveFire if you do not want messages).
+- **`commandWatch`** — Orders the unit(s) to watch the given position or target (via the radio).
+- **`currentCommand`** — Return the current command type (empty string when no command) for the commander of given vehicle (or for a given soldier).
+- **`doFire`** — Order the given unit(s) to fire on the given target (without radio messages).
+- **`doFollow`** — Order the given unit(s) to follow another from his own group as his formation leader (without radio messages).
+- **`doFSM`** — "Orders a unit to process command defined by FSM file (silently).
+- **`doGetOut`** — Orders one or multiple units to get out from the vehicle (silently).
+- **`doMove`** — Order the given unit(s) to move to the given position (without radio messages).
+- **`doStop`** — 'Order the given unit(s) to stop (without radio messages).
+- **`doSuppressiveFire`** — "Orders the given unit or a group of units to suppress the given position or target (without radio messages, see commandSuppressiveFire is you need messages).
+- **`doTarget`** — Order the given unit(s) to target the given target (without radio messages).Targeting can be stopped by _unit doWatch objNull; or_unit commandWatch objNull;
+- **`doWatch`** — Order the given unit(s) to watch the given position or target (without radio messages).
+- **`effectiveCommander`** — Returns the effective commander of the vehicle.
+- **`emptyPositions`** — Returns the number of given empty positions in the vehicle.
+- **`enableAttack`** — Set if leader can issue attack commands to the soldiers in his group.
+- **`expectedDestination`** — Return expected destination of unit as an array.
+- **`fire`** — Forces a unit to fire the given weapon.
+- **`fireAtTarget`** — Remotely forces a unit to fire the given weapon.
+- **`forceFollowRoad`** — Forces the vehicle to stay on road.
+- **`forceWeaponFire`** — 'The unit will be forced to fire weapon from the given muzzle.
+- **`forgetTarget`** — Resets the info a group has about a target, forcing knowsAbout value to 0.
+- **`formationLeader`** — Return leader of the formation.
+- **`formLeader`** — Returns the formation leader of a given unit.
+- **`getCruiseControl`** — Returns cruise control settings set with setCruiseControl command.
+- **`getLeaning`** — Returns the leaning factor of the given unit.
+- **`glanceAt`** — Control what the unit(s) is/are glancing at (target or Position).
+- **`hideBehindScripted`** — When set to true it disables the default engine hiding behavior.
+- **`in`** — Checks whether value is in array, unit is in vehicle, position is inside location or ANSI string is part of other ANSI string.
+- **`land`** — Forces a helicopter landing.
+- **`landAt`** — Order an AI airplane to land at a given airport.
+- **`landResult`** — Return the result of helicopter landing position searching (performed after the land command).
+- **`leaveVehicle`** — Ceases the using of the vehicle by a group and unassigns vehicle from the group.
+- **`limitSpeed`** — Limit the speed of an AI-driven vehicle or AI person to given value.
+- **`lookAt`** — Control what the unit(s) is/are looking at (target or Position).
+- **`move`** — Let group move to given position.
+- **`moveInAny`** — Moves unit to the first available seat in the specified vehicle.
+- **`moveInCargo`** — Moves a unit into a vehicle cargo position (immediately and without animation).
+- **`moveInCommander`** — Move soldier into vehicle commander position (Immediate, no animation).
+- **`moveInDriver`** — Moves soldier into vehicle driver position (immediate, no animation).
+- **`moveInGunner`** — Move the unit into vehicle gunner position (immediate, no animation).
+- **`moveOut`** — Moves the soldier out of the vehicle.
+- **`moveTo`** — Low level command to person to move to given position.
+- **`moveToCompleted`** — Check if latest low level moveTo command is finished.
+- **`moveToFailed`** — Check if latest low level moveTo command failed.
+- **`orderGetIn`** — Force all units in the array to get in or out of their assigned vehicles.
+- **`playAction`** — When used on a person, a smooth transition to the given action will be initiated.
+- **`pose`** — Returns the pose of the given unit.
+- **`sendSimpleCommand`** — Sends a simple command to the vehicle's driver / gunner (air vehicles ignore it).
+- **`setCruiseControl`** — Limits or sets '''local player-controlled''' vehicle's speed through cruise control.
+- **`setDestination`** — Set the destination for path planning of the pilot.
+- **`setEffectiveCommander`** — Sets effectiveCommander of the given vehicle.
+- **`setFormationTask`** — Set the current task of the formation member.
+- **`setUnitPos`** — Set unit position rules.
+- **`setUnitPosWeak`** — "Set unit position rules.
+- **`setUnloadInCombat`** — Sets whether or not cargo or turret units ''should'' get out of vehicle when in combat.
+- **`stance`** — Returns the stance of the given unit.
+- **`stop`** — Stop an AI unit from turning or moving, preventing it to follow a watched object or engage an enemy properly - although if properly aligned, the unit -will- shoot the enemy.
+- **`stopped`** — Check if unit is stopped by stop command.
+- **`suppressFor`** — Force suppressive fire from the unit.
+- **`swimInDepth`** — Sets the target depth level for swimming soldier.
+- **`switchAction`** — When used on a person, the given action is started immediately (there is no transition).
+- **`unassignVehicle`** — Unassigns individual unit from a vehicle, usually previously assigned with ''assignAsXXX'' command, i.e removes assignedVehicleRole of the unit.
+- **`unitPos`** — Return the unit position rules.
+- **`unitReady`** — Check if the unit is ready.
+- **`vehicleMoveInfo`** — "Returns current vehicle move/turn info (a getter for sendSimpleCommand) in format [moveInfo, turnInfo].
+- **`weaponDirection`** — Returns the direction that the vehicle weapon is aiming in.
+
+### Unit Identity <a id="sqf-unit-identity"></a>
+
+- **`deleteIdentity`** — Deletes an identity created with saveIdentity from the campaign's progress file.
+- **`face`** — Returns the face class of a person as it is written in 'CfgFaces'.
+- **`hasCustomFace`** — Get whether or not a player has an available custom face file.
+- **`loadIdentity`** — Loads person's identity from Objects.sav file in campaign directory (from entry name).
+- **`lockIdentity`** — Locks the identity of a person.
+- **`name`** — When argument is Object, the command returns the name given to a unit using the setIdentity instruction or selected randomly by the game engine if setIdentity has not been used on the unit.
+- **`pitch`** — Returns the pitch of a persons voice.
+- **`rank`** — Returns the rank of the given unit.
+- **`rankId`** — Return the rank of the given unit for comparison.
+- **`saveIdentity`** — Saves units's identity to Objects.sav file in campaign directory as entry name.
+- **`setFace`** — Set person's face.
+- **`setIdentity`** — "Sets identity of a person.
+- **`setMimic`** — Sets person's facial expression.
+- **`setName`** — Sets the name of a location or a person (person only in single player).
+- **`setNameSound`** — Sets the nameSound of a person.
+- **`setPitch`** — Sets the pitch of a persons voice.
+- **`setRank`** — Sets rank of given unit.
+- **`setSpeaker`** — Sets the speaker of a person.
+- **`setUnitRank`** — Sets rank of given unit.
+- **`speaker`** — Returns the speaker class name of a unit.
+
+### Unit Inventory <a id="sqf-unit-inventory"></a>
+
+- **`addBackpackGlobal`** — Adds a backpack to a unit - global variant of addBackpack.
+- **`addBinocularItem`** — Adds weapon item, including magazine, directly to the binocular weapon.
+- **`addGoggles`** — Create a new item and try to link it into goggles (glasses) slot.
+- **`addHandgunItem`** — Adds weapon item, including magazine, directly to the handgunWeapon.
+- **`addHeadgear`** — Creates a headgear item and tries to link it to headgear slot.
+- **`addItem`** — Creates new item and tries to add it into inventory.
+- **`addItemToUniform`** — Create new item and store it to soldier's uniform.
+- **`addItemToVest`** — Create new item and store it to soldier's vest.
+- **`addMagazine`** — Adds a magazine to a person.
+- **`addMagazineGlobal`** — Adds magazine to a unit regardless of locality.
+- **`addMagazines`** — Adds multiple magazines to the unit.
+- **`addPrimaryWeaponItem`** — Adds weapon item, including magazine, directly to the primaryWeapon.
+- **`addSecondaryWeaponItem`** — Adds weapon item, including magazine, directly to the secondaryWeapon.
+- **`addUniform`** — Create a new uniform and try to link it into uniform slot (given uniform has to be supported by allowedUniforms list of target soldier).
+- **`addVest`** — Create a new vest and try to link it into vest slot.
+- **`addWeapon`** — "Add a weapon to a unit.
+- **`addWeaponGlobal`** — Add a weapon to a unit.
+- **`addWeaponItem`** — Adds a weapon item to the specified weapon.
+- **`ammo`** — Check how many rounds are left in the currently loaded magazine in the given muzzle.
+- **`assignedItems`** — Get array with assigned items.
+- **`assignItem`** — Assigns existing item from inventory (uniform, vest, backpack) to a correct slot.
+- **`backpackMagazines`** — Get array with all magazines from backpack of the given unit.
+- **`backpacks`** — Returns an array of all backpack names a unit has in its inventory, excluding the one it carries on the back.
+- **`binocular`** — Returns class name of currently used binocular weapon.
+- **`binocularItems`** — Returns array with all items assigned to the binocular weapon except magazines.
+- **`binocularMagazine`** — Collects all loaded magazines from all binocular muzzles and returns them in Array, otherwise it returns [].
+- **`canAdd`** — Checks if given object can be stored in inventory of given object or any inventory container (uniform, vest, backpack) of given unit.
+- **`canAddItemToUniform`** — Checks if given object can be stored into soldier's uniform.
+- **`canAddItemToVest`** — Checks if given object can be stored into soldier's vest.
+- **`currentMagazine`** — Returns class name of currently loaded vehicle's / unit's magazine.
+- **`currentMagazineDetail`** — Returns description of vehicle's currently loaded magazine, its ammo count (current/default) and its id.
+- **`currentThrowable`** — Returns currently selected throwable (and the muzzle it is loaded into), which will be launched if the user presses .
+- **`currentWeapon`** — Return the name of the currently selected weapon (on the primary turret for vehicles).
+- **`forceAddUniform`** — Create a new uniform and hard link it into slot (without any restrictions).
+- **`gearIDCAmmoCount`** — Returns ammo count of assigned magazine.
+- **`gearSlotAmmoCount`** — Returns ammo count of assigned magazine.
+- **`gearSlotData`** — Returns gear slot item name.
+- **`getContainerMaxLoad`** — Returns max load value of given uniform, vest or backpack container.
+- **`getCorpse`** — Returns the corpse associated with given weaponholder.
+- **`getCorpseWeaponholders`** — Returns primary and secondary weapon holders of a dead unit.
+- **`getSlotItemName`** — Returns the name of assigned item in given slot or the empty string.
+- **`getUnitLoadout`** — "Returns a '''Unit Loadout Array''' with all assigned items, weapons, containers and their stored items.\n\n{{Feature|informative|\nThe config should contain the following standard entries: \n\nclass MyLoadout\n{\n\tuniformClass = \"U_B_CombatUniform_mcam\";\n\tbackpack = \"B_AssaultPack_mcamo\";\n\tlinkedItems[] = { \"V_PlateCarrier1_rgr\", \"H_HelmetB\", \"ItemCompass\", \"ItemWatch\", \"ItemRadio\", \"NVGoggles\" };\n\tweapons[] = { \"arifle_MX_ACO_pointer_F\", \"hgun_P07_F\" };\n\titems[] = { \"FirstAidKit\", \"FirstAidKit\", \"FirstAidKit\" };\n\tmagazines[] = {\n\t\t\"30Rnd_65x39_caseless_mag\", \"16Rnd_9x21_Mag\",\n\t\t\"SmokeShell\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\"\n\t};\n};\n\n\n}}"
+- **`goggles`** — Returns name of currently used goggles (for NVGoggles use hmd).
+- **`handgunItems`** — Returns array with all items assigned to the handgunWeapon except magazines.
+- **`handgunMagazine`** — Collects all loaded magazines from all handgunWeapon muzzles and returns them in Array, otherwise it returns [].
+- **`handgunWeapon`** — Returns the name of a unit's handgun (an empty string if there is none).
+- **`hasWeapon`** — Checks if a unit has the given weapon in hands or on back/in holster.
+- **`headgear`** — Returns headgear of unit.
+- **`hmd`** — Returns class name of currently used Head Mounted Display.
+- **`isSwitchingWeapon`** — Returns wether or not the unit is in the process of switching weapon.
+- **`isThrowable`** — Returns true if the given magazine is a throwable.
+- **`isUniformAllowed`** — Check whether given uniform can be dressed by target soldier.
+- **`items`** — Returns an array of names of all unit's stored items, including weapons but excluding magazines (see itemsWithMagazines) and assignedItems.
+- **`itemsWithMagazines`** — Returns combined array including all unit's stored items and all unit's stored magazines and all unit's '''stored''' weapons.
+- **`linkItem`** — Create and assign item to the correct slot.
+- **`load`** — Returns the percentage of fullness of a unit's cargo.
+- **`loadAbs`** — Returns current sum of mass from items stored in all unit's containers, linked items and weapons.
+- **`loadUniform`** — Returns current percentage of mass from items stored in a uniform relative to the maximum capacity of the uniform.
+- **`loadVest`** — Returns current percentage of mass from items stored in a vest relative to the maximum capacity of the vest.
+- **`lockedInventory`** — Get a vehicle's inventory lock state.
+- **`lockInventory`** — Lock or unlock a vehicle's inventory access.
+- **`magazines`** — Returns array of type names of all vehicle's magazines.
+- **`magazinesAmmo`** — Returns all vehicle's magazines and their ammo count (also works on supply boxes).
+- **`magazinesAmmoFull`** — Returns array of arrays of all unit's or vehicle's magazines with extended information about them.
+- **`magazinesDetail`** — "Returns an array of strings with description of all vehicle's magazines, their ammo count (current/default) and their ids for the primary gunner.
+- **`magazinesDetailBackpack`** — Returns an array with the type names of all the unit's backpack magazines.
+- **`magazinesDetailUniform`** — Returns an array with the type names of all the unit's uniform magazines.
+- **`magazinesDetailVest`** — Returns an array with the type names of all the unit's vest magazines.
+- **`maxLoad`** — Returns maximum load limit for a unit, uniform/vest/backpack containers, vehicle cargo, supply boxes and weapon holders.
+- **`primaryWeapon`** — Returns name of unit's primary weapon.
+- **`primaryWeaponItems`** — Returns array with all items assigned to the primaryWeapon except magazines.
+- **`primaryWeaponMagazine`** — Collects all loaded magazines from all primaryWeapon muzzles and returns them in Array, otherwise it returns [].
+- **`removeAllAssignedItems`** — Unassigns and deletes all linked items from inventory.
+- **`removeAllBinocularItems`** — Removes all items from binocular weapon, except magazine.
+- **`removeAllContainers`** — Removes all containers (vest, uniform, backpack) from the provided unit.
+- **`removeAllHandgunItems`** — Removes all items from handgunWeapon, except magazine.
+- **`removeAllItems`** — Removes all special items from the unit.
+- **`removeAllItemsWithMagazines`** — Removes all itemsWithMagazines from the uniform, vest and backpack.
+- **`removeAllMagazines`** — Removes all magazines from the unit.
+- **`removeAllPrimaryWeaponItems`** — Removes all items from primaryWeapon, except magazine.
+- **`removeAllSecondaryWeaponItems`** — Removes all items from secondaryWeapon, except magazine.
+- **`removeAllWeapons`** — Removes all weapons and magazines from the given unit.
+- **`removeBackpackGlobal`** — Removes backpack from a unit.
+- **`removeBinocularItem`** — Removes given weapon item, including magazine, from the binocular weapon.
+- **`removeClothing`** — Removes specified named clothes selections from unit.
+- **`removeGoggles`** — Removes goggles from unit (diver goggles for example).
+- **`removeHandgunItem`** — Removes given weapon item, including magazine, from the handgunWeapon
+- **`removeHeadgear`** — Removes headgear from a unit.
+- **`removeItem`** — Removes item from the inventory.
+- **`removeItems`** — Removes all items with given class name from the inventory.
+- **`removeMagazine`** — Remove magazine from the unit or static weapon.
+- **`removeMagazineGlobal`** — Removes the magazine from the unit.
+- **`removeMagazines`** — Removes all magazines of given type from the unit.
+- **`removePrimaryWeaponItem`** — Removes given weapon item, including magazine, from the primaryWeapon.
+- **`removeSecondaryWeaponItem`** — Removes given weapon item, including magazine, from the secondaryWeapon.
+- **`removeUniform`** — Removes uniform from unit.
+- **`removeVest`** — Removes vest from unit.
+- **`removeWeapon`** — Remove weapon from a unit.
+- **`removeWeaponGlobal`** — Remove a weapon from a unit.
+- **`removeWeaponItem`** — Removes magazine from the specified muzzle.
+- **`secondaryWeapon`** — Returns the name of a unit's secondary weapon (launcher).
+- **`secondaryWeaponItems`** — Returns array with all items assigned to the secondaryWeapon except magazines.
+- **`secondaryWeaponMagazine`** — Collects all loaded magazines from all secondaryWeapon muzzles and returns them in Array, otherwise it returns [].
+- **`selectThrowable`** — Selects  current throwable, which will be launched if the user presses .
+- **`setAmmo`** — Sets custom ammo count in the currently loaded magazine of the specified weapon or muzzle.
+- **`setMaxLoad`** — Sets maximum load limit for a uniform/vest/backpack containers, vehicle cargo, supply boxes and weapon holders.
+- **`setUnitLoadout`** — "Creates a loadout from given inventory structure and applies it to a unit.\nWhen String for class name is supplied, the command will search  for the given class in order to extract the loadout from config.\nIf Config is given, it will search given config (including mission config) for the loadout information.\nIn either case, the config should contain the following entries, which is standard for any unit class, for example:\n\nclass MyLoadout\n{\n\tuniformClass = \"U_B_CombatUniform_mcam\";\n\tbackpack = \"B_AssaultPack_mcamo\";\n\tlinkedItems[] = { \"V_PlateCarrier1_rgr\", \"H_HelmetB\", \"ItemCompass\", \"ItemWatch\", \"ItemRadio\", \"NVGoggles\" };\n\tweapons[] = { \"arifle_MX_ACO_pointer_F\", \"hgun_P07_F\" };\n\titems[] = { \"FirstAidKit\", \"FirstAidKit\", \"FirstAidKit\" };\n\tmagazines[] = {\n\t\t\"30Rnd_65x39_caseless_mag\", \"16Rnd_9x21_Mag\", \"SmokeShell\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\"\n\t};\n};\n\n\n if the command is executed while the unit is in the process of switching weapon, the command will be aborted.
+- **`setVehicleAmmoDef`** — Sets how much ammunition (compared to the configuration of magazines defined in the vehicle's class) the vehicle has.
+- **`soldierMagazines`** — Get array with all magazines of the given unit.
+- **`someAmmo`** — Check if unit has some ammo.
+- **`throwables`** — Returns all throwables in unit inventory in currentThrowable format.
+- **`unassignItem`** — Unassigns existing item and tries to put it into inventory.
+- **`uniform`** — Returns name of uniform.
+- **`uniformContainer`** — Returns a cargo container of a unit's uniform.
+- **`uniformItems`** — Get array with all items (of any kind, even weapons) from uniform.
+- **`uniformMagazines`** — Get array with all magazines from uniform of the given unit.
+- **`uniqueUnitItems`** — Returns hashmap of all items in units inventory as [classname, count] pairs.
+- **`unlinkItem`** — Unassign and delete existing item from its assigned slot.
+- **`vest`** — nameof vest.
+- **`vestContainer`** — Returns a cargo container of a unit's vest.
+- **`vestItems`** — Get array with all items (of any kind, even weapons) from vest.
+- **`vestMagazines`** — Get array with all magazines from vest of the given unit.
+- **`weaponAccessories`** — Get array with all items linked to a given weapon.
+- **`weaponAccessoriesCargo`** — Returns array with all items assigned to the given weapon in given cargo container.
+- **`weaponCargo`** — Get array with weapons from ammo box (or any general weapon holder container).
+- **`weapons`** — Returns array of names of all unit's weapons.
+- **`weaponsItems`** — 150px|right|borderReturns an array with subarrays contains class names and also names of connected items of all the vehicle's weapons.
+
+### Variables <a id="sqf-variables"></a>
+
+- **`'!'`** — Returns the negation of a Boolean expression.
+- **`'!='`** — Returns whether one value is '''not''' equal to another.
+- **`'#'`** — Selects an element from an Array, same as select command for arrays, but has higher precedence.
+- **`'&&'`** — Returns true only if both conditions are true.
+- **`'>'`** — Returns true if '''a''' is greater than '''b''', else returns false.
+- **`'>='`** — Returns if ''a'' is greater than or equal to ''b''.
+- **`'false'`** — Always false.
+- **`'true'`** — Always true
+- **`'||'`** — Returns true if one or both conditions are true.
+- **`<`** — Returns if ''a'' is lesser than ''b''.
+- **`<=`** — Returns true if '''a''' is less than or equal to '''b''', else returns false.
+- **`=`** — Assigns the result of expression on the right to the variable on the left.
+- **`==`** — Check if ''a'' is equal to ''b''.
+- **`addPublicVariableEventHandler`** — and the introduction of remoteExec and remoteExecCall.}}  This event handler will detect if a missionNamespace variable (it is attached to) has been broadcast over network with publicVariable, publicVariableClient or publicVariableServer commands and will execute EH code upon detection.
+- **`allVariables`** — Returns a list of all variables from the desired namespace.
+- **`and`** — Returns true only if both conditions are true.
+- **`configNull`** — "A non-existing Config.\n\n"
+- **`diaryRecordNull`** — "A non-existent Diary Record.
+- **`displayNull`** — "A non-existing Display.
+- **`getFSMVariable`** — Return the value of variable in the variable space of given FSM.
+- **`getVariable`** — "Returns the value of variable in the variable space assigned to various data types.\nAll available data types combinations:\n class=\"wikitable\"\n!colspan=\"2\"Primary syntax (String) !!
+- **`import`** — Imports one or multiple local variables from the parent scope, and defines them as private variables in the current scope.
+- **`isEqualRef`** — Compares two values by reference, returns true if equal.
+- **`isEqualTo`** — Performs strict comparison between var1 and var2 and returns true if equal, otherwise false.
+- **`isEqualType`** — Compares two values' types.
+- **`isEqualTypeAll`** — Compares types of all elements of an array to the type of a single value.
+- **`isEqualTypeAny`** — Compares type of given value to every type in the given array and if match is found, true is returned.
+- **`isEqualTypeArray`** — Compares types of all elements of one array to types of all elements of another array.
+- **`isEqualTypeParams`** — Compares types of all elements of input array to types of all elements of template array.
+- **`isFinal`** — Checks if Code or a variable was compiled final with compileFinal.
+- **`isMissionProfileNamespaceLoaded`** — The missionProfileNamespace variables are loaded at the start of a mission, before 'init.sqf' is executed.
+- **`isNil`** — Tests whether a variable is nil or undefined from its identifier, or whether the given expression evaluates to nil or Nothing.
+- **`isNotEqualRef`** — Compares two values by reference, returns true if not equal.
+- **`isNotEqualTo`** — Performs strict comparison between var1 and var2 and returns false if equal, otherwise true.
+- **`isNull`** — Checks whether the tested item is null.
+- **`localNamespace`** — Returns local Namespace attached to the mission.
+- **`locationNull`** — "A non-existing Location.
+- **`missionNamespace`** — Returns the global namespace attached to mission.
+- **`missionProfileNamespace`** — This namespace has the same lifetime as profileNamespace but is also connected to the mission it is saved from.
+- **`netObjNull`** — A non-existing network object.
+- **`nil`** — Nil value.
+- **`not`** — 'not a is exactly the same as !
+- **`objNull`** — "A non-existent Object.
+- **`or`** — Returns true if one or both conditions are true.
+- **`param`** — Extracts a single value with given index from input argument, similar to BIS_fnc_param.
+- **`params`** — Parses input argument into array of private variables.
+- **`parsingNamespace`** — Returns the global namespace attached to config parser.
+- **`private`** — Sets a variable to the innermost scope.
+- **`privateAll`** — Disables the implicit inheritance of local variables, as defined in the parent scope.
+- **`profileNamespace`** — Returns the global namespace attached to the active user profile.
+- **`publicVariable`** — Reliably broadcasts missionNamespace variable and its '''current''' value to all computers (server/client).
+- **`publicVariableClient`** — Send the variable value to the client computer - same limitations regarding variable type as publicVariable.
+- **`publicVariableServer`** — Send the variable value to the server - same limitations regarding variable type as publicVariable.
+- **`saveMissionProfileNamespace`** — missionProfileNamespace provides long-term storage solution for mission variables.
+- **`saveProfileNamespace`** — Saves all variables stored in profileNamespace to the active Profile.
+- **`saveVar`** — Save variable value into the campaign space.
+- **`scriptNull`** — "A non-existing or completed Script Handle.
+- **`serverNamespace`** — Returns server's namespace.
+- **`setVariable`** — Set variable to given value in the variable space of given element.
+- **`taskNull`** — "A non-existing Task.
+- **`typeName`** — "Returns the Data Type of an expression.
+- **`uiNamespace`** — Returns the global namespace attached to user interface.
+
+### Vehicle Inventory <a id="sqf-vehicle-inventory"></a>
+
+- **`addItemCargo`** — Creates new items and stores them in given container.
+- **`addItemCargoGlobal`** — Global variant of addItemCargo.
+- **`addMagazineAmmoCargo`** — Adds magazines with specified ammo count to the cargo space of a vehicle or a container.
+- **`addWeapon`** — "Add a weapon to a unit.
+- **`addWeaponGlobal`** — Add a weapon to a unit.
+- **`addWeaponWithAttachmentsCargo`** — Adds a weapon into the cargo space of a vehicle / box with given attachments / magazines.
+- **`addWeaponWithAttachmentsCargoGlobal`** — Adds a weapon into the cargo space of a vehicle / box with given attachments / magazines.
+- **`currentMagazine`** — Returns class name of currently loaded vehicle's / unit's magazine.
+- **`currentMagazineDetail`** — Returns description of vehicle's currently loaded magazine, its ammo count (current/default) and its id.
+- **`everyContainer`** — Returns array of all containers (uniforms, vests, backpacks) stored in given crate or vehicle.
+- **`getAmmoCargo`** — Returns the amount (1 is full) of ammo resources in the cargo space of a rearm vehicle.
+- **`getFuelCargo`** — Returns the fuel amount (1 is full) in the cargo space of a refueling vehicle.
+- **`getItemCargo`** — Returns all items names and count from ammo box (or any general weapon holder container).
+- **`getMagazineCargo`** — Returns all magazines types and count from the cargo space
+- **`getRepairCargo`** — Returns the amount (1 is full) of repair resources in the cargo space of a repair vehicle.
+- **`getWeaponCargo`** — Returns all weapons types and count from the cargo space
+- **`itemCargo`** — Get array with items from ammo box (or any general weapon holder container).
+- **`magazineCargo`** — Get array with magazines from ammo box (or any general weapon holder container).
+- **`magazines`** — Returns array of type names of all vehicle's magazines.
+- **`magazinesAmmo`** — Returns all vehicle's magazines and their ammo count (also works on supply boxes).
+- **`magazinesAmmoCargo`** — Returns an array of subarrays with the type names and ammo left of all the vehicle's cargo or container magazines.
+- **`magazinesAmmoFull`** — Returns array of arrays of all unit's or vehicle's magazines with extended information about them.
+- **`magazinesDetail`** — "Returns an array of strings with description of all vehicle's magazines, their ammo count (current/default) and their ids for the primary gunner.
+- **`removeWeapon`** — Remove weapon from a unit.
+- **`removeWeaponAttachmentCargo`** — "Remove attachment linked to a weapon from the vehicle cargo space.
+- **`removeWeaponCargo`** — Remove weapon from the vehicle cargo space.
+- **`removeWeaponGlobal`** — Remove a weapon from a unit.
+- **`setAmmo`** — Sets custom ammo count in the currently loaded magazine of the specified weapon or muzzle.
+- **`setAmmoCargo`** — Set amount of ammo resources in cargo space of a rearm vehicle.
+- **`setFuelCargo`** — Sets fuel amount in cargo space of refuel vehicles.
+- **`setRepairCargo`** — Set amount of repair resources in cargo space of repair vehicle.
+- **`setVehicleAmmo`** — Sets how much ammunition (compared to a full state defined by the vehicle type) the vehicle has.
+- **`setVehicleAmmoDef`** — Sets how much ammunition (compared to the configuration of magazines defined in the vehicle's class) the vehicle has.
+- **`weaponAccessoriesCargo`** — Returns array with all items assigned to the given weapon in given cargo container.
+- **`weaponCargo`** — Get array with weapons from ammo box (or any general weapon holder container).
+- **`weapons`** — Returns array of names of all unit's weapons.
+- **`weaponsItems`** — 150px|right|borderReturns an array with subarrays contains class names and also names of connected items of all the vehicle's weapons.
+- **`weaponsItemsCargo`** — Returns an array with subarrays contains class names and also names of connected items of all the vehicle's cargo weapons in weaponsItems format.
+
+### Vehicle Loadouts <a id="sqf-vehicle-loadouts"></a>
+
+- **`ammoOnPylon`** — Returns ammo count on given pylon (or false on failure).
+- **`animateBay`** — Forces animation of bay to given state, -1 for reset to engine handling, can cause weapon inoperative, because weapon is released when bay state == 1.
+- **`animatePylon`** — Force animation of pylon to given state, -1 for reset to engine handling, can cause weapon inoperative, because weapon is released  when pylon state == 1.
+- **`getAllPylonsInfo`** — Return an array with the vehicle's all pylons info.
+- **`getCompatiblePylonMagazines`** — Get array of compatible pylon magazines
+- **`getPylonMagazines`** — Return array of magazines on pylons.
+- **`setAmmoOnPylon`** — Set count of ammo in magazine on pylon (supports pylon name since Arma 3 v1.94)
+- **`setPylonLoadout`** — Adds/overrides loadout to a vehicle pylon.
+- **`setPylonsPriority`** — Overrides default pylons priorities.
+
+### Vehicle in Vehicle Transport <a id="sqf-vehicle-in-vehicle-transport"></a>
+
+- **`canVehicleCargo`** — Returns bool array if it is possible to load cargo inside vehicle and if possible to load cargo into empty vehicle
+- **`enableVehicleCargo`** — Enable/disable option to transport other vehicles (if configured) or be transported.
+- **`getVehicleCargo`** — Get a list of vehicles loaded as cargo inside this vehicle.
+- **`isVehicleCargo`** — Despite a misleading name, returns the vehicle that is transporting given vehicle in cargo.
+- **`setVehicleCargo`** — Load cargo vehicle inside vehicle if possible, returns bool based on whether the vehicle was able to be loaded.
+- **`vehicleCargoEnabled`** — Check if the vehicle has enabled transporting other vehicles or not.
+
+### Waypoints <a id="sqf-waypoints"></a>
+
+- **`addWaypoint`** — Adds (or inserts when index is given) a new waypoint to a group.
+- **`copyWaypoints`** — Copy the chain of waypoints from source to target group.
+- **`createGuardedPoint`** — Adds a point guarded by the given side (scripted way of adding equivalent of "GUARDED BY" trigger in Editor).
+- **`currentWaypoint`** — Returns the ''index'' of the current waypoint ('''not''' the waypoint in Waypoint Array format).
+- **`customWaypointPosition`** — Returns player's custom waypoint () position.
+- **`deleteWaypoint`** — Removes the specified waypoint.
+- **`enableUAVWaypoints`** — Enables/disables the option for player to set waypoints for UAV in AV terminal.
+- **`getWPPos`** — Returns the position of a selected waypoint of a given group.
+- **`lockWP`** — Disable switching to next waypoint (current waypoint will never complete while lockwp is used).
+- **`setCurrentWaypoint`** — Sets the currently active waypoint for a group.
+- **`setMusicEffect`** — Defines a music track played on activation.
+- **`setSoundEffect`** — Defines the different sound effects for a trigger or a waypoint.
+- **`setTitleEffect`** — "Defines the title effect to show on activation via [Type, Effect, Text] where\n\n'Type' \n\nThe title effect does not disappear on deactivation, this should be done manually if required."
+- **`setWaypointBehaviour`** — Switches the unit behaviour when the waypoint becomes active.
+- **`setWaypointCombatMode`** — Changes a group's combat mode when the waypoint becomes active.
+- **`setWaypointCompletionRadius`** — The completion radius allows units to call the waypoint completed once they are inside of the given circle.
+- **`setWaypointDescription`** — Sets the description shown in the HUD while the waypoint is active.
+- **`setWaypointForceBehaviour`** — Forces the behavior of waypoint, disables AUTOCOMBAT.
+- **`setWaypointFormation`** — "Switches the group formation when the waypoint becomes active.\n\n\nPossible values are: \n* \"NO CHANGE\"\n* \"COLUMN\"\n* \"STAG COLUMN\"\n* \"WEDGE\"\n* \"ECH LEFT\"\n* \"ECH RIGHT\"\n* \"VEE\"\n* \"LINE\"\n* \"FILE\"\n* \"DIAMOND\""
+- **`setWaypointHousePosition`** — For waypoints attached to a house, this defines the target buildingPos index.
+- **`setWaypointLoiterAltitude`** — Assigns loiter altitude to the provided waypoint.
+- **`setWaypointLoiterRadius`** — Assignes loiter radius to waypoint
+- **`setWaypointLoiterType`** — Sets the waypoint loiter type.
+- **`setWaypointName`** — Changes the waypoint name.
+- **`setWaypointPosition`** — "Attempts to move given waypoint to a random position inside a circle with the given center and radius.
+- **`setWaypointScript`** — Attaches a script to a scripted waypoint.
+- **`setWaypointSpeed`** — Switches the group speed mode when the waypoint becomes active.
+- **`setWaypointStatements`** — The waypoint is done only when the condition is fulfilled.
+- **`setWaypointTimeout`** — Defines the time between condition satisfaction and waypoint finish (randomly from min to max, with an average value mid).
+- **`setWaypointType`** — "Sets the waypoint type of given waypoint.
+- **`setWaypointVisible`** — Sets the visibility of the given waypoint in 3D HUD view (for map visibility see showWaypoint).
+- **`setWPPos`** — Sets waypoint position.
+- **`showWaypoint`** — Defines how waypoints are shown to the player in map view.
+- **`showWaypoints`** — Shows/Hides task HUD markers and waypoints that will fade out in time.
+- **`synchronizedWaypoints`** — Returns the list of waypoints synchronized with a given trigger or waypoint.
+- **`synchronizeTrigger`** — 'Synchronizes the trigger with zero or more waypoints.'
+- **`synchronizeWaypoint`** — Synchronizes the trigger or the waypoint with an array of waypoints.
+- **`waypointAttachedObject`** — Gets the object attached to the waypoint.
+- **`waypointAttachedVehicle`** — Gets the vehicle attached to the waypoint.
+- **`waypointAttachObject`** — Attaches a static object via its numeric ID to the given waypoint.
+- **`waypointAttachVehicle`** — Attaches the Waypoint to the provided vehicle Object.
+- **`waypointBehaviour`** — Gets the waypoint behavior.
+- **`waypointCombatMode`** — Gets the waypoint's combat mode setting.
+- **`waypointCompletionRadius`** — Gets the radius around the waypoint where the waypoint is completed.
+- **`waypointDescription`** — Gets the waypoint description.
+- **`waypointForceBehaviour`** — Returns true if the waypoint behavior is forced.
+- **`waypointFormation`** — "Gets the waypoint formation.\n\nPossible values are: \n* \"NO CHANGE\"\n* \"COLUMN\"\n* \"STAG COLUMN\"\n* \"WEDGE\"\n* \"ECH LEFT\"\n* \"ECH RIGHT\"\n* \"VEE\"\n* \"LINE\"\n* \"FILE\"\n* \"DIAMOND\""
+- **`waypointHousePosition`** — Returns buildingPos index assigned to the waypoint.
+- **`waypointLoiterAltitude`** — Gets the waypoint loiter altitude.
+- **`waypointLoiterRadius`** — Gets the waypoint's loiter radius.
+- **`waypointLoiterType`** — Gets the waypoint loiter type.
+- **`waypointName`** — Gets the waypoint name.
+- **`waypointPosition`** — Get provided waypoint's position.
+- **`waypoints`** — Returns an array of waypoints for the specified unit/group.
+- **`waypointScript`** — Gets the waypoint script.
+- **`waypointsEnabledUAV`** — Checks if the UAV has waypoints enabled.
+- **`waypointShow`** — A getter for showWaypoint command.
+- **`waypointSpeed`** — Gets the waypoint speed.
+- **`waypointStatements`** — Gets the waypoint statements.
+- **`waypointTimeout`** — Gets the waypoint timeout values.
+- **`waypointTimeoutCurrent`** — Gets the current timeout for currentWaypoint of a group or -1 if countdown is not in progress.
+- **`waypointType`** — Gets the waypoint type.
+- **`waypointVisible`** — A getter for setWaypointVisible command.
+
+### Weapon Pool <a id="sqf-weapon-pool"></a>
+
+- **`addItemPool`** — Adds count items of type name into the weapon pool (used in the campaign to transfer items to the next mission)
+- **`addMagazinePool`** — Adds magazines to the magazine pool, of which the player may choose in the following mission.
+- **`addWeaponPool`** — Add weapons to the weapon pool, of which the player may choose in the following mission.
+- **`clearItemPool`** — Removes all items from ammo box (or any general weapon holder container)
+- **`clearMagazinePool`** — Removes all magazines from the magazine pool, of which the player may choose in the following missions.
+- **`clearWeaponPool`** — Remove all weapons from the weapon pool, of which the player may choose in the following missions.
+- **`fillWeaponsFromPool`** — Adds magazines from the campaign pool to the given unit, depending on his weapons.
+- **`loadStatus`** — Loads object's properties from Objects.sav file in campaign directory (from entry name).
+- **`pickWeaponPool`** — Transfers weapons and magazines from cargo of object into the weapon pool.
+- **`putWeaponPool`** — Transfers weapons and magazines from weapon pool into cargo of given object.
+- **`queryItemsPool`** — Returns the number of items of type in the weapon pool (used in campaigns to transfer weapons to the next mission).
+- **`queryMagazinePool`** — Return number of magazines of type name in magazine pool (used in campaign to transfer magazines into next mission).
+- **`queryWeaponPool`** — Return number of weapons of type name in weapon pool (used in campaign to transfer weapons into next mission).
+- **`saveStatus`** — Saves object's properties to Objects.sav file in campaign directory as entry name.
+
+### Weapons <a id="sqf-weapons"></a>
+
+- **`aimedAtTarget`** — Returns how good a vehicle's weapon is aimed at the target.
+- **`canDeployWeapon`** — Returns true if a unit's weapon can be deployed.
+- **`canFire`** — Returns true if the given vehicle is still able to fire.
+- **`compatibleItems`** — Returns all items (attachments) that can be mounted on the given weapon.
+- **`compatibleMagazines`** — Returns all magazines that can be loaded in the given weapon or all magazines containing the provided ammo.
+- **`compatibleWeapons`** — Returns all compatible weapons for given weapon item, weapon magazine or weapon slot.
+- **`currentMuzzle`** — Returns a unit's current weapon muzzle.
+- **`currentThrowable`** — Returns currently selected throwable (and the muzzle it is loaded into), which will be launched if the user presses .
+- **`currentVisionMode`** — Returns current vision mode of unit's weapon.
+- **`currentWeapon`** — Return the name of the currently selected weapon (on the primary turret for vehicles).
+- **`currentWeaponMode`** — Returns current weapon mode of unit's weapon.
+- **`currentZeroing`** — Returns current zeroing.
+- **`disableNVGEquipment`** — Enables or disables transport NV (Night Vision).
+- **`disableTIEquipment`** — Disables TI (Thermal Imaging) equipment for given vehicle.
+- **`enableGunLights`** — Toggles the target group's gun lights.
+- **`enableIRLasers`** — Allows the AI to use IR lasers.
+- **`enableReload`** — Enable / disable auto-reload (including AI) when magazine is empty.
+- **`enableWeaponDisassembly`** — Enables or disables disassembly of static weapons.
+- **`fire`** — Forces a unit to fire the given weapon.
+- **`fireAtTarget`** — Remotely forces a unit to fire the given weapon.
+- **`forceWeaponFire`** — 'The unit will be forced to fire weapon from the given muzzle.
+- **`getShotParents`** — Returns shot information for the given projectile.
+- **`getWeaponSway`** — Returns current size of weapon sway of a given unit, in radians.
+- **`hasWeapon`** — Checks if a unit has the given weapon in hands or on back/in holster.
+- **`isFlashlightOn`** — Returns true if there is a linked and enabled flashlight on a given weapon.
+- **`isLaserOn`** — Returns true if the vehicle has its laser turned on.
+- **`isManualFire`** — Returns true if manual fire is on.
+- **`isThrowable`** — Returns true if the given magazine is a throwable.
+- **`isWeaponDeployed`** — Returns true if weapon is currently deployed.
+- **`isWeaponRested`** — Returns true if weapon is currently rested.
+- **`laserTarget`** — Returns the laser target object created by given unit (vehicle or soldier) when using a laser targeting device.
+- **`loadMagazine`** — Initiates the loading action on given weapon of the turret of a transport.
+- **`missileState`** — Get the provided ''guided'' missile's engine, target lock and flight profile states.
+- **`missileTarget`** — Returns a guided missile's target.
+- **`missileTargetPos`** — Returns a guided missile's target position.
+- **`needReload`** — Returns how much vehicle wants to reload its weapons.
+- **`reload`** — Main syntax: Reload first found muzzle that needs reloading (with some inconsistencies).
+- **`reloadEnabled`** — A getter for enableReload.
+- **`selectThrowable`** — Selects  current throwable, which will be launched if the user presses .
+- **`selectWeapon`** — Selects the given weapon.
+- **`setMissileTarget`** — Sets a guided missile target.
+- **`setMissileTargetPos`** — Sets a guided munition target position.
+- **`setShotParents`** — Sets vehicle and instigator pair for the given projectile.
+- **`setWeaponReloadingTime`** — Sets reloading '''phase''' on the given weapon's current ammo round.
+- **`setWeaponZeroing`** — Sets zeroing of given weapon and muzzle for given unit or vehicle.
+- **`throwables`** — Returns all throwables in unit inventory in currentThrowable format.
+- **`weaponDirection`** — Returns the direction that the vehicle weapon is aiming in.
+- **`weaponDisassemblyEnabled`** — Returns if weapon disassembly is enabled.
+- **`weaponInertia`** — Returns current rate of how much the weapon view is distorted because of quick aiming.
+- **`weaponLowered`** — Returns true if given soldier's weapon is lowered.
+- **`weaponReloadingTime`** — Returns current ammo round reloading phase.
+- **`weaponsInfo`** — Returns entity's weapons information including weapon index and firemode.
+- **`weaponState`** — Returns the given or currently selected weapon state for unit or vehicle.
+
+---
+
+## Event Handlers by Category
+
+> **How to look up an event:** `events/{category}/{EventName}.yml`  
+> Each file has: description, params (name/type/description), locality, examples.
+
+### eden <a id="events-eden"></a>
+
+- **`Init`** — |-
+- **`OnBeforeMissionPreview`** — Runs before the scenario preview is started.
+- **`OnConnectingEnd`** — 'When Connecting operation is terminated, no matter if it was confirmed or canceled.'
+- **`OnConnectingStart`** — 'When Connecting operation is initiated.'
+- **`OnCopy`** — |-
+- **`OnCut`** — Fires when entities are cut (after the entities have been deleted).
+- **`OnDeleteUnits`** — When entities are deleted.
+- **`OnEditableEntityAdded`** — |-
+- **`OnEditableEntityRemoved`** — |-
+- **`OnEntityAttributeChanged`** — When an entity's attribute got changed.
+- **`OnEntityDragged`** — |-
+- **`OnEntityMenu`** — |-
+- **`OnEntityParentChanged`** — |-
+- **`OnGridChange`** — 'When grid changes, either using Toolbar option, ot by scripting command set3DENGrid.'
+- **`OnHistoryChange`** — When history changes.
+- **`OnMapClosed`** — When map is closed.
+- **`OnMapOpened`** — When map is opened.
+- **`OnMessage`** — |-
+- **`OnMissionAttributeChanged`** — When a mission attribute or the preferences are changed.
+- **`OnMissionAutosave`** — When scenario is autosaved.
+- **`OnMissionExportMP`** — When a scenario is exported to multiplayer.
+- **`OnMissionExportSP`** — When a scenario is exported to singleplayer.
+- **`OnMissionListChange`** — When the current list of missions in the open/save mission dialog changes, i.e when first opened or a different folder is selected.
+- **`OnMissionLoad`** — |-
+- **`OnMissionNew`** — When new scenario is started.
+- **`OnMissionPreview`** — |-
+- **`OnMissionPreviewEnd`** — |-
+- **`OnMissionSave`** — When scenario is saved.
+- **`OnMissionSaveAs`** — When ''Save As'' action is triggered (i.e.
+- **`OnModeChange`** — When editing mode is changed (i.e.
+- **`OnMoveGridDecrease`** — ''
+- **`OnMoveGridIncrease`** — ''
+- **`OnMoveGridToggle`** — When '''translation''' grid is toggled on or off.
+- **`OnPaste`** — When entities are pasted.
+- **`OnPasteUnitOrig`** — When entities are pasted on their original positions.
+- **`OnRedo`** — When undo operation is redone.
+- **`OnRotateGridDecrease`** — ''
+- **`OnRotateGridIncrease`** — ''
+- **`OnRotateGridToggle`** — When '''rotation''' grid is toggled on or off.
+- **`OnScaleGridToggle`** — When '''area scaling''' grid is toggled on or off.
+- **`OnSearchCreate`** — When "SearchCreate" action is triggered (e.g.
+- **`OnSearchEdit`** — When "SearchEdit" action is triggered (e.g.
+- **`OnSelectionChange`** — When entity selection changes.
+- **`OnServerToggle`** — When server is created or destroyed from the preview.
+- **`OnSubmodeChange`** — When submode (e.g.
+- **`OnSurfaceSnapToggle`** — When surface snap settings are changed.
+- **`OnTerrainNew`** — When new terrain is loaded.
+- **`OnToggleMapIDs`** — When map IDs are toggled with do3DENAction "ToggleMapIDs".
+- **`OnToggleMapTextures`** — When map textures are toggled on or off.
+- **`OnTogglePlaceEmptyVehicle`** — When the ''Place vehicles with crew'' is toggled on/off in Objects mode.
+- **`OnUndo`** — When an operation is undone.
+- **`OnVerticalToggle`** — When vertical mode settings are changed.
+- **`OnWidgetArea`** — 'When area widget is selected.'
+- **`OnWidgetNone`** — 'When no widget is selected.'
+- **`OnWidgetRotation`** — 'When rotation widget is selected.'
+- **`OnWidgetScale`** — 'When scaling widget is selected.'
+- **`OnWidgetToggle`** — 'When widget is toggled (i.e.
+- **`OnWidgetTranslation`** — 'When translation widget is selected.'
+- **`OnWorkspacePartSwitch`** — 'When scenario phase is selected.'
+
+### group <a id="events-group"></a>
+
+- **`CombatModeChanged`** — Triggers when the group's '''behaviour''' changes (see behaviour, setBehaviour)
+- **`CommandChanged`** — |-
+- **`Deleted`** — ''
+- **`Empty`** — ''
+- **`EnableAttackChanged`** — ''
+- **`EnemyDetected`** — ''
+- **`Fleeing`** — ''
+- **`FormationChanged`** — ''
+- **`GroupIdChanged`** — ''
+- **`KnowsAboutChanged`** — ''
+- **`LeaderChanged`** — ''
+- **`Local`** — ''
+- **`SpeedModeChanged`** — ''
+- **`SubmunitionCreated`** — This event fires as many times as submunitions are created.
+- **`UnitJoined`** — ''
+- **`UnitKilled`** — Triggered when a unit in the group is killed.
+- **`UnitLeft`** — ''
+- **`VehicleAdded`** — ''
+- **`VehicleRemoved`** — ''
+- **`WaypointComplete`** — ''
+
+### mission <a id="events-mission"></a>
+
+- **`ArtilleryShellFired`** — Global Mission Event Handler.
+- **`BuildingChanged`** — Fired each time a building model changes, for example due to stages of destruction.
+- **`CommandModeChanged`** — Executes assigned code when user switches to/from High Command mode ().
+- **`ControlsShifted`** — Triggers when control of a vehicle is shifted (pilot->co-pilot, co-pilot->pilot), usually when user performs an action such as  TakeVehicleControl,  SuspendVehicleControl,  UnlockVehicleControl,  LockVehicleControl, or when enableCopilot command is used.
+- **`Draw2D`** — |-
+- **`Draw3D`** — |-
+- **`Drowned`** — Runs when a vehicle gets drowned (the vehicle is submerged below 'maxFord' for longer than 'waterResistance').
+- **`EachFrame`** — Executes assigned code each frame.
+- **`Ended`** — 'Triggered when mission ends, either using trigger of type "End", endMission command, BIS_fnc_endMission function or ENDMISSION cheat.'
+- **`EntityCreated`** — |-
+- **`EntityDeleted`** — |-
+- **`EntityKilled`** — |-
+- **`EntityRespawned`** — Triggered when an entity is respawned.
+- **`ExtensionCallback`** — Triggered when an  extension calls provided function pointer with 3 params.
+- **`GroupCreated`** — Triggered when a Group is created.
+- **`GroupDeleted`** — Triggered when a Group is manually or automatically deleted.
+- **`GroupIconClick`** — Executes assigned code when user clicks on the HC group icon on the map.
+- **`GroupIconOverEnter`** — '''''''Continuously'''''' executes assigned code when user hovers with pointer over the HC group icon, either on the HUD or the main map.
+- **`GroupIconOverLeave`** — Executes assigned code when user moves the pointer away from HC group icon it was over.
+- **`HandleAccTime`** — Fires when user changes time acceleration with +/- keys in SP or setAccTime command.
+- **`HandleChatMessage`** — |-
+- **`HandleDisconnect`** — |-
+- **`HCGroupSelectionChanged`** — Executes assigned code when user selects available HC group ().
+- **`Loaded`** — |-
+- **`Map`** — Triggered when map is opened or closed either by user action or script command openMap.
+- **`MapSingleClick`** — Executes when the player clicks anywhere on the main map.
+- **`MarkerCreated`** — Executes when a marker is created either by a user or via script command.
+- **`MarkerDeleted`** — Executes immediately before a marker is deleted either by a user or via script command.
+- **`MarkerUpdated`** — |-
+- **`MPEnded`** — |-
+- **`OnUserAdminStateChanged`** — Executes assigned code after user logs in, gets voted in or logs out as admin.
+- **`OnUserClientStateChanged`** — Executes assigned code for every stage of user client state change.
+- **`OnUserConnected`** — Executes assigned code on user joining server.
+- **`OnUserDisconnected`** — Executes assigned code on user leaving server.
+- **`OnUserKicked`** — 'Executes assigned code after after a user has been kicked from the server providing kick reason.
+- **`OnUserSelectedPlayer`** — |-
+- **`PlayerConnected`** — |-
+- **`PlayerDisconnected`** — Executes assigned code when client leaves the mission in MP.
+- **`PlayerViewChanged`** — Fired on player view change.
+- **`PreloadFinished`** — |-
+- **`PreloadStarted`** — |-
+- **`ProjectileCreated`** — Triggered when a projectile is created.
+- **`SaveGame`** — Triggered just BEFORE the game saving process started but isSaving is already set to true.
+- **`ScriptError`** — |-
+- **`SelectedActionChanged`** — |-
+- **`SelectedActionPerformed`** — |-
+- **`SelectedRotorLibActionChanged`** — |-
+- **`SelectedRotorLibActionPerformed`** — |-
+- **`Service`** — Executes assigned code when a serviced vehicle gets rearmed, repaired or refueled.
+- **`TeamSwitch`** — Executes assigned code when player teamswitches.
+- **`UAVCrewCreated`** — |-
+
+### multiplayer <a id="events-multiplayer"></a>
+
+- **`CuratorWaypointSelectionChanged`** — Triggered when a waypoint is selected in curator interface.
+- **`MPHit`** — |-
+- **`MPKilled`** — |-
+- **`MPRespawn`** — |-
+
+### music <a id="events-music"></a>
+
+- **`MusicStart`** — Triggers when CfgMusic sound starts playing, after being executed with playMusic command.
+- **`MusicStop`** — |-
+
+### projectile <a id="events-projectile"></a>
+
+- **`Analog`** — ''
+- **`Deflected`** — ''
+- **`Deleted`** — ''
+- **`Explode`** — ''
+- **`HitExplosion`** — |-
+- **`HitPart`** — |-
+- **`Init`** — |-
+- **`MineActivated`** — ''
+- **`Penetrated`** — This event fires as many times as the projectile penetrates a surface.
+- **`SubmunitionCreated`** — This event fires as many times as submunitions are created.
+
+### standard <a id="events-standard"></a>
+
+- **`AnimChanged`** — Triggered every time a new animation is started.
+- **`AnimDone`** — Triggered every time an animation is finished.
+- **`AnimStateChanged`** — Triggered every time an animation state changes.
+- **`Assembled`** — Triggers when weapon that is moved out of the world is assembled again.
+- **`Attached`** — Triggered after an object has been attached to another object (see attachTo).
+- **`AttributesChanged3DEN`** — |-
+- **`CargoLoaded`** — |-
+- **`CargoUnloaded`** — |-
+- **`ConnectionChanged3DEN`** — 'When a connection is added or removed from an object.'
+- **`ContainerClosed`** — |-
+- **`ContainerOpened`** — |-
+- **`ControlsShifted`** — |-
+- **`CuratorFeedbackMessage`** — |-
+- **`CuratorGroupDoubleClicked`** — Triggered when a group is double-clicked on in curator interface.
+- **`CuratorGroupPlaced`** — Triggered when new group is placed in curator interface.
+- **`CuratorGroupSelectionChanged`** — Triggered when a group is selected in curator interface.
+- **`CuratorMarkerDeleted`** — Triggered when a marker is deleted in curator interface.
+- **`CuratorMarkerDoubleClicked`** — Triggered when a marker is double-clicked on in curator interface.
+- **`CuratorMarkerEdited`** — Triggered when a marker is moved in curator interface.
+- **`CuratorMarkerPlaced`** — Triggered when new marker is placed in curator interface.
+- **`CuratorMarkerSelectionChanged`** — Triggered when a marker is selected in curator interface.
+- **`CuratorObjectDeleted`** — Triggered when an object is deleted in curator interface.
+- **`CuratorObjectDoubleClicked`** — Triggered when an object is double-clicked on in curator interface.
+- **`CuratorObjectEdited`** — Triggered when an object is moved or rotated in curator interface.
+- **`CuratorObjectPlaced`** — |-
+- **`CuratorObjectRegistered`** — |-
+- **`CuratorObjectSelectionChanged`** — Triggered when an object is selected in curator interface.
+- **`CuratorPinged`** — Triggered when a player pings his curator(s) by pressing ''Zeus'' key.
+- **`CuratorSelectionPresetLoaded`** — Triggered when a selection preset is loaded using the respective number key or through script.
+- **`CuratorSelectionPresetSaved`** — Triggered when a selection preset is saved using the respective CTRL + number key or set through script.
+- **`CuratorWaypointDeleted`** — Triggered when a waypoint is deleted in curator interface.
+- **`CuratorWaypointDoubleClicked`** — Triggered when a waypoint is double-clicked on in curator interface.
+- **`CuratorWaypointEdited`** — Triggered when a waypoint is moved in curator interface.
+- **`CuratorWaypointPlaced`** — Triggered when new waypoint is placed in curator interface.
+- **`CuratorWaypointSelectionChanged`** — Triggered when a waypoint is selected in curator interface.
+- **`Dammaged`** — |-
+- **`Deleted`** — Triggered just before the assigned entity is deleted.
+- **`Detached`** — Triggered after an object has been detached from its parent object (see detach).
+- **`Disassembled`** — Triggers when entity such as weapon/backpack gets disassembled.
+- **`Dragged3DEN`** — |-
+- **`Engine`** — |-
+- **`EpeContact`** — Triggered when object collision (PhysX) is in progress.
+- **`EpeContactEnd`** — Triggered when object collision (PhysX) ends.
+- **`EpeContactStart`** — Triggered when object collision (PhysX) starts.
+- **`Explosion`** — |-
+- **`Fired`** — |-
+- **`FiredMan`** — |-
+- **`FiredNear`** — |-
+- **`Fuel`** — Triggered when the vehicle's fuel status changes between non-empty and empty or between empty and non-empty.
+- **`Gear`** — |-
+- **`GestureChanged`** — Triggered every time a new gesture is played.
+- **`GestureDone`** — Triggered every time a gesture is finished.
+- **`GetIn`** — |-
+- **`GetInMan`** — |-
+- **`GetOut`** — |-
+- **`GetOutMan`** — |-
+- **`HandleDamage`** — |-
+- **`HandleHeal`** — |-
+- **`HandleIdentity`** — |-
+- **`HandleRating`** — |-
+- **`HandleScore`** — |-
+- **`Hit`** — |-
+- **`HitPart`** — |-
+- **`IncomingMissile`** — Triggered when a unit fires a missile or rocket at the target.
+- **`Init`** — |-
+- **`InventoryClosed`** — Triggered when the unit closes inventory.
+- **`InventoryOpened`** — |-
+- **`Killed`** — Triggered when the unit is killed.
+- **`LandedStopped`** — Triggered when an AI pilot would get out usually.
+- **`LandedTouchDown`** — Triggered when a plane (AI or player) touches the ground.
+- **`Landing`** — Triggered when an AI pilot (or auto-pilot) is preparing for landing.
+- **`LandingCanceled`** — |-
+- **`LeaningChanged`** — Triggered when a soldier leaning factor is changed between -1 (extreme left), 0 (not leaning) and 1 (extreme right)
+- **`Local`** — |-
+- **`MagazineUnloaded`** — |-
+- **`OpticsModeChanged`** — Triggers everytime a local unit changes optic mode.
+- **`OpticsSwitch`** — |-
+- **`PathCalculated`** — |-
+- **`PeriscopeElevationChanged`** — Fires every frame during periscope elevation animation.
+- **`PostInit`** — |-
+- **`PostReset`** — '''''''Obsolete'''''' - triggers after PP effects have been reset by the engine.'
+- **`Put`** — |-
+- **`RegisteredToWorld3DEN`** — When object is re-added to the scenario after undoing a delete operation.
+- **`Reloaded`** — 'Triggers when a weapon is reloaded with a new magazine.
+- **`Respawn`** — Triggered when a unit respawns.
+- **`RopeAttach`** — |-
+- **`RopeBreak`** — |-
+- **`SeatSwitched`** — |-
+- **`SeatSwitchedMan`** — |-
+- **`SelectedActionChanged`** — |-
+- **`SelectedActionPerformed`** — |-
+- **`SelectedRotorLibActionChanged`** — |-
+- **`SelectedRotorLibActionPerformed`** — |-
+- **`SlotItemChanged`** — 'Triggered when any of the following slots get assigned or unassigned: ''''Items'''' - Map, GPS, Radio, Watch, Compass, Helmet, Goggles, NVG; ''''Weapon'''' - Binoculars; ''''Containers'''' - Uniform, Vest, Backpack.'
+- **`SoundPlayed`** — |-
+- **`Suppressed`** — Triggers when enemy projectile is passing by closer than defined suppression radius ammo value in config.
+- **`Take`** — |-
+- **`TaskSetAsCurrent`** — Triggers when player's current task changes
+- **`TurnIn`** — Triggers when member of crew in a vehicle uses Turn In action
+- **`TurnOut`** — Triggers when member of crew in a vehicle uses Turn Out action
+- **`UnregisteredFromWorld3DEN`** — 'When object is removed from the scenario.
+- **`VisionModeChanged`** — Triggers when the assigned vehicle/unit's vision mode has changed.
+- **`WeaponAssembled`** — Triggers when weapon gets assembled.
+- **`WeaponChanged`** — |-
+- **`WeaponDeployed`** — 'Triggers when the deployed state of a weapon or bipod changes.
+- **`WeaponDisassembled`** — |-
+- **`WeaponRested`** — |-
+
+### user_action <a id="events-user_action"></a>
+
+- **`Activate`** — ''
+- **`Analog`** — ''
+- **`Deactivate`** — ''
+
+### user_interface <a id="events-user_interface"></a>
+
+- **`ButtonClick`** — |-
+- **`ButtonDblClick`** — |-
+- **`ButtonDown`** — |-
+- **`ButtonUp`** — |-
+- **`CanDestroy`** — |-
+- **`Char`** — |-
+- **`CheckBoxesSelChanged`** — |-
+- **`Checked`** — |-
+- **`CheckedChanged`** — |-
+- **`ChildDestroyed`** — |-
+- **`Committed`** — |-
+- **`Destroy`** — |-
+- **`Draw`** — |-
+- **`EditChanged`** — |-
+- **`HTMLLink`** — |-
+- **`IMEChar`** — |-
+- **`IMEComposition`** — |-
+- **`KeyDown`** — |-
+- **`KeyUp`** — |-
+- **`KillFocus`** — |-
+- **`LBDblClick`** — |-
+- **`LBDrag`** — |-
+- **`LBDragging`** — |-
+- **`LBDrop`** — |-
+- **`LBListSelChanged`** — |-
+- **`LBSelChanged`** — |-
+- **`Load`** — |-
+- **`MenuSelected`** — |-
+- **`MouseButtonClick`** — |-
+- **`MouseButtonDblClick`** — |-
+- **`MouseButtonDown`** — |-
+- **`MouseButtonUp`** — |-
+- **`MouseEnter`** — |-
+- **`MouseExit`** — |-
+- **`MouseHolding`** — |-
+- **`MouseMoving`** — |-
+- **`MouseZChanged`** — |-
+- **`ObjectMoved`** — |-
+- **`SetFocus`** — |-
+- **`SliderPosChanged`** — |-
+- **`Timer`** — |-
+- **`ToolBoxSelChanged`** — |-
+- **`TreeCollapsed`** — |-
+- **`TreeDblClick`** — |-
+- **`TreeExpanded`** — |-
+- **`TreeFilterUpdated`** — |-
+- **`TreeLButtonDown`** — |-
+- **`TreeMouseExit`** — |-
+- **`TreeMouseHold`** — |-
+- **`TreeMouseMove`** — |-
+- **`TreeSelChanged`** — |-
+- **`Unload`** — |-
+- **`VideoStopped`** — |-
+
