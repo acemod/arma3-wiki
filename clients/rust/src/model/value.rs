@@ -143,6 +143,7 @@ impl Value {
             | "[[Array]] in format [[Color|Color (RGBA)]]"
             | "[[Array]] format [[Color|Color (RGBA)]] - text color" => Some(Self::ArrayColor),
             "[[Array]] with [[Anything]]"
+            | "[[Array]] of [[Anything]]"
             | "[[Array]] of [[Team Member]]s"
             | "[[Array]] of [[Location]]s"
             | "[[Array]] of [[Boolean]]s"
