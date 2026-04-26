@@ -1,7 +1,8 @@
 name: ctrlText
 description: |-
-  Returns the text of a control of the currently active user dialog. This command can be used on static texts, buttons, edit lines and active texts as well as for images, where it returns the image path. Does not work on HTML control and returns empty string "". Since Arma 3 v2.05.147765 supported control types are:
-  * [[CT_STATIC]]
+  Returns the text of a control of the currently active user dialog. This command can be used on static texts, buttons, edit lines and active texts as well as for images, where it returns the image path. Does not work on HTML control and returns empty string "". Since {{GVI|arma3|2.05|size= 0.75}} supported control types are:
+  {{Columns|4|* [[CT_STATIC]]
+
   * [[CT_EDIT]]
   * [[CT_XKEYDESC]]
   * [[CT_XBUTTON]]
@@ -9,13 +10,16 @@ description: |-
   * [[CT_STRUCTURED_TEXT]]
   * [[CT_BUTTON]]
   * [[CT_ACTIVETEXT]]
+  }}
+
+  Since {{GVI|arma3|2.20|size= 0.75}} [[CT_PROGRESS]] is also supported.
 groups:
 - GUI Control
 syntax:
 - call: !Unary idc
   ret:
   - String
-  - the text or image path is returned, dependent on the control type
+  - the text or image path or texture is returned, dependent on the control type
   params:
   - name: idc
     description: control ID
@@ -23,9 +27,10 @@ syntax:
 - call: !Unary controlName
   ret:
   - String
-  - the text or image path is returned, dependent on the control type
+  - the text or image path or texture is returned, dependent on the control type
   params:
   - name: controlName
+    description: control
     type: Control
 argument_loc: Unspecified
 effect_loc: Unspecified
