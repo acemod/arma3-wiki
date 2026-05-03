@@ -6,7 +6,10 @@ syntax:
 - call: !Unary control
   ret:
   - Unknown
-  - null
+  - |-
+    position in text selection started
+    * length: [[Number]] - number of the highlighted characters (this number could be negative, see description)
+    * selectedText: [[String]] - selected text
   params:
   - name: control
     type: Control

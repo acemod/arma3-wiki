@@ -6,14 +6,14 @@ groups:
 - Mods and Addons
 syntax:
 - call: !Unary
-  - pboPrefix
+  - prefix
   - fileExtension
   ret:
   - ArrayUnknown
   - null
   params:
-  - name: pboPrefix
-    description: addon prefix available from [[allAddonsInfo]]
+  - name: prefix
+    description: addon prefix available from [[allAddonsInfo]]. Since {{GVI|arma3|2.22}} it is possible to also return all files present in a scenario folder from within [[Eden Editor]] or Eden preview with the special prefix {{hl|$mission}}
     type: String
   - name: fileExtension
     description: file extension to filter results, for example {{hl|".paa"}}
@@ -27,3 +27,8 @@ since:
     minor: 0
 examples:
 - "<sqf>\naddonFiles [\"a3\\3den\\\", \".paa\"];\n/*\n\t[\n\t\t\"a3\\3den\\data\\attributes\\formation\\ech_left_ca.paa\",\n\t\t\"a3\\3den\\data\\attributes\\formation\\stag_column_ca.paa\",\n\t\t\"a3\\3den\\data\\attributes\\stance\\down_ca.paa\",\n\t\t\"a3\\3den\\data\\cfg3den\\layer\\icondisabled_ca.paa\",\n\t\t\"a3\\3den\\data\\controlsgroups\\diagmousecontrol\\mouse_ca.paa\",\n\t\t...\n\t]\n*/\n</sqf>"
+- |-
+  <sqf>
+  // Since Arma 3 2.22
+  addonFiles ["$mission", ".sqf"];
+  </sqf>

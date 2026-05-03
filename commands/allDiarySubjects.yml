@@ -6,7 +6,13 @@ syntax:
 - call: !Unary person
   ret:
   - Unknown
-  - null
+  - |-
+    internal subject reference
+    * displayName: [[String]] - visible name
+    * picture: [[String]] - subject icon
+    * countRecords: [[Number]] - number of records in this subject
+    * isReadOnly: [[Boolean]] - whether or not the records could be added
+    * isSelected: [[Boolean]] - [[true]] if subject is currently selected
   params:
   - name: person
     description: unit

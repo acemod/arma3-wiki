@@ -14,11 +14,9 @@ syntax:
   - name: idc
     type: Number
   - name: path
-    description: '[[Tree View Path]] of the item'
-    type: ArrayUnknown
+    type: Unknown
   - name: color
-    description: item text color
-    type: ArrayUnknown
+    type: ArrayColor
 - call: !Binary
   - control
   - - path
@@ -30,11 +28,9 @@ syntax:
   - name: control
     type: Control
   - name: path
-    description: '[[Tree View Path]] of the item'
-    type: ArrayUnknown
+    type: Unknown
   - name: color
-    description: item text color in format [r,g,b,a]
-    type: ArrayUnknown
+    type: ArrayColor
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

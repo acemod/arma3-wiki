@@ -10,13 +10,15 @@ syntax:
   - turretPath
   ret:
   - Unknown
-  - null
+  - |-
+    not locked
+    * [[Object]] - if locked to an object
+    * [[Position#PositionASL|PositionASL]] - if locked to a position
   params:
   - name: vehicle
     type: Object
   - name: turretPath
-    description: turret path. Use an empty array to select the gunner's turret by default
-    type: ArrayUnknown
+    type: Unknown
 argument_loc: Local
 effect_loc: Unspecified
 since:

@@ -27,6 +27,26 @@ syntax:
     arma_3:
       major: 2
       minor: 22
+- call: !Binary
+  - scriptHandle
+  - - code
+    - args
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: scriptHandle
+    type: ScriptHandle
+  - name: code
+    description: Code to execute once the [[Script_Handle#Promise_Handles|Promise]] has completed. The code will be executed in [[Scheduler#Unscheduled_Environment|Unscheduled Environment]].
+    type: Code
+  - name: args
+    description: Arguments passed into code in _thisArgs variable
+    type: Anything
+  since:
+    arma_3:
+      major: 2
+      minor: 22
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -1,5 +1,7 @@
 name: pixelGridNoUIScale
-description: 'Returns grid size based on screen resolution and configs: uiScaleFactor, uiScaleMaxGrids. As mentioned in the name of this command, the ''''''user interface scale is ignored''''''.'
+description: |-
+  Returns grid size based on screen resolution and configs: <syntaxhighlight lang="cpp" inline>uiScaleFactor</syntaxhighlight>, <syntaxhighlight lang="cpp" inline>uiScaleMaxGrids</syntaxhighlight>.
+  As mentioned in the name of this command, '''the user interface scale is ignored'''.
 groups:
 - GUI Control - Positioning
 syntax:
@@ -15,4 +17,4 @@ since:
     major: 1
     minor: 62
 examples:
-- <sqf>_gridHeightNoUIScale = pixelH * pixelGridNoUIScale;</sqf>
+- <sqf>private _gridHeightNoUIScale = pixelH * pixelGridNoUIScale;</sqf>

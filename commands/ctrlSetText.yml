@@ -17,6 +17,8 @@ description: |-
   * [[CT_BUTTON]]
   * [[CT_ACTIVETEXT]]
   }}
+
+  Since {{GVI|arma3|2.22|size= 0.75}} [[CT_PROGRESS]] is also supported.
 groups:
 - GUI Control
 syntax:
@@ -31,7 +33,7 @@ syntax:
     description: control IDC
     type: Number
   - name: text
-    description: text or image path, depending on the control type
+    description: text or image path or texture, depending on the control type
     type: String
 - call: !Binary
   - control
@@ -41,8 +43,10 @@ syntax:
   - null
   params:
   - name: control
+    description: control
     type: Control
   - name: text
+    description: text or image path or texture, depending on the control type
     type: String
 argument_loc: Local
 effect_loc: Local
@@ -71,3 +75,4 @@ since:
 examples:
 - <sqf>ctrlSetText [100, "Hello world"]; // for Dialogs</sqf>
 - <sqf>_control ctrlSetText "Hello world."; // for Displays</sqf>
+- "Since Arma 3 2.22:\n<sqf>with uiNamespace do \n{ \n bar = findDisplay 46 ctrlCreate [\"RscProgress\", -1]; \n bar ctrlSetText \"\\A3\\Data_F\\Flags\\Flag_red_CO.paa\";\n bar ctrlSetPosition [0,0,1,0.25]; \n bar ctrlCommit 0; \n bar progressSetPosition 0.7;\n};\n</sqf>"

@@ -1,5 +1,5 @@
 name: setOxygenRemaining
-description: Sets oxygen remaining. It has no effect when soldier is not diving. Oxygen remaining is a number between 0 and 1.
+description: Sets oxygen remaining. It has no effect when soldier is not diving.
 groups:
 - Object Manipulation
 syntax:
@@ -21,4 +21,4 @@ since:
     major: 0
     minor: 50
 examples:
-- <sqf>player setOxygenRemaining 0; // drowns player</sqf>
+- "<sqf>\nif (!isAbleToBreathe player) then\n{\n\tplayer setOxygenRemaining 0; // drowns player\n};\n</sqf>"

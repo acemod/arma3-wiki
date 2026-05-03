@@ -1,5 +1,13 @@
 name: showMap
-description: Enable Map (default [[true]])
+description: |-
+  Enable Map (default [[true]]).
+  {{Feature|informative|
+  In {{arma2}} and later this command no longer works, the map now being an inventory item ("ItemMap" class name).
+  <sqf>
+  unitName removeWeapon "ItemMap";
+  unitName addWeapon "ItemMap";
+  </sqf>
+  }}
 groups:
 - Map
 syntax:

@@ -1,7 +1,10 @@
 name: switchGesture
 description: |-
   When used on a person,the given move is started immediately (without transition).
-  {{Feature|arma3|Since {{GVI|arma3|2.18}} it is possible to play [[gestureState|gesture states]] (define in config under {{hl|CfgGesturesMale >> states}} for male soldiers). In addition, it is also possible to play [[animationState|move states]] (define in config under {{hl|CfgMovesMaleSdr >> states}} for male soldiers) as gestures if they have a valid mask defined in their configs (for example, weapon switching animations have a "WeaponSwitching" mask that only affects the upper body, so they work correctly with this command) }}
+  {{Feature|arma3|
+  Since {{GVI|arma3|2.18|size= 0.75}} it is possible to play [[gestureState|gesture states]] (define in config under <sqf inline>"CfgGesturesMale" >> "states"</sqf> for male soldiers).
+  In addition, it is also possible to play [[animationState|move states]] (define in config under <sqf inline>"CfgMovesMaleSdr" >> "states"</sqf> for male soldiers) as gestures if they have a valid mask defined in their configs (for example, weapon switching animations have a "WeaponSwitching" mask that only affects the upper body, so they work correctly with this command).
+  }}
 groups:
 - Animations
 syntax:
@@ -29,21 +32,23 @@ syntax:
   - name: soldier
     type: Object
   - name: moveName
-    description: Entry from {{hl|"CfgMovesMaleSdr" >> "states"}} or {{hl|"CfgGesturesMale" >> "states"}}
+    description: entry from <sqf inline>"CfgMovesMaleSdr" >> "states"</sqf> or <sqf inline>"CfgGesturesMale" >> "states"</sqf>
     type: String
   - name: time
-    description: '(Optional, default: 0) normalized time, in range 0-1, where 0 = beginning of the animation, and 1 = end of the animation'
+    description: normalised time, in range 0..1, where 0 = beginning of the animation, and 1 = end of the animation
     type: Number
     optional: true
+    default: '0'
   - name: blendFactor
     description: how much to blend the current animation with the new animation, in range 0..1, where 0 = current animation, and 1 = new animation. When 1 is used, the switching is instant (not smooth).
     type: Number
     optional: true
     default: '1'
   - name: resetAim
-    description: '(Optional, default: true) Whether the aim/head direction should be reset after switching'
+    description: whether the aim/head direction should be reset after switching
     type: Boolean
     optional: true
+    default: 'true'
   since:
     arma_3:
       major: 2
@@ -65,4 +70,4 @@ since:
     minor: 50
 examples:
 - <sqf>soldierOne switchGesture "Wave";</sqf>
-- "<sqf>// Create a dummy agent that copies your moves\nai1 = createAgent [typeOf player, getPosATL player, [], 0, \"NONE\"];\nai1 disableAI \"ALL\";\nonEachFrame\n{\n\tai1 setAnimSpeedCoef getAnimSpeedCoef player;\n\tai1 setVectorDir vectorDir player;\n\t_m = animationState player;\n\t_g = gestureState player;\n\t_i = getUnitMovesInfo player;\n\t_a = getUnitMovesInfo ai1;\n\n\tif (animationState ai1 != _m || abs(_i#1 - _a#1) > 0.1) then {\n\t\tai1 switchMove [_m, _i#0, _i#3, false];\n\t};\n\tif ((gestureState ai1 != _g || abs(_i#6 - _a#6) > 0.1) && (_g != \"<none>\" && _g find \"_player\" < 0)) then {\n\t\tai1 switchGesture [_g, _i#5, _i#8, false];\n\t};\n}\n</sqf>"
+- "<sqf>\n// Create a dummy agent that copies your moves\nai1 = createAgent [typeOf player, getPosATL player, [], 0, \"NONE\"];\nai1 disableAI \"ALL\";\n\nonEachFrame\n{\n\tai1 setAnimSpeedCoef getAnimSpeedCoef player;\n\tai1 setVectorDir vectorDir player;\n\tprivate _m = animationState player;\n\tprivate _g = gestureState player;\n\tprivate _i = getUnitMovesInfo player;\n\tprivate _a = getUnitMovesInfo ai1;\n\n\tif (animationState ai1 != _m || abs(_i # 1 - _a # 1) > 0.1) then\n\t{\n\t\tai1 switchMove [_m, _i # 0, _i # 3, false];\n\t};\n\n\tif ((gestureState ai1 != _g || abs(_i # 6 - _a # 6) > 0.1) && (_g != \"<none>\" && _g find \"_player\" < 0)) then\n\t{\n\t\tai1 switchGesture [_g, _i # 5, _i # 8, false];\n\t};\n}\n</sqf>"

@@ -6,7 +6,10 @@ syntax:
 - call: !Unary munition
   ret:
   - Unknown
-  - null
+  - |-
+    one of "INIT", "THRUST", "FLY" or ""
+    * lockState: [[String]] - one of "MANUAL", "LOCKED", "LOST", "INITIAL", "SEEKING" or ""
+    * flightState: [[String]] - one of "DEFAULT", "DIRECT", "TOPDOWN", "LOALDISTANCE", "LOALALTITUDE", "OVERFLY", "CRUISE" or "" (LOAL stands for "Lock-On After Launch")
   params:
   - name: munition
     description: missile

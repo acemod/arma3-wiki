@@ -1,15 +1,15 @@
 name: typeOf
-description: Returns the class name of a given object.
+description: Returns the class name of given target.
 groups:
 - Object Manipulation
 syntax:
-- call: !Unary obj
+- call: !Unary target
   ret:
   - String
-  - config class name, or empty string if ''obj'' does not have a class
+  - config class name, or empty string if ''target'' does not have a class
   params:
-  - name: obj
-    type: Object
+  - name: target
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -36,3 +36,8 @@ since:
     minor: 50
 examples:
 - <sqf>if (typeOf vehicle player == "B_Heli_Light_01_armed_F") then { hint "Player is in a AH-9 Pawnee"; };</sqf>
+- |-
+  <sqf>
+  // Since 2.22
+  typeOf (findDisplay 313); // "Display3DEN"
+  </sqf>

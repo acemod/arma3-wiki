@@ -1,5 +1,7 @@
 name: getUnitMovesInfo
-description: Returns various information about the unit moves (primary animation) and gestures (masked animation)
+description: |-
+  Returns various information about the unit moves (primary animation) and gestures (masked animation)
+  {{Feature|informative| Up until {{GVI|arma3|2.20}} this command only worked for a man unit, and other units such as animals couldn't use this command. As of {{GVI|arma3|2.22}} animals are supported as well. }}
 groups:
 - Animations
 syntax:
@@ -29,10 +31,5 @@ since:
     major: 2
     minor: 18
 examples:
-- |-
-  <sqf>
-  // Getting the move velocity of the animation
-  private _animInfo = getUnitMovesInfo player;
-  // velocity = displacement / time
-  private _animVelocity = _animInfo # 4 vectorMultiply -1 / _animInfo # 2; // -1 is because man model is reversed, so the rtm animation moves "backwards"
-  </sqf>
+- "<sqf>\n// Getting the move velocity of the animation\nprivate _animInfo = getUnitMovesInfo player;\n// velocity = displacement / time\nprivate _animVelocity = _animInfo # 4 vectorMultiply -1 / _animInfo # 2;\t// -1 is because man model is reversed\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// so the rtm animation moves \"backwards\"\n</sqf>"
+- "<sqf>\ngetUnitMovesInfo player params [\n\t\"_moveProgress\",\n\t\"_moveTime\",\n\t\"_moveDuration\",\n\t\"_moveFactor\",\n\t\"_rtmStep\",\n\t\"_gestureProgress\",\n\t\"_gestureTime\",\n\t\"_gestureDuration\",\n\t\"_gestureFactor\"\n];\n</sqf>"

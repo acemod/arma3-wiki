@@ -70,7 +70,7 @@ syntax:
     type: Unknown
   - name: idc
     description: |-
-      IDC of the new control. Use -1 if not needed
+      IDC of the new control. Use -1 if not needed. Using 0 will use the IDC that is provided by the class.
       {{Feature|warning|Be careful when setting the IDC to {{hl|-1}} if the GUI also contains a [[CT_LISTNBOX]] since {{hl|idcLeft}} and {{hl|idcRight}} by default have <syntaxhighlight lang="cpp" inline>idc = -1;</syntaxhighlight>.}}
     type: Number
   - name: controlsGroup

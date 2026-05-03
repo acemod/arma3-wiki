@@ -1,20 +1,39 @@
 name: UAVControl
-description: |-
-  Returns array with current operator of UAV and his vehicle role in UAV.
-  If nobody is controlling the UAV, the command tries to find any person with connected terminal to this UAV.
-  If nobody is connected, [[objNull]] is used as returned operator (see {{Link|#Example 2}}).
-  {{Feature|informative|This command works only for vehicles, to get a unit remote-controlling a unit, see [[remoteControlled]] and {{Link|remoteControl#Example 4}}.}}
+description: "Returns array with current operator of UAV and his vehicle role in UAV.\nIf nobody is controlling the UAV, the command tries to find if [[player]] has terminal connected to this UAV.\nIf nobody is connected, [[objNull]] is used as returned operator (see {{Link|#Example 2}}). \nThe possible outputs are:\n\n* [objNull, \"\"] - nobody is controlling UAV but there maybe an abandoned terminal connected to the UAV, which will auto-disconnect when a new connection to the UAV is made\n* [somePlayer1, \"DRIVER\"] - some player (could be remote) is a pilot, the gunner seat is empty\n* [somePlayer2, \"GUNNER\"] - some player (could be remote) is a gunner, the pilot seat is empty\n* [somePlayer1, \"DRIVER\", somePlayer2, \"GUNNER\"] - some players (could be remote) control both the pilot and the gunner seats\n* [player, \"\"] - [[local]] [[player]] has terminal connected to this UAV\n\nThe UAV terminals are [[local]] to the [[player]]s so only [[local]] terminal connections are returned.\n\n{{Feature|informative|This command works only for vehicles, to get a unit remote-controlling a unit, see [[remoteControlled]] and {{Link|remoteControl#Example 4}}.\n<br>While main syntax can only return remote players when they are controlling either pilot or gunner, the alternative syntax can also return all remote players connected with terminals to given UAV.}}"
 groups:
 - Remote Control
 syntax:
 - call: !Unary uav
   ret:
   - Unknown
-  - null
+  - |-
+    UAV operator
+    ** vehicleRole: [[String]] - vehicle role of the operator in UAV. Can be "DRIVER", "GUNNER" or "" (not in control)
+    * {{GVI|arma3|1.96|size= 0.75}} [[Array]] with [unit, vehicleRole, unit2, vehicleRole2] (see {{Link|#Example 2}})
+    ** unit: [[Object]] - UAV operator
+    ** vehicleRole: [[String]] - vehicle role of the operator in UAV. Can be "DRIVER", "GUNNER" or "" (not in control)
+    ** unit2: [[Object]] - see {{Link|#Example 2}}
+    ** vehicleRole2: Can be "DRIVER", "GUNNER", or "". (see {{Link|#Example 2}})
   params:
   - name: uav
     type: Object
-argument_loc: Unspecified
+- call: !Unary
+  - uav
+  - option
+  ret:
+  - ArrayUnknown
+  - '[player1], [player1, player2] or [player1, player2,...playerN]'
+  params:
+  - name: uav
+    description: uav vehicle
+    type: Object
+  - name: option
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 22
+argument_loc: Global
 effect_loc: Unspecified
 since:
   arma_3:
@@ -22,12 +41,4 @@ since:
     minor: 0
 examples:
 - <sqf>private _result = UAVControl _myUAV;</sqf>
-- |-
-  Since {{GVI|arma3|1.96|size= 0.75}} this command returns both driver and gunner units if the UAV is controlled by 2 players. Here is the list of all expected outputs:
-  <sqf>
-  [player1, "DRIVER"]; // player1 is controlling the UAV and is the pilot
-  [player2, "GUNNER"]; // player2 is controlling the UAV and is the gunner
-  [player1, "DRIVER", player2, "GUNNER"]; // player1 is controlling the UAV as the pilot, player2 is controlling the UAV as the gunner
-  [player3, ""]; // no one is controlling the UAV, player3 is connected to the UAV via terminal, but not controlling it yet
-  [objNull, ""]; // nobody is controlling or connected to the UAV
-  </sqf>
+- "Since {{GVI|arma3|1.96|size= 0.75}} this command returns both driver and gunner units if the UAV is controlled by 2 players. Here is the list of all expected outputs:\n<sqf>\n[player1, \"DRIVER\"]; // player1 is controlling the UAV and is the pilot\n[player2, \"GUNNER\"]; // player2 is controlling the UAV and is the gunner\n[player1, \"DRIVER\", player2, \"GUNNER\"]; // player1 is controlling the UAV as the pilot, player2 is controlling the UAV as the gunner\n[player3, \"\"]; // no one is controlling the UAV, player3 is connected to the UAV via terminal, but not controlling it yet\n[objNull, \"\"]; // nobody is controlling but there maybe an abandoned terminal connected to the UAV, \n               // which will auto-disconnect when a new connection to the UAV is made\n</sqf>"

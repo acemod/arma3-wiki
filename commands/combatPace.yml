@@ -1,0 +1,38 @@
+name: combatPace
+description: Sets or gets the combat pace for the local player. If the right-hand array is empty, the command will simply return the current combat pace mode without making any changes to combat pace.
+groups:
+- Object Manipulation
+syntax:
+- call: !Binary
+  - soldier
+  - - enable
+    - duration
+  ret:
+  - String
+  - 'previous combat pace. Possible values: "None", "Timer", "Toggle"'
+  params:
+  - name: soldier
+    description: The local player unit.
+    type: Object
+  - name: enable
+    description: (Optional, no default) Whether to enable or disable combat pace. This param is optional, i.e. the right-hand array can be completely empty (see [[#Example 1]]).
+    type: Boolean
+    optional: true
+  - name: duration
+    description: Duration of combat pace in seconds (maximum 5 seconds). If duration < 0, combat pace will be toggled. If duration >= 0, short combat pace will be used. duration == 0 means use the default short combat pace duration in config, similar to when the player presses the fire button and weapon is raised. Note that the combat pace modes are mutually exclusive (enabling one disables the other)
+    type: Unknown
+    optional: true
+    default: '-1'
+argument_loc: Local
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 22
+examples:
+- <sqf>private _isCombatPaceToggled = player combatPace [] == "Toggle"; // current combat pace is toggled</sqf>
+- <sqf>private _isInCombatPace = player combatPace [] != "None"; // either using timer or toggled combat pace</sqf>
+- <sqf>player combatPace [false]; // disables combat pace (both short and toggle)</sqf>
+- <sqf>player combatPace [true]; // enables combat pace toggle and disables timer mode</sqf>
+- <sqf>player combatPace [true, 1]; // disables combat pace toggle, enables timer mode for 1 second</sqf>
+- <sqf>player combatPace [player combatPace [] != "Toggle"]; // toggle combat pace (enable<->disable)</sqf>

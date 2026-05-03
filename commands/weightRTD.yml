@@ -5,8 +5,14 @@ groups:
 syntax:
 - call: !Unary helicopter
   ret:
-  - ArrayUnknown
-  - '[fuselage weight, crew weight, fuel weight, [[setCustomWeightRTD|custom weight]], weapons weight] (kilograms)'
+  - Unknown
+  - |-
+    weights in kilograms
+    * fuselage: [[Number]] - weight of the fuselage
+    * crew: [[Number]] - weight of the crew
+    * fuel: [[Number]] - weight of the fuel
+    * custom: [[Number]] - weight set with [[setCustomWeightRTD]]
+    * weapons: [[Number]] - weight of the weapons
   params:
   - name: helicopter
     type: Object

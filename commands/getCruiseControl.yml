@@ -7,7 +7,9 @@ syntax:
 - call: !Unary vehicle
   ret:
   - Unknown
-  - null
+  - |-
+    defined speed limit
+    * cruiseControlActive: [[Boolean]] - [[true]] if cruise control is enabled, [[false]] if only speed was limited
   params:
   - name: vehicle
     description: the vehicle

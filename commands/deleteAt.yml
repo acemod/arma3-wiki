@@ -10,13 +10,14 @@ syntax:
   - array
   - index
   ret:
-  - Anything
-  - returns the deleted element or [[Nothing]]
+  - Unknown
+  - returns the deleted element if one existed
   params:
   - name: array
     type: ArrayUnknown
   - name: index
-    type: Unknown
+    description: see the note in description
+    type: Number
 - call: !Binary
   - hashMap
   - key

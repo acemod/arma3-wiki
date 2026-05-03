@@ -1,9 +1,12 @@
 name: playMoveNow
 description: |-
-  When used on a person,a smooth transition to the given move will be initiated, but all previous playMove are discarded. <br>
+  When used on a person,a smooth transition to the given move will be initiated, but all previous playMove are discarded.<br>
   The difference between [[playMove]] and [[playMoveNow]] is that [[playMove]] adds another move to the move queue, while [[playMoveNow]] replaces the whole move queue with new move (see {{Link|#Example 2}}).
   {{Feature|informative|see [[:Category:Moves]] for respective games animations.}}
-  {{Feature|important|A transition is only possible if the current and provided animation nodes are connected to each other in config (via connectTo/From and interpolateTo/From). The connection can be indirect (using intermediate animations) }}
+  {{Feature|important|
+  A transition is only possible if the current and provided animation nodes are connected to each other in config (via connectTo/From and interpolateTo/From).
+  The connection can be indirect (using intermediate animations).
+  }}
 groups:
 - Animations
 syntax:
@@ -35,5 +38,5 @@ since:
     minor: 50
 examples:
 - <sqf>player playMoveNow "AmovPercMevaSlowWrflDf";</sqf>
-- "<sqf>\nplayer switchMove \"AmovPercMstpSrasWrflDnon\";\n0 spawn \n{\n\tsleep 0.5;\n\tplayer playMove \"AmovPpneMstpSrasWrflDnon\"; // player goes prone\n\tplayer playMove \"amovPknlMstpSrasWrflDnon\"; // player gets up on one knee\n};\n</sqf>"
-- "<sqf>\nplayer switchMove \"amovpercmstpsraswrfldnon\";\n0 spawn\n{\n\tsleep 0.5;\n\tplayer playMove \"AmovPpneMstpSrasWrflDnon\"; // player never goes prone\n\tplayer playMoveNow \"AmovPknlMstpSrasWrflDnon\"; // player goes down on one knee straight away\n};\n</sqf>"
+- "<sqf>\nplayer switchMove \"AmovPercMstpSrasWrflDnon\";\n0 spawn \n{\n\tsleep 0.5;\n\tplayer playMove \"AmovPpneMstpSrasWrflDnon\";\t\t// player goes prone\n\tplayer playMove \"amovPknlMstpSrasWrflDnon\";\t\t// player gets up on one knee\n};\n</sqf>"
+- "<sqf>\nplayer switchMove \"AmovPercMstpSrasWrflDnon\";\n0 spawn\n{\n\tsleep 0.5;\n\tplayer playMove \"AmovPpneMstpSrasWrflDnon\";\t\t// player never goes prone\n\tplayer playMoveNow \"AmovPknlMstpSrasWrflDnon\";\t// player goes down on one knee straight away\n};\n</sqf>"

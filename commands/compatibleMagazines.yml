@@ -1,15 +1,15 @@
 name: compatibleMagazines
-description: Returns all magazines that can be loaded in the given weapon.
+description: Returns all magazines that can be loaded in the given weapon or all magazines containing the provided ammo. No compatible magazines are returned for submunition or missiles.
 groups:
 - Weapons
 syntax:
-- call: !Unary weapon
+- call: !Unary weaponOrAmmo
   ret:
   - ArrayUnknown
-  - all magazines that can be loaded in '''any muzzle''' of the given weapon.
+  - all magazines that can be loaded in '''any muzzle''' of the given weapon or magazines containing given ammo.
   params:
-  - name: weapon
-    description: weapon class name
+  - name: weaponOrAmmo
+    description: weapon class name or {{GVI|arma3|2.22|size= 0.75}} ammo class name
     type: String
 - call: !Unary
   - weapon
@@ -22,7 +22,7 @@ syntax:
     description: weapon class name
     type: String
   - name: muzzle
-    description: muzzle name
+    description: muzzle name ("this" is supported for primary muzzle)
     type: String
 argument_loc: Unspecified
 effect_loc: Unspecified
@@ -34,3 +34,7 @@ examples:
 - <sqf>compatibleMagazines "arifle_Katiba_GL_F";</sqf>
 - <sqf>compatibleMagazines ["arifle_Katiba_GL_F", "this"];</sqf>
 - <sqf>compatibleMagazines ["arifle_Katiba_GL_F", "EGLM"];</sqf>
+- |-
+  <sqf>
+  compatibleMagazines "B_65x39_Caseless_green"; // ["30Rnd_65x39_caseless_green", "30Rnd_65x39_caseless_green_mag_Tracer"]
+  </sqf>

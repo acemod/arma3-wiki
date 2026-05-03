@@ -5,8 +5,10 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - ArrayUnknown
-  - null
+  - Unknown
+  - |-
+    class name of the container
+    * container: [[Object]] - container object
   params:
   - name: object
     description: vehicle or ammo box

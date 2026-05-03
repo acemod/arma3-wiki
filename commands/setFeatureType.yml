@@ -4,7 +4,11 @@ description: |-
   * 0 - Feature disabled
   * 1 - Object is always visible within object view distance
   * 2 - Object is always visible within terrain view distance
-  The limit is 500 map/static objects and 200 dynamic objects including config features and auto features (flying helicopters, airplanes). When limit is reached, function returns false.
+
+  {{Feature|important|
+  The limit is '''500''' map/static objects and '''200''' dynamic objects including config features and auto features (flying helicopters, airplanes).<br>
+  The command returns [[false]] if the related limit is reached.
+  }}
 groups:
 - Object Manipulation
 syntax:
@@ -13,7 +17,7 @@ syntax:
   - type
   ret:
   - Boolean
-  - null
+  - '[[true]] if the feature is set, [[false]] otherwise (limit reached)'
   params:
   - name: object
     type: Object

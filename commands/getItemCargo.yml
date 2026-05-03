@@ -6,7 +6,9 @@ syntax:
 - call: !Unary box
   ret:
   - Unknown
-  - null
+  - |-
+    Item class names
+    * counts: [[Array]] of [[Number]]s - Item counts
   params:
   - name: box
     type: Object
@@ -17,4 +19,4 @@ since:
     major: 0
     minor: 50
 examples:
-- <sqf>hint str getItemCargo cursorTarget;</sqf>
+- "<sqf>\ngetItemCargo cursorTarget;\n/*\n\treturns e.g\n\t[\n        [\"5ItemA\", \"10ItemB\"]\n        [5, 10]\n\t]\n*/\n</sqf>"

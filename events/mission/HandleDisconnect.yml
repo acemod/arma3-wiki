@@ -1,6 +1,9 @@
 id: HandleDisconnect
 description: |-
-  Triggered when player disconnects from the game. Similar to [[onPlayerDisconnected]] event but can be stacked and contains the unit occupied by player before disconnect. Must be added on the server and triggers only on the server.
+  Triggered right after a player disconnects from the game, more accurately when a player-controlled unit changes ownership due to the owning player being disconnected (disconnected player information is no available through e.g [[getUserInfo]] anymore).
+  Similar to the {{Link|#PlayerDisconnected}} event but contains the unit occupied by the player before their disconnection.
+  Must be added on the server and triggers only on the server.
+  {{Feature|important|A player disconnecting while not controlling a unit (not spawned, deleted unit, etc) does '''not''' trigger this event.}}
   '''Override''': if this EH code returns [[true]], the unit, previously occupied by player, gets transferred to the server, becomes AI and continues to live, even with [[Description.ext|description.ext]] param {{hl|disabledAI {{=}} 1;}}.
 params:
 - name: unit

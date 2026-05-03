@@ -1,0 +1,27 @@
+name: getAnimationsQueue
+description: Returns the primary and secondary animations queue of the entity. The primary queue contains the full motion path from current animation ([[animationState]]) to a target animation, while the secondary queue contains animations that are queued to be played after the target animation in primaryQueue is reached, e.g. due to using [[playMove]] or [[playAction]].
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary entity
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: entity
+    description: Man or animal object.
+    type: Object
+argument_loc: Global
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 22
+examples:
+- "<sqf>getAnimationsQueue player params [\"_primaryQueue\", \"_secondaryQueue\"];\nif (_secondaryQueue isNotEqualTo []) then { \n    private _targetAnim = _primaryQueue param [count _primaryQueue - 1, animationState player];\n    private _nextAnim = _secondaryQueue#0;\n    systemChat format [\"Will play '%1' after completing '%2'\", _nextAnim, _targetAnim]; \n};\n</sqf>"
+- |-
+  <sqf>player playMove _myMove; // push an animation state to the secondary queue
+  player playAction "WalkF"; // an action that gets mapped to an animation state and pushed to queue
+  getAnimationsQueue player params ["_primaryQueue", "_secondaryQueue"];
+  // _secondaryQueue will contain _myMove and the animation that the "WalkF" action maps to
+  </sqf>

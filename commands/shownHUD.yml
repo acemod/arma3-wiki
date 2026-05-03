@@ -6,7 +6,18 @@ syntax:
 - call: Nular
   ret:
   - Unknown
-  - null
+  - |-
+    show scripted HUD such as weapon crosshair, action menu and overlays created with [[cutRsc]] and [[titleRsc]]
+    * info: [[Boolean]] - (Optional, default [[true]]) show vehicle, soldier and weapon info
+    * radar: [[Boolean]] - (Optional, default [[true]]) show vehicle radar
+    * compass: [[Boolean]] - (Optional, default [[true]]) show vehicle compass
+    * direction: [[Boolean]] - (Optional, default [[true]]) show tank direction indicator. Not present in vanilla {{arma3}}
+    * menu: [[Boolean]] - (Optional, default [[true]]) show commanding menu (HC related menus)
+    * group: [[Boolean]] - (Optional, default [[true]]) show group info bar (Squad leader info bar)
+    * cursors: [[Boolean]] - (Optional, default [[true]]) show HUD weapon cursors (connected with scripted HUD)
+    * panels: [[Boolean]] - (Optional, default [[true]]) show [[Arma 3: Custom Info]]
+    * kills: [[Boolean]] - (Optional, default [[true]]) show "x killed by y" [[systemChat]] messages
+    * icon3d: [[Boolean]] - (Optional, default [[false]]) show icons drawn with [[drawIcon3D]] even when the HUD is hidden
   params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
@@ -16,3 +27,4 @@ since:
     minor: 52
 examples:
 - <sqf>_hudStatus = shownHUD;</sqf>
+- <sqf>shownHUD params ["_hud", "_info", "_radar", "_compass", "_direction", "_menu", "_group", "_cursors", "_panels", "_kills", "_icon3d"];</sqf>

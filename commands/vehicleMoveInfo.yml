@@ -7,7 +7,9 @@ syntax:
 - call: !Unary vehicle
   ret:
   - Unknown
-  - null
+  - |-
+    state of vehicle forward/backward movement (see description)
+    * turnInfo: [[String]] - state of vehicle left/right turning (see description)
   params:
   - name: vehicle
     type: Object

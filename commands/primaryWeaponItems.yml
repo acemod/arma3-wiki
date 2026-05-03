@@ -5,8 +5,12 @@ groups:
 syntax:
 - call: !Unary unit
   ret:
-  - ArrayUnknown
-  - '[silencer, laserpointer/flashlight, optics, bipod]'
+  - Unknown
+  - |-
+    class name of the muzzle attachment (silencer, flash hider)
+    * rail: [[String]] - class name of the rail attachement (laserpointer/flashlight)
+    * optic: [[String]]
+    * bipod: [[String]]
   params:
   - name: unit
     type: Object

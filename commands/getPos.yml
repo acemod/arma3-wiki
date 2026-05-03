@@ -14,15 +14,15 @@ groups:
 syntax:
 - call: !Unary object
   ret:
-  - Unknown
-  - null
+  - Position3dAGLS
+  - where Z is the height over the surface underneath
   params:
   - name: object
     type: Object
 - call: !Unary location
   ret:
-  - Unknown
-  - null
+  - Position3dAGL
+  - see [[locationPosition]]
   params:
   - name: location
     type: Location
@@ -31,8 +31,8 @@ syntax:
   - - distance
     - heading
   ret:
-  - Unknown
-  - null
+  - Position3dAGLS
+  - the Z value is '''terrain level [[Position#PositionAGL|Above Ground Level]]''', either 0 over land or [[getTerrainHeightASL]] (negative value) over water
   params:
   - name: origin
     type: Unknown

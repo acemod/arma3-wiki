@@ -1,5 +1,7 @@
 name: getOrDefaultCall
-description: Retrieves a value from the [[HashMap]] for the given 'key', executes given 'code' if key was not found and returns result. Additionally sets key to the code result value if 'set' is true.
+description: |-
+  Retrieves a value from the [[HashMap]] for the given 'key', executes given 'code' if key was not found and returns result.
+  Additionally sets key to the code result value if ''set'' is true.
 groups:
 - HashMap
 syntax:
@@ -18,12 +20,12 @@ syntax:
     description: case-sensitive key
     type: Unknown
   - name: code
-    description: '- [[Code]] to execute if the key does not exist'
+    description: code to execute if the key does not exist
     type: Code
     optional: true
     default: '[[nil]]'
   - name: set
-    description: if [[true]] and value does not exist in the provided hash map, the result of the ''code'' execution will be added to the hash map
+    description: if [[true]] and value does not exist in the provided hash map, the result of the ''code'' execution is added to the hash map
     type: Boolean
     optional: true
     default: '[[false]]'
