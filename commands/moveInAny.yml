@@ -18,9 +18,31 @@ syntax:
   - '[[true]] on success, [[false]] on failure'
   params:
   - name: unit
+    description: person
     type: Object
   - name: vehicle
+    description: transport
     type: Object
+- call: !Binary
+  - unit
+  - - vehicle
+    - positions
+  ret:
+  - Boolean
+  - '[[true]] on success, [[false]] on failure'
+  params:
+  - name: unit
+    description: person
+    type: Object
+  - name: vehicle
+    description: transport
+    type: Object
+  - name: positions
+    type: Unknown
+  since:
+    arma_3:
+      major: 2
+      minor: 22
 argument_loc: Global
 effect_loc: Global
 since:
@@ -29,3 +51,4 @@ since:
     minor: 18
 examples:
 - <sqf>player moveInAny tank;</sqf>
+- <sqf>player moveInAny [tank, ["CARGO", "TURRET"]]; // checks free cargo position, if not available, checks free turret next</sqf>
