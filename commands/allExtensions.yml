@@ -5,9 +5,9 @@ groups:
 syntax:
 - call: Nular
   ret:
-  - ArrayUnknown
+  - Unknown
   - |-
-    List of [[HashMap]] for each extension; each one containing the following keys
+    one for each extension, containing the following keys
     * name: [[String]]
     * hash: [[String]] - sha1
     * hasRVExtensionVersion: [[Boolean]]
@@ -16,8 +16,8 @@ syntax:
     * hasRVExtensionContext: [[Boolean]]
     * hasRVExtensionRegisterCallback: [[Boolean]]
     * hasRVExtension: [[Boolean]]
-    * hasRVExtensionFeatureFlags: [[Array]]
-    * signatures: [[Array]]
+    * hasRVExtensionFeatureFlags: [[Array]] of [[String]]s
+    * signatures: [[Array]] of [[String]]s
     * productVersion: [[String]]
     * dllVersion: [[Boolean]]
     * fileVersion: [[Boolean]]
