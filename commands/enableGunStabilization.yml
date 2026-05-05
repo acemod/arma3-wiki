@@ -1,0 +1,28 @@
+name: enableGunStabilization
+description: Enables/disables turret gun stabilisation.
+groups:
+- Camera Control
+- Turrets
+syntax:
+- call: !Binary
+  - vehicle
+  - - mode
+    - turretPath
+  ret:
+  - Number
+  - the previous mode, also returns -1 on error
+  params:
+  - name: vehicle
+    type: Object
+  - name: mode
+    type: Unknown
+  - name: turretPath
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 22
+examples:
+- <sqf>vehicle player enableGunStabilization [3, [0]];</sqf>
