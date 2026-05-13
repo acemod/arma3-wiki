@@ -1,0 +1,30 @@
+name: hideActions
+description: |-
+  Hides unwanted actions given by their enum number (see [[shownAction]]). There are 4 ways this command can hide actions:
+  * HideNone - when actions argument array is empty, all previously hidden actions are unhidden.
+  * HideAll - when actions argument array is [0], all actions are hidden. This doesn't stop actions that have key bindings from execution.
+  * HideSelected - when actions argument array conssists of positive numbers [1,2,3,...] only the corresponding actions are hidden.
+  * HideAllButSelected - when actions argument array consists of negative numbers [-1,-2,-3,...] all but the corresponding actions are hidden.
+  Mix and match of the above will result in "Malformed command params!" script error.
+groups:
+- Interaction
+syntax:
+- call: !Unary actions
+  ret:
+  - Boolean
+  - '[[true]] on success, [[false]] on failure. Failure may also have script error displayed (see description)'
+  params:
+  - name: actions
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 22
+examples:
+- <sqf>hideActions [1,2]; //hide GetInCommander and GetInDriver actions</sqf>
+- <sqf>hideActions [91]; //hide all user added actions</sqf>
+- <sqf>hideActions [-91]; //hide all engine actions leaving only user added</sqf>
+- <sqf>hideActions [0]; //hide all actions</sqf>
+- <sqf>hideActions []; //unhide all hidden actions</sqf>
