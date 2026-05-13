@@ -1,5 +1,8 @@
 name: markerShape
-description: Returns the shape of given marker.
+description: |-
+  Returns the shape of given marker. markerShape#Example_2
+
+  {{Feature|informative|This command can be used as a fast way to check if a marker exists. See {{Link|#Example 2}}.}}
 groups:
 - Markers
 syntax:
@@ -41,3 +44,4 @@ since:
     minor: 50
 examples:
 - <sqf>if (markerShape "Marker1" == "RECTANGLE") then { hint "Marker1 is a rectangle!" };</sqf>
+- <sqf>if (markerShape "Marker1" == "") then { hint "Marker1 does not exist!" };</sqf>
