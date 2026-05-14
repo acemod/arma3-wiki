@@ -1,0 +1,15 @@
+id: ActionTargetChanged
+description: Executes when action target object changes under cursor. This event handler fires before user actions are processed and added to the player.
+params:
+- name: newActionTarget
+  type: Object
+- name: oldActionTarget
+  type: Object
+since:
+  arma_3:
+    major: 2
+    minor: 22
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"ActionTargetChanged\", {\n\tparams [\"_newActionTarget\", \"_oldActionTarget\"];\n}];"
