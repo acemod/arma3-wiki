@@ -5,11 +5,14 @@ description: |-
 groups:
 - Interaction
 syntax:
-- call: Nular
+- call: !Unary filter
   ret:
   - ArrayUnknown
-  - Array of [[Number]]s or []. See [[shownAction]] for numbers meaning.
-  params: []
+  - Array of [[Number]]s - actions that are hidden or [] if none is hidden. See [[shownAction]] for numbers meaning
+  params:
+  - name: filter
+    description: Array of [[Number]]s - actions to check if hidden or [] to check all. See [[shownAction]] for numbers meaning
+    type: ArrayUnknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -17,4 +20,7 @@ since:
     major: 2
     minor: 22
 examples:
-- <sqf>if (count hiddenActions == 0) then { hint "No actions have been harmed during script execution" };</sqf>
+- <sqf>if (hiddenActions [] isEqualTo []) then { hint "No actions have been harmed during script execution" };</sqf>
+- <sqf>if (hiddenActions [91] isEqualTo [91]) then { hint "User actions have been hidden" };</sqf>
+- <sqf>hiddenActions []; // [2] - GetInDriver is hidden</sqf>
+- <sqf>hiddenActions [1, 2, 4]; // [1,4] - from GetInCommander/Driver/Gunner only Commander and Gunner are hidden</sqf>
