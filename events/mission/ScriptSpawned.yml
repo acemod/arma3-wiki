@@ -1,0 +1,20 @@
+id: ScriptSpawned
+description: |-
+  Executes when any script is spawned.
+  ** fileName: [[String]] - file name of the spawned script, empty when not available
+  ** content: [[String]] - content of the spawned script
+  ** hash: [[String]] - hash value of the [[Script Handle]]
+  ** parentFileName [[String]] - file name of the parent script, empty when not available
+  ** parentLine: [[Number]] - line number of the parent script
+  ** parentScript: [[String]] - content of the parent script
+params:
+- name: _data
+  type: Unknown
+since:
+  arma_3:
+    major: 2
+    minor: 22
+argument_loc: Unspecified
+effect_loc: Unspecified
+examples:
+- "addMissionEventHandler [\"ScriptSpawned\", {\n\tparams [\"_data\"];\n}];"
