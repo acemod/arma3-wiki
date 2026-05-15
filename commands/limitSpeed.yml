@@ -17,7 +17,7 @@ syntax:
     type: Object
   - name: speed
     description: in km/h; By default, it's {{hl|2 * maxSpeed}} of the vehicle/unit (which is defined in config). See Example 1.
-    type: Number
+    type: Unknown
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -45,3 +45,4 @@ examples:
   myVehicle limitSpeed 5;
   </sqf>
 - "<sqf>\n// it was necessary to use limitSpeed repeatedly before Arma 3 1.24\n_this setVariable [\"speedLimit\", 50];\n_this spawn {\n\twhile { sleep 0.1; canMove _this } do\n\t{\n\t\t_this limitSpeed (_this getVariable \"speedLimit\");\n\t};\n};\nsleep 10;\n_this setVariable [\"speedLimit\", 100]; // update the speed limit\n</sqf>"
+- 'Since Arma 3 2.22: <sqf>_heli limitSpeed false; // reset to default</sqf>'
