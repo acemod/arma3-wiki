@@ -244,7 +244,7 @@
     description: eventCode     - Code to run when event is raised. <CODE>
     type: Code
   - name: '3'
-    description: 'ignoreVirtual - Ignore virtual units (spectators, virtual zeus, UAV RC) [optional] (default: true) <BOOLEAN>'
+    description: 'ignoreVirtual - Ignore virtual units (spectators, virtual zeus, UAV RC) (optional) (default: true) <BOOLEAN>'
     type: Boolean
     optional: true
   example: |-
@@ -396,11 +396,11 @@
                 params ["_unit", "_container", "_item", "_slot", "_params"];
                 systemChat str [name _unit, typeOf _container, _item, _slot, _params];
                 true
-            }, false, [0,1,2]] call CBA_fnc_addItemContextMenuOption;
+            }, false, [0,1,2], "DebugAction", false] call CBA_fnc_addItemContextMenuOption;
         (end)
 
     Author:
-        commy2, Zorn
+        commy2, Zorn, 10Dozen
     ----------------------------------------------------------------------------
 - name: cba_fnc_addkeybind
   ret: !OneOf
@@ -500,19 +500,21 @@
     description: code      - Code to execute upon event. <CODE>
     type: Code
   - name: '3'
-    description: 'type      - "keydown" or "keyup". [optional] (default: "keydown") <STRING>'
+    description: 'type      - "keydown" or "keyup". (optional) (default: "keydown") <STRING>'
     type: String
     optional: true
   - name: '4'
-    description: hashKey   - Key handler identifier. Randomly generated if not supplied. [optional] <STRING>
+    description: hashKey   - Key handler identifier. Randomly generated if not supplied. (optional) <STRING>
     type: String
+    optional: true
   - name: '5'
-    description: 'allowHold - Will the key fire every frame while hold down? [optional] (default: true) <BOOLEAN>'
+    description: 'allowHold - Will the key fire every frame while hold down? (optional) (default: true) <BOOLEAN>'
     type: Boolean
     optional: true
   - name: '6'
-    description: holdDelay - How long after keydown will the key event fire, in seconds. [optional] <NUMBER>
+    description: holdDelay - How long after keydown will the key event fire, in seconds. (optional) <NUMBER>
     type: Number
+    optional: true
   example: |-
     (begin example)
             _id = [47, [true, false, false], {_this call myAction}] call CBA_fnc_addKeyHandler;
@@ -534,7 +536,7 @@
     description: code      - Code to execute upon event. <CODE>
     type: Code
   - name: '3'
-    description: 'type      - "keydown" or "keyup". [optional] (default: "keydown") <STRING>'
+    description: 'type      - "keydown" or "keyup". (optional) (default: "keydown") <STRING>'
     type: String
     optional: true
   example: |-
@@ -641,8 +643,27 @@
         commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_addperframehandler
-  params: []
-  example: ''
+  ret: Number
+  params:
+  - name: '0'
+    description: function - The function you wish to execute. <CODE>
+    type: Code
+  - name: '1'
+    description: 'delay    - The amount of time in seconds between executions, 0 for every frame. (optional, default: 0) <NUMBER>'
+    type: Number
+    optional: true
+  - name: '2'
+    description: args     - Parameters passed to the function executing. This will be the same array every execution. (optional) <ANY>
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            _handle = [{player sideChat format ["every frame! _this: %1", _this];}, 0, ["some","params",1,2,3]] call CBA_fnc_addPerFrameHandler;
+        (end)
+
+    Author:
+        Nou & Jaynus, donated from ACRE project code for use by the community; commy2
+    ----------------------------------------------------------------------------
 - name: cba_fnc_addplayeraction
   params:
   - name: '0'
@@ -831,6 +852,30 @@
     Author:
         commy2
     ----------------------------------------------------------------------------
+- name: cba_fnc_attachtobone
+  params:
+  - name: '0'
+    description: child             - Child object to be attached to parent <OBJECT>
+    type: Object
+  - name: '1'
+    description: parent            - Parent object to which child will be attached <OBJECT>
+    type: Object
+  - name: '2'
+    description: bone              - Bone name <STRING>
+    type: String
+  - name: '3'
+    description: 'matchOrientation  - Orientation <BOOLEAN> (Default: true) True: match bone orientation, False: maintain relative orientation'
+    type: Boolean
+    optional: true
+  - name: '4'
+    description: 'lod               - LOD in which to check for bone <NUMBER><STRING> (Default: 1e15 for Memory LOD)'
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
+    optional: true
+  example: ''
 - name: cba_fnc_binocularmagazine
   ret: String
   params:
@@ -1216,7 +1261,7 @@
     type: ArrayUnknown
     optional: true
   - name: '3'
-    description: 'type     - "keydown" or "keyup". [optional] (default: "keydown") <STRING>'
+    description: 'type     - "keydown" or "keyup". (optional) (default: "keydown") <STRING>'
     type: String
     optional: true
   example: |-
@@ -1522,8 +1567,60 @@
         commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_createperframehandlerobject
-  params: []
-  example: ''
+  ret: Location
+  params:
+  - name: '0'
+    description: function      - The function you wish to execute. <CODE>
+    type: Code
+  - name: '1'
+    description: 'delay         - The amount of time in seconds between executions, 0 for every frame. (optional, default: 0) <NUMBER>'
+    type: Number
+    optional: true
+  - name: '2'
+    description: args          - Parameters passed to the function executing. (optional) <ANY>
+    type: Anything
+    optional: true
+  - name: '3'
+    description: start         - Function that is executed when the PFH is added. (optional) <CODE>
+    type: Code
+    optional: true
+  - name: '4'
+    description: end           - Function that is executed when the PFH is removed. (optional) <CODE>
+    type: Code
+    optional: true
+  - name: '5'
+    description: runCondition  - Condition that has to return true for the PFH to be executed. (optional, default {true}) <CODE>
+    type: Code
+    optional: true
+  - name: '6'
+    description: exitCondition - Condition that has to return true to delete the PFH object. (optional, default {false}) <CODE>
+    type: Code
+    optional: true
+  - name: '7'
+    description: private       - List of local variables that are serialized between executions. (optional) <STRING><ARRAY>
+    type: !OneOf
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
+    optional: true
+  example: |-
+    (begin example)
+            [
+                { systemChat format ["frame! params: %1", _this getVariable "params"]; },
+                0,
+                ["some_params", [1,2,3]],
+                { systemChat format ["start! params: %1", _this getVariable "params"]; _test = 127; },
+                { systemChat format ["end! params: %1",   _this getVariable "params"]; systemChat str [_test] },
+                { random 1 > 0.5 },
+                { random 1 > 0.8 },
+                "_test"
+            ] call CBA_fnc_createPerFrameHandlerObject;
+        (end)
+
+    Author:
+        Nou & Jaynus, donated from ACRE project code for use by the community; commy2
+    ----------------------------------------------------------------------------
 - name: cba_fnc_createtrigger
   params:
   - name: '0'
@@ -1801,17 +1898,21 @@
     type: String
     optional: true
   - name: '2'
-    description: title     - Title of the error <STRING>
+    description: title     - Title of the error (optional) <STRING>
     type: String
+    optional: true
   - name: '3'
-    description: message   - Error message (use "\n" for newline) <STRING>
+    description: message   - Error message (use "\n" for newline) (optional) <STRING>
     type: String
+    optional: true
   - name: '4'
-    description: file      - Name of file <STRING>
+    description: file      - Name of file (optional) <STRING>
     type: String
+    optional: true
   - name: '5'
-    description: lineNum   - Line of file <NUMBER>
+    description: lineNum   - Line of file (optional) <NUMBER>
     type: Number
+    optional: true
   example: ''
 - name: cba_fnc_escaperegex
   ret: String
@@ -2421,11 +2522,13 @@
     - - Anything
       - null
   - name: '2'
-    description: radius   - Maximum distance from _position <NUMBER>
+    description: 'radius   - Maximum distance from _position <NUMBER> (default: infinity)'
     type: Number
+    optional: true
   - name: '3'
-    description: code     - Condition to meet, object is stored in _x variable <CODE>
+    description: 'code     - Condition to meet, object is stored in _x variable <CODE> (default: no condition)'
     type: Code
+    optional: true
   example: ''
 - name: cba_fnc_getnearestbuilding
   params:
@@ -2619,7 +2722,7 @@
     description: params    - Parameters to pass to the event handlers. <ANY>
     type: Anything
   - name: '2'
-    description: 'jipID     - Unique event ID or object. [optional] (default: create unique id) <STRING, OBJECT>'
+    description: 'jipID     - Unique event ID or object. (optional) (default: create unique id) <STRING, OBJECT>'
     type: Anything
     optional: true
   example: ''
@@ -2657,8 +2760,8 @@
     description: 'params   - classname or parameter array - see biki: say3d <STRING, ARRAY>'
     type: Anything
   - name: '2'
-    description: 'range    - Maximum distance from camera to execute command - will be ignored if _params is an array (optional, default: nil) <NUMBER>'
-    type: Number
+    description: 'range    - Maximum distance from camera to execute command - will be ignored if _params is an array (optional, default: nil) <NUMBER, NIL>'
+    type: Anything
     optional: true
   - name: '3'
     description: 'attach   - Attach created sound to _object (optional, default: false) <BOOL>'
@@ -2671,6 +2774,10 @@
   - name: '5'
     description: 'rndPitch - Randomizes Pitch. True for a Dynamic Range of 10% - Alternative Number of Dynamic Range in Pecentage. Example: 0.15 -> +- 7.5% (optional, default: false) <BOOL, NUMBER>'
     type: Anything
+    optional: true
+  - name: '6'
+    description: 'parallel - Allows for multiple sounds to be played at once. (optional, default: false) <BOOL>'
+    type: Boolean
     optional: true
   example: ''
 - name: cba_fnc_hashcreate
@@ -3330,8 +3437,14 @@
 - name: cba_fnc_notify
   params:
   - name: '0'
-    description: content   - Notifications content (lines). <ARRAY>
-    type: ArrayUnknown
+    description: content   - Notifications content (lines). <ARRAY><STRING><NUMBER>
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
+    - - Number
+      - null
   - name: '1'
     description: 'skippable - Skip or overwrite this notification if another entered the queue. (optional, default: false) <BOOL>'
     type: Boolean
@@ -3515,8 +3628,48 @@
 
     ----------------------------------------------------------------------------
 - name: cba_fnc_progressbar
-  params: []
-  example: ''
+  ret: Nothing
+  params:
+  - name: '0'
+    description: title      - Title of the progress bar <STRING>
+    type: String
+  - name: '1'
+    description: totalTime  - Time for the progress bar to complete <NUMBER>
+    type: Number
+  - name: '2'
+    description: condition  - Execute every frame. If reports false, close the progress bar <CODE>
+    type: Code
+  - name: '3'
+    description: onSuccess  - Script to execute if the progress bar completed <CODE>
+    type: Code
+  - name: '4'
+    description: onFailure  - Script to execute if the progress bar was aborted prematurely
+    type: Anything
+    optional: true
+  - name: '5'
+    description: 'arguments  - Arguments passed to the scripts (optional, default: []) <ANY>'
+    type: Anything
+    optional: true
+  - name: '6'
+    description: 'blockMouse - Block mouse input (optional, default: true) <BOOLEAN>'
+    type: Boolean
+    optional: true
+  - name: '7'
+    description: blockKeys  - Block keyboard input
+    type: Anything
+    optional: true
+  - name: '8'
+    description: allowClose - Allow ESC key to abort the progress bar
+    type: Anything
+    optional: true
+  example: |-
+    (begin example)
+            ["progress bar", 5, {true}, {hint "done"}, {hint "aborted"}] call CBA_fnc_progressBar;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
 - name: cba_fnc_publicvariable
   ret: Boolean
   params:
@@ -3906,7 +4059,7 @@
     description: hashKey - Key handler identifier. <STRING>
     type: String
   - name: '1'
-    description: 'type    - "keydown" or "keyup". [optional] (default: "keydown") <STRING>'
+    description: 'type    - "keydown" or "keyup". (optional) (default: "keydown") <STRING>'
     type: String
     optional: true
   example: |-
@@ -4098,7 +4251,7 @@
     description: string   - Any String <STRING>
     type: String
   - name: '1'
-    description: 'seperate - Seperate leftovers with spaces? (optional, default: false) <BOOLEAN>'
+    description: 'seperate - Separate leftovers with spaces? (optional, default: false) <BOOLEAN>'
     type: Boolean
     optional: true
   example: ''
@@ -4256,7 +4409,7 @@
     description: weapon - Weapon or muzzle to select <STRING>
     type: String
   - name: '2'
-    description: 'mode   - Weapon mode to switch to [optional] <STRING> (default: "")'
+    description: 'mode   - Weapon mode to switch to (optional) <STRING> (default: "")'
     type: String
     optional: true
   example: |-
@@ -4476,7 +4629,7 @@
     description: numbers - The array from which the standard deviation is computed <ARRAY>
     type: ArrayUnknown
   - name: '1'
-    description: 'ddof    - The delta degrees of freedom [optional] <SCALAR> (default: 0)'
+    description: 'ddof    - The delta degrees of freedom (optional) <SCALAR> (default: 0)'
     type: Number
     optional: true
   example: |-
@@ -5026,11 +5179,61 @@
         commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_waitandexecute
-  params: []
-  example: ''
+  ret: Nothing
+  params:
+  - name: '0'
+    description: function - The function you wish to execute. <CODE>
+    type: Code
+  - name: '1'
+    description: args     - Parameters passed to the function executing. (optional) <ANY>
+    type: Anything
+    optional: true
+  - name: '2'
+    description: 'delay    - The amount of time in seconds before the code is executed. (optional, default: 0) <NUMBER>'
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+            [{player sideChat format ["5s later! _this: %1", _this];}, ["some","params",1,2,3], 5] call CBA_fnc_waitAndExecute;
+        (end)
+
+    Author:
+        esteldunedain and PabstMirror, donated from ACE3
+    ----------------------------------------------------------------------------
 - name: cba_fnc_waituntilandexecute
-  params: []
-  example: ''
+  ret: Nothing
+  params:
+  - name: '0'
+    description: condition   - The function to evaluate as condition. <CODE>
+    type: Code
+  - name: '1'
+    description: statement   - The function to run if the condition is true before timeout. <CODE>
+    type: Code
+  - name: '2'
+    description: args        - Parameters passed to the functions (statement and condition) executing. (optional) <ANY>
+    type: Anything
+    optional: true
+  - name: '3'
+    description: timeout     - If >= 0, timeout for the condition in seconds.  If < 0, no timeout.
+    type: Anything
+    optional: true
+  - name: '4'
+    description: timeoutCode - When provided, will be executed if condition times out. (optional) <CODE>
+    type: Code
+    optional: true
+  example: |-
+    (begin example)
+            [{(_this select 0) == vehicle (_this select 0)}, {(_this select 0) setDamage 1;}, [player]] call CBA_fnc_waitUntilAndExecute;
+        (end)
+        (begin example)
+            [{backpackCargo _this isEqualTo []}, {
+                deleteVehicle _this;
+            }, _holder, 5, {hint backpackCargo _this;}] call CBA_fnc_waitUntilAndExecute;
+        (end)
+
+    Author:
+        joko // Jonas, donated from ACE3
+    ----------------------------------------------------------------------------
 - name: cba_fnc_weaponcomponents
   ret: ArrayUnknown
   params:
@@ -5259,6 +5462,183 @@
     Author:
         commy2
     ----------------------------------------------------------------------------
+- name: cba_pid_fnc_create
+  ret: HashMapUnknown
+  params:
+  - name: '0'
+    description: 'pGain          - gain for the immediate error <NUMBER> (Default: 0)'
+    type: Number
+    optional: true
+  - name: '1'
+    description: 'iGain          - gain for the persistent error over time <NUMBER> (Default: 0)'
+    type: Number
+    optional: true
+  - name: '2'
+    description: 'dGain          - gain for the error rate over time <NUMBER> (Default: 0)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'setpoint       - initial setpoint for the controller <NUMBER> (Default: 0)'
+    type: Number
+    optional: true
+  - name: '4'
+    description: 'min            - the minimum value the controller can return <NUMBER> (Default: -1e30)'
+    type: Number
+    optional: true
+  - name: '5'
+    description: 'max            - the maximum value the controller can return <NUMBER> (Default: 1e30)'
+    type: Number
+    optional: true
+  - name: '6'
+    description: 'historyLength  - how many past errors are stored and used to calculate the derivative/integral <NUMBER> (Default: 10)'
+    type: Number
+    optional: true
+  - name: '7'
+    description: 'errorFunction  - the function which calculates the error which the controller operators <CODE> (Default: <CBA_pid_fnc_error_linear>)'
+    type: !OneOf
+    - - Code
+      - null
+    - - Anything
+      - null
+    optional: true
+  example: |-
+    (begin example)
+            private _pid = [1, 0.05, 0.2, 5, 0, 10, 15, CBA_pid_fnc_error_linear] call CBA_pid_fnc_create;
+        (end)
+
+    Author:
+        tcvm
+    ----------------------------------------------------------------------------
+- name: cba_pid_fnc_error_degree
+  ret: Number
+  params:
+  - name: '0'
+    description: observed           - the observed value <NUMBER>
+    type: Number
+  - name: '1'
+    description: setpoint           - the setpoint <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            private _error = [350, 5] call CBA_pid_fnc_error_degree;
+            // _error == 15
+        (end)
+
+    Author:
+        tcvm
+    ----------------------------------------------------------------------------
+- name: cba_pid_fnc_error_linear
+  ret: Number
+  params:
+  - name: '0'
+    description: observed           - the observed value <NUMBER>
+    type: Number
+  - name: '1'
+    description: setpoint           - the setpoint <NUMBER>
+    type: Number
+  example: |-
+    (begin example)
+            private _error = [2, 5] call CBA_pid_fnc_error_linear;
+            // _error == 3
+        (end)
+
+    Author:
+        tcvm
+    ----------------------------------------------------------------------------
+- name: cba_pid_fnc_reset
+  ret: Nothing
+  params:
+  - name: '0'
+    description: pid           - the controller <HASHMAP>
+    type: HashMapUnknown
+  example: |-
+    (begin example)
+            _pid call CBA_pid_fnc_reset;
+        (end)
+
+    Author:
+        tcvm
+    ----------------------------------------------------------------------------
+- name: cba_pid_fnc_setgains
+  ret: Nothing
+  params:
+  - name: '0'
+    description: pid        - a pid controller <HASHMAP>
+    type: HashMapUnknown
+  - name: '1'
+    description: 'pGain      - the new proportional gain <NUMBER><NIL> (Default: `nil`)'
+    type: !OneOf
+    - - Number
+      - null
+    - - Nothing
+      - null
+    optional: true
+  - name: '2'
+    description: 'iGain      - the new integral gain <NUMBER><NIL> (Default: `nil`)'
+    type: !OneOf
+    - - Number
+      - null
+    - - Nothing
+      - null
+    optional: true
+  - name: '3'
+    description: 'dGain      - the new derivative gain <NUMBER><NIL> (Default: `nil`)'
+    type: !OneOf
+    - - Number
+      - null
+    - - Nothing
+      - null
+    optional: true
+  example: |-
+    (begin example)
+            [_pid, 5, nil, 0.2] call CBA_pid_fnc_setGains;
+        (end)
+
+    Author:
+        tcvm
+    ----------------------------------------------------------------------------
+- name: cba_pid_fnc_setpoint
+  ret: Nothing
+  params:
+  - name: '0'
+    description: pid        - a pid controller <HASHMAP>
+    type: HashMapUnknown
+  - name: '1'
+    description: setpoint   - the new target setpoint for the controller <NUMBER>
+    type: Number
+  - name: '2'
+    description: 'reset      - if we want to reset the PID for the new setpoint <BOOL> (Default: true)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            [_pid, 42] call CBA_pid_fnc_setpoint;
+        (end)
+
+    Author:
+        tcvm
+    ----------------------------------------------------------------------------
+- name: cba_pid_fnc_update
+  ret: Number
+  params:
+  - name: '0'
+    description: pid    - a pid controller <HASHMAP>
+    type: HashMapUnknown
+  - name: '1'
+    description: value  - the measured value for this update <NUMBER>
+    type: Number
+  - name: '2'
+    description: 'time   - the time for which the value was measured <NUMBER> (Default: CBA_missionTime)'
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+            private _delta = [_pid, 6, CBA_missionTime] call CBA_pid_fnc_update;
+        (end)
+
+    Author:
+        tcvm
+    ----------------------------------------------------------------------------
 - name: cba_settings_fnc_check
   params:
   - name: '0'
@@ -5284,8 +5664,8 @@
     type: String
     optional: true
   - name: '1'
-    description: 'exportDefault - true: export all settings,'
-    type: Anything
+    description: 'exportDefault - true: export all settings, false: only changed settings (optional, default: false) <BOOL>'
+    type: Boolean
     optional: true
   example: ''
 - name: cba_settings_fnc_get
@@ -5318,7 +5698,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: info   - Formated settings info, (from CBA_settings_fnc_export) <STRING>
+    description: info   - Formatted settings info, (from CBA_settings_fnc_export) <STRING>
     type: String
   - name: '1'
     description: 'source - Can be "client", "mission" or "server" (optional, default: "client") <STRING>'
@@ -5758,7 +6138,7 @@
         (end)
 
     Author:
-        commy2, Zorn
+        commy2, Zorn, 10Dozen
     ----------------------------------------------------------------------------
 - name: cba_ui_fnc_preload3den
   ret: Boolean

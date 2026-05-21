@@ -1,0 +1,815 @@
+- name: acre_api_fnc_adddisplaypassthroughkeys
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Display <DISPLAY>
+    type: Display
+  example: '[display] call acre_api_fnc_addDisplayPassthroughKeys'
+- name: acre_api_fnc_addnotificationdisplay
+  ret: Number
+  params:
+  - name: '0'
+    description: Display ID <NUMBER>
+    type: Number
+  example: '[3333] call acre_api_fnc_addNotificationDisplay'
+- name: acre_api_fnc_addracktovehicle
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Vehicle <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
+  - name: '1'
+    description: Rack configuration <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: 'Force initialisation <BOOL> (default: false)'
+    type: Boolean
+    optional: true
+  - name: '3'
+    description: 'Condition called with argument "_unit". If a longer function is given, it should be precompiled. <CODE> (default: {})'
+    type: Code
+    optional: true
+  example: '[cursorTarget, ["ACRE_VRC103", "Upper Dash", "Dash", false, ["external"], [], "ACRE_PRC117F", [], ["intercom_1"]], false] call acre_api_fnc_addRackToVehicle'
+- name: acre_api_fnc_addspectatorradio
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Player unit <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
+  - name: '1'
+    description: 'Unique Radio or Rack ID <STRING> (default: "")'
+    type: String
+    optional: true
+  example: '[player, "acre_prc343_id_1"] call acre_api_fnc_addSpectatorRadio'
+- name: acre_api_fnc_arevehicleracksinitialized
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Vehicle <OBJECT>
+    type: Object
+  example: '[cursorTarget] call acre_api_fnc_areVehicleRacksInitialized'
+- name: acre_api_fnc_babeladdlanguagetype
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Language ID (used internally for identifying the language or specifying languages via other API methods) <STRING>
+    type: String
+  - name: '1'
+    description: Language display name <STRING>
+    type: String
+  example: '["en", "English"] call acre_api_fnc_babelAddLanguageType;'
+- name: acre_api_fnc_babelgetlanguageid
+  ret: String
+  params:
+  - name: '0'
+    description: Language display name <STRING>
+    type: String
+  example: '["English"] call acre_api_fnc_babelGetLanguageId;'
+- name: acre_api_fnc_babelgetlanguagename
+  ret: String
+  params:
+  - name: '0'
+    description: Language ID <STRING>
+    type: String
+  example: '["en"] call acre_api_fnc_babelGetLanguageName;'
+- name: acre_api_fnc_babelgetspeakinglanguageid
+  ret: String
+  params: []
+  example: '[] call acre_api_fnc_babelGetSpeakingLanguageId;'
+- name: acre_api_fnc_babelsetspeakinglanguage
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Language ID <STRING>
+    type: String
+  example: '["en"] call acre_api_fnc_babelSetSpeakingLanguage;'
+- name: acre_api_fnc_babelsetspokenlanguages
+  ret: Boolean
+  params: []
+  example: '["en"] call acre_api_fnc_babelSetSpokenLanguages;'
+- name: acre_api_fnc_babelsetupmission
+  ret: Boolean
+  params: []
+  example: |-
+    [ [west, "English", "French"], [east, "Russian"], [civilian, "French"] ] call acre_api_fnc_babelSetupMission;
+     * [ [west, "English", "French"], [east, "Russian", "French" ] ] call acre_api_fnc_babelSetupMission;
+- name: acre_api_fnc_copypreset
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio base type <STRING>
+    type: String
+  - name: '1'
+    description: Preset name to copy <STRING>
+    type: String
+  - name: '2'
+    description: Destination preset name <STRING>
+    type: String
+  example: '["ACRE_PRC152", "default2", "balls"] call acre_api_fnc_copyPreset'
+- name: acre_api_fnc_filterunitloadout
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: 'Loadout <ARRAY or OBJECT or STRING or CONFIG> (default: getUnitLoadout acre_player)'
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - Object
+      - null
+    - - String
+      - null
+    - - Config
+      - null
+    optional: true
+  example: |-
+    _loadout = [_loadout] call acre_api_fnc_filterUnitLoadout;
+     * _loadout = [getUnitLoadout _unit] call acre_api_fnc_filterUnitLoadout;
+     * _loadout = [player] call acre_api_fnc_filterUnitLoadout;
+- name: acre_api_fnc_getallradios
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - ArrayUnknown
+    - null
+  params: []
+  example: '[] call acre_api_fnc_getAllRadios;'
+- name: acre_api_fnc_getallradiosbytype
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Radio type <STRING>
+    type: String
+  - name: '1'
+    description: 'Optional unit or List of String <ARRAY, OBJECT> (default: [])'
+    type: Anything
+    optional: true
+  example: |-
+    _radioIds = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType
+     * _radioIds = ["ACRE_PRC152", _unit] call acre_api_fnc_getAllRadiosByType
+- name: acre_api_fnc_getbaseradio
+  ret: String
+  params:
+  - name: '0'
+    description: Radio item name with ID <STRING>
+    type: String
+  example: '["ACRE_PRC148_ID_15"] call acre_api_fnc_getBaseRadio;'
+- name: acre_api_fnc_getcurrentradio
+  ret: String
+  params: []
+  example: '[] call acre_api_fnc_getCurrentRadio;'
+- name: acre_api_fnc_getcurrentradiochannelnumber
+  ret: Number
+  params: []
+  example: '[] call acre_api_fnc_getCurrentRadioChannelNumber;'
+- name: acre_api_fnc_getcurrentradiolist
+  ret: ArrayUnknown
+  params: []
+  example: '[] call acre_api_fnc_getCurrentRadioList;'
+- name: acre_api_fnc_getdisplayname
+  ret: String
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  example: '["ACRE_PRC343_ID_1"] call acre_api_fnc_getDisplayName'
+- name: acre_api_fnc_getglobalvolume
+  ret: Number
+  params: []
+  example: '[] call acre_api_fnc_getGlobalVolume;'
+- name: acre_api_fnc_getmountedrackradio
+  ret: String
+  params:
+  - name: '0'
+    description: Rack unique ID <STRING>
+    type: String
+  example: '["ACRE_VRC103_ID_1"] call acre_api_fnc_getMountedRackRadio'
+- name: acre_api_fnc_getmultipushtotalkassignment
+  ret: ArrayUnknown
+  params: []
+  example: _mpttRadioList = [] call acre_api_fnc_getMultiPushToTalkAssignment;
+- name: acre_api_fnc_getpreset
+  ret: String
+  params:
+  - name: '0'
+    description: Radio base type <STRING>
+    type: String
+  example: _currentPreset = ["ACRE_PRC152"] call acre_api_fnc_getPreset;
+- name: acre_api_fnc_getpresetchanneldata
+  ret: Anything
+  params:
+  - name: '0'
+    description: Base radio class <STRING>
+    type: String
+  - name: '1'
+    description: Preset name <STRING>
+    type: String
+  - name: '2'
+    description: Channel number <NUMBER>
+    type: Number
+  example: _presetData = ["ACRE_PRC152", "default", 4] call acre_api_fnc_getPresetChannelData;
+- name: acre_api_fnc_getpresetchannelfield
+  ret: Anything
+  params:
+  - name: '0'
+    description: Radio Base class <STRING>
+    type: String
+  - name: '1'
+    description: Preset name <STRING>
+    type: String
+  - name: '2'
+    description: Channel number <NUMBER>
+    type: Number
+  - name: '3'
+    description: Field name <STRING>
+    type: String
+  example: '["ACRE_PRC148", "default", 2, "label"] call acre_api_fnc_getPresetChannelField;'
+- name: acre_api_fnc_getpresetdata
+  ret: Anything
+  params:
+  - name: '0'
+    description: Radio base class <STRING>
+    type: String
+  - name: '1'
+    description: Preset Name <STRING>
+    type: String
+  example: _presetData = ["ACRE_PRC152", "default"] call acre_api_fnc_getPresetData;
+- name: acre_api_fnc_getpttdelay
+  ret: Number
+  params: []
+  example: _delay = [] call acre_api_fnc_getPTTDelay
+- name: acre_api_fnc_getradioaudiosource
+  ret: String
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  example: _audioSource = ["ACRE_PRC148_ID_123"] call acre_api_fnc_getRadioAudioSource
+- name: acre_api_fnc_getradiobytype
+  ret: String
+  params:
+  - name: '0'
+    description: Radio type <STRING>
+    type: String
+  - name: '1'
+    description: 'Optional unit or List of String <ARRAY, OBJECT> (default: [])'
+    type: Anything
+    optional: true
+  example: |-
+    _radioId = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType
+     * _radioId = ["ACRE_PRC152", _unit] call acre_api_fnc_getRadioByType
+- name: acre_api_fnc_getradiochannel
+  ret: Number
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  example: _currentChannel = ["ACRE_PRC152_ID_123"] call acre_api_fnc_getRadioChannel;
+- name: acre_api_fnc_getradioonoffstate
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  example: '["ACRE_PR77_ID_1"] call acre_api_fnc_getRadioOnOffState'
+- name: acre_api_fnc_getradiospatial
+  ret: String
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  example: '["ACRE_PRC148_ID_1"] call acre_api_fnc_getRadioSpatial;'
+- name: acre_api_fnc_getradiovolume
+  ret: Number
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  example: '["ACRE_PRC148_ID_1"] call acre_api_fnc_getRadioVolume'
+- name: acre_api_fnc_getrevealtoai
+  ret: Number
+  params: []
+  example: '[] call acre_api_fnc_getRevealToAI;'
+- name: acre_api_fnc_getselectablevoicecurve
+  ret: Number
+  params: []
+  example: _ret = [] call acre_api_fnc_getSelectableVoiceCurve;
+- name: acre_api_fnc_getvehicleracks
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Vehicle <OBJECT>
+    type: Object
+  example: '[cursorTarget] call acre_api_fnc_getVehicleRacks'
+- name: acre_api_fnc_getvehiclerackspreset
+  ret: String
+  params:
+  - name: '0'
+    description: 'Vehicle <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
+  example: '[cursorTarget] call acre_api_fnc_getVehicleRacksPreset'
+- name: acre_api_fnc_getvoipchannelname
+  ret: String
+  params: []
+  example: '[] call acre_api_fnc_getVOIPChannelName'
+- name: acre_api_fnc_getvoipchanneluid
+  ret: String
+  params: []
+  example: '[] call acre_api_fnc_getVOIPChannelUID'
+- name: acre_api_fnc_getvoipservername
+  ret: String
+  params: []
+  example: '[] call acre_api_fnc_getVOIPServerName'
+- name: acre_api_fnc_getvoipserveruid
+  ret: String
+  params: []
+  example: '[] call acre_api_fnc_getVOIPServerUID'
+- name: acre_api_fnc_godmodeconfigureaccess
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Access to the BI Chat Channel functionality <BOOL> (default: false)'
+    type: Boolean
+    optional: true
+  - name: '1'
+    description: 'Access to Group presets functionality <BOOL> (default: false)'
+    type: Boolean
+    optional: true
+  example: '[true, false] call acre_api_fnc_godModeConfigureAccess'
+- name: acre_api_fnc_godmodegetgrouptargets
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: 'Group (0-based index or -1 for current channel) <NUMBER> (default: 0)'
+    type: Number
+    optional: true
+  example: '[0] call acre_api_fnc_godModeGetGroupTargets'
+- name: acre_api_fnc_godmodemodifygroup
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Unit or UID or array of either or code returning array of units <OBJECT, STRING, ARRAY, CODE> (default: [])'
+    type: Anything
+    optional: true
+  - name: '1'
+    description: 'Group to effect (0-based index) <NUMBER> (default: 0)'
+    type: Number
+    optional: true
+  - name: '2'
+    description: 'Action. 0 for set, 1 for add and 2 for subtract <NUMBER> (default: 0)'
+    type: Number
+    optional: true
+  example: |-
+    [[unit1, unit2], 0, 1] call acre_api_fnc_godModeModifyGroup
+     * [["76561198040512062", "76561198046921073"], 0, 1] call acre_api_fnc_godModeModifyGroup
+     * [{allUnits select {alive _x}}, 0, 1] call acre_api_fnc_godModeModifyGroup
+- name: acre_api_fnc_godmodenamegroup
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Name <STRING>
+    type: String
+  - name: '1'
+    description: 'Group to effect (0-based index) <NUMBER> (default: 0)'
+    type: Number
+    optional: true
+  example: '["Admin", 0] call acre_api_fnc_godModeNameGroup'
+- name: acre_api_fnc_godmodesendtext
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Text <STRING> (default: "")'
+    type: String
+    optional: true
+  - name: '1'
+    description: 'Group ID (0-based index) <NUMBER> (default: 0)'
+    type: Number
+    optional: true
+  example: '["sample text", 2] call acre_api_fnc_godModeSendText'
+- name: acre_api_fnc_hasbaseradio
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: _result = [player] call acre_api_fnc_hasBaseRadio;
+- name: acre_api_fnc_haskindofradio
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Unit or array of item classnames <OBJECT, ARRAY>
+    type: Anything
+  - name: '1'
+    description: Radio base type <STRING>
+    type: String
+  example: _hasRadio = [player, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio
+- name: acre_api_fnc_hasradio
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: _hasRadio = [player] call acre_api_fnc_hasRadio;
+- name: acre_api_fnc_initvehicleracks
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: 'Condition called with argument "_unit". If a longer function is given, it should be precompiled. <CODE> (default: {})'
+    type: Code
+    optional: true
+  example: '[cursorTarget, {}] call acre_api_fnc_initVehicleRacks'
+- name: acre_api_fnc_isbaseradio
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Item name <STRING>
+    type: String
+  example: _result = ["ACRE_PRC343"] call acre_api_fnc_isBaseRadio;
+- name: acre_api_fnc_isbroadcasting
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: _isBroadcasting = [player] call acre_api_fnc_isBroadcasting;
+- name: acre_api_fnc_isinitialized
+  ret: Boolean
+  params: []
+  example: _status = [] call acre_api_fnc_isInitialized;
+- name: acre_api_fnc_iskindof
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio ID/Item classname <STRING>
+    type: String
+  - name: '1'
+    description: Radio base type <STRING>
+    type: String
+  example: _ret = ["ACRE_PRC117F_ID_123", "ACRE_PRC117F"] call acre_api_fnc_isKindOf;
+- name: acre_api_fnc_israckradioremovable
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Unique rack ID <STRING>
+    type: String
+  example: '["ACRE_VRC103_ID_1"] call acre_api_fnc_isRackRadioRemovable'
+- name: acre_api_fnc_isradio
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Classname <STRING>
+    type: String
+  example: _isRadio = ["NVGoggles"] call acre_api_fnc_isRadio;
+- name: acre_api_fnc_isradiospeaker
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  example: _isSpeaker = ["ACRE_PRC148_ID_123"] call acre_api_fnc_isRadioSpeaker
+- name: acre_api_fnc_isspeaking
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: _isSpeaking = [player] call acre_api_fnc_isSpeaking;
+- name: acre_api_fnc_isspectator
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Unit <OBJECT> (default: acre_player)'
+    type: Object
+    optional: true
+  example: |-
+    _isSpectator = [] call acre_api_fnc_isSpectator;
+     * _isSpectator = [player] call acre_api_fnc_isSpectator;
+- name: acre_api_fnc_isvoipconnected
+  ret: Boolean
+  params: []
+  example: '[] call acre_api_fnc_isVOIPConnected'
+- name: acre_api_fnc_mapchannelfieldname
+  ret: String
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  - name: '1'
+    description: Field Name <STRING>
+    type: String
+  example: '["ACRE_PRC148_ID_1","description"] call acre_api_fnc_mapChannelFieldName;'
+- name: acre_api_fnc_mountrackradio
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Rack ID <STRING> (default: "")'
+    type: String
+    optional: true
+  - name: '1'
+    description: 'Base radio to mount <STRING> (default: "")'
+    type: String
+    optional: true
+  example: '["ACRE_VRC103_ID_1", "ACRE_PRC117F"] call acre_api_fnc_mountRackRadio'
+- name: acre_api_fnc_removeallracksfromvehicle
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Vehicle <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
+  example: '[cursorTarget] call acre_api_fnc_removeAllRacksFromVehicle'
+- name: acre_api_fnc_removeallspectatorradios
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Player unit <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
+  example: '[player] call acre_api_fnc_removeAllSpectatorRadios'
+- name: acre_api_fnc_removerackfromvehicle
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Vehicle <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
+  - name: '1'
+    description: Unique rack ID <STRING>
+    type: String
+  example: '[cursorTarget, "ACRE_VRC103_ID_1"] call acre_api_fnc_removeRackFromVehicle'
+- name: acre_api_fnc_removespectatorradio
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Player unit <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
+  - name: '1'
+    description: 'Unique Radio or Rack ID <STRING> (default: "")'
+    type: String
+    optional: true
+  example: '[player, "acre_prc343_id_1"] call acre_api_fnc_removeSpectatorRadio'
+- name: acre_api_fnc_replaceracksonvehicle
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Vehicle <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
+  - name: '1'
+    description: 'Rack classname to remove <STRING> (default: "")'
+    type: String
+    optional: true
+  - name: '2'
+    description: 'Rack classname to add <STRING> (default: "")'
+    type: String
+    optional: true
+  - name: '3'
+    description: 'Condition called with argument "_unit" for rack init. If a longer function is given, it should be precompiled. <CODE> (default: {})'
+    type: Code
+    optional: true
+  example: '[cursorTarget, "ACRE_VRC103", "ACRE_VRC64", {}] call acre_api_fnc_replaceRacksOnVehicle'
+- name: acre_api_fnc_setcurrentradio
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  example: _success = ["ACRE_PRC148_ID_7"] call acre_api_fnc_setCurrentRadio;
+- name: acre_api_fnc_setcurrentradiochannelnumber
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Channel number <NUMBER>
+    type: Number
+  example: _success = [5] call acre_api_fnc_setCurrentRadioChannelNumber;
+- name: acre_api_fnc_setcurvemodel
+  ret: Nothing
+  params:
+  - name: '0'
+    description: '"ACRE_CURVE_MODEL_ORIGINAL", "ACRE_CURVE_MODEL_SELECTABLE_A" or "ACRE_CURVE_MODEL_SELECTABLE_B" <STRING>'
+    type: String
+  example: '["ACRE_CURVE_MODEL_ORIGINAL"] call acre_api_fnc_setCurveModel;'
+- name: acre_api_fnc_setcurvemodelscale
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Curve scale <NUMBER>
+    type: Number
+  example: '[1.0] call acre_api_fnc_setCurveModelScale;'
+- name: acre_api_fnc_setcustomsignalfunc
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Function to use <CODE>
+    type: Code
+  example: |-
+    [mySignalFunc] call acre_api_fnc_setCustomSignalFunc
+     * [{}] call acre_api_fnc_setCustomSignalFunc
+- name: acre_api_fnc_setglobalvolume
+  ret: Number
+  params:
+  - name: '0'
+    description: Volume between 0 and 1 <NUMBER>
+    type: Number
+  example: '[0.05] call acre_api_fnc_setGlobalVolume;'
+- name: acre_api_fnc_setitemradioreplacement
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio base type <STRING>
+    type: String
+  example: '["ACRE_PRC148"] call acre_api_fnc_setItemRadioReplacement;'
+- name: acre_api_fnc_setmultipushtotalkassignment
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Array of radio IDs <ARRAY>
+    type: ArrayUnknown
+  example: |-
+    _personalRadio = [“ACRE_PRC343”] call acre_api_fnc_getRadioByType;
+     * _handheldRadio = [“ACRE_PRC152”] call acre_api_fnc_getRadioByType;
+     * _manpackRadio = [“ACRE_PRC117F”] call acre_api_fnc_getRadioByType;
+     * _success = [ [ _personalRadio, _handheldRadio, _manpackRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+- name: acre_api_fnc_setpreset
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio base type <STRING>
+    type: String
+  - name: '1'
+    description: Preset name <STRING>
+    type: String
+  example: _success = ["ACRE_PRC152", "default2"] call acre_api_fnc_setPreset;
+- name: acre_api_fnc_setpresetchanneldata
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio base type <STRING>
+    type: String
+  - name: '1'
+    description: Preset name <STRING>
+    type: String
+  - name: '2'
+    description: Channel number <NUMBER>
+    type: Number
+  - name: '3'
+    description: Preset data <HASH>
+    type: Anything
+  example: _success = ["ACRE_PRC152", "new_preset", 4, _presetData] call acre_api_fnc_setPresetChannelData;
+- name: acre_api_fnc_setpresetchannelfield
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio Base class <STRING>
+    type: String
+  - name: '1'
+    description: Preset name <STRING>
+    type: String
+  - name: '2'
+    description: Channel number <NUMBER>
+    type: Number
+  - name: '3'
+    description: Field name <STRING>
+    type: String
+  - name: '4'
+    description: value <ANY>
+    type: Anything
+  example: '["ACRE_PRC148", "default", 5, "label", "COY"] call acre_api_fnc_setPresetChannelField;'
+- name: acre_api_fnc_setpresetdata
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio base type <STRING>
+    type: String
+  - name: '1'
+    description: Preset name <STRING>
+    type: String
+  - name: '2'
+    description: Preset data <HASH>
+    type: Anything
+  example: _success = ["ACRE_PRC152", "new_preset", _presetData] call acre_api_fnc_setPresetData;
+- name: acre_api_fnc_setpttdelay
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Delay in seconds between 0 and 1. <NUMBER>
+    type: Number
+  example: _delay = [0.2] call acre_api_fnc_setPTTDelay;
+- name: acre_api_fnc_setradioaudiosource
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  - name: '1'
+    description: Audio Source <STRING>
+    type: String
+  example: _success = ["ACRE_PRC148_ID_123", "INTAUDIO"] call acre_api_fnc_setRadioAudioSource
+- name: acre_api_fnc_setradiochannel
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  - name: '1'
+    description: Channel number <NUMBER>
+    type: Number
+  example: _success = ["ACRE_PRC152_ID_123", 5] call acre_api_fnc_setRadioChannel;
+- name: acre_api_fnc_setradiospatial
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  - name: '1'
+    description: Spatial “LEFT”, “RIGHT” or “CENTER" <STRING>
+    type: String
+  example: _success = ["ACRE_PRC148_ID_3", "LEFT" ] call acre_api_fnc_setRadioSpatial;
+- name: acre_api_fnc_setradiospeaker
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  - name: '1'
+    description: Speaker <BOOL>
+    type: Boolean
+  example: |-
+    _success = ["ACRE_PRC148_ID_123", true] call acre_api_fnc_setRadioSpeaker
+     * _success = ["ACRE_PRC148_ID_123", false] call acre_api_fnc_setRadioSpeaker
+- name: acre_api_fnc_setradiovolume
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Radio ID <STRING>
+    type: String
+  - name: '1'
+    description: Volume between 0 and 1 <NUMBER>
+    type: Number
+  example: '["ACRE_PRC343_ID_1",0.5] call acre_api_fnc_setRadioVolume;'
+- name: acre_api_fnc_setselectablevoicecurve
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Voice Curve Level <NUMBER>
+    type: Number
+  example: '[0.7] call acre_api_fnc_setSelectableVoiceCurve'
+- name: acre_api_fnc_setspectator
+  ret: Boolean
+  params:
+  - name: '0'
+    description: true or false on whether the unit should locally be considered a spectator <BOOLEAN>
+    type: Boolean
+  example: _ret = [true] call acre_api_fnc_setSpectator;
+- name: acre_api_fnc_setupmission
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Babel - true to set up a unique babel language for each side. <BOOLEAN>
+    type: Boolean
+  - name: '1'
+    description: Radio - true to set up different frequencies for each side by using different presets. <BOOLEAN>
+    type: Boolean
+  example: '[true, true] call acre_api_fnc_setupMission;'
+- name: acre_api_fnc_setupradios
+  ret: Boolean
+  params: []
+  example: |-
+    _success = [ ["ACRE_PRC343", [2,3]], ["ACRE_PRC152", 3], ["ACRE_PRC77", [31,15]] ] call acre_api_fnc_setupRadios;
+     * // Will set PRC343 to Ch2 Blk3, PRC152 to Ch3 and PRC77 to 31.15 MHz
+     *
+     * _success = [ ["ACRE_PRC343", 6], ["ACRE_PRC152", 2], ["ACRE_PRC152", 3] ] call acre_api_fnc_setupRadios;
+     * // Will set PRC343 to Ch6 Blk1, the first PRC152 to Ch2 and the second PRC152 to Ch3
+     *
+     * _success = [ ["ACRE_SEM52SL", 8], ["ACRE_SEM70", [34,075]] ] call acre_api_fnc_setupRadios;
+     * // Will set SEM52SL to Ch8 and SEM70 to 34.075 MHz
+- name: acre_api_fnc_setvehiclerackspreset
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Vehicle <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
+  - name: '1'
+    description: 'Preset name <STRING> (default: "")'
+    type: String
+    optional: true
+  example: '[cursorTarget, "default4"] call acre_api_fnc_setVehicleRacksPreset'
+- name: acre_api_fnc_unmountrackradio
+  ret: Boolean
+  params:
+  - name: '0'
+    description: 'Rack ID <STRING> (default: "")'
+    type: String
+    optional: true
+  - name: '1'
+    description: 'Radio to unmount <STRING> (default: "")'
+    type: String
+    optional: true
+  example: '["ACRE_VRC103_ID_1", "ACRE_PRC117F_ID_1"] call acre_api_fnc_unmountRackRadio'
