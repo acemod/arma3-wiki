@@ -79,6 +79,7 @@ pub enum Value {
 }
 
 // regex once cell
+#[allow(dead_code, reason = "only used in wiki feature")]
 static REGEX_TYPE: OnceLock<Regex> = OnceLock::new();
 // static REGEX_ARRAY_IN_FORMAT: OnceLock<Regex> = OnceLock::new();
 

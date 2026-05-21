@@ -53,7 +53,7 @@ impl GitHub {
             println!("Local, Skipping commit for {command}");
             return Ok(None);
         }
-        command!(["checkout", "dist"]);
+        command!(["checkout", "dist-f"]);
         command!([
             "add",
             format!("commands/{}.yml", urlencoding::encode(command)).as_str()
@@ -76,14 +76,14 @@ impl GitHub {
             println!("Local, Skipping commit for {ns}::{handler}");
             return Ok(None);
         }
-        command!(["checkout", "dist"]);
+        command!(["checkout", "dist-f"]);
         command!(["add", format!("events/{ns}/{handler}.yml").as_str()]);
         command!([
             "commit",
             "-m",
             format!("Update Event `{ns}::{handler}`").as_str()
         ]);
-        command!(["push", "origin", "dist"]);
+        command!(["push", "origin", "dist-f"]);
         Ok(None)
     }
 
@@ -92,10 +92,10 @@ impl GitHub {
             println!("Local, Skipping commit for version");
             return;
         }
-        command!(["checkout", "dist"]);
+        command!(["checkout", "dist-f"]);
         command!(["add", "version.txt"]);
         command!(["commit", "-m", "Update version"]);
-        command!(["push", "origin", "dist"]);
+        command!(["push", "origin", "dist-f"]);
     }
 }
 
