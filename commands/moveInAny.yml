@@ -27,6 +27,7 @@ syntax:
   - unit
   - - vehicle
     - positions
+    - ignoreLocked
   ret:
   - Boolean
   - '[[true]] on success, [[false]] on failure'
@@ -39,6 +40,11 @@ syntax:
     type: Object
   - name: positions
     type: Unknown
+  - name: ignoreLocked
+    description: '[[true]] to ignore locked positions'
+    type: Boolean
+    optional: true
+    default: '[[false]]'
   since:
     arma_3:
       major: 2
