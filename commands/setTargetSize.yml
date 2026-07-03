@@ -1,8 +1,9 @@
 name: setTargetSize
 description: |-
-  Sets target size (see irTargetSize and others from vehicle config) override on vehicle.
-  Returns the previously active values. Note if the array is empty, it will only return the previous/current values, and not set new ones. So this also functions as a getter.
-groups: []
+  Sets target size (see <syntaxhighlight lang="cpp" inline>irTargetSize</syntaxhighlight> and others from vehicle config) override on vehicle.
+  {{Feature|informative|Passing an empty array returns the current values without modifying them, so this commands works as both getter and setter.}}
+groups:
+- Sensors
 syntax:
 - call: !Binary
   - vehicle
@@ -11,16 +12,13 @@ syntax:
     - radarTargetSize
   ret:
   - Unknown
-  - |-
-    previous value
-    * irTargetSize: [[Number]] - previous value
-    * radarTargetSize: [[Number]] - previous value
+  - null
   params:
   - name: vehicle
-    description: A transport vehicle
+    description: a transport vehicle
     type: Object
   - name: visualTargetSize
-    description: set to -1 to disable override and use config values. Otherwise value between 0-2
+    description: 0..2 value, set to -1 to disable override and use config values
     type: Number
   - name: irTargetSize
     type: Number
@@ -33,5 +31,5 @@ since:
     major: 2
     minor: 22
 examples:
-- <sqf>_previous = vehicle player setTargetSize [0,0,0];</sqf>
-- <sqf>_sizes = vehicle player setTargetSize [];</sqf>
+- <sqf>private _previousSizes = vehicle player setTargetSize [0,0,0]; // set</sqf>
+- <sqf>private _currentSizes = vehicle player setTargetSize []; // get</sqf>
