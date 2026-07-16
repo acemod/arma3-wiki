@@ -1,6 +1,6 @@
-# Arma 3 Wiki — Command & Event Index
+# Arma 3 Wiki — Command, Event & Tutorial Index
 _Generated from wiki data version `2.20`. Re-run `build_index.py` to refresh._
-**3150 commands** across 89 groups · **309 event handlers** across 9 categories
+**3150 commands** across 89 groups · **309 event handlers** across 9 categories · **7 tutorials**
 
 ---
 ## Contents
@@ -104,6 +104,7 @@ _Generated from wiki data version `2.20`. Re-run `build_index.py` to refresh._
   - [standard (107)](#events-standard)
   - [user_action (3)](#events-user_action)
   - [user_interface (53)](#events-user_interface)
+- [Scripting Tutorials](#scripting-tutorials)
 
 ---
 ## SQF Commands by Group
@@ -3870,4 +3871,21 @@ _Generated from wiki data version `2.20`. Re-run `build_index.py` to refresh._
 - **`TreeSelChanged`** — |-
 - **`Unload`** — |-
 - **`VideoStopped`** — |-
+
+---
+
+## Scripting Tutorials
+
+> **How to look up a tutorial:** `scripting/{filename}.md`  
+> Each file has: YAML frontmatter (title, category, source), clean markdown, fenced SQF code blocks.
+
+### Scripting Tutorials <a id="scripting-tutorials"></a>
+
+- **`Code Best Practices`** — [best-practices.md](../scripting/best-practices.md) — Prerequisites, code format, variable naming conventions, code structuring and organisation principles, with good/bad code examples.
+- **`Code Optimisation`** — [code-optimization.md](../scripting/code-optimization.md) — Three rules: Make it work → Make it readable → Optimise then.
+- **`Code Positivity`** — [code-positivity.md](../scripting/code-positivity.md) — This page provides some insights into what it means to try and write code in a positive way, with the least negation as possible.
+- **`Mission Optimisation`** — [mission-optimization.md](../scripting/mission-optimization.md) — Performance checklist: GPU/CPU/network impact by AI, objects, scripts, network messages, and unscheduled code. Includes diagnostic tools and server commands.
+- **`Multiplayer Scripting`** — [multiplayer-scripting.md](../scripting/multiplayer-scripting.md) — Localisation rules, machine targeting (dedicated/player-server/client/headless), network ID, remote execution, publicVariable, setVariable, JIP synchronisation, and local testing procedures.
+- **`Remote Control`** — [remote-control.md](../scripting/remote-control.md) — Remote Control allows a player (remote-controller) to take control of another unit (drone, or remote-controlled) that is different from the local player unit.
+- **`Scripting Overview`** — [scripting-overview.md](../scripting/scripting-overview.md) — Learning roadmap: beginner topics (variables, commands, control structures, arrays, script files), intermediate (functions, namespaces, event handlers, hashmaps), advanced (multiplayer, GUIs, optimisation, debugging).
 

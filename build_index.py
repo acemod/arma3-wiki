@@ -17,6 +17,7 @@ from collections import defaultdict
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 COMMANDS_DIR = os.path.join(SCRIPT_DIR, "commands")
 EVENTS_DIR = os.path.join(SCRIPT_DIR, "events")
+SCRIPTING_DIR = os.path.join(SCRIPT_DIR, "scripting")
 OUTPUT = os.path.join(SCRIPT_DIR, "INDEX.md")
 
 
@@ -66,6 +67,54 @@ def parse_first_sentence(text: str) -> str:
     # Take first sentence
     sentence = re.split(r"(?<=[.!?])\s", text.strip())[0]
     return sentence.strip()
+
+
+def parse_yaml_frontmatter(text: str) -> dict[str, str]:
+    """Extract YAML frontmatter (between --- delimiters) from a file."""
+    import re
+    # Find content between first pair of ---
+    match = re.match(r"^---\s*\n(.*?)\n---\s*", text, re.DOTALL)
+    if not match:
+        return {}
+    fm_text = match.group(1)
+    fm: dict[str, str] = {}
+    for line in fm_text.splitlines():
+        line = line.strip()
+        if ":" in line:
+            key, _, value = line.partition(":")
+            key = key.strip().lower()
+            value = value.strip().strip('"').strip("'")
+            if key and value:
+                fm[key] = value
+    return fm
+
+
+def extract_description_from_md(text: str) -> str:
+    """Extract a brief description from markdown body content (after frontmatter)."""
+    import re
+    # Strip frontmatter
+    body = re.sub(r"^---\s*\n.*?\n---\s*", "", text, count=1, flags=re.DOTALL)
+    # Strip headings (all levels) — need MULTILINE so ^ matches each line start
+    body = re.sub(r"^#{1,6}\s+.+$", "", body, flags=re.MULTILINE)
+    # Strip code blocks (keep their content for description)
+    body = re.sub(r"```[^`]*```", "", body, flags=re.DOTALL)
+    # Strip tables
+    body = re.sub(r"\|.*\|\n\|?.*\|.*\|\n((?:\|.*\|\n)*)?", "", body)
+    # Strip blockquotes
+    body = re.sub(r">.*?\n?", "", body)
+    # Strip inline formatting
+    body = re.sub(r"\*\*(.+?)\*\*", r"\1", body)
+    body = re.sub(r"`([^`]+)`", r"\1", body)
+    # Get first non-empty paragraph
+    paragraphs = [p.strip() for p in body.split("\n\n") if p.strip()]
+    if paragraphs:
+        # Take first paragraph, clean up
+        desc = re.sub(r"\s+", " ", paragraphs[0]).strip()
+        # Limit to ~200 chars
+        if len(desc) > 200:
+            desc = desc[:197] + "..."
+        return desc
+    return ""
 
 
 # ── Commands ──────────────────────────────────────────────────────────────────
@@ -129,6 +178,31 @@ for category in sorted(os.listdir(EVENTS_DIR)):
 
         event_categories[category].append((raw_id, desc))
 
+# ── Scripting Tutorials ───────────────────────────────────────────────────────
+
+print(f"Scanning {SCRIPTING_DIR} ...")
+scripting_tutorials: list[tuple[str, str, str]] = []  # (filename, title, description)
+
+if os.path.isdir(SCRIPTING_DIR):
+    for path in sorted(glob.glob(os.path.join(SCRIPTING_DIR, "*.md"))):
+        # Skip the source txt file
+        if not path.endswith(".md"):
+            continue
+        with open(path, encoding="utf-8", errors="ignore") as fh:
+            content = fh.read()
+
+        fm = parse_yaml_frontmatter(content)
+        title = fm.get("title", os.path.splitext(os.path.basename(path))[0].replace("-", " ").title())
+        category = fm.get("category", "general")
+
+        # Use frontmatter description if provided, otherwise extract from body
+        raw_desc = fm.get("description", "")
+        if not raw_desc:
+            raw_desc = extract_description_from_md(content)
+
+        filename = os.path.basename(path)
+        scripting_tutorials.append((filename, title, raw_desc))
+
 # ── Write INDEX.md ────────────────────────────────────────────────────────────
 
 version = ""
@@ -139,12 +213,13 @@ if os.path.exists(version_file):
 
 total_commands = sum(len(v) for v in group_to_commands.values()) + len(ungrouped)
 total_events = sum(len(v) for v in event_categories.values())
+total_tutorials = len(scripting_tutorials)
 
 lines_out: list[str] = []
-lines_out.append("# Arma 3 Wiki — Command & Event Index\n")
+lines_out.append("# Arma 3 Wiki — Command, Event & Tutorial Index\n")
 if version:
     lines_out.append(f"_Generated from wiki data version `{version}`. Re-run `build_index.py` to refresh._\n")
-lines_out.append(f"**{total_commands} commands** across {len(group_to_commands)} groups · **{total_events} event handlers** across {len(event_categories)} categories\n")
+lines_out.append(f"**{total_commands} commands** across {len(group_to_commands)} groups · **{total_events} event handlers** across {len(event_categories)} categories · **{total_tutorials} tutorials**\n")
 lines_out.append("\n---\n")
 
 # Table of contents
@@ -157,6 +232,8 @@ lines_out.append("- [Event Handlers by Category](#event-handlers-by-category)\n"
 for cat in sorted(event_categories):
     anchor = cat.lower().replace(" ", "-")
     lines_out.append(f"  - [{cat} ({len(event_categories[cat])})](#events-{anchor})\n")
+if scripting_tutorials:
+    lines_out.append("- [Scripting Tutorials](#scripting-tutorials)\n")
 lines_out.append("\n---\n")
 
 # Commands section
@@ -195,9 +272,24 @@ for cat in sorted(event_categories):
             lines_out.append(f"- **`{eid}`**\n")
     lines_out.append("\n")
 
+# Scripting Tutorials section
+if scripting_tutorials:
+    lines_out.append("---\n\n## Scripting Tutorials\n\n")
+    lines_out.append("> **How to look up a tutorial:** `scripting/{filename}.md`  \n")
+    lines_out.append("> Each file has: YAML frontmatter (title, category, source), clean markdown, fenced SQF code blocks.\n\n")
+
+    lines_out.append("### Scripting Tutorials <a id=\"scripting-tutorials\"></a>\n\n")
+    for filename, title, desc in sorted(scripting_tutorials, key=lambda x: x[1].lower()):
+        if desc:
+            lines_out.append(f"- **`{title}`** — [{filename}](../scripting/{filename}) — {desc}\n")
+        else:
+            lines_out.append(f"- **`{title}`** — [{filename}](../scripting/{filename})\n")
+    lines_out.append("\n")
+
 with open(OUTPUT, "w", encoding="utf-8") as fh:
     fh.writelines(lines_out)
 
 print(f"Written: {OUTPUT}")
 print(f"  {total_commands} commands in {len(group_to_commands)} groups")
 print(f"  {total_events} event handlers in {len(event_categories)} categories")
+print(f"  {total_tutorials} scripting tutorials")
