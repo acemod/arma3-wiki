@@ -11,7 +11,7 @@ syntax:
 - call: !Unary entity
   ret:
   - Number
-  - vision mode
+  - vision mode ('''0''' on error, e.g on [[objNull]])
   params:
   - name: entity
     description: unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode

@@ -1,0 +1,33 @@
+name: hideActions
+description: |-
+  {{Feature|important|This command is a work in progress and can evolve until release on stable branch.}}
+  Hides/unhides user UI actions given by their enum number (see [[shownAction]]).
+
+  {{Feature|informative|This command hides actions for the current player ([[focusOn]]), a respawned player will have all actions unhidden so it must be reapplied.}}
+groups:
+- Interaction
+syntax:
+- call: !Unary
+  - mode
+  - actions
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: mode
+    type: Unknown
+  - name: actions
+    type: Unknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 22
+examples:
+- <sqf>hideActions [true, [1, 2]]; //hide GetInCommander and GetInDriver actions</sqf>
+- <sqf>hideActions ["UnhideSelected", [1, 2]]; //unhide GetInCommander and GetInDriver actions</sqf>
+- <sqf>hideActions [1, [91]]; //hide all user added actions</sqf>
+- <sqf>hideActions ["HideAllButSelected", [91]]; //hide all engine actions leaving only user added</sqf>
+- <sqf>hideActions [3, []]; //hide all actions</sqf>
+- <sqf>hideActions ["UnhideAllButSelected", []]; //unhide all hidden actions</sqf>

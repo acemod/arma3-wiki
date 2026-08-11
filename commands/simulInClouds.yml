@@ -8,9 +8,7 @@ syntax:
 - call: !Unary pos
   ret:
   - Unknown
-  - |-
-    [[true]] if given position is in clouds
-    * [[Nothing]] - If given arguments are incorrect
+  - '[[true]] if given position is in clouds. [[Nothing]] if given arguments are incorrect'
   params:
   - name: pos
     type: Position

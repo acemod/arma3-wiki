@@ -1,14 +1,14 @@
 name: infoPanel
-description: |-
-  Returns information about what is currently displayed on given player's info panel.<br>
-  Returns ["EmptyDisplay","EmptyDisplayComponent"] when no panel is open.
+description: Returns information about what is currently displayed on given player's info panel.
 groups:
 - Custom Panels
 syntax:
 - call: !Unary infoPanelId
   ret:
   - Unknown
-  - null
+  - |-
+    ''EmptyDisplay'' when no panel is open
+    * componentType: [[String]] -  ''EmptyDisplayComponent'' when no panel is open
   params:
   - name: infoPanelId
     description: info panel classname, or "left" or "right"

@@ -11,12 +11,30 @@ syntax:
   - position
   ret:
   - Number
-  - null
+  - the number of available positions ignoring locked positions
   params:
   - name: vehicle
+    description: transport
     type: Object
   - name: position
     type: Unknown
+- call: !Binary
+  - vehicle
+  - - position
+  ret:
+  - Number
+  - the number of available positions ignoring locked positions
+  params:
+  - name: vehicle
+    description: transport
+    type: Object
+  - name: position
+    description: see [[moveInAny]]. Empty string "" returns number of all free positions
+    type: String
+  since:
+    arma_3:
+      major: 2
+      minor: 22
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:

@@ -1,5 +1,5 @@
 name: add3DENConnection
-description: '[[Eden Editor: Connecting|Connect]] entities together. Be aware to select the correct type of [[Eden Entity|Eden Entities]]. For example, grouping only works between entities of type [[Group]].'
+description: '[[Eden Editor: Connecting|Connect]] entities together. Be aware to select the correct type of [[Eden Entity|Eden Entities]] for the connection type.'
 groups:
 - Eden Editor
 syntax:
@@ -27,3 +27,11 @@ since:
     minor: 56
 examples:
 - <sqf>add3DENConnection ["RandomStart", get3DENSelected "Object", "marker_0"];// Set random start on marker "marker_0" for all selected objects.</sqf>
+- |-
+  <sqf>
+  // Group all selected units to the first selected group
+  private _group = get3DENSelected "Group" param [0, grpNull];
+  private _units = get3DENSelected "Objects";
+
+  add3DENConnection ["Group", _units, _group];
+  </sqf>

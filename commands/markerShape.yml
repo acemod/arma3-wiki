@@ -1,5 +1,8 @@
 name: markerShape
-description: Returns the shape of given marker.
+description: |-
+  Returns the shape of given marker. markerShape#Example_2
+
+  {{Feature|informative|This command can be used as a fast way to check if a marker exists. See {{Link|#Example 2}}.}}
 groups:
 - Markers
 syntax:
@@ -8,10 +11,11 @@ syntax:
   - String
   - |-
     shape of given marker. Can be return:
+    * {{hl|""}} - if the marker does not exist
     * {{hl|"ICON"}}
     * {{hl|"RECTANGLE"}}
     * {{hl|"ELLIPSE"}}
-    * {{GVI|arma3|1.60|size= 0.75}} {{hl|"POLYLINE"}} (Hand drawn markers)
+    * {{GVI|arma3|1.60|size= 0.75}} {{hl|"POLYLINE"}} - hand drawn markers
     * {{GVI|arma3|2.20|size= 0.75}} {{hl|"TRIANGLE"}}
     * {{GVI|arma3|2.20|size= 0.75}} {{hl|"PENTAGON"}}
     * {{GVI|arma3|2.20|size= 0.75}} {{hl|"HEXAGON"}}
@@ -40,3 +44,4 @@ since:
     minor: 50
 examples:
 - <sqf>if (markerShape "Marker1" == "RECTANGLE") then { hint "Marker1 is a rectangle!" };</sqf>
+- <sqf>if (markerShape "Marker1" == "") then { hint "Marker1 does not exist!" };</sqf>
