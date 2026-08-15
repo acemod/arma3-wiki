@@ -5,10 +5,10 @@ description: |-
   * "Action" - action key press
   * "NextAction" - mouse scroll down
   In order to remove a previously added event handler, set it again with an empty ''code'' string {{hl|""}}.
-
+  {{Feature|informative|'''Since {{GVI|arma3|2.22|size= 0.75}} consider using [[hideActions]]'''}}
   {{Feature|important|This is a "set" command, which means event handlers are not stackable and will replace previously set event handlers of the same type.}}
 
-  {{Feature|arma3|Since {{arma3}} v1.50 the event handler receives an array of the selected/activated action's arguments in {{hl|_this}} variable:
+  {{Feature|arma3|Since {{GVI|arma3|1.50|size= 0.75}} the event handler receives an array of the selected/activated action's arguments in {{hl|_this}} variable:
   <sqf>params ["_target", "_caller", "_index", "_engineName", "_text", "_priority", "_showWindow", "_hideOnUse", "_shortcut", "_visibleMenu", "_eventName"];</sqf>
   * _target: [[Object]] - target object to which action is attached
   * _caller: [[Object]] - caller object, basically [[player]]
