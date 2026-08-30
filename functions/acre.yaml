@@ -61,7 +61,13 @@
     type: String
   example: '["en", "English"] call acre_api_fnc_babelAddLanguageType;'
 - name: acre_api_fnc_babelgetlanguageid
-  ret: String
+  ret: !OneOf
+  - - String
+    - null
+  - - Boolean
+    - null
+  - - ArrayUnknown
+    - null
   params:
   - name: '0'
     description: Language display name <STRING>
@@ -90,7 +96,7 @@
   params: []
   example: '["en"] call acre_api_fnc_babelSetSpokenLanguages;'
 - name: acre_api_fnc_babelsetupmission
-  ret: Boolean
+  ret: Nothing
   params: []
   example: |-
     [ [west, "English", "French"], [east, "Russian"], [civilian, "French"] ] call acre_api_fnc_babelSetupMission;
@@ -160,7 +166,11 @@
   params: []
   example: '[] call acre_api_fnc_getCurrentRadio;'
 - name: acre_api_fnc_getcurrentradiochannelnumber
-  ret: Number
+  ret: !OneOf
+  - - Number
+    - null
+  - - ArrayUnknown
+    - null
   params: []
   example: '[] call acre_api_fnc_getCurrentRadioChannelNumber;'
 - name: acre_api_fnc_getcurrentradiolist
@@ -247,7 +257,13 @@
     type: String
   example: _audioSource = ["ACRE_PRC148_ID_123"] call acre_api_fnc_getRadioAudioSource
 - name: acre_api_fnc_getradiobytype
-  ret: String
+  ret: !OneOf
+  - - String
+    - null
+  - - Nothing
+    - null
+  - - ArrayUnknown
+    - null
   params:
   - name: '0'
     description: Radio type <STRING>
@@ -260,14 +276,24 @@
     _radioId = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType
      * _radioId = ["ACRE_PRC152", _unit] call acre_api_fnc_getRadioByType
 - name: acre_api_fnc_getradiochannel
-  ret: Number
+  ret: !OneOf
+  - - Number
+    - null
+  - - ArrayUnknown
+    - null
   params:
   - name: '0'
     description: Radio ID <STRING>
     type: String
   example: _currentChannel = ["ACRE_PRC152_ID_123"] call acre_api_fnc_getRadioChannel;
 - name: acre_api_fnc_getradioonoffstate
-  ret: Boolean
+  ret: !OneOf
+  - - Boolean
+    - null
+  - - Number
+    - null
+  - - ArrayUnknown
+    - null
   params:
   - name: '0'
     description: Radio ID <STRING>
@@ -288,7 +314,13 @@
     type: String
   example: '["ACRE_PRC148_ID_1"] call acre_api_fnc_getRadioVolume'
 - name: acre_api_fnc_getrevealtoai
-  ret: Number
+  ret: !OneOf
+  - - Number
+    - null
+  - - Boolean
+    - null
+  - - ArrayUnknown
+    - null
   params: []
   example: '[] call acre_api_fnc_getRevealToAI;'
 - name: acre_api_fnc_getselectablevoicecurve
@@ -672,8 +704,12 @@
     description: Preset name <STRING>
     type: String
   - name: '2'
-    description: Channel number <NUMBER>
-    type: Number
+    description: Channel number <NUMBER><STRING>
+    type: !OneOf
+    - - Number
+      - null
+    - - String
+      - null
   - name: '3'
     description: Field name <STRING>
     type: String
