@@ -58,13 +58,11 @@
 - name: cba_diagnostic_fnc_watchinput
   params:
   - name: '0'
-    description: event - The event that triggered the function
-    type: Anything
-    optional: true
+    description: event - The event that triggered the function <STRING>
+    type: String
   - name: '1'
-    description: args - The arguments passed to the event
-    type: Anything
-    optional: true
+    description: args - The arguments passed to the event <ARRAY>
+    type: ArrayUnknown
   example: |-
     (begin example)
             [1] call CBA_diagnostic_fnc_watchInput;
@@ -76,9 +74,8 @@
 - name: cba_diagnostic_fnc_watchstart
   params:
   - name: '0'
-    description: index - The index in the watch list
-    type: Anything
-    optional: true
+    description: index - The index in the watch list <NUMBER>
+    type: Number
   example: |-
     (begin example)
             [1] call CBA_diagnostic_fnc_watchStart;
@@ -90,9 +87,8 @@
 - name: cba_diagnostic_fnc_watchstop
   params:
   - name: '0'
-    description: index - The index in the watch list
-    type: Anything
-    optional: true
+    description: index - The index in the watch list <NUMBER>
+    type: Number
   example: |-
     (begin example)
             [1] call CBA_diagnostic_fnc_watchStop;
@@ -475,6 +471,7 @@
         Taosenai & Nou, commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_addkeybindtofleximenu
+  ret: ArrayUnknown
   params: []
   example: |-
     (begin example)
@@ -629,11 +626,19 @@
   ret: Nothing
   params:
   - name: '0'
-    description: name   - name of the menu button or array of name and tooltip <STRING, ARRAY>
+    description: name         - name of the menu button or array of name and tooltip <STRING, ARRAY>
     type: Anything
   - name: '1'
-    description: dialog - Dialog to open when clicking the menu button <STRING>
-    type: String
+    description: dialogOrCode - Dialog to open or code to execute when clicking the menu button <STRING, CODE>
+    type: Anything
+  - name: '2'
+    description: 'condition    - condition to check whether the menu button should be shown (optional, default: {true}) <CODE>'
+    type: Code
+    optional: true
+  - name: '3'
+    description: 'params       - parameters passed to the condition and dialog code (optional, default: []) <ARRAY>'
+    type: ArrayUnknown
+    optional: true
   example: |-
     (begin example)
             ["Menu Name", "RscDebugConsole"] call CBA_fnc_addPauseMenuOption;
@@ -665,11 +670,11 @@
         Nou & Jaynus, donated from ACRE project code for use by the community; commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_addplayeraction
+  ret: Number
   params:
   - name: '0'
-    description: actionArray - Array that defines the action, as used in addAction command [Array]
-    type: Anything
-    optional: true
+    description: actionArray - Array that defines the action, as used in addAction command <ARRAY>
+    type: ArrayUnknown
   example: ''
 - name: cba_fnc_addplayereventhandler
   ret: Number
@@ -748,6 +753,33 @@
     Author:
         commy2
     ----------------------------------------------------------------------------
+- name: cba_fnc_addstatuseffecttype
+  ret: Nothing
+  params:
+  - name: '0'
+    description: name               - Status Effect Name, this should match a corresponding event name <STRING>
+    type: String
+  - name: '1'
+    description: 'isGlobal           - Send event globally (optional, default: false) <BOOL>'
+    type: Boolean
+    optional: true
+  - name: '2'
+    description: 'commonReasonsArray - Common Effect Reasons to pre-seed during init (optional, default: []) <ARRAY>'
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: 'sendJIP            - Send event to JIP (requires sending event globally) <BOOL> (default: false)'
+    type: Boolean
+    optional: true
+  - name: '4'
+    description: 'eventName          - Event name <STRING> (default: "CBA_statusEffects_<effect>")'
+    type: !OneOf
+    - - String
+      - null
+    - - Anything
+      - null
+    optional: true
+  example: ''
 - name: cba_fnc_addunittrackprojectiles
   params:
   - name: '0'
@@ -874,6 +906,17 @@
       - null
     - - String
       - null
+    optional: true
+  example: ''
+- name: cba_fnc_binarizenumber
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: number    - Decimal Number <NUMBER>
+    type: Number
+  - name: '1'
+    description: 'minLength - Minimum length of the returned Array, note: returned array can be larger (optional, default: 8)<NUMBER>'
+    type: Number
     optional: true
   example: ''
 - name: cba_fnc_binocularmagazine
@@ -1230,11 +1273,11 @@
         commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_capitalize
+  ret: String
   params:
   - name: '0'
-    description: string - String to capitalize [String]
-    type: Anything
-    optional: true
+    description: string - String to capitalize <STRING>
+    type: String
   example: |-
     (begin example)
             _result = ["FISH"] call CBA_fnc_capitalize;
@@ -1516,23 +1559,20 @@
         OverlordZorn
     ----------------------------------------------------------------------------
 - name: cba_fnc_createmarker
+  ret: String
   params:
   - name: '0'
-    description: markerName - Name of marker to create [String]
-    type: Anything
-    optional: true
+    description: markerName - Name of marker to create <STRING>
+    type: String
   - name: '1'
-    description: 'position - [Array: [x, y]]'
-    type: Anything
-    optional: true
+    description: position - <ARRAY> of [x,y]
+    type: ArrayUnknown
   - name: '2'
-    description: shape - "ICON", "RECTANGLE" or "ELLIPSE" [String]
-    type: Anything
-    optional: true
+    description: shape - "ICON", "RECTANGLE" or "ELLIPSE" <STRING>
+    type: String
   - name: '3'
-    description: 'size - [Array: [width, height]]'
-    type: Anything
-    optional: true
+    description: size - <ARRAY> of [width, height]
+    type: ArrayUnknown
   example: |-
     (begin example)
             // simple marker creation
@@ -1624,9 +1664,8 @@
 - name: cba_fnc_createtrigger
   params:
   - name: '0'
-    description: pos - Position [Array]
-    type: Anything
-    optional: true
+    description: pos - Position <ARRAY>
+    type: ArrayUnknown
   example: |-
     (begin example)
             [_position] call CBA_fnc_createTrigger;
@@ -1638,6 +1677,7 @@
         Sickboy (sb_at_dev-heaven.net)
     ----------------------------------------------------------------------------
 - name: cba_fnc_createuuid
+  ret: String
   params: []
   example: ''
 - name: cba_fnc_csscolortodecimal
@@ -1887,6 +1927,17 @@
     Author:
         BaerMitUmlaut
     ----------------------------------------------------------------------------
+- name: cba_fnc_endradiotransmission
+  ret: Nothing
+  params: []
+  example: |-
+    (begin example)
+            [] call CBA_fnc_endRadioTransmission
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
 - name: cba_fnc_error
   params:
   - name: '0'
@@ -1999,18 +2050,25 @@
         Spooner, commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_find
+  ret: Number
   params:
   - name: '0'
-    description: haystack - String in which to search [String or ASCII char array]
-    type: Anything
-    optional: true
+    description: haystack - String in which to search or ASCII char array <STRING or ARRAY>
+    type: !OneOf
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
   - name: '1'
-    description: needle - String to search for [String or ASCII char array]
-    type: Anything
-    optional: true
+    description: needle - String to search for <STRING or ARRAY>
+    type: !OneOf
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
   - name: '2'
-    description: initialIndex - Initial character index within _haystack to start the
-    type: Anything
+    description: initialIndex - Initial character index (0+) within _haystack to start the search at <NUMBER> (defaults to 0)
+    type: Number
     optional: true
   example: |-
     (begin example)
@@ -2032,49 +2090,70 @@
   params: []
   example: ''
 - name: cba_fnc_findmax
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - Nothing
+    - null
   params:
   - name: '0'
-    description: 'array: Array with Numbers'
-    type: Anything
-    optional: true
+    description: 'array: Array with Numbers <ARRAY>'
+    type: ArrayUnknown
   example: ''
 - name: cba_fnc_findmin
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - Nothing
+    - null
   params:
   - name: '0'
-    description: 'array: Array with Numbers'
-    type: Anything
-    optional: true
+    description: 'array: Array with Numbers <ARRAY>'
+    type: ArrayUnknown
   example: ''
 - name: cba_fnc_findmusic
   params: []
   example: ''
 - name: cba_fnc_findnil
+  ret: Number
   params:
   - name: '0'
-    description: index = ["", player, "test", nil, _variable, nil] call CBA_fnc_findNil
-    type: Anything
-    optional: true
+    description: 'array: to search in. <ARRAY>'
+    type: ArrayUnknown
   example: ''
 - name: cba_fnc_findnull
   params:
   - name: '0'
-    description: index = ["", player, "test", objNull, _variable] call CBA_fnc_findNull
-    type: Anything
-    optional: true
+    description: 'array: to search in. <ARRAY>'
+    type: ArrayUnknown
   example: ''
 - name: cba_fnc_findtypename
+  ret: Number
   params:
   - name: '0'
-    description: index = ["OBJECT", ["", Player, "test", nil, VARIABLE, nil]] call CBA_fnc_findTypeName
-    type: Anything
-    optional: true
+    description: 'array: Array to search in. <ARRAY>'
+    type: ArrayUnknown
+  - name: '1'
+    description: 'typeName: TypeName, if parameter is a string, that contains a case insensitive typename, it will be used. Otherwise typename of the variable will be used. <STRING><ANY>'
+    type: !OneOf
+    - - String
+      - null
+    - - Anything
+      - null
   example: ''
 - name: cba_fnc_findtypeof
+  ret: Number
   params:
   - name: '0'
-    description: index = [["", Player, "test", nil, VARIABLE, nil], player] call CBA_fnc_findTypeOf
-    type: Anything
-    optional: true
+    description: array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: entryType, can be either Object or class name string (as returned by typeOf) <OBJECT or STRING>
+    type: !OneOf
+    - - Object
+      - null
+    - - String
+      - null
   example: ''
 - name: cba_fnc_fireddisposable
   ret: Nothing
@@ -2114,11 +2193,11 @@
         commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_floattostring
+  ret: String
   params:
   - name: '0'
-    description: number - Number to format [Number]
-    type: Anything
-    optional: true
+    description: number - Number to format <NUMBER>
+    type: Number
   example: |-
     (begin example)
             _str = 100.12345678 call CBA_fnc_floatToString; // _str = "100.123459", using (str 100.12345678) results in "100.123"
@@ -2129,33 +2208,33 @@
         Nou
     ----------------------------------------------------------------------------
 - name: cba_fnc_formatelapsedtime
+  ret: String
   params:
   - name: '0'
-    description: seconds - Number of seconds to format, for example from 'time' command [number]
-    type: Anything
-    optional: true
+    description: seconds - Number of seconds to format, for example from 'time' command <NUMBER>
+    type: Number
   - name: '1'
-    description: 'format - Format to put time into [String: "H:MM:SS", "M:SS",'
-    type: Anything
+    description: format - Format to put time into [one of "H:MM:SS", "M:SS", "H:MM:SS.mmm" or "M:SS.mmm"] <STRING> (defaults to "H:MM:SS")
+    type: String
     optional: true
   example: ''
 - name: cba_fnc_formatnumber
+  ret: String
   params:
   - name: '0'
-    description: number - Number to format [Number]
-    type: Anything
-    optional: true
+    description: number - Number to format <NUMBER>
+    type: Number
   - name: '1'
-    description: integerWidth - Minimum width of integer part of number, padded with 0s,
-    type: Anything
+    description: 'integerWidth - Minimum width of integer part of number, padded with 0s, <NUMBER> (default: 1)'
+    type: Number
     optional: true
   - name: '2'
-    description: decimalPlaces - Number of decimal places, padded with trailing 0s,
-    type: Anything
+    description: 'decimalPlaces - Number of decimal places, padded with trailing 0s, if necessary <NUMBER> (default: 0)'
+    type: Number
     optional: true
   - name: '3'
-    description: separateThousands - True to separate each three digits with a comma
-    type: Anything
+    description: 'separateThousands - True to separate each three digits with a comma <BOOL> (default: false)'
+    type: Boolean
     optional: true
   example: |-
     (begin example)
@@ -2237,25 +2316,27 @@
   params: []
   example: ''
 - name: cba_fnc_getarraydiff
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: distance = [[0, 0, 1], [0, 0, 0]] call CBA_fnc_getArrayDiff
-    type: Anything
-    optional: true
+    description: 'arrayA: First array of strings (must not contain scalars) <ARRAY>'
+    type: ArrayUnknown
+  - name: '1'
+    description: 'arrayB: Second array of strings (must not contain scalars) <ARRAY>'
+    type: ArrayUnknown
   example: ''
 - name: cba_fnc_getarrayelements
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: types = [0, 0, 1, 1, 1, 1] call CBA_fnc_getArrayElements
-    type: Anything
-    optional: true
+    description: 'input: <ARRAY>'
+    type: ArrayUnknown
   example: ''
 - name: cba_fnc_getaspectratio
   params:
   - name: '0'
-    description: output - string with one of ["ARRAY","NUMBER","STRING"]
-    type: Anything
-    optional: true
+    description: output - string with one of ["ARRAY","NUMBER","STRING"] <STRING>
+    type: String
   example: |-
     (begin example)
             _ratio = "STRING" call CBA_fnc_getAspectRatio;
@@ -2288,6 +2369,10 @@
     optional: true
   - name: '3'
     description: 'convert    - convert certain values - see above (optional, default: true) <BOOL>'
+    type: Boolean
+    optional: true
+  - name: '4'
+    description: 'toLower    - applies toLowerANSI to keys of hashmap (optional, default: false) <BOOL>'
     type: Boolean
     optional: true
   example: |-
@@ -2345,11 +2430,8 @@
         Sickboy (sb_at_dev-heaven.net)
     ----------------------------------------------------------------------------
 - name: cba_fnc_getdistance
-  params:
-  - name: '0'
-    description: distance = [Player, [0,0,0]] call CBA_fnc_getDistance
-    type: Anything
-    optional: true
+  ret: Number
+  params: []
   example: ''
 - name: cba_fnc_getfirer
   ret: !OneOf
@@ -2425,6 +2507,11 @@
         Zorn
     ----------------------------------------------------------------------------
 - name: cba_fnc_getkeybind
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - Nothing
+    - null
   params: []
   example: |-
     (begin example)
@@ -2577,6 +2664,7 @@
         Mokka, OverlordZorn
     ----------------------------------------------------------------------------
 - name: cba_fnc_getpos
+  ret: ArrayUnknown
   params:
   - name: '0'
     description: entity - <MARKER, OBJECT, LOCATION, GROUP, TASK, WAYPOINT or POSITION>
@@ -2603,6 +2691,22 @@
     Author:
         Sickboy, commy2
     ----------------------------------------------------------------------------
+- name: cba_fnc_getstatuseffect
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - Boolean
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: object     - Vehicle that it will be attached to (player or vehicle) <OBJECT>
+    type: Object
+  - name: '1'
+    description: effectName - Effect Name <STRING>
+    type: String
+  example: ''
 - name: cba_fnc_getterrainprofile
   params: []
   example: ''
@@ -2619,9 +2723,8 @@
 - name: cba_fnc_getuisize
   params:
   - name: '0'
-    description: output - the desired output format, either "NUMBER" or "STRING".
-    type: Anything
-    optional: true
+    description: output - the desired output format, either ["NUMBER" or "STRING"] <STRING>
+    type: String
   example: |-
     (begin example)
             _uiSize = "STRING" call CBA_fnc_getUISize;
@@ -2631,11 +2734,11 @@
         commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_getunitanim
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: unit - get stance and movement mode for this unit
-    type: Anything
-    optional: true
+    description: unit - get stance and movement mode for this unit <OBJECT>
+    type: Object
   example: |-
     (begin example)
         _result = player call CBA_fnc_getUnitAnim;
@@ -2648,11 +2751,11 @@
 
     ----------------------------------------------------------------------------
 - name: cba_fnc_getunitdeathanim
+  ret: String
   params:
   - name: '0'
-    description: unit - the unit to get the death animation for. [Object]
-    type: Anything
-    optional: true
+    description: unit - the unit to get the death animation for. <OBJECT>
+    type: Object
   example: |-
     (begin example)
         _anim = player call CBA_fnc_getUnitDeathAnim;
@@ -2783,11 +2886,11 @@
 - name: cba_fnc_hashcreate
   params:
   - name: '0'
-    description: array - Array of key-value pairs to create Hash from [Array, defaults to []]
-    type: Anything
+    description: 'array - Array of key-value pairs to create Hash from <ARRAY> (default: [])'
+    type: ArrayUnknown
     optional: true
   - name: '1'
-    description: defaultValue - Default value. Used when key doesn't exist. A key is also removed from the hash if the value is set to this default [Any, defaults to nil]
+    description: 'defaultValue - Default value. Used when key doesn''t exist. A key is also removed from the hash if the value is set to this default <ANY> (default: nil)'
     type: Anything
     optional: true
   example: |-
@@ -2808,90 +2911,82 @@
 - name: cba_fnc_hasheachpair
   params:
   - name: '0'
-    description: hash - Hash to iterate [Array which is a Hash structure]
-    type: Anything
-    optional: true
+    description: hash - Hash to iterate <ARRAY>(CBA HASH)
+    type: ArrayUnknown
   - name: '1'
-    description: code - Function to call with each pair [Any]
-    type: Anything
-    optional: true
+    description: code - Function to call with each pair <CODE>
+    type: Code
   example: ''
 - name: cba_fnc_hashfilter
+  ret: Number
   params:
   - name: '0'
-    description: hash - Hash to iterate [Array which is a Hash structure]
-    type: Anything
-    optional: true
+    description: hash - Hash to iterate <ARRAY>(CBA HASH)
+    type: ArrayUnknown
   - name: '1'
-    description: code - Function to call with each pair which returns a bool (false will remove key from hash) [Code]
-    type: Anything
-    optional: true
+    description: code - Function to call with each pair which returns a bool (false will remove key from hash) <CODE>
+    type: Code
   example: ''
 - name: cba_fnc_hashget
+  ret: Anything
   params:
   - name: '0'
-    description: hash - Hash to look for key in [Array which is a Hash structure]
-    type: Anything
-    optional: true
+    description: hash - Hash to look for key in <ARRAY>(CBA HASH)
+    type: ArrayUnknown
   - name: '1'
-    description: key - Key to search for in Hash [Any]
+    description: key - Key to search for in Hash <ANY>
     type: Anything
-    optional: true
   - name: '2'
-    description: defaultOverwrite - Default Overwrite if key is not defined [Any]
+    description: defaultOverwrite - Default Overwrite if key is not defined <ANY>(optional)
     type: Anything
     optional: true
   example: ''
 - name: cba_fnc_hashhaskey
+  ret: Boolean
   params:
   - name: '0'
-    description: hash - Hash to look for key in [Array which is a Hash structure]
-    type: Anything
-    optional: true
+    description: hash - Hash to look for key in <ARRAY>(CBA HASH)
+    type: ArrayUnknown
   - name: '1'
-    description: key - Key to search for in Hash [Any]
+    description: key - Key to search for in Hash <ANY>
     type: Anything
-    optional: true
   example: ''
 - name: cba_fnc_hashkeys
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: hash - Hash to get keys for [Array which is a Hash structure]
-    type: Anything
-    optional: true
+    description: hash - Hash to get keys for <ARRAY>(CBA HASH)
+    type: ArrayUnknown
   example: ''
 - name: cba_fnc_hashrem
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: hash - Hash to use [Hash]
-    type: Anything
-    optional: true
+    description: hash - Hash to use <ARRAY>(CBA HASH)
+    type: ArrayUnknown
   - name: '1'
-    description: key - Key to remove from Hash [Any]
+    description: key - Key to remove from Hash <ANY>
     type: Anything
-    optional: true
   example: ''
 - name: cba_fnc_hashset
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: hash - Hash to use [Hash]
-    type: Anything
-    optional: true
+    description: hash - Hash to use <ARRAY>(CBA HASH)
+    type: ArrayUnknown
   - name: '1'
-    description: key - Key to set in Hash [Any]
+    description: key - Key to set in Hash <ANY>
     type: Anything
-    optional: true
   - name: '2'
-    description: value - Value to set [Any]
+    description: value - Value to set <ANY>
     type: Anything
-    optional: true
   example: ''
 - name: cba_fnc_hashsize
+  ret: Number
   params:
   - name: '0'
-    description: hash - Hash to check size of [Array which is a Hash structure]
-    type: Anything
-    optional: true
+    description: hash - Hash to check size of <ARRAY>(CBA HASH)
+    type: ArrayUnknown
   example: |-
     (begin code)
         _emptyHash = [] call CBA_fnc_hashCreate;
@@ -2905,11 +3000,11 @@
         Killswitch
     ----------------------------------------------------------------------------
 - name: cba_fnc_hashvalues
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: hash - Hash to get values for [Array which is a Hash structure]
-    type: Anything
-    optional: true
+    description: hash - Hash to get values for <ARRAY>(CBA HASH)
+    type: ArrayUnknown
   example: ''
 - name: cba_fnc_headdir
   ret: !OneOf
@@ -2925,12 +3020,17 @@
     - null
   params:
   - name: '0'
-    description: unit - Unit to check [Object]
-    type: Anything
-    optional: true
+    description: unit - Unit to check <OBJECT>
+    type: Object
   - name: '1'
-    description: object - Relative object/position to get direction to [Object or
-    type: Anything
+    description: offset - Relative object/position to get direction to <OBJECT or ARRAY or STRING> (defaults to getting compass direction)
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
     optional: true
   example: |-
     (begin example)
@@ -2961,15 +3061,14 @@
         rocko
     ----------------------------------------------------------------------------
 - name: cba_fnc_inheritsfrom
+  ret: Boolean
   params:
   - name: '0'
-    description: config - Class to check if it is a descendent of _baseConfig [Config]
-    type: Anything
-    optional: true
+    description: config - Class to check if it is a descendent of _baseConfig <CONFIG>
+    type: Config
   - name: '1'
-    description: baseConfig - Ancestor config class [Config]
-    type: Anything
-    optional: true
+    description: baseConfig - Ancestor config class <CONFIG>
+    type: Config
   example: |-
     (begin example)
             _rifle = configFile >> "CfgWeapons" >> "m16a4_acg_gl";
@@ -3004,19 +3103,17 @@
         commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_inject
+  ret: Anything
   params:
   - name: '0'
-    description: array - Array of key-value pairs to create Hash from [Array]
-    type: Anything
-    optional: true
+    description: array - Array of key-value pairs to create Hash from <ARRAY>
+    type: ArrayUnknown
   - name: '1'
-    description: initial - Initial value to pass into the function as _accumulator [Any]
+    description: initial - Initial value to pass into the function as _accumulator <ANY>
     type: Anything
-    optional: true
   - name: '2'
-    description: function - Code to pass values to [Function]
-    type: Anything
-    optional: true
+    description: function - Code to pass values to <CODE>
+    type: Code
   example: |-
     (begin example)
             _result = [[1, 2, 3], "", {_accumulator + (str _x)}] call CBA_fnc_inject;
@@ -3062,11 +3159,22 @@
     type: Anything
   example: ''
 - name: cba_fnc_ishash
+  ret: Boolean
   params:
   - name: '0'
-    description: value - Data structure to check [Any]
-    type: Anything
-    optional: true
+    description: value - Data structure to check <ANY> (target is <ARRAY>(CBA Hash))
+    type: !OneOf
+    - - Anything
+      - null
+    - - ArrayUnknown
+      - null
+  example: ''
+- name: cba_fnc_ismodloaded
+  ret: Boolean
+  params:
+  - name: '0'
+    description: modName - Classname of the mod in CfgPatches <STRING>
+    type: String
   example: ''
 - name: cba_fnc_ismusicplaying
   params: []
@@ -3132,11 +3240,11 @@
         commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_isturnedout
+  ret: Boolean
   params:
   - name: '0'
-    description: unit - Unit to check [Object]
-    type: Anything
-    optional: true
+    description: unit - Unit to check <OBJECT>
+    type: Object
   example: |-
     (begin example)
         if ( [player] call CBA_fnc_isTurnedOut ) then
@@ -3149,11 +3257,11 @@
         Nou, courtesy of ACRE project.
     ----------------------------------------------------------------------------
 - name: cba_fnc_isunitgetoutanim
+  ret: Boolean
   params:
   - name: '0'
-    description: unit - Unit to check [Object]
-    type: Anything
-    optional: true
+    description: unit - Unit to check <OBJECT>
+    type: Object
   example: |-
     (begin example)
             if ( [player] call CBA_fnc_isUnitGetOutAnim ) then
@@ -3166,14 +3274,14 @@
         (c) Denisko-Redisko
     ----------------------------------------------------------------------------
 - name: cba_fnc_join
+  ret: String
   params:
   - name: '0'
-    description: array - Array to join together as a string [Array]
-    type: Anything
-    optional: true
+    description: array - Array to join together as a string <ARRAY>
+    type: ArrayUnknown
   - name: '1'
-    description: separator - String to put between each element of _array
-    type: Anything
+    description: separator - String to put between each element of _array <STRING> (defaults to "")
+    type: String
     optional: true
   example: ''
 - name: cba_fnc_keypressedqte
@@ -3184,14 +3292,14 @@
     type: String
   example: ''
 - name: cba_fnc_lefttrim
+  ret: String
   params:
   - name: '0'
-    description: string - String to trim [String]
-    type: Anything
-    optional: true
+    description: string - String to trim <STRING>
+    type: String
   - name: '1'
-    description: 'trim - Characters to trim [String] (default: "")'
-    type: Anything
+    description: 'trim   - Characters to trim <STRING> (default: "")'
+    type: String
     optional: true
   example: ''
 - name: cba_fnc_localevent
@@ -3253,15 +3361,14 @@
         Daisy
     ----------------------------------------------------------------------------
 - name: cba_fnc_mapdirto
+  ret: Number
   params:
   - name: '0'
-    description: pos1 - Origin position array in format [Easting, Northing] [Array]
-    type: Anything
-    optional: true
+    description: pos1 - Origin position array in format [Easting, Northing] <ARRAY>
+    type: ArrayUnknown
   - name: '1'
-    description: pos2 - End position in format [Easting, Northing] [Array]
-    type: Anything
-    optional: true
+    description: pos2 - End position in format [Easting, Northing] <ARRAY>
+    type: ArrayUnknown
   example: |-
     (begin example)
             _dir = [[024,015], [025,014]] call CBA_fnc_mapDirTo;
@@ -3283,12 +3390,15 @@
 - name: cba_fnc_mapgridtopos
   params:
   - name: '0'
-    description: pos - The position, either an array of strings for the northing & easting or a string.
-    type: Anything
-    optional: true
+    description: pos - Position in 10 digit grid format [Easting, Northing] <ARRAY><STRING>
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
   - name: '1'
-    description: doOffSet - If true, return the center of the gridsquare, if false return upper left. Default false.
-    type: Anything
+    description: 'doOffSet - If true, return the center of the gridsquare, if false return upper left. <BOOL> (Default: false)'
+    type: Boolean
     optional: true
   example: |-
     (begin example)
@@ -3305,19 +3415,21 @@
         Nou
     ----------------------------------------------------------------------------
 - name: cba_fnc_maprelpos
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: pos - Position in 10 digit grid format [Easting, Northing] [Array]
-    type: Anything
-    optional: true
+    description: pos - Position in 10 digit grid format [Easting, Northing] <ARRAY><STRING>
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - String
+      - null
   - name: '1'
-    description: dist - Distance from the starting position [Number]
-    type: Anything
-    optional: true
+    description: dist - Distance from the starting position <NUMBER>
+    type: Number
   - name: '2'
-    description: dir  - Direction from the starting position [Number]
-    type: Anything
-    optional: true
+    description: dir  - Direction from the starting position <NUMBER>
+    type: Number
   example: |-
     (begin example)
             _endPos = [[024,015], 20, 45] call CBA_fnc_mapRelPos;
@@ -3364,19 +3476,18 @@
     ----------------------------------------------------------------------------
 - name: cba_fnc_modelheaddir
   ret: !OneOf
-  - - Number
-    - null
-  - - Number
-    - null
-  - - Number
-    - null
   - - ArrayUnknown
+    - null
+  - - Number
+    - null
+  - - Number
+    - null
+  - - Number
     - null
   params:
   - name: '0'
-    description: unit - Unit to check [Object]
-    type: Anything
-    optional: true
+    description: unit - Unit to check <OBJECT>
+    type: Object
   example: |-
     (begin example)
             _data = [object] call CBA_fnc_headDir;
@@ -3590,7 +3701,7 @@
     type: String
     optional: true
   - name: '3'
-    description: 'depth     - Initial indentation count (optional, default: 0) <NUMBER>'
+    description: 'depth     - Initial indentation count (optional, default: 0) <SCALAR>'
     type: Number
     optional: true
   example: |-
@@ -3643,8 +3754,8 @@
     description: onSuccess  - Script to execute if the progress bar completed <CODE>
     type: Code
   - name: '4'
-    description: onFailure  - Script to execute if the progress bar was aborted prematurely
-    type: Anything
+    description: 'onFailure  - Script to execute if the progress bar was aborted prematurely <CODE> (optional, default: {})'
+    type: Code
     optional: true
   - name: '5'
     description: 'arguments  - Arguments passed to the scripts (optional, default: []) <ANY>'
@@ -3655,12 +3766,12 @@
     type: Boolean
     optional: true
   - name: '7'
-    description: blockKeys  - Block keyboard input
-    type: Anything
+    description: 'blockKeys  - Block keyboard input <BOOLEAN> (optional, default: true)'
+    type: Boolean
     optional: true
   - name: '8'
-    description: allowClose - Allow ESC key to abort the progress bar
-    type: Anything
+    description: 'allowClose - Allow ESC key to abort the progress bar <BOOL> (optional, default: true)'
+    type: Boolean
     optional: true
   example: |-
     (begin example)
@@ -3837,15 +3948,14 @@
 - name: cba_fnc_registerkeybindmodprettyname
   params:
   - name: '0'
-    description: addonName  - Name of the registering mod [String]
-    type: Anything
-    optional: true
+    description: addonName  - Name of the registering mod <STRING>
+    type: String
   - name: '1'
-    description: prettyName - Pretty name of the mod (localized, etc) [String]
-    type: Anything
-    optional: true
+    description: prettyName - Pretty name of the mod (localized, etc) <STRING>
+    type: String
   example: ''
 - name: cba_fnc_registerkeybindtofleximenu
+  ret: ArrayUnknown
   params: []
   example: |-
     (begin example)
@@ -3856,15 +3966,14 @@
      Taosenai
     ----------------------------------------------------------------------------
 - name: cba_fnc_reject
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: array - Input Array [Array]
-    type: Anything
-    optional: true
+    description: array - Input Array <ARRAY>
+    type: ArrayUnknown
   - name: '1'
-    description: block - Block [Code]
-    type: Anything
-    optional: true
+    description: block - Block <CODE>
+    type: Code
   example: ''
 - name: cba_fnc_remoteevent
   ret: Nothing
@@ -4159,11 +4268,11 @@
         Nou & Jaynus, donated from ACRE project code for use by the community; commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_removeplayeraction
+  ret: Boolean
   params:
   - name: '0'
-    description: actionIndex - Index of action to remove [Number]
-    type: Anything
-    optional: true
+    description: actionIndex - Index of action to remove <NUMBER>
+    type: Number
   example: ''
 - name: cba_fnc_removeplayereventhandler
   ret: Nothing
@@ -4280,29 +4389,27 @@
         Brett Mayson
     ----------------------------------------------------------------------------
 - name: cba_fnc_replace
+  ret: String
   params:
   - name: '0'
-    description: string - String to make replacement in [String]
-    type: Anything
-    optional: true
+    description: string      - String to make replacement in <STRING>
+    type: String
   - name: '1'
-    description: pattern - Substring to replace [String]
-    type: Anything
-    optional: true
+    description: pattern     - Substring to replace <STRING>
+    type: String
   - name: '2'
-    description: replacement - String to replace the _pattern with [String]
-    type: Anything
-    optional: true
+    description: replacement - String to replace the _pattern with <STRING>
+    type: String
   example: ''
 - name: cba_fnc_righttrim
+  ret: String
   params:
   - name: '0'
-    description: string - String to trim [String]
-    type: Anything
-    optional: true
+    description: string - String to trim <STRING>
+    type: String
   - name: '1'
-    description: 'trim - Characters to trim [String] (default: "")'
-    type: Anything
+    description: 'trim   - Characters to trim <STRING> (default: "")'
+    type: String
     optional: true
   example: ''
 - name: cba_fnc_runqte
@@ -4364,28 +4471,26 @@
   params: []
   example: ''
 - name: cba_fnc_select
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: array - Input Array [Array]
-    type: Anything
-    optional: true
+    description: array - Input Array <ARRAY>
+    type: ArrayUnknown
   - name: '1'
-    description: block - Block [Code]
-    type: Anything
-    optional: true
+    description: block - Block <CODE>
+    type: Code
   example: ''
 - name: cba_fnc_selectbest
+  ret: Anything
   params:
   - name: '0'
-    description: array - Input Array [Array]
-    type: Anything
-    optional: true
+    description: array - Input Array <ARRAY>
+    type: ArrayUnknown
   - name: '1'
-    description: criteria - Code that is passed element and should return an integer value [Code]
-    type: Anything
-    optional: true
+    description: criteria - Code that is passed element and should return an integer value <CODE>
+    type: Code
   - name: '2'
-    description: return - default return value if array is empty (optional, default nil) [Any]
+    description: return - default return value if array is empty (optional, default nil) <ANY>
     type: Anything
     optional: true
   example: ''
@@ -4429,7 +4534,7 @@
     description: namespace - a namespace <LOCATION, OBJECT>
     type: Anything
   - name: '1'
-    description: defaultValue - Default value. Used when key doesn't exist. A key is also removed from the hash if the value is set to this default [Any, defaults to nil]
+    description: 'defaultValue - Default value. Used when key doesn''t exist. A key is also removed from the hash if the value is set to this default <ANY> (default: nil)'
     type: Anything
     optional: true
   example: |-
@@ -4479,8 +4584,8 @@
     description: height - Height in metres <NUMBER>
     type: Number
   - name: '2'
-    description: 'type   - Mode (optional, default: 1), 0 is AGL, 1 is ASL, 2 is ATL (Default: 1)'
-    type: Anything
+    description: 'type   - Mode [0 is AGL, 1 is ASL, 2 is ATL] <NUMBER> (optional, default: 1)'
+    type: Number
     optional: true
   example: ''
 - name: cba_fnc_setloadout
@@ -4534,6 +4639,22 @@
     type: Number
     optional: true
   example: ''
+- name: cba_fnc_setstatuseffect
+  ret: Nothing
+  params:
+  - name: '0'
+    description: object     - Vehicle that it will be attached to (player or vehicle) <OBJECT>
+    type: Object
+  - name: '1'
+    description: effectName - Effect Name <STRING>
+    type: String
+  - name: '2'
+    description: id         - Unique Reason ID <STRING>
+    type: String
+  - name: '3'
+    description: set        - Is Set (true adds/false removes) <BOOL>
+    type: Boolean
+  example: ''
 - name: cba_fnc_setvarnet
   ret: Boolean
   params:
@@ -4559,11 +4680,11 @@
     optional: true
   example: ''
 - name: cba_fnc_simplifyangle
+  ret: Number
   params:
   - name: '0'
-    description: angle - The unadjusted angle [Number]
-    type: Anything
-    optional: true
+    description: angle - The unadjusted angle <NUMBER>
+    type: Number
   example: |-
     (begin example)
        _angle = [912] call CBA_fnc_simplifyAngle;
@@ -4573,11 +4694,11 @@
         SilentSpike 2015-27-07
     ----------------------------------------------------------------------------
 - name: cba_fnc_simplifyangle180
+  ret: Number
   params:
   - name: '0'
-    description: angle - The unadjusted angle [Number]
-    type: Anything
-    optional: true
+    description: angle - The unadjusted angle <NUMBER>
+    type: Number
   example: |-
     (begin example)
        _angle = [912] call CBA_fnc_simplifyAngle180;
@@ -4601,14 +4722,14 @@
     optional: true
   example: ''
 - name: cba_fnc_split
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: string - String to split up [String]
-    type: Anything
-    optional: true
+    description: string - String to split up <STRING>
+    type: String
   - name: '1'
-    description: separator - String to split around. If an empty string, "", then split
-    type: Anything
+    description: separator - String to split around. <STRING> (defaults to "")
+    type: String
     optional: true
   example: |-
     (begin example)
@@ -4659,11 +4780,11 @@
   params: []
   example: ''
 - name: cba_fnc_strlen
+  ret: Number
   params:
   - name: '0'
-    description: string - String to measure [String]
-    type: Anything
-    optional: true
+    description: string - String to measure <STRING>
+    type: String
   example: |-
     (begin example)
             _length = [""] call CBA_fnc_strLen;
@@ -4677,34 +4798,31 @@
         Spooner
     ----------------------------------------------------------------------------
 - name: cba_fnc_substr
+  ret: String
   params:
   - name: '0'
-    description: string - String to extract from [String]
-    type: Anything
-    optional: true
+    description: string     - String to extract from <STRING>
+    type: String
   - name: '1'
-    description: startIndex - Index to start the substring extraction [Number]
-    type: Anything
-    optional: true
+    description: startIndex - Index to start the substring extraction <NUMBER>
+    type: Number
   - name: '2'
-    description: length - length of the extracted substring [Number](Optional) if is not set than from _startIndex to end
-    type: Anything
+    description: length     - length of the extracted substring <NUMBER> (Optional) if is not set than from _startIndex to end
+    type: Number
     optional: true
   example: ''
 - name: cba_fnc_substring
+  ret: String
   params:
   - name: '0'
-    description: string - String to extract from [String]
-    type: Anything
-    optional: true
+    description: string     - String to extract from <STRING>
+    type: String
   - name: '1'
-    description: startIndex - Index to start the substring extraction [Number]
-    type: Anything
-    optional: true
+    description: startIndex - Index to start the substring extraction <NUMBER>
+    type: Number
   - name: '2'
-    description: endIndex - Index to end the substring extraction [Number]
-    type: Anything
-    optional: true
+    description: endIndex   - Index to end the substring extraction <NUMBER>
+    type: Number
   example: ''
 - name: cba_fnc_supportmonitor
   ret: ArrayUnknown
@@ -4729,7 +4847,10 @@
         commy2
     ----------------------------------------------------------------------------
 - name: cba_fnc_switchplayer
-  params: []
+  params:
+  - name: '0'
+    description: 'type: The type of the new unit the player should switch to <STRING>'
+    type: String
   example: |-
     (begin example)
         // Change into a M136 AT rifleman
@@ -4807,13 +4928,23 @@
   ret: Nothing
   params:
   - name: '0'
-    description: group - The group that will search [Group or Object]
-    type: Anything
-    optional: true
+    description: group - The group that will search <GROUP or OBJECT>
+    type: !OneOf
+    - - Group
+      - null
+    - - Object
+      - null
   - name: '1'
-    description: area - The area to search [Marker, Trigger or Area Array]
-    type: Anything
-    optional: true
+    description: area - The area to search [Marker, Trigger or Area Array] <STRING or OBJECT or ARRAY or LOCATION>
+    type: !OneOf
+    - - String
+      - null
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
+    - - Location
+      - null
   example: |-
     (begin example)
        [this, "Mark1"] call CBA_fnc_taskSearchArea;
@@ -4826,12 +4957,12 @@
 - name: cba_fnc_test
   params:
   - name: '0'
-    description: addon - Prefix of addon to test [String, defaulting to "cba"].
-    type: Anything
+    description: 'addon - Prefix of addon to test <STRING> (default: "cba")'
+    type: String
     optional: true
   - name: '1'
-    description: component - Name of component to test. If "main", will
-    type: Anything
+    description: 'component - Name of component to test. If "main", will test the whole addon <STRING> (default: "main").'
+    type: String
     optional: true
   example: |-
     (begin example)
@@ -4854,15 +4985,22 @@
         Spooner
 
     ----------------------------------------------------------------------------
-- name: cba_fnc_trim
+- name: cba_fnc_tobitmask
+  ret: Number
   params:
   - name: '0'
-    description: string - String to trim [String]
-    type: Anything
-    optional: true
+    description: input - Array of bools (0 index is least significant bit) <ARRAY>
+    type: ArrayUnknown
+  example: ''
+- name: cba_fnc_trim
+  ret: String
+  params:
+  - name: '0'
+    description: string - String to trim <STRING>
+    type: String
   - name: '1'
-    description: 'trim - Characters to trim [String] (default: "")'
-    type: Anything
+    description: 'trim - Characters to trim <STRING> (default: "")'
+    type: String
     optional: true
   example: ''
 - name: cba_fnc_turretdir
@@ -4936,48 +5074,45 @@
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: unit           - Unit to retrieve the items from
-    type: Anything
-    optional: true
+    description: unit           - Unit to retrieve the items from <OBJECT>
+    type: Object
   - name: '1'
-    description: 'weaponItems    - Include weapons, attachments, loaded magazines (Default: false)'
-    type: Anything
+    description: 'weaponItems    - Include weapons, attachments, loaded magazines <BOOL>(Default: false)'
+    type: Boolean
     optional: true
   - name: '2'
-    description: 'backpack       - Include items in backpack    (Default: true)'
-    type: Anything
+    description: 'backpack       - Include items in backpack <BOOL>(Default: true)'
+    type: Boolean
     optional: true
   - name: '3'
-    description: 'vest           - Include items in vest        (Default: true)'
-    type: Anything
+    description: 'vest           - Include items in vest <BOOL>(Default: true)'
+    type: Boolean
     optional: true
   - name: '4'
-    description: 'uniform        - Include items in uniform     (Default: true)'
-    type: Anything
+    description: 'uniform        - Include items in uniform <BOOL>(Default: true)'
+    type: Boolean
     optional: true
   - name: '5'
-    description: 'assignedItems  - Include assigned items       (Default: true)'
-    type: Anything
+    description: 'assignedItems  - Include assigned items <BOOL>(Default: true)'
+    type: Boolean
     optional: true
   - name: '6'
-    description: 'magazines      - Include not loaded magazines (Default: false)'
-    type: Anything
+    description: 'magazines      - Include not loaded magazines <BOOL>(Default: false)'
+    type: Boolean
     optional: true
   example: ''
 - name: cba_fnc_vect2polar
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: vx - vector direction in x
-    type: Anything
-    optional: true
+    description: vx - vector direction in x <NUMBER>
+    type: Number
   - name: '1'
-    description: vy - vector direction in y
-    type: Anything
-    optional: true
+    description: vy - vector direction in y <NUMBER>
+    type: Number
   - name: '2'
-    description: vz - vector direction in z
-    type: Anything
-    optional: true
+    description: vz - vector direction in z <NUMBER>
+    type: Number
   example: |-
     (begin example)
         [5, 5, 10] call CBA_fnc_vect2Polar
@@ -4997,15 +5132,14 @@
         Vigilante, courtesy by -=ACE=- of Simcentric
     ----------------------------------------------------------------------------
 - name: cba_fnc_vectcross
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: u the first vector.
-    type: Anything
-    optional: true
+    description: u the first vector. <ARRAY>
+    type: ArrayUnknown
   - name: '1'
-    description: v the second vector.
-    type: Anything
-    optional: true
+    description: v the second vector. <ARRAY>
+    type: ArrayUnknown
   example: |-
     (begin example)
 
@@ -5015,15 +5149,14 @@
         Vigilante, courtesy by -=ACE=- of Simcentric,
     ----------------------------------------------------------------------------
 - name: cba_fnc_vectcross2d
+  ret: Number
   params:
   - name: '0'
-    description: u the first vector.
-    type: Anything
-    optional: true
+    description: u the first vector. <ARRAY>
+    type: ArrayUnknown
   - name: '1'
-    description: v the second vector.
-    type: Anything
-    optional: true
+    description: v the second vector. <ARRAY>
+    type: ArrayUnknown
   example: |-
     (begin example)
 
@@ -5043,15 +5176,14 @@
         Vigilante, courtesy by -=ACE=- of Simcentric
     ----------------------------------------------------------------------------
 - name: cba_fnc_vectdot
+  ret: Number
   params:
   - name: '0'
-    description: u the first vector.
-    type: Anything
-    optional: true
+    description: u the first vector. <ARRAY>
+    type: ArrayUnknown
   - name: '1'
-    description: v the second vector.
-    type: Anything
-    optional: true
+    description: v the second vector. <ARRAY>
+    type: ArrayUnknown
   example: |-
     (begin example)
 
@@ -5136,6 +5268,7 @@
         LorenLuke
     ----------------------------------------------------------------------------
 - name: cba_fnc_vectsubtract
+  ret: ArrayUnknown
   params: []
   example: |-
     (begin example)
@@ -5214,7 +5347,7 @@
     type: Anything
     optional: true
   - name: '3'
-    description: timeout     - If >= 0, timeout for the condition in seconds.  If < 0, no timeout.
+    description: timeout     - If >= 0, timeout for the condition in seconds.  If < 0, no timeout. <NUMBER> (optional, default -1)
     type: Anything
     optional: true
   - name: '4'
@@ -5686,14 +5819,295 @@
     Author:
         commy2
     ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_confirmdiscard
+  ret: Boolean
+  params:
+  - name: '0'
+    description: display - Settings menu display <DISPLAY>
+    type: Display
+  example: |-
+    (begin example)
+            [_display] call CBA_settings_fnc_gui_confirmDiscard;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_createcategory
+  ret: Nothing
+  params:
+  - name: '0'
+    description: display  - Addon Options dialog <DISPLAY>
+    type: Display
+  - name: '1'
+    description: category - Lower case category to create <STRING>
+    type: String
+  example: |-
+    (begin example)
+            [_display, "cba_ui"] call CBA_settings_fnc_gui_createCategory;
+        (end)
+
+    Author:
+        commy2, kymckay, LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_filladdonlist
+  ret: Nothing
+  params:
+  - name: '0'
+    description: ctrlAddonList - Addon list control <CONTROL>
+    type: Control
+  - name: '1'
+    description: 'categories    - Lower case categories to add, all if empty <ARRAY> (default: [])'
+    type: ArrayUnknown
+    optional: true
+  example: |-
+    (begin example)
+            [_ctrlAddonList, ["cba_ui"]] call CBA_settings_fnc_gui_fillAddonList;
+        (end)
+
+    Author:
+        commy2, LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_filtersettings
+  ret: Nothing
+  params:
+  - name: '0'
+    description: display      - Addon Options dialog <DISPLAY>
+    type: Display
+  - name: '1'
+    description: 'resetScroll  - Scroll back to the top afterwards <BOOL> (default: true)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            [_display] call CBA_settings_fnc_gui_filterSettings;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_getliveedits
+  ret: ArrayUnknown
+  params: []
+  example: |-
+    (begin example)
+            private _edits = call CBA_settings_fnc_gui_getLiveEdits;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_index
+  ret: Nothing
+  params: []
+  example: |-
+    (begin example)
+            call CBA_settings_fnc_gui_index;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_onkeydown
+  ret: Boolean
+  params:
+  - name: '0'
+    description: display - Addon Options dialog <DISPLAY>
+    type: Display
+  - name: '1'
+    description: key     - DIK code of the pressed key <NUMBER>
+    type: Number
+  - name: '2'
+    description: shift   - Shift held <BOOL>
+    type: Boolean
+  - name: '3'
+    description: ctrl    - Ctrl held <BOOL>
+    type: Boolean
+  example: |-
+    (begin example)
+            _display displayAddEventHandler ["KeyDown", {_this call CBA_settings_fnc_gui_onKeyDown}];
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_reflow
+  ret: Nothing
+  params:
+  - name: '0'
+    description: ctrlOptionsGroup - Options controls group of a category <CONTROL>
+    type: Control
+  - name: '1'
+    description: 'resetScroll      - Scroll back to the top afterwards <BOOL> (default: false)'
+    type: Boolean
+    optional: true
+  example: |-
+    (begin example)
+            _ctrlOptionsGroup call CBA_settings_fnc_gui_reflow;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
 - name: cba_settings_fnc_gui_refresh
   ret: Nothing
   params: []
   example: ''
+- name: cba_settings_fnc_gui_retargetrow
+  ret: Boolean
+  params:
+  - name: '0'
+    description: controlsGroup - Setting controls group <CONTROL>
+    type: Control
+  - name: '1'
+    description: setting       - Variable name of the setting to show <STRING>
+    type: String
+  - name: '2'
+    description: source        - Source to show it for, "client", "mission" or "server" <STRING>
+    type: String
+  example: |-
+    (begin example)
+            [_ctrlSettingGroup, "cba_disposable_replaceDisposableLauncher", "server"] call CBA_settings_fnc_gui_retargetRow;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_rowclassinfo
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - ArrayUnknown
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: control - Control to look up <CONTROL>
+    type: Control
+  example: |-
+    (begin example)
+            (_ctrlSettingGroup call CBA_settings_fnc_gui_rowClassInfo) params ["_position", "_idcs"];
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
 - name: cba_settings_fnc_gui_savetempdata
   ret: Nothing
   params: []
   example: ''
+- name: cba_settings_fnc_gui_search
+  ret: Nothing
+  params:
+  - name: '0'
+    description: display - Addon Options dialog <DISPLAY>
+    type: Display
+  example: |-
+    (begin example)
+            [_display] call CBA_settings_fnc_gui_search;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_searchselect
+  ret: Nothing
+  params:
+  - name: '0'
+    description: display        - Addon Options dialog <DISPLAY>
+    type: Display
+  - name: '1'
+    description: ctrlAddonList  - Addon list control <CONTROL>
+    type: Control
+  - name: '2'
+    description: category       - Lower case category to select <STRING>
+    type: String
+  example: |-
+    (begin example)
+            [_display, _ctrlAddonList, "cba_ui"] call CBA_settings_fnc_gui_searchSelect;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_setoverwritevisible
+  ret: Nothing
+  params:
+  - name: '0'
+    description: controlsGroup - Setting controls group <CONTROL>
+    type: Control
+  example: |-
+    (begin example)
+            _ctrlSettingGroup call CBA_settings_fnc_gui_setOverwriteVisible;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_setrowedited
+  ret: Boolean
+  params:
+  - name: '0'
+    description: controlsGroup - Settings menu row <CONTROL>
+    type: Control
+  example: |-
+    (begin example)
+            _ctrlSettingGroup call CBA_settings_fnc_gui_setRowEdited;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_setrowenabled
+  ret: Boolean
+  params:
+  - name: '0'
+    description: controlsGroup - Setting controls group <CONTROL>
+    type: Control
+  example: |-
+    (begin example)
+            private _enabled = _ctrlSettingGroup call CBA_settings_fnc_gui_setRowEnabled;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_settableposy
+  ret: Number
+  params:
+  - name: '0'
+    description: control   - Control to position <CONTROL>
+    type: Control
+  - name: '1'
+    description: tablePosY - Vertical offset in the table <NUMBER>
+    type: Number
+  - name: '2'
+    description: 'height    - Height override, config height if omitted <NUMBER> (default: nil)'
+    type: Number
+    optional: true
+  example: |-
+    (begin example)
+            _tablePosY = [_ctrlSettingGroup, _tablePosY] call CBA_settings_fnc_gui_setTablePosY;
+        (end)
+
+    Author:
+        commy2
+    ----------------------------------------------------------------------------
+- name: cba_settings_fnc_gui_togglesubcategory
+  ret: Nothing
+  params:
+  - name: '0'
+    description: ctrlHeaderGroup - Sub-category header controls group <CONTROL>
+    type: Control
+  example: |-
+    (begin example)
+            [_ctrlHeaderGroup] call CBA_settings_fnc_gui_toggleSubCategory;
+        (end)
+
+    Author:
+        LinkIsGrim
+    ----------------------------------------------------------------------------
 - name: cba_settings_fnc_import
   ret: Nothing
   params:
@@ -5856,15 +6270,17 @@
     description: events         - list of events that can trigger the transition <ARRAY>
     type: ArrayUnknown
   - name: '4'
-    description: condition      - additional condition required for the transition to
-    type: Anything
+    description: 'condition      - additional condition required for the transition to trigger <CODE> (default: {true})'
+    type: Code
     optional: true
   - name: '5'
-    description: onTransition   - code that gets executed once transition happens <CODE>
+    description: 'onTransition   - code that gets executed once transition happens <CODE> (Default: {})'
     type: Code
+    optional: true
   - name: '6'
-    description: name           - name for this specific transition <STRING>
+    description: 'name           - name for this specific transition <STRING> (Default: "NONAME")'
     type: String
+    optional: true
   example: |-
     (begin example)
             [_stateMachine, "initial", "end", ["end_statemachine"], {true}, {
@@ -5885,20 +6301,21 @@
     description: stateMachine   - a state machine <LOCATION>
     type: Location
   - name: '1'
-    description: onState        - code that is executed when state is active (frequency
-    type: Anything
+    description: 'onState        - code that is executed when state is active <CODE> (Default: {})'
+    type: Code
     optional: true
   - name: '2'
-    description: onStateEntered - code that is executed once when state was entered, after
-    type: Anything
+    description: 'onStateEntered - code that is executed once when state was entered <CODE> (Default: {})'
+    type: Code
     optional: true
   - name: '3'
-    description: onStateLeaving - code that is executed once when exiting state, before
-    type: Anything
+    description: 'onStateLeaving - code that is executed once when exiting state, <CODE> (Default: {})'
+    type: Code
     optional: true
   - name: '4'
-    description: name           - unique state name <STRING>
+    description: 'name           - unique state name <STRING> (Default: "stateX" with X being a unique number)'
     type: String
+    optional: true
   example: |-
     (begin example)
             _name = [_stateMachine, {}] call CBA_statemachine_fnc_addState;
@@ -5949,12 +6366,15 @@
   ret: Location
   params:
   - name: '0'
-    description: list           - list of anything over which the state machine will run
-    type: Anything
-    optional: true
+    description: list           - list of anything over which the state machine will run <ARRAY or CODE>
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - Code
+      - null
   - name: '1'
-    description: skipNull       - skip list items that are null
-    type: Anything
+    description: 'skipNull       - skip list items that are null <BOOL>(default: false)'
+    type: Boolean
     optional: true
   example: |-
     (begin example)
@@ -5974,9 +6394,8 @@
     - null
   params:
   - name: '0'
-    description: config         - config path that contains a valid state machine config
-    type: Anything
-    optional: true
+    description: config         - config path that contains a valid state machine config <CONFIG>
+    type: Config
   example: |-
     (begin example)
             _stateMachine = [configFile >> "MyAddon_Statemachine"] call CBA_statemachine_fnc_createFromConfig;
@@ -6090,9 +6509,8 @@
     description: stateMachine   - a state machine <LOCATION>
     type: Location
   - name: '1'
-    description: list           - list of anything over which the state machine will run
-    type: Anything
-    optional: true
+    description: list           - list of anything over which the state machine will run <ARRAY>
+    type: ArrayUnknown
   example: |-
     (begin example)
             [_stateMachine, _list] call CBA_statemachine_fnc_updateList;
@@ -6100,6 +6518,68 @@
 
     Author:
         BaerMitUmlaut
+    ----------------------------------------------------------------------------
+- name: cba_statuseffects_fnc_handleengine
+  ret: Nothing
+  params:
+  - name: '0'
+    description: vehicle     - Vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: engineState - Engine state <BOOL>
+    type: Boolean
+  example: ''
+- name: cba_statuseffects_fnc_localeh
+  ret: Nothing
+  params:
+  - name: '0'
+    description: object  - Vehicle that it will be attached to (player or vehicle) <OBJECT>
+    type: Object
+  - name: '1'
+    description: isLocal - Is local <BOOL>
+    type: Boolean
+  example: ''
+- name: cba_statuseffects_fnc_resetvariables
+  ret: Nothing
+  params:
+  - name: '0'
+    description: object       - Vehicle that it will be attached to (player or vehicle) <OBJECT>
+    type: Object
+  - name: '1'
+    description: 'setObjectRef - Explicitly set object reference (optional, default: false) <BOOL>'
+    type: Boolean
+    optional: true
+  example: ''
+- name: cba_statuseffects_fnc_respawneh
+  ret: Nothing
+  params:
+  - name: '0'
+    description: object - Vehicle that it will be attached to (player or vehicle) <OBJECT>
+    type: Object
+  example: ''
+- name: cba_statuseffects_fnc_sendeffects
+  ret: Nothing
+  params:
+  - name: '0'
+    description: object     - Object <OBJECT>
+    type: Object
+  - name: '1'
+    description: effectName - Effect name (or "" to send all) <STRING>
+    type: String
+  example: ''
+- name: cba_ui_fnc_addmissionsbutton
+  ret: Nothing
+  params:
+  - name: '0'
+    description: display - RscDisplayMultiplayerSetup display <DISPLAY>
+    type: Display
+  example: |-
+    (begin example)
+            call cba_ui_fnc_addMissionsButton
+        (end)
+
+    Author:
+        Dystopian
     ----------------------------------------------------------------------------
 - name: cba_ui_fnc_getinventoryitemdata
   params:
