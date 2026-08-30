@@ -1,5 +1,7 @@
 name: getShotParents
-description: Returns shot information for the given projectile. If shot was fired by a soldier on foot or in FFV position in vehicle, the soldier is returned for the vehicle.
+description: |-
+  Returns shot information for the given projectile.
+  If shot was fired by a soldier on foot or in FFV position in vehicle, the soldier is returned for the vehicle.
 groups:
 - Weapons
 syntax:
@@ -19,4 +21,4 @@ since:
     minor: 62
 examples:
 - <sqf>_shotParents = getShotParents myProjectile;</sqf>
-- <sqf>batmobile addEventHandler ["Fired", {systemChat str getShotParents (_this select 6)}];</sqf>
+- <sqf>batmobile addEventHandler ["Fired", { systemChat str getShotParents (_this select 6) }];</sqf>
