@@ -3734,7 +3734,14 @@
 - name: ace_common_fnc_fixposition
   ret: Nothing
   params: []
-  example: bob call ace_common_fnc_fixPosition
+  example: cursorObject call ace_common_fnc_fixPosition
+- name: ace_common_fnc_focuswindow
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Mode <NUMBER>
+    type: Number
+  example: 1 call ace_common_fnc_focusWindow
 - name: ace_common_fnc_getaddon
   ret: String
   params:
@@ -5191,6 +5198,10 @@
   - name: '0'
     description: Object <OBJECT>
     type: Object
+  - name: '1'
+    description: 'Force set name (optional, default: false) <BOOL>'
+    type: Boolean
+    optional: true
   example: '[bob] call ace_common_fnc_setName'
 - name: ace_common_fnc_setparameter
   ret: Nothing
@@ -5513,6 +5524,14 @@
   ret: Nothing
   params: []
   example: '[?] call ace_common_fnc_syncedEventPFH'
+- name: ace_common_fnc_temporaryblockfire
+  ret: Nothing
+  params:
+  - name: '0'
+    description: 'Duration (seconds) <NUMBER> (default: 1)'
+    type: Number
+    optional: true
+  example: '[1] call ace_common_fnc_temporaryBlockFire'
 - name: ace_common_fnc_throwweapon
   params:
   - name: '0'
@@ -6254,7 +6273,13 @@
   - name: '0'
     description: Unit <OBJECT>
     type: Object
-  example: player call ace_csw_fnc_assemble_deployTripod
+  - name: '1'
+    description: Position ASL <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: Vector direction & up <ARRAY>
+    type: ArrayUnknown
+  example: '[player, (getPosASL player) vectorAdd [0, 2, 0], [[1, 0, 0], [0, 0, 1]]] call ace_csw_fnc_assemble_deployTripod'
 - name: ace_csw_fnc_assemble_deployweapon
   ret: Nothing
   params:
@@ -6307,6 +6332,13 @@
     description: Player <OBJECT>
     type: Object
   example: '[cursorObject, player] call ace_csw_fnc_assemble_pickupWeapon'
+- name: ace_csw_fnc_assemble_startdeploytripod
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Unit deploying <OBJECT>
+    type: Object
+  example: player call ace_csw_fnc_assemble_startDeployTripod
 - name: ace_csw_fnc_autofire_candisable
   ret: Boolean
   params:
@@ -6358,6 +6390,13 @@
     description: Reloaded Muzzle <STRING>
     type: String
   example: cursorObject addEventHandler ["Reloaded", ace_csw_fnc_autofire_onReload]
+- name: ace_csw_fnc_canceldeploytripod
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Key <NUMBER>
+    type: Number
+  example: 1 call ace_csw_fnc_cancelDeployTripod
 - name: ace_csw_fnc_candeploytripod
   ret: Boolean
   params:
@@ -6379,6 +6418,20 @@
     description: Tripod <OBJECT>
     type: Object
   example: cursorObject call ace_csw_fnc_canPickupTripod
+- name: ace_csw_fnc_deploycancel
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: player call ace_csw_fnc_deployCancel
+- name: ace_csw_fnc_deployconfirm
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: player call ace_csw_fnc_deployConfirm
 - name: ace_csw_fnc_getcarrymagazine
   ret: String
   params:
@@ -6403,6 +6456,13 @@
     description: Vehicle <OBJECT>
     type: Object
   example: cursorObject call ace_csw_fnc_getUnloadActions
+- name: ace_csw_fnc_handlescrollwheel
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Scroll amount <NUMBER>
+    type: Number
+  example: 1.2 call ace_csw_fnc_handleScrollWheel
 - name: ace_csw_fnc_initvehicle
   ret: Nothing
   params:
@@ -7670,6 +7730,13 @@
     description: Speed dial name <STRING>
     type: String
   example: '"IED 1" call ace_explosives_fnc_removeFromSpeedDial'
+- name: ace_explosives_fnc_replaceeodunititems
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: player call ace_explosives_fnc_replaceEODUnitItems
 - name: ace_explosives_fnc_scriptedexplosive
   ret: Nothing
   params:
@@ -8796,8 +8863,8 @@
     type: Boolean
     optional: true
   - name: '2'
-    description: Only export ammo classes of classes referenced in CfgMagazines and their
-    type: Anything
+    description: 'Only export ammo classes of classes referenced in CfgMagazines and their submunitions <BOOL> (default: false)'
+    type: Boolean
     optional: true
   - name: '3'
     description: 'Force a CSV format on debug print. <BOOL> (default: false)'
@@ -9128,6 +9195,13 @@
   ret: Nothing
   params: []
   example: call ace_grenades_fnc_addChangeFuseItemContextMenuOptions
+- name: ace_grenades_fnc_altflashbanginit
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Flashbang grenade <OBJECT>
+    type: Object
+  example: '[cursorObject] call ace_grenades_fnc_altFlashbangInit'
 - name: ace_grenades_fnc_damageengineandwheels
   ret: Nothing
   params:
@@ -9151,8 +9225,8 @@
     description: Intensity of flare <NUMBER>
     type: Number
   - name: '3'
-    description: Flare lifetime <OBJECT>
-    type: Object
+    description: Flare lifetime <NUMBER>
+    type: Number
   example: '[_nade, [0.5,0.5,0.5], 0.5, 60] call ace_grenades_fnc_flare'
 - name: ace_grenades_fnc_flashbangexplosioneh
   ret: Nothing
@@ -10021,12 +10095,12 @@
   ret: Boolean
   params:
   - name: '0'
-    description: LongPath <ARRAY>
+    description: Long path <ARRAY>
     type: ArrayUnknown
   - name: '1'
-    description: ShortPath <ARRAY>
+    description: Short path <ARRAY>
     type: ArrayUnknown
-  example: '[[["ACE_SelfActions", player],["ace_Gestures", player]], [["ACE_SelfActions", player]]] call ace_interact_menu_fnc_isSubPath'
+  example: '[[["ACE_SelfActions", player], ["ace_gestures", player]], [["ACE_SelfActions", player]]] call ace_interact_menu_fnc_isSubPath'
 - name: ace_interact_menu_fnc_keydown
   ret: Boolean
   params:
@@ -10071,6 +10145,13 @@
     description: Full path of the action to remove <ARRAY>
     type: ArrayUnknown
   example: '[cursorTarget,0,["ACE_TapShoulderRight","VulcanPinch"]] call ace_interact_menu_fnc_removeActionFromObject;'
+- name: ace_interact_menu_fnc_removeactionfromzeus
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Full path of the action to remove <ARRAY>
+    type: ArrayUnknown
+  example: '[["ACE_ZeusActions", "MyZeusAction"]] call ace_interact_menu_fnc_removeActionFromZeus;'
 - name: ace_interact_menu_fnc_render
   ret: Nothing
   params: []
@@ -10177,8 +10258,12 @@
     type: Object
     optional: true
   - name: '2'
-    description: Parameters <ARRAY>
-    type: ArrayUnknown
+    description: Parameters <ARRAY or OBJECT>
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - Object
+      - null
   example: '[cursorObject, player, [crew cursorObject select 0]] call ace_interaction_fnc_addPassengerActions'
 - name: ace_interaction_fnc_addpassengersactions
   ret: ArrayUnknown
@@ -11224,6 +11309,13 @@
     description: Fence <OBJECT>
     type: Object
   example: '[fence] call ace_logistics_wirecutter_fnc_destroyFence'
+- name: ace_logistics_wirecutter_fnc_haswirecutter
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: '[cursorObject] call ace_logistics_wirecutter_fnc_hasWirecutter'
 - name: ace_logistics_wirecutter_fnc_interacteh
   ret: Nothing
   params: []
@@ -14453,7 +14545,7 @@
   params: []
   example: '[] call ace_milr_fnc_display_refresh'
 - name: ace_milr_fnc_getrange
-  ret: Nothing
+  ret: Number
   params:
   - name: '0'
     description: Player <OBJECT>
@@ -16309,6 +16401,13 @@
     description: Unit <OBJECT>
     type: Object
   example: '[cursorObject, player] call ace_quickmount_fnc_addFreeSeatsActions'
+- name: ace_quickmount_fnc_addgetinactions
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Vehicle <OBJECT>
+    type: Object
+  example: cursorObject call ace_quickmount_fnc_addGetInActions
 - name: ace_quickmount_fnc_canshowfreeseats
   ret: Boolean
   params:
@@ -16319,9 +16418,14 @@
     description: Unit <OBJECT>
     type: Object
   - name: '2'
-    description: Args <ARRAY>
-    type: ArrayUnknown
-  example: '[cursorObject, player] call ace_quickmount_fnc_canShowFreeSeats'
+    description: 'Menu (true for menu, false for 3d interactions) <BOOL> (default: true)'
+    type: Boolean
+    optional: true
+  - name: '3'
+    description: 'Use cache <BOOL> (default: true)'
+    type: Boolean
+    optional: true
+  example: '[cursorObject, player, true] call ace_quickmount_fnc_canShowFreeSeats'
 - name: ace_quickmount_fnc_getinnearest
   ret: Nothing
   params:
@@ -16330,6 +16434,27 @@
     type: Object
     optional: true
   example: call ace_quickmount_fnc_getInNearest
+- name: ace_quickmount_fnc_getseatproxies
+  ret: HashMapUnknown
+  params:
+  - name: '0'
+    description: Vehicle <OBJECT>
+    type: Object
+  example: cursorObject call ace_quickmount_fnc_getSeatProxies
+- name: ace_quickmount_fnc_getseatunit
+  ret: Object
+  params:
+  - name: '0'
+    description: Vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: Seat (Cargo Index or Turret Path) <NUMBER or ARRAY>
+    type: !OneOf
+    - - Number
+      - null
+    - - ArrayUnknown
+      - null
+  example: '[cursorObject, []] call ace_quickmount_fnc_getSeatUnit'
 - name: ace_rangecard_fnc_calculaterangecard
   ret: !OneOf
   - - String
@@ -17099,6 +17224,9 @@
     description: Fuel Source <OBJECT>
     type: Object
   example: cursorObject call ace_refuel_fnc_getFuelCargo
+- name: ace_refuel_fnc_handledamage
+  params: []
+  example: call ace_refuel_fnc_handleDamage
 - name: ace_refuel_fnc_handledisconnect
   ret: Nothing
   params:
@@ -17113,6 +17241,17 @@
     description: Unit <OBJECT>
     type: Object
   example: '[player] call ace_refuel_fnc_handleRespawn'
+- name: ace_refuel_fnc_initobject
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Source <OBJECT>
+    type: Object
+  - name: '1'
+    description: 'Is static <BOOL> (default: false)'
+    type: Boolean
+    optional: true
+  example: cursorObject call ace_refuel_fnc_initObject
 - name: ace_refuel_fnc_initsource
   ret: Nothing
   params:
@@ -19137,9 +19276,8 @@
     description: Camera <OBJECT>
     type: Object
   - name: '1'
-    description: Increase <BOOL
-    type: Anything
-    optional: true
+    description: Increase <BOOL>
+    type: Boolean
   example: '[cam, true] call ace_spike_fnc_camera_changeZoom'
 - name: ace_spike_fnc_camera_cycleviewmode
   ret: Nothing
@@ -20736,7 +20874,7 @@
     description: Delay (seconds) <NUMBER>
     type: Number
   example: '[hemtt, 3.2] call ace_vehicles_fnc_setVehicleStartDelay'
-- name: ace_vehicles_fnc_speedlimiter
+- name: ace_vehicles_fnc_speedcontrol
   ret: Nothing
   params:
   - name: '0'
@@ -20751,7 +20889,7 @@
   - name: '3'
     description: Preserve Speed Limit <BOOL>
     type: Boolean
-  example: '[player, car, true] call ace_vehicles_fnc_speedLimiter'
+  example: '[player, car, true] call ace_vehicles_fnc_speedControl'
 - name: ace_vehicles_fnc_startengine
   ret: Nothing
   params:
