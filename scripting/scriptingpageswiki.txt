@@ -1,0 +1,2386 @@
+{{TOC|side}}
+== Getting Started ==
+
+In the domain of development, any rule is a rule of thumb.
+If a rule states for example that it is better that a line of code doesn't go over 80 characters, it doesn't mean that any line '''''must not''''' go over 80 characters; sometimes, the situation needs it.
+If you have a good structure, '''do not''' change your code to enforce a single arbitrary rule.
+If you break many of them, you may have to change something; again, this is according to your judgement.
+
+With that being said, let's go!
+
+=== Prerequisites ===
+
+* An advanced text editor such as Visual Studio Code or Notepad++ - see {{Link|Category:Community Tools#Code Edition}} for useful tools and plugins
+* Some English knowledge, helped if needed by a translator tool such as {{Link|https://www.google.com/translate|Google Translate}} or {{Link|https://www.deepl.com/|DeepL}}
+* Access to this wiki is a plus (the Swiss flag is, too)
+* Tutorials/examples (YouTube tutorials, community tutorials, [[:Category:Example_Code|Example Code]])
+* Google-Fu (a.k.a search engine skills)
+* {{arma}} Discord server: {{Link|https://discord.gg/arma|ARMA}}, channel {{hl|#arma3_scripting}}
+
+
+== Best Practices ==
+
+=== Code Format ===
+
+* Whatever you do about your code's format, '''be consistent'''.
+* Choose an indentation format '''and stick to it'''. There is not especially one indent better than another (''but there sure are terrible ones''), again the important point here being ''consistency''.
+** Common indentation styles are:
+*** {{Link|https://en.wikipedia.org/wiki/Indentation_style#K&R_style|K&R style}} indenting
+*** {{Link|https://en.wikipedia.org/wiki/Indentation_style#Allman_style|Allman style}} indenting
+** Use empty space. Line return, spaces before and after brackets, if this improves readability, use it: space is free.
+** indent with two/four spaces '''or''' one tab. Do not mix these.
+** ''One-lining'' (putting everything in one statement) memory improvement is most of the time not worth the headache it gives when trying to read it. Don't overuse it.
+* {{hl|1= <span style="background-color: #FCC">'''0 =''' </span>''myCommand''}} '''was''' "useful" only for editor fields that for no apparent reason refused commands returning a value. You do '''not''' need it in script files, and don't need it in editor fields anymore '''since {{arma3}} v2.04'''.
+
+=== Variable Format ===
+
+* Name your variables and functions properly:<!--
+--> While [[SQF Syntax|SQF]] ''is'' (non-noticeably) impacted by variable name length, this should not take precedence on the fact that code must be readable by a human being.
+** Your variable names must have a meaning: variables like '''_u''' instead of '''_uniform''' should not exist. '''_i''' is an accepted iteration variable name (e.g in [[for]] loops).
+** It is recommended to use {{Link|https://en.wikipedia.org/wiki/Camel_case|camel-case}} your variables;<!--
+--> camel-casing (namingLikeThis) your variables and functions make the code naturally more readable, especially for long names.
+* Prefix your public variables and [[setVariable]] with your tag in order to avoid any conflict about other mods, scripts or mission variables.
+* Make your variables '''private''' thanks to the [[private]] or [[params]] keyword in order to avoid accidental upper-scope overwriting of variables of the same name.
+* Defined constants must be UPPERCASE_WITH_UNDERSCORES (e.g <sqf inline>#define SOME_CONST</sqf>).
+
+=== Code Structuration ===
+
+* '''DRY:''' '''D'''on't '''R'''epeat '''Y'''ourself. If you write the same code block or the same logic many times, export this code as a function and use parameters with it.
+** If your code has too many levels, it is time to split and rethink it - maybe using [[exitWith]] (e.g <sqf inline>if (a) then { if (b) then { if (c) then { /* etc */  }; }; };</sqf>)
+** Do NOT use [[PreProcessor Commands#Macros|macros]] as functions - these hinder readability. Use functions instead.
+* {{cc|Comments}} in your code must not explain ''what'' the code does, but ''why'' it is done this way (if needed).<!--
+--> Your code organisation combined to your variable names must be enough to be read by a human.
+
+=== Code/Files Organisation ===
+
+* Use [[Arma 3: Functions Library#Adding a Function|CfgFunctions]] to declare the functions that will be called frequently.
+** One Functions directory, with sub-directories if needed.
+* Use [[Event Scripts]] as needed.
+* Don't put '''any code''' in a unit's init box ''but eventually'' [[Multiplayer Scripting#Locality|local]] commands for this specific unit - '''all''' unit's init boxes are run client-side on client connection.
+
+
+== Examples ==
+<!--
+
+	EDITOR'S NOTE: Formatting Code examples are not linking commands on purpose! This allows for a fair comparison of both syntaxes's readability.
+	
+-->
+{| class="wikitable valign-top"
+! <big>Bad Example</big>
+! <big>Good Example</big>
+|-
+! colspan="2" |
+<small>
+=== Good Practice examples ===
+</small>
+|-
+|
+ _unit = player;
+|
+ '''private''' _unit = player;
+|-
+|
+ private _uB = allUnits select { side _x == blufor };
+|
+ private '''_bluforUnits''' = allUnits select { side _x == blufor };
+|-
+|
+ private _plead = leader player;
+|
+ private '''_playersLeader''' = leader player;
+|-
+|
+ finalAssault = true; publicVariable "finalAssault";
+|
+ '''PREFIX_'''finalAssault = true; publicVariable "'''PREFIX_'''finalAssault";
+|-
+|
+ player setVariable ["MoneyInPocket", 250, true];
+|
+ player setVariable ["'''PREFIX_'''MoneyInPocket", 250, true];
+|-
+|
+ #define KILL(UNIT) UNIT setDamage 1
+ 
+ // ...
+ 
+ {
+ 	KILL(_x);
+ } forEach (units group player - [player]);
+|
+ private _killFnc = { _this setDamage 1; };
+ 
+ // ...
+ 
+ {
+ 	_x call _killFnc;
+ } forEach (units group player - [player]);
+|- style="vertical-align: top"
+|
+ {{cc|if player has less than 3/4 health}}
+ if (damage player > 0.25) then
+ {
+ 	{{cc|if the player has no first aid kit}}
+ 	if (not ("FirstAidKit" in items player))
+ 	{
+ 		{{cc|if player has room for first aid kit}}
+ 		if (player canAdd "FirstAidKit") then
+ 		{
+ 			 {{cc|add first aid kit to the player}}
+ 			player addItem "FirstAidKit";
+ 		}
+ 		else
+ 		{
+ 			{{cc|set player's damage to 1/4}}
+ 			player setDamage 0.25;
+ 		};
+ 	};
+ };
+|
+ {{cc|player will need health at this stage of the mission}}
+ if (
+ 	damage player > 0.25 &&
+ 	not ("FirstAidKit" in items player)) then
+ {
+ 	if (player canAdd "FirstAidKit") then
+ 	{
+ 		player addItem "FirstAidKit";
+ 	}
+ 	else {{cc|let's help him anyway}}
+ 	{
+ 		player setDamage 0.25;
+ 	};
+ };
+|-
+! colspan="2" |
+<small>
+=== Flow Logic examples ===
+</small>
+|-
+|
+ if (alive player && damage player >= 0.9) then {
+ 	hint "very damaged";
+ };
+ if (alive player && damage player >= 0.5 && damage player < 0.9) then {
+ 	hint "quite damaged";
+ };
+ if (alive player && damage player > 0 && damage player < 0.5) then {
+ 	hint "slightly damaged";
+ };
+ if (alive player && damage player == 0) then {
+ 	hint "pristine state";
+ };
+ if (not alive player) then {
+ 	hint "dead";
+ };
+|
+ if (not alive player) exitWith { hint "dead"; };
+ 
+ private _playerDamage = damage player;
+ switch (true) do {
+ 	case (_playerDamage >= 0.9): { hint "very damaged"; };
+ 	case (_playerDamage >= 0.5): { hint "quite damaged"; };
+ 	case (_playerDamage > 0)   : { hint "slightly damaged"; };
+ 	default { hint "pristine"; };
+ };
+|-
+|
+ if (cond1) then
+ {
+ 	if (cond2) then
+ 	{
+ 		if (cond3) then
+ 		{
+ 			// hadouken code
+ 		}
+ 		else { {{codecomment|/* failure 3 */}} };
+ 	}
+ 	else { {{codecomment|/* failure 2 */}} };
+ }
+ else { {{codecomment|/* failure 1 */}} };
+|
+ if (!cond1) exitWith { {{codecomment|/* failure 1 */}} };
+ if (!cond2) exitWith { {{codecomment|/* failure 2 */}} };
+ if (!cond3) exitWith { {{codecomment|/* failure 3 */}} };
+ 
+ // code
+|-
+! colspan="2" |
+<small>
+=== Format examples ===
+</small>
+|-
+|
+ if (not alive player) exitWith 
+ { hint "dead"; };
+ 
+ private _playerDamage = damage player;
+ switch (true) do {
+ case (_playerDamage >= 0.9): {hint "very damaged";};
+ case (_playerDamage >= 0.5): {
+ 	hint  "quite damaged";};
+ 
+ case (_playerDamage > 0): { hint "slightly damaged"; };
+ <nowiki>  </nowiki>default
+ {
+ 
+ <nowiki>   </nowiki>hint "pristine";
+ <nowiki>  </nowiki>};
+ };
+|
+ if (not alive player) exitWith { hint "dead"; };
+ 
+ private _playerDamage = damage player;
+ switch (true) do {
+ 	case (_playerDamage >= 0.9): { hint "very damaged"; };
+ 	case (_playerDamage >= 0.5): { hint "quite damaged"; };
+ 	case (_playerDamage > 0)   : { hint "slightly damaged"; };
+ 	default { hint "pristine"; };
+ };
+|}
+
+
+== Final Words ==
+
+* Remember: '''consistency''' is the most important thing!
+* The {{arma}} Discord server and its community can help: {{Link|https://discord.gg/arma|ARMA}} (channel {{hl|#arma3_scripting}})
+* Learn from others's scripts but do not steal code and pretend it is yours — be a decent human being. Stealing code and its consequences:
+** It soils your reputation and devaluates your actions once it is found out — and it ''always'' get found out. DMCA's are filled on Steam every day.
+** It makes people in the community get less helpful and more reluctant in giving advices. It can also prevent them to ''release'' an interesting feature!
+* Don't try to obfuscate your code: it is considered rude, especially since you learnt from others.
+** Obfuscated code only makes it ''harder'' to get, but does not make it ''copy-protected''. If the engine can read it, it can be obtained.
+** Obfuscated code is also slower on parsing and, depending on the quality of code and obfuscation, on execution too.
+* Do not hesitate to help newcomers even if you do not know the whole topic: both sides will learn from it!
+* Most important of all, have fun!
+
+
+== See also ==
+
+* [[Code Optimisation]]
+* [[Code Positivity]]
+* [[Mission Optimisation]]
+* [[Multiplayer Scripting]]
+
+
+[[Category:Arma Scripting Tutorials]]
+{{TOC|side|0.9}}
+{{Feature|informative|This page is about [[Code Optimisation]]. For ''conception'' optimisation, see [[Mission Optimisation]].}}
+
+This article will try to be a general guide about improving your code '''and''' its performance.
+* The first part ([[#Rules|Rules]]) focuses on having a clean, readable and maintainable code.
+* The second part ([[#Code optimisation|Code optimisation]]) is about '''improving performance''', sometimes trading it against code readability.
+* The third part ([[#Equivalent commands performance|Equivalent commands performance]]) mentions commands that in appearance have identical effects but may differ in terms of performance according to the use you may have of them.
+* The fourth part ([[#Conversion from earlier versions|Conversion from earlier versions]]) is a hopefully helpful, short guide about useful new commands or syntaxes to replace the old ways.
+
+
+== Rules ==
+
+In the domain of development, any rule is a rule of thumb. If a rule states for example that it is ''better'' that a line of code doesn't go over 80 characters, it doesn't mean that any line '''''must not''''' go over 80 characters; sometimes, the situation needs it. If you have a good structure, '''do not''' change your code to enforce a single arbitrary rule. If you break many of them, you may have to change something. Again, this is according to your judgement.
+
+With that being said, here are the three basic rules to get yourself in the clear:
+
+# {{Link|#Make It Work|Make it work}}
+# {{Link|#Make It Readable|Make it readable}}
+# {{Link|#Optimise Then|Optimise then}}
+
+=== Make It Work ===
+
+{{Feature|quote|Premature optimization is the root of all evil.|{{Link|https://en.wikipedia.org/wiki/Donald_Knuth|Donald Knuth}}}}
+Your first goal when coding is to make your code do what you want it does. A good way to reach this objective is to read and getting inspired by other people's code. If you understand it by reading it once, it is probably a good source of inspiration.
+
+* When starting from scratch if you know what you want but miss the specific steps to get to your point, it is a good practice to write down in your native language what you want to do. E.g ''Get [[allUnits|all the units]] [[distance|near]] [[locationPosition|the city]], and [[forEach|for each]] [[side|west]] soldier in them, [[setDamage|add 30% damage]]''.
+* Use [[Arma_3_Startup_Parameters#Developer_Options|-showScriptErrors]] startup parameter and '''make sure your code doesn't throw errors.''' Not only will your code run slower but it may also ''not work at all''. Be sure to read the error, isolate the issue and sort it out [[:Category:Scripting Commands|thanks to this Wiki]].
+* Read your [[Crash_Files|Arma RPT]] (report) to read more details about the error that happened in your code.
+
+=== Make It Readable ===
+
+Whether you are cleaning your code or a different person's, you must understand the code without twisting your brain:
+
+* While [[SQF Syntax|SQF]] ''is'' (non-noticeably) impacted by variable name length, this should not take precedence on the fact that code must be readable by a human being. Variables like '''_u''' instead of '''_uniform''' should not be present.
+* ''One-lining'' (putting everything in one statement) memory improvement is most of the time not worth the headache it gives when trying to read it. Don't overuse it.
+* Indentation is important for the human mind, and space is too. Space is free, use it.
+* Same goes for line return; it helps to see a code block wrapping multiple common instructions instead of having to guess where it starts and stops.
+* Do you see the same code multiple times, only with different parameters? Now is the time to write a function!
+* If you have a lot of [[if]]..[[else]], you may want to look at a [[switch]] condition, or again break your code in smaller functions.
+* Is your function code far too long? Break it in understandable-sized bites for your own sanity.
+* Finally, camel-casing (namingLikeThis) your variables will naturally make the code more readable, especially for long names.
+
+{{Feature|informative|See '''[[Code Best Practices]]''' for more information.}}
+
+See the following code:
+ _w=[]; {_w pushbackunique primaryweapon _x} foreach((allunits+alldeadmen) select{_x call BIS_fnc_objectside==east});
+
+The same example is far more readable with proper spacing, good variable names and intermediate results:
+ _weaponNames = [];
+ _allUnitsAliveAndDead = allUnits + allDeadMen;
+ _allEastAliveAndDead = _allUnitsAliveAndDead select { _x call BIS_fnc_objectSide == east };
+ { _weaponNames pushBackUnique primaryWeapon _x } forEach _allEastAliveAndDead;
+<!--
+
+	EDITOR'S NOTE: ^ code examples are not linking commands on purpose! This allows for a fair comparison of both syntaxes' readability.
+
+-->
+
+==== Constants ====
+Using a hard-coded constant more than once? Use preprocessor directives rather than storing it in memory or cluttering your code with numbers. Such as:
+<sqf>
+a = _x + 1.053;
+b = _y + 1.053;
+</sqf>
+And
+<sqf>
+_buffer = 1.053;
+a = _x + _buffer;
+b = _y + _buffer;
+</sqf>
+Becomes
+<sqf>
+#define BUFFER 1.053 // note: no semicolon
+_a = _x + BUFFER;
+_b = _y + BUFFER;
+</sqf>
+{{Feature|informative|Using the <sqf inline>#define</sqf> macro only works within the current [[SQF Syntax|SQF]] ''file''. Such definition will not propagate anywhere else.}}
+'''Global''' "constants" can be defined via a [[Description.ext]] declaration, though, and accessed using [[getMissionConfigValue]] command:
+
+Declaration in [[Description.ext]]:
+<syntaxhighlight lang="cpp">
+var1 = 123;
+var2 = "123";
+var3[] = { 1, 2, 3 };
+rand = __EVAL(random 999);
+</syntaxhighlight>
+
+Usage in code:
+<sqf>
+hint str getMissionConfigValue "var1"; // 123									// 0.0007 ms
+hint str getMissionConfigValue "var2"; // "123"									// 0.0008 ms
+hint str getMissionConfigValue "var3"; // [1,2,3]								// 0.0017 ms
+hint str getMissionConfigValue "rand"; // constant random, for example 935.038	// 0.0007 ms
+</sqf>
+
+The [[getMissionConfigValue]] command searching [[Description.ext]] from top to bottom,
+it is better for a matter of performance to put all your definitions at the top of the file.
+
+=== Optimise Then ===
+
+Once you know what is what, you can understand your code better.
+* Use [[Variables#Scopes|private variables]] instead of global variables (preceded by an underscore) as much as possible.
+* You were iterating multiple times on the same array?
+** You should be able to spot your issue now.
+* Are you using [[execVM]] on the same file, many times?
+** Store your function in memory to avoid file reading every call ( e.g <sqf inline>_myFunction = compile preprocessFileLineNumbers "myFile.sqf";</sqf>).
+* Is your variable name far too long?
+** Find a smaller name, according to the variable scope;<!--
+-->e.g:<sqf>{ _opforUnitUniform = uniform _x; systemChat _opforUnitUniform; } forEach _allOpforUnits;</sqf><!--
+-->becomes<sqf>{ _uniform = uniform _x; systemChat _uniform; } forEach _allOpforUnits;</sqf>
+
+
+== Code Optimisation ==
+
+{{Feature|important|
+'''Please note:''' Tests and benchmarks were done with the latest {{arma3}} version at the time {{GVI|arma3|1.82}} with '''Tank DLC'''. Game engine performance may have changed since.<br>Benchmark result in milliseconds (ms) is an average for '''10000''' iterations.
+}}
+
+{{Feature|informative|
+{{Colorball|red|1.125}} means you '''must''' change your ways today, ''or with us you will ride…''<br>
+{{Colorball|orange|1.125}} means you may want to look at it if you are targeting pure performance<br>
+{{Colorball|green|1.125}} means the gain is little to insignificant. Going through your code for this replacement is not worth it. You ''may'' only consider it for future code.
+}}
+
+=== Scheduled and Unscheduled Environment ===
+
+There are two code environment types, [[Scheduler#Scheduled_Environment|scheduled]] and [[Scheduler#Unscheduled_Environment|unscheduled]].
+* A '''scheduled''' script has an execution time limit of '''3 ms''' before being suspended to the benefit of another script until its turn comes back. It is a bit slower than unscheduled, but [[canSuspend|suspending]] ([[sleep]], [[waitUntil]]) is allowed.
+* An '''unscheduled''' script is not watched and will run without limitations. It is recommended for time-critical scripts, but [[canSuspend|suspending]] ([[sleep]], [[waitUntil]]) is '''not''' allowed!
+{{Feature|informative|See [[Scheduler]] for more information.}}
+
+=== {{Colorball|orange|0.9}} Variable Assignment ===
+
+<sqf>
+private _myVar = [33, 66] select false;											// 0.0013 ms
+private _myVar = if (false) then { 33; } else { 66; };							// 0.0020 ms
+private "_myVar"; if (false) then { _myVar = 33; } else { _myVar = 66; };	 	// 0.0025 ms
+</sqf>
+
+=== {{Colorball|orange|0.9}} Lazy Evaluation ===
+
+In [[SQF Syntax|SQF]] the following code will evaluate every single condition, even if one fails:
+<sqf>if (a && b && c) then {};</sqf>
+Even if <var>a</var> returns [[false]] (and thus the entire [[Boolean]] expression can no longer become [[true]]), <var>b</var> and <var>c</var> will still be executed and evaluated regardless.
+
+To avoid this behaviour, one can either imbricate [[if]] statements or use '''lazy evaluation'''. The latter is done like so:
+<sqf>if (a && { b && { c } }) then {};</sqf>
+In the example above, condition evaluation stops once any condition evaluates to [[false]].
+
+==== Influence on Semantics ====
+Depending on the arrangement of the curly brackets, lazy evaluation can change the precedence (and therefore the semantics) of a condition. Consider this example:
+
+{| class="wikitable align-center" style="margin: auto"
+|-
+! rowspan="2" | Expression !! colspan="3" | Condition Value !! rowspan="2" | Evaluated Conditions !! rowspan="2" | Result
+|-
+! <var>a</var> !! <var>b</var> !! <var>c</var>
+|-
+| style="text-align: left" | <sqf>a &&  b  ||  c</sqf> || rowspan="3" | [[false]] || rowspan="3" | any [[Boolean]] || rowspan="3" | [[true]] || <var>a</var>, <var>b</var>, <var>c</var> || [[true]]
+|-
+| style="text-align: left" | <sqf>a && {b} || {c}</sqf> || <var>a</var>, <var>c</var> || [[true]]
+|-
+| style="text-align: left" | <sqf>a && {b  || {c}}</sqf> || <var>a</var> || [[false]]
+|}
+
+==== Performance ====
+Using lazy evaluation is not always the best way as it can both speed up and slow down the code, depending on the current condition being evaluated:
+<sqf>
+["true  || { false  || {false}}", nil, 100000] call BIS_fnc_codePerformance;	// 0.00080 ms
+["true  ||  {false} || {false} ", nil, 100000] call BIS_fnc_codePerformance;	// 0.00105 ms
+["false ||   false  ||  false  ", nil, 100000] call BIS_fnc_codePerformance;	// 0.00123 ms
+["true  ||   false  ||  false  ", nil, 100000] call BIS_fnc_codePerformance;	// 0.00128 ms
+["false ||  {false} || {false} ", nil, 100000] call BIS_fnc_codePerformance;	// 0.00200 ms
+</sqf>
+
+=== {{Colorball|red|0.9}} Concatenating Strings ===
+
+<sqf inline>myString = myString + otherString</sqf> works fine for small strings, however the bigger the string gets the slower the operation becomes:
+<sqf>myString = ""; for "_i" from 1 to 10000 do { myString = myString + "123" };		// 290 ms</sqf>
+
+The solution is to use a string array that you will concatenate later:
+<sqf>
+strings = [];
+for "_i" from 1 to 10000 do { strings pushBack "123" };
+strings = strings joinString "";												// 30 ms
+</sqf>
+
+=== {{Colorball|red|0.9}} Array Manipulation ===
+
+==== Add Elements ====
+New commands [[append]] and [[pushBack]] hold the best score.
+<sqf>
+_array = [0,1,2,3]; _array append [4,5,6];										// 0.0020 ms
+_array = [0,1,2,3]; _array = _array + [4,5,6];									// 0.0023 ms
+_array = [0,1,2,3]; { _array set [count _array, _x]; } forEach [4,5,6];			// 0.0080 ms
+</sqf>
+
+<sqf>
+_array = [0,1,2,3]; _array pushBack 4;											// 0.0016 ms
+_array = [0,1,2,3]; _array = _array + [4];										// 0.0021 ms
+_array = [0,1,2,3]; _array set [count _array, _x]; 								// 0.0022 ms
+</sqf>
+
+==== Iterate Elements ====
+'''If [[Magic Variables#x|_x]] is not required''', [[for]] is twice as fast as [[forEach]] - otherwise, use [[forEach]] (see results below).
+
+<sqf>
+private _array = allUnits;																// 64 units				256 units
+
+// if the amount of loops is known
+for "_i" from 0 to 63 do {};															// 0.0120 ms			0.0460 ms
+for "_i" from 0 to count _array -1 do {};												// 0.0170 ms			0.0480 ms
+for "_i" from 0 to count _array -1 do { private _x = _array select _i };				// 0.0500 ms			0.1896 ms <
+for "_i" from 0 to count _array -1 do { private _x = array select _i; _x setDamage 0 };	// 0.107 ms				0.39 ms
+
+{} forEach _array;																		// 0.0250 ms			0.098 ms
+{ _x setDamage 0 } forEach _array;														// 0.0770 ms			0.312 ms
+
+_array apply {};																		// 0.0250 ms			0.098 ms
+_array apply { _x setDamage 0 };														// 0.0770 ms			0.312 ms
+
+private _i = 0;
+while { _i < 64 } do { _i = _i + 1; };													// 0.048 ms				0.200 ms
+
+// counts array every loop
+private _i = 0;
+while { _i < count _array } do { _i = _i + 1; };										// 0.062 ms				0.247 ms
+
+private _i = 0;
+while { _i < 64 } do { private _x = _array select _i; _i = _i + 1; };					// 0.086 ms				0.42 ms
+</sqf>
+
+==== Remove Elements ====
+<sqf>
+_array = [0,1,2,3]; _array deleteAt 0;																	// 0.0015 ms
+_array = [0,1,2,3]; _array set [0, objNull]; _array = _array - [objNull];								// 0.0038 ms
+</sqf>
+
+<sqf>
+_array = [0,1,2,3]; _array deleteRange [1, 2];															// 0.0018 ms
+_array = [0,1,2,3]; { _array set [_x, objNull] } forEach [1,2]; _array = _array - [objNull];			// 0.0078 ms
+</sqf>
+
+=== {{Colorball|red|0.9}} Multiplayer Recommendations ===
+
+* Do not saturate the network with information: [[publicVariable]] or public [[setVariable]] shouldn't be used at high frequency, else '''everyone's performance experience''' is at risk!
+* The server is supposed to have a good CPU and a lot of memory, use it: store functions, run them from it, send only the result to the clients
+* [[publicVariable]] and [[setVariable]] variable name length impacts network, be sure to send well-named, understandable variables<br><span style="font-size: 0.9em;">(''and not '''<span style="word-break: break-word">playerNameBecauseThePlayerIsImportantAndWeNeedToKnowWhoTheyAreAllTheTimeEspeciallyInsideThisImpressiveFunction</span>''''')</span>
+* Use, use and use [[remoteExec]] &amp; [[remoteExecCall]]. Ditch [[BIS_fnc_MP]] for good!
+{{Feature|informative|See [[Multiplayer Scripting]] for more information.}}
+
+
+== Equivalent Commands Performance ==
+
+=== {{Colorball|orange|0.9}} call ===
+
+[[call]] without arguments is faster than call with arguments:
+<sqf>
+call {};								// 0.0007 ms
+123 call {};							// 0.0013 ms
+</sqf>
+
+Since the variables defined in the parent scope will be available in the [[call]]ed child scope, it could be possible to speed up the code by avoiding passing arguments all together, for example writing:
+<sqf>player addEventHandler ["HandleDamage", { call my_fnc_damage }];</sqf>
+instead of:
+<sqf>player addEventHandler ["HandleDamage", { _this call my_fnc_damage }];</sqf>
+
+=== {{Colorball|red|0.9}} execVM and call ===
+
+{{Feature|important|
+Using [[execVM]] multiple times make the game read the file and recompile it every time.<br>
+If you use the script more than once, store its code in a variable or better, make it a [[Arma 3: Functions Library|Function]]!
+}}
+<sqf>
+// myFile.sqf is an EMPTY file
+private _myFunction = compile preprocessFileLineNumbers "myFile.sqf"; // compile time is done only once
+call _myFunction;				// 0.0009 ms
+execVM "myFile.sqf";			// 0.275 ms
+
+// myFile.sqf is BIS_fnc_showRespawnMenu
+private _myFunction = compile preprocessFileLineNumbers "myFile.sqf"; // compile time is done only once
+["close"] call _myFunction;		// 0.0056 ms
+["close"] execVM "myFile.sqf";	// 0.506 ms
+</sqf>
+
+=== {{Colorball|orange|0.9}} loadFile, preprocessFile and preprocessFileLineNumbers ===
+
+<sqf>
+// myFile.sqf is an empty file
+loadFile "myFile.sqf";					// 0.219 ms
+preprocessFile "myFile.sqf";			// 0.353 ms
+preprocessFileLineNumbers "myFile.sqf";	// 0.355 ms
+</sqf>
+
+<sqf>
+// myFile.sqf is BIS_fnc_showRespawnMenu
+loadFile "myFile.sqf";					// 0.3516 ms
+preprocessFile "myFile.sqf";			// 2.75 ms
+preprocessFileLineNumbers "myFile.sqf"; // 2.73 ms
+</sqf>
+
+<sqf>
+// myFile.sqf is a missing file
+loadFile "myFile.sqf";					// 0.692 ms
+preprocessFile "myFile.sqf";			// 0.6225 ms
+preprocessFileLineNumbers "myFile.sqf";	// 0.6225 ms
+</sqf>
+
+{{Feature|important|
+The comparison of [[loadFile]] with preprocessFile* is not exactly fair as [[loadFile]] doesn't preprocess the file's content.<br>
+On the other hand, the loaded file cannot contain any <sqf inline>//</sqf> or <sqf inline>/* */</sqf> comments nor any [[PreProcessor Commands|preprocessor instructions]] (including debug information like line numbers or file information).
+}}
+
+=== {{Colorball|green|0.9}} if ===
+
+<sqf>
+if (condition) then { /* thenCode */ };									// 0.0011 ms
+if (condition) exitWith { /* exitCode */ };								// 0.0014 ms
+if (condition) then { /* thenCode */ } else { /* elseCode */ };			// 0.0015 ms
+if (condition) then [{ /* thenCode */ }, { /* elseCode */ }];			// 0.0016 ms
+</sqf>
+
+=== {{Colorball|green|0.9}} if and select ===
+
+Use <sqf inline>[array] select boolean</sqf> instead of the lazy-evaluated [[if]].
+<sqf>
+_result = ["false result", "true result"] select true;					// 0.0011 ms
+_result = if (true) then { "true result"; } else { "false result"; };	// 0.0017 ms
+</sqf>
+
+=== {{Colorball|orange|0.9}} if and switch ===
+
+<sqf>
+_result = call {
+	if (false) exitWith {};
+	if (false) exitWith {};
+	if (true)  exitWith {};
+	if (false) exitWith {};
+	if (false) exitWith {};
+};							// 0.0032 ms
+</sqf>
+
+<sqf>
+_result = switch (true) do {
+	case (false): {};
+	case (false): {};
+	case (true) : {};
+	case (false): {};
+	case (false): {};
+};							// 0.0047 ms
+</sqf>
+
+=== {{Colorball|green|0.9}} if else and switch ===
+
+<sqf>
+_mode = "killed";
+
+switch _mode do {
+    case "init": {};
+    case "killed": {};
+    case "respawned": {};
+};							// 0.0019 ms
+</sqf>
+
+<sqf>
+_mode = "killed";
+
+if (_mode == "init") then {} else {
+    if (_mode == "killed") then {} else {
+        if (_mode == "respawned") then {};
+    };
+};							// 0.0019 ms
+</sqf>
+
+=== {{Colorball|orange|0.9}} in vs find ===
+
+<sqf>
+// String search
+"bar" in "foobar"									// 0.0008 ms
+"foobar" find "bar" > -1							// 0.0012 ms
+</sqf>
+
+<sqf>
+// array search - case-sensitive
+"bar" in ["foo", "Bar", "bar", "BAR"];				// 0.0012 ms
+["foo", "Bar", "bar", "BAR"] find "bar" > -1;		// 0.0016 ms
+</sqf>
+
+=== {{Colorball|orange|0.9}} for ===
+
+The {{hl|[[for]]..[[from]]..[[to]]..[[do]]}} is twice as fast as its alternative syntax, {{hl|[[for]]..[[do]]}}.
+<sqf>
+for "_i" from 0 to 10 do { /* forCode */ };										// 0.015 ms
+for [{ _i = 0 }, { _i < 100 }, { _i = _i + 1 }] do { /* forCode */ };			// 0.030 ms
+</sqf>
+
+=== {{Colorball|green|0.9}} forEach vs count vs findIf ===
+
+Both [[forEach]] and [[count]] commands will step through ''all'' the array elements and both commands will contain reference to current element with the [[Magic Variables#x|_x]] variable.
+However, [[count]] loop is a little faster than [[forEach]] loop, but it does not benefit from the [[Magic Variables#forEachIndex|_forEachIndex]] variable.<br>
+Also, there is a limitation as the code inside [[count]] expects [[Boolean]] or [[Nothing]] while the command itself returns [[Number]].
+This limitation is very important if you try to replace your [[forEach]] by [[count]]. If you have to add an extra [[true]]/[[false]]/[[nil]] at the end to make [[count]] work, it will be slower than the [[forEach]] equivalent.
+
+<sqf>
+{ diag_log _x } count   [1,2,3,4,5];											// 0.082 ms
+{ diag_log _x } forEach [1,2,3,4,5];											// 0.083 ms
+</sqf>
+
+<sqf>
+// with an empty array
+_someoneIsNear = (allUnits findIf { _x  distance [0,0,0] < 1000 }) != -1;		// 0.0046 ms
+_someoneIsNear = { _x distance [0,0,0] < 1000 } count allUnits > 0;				// 0.0047 ms <
+_someoneIsNear = {
+	if (_x distance [0,0,0] < 1000) exitWith { true };
+	false
+} forEach allUnits;																// 0.0060 ms
+</sqf>
+
+<sqf>
+// with a 30 items array
+_someoneIsNear = (allUnits findIf { _x  distance [0,0,0] < 1000 }) != -1;		// 0.0275 ms
+_someoneIsNear = { _x distance [0,0,0] < 1000 } count allUnits > 0;				// 0.0645 ms <
+_someoneIsNear = {
+	if (_x distance [0,0,0] < 1000) exitWith { true };
+	false
+} forEach allUnits;																// 0.0390 ms
+</sqf>
+
+=== {{Colorball|red|0.9}} findIf ===
+
+[[findIf]] stops array iteration as soon as the condition is met.
+<sqf>
+[0,1,2,3,4,5,6,7,8,9] findIf { _x == 2 };										// 0.0050 ms
+{ if (_x == 2) exitWith { _forEachIndex; }; } forEach [0,1,2,3,4,5,6,7,8,9];	// 0.0078 ms
+_quantity = { _x == 2 } count [0,1,2,3,4,5,6,7,8,9];							// 0.0114 ms
+</sqf>
+
+=== {{Colorball|green|0.9}} format vs str ===
+
+<sqf>
+str 33;				// 0.0016 ms
+format ["%1", 33];	// 0.0022 ms
+</sqf>
+
+=== {{Colorball|green|0.9}} + vs format vs joinString ===
+
+non-[[String]] data:
+<sqf>
+[33, 45, 78] joinString "";				// 0.0052 ms - no length limit
+format ["%1%2%3", 33, 45, 78];			// 0.0054 ms - limited to ~8Kb
+str 33 + str 45 + str 78;				// 0.0059 ms - no length limit
+</sqf>
+
+[[String]] data:
+<sqf>
+["str1", "str2", "str3"] joinString "";		// 0.0015 ms - no length limit
+format ["%1%2%3", "str1", "str2", "str3"];	// 0.0015 ms - limited to ~8Kb
+"str1" + "str2" + "str3";					// 0.0012 ms - no length limit
+</sqf>
+
+=== {{Colorball|orange|0.9}} private ===
+
+Direct declaration (<sqf inline>private _var = value</sqf>) is faster than declaring ''then'' assigning the variable.
+<sqf>
+private _a = 1;
+private _b = 2;
+private _c = 3;
+private _d = 4;
+// 0.0023 ms
+</sqf>
+
+<sqf>
+private ["_a", "_b", "_c", "_d"];
+_a = 1;
+_b = 2;
+_c = 3;
+_d = 4;
+// 0.0040 ms
+</sqf>
+
+However, if you have to reuse the same variable in a loop, external declaration is faster.<br>
+The reason behind this is that a declaration in the loop will create, assign and delete the variable in each loop.<br>
+An external declaration creates the variable only once and the loop only assigns the value.
+<sqf>
+private ["_a", "_b", "_c", "_d"];
+for "_i" from 1 to 10 do
+{
+	_a = 1; _b = 2; _c = 3; _d = 4;
+};
+// 0.0195 ms
+</sqf>
+
+<sqf>
+for "_i" from 1 to 10 do
+{
+	private _a = 1; private _b = 2; private _c = 3; private _d = 4;
+};
+// 0.0235 ms
+</sqf>
+
+=== {{Colorball|orange|0.9}} isNil ===
+
+<sqf>
+isNil "varName";					// 0.0007 ms
+isNil { varName };					// 0.0012 ms
+</sqf>
+
+=== {{Colorball|red|0.9}} isEqualType and typeName ===
+
+[[isEqualType]] is much faster than [[typeName]]
+<sqf>
+"string" isEqualType 33;			// 0.0006 ms
+typeName "string" == typeName 33;	// 0.0018 ms
+</sqf>
+
+=== {{Colorball|green|0.9}} isEqualTo and count ===
+
+<sqf>
+// with a items array
+allUnits isEqualTo [];				// 0.0040 ms
+count allUnits == 0;				// 0.0043 ms
+</sqf>
+
+=== {{Colorball|green|0.9}} select and param ===
+
+<sqf>
+[1,2,3] select 0;					// 0.0008 ms
+[1,2,3] param [0];					// 0.0011 ms
+</sqf>
+
+=== {{Colorball|red|0.9}} createSimpleObject vs createVehicle ===
+
+<sqf>
+// createSimpleObject is over 43× faster than createVehicle!
+deleteVehicle createSimpleObject ["a3\structures_f_mark\vr\shapes\vr_shape_01_cube_1m_f.p3d", [0,0,0]];	// ~0.08 ms
+deleteVehicle createSimpleObject ["Land_VR_Shape_01_cube_1m_F", [0,0,0]];								// ~3.2 ms
+deleteVehicle createVehicle ["Land_VR_Shape_01_cube_1m_F", [0,0,0], [], 0, "CAN_COLLIDE"];				// ~2.7 ms
+deleteVehicle createVehicle ["Land_VR_Shape_01_cube_1m_F", [0,0,0], [], 0, "NONE"];						// ~78 ms
+</sqf>
+
+=== {{Colorball|orange|0.9}} objectParent and vehicle ===
+
+<sqf>
+isNull objectParent player;			// 0.0013 ms
+vehicle player == player;			// 0.0022 ms
+</sqf>
+
+[[File:nearEntities vs nearestObjects.png|thumb|150px|right|nearEntities vs nearestObjects]]
+=== {{Colorball|red|0.9}} nearEntities and nearestObjects ===
+
+[[nearEntities]] is much faster than [[nearestObjects]] given on range and amount of objects within the given range.
+If range is over 100 meters it is highly recommended to use [[nearEntities]] over [[nearestObjects]].
+<sqf>
+// tested with a NATO rifle squad amongst solar power plant panels on Altis at coordinates [20762,15837]
+getPosATL player nearEntities [["CAManBase"], 50];		// 0.0075 ms
+nearestObjects [getPosATL player, ["CAManBase"], 50];	// 0.0145 ms
+</sqf>
+
+{{Feature|important|
+[[nearEntities]] only searches for [[alive]] objects and on-foot soldiers.<br>
+In-vehicle units, killed units, destroyed vehicles, static objects and buildings will be ignored.
+}}
+
+{{Clear}}
+=== {{Colorball|orange|0.9}} Global Variables vs Local Variables ===
+
+If you need to use global variable repeatedly in a loop, copy its value to local variable and use local variable instead:
+
+<sqf>
+SomeGlobalVariable = [123];
+for "_i" from 1 to 100 do
+{
+	SomeGlobalVariable select 0;
+};
+// 0.13 ms
+</sqf>
+
+is noticeably slower than
+
+<sqf>
+SomeGlobalVariable = [123];
+private _var = SomeGlobalVariable;
+for "_i" from 1 to 100 do
+{
+	_var select 0;
+};
+// 0.08 ms
+</sqf>
+
+=== {{Colorball|green|0.9}} Config path delimiter ===
+
+{{hl|[[config greater greater name|>>]]}} is slightly faster than {{hl|[[a / b|/]]}} when used in config path with [[configFile]] or [[missionConfigFile]].
+<sqf>
+configFile >> "CfgVehicles";		// 0.0019 ms
+configFile  / "CfgVehicles";		// 0.0023 ms
+</sqf>
+{{Feature|informative|A config path can be stored in a variable for later use, saving CPU time: <sqf inline>_cfgVehicles = configFile >> "CfgVehicles"</sqf>.}}
+
+=== {{Colorball|orange|0.9}} getPos* and setPos* ===
+
+<sqf>
+getPosWorld							// 0.0015 ms
+getPosASL							// 0.0016 ms
+getPosATL							// 0.0016 ms
+getPosASLW							// 0.0023 ms
+getPos								// 0.0030-0.0300 ms; performance depends on where this command is used - see its documentation
+position							// same as getPos
+getPosVisual						// same as getPos
+visiblePosition						// same as getPos
+</sqf>
+
+<sqf>
+setPosWorld							// 0.0060 ms
+setPosASL							// 0.0060 ms
+setPosATL							// 0.0060 ms
+setPos								// 0.0063 ms
+setPosASLW							// 0.0068 ms
+setVehiclePosition					// 0.0077 ms with "CAN_COLLIDE"
+									// 0.0390 ms with "NONE"
+</sqf>
+
+=== {{Colorball|orange|0.9}} toLower/toUpper vs toLowerANSI/toUpperANSI ===
+
+<sqf>
+// _myString is a 100 chars "aAaAaA(…)" string
+toLowerANSI _myString;				// 0.0006 ms
+toLower _myString;					// 0.0016 ms
+
+toUpperANSI _myString;				// 0.0006 ms
+toUpper _myString;					// 0.0016 ms
+</sqf>
+
+
+== Equivalent Data Structures Performance ==
+
+=== Key-Value Data Structures ===
+
+<sqf>
+private _hashMap = createHashMapFromArray [["id", 123], ["name", "player name"], ["unit", player]]; // since Arma 3 v2.02
+private _goodFormat = [["id", "name", "unit"], [123, "player name", player]];
+private _slowFormat = [["id", 123], ["name", "player name"], ["unit", player]];
+</sqf>
+
+<sqf>
+private _name = _hashMap get "name"; // 0.0018ms
+
+// this takes 0.0038ms:
+private _index = _goodFormat select 0 find "name"; // loop in engine
+private _name = _goodFormat select 1 select _index;
+
+// this takes 0.0116ms:
+private _index = _slowFormat findIf { _x select 0 == "name" }; // loop in script
+private _name = _slowFormat select _index select 1;
+</sqf>
+
+{{Feature|informative|[[:Category:Function Group: Database|Database Functions]] use a slow format.}}
+
+
+== Conversion From Earlier Versions ==
+
+Each iteration of Bohemia games ({{ofp}}, {{arma1}}, {{arma2}}, {{tkoh}}, {{arma3}}) brought their own new commands, especially {{arma2}} and {{arma3}}.<br>
+For that, if you are converting scripts from older versions of the engine, the following aspects should be reviewed.
+
+=== Loops ===
+
+* [[forEach]] loops, depending on the situation, can be replaced by:
+** [[apply]]
+** [[count]]
+** [[findIf]]
+** [[select]]
+
+=== Array Operations ===
+
+* '''Adding an item:''' <sqf inline>myArray + [element]</sqf> and <sqf inline>myArray set [count myArray, element]</sqf> have been replaced by [[pushBack]]
+* '''Selecting a random item:''' [[BIS_fnc_selectRandom]] has been replaced by [[selectRandom]]
+* '''Removing items:''' <sqf inline>myArray set [1, objNull]; myArray - [objNull]</sqf> has been replaced by [[deleteAt]] and [[deleteRange]]
+* '''Concatenating:''' <sqf inline>myArray = myArray + [element]</sqf> has been ''reinforced'' with [[append]]: if you don't need the original array to be modified, use [[+]]
+* '''Comparing:''' use [[isEqualTo]] instead of [[BIS_fnc_areEqual]]
+* '''Finding common items:''' [[in]] [[forEach]] loop has been replaced by [[arrayIntersect]]
+* '''Condition filtering:''' [[forEach]] can be replaced by [[select]] (alternative syntax)
+<sqf>result = (arrayOfNumbers select { _x % 2 == 0 });	// 1.55 ms</sqf>
+<sqf>
+result = [];
+{
+	if (_x % 2 == 0) then { result pushBack _x; };
+} forEach arrayOfNumbers;							// 2.57 ms
+</sqf>
+
+=== Vector Operations ===
+
+* [[BIS_fnc_vectorMultiply]] has been replaced by [[vectorMultiply]] (at least 6x faster)
+* [[BIS_fnc_vectorDivide]] too, to an extent (see [[BIS_fnc_vectorDivide|its page]] for more information)
+
+<sqf>
+private _vector = [102, 687, 1543];
+private _factor = 53;
+
+_vector vectorMultiply _factor;					// 0.0028 ms
+[_vector, _factor] call BIS_fnc_vectorMultiply;	// 0.0145 ms
+
+_vector vectorMultiply (1 / _factor);			// 0.003 ms - but beware of 0 divisor
+[_vector, _factor] call BIS_fnc_vectorDivide;	// 0.017 ms
+</sqf>
+
+=== String Operations ===
+
+[[String]] manipulation has been simplified with the following commands:
+* alternative syntax for [[select]]: <sqf inline>string select index</sqf>
+* [[toArray]] and [[toString]] have been ''reinforced'' with [[splitString]] and [[joinString]]
+
+=== Number Operations ===
+
+* [[BIS_fnc_linearConversion]] has been replaced by [[linearConversion]]. The command is '''9 times faster'''.
+* [[BIS_fnc_selectRandomWeighted]] has been replaced by [[selectRandomWeighted]]. The command is '''7 times faster'''.
+
+=== Type Comparison ===
+
+* [[typeName]] has been more than ''reinforced'' with [[isEqualType]].
+
+=== Multiplayer ===
+
+* [[BIS_fnc_MP]] has been replaced by [[remoteExec]] and [[remoteExecCall]] and internally uses them. Use the engine commands from now on!
+
+{{Feature|informative|See also [[Multiplayer Scripting]].}}
+
+=== Parameters ===
+
+* [[BIS_fnc_param]] has been replaced by [[param]] and [[params]]. The commands are approximately '''14 times''' faster. Use them!
+
+
+[[Category:Arma Scripting Tutorials]]
+{{TOC|side}}
+{{Feature|informative|This page is about [[Mission Optimisation]]. For ''scripting'' optimisation, see [[Code Optimisation]].}}
+
+This article will try to be a general guide about improving your '''mission's''' performance.<br>
+As usual, moderation is the key; do not expect to find on this page a magical solution that makes it possible to run thousands of AI at 240 FPS.
+Everything comes at a cost, the tweaks here will simply allow you to locate issues and calibrate your mission properly.
+
+
+== Before Anything ==
+
+Before optimising anything, make sure you do not have any performance issue running the game itself:
+* Read [[Arma 3: Performance Optimisation]]
+* Open the editor, place a unit in the area you like and test your computer.
+** You can get current FPS in {{arma3}} by going into '''video options''' or using [[diag_fps]]
+** '''Steam''' allows you to display FPS in a screen corner, in ''Settings &gt; In game &gt; FPS Counter''
+* Use (unofficial) Performance Guides to get better performances:
+** {{Link|https://steamcommunity.com/sharedfiles/filedetails/?id{{=}}1731305438|{{arma3}} performance guide}}
+** {{Link|https://www.moddb.com/forum/thread/arma-2-ultimate-tweak-thread|{{arma2}} performance guide}}
+** {{Link|https://forums.bohemia.net/forums/topic/50167-pc-optimization-for-arma/|{{arma1}} performance guide}}<!--
+** {{Link|{{ofp}} performance guide}}
+-->
+* Play your mission in singleplayer. If your mission runs fine, its network messages might very well be the issue. See [[Multiplayer Scripting]] for good practice tips.
+* Usual bottlenecks:
+** Lower your graphical settings (resolution, textures). If you get way better performances, at least your '''GPU''' limits you.
+** If the game keeps having low FPS when running @ 1024×768/low textures then your CPU is most likely the issue. Mission scripts may be performance-hogging too.
+{{Feature|important|Please note that [[viewDistance|view distance]] (among other settings) impacts both GPU and CPU!}}
+{{Feature|informative|[[viewDistance|View distance]] can be separately set for each clients independently from the server's value through scripting.<br>This can make or break performance for the client.}}
+
+
+== Mission Creation ==
+
+* Be sure to create your scripts with the latest available commands and functions.
+** In {{arma3}} use [[remoteExec]]&nbsp;/&nbsp;[[remoteExecCall]] and '''DITCH [[BIS_fnc_MP]] FOR GOOD!''' See [[Arma 3: Remote Execution]] for more information.
+** In {{arma2}} network communication is done using the [[Arma 2: Multiplayer Framework]].
+* Use the available frameworks and functions for each topic, unless you replace them by third-party ones:
+** [[Arma 3: Respawn]]
+** [[Arma 3: Revive]]
+** [[Arma 3: Task Framework]]
+** [[Arma 3: Animated Briefing]]
+** [[Arma 3: Animated Opening]]
+** [[Arma 3: Dynamic Groups]]
+** [[Arma 3: Key Frame Animation]]
+** and most importantly: [[Functions]]
+
+
+== Performance Impact Table ==
+
+{{Feature|informative|
+: {{Colorball|red|1.125}}		means a heavy impact on performance
+: {{Colorball|orange|1.125}}	means an average impact
+: {{Colorball|green|1.125}} 	means little to no performance impact.
+}}
+
+{| class="wikitable align-center-col-2 align-center-col-3 align-center-col-4"
+! Topic
+! CPU
+! GPU
+! Net-<br>work
+! Solution
+|-
+|
+==== AI unit quantity ====
+| {{Colorball|red}}
+| {{Colorball|green}}
+| {{Colorball|orange}}
+|
+* Use [[createAgent|Agents]] whenever possible
+* The more units there are, the more network updates there will be - hence the impact on both CPU and network.
+* If a client has a low-end machine, they should not lead a group of many AIs as these would then be locally computed.
+* [[Arma 3: Dynamic Simulation]] allows you to freeze AI that are distant from players. Many distance settings should be set according to the mission.
+{{Feature|informative|If you own more than one average computer, you could consider [[Arma 3: Headless Client|Headless client]] to offload AI from the server.}}
+|-
+|
+==== Object quantity ====
+| {{Colorball|orange}}
+| {{Colorball|orange}}
+| {{Colorball|orange}}
+| The less objects, the more FPS you will have.
+* Lower the quantity of objects in the mission, such as:
+** AI units, agents
+** vehicles, simple objects
+** weapon attachments (their proxies are [[attachedTo]])
+** headgear, clothing, vests, backpacks
+** head-mounted devices (NVGs, etc.)
+* Lower [[viewDistance|view distance]]
+* Lower [[setTerrainGrid|terrain details]]
+* Lower the [[Arma 3: Dynamic Simulation|Dynamic Simulation]] threshold
+* Use [[Arma 3: Simple Objects|Simple Objects]]
+* Use '''Garbage Collection''' in order to automatically delete bodies and wreckages:
+** {{arma3}}'s Eden-integrated [[Description.ext#Corpse .26 wreck management|Garbage Collection]]
+** {{arma2}}'s [[Garbage Collector]]
+** {{tkoh}}'s [[BIS_fnc_GC]]
+{{Feature|informative|Only the ''on-screen'' objects will strongly impact the GPU.}}
+|-
+|
+==== General script mistakes ====
+| {{Colorball|orange}}
+| {{Colorball|green}}
+| {{Colorball|green}}
+| Having too many scripts running is a cause for severe performance issues and execution delays in singleplayer as well as multiplayer.
+* You can track the number of running scripts using [[diag_activeScripts]]; you can also use:
+** [[diag_activeSQFScripts]]
+** [[diag_activeSQSScripts]]
+** [[diag_activeMissionFSMs]]
+* A common bad practice is to [[spawn]] a function for each units that need it; the good practice would be to have a single script working with an array of units, array that is edited (unit added/removed) whenever needed:<!--
+--><sqf>
+{ _x spawn _myCode; } forEach _units;	// bad
+_units spawn _myCode;					// good
+</sqf><!--
+-->You can use [[diag_activeSQFScripts]] to ensure you are not clogging your CPU with multiple instances of the same script.
+* '''Not compiling your scripts:''' running multiple times the same script with [[execVM]] will make the game read the file every single time; This is an issue, especially if you execute it frequently.<!--
+--><sqf>
+while { sleep 5; alive player } do { player execVM "myScript.sqf"; };	// bad
+
+private _myScript = compile preprocessFileLineNumbers "myScript.sqf";
+while { sleep 5; alive player } do { player spawn _myScript; };			// better
+
+while { sleep 5; alive player } do { player spawn TAG_fnc_myScript; };	// perfect! see [[Arma 3: Functions Library|Functions]]
+</sqf>
+|-
+|
+==== High-frequency scripts ====
+| {{Colorball|red}}
+| {{Colorball|green}}
+| {{Colorball|green}}
+| Checking a condition too often is usually a source of poor performance. Does your code execution need to be frame-perfect, or can you afford a delay of a few seconds?
+* A [[while]]-loop checking without a minimum loop-[[sleep]] time is usually a sign of bad conception.<!--
+--><sqf>
+while { true }						// bad if you do not know what you are doing
+while { alive player }				// better
+while { sleep 1 ; alive player }	// perfect
+</sqf>
+* By default, [[Trigger]]s check their set condition '''every 0.5 second'''. If a large area is covered or condition code is too complex, this can become an issue; the triggers should then be converted to scripts if possible. Since {{GVI|arma3|2.00}} it is possible to change trigger intervals, either via [[Eden Editor: Entity Attributes|trigger attributes]] in [[:Category:Eden Editor|3DEN]], or via the scripting command [[setTriggerInterval]].
+* [[Trigger]]s can be made '''Server-Side only''' to save clients' resources.
+{{Feature | important | All of the mission-related calculation (objectives, completion distance, etc.) must be done '''server-side'''. Local effects should be calculated '''client-side'''.}}
+|-
+|
+==== High-frequency network messages ====
+| {{Colorball|orange}}
+| {{Colorball|green}}
+| {{Colorball|red}}
+|
+* Use [[publicVariable]] wisely; for specific cases, consider [[publicVariableServer]]&nbsp;/&nbsp;[[publicVariableClient]]
+* Creating [[createUnit|units]]/[[createVehicle|vehicles]] globally implies a network synchronisation, keep them to a minimum / at one-point in the mission.
+* Keep [[Multiplayer Scripting#Locality|global effect]] commands to a minimum:
+** e.g a [[setPos]] will synchronise the unit position to every client, a good practice is to use these commands punctually. If you need a frequent "set position" you may want to look at [[attachTo]] depending on your usage.
+** [[Multiplayer Scripting#Locality|global]] [[:Category:Command Group: Markers|marker commands]] always send ''all'' the marker's information. If you are creating/updating many markers e.g server-side, edit them with [[Multiplayer Scripting#Locality|local]] commands, except the last one (that will be global) to send the whole marker's status over the network, once.
+* Lower client's [[viewDistance|view distance]] in order to lessen its object position update requests
+|-
+|
+==== Unscheduled code ====
+| {{Colorball|red}}
+| {{Colorball|green}}
+| {{Colorball|green}}
+| [[Scheduler#Unscheduled Environment|Unscheduled code]] can have a high impact on the framerate, as such code is not subject to the [[Scheduler|scheduler]]'s management (as its name suggests) and will run without limitation. Cyclic unscheduled low-performance code can make the game unplayable, up to freezing it.
+* As only time-critical scripts should run unscheduled, [[spawn]] any other code from unscheduled environment once you have the required results:<!--
+--><sqf>
+/* ... */ // unscheduled code
+[_var1, _var2] spawn TAG_fnc_MyFunction;
+/* ... */ // other unscheduled code
+</sqf>
+{{Feature|informative|See also {{Link|Scheduler#Where code starts unscheduled}}.}}
+|}
+
+
+== What Else? ==
+
+If you have applied all these recommendations and your mission still does not run well in multiplayer (but does in singleplayer),
+it might be caused by '''mods''' that you are running which could be badly, or not at all, optimised.
+
+If you want to be sure, run the same mission with and without mods. If you have a big difference in performance, look no further.
+
+
+== Performance Diagnostic Tools ==
+
+=== Server Commands ===
+
+* [[Multiplayer Server Commands#Commands|#monitor]] 5
+** Shows performance information of the server. Interval 0 means to stop monitoring.
+* [[Multiplayer Server Commands#Commands|#monitords]] 5
+** Shows performance information in the dedicated server console. Interval 0 means to stop monitoring. (since {{arma3}} v1.64)
+
+=== Diagnostic Commands ===
+
+* [[:Category:Arma 3: Scripting Commands: Diagnostic Branch|Diag. commands only available in Diagnostic Branch]]
+* [[:Category:Command Group: Diagnostic|Diag. command available in all builds]]
+
+
+== See Also ==
+
+* [[Multiplayer Scripting]]
+* [[Code Optimisation]]
+* [[Code Best Practices]]
+* [[Performance Profiling]]
+* [[User:Dedmen|Dedmen]]'s [[ArmaScriptProfiler]] ({{Link|https://forums.bohemia.net/forums/topic/211626-arma-script-profiler/|forum post}})
+
+
+[[Category:Arma Scripting Tutorials]]
+{{TOC|side|0.9}}
+
+This page aims to explain notions and specificities of [[Multiplayer Scripting]] and its differences with Singleplayer Scripting.<br>
+It features three parts:
+# {{Link|#Notions and general knowledge}}
+# {{Link|#Structuring Multiplayer code}}
+# {{Link|#Testing locally|Testing locally}}
+
+
+= Notions and general knowledge =
+
+
+== The basics ==
+
+<div style="float: right">[[File:network client-server.png|thumb|Client-Server relationship]]</div>
+* In Multiplayer, players are connected to a '''server'''.
+** The server is a machine that distributes information among clients, such as unit positions, vehicle speeds, etc.
+** The server can be either a dedicated machine, or hosted by a player; in the latter it means the server can have a [[player]] unit.
+* A machine connected to a server is called a '''client'''.
+** Clients can join a mission ''after'' it started: they are considered "{{Link|#Join In Progress|JIP}}" and scripting should be adapted to them. See the {{Link|#Join In Progress}} chapter for more information.
+<br>
+
+{{Feature|informative|In Singleplayer, the game acts as a player-hosted server ([[isServer]] returns true).}}
+{{Feature|warning|Some Multiplayer commands do '''not''' work in Singleplayer, such as [[netId]]!<br>
+The other way around, some Singleplayer commands do not work in Multiplayer (e.g  [[setAccTime]]).}}
+
+
+== Locality ==
+
+=== Definitions ===
+
+* '''LOCAL''' is an attribute for the machine where the command/script/function is executed or the AI calculated.
+** to check if an argument is local, use the [[local]] command
+* '''REMOTE''' means '''non local''' - on another machine. All player-controlled soldiers are remote units to a dedicated server, for example.
+** to check if an argument is remote, simply use <sqf inline>not local _myObject</sqf>
+* [[:Category:Scripting_Commands|commands]] arguments and effects can be either '''local''' or '''global''':
+{|
+| style="padding-right: 0.5em;" | {{Icon|localArgument|32}}
+| a '''local''' argument means an argument that is processed on the machine where the command is executed
+|-
+| {{Icon|globalArgument|32}}
+| a '''global''' argument means any argument, even a remote one
+|-
+| {{Icon|localEffect|32}}
+| a '''local''' effect means that the effect will only happen on the machine where the command is executed
+|-
+| {{Icon|globalEffect|32}}
+| a '''global''' effect means that all the computers will receive it
+|-
+| {{Icon|serverExec|32}}
+| '''server exec''' means that the command or function has to be executed on the server machine, either mission host or dedicated server
+|}
+{{Feature|informative|See also:
+{{Columns|2|
+* [[:Category:Scripting Commands: Local Effect|Scripting Commands: Local Effect]]
+* [[:Category:Scripting Commands: Global Effect|Scripting Commands: Global Effect]]
+* [[:Category:Scripting Commands: Server Execution|Scripting Commands: Server Execution]]
+* [[:Category:Functions: Local Effect|Functions: Local Effect]]
+* [[:Category:Functions: Global Effect|Functions: Global Effect]]
+* [[:Category:Functions: Server Execution|Functions: Server Execution]]
+}}
+}}
+
+=== Different machines and how to target them ===
+
+{{Feature|informative|
+* For obvious reasons, a server cannot be {{Link|#Join In Progress|JIP}}.
+* Use [[didJIP]] to determine if a client joined during the game.
+}}
+
+{| class="wikitable valign-middle-row-1 align-center-col-2 align-center-col-3 align-center-col-4 align-center-col-5"
+! rowspan="2" | [[:Category:Scripting Commands|Scripting Commands]]
+! colspan="2" | Server
+! rowspan="2" | Player client
+! rowspan="2" | [[Arma 3: Headless Client|Headless client]]
+! rowspan="2" | Note
+|-
+! Dedicated
+! Player-Hosted
+|-
+| <sqf>isDedicated</sqf>
+| {{Icon|checked}}
+| {{Icon|unchecked}}
+| {{Icon|unchecked}}
+| {{Icon|unchecked}}
+| Dedicated server
+|-
+| <sqf>hasInterface && isServer</sqf>
+| {{Icon|unchecked}}
+| {{Icon|checked}}
+| {{Icon|unchecked}}
+| {{Icon|unchecked}}
+| Player server
+|-
+| <sqf>hasInterface && not isServer</sqf>
+| {{Icon|unchecked}}
+| {{Icon|unchecked}}
+| {{Icon|checked}}
+| {{Icon|unchecked}}
+| Player client
+|-
+| <sqf>not hasInterface && not isDedicated</sqf>
+| {{Icon|unchecked}}
+| {{Icon|unchecked}}
+| {{Icon|unchecked}}
+| {{Icon|checked}}
+| Headless client
+|-
+| <sqf>isServer</sqf>
+| {{Icon|checked}}
+| {{Icon|checked}}
+| {{Icon|unchecked}}
+| {{Icon|unchecked}}
+| Any server
+|-
+| <sqf>hasInterface</sqf>
+| {{Icon|unchecked}}
+| {{Icon|checked}}
+| {{Icon|checked}}
+| {{Icon|unchecked}}
+| Any player
+|-
+! colspan="6" | Miscellaneous
+|-
+| <sqf>not isServer</sqf>
+| {{Icon|unchecked}}
+| {{Icon|unchecked}}
+| {{Icon|checked}}
+| {{Icon|checked}}
+| All server clients, including headless clients, but excluding player host
+|-
+| <sqf>not isDedicated</sqf>
+| {{Icon|unchecked}}
+| {{Icon|checked}}
+| {{Icon|checked}}
+| {{Icon|checked}}
+| Everything but a dedicated server
+|-
+| <sqf>not hasInterface</sqf>
+| {{Icon|checked}}
+| {{Icon|unchecked}}
+| {{Icon|unchecked}}
+| {{Icon|checked}}
+| Headless clients and dedicated server
+|}
+
+'''For an extended version for all games, click''' <spoiler>
+{{Feature|informative|Before {{GVI|ofp|1.99}} and the backport of [[isServer]], the server could be identified by placing a [[Game Logic]] in the editor (that would always remain local to the server), then using the following: <sqf inline>local myLogic</sqf>.}}
+
+{| class="wikitable" style="line-height: normal; text-align: center"
+|- style="line-height: 2em"
+! Targeted machine
+! {{ofp}}
+! {{arma1}}
+! {{arma2}}
+! {{arma3}}
+|-
+! '''Dedicated Server'''<br><small>A server without a human player behind it</small>
+| <sqf>isServer && isNull player</sqf>
+| <sqf>isServer && isNull player</sqf>
+| <sqf>isDedicated</sqf>
+| <sqf>isDedicated</sqf>
+|-
+! '''Player Server'''<br><small>A server hosted by a player</small>
+| <sqf>isServer && not isNull player</sqf>
+| <sqf>isServer && not isNull player</sqf>
+| <sqf>isServer && not isDedicated</sqf>
+| <sqf>hasInterface && isServer</sqf>
+|-
+! '''Server'''<br><small>Any server, dedicated or hosted</small>
+| <sqf>isServer</sqf>
+| <sqf>isServer</sqf>
+| <sqf>isServer</sqf>
+| <sqf>isServer</sqf>
+|-
+! '''Player Client'''<br><small>A player connected since the lobby</small>
+| <sqf>not isServer && not isNull player</sqf>
+| <sqf>not isServer && not isNull player</sqf>
+| <sqf>not isServer && not isNull player</sqf>
+| <sqf>hasInterface && not isServer</sqf>
+|-
+! '''JIP Player Client'''<br><small>A player connected in the middle of a mission</small>
+| {{n/a}}
+| <sqf>not isServer && isNull player</sqf>
+| <sqf>not isServer && isNull player</sqf>
+| <sqf>hasInterface && didJIP</sqf>
+|-
+! '''Headless Client'''<br><small>A client without a human player behind it<br>(used to offload server calculations)</small>
+| colspan="3" {{n/a}}
+| <sqf>not hasInterface && not isServer</sqf>
+|-
+! '''JIP Headless Client'''<br><small>Headless client connected during the ongoing mission</small>
+| colspan="3" {{n/a}}
+| <sqf>not hasInterface && not isServer && didJIP</sqf>
+|}
+</spoiler>
+
+* If you want to know if the current machine is a server (Dedicated Server or Player Server), use [[isServer]].
+* If you want to know if the current machine has a player (Player Server included), use [[hasInterface]].
+
+{{Feature|arma3|Since {{arma3}}, a server-only init file is available: '''initServer.sqf''' (see [[Event Scripts]])}}
+
+{{Feature | arma3 | '''[[BIS_fnc_getNetMode]]''' can be used to have a string value representing the local machine status ("DedicatedServer", "Server", "HeadlessClient", "Client", "SinglePlayer" ).<br>
+This function doesn't make the JIP distinction and should be used along [[didJIP]].}}
+
+=== General information about locality ===
+
+* about [[player]]:
+** a [[player]]'s unit is '''always''' local to the (human) player's machine
+** a dedicated server doesn't have a [[player]] unit (<sqf inline>isNull player</sqf> returns [[true]])
+** to know if a certain unit is ''a'' player, use [[isPlayer]]
+* groups and AI:
+** an AI group with a player-leader will be local to the player's computer
+** a subordinate player being in a player-lead group will remain local to its computer (see bulletpoint #1)
+* objects:
+** a driven vehicle is always local to the machine of its driver (not the commander's, not the gunner's)
+** terrain objects (buildings, vegetation, roads etc.) are local everywhere (<sqf inline>local nearestBuilding player</sqf> returns [[true]] on every client)
+** editor-placed objects and empty vehicles are local to the server
+** editor-placed '''triggers''' are created on every machine unless specified otherwise ("Server Only" [[:Category:Eden Editor|Eden Editor]] option ticked)
+** units created with [[createUnit]] will be local to the computer that issued the command
+** objects and vehicles created with [[createVehicle]] will be local to the computer that issued the command
+
+=== Locality changes ===
+
+* if the player-leader dies, the AI is transferred to the machine where the new leader is local (server in case of AI, client in case of another player)
+* [[join|joining]] AI units will change locality to the new leader's computer
+* locality will change from server to client when a player gets in an empty vehicle
+* locality can also change in the event of a [[Team Switch]] or usage of [[selectPlayer]]
+{{Feature|arma3|Since {{arma3}} the [[Arma 3: Event Handlers#Local|"Local" Event Handler]] triggers when an object's locality is changed.}}
+
+=== Code examples ===
+
+{| class="wikitable"
+! Code
+! Argu-ments
+! Effect
+! Description
+|-
+| <sqf>remoteUnit setDamage 1;</sqf>
+| align="center" | {{Icon|globalArgument|32}}
+| align="center" | {{Icon|globalEffect|32}}
+| Any unit (local or remote) will die, and all the computers will know
+|-
+| <sqf>localUnit addMagazine "30Rnd_556x45_STANAG";</sqf>
+| align="center" | {{Icon|localArgument|32}}
+| align="center" | {{Icon|globalEffect|32}}
+| Only a local unit can have its inventory edited with this command, but all the machines will be notified: if a player looks into the ''localUnit'' inventory, the added magazine will be there
+|-
+| <sqf>remoteUnit setFace "Miller";</sqf>
+| align="center" | {{Icon|globalArgument|32}}
+| align="center" | {{Icon|localEffect|32}}
+| Any unit (local or remote) can get its face changed, but the new face will not be propagated through the network. Only the local machine's player will see the effect of the command
+{{Feature|informative|This command should ideally be '''executed on every machine''', for example with:
+<sqf>[remoteUnit, "Miller"] remoteExec ["setFace", 0, true];</sqf>
+See the {{Link|#Remote Execution}} chapter for more information.}}
+|-
+| <sqf>localCamera cameraEffect ["Internal", "Back"];</sqf>
+| align="center" | {{Icon|localArgument|32}}
+| align="center" | {{Icon|localEffect|32}}
+| Only a local camera can be entered, and of course only the local machine will see through this camera
+|}
+
+
+== Network ID ==
+
+Network IDs identify machines and network objects. They can be used to target proper machines with remote execution; see the {{Link|#Remote Execution}} chapter for more information.
+{{Feature|warning|'''A machine ID''' ([[owner|ownerID]]) is not to be confused with '''an object's network ID''' ([[netId]]).}}
+
+=== Machine network ID ===
+
+Every machine, including the server, has a '''network ID'''.<br>
+A server always has an ID of '''2''', every new client has the next number (the first client will be number '''3''', second client number '''4''', etc.)
+* To get the current machine's ID, use [[clientOwner]].
+* To get the machine ID of an object's owner, use [[owner]] ''object''  (MP only).
+* To get the machine ID of a group's owner, use [[groupOwner]] ''object'' (MP only).
+
+{{Feature|informative|'''0''' and '''1''' are special values:
+* '''0''' means '''everyone''' (including the server)
+* '''1''' means '''current machine''' but '''{{Color|darkred|is not implemented}}''' and should '''not''' be used.}}
+
+=== Object network ID ===
+
+Every object synchronised through the network has a network ID, shortened to '''netId'''.
+* To get an object's netId, use [[netId]] (MP only). '''SP &amp; MP variant:''' [[BIS_fnc_netId]]
+* To get an object from a netId, use [[objectFromNetId]] (MP only). '''SP &amp; MP variant:''' [[BIS_fnc_objectFromNetId]]
+* To get a group from a netId, use [[groupFromNetId]] (MP only). '''SP &amp; MP variant:''' [[BIS_fnc_groupFromNetId]]
+
+
+== Sending information across network ==
+
+=== Remote Execution ===
+
+Since {{arma3}} v1.50, [[remoteExec]] and [[remoteExecCall]] efficient engine network commands are available:
+<sqf>"Message to everyone, including JIP players!" remoteExec ["hint", 0, true];</sqf>
+See [[Arma 3: Remote Execution]] for more information.
+
+{{arma3}} alpha introduced [[BIS_fnc_MP]] ('''obsolete''' since {{arma3}} v1.50, use the above version):
+<sqf>["Message to everyone, including JIP  players!", "hint", true, true] call BIS_fnc_MP;  // obsolete since Arma 3 v1.50, use remoteExec or remoteExecCall</sqf>
+
+{{arma2}} introduced the [[Arma 2: Multiplayer Framework]] (not present in {{arma3}}):
+<sqf>
+// having the Functions module placed in the editor
+waitUntil { not isNil "BIS_MPF_InitDone"; };
+[nil, nil, rHINT, "Message to everyone!"] call RE;
+</sqf>
+
+=== PublicVariable commands ===
+
+PublicVariable commands allow to send '''global''' variables to specified machines.
+* Network reception is guaranteed
+* Short variable names should be used for network performance
+* These commands shouldn't be used intensely for the same reason
+{| class="wikitable"
+! Command
+! Effect
+! {{Link|#Join In Progress|JIP}} synchronised
+|-
+| [[publicVariable]]
+| Set/update a variable value from the local machine to all the other machines (including server)
+| align="center" | {{Icon|checked}}
+|-
+| [[publicVariableServer]]
+| Set/update a variable value '''from a client to the server'''
+| align="center" | {{Icon|unchecked}}
+|-
+| [[publicVariableClient]]
+| Set/update a variable value '''from the local machine''' (not necessarily the server) '''to a specific client'''
+| align="center" | {{Icon|unchecked}}
+|}
+
+==== How it works ====
+The server has the variable {{hl|ABC_Score}} to broadcast:
+<sqf>
+ABC_Score = 5;				// sets the value
+publicVariable "ABC_Score"	// publishes the variable (do not forget the quotes!)
+</sqf>
+This sends the variable name and value to the clients.
+* If the variable is not yet declared on their machine, it will declare it as well.
+* If the variable already exists, '''the value is overridden''' by the server's value.
+* If the variable changes again on the server, it has to be manually [[publicVariable]]'d once again!
+* A {{Link|#Join In Progress|JIP}} player will synchronise '''server's''' [[publicVariable]]'d variables '''before''' executing '''init.sqf'''. See [[Initialisation Order]] for more information.
+** A JIP player will '''not''' synchronise [[publicVariableClient]]-received variables after he disconnects/reconnects. Only server-known public variables sent with [[publicVariable]] will be synchronised.
+
+=== setVariable command ===
+
+Available since {{arma2}}, the '''public''' version of the [[setVariable]] command (alternative syntax) allows you to store a variable into an object and spread this variable across the network.
+{{Feature|arma3|In {{arma3}} it is possible to broadcast the [[nil]] value, thus deleting the variable from the target.}}
+
+
+== Player connection events ==
+
+The following commands will execute given code when a player is connecting or disconnecting. This code will run for players connecting in the lobby '''and''' for {{Link|#Join In Progress|JIP}} players!
+* [[Arma 3: Mission Event Handlers#PlayerConnected|"PlayerConnected" mission Event Handler]]
+* [[Arma 3: Mission Event Handlers#PlayerDisconnected|"PlayerDisconnected" mission Event Handler]]
+{{Feature|informative|Before {{arma3}} v1.58, use [[BIS_fnc_addStackedEventHandler]] for [[onPlayerConnected]]/[[onPlayerDisconnected]].}}
+
+
+== Client state ==
+
+A client state is the client's connection state. It can be obtained with [[getClientState]] and [[getClientStateNumber]] commands on both server and clients.
+{| class="wikitable"
+! [[getClientStateNumber]]
+! [[getClientState]]
+! Description
+|-
+| 0
+| "NONE"
+| No client (or singleplayer)
+|-
+| 1
+| "CREATED"
+| Client is created
+|-
+| 2
+| "CONNECTED"
+| Client is connected to server, message formats are registered
+|-
+|3
+| "LOGGED IN"
+| Identity is created
+|-
+| 4
+| "MISSION SELECTED"
+| Mission is selected
+|-
+| 5
+| "MISSION ASKED"
+| Server was asked to send / not send mission
+|-
+| 6
+| "ROLE ASSIGNED"
+| Role was assigned (and confirmed)
+|-
+| 7
+| "MISSION RECEIVED"
+| Mission received
+|-
+| 8
+| "GAME LOADED"
+| Island loaded, vehicles received
+|-
+| 9
+| "BRIEFING SHOWN"
+| Briefing was displayed
+|-
+| 10
+| "BRIEFING READ"
+| Ready to play mission
+|-
+| 11
+| "GAME FINISHED"
+| Game was finished
+|-
+| 12
+| "DEBRIEFING READ"
+| Debriefing read, ready to continue with next mission
+|}
+
+
+{{ArgTitle|2|Join In Progress|{{GVI|arma1|1.00}}|{{GVI|ofpe|1.00}}}}
+
+'''Join In Progress''' (JIP) is the ability for a player to connect while a game is running, unlike in {{ofp}} where one had to wait for the game to be over.<br>
+It was introduced in [[:Category:{{ofpe}}|{{ofpe}}]] on Xbox and [[:Category:ArmA: Armed Assault|{{arma1}}]] on PC.
+
+A player that joined in progress will be referred to as '''JIP player'''.
+
+{{Feature | Informative |
+To disable JIP on a server:
+* the server admin can disable playable slots on the role selection screen
+* the mission designer can [[Description.ext#disabledAI|disable AI]] within mission config
+However, JIP remains available if respawn is enabled in the mission.
+}}
+
+=== JIP Synchronisation ===
+
+A JIP player will have a lot of information synchronised ([[publicVariable]]'d and [[setVariable]] server variables for example) by the game '''before''' accessing the mission itself; see below:
+
+{| class="wikitable"
+! Information
+! Arma 1
+! {{arma2}}
+! {{arma3}}
+|-
+| date/time
+| align="center" | {{Icon|checked}}
+| align="center" | {{Icon|checked}}
+| align="center" | {{Icon|checked}}
+|-
+| date/time + [[setDate]]/[[skipTime]]
+| align="center" | {{Icon|unchecked}}
+| align="center" | {{Icon|unchecked}}
+| align="center" | {{Icon|checked}}
+|-
+| weather ([[overcast]], [[fog]])
+| align="center" | {{Icon|unchecked}}
+| align="center" | {{Icon|checked}}
+| align="center" | {{Icon|checked}}
+|-
+| weather + [[setOvercast]]/[[setFog]]/[[setRain]]/[[setLightnings]]
+| align="center" | {{Icon|unchecked}}
+| align="center" | {{Icon|unchecked}}
+| align="center" | {{Icon|checked}}
+|-
+| time passed since mission start ([[time]] command)
+| align="center" | {{Icon|unknown}}
+| align="center" | {{Icon|unknown}}
+| align="center" | {{Icon|checked}}
+|-
+| [[publicVariable]]-sent variables ([[Number]], [[String]], [[Structured Text]], [[Array]], [[Code]])
+| align="center" | {{Icon|checked}}
+| align="center" | {{Icon|checked}}
+| align="center" | {{Icon|checked}}
+|-
+| [[publicVariable]]-sent variables ([[nil]])
+| align="center" | {{Icon|unchecked}}
+| align="center" | {{Icon|unchecked}}
+| align="center" | {{Icon|checked}}
+|-
+| [[setVariable]]-assigned variables (when alternative syntax's ''public'' parameter is set to true)
+| {{n/a}}
+| align="center" | {{Icon|checked}}
+| align="center" | {{Icon|checked}}
+|-
+| [[remoteExec]]- and [[remoteExecCall]]-executed code if ''JIP'' prerequisites are met
+| colspan="2" {{n/a}}
+| align="center" | {{Icon|checked}}
+|}
+
+{{Feature|warning|All the '''initialisation fields''' code get executed again for '''each and every JIP connecting player'''.<br>
+This means that code with global effect {{Icon|globalEffect|32}} (such as [[setDamage]]) '''WILL''' be re-executed (depending on locality)!}}
+
+=== Related Commands ===
+
+* [[remoteExec]]
+* [[remoteExecCall]]
+* [[didJIP]]
+* [[didJIPOwner]]
+* [[exportJIPMessages]]
+* [[isRemoteExecutedJIP]]
+
+
+== See also ==
+
+* [[Arma 3: Headless Client|Headless Client]]
+* [[Initialisation Order]]
+* [[Arma 3: Remote Execution]]
+
+
+= Structuring Multiplayer code =
+
+
+== Responsibilities ==
+
+* The '''server''' initialises and works with '''variables'''
+* A connecting or connected '''player-client''' gets the mission data from the server
+* Once an objective is reached, '''the server tells the players''' via [[remoteExec]]/[[remoteExecCall]], [[publicVariable]] or [[setVariable]]
+* Players can get their client-side UI code triggered by the server
+See {{Link|#Different machines and how to target them|this earlier chapter}} to know how to target specific machines.
+
+=== Server ===
+
+The '''Server''' must be considered as the one ruler of the mission. He is the game's referee and all the decisions should come from it. All the values on the server should be considered as '''true'''.<br>
+Consider the server as a powerful machine where you can put all the mission conditions and heavy scripting on.
+In case of a very heavy mission, the server can be assisted by [[Arma 3: Headless Client|Headless Clients]] (this involves a per-mission specific design).
+
+Server-side code must gather or wait all the variables (potentially from client-side scripts and [[publicVariableServer]]) and take and broadcast its decisions accordingly using [[publicVariable]].
+
+Server-side code should ideally '''not''' make any reference to a [[player]] variable considering a server can potentially be '''dedicated''', unless you want to force this mission to be player-hosted (such as {{arma2}}'s campaign).
+{{Feature|informative|Use [[allPlayers]], [[BIS_fnc_listPlayers]], [[playableUnits]] (and [[switchableUnits]] for SP compatibility) to refer to players.}}
+
+=== Client ===
+
+The '''Client''' must be considered as an average machine that can leave the game at any moment.
+'''No mission-vital code must be executed on its side''' and '''no decisions must be taken client-side'''.<br>
+Again, '''one must expect that any client can disconnect at any moment'''.
+
+The client executes all the (local) UI code ([[Post Process Effects]], [[Arma: GUI Configuration|Dialogs]], etc.)<br>
+The player's machine should not deal with a great piece of code.
+{{Feature | important | Do not forget that a server '''can''' be a player, and therefore should execute player code in that case.}}
+The proper way to check for player-side condition is
+<sqf>if (hasInterface) then { /* (...) */ };</sqf>
+Note that the following example is '''incorrect''':
+<sqf>
+if (isServer) then
+{
+	// ...
+}
+else // WRONG: a server CAN be a player
+{
+	// ...
+};
+</sqf>
+
+
+== Code writing ==
+
+The usual four steps of coding are the following:
+* Think it well
+** If you cannot figure out how to write your code, say what you want to do out loud or write it down in your language, then replace it by code little by little.
+* Make it work
+** use the [[Arma 3: Startup Parameters#Developer Options|-showScriptErrors]] startup parameter to see your code errors.
+* Make it readable
+** name your variables properly, as if you had to give it to someone that should get it without the need of explaining
+* Optimise then
+** use more performance-friendly commands, reduce your search radius and loop frequencies once everything works.
+
+See {{Link|Code Optimisation#Rules}} for advices and more information.
+
+
+== See also ==
+
+* [[Event Scripts]]
+* [[Code Optimisation]]
+
+
+= Local Multiplayer Testing =
+
+To ensure all cases, your mission should ideally work properly:
+* in Singleplayer
+* in Player-hosted Multiplayer
+* in a Dedicated Server-hosted game
+
+The following chapters explain how to mimic multiple clients on one computer. Of course, nothing prevents you from inviting friends to play your mission and report bugs!
+
+
+== Dedicated Server ==
+
+To properly test MP scripting locality issues, it is recommended to run a '''dedicated server''' and connect with '''two''' clients. In order to do so:
+* In your server executable's [[Arma 3: Server Config File|server.cfg]]: <syntaxhighlight lang="cpp">
+loopback = true;	// force LAN-only server
+kickDuplicate = 0;	// disable duplicate Arma kick
+
+// needed in case of Headless Client test only
+headlessClients[]	= { "127.0.0.1" };
+localClient[]		= { "127.0.0.1" };
+</syntaxhighlight>
+* Run the game twice from Steam and connect each (with {{hl|-showScriptErrors}} flag)
+** If you use one screen for the first client and the other screen for the second client, use {{hl|-noPause -window}} launcher options. This will not pause render if the window doesn't have focus.<!--
+-->{{Feature|important |Be sure to disable [[BattlEye]] or it will close any additional instances.}}
+* Try your mission and check for script errors:
+** on client's screens and [[arma.RPT|RPT files]]
+** in your server's [[arma.RPT|RPT files]]
+
+{| class="wikitable"
+! Pros
+! Cons
+|-
+|
+* Tests almost all "can go wrong" scenarios
+* Can test [[Arma 3: Headless Client|Headless Clients]], persistent server, server restart, admin login/logout
+|
+* Misses cases where [[isDedicated]] is used instead of [[isServer]]
+* "Big" setup
+|}
+
+
+== Player-Hosted Server ==
+
+While this method covers less cases than the {{Link|#Dedicated Server Test}} method above, this method is faster:
+* Open the [[Arma 3: Launcher]] and disable [[BattlEye]]
+* Select the mods that the host will use (if any)
+* Launch the game using the {{hl|Play}}/{{hl|Play with Mods}} button
+* Select the mods that clients will use
+* Launch the game again using the {{hl|Play}}/{{hl|Play with Mods}} button
+* In the first game instance (server), host the mission either through local hosting or with [[:Category:Eden Editor|Eden Editor]] MP mission type launch
+* In the second game instance (client), join the session using the MP tab LAN section and entering the mission hosted by the server
+
+{| class="wikitable"
+! Pros
+! Cons
+|-
+|
+* Fast setup (with quick modlist support)
+* Helps find cases where [[isDedicated]] is used instead of [[isServer]]
+|
+* May miss locality issues (code that happens to run on the server because it runs on the server's ''client'' like e.g [[hideObjectGlobal]])
+* No headless client testing (this can be solved by using a custom [[Arma 3: Server Config File|server.cfg]])
+|}
+
+
+== See Also ==
+
+* [[Arma 3: Dedicated Server]]
+* [[Arma 3: Server Config File|server config]]
+
+
+[[Category:Arma Scripting Tutorials]]
+{{TOC|side}}
+'''Remote Control''' allows a player (remote-controller) to take control of another unit (drone, or remote-controlled) that is different from the [[local]] [[player]] unit.
+
+* only a [[isPlayer|human player]] can remote-control another unit.
+* <!-- since Arma 3 & selectPlayer fix -->players cannot remote-control other players.
+* only one unit can be controlled at the same time; remote control has to be terminated before controlling another unit.
+* when a player takes control of a unit that is controlled by another player, the unit is transferred to the new owner and the previous player control is terminated.
+
+The remote control is handled [[local]]ly, which is why it is important that all arguments for [[remoteControl]], [[remoteControlled]] and [[isRemoteControlling]] commands are {{Icon|localArgument|32}} local.
+Exception is [[remoteControl]]'s ''target'' argument, for which locality {{Icon|globalArgument|32}} does not matter, in which case the unit will be moved to the controlling player machine's locality.
+When the player is controlling the unit, the unit is [[local]] to player.<!-- ''If not, then something went terribly wrong''. -->
+
+
+== How To ==
+
+=== Take Control ===
+
+Executing [[remoteControl]] transfers the movement control. In order to take full control, the camera also has to be transferred - using [[switchCamera]] and ideally ''before'' [[remoteControl]] usage;
+the point of view and the firing control are then transferred.
+In some<!-- which? --> cases [[remoteControl]] is enough and the [[cameraOn]] transfer happens automatically.
+
+<sqf>
+otherUnit switchCamera "INTERNAL";
+player remoteControl otherUnit;
+</sqf>
+
+{{ArgTitle|3|Obtain Remote Control Information|{{GVI|arma3|2.14}}}}
+
+The [[remoteControlled]] command works for both cases and can return either the player controlling the provided UAV or the UAV controlled by the provided player, depending on the argument used.
+{{Feature|informative|Before {{GVI|arma3|2.14|size= 0.75}} and [[remoteControlled]], see [[remoteControl]] examples for a workaround.}}
+
+==== Get the Remote Controller ====
+<sqf>private _drone = remoteControlled player;</sqf>
+
+==== Get the Remote Controlled Unit ====
+<sqf>private _player = remoteControlled _drone;</sqf>
+
+=== Ensure Proper Disconnection ===
+
+Remote Control termination can automatically transfer the camera back to the player but might need to be forced in some<!-- which? --> cases.
+
+When player controls a unit and the unit dies, the control stays with that unit.
+After a short time, the dead unit is removed from its group.
+This will make [[remoteControlled]] on this unit return [[objNull]], but [[isRemoteControlling]] for the controlling player will still return [[true]] and the player will remain stuck in remote control mode.
+To exit this mode, the following can be used:
+<sqf>
+player remoteControl objNull;
+switchCamera player; // if needed
+
+// remote control can also be terminated when only the drone is known
+objNull remoteControl _drone;
+</sqf>
+
+
+== See Also ==
+
+* {{Link|Multiplayer Scripting#Locality}}
+* [[local]]
+* [[:Category:Command Group: Remote Control|Command Group: Remote Control]]
+
+
+[[Category:Arma Scripting Tutorials]]
+{{TOC|side}}
+This page provides some insights into what it means to try and write code in a positive way, with the least negation as possible.
+
+
+== Overview ==
+
+Code negation is (usually) using [[not]] (in [[SQF Syntax|SQF]]/[[SQS Syntax|SQS]]) or {{hl|!}} (in both [[SQF Syntax|SQF]]/[[SQS Syntax|SQS]] and [[DayZ:Enforce Script Syntax|Enforce]] {{GameCategory|armaR|Modding|Scripting|Guidelines|text= Script}}); all in all, it is about searching for the opposite of what one wants. Examples:
+{| class="wikitable valign-top" style="width: 100%"
+! style="width: 50%" | SQF
+! style="width: 50%" | Enforce Script
+|-
+|
+<sqf>
+if (not alive player) then
+{
+	hint "you are dead";
+}
+else
+{
+	hint "you are alive";
+};
+</sqf>
+|
+<enforce>
+if (value < minValue)
+{
+	Print("Value is invalid");
+}
+else
+{
+	Print("Value is valid");
+}
+</enforce>
+|}
+
+Research<ref>{{Link|https://www.researchgate.net/publication/10733819_Effects_of_Negation_and_Situational_Presence_on_the_Accessibility_of_Text_Information}}</ref>
+has<ref>{{Link|https://www.researchgate.net/publication/221438570_Some_Issues_on_Detecting_Negation_from_Text}}</ref>
+shown<ref>{{Link|https://medium.com/@Cuadraman/why-to-stop-writting-negavite-code-af5ffb17195}}</ref>
+that '''negation''' in general (not just in code but also in reading, teaching etc) makes processing sentences more difficult for the human brain, making its message less impactful
+(although not in all cases<ref>{{Link|https://www.psychologicalscience.org/news/releases/true-or-false-how-our-brain-processes-negative-statements.html}}</ref>).
+
+
+== Examples ==
+
+{| class="wikitable valign-top" style="width: 100%"
+! style="width: 50%" | {{Color|darkgreen|Do}}
+! style="width: 50%" | {{Color|darkred|Don't}}
+|-
+| <sqf>
+// this is called {{Link|https://dev.to/arikaturika/one-concept-a-day-early-return-pattern-in-javascript-3pol|Early Return}} / {{Link|https://szymonkrajewski.pl/why-should-you-return-early/|Bouncer}} pattern
+if (isNull _control1) exitWith {};
+if (isNull _control2) exitWith {};
+if (isNull _control3) exitWith {};
+
+// do something
+</sqf>
+| <sqf>
+if (not isNull _control1) then
+{
+	if (not isNull _control2) then
+	{
+		if (not isNull _control3) then
+		{
+			// finally do something
+
+			// <- this is called Hadouken code style as per
+			// the {{Link|https://www.reddit.com/r/ProgrammerHumor/comments/27yykv/indent_hadouken/|shape}} drawn by the brackets
+		};
+	};
+};
+</sqf>
+|-
+| <enforce>
+// whenever possible without rewriting everything
+// or doubling the methods, of course
+if (unit.IsAlive() && unit.IsInjured())
+	DoHealThing();
+</enforce>
+<enforce>
+// alternatively
+if (unit.IsDead())
+	DoDeathThing();
+else if (unit.IsPerfectHealth())
+	DoPerfectThing();
+else // injured
+	DoHealThing();
+</enforce>
+| <enforce>
+// sometimes, only negative methods are available
+if (!unit.IsPerfectHealth() && !unit.IsDead())
+	DoHealThing();
+</enforce>
+|}
+
+
+== Counter Examples ==
+
+As most if not all rules of development, this rule is a rule of thumb that is '''not''' to be enforced at all cost. 
+
+{| class="wikitable valign-top" style="width: 100%"
+! style="width: 50%" | {{Color|darkred|Don't}}
+! style="width: 50%" | {{Color|darkgreen|Do}}
+<!-- See what I did here? -->
+|-
+| <sqf>
+if (isNull _control) then
+{
+}
+else
+{
+	systemChat "the control exists";
+};
+
+// or, even more convoluted and less performance-friendly
+if (str _control find "NULL" == -1) then
+{
+	systemChat "the control exists";
+};
+</sqf>
+| <sqf>
+if (not isNull _control) then // neater
+{
+	systemChat "the control exists";
+};
+</sqf>
+|-
+| <enforce>
+if (m_aElements.Count() > 0)
+	Print("There are elements!");
+// note that in some cases, storing the count in a variable
+// saves further calculations in below code
+</enforce>
+| <enforce>
+if (!m_aElements.IsEmpty())
+	Print("There are elements!");
+</enforce>
+|}
+
+
+== See Also ==
+
+* [[Code Optimisation]]
+* [[Mission Optimisation]]
+* [[Multiplayer Scripting]]
+
+
+[[Category:Arma Scripting Tutorials]]
+{{TOC|side}}
+Scripting is one of the most powerful and most versatile tools available in the Arma sandbox. Unfortunately, it is also one of the most complex and unforgiving aspects of addon (i.e. mod) and mission creation.
+
+All {{arma}} games from {{arma0}} to {{arma3}} use a scripting language called [[SQF Syntax|SQF]]. Its predecessor [[SQS Syntax|SQS]] has been considered deprecated since {{arma1}} (2006) and is no longer used.
+As of {{armaR}} (2022), SQF has been succeeded by {{GameCategory|armaR|Modding|Scripting|Guidelines|text= Enforce Script}}. This document only considers SQF.
+
+
+== Scripting Topics ==
+
+There is a plethora of topics to learn about in the context of {{arma}} scripting (see the table below).
+Fortunately, there is no need to acquire detailed knowledge about all of these things in order to get started with scripting.
+To aid with prioritisation, this page provides three selections of topics, each relevant to beginner, intermediate and advanced scripters respectively.
+{{Table/RVScripting}}
+
+
+== Beginner Scripting ==
+
+{{Wiki|TODO|
+* Using existing functions
+}}
+
+=== Variables ===
+
+[[Variables]] are a fundamental building block of scripting (and programming in general). Like in mathematics, they serve as placeholders for values. A few examples:
+* <sqf inline>A = 1;</sqf> The variable <var>A</var> now has the value 1.
+* <sqf inline>B = 2;</sqf> The variable <var>B</var> now has the value 2.
+* <sqf inline>C = "Hello World!";</sqf> The variable <var>C</var> now has the value "Hello World!".
+A variable always has a [[Data Types|Data Type]]. In the example above, the variables <var>A</var> and <var>B</var> both have the data type [[Number]], while <var>C</var> has the data type [[String]]. The data type of a variable is not fixed and changes automatically based on the current value of the variable.
+
+=== Commands and Operators ===
+
+Two other basic tools of scripting are commands and [[Operators]]. In fact, they are so basic that the examples in the {{Link|#Variables}} section above already had to make use of an operator: The equals sign (<sqf inline>=</sqf>) serves as the assignment operator, assigning values to variables. Similarly, symbols such as <sqf inline>+</sqf>, <sqf inline>-</sqf>, <sqf inline>*</sqf> and <sqf inline>/</sqf> are also operators. Using operators is quite simple:
+<sqf>
+A = 1.5;
+B = -2 * A;
+C = A + B + 3.5; // Result: C is 2
+</sqf>
+Commands are often more versatile and complex than operators and can sometimes be used to interact with the game in some way. For instance, the [[setPosATL]] command can be used to change the position of an object in the game world, the [[damage]] command returns the amount of damage an object has suffered and the [[systemChat]] command can be used to display a message in the system chat.
+
+While operators are usually fairly intuitive to use, commands are often more complicated. As such, every single command (and every single operator) has a dedicated [[Main Page|Community Wiki]] page documenting it. This makes the Community Wiki an essential resource for scripting as it can be consulted whenever an unfamiliar command is encountered or needs to be used. The documentation commonly includes information about the behaviour and effect of the command, its return value and the purpose and data types of its parameters.
+
+{{Feature|informative|Commands List can be found here: [[:Category:Scripting Commands|Scripting Commands]].}}
+
+=== Control Structures, Conditions and Booleans ===
+
+[[Control Structures]] allow scripts to accomplish complex tasks. See the following:
+<sqf>
+if (damage player > 0.5) then
+{
+	player setDamage 0;
+	systemChat "The player has been healed.";
+}
+else
+{
+	systemChat "The player is fine.";
+};
+</sqf>
+This code behaves differently depending on the damage status of the player. The [[systemChat]] output and whether or not the player is healed changes dynamically based on how much health the player has when the code is executed.
+
+==== Conditions ====
+In the example above, the condition is <sqf inline>damage player > 0.5</sqf>. Like all conditions, it results in a [[Boolean]] value when evaluated:
+# First, <sqf inline>damage player</sqf> is evaluated and returns a number.
+# Then, the <sqf inline>></sqf> operator compares that number to 0.5:
+#* If the number is greater than 0.5, the <sqf inline>></sqf> operator returns [[true]].
+#* If the number is less than or equal to 0.5, the <sqf inline>></sqf> operator returns [[false]].
+
+==== Booleans ====
+The data type [[Boolean]] only has two possible values: [[true]] and [[false]].
+
+===== Boolean Operations =====
+There are three basic operations that can be performed on Boolean values:
+
+{| class="wikitable align-center-col-3 align-center-col-4" style="margin: auto"
+|-
+! Operation !! Description !! SQF Operator !! SQF Command
+|-
+| NOT (Negation) || Inverts the input value. || <sqf inline>!</sqf> || [[not]]
+|-
+| AND (Conjunction) || Combines two Booleans into one. Only returns [[true]] if both input values are [[true]]. || <sqf inline>&&</sqf> || [[and]]
+|-
+| OR (Disjunction) || Combines two Booleans into one. Returns [[true]] if at least one of the input values is [[true]]. || <sqf inline>||</sqf> || [[or]]
+|}
+
+Both the input and the output of these operations are Boolean values. Their behaviour is defined as follows:
+
+{| class="align-center valign-top" style="margin: auto"
+|
+
+{| class="wikitable align-center"
+! colspan="2" style="font-size: 1.25em" | NOT
+|-
+! Expression !! Result
+|-
+| <sqf inline>!true</sqf> || [[false]]
+|-
+| <sqf inline>!false</sqf> || [[true]]
+|}
+
+|
+
+{| class="wikitable align-center"
+! colspan="2" style="font-size: 1.25em" | AND
+|-
+! Expression !! Result
+|-
+| <sqf inline>true && true</sqf> || [[true]]
+|-
+| <sqf inline>true && false</sqf> || [[false]]
+|-
+| <sqf inline>false && true</sqf> || [[false]]
+|-
+| <sqf inline>false && false</sqf> || [[false]]
+|}
+
+|
+
+{| class="wikitable align-center"
+! colspan="2" style="font-size: 1.25em" | OR
+|-
+! Expression !! Result
+|-
+| <sqf inline>true || true</sqf> || [[true]]
+|-
+| <sqf inline>true || false</sqf> || [[true]]
+|-
+| <sqf inline>false || true</sqf> || [[true]]
+|-
+| <sqf inline>false || false</sqf> || [[false]]
+|}
+
+|}
+
+==== Complex Conditions ====
+Boolean operations can be used to create complex conditions by combining multiple conditions into one.
+<sqf>
+if ((alive VIP_1 && triggerActivated VIP_1_Task_Complete) || (alive VIP_2 && triggerActivated VIP_2_Task_Complete)) then
+{
+	systemChat "At least one VIP has been rescued.";
+};
+</sqf>
+
+{{Feature|informative|Beginners sometimes write conditions such as <sqf inline>if (Condition == true)</sqf> or <sqf inline>if (Condition == false)</sqf>.<br>
+While doing so is not a real error, it is unnecessary because [[Control Structures]] (and [[Trigger]]s) always implicitly compare the condition to [[true]].<br>
+The correct (as in faster, more common and more readable) way to write such conditions is <sqf inline>if (Condition)</sqf> and <sqf inline>if (!Condition)</sqf> respectively.
+}}
+
+=== Arrays ===
+
+An [[Array]] is a [[:Category:Data Types|Data Type]] that can be seen as a list of items. This list can hold none to multiple elements of different types:
+<sqf>
+[]						// an empty array
+[true]					// an array of 1 element (Boolean)
+[0, 10, 20, 30, 40, 50]	// an array of 6 elements of Number type
+["John Doe", 32, true]	// an array of 3 elements of different types (String, Number, Boolean)
+</sqf>
+An array is a useful way to keep data together and is used for example to store positions.
+
+==== Positions ====
+[[Position]]s are represented as 2D or 3D [[Array]]s of [[Number]]s (usually in the format <sqf inline>[X, Y]</sqf> or <sqf inline>[X, Y, Z]</sqf>) where X represents West-East, Y represents South-North and Z represents altitude.
+However, there are some important caveats and distinctions one should be aware of - for instance, the positions <sqf inline>[0, 0, 0]</sqf> ASL ('''A'''bove '''S'''ea '''L'''evel) and <sqf inline>[0, 0, 0]</sqf> AGL ('''A'''bove '''G'''round '''L'''evel) are not necessarily equivalent.
+It is therefore highly recommended to read the [[Position]]s page before working with positions.
+
+=== Script Files ===
+
+Scripts are usually placed in [[Script File]]s. It is of course possible and sometimes even necessary to use short pieces of code in the Editor (e.g. in the ''On Activation'' expression of a [[Trigger]]), but scripts can become long and complex, and then working with them is far easier when they are properly placed in script files. Additionally, some features are only accessible through the use of script files ([[Event Scripts]] for example).
+
+Script files are basically just text files with a certain filename extension. For script files, that file extension is {{hl|.sqf}} (or {{hl|.sqs}}), but in the broader context of Arma scripting, modification, configuration and mission design, more file extensions can be encountered: {{hl|.ext}}, {{hl|.hpp}}, {{hl|.cpp}} and {{hl|.cfg}} to mention the most common ones.
+
+==== File Creation ====
+Unfortunately, Windows does not make the creation of blank files with a desired file extension easily accessible.
+
+For instance, a common pitfall when trying to use [[Description.ext]] (a file that is used to configure certain mission features such as the respawn settings) for the first time is (unknowingly) creating {{hl|Description.ext.txt}} instead of {{hl|Description.ext}} because the Windows File Explorer hides file extensions by default.
+Obviously, {{hl|Description.ext.txt}} will not work and will not have any of the desired effects on the mission because the game does not recognize it as {{hl|Description.ext}}, but identifying a wrong file extension as the root cause of an issue when troubleshooting is notoriously difficult as one is usually looking for errors in the code and not in the filename.
+
+While there are many different ways to create a blank text file with a specific file extension, the easiest method using native Windows tools is probably this:
+* Preparation (only needs to be done once):
+# Open the File Explorer
+# Open the ''View'' tab at the top
+# Tick the ''File name extensions'' checkbox
+* File Creation:
+# Navigate to the location where you want to create a new script file
+# Right-click
+# Go to ''New''
+# Click on ''Text Document''
+# Rename {{hl|New Text Document.txt}} to what you need
+
+{{Feature|informative|It is also possible to bypass Notepad's automatic addition of the {{hl|.txt}} extension by wrapping the file name in quote, e.g {{hl|"description.ext"}}.}}
+
+==== File Locations ====
+In the context of mission creation, script files generally need to be placed in the corresponding ''scenario folder'' (often also called the ''mission root folder''). Every mission has its own scenario folder, it is created by the Editor when saving the scenario for the first time.
+By default it only contains a single file called [[Mission.sqm|{{hl|mission.sqm}}]]; this file mostly stores data regarding Editor-placed entities and does not need to be touched when scripting.
+
+[[Description.ext]] and [[Event Scripts]] have to be placed directly in the root of the scenario folder (i.e. next to {{hl|mission.sqm}}), but all other files can be placed in subfolders of the scenario folder.
+A well-structured scenario folder could look like this:
+
+ {{Color|green|Apex%20Protocol.Tanoa}}/
+ {{Color|lightgrey|├──}} functions/
+ {{Color|lightgrey|│   ├──}} fn_myFirstFunction.sqf
+ {{Color|lightgrey|│   └──}} fn_mySecondFunction.sqf
+ {{Color|lightgrey|├──}} scripts/
+ {{Color|lightgrey|│   ├──}} myFirstScript.sqf
+ {{Color|lightgrey|│   └──}} mySecondScript.sqf
+ {{Color|lightgrey|├──}} description.ext
+ {{Color|lightgrey|├──}} initPlayerLocal.sqf
+ {{Color|lightgrey|├──}} initServer.sqf
+ {{Color|lightgrey|└──}} mission.sqm
+
+Each scenario folder is stored in either the {{hl|missions}} or the {{hl|mpmissions}} subfolder of the folder containing the [[Profile|Arma Profile]] that was used to create the scenario.
+For instance, the path to the scenario folder from the example above could be:
+ C:\Users\Scott Miller\Documents\Arma 3 - Other Profiles\Keystone\missions\{{Color|green|Apex%20Protocol.Tanoa}}
+The Editor uses {{Link|https://en.wikipedia.org/wiki/Percent-encoding|percent-encoding}} for scenario folder names, that is why whitespaces in the scenario name are replaced with {{hl|%20}}.
+
+{{Feature|informative|
+The [[:Category:Eden Editor|Eden Editor]] provides a useful shortcut to quickly open a mission's scenario folder in the Windows File Explorer:
+With the mission open in the Editor, go to ''Scenario'' in the top left and then click on ''Open Scenario Folder''.
+}}
+
+'''See Also:'''
+* [[2D Editor: External]]
+* [[Eden Editor: Scenario Folder]]
+* [[Profile]] (the possible profile folder paths are listed there)
+
+==== Editing Script Files ====
+Because script files are essentially plain text files, they can be edited with just about any text editor. For instance, the native Windows Notepad can be used, but working with it is not very comfortable. As such, regular scripters typically use more versatile applications such as {{Link|https://notepad-plus-plus.org|Notepad++}} or {{Link|https://code.visualstudio.com|Visual Studio Code}}, usually in combination with plugins that add additional support for SQF. One feature commonly provided by these plugins is ''syntax highlighting'', and for good reason: Syntax highlighting makes code significantly more readable and helps recognizing and avoiding basic syntax errors. Consequently, it is highly recommended to use syntax highlighting.
+
+See [[:Category:Community Tools#Code Edition|Community Tools - Code Edition]] for a selection of community-made applications and plugins for Arma Scripting.
+
+==== Script Execution ====
+The [[execVM]] command is used to execute script files.
+
+For instance, {{hl|myFirstScript.sqf}} from the {{Link|#File Locations}} example above can simply be executed like so:
+<sqf>execVM "scripts\myFirstScript.sqf";</sqf>
+This can be done anywhere: Within another script, from the [[Arma 3: Debug Console|Debug Console]], in the ''On Activation'' or ''On Deactivation'' expression of a [[Trigger]] or in the init field of an [[Eden Editor: Object|Object]] in the Editor.
+
+
+== Intermediate Scripting ==
+
+{{Wiki|TODO|
+* [[:Category:Functions|Functions]]
+* [[Namespace]]s, {{Link|Variables#Scopes|Scopes}}
+* {{Link|Category:Event Handlers|Event Handlers}}
+* [[HashMap]]s
+}}
+
+
+== Advanced Scripting ==
+
+{{Wiki|TODO|
+* [[Multiplayer Scripting]]
+* [[GUI Tutorial|GUIs]]
+* [[Code Optimisation]]
+* [[Debugging Techniques]]
+}}
+
+
+== Miscellaneous ==
+
+{{Feature|informative|This section contains content from an old version of this page which is due to be updated.}}
+
+
+== Before anything ==<!-- "General Considerations" perhaps? -->
+
+; Is your idea necessary?
+: Will players even notice or use what you want to script? Just because you can does not mean you should. Sometimes less is more!
+
+; Is it possible to do this in the editor?
+: The [[:Category:Eden Editor|Eden Editor]] is a powerful tool and with it alone one can achieve a lot of things without writing a single line of code.
+: Poorly written scripts are a frequent cause of poor performance, both in singleplayer and multiplayer scenarios.
+
+; Can it be scripted using SQF?
+: This question might be hard to answer. Try to get as much information about what you want to do and what [[:Category: Scripting Commands|commands]] and [[:Category: Functions|functions]] there are before spending time on writing a script, just to find out that what you hoped to achieve is not possible after all.
+
+{{Feature|informative|Scripting is <u>not</u> the solution for everything!}}
+
+=== Terms ===
+
+The following is a collection of terms frequently encountered when talking or reading about scripting.
+
+; Game Engine
+: The core program of the game which executes your scripting commands at run time.
+
+; Script / Script File
+: Scripts are usually placed in [[Script File|script files]]. Script files contain code.
+
+; Syntax <!-- TODO: Explanation -->
+: See [[SQF Syntax]] ({{arma}}, {{arma2}}, {{arma3}}).
+: See [[SQS Syntax]] ({{ofp}}, {{arma}}).
+
+; Variables
+: A [[Variables|Variable]] is a named storage container for data.
+: The name of a variable is called its [[Identifier]].
+
+; Data Types
+: The [[:Category: Data Types|Data Type]] of a variable specifies which kind of data that variable can contain.
+
+; Operators <!-- TODO: Explanation -->
+: See [[Operators]]
+
+; Control Structures <!-- TODO: Explanation -->
+: See [[Control Structures]]
+
+; Functions <!-- TODO: Explanation -->
+: See [[Function]]
+
+=== Must-Read Articles ===
+
+==== Best Practices ====<!-- Bad section title, should be changed -->
+See [[Code Best Practices]]
+
+==== Debugging ====
+* [[Debugging Techniques]]
+* [[:Category:Community_Tools#Debug_Console.2FSystem|Community Tools - Debug Console/System]]
+
+==== Optimisation ====
+* [[Code Optimisation]]
+* [[Mission Optimisation]]
+
+=== Useful Links ===
+
+These pages cover further aspects of scripting:
+* [[:Category:Example Code|Example Code]]
+* [[Control Structures]]
+* [[Multiplayer Scripting]]
+* [[Exception handling]]
+* [[Script File]]
+* [[Function]]
+* [[SQS to SQF conversion]]
+
+Consider the following resources for more general learning:
+* [[6thSense.eu/EG|6thSense.eu Editing Guide]]
+* {{Link|link= https://www.armaholic.com/page.php?id=20465|text= Fockers Arma 3 Scripting Guide}}
+* {{Link|link= https://www.armaholic.com/page.php?id=4847|text= Mr-Murray's Armed Assault Editing Guide - Deluxe Edition}}
+* {{Link|https://youtu.be/WmEBN-RbK44|Excellent German SQF tutorial (YouTube)}}
+
+
+[[Category:Arma Scripting Tutorials]]
