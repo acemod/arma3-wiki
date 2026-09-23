@@ -27,7 +27,7 @@ syntax:
     description: the expression that '''must''' return a [[Boolean]], [[true]] to finish waiting or [[false]] to continue waiting
     type: Code
   - name: timeout
-    description: a timeout in seconds of game time ([[sleep]] vs [[uiSleep]]). The timeout is only checked after the condition was checked.
+    description: a timeout in seconds of game time ([[sleep]] vs [[uiSleep]]). The timeout is only checked after the condition was checked. '''Any negative value disables the timeout'''
     type: Number
   - name: interval
     description: the time interval in seconds of game time between condition checks, this is equivalent to using a "sleep" after the condition.

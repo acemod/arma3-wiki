@@ -19,18 +19,18 @@ since:
     major: 0
     minor: 56
 examples:
-- "<sqf>\n_myCode = compileFinal \"a = a + 1\";\ncall _myCode;\n \n// repeated compile won't have any effect\n_myCode = compileFinal \"a = a + 2\";\n</sqf>"
+- "<sqf>\nMyCode = compileFinal \"a = a + 1\";\ncall MyCode;\n \n// repeated compile won't have any effect\nMyCode = compileFinal \"a = a + 2\";\n</sqf>"
 - |-
   <sqf>
   // duplicate code will be final as well
-  _myDuplicateCode = _myCode;
+  MyDuplicateCode = MyCode;
 
-  // an alternative is to copy str'd code (since Arma 3 v2.02)
-  private _myNonFinalCopy = compile toString _myCode;
+  // an alternative is to copy str'd code (since {{arma3}} v2.02)
+  MyNonFinalCopy = compile toString MyCode;
   </sqf>
 - |-
   <sqf>
   // since {{arma3}} v2.14
-  private _readonlyCode = compileFinal { systemChat "Hello World!"; };
-  private _readonlyHashMap = compileFinal _myHashMap;
+  ReadonlyCode = compileFinal { systemChat "Hello World!"; };
+  ReadonlyHashMap = compileFinal _myHashMap;
   </sqf>
