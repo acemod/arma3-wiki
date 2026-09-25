@@ -6,7 +6,7 @@ description: |-
   Sound is defined in {{Link|Description.ext#CfgSounds|"CfgSounds"}} of the [[Description.ext]] or main config.
 
   {{Feature|informative|
-  The name of the command is the clue to its usage. It is meant for playing short sounds within short range. Consecutive execution of the command cues the sounds, the next sound would not start until the previous sound is finished, hence the need for the short sounds. The simulation of speed of sound would delay next sound and might mess with the timing of the cued sounds, especially if used globally. Additionally the sounds are not synced for JIP players. A long playing sound will not be heard by newly joined payers. To summarise:
+  The name of the command is the clue to its usage. It is meant for playing short sounds within short range. Consecutive execution of the command queues the sounds, the next sound would not start until the previous sound is finished, hence the need for the short sounds. The simulation of speed of sound would delay next sound and might mess with the timing of the queued sounds, especially if used globally. Additionally the sounds are not synced for JIP players. A long playing sound will not be heard by newly joined payers. To summarise:
 
   * An object can only "say" '''one''' sound at a time
   * In order to stop a [[say3D]] sound: delete the returned '''sound source''' with [[deleteVehicle]], or kill the '''sound source''' with e.g [[setDamage]].
@@ -22,7 +22,7 @@ syntax:
   - sound
   ret:
   - Object
-  - the sound source or null [[NetObject]] - when 'isGlobal' is [[true]]
+  - the sound source or [[NetObject]] - when 'isGlobal' is [[true]]
   params:
   - name: from
     type: Unknown
