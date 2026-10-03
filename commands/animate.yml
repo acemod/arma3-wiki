@@ -1,6 +1,10 @@
 name: animate
 description: |-
   Activates given object animation. Animation is defined in CfgModels [[Model Config#Animations|animations]] class. Class names listed in CfgVehicles [[Model Config#AnimationSources|AnimationSources]] bound to "Proxy" controller can also be animated with [[animate]] command (see [[Arma 3: createVehicle/vehicles]]).
+
+  {{Feature|informative|
+  Since {{GVI|arma3|2.24|size= 0.75}} parachutes are supported. The phases for a parachute animation are: 0...1 - pulling of the parachute from the bag, 1...2 - opening of the canopy, 2...3 packing of the canopy. The animation name is "". You can only skip forward the animation of the parachute. For example: <sqf>_para animate ["", 1]; // skips parachute animation forward to the canopy opening</sqf> Giving negative phase would delay the whole parachute opening animation until the phase rolls up to 0. See also [[animationPhase]] }}
+
   {{Feature|arma3|
   * It is recommended that [[animateSource]] command is used instead of [[animate]] whenever is possible, as it is more efficient and optimised for multiplayer
   * Since {{arma3}} v1.58 animation names can be obtained with [[animationNames]]}}
