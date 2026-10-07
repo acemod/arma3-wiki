@@ -1,8 +1,10 @@
 name: ctrlFade
 description: |-
   Returns the current fade factor of control.<br>
-  {{ Feature | Informative | Despite having <syntaxhighlight lang="cpp" inline>fade = 1;</syntaxhighlight> inside a control's config, <sqf inline>ctrlFade</sqf> will '''still report a fade of 0'''.<br>
-  Only the value actually set by [[ctrlSetFade]] will be returned by [[ctrlFade]].}}
+  {{Feature|informative|
+  Despite having <syntaxhighlight lang="cpp" inline>fade = 1;</syntaxhighlight> inside a control's config, this command '''will''' report a fade of 0.<br>
+  Only the value actually set by [[ctrlSetFade]] will be returned by [[ctrlFade]].
+  }}
 groups:
 - GUI Control
 syntax:
