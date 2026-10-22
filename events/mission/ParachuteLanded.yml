@@ -5,11 +5,11 @@ params:
   description: The parachute object
   type: Object
 - name: driver
-  description: Person in parachute driver seat
+  description: Person that was in parachute driver seat or [[objNull]]
   type: Object
-- name: attachedto
-  description: Cargo object (if attached to parachute)
-  type: Object
+- name: attachedObjects
+  description: Objects that were attached to the parachute or []
+  type: ArrayUnknown
 - name: onwater
   description: '[[true]] if water landing'
   type: Boolean
