@@ -3,13 +3,11 @@ description: Removes all items from ammo box (or any general weapon holder conta
 groups:
 - Weapon Pool
 syntax:
-- call: !Unary box
+- call: Nular
   ret:
   - Nothing
   - null
-  params:
-  - name: box
-    type: Object
+  params: []
 argument_loc: Unspecified
 effect_loc: Unspecified
 since:
@@ -17,4 +15,4 @@ since:
     major: 1
     minor: 0
 examples:
-- <sqf>clearItemPool jeepOne;</sqf>
+- <sqf>clearItemPool;</sqf>
