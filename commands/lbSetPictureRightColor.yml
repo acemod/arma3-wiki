@@ -1,25 +1,10 @@
 name: lbSetPictureRightColor
 description: |-
-  Sets the color of the second (right aligned) picture of the given index of the listbox with id idc of the topmost user dialog to the given color.
+  Sets the color of the second (right aligned) picture of the item with the given index of the listbox to the given color.
   Color which consists from only zeros means disable this override.
 groups:
 - GUI Control - ListBox
 syntax:
-- call: !Unary
-  - idc
-  - index
-  - color
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: idc
-    description: control id
-    type: Number
-  - name: index
-    type: Number
-  - name: color
-    type: ArrayColor
 - call: !Binary
   - control
   - - index
@@ -41,5 +26,4 @@ since:
     major: 1
     minor: 22
 examples:
-- <sqf>lbSetPictureRightColor [101, 0, [0, 1, 0, 0.5]];</sqf>
 - <sqf>_ctrl lbSetPictureRightColor [0, [1, 1, 1, 1]];</sqf>
