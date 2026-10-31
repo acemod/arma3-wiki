@@ -53,8 +53,10 @@ syntax:
     - showInMap
     - drawOverHUD
   ret:
-  - Nothing
-  - null
+  - Unknown
+  - |-
+    if layer is a [[Number]]
+    * [[Number]] - if layer is a [[String]]: the layer number used for that name
   params:
   - name: layer
     type: Unknown
