@@ -10,11 +10,22 @@ syntax:
   - var2
   ret:
   - Number
-  - distance in meters or 1e10 if distance cannot be calculated
+  - squared distance in square meters or 1e10 if distance cannot be calculated
   params:
   - name: var1
     type: Unknown
   - name: var2
+    type: Unknown
+- call: !Binary
+  - location1
+  - location2
+  ret:
+  - Number
+  - squared distance in square meters or 1e10 if distance cannot be calculated
+  params:
+  - name: location1
+    type: Unknown
+  - name: location2
     type: Unknown
 - call: !Binary
   - a
