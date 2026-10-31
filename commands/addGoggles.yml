@@ -1,7 +1,5 @@
 name: addGoggles
-description: |-
-  Create a new item and try to link it into goggles (glasses) slot.
-  {{Feature | informative | This command does '''not''' add NVGs, which are [[hmd]] slot items (see [[linkItem]] instead).}}
+description: "Create a new item and try to link it into goggles (glasses) slot.\n{{Feature | informative | This command does '''not''' add NVGs, which are [[hmd]] slot items (see [[linkItem]] instead). The glasses could be one of the following modes:\n\n<sqf>_mode = getNumber(configFile >> \"CfgGlasses\" >> \"G_Diving\" >> \"mode\"); // 1 \n/*\n0 - None\n1 - Diving\n2 - Goggles\n3 - NVG\n4 - DivingAndOverwater (since 2.08)\n*/\n</sqf>\n}}"
 groups:
 - Unit Inventory
 syntax:

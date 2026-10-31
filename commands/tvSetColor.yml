@@ -3,20 +3,6 @@ description: Sets text color on given Tree View Item
 groups:
 - GUI Control - Tree View
 syntax:
-- call: !Unary
-  - idc
-  - path
-  - color
-  ret:
-  - Nothing
-  - null
-  params:
-  - name: idc
-    type: Number
-  - name: path
-    type: Unknown
-  - name: color
-    type: ArrayColor
 - call: !Binary
   - control
   - - path
@@ -38,5 +24,4 @@ since:
     major: 0
     minor: 74
 examples:
-- <sqf>tvSetColor [101, [0,0], [1,0,0,1]];</sqf>
 - <sqf>_ctrl tvSetColor [[0,0], [1,0,0,1]];</sqf>

@@ -1,0 +1,38 @@
+name: ctrlGetProperty
+description: Returns one or multiple given properties of given control.
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - control
+  - property
+  ret:
+  - Anything
+  - Return value depends on the property
+  params:
+  - name: control
+    type: Control
+  - name: property
+    description: Any property available for given control type. Case insensitive
+    type: String
+- call: !Binary
+  - control
+  - properties
+  ret:
+  - Unknown
+  - null
+  params:
+  - name: control
+    type: Control
+  - name: properties
+    description: Properties available for given control type. Case insensitive
+    type: ArrayUnknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 24
+examples:
+- <sqf>_ctrl ctrlGetProperty "x"; // Return 0.015</sqf>
+- '<sqf>_ctrl ctrlGetProperty ["x", "colorBackground"]; // Return <noWiki>{</noWiki>"x": 0.015, "colorBackground": [1, 0.4, 1, 1]<noWiki>}</noWiki></sqf>'

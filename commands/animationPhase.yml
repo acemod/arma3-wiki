@@ -1,5 +1,9 @@
 name: animationPhase
-description: Returns the phase of the given animation on the given object. Animation can be scripted ([[animate]], [[animateSource]], [[animateDoor]]) or engine driven. Animation names for an object could be found out with [[animationNames]] command. When animation is rotation, like with "MainTurret" for example, the output is in radians, to convert to degrees use [[deg]] command.
+description: |-
+  Returns the phase of the given animation on the given object. Animation can be scripted ([[animate]], [[animateSource]], [[animateDoor]]) or engine driven. Animation names for an object could be found out with [[animationNames]] command. When animation is rotation, like with "MainTurret" for example, the output is in radians, to convert to degrees use [[deg]] command.
+
+  {{Feature|informative|
+  Since {{GVI|arma3|2.24|size= 0.75}} parachutes are supported. The phases for a parachute animation are: 0...1 - pulling of the parachute from the bag, 1...2 - opening of the canopy, 2...3 packing of the canopy. The animation name is "". <sqf>_para animationPhase ""; // current animation phase</sqf> See also [[animate]] }}
 multiplayer_note: In {{ofp}}, on dedicated servers, ''animationPhase'' will always return 0, no matter what the actual phase is.
 groups:
 - Animations

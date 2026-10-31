@@ -7,8 +7,8 @@ groups:
 syntax:
 - call: !Unary marker
   ret:
-  - Unknown
-  - null
+  - Boolean
+  - '[[true]] if marker is enabled, [[false]] if not'
   params:
   - name: marker
     description: the marker

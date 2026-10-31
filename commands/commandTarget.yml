@@ -12,9 +12,9 @@ syntax:
   - null
   params:
   - name: unit
-    type: Object
-  - name: target
     type: Unknown
+  - name: target
+    type: Object
 argument_loc: Local
 effect_loc: Global
 since:
@@ -41,4 +41,4 @@ since:
     minor: 50
 examples:
 - <sqf>_ESoldier1 commandTarget _WSoldier1;</sqf>
-- <sqf>player commandTarget [ted, bill];</sqf>
+- <sqf>[_ESoldier1, _ESoldier2] commandTarget _WSoldier1;</sqf>

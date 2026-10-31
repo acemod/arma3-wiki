@@ -17,6 +17,20 @@ syntax:
     type: Number
   - name: column
     type: Number
+- call: !Unary
+  - idc
+  - - row
+    - column
+  ret:
+  - String
+  - null
+  params:
+  - name: idc
+    type: Number
+  - name: row
+    type: Number
+  - name: column
+    type: Number
 argument_loc: Local
 effect_loc: Local
 since:
@@ -34,3 +48,4 @@ since:
     minor: 50
 examples:
 - <sqf>_text = _ctrl lnbText [0,0];</sqf>
+- <sqf>_text = lnbText [101, [0,1]];</sqf>

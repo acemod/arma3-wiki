@@ -1,0 +1,55 @@
+name: setJointDriveOrientation
+description: |-
+  {{Wiki|WIP}} Requires that a swing+twist or SLERP "drive" has been configured in [[attachChild]].
+  Sets the joints target orientation (relative to the joint's own orientation).
+  The drive will then behave like a spring (springParameters are configured in the drive), trying to pull the child object to the desired orientation.
+groups:
+- PhysX
+syntax:
+- call: !Binary
+  - joint
+  - - angle
+    - axis
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: joint
+    description: The parent vehicle that has a joint to a child, or the joint itself to be manipulated
+    type: Unknown
+  - name: angle
+    description: The angle (in radians to rotate around axis), clockwise
+    type: Number
+  - name: axis
+    description: The vector around which to rotate
+    type: Vector3d
+- call: !Binary
+  - joint
+  - - vectorDir
+    - vectorUp
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: joint
+    description: The parent vehicle that has a joint to a child, or the joint itself to be manipulated
+    type: Unknown
+  - name: vectorDir
+    description: '[[vectorDir]]'
+    type: Vector3d
+  - name: vectorUp
+    description: '[[vectorUp]]'
+    type: Vector3d
+argument_loc: Local
+effect_loc: Local
+server_exec: false
+since:
+  arma_3:
+    major: 2
+    minor: 22
+examples:
+- <sqf></sqf>
+- <sqf></sqf>
+- <sqf></sqf>
+- <sqf></sqf>
+- <sqf></sqf>

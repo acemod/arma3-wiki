@@ -1,0 +1,22 @@
+name: enableFreeLook
+description: Enables or disables the freelook toggle (2x Alt)
+groups:
+- Object Manipulation
+syntax:
+- call: !Unary enable
+  ret:
+  - Boolean
+  - Previous state
+  params:
+  - name: enable
+    description: enable or disable the toggle
+    type: Boolean
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 22
+examples:
+- <sqf>enableFreeLook true;</sqf>
+- "<sqf>// a function to get the current state without making changes\nprivate _fnc_isFreeLookToggled = \n{\n  private _oldState = enableFreeLook true; // enable temporarily; get state\n  enableFreeLook _oldState;\n  _oldState; // return the state\n};\n\nprivate _isFreeLookToggled = call _fnc_isFreeLookToggled;\n\n// a function to toggle the state\nprivate _fnc_toggleFreeLook = \n{\n  enableFreeLook !enableFreeLook false;\n};\n\ncall _fnc_toggleFreeLook; // toggle it (if enabled->disable it, and vice versa)\n</sqf>"

@@ -20,7 +20,7 @@ syntax:
     type: Object
   - name: turret
     description: turret path
-    type: ArrayUnknown
+    type: Unknown
   - name: minTurn
     description: from 0 to -angle in degrees (left)
     type: Number
@@ -41,6 +41,19 @@ syntax:
       arma_3:
         major: 2
         minor: 22
+- call: !Binary
+  - vehicle
+  - - turret
+  ret:
+  - Nothing
+  - null
+  params:
+  - name: vehicle
+    description: vehicle the turret belongs to
+    type: Object
+  - name: turret
+    description: turret path (to reset)
+    type: Unknown
 argument_loc: Local
 effect_loc: Global
 since:
