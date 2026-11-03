@@ -1,0 +1,22 @@
+name: webRequest
+description: |-
+  Create a web request returning an SQF promise, allowing communication with web servers in game.
+  {{Feature|informative|See {{Link|Arma 3: WebAPI|WebAPI}} for a full tutorial.}}
+groups:
+- System
+syntax:
+- call: !Unary request
+  ret:
+  - ScriptHandle
+  - a {{Link|Script Handle#Promise Handles|promise}}
+  params:
+  - name: request
+    type: HashMapUnknown
+argument_loc: Unspecified
+effect_loc: Unspecified
+since:
+  arma_3:
+    major: 2
+    minor: 24
+examples:
+- "<sqf>\nspawn {\n\tprivate _handle = webRequest #{\n\t\t\"type\": \"http\",\n\t\t//\"method\": \"GET\", \"GET\" is default\n\t\t\"origin\": \"test\",\n\t\t\"url\": \"https://myip.wtf/text\"\n\t};\n\tprivate _result = waitUntil _handle; // suspend until it is ready\n\t_result params [\"_request\", \"_result\"];\n\tsystemChat format [\"My IP is: %1\", _result get \"body\"];\n};\n</sqf>"
