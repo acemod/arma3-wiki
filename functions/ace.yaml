@@ -105,7 +105,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
@@ -162,7 +162,7 @@
     description: Weapon <STRING>
     type: String
   - name: '1'
-    description: Muzzle <STRING> (optional)
+    description: 'Muzzle <STRING> (default: Weapon)'
     type: String
     optional: true
   example: '[currentWeapon player, currentMuzzle player] call ace_advanced_ballistics_fnc_readWeaponDataFromConfig'
@@ -251,7 +251,10 @@
   example: '[newbob, oldbob] call ace_advanced_fatigue_fnc_handlePlayerChanged'
 - name: ace_advanced_fatigue_fnc_handlestaminabar
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Fraction of stamina remaining (0..1) <NUMBER>
+    type: Number
   example: '[0.5] call ace_advanced_fatigue_fnc_handleStaminaBar'
 - name: ace_advanced_fatigue_fnc_mainloop
   ret: Nothing
@@ -353,12 +356,26 @@
   example: '[control, 5, false, true, false] call ace_advanced_throwing_fnc_onKeyDown'
 - name: ace_advanced_throwing_fnc_onmousebuttondown
   ret: Nothing
-  params: []
-  example: '[] call ace_advanced_throwing_fnc_onMouseButtonDown'
+  params:
+  - name: '0'
+    description: Display (not used) <DISPLAY>
+    type: Display
+    optional: true
+  - name: '1'
+    description: Mouse button <NUMBER>
+    type: Number
+  example: '[findDisplay 46, 0] call ace_advanced_throwing_fnc_onMouseButtonDown'
 - name: ace_advanced_throwing_fnc_onmousescroll
   ret: Nothing
-  params: []
-  example: '[] call ace_advanced_throwing_fnc_onMouseScroll'
+  params:
+  - name: '0'
+    description: Display (not used) <DISPLAY>
+    type: Display
+    optional: true
+  - name: '1'
+    description: Scroll amount <NUMBER>
+    type: Number
+  example: '[findDisplay 46, 1] call ace_advanced_throwing_fnc_onMouseScroll'
 - name: ace_advanced_throwing_fnc_pickup
   ret: Nothing
   params:
@@ -624,7 +641,7 @@
     type: String
     optional: true
   - name: '4'
-    description: 'Config root <NUMBER> (default: 0 -> configFile)'
+    description: 'Config root (0: configFile, 1: campaignConfigFile, 2: missionConfigFile) <NUMBER> (default: 0)'
     type: Number
     optional: true
   example: '["CfgWeapons", "launch_NLAW_F", _ctrl, "icon"] call ace_arsenal_fnc_addListBoxItem'
@@ -708,7 +725,7 @@
     description: Show bar / show text bools <ARRAY of BOOLs>
     type: ArrayUnknown
   - name: '5'
-    description: Array of statements <ARRAY of CODE>
+    description: Array of statements <ARRAY of CODEs>
     type: ArrayUnknown
   - name: '6'
     description: 'Priority <NUMBER> (default: 0)'
@@ -851,6 +868,267 @@
     description: Optic <STRING>
     type: String
   example: '"CUP_optic_Elcan_SpecterDR_black_PIP" call ace_arsenal_fnc_baseOptic'
+- name: ace_arsenal_fnc_buttonActionsPage
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Actions page <CONTROL>
+    type: Control
+  - name: '2'
+    description: Previous (false) or next (true) page <BOOL>
+    type: Boolean
+  example: ''
+- name: ace_arsenal_fnc_buttonCargo
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Add (1) or remove (-1) item <NUMBER>
+    type: Number
+  example: ''
+- name: ace_arsenal_fnc_buttonClearAll
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  example: ''
+- name: ace_arsenal_fnc_buttonExport
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  example: ''
+- name: ace_arsenal_fnc_buttonFavorites
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Button control <CONTROL>
+    type: Control
+  example: ''
+- name: ace_arsenal_fnc_buttonHide
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  example: ''
+- name: ace_arsenal_fnc_buttonImport
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  example: ''
+- name: ace_arsenal_fnc_buttonLoadoutsDelete
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Button control <CONTROL>
+    type: Control
+  example: ''
+- name: ace_arsenal_fnc_buttonLoadoutsLoad
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Button control <CONTROL>
+    type: Control
+  example: ''
+- name: ace_arsenal_fnc_buttonLoadoutsRename
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Button control <CONTROL>
+    type: Control
+  example: ''
+- name: ace_arsenal_fnc_buttonLoadoutsSave
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Button control <CONTROL>
+    type: Control
+  example: ''
+- name: ace_arsenal_fnc_buttonLoadoutsShare
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Button control <CONTROL>
+    type: Control
+  example: ''
+- name: ace_arsenal_fnc_buttonStatsPage
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Stats page <CONTROL>
+    type: Control
+  - name: '2'
+    description: Previous (false) or next (true) page <BOOL>
+    type: Boolean
+  example: ''
+- name: ace_arsenal_fnc_canEditDefaultLoadout
+  ret: Boolean
+  params: []
+  example: ''
+- name: ace_arsenal_fnc_clearSearchbar
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Searchbar control <CONTROL>
+    type: Control
+  - name: '2'
+    description: Mouse button <NUMBER>
+    type: Number
+  example: ''
+- name: ace_arsenal_fnc_compileActions
+  ret: Nothing
+  params: []
+  example: ''
+- name: ace_arsenal_fnc_compileSorts
+  ret: Nothing
+  params: []
+  example: ''
+- name: ace_arsenal_fnc_compileStats
+  ret: Nothing
+  params: []
+  example: ''
+- name: ace_arsenal_fnc_createTarget
+  ret: Object
+  params:
+  - name: '0'
+    description: Classname <STRING>
+    type: String
+  - name: '1'
+    description: Position <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: Group <GROUP> (optional)
+    type: Group
+    optional: true
+  - name: '3'
+    description: Variable name <STRING> (optional)
+    type: String
+    optional: true
+  example: ''
+- name: ace_arsenal_fnc_fillLeftPanel
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Tab control <CONTROL>
+    type: Control
+  - name: '2'
+    description: 'Animate panel refresh <BOOL> (default: true)'
+    type: Boolean
+    optional: true
+  example: ''
+- name: ace_arsenal_fnc_fillLoadoutsList
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Loadouts display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Tab control <CONTROL>
+    type: Control
+  - name: '2'
+    description: 'Current frame filling loadouts list <NUMBER> (default: 0)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'Frames necessary to fill loadouts list <NUMBER> (default: -1)'
+    type: Number
+    optional: true
+  example: ''
+- name: ace_arsenal_fnc_fillRightPanel
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Tab control <CONTROL>
+    type: Control
+  - name: '2'
+    description: 'Animate panel refresh <BOOL> (default: true)'
+    type: Boolean
+    optional: true
+  example: ''
+- name: ace_arsenal_fnc_fillSort
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Tab control <CONTROL>
+    type: Control
+  - name: '2'
+    description: Sort control <CONTROL>
+    type: Control
+  - name: '3'
+    description: Sort direction control <CONTROL>
+    type: Control
+  example: ''
+- name: ace_arsenal_fnc_fireItemsChangedEvent
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Panel the change originated from (an IDC_button* constant) <NUMBER>
+    type: Number
+  - name: '2'
+    description: 'Item counts before the change (classname: count) <HASHMAP>'
+    type: HashMapUnknown
+  - name: '3'
+    description: 'Item counts after the change (classname: count) <HASHMAP>'
+    type: HashMapUnknown
+  example: ''
+- name: ace_arsenal_fnc_getloadoutitemcounts
+  ret: !OneOf
+  - - HashMapUnknown
+    - null
+  - - String
+    - null
+  - - Number
+    - null
+  - - ArrayUnknown
+    - null
+  params: []
+  example: call ace_arsenal_fnc_getLoadoutItemCounts
 - name: ace_arsenal_fnc_getvirtualitems
   ret: HashMapUnknown
   params:
@@ -858,6 +1136,108 @@
     description: Target <OBJECT>
     type: Object
   example: cursorObject call ace_arsenal_fnc_getVirtualItems
+- name: ace_arsenal_fnc_handleActions
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Current panel control <CONTROL>
+    type: Control
+  - name: '2'
+    description: Current panel selection <NUMBER>
+    type: Number
+  - name: '3'
+    description: Item config entry <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_handleLoadoutsSearchbar
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Loadouts display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Searchbar control <CONTROL>
+    type: Control
+  example: ''
+- name: ace_arsenal_fnc_handleMouse
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '1'
+    description: Arguments <ARRAY>
+    type: ArrayUnknown
+  example: ''
+- name: ace_arsenal_fnc_handleSearchInputChanged
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Search text input (left or right) <CONTROL>
+    type: Control
+  - name: '1'
+    description: Text <STRING>
+    type: String
+  example: ''
+- name: ace_arsenal_fnc_handleSearchModeToggle
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Search button (left or right) <CONTROL>
+    type: Control
+  - name: '1'
+    description: Mouse Button <NUMBER>
+    type: Number
+  - name: '2'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '3'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '4'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '5'
+    description: Ctrl Button <BOOL>
+    type: Boolean
+  example: ''
+- name: ace_arsenal_fnc_handleSearchbar
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Searchbar control <CONTROL>
+    type: Control
+  - name: '2'
+    description: 'Animate panel refresh <BOOL> (default: true)'
+    type: Boolean
+    optional: true
+  example: ''
+- name: ace_arsenal_fnc_handleStats
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Current panel control <CONTROL>
+    type: Control
+  - name: '2'
+    description: Current panel selection <NUMBER>
+    type: Number
+  - name: '3'
+    description: Item config entry <CONFIG>
+    type: Config
+  example: ''
 - name: ace_arsenal_fnc_initbox
   ret: Nothing
   params:
@@ -901,6 +1281,151 @@
     type: Boolean
     optional: true
   example: '"ACE_CableTie" call ace_arsenal_fnc_isMiscItem'
+- name: ace_arsenal_fnc_itemInfo
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Current panel control (nil if item config is null) <CONTROL or NIL>
+    type: !OneOf
+    - - Control
+      - null
+    - - Nothing
+      - null
+  - name: '2'
+    description: Current panel selection (nil if item config is null) <NUMBER or NIL>
+    type: !OneOf
+    - - Number
+      - null
+    - - Nothing
+      - null
+  - name: '3'
+    description: Item config entry <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_loadoutsChangeTab
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Tab control <CONTROL>
+    type: Control
+  example: ''
+- name: ace_arsenal_fnc_message
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Message <STRING>
+    type: String
+  example: ''
+- name: ace_arsenal_fnc_onArsenalClose
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '1'
+    description: Args <ARRAY>
+    type: ArrayUnknown
+  example: ''
+- name: ace_arsenal_fnc_onArsenalOpen
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '1'
+    description: Arguments <ARRAY>
+    type: ArrayUnknown
+  example: ''
+- name: ace_arsenal_fnc_onLoadoutsClose
+  ret: Nothing
+  params: []
+  example: ''
+- name: ace_arsenal_fnc_onLoadoutsOpen
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '1'
+    description: Arguments <ARRAY>
+    type: ArrayUnknown
+  example: ''
+- name: ace_arsenal_fnc_onPanelDblClick
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Left panel control <CONTROL>
+    type: Control
+  - name: '1'
+    description: Left panel selection <NUMBER>
+    type: Number
+  example: ''
+- name: ace_arsenal_fnc_onPause
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Game Pause <DISPLAY>
+    type: Display
+  example: ''
+- name: ace_arsenal_fnc_onSelChangedLeft
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Left panel control <CONTROL>
+    type: Control
+  - name: '1'
+    description: Left panel selection <NUMBER>
+    type: Number
+  example: ''
+- name: ace_arsenal_fnc_onSelChangedLoadouts
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arsenal display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Loadouts panel control <CONTROL>
+    type: Control
+  - name: '2'
+    description: Currently selected loadout's index <NUMBER>
+    type: Number
+  example: ''
+- name: ace_arsenal_fnc_onSelChangedRight
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Right panel control <CONTROL>
+    type: Control
+  - name: '1'
+    description: Right panel selection <NUMBER>
+    type: Number
+  example: ''
+- name: ace_arsenal_fnc_onSelChangedRightListnBox
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Right panel control <CONTROL>
+    type: Control
+  - name: '1'
+    description: Right panel selection <NUMBER>
+    type: Number
+  example: ''
+- name: ace_arsenal_fnc_open3DEN
+  ret: Nothing
+  params: []
+  example: ''
 - name: ace_arsenal_fnc_openbox
   ret: Nothing
   params:
@@ -919,6 +1444,26 @@
   ret: Nothing
   params: []
   example: call ace_arsenal_fnc_portVALoadouts
+- name: ace_arsenal_fnc_preventOverfilling
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Unit to check for overfill <OBJECT>
+    type: Object
+  - name: '1'
+    description: Which container to check. If unit, will go through all containers starting from uniform <OBJECT>
+    type: Object
+  example: ''
+- name: ace_arsenal_fnc_recoverInvalidContainers
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Unit from which to get valid (worn) containers <OBJECT>
+    type: Object
+  - name: '1'
+    description: Verified loadout to insert valid containers into <ARRAY>
+    type: ArrayUnknown
+  example: ''
 - name: ace_arsenal_fnc_refresh
   ret: Nothing
   params:
@@ -1029,6 +1574,245 @@
     type: Boolean
     optional: true
   example: '["Current Loadout", getUnitLoadout ACE_player] call ace_arsenal_fnc_saveLoadout'
+- name: ace_arsenal_fnc_showItem
+  ret: Nothing
+  params: []
+  example: ''
+- name: ace_arsenal_fnc_sortPanel
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Control <CONTROL>
+    type: Control
+  example: ''
+- name: ace_arsenal_fnc_sortStatement_accuracy
+  ret: Number
+  params:
+  - name: '0'
+    description: Item Config <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_sortStatement_amount
+  ret: Number
+  params:
+  - name: '0'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '1'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '2'
+    description: Quantity <NUMBER>
+    type: Number
+  example: ''
+- name: ace_arsenal_fnc_sortStatement_magCount
+  ret: Number
+  params:
+  - name: '0'
+    description: Item Config <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_sortStatement_mass
+  ret: Number
+  params:
+  - name: '0'
+    description: Item Config <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_sortStatement_mod
+  ret: String
+  params:
+  - name: '0'
+    description: Item Config <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_sortStatement_protection
+  ret: Number
+  params:
+  - name: '0'
+    description: Item Config <CONFIG>
+    type: Config
+  - name: '1'
+    description: Ballistic (passthrough) coefficent <NUMBER>
+    type: Number
+  - name: '2'
+    description: Explosive (armor) coefficent <NUMBER>
+    type: Number
+  example: ''
+- name: ace_arsenal_fnc_sortStatement_rateOfFire
+  ret: Number
+  params:
+  - name: '0'
+    description: Item Config <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_sortStatement_scopeMag
+  ret: !OneOf
+  - - Number
+    - null
+  - - String
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: Item Config <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_statBarStatement_accuracy
+  ret: Number
+  params:
+  - name: '0'
+    description: Item config path <CONFIG>
+    type: Config
+  - name: '1'
+    description: Args <ARRAY>
+    type: ArrayUnknown
+  example: ''
+- name: ace_arsenal_fnc_statBarStatement_impact
+  params:
+  - name: '0'
+    description: Stats array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  - name: '2'
+    description: Stat limits <ARRAY>
+    type: ArrayUnknown
+  example: ''
+- name: ace_arsenal_fnc_statBarStatement_rateOfFIre
+  ret: Number
+  params:
+  - name: '0'
+    description: Item config path <CONFIG>
+    type: Config
+  - name: '1'
+    description: Args <ARRAY>
+    type: ArrayUnknown
+  example: ''
+- name: ace_arsenal_fnc_statCondition_isWeapon
+  ret: String
+  params:
+  - name: '0'
+    description: Stats array (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_statTextStatement_accuracy
+  ret: String
+  params:
+  - name: '0'
+    description: Stats array (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_statTextStatement_binoMag
+  ret: String
+  params:
+  - name: '0'
+    description: Stats array (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_statTextStatement_binoVisionMode
+  ret: String
+  params:
+  - name: '0'
+    description: Stats array (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_statTextStatement_load
+  ret: String
+  params:
+  - name: '0'
+    description: Stats <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_statTextStatement_magCount
+  ret: Number
+  params:
+  - name: '0'
+    description: Stats array (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_statTextStatement_mass
+  ret: String
+  params:
+  - name: '0'
+    description: Stats array (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_statTextStatement_rateOfFire
+  ret: String
+  params:
+  - name: '0'
+    description: Stats array (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_statTextStatement_scopeMag
+  ret: String
+  params:
+  - name: '0'
+    description: Stats array (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_statTextStatement_scopeVisionMode
+  ret: String
+  params:
+  - name: '0'
+    description: Stats array (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_arsenal_fnc_statTextStatement_smokeChemTTL
+  ret: String
+  params:
+  - name: '0'
+    description: Stats array (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
 - name: ace_arsenal_fnc_statbarstatement_default
   ret: Number
   params:
@@ -1094,10 +1878,46 @@
     description: Item config path <CONFIG>
     type: Config
   example: '["ACE_hasEHP", _config] call ace_arsenal_fnc_statTextStatement_yesno'
+- name: ace_arsenal_fnc_updateCurrentItemsList
+  ret: Nothing
+  params: []
+  example: ''
+- name: ace_arsenal_fnc_updateRightPanel
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Right panel control <CONTROL>
+    type: Control
+  - name: '1'
+    description: Container <OBJECT>
+    type: Object
+  - name: '2'
+    description: If container has items <BOOL>
+    type: Boolean
+  example: ''
+- name: ace_arsenal_fnc_updateUniqueItemsList
+  ret: Nothing
+  params: []
+  example: ''
+- name: ace_arsenal_fnc_updateVirtualItemsFlat
+  ret: Nothing
+  params: []
+  example: ''
 - name: ace_arsenal_fnc_updatecampos
   ret: Nothing
   params: []
   example: call ace_arsenal_fnc_updateCamPos
+- name: ace_arsenal_fnc_verifyLoadout
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Loadout <ARRAY> (CBA Extended Loadout or getUnitLoadout format)
+    type: ArrayUnknown
+  - name: '1'
+    description: 'Whether to attempt to recover invalid containers <BOOL> (default: false)'
+    type: Boolean
+    optional: true
+  example: ''
 - name: ace_artillerytables_fnc_adjustfire
   ret: !OneOf
   - - ArrayUnknown
@@ -1458,6 +2278,9 @@
   - name: '20'
     description: Latitude <NUMBER>
     type: Number
+  - name: '21'
+    description: Direction of fire (degrees) <NUMBER>
+    type: Number
   example: call ace_atragmx_fnc_calculate_solution
 - name: ace_atragmx_fnc_calculate_target_range_assist
   ret: Nothing
@@ -1474,7 +2297,7 @@
 - name: ace_atragmx_fnc_calculate_truing_drop
   ret: Nothing
   params: []
-  example: call ace_atragmx_fnc_calculate_truing_drop
+  example: true call ace_atragmx_fnc_calculate_truing_drop
 - name: ace_atragmx_fnc_can_show
   ret: Boolean
   params: []
@@ -1515,7 +2338,7 @@
 - name: ace_atragmx_fnc_cycle_gun_list
   ret: Nothing
   params: []
-  example: call ace_atragmx_fnc_cycle_gun_list
+  example: 1 call ace_atragmx_fnc_cycle_gun_list
 - name: ace_atragmx_fnc_cycle_image_size_units
   ret: Nothing
   params: []
@@ -1561,15 +2384,34 @@
   example: call ace_atragmx_fnc_initGunList
 - name: ace_atragmx_fnc_insert_c1_ballistic_coefficient_data
   ret: Nothing
-  params: []
-  example: '[800, 0.485] call ace_atragmx_fnc_insert_c1_ballistic_coefficient_data'
+  params:
+  - name: '0'
+    description: Transonic range <NUMBER>
+    type: Number
+  - name: '1'
+    description: Subsonic range <NUMBER>
+    type: Number
+  - name: '2'
+    description: C1 ballistic coefficient <NUMBER>
+    type: Number
+  example: '[800, 1200, 0.485] call ace_atragmx_fnc_insert_c1_ballistic_coefficient_data'
 - name: ace_atragmx_fnc_insert_muzzle_velocity_data
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Temperature (°C) <NUMBER>
+    type: Number
+  - name: '1'
+    description: Muzzle velocity (m/s) <NUMBER>
+    type: Number
   example: '[10, 800] call ace_atragmx_fnc_insert_muzzle_velocity_data'
 - name: ace_atragmx_fnc_lookup_c1_ballistic_coefficient
-  params: []
-  example: call ace_atragmx_fnc_lookup_c1_ballistic_coefficient
+  ret: Number
+  params:
+  - name: '0'
+    description: Target range <NUMBER>
+    type: Number
+  example: '[1000] call ace_atragmx_fnc_lookup_c1_ballistic_coefficient'
 - name: ace_atragmx_fnc_on_close_dialog
   ret: Nothing
   params: []
@@ -1584,12 +2426,24 @@
   example: call ace_atragmx_fnc_read_gun_list_entries_from_config
 - name: ace_atragmx_fnc_recalculate_c1_ballistic_coefficient
   ret: Nothing
-  params: []
-  example: call ace_atragmx_fnc_recalculate_c1_ballistic_coefficient
+  params:
+  - name: '0'
+    description: Parse input <BOOL>
+    type: Boolean
+  - name: '1'
+    description: Update display <BOOL>
+    type: Boolean
+  example: '[false, false] call ace_atragmx_fnc_recalculate_c1_ballistic_coefficient'
 - name: ace_atragmx_fnc_recalculate_muzzle_velocity
   ret: Nothing
-  params: []
-  example: call ace_atragmx_fnc_recalculate_muzzle_velocity
+  params:
+  - name: '0'
+    description: Parse input <BOOL>
+    type: Boolean
+  - name: '1'
+    description: Update display <BOOL>
+    type: Boolean
+  example: '[false, false] call ace_atragmx_fnc_recalculate_muzzle_velocity'
 - name: ace_atragmx_fnc_reset_relative_click_memory
   ret: Nothing
   params: []
@@ -1601,7 +2455,7 @@
 - name: ace_atragmx_fnc_restore_truing_drop
   ret: Nothing
   params: []
-  example: call ace_atragmx_fnc_restore_truing_drop
+  example: false call ace_atragmx_fnc_restore_truing_drop
 - name: ace_atragmx_fnc_restore_user_data
   ret: Nothing
   params: []
@@ -1730,7 +2584,7 @@
 - name: ace_atragmx_fnc_toggle_option_menu
   ret: Nothing
   params: []
-  example: 1 call ace_atragmx_fnc_toggle_option_menu
+  example: true call ace_atragmx_fnc_toggle_option_menu
 - name: ace_atragmx_fnc_toggle_range_card
   ret: Nothing
   params: []
@@ -1861,8 +2715,16 @@
     description: unit doing the attach (player) <OBJECT>
     type: Object
   - name: '2'
-    description: Array containing a string of the attachable item <ARRAY>
-    type: ArrayUnknown
+    description: Classname of the attachable item (or array containing it) <STRING or ARRAY>
+    type: !OneOf
+    - - String
+      - null
+    - - ArrayUnknown
+      - null
+  - name: '3'
+    description: 'Silent scripted attach, skips checks and hint <BOOL> (default: false)'
+    type: Boolean
+    optional: true
   example: '[bob, bob, ["light"]] call ace_attach_fnc_attach;'
 - name: ace_attach_fnc_canattach
   ret: Boolean
@@ -1944,6 +2806,31 @@
     description: DeadVehicle <OBJECT>
     type: Object
   example: '[bob1] call ACE_attach_fnc_handleKilled'
+- name: ace_attach_fnc_placeApprove
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Unit (player) <OBJECT>
+    type: Object
+  - name: '1'
+    description: attachToVehicle <OBJECT>
+    type: Object
+  - name: '2'
+    description: Item Classname (CfgWeapon/CfgMagazine) <STRING>
+    type: String
+  - name: '3'
+    description: Light Vehicle Classname <STRING>
+    type: String
+  - name: '4'
+    description: On Attach Text <STRING>
+    type: String
+  - name: '5'
+    description: Starting Pos of dummy item <ARRAY>
+    type: ArrayUnknown
+  - name: '6'
+    description: Orientation of model <ARRAY>
+    type: ArrayUnknown
+  example: None
 - name: ace_backpacks_fnc_backpackopened
   ret: Nothing
   params:
@@ -1975,6 +2862,43 @@
     description: Backpack <OBJECT>
     type: Object
   example: '[bob, backpack] call ace_backpacks_fnc_onOpenInventory'
+- name: ace_ballistics_fnc_statTextStatement_magazineAiUsage
+  ret: String
+  params:
+  - name: '0'
+    description: Stats array (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_ballistics_fnc_statTextStatement_magazineMuzzleVelocity
+  ret: String
+  params:
+  - name: '0'
+    description: Stats <ARRAY> (unused)
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_ballistics_fnc_statTextStatement_weaponMuzzleVelocity
+  ret: String
+  params:
+  - name: '0'
+    description: Stats <ARRAY> (unused)
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Weapon config path <CONFIG>
+    type: Config
+  - name: '2'
+    description: 'Magazine config path <CONFIG> (default: configNull)'
+    type: Config
+    optional: true
+  example: ''
 - name: ace_captives_fnc_addloadcaptiveactions
   ret: ArrayUnknown
   params:
@@ -2711,33 +3635,33 @@
   ret: Nothing
   params:
   - name: '0'
-    description: unit - Object the event handler is assigned to <OBJECT>
+    description: Unit <OBJECT>
     type: Object
   - name: '1'
-    description: padding for skipped args
-    type: Anything
+    description: Weapon (not used) <STRING>
+    type: String
     optional: true
   - name: '2'
-    description: padding for skipped args
-    type: Anything
+    description: Muzzle (not used) <STRING>
+    type: String
     optional: true
   - name: '3'
-    description: padding for skipped args
-    type: Anything
+    description: Mode (not used) <STRING>
+    type: String
     optional: true
   - name: '4'
-    description: ammo - Ammo used <STRING>
+    description: Ammo <STRING>
     type: String
   - name: '5'
-    description: padding for skipped args
-    type: Anything
+    description: Magazine (not used) <STRING>
+    type: String
     optional: true
   - name: '6'
-    description: padding for skipped args
-    type: Anything
+    description: Projectile (not used) <OBJECT>
+    type: Object
     optional: true
   - name: '7'
-    description: vehicle - vehicle, if weapon is vehicle weapon, otherwise objNull <OBJECT>
+    description: Vehicle, if weapon is vehicle weapon, otherwise objNull <OBJECT>
     type: Object
   example: '[player, "", "","", "B_556x45_Ball", "", "", objNull] call ace_casings_fnc_createCasing'
 - name: ace_chemlights_fnc_compilechemlightmenu
@@ -2764,10 +3688,6 @@
   ret: Nothing
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
-    optional: true
-  - name: '1'
     description: Dummy IR physX <OBJECT>
     type: Object
   example: '[_object] call ace_chemlights_fnc_initIR;'
@@ -2830,6 +3750,22 @@
     description: client <OBJECT>
     type: Object
   example: '[bob] call ace_common_fnc__handleRequestAllSyncedEvents'
+- name: ace_common_fnc__handlerequestsyncedevent
+  ret: Boolean
+  params:
+  - name: '0'
+    description: eventName <STRING>
+    type: String
+  - name: '1'
+    description: client (on server) or eventLog (on client) <OBJECT or ARRAY>
+    type: !OneOf
+    - - Object
+      - null
+    - - ArrayUnknown
+      - null
+  example: |-
+    ["name", [LOG]] call ace_common_fnc__handleRequestSyncedEvent //Client
+     * ["name", bob] call ace_common_fnc__handleRequestSyncedEvent//Server
 - name: ace_common_fnc__handlesyncedevent
   ret: Boolean
   params:
@@ -2842,7 +3778,7 @@
   - name: '2'
     description: ttl <NUMBER>
     type: Number
-  example: '[bob] call ace_common_fnc__handleSyncedEvent'
+  example: '["myEvent", [], 0] call ace_common_fnc__handleSyncedEvent'
 - name: ace_common_fnc_actionkeysnamesconverted
   ret: ArrayUnknown
   params:
@@ -3071,7 +4007,7 @@
     type: String
   example: |-
     [ace_player, "ace_aimCoefficents", "product"] call ace_common_fnc_arithmeticGetResult
-     * [missionNameSpace, "ace_hearing", "min"] call ace_common_fnc_arithmeticGetResult
+     * [missionNamespace, "ace_hearing", "min"] call ace_common_fnc_arithmeticGetResult
 - name: ace_common_fnc_arithmeticsetsource
   ret: Nothing
   params:
@@ -3094,7 +4030,7 @@
     description: Code that returns a number (can access var _namespace) [use {} to remove] <CODE>
     type: Code
   example: |-
-    [missionNameSpace, "ace_hearing", "myMission", {0.5}] call ace_common_fnc_arithmeticSetSource
+    [missionNamespace, "ace_hearing", "myMission", {0.5}] call ace_common_fnc_arithmeticSetSource
      * [ace_player, "ace_aimCoefficents", "ace_medical", {linearConversion [0,1,(_namespace getVariable "ace_medical_pain",1,0.2,true]}] call ace_common_fnc_arithmeticSetSource
 - name: ace_common_fnc_asltoposition
   ret: ArrayUnknown
@@ -3185,14 +4121,14 @@
     description: Max duration of the cache <NUMBER>
     type: Number
   - name: '5'
-    description: 'Events that clear the cache <STRING or ARRAY of STRINGs> (default: nil)'
+    description: 'Events that clear the cache <STRING or ARRAY of STRINGs> (default: [])'
     type: !OneOf
     - - String
       - null
     - - ArrayUnknown
       - null
     optional: true
-  example: '[[array]], {dothings}, NAMESPACE, "UID", 5, "clear"] call ace_common_fnc_cachedCall'
+  example: '[[array], {dothings}, NAMESPACE, "UID", 5, "clear"] call ace_common_fnc_cachedCall'
 - name: ace_common_fnc_candig
   ret: Boolean
   params:
@@ -3439,7 +4375,7 @@
   - name: '2'
     description: Version when the component will be removed <STRING>
     type: String
-  example: ''
+  example: '[["ace_sitting", "ace_sitting_enabled"], ["acex_sitting", "acex_sitting_enabled"], "3.7.0"] call ace_common_fnc_deprecateComponent;'
 - name: ace_common_fnc_devicekeyfindvalidindex
   ret: Number
   params:
@@ -3607,6 +4543,10 @@
   - name: '1'
     description: Animation <STRING>
     type: String
+  - name: '2'
+    description: 'Priority, >0 plays even while reloading <NUMBER> (default: 0)'
+    type: Number
+    optional: true
   example: '[player, "gestureGo"] call ace_common_fnc_doGesture'
 - name: ace_common_fnc_dropbackpack
   ret: Object
@@ -3615,6 +4555,10 @@
     description: Unit that has a backpack <OBJECT>
     type: Object
   example: '[unit] call ace_common_fnc_dropBackpack'
+- name: ace_common_fnc_dummy
+  ret: Nothing
+  params: []
+  example: ''
 - name: ace_common_fnc_dumparray
   ret: Nothing
   params:
@@ -3719,10 +4663,13 @@
 - name: ace_common_fnc_fixcollision
   ret: Nothing
   params: []
-  example: '[bob] call ace_common_fnc_fixCollision'
+  example: bob call ace_common_fnc_fixCollision
 - name: ace_common_fnc_fixfloating
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: PhysX object <OBJECT>
+    type: Object
   example: '[object] call ace_common_fnc_fixFloating'
 - name: ace_common_fnc_fixloweredrifleanimation
   ret: Nothing
@@ -3773,6 +4720,7 @@
     optional: true
   example: '[bob, ""] call ace_common_fnc_getAllDefinedSetVariables'
 - name: ace_common_fnc_getawakeanim
+  ret: String
   params:
   - name: '0'
     description: The unit <OBJECT>
@@ -3782,9 +4730,12 @@
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: Unit <OBJECT>
-    type: Object
-  example: '[bob] call ace_common_fnc_getChildren'
+    description: Parent class name <STRING>
+    type: String
+  - name: '1'
+    description: Root config class name (e.g. "CfgVehicles") <STRING>
+    type: String
+  example: '["Car", "CfgVehicles"] call ace_common_fnc_getChildren'
 - name: ace_common_fnc_getconfigcommander
   ret: Config
   params:
@@ -3839,6 +4790,10 @@
   - name: '1'
     description: Variable Name <STRING>
     type: String
+  - name: '2'
+    description: 'Default value if the variable is undefined <ANY> (default: value registered via defineVariable, else 0)'
+    type: Anything
+    optional: true
   example: '[bob, "var"] call ace_common_fnc_getDefinedVariable'
 - name: ace_common_fnc_getdefinedvariabledefault
   ret: Anything
@@ -3915,12 +4870,9 @@
     description: PositionASL <ARRAY>
     type: ArrayUnknown
   - name: '1'
-    description: PositionATL <ARRAY>
+    description: PositionASL <ARRAY>
     type: ArrayUnknown
-  - name: '2'
-    description: Accuracy <NUMBER>
-    type: Number
-  example: '[[1,2,3], [0,0,5], 5] call ace_common_fnc_getFirstObjectIntersection'
+  example: '[[1,2,3], [0,0,5]] call ace_common_fnc_getFirstObjectIntersection'
 - name: ace_common_fnc_getfirstterrainintersection
   ret: !OneOf
   - - Boolean
@@ -4060,17 +5012,16 @@
   example: '[] call ace_common_fnc_getMagneticBearingOffset'
 - name: ace_common_fnc_getmapdata
   ret: !OneOf
-  - - Number
-    - null
-  - - Number
-    - null
   - - ArrayUnknown
+    - null
+  - - Number
+    - null
+  - - Number
     - null
   params:
   - name: '0'
-    description: 'Map name <STRING> (default: worldName)'
+    description: Map name <STRING>
     type: String
-    optional: true
   example: '["altis"] call ace_common_fnc_getMapData'
 - name: ace_common_fnc_getmapgriddata
   ret: Nothing
@@ -4138,12 +5089,8 @@
     type: Boolean
     optional: true
   - name: '2'
-    description: 'Get Raw Name (Don''t sanitize HTML tags `</>`) <BOOL> (default: false)'
-    type: !OneOf
-    - - Anything
-      - null
-    - - Boolean
-      - null
+    description: 'Get Raw Name (Don''t sanitize HTML tags) <BOOL> (default: false)'
+    type: Boolean
     optional: true
   example: '[player, false, true] call ace_common_fnc_getName;'
 - name: ace_common_fnc_getnumbermagazinesin
@@ -4724,7 +5671,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
@@ -4735,8 +5682,17 @@
   example: '[LOGIC, [bob, kevin], true] call ace_common_fnc_moduleCheckPBOs'
 - name: ace_common_fnc_modulelsdvehicles
   ret: Nothing
-  params: []
-  example: '[bob, target, []] call ace_common_fnc_moduleLSDVehicles'
+  params:
+  - name: '0'
+    description: Logic <OBJECT>
+    type: Object
+  - name: '1'
+    description: Synchronized Units <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: Module Activated <BOOL>
+    type: Boolean
+  example: '[_logic, [car], true] call ace_common_fnc_moduleLSDVehicles'
 - name: ace_common_fnc_monitor
   ret: Nothing
   params:
@@ -5034,7 +5990,7 @@
     type: String
   example: '["event"] call ace_common_fnc_requestSyncedEvent'
 - name: ace_common_fnc_resetalldefaults
-  ret: Anything
+  ret: Nothing
   params:
   - name: '0'
     description: Unit <OBJECT>
@@ -5163,6 +6119,10 @@
   - name: '2'
     description: value <ANY>
     type: Anything
+  - name: '3'
+    description: 'Global <BOOL> (default: public flag registered via defineVariable, else false)'
+    type: Boolean
+    optional: true
   example: '[bob, "var", 5] call ace_common_fnc_setDefinedVariable'
 - name: ace_common_fnc_setdisableuserinputstatus
   ret: Nothing
@@ -5199,7 +6159,7 @@
     description: Object <OBJECT>
     type: Object
   - name: '1'
-    description: 'Force set name (optional, default: false) <BOOL>'
+    description: 'Force set name <BOOL> (default: false)'
     type: Boolean
     optional: true
   example: '[bob] call ace_common_fnc_setName'
@@ -5332,7 +6292,7 @@
 - name: ace_common_fnc_showuser
   ret: Nothing
   params: []
-  example: '[bob] call ace_common_fnc_showUser'
+  example: bob call ace_common_fnc_showUser
 - name: ace_common_fnc_statuseffect_addtype
   ret: Nothing
   params:
@@ -5388,8 +6348,12 @@
   ret: Nothing
   params:
   - name: '0'
-    description: Vehicle that it will be attached to (player or vehicle) <OBJECT>
+    description: Object <OBJECT>
     type: Object
+  - name: '1'
+    description: 'Set object reference <BOOL> (default: false)'
+    type: Boolean
+    optional: true
   example: '[player, true] call ace_common_fnc_statusEffect_resetVariables'
 - name: ace_common_fnc_statuseffect_respawneh
   ret: Nothing
@@ -5523,7 +6487,7 @@
 - name: ace_common_fnc_syncedeventpfh
   ret: Nothing
   params: []
-  example: '[?] call ace_common_fnc_syncedEventPFH'
+  example: '[ace_common_fnc_syncedEventPFH, 0.5, []] call CBA_fnc_addPerFrameHandler'
 - name: ace_common_fnc_temporaryblockfire
   ret: Nothing
   params:
@@ -5532,7 +6496,21 @@
     type: Number
     optional: true
   example: '[1] call ace_common_fnc_temporaryBlockFire'
+- name: ace_common_fnc_throttledPublicVariable
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Unit <OBJECT>.
+    type: Object
+  - name: '1'
+    description: Variable name <STRING>
+    type: String
+  - name: '2'
+    description: Maximum delay <NUMBER>
+    type: Number
+  example: None
 - name: ace_common_fnc_throwweapon
+  ret: Object
   params:
   - name: '0'
     description: Unit <OBJECT>
@@ -5575,13 +6553,31 @@
       - null
   example: number = ["102"] call ace_common_fnc_toNumber;
 - name: ace_common_fnc_translatetomodelspace
-  ret: Anything
-  params: []
-  example: '[UNKNOWN] call ace_common_fnc_translateToModelSpace'
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Object, its position is used as origin <OBJECT>
+    type: Object
+  - name: '1'
+    description: Basis vectors <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: Offset in the basis [x, y, z] <ARRAY>
+    type: ArrayUnknown
+  example: '[player, [[1,0,0], [0,1,0], [0,0,1]], [0, 1, 0]] call ace_common_fnc_translateToModelSpace'
 - name: ace_common_fnc_translatetoweaponspace
-  ret: Anything
-  params: []
-  example: '[UNKOWN] call ace_common_fnc_translateToWeaponSpace'
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Object, its position is used as origin <OBJECT>
+    type: Object
+  - name: '1'
+    description: Basis vectors <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: Position ASL <ARRAY>
+    type: ArrayUnknown
+  example: '[player, [[1,0,0], [0,1,0], [0,0,1]], getPosASL car] call ace_common_fnc_translateToWeaponSpace'
 - name: ace_common_fnc_unhideunit
   ret: Nothing
   params:
@@ -5707,6 +6703,10 @@
   - name: '1'
     description: item <STRING>
     type: String
+  - name: '2'
+    description: 'Vehicle usage (not implemented, returns false) <BOOL> (default: false)'
+    type: Boolean
+    optional: true
   example: '[bob, "gun"] call ace_common_fnc_useItem'
 - name: ace_common_fnc_usemagazine
   ret: Boolean
@@ -5717,6 +6717,10 @@
   - name: '1'
     description: magazine <STRING>
     type: String
+  - name: '2'
+    description: 'Vehicle usage (not implemented, returns false) <BOOL> (default: false)'
+    type: Boolean
+    optional: true
   example: '[bob, "magazine"] call ace_common_fnc_useMagazine'
 - name: ace_common_fnc_watchvariable
   ret: Nothing
@@ -5783,6 +6787,13 @@
     description: Helicopter <OBJECT>
     type: Object
   example: '[_vehicle] call ace_compat_cup_vehicles_fnc_onCutUH1Y'
+- name: ace_compat_cup_vehicles_fnc_onpreparehc3
+  ret: Number
+  params:
+  - name: '0'
+    description: Helicopter <OBJECT>
+    type: Object
+  example: '[_vehicle] call ace_compat_cup_vehicles_fnc_onPrepareHC3'
 - name: ace_compat_cup_vehicles_fnc_onprepareuh1y
   ret: Number
   params:
@@ -6216,7 +7227,38 @@
     - null
   - - ArrayUnknown
     - null
-  params: []
+  params:
+  - name: '0'
+    description: Ammo box <OBJECT>
+    type: Object
+  - name: '1'
+    description: Selection <STRING>
+    type: String
+  - name: '2'
+    description: New level of damage <NUMBER>
+    type: Number
+  - name: '3'
+    description: Source of damage <OBJECT>
+    type: Object
+  - name: '4'
+    description: Projectile that caused damage <STRING>
+    type: String
+  - name: '5'
+    description: Hit index <NUMBER>
+    type: Number
+  - name: '6'
+    description: Person who caused damage <OBJECT>
+    type: Object
+  - name: '7'
+    description: Hit point <STRING>
+    type: String
+  - name: '8'
+    description: Direct hit (not used) <BOOL>
+    type: Boolean
+    optional: true
+  - name: '9'
+    description: Context <NUMBER>
+    type: Number
   example: _this call ace_cookoff_fnc_handleDamageBox
 - name: ace_cookoff_fnc_ismagazineflare
   ret: Boolean
@@ -6250,6 +7292,64 @@
       - null
     optional: true
   example: '[cursorObject, [0]] call ace_csw_fnc_aceRearmGetCarryMagazines'
+- name: ace_csw_fnc_ai_handleFired
+  ret: Nothing
+  params:
+  - name: '0'
+    description: CSW <OBJECT>
+    type: Object
+  - name: '1'
+    description: Weapon (not used) <STRING>
+    type: String
+    optional: true
+  - name: '2'
+    description: Muzzle (not used) <STRING>
+    type: String
+    optional: true
+  - name: '3'
+    description: Mode (not used) <STRING>
+    type: String
+    optional: true
+  - name: '4'
+    description: Ammo (not used) <STRING>
+    type: String
+    optional: true
+  - name: '5'
+    description: Magazine (not used) <STRING>
+    type: String
+    optional: true
+  - name: '6'
+    description: Projectile (not used) <OBJECT>
+    type: Object
+    optional: true
+  - name: '7'
+    description: Gunner <OBJECT>
+    type: Object
+  example: ''
+- name: ace_csw_fnc_ai_handleGetIn
+  ret: Nothing
+  params:
+  - name: '0'
+    description: CSW <OBJECT>
+    type: Object
+  - name: '1'
+    description: Role (not used) <STRING>
+    type: String
+    optional: true
+  - name: '2'
+    description: Unit that got in <OBJECT>
+    type: Object
+  example: ''
+- name: ace_csw_fnc_ai_reload
+  ret: Nothing
+  params:
+  - name: '0'
+    description: CSW <OBJECT>
+    type: Object
+  - name: '1'
+    description: Gunner <OBJECT>
+    type: Object
+  example: '[cursorObject, gunner cursorObject] call ace_csw_fnc_ai_reload'
 - name: ace_csw_fnc_assemble_candeployweapon
   ret: Boolean
   params:
@@ -6374,9 +7474,12 @@
     description: CSW <OBJECT>
     type: Object
   - name: '1'
+    description: Weapon <STRING>
+    type: String
+  - name: '2'
     description: Muzzle to shoot <STRING>
     type: String
-  example: '[csw, "Main"] call ace_csw_fnc_autofire_fire'
+  example: '[csw, "weapon", "muzzle"] call ace_csw_fnc_autofire_fire'
 - name: ace_csw_fnc_autofire_onreload
   ret: Nothing
   params:
@@ -6418,6 +7521,21 @@
     description: Tripod <OBJECT>
     type: Object
   example: cursorObject call ace_csw_fnc_canPickupTripod
+- name: ace_csw_fnc_compatiblemagazines
+  ret: !OneOf
+  - - HashMapUnknown
+    - null
+  - - String
+    - null
+  - - Boolean
+    - null
+  - - ArrayUnknown
+    - null
+  params:
+  - name: '0'
+    description: CSW <OBJECT>
+    type: Object
+  example: '[cursorObject] call ace_csw_fnc_compatibleMagazines'
 - name: ace_csw_fnc_deploycancel
   ret: Nothing
   params:
@@ -6449,6 +7567,48 @@
     description: Unit <OBJECT>
     type: Object
   example: '[cursorObject, player] call ace_csw_fnc_getLoadActions'
+- name: ace_csw_fnc_getmagazinegroup
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - String
+    - null
+  - - Number
+    - null
+  params:
+  - name: '0'
+    description: Carry magazine <STRING>
+    type: String
+  example: '"ACE_csw_100Rnd_127x99_mag" call ace_csw_fnc_getMagazineGroup'
+- name: ace_csw_fnc_getnearbysources
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Unit or vehicle attempting to load <OBJECT>
+    type: Object
+  example: '[player] call ace_csw_fnc_getNearbySources'
+- name: ace_csw_fnc_getsourcecompatiblemagazines
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - String
+    - null
+  - - Number
+    - null
+  params:
+  - name: '0'
+    description: 'Magazine Source <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
+  - name: '1'
+    description: 'CSW <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
+  - name: '2'
+    description: 'Compatible carry magazines, if the caller already has them <HASHMAP> (default: read from the CSW)'
+    type: HashMapUnknown
+    optional: true
+  example: '[backpackContainer player, cursorObject] call ace_csw_fnc_getSourceCompatibleMagazines'
 - name: ace_csw_fnc_getunloadactions
   ret: ArrayUnknown
   params:
@@ -6516,6 +7676,10 @@
     description: 'Supplier <OBJECT> (default: objNull)'
     type: Object
     optional: true
+  - name: '4'
+    description: 'Unit loading, only needed with a supplier <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
   example: '[cursorObject, [0], "ACE_csw_100Rnd_127x99_mag_red", player] call ace_csw_fnc_reload_canLoadMagazine'
 - name: ace_csw_fnc_reload_canunloadmagazine
   ret: Boolean
@@ -6536,6 +7700,19 @@
     description: Vehicle Magazine <STRING>
     type: String
   example: '[cursorTarget, [0], player, "ACE_csw_100Rnd_127x99_mag_red", "200Rnd_127x99_mag_Tracer_Red"] call ace_csw_fnc_reload_canUnloadMagazine'
+- name: ace_csw_fnc_reload_canusesource
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Unit loading <OBJECT>
+    type: Object
+  - name: '1'
+    description: Carryable Magazine <STRING>
+    type: String
+  - name: '2'
+    description: Magazine source <OBJECT>
+    type: Object
+  example: '[player, "ACE_csw_100Rnd_127x99_mag_red", backpackContainer player] call ace_csw_fnc_reload_canUseSource'
 - name: ace_csw_fnc_reload_getloadablemagazines
   ret: !OneOf
   - - ArrayUnknown
@@ -6548,6 +7725,8 @@
     - null
   - - Object
     - null
+  - - Number
+    - null
   params:
   - name: '0'
     description: CSW <OBJECT>
@@ -6555,6 +7734,10 @@
   - name: '1'
     description: Unit <OBJECT>
     type: Object
+  - name: '2'
+    description: 'AI reloading, only check the unit''s own turret <BOOL> (default: false)'
+    type: Boolean
+    optional: true
   example: '[cursorObject, player] call ace_csw_fnc_reload_getLoadableMagazines'
 - name: ace_csw_fnc_reload_getvehiclemagazine
   ret: String
@@ -6579,19 +7762,15 @@
     description: Turret Path <ARRAY>
     type: ArrayUnknown
   - name: '2'
-    description: Source of magazine <OBJECT>
-    type: Object
-  - name: '3'
     description: Vehicle Magazine <STRING>
     type: String
-  - name: '4'
+  - name: '3'
     description: Ammo in magazine <NUMBER>
     type: Number
-  - name: '5'
-    description: 'Unit or object to return ammo to <OBJECT> (default: Source of magazine)'
+  - name: '4'
+    description: Unit or object to return leftover ammo to <OBJECT>
     type: Object
-    optional: true
-  example: '[cursorTarget, [0], player, "200Rnd_127x99_mag_Tracer_Red", 70] call ace_csw_fnc_reload_handleAddTurretMag'
+  example: '[cursorTarget, [0], "200Rnd_127x99_mag_Tracer_Red", 70, player] call ace_csw_fnc_reload_handleAddTurretMag'
 - name: ace_csw_fnc_reload_handleremoveturretmag
   ret: Nothing
   params:
@@ -6643,6 +7822,20 @@
     description: Unit doing the action <OBJECT>
     type: Object
   example: '[cursorTarget, [0], "ACE_csw_100Rnd_127x99_mag_red", player, player] call ace_csw_fnc_reload_loadMagazine'
+- name: ace_csw_fnc_statTextCondition_tripods
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_csw_fnc_statTextStatement_tripods
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
 - name: ace_csw_fnc_staticweaponinit_unloadextramags
   ret: Nothing
   params:
@@ -6771,7 +7964,7 @@
     description: Target <OBJECT>
     type: Object
   - name: '2'
-    description: Item to remove (even if it's 1 item, array is kept for BWC) <ARRAY of STRING>
+    description: Items to remove (even if it's 1 item, array is kept for BWC) <ARRAY of STRINGs>
     type: ArrayUnknown
   - name: '3'
     description: Amount of item to remove (not used) <NUMBER>
@@ -7321,12 +8514,22 @@
   ret: Nothing
   params:
   - name: '0'
-    description: None
-    type: Anything
-    optional: true
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
   - name: '1'
-    description: The weapon that was fired <OBJECT>
-    type: Object
+    description: Launch Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters <ARRAY>
+    type: ArrayUnknown
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
   example: '[any, vehicle player] call ace_dragon_fnc_onFired;'
 - name: ace_dragon_fnc_sightattach
   ret: Nothing
@@ -7655,8 +8858,11 @@
   example: player call ace_explosives_fnc_hasPlacedExplosives
 - name: ace_explosives_fnc_interacteh
   ret: Nothing
-  params: []
-  example: 0 call ace_explosives_fnc_interactEH
+  params:
+  - name: '0'
+    description: Interact Menu Type (0 - World, 1 - Self) <NUMBER>
+    type: Number
+  example: '[0] call ace_explosives_fnc_interactEH'
 - name: ace_explosives_fnc_isalloweddefuse
   ret: Boolean
   params:
@@ -7853,13 +9059,9 @@
   ret: Nothing
   params:
   - name: '0'
-    description: Ammo <OBJECT>
+    description: Tripflare <OBJECT>
     type: Object
-  - name: '1'
-    description: Position ASL (not used) <ARRAY>
-    type: ArrayUnknown
-    optional: true
-  example: '[cursorObject, [0, 0, 0]] call ace_explosives_fnc_tripflare_init'
+  example: '[cursorObject] call ace_explosives_fnc_tripflare_init'
 - name: ace_explosives_fnc_woundshandlertoepopper
   ret: ArrayUnknown
   params:
@@ -8018,7 +9220,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: Module <LOGIC>
+    description: Module logic <OBJECT>
     type: Object
   example: '[_module] call ace_fastroping_fnc_moduleEquipFRIES'
 - name: ace_fastroping_fnc_oncutcommon
@@ -8092,13 +9294,16 @@
     description: Target distance <NUMBER>
     type: Number
   - name: '3'
-    description: Azimuth offset <UNKNOWN>
-    type: Anything
-  example: '[car, [turret], 5, ?] call ace_fcs_fnc_calculateSolution'
+    description: Elevation angle to target (degrees) <NUMBER>
+    type: Number
+  example: '[car, [0], 1200, 2.5] call ace_fcs_fnc_calculateSolution'
 - name: ace_fcs_fnc_canresetfcs
   ret: Boolean
-  params: []
-  example: call ace_fcs_fnc_canResetFCS
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: player call ace_fcs_fnc_canResetFCS
 - name: ace_fcs_fnc_canusefcs
   ret: Boolean
   params: []
@@ -8158,7 +9363,13 @@
   example: '[5, 6, 7, true] call ace_fcs_fnc_getRange'
 - name: ace_fcs_fnc_handleairburstammunitionpfh
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: PFH handle <NUMBER>
+    type: Number
   example: '[[array]] call ace_fcs_fnc_handleAirBurstAmmunitionPFH'
 - name: ace_fcs_fnc_keydown
   ret: Nothing
@@ -8179,11 +9390,26 @@
   - name: '1'
     description: Turret <ARRAY>
     type: ArrayUnknown
+  - name: '2'
+    description: 'Distance to target <NUMBER> (default: measured with laser rangefinder)'
+    type: Number
+    optional: true
+  - name: '3'
+    description: 'Show hint <BOOL> (default: false)'
+    type: Boolean
+    optional: true
+  - name: '4'
+    description: 'Play sound <BOOL> (default: true)'
+    type: Boolean
+    optional: true
   example: '[car, [turret]] call ace_fcs_fnc_keyUp'
 - name: ace_fcs_fnc_onforceupdate
   ret: Nothing
-  params: []
-  example: call ace_fcs_fnc_onForceUpdate
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: '[player] call ace_fcs_fnc_onForceUpdate'
 - name: ace_fcs_fnc_reset
   ret: Nothing
   params:
@@ -8221,7 +9447,10 @@
   example: '[0, {}] call ace_field_rations_fnc_addStatusModifier'
 - name: ace_field_rations_fnc_addwatersourceinteractions
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Interact Menu Type (0 - World, 1 - Self) <NUMBER>
+    type: Number
   example: '[0] call ace_field_rations_fnc_addWaterSourceInteractions'
 - name: ace_field_rations_fnc_candrinkfromsource
   ret: Boolean
@@ -8416,7 +9645,10 @@
   - name: '1'
     description: Position being pointed at (ASL) <ARRAY>
     type: ArrayUnknown
-  example: '[bob, [1,2,3]] call ace_finger_fnc_incomingFinger;'
+  - name: '2'
+    description: Distance from source to pointed position <NUMBER>
+    type: Number
+  example: '[bob, [1,2,3], 10] call ace_finger_fnc_incomingFinger;'
 - name: ace_finger_fnc_keypress
   ret: Boolean
   params: []
@@ -8460,6 +9692,13 @@
     type: Object
     optional: true
   example: '[player, 4] call ace_fire_fnc_burn'
+- name: ace_fire_fnc_burnReaction
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: ''
 - name: ace_fire_fnc_burneffects
   ret: Nothing
   params:
@@ -8802,9 +10041,8 @@
     description: Budget <NUMBER>
     type: Number
   - name: '2'
-    description: Object classnames in format [classname, cost, category (optional)] <ARRAY<STRING, NUMBER, STRING>>
-    type: Anything
-    optional: true
+    description: Objects <ARRAY of ARRAYs>
+    type: ArrayUnknown
   example: |-
     [west, 5000, [["Land_BagFence_Long_F", 5], ["Land_BagBunker_Small_F", 50]]] call ace_fortify_fnc_registerObjects
      * [west, 5000, [["Land_BagFence_Long_F", 5, "tan"], ["Land_BagFence_01_long_green_F", 5, "green"]]] call ace_fortify_fnc_registerObjects
@@ -8924,12 +10162,28 @@
   example: player call ace_frag_fnc_dev_trackObj
 - name: ace_frag_fnc_doexplosions
   ret: Nothing
-  params: []
-  example: call ace_frag_fnc_doExplosions
+  params:
+  - name: '0'
+    description: PFH Args <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: PFH ID <NUMBER>
+    type: Number
+  example: '[ace_frag_fnc_doExplosions, 0, [_explosions, 0]] call CBA_fnc_addPerFrameHandler'
 - name: ace_frag_fnc_doreflections
   ret: Nothing
-  params: []
-  example: call ace_frag_fnc_doReflections
+  params:
+  - name: '0'
+    description: Position ASL <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Ammo classname <STRING>
+    type: String
+  - name: '2'
+    description: 'Depth <NUMBER> (default: 1)'
+    type: Number
+    optional: true
+  example: '[getPosASL player, "R_80mm_HE"] call ace_frag_fnc_doReflections'
 - name: ace_frag_fnc_dospallhitpart
   ret: Nothing
   params:
@@ -8940,7 +10194,7 @@
     description: The object the projectile hit <OBJECT>
     type: Object
   - name: '2'
-    description: The position (ASL) of the projectile hit<ARRAY>
+    description: The position (ASL) of the projectile hit <ARRAY>
     type: ArrayUnknown
   - name: '3'
     description: The velocity of the projectile before it hit the surface <ARRAY>
@@ -8952,23 +10206,45 @@
     description: The name of the config name or path to bisurf of the surface hit <STRING>
     type: String
   - name: '6'
-    description: The projectiles ammo config  <STRING>
+    description: The projectile's ammo classname <STRING>
     type: String
   - name: '7'
-    description: The projectiles shot parent <ARRAY>
-    type: ArrayUnknown
-  - name: '8'
     description: The "up" vector of the projectile when it hit the object <ARRAY>
     type: ArrayUnknown
-  example: '[BIS_HITPART_EH_ARGS] call ace_frag_fnc_doSpallHitPart;'
+  example: '[_projectile, _objectHit, _posASL, _velocity, _surfNorm, _surfType, _ammo, _vectorUp] call ace_frag_fnc_doSpallHitPart;'
 - name: ace_frag_fnc_dospallpenetrate
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Projectile <OBJECT>
+    type: Object
+  - name: '1'
+    description: Hit object <OBJECT>
+    type: Object
+  - name: '2'
+    description: Surface type <STRING>
+    type: String
+  - name: '3'
+    description: Entry point ASL (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: Exit point ASL <ARRAY>
+    type: ArrayUnknown
+  - name: '5'
+    description: Exit velocity vector <ARRAY>
+    type: ArrayUnknown
   example: '[BIS_PENETRATED_EH_ARGS] call ace_frag_fnc_doSpallPenetrate;'
 - name: ace_frag_fnc_findreflections
   ret: Nothing
-  params: []
-  example: call ace_frag_fnc_findReflections
+  params:
+  - name: '0'
+    description: PFH Args <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: PFH ID <NUMBER>
+    type: Number
+  example: '[ace_frag_fnc_findReflections, 0, [_posASL, [_indirectHitRange, _indirectHit], [], [], -4, 1, 0]] call CBA_fnc_addPerFrameHandler'
 - name: ace_frag_fnc_fired
   ret: Nothing
   params: []
@@ -9464,6 +10740,7 @@
     type: Object
   example: '[guy] call ace_hearing_fnc_addEarPlugs'
 - name: ace_hearing_fnc_canputonehp
+  ret: Boolean
   params:
   - name: '0'
     description: Unit <OBJECT>
@@ -9547,8 +10824,11 @@
   example: '[vehicle player, player, player, true] call ace_hearing_fnc_handleVehicleKilled'
 - name: ace_hearing_fnc_modulehearing
   ret: Nothing
-  params: []
-  example: player call ace_hearing_fnc_moduleHearing
+  params:
+  - name: '0'
+    description: Logic <OBJECT>
+    type: Object
+  example: '[LOGIC] call ace_hearing_fnc_moduleHearing'
 - name: ace_hearing_fnc_putinearplugs
   ret: Nothing
   params:
@@ -9593,6 +10873,23 @@
     type: Boolean
     optional: true
   example: '[player, false] call ace_hearing_fnc_removeEHP'
+- name: ace_hearing_fnc_statBarStatement_hearingProtection
+  ret: Number
+  params:
+  - name: '0'
+    description: Stats <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_hearing_fnc_statTextStatement_hearingProtection
+  ret: String
+  params:
+  - name: '0'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
 - name: ace_hearing_fnc_updatehearingprotection
   ret: Nothing
   params:
@@ -9635,8 +10932,15 @@
     type: ArrayUnknown
   example: '[[], [], []] call ace_hellfire_fnc_getAttackProfileSettings;'
 - name: ace_hellfire_fnc_midcoursetransition
-  ret: Nothing
-  params: []
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Guidance Arg Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Timestep (not used) <NUMBER>
+    type: Number
+    optional: true
   example: '[] call ace_hellfire_fnc_midCourseTransition'
 - name: ace_hellfire_fnc_setupvehicle
   ret: Nothing
@@ -9717,8 +11021,34 @@
   example: '[cam] call ACE_huntir_fnc_cam'
 - name: ace_huntir_fnc_handlefired
   ret: Nothing
-  params: []
-  example: call ACE_huntir_fnc_handleFired
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  - name: '1'
+    description: Weapon (not used) <STRING>
+    type: String
+    optional: true
+  - name: '2'
+    description: Muzzle (not used) <STRING>
+    type: String
+    optional: true
+  - name: '3'
+    description: Mode (not used) <STRING>
+    type: String
+    optional: true
+  - name: '4'
+    description: Ammo (not used) <STRING>
+    type: String
+    optional: true
+  - name: '5'
+    description: Magazine (not used) <STRING>
+    type: String
+    optional: true
+  - name: '6'
+    description: Projectile <OBJECT>
+    type: Object
+  example: '[player, "", "", "", "F_HuntIR", "", _projectile] call ace_huntir_fnc_handleFired'
 - name: ace_huntir_fnc_huntir
   ret: Nothing
   params: []
@@ -9731,12 +11061,12 @@
   ret: Boolean
   params:
   - name: '0'
-    description: '? <UNKNOWN>'
-    type: Anything
+    description: Display <DISPLAY>
+    type: Display
   - name: '1'
-    description: keycode <NUMBER>
+    description: Key code (DIK) <NUMBER>
     type: Number
-  example: '[] call ace_huntir_fnc_keyPressed'
+  example: '[findDisplay 46, 30] call ace_huntir_fnc_keyPressed'
 - name: ace_intelitems_fnc_addactions
   ret: ArrayUnknown
   params:
@@ -10114,7 +11444,10 @@
   - name: '0'
     description: 'Type of key: 0 interaction / 1 self interaction <NUMBER>'
     type: Number
-  example: '[1] call ACE_interact_menu_fnc_keyUp'
+  - name: '1'
+    description: Called by clicking <BOOL>
+    type: Boolean
+  example: '[1, false] call ACE_interact_menu_fnc_keyUp'
 - name: ace_interact_menu_fnc_removeactionfromclass
   ret: Nothing
   params:
@@ -10283,8 +11616,8 @@
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Target (not used) <OBJECT>
+    type: Object
     optional: true
   - name: '1'
     description: Player <OBJECT>
@@ -10394,13 +11727,9 @@
   ret: Boolean
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
-    optional: true
-  - name: '1'
     description: Body <OBJECT>
     type: Object
-  - name: '2'
+  - name: '1'
     description: Unit <OBJECT>
     type: Object
   example: '[crew cursorObject select 0, player] call ace_interaction_fnc_canPullOutBody'
@@ -10568,6 +11897,19 @@
     type: Boolean
     optional: true
   example: '[player, "YELLOW", false] call ace_interaction_fnc_joinTeam'
+- name: ace_interaction_fnc_modifyTeamManagementAction
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Team color <STRING>
+    type: String
+  - name: '1'
+    description: Icon to show on action <STRING>
+    type: String
+  - name: '2'
+    description: Action Data to modifiy <ARRAY>
+    type: ArrayUnknown
+  example: ''
 - name: ace_interaction_fnc_modifyjoingroupaction
   ret: Nothing
   params:
@@ -11048,27 +12390,27 @@
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: Vehicle (shooter of laser) <OBJECT>
+    description: Emitter (vehicle that is the laser source) <OBJECT>
     type: Object
   - name: '1'
-    description: padding for skipped args
-    type: Anything
+    description: Owner (not used) <OBJECT>
+    type: Object
     optional: true
   - name: '2'
-    description: padding for skipped args
-    type: Anything
+    description: Method (not used) <STRING>
+    type: String
     optional: true
   - name: '3'
-    description: padding for skipped args
-    type: Anything
+    description: Wavelength (not used) <NUMBER>
+    type: Number
     optional: true
   - name: '4'
-    description: padding for skipped args
-    type: Anything
+    description: Laser code (not used) <NUMBER>
+    type: Number
     optional: true
   - name: '5'
-    description: padding for skipped args
-    type: Anything
+    description: Beam divergence (not used) <NUMBER>
+    type: Number
     optional: true
   - name: '6'
     description: Method Args <ARRAY>
@@ -11152,12 +12494,22 @@
   example: '[vehicle player] call ace_laser_fnc_laserPointTrack'
 - name: ace_laser_fnc_lasertargetpfh
   ret: Nothing
-  params: []
-  example: '[[], 1]] call ace_laser_fnc_laserTargetPFH;'
+  params:
+  - name: '0'
+    description: PFH arguments (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: PFH handle <NUMBER>
+    type: Number
+  example: '[[], 1] call ace_laser_fnc_laserTargetPFH;'
 - name: ace_laser_fnc_onlaserdesignatordraw
   ret: Nothing
-  params: []
-  example: '[] call ace_laser_fnc_onLaserDesignatorDraw'
+  params:
+  - name: '0'
+    description: Lasercode helper control <CONTROL>
+    type: Control
+  example: '[_ctrl] call ace_laser_fnc_onLaserDesignatorDraw'
 - name: ace_laser_fnc_rotatevectline
   ret: ArrayUnknown
   params:
@@ -11318,7 +12670,10 @@
   example: '[cursorObject] call ace_logistics_wirecutter_fnc_hasWirecutter'
 - name: ace_logistics_wirecutter_fnc_interacteh
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Interact Menu Type (0 - World, 1 - Self) <NUMBER>
+    type: Number
   example: '[0] call ace_logistics_wirecutter_fnc_interactEH'
 - name: ace_logistics_wirecutter_fnc_isfence
   ret: Boolean
@@ -11406,29 +12761,26 @@
   example: '[player, player, "30Rnd_65x39_caseless_mag"] call ace_magazinerepack_fnc_startRepackingMagazine'
 - name: ace_map_fnc_blueforcetrackingmodule
   ret: Nothing
-  params: []
-  example: call ACE_map_fnc_blueForceTrackingModule
+  params:
+  - name: '0'
+    description: Logic <OBJECT>
+    type: Object
+  example: '[LOGIC] call ace_map_fnc_blueForceTrackingModule'
 - name: ace_map_fnc_blueforcetrackingupdate
   ret: Nothing
   params: []
   example: call ACE_map_fnc_blueForceTrackingUpdate
 - name: ace_map_fnc_compileflashlightmenu
-  ret: Nothing
+  ret: ArrayUnknown
   params:
   - name: '0'
-    description: Vehicle <OBJECT>
+    description: Target (not used) <OBJECT>
     type: Object
+    optional: true
   - name: '1'
     description: Player <OBJECT>
     type: Object
-  - name: '2'
-    description: padding for skipped args
-    type: Anything
-    optional: true
-  - name: '3'
-    description: Parameters <ARRAY>
-    type: ArrayUnknown
-  example: '[_player, _player, []] call ace_map_fnc_compileFlashlightMenu;'
+  example: '[_player, _player] call ace_map_fnc_compileFlashlightMenu;'
 - name: ace_map_fnc_determinemaplight
   ret: !OneOf
   - - Boolean
@@ -11465,6 +12817,13 @@
     description: Unit to check <OBJECT>
     type: Object
   example: player call ace_map_fnc_getUnitFlashlights
+- name: ace_map_fnc_initmainmap
+  ret: Nothing
+  params:
+  - name: '0'
+    description: RscDiary Display <DISPLAY>
+    type: Display
+  example: '[findDisplay 12] call ace_map_fnc_initMainMap'
 - name: ace_map_fnc_isflashlight
   ret: Boolean
   params:
@@ -11474,8 +12833,18 @@
   example: '["acc_flashlight"] call ace_map_fnc_isFlashlight'
 - name: ace_map_fnc_modulemap
   ret: Nothing
-  params: []
-  example: call ACE_map_fnc_moduleMap
+  params:
+  - name: '0'
+    description: Logic <OBJECT>
+    type: Object
+  - name: '1'
+    description: Synchronized Units (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '2'
+    description: Module Activated <BOOL>
+    type: Boolean
+  example: '[LOGIC, [bob, kevin], true] call ace_map_fnc_moduleMap'
 - name: ace_map_fnc_needplaysound
   ret: Boolean
   params:
@@ -11488,8 +12857,11 @@
   example: '[player, "acc_flashlight"] call ace_map_fnc_needPlaySound'
 - name: ace_map_fnc_ondrawmap
   ret: Nothing
-  params: []
-  example: call ACE_map_fnc_onDrawMap
+  params:
+  - name: '0'
+    description: Map display <DISPLAY>
+    type: Display
+  example: '[findDisplay 12] call ace_map_fnc_onDrawMap'
 - name: ace_map_fnc_simulatemaplight
   ret: Nothing
   params:
@@ -11547,26 +12919,30 @@
     description: Map Handle <CONTROL>
     type: Control
   - name: '1'
-    description: Positions (objects or posAGLs) with render distance <ARRAY<ARRAY<OBJECT, NUMBER>>>
-    type: Anything
+    description: 'Positions with render range, or briefing mode (0: All, 1: Group, 2: Side, 3: Proximity, 4: Disabled) <ARRAY of ARRAYs or NUMBER>'
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - Number
+      - null
   example: '[findDisplay 12 displayCtrl 51, [[player, 0]]] call ace_map_gestures_fnc_drawMapGestures'
 - name: ace_map_gestures_fnc_getproximityplayers
-  ret: Anything
-  params:
-  - name: '0'
-    description: Positions (objects or posAGLs) <ARRAY>
-    type: ArrayUnknown
-  - name: '1'
-    description: Range <NUMBER>
-    type: Number
+  ret: ArrayUnknown
+  params: []
   example: '[[[player, 6]]] call ace_map_gestures_fnc_getProximityPlayers'
 - name: ace_map_gestures_fnc_initdisplaycurator
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Curator map control <CONTROL>
+    type: Control
   example: _mapCtrl call ace_map_gestures_fnc_initDisplayCurator
 - name: ace_map_gestures_fnc_initdisplaydiary
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Diary map control <CONTROL>
+    type: Control
   example: _mapCtrl call ace_map_gestures_fnc_initDisplayDiary
 - name: ace_map_gestures_fnc_initdisplayspectator
   ret: Nothing
@@ -11586,7 +12962,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: Logic <LOGIC>
+    description: Logic <OBJECT>
     type: Object
   - name: '1'
     description: Units <ARRAY>
@@ -11599,7 +12975,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: Logic <LOGIC>
+    description: Logic <OBJECT>
     type: Object
   - name: '1'
     description: Units <ARRAY>
@@ -11984,10 +13360,7 @@
   - name: '1'
     description: Array of map marker data <ARRAY>
     type: ArrayUnknown
-  - name: '2'
-    description: Logic <OBJECT>
-    type: Object
-  example: '[[],[],dummyLogic] call ace_markers_fnc_setMarkerJIP;'
+  example: '[[], []] call ace_markers_fnc_setMarkerJIP;'
 - name: ace_markers_fnc_setmarkernetwork
   ret: Nothing
   params:
@@ -12164,6 +13537,7 @@
     type: Number
   example: '[player, random 360, 1] call ace_medical_blood_fnc_spurt'
 - name: ace_medical_damage_fnc_debug_explosivetest
+  ret: Nothing
   params:
   - name: '0'
     description: Center position, format PositionAGL <ARRAY>
@@ -12176,7 +13550,7 @@
     type: String
     optional: true
   - name: '3'
-    description: 'Ammo class to spawn, "" or nil to skip  <STRING> (default: "")'
+    description: 'Ammo class to spawn, "" or nil to skip <STRING> (default: "")'
     type: String
     optional: true
   - name: '4'
@@ -12184,11 +13558,12 @@
     type: Number
     optional: true
   - name: '5'
-    description: Function to run on each unit that is spawned (optional) <CODE> params [_unit, _center, _ammoClass]
+    description: Function to run on each unit that is spawned, params [_unit, _center, _ammoClass] <CODE> (optional)
     type: Code
     optional: true
   example: '[position player, [20, 80, 5]] call ace_medical_damage_fnc_debug_explosiveTest'
 - name: ace_medical_damage_fnc_determineiffatal
+  ret: Boolean
   params:
   - name: '0'
     description: The Unit <OBJECT>
@@ -12204,7 +13579,15 @@
     type: Number
   example: '[player, 0, 1.4, 0.7] call ace_medical_damage_fnc_determineIfFatal'
 - name: ace_medical_damage_fnc_getammodata
-  ret: ArrayUnknown
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - Number
+    - null
+  - - Number
+    - null
+  - - Number
+    - null
   params:
   - name: '0'
     description: Ammo <STRING>
@@ -12218,12 +13601,14 @@
     type: String
   example: '"bullet" call ace_medical_damage_fnc_getTypeOfDamage'
 - name: ace_medical_damage_fnc_handleincapacitation
+  ret: Nothing
   params:
   - name: '0'
     description: The Unit <OBJECT>
     type: Object
   example: '[player] call ace_medical_damage_fnc_handleIncapacitation'
 - name: ace_medical_damage_fnc_interpolatepoints
+  ret: Number
   params:
   - name: '0'
     description: Input value <NUMBER>
@@ -12237,15 +13622,18 @@
     optional: true
   example: '[0.2, [[1,0], [0.5,1], [0,0]]] call ace_medical_damage_fnc_interpolatePoints'
 - name: ace_medical_damage_fnc_parseconfigforinjuries
+  ret: Nothing
   params: []
   example: '[] call ace_medical_damage_fnc_parseConfigForInjuries'
 - name: ace_medical_damage_fnc_parsewoundhandlerscfg
+  ret: ArrayUnknown
   params:
   - name: '0'
     description: The config class containing the entries <CONFIG>
     type: Config
   example: '[configFile >> "ace_medical_injuries" >> "damageTypes" >> "woundHandlers"] call ace_medical_damage_fnc_parseWoundHandlersCfg'
 - name: ace_medical_damage_fnc_woundreceived
+  ret: Nothing
   params:
   - name: '0'
     description: Unit That Was Hit <OBJECT>
@@ -12389,6 +13777,13 @@
     description: Hitpoint <STRING>
     type: String
   example: '["V_PlateCarrier_rgr", "HitChest"] call ace_medical_engine_fnc_getItemArmor'
+- name: ace_medical_engine_fnc_lockUnconsciousSeat
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: ''
 - name: ace_medical_engine_fnc_setstructuraldamage
   ret: Nothing
   params:
@@ -12410,6 +13805,13 @@
     type: Boolean
     optional: true
   example: '[player, true] call ace_medical_engine_fnc_setUnconsciousAnim'
+- name: ace_medical_engine_fnc_unlockUnconsciousSeat
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  example: ''
 - name: ace_medical_engine_fnc_updatebodypartvisuals
   ret: Nothing
   params:
@@ -12443,7 +13845,7 @@
     description: Enable effect <BOOL>
     type: Boolean
   - name: '1'
-    description: Current bloodloss (in l/s) <NUMBER> (optional if enable is false)
+    description: Current bloodloss (in l/s), can be omitted if enable is false <NUMBER> (optional)
     type: Number
     optional: true
   - name: '2'
@@ -12458,7 +13860,7 @@
     description: Enable <BOOL>
     type: Boolean
   - name: '1'
-    description: Intensity <NUMBER> (optional if enable is false)
+    description: Intensity, can be omitted if enable is false <NUMBER> (optional)
     type: Number
     optional: true
   example: '[false, 0.5] call ace_medical_feedback_fnc_effectBloodVolume'
@@ -12469,7 +13871,7 @@
     description: Enable <BOOL>
     type: Boolean
   - name: '1'
-    description: Intensity 0...6 <NUMBER> (optional if enable is false)
+    description: Intensity 0...6, can be omitted if enable is false <NUMBER> (optional)
     type: Number
     optional: true
   example: '[true, 4] call ace_medical_feedback_fnc_effectBloodVolumeIcon'
@@ -12488,7 +13890,7 @@
     description: Enable <BOOL>
     type: Boolean
   - name: '1'
-    description: Intensity <NUMBER> (optional if enable is false)
+    description: Intensity, can be omitted if enable is false <NUMBER> (optional)
     type: Number
     optional: true
   example: '[true, 0.5] call ace_medical_feedback_fnc_effectPain'
@@ -12888,8 +14290,8 @@
   ret: Nothing
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Event name (not used) <STRING>
+    type: String
     optional: true
   - name: '1'
     description: Args <ARRAY>
@@ -13200,6 +14602,13 @@
     type: Object
   example: '[player] call ace_medical_status_fnc_getCardiacOutput'
 - name: ace_medical_status_fnc_getmedicationcount
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - Number
+    - null
+  - - Number
+    - null
   params:
   - name: '0'
     description: The patient <OBJECT>
@@ -13268,6 +14677,20 @@
     description: The patient <OBJECT>
     type: Object
   example: '[player] call ace_medical_status_fnc_isInStableCondition'
+- name: ace_medical_status_fnc_setStatusEffects
+  ret: Nothing
+  params:
+  - name: '0'
+    description: The unit <OBJECT>
+    type: Object
+  - name: '1'
+    description: Status effects value <BOOL>
+    type: Boolean
+  - name: '2'
+    description: 'Skip setHidden <BOOL> (default: false)'
+    type: Boolean
+    optional: true
+  example: ''
 - name: ace_medical_status_fnc_setcardiacarreststate
   ret: Nothing
   params:
@@ -13454,6 +14877,7 @@
     type: String
   example: '[player, cursorObject, "LeftLeg"] call ace_medical_treatment_fnc_canSplint'
 - name: ace_medical_treatment_fnc_canstitch
+  ret: Boolean
   params:
   - name: '0'
     description: Medic <OBJECT>
@@ -13658,7 +15082,10 @@
   - name: '2'
     description: Direction <NUMBER>
     type: Number
-  example: '["Litter_1", [100, 100, 0], 90] call ace_medical_treatment_fnc_createLitterServer'
+  - name: '3'
+    description: Surface normal <ARRAY>
+    type: ArrayUnknown
+  example: '["Litter_1", [100, 100, 0], 90, [0, 0, 1]] call ace_medical_treatment_fnc_createLitterServer'
 - name: ace_medical_treatment_fnc_diagnose
   ret: Nothing
   params:
@@ -13671,9 +15098,9 @@
   example: '[player, cursorObject] call ace_medical_treatment_fnc_diagnose'
 - name: ace_medical_treatment_fnc_findmosteffectivewounds
   ret: !OneOf
-  - - Anything
+  - - HashMapUnknown
     - null
-  - - Anything
+  - - ArrayUnknown
     - null
   - - ArrayUnknown
     - null
@@ -13692,7 +15119,7 @@
     type: Number
     optional: true
   - name: '4'
-    description: 'Wounds found from prior runs of the function <HASHMAP> (default: Empty Hashmap)'
+    description: 'Wounds found by earlier runs of the function, same format as the return value <HASHMAP> (default: createHashMap)'
     type: HashMapUnknown
     optional: true
   example: '[cursorObject, "FieldDressing", "rightleg"] call ace_medical_treatment_fnc_findMostEffectiveWounds'
@@ -13795,6 +15222,28 @@
     description: Unit <OBJECT>
     type: Object
   example: '[player] call ace_medical_treatment_fnc_getTriageStatus'
+- name: ace_medical_treatment_fnc_handleBandageOpening
+  ret: Nothing
+  params:
+  - name: '0'
+    description: The target <OBJECT>
+    type: Object
+  - name: '1'
+    description: The impact <NUMBER>
+    type: Number
+  - name: '2'
+    description: Body part <STRING>
+    type: String
+  - name: '3'
+    description: Injury index <NUMBER>
+    type: Number
+  - name: '4'
+    description: Injury <ARRAY>
+    type: ArrayUnknown
+  - name: '5'
+    description: Used Bandage type <STRING>
+    type: String
+  example: ''
 - name: ace_medical_treatment_fnc_hasitem
   ret: Boolean
   params:
@@ -13958,7 +15407,7 @@
     description: Medication Treatment classname <STRING>
     type: String
   - name: '2'
-    description: Incompatible medication <ARRAY of <STRING, NUMBER>>
+    description: Incompatible medication <ARRAY of ARRAYs>
     type: ArrayUnknown
   example: '[player, "morphine", [["x", 1]]] call ace_medical_treatment_fnc_onMedicationUsage'
 - name: ace_medical_treatment_fnc_overdose
@@ -13977,9 +15426,8 @@
     description: Overdose threshold <NUMBER>
     type: Number
   - name: '4'
-    description: 'Incompatible medication that caused overdose (can be the medication itself) <STRING> (default: "")'
+    description: Incompatible medication that caused overdose (can be the medication itself) <STRING>
     type: String
-    optional: true
   example: '[player, "morphine", 5, 3, "morphine"] call ace_medical_treatment_fnc_overDose'
 - name: ace_medical_treatment_fnc_placebodybagingrave
   ret: Nothing
@@ -14201,6 +15649,20 @@
     description: Treatment <STRING>
     type: String
   example: '[player, cursorObject, "Head", "BasicBandage"] call ace_medical_treatment_fnc_treatment'
+- name: ace_medical_treatment_fnc_treatmentFailure
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arguments <ARRAY>
+    type: ArrayUnknown
+  example: ''
+- name: ace_medical_treatment_fnc_treatmentSuccess
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Arguments <ARRAY>
+    type: ArrayUnknown
+  example: ''
 - name: ace_medical_treatment_fnc_unloadunit
   ret: Nothing
   params:
@@ -14318,6 +15780,7 @@
     type: Boolean
   example: '[player, 0, 1, false] call ace_medical_vitals_fnc_updateHeartRate'
 - name: ace_medical_vitals_fnc_updateoxygen
+  ret: Nothing
   params:
   - name: '0'
     description: The Unit <OBJECT>
@@ -14409,11 +15872,17 @@
   example: call ace_microdagr_fnc_appWaypointsButtonDeleteWP
 - name: ace_microdagr_fnc_appwaypointsbuttonsetwp
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: The "SetWP" button <CONTROL>
+    type: Control
   example: '[1234] call ace_microdagr_fnc_appWaypointsButtonSetWP'
 - name: ace_microdagr_fnc_canshow
   ret: Boolean
-  params: []
+  params:
+  - name: '0'
+    description: The display mode to test showing <NUMBER>
+    type: Number
   example: '[1] call ace_microdagr_fnc_canShow'
 - name: ace_microdagr_fnc_deviceaddwaypoint
   ret: Nothing
@@ -14607,7 +16076,7 @@
     description: 'Detector type <STRING> (default: currentWeapon Unit)'
     type: String
     optional: true
-  example: call ace_minedetector_fnc_canDeactivateDetector
+  example: '[player] call ace_minedetector_fnc_canDeactivateDetector'
 - name: ace_minedetector_fnc_candisconnectheadphones
   ret: Boolean
   params:
@@ -14728,19 +16197,72 @@
   example: '[shell] call ace_missile_clgp_fnc_copperhead_deployCondition'
 - name: ace_missile_clgp_fnc_copperhead_onfired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Launch Parameters <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_missile_clgp_fnc_copperhead_onfired'
 - name: ace_missile_clgp_fnc_copperhead_uicanopen
   ret: Boolean
-  params: []
+  params:
+  - name: '0'
+    description: Vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: Player <OBJECT>
+    type: Object
   example: '[vehicle, player] call ace_missile_clgp_fnc_copperhead_uiCanOpen'
 - name: ace_missile_clgp_fnc_copperhead_uicreate
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: Player <OBJECT>
+    type: Object
   example: '[vehicle, player] call ace_missile_clgp_fnc_copperhead_uiCreate'
 - name: ace_missile_clgp_fnc_submunition_ammofired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  - name: '1'
+    description: Weapon <STRING>
+    type: String
+  - name: '2'
+    description: Muzzle <STRING>
+    type: String
+  - name: '3'
+    description: Mode <STRING>
+    type: String
+  - name: '4'
+    description: Ammo <STRING>
+    type: String
+  - name: '5'
+    description: Magazine <STRING>
+    type: String
+  - name: '6'
+    description: Projectile <OBJECT>
+    type: Object
+  - name: '7'
+    description: Gunner <OBJECT>
+    type: Object
   example: '[] call ace_missile_clgp_fnc_submunition_ammoFired'
 - name: ace_missile_clgp_fnc_submunition_applydrag
   ret: Nothing
@@ -14874,9 +16396,6 @@
   - name: '1'
     description: Guidance Arg Array <ARRAY>
     type: ArrayUnknown
-  - name: '2'
-    description: Seeker State <ARRAY>
-    type: ArrayUnknown
   example: '[[1,2,3], [], []] call ace_missileguidance_fnc_attackProfile_AIR;'
 - name: ace_missileguidance_fnc_attackprofile_beam
   ret: ArrayUnknown
@@ -14896,12 +16415,6 @@
   params:
   - name: '0'
     description: Seeker Target PosASL <ARRAY>
-    type: ArrayUnknown
-  - name: '1'
-    description: Guidance Arg Array <ARRAY>
-    type: ArrayUnknown
-  - name: '2'
-    description: Seeker State <ARRAY>
     type: ArrayUnknown
   example: '[[1,2,3], [], []] call ace_missileguidance_fnc_attackProfile_DIR;'
 - name: ace_missileguidance_fnc_attackprofile_jav_dir
@@ -14940,8 +16453,12 @@
     description: Guidance Arg Array <ARRAY>
     type: ArrayUnknown
   - name: '2'
-    description: Seeker State <ARRAY>
+    description: Attack Profile State <ARRAY>
     type: ArrayUnknown
+  - name: '3'
+    description: Timestep (not used) <NUMBER>
+    type: Number
+    optional: true
   example: '[[1,2,3], [], []] call ace_missileguidance_fnc_attackProfile_jdam;'
 - name: ace_missileguidance_fnc_attackprofile_lin
   ret: ArrayUnknown
@@ -14952,10 +16469,17 @@
   - name: '1'
     description: Guidance Arg Array <ARRAY>
     type: ArrayUnknown
-  - name: '2'
-    description: Attack Profile State <ARRAY>
-    type: ArrayUnknown
   example: '[[1,2,3], [], []] call ace_missileguidance_fnc_attackProfile_LIN;'
+- name: ace_missileguidance_fnc_attackprofile_loft
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Seeker Target PosASL <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Guidance Arg Array <ARRAY>
+    type: ArrayUnknown
+  example: '[[1,2,3], [], []] call ace_missileguidance_fnc_attackProfile_LOFT;'
 - name: ace_missileguidance_fnc_attackprofile_wire
   ret: ArrayUnknown
   params:
@@ -15016,6 +16540,13 @@
   ret: Nothing
   params: []
   example: '[] call ace_missileguidance_fnc_cycleAttackProfileKeyDown'
+- name: ace_missileguidance_fnc_dev_ProjectileCamera
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Projectile <OBJECT>
+    type: Object
+  example: ''
 - name: ace_missileguidance_fnc_doattackprofile
   ret: ArrayUnknown
   params:
@@ -15026,8 +16557,11 @@
     description: Guidance Arg Array <ARRAY>
     type: ArrayUnknown
   - name: '2'
-    description: Seeker State <ARRAY>
+    description: Attack Profile State <ARRAY>
     type: ArrayUnknown
+  - name: '3'
+    description: Timestep <NUMBER>
+    type: Number
   example: '[[1,2,3], [], []] call ace_missileguidance_fnc_doAttackProfile;'
 - name: ace_missileguidance_fnc_dohandoff
   ret: Nothing
@@ -15041,29 +16575,73 @@
   example: '[target, [args]] call ace_missileguidance_fnc_doHandoff'
 - name: ace_missileguidance_fnc_doppler_onfired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Launch Parameters <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_missileguidance_fnc_doppler_onFired'
 - name: ace_missileguidance_fnc_doseekersearch
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
-    optional: true
+    description: Seeker Target PosASL, always [0, 0, 0] <ARRAY>
+    type: ArrayUnknown
   - name: '1'
     description: Guidance Arg Array <ARRAY>
     type: ArrayUnknown
   - name: '2'
-    description: padding for skipped args
-    type: Anything
-    optional: true
+    description: Seeker State <ARRAY>
+    type: ArrayUnknown
   - name: '3'
     description: Last known pos state array <ARRAY>
     type: ArrayUnknown
+  - name: '4'
+    description: Timestep <NUMBER>
+    type: Number
   example: '[[], [], []] call ace_missileguidance_fnc_doSeekerSearch;'
 - name: ace_missileguidance_fnc_gps_attackonfired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Launch Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
+  - name: '5'
+    description: Target Data (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '6'
+    description: Navigation State Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
   example: '[] call ace_missileguidance_fnc_gps_attackOnFired'
 - name: ace_missileguidance_fnc_gps_confirm
   ret: Nothing
@@ -15073,28 +16651,79 @@
   ret: ArrayUnknown
   params: []
   example: '[] call ace_missileguidance_fnc_gps_getAttackData'
+- name: ace_missileguidance_fnc_gps_loadattacksettings
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Current PB mode <NUMBER>
+    type: Number
+  example: '[] call ace_missileguidance_fnc_gps_loadAttackSettings'
 - name: ace_missileguidance_fnc_gps_modeselect
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Mode to switch to (GPS_UI_TOO or GPS_UI_PB IDC) <NUMBER>
+    type: Number
+  - name: '1'
+    description: 'Called from onLoad <BOOL> (default: false)'
+    type: Boolean
+    optional: true
   example: '[0] call ace_missileguidance_fnc_gps_modeSelect'
 - name: ace_missileguidance_fnc_gps_onload
   ret: Nothing
-  params: []
-  example: '[1] call ace_missileguidance_fnc_gps_onLoad'
+  params:
+  - name: '0'
+    description: Display <DISPLAY>
+    type: Display
+  example: '[theDisplay] call ace_missileguidance_fnc_gps_onLoad'
 - name: ace_missileguidance_fnc_gps_onunload
   ret: Nothing
   params: []
   example: '[] call ace_missileguidance_fnc_gps_onUnload'
 - name: ace_missileguidance_fnc_gps_pbmodecycle
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: 'Direction (-1: previous, 1: next) <NUMBER>'
+    type: Number
   example: '[1] call ace_missileguidance_fnc_gps_pbModeCycle'
 - name: ace_missileguidance_fnc_gps_saveattacksettings
-  params: []
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: PB mode to save to, -1 to not save <NUMBER>
+    type: Number
   example: '[-1] call ace_missileguidance_fnc_gps_saveAttackSettings'
 - name: ace_missileguidance_fnc_gps_seekeronfired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Fired EH arguments (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '1'
+    description: Launch Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
+  - name: '5'
+    description: Target Data (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '6'
+    description: Navigation State Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
   example: '[] call ace_missileguidance_fnc_gps_seekerOnFired'
 - name: ace_missileguidance_fnc_gps_setupvehicle
   ret: Nothing
@@ -15125,13 +16754,37 @@
   example: '[bob, kevin] call ACE_missileguidance_fnc_handleHandoff'
 - name: ace_missileguidance_fnc_ir_onfired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Launch Parameters <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_missileguidance_fnc_IR_onFired'
 - name: ace_missileguidance_fnc_javelin_midcoursetransition
-  ret: Nothing
-  params: []
+  ret: Boolean
+  params:
+  - name: '0'
+    description: Guidance Arg Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Timestep <NUMBER>
+    type: Number
   example: '[] call ace_missileguidance_fnc_javelin_midCourseTransition'
 - name: ace_missileguidance_fnc_keybind_add
+  ret: Nothing
   params:
   - name: '0'
     description: Type of keybind <STRING>
@@ -15144,6 +16797,7 @@
     type: Code
   example: '["left", {hint "Down"}, {hint "Up"}] call ace_missileguidance_fnc_keybind_add'
 - name: ace_missileguidance_fnc_keybind_pressed
+  ret: Boolean
   params:
   - name: '0'
     description: Type of keybind <STRING>
@@ -15153,10 +16807,30 @@
     type: String
   example: '["left", "down"] call ace_missileguidance_fnc_keybind_pressed'
 - name: ace_missileguidance_fnc_line_onfired
-  ret: Nothing
-  params: []
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Launch Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: State Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
   example: '[] call ace_missileguidance_fnc_line_onFired'
 - name: ace_missileguidance_fnc_mclos_buttonpressed
+  ret: Boolean
   params:
   - name: '0'
     description: Acceleration vector <ARRAY>
@@ -15165,37 +16839,164 @@
     description: Unit <OBJECT>
     type: Object
   example: '[[0, 0, 1], player] call ace_missileguidance_fnc_MCLOS_buttonPressed'
+- name: ace_missileguidance_fnc_mclos_mouseinput
+  ret: Boolean
+  params: []
+  example: '[] call ace_missileguidance_fnc_MCLOS_mouseInput'
 - name: ace_missileguidance_fnc_mclos_onfired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Launch Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_missileguidance_fnc_MCLOS_onFired'
 - name: ace_missileguidance_fnc_mwr_onfired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Launch Parameters <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_missileguidance_fnc_mwr_onFired'
 - name: ace_missileguidance_fnc_navigationtype_augmentedpronav
   ret: ArrayUnknown
-  params: []
+  params:
+  - name: '0'
+    description: Guidance Arg Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Timestep <NUMBER>
+    type: Number
+  - name: '2'
+    description: Seeker Target PosASL <ARRAY>
+    type: ArrayUnknown
+  - name: '3'
+    description: Profile Adjusted Target PosASL (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
   example: '[] call ace_missileguidance_fnc_navigationType_augmentedProNav'
 - name: ace_missileguidance_fnc_navigationtype_direct
   ret: ArrayUnknown
-  params: []
+  params:
+  - name: '0'
+    description: Guidance Arg Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Timestep <NUMBER>
+    type: Number
+  - name: '2'
+    description: Seeker Target PosASL (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Profile Adjusted Target PosASL <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_missileguidance_fnc_navigationType_direct'
 - name: ace_missileguidance_fnc_navigationtype_line
   ret: ArrayUnknown
-  params: []
+  params:
+  - name: '0'
+    description: Guidance Arg Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Timestep (not used) <NUMBER>
+    type: Number
+    optional: true
+  - name: '2'
+    description: Seeker Target PosASL (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Profile Adjusted Target PosASL (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: Target Data <ARRAY>
+    type: ArrayUnknown
+  - name: '5'
+    description: Navigation Parameters <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_missileguidance_fnc_navigationType_line'
 - name: ace_missileguidance_fnc_navigationtype_lineofsight
   ret: ArrayUnknown
-  params: []
+  params:
+  - name: '0'
+    description: Guidance Arg Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Timestep <NUMBER>
+    type: Number
+  - name: '2'
+    description: Seeker Target PosASL <ARRAY>
+    type: ArrayUnknown
+  - name: '3'
+    description: Profile Adjusted Target PosASL (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
   example: '[] call ace_missileguidance_fnc_navigationType_lineOfSight'
 - name: ace_missileguidance_fnc_navigationtype_pronav
   ret: ArrayUnknown
-  params: []
+  params:
+  - name: '0'
+    description: Guidance Arg Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Timestep <NUMBER>
+    type: Number
+  - name: '2'
+    description: Seeker Target PosASL <ARRAY>
+    type: ArrayUnknown
+  - name: '3'
+    description: Profile Adjusted Target PosASL (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
   example: '[] call ace_missileguidance_fnc_navigationType_proNav'
 - name: ace_missileguidance_fnc_navigationtype_zeroeffortmiss
   ret: ArrayUnknown
-  params: []
+  params:
+  - name: '0'
+    description: Guidance Arg Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Timestep (not used) <NUMBER>
+    type: Number
+    optional: true
+  - name: '2'
+    description: Seeker Target PosASL (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Profile Adjusted Target PosASL (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
   example: '[] call ace_missileguidance_fnc_navigationType_zeroEffortMiss'
 - name: ace_missileguidance_fnc_onfired
   ret: Nothing
@@ -15243,7 +17044,7 @@
     description: Mode <STRING>
     type: String
   - name: '4'
-    description: Ammo (in the future) <STRING>
+    description: Ammo <STRING>
     type: String
   - name: '5'
     description: Magazine (not used) <STRING>
@@ -15267,19 +17068,40 @@
     type: Object
   example: '[cursorTarget, "x", player] call ace_missileguidance_fnc_onIncomingMissile;'
 - name: ace_missileguidance_fnc_pronav_onfired
-  ret: Nothing
-  params: []
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_missileguidance_fnc_proNav_onFired'
 - name: ace_missileguidance_fnc_saclos_onfired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Launch Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_missileguidance_fnc_SACLOS_onFired'
 - name: ace_missileguidance_fnc_seekertype_doppler
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Seeker Target PosASL, always [0, 0, 0] (not used) <ARRAY>
+    type: ArrayUnknown
     optional: true
   - name: '1'
     description: Guidance Arg Array <ARRAY>
@@ -15287,13 +17109,20 @@
   - name: '2'
     description: Seeker State <ARRAY>
     type: ArrayUnknown
+  - name: '3'
+    description: Last Known Pos State (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: Timestep <NUMBER>
+    type: Number
   example: '[] call ace_missileguidance_fnc_seekerType_Doppler;'
 - name: ace_missileguidance_fnc_seekertype_gps
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Seeker Target PosASL, always [0, 0, 0] (not used) <ARRAY>
+    type: ArrayUnknown
     optional: true
   - name: '1'
     description: Guidance Arg Array <ARRAY>
@@ -15306,8 +17135,8 @@
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Seeker Target PosASL, always [0, 0, 0] (not used) <ARRAY>
+    type: ArrayUnknown
     optional: true
   - name: '1'
     description: Guidance Arg Array <ARRAY>
@@ -15320,8 +17149,8 @@
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Seeker Target PosASL, always [0, 0, 0] (not used) <ARRAY>
+    type: ArrayUnknown
     optional: true
   - name: '1'
     description: Guidance Arg Array <ARRAY>
@@ -15334,8 +17163,8 @@
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Seeker Target PosASL, always [0, 0, 0] (not used) <ARRAY>
+    type: ArrayUnknown
     optional: true
   - name: '1'
     description: Guidance Arg Array <ARRAY>
@@ -15343,27 +17172,31 @@
   - name: '2'
     description: Seeker State <ARRAY>
     type: ArrayUnknown
+  - name: '3'
+    description: Last Known Pos State (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: Timestep <NUMBER>
+    type: Number
   example: '[] call ace_missileguidance_fnc_seekerType_MWR;'
 - name: ace_missileguidance_fnc_seekertype_optic
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Seeker Target PosASL, always [0, 0, 0] (not used) <ARRAY>
+    type: ArrayUnknown
     optional: true
   - name: '1'
     description: Guidance Arg Array <ARRAY>
-    type: ArrayUnknown
-  - name: '2'
-    description: Seeker State <ARRAY>
     type: ArrayUnknown
   example: '[[], [], []] call ace_missileguidance_fnc_seekerType_Optic;'
 - name: ace_missileguidance_fnc_seekertype_saclos
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Seeker Target PosASL, always [0, 0, 0] (not used) <ARRAY>
+    type: ArrayUnknown
     optional: true
   - name: '1'
     description: Guidance Arg Array <ARRAY>
@@ -15376,15 +17209,23 @@
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Seeker Target PosASL, always [0, 0, 0] (not used) <ARRAY>
+    type: ArrayUnknown
     optional: true
   - name: '1'
     description: Guidance Arg Array <ARRAY>
     type: ArrayUnknown
   - name: '2'
-    description: Seeker State <ARRAY>
+    description: Seeker State (not used) <ARRAY>
     type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Last Known Pos State (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: Timestep <NUMBER>
+    type: Number
   example: '[[], [], []] call ace_missileguidance_fnc_seekerType_SALH;'
 - name: ace_missileguidance_fnc_shouldfilterradarhit
   ret: Boolean
@@ -15410,13 +17251,30 @@
   example: '[] call ace_missileguidance_fnc_shouldFilterRadarHit;'
 - name: ace_missileguidance_fnc_wire_onfired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Launch Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters <ARRAY>
+    type: ArrayUnknown
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_missileguidance_fnc_wire_onFired'
 - name: ace_missionmodules_fnc_moduleambiancesound
   ret: Nothing
   params:
   - name: '0'
-    description: Logic <LOGIC>
+    description: Logic <OBJECT>
     type: Object
   - name: '1'
     description: Units <ARRAY>
@@ -15606,8 +17464,18 @@
   example: '[] call ace_nametags_fnc_initIsSpeaking'
 - name: ace_nametags_fnc_modulenametags
   ret: Nothing
-  params: []
-  example: '[] call ace_nametags_fnc_moduleNameTags'
+  params:
+  - name: '0'
+    description: Logic <OBJECT>
+    type: Object
+  - name: '1'
+    description: Synchronized Units (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '2'
+    description: Module Activated <BOOL>
+    type: Boolean
+  example: '[LOGIC, [bob, kevin], true] call ace_nametags_fnc_moduleNameTags'
 - name: ace_nametags_fnc_ondraw3d
   ret: Nothing
   params: []
@@ -15705,15 +17573,8 @@
   example: '[player, 1] call ace_nightvision_fnc_onVisionModeChanged'
 - name: ace_nightvision_fnc_pfeh
   ret: Nothing
-  params:
-  - name: '0'
-    description: padding for skipped args
-    type: Anything
-    optional: true
-  - name: '1'
-    description: PFEH ID <NUMBER>
-    type: Number
-  example: '[[], 1] call ace_nightvision_fnc_pfeh'
+  params: []
+  example: call ace_nightvision_fnc_pfeh
 - name: ace_nightvision_fnc_refreshgoggletype
   ret: Nothing
   params: []
@@ -15738,6 +17599,17 @@
     description: Activated <BOOL>
     type: Boolean
   example: '[true] call ace_nightvision_fnc_setupDisplayEffects'
+- name: ace_nightvision_fnc_statTextStatement_NVGeneration
+  ret: String
+  params:
+  - name: '0'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
 - name: ace_nlaw_fnc_attackprofile
   ret: ArrayUnknown
   params:
@@ -15755,16 +17627,78 @@
   ret: Nothing
   params: []
   example: '[] call ace_nlaw_fnc_keyDown'
+- name: ace_nlaw_fnc_navigation
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Guidance Arg Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Timestep (not used) <NUMBER>
+    type: Number
+    optional: true
+  - name: '2'
+    description: Seeker Target PosASL (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Profile Adjusted Target PosASL <ARRAY>
+    type: ArrayUnknown
+  - name: '4'
+    description: Target Data (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '5'
+    description: Navigation Parameters <ARRAY>
+    type: ArrayUnknown
+  example: '[] call ace_nlaw_fnc_navigation'
+- name: ace_nlaw_fnc_navigation_onfired
+  ret: ArrayUnknown
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Launch Parameters <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: Flight Parameters <ARRAY>
+    type: ArrayUnknown
+  - name: '3'
+    description: Seeker Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
+  example: '[] call ace_nlaw_fnc_navigation_onFired'
 - name: ace_nlaw_fnc_onfired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Fired EH arguments <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Launch Parameters <ARRAY>
+    type: ArrayUnknown
+  - name: '2'
+    description: Flight Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Seeker Parameters (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: State Parameters <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_nlaw_fnc_onFired'
 - name: ace_nlaw_fnc_seeker
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Seeker Target PosASL, always [0, 0, 0] (not used) <ARRAY>
+    type: ArrayUnknown
     optional: true
   - name: '1'
     description: Guidance Arg Array <ARRAY>
@@ -15772,6 +17706,14 @@
   - name: '2'
     description: Seeker State <ARRAY>
     type: ArrayUnknown
+  - name: '3'
+    description: Last Known Pos State (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: Timestep (not used) <NUMBER>
+    type: Number
+    optional: true
   example: '[] call ace_nlaw_fnc_seeker'
 - name: ace_nouniformrestrictions_fnc_exportconfig
   ret: String
@@ -15798,12 +17740,12 @@
     description: Barrel mass <NUMBER>
     type: Number
   - name: '2'
-    description: Time interval  <NUMBER>
+    description: Time interval <NUMBER>
     type: Number
   - name: '3'
-    description: Bolt type  <NUMBER>
+    description: Bolt type <NUMBER>
     type: Number
-  example: '[_temperature, _barrelMass, _totalTime] call ace_overheating_fnc_calculateCooling'
+  example: '[_temperature, _barrelMass, _totalTime, _boltType] call ace_overheating_fnc_calculateCooling'
 - name: ace_overheating_fnc_canchecksparebarrelstemperatures
   ret: Boolean
   params:
@@ -16051,11 +17993,10 @@
     description: Weapon <STRING>
     type: String
   - name: '2'
-    description: padding for skipped args
-    type: Anything
-    optional: true
-  - name: '3'
     description: Muzzle <STRING>
+    type: String
+  - name: '3'
+    description: Mode <STRING>
     type: String
   - name: '4'
     description: Ammo <STRING>
@@ -16066,7 +18007,7 @@
   - name: '6'
     description: Projectile <OBJECT>
     type: Object
-  example: '[bob, "weapon", "muzzle", "ammo", "magazine", bullet] call ace_overheating_fnc_overheat'
+  example: '[bob, "weapon", "muzzle", "mode", "ammo", "magazine", bullet] call ace_overheating_fnc_overheat'
 - name: ace_overheating_fnc_sendsparebarrelstemperatureshint
   ret: Nothing
   params:
@@ -16103,6 +18044,28 @@
     description: Temperature <NUMBER>
     type: Number
   example: '[player, currentWeapon player, 123] call ace_overheating_fnc_setWeaponTemperature'
+- name: ace_overheating_fnc_statTextStatement_allowSwapBarrel
+  ret: String
+  params:
+  - name: '0'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
+- name: ace_overheating_fnc_statTextStatement_boltType
+  ret: String
+  params:
+  - name: '0'
+    description: Not used
+    type: Anything
+    optional: true
+  - name: '1'
+    description: Item config path <CONFIG>
+    type: Config
+  example: ''
 - name: ace_overheating_fnc_swapbarrel
   ret: Nothing
   params:
@@ -16271,8 +18234,14 @@
   example: '[player, vehicle player] call ace_parachute_fnc_handleFailureChance'
 - name: ace_parachute_fnc_handleinfodisplaychanged
   ret: Nothing
-  params: []
-  example: '[?] call ACE_parachute_fnc_handleInfoDisplayChanged'
+  params:
+  - name: '0'
+    description: Info display <DISPLAY>
+    type: Display
+  - name: '1'
+    description: Info display type <STRING>
+    type: String
+  example: '[_display, "Soldier"] call ace_parachute_fnc_handleInfoDisplayChanged'
 - name: ace_parachute_fnc_handlereserve
   ret: Nothing
   params:
@@ -17085,16 +19054,14 @@
   - name: '1'
     description: Fuel Source <OBJECT>
     type: Object
-  example: '[player, truck] call ace_refuel_fnc_canCheckFuel'
+  example: '[player, cursorObject] call ace_refuel_fnc_canCheckFuel'
 - name: ace_refuel_fnc_canconnectnozzle
   ret: Boolean
   params:
   - name: '0'
     description: Object <OBJECT>
     type: Object
-  example: |-
-    [myVehicle] call ace_refuel_fnc_canConnectNozzle;
-     * [myJerryCan] call ace_refuel_fnc_canConnectNozzle;
+  example: cursorObject call ace_refuel_fnc_canConnectNozzle
 - name: ace_refuel_fnc_candisconnect
   ret: Boolean
   params:
@@ -17104,7 +19071,7 @@
   - name: '1'
     description: Nozzle <OBJECT>
     type: Object
-  example: '[player, nozzle] call ace_refuel_fnc_canDisconnect'
+  example: '[player, cursorObject] call ace_refuel_fnc_canDisconnect'
 - name: ace_refuel_fnc_canreturnnozzle
   ret: Boolean
   params:
@@ -17114,7 +19081,7 @@
   - name: '1'
     description: Fuel Source <OBJECT>
     type: Object
-  example: '[player, fuelTruck] call ace_refuel_fnc_canReturnNozzle'
+  example: '[player, cursorObject] call ace_refuel_fnc_canReturnNozzle'
 - name: ace_refuel_fnc_cantakenozzle
   ret: Boolean
   params:
@@ -17124,7 +19091,7 @@
   - name: '1'
     description: Fuel Source or Nozzle <OBJECT>
     type: Object
-  example: '[player, nozzle] call ace_refuel_fnc_canTakeNozzle'
+  example: '[player, cursorObject] call ace_refuel_fnc_canTakeNozzle'
 - name: ace_refuel_fnc_canturnoff
   ret: Boolean
   params:
@@ -17134,7 +19101,7 @@
   - name: '1'
     description: Nozzle <OBJECT>
     type: Object
-  example: '[player, nozzle] call ace_refuel_fnc_canTurnOff'
+  example: '[player, cursorObject] call ace_refuel_fnc_canTurnOff'
 - name: ace_refuel_fnc_canturnon
   ret: Boolean
   params:
@@ -17148,7 +19115,7 @@
     description: 'Refuel container <BOOL> (default: false)'
     type: Boolean
     optional: true
-  example: '[player, nozzle] call ace_refuel_fnc_canTurnOn'
+  example: '[player, cursorObject] call ace_refuel_fnc_canTurnOn'
 - name: ace_refuel_fnc_checkfuel
   ret: Nothing
   params:
@@ -17158,7 +19125,7 @@
   - name: '1'
     description: Fuel Source <OBJECT>
     type: Object
-  example: '[player, fuelTruck] call ace_refuel_fnc_checkFuel'
+  example: '[player, cursorObject] call ace_refuel_fnc_checkFuel'
 - name: ace_refuel_fnc_connectnozzleaction
   ret: Nothing
   params:
@@ -17174,49 +19141,57 @@
   - name: '3'
     description: Nozzle <OBJECT>
     type: Object
-  example: '[player, tank, [0,0,0], nozzle] call ace_refuel_fnc_connectNozzleAction'
+  example: '[player, cursorObject, [0, 0, 0], nozzle] call ace_refuel_fnc_connectNozzleAction'
 - name: ace_refuel_fnc_disconnect
   ret: Nothing
   params:
   - name: '0'
-    description: 'Unit <OBJECT> (default: objNull)'
+    description: Unit <OBJECT>
     type: Object
-    optional: true
-  - name: '1'
-    description: Nozzle <OBJECT>
-    type: Object
-  example: '[player, nozzle] call ace_refuel_fnc_disconnect'
-- name: ace_refuel_fnc_dropnozzle
-  ret: Nothing
-  params:
-  - name: '0'
-    description: 'Unit <OBJECT> (default: objNull)'
-    type: Object
-    optional: true
   - name: '1'
     description: Nozzle <OBJECT>
     type: Object
   - name: '2'
-    description: 'Disconnect Only <BOOL> (default: false)'
+    description: 'Drop nozzle on ground <BOOL> (default: true)'
     type: Boolean
     optional: true
-  example: |-
-    [player,  nozzle, false] call ace_refuel_fnc_dropNozzle
-     * [objNull, nozzle, false] call ace_refuel_fnc_dropNozzle
+  - name: '3'
+    description: 'Ground position to drop to <ARRAY of NUMBERs or NIL> (default: nil)'
+    type: !OneOf
+    - - ArrayUnknown
+      - null
+    - - Nothing
+      - null
+    optional: true
+  example: '[player, cursorObject] call ace_refuel_fnc_disconnect'
+- name: ace_refuel_fnc_dropnozzle
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Unit <OBJECT>
+    type: Object
+  - name: '1'
+    description: Nozzle <OBJECT>
+    type: Object
+  - name: '2'
+    description: 'Position ASL to drop from <ARRAY> (default: nozzle''s current position)'
+    type: ArrayUnknown
+    optional: true
+  example: '[player, cursorObject] call ace_refuel_fnc_dropNozzle'
 - name: ace_refuel_fnc_getcapacity
   ret: Number
   params:
   - name: '0'
     description: Fuel Source <OBJECT>
     type: Object
-  example: '[fuelTruck] call ace_refuel_fnc_getCapacity'
+  example: cursorObject call ace_refuel_fnc_getCapacity
 - name: ace_refuel_fnc_getfuel
   ret: Number
   params:
   - name: '0'
     description: Fuel Source <OBJECT>
     type: Object
-  example: '[fuelTruck] call ace_refuel_fnc_getFuel'
+  example: cursorObject call ace_refuel_fnc_getFuel
 - name: ace_refuel_fnc_getfuelcargo
   ret: Number
   params:
@@ -17225,22 +19200,52 @@
     type: Object
   example: cursorObject call ace_refuel_fnc_getFuelCargo
 - name: ace_refuel_fnc_handledamage
-  params: []
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Fuel source <OBJECT>
+    type: Object
+  - name: '1'
+    description: Selection <STRING>
+    type: String
+  - name: '2'
+    description: New level of damage <NUMBER>
+    type: Number
   example: call ace_refuel_fnc_handleDamage
+- name: ace_refuel_fnc_handledestroyed
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Object <OBJECT>
+    type: Object
+  example: cursorObject call ace_refuel_fnc_handleDestroyed
 - name: ace_refuel_fnc_handledisconnect
   ret: Nothing
   params:
   - name: '0'
     description: Player <OBJECT>
     type: Object
-  example: '[player] call ace_refuel_fnc_handleDisconnect'
+  example: player call ace_refuel_fnc_handleDisconnect
 - name: ace_refuel_fnc_handlerespawn
   ret: Nothing
   params:
   - name: '0'
     description: Unit <OBJECT>
     type: Object
-  example: '[player] call ace_refuel_fnc_handleRespawn'
+  example: player call ace_refuel_fnc_handleRespawn
+- name: ace_refuel_fnc_handleropebreak
+  ret: Nothing
+  params:
+  - name: '0'
+    description: Object that rope is attached from (parent) <OBJECT>
+    type: Object
+  - name: '1'
+    description: Rope <OBJECT>
+    type: Object
+  - name: '2'
+    description: Object that rope is attached to (child) <OBJECT>
+    type: Object
+  example: '[cursorObject, _rope, _child] call ace_refuel_fnc_handleRopeBreak'
 - name: ace_refuel_fnc_initobject
   ret: Nothing
   params:
@@ -17258,7 +19263,7 @@
   - name: '0'
     description: Source <OBJECT>
     type: Object
-  example: '[cursorObject] call ace_refuel_fnc_initSource'
+  example: cursorObject call ace_refuel_fnc_initSource
 - name: ace_refuel_fnc_makejerrycan
   ret: Nothing
   params:
@@ -17266,9 +19271,10 @@
     description: Target <OBJECT>
     type: Object
   - name: '1'
-    description: Fuel amount (in liters) <NUMBER>
+    description: 'Fuel amount (in liters) <NUMBER> (default: 20)'
     type: Number
-  example: '[can] call ace_refuel_fnc_makeJerryCan'
+    optional: true
+  example: cursorObject call ace_refuel_fnc_makeJerryCan
 - name: ace_refuel_fnc_makesource
   ret: Nothing
   params:
@@ -17280,7 +19286,7 @@
     type: Number
     optional: true
   - name: '2'
-    description: 'Hooks positions <ARRAY> (default: [[0,0,0]])'
+    description: 'Hooks positions <ARRAY> (default: [[0, 0, 0]])'
     type: ArrayUnknown
     optional: true
   example: '[cursorObject, 100] call ace_refuel_fnc_makeSource'
@@ -17288,7 +19294,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
@@ -17310,23 +19316,20 @@
   - name: '1'
     description: Fuel Source <OBJECT>
     type: Object
-  example: '[player, fuelTruck] call ace_refuel_fnc_readFuelCounter'
+  example: '[player, cursorObject] call ace_refuel_fnc_readFuelCounter'
 - name: ace_refuel_fnc_refuel
   ret: Nothing
   params:
   - name: '0'
-    description: Unit <OBJECT>
-    type: Object
-  - name: '1'
     description: Vehicle <OBJECT>
     type: Object
-  - name: '2'
+  - name: '1'
     description: Nozzle <OBJECT>
     type: Object
-  - name: '3'
-    description: Connection Point <ARRAY>
-    type: ArrayUnknown
-  example: '[bob, kevin, nozzle, [2, 1, 5]] call ace_refuel_fnc_refuel'
+  - name: '2'
+    description: Refuel container? <BOOL>
+    type: Boolean
+  example: '[cursorObject, _nozzle, false] call ace_refuel_fnc_refuel'
 - name: ace_refuel_fnc_returnnozzle
   ret: Nothing
   params:
@@ -17346,7 +19349,7 @@
   - name: '1'
     description: Amount (in liters) <NUMBER>
     type: Number
-  example: '[fuelTruck, 42] call ace_refuel_fnc_setFuel'
+  example: '[cursorObject, 42] call ace_refuel_fnc_setFuel'
 - name: ace_refuel_fnc_startnozzleinhandspfh
   ret: Nothing
   params:
@@ -17356,7 +19359,7 @@
   - name: '1'
     description: Nozzle <OBJECT>
     type: Object
-  example: '[player, nozzle] call ace_refuel_fnc_startNozzleInHandsPFH'
+  example: '[player, cursorObject] call ace_refuel_fnc_startNozzleInHandsPFH'
 - name: ace_refuel_fnc_takenozzle
   ret: Nothing
   params:
@@ -17376,7 +19379,7 @@
   - name: '1'
     description: Nozzle <OBJECT>
     type: Object
-  example: '[nozzle] call ace_refuel_fnc_turnOff'
+  example: '[player, cursorObject] call ace_refuel_fnc_turnOff'
 - name: ace_refuel_fnc_turnon
   ret: Nothing
   params:
@@ -17386,11 +19389,7 @@
   - name: '1'
     description: Nozzle <OBJECT>
     type: Object
-  - name: '2'
-    description: 'Refuel container <BOOL> (default: false)'
-    type: Boolean
-    optional: true
-  example: '[player, nozzle] call ace_refuel_fnc_turnOn'
+  example: '[player, cursorObject] call ace_refuel_fnc_turnOn'
 - name: ace_reload_fnc_cancheckammo
   ret: Boolean
   params:
@@ -18310,7 +20309,7 @@
     description: Unit <OBJECT>
     type: Object
   - name: '1'
-    description: All Gear based on return value of ace_common_fnc_getAllGear <ARRAY>
+    description: All Gear based on return value of CBA_fnc_getLoadout <ARRAY>
     type: ArrayUnknown
   - name: '2'
     description: All weapon info needed for restoring previous weapon status <ARRAY>
@@ -18349,8 +20348,9 @@
     description: Side <SIDE>
     type: Side
   - name: '2'
-    description: Position <ARRAY>
+    description: 'Position <ARRAY> (default: getPos Rallypoint)'
     type: ArrayUnknown
+    optional: true
   example: '[marker_name, side ACE_Player, getPos ACE_Player] call ace_respawn_fnc_updateRallypoint'
 - name: ace_safemode_fnc_getweaponsafety
   ret: Boolean
@@ -18615,7 +20615,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
@@ -18669,7 +20669,10 @@
   example: '[cursorObject, player] call ace_sitting_fnc_canSit'
 - name: ace_sitting_fnc_canstand
   ret: Boolean
-  params: []
+  params:
+  - name: '0'
+    description: Player <OBJECT>
+    type: Object
   example: player call ace_sitting_fnc_canStand
 - name: ace_sitting_fnc_getrandomanimation
   ret: String
@@ -18704,7 +20707,10 @@
      * [cursorObject, player, 0] call ace_sitting_fnc_sit
 - name: ace_sitting_fnc_stand
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Player <OBJECT>
+    type: Object
   example: player call ace_sitting_fnc_stand
 - name: ace_slideshow_fnc_addslideactions
   ret: ArrayUnknown
@@ -18829,7 +20835,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: Units <ARRAY>
@@ -18917,7 +20923,7 @@
     description: Group to get the icon of <GROUP>
     type: Group
   - name: '1'
-    description: 'Return icons for draw3D use <BOOL> (Default: false)'
+    description: 'Return icons for draw3D use <BOOL> (default: false)'
     type: Boolean
     optional: true
   example: ''
@@ -18931,13 +20937,37 @@
   example: '[true] call ace_spectator_fnc_getTargetEntities'
 - name: ace_spectator_fnc_handlefired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Unit or vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: Weapon <STRING>
+    type: String
+  - name: '2'
+    description: Muzzle (not used) <STRING>
+    type: String
+    optional: true
+  - name: '3'
+    description: Mode (not used) <STRING>
+    type: String
+    optional: true
+  - name: '4'
+    description: Ammo <STRING>
+    type: String
+  - name: '5'
+    description: Magazine (not used) <STRING>
+    type: String
+    optional: true
+  - name: '6'
+    description: Projectile <OBJECT>
+    type: Object
   example: _unit addEventHandler ["Fired",{_this call ace_spectator_fnc_handleFired}]
 - name: ace_spectator_fnc_modulespectatorsettings
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
@@ -19392,18 +21422,25 @@
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
-    optional: true
-  - name: '1'
-    description: Origin <ARRAY>
+    description: Origin PosASL <ARRAY>
     type: ArrayUnknown
-  - name: '2'
+  - name: '1'
     description: Direction <ARRAY>
     type: ArrayUnknown
-  - name: '3'
-    description: If we are designating <NUMBER>
+  - name: '2'
+    description: If we are designating (0 or 1) <NUMBER>
     type: Number
+  - name: '3'
+    description: Current Seeker Target PosASL <ARRAY>
+    type: ArrayUnknown
+  - name: '4'
+    description: Seeker (not used) <OBJECT>
+    type: Object
+    optional: true
+  - name: '5'
+    description: 'Object to ignore in intersections <OBJECT> (default: objNull)'
+    type: Object
+    optional: true
   example: '[[], [], []] call ace_spike_fnc_getTargetPosition'
 - name: ace_spike_fnc_keydown
   ret: Nothing
@@ -19420,7 +21457,7 @@
   params: []
   example: '[] call ace_spike_fnc_mapHelperDraw'
 - name: ace_spike_fnc_midcoursetransition
-  ret: Nothing
+  ret: Boolean
   params:
   - name: '0'
     description: Guidance Arg Array <ARRAY>
@@ -19428,7 +21465,27 @@
   example: '[] call ace_spike_fnc_midCourseTransition'
 - name: ace_spike_fnc_navigation
   ret: ArrayUnknown
-  params: []
+  params:
+  - name: '0'
+    description: Guidance Arg Array <ARRAY>
+    type: ArrayUnknown
+  - name: '1'
+    description: Timestep <NUMBER>
+    type: Number
+  - name: '2'
+    description: Seeker Target PosASL (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '3'
+    description: Profile Adjusted Target PosASL <ARRAY>
+    type: ArrayUnknown
+  - name: '4'
+    description: Target Data (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '5'
+    description: Navigation Parameters <ARRAY>
+    type: ArrayUnknown
   example: '[] call ace_spike_fnc_navigation'
 - name: ace_spike_fnc_onfired
   ret: Nothing
@@ -19441,8 +21498,8 @@
   ret: ArrayUnknown
   params:
   - name: '0'
-    description: padding for skipped args
-    type: Anything
+    description: Seeker Target PosASL, always [0, 0, 0] (not used) <ARRAY>
+    type: ArrayUnknown
     optional: true
   - name: '1'
     description: Guidance Arg Array <ARRAY>
@@ -19450,6 +21507,14 @@
   - name: '2'
     description: Seeker State <ARRAY>
     type: ArrayUnknown
+  - name: '3'
+    description: Last Known Pos State (not used) <ARRAY>
+    type: ArrayUnknown
+    optional: true
+  - name: '4'
+    description: Timestep (not used) <NUMBER>
+    type: Number
+    optional: true
   example: '[[], [], []] call ace_spike_fnc_seeker'
 - name: ace_spottingscope_fnc_pickup
   ret: Nothing
@@ -19593,7 +21658,10 @@
   example: '[bob, kevin] call ace_tacticalladder_fnc_handlePlayerChanged'
 - name: ace_tacticalladder_fnc_handlescrollwheel
   ret: Boolean
-  params: []
+  params:
+  - name: '0'
+    description: Amount scrolled <NUMBER>
+    type: Number
   example: '[1] call ace_tacticalladder_fnc_handleScrollWheel;'
 - name: ace_tacticalladder_fnc_handleunconscious
   ret: Nothing
@@ -19723,6 +21791,10 @@
     description: Tag Model <STRING> (optional)
     type: String
     optional: true
+  - name: '7'
+    description: 'Condition <CODE> (default: {true})'
+    type: Code
+    optional: true
   example: '["ace_victoryRed", "Victory Red", "ACE_SpraypaintRed", ["path\to\texture1.paa", "path\to\texture2.paa"], "path\to\icon.paa"] call ace_tagging_fnc_applyCustomTag'
 - name: ace_tagging_fnc_checktaggable
   ret: Boolean
@@ -19751,9 +21823,8 @@
     description: Textures Paths <ARRAY of STRINGs>
     type: ArrayUnknown
   - name: '4'
-    description: 'Icon Path <STRING> (default: "")'
+    description: Icon Path <STRING>
     type: String
-    optional: true
   - name: '5'
     description: Material Paths <ARRAY>
     type: ArrayUnknown
@@ -19835,7 +21906,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: Units <ARRAY>
@@ -19923,9 +21994,21 @@
     description: Unit wanting to attach rope <OBJECT>
     type: Object
   - name: '1'
-    description: Vehicle to attach rope <OBJECT>
+    description: Vehicle to attach rope to (objNull for any vehicle) <OBJECT>
     type: Object
-  example: '[player, cursorObject] call ace_towing_fnc_attachRopePFH'
+  - name: '2'
+    description: Parent vehicle to ignore <OBJECT>
+    type: Object
+  - name: '3'
+    description: Rope to ignore <OBJECT>
+    type: Object
+  - name: '4'
+    description: Rope source position ASL ([0, 0, 0] to disable range limit) <ARRAY>
+    type: ArrayUnknown
+  - name: '5'
+    description: Maximum range from source <NUMBER>
+    type: Number
+  example: '[player, cursorObject, objNull, objNull, [0, 0, 0], 10] call ace_towing_fnc_attachRopePFH'
 - name: ace_towing_fnc_attachvehicles
   ret: Nothing
   params:
@@ -19982,12 +22065,26 @@
   example: '[cursorObject] call ace_towing_fnc_isSuitableSimulation'
 - name: ace_towing_fnc_onmousebuttondown
   ret: Nothing
-  params: []
-  example: '[] call ace_towing_fnc_onMouseButtonDown'
+  params:
+  - name: '0'
+    description: Display (not used) <DISPLAY>
+    type: Display
+    optional: true
+  - name: '1'
+    description: Mouse button <NUMBER>
+    type: Number
+  example: '[findDisplay 46, 0] call ace_towing_fnc_onMouseButtonDown'
 - name: ace_towing_fnc_onmousebuttonup
   ret: Nothing
-  params: []
-  example: '[] call ace_towing_fnc_onMouseButtonUp'
+  params:
+  - name: '0'
+    description: Display (not used) <DISPLAY>
+    type: Display
+    optional: true
+  - name: '1'
+    description: Mouse button <NUMBER>
+    type: Number
+  example: '[findDisplay 46, 0] call ace_towing_fnc_onMouseButtonUp'
 - name: ace_towing_fnc_starttow
   ret: Nothing
   params:
@@ -20217,7 +22314,10 @@
   ret: Nothing
   params:
   - name: '0'
-    description: tripod <OBJECT>
+    description: Unit <OBJECT>
+    type: Object
+  - name: '1'
+    description: Tripod <OBJECT>
     type: Object
   example: '[ACE_player, tripod] call ace_tripod_fnc_adjust'
 - name: ace_tripod_fnc_handleinteractmenuopened
@@ -20291,13 +22391,16 @@
   example: '[] call ace_ui_fnc_compileConfigUI'
 - name: ace_ui_fnc_handlespeedindicator
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Current animation state <STRING>
+    type: String
   example: '["amovpercmtacslowwrfldf_ver2"] call ace_ui_fnc_handleSpeedIndicator'
 - name: ace_ui_fnc_moduleinit
   ret: Nothing
   params:
   - name: '0'
-    description: Module Logic <LOGIC>
+    description: Module Logic <OBJECT>
     type: Object
   - name: '1'
     description: Units <ARRAY>
@@ -20487,9 +22590,9 @@
   ret: Nothing
   params:
   - name: '0'
-    description: Unknown <UNKNOWN>
-    type: Anything
-  example: '[?] call ace_vector_fnc_showFallOfShot'
+    description: Show applicate (height) instead of ordinate/abscissa <BOOL>
+    type: Boolean
+  example: '[false] call ace_vector_fnc_showFallOfShot'
 - name: ace_vector_fnc_showheightdistance
   ret: Nothing
   params: []
@@ -20572,7 +22675,7 @@
     type: String
     optional: true
   - name: '6'
-    description: 'Whether or not the vehicle can spawn ring-fire effect <BOOL> (default: false)'
+    description: 'Whether or not the vehicle can spawn ring-fire effect <BOOL> (default: true)'
     type: Boolean
     optional: true
   - name: '7'
@@ -20613,10 +22716,35 @@
   - name: '7'
     description: Hit point <STRING>
     type: String
-  example: '[cursorObject, "hit_engine_point", 0.5, player, projectile, 1, player, "HitEngine"] call ace_vehicle_damage_fnc_handleDamage'
+  - name: '8'
+    description: Direct hit (not used) <BOOL>
+    type: Boolean
+    optional: true
+  - name: '9'
+    description: Context <NUMBER>
+    type: Number
+  example: '[cursorObject, "hit_engine_point", 0.5, player, projectile, 1, player, "HitEngine", true, 1] call ace_vehicle_damage_fnc_handleDamage'
 - name: ace_vehicle_damage_fnc_handledamageejectifdestroyed
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Vehicle <OBJECT>
+    type: Object
+  - name: '1'
+    description: Selection (not used) <STRING>
+    type: String
+    optional: true
+  - name: '2'
+    description: New level of damage (not used) <NUMBER>
+    type: Number
+    optional: true
+  - name: '3'
+    description: Source of damage (not used) <OBJECT>
+    type: Object
+    optional: true
+  - name: '4'
+    description: Projectile that caused damage <STRING>
+    type: String
   example: _this call ace_vehicle_damage_fnc_handleDamageEjectIfDestroyed
 - name: ace_vehicle_damage_fnc_handledetonation
   ret: Boolean
@@ -20966,6 +23094,9 @@
   - name: '0'
     description: PFEH Args <ARRAY>
     type: ArrayUnknown
+  - name: '1'
+    description: PFEH ID <NUMBER>
+    type: Number
   example: '[] call ace_viewports_fnc_eachFrame'
 - name: ace_viewports_fnc_entervehicle
   ret: Nothing
@@ -20978,6 +23109,17 @@
     type: Object
   example: '[player, vehicle player] call ace_viewports_fnc_enterVehicle'
 - name: ace_viewports_fnc_getseatinfo
+  ret: !OneOf
+  - - ArrayUnknown
+    - null
+  - - String
+    - null
+  - - Number
+    - null
+  - - ArrayUnknown
+    - null
+  - - String
+    - null
   params:
   - name: '0'
     description: Unit <OBJECT>
@@ -21079,8 +23221,9 @@
     type: ArrayUnknown
   example: '[player, nil, [configFile >> "CfgWeapons" >> "U_B_CTRG_1", [configFile >> "CfgWeapons" >> "U_B_CTRG_3"]]] call ace_wardrobe_fnc_addActionsChildren'
 - name: ace_wardrobe_fnc_checkforlegacy
+  ret: Nothing
   params: []
-  example: ''
+  example: call ace_wardrobe_fnc_checkForLegacy
 - name: ace_wardrobe_fnc_checkmissingcomponents
   ret: Boolean
   params:
@@ -21163,6 +23306,16 @@
     description: Desired variant <CONFIG>
     type: Config
   example: '[(configFile >> "CfgWeapons" >> "U_B_CTRG_3"), (configFile >> "CfgWeapons" >> "U_B_CTRG_1")] call ace_wardrobe_fnc_getDuration'
+- name: ace_wardrobe_fnc_getgesture
+  ret: String
+  params:
+  - name: '0'
+    description: Current variant <CONFIG>
+    type: Config
+  - name: '1'
+    description: Desired variant <CONFIG>
+    type: Config
+  example: '[(configFile >> "CfgWeapons" >> "U_B_CTRG_3"), (configFile >> "CfgWeapons" >> "U_B_CTRG_1")] call ace_wardrobe_fnc_getGesture'
 - name: ace_wardrobe_fnc_geticon
   ret: String
   params:
@@ -21187,6 +23340,26 @@
     description: TYPENUMBER <NUMBER>
     type: Number
   example: TYPE_HMD call ace_wardrobe_fnc_getSlotName;
+- name: ace_wardrobe_fnc_getsound
+  ret: String
+  params:
+  - name: '0'
+    description: Current variant <CONFIG>
+    type: Config
+  - name: '1'
+    description: Desired variant <CONFIG>
+    type: Config
+  example: '[(configFile >> "CfgWeapons" >> "U_B_CTRG_3"), (configFile >> "CfgWeapons" >> "U_B_CTRG_1")] call ace_wardrobe_fnc_getSound'
+- name: ace_wardrobe_fnc_getsoundtiming
+  ret: Number
+  params:
+  - name: '0'
+    description: Current variant <CONFIG>
+    type: Config
+  - name: '1'
+    description: Desired variant <CONFIG>
+    type: Config
+  example: '[(configFile >> "CfgWeapons" >> "U_B_CTRG_3"), (configFile >> "CfgWeapons" >> "U_B_CTRG_1")] call ace_wardrobe_fnc_getSoundTiming'
 - name: ace_wardrobe_fnc_gettypenumber
   ret: Number
   params:
@@ -21364,7 +23537,7 @@
   - name: '2'
     description: Relative humidity - value between 0.0 and 1.0 <NUMBER>
     type: Number
-  example: '[0, 1020] call ace_weather_fnc_calculateOxygenDensity'
+  example: '[0, 1020, 0.5] call ace_weather_fnc_calculateOxygenDensity'
 - name: ace_weather_fnc_calculateroughnesslength
   ret: Number
   params: []
@@ -21445,7 +23618,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
@@ -21458,6 +23631,22 @@
   ret: Nothing
   params: []
   example: '[] call ace_weather_fnc_initWind'
+- name: ace_weather_fnc_settemperatureshift
+  ret: String
+  params:
+  - name: '0'
+    description: 'Temperature shift in degrees Celsius <NUMBER> (default: 0)'
+    type: Number
+    optional: true
+  - name: '1'
+    description: 'Transition duration in seconds, less than 1 is instant <NUMBER> (default: 0)'
+    type: Number
+    optional: true
+  - name: '2'
+    description: 'Unique identifier <STRING> (default: "")'
+    type: String
+    optional: true
+  example: '[-5, 600] call ace_weather_fnc_setTemperatureShift'
 - name: ace_weather_fnc_updatehumidity
   ret: Nothing
   params: []
@@ -21482,7 +23671,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
@@ -21497,7 +23686,36 @@
   example: '[] call ace_winddeflection_fnc_updateTrajectoryPFH'
 - name: ace_xm157_fnc_airburst_ammofired
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Unit (not used) <OBJECT>
+    type: Object
+    optional: true
+  - name: '1'
+    description: Weapon (not used) <STRING>
+    type: String
+    optional: true
+  - name: '2'
+    description: Muzzle (not used) <STRING>
+    type: String
+    optional: true
+  - name: '3'
+    description: Mode (not used) <STRING>
+    type: String
+    optional: true
+  - name: '4'
+    description: Ammo <STRING>
+    type: String
+  - name: '5'
+    description: Magazine (not used) <STRING>
+    type: String
+    optional: true
+  - name: '6'
+    description: Projectile <OBJECT>
+    type: Object
+  - name: '7'
+    description: Gunner <OBJECT>
+    type: Object
   example: '[] call ace_xm157_fnc_airburst_ammoFired'
 - name: ace_xm157_fnc_ballistics_calculator
   ret: ArrayUnknown
@@ -21567,13 +23785,16 @@
   example: call ace_yardage450_fnc_turnOn
 - name: ace_zeus_fnc_addobjecttocurator
   ret: Nothing
-  params: []
+  params:
+  - name: '0'
+    description: Object <OBJECT>
+    type: Object
   example: '[object] call ace_zeus_fnc_addObjectToCurator'
 - name: ace_zeus_fnc_bi_modulearsenal
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: Not used
@@ -21587,7 +23808,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
@@ -21600,7 +23821,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
@@ -21613,7 +23834,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
@@ -21626,7 +23847,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
@@ -21673,12 +23894,37 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The zeus logic <LOGIC>
+    description: The zeus (curator) logic <OBJECT>
     type: Object
-  - name: '1'
-    description: The zeus player <OBJECT>
+  example: '[myCurator] call ace_zeus_fnc_handleZeusUnitAssigned'
+- name: ace_zeus_fnc_moduleAddAceArsenal
+  ret: Nothing
+  params:
+  - name: '0'
+    description: The module logic <OBJECT>
     type: Object
-  example: '[LOGIC, bob] call ace_zeus_fnc_handleZeusUnitAssigned'
+  example: ''
+- name: ace_zeus_fnc_moduleAddArsenal
+  ret: Nothing
+  params:
+  - name: '0'
+    description: The module logic <OBJECT>
+    type: Object
+  example: ''
+- name: ace_zeus_fnc_moduleRemoveAceArsenal
+  ret: Nothing
+  params:
+  - name: '0'
+    description: The module logic <OBJECT>
+    type: Object
+  example: ''
+- name: ace_zeus_fnc_moduleRemoveArsenal
+  ret: Nothing
+  params:
+  - name: '0'
+    description: The module logic <OBJECT>
+    type: Object
+  example: ''
 - name: ace_zeus_fnc_moduleaddorremovefries
   ret: Nothing
   params:
@@ -21792,7 +24038,11 @@
   - name: '4'
     description: Enable or not top down filling <BOOL>
     type: Boolean
-  example: '[LOGIC, [2203.64, 2281.47, 1], 20, 2, true] call ace_zeus_fnc_moduleGarrison'
+  - name: '5'
+    description: 'Teleport units <BOOL> (default: false)'
+    type: Boolean
+    optional: true
+  example: '[LOGIC, [2203.64, 2281.47, 1], 20, 2, true, false] call ace_zeus_fnc_moduleGarrison'
 - name: ace_zeus_fnc_moduleglobalsetskill
   ret: Nothing
   params:
@@ -22097,7 +24347,7 @@
   ret: Nothing
   params:
   - name: '0'
-    description: The module logic <LOGIC>
+    description: The module logic <OBJECT>
     type: Object
   - name: '1'
     description: units <ARRAY>
